@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<Database Name="CHSNSDB" EntityNamespace="CHSNS.Models" ContextNamespace="CHSNS.Models" Class="CHSNSDataContext" EntityBase="CHSNSEntity" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=CHSNSDB;Integrated Security=True" SettingsObjectName="Properties.Settings" SettingsPropertyName="CHSNSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Account">
+    <Type Name="Account">
+      <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Member="Email" Storage="_email" Type="System.String" DbType="nvarchar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Member="Password" Storage="_password" Type="System.Byte[]" DbType="varbinary(32) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Member="RoleID" Storage="_roleID" Type="System.Int64" DbType="bigint" CanBeNull="true" />
+      <Column Name="NickName" Member="NickName" Storage="_nickName" Type="System.String" DbType="nvarchar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RegTime" Member="RegTime" Storage="_regTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
+      <Column Name="LoginTime" Member="LoginTime" Storage="_loginTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Account_Role" Member="Role" Storage="_role" ThisKey="RoleID" OtherKey="ID" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Role">
+    <Type Name="Role">
+      <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Member="RoleName" Storage="_roleName" Type="System.String" DbType="nvarchar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Account_Role" Member="AccountList" Storage="_accountList" ThisKey="ID" OtherKey="RoleID" Type="Account" />
+    </Type>
+  </Table>
+</Database>

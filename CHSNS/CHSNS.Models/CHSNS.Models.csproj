@@ -54,25 +54,26 @@
   <ItemGroup>
     <Compile Include="Entity\Account.cs" />
     <Compile Include="Entity\Account.Generated.cs" />
-    <Compile Include="Entity\ArticleDataContext.cs" />
-    <Compile Include="Entity\ArticleDataContext.Generated.cs" />
-    <Compile Include="Entity\CHSNSEntity.cs" />
+    <Compile Include="Entity\CHSNSDataContext.cs" />
+    <Compile Include="Entity\CHSNSDataContext.Generated.cs" />
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\Role.Generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
+    <Compile Include="Properties\CHSNSDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
+      <DependentUpon>CHSNSDB.DBML</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Settings.settings">
+    <None Include="app.config" />
+    <None Include="CHSNSDB.DBML" />
+    <None Include="Properties\CHSNSDB.DBML">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <LastGenOutput>CHSNSDB.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
