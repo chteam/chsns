@@ -74,6 +74,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Js\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Home\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -89,12 +93,26 @@
     <Compile Include="Views\Home\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\PublicMenu.ascx.cs">
+      <DependentUpon>PublicMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\PublicMenu.ascx.designer.cs">
+      <DependentUpon>PublicMenu.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Shared\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Utility.ascx.cs">
+      <DependentUpon>Utility.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Utility.ascx.designer.cs">
+      <DependentUpon>Utility.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -174,7 +192,15 @@
     <Content Include="Images\video.png" />
     <Content Include="Images\复件 cnjmsu.gif" />
     <Content Include="Images\复件 toplogo.jpg" />
+    <Content Include="Js\CHSNSLib.js" />
+    <Content Include="Js\default.htm" />
     <Content Include="Js\Framework.js" />
+    <Content Include="Js\jquery-1.2.3-intellisense.js" />
+    <Content Include="Js\jquery-1.2.3.pack.js" />
+    <Content Include="Js\jquery-docs-xml.xml" />
+    <Content Include="Js\jquery.biggerlink.pack.js" />
+    <Content Include="Js\test.aspx" />
+    <Content Include="Js\test.js" />
     <Content Include="Style\Default\admin.css" />
     <Content Include="Style\Default\appli.css" />
     <Content Include="Style\Default\blog.css" />
@@ -297,6 +323,8 @@
     <Content Include="Style\Other\setpicture1.css" />
     <Content Include="Style\Other\simpleEditor.css" />
     <Content Include="Style\Readme.txt" />
+    <Content Include="Views\Shared\PublicMenu.ascx" />
+    <Content Include="Views\Shared\Utility.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Views\Home\About.aspx" />

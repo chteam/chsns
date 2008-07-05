@@ -1,0 +1,477 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <!-- JQuery Intellisense Header Generator - Copyright (c) 2008 InfoBasis Ltd. -->
+
+    <title>JQuery Intellisense Header Generator</title>
+
+	<!-- This is the jQuery script we're using for two purposes:
+			1) to provide us with a live jQuery object to clone
+			2) to provide us with jQuery functionality to run this script
+	 -->
+ 	
+
+    <script src="jquery-1.2.3.pack.js" type="text/javascript"></script>
+
+    <script src="jquery-1.2.3-intellisense.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	
+	// some jQuery documentation gives parameters names that are illegal in javaScript. 
+	// This lookup table provides replacement names
+	var substituteParams = {
+		'class' : 'cssClass'
+	}
+	
+	// poor man's stringBuilder
+	function stringBuilder()
+	{
+		var text = [];
+		this.write = function (str)
+		{
+			text.push(str);
+		}
+		this.getText = function()
+		{
+			return text.join('');
+		}
+	}
+	
+	// We'else up this lookup table of comments from the jQuery documentation
+	var comments = {};
+	
+	$(function() {
+		// on load
+	
+		// 'obj' serves two purposes.
+		// 1) it's our exemplar jQuery instance, which we use to examine what a jQuery object looks like
+		// 2) it's the 'textarea' element we'else ultimately stick our jQuery header into	
+		var obj = $('textarea');
+	
+		// get the doc XML	
+		$.ajax(
+			{
+				type: 'GET',
+				url: 'jquery-docs-xml.xml', 
+				success: docsLoaded,
+				dataType: 'xml'
+			}
+		);
+	
+		// once the docs are loaded:
+		function docsLoaded(docs)
+		{	
+		
+			var $docs = $(docs);
+			var docVersion = 'Documentation version: ' + $docs.find('docs').attr('version');
+			var apiVersion = 'API version: ' + obj.jquery;
+			
+			obj.before('<p>' + docVersion + '</p>');
+			obj.before('<p>' + apiVersion + '</p>');
+
+			// get the overloads the jQuery constructor function
+			var $rootMethods = $docs.find('method[@name="$"]');
+			// get all documentation items
+			var $methods = $docs.find('method');
+			
+			// now we need to divvy them up as instance methods or class methods, fields or functions
+			var instanceMethods = {};
+			var classMethods = {};
+			var instanceFields = {};
+			var classFields = {};
+			
+			
+			$methods.each(function() {
+				var methodName = $(this).attr('name');
+				if (methodName == '$') return;
+				if (methodName.substr(0,1) == '$')
+				{
+					if ($(this).attr('property') == 1)
+					{
+						classFields[methodName] = this; // sadly, we can't actually use this documentation...
+					}
+					else
+					{
+						classMethods[methodName] = true;
+					}
+				}
+				else
+				{
+					if ($(this).attr('property') == 1)
+					{
+						instanceFields[methodName] = this;
+					}
+					else
+					{
+						instanceMethods[methodName] = true;
+					}
+				}
+			});
+			
+
+			// generate comments for the jQuery constructor
+			saveComments('$', '$', $rootMethods, instanceFields); // note - pass instance fields through here to generate ///<field> documentation in the constructor
+			
+			// generate comments for instance and class methods
+			for (var instanceMethod in instanceMethods)
+			{
+				saveComments(instanceMethod, instanceMethod, $methods.filter('method[@name="' + instanceMethod + '"]'));
+			}
+			
+			for (var classMethod in classMethods)
+			{
+				saveComments(classMethod, classMethod, $methods.filter('method[@name="' + classMethod + '"]'));
+			}
+							
+			// now, reflect over jQuery and our exemplar jQuery object
+			// writing out a script that creates a non-functioning mock jQuery API
+			var writer = new stringBuilder();
+			with (writer)
+			{
+				// write header coments
+				write('/*                 JQuery header comments\n');
+				write(' *          for Visual Studio IntelliSense support\n');
+				write(' * \n');
+				write(' * **************************************************************\n');
+				write(' * ************ CONTAINS NO FUNCTIONAL JQUERY CODE **************\n');
+				write(' * **************************************************************\n');
+				write(' * \n');
+				write(' * Generated with InfoBasis JQuery IntelliSense Header Generator\n');
+				write(' * \n');
+				write(' * Sources:\n');
+				write(' *     '); write(apiVersion); write('\n');
+				write(' *     '); write(docVersion); write('\n');
+				write(' * \n');
+				write(' * JQuery is Copyright (c) John Resig (jquery.com)\n');
+				write(' */\n\n\n');
+				
+				// declare jQuery and $ first
+				write ('jQuery = $ = ');
+				
+				writeFunction($, '$', writer);
+				
+				write(';\n\n');
+				
+				// add a prototype definition to $
+				write('$.prototype = {\r\n\t');
+			
+				var first = true;
+				for (var e in obj)
+				{
+					if (isNaN(parseInt(e)))
+					{
+						if (first) first = false;
+						else  write(',\n\t');
+						
+						write(e);
+						write(': ');
+						
+    					if (obj[e] instanceof (Function))
+    					{
+    						writeFunction(obj[e], e, writer);
+    					}
+						else
+						{
+							write('{}');
+						}
+					}
+			    	
+				}
+				
+				write('\n};\n\n');
+				
+				// traverse the jQuery namespace creating a simulation of every value we find
+				var objectQueue = [{name: '$', obj: $}];
+				
+				while (objectQueue.length > 0)
+				{
+					var target = objectQueue.pop();
+					
+					if (target.obj == jQuery.prototype || target.obj == jQuery.expr || target.obj == jQuery.event) continue;
+					
+					for (var e in target.obj)
+					{
+						
+						// some things we find won't work, or will cause us to loop infinitely
+							
+						if (! isNaN(parseInt(e))) continue;
+						else if (e == 'constructor') continue;
+						else if (e == 'prototype') continue;
+						else if (e == 'for') continue; // skip keyword
+						else if (e == 'class') continue; // skip keyword
+						else if (target.obj[e] == $) continue;
+						else if (target.obj[e] == $.prototype) continue;
+						
+						var newTarget = target.name + '.' + e
+
+						write (newTarget + ' = ');
+						
+						if (target.obj[e] instanceof (Function))
+						{
+							writeFunction(target.obj[e], newTarget, writer);
+				   		
+						}
+						else 
+						{
+							write('{}');
+							objectQueue.push({name: newTarget, obj: target.obj[e]});
+						}
+
+					
+						write(';\n\n');
+							
+					}
+				}	
+				
+				
+				obj.text(getText());
+			}
+		}
+	
+	
+	});
+	
+	function writeFunction(fn, name, writer)
+	{
+		/// <summary>
+		/// Writes out an empty version of the supplied function to the provided writer.
+		/// if documentation comments exist under the supplied name, then those are included
+		/// </summary>
+		with (writer)
+		{
+			var comment = comments[name];
+			
+			
+			if (comment) 
+			{
+				// it's a documented function. 
+			
+				write ('function (');
+				// we need to make sure the argument names match the <params> that we documented in the function to get intellisense
+				for (var i = 0; i < comment.params.length; i++)
+				{
+					if (i > 0) write(', ');
+					write(comment.params[i]);
+				}
+				write (') {');
+				write('\n' + comment.comment);
+			}
+			else 
+			{
+				// we have no documentation. Write out everything up to the first curly brace
+				var srcText = fn.toString();
+				var curlyBrace = srcText.indexOf('{');
+				var toBrace = srcText.substr(0, curlyBrace + 1);	
+				
+				write(toBrace);
+			}
+			
+			write('}');
+		}
+	}
+	
+	function saveComments(functionRef, name, $overloads, constructorFields)
+	{
+		/// <summary>
+		/// Generate documentation comments for a given function name from the supplied set of jQuery <method> elements
+		/// which document overloads of the given function.
+		/// if constructor fields are supplied, document them too
+		/// </summary>
+
+		// first we establish the aggregate parameter list for the function
+		var paramDetails = [];
+		var details = [];
+		
+		var returnType = null;
+		
+		var overloadCount = 0;
+		$overloads.each(function() { 
+			var $method = $(this);
+			var $params = $method.find('params');
+			for (var i = 0; i < $params.size() || i < paramDetails.length; i++)
+			{
+				if ($params.size() > i)
+				{
+					var $param = $params.eq(i);
+					paramDetails[i] = paramDetails[i] || [];
+					
+					while (paramDetails[i].length < overloadCount) 
+					{
+						paramDetails[i].optional = true;
+						paramDetails[i].push(null);
+					}
+					
+					var paramName = $param.attr('name');
+					
+					if (substituteParams[paramName]) paramName = substituteParams[paramName];
+					
+					var desc = $param.find('desc').text();
+					var optional = desc.substr(0,10).toLowerCase() == '(optional)';
+					paramDetails[i].optional = paramDetails[i].optional || (optional);
+					
+					paramDetails[i].firstName = paramDetails[i].firstName || paramName;
+										
+					paramDetails[i].push(
+						{
+							name: paramName,
+							type: $param.attr('type'),
+							desc: desc,
+							optional : optional
+						}
+					);
+				}
+				else
+				{
+					paramDetails[i].push(null);
+					paramDetails[i].optional = true;
+				}
+			}
+			
+			var type = $method.attr('type');
+			
+			if (returnType != type)
+			{
+				if (returnType) returnType = 'Object';
+				else returnType = type;
+			}
+			
+			var ss = '';
+			if( $method.attr('short') )
+			    ss= '\n\t///[short] '+$method.attr('short').replace( /\n/g,'\n\t///');
+			if( $method.find('desc'))
+			    ss +='\n\t///[desc] '+  $method.find('desc').text().replace( /\n/g,'\n\t///'); 
+			details.push(
+				{
+					overload: ++overloadCount,
+					desc: ss,
+					returnType: type
+				}
+			);
+		});
+		
+		
+		for (var i = 0; i < paramDetails.length; i++)
+		{			
+			for (var j = 0; j < paramDetails[i].length; j++)
+			{
+				if (paramDetails[i][j])
+				{
+					paramDetails[i].firstName = paramDetails[i][j].name;
+					break;
+				}
+			}
+		}
+			
+		// now we can start generating the actual comment
+		with (new stringBuilder())
+		{
+			write ('\t/// <summary>\n');
+			for (var i = 0; i < details.length; i++)
+			{
+				write ('\t/// ');
+				if (details.length > 1)
+				{
+					 write ('' + details[i].overload + ': ');
+					 write (name);
+					 write ('(');
+					 for (var j = 0; j < paramDetails.length; j++)
+					{
+						if (! paramDetails[j][i]) break;
+						if (j > 0) write (', ');
+						write (paramDetails[j][i].name);
+					}
+			
+					 write (') - ');
+				}
+				write (details[i].desc);
+				if (details.length > 1) write('');
+				write ('\n');
+				
+				if (details[i].returnType != returnType)
+				{
+					write ('\t///   returns ');
+					write (details[i].returnType);
+					write ('\n');
+				}
+			}
+			write ('\t/// </summary>\n');
+			
+			if (returnType != "undefined")
+			{
+				write ('\t/// <returns type="');
+				write (returnType);
+				write ('"></returns>\n');
+			}
+			
+			for (var i = 0; i < paramDetails.length; i++)
+			{
+				write('\t/// <param name="');			
+				write(paramDetails[i].firstName);
+				if (paramDetails[i].optional)
+				{
+					write('" optional="true');
+				}
+				write('">');
+				
+				for (var j = 0; j < paramDetails[i].length; j++)
+				{
+					if (paramDetails[i][j])
+					{
+						if (paramDetails[i].length > 1)
+						{
+							write ('\n\t/// ');
+							write ('' + details[j].overload + ': '); 
+							write(paramDetails[i][j].name);
+							write (' - ');
+						}
+						
+						write (paramDetails[i][j].desc);
+						
+					}
+					
+				}
+				
+				if (paramDetails[i].length > 1) write ('\n\t/// ');
+				write('</param>\n');			
+			}
+			
+			if (constructorFields)
+			{
+				for (var field in constructorFields)
+				{
+					var $fieldMethod = $(constructorFields[field]);
+				
+					write ('\t/// <field name="');
+					write(field);
+					write('" type="');
+					write($fieldMethod.attr('type'));
+					write('">');
+					write($fieldMethod.attr('short'));
+					write ('</field>\n');
+					
+				}
+			}
+			
+			var paramNames = [];
+			for (var i = 0; i < paramDetails.length; i++)
+			{
+				paramNames[i] = paramDetails[i].firstName;
+			}
+			
+			comments[functionRef] = {comment: getText(), params: paramNames};
+		}
+	}
+	
+	</script>
+	
+</head>
+<body>
+    <textarea cols="80" rows="100">
+    
+    </textarea>
+
+<!-- for infobasis.com tracking -->
+<ib:GoogleAnalytics runat="server" />
+
+</body>
+</html>
