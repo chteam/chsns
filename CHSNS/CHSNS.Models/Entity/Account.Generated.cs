@@ -151,6 +151,50 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private System.DateTime _regTime;
+
+        /// <summary>
+        /// Gets or sets the RegTime column value.
+        /// </summary>
+        [Column(Name="RegTime", Storage="_regTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime RegTime
+        {
+            get { return _regTime; }
+            set
+            {
+                if (_regTime != value)
+                {
+                    OnRegTimeChanging(value);
+                    OnPropertyChanging("RegTime");
+                    _regTime = value;
+                    OnPropertyChanged("RegTime");
+                    OnRegTimeChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _loginTime;
+
+        /// <summary>
+        /// Gets or sets the LoginTime column value.
+        /// </summary>
+        [Column(Name="LoginTime", Storage="_loginTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime LoginTime
+        {
+            get { return _loginTime; }
+            set
+            {
+                if (_loginTime != value)
+                {
+                    OnLoginTimeChanging(value);
+                    OnPropertyChanging("LoginTime");
+                    _loginTime = value;
+                    OnPropertyChanged("LoginTime");
+                    OnLoginTimeChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -223,6 +267,16 @@ namespace CHSNS.Models
         partial void OnNickNameChanging(string value);
         /// <summary>Called after NickName has Changed.</summary>
         partial void OnNickNameChanged();
+        /// <summary>Called when RegTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnRegTimeChanging(System.DateTime value);
+        /// <summary>Called after RegTime has Changed.</summary>
+        partial void OnRegTimeChanged();
+        /// <summary>Called when LoginTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnLoginTimeChanging(System.DateTime value);
+        /// <summary>Called after LoginTime has Changed.</summary>
+        partial void OnLoginTimeChanged();
         #endregion
         
     }
