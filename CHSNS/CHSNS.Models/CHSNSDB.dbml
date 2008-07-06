@@ -5,11 +5,11 @@
     <Type Name="Account">
       <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Email" Member="Email" Storage="_email" Type="System.String" DbType="nvarchar(80) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Member="Password" Storage="_password" Type="System.Byte[]" DbType="varbinary(32) NOT NULL" CanBeNull="false" />
       <Column Name="RoleID" Member="RoleID" Storage="_roleID" Type="System.Int64" DbType="bigint" CanBeNull="true" />
       <Column Name="NickName" Member="NickName" Storage="_nickName" Type="System.String" DbType="nvarchar(50) NOT NULL" CanBeNull="false" />
       <Column Name="RegTime" Member="RegTime" Storage="_regTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
       <Column Name="LoginTime" Member="LoginTime" Storage="_loginTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordMd5" Member="PasswordMd5" Storage="_passwordMd5" Type="System.String" DbType="varchar(50) NOT NULL" CanBeNull="false" />
       <Association Name="FK_Account_Role" Member="Role" Storage="_role" ThisKey="RoleID" OtherKey="ID" Type="Role" IsForeignKey="true" />
     </Type>
   </Table>

@@ -22,7 +22,6 @@ namespace CHSNS.Models {
 			HttpContext.Current.Response.Cookies["CHSNS"].Domain = "chs";
 			HttpContext.Current.Session["role"] = exists.RoleID;
 			HttpContext.Current.Response.Cookies["CHSNS"].Expires = DateTime.Now.Add(new TimeSpan(365, 0, 0, 0, 0));
-
 			return true;
 		}
 
@@ -31,7 +30,6 @@ namespace CHSNS.Models {
 			return DBExt.Login(
 				DB.Account.Where(a => a.Email == Email && a.PasswordMd5 == Password.Md5_32())
 				);
-
 		}
 		public static Boolean Login(Int64 UserID, String Password) {
 			CHSNSDataContext DB = new CHSNSDataContext();
