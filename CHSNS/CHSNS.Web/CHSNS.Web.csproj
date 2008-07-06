@@ -93,6 +93,27 @@
     <Compile Include="Views\Home\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\Footer.ascx.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Footer.ascx.designer.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\LoginControl.ascx.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\LoginControl.ascx.designer.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\MyMenu.ascx.cs">
+      <DependentUpon>MyMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\MyMenu.ascx.designer.cs">
+      <DependentUpon>MyMenu.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shared\PublicMenu.ascx.cs">
       <DependentUpon>PublicMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -323,6 +344,9 @@
     <Content Include="Style\Other\setpicture1.css" />
     <Content Include="Style\Other\simpleEditor.css" />
     <Content Include="Style\Readme.txt" />
+    <Content Include="Views\Shared\Footer.ascx" />
+    <Content Include="Views\Shared\LoginControl.ascx" />
+    <Content Include="Views\Shared\MyMenu.ascx" />
     <Content Include="Views\Shared\PublicMenu.ascx" />
     <Content Include="Views\Shared\Utility.ascx" />
     <Content Include="Web.config" />
@@ -356,7 +380,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

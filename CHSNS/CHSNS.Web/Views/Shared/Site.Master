@@ -40,18 +40,19 @@
 				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 			</div>
 		</div>
-		#parse("$siteroot/Layouts/master-footer.vm")##Footer²¿·Ö
+		<%=Html.RenderUserControl("/Views/Shared/Footer.ascx") %>
 		<div id="linkList">
 			<div id="linkList2">
-				#parse("$siteroot/Layouts/master-mymenu.vm")</div>
-			#if($ChHelper.ChSite.Publish.IsShow)
+			<%=Html.RenderUserControl("/Views/Shared/MyMenu.ascx") %>
+				</div>
+<%--			#if($ChHelper.ChSite.Publish.IsShow)
 			<div id="master-publish">
 				$ChHelper.ChSite.Publish.Body
 			</div>
 			#end
 			<div id="ad" style="padding-top: 20px">
 				#component(ad)
-			</div>
+			</div>--%>
 		</div>
 	</div>
 	<div id="extendDiv1">
