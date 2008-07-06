@@ -82,28 +82,6 @@ namespace CHSNS.Models
             }
         }
         
-        private byte[] _password;
-
-        /// <summary>
-        /// Gets or sets the Password column value.
-        /// </summary>
-        [Column(Name="Password", Storage="_password", DbType="varbinary(32) NOT NULL", CanBeNull=false)]
-        public byte[] Password
-        {
-            get { return _password; }
-            set
-            {
-                if (_password != value)
-                {
-                    OnPasswordChanging(value);
-                    OnPropertyChanging("Password");
-                    _password = value;
-                    OnPropertyChanged("Password");
-                    OnPasswordChanged();
-                }
-            }
-        }
-        
         private Nullable<long> _roleID;
 
         /// <summary>
@@ -195,6 +173,28 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private string _passwordMd5;
+
+        /// <summary>
+        /// Gets or sets the PasswordMd5 column value.
+        /// </summary>
+        [Column(Name="PasswordMd5", Storage="_passwordMd5", DbType="varchar(50) NOT NULL", CanBeNull=false)]
+        public string PasswordMd5
+        {
+            get { return _passwordMd5; }
+            set
+            {
+                if (_passwordMd5 != value)
+                {
+                    OnPasswordMd5Changing(value);
+                    OnPropertyChanging("PasswordMd5");
+                    _passwordMd5 = value;
+                    OnPropertyChanged("PasswordMd5");
+                    OnPasswordMd5Changed();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -252,11 +252,6 @@ namespace CHSNS.Models
         partial void OnEmailChanging(string value);
         /// <summary>Called after Email has Changed.</summary>
         partial void OnEmailChanged();
-        /// <summary>Called when Password is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnPasswordChanging(byte[] value);
-        /// <summary>Called after Password has Changed.</summary>
-        partial void OnPasswordChanged();
         /// <summary>Called when RoleID is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnRoleIDChanging(Nullable<long> value);
@@ -277,6 +272,11 @@ namespace CHSNS.Models
         partial void OnLoginTimeChanging(System.DateTime value);
         /// <summary>Called after LoginTime has Changed.</summary>
         partial void OnLoginTimeChanged();
+        /// <summary>Called when PasswordMd5 is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnPasswordMd5Changing(string value);
+        /// <summary>Called after PasswordMd5 has Changed.</summary>
+        partial void OnPasswordMd5Changed();
         #endregion
         
     }
