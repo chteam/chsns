@@ -195,6 +195,50 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private string _question;
+
+        /// <summary>
+        /// Gets or sets the Question column value.
+        /// </summary>
+        [Column(Name="Question", Storage="_question", DbType="nvarchar(50)")]
+        public string Question
+        {
+            get { return _question; }
+            set
+            {
+                if (_question != value)
+                {
+                    OnQuestionChanging(value);
+                    OnPropertyChanging("Question");
+                    _question = value;
+                    OnPropertyChanged("Question");
+                    OnQuestionChanged();
+                }
+            }
+        }
+        
+        private string _answer;
+
+        /// <summary>
+        /// Gets or sets the Answer column value.
+        /// </summary>
+        [Column(Name="Answer", Storage="_answer", DbType="nvarchar(50)")]
+        public string Answer
+        {
+            get { return _answer; }
+            set
+            {
+                if (_answer != value)
+                {
+                    OnAnswerChanging(value);
+                    OnPropertyChanging("Answer");
+                    _answer = value;
+                    OnPropertyChanged("Answer");
+                    OnAnswerChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -277,6 +321,16 @@ namespace CHSNS.Models
         partial void OnPasswordMd5Changing(string value);
         /// <summary>Called after PasswordMd5 has Changed.</summary>
         partial void OnPasswordMd5Changed();
+        /// <summary>Called when Question is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnQuestionChanging(string value);
+        /// <summary>Called after Question has Changed.</summary>
+        partial void OnQuestionChanged();
+        /// <summary>Called when Answer is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnAnswerChanging(string value);
+        /// <summary>Called after Answer has Changed.</summary>
+        partial void OnAnswerChanged();
         #endregion
         
     }
