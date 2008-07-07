@@ -20,7 +20,8 @@
 		<p>
 			<input type="button" id="SubmitLogin" onclick="Login();" onkeydown="EnterLogin(event);" value="登录" class="subbutton" /> <a href="/help/getcode.aspx">忘了密码?</a></p>
 	</div>
-<%--	$url.link('<span>注册</span>', "%{controller='reg',action='start'}", "%{class='portal'}")
+	<%=Html.ActionLink<AccountController>(c => c.Agreement(), "注册", new{@class="portal" })%>
+<%--
 	$url.link('<span>没有收到验证邮件吗?</span>', "%{controller='reg',action='resend'}", "%{class='portal'}")
 --%></div>
 

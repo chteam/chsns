@@ -4,6 +4,6 @@ using System.Linq;
 using System.Text;
 
 namespace CHSNS.Models {
-	public class CHSNSDBDataContext : CChsnsDatabasesChsnsdbS3dbdatacontext {
+	public class CHSNSDataContext : CChsnsDatabasesChsnsdbS3dbdatacontext {
 	}
 }

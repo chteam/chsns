@@ -17,9 +17,9 @@ using System.Diagnostics;
 namespace CHSNS.Models
 {
     /// <summary>
-    /// The class representing the dbo.Account table.
+    /// The class representing the Account table.
     /// </summary>
-    [Table(Name="dbo.Account")]
+    [Table(Name="Account")]
     public partial class Account
         : CHSNSEntity
     {
@@ -32,7 +32,6 @@ namespace CHSNS.Models
         public Account()
         {
             OnCreated();
-            _role = default(EntityRef<Role>);
         }
         #endregion
         
@@ -43,7 +42,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets the ID column value.
         /// </summary>
-        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        [Column(Name="ID", Storage="_iD", DbType="integer", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
         public long ID
         {
             get { return _iD; }
@@ -65,7 +64,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Email column value.
         /// </summary>
-        [Column(Name="Email", Storage="_email", DbType="nvarchar(80) NOT NULL", CanBeNull=false)]
+        [Column(Name="Email", Storage="_email", DbType="nvarchar", CanBeNull=false)]
         public string Email
         {
             get { return _email; }
@@ -82,104 +81,12 @@ namespace CHSNS.Models
             }
         }
         
-        private Nullable<long> _roleID;
-
-        /// <summary>
-        /// Gets or sets the RoleID column value.
-        /// </summary>
-        [Column(Name="RoleID", Storage="_roleID", DbType="bigint")]
-        public Nullable<long> RoleID
-        {
-            get { return _roleID; }
-            set
-            {
-                if (_roleID != value)
-                {
-                    if (_role.HasLoadedOrAssignedValue)
-                    {
-                        throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-                    }
-                    OnRoleIDChanging(value);
-                    OnPropertyChanging("RoleID");
-                    _roleID = value;
-                    OnPropertyChanged("RoleID");
-                    OnRoleIDChanged();
-                }
-            }
-        }
-        
-        private string _nickName;
-
-        /// <summary>
-        /// Gets or sets the NickName column value.
-        /// </summary>
-        [Column(Name="NickName", Storage="_nickName", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
-        public string NickName
-        {
-            get { return _nickName; }
-            set
-            {
-                if (_nickName != value)
-                {
-                    OnNickNameChanging(value);
-                    OnPropertyChanging("NickName");
-                    _nickName = value;
-                    OnPropertyChanged("NickName");
-                    OnNickNameChanged();
-                }
-            }
-        }
-        
-        private System.DateTime _regTime;
-
-        /// <summary>
-        /// Gets or sets the RegTime column value.
-        /// </summary>
-        [Column(Name="RegTime", Storage="_regTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
-        public System.DateTime RegTime
-        {
-            get { return _regTime; }
-            set
-            {
-                if (_regTime != value)
-                {
-                    OnRegTimeChanging(value);
-                    OnPropertyChanging("RegTime");
-                    _regTime = value;
-                    OnPropertyChanged("RegTime");
-                    OnRegTimeChanged();
-                }
-            }
-        }
-        
-        private System.DateTime _loginTime;
-
-        /// <summary>
-        /// Gets or sets the LoginTime column value.
-        /// </summary>
-        [Column(Name="LoginTime", Storage="_loginTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
-        public System.DateTime LoginTime
-        {
-            get { return _loginTime; }
-            set
-            {
-                if (_loginTime != value)
-                {
-                    OnLoginTimeChanging(value);
-                    OnPropertyChanging("LoginTime");
-                    _loginTime = value;
-                    OnPropertyChanged("LoginTime");
-                    OnLoginTimeChanged();
-                }
-            }
-        }
-        
         private string _passwordMd5;
 
         /// <summary>
         /// Gets or sets the PasswordMd5 column value.
         /// </summary>
-        [Column(Name="PasswordMd5", Storage="_passwordMd5", DbType="varchar(50) NOT NULL", CanBeNull=false)]
+        [Column(Name="PasswordMd5", Storage="_passwordMd5", DbType="varchar", CanBeNull=false)]
         public string PasswordMd5
         {
             get { return _passwordMd5; }
@@ -196,12 +103,80 @@ namespace CHSNS.Models
             }
         }
         
+        private System.DateTime _regTime = default(System.DateTime);
+
+        /// <summary>
+        /// Gets the RegTime column value.
+        /// </summary>
+        [Column(Name="RegTime", Storage="_regTime", DbType="timestamp", IsDbGenerated=true, IsVersion=true, CanBeNull=false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public System.DateTime RegTime
+        {
+            get { return _regTime; }
+            set
+            {
+                if (_regTime != value)
+                {
+                    OnRegTimeChanging(value);
+                    OnPropertyChanging("RegTime");
+                    _regTime = value;
+                    OnPropertyChanged("RegTime");
+                    OnRegTimeChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _loginTime = default(System.DateTime);
+
+        /// <summary>
+        /// Gets the LoginTime column value.
+        /// </summary>
+        [Column(Name="LoginTime", Storage="_loginTime", DbType="timestamp", IsDbGenerated=true, IsVersion=true, CanBeNull=false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public System.DateTime LoginTime
+        {
+            get { return _loginTime; }
+            set
+            {
+                if (_loginTime != value)
+                {
+                    OnLoginTimeChanging(value);
+                    OnPropertyChanging("LoginTime");
+                    _loginTime = value;
+                    OnPropertyChanged("LoginTime");
+                    OnLoginTimeChanged();
+                }
+            }
+        }
+        
+        private string _nickName;
+
+        /// <summary>
+        /// Gets or sets the NickName column value.
+        /// </summary>
+        [Column(Name="NickName", Storage="_nickName", DbType="nvarchar", CanBeNull=false)]
+        public string NickName
+        {
+            get { return _nickName; }
+            set
+            {
+                if (_nickName != value)
+                {
+                    OnNickNameChanging(value);
+                    OnPropertyChanging("NickName");
+                    _nickName = value;
+                    OnPropertyChanged("NickName");
+                    OnNickNameChanged();
+                }
+            }
+        }
+        
         private string _question;
 
         /// <summary>
         /// Gets or sets the Question column value.
         /// </summary>
-        [Column(Name="Question", Storage="_question", DbType="nvarchar(50)")]
+        [Column(Name="Question", Storage="_question", DbType="nvarchar")]
         public string Question
         {
             get { return _question; }
@@ -223,7 +198,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Answer column value.
         /// </summary>
-        [Column(Name="Answer", Storage="_answer", DbType="nvarchar(50)")]
+        [Column(Name="Answer", Storage="_answer", DbType="nvarchar")]
         public string Answer
         {
             get { return _answer; }
@@ -239,44 +214,31 @@ namespace CHSNS.Models
                 }
             }
         }
-        #endregion
         
-        #region Association Mapped Properties
-        
-        private EntityRef<Role> _role;
+        private long _roles;
 
         /// <summary>
-        /// Gets or sets the Role association.
+        /// Gets or sets the Roles column value.
         /// </summary>
-        [Association(Name="FK_Account_Role", Storage="_role", ThisKey="RoleID", OtherKey="ID", IsForeignKey=true)]
-        public Role Role
+        [Column(Name="Roles", Storage="_roles", DbType="integer", CanBeNull=false)]
+        public long Roles
         {
-            get { return _role.Entity; }
+            get { return _roles; }
             set
             {
-                Role previousValue = _role.Entity;
-                if (previousValue != value || _role.HasLoadedOrAssignedValue == false)
+                if (_roles != value)
                 {
-                    OnPropertyChanging("Role");
-                    if (previousValue != null)
-                    {
-                        _role.Entity = null;
-                        previousValue.AccountList.Remove(this);
-                    }
-                    _role.Entity = value;
-                    if (value != null)
-                    {
-                        value.AccountList.Add(this);
-                        _roleID = value.ID;
-                    }
-                    else
-                    {
-                        _roleID = default(long);
-                    }
-                    OnPropertyChanged("Role");
+                    OnRolesChanging(value);
+                    OnPropertyChanging("Roles");
+                    _roles = value;
+                    OnPropertyChanged("Roles");
+                    OnRolesChanged();
                 }
             }
         }
+        #endregion
+        
+        #region Association Mapped Properties
         #endregion
         
         #region Extensibility Method Definitions
@@ -296,16 +258,11 @@ namespace CHSNS.Models
         partial void OnEmailChanging(string value);
         /// <summary>Called after Email has Changed.</summary>
         partial void OnEmailChanged();
-        /// <summary>Called when RoleID is changing.</summary>
+        /// <summary>Called when PasswordMd5 is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnRoleIDChanging(Nullable<long> value);
-        /// <summary>Called after RoleID has Changed.</summary>
-        partial void OnRoleIDChanged();
-        /// <summary>Called when NickName is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnNickNameChanging(string value);
-        /// <summary>Called after NickName has Changed.</summary>
-        partial void OnNickNameChanged();
+        partial void OnPasswordMd5Changing(string value);
+        /// <summary>Called after PasswordMd5 has Changed.</summary>
+        partial void OnPasswordMd5Changed();
         /// <summary>Called when RegTime is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnRegTimeChanging(System.DateTime value);
@@ -316,11 +273,11 @@ namespace CHSNS.Models
         partial void OnLoginTimeChanging(System.DateTime value);
         /// <summary>Called after LoginTime has Changed.</summary>
         partial void OnLoginTimeChanged();
-        /// <summary>Called when PasswordMd5 is changing.</summary>
+        /// <summary>Called when NickName is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnPasswordMd5Changing(string value);
-        /// <summary>Called after PasswordMd5 has Changed.</summary>
-        partial void OnPasswordMd5Changed();
+        partial void OnNickNameChanging(string value);
+        /// <summary>Called after NickName has Changed.</summary>
+        partial void OnNickNameChanged();
         /// <summary>Called when Question is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnQuestionChanging(string value);
@@ -331,6 +288,11 @@ namespace CHSNS.Models
         partial void OnAnswerChanging(string value);
         /// <summary>Called after Answer has Changed.</summary>
         partial void OnAnswerChanged();
+        /// <summary>Called when Roles is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnRolesChanging(long value);
+        /// <summary>Called after Roles has Changed.</summary>
+        partial void OnRolesChanged();
         #endregion
         
     }

@@ -79,6 +79,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Account\Agreement.aspx.cs">
+      <DependentUpon>Agreement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\Agreement.aspx.designer.cs">
+      <DependentUpon>Agreement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\RegPage.aspx.cs">
+      <DependentUpon>RegPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\RegPage.aspx.designer.cs">
+      <DependentUpon>RegPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -120,6 +134,13 @@
     </Compile>
     <Compile Include="Views\Shared\PublicMenu.ascx.designer.cs">
       <DependentUpon>PublicMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Single.Master.cs">
+      <DependentUpon>Single.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Single.Master.designer.cs">
+      <DependentUpon>Single.Master</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -363,6 +384,9 @@
     <None Include="Images\Thumbs.db" />
     <None Include="Style\Default\Images\Thumbs.db" />
     <None Include="Style\foxblue\Images\Thumbs.db" />
+    <Content Include="Views\Account\Agreement.aspx" />
+    <Content Include="Views\Account\RegPage.aspx" />
+    <Content Include="Views\Shared\Single.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Controllers\CHSNS.Controllers.csproj">

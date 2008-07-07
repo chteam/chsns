@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyMenu.ascx.cs" Inherits="CHSNS.Web.Views.Shared.MyMenu" %>
-#if($ChHelper.ChUser.isLogined)
+<%if(CHUser.IsLogin){ %>
 <div id="lselect">
 	<div id="leftmenu" class="mymenu">
 	    <ul>
@@ -32,6 +32,6 @@
 <script type="text/javascript">
 chmenu("#leftmenu .menusea");
 </script>
-#else
+<%}else{ %>
 <%=Html.RenderUserControl("/Views/Shared/LoginControl.ascx") %>
-#end
+<%} %>
