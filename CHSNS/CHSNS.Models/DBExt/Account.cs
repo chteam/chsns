@@ -6,13 +6,14 @@ using System.Web;
 
 namespace CHSNS.Models {
 	public class DBExt {
+
 		static Boolean Login(IQueryable<Account> A){
 			var exists = (from a in A
 						  select new {
 							  a.NickName,
 							  a.PasswordMd5,
 							  UserID = a.ID,
-							  a.RoleID
+							  a.Roles
 						  }).SingleOrDefault();
 			if (exists == null)
 				return false;
@@ -20,7 +21,7 @@ namespace CHSNS.Models {
 			HttpContext.Current.Response.Cookies["CHSNS"]["id"] = exists.UserID.ToString();
 			HttpContext.Current.Response.Cookies["CHSNS"]["pwd"] = exists.PasswordMd5;
 			HttpContext.Current.Response.Cookies["CHSNS"].Domain = "chs";
-			HttpContext.Current.Session["role"] = exists.RoleID;
+			HttpContext.Current.Session["roles"] = exists.Roles;
 			HttpContext.Current.Response.Cookies["CHSNS"].Expires = DateTime.Now.Add(new TimeSpan(365, 0, 0, 0, 0));
 			return true;
 		}
