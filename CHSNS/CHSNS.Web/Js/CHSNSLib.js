@@ -71,3 +71,29 @@ var chmenu=function(x) {
 		.mouseout(function(){$(this).removeClass("sfhover");});
 	}); 
 } ;
+
+//Enter focus
+function EnterTo(n,event){
+  if(event.keyCode == 13){ 
+	$("input[name="+n+"]").focus();
+  }
+}
+//message show 
+var showMessage=function(id,m,timeout){//show Message
+	var timeoutSeed;
+	if($(id)){
+		$h(id,m);
+		if(timeout==null)timeout=3000;
+		if (timeoutSeed){
+			window.clearTimeout(timeoutSeed);
+		}
+		timeoutSeed = window.setTimeout(
+			function(){
+				$h(id,""); 
+			},
+			timeout || 3500
+		);
+	}else alertEx(m);
+};
+
+//account

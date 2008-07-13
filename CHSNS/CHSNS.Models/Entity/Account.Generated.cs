@@ -17,9 +17,9 @@ using System.Diagnostics;
 namespace CHSNS.Models
 {
     /// <summary>
-    /// The class representing the Account table.
+    /// The class representing the dbo.Account table.
     /// </summary>
-    [Table(Name="Account")]
+    [Table(Name="dbo.Account")]
     public partial class Account
         : CHSNSEntity
     {
@@ -37,12 +37,12 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _iD = default(long);
+        private long _iD;
 
         /// <summary>
-        /// Gets the ID column value.
+        /// Gets or sets the ID column value.
         /// </summary>
-        [Column(Name="ID", Storage="_iD", DbType="integer", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL", CanBeNull=false)]
         public long ID
         {
             get { return _iD; }
@@ -59,12 +59,34 @@ namespace CHSNS.Models
             }
         }
         
+        private string _nickname;
+
+        /// <summary>
+        /// Gets or sets the Nickname column value.
+        /// </summary>
+        [Column(Name="Nickname", Storage="_nickname", DbType="nvarchar(12) NOT NULL", CanBeNull=false)]
+        public string Nickname
+        {
+            get { return _nickname; }
+            set
+            {
+                if (_nickname != value)
+                {
+                    OnNicknameChanging(value);
+                    OnPropertyChanging("Nickname");
+                    _nickname = value;
+                    OnPropertyChanged("Nickname");
+                    OnNicknameChanged();
+                }
+            }
+        }
+        
         private string _email;
 
         /// <summary>
         /// Gets or sets the Email column value.
         /// </summary>
-        [Column(Name="Email", Storage="_email", DbType="nvarchar", CanBeNull=false)]
+        [Column(Name="Email", Storage="_email", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
         public string Email
         {
             get { return _email; }
@@ -81,102 +103,12 @@ namespace CHSNS.Models
             }
         }
         
-        private string _passwordMd5;
-
-        /// <summary>
-        /// Gets or sets the PasswordMd5 column value.
-        /// </summary>
-        [Column(Name="PasswordMd5", Storage="_passwordMd5", DbType="varchar", CanBeNull=false)]
-        public string PasswordMd5
-        {
-            get { return _passwordMd5; }
-            set
-            {
-                if (_passwordMd5 != value)
-                {
-                    OnPasswordMd5Changing(value);
-                    OnPropertyChanging("PasswordMd5");
-                    _passwordMd5 = value;
-                    OnPropertyChanged("PasswordMd5");
-                    OnPasswordMd5Changed();
-                }
-            }
-        }
-        
-        private System.DateTime _regTime = default(System.DateTime);
-
-        /// <summary>
-        /// Gets the RegTime column value.
-        /// </summary>
-        [Column(Name="RegTime", Storage="_regTime", DbType="timestamp", IsDbGenerated=true, IsVersion=true, CanBeNull=false)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public System.DateTime RegTime
-        {
-            get { return _regTime; }
-            set
-            {
-                if (_regTime != value)
-                {
-                    OnRegTimeChanging(value);
-                    OnPropertyChanging("RegTime");
-                    _regTime = value;
-                    OnPropertyChanged("RegTime");
-                    OnRegTimeChanged();
-                }
-            }
-        }
-        
-        private System.DateTime _loginTime = default(System.DateTime);
-
-        /// <summary>
-        /// Gets the LoginTime column value.
-        /// </summary>
-        [Column(Name="LoginTime", Storage="_loginTime", DbType="timestamp", IsDbGenerated=true, IsVersion=true, CanBeNull=false)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public System.DateTime LoginTime
-        {
-            get { return _loginTime; }
-            set
-            {
-                if (_loginTime != value)
-                {
-                    OnLoginTimeChanging(value);
-                    OnPropertyChanging("LoginTime");
-                    _loginTime = value;
-                    OnPropertyChanged("LoginTime");
-                    OnLoginTimeChanged();
-                }
-            }
-        }
-        
-        private string _nickName;
-
-        /// <summary>
-        /// Gets or sets the NickName column value.
-        /// </summary>
-        [Column(Name="NickName", Storage="_nickName", DbType="nvarchar", CanBeNull=false)]
-        public string NickName
-        {
-            get { return _nickName; }
-            set
-            {
-                if (_nickName != value)
-                {
-                    OnNickNameChanging(value);
-                    OnPropertyChanging("NickName");
-                    _nickName = value;
-                    OnPropertyChanged("NickName");
-                    OnNickNameChanged();
-                }
-            }
-        }
-        
         private string _question;
 
         /// <summary>
         /// Gets or sets the Question column value.
         /// </summary>
-        [Column(Name="Question", Storage="_question", DbType="nvarchar")]
+        [Column(Name="Question", Storage="_question", DbType="nvarchar(50)")]
         public string Question
         {
             get { return _question; }
@@ -198,7 +130,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Answer column value.
         /// </summary>
-        [Column(Name="Answer", Storage="_answer", DbType="nvarchar")]
+        [Column(Name="Answer", Storage="_answer", DbType="char(32)")]
         public string Answer
         {
             get { return _answer; }
@@ -215,13 +147,123 @@ namespace CHSNS.Models
             }
         }
         
-        private long _roles;
+        private Nullable<long> _code;
+
+        /// <summary>
+        /// Gets or sets the Code column value.
+        /// </summary>
+        [Column(Name="Code", Storage="_code", DbType="bigint")]
+        public Nullable<long> Code
+        {
+            get { return _code; }
+            set
+            {
+                if (_code != value)
+                {
+                    OnCodeChanging(value);
+                    OnPropertyChanging("Code");
+                    _code = value;
+                    OnPropertyChanged("Code");
+                    OnCodeChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _loginTime;
+
+        /// <summary>
+        /// Gets or sets the LoginTime column value.
+        /// </summary>
+        [Column(Name="LoginTime", Storage="_loginTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime LoginTime
+        {
+            get { return _loginTime; }
+            set
+            {
+                if (_loginTime != value)
+                {
+                    OnLoginTimeChanging(value);
+                    OnPropertyChanging("LoginTime");
+                    _loginTime = value;
+                    OnPropertyChanged("LoginTime");
+                    OnLoginTimeChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _regTime;
+
+        /// <summary>
+        /// Gets or sets the RegTime column value.
+        /// </summary>
+        [Column(Name="RegTime", Storage="_regTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime RegTime
+        {
+            get { return _regTime; }
+            set
+            {
+                if (_regTime != value)
+                {
+                    OnRegTimeChanging(value);
+                    OnPropertyChanging("RegTime");
+                    _regTime = value;
+                    OnPropertyChanged("RegTime");
+                    OnRegTimeChanged();
+                }
+            }
+        }
+        
+        private string _truePassword;
+
+        /// <summary>
+        /// Gets or sets the TruePassword column value.
+        /// </summary>
+        [Column(Name="TruePassword", Storage="_truePassword", DbType="char(32) NOT NULL", CanBeNull=false)]
+        public string TruePassword
+        {
+            get { return _truePassword; }
+            set
+            {
+                if (_truePassword != value)
+                {
+                    OnTruePasswordChanging(value);
+                    OnPropertyChanging("TruePassword");
+                    _truePassword = value;
+                    OnPropertyChanged("TruePassword");
+                    OnTruePasswordChanged();
+                }
+            }
+        }
+        
+        private string _trueEmail;
+
+        /// <summary>
+        /// Gets or sets the TrueEmail column value.
+        /// </summary>
+        [Column(Name="TrueEmail", Storage="_trueEmail", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
+        public string TrueEmail
+        {
+            get { return _trueEmail; }
+            set
+            {
+                if (_trueEmail != value)
+                {
+                    OnTrueEmailChanging(value);
+                    OnPropertyChanging("TrueEmail");
+                    _trueEmail = value;
+                    OnPropertyChanged("TrueEmail");
+                    OnTrueEmailChanged();
+                }
+            }
+        }
+        
+        private int _roles;
 
         /// <summary>
         /// Gets or sets the Roles column value.
         /// </summary>
-        [Column(Name="Roles", Storage="_roles", DbType="integer", CanBeNull=false)]
-        public long Roles
+        [Column(Name="Roles", Storage="_roles", DbType="int NOT NULL", CanBeNull=false)]
+        public int Roles
         {
             get { return _roles; }
             set
@@ -233,6 +275,28 @@ namespace CHSNS.Models
                     _roles = value;
                     OnPropertyChanged("Roles");
                     OnRolesChanged();
+                }
+            }
+        }
+        
+        private string _password;
+
+        /// <summary>
+        /// Gets or sets the Password column value.
+        /// </summary>
+        [Column(Name="Password", Storage="_password", DbType="char(32) NOT NULL", CanBeNull=false)]
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                if (_password != value)
+                {
+                    OnPasswordChanging(value);
+                    OnPropertyChanging("Password");
+                    _password = value;
+                    OnPropertyChanged("Password");
+                    OnPasswordChanged();
                 }
             }
         }
@@ -253,31 +317,16 @@ namespace CHSNS.Models
         partial void OnIDChanging(long value);
         /// <summary>Called after ID has Changed.</summary>
         partial void OnIDChanged();
+        /// <summary>Called when Nickname is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnNicknameChanging(string value);
+        /// <summary>Called after Nickname has Changed.</summary>
+        partial void OnNicknameChanged();
         /// <summary>Called when Email is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnEmailChanging(string value);
         /// <summary>Called after Email has Changed.</summary>
         partial void OnEmailChanged();
-        /// <summary>Called when PasswordMd5 is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnPasswordMd5Changing(string value);
-        /// <summary>Called after PasswordMd5 has Changed.</summary>
-        partial void OnPasswordMd5Changed();
-        /// <summary>Called when RegTime is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnRegTimeChanging(System.DateTime value);
-        /// <summary>Called after RegTime has Changed.</summary>
-        partial void OnRegTimeChanged();
-        /// <summary>Called when LoginTime is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnLoginTimeChanging(System.DateTime value);
-        /// <summary>Called after LoginTime has Changed.</summary>
-        partial void OnLoginTimeChanged();
-        /// <summary>Called when NickName is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnNickNameChanging(string value);
-        /// <summary>Called after NickName has Changed.</summary>
-        partial void OnNickNameChanged();
         /// <summary>Called when Question is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnQuestionChanging(string value);
@@ -288,11 +337,41 @@ namespace CHSNS.Models
         partial void OnAnswerChanging(string value);
         /// <summary>Called after Answer has Changed.</summary>
         partial void OnAnswerChanged();
+        /// <summary>Called when Code is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnCodeChanging(Nullable<long> value);
+        /// <summary>Called after Code has Changed.</summary>
+        partial void OnCodeChanged();
+        /// <summary>Called when LoginTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnLoginTimeChanging(System.DateTime value);
+        /// <summary>Called after LoginTime has Changed.</summary>
+        partial void OnLoginTimeChanged();
+        /// <summary>Called when RegTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnRegTimeChanging(System.DateTime value);
+        /// <summary>Called after RegTime has Changed.</summary>
+        partial void OnRegTimeChanged();
+        /// <summary>Called when TruePassword is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnTruePasswordChanging(string value);
+        /// <summary>Called after TruePassword has Changed.</summary>
+        partial void OnTruePasswordChanged();
+        /// <summary>Called when TrueEmail is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnTrueEmailChanging(string value);
+        /// <summary>Called after TrueEmail has Changed.</summary>
+        partial void OnTrueEmailChanged();
         /// <summary>Called when Roles is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnRolesChanging(long value);
+        partial void OnRolesChanging(int value);
         /// <summary>Called after Roles has Changed.</summary>
         partial void OnRolesChanged();
+        /// <summary>Called when Password is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnPasswordChanging(string value);
+        /// <summary>Called after Password has Changed.</summary>
+        partial void OnPasswordChanged();
         #endregion
         
     }

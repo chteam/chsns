@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using CHSNS.Models;
 
 namespace CHSNS.Web {
 	public class GlobalApplication : System.Web.HttpApplication {
@@ -20,6 +21,11 @@ namespace CHSNS.Web {
 
 		protected void Application_Start() {
 			RegisterRoutes(RouteTable.Routes);
+		}
+		public void Session_OnStart(object sender, EventArgs e) {
+			if (!CHUser.IsLogin && HttpContext.Current.Request.Cookies.AllKeys.Contains("CHSNS")) {	//当前不处于登录状态
+				DBExt.Login();
+			}
 		}
 	}
 }

@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MvcContrib, Version=0.0.1.118, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\开源产品\MVCToolkit\MVCContrib-7-12-pv3\Bin\MvcContrib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -85,6 +89,13 @@
     </Compile>
     <Compile Include="Views\Account\Agreement.aspx.designer.cs">
       <DependentUpon>Agreement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Reg-Success.aspx.cs">
+      <DependentUpon>Reg-Success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\Reg-Success.aspx.designer.cs">
+      <DependentUpon>Reg-Success.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Account\RegPage.aspx.cs">
       <DependentUpon>RegPage.aspx</DependentUpon>
@@ -384,7 +395,10 @@
     <None Include="Images\Thumbs.db" />
     <None Include="Style\Default\Images\Thumbs.db" />
     <None Include="Style\foxblue\Images\Thumbs.db" />
+    <Content Include="Js\Framework1.js" />
+    <Content Include="Js\WebUIValidation.js" />
     <Content Include="Views\Account\Agreement.aspx" />
+    <Content Include="Views\Account\Reg-Success.aspx" />
     <Content Include="Views\Account\RegPage.aspx" />
     <Content Include="Views\Shared\Single.Master" />
   </ItemGroup>
