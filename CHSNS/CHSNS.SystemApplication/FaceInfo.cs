@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 namespace CHSNS.SystemApplication {
-	public class BaseInfo : ISystemApplication {
+
+	public class FaceInfo : ISystemApplication {
 		Assembly Ass{
 			get{
 				return  Assembly.GetExecutingAssembly();
@@ -18,16 +19,12 @@ namespace CHSNS.SystemApplication {
 			}
 		}
 
-		#endregion
-
-		#region IBaseApplication 成员
-
 		public string GUID {
-			get { return "{1058FEDC-D819-4f0f-B359-7E635ABBA52F}"; }
+			get { return "{0E851E00-63B3-4854-B000-AF0DDDCD3607}"; }
 		}
 
 		public string Name {
-			get { return "基本信息"; }
+			get { return "头像"; }
 		}
 
 		public string Version {
@@ -36,20 +33,16 @@ namespace CHSNS.SystemApplication {
 		}
 		public string BaseViewFolder {
 			get {
-				return "BaseInfo";
+				return "FaceInfo";
 			}
 		}
 
-
+		public string Description {
+			get { return "头像信息设置与显示"; }
+		}
 
 		public int Position {
 			get { return 1; }
-		}
-
-
-
-		public string Description {
-			get { return "基本信息"; }
 		}
 
 		#endregion
