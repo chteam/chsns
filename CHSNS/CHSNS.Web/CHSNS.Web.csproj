@@ -34,9 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MvcContrib, Version=0.0.1.118, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.Unity, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\开源产品\MVCToolkit\MVCContrib-7-12-pv3\Bin\MvcContrib.dll</HintPath>
+      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC CodePlex Preview 4\Assemblies\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -48,15 +49,15 @@
     </Reference>
     <Reference Include="System.Web.Abstractions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC Preview 3\Assemblies\System.Web.Abstractions.dll</HintPath>
+      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC CodePlex Preview 4\Assemblies\System.Web.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC Preview 3\Assemblies\System.Web.Mvc.dll</HintPath>
+      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC CodePlex Preview 4\Assemblies\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Routing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC Preview 3\Assemblies\System.Web.Routing.dll</HintPath>
+      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC CodePlex Preview 4\Assemblies\System.Web.Routing.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -104,6 +105,20 @@
     <Compile Include="Views\Account\RegPage.aspx.designer.cs">
       <DependentUpon>RegPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BaseInfo\Setting.ascx.cs">
+      <DependentUpon>Setting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\BaseInfo\Setting.ascx.designer.cs">
+      <DependentUpon>Setting.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FaceInfo\Setting.ascx.cs">
+      <DependentUpon>Setting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\FaceInfo\Setting.ascx.designer.cs">
+      <DependentUpon>Setting.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -117,6 +132,20 @@
     </Compile>
     <Compile Include="Views\Home\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Setting.aspx.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\Setting.aspx.designer.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Footer.ascx.cs">
       <DependentUpon>Footer.ascx</DependentUpon>
@@ -395,11 +424,18 @@
     <None Include="Images\Thumbs.db" />
     <None Include="Style\Default\Images\Thumbs.db" />
     <None Include="Style\foxblue\Images\Thumbs.db" />
+    <Content Include="Js\jquery-ui.js" />
+    <Content Include="Js\ui.datepicker-zh-CN.js" />
+    <Content Include="Unity.config" />
     <Content Include="Js\Framework1.js" />
     <Content Include="Js\WebUIValidation.js" />
     <Content Include="Views\Account\Agreement.aspx" />
     <Content Include="Views\Account\Reg-Success.aspx" />
     <Content Include="Views\Account\RegPage.aspx" />
+    <Content Include="Views\BaseInfo\Setting.ascx" />
+    <Content Include="Views\FaceInfo\Setting.ascx" />
+    <Content Include="Views\Home\Setting.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\Single.Master" />
   </ItemGroup>
   <ItemGroup>

@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CHSNS.Web.Views.Home {
+namespace CHSNS.Web.Views.FaceInfo {
     
     
-    public partial class About {
+    public partial class Setting {
     }
 }

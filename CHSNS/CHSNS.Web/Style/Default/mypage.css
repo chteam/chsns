@@ -81,3 +81,85 @@ z-index:-100;
 .ajax__slider_v_handle {position:absolute;height:10px;width:22px;}
 .basic_over{ width:300px;}
 .basic_over .edit{ float:right; margin-right:5px;}
+
+
+/*toc tabs*/
+#toc{padding:0 10px; margin:10px 0;}
+.ui-tabs-nav .status{float:right; color:#808080;}
+
+
+
+
+
+
+
+/*jquery ui tabs*/
+
+/* Caution! Ensure accessibility in print and other media types... */
+@media projection, screen { /* Use class for showing/hiding tab content, so that visibility can be better controlled in different media types... */
+    .ui-tabs-hide {
+        display: none !important;
+    }
+}
+
+/* Hide useless elements in print layouts... */
+@media print {
+    .ui-tabs-nav {
+        display: none;
+    }
+}
+
+/* Skin */
+.ui-tabs-nav, .ui-tabs-panel {
+    font-family: "Î¢ÈíÑÅºÚ", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+.ui-tabs-nav {list-style-type:none; padding-left:10px; border-bottom:1px solid #3B5999;}
+.ui-tabs-nav:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.ui-tabs-nav li {float:left;}
+.ui-tabs-nav a, .ui-tabs-nav a span {}
+.ui-tabs-nav a {display:block; margin-right:0px; padding:2px 5px; text-decoration:none; line-height:15px; word-break:keep-all;}
+.ui-tabs-nav a:link, .ui-tabs-nav a:visited {}/**/
+.ui-tabs-nav .ui-tabs-selected a {background:#6d84b4;  margin:0px; color:#fff;}
+/**/
+.ui-tabs-nav .ui-tabs-selected a:hover{text-decoration:none; background:#d8dfea;display:block; color:#3b5999;}
+.ui-tabs-nav a:hover{color:#3b5999;padding:2px 4px; padding-bottom:1px; background:#d8dfea; text-decoration:none;border:solid 1px #d8dfea;border-width:1px 1px 0;}
+.ui-tabs-nav .ui-tabs-selected{float:left; color:#3b5999;border:solid 1px #6d84b4;border-width:1px 1px 0}
+.ui-tabs-nav .activetabhover{margin:0px; text-decoration:none; background:#3B5999;}
+.ui-tabs-nav .inactivetab:hover{color:#3B5999; background:#B6BDD2; text-decoration:none;}
+.ui-tabs-nav .tabs_hover{margin:0px; color:#3B5999; text-decoration:none;}
+
+.ui-tabs-nav a span {
+    padding-top: 1px;
+    padding-right: 0;
+    height: 20px;
+    background-position: 0 0;
+    line-height: 20px;
+}
+.ui-tabs-nav .ui-tabs-selected a span {
+    padding-top: 0;
+    height: 27px;
+    background-position: 0 -23px;
+    line-height: 27px;
+}
+.ui-tabs-nav .ui-tabs-selected a:link, .ui-tabs-nav .ui-tabs-selected a:visited,
+.ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */
+    cursor: text;
+}
+.ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active,
+.ui-tabs-nav .ui-tabs-unselect a:hover, .ui-tabs-nav .ui-tabs-unselect a:focus, .ui-tabs-nav .ui-tabs-unselect a:active { /* @ Opera, we need to be explicit again here now... */
+    cursor: pointer;
+}
+.ui-tabs-disabled {opacity: .4;filter: alpha(opacity=40);}
+.ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited {}
+.ui-tabs-panel {}
+
+/* Additional IE specific bug fixes... */
+* html .ui-tabs-nav { /* auto clear @ IE 6 & IE 7 Quirks Mode */
+    display: inline-block;
+}
+*:first-child+html .ui-tabs-nav  { /* auto clear @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */
+    display: inline-block;
+}
+* html .ui-tabs-nav{height:1%;}
+*+html .ui-tabs-nav{min-height:1%;}

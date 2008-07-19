@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CHSNS.Web.Views.Home {
+namespace CHSNS.Web.Views.Shared {
     
     
-    public partial class About {
+    public partial class Error {
     }
 }

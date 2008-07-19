@@ -133,25 +133,34 @@ html>body #myhome,html>body #myblog,html>body #myphoto{border-bottom:0;}
 .fontlink a:visited{text-decoration:none;color:#3B5999;}
 .fontlink a:hover{text-decoration:underline;color:#3B5999;}
 
-/*toc tabs*/
 
-#toc .status{float:right; color:#808080;}
-#toc{padding:0 10px; margin:10px 0;}
 
-#tabs{list-style-type:none; padding-left:10px; border-bottom:1px solid #3B5999;}
-#tabs:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
-* html #tabs{height:1%;}
-*+html #tabs{min-height:1%;}
-#tabs li{float:left;}
-#tabs li a{display:block; margin-right:0px; padding:2px 5px; text-decoration:none; line-height:15px; word-break:keep-all;}
-#tabs li a:hover{background:#6d84b4;text-decoration:none;}
-#tabs .activetab a{background:#6d84b4;  margin:0px; color:#fff;}
-#tabs .activetab a:hover{text-decoration:none; background:#d8dfea;display:block; color:#3b5999;}
-#tabs .inactivetab a:hover{color:#3b5999;padding:2px 4px; padding-bottom:1px; background:#d8dfea; text-decoration:none;border:solid 1px #d8dfea;border-width:1px 1px 0;}
-#tabs .activetab{float:left; color:#3b5999;border:solid 1px #6d84b4;border-width:1px 1px 0}
-#tabs .activetabhover{margin:0px; text-decoration:none; background:#3B5999;}
-#tabs .inactivetab:hover{color:#3B5999; background:#B6BDD2; text-decoration:none;}
-#tabs .tabs_hover{margin:0px; color:#3B5999; text-decoration:none;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

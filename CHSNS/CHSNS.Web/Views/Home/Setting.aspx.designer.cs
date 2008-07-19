@@ -11,6 +11,6 @@
 namespace CHSNS.Web.Views.Home {
     
     
-    public partial class About {
+    public partial class Setting {
     }
 }
