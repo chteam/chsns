@@ -34,7 +34,7 @@ namespace CHSNS.SystemApplication {
 			get { 
 				return "v1.0"; }
 		}
-		public string BaseViewFolder {
+		public string ControllerName {
 			get {
 				return "BaseInfo";
 			}
@@ -53,5 +53,6 @@ namespace CHSNS.SystemApplication {
 		}
 
 		#endregion
+
 	}
 }
