@@ -16,12 +16,16 @@ namespace CHSNS.Controllers.SystemApplication {
 			ViewData["Sex"] = new SelectList(li, "Value", "Text", bi.Sex);
 			ViewData["ProvinceID"] = new SelectList(DBExt.Provinces, "ID", "Name", bi.ProvinceID);
 			ViewData["CityID"] = new SelectList(DBExt.GetCitys(bi.ProvinceID.Value), "ID", "Name", bi.CityID);
-			ViewData["Birthday"] = bi.Birthday;
+			ViewData["Birthday"] = bi.Birthday.Value.ToString("MM/dd/yyyy").Replace("-", "/");
 			return View();
 		}
 		[PostOnlyFilter]
 		public ActionResult AjaxSave() {
-			return Content("yes");
+			BaseInfo bi = new BaseInfo();
+			BindingHelperExtensions.UpdateFrom(bi, Request.Form);
+			bi.UserID = CHUser.UserID;
+			DBExt.BaseInfo_Save(bi);
+			return Content("");
 		}
 	}
 }

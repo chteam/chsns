@@ -76,6 +76,7 @@
     <Compile Include="Config\ConfigSerializer.cs" />
     <Compile Include="Config\SiteConfig.cs" />
     <Compile Include="Debug.cs" />
+    <Compile Include="Dictionary.cs" />
     <Compile Include="ExpressionVisitor.cs" />
     <Compile Include="Application\ISystemApplication.cs" />
     <Compile Include="LinqToSqlExtensions.cs" />

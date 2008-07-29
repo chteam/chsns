@@ -46,9 +46,14 @@ var ChangeProvince=function(){
 	
 };
 var SBaseInfo=function(){
-if(validate_empty('#Name','姓名为必添项'))
+	if(validate_empty('#Name','姓名为必添项')
+	&&validate_regex('#ProvinceID',/[^0]+/,false,'省为必选')
+	&&validate_regex('#CityID',/[^0]+/,false,'市为必选')
+	&&validate_date('#Birthday','请写入正确日期')
+	)
 	$.post('<%=Url.Action("AjaxSave","BaseInfo") %>',$("#BasicInfofrm").serialize(),function(r){
-//	alert(r);
+if(''==r)
+alertEx('成功提交');
 	});
 };
 	</script>

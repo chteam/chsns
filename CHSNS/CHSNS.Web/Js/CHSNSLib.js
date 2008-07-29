@@ -1,6 +1,6 @@
 ﻿/// <reference path="jquery-1.2.3-intellisense.js" />
-var isnull=function(v){return !(typeof v!=="undefined"&&v!=null);}
 //common function
+var isnull=function(v){return !(typeof v!=="undefined"&&v!=null);}
 var $v=function(i,v){if(isnull(v)) return $(i).val();else $(i).val(v);};
 var $h=function(i,v){if(isnull(v)){return $(i).html();}else{$(i).html(v);}};
 
@@ -20,7 +20,7 @@ var chmenu=function(x) {
 		.mouseup(function(){$(this).addClass("sfhover");})
 		.mouseout(function(){$(this).removeClass("sfhover");});
 	}); 
-} ;
+};
 
 //Enter focus
 function EnterTo(n,event){
@@ -76,15 +76,13 @@ $.postJSON = function(u, d, callback,iscache) {
 };
 
 var BindSelect=function(id,o,t,v){
-	var options;
 	if(!t) t="Text";
 	if(!v) v="Value";
 	var s=$(id).get(0);
 	s.options.length=1;
-	if(o==null)return;
-	for (var i = 0; i < o.length; ++ i) {
+	if(null==o)return;
+	for(var i = 0; i < o.length; ++ i)
 		s.options.add(new Option(o[i][t],o[i][v]));
-	}
 };
 
 var alertEx=function(s){
@@ -101,50 +99,48 @@ var Regtest=function(id,reg){return reg.test($v(id));};
 function FormMsg(i,m,p){//i:id without msg,m:message,p:id withmsg or define self
 	if(p==null) p=i+"msg";
 	var l=$(p);
-	if(null==document.getElementById(p)){
-	//
-		l= jQuery("<span></span>").attr("id",p).addClass("error");
+	if(!l.length){
+		l= jQuery("<span></span>").attr("id",p.substr(1,p.length-1)).addClass("error");
 		$(i).after(l);
 	}
 	l.html(m).fadeIn();
 	$(i).focus();
 }
-var validate_regex=function(id,myreg,allowempty,msg,p){//isnone allow empty
+var validate_regex=function(id,reg,ae,m,p){
+//id:id of input,reg:regex,ae:alloweEmpty,m:msg,p:element show errormsg
 	var ie=false;//is empty
-	if(!allowempty)ie=isEmpty(id);
-	if(!myreg.test($v(id))||ie){
-		FormMsg(id,msg,p);
-		return false;
-	}
-	return true;
+	if(!ae)ie=isEmpty(id);
+	var b=!reg.test($v(id))||ie;
+	FormMsg(id,b?m:'',p);
+	return !b;
 };
-var validate_empty=function(id,msg,p){//p为显示块
-	if(isEmpty(id)){
-		FormMsg(id,msg,p);
-		return false;
-	}
-	return true;
+var validate_empty=function(id,m,p){
+	var b=isEmpty(id);
+	FormMsg(id,b?m:'',p);
+	return !b;
 };
-var validate_equals=function(id1,id2,msg,p){//id2 is the span that show error
-	if($v(id1)!=$v(id2)){
-		FormMsg(id,msg,p);
-		return false;
-	}
-	return true;
+var validate_date=function(id,m,p){
+	var b = /Invalid|NaN/.test(new Date($(id).val()));
+	FormMsg(id,b?m:'',p);
+	return !b;
+};
+
+var validate_equals=function(id1,id2,m,p){//id2 is the span that show error
+	var b=$v(id1)!=$v(id2);
+	FormMsg(id,b?m:'',p);
+	return !b;
 };
 var isEmpty=function(_){
-	if($(_)){
-		return ($.trim($v(_)).length<1);
-	}
+	if($(_))return $.trim($v(_)).length<1;
 	return true;
 };
 var isNum=function(_){
-  if(!_) return false;
-  var s=/^\d+(\.\d+)?$/;
-  if(!s.test(_)) return false;
-  try{
-  if(parseFloat(_)!=_) return false;
-  }catch(ex){return false;}
-  return true;
+	if(!_) return false;
+	var s=/^\d+(\.\d+)?$/;
+	if(!s.test(_)) return false;
+	try{
+	if(parseFloat(_)!=_) return false;
+	}catch(ex){return false;}
+	return true;
 };
 

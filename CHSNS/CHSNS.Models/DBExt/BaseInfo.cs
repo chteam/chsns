@@ -17,8 +17,24 @@ namespace CHSNS.Models {
 					Sex = false,
 					UserID = userid
 				};
+				MsSqlDB mdb = new MsSqlDB();
+				mdb.SqlExecute("insert into BaseInfo(userid) values(@ui)", "ui", userid);
 			}
 			return bi;
 		}
+		static public void BaseInfo_Save(BaseInfo bi) {
+			MsSqlDB db = new MsSqlDB();
+			db.SqlExecute(@"update BaseInfo 
+set [name]=@name,[sex]=@sex,provinceid=@provinceid,cityid=@cityid,birthday=@birthday
+where userid=@userid",
+				"name", bi.Name,
+			"Sex", bi.Sex,
+			"ProvinceID", bi.ProvinceID,
+			"CityID", bi.CityID,
+			"Birthday", bi.Birthday,
+			"UserID", bi.UserID
+			);
+		}
+
 	}
 }
