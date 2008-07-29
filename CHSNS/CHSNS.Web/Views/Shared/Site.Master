@@ -13,15 +13,10 @@
 	
 	<%=Html.CSSLink("Master") %>
 	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
-<%--	#if($ChHelper.ChUser.isAdmin)
 
-	<script src="/JavaScript/Adminuser.js" type="text/javascript"></script>
-
-	#end--%>
 </head>
 <body>
-<%=Html.Hidden("Hduserid")%>
-<%--//	$HtmlHelper.InputHidden("Hduserid", $session.get_Item("userid"))----%>
+    <%--<%=Html.Hidden("Hduserid")%>--%>
 	<div id="header">
 	</div>
 	<div id="container">
@@ -70,14 +65,13 @@
 	<div id="extendDiv5">
 		<span></span>
 	</div>
-	<div id="extendDiv6">
-		<span></span>
+	<div id="extendDiv6" style="display:none">
+		<div id="dialog">sss</div>
 	</div>
 	<asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
 	<script type="text/javascript">
-	//$('.menu_network li').biggerlink({clickableclass:'yum',hoverclass:'roll'});
-
 	chmenu("#publicmenu .menuli");
+
 	</script>
 	
 </body>

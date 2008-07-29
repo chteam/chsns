@@ -183,8 +183,8 @@ input,textarea{font-size:1em;border:1px solid #bdc7d8; padding:1px;}
 input[type~="text"],input[type~="password"],input[type~="inputfile"]{border:1px solid #bdc7d8;line-height:16px;height:16px;layout-flow:horizontal;}
 * html .inputtext,* html .inputfile{border:1px solid #bdc7d8;}
 input[type~="text"]:focus,input[type~="password"]:focus,textarea:focus{background:#fcfcfc; border:1px solid #bdc7d8;}
-.subbutton{background:#3B5999; padding:2px;border:1px solid; border-color:#d8dfea #0e1f5b #0e1f5b #d8dfea; color:#fff; background-image:url(images/buttonbg.jpg);}
-.subbutton:hover{background-image:url(images/buttonhover.jpg);border-color:#3B6E22; color:#fff;}
+.subbutton{background:#3B5999; padding:2px;border:1px solid; border-color:#ffffff #efefef #efefef #ffffff; color:#fff; background-image:url(images/buttonbg.jpg);}
+.subbutton:hover{background-image:url(images/buttonhover.jpg);border-color:#bebebe; color:#fff;}
 input[type~="submit"],input[type~="button"]{background:#3B5999; padding:2px;border:1px solid; border-color:#d8dfea #0e1f5b #0e1f5b #d8dfea; color:#fff; background-image:url(images/buttonbg.jpg)}
 .select{border:1px solid #bdc7d8;}
 .select select{margin:-2px; font-size:1em;background:#fcfcfc;}
@@ -399,3 +399,94 @@ margin: 0 1px 0 45px;padding: 5px 0;color: #5C5C5C;border-left: 1px solid #ddd;b
 
 .userviewname { padding:5px 0 2px; line-height:15px; overflow:hidden;}
 .userviewname a { display:block; white-space:nowrap;}
+
+
+
+.ui-resizable { position: relative; }
+
+/* Global handle styles */
+.ui-resizable-handle { position: absolute; display: none; font-size: 0.1px; }
+.ui-resizable .ui-resizable-handle { display: block; }
+body .ui-resizable-disabled .ui-resizable-handle { display: none; } /* use 'body' to make it more specific (css order) */
+body .ui-resizable-autohide .ui-resizable-handle { display: none; } /* use 'body' to make it more specific (css order) */
+
+.ui-resizable-n { cursor: n-resize;height: 6px; width: 100%; top: 0px; left: 0px;margin:0 6px}
+.ui-resizable-s { cursor: s-resize; height: 6px; width: 100%; bottom: 0px; left: 0px;margin:0 6px}
+
+.ui-resizable-e { cursor: e-resize; width: 6px; right: 0px; top: 0px; height: 100%;margin:6px 0}
+.ui-resizable-w { cursor: w-resize; width: 6px; left: 0px; top: 0px; height: 100%;}
+
+/*.ui-resizable-se { cursor: se-resize; width: 9px; height: 9px; right: 0px; bottom: 0px; background: transparent url(i/resizable-se.gif); }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: 0px; bottom: 0px; background: transparent url(i/resizable-sw.gif); }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: 0px; top: 0px; background: transparent url(i/resizable-nw.gif); }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: 0px; top: 0px; background: transparent url(i/resizable-ne.gif); }
+*/.ui-resizable-n,.ui-resizable-s ,.ui-resizable-e ,.ui-resizable-w ,.ui-resizable-se,.ui-resizable-sw,.ui-resizable-nw,.ui-resizable-ne{
+background:#000;
+filter:alpha(opacity=77);
+-moz-opacity:0.77; 
+opacity:0.77;}
+/* This file skins dialog */
+
+.ui-dialog {
+	background-color: #efefef;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	border-bottom: 1px solid #efefef;
+	background: #ff9900 url(i/dialog-title.gif) repeat-x;
+	padding: 0px;
+	height: 28px;
+	_height: 29px;
+	margin:0 6px
+}
+
+.ui-draggable .ui-dialog-titlebar {
+	cursor: move;
+}
+
+.ui-draggable-disabled .ui-dialog-titlebar {
+	cursor: default;
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	width: 16px;
+	height: 16px;
+	background: url(i/dialog-titlebar-close.png) no-repeat;
+	position:absolute;
+	top: 6px;
+	right: 7px;
+	cursor: default;
+}
+.ui-dialog .ui-dialog-titlebar-close img{border:0;}
+
+.ui-dialog .ui-dialog-titlebar-close span {
+	display: none;
+}
+
+.ui-dialog .ui-dialog-titlebar-close-hover {
+	background: url(i/dialog-titlebar-close-hover.png) no-repeat;
+}
+
+.ui-dialog .ui-dialog-title {
+	margin-left: 5px;
+	color: white;
+	font-weight: bold;
+	position: relative;
+	top: 7px;
+	left: 4px;
+}
+
+.ui-dialog .ui-dialog-content {
+	margin: 1.2em;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	position: absolute;
+	bottom: 8px;
+	right: 12px;
+	width: 100%;
+	text-align: right;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+	margin: 6px;
+}

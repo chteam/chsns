@@ -71,7 +71,9 @@
   <ItemGroup>
     <Compile Include="Application\IBaseApplication.cs" />
     <Compile Include="Application\IUserApplication.cs" />
+    <Compile Include="CHCache.cs" />
     <Compile Include="CHUser.cs" />
+    <Compile Include="Config\ConfigSerializer.cs" />
     <Compile Include="Config\SiteConfig.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="ExpressionVisitor.cs" />

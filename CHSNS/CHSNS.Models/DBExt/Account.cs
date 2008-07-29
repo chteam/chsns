@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using System.Data.SQLite;
 
 namespace CHSNS.Models {
-	public class DBExt {
+	public partial class DBExt {
 		/// <summary>
 		/// 注册
 		/// </summary>

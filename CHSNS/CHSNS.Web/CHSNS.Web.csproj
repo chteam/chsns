@@ -47,6 +47,12 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web.Abstractions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC CodePlex Preview 4\Assemblies\System.Web.Abstractions.dll</HintPath>
@@ -209,8 +215,6 @@
     <Content Include="Images\ApiIcon\note.gif" />
     <Content Include="Images\ApiIcon\photos.gif" />
     <Content Include="Images\bg_icon.png" />
-    <Content Include="Images\buttonbg.jpg" />
-    <Content Include="Images\buttonhover.jpg" />
     <Content Include="Images\c.jpg" />
     <Content Include="Images\Calendar_scheduleHS.png" />
     <Content Include="Images\cnjmsu.gif" />
@@ -426,6 +430,38 @@
     <None Include="Style\foxblue\Images\Thumbs.db" />
     <Content Include="Js\jquery-ui.js" />
     <Content Include="Js\ui.datepicker-zh-CN.js" />
+    <Content Include="Style\Default\i\accordion-left-act.png" />
+    <Content Include="Style\Default\i\accordion-left-over.png" />
+    <Content Include="Style\Default\i\accordion-left.png" />
+    <Content Include="Style\Default\i\accordion-middle-act.png" />
+    <Content Include="Style\Default\i\accordion-middle-over.png" />
+    <Content Include="Style\Default\i\accordion-middle.png" />
+    <Content Include="Style\Default\i\accordion-right-act.png" />
+    <Content Include="Style\Default\i\accordion-right-over.png" />
+    <Content Include="Style\Default\i\accordion-right.png" />
+    <Content Include="Style\Default\i\dialog-e.gif" />
+    <Content Include="Style\Default\i\dialog-n.gif" />
+    <Content Include="Style\Default\i\dialog-ne.gif" />
+    <Content Include="Style\Default\i\dialog-nw.gif" />
+    <Content Include="Style\Default\i\dialog-s.gif" />
+    <Content Include="Style\Default\i\dialog-se.gif" />
+    <Content Include="Style\Default\i\dialog-sw.gif" />
+    <Content Include="Style\Default\i\dialog-title.gif" />
+    <Content Include="Style\Default\i\dialog-titlebar-close-hover.png" />
+    <Content Include="Style\Default\i\dialog-titlebar-close.png" />
+    <Content Include="Style\Default\i\dialog-w.gif" />
+    <Content Include="Style\Default\i\resizable-e.gif" />
+    <Content Include="Style\Default\i\resizable-n.gif" />
+    <Content Include="Style\Default\i\resizable-ne.gif" />
+    <Content Include="Style\Default\i\resizable-nw.gif" />
+    <Content Include="Style\Default\i\resizable-s.gif" />
+    <Content Include="Style\Default\i\resizable-se.gif" />
+    <Content Include="Style\Default\i\resizable-sw.gif" />
+    <Content Include="Style\Default\i\resizable-w.gif" />
+    <Content Include="Style\Default\i\slider-bg-1.png" />
+    <Content Include="Style\Default\i\slider-bg-2.png" />
+    <Content Include="Style\Default\i\slider-handle.gif" />
+    <Content Include="Style\Default\i\tabs.png" />
     <Content Include="Unity.config" />
     <Content Include="Js\Framework1.js" />
     <Content Include="Js\WebUIValidation.js" />
@@ -454,6 +490,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Config\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

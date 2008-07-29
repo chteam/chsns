@@ -33,9 +33,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DataBases", "DataBases", "{
 		VWDPort = "23002"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.SystemApplication", "CHSNS.SystemApplication\CHSNS.SystemApplication.csproj", "{7C3BDA3C-8215-4A89-9931-4F535BB51074}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -53,9 +55,13 @@ Global
 		SccLocalPath4 = CHSNS
 		SccWebProject5 = true
 		SccProjectUniqueName5 = DataBases
+		SccProjectName5 = DataBases
 		SccLocalPath5 = .
 		SccProjectFilePathRelativizedFromConnection5 = DataBases\\
 		SccProjectEnlistmentChoice5 = 2
+		SccProjectUniqueName6 = CHSNS.SystemApplication\\CHSNS.SystemApplication.csproj
+		SccProjectName6 = CHSNS.SystemApplication
+		SccLocalPath6 = CHSNS.SystemApplication
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -116,6 +122,16 @@ Global
 		{13A0845A-9F7D-4AF7-A2BA-47795B10946D}.Release|Any CPU.ActiveCfg = Debug|.NET
 		{13A0845A-9F7D-4AF7-A2BA-47795B10946D}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
 		{13A0845A-9F7D-4AF7-A2BA-47795B10946D}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Release|.NET.ActiveCfg = Release|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7C3BDA3C-8215-4A89-9931-4F535BB51074}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

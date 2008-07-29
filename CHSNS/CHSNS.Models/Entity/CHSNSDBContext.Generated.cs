@@ -100,10 +100,22 @@ namespace CHSNS.Models
             get { return GetTable<Account>(); }
         }
         
+        /// <summary>Represents the dbo.BaseInfo table in the underlying database.</summary>
+        public Table<BaseInfo> BaseInfo
+        {
+            get { return GetTable<BaseInfo>(); }
+        }
+        
         /// <summary>Represents the dbo.City table in the underlying database.</summary>
         public Table<City> City
         {
             get { return GetTable<City>(); }
+        }
+        
+        /// <summary>Represents the dbo.HasApp table in the underlying database.</summary>
+        public Table<HasApp> HasApp
+        {
+            get { return GetTable<HasApp>(); }
         }
         
         /// <summary>Represents the dbo.Province table in the underlying database.</summary>
@@ -135,6 +147,15 @@ namespace CHSNS.Models
         /// <summary>Called before a Account is deleted.</summary>
         /// <param name="instance">The instance.</param>
         partial void DeleteAccount(Account instance);
+        /// <summary>Called before a BaseInfo is inserted.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void InsertBaseInfo(BaseInfo instance);
+        /// <summary>Called before a BaseInfo is updated.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void UpdateBaseInfo(BaseInfo instance);
+        /// <summary>Called before a BaseInfo is deleted.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void DeleteBaseInfo(BaseInfo instance);
         /// <summary>Called before a City is inserted.</summary>
         /// <param name="instance">The instance.</param>
         partial void InsertCity(City instance);
@@ -144,6 +165,15 @@ namespace CHSNS.Models
         /// <summary>Called before a City is deleted.</summary>
         /// <param name="instance">The instance.</param>
         partial void DeleteCity(City instance);
+        /// <summary>Called before a HasApp is inserted.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void InsertHasApp(HasApp instance);
+        /// <summary>Called before a HasApp is updated.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void UpdateHasApp(HasApp instance);
+        /// <summary>Called before a HasApp is deleted.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void DeleteHasApp(HasApp instance);
         /// <summary>Called before a Province is inserted.</summary>
         /// <param name="instance">The instance.</param>
         partial void InsertProvince(Province instance);

@@ -6,15 +6,23 @@ using System.Text;
 
 namespace CHSNS.Models
 {
-    public partial class CHSNSDataContext
+    public partial class BaseInfo
     {
         #region Extensibility Method Definitions
-        //TODO: Uncomment and implement partial method
+        //partial void OnLoaded()
+        //{
+        //    
+        //}
+        
+        //partial void OnValidate()
+        //{
+        //    
+        //}
+        
         //partial void OnCreated()
         //{
         //    
         //}
         #endregion
-        
     }
 }
