@@ -7,8 +7,11 @@ using CHSNS.Models;
 using System.Runtime.Serialization.Json;
 
 namespace CHSNS.Controllers.SystemApplication {
+	/// <summary>
+	/// 系统应用之基本设置
+	/// </summary>
+	[LoginedFilter]
 	public class BaseInfoController : Controller {
-
 		public ActionResult Setting() {
 			BaseInfo bi = DBExt.BaseInfo(CHUser.UserID);
 			List<ListItem> li = ConfigSerializer.Load<List<ListItem>>("Sex");

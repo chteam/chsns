@@ -22,7 +22,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <returns></returns>
 		public ActionResult About() {
-			throw new Exception("这是个错误");
+			throw new Exception("关于里不知道写啥先异常一下吧");
 			return View();
 		}
 		/// <summary>
@@ -30,6 +30,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
+		[LoginedFilter]
 		public ActionResult Setting(string id) {
 			if (!UnitySingleton.SytemHas(id)) {
 				id = "BaseInfo";
