@@ -13,6 +13,7 @@ namespace CHSNS {
 	/// </summary>
 	public class ConfigSerializer {
 		static string PATH = "~/Config/{0}.xml";
+		static string KEY = "config.{0}";
 		/// <summary>
 		/// 序列化到配置文件　
 		/// </summary>
@@ -56,10 +57,10 @@ namespace CHSNS {
 		/// <param name="key">键</param>
 		/// <returns></returns>
 		public static T Load<T>(string key) where T : class {
-			if (!CHCache.Contains(key)) {
-				CHCache.Add(key, _Load<T>(key));
+			if (!CHCache.Contains(string.Format(KEY, key))) {
+				CHCache.Add(string.Format(KEY, key), _Load<T>(key));
 			}
-			return CHCache.Get<T>(key);
+			return CHCache.Get<T>(string.Format(KEY, key));
 		}
 		/// <summary>
 		/// 从配置文件反序列化
