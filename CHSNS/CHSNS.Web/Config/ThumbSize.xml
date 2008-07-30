@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfThumbSize xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ThumbSize>
+    <Name>big</Name>
+    <Size>
+      <Width>160</Width>
+      <Height>120</Height>
+    </Size>
+  </ThumbSize>
+</ArrayOfThumbSize>
