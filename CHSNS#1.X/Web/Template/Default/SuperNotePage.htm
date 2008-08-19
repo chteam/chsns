@@ -1,0 +1,87 @@
+﻿<div class="sbox">
+	<div class="vmain">
+		<h4>
+			$Username$的视频</h4>
+		<ol id="SuperNoteList">
+			$SuperNoteList$</ol>
+		<div class="page" id="PageDown"></div>
+		<input id="HdOwnerid" type="hidden" value="$Ownerid$" />
+		<input id="HdPage" type="hidden" value="1" />
+		<input id="HdCount" type="hidden" value="$Count$" />
+		<input id="HdEveryPage" type="hidden" value="10" />
+	</div>
+	<div class="vinputpart">
+		<ul>
+			<li>
+				<h4>
+					添加新视频</h4>
+			</li>
+			<li>
+				<label>
+					flash地址:<input type="text" id="f_url"/></label></li>
+			<li>
+				<label>
+					标题:<input type="text" id="f_tit"/></label></li>
+			<li>
+				<label>
+					可见人群：$Showlevel$</label></li>
+			<li>
+				<label>
+					系统分类<select id="f_systemc" class="select"><option value="40">其它</option>$systemcategory$</select></label></li>
+			<li>
+				<input type="button" value="提交" id="f_submit" class="subbutton" onclick="SuperNote_Add();" /><br />
+				<br />
+				<span class="discription"><h5>小贴士：</h5>使用方法 在地址栏中输入对应的视频地址链接， 然后在描述栏中输入对应的标题或其他文字描述就可以了...<br /><br /><h5>视频地址获取方法：</h5>在对应的视频网站选择 【把视频贴到Blog或BBS】，然后复制对应的地址即可。</span> </li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+var $supernoteshow;
+function SuperNote_Add(){
+	if(isEmpty("f_url")){
+	alertEx('请添写要共享的网址');
+	return;
+	}
+	if(isEmpty("f_tit")){
+	alertEx('请添写标题');
+	return;
+	}
+	alertEx('正在提交...');
+	$get("f_submit").disabled="disabled";
+	ChAlumna.NoteBook.SuperNote_Add($get("f_url").value,$get("f_tit").value,$get("f_showlevel").value,$get('f_systemc').value,function(r){
+	if(r) {alertEx('提交成功');setSuperNotePage(1);}else alertEx('提交内容不合法');
+	$get("f_submit").disabled="";
+	},onfail);
+}
+function SuperNote_Remove(id){
+	alertEx('正在提交...');
+	ChAlumna.NoteBook.SuperNote_Remove(id,function(r){
+	if(r) {alertEx('删除成功');setSuperNotePage(1);}else alertEx('失败');
+	},onfail);
+}
+PageSet_chSetPage("PageUp","PageDown","HdPage","HdCount","HdEveryPage","setSuperNotePage");
+function setSuperNotePage(page){
+	$get("HdPage").value=page;
+	ChAlumna.NoteBook.SuperNote_ListString(page,$get("HdOwnerid").value,function(r){
+	$get("SuperNoteList").innerHTML=r;
+	PageSet_chSetPage("PageUp","PageDown","HdPage","HdCount","HdEveryPage","setSuperNotePage");
+	},onfail);
+}
+function ShowNote(id,url){
+	if($supernoteshow!=null){
+	hideLayer("showNote_"+$supernoteshow);
+	$get("SuperNoteItem_"+$supernoteshow).style.height="100px";
+	$get("SuperVideo_"+$supernoteshow).src=$supernotepic;
+	}
+	$supernoteshow=id;
+	showLayer("showNote_"+$supernoteshow);
+	$supernotepic=$get("SuperVideo_"+$supernoteshow).src;
+	$get("SuperVideo_"+$supernoteshow).src="/images/video.png";
+	$get("SuperNoteItem_"+$supernoteshow).style.height="472px";
+	
+	$get("showNote_"+id).innerHTML='<embed mediawrapchecked="true" src="'+url+'" scale="exactfit" play="true" loop="false"	menu="true" wmode="Window" quality="1" type="application/x-shockwave-flash" height="350" width="460"></embed>';
+	ChAlumna.NoteBook.SuperNote_See(id,0,function(r){
+	},onfail);
+}
+</script>
+

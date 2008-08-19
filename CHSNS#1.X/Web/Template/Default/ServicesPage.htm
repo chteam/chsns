@@ -1,0 +1,44 @@
+﻿<div class="sbox">
+	<h4>
+		在线客服</h4>
+	<div class="page" id="PageUp">
+	</div>
+	<ol id="Serviceslist">
+	</ol>
+	<div class="page" id="PageDown">
+	</div>
+	<input id="HdPage" type="hidden" value="1" />
+	<input id="HdCount" type="hidden" value="$Count$" />
+	<input id="HdEveryPage" type="hidden" value="20" />
+	<div class="inputpart">
+		<ul>
+			<li style="display: $isLogined$">
+				<label runat="server" id="Le">
+					Email:<input id="temail" type="text" class="cmtbody" /></label><br />
+			</li>
+			<li>
+				<label>
+					<h4>
+						提交问题: <a>(请直接输入问题即可)</a></h4>
+					<textarea id="tbody" rows="2"></textarea></label></li>
+			<li>
+				<input type="button" value="提交问题" onclick="SendQuestion();" />
+				<span class="discription">(每条最多4000字)</span> </li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+InitServices();
+</script>
+
+<!--
+创建:邹健 2007 9 30
+最后修改:2007 9 30LE: 10 6
+功能:在线客服页面
+特殊id:
+	Serviceslist:帖子列表
+参数说明:
+	$Serviceslist$ 显示帖子列表
+	$isLogined$用户是否登录
+-->
