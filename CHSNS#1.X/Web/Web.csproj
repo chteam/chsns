@@ -1,0 +1,676 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{565374D0-3D96-4D3B-9E95-108574BA9755}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChWeb</RootNamespace>
+    <AssemblyName>ChWeb</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Components.Binder, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Components.Common.EmailSender, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.MonoRail.Framework, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.MonoRail.ViewComponents, Version=1.0.2941.22101, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\开源产品\Castle.MonoRail.ViewComponents\Castle.MonoRail.ViewComponents.TestSite\bin\Castle.MonoRail.ViewComponents.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\BaseTable.asmx" />
+    <Content Include="ADpic\adfoot.jpg" />
+    <Content Include="ADpic\adjmsu.jpg" />
+    <Content Include="ADpic\adjmsu.png" />
+    <Content Include="ADpic\adtop.jpg" />
+    <Content Include="ADpic\kfc.jpg" />
+    <Content Include="ADpic\kfc.png" />
+    <Content Include="ADpic\kfcvip.jpg" />
+    <Content Include="ADpic\newyear2008.jpg" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\css\default.css" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\html\calendar.html" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\html\calendarbottom.html" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\html\calendartop.html" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\html\crystalexportdialog.htm" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\html\crystalprinthost.html" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\calendar.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\crlogo.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\export.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\exportd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\export_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\First.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Firstd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\first_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\gotopage.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\gotopaged.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\gotopage_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\grouptree.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\grouptreed.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\grouptreepressed.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\grouptree_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Last.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Lastd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\last_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Next.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Nextd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\next_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Prev.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Prevd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\prev_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\print.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\printd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\print_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Refresh.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\refreshd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\refresh_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\Search.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\searchd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\search_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\up.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\upd.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\toolbar\up_over.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\begindots.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\beginminus.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\beginplus.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\blank.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\blankdots.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\dots.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\lastdots.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\lastminus.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\lastplus.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\Magnify.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\minus.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\minusbox.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\plus.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\plusbox.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\singleminus.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\images\tree\singleplus.gif" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\calendar_param.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\dt_param.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\export.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\KeyDownEvent.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\print.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\prompts_param.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_chs.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_cht.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_de.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_en.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_es.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_fr.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_it.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_ja.js" />
+    <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_ko.js" />
+    <Content Include="Config\AnimalSign.config" />
+    <Content Include="Config\City.config" />
+    <Content Include="Config\Comment.config" />
+    <Content Include="Config\Config.config" />
+    <Content Include="Config\Date.config" />
+    <Content Include="Config\EditFormat.config" />
+    <Content Include="Config\Event.config" />
+    <Content Include="Config\Format.config" />
+    <Content Include="Config\Friend.config" />
+    <Content Include="Config\Group.config" />
+    <Content Include="Config\Identity.config" />
+    <Content Include="Config\Message.config" />
+    <Content Include="Config\Note.config" />
+    <Content Include="Config\Page.config" />
+    <Content Include="Config\Photos.config" />
+    <Content Include="Config\Profile.config" />
+    <Content Include="Config\Prompt.config" />
+    <Content Include="Config\Province.config" />
+    <Content Include="Config\Regex.config" />
+    <Content Include="Config\Script.config" />
+    <Content Include="Config\SkyTree.config" />
+    <Content Include="Config\StarSign.config" />
+    <Content Include="Config\StyleSheet.config" />
+    <Content Include="Config\Email.config" />
+    <Content Include="Config\Routing.config" />
+    <Content Include="Config\SiteConfig.config" />
+    <Content Include="Config\Style.config" />
+    <Content Include="ChAlumna.config" />
+    <None Include="Template\Default\PublicMenu.htm1" />
+    <None Include="Template\Default\Random.htm1" />
+    <None Include="Views\Admin\Admin\ApplyClass.vm" />
+    <None Include="Views\Admin\Admin\Basic.vm" />
+    <None Include="Views\Admin\Admin\File.vm" />
+    <None Include="Views\Admin\Admin\Group.vm" />
+    <None Include="Views\Admin\Admin\Index.vm" />
+    <None Include="Views\Admin\Admin\Isstar.vm" />
+    <None Include="Views\Admin\Admin\Note.vm" />
+    <None Include="Views\Admin\Admin\Note_today.vm" />
+    <None Include="Views\Admin\Admin\Space.vm" />
+    <None Include="Views\Admin\Admin\User.vm" />
+    <None Include="Views\Admin\Common\AddStyle.vm" />
+    <None Include="Views\Admin\Common\Config.vm" />
+    <None Include="Views\Admin\Common\Publish.vm" />
+    <None Include="Views\Admin\Common\RegandVisit.vm" />
+    <None Include="Views\Admin\Field\field_addmini.vm" />
+    <None Include="Views\Admin\Field\Field_AddQinShi.vm" />
+    <None Include="Views\Admin\Field\Field_Index.vm" />
+    <None Include="Views\Admin\menu.vm" />
+    <None Include="Views\Admin\Sql\Execute.vm" />
+    <None Include="Views\Admin\UserManage\userlist.vm" />
+    <None Include="Views\Admin\UserManage\userset.vm" />
+    <None Include="Views\Ad\index.vm" />
+    <None Include="Views\Album\index.vm" />
+    <None Include="Views\Album\list.vm" />
+    <None Include="Views\Album\random.vm" />
+    <None Include="Views\Application\myapp.vm" />
+    <None Include="Views\App\Train\Index.vm" />
+    <None Include="Views\Blog\edit.vm" />
+    <None Include="Views\Blog\index.vm" />
+    <None Include="Views\Blog\Item-Notes.vm" />
+    <None Include="Views\Comment\List.vm" />
+    <None Include="Views\Components\Ad.vm" />
+    <None Include="Views\Components\AlbumItem.vm" />
+    <None Include="Views\Components\CommentList.vm" />
+    <None Include="Views\Components\Event.vm" />
+    <None Include="Views\Components\GroupList\ProfileLink.vm" />
+    <None Include="Views\Components\Html\SearchClass.vm" />
+    <None Include="Views\Components\NoteList\First.vm" />
+    <None Include="Views\Components\NoteList\Full.vm" />
+    <None Include="Views\Components\NoteList\Item.vm" />
+    <None Include="Views\Components\NoteList\Second.vm" />
+    <None Include="Views\Components\Pager.vm" />
+    <None Include="Views\Components\PhotoList\PhotoItem.vm" />
+    <None Include="Views\Components\PostList\SubjectList.vm" />
+    <None Include="Views\Components\ProfileEditChild\Basic.vm" />
+    <None Include="Views\Components\ProfileEditChild\Contact.vm" />
+    <None Include="Views\Components\ProfileEditChild\MagicBox.vm" />
+    <None Include="Views\Components\ProfileEditChild\PersonalInfo.vm" />
+    <None Include="Views\Components\ProfileEditChild\School.vm" />
+    <None Include="Views\Components\ProfileEditChild\Upload.vm" />
+    <None Include="Views\Components\ShowLevel.vm" />
+    <None Include="Views\Components\System\Option.vm" />
+    <None Include="Views\Components\ViewList.vm" />
+    <None Include="Views\Event\index.vm" />
+    <None Include="Views\Group\ClassList.vm" />
+    <None Include="Views\Group\CreateClass.vm" />
+    <None Include="Views\Group\index.vm" />
+    <None Include="Views\Group\List.vm" />
+    <None Include="Views\Group\Manage.vm" />
+    <None Include="Views\Group\MyClass.vm" />
+    <None Include="Views\Home\AboutUs.vm" />
+    <None Include="Views\Home\Error.vm" />
+    <None Include="Views\Home\GetCode.vm" />
+    <None Include="Views\Home\index.vm" />
+    <None Include="Views\Home\Invite.vm" />
+    <None Include="Views\Home\PrivateClaim.vm" />
+    <None Include="Views\Home\SetPassword.vm" />
+    <None Include="Views\Html\ChangePassword.vm" />
+    <None Include="Views\Html\ChangeShowLevel.vm" />
+    <None Include="Views\Html\Comment_Item.vm" />
+    <None Include="Views\Html\g.vm" />
+    <None Include="Views\Html\GroupMember.vm" />
+    <None Include="Views\Html\GroupPhoto.vm" />
+    <None Include="Views\Html\GroupSetting.vm" />
+    <None Include="Views\Html\MyEvent.vm" />
+    <None Include="Views\Html\Pager.vm" />
+    <None Include="Views\Html\PhotoList.vm" />
+    <None Include="Views\Html\PostList.vm" />
+    <None Include="Views\Html\ProfileEdit.vm" />
+    <None Include="Views\Html\Rss-List.vm" />
+    <None Include="Views\Html\UserList-Friend.vm" />
+    <None Include="Views\Html\UserList-FriendRequest.vm" />
+    <None Include="Views\Html\UserList-Random.vm" />
+    <None Include="Views\Layouts\Adminmaster.vm" />
+    <None Include="Views\Layouts\basemaster.vm" />
+    <None Include="Views\Layouts\BlogMaster.vm" />
+    <None Include="Views\Layouts\master-footer.vm" />
+    <None Include="Views\Layouts\master-Login.vm" />
+    <None Include="Views\Layouts\master-MyMenu.vm" />
+    <None Include="Views\Layouts\master-publicmenu.vm" />
+    <None Include="Views\Layouts\master-Utility.vm" />
+    <None Include="Views\Layouts\reg.vm" />
+    <None Include="Views\Mail\replyback.vm" />
+    <None Include="Views\Mail\Test.vm" />
+    <None Include="Views\Message\index.vm" />
+    <None Include="Views\Note\book.vm" />
+    <None Include="Views\Note\index.vm" />
+    <None Include="Views\Note\new.vm" />
+    <None Include="Views\nvelocity.properties" />
+    <None Include="Views\Profile\Edit.vm" />
+    <None Include="Views\Profile\Setting.vm" />
+    <None Include="Views\Reg\AgreementStep.vm" />
+    <None Include="Views\Reg\ConfirmStep.vm" />
+    <None Include="Views\Reg\DoneStep.vm" />
+    <None Include="Views\Reg\FieldStep.vm" />
+    <None Include="Views\Reg\reSend.vm" />
+    <None Include="Views\Reg\StartStep.vm" />
+    <None Include="Views\Reg\verify.vm" />
+    <None Include="Views\Rescues\index.vm" />
+    <None Include="Views\Search\index.vm" />
+    <None Include="Views\Services\admin.vm" />
+    <None Include="Views\Services\index.vm" />
+    <None Include="Views\SuperNote\randomvideo.vm" />
+    <None Include="Views\SuperNote\video.vm" />
+    <None Include="Views\Tags\Logtag.vm" />
+    <None Include="Views\Tags\Tags.vm" />
+    <None Include="Views\test\index.vm" />
+    <None Include="Views\Upload\Face.vm" />
+    <None Include="Views\Upload\Photo.vm" />
+    <None Include="Views\User\EmptyMagicBox.vm" />
+    <None Include="Views\User\friend.vm" />
+    <None Include="Views\User\friendRequest.vm" />
+    <None Include="Views\User\index-account.vm" />
+    <None Include="Views\User\index-contact.vm" />
+    <None Include="Views\User\index-event.vm" />
+    <None Include="Views\User\index-isstar.vm" />
+    <None Include="Views\User\index-Myactions.vm" />
+    <None Include="Views\User\index-mystatus.vm" />
+    <None Include="Views\User\index-noright.vm" />
+    <None Include="Views\User\index-personal.vm" />
+    <None Include="Views\User\index-school.vm" />
+    <None Include="Views\User\index.vm" />
+    <None Include="Views\User\random.vm" />
+    <Content Include="JavaScript\AdminUser.js" />
+    <Content Include="JavaScript\Application.js" />
+    <Content Include="JavaScript\Client\AccordionBehavior.js" />
+    <Content Include="JavaScript\Client\AlwaysVisibleControlBehavior.js" />
+    <Content Include="JavaScript\Client\AutoCompleteBehavior.js" />
+    <Content Include="JavaScript\Client\CalendarBehavior.js" />
+    <Content Include="JavaScript\Client\CascadingDropDownBehavior.js" />
+    <Content Include="JavaScript\Client\CollapsiblePanelBehavior.js" />
+    <Content Include="JavaScript\Client\Common.js" />
+    <Content Include="JavaScript\Client\confirmButtonBehavior.js" />
+    <Content Include="JavaScript\Client\DragDropScripts.js" />
+    <Content Include="JavaScript\Client\DraggableListItemBehavior.js" />
+    <Content Include="JavaScript\Client\DropWatcherBehavior.js" />
+    <Content Include="JavaScript\Client\FilteredTextBoxBehavior.js" />
+    <Content Include="JavaScript\Client\FloatingBehavior.js" />
+    <Content Include="JavaScript\Client\HoverMenuBehavior.js" />
+    <Content Include="JavaScript\Client\Input.js" />
+    <Content Include="JavaScript\Client\ListSearchBehavior.js" />
+    <Content Include="JavaScript\Client\MaskedEditBehavior.js" />
+    <Content Include="JavaScript\Client\MaskedEditValidator.js" />
+    <Content Include="JavaScript\Client\MutuallyExclusiveCheckBoxBehavior.js" />
+    <Content Include="JavaScript\Client\NoBotBehavior.js" />
+    <Content Include="JavaScript\Client\NumericUpDownBehavior.js" />
+    <Content Include="JavaScript\Client\PagingBulletedListBehavior.js" />
+    <Content Include="JavaScript\Client\PasswordStrengthExtenderBehavior.js" />
+    <Content Include="JavaScript\Client\PopupControlBehavior.js" />
+    <Content Include="JavaScript\Client\RatingBehavior.js" />
+    <Content Include="JavaScript\Client\ResizableControlBehavior.js" />
+    <Content Include="JavaScript\Client\SliderBehavior.js" />
+    <Content Include="JavaScript\Client\SlideShowBehavior.js" />
+    <Content Include="JavaScript\Client\Tabs.js" />
+    <Content Include="JavaScript\Client\TextboxWatermark.js" />
+    <Content Include="JavaScript\Client\ToggleButton.js" />
+    <Content Include="JavaScript\Client\UpdatePanelAnimationBehavior.js" />
+    <Content Include="JavaScript\Client\ValidatorCalloutBehavior.js" />
+    <Content Include="JavaScript\EditMyInfo.js" />
+    <Content Include="JavaScript\Editor.js" />
+    <Content Include="JavaScript\Framework.js" />
+    <Content Include="JavaScript\Friend.js" />
+    <Content Include="JavaScript\GroupList.js" />
+    <Content Include="JavaScript\GroupUser.js" />
+    <Content Include="JavaScript\Input.js" />
+    <Content Include="JavaScript\Invite.js" />
+    <Content Include="JavaScript\LogBook.js" />
+    <Content Include="JavaScript\ManageGroup.js" />
+    <Content Include="JavaScript\Message.js" />
+    <Content Include="JavaScript\MicrosoftAjaxTimer.js" />
+    <Content Include="JavaScript\MicrosoftAjaxWebForms.js" />
+    <Content Include="JavaScript\Notebook.js" />
+    <Content Include="JavaScript\PageSet.js" />
+    <Content Include="JavaScript\Photos.js" />
+    <Content Include="JavaScript\Preview\History.js" />
+    <Content Include="JavaScript\Preview\PreviewScript.js" />
+    <Content Include="JavaScript\Profile.js" />
+    <Content Include="JavaScript\Reply.js" />
+    <Content Include="JavaScript\Search.js" />
+    <Content Include="JavaScript\Services.js" />
+    <Content Include="JavaScript\Setting.js" />
+    <Content Include="JavaScript\Upload.js" />
+    <Content Include="JavaScript\UploadPhoto.js" />
+    <Content Include="JavaScript\_source\AdminUser.js" />
+    <Content Include="JavaScript\_source\Application.js" />
+    <Content Include="JavaScript\_source\Basic.js" />
+    <Content Include="JavaScript\_source\Chinese.js" />
+    <Content Include="JavaScript\_source\Client\AccordionBehavior.js" />
+    <Content Include="JavaScript\_source\Client\AlwaysVisibleControlBehavior.js" />
+    <Content Include="JavaScript\_source\Client\AutoCompleteBehavior.js" />
+    <Content Include="JavaScript\_source\Client\CalendarBehavior.js" />
+    <Content Include="JavaScript\_source\Client\CascadingDropDownBehavior.js" />
+    <Content Include="JavaScript\_source\Client\CollapsiblePanelBehavior.js" />
+    <Content Include="JavaScript\_source\Client\Common.js" />
+    <Content Include="JavaScript\_source\Client\Common2.js" />
+    <Content Include="JavaScript\_source\Client\confirmButtonBehavior.js" />
+    <Content Include="JavaScript\_source\Client\DragDropScripts.js" />
+    <Content Include="JavaScript\_source\Client\DraggableListItemBehavior.js" />
+    <Content Include="JavaScript\_source\Client\DropWatcherBehavior.js" />
+    <Content Include="JavaScript\_source\Client\FilteredTextBoxBehavior.js" />
+    <Content Include="JavaScript\_source\Client\FloatingBehavior.js" />
+    <Content Include="JavaScript\_source\Client\HoverMenuBehavior.js" />
+    <Content Include="JavaScript\_source\Client\Input.js" />
+    <Content Include="JavaScript\_source\Client\ListSearchBehavior.js" />
+    <Content Include="JavaScript\_source\Client\MaskedEditBehavior.js" />
+    <Content Include="JavaScript\_source\Client\MaskedEditValidator.js" />
+    <Content Include="JavaScript\_source\Client\MutuallyExclusiveCheckBoxBehavior.js" />
+    <Content Include="JavaScript\_source\Client\NoBotBehavior.js" />
+    <Content Include="JavaScript\_source\Client\NumericUpDownBehavior.js" />
+    <Content Include="JavaScript\_source\Client\PagingBulletedListBehavior.js" />
+    <Content Include="JavaScript\_source\Client\PasswordStrengthExtenderBehavior.js" />
+    <Content Include="JavaScript\_source\Client\PopupControlBehavior.js" />
+    <Content Include="JavaScript\_source\Client\RatingBehavior.js" />
+    <Content Include="JavaScript\_source\Client\ResizableControlBehavior.js" />
+    <Content Include="JavaScript\_source\Client\SliderBehavior.js" />
+    <Content Include="JavaScript\_source\Client\SlideShowBehavior.js" />
+    <Content Include="JavaScript\_source\Client\Tabs.js" />
+    <Content Include="JavaScript\_source\Client\TextboxWatermark.js" />
+    <Content Include="JavaScript\_source\Client\ToggleButton.js" />
+    <Content Include="JavaScript\_source\Client\UpdatePanelAnimationBehavior.js" />
+    <Content Include="JavaScript\_source\Client\ValidatorCalloutBehavior.js" />
+    <Content Include="JavaScript\_source\EditMyInfo.js" />
+    <Content Include="JavaScript\_source\Editor.js" />
+    <Content Include="JavaScript\_source\Friend.js" />
+    <Content Include="JavaScript\_source\Globalization\Local.js" />
+    <Content Include="JavaScript\_source\Globalization\zh-CN.js" />
+    <Content Include="JavaScript\_source\Group.js" />
+    <Content Include="JavaScript\_source\GroupList.js" />
+    <Content Include="JavaScript\_source\GroupUser.js" />
+    <Content Include="JavaScript\_source\Input.js" />
+    <Content Include="JavaScript\_source\Invite.js" />
+    <Content Include="JavaScript\_source\LogBook.js" />
+    <Content Include="JavaScript\_source\ManageGroup.js" />
+    <Content Include="JavaScript\_source\Message.js" />
+    <Content Include="JavaScript\_source\MicrosoftAjax.js" />
+    <Content Include="JavaScript\_source\MicrosoftAjaxTimer.js" />
+    <Content Include="JavaScript\_source\MicrosoftAjaxWebForms.js" />
+    <Content Include="JavaScript\_source\Notebook.js" />
+    <Content Include="JavaScript\_source\PageSet.js" />
+    <Content Include="JavaScript\_source\Photos.js" />
+    <Content Include="JavaScript\_source\Preview\History.js" />
+    <Content Include="JavaScript\_source\Preview\PreviewScript.js" />
+    <Content Include="JavaScript\_source\Profile.js" />
+    <Content Include="JavaScript\_source\Registrator.js" />
+    <Content Include="JavaScript\_source\Reply.js" />
+    <Content Include="JavaScript\_source\Search.js" />
+    <Content Include="JavaScript\_source\Services.js" />
+    <Content Include="JavaScript\_source\Setting.js" />
+    <Content Include="JavaScript\_source\Upload.js" />
+    <Content Include="JavaScript\_source\UploadPhoto.js" />
+    <Content Include="Style\Default\admin.css" />
+    <Content Include="Style\Default\appli.css" />
+    <Content Include="Style\Default\blog.css" />
+    <Content Include="Style\Default\calendar.css" />
+    <Content Include="Style\Default\friend.css" />
+    <Content Include="Style\Default\group.css" />
+    <Content Include="Style\Default\home.css" />
+    <Content Include="Style\Default\Images\act_select.gif" />
+    <Content Include="Style\Default\Images\bg_icon.png" />
+    <Content Include="Style\Default\Images\buttonbg.jpg" />
+    <Content Include="Style\Default\Images\buttonhover.jpg" />
+    <Content Include="Style\Default\Images\c.jpg" />
+    <Content Include="Style\Default\Images\Calendar_scheduleHS.png" />
+    <Content Include="Style\Default\Images\cnjmsu.gif" />
+    <Content Include="Style\Default\Images\cross.gif" />
+    <Content Include="Style\Default\Images\Default.jpg" />
+    <Content Include="Style\Default\Images\footbg.jpg" />
+    <Content Include="Style\Default\Images\glass.gif" />
+    <Content Include="Style\Default\Images\grippie.png" />
+    <Content Include="Style\Default\Images\h4bg.jpg" />
+    <Content Include="Style\Default\Images\headbg.jpg" />
+    <Content Include="Style\Default\Images\headbgl.jpg" />
+    <Content Include="Style\Default\Images\headbgr.jpg" />
+    <Content Include="Style\Default\Images\headjmsu.gif" />
+    <Content Include="Style\Default\Images\headlinkbg.gif" />
+    <Content Include="Style\Default\Images\headlinkbg.jpg" />
+    <Content Include="Style\Default\Images\headlinkbghover.jpg" />
+    <Content Include="Style\Default\Images\headlinkborder.jpg" />
+    <Content Include="Style\Default\Images\icon_new.gif" />
+    <Content Include="Style\Default\Images\if6.gif" />
+    <Content Include="Style\Default\Images\left.gif" />
+    <Content Include="Style\Default\Images\Menutab.jpg" />
+    <Content Include="Style\Default\Images\new.gif" />
+    <Content Include="Style\Default\Images\note_top.gif" />
+    <Content Include="Style\Default\Images\picon_topbg.gif" />
+    <Content Include="Style\Default\Images\read.gif" />
+    <Content Include="Style\Default\Images\readed.gif" />
+    <Content Include="Style\Default\Images\replied_mail_icon.gif" />
+    <Content Include="Style\Default\Images\right.gif" />
+    <Content Include="Style\Default\Images\slider_h_handle.gif" />
+    <Content Include="Style\Default\Images\slider_h_rail.gif" />
+    <Content Include="Style\Default\Images\slider_v_handle.gif" />
+    <Content Include="Style\Default\Images\slider_v_rail.gif" />
+    <Content Include="Style\Default\Images\style_triangle.gif" />
+    <Content Include="Style\Default\Images\top.gif" />
+    <Content Include="Style\Default\Images\toplogo.jpg" />
+    <Content Include="Style\Default\Images\toplogo.png" />
+    <Content Include="Style\Default\Images\unread.gif" />
+    <Content Include="Style\Default\Images\video.png" />
+    <Content Include="Style\Default\invite.css" />
+    <Content Include="Style\Default\main.css" />
+    <Content Include="Style\Default\master.css" />
+    <Content Include="Style\Default\mini.css" />
+    <Content Include="Style\Default\msg.css" />
+    <Content Include="Style\Default\myblog.css" />
+    <Content Include="Style\Default\myclass.css" />
+    <Content Include="Style\Default\mypage.css" />
+    <Content Include="Style\Default\photo.css" />
+    <Content Include="Style\Default\register.css" />
+    <Content Include="Style\Default\Reply.css" />
+    <Content Include="Style\Default\skin.gif" />
+    <Content Include="Style\Default\system.css" />
+    <Content Include="Style\Default\video.css" />
+    <Content Include="Style\foxblue\admin.css" />
+    <Content Include="Style\foxblue\appli.css" />
+    <Content Include="Style\foxblue\application.css" />
+    <Content Include="Style\foxblue\blog.css" />
+    <Content Include="Style\foxblue\calendar.css" />
+    <Content Include="Style\foxblue\code.css" />
+    <Content Include="Style\foxblue\friend.css" />
+    <Content Include="Style\foxblue\group.css" />
+    <Content Include="Style\foxblue\home.css" />
+    <Content Include="Style\foxblue\Images\act_select.gif" />
+    <Content Include="Style\foxblue\Images\bg_icon.png" />
+    <Content Include="Style\foxblue\Images\bodybg.jpg" />
+    <Content Include="Style\foxblue\Images\bodybg.png" />
+    <Content Include="Style\foxblue\Images\buttonbg.jpg" />
+    <Content Include="Style\foxblue\Images\buttonhover.jpg" />
+    <Content Include="Style\foxblue\Images\c.jpg" />
+    <Content Include="Style\foxblue\Images\c.png" />
+    <Content Include="Style\foxblue\Images\Calendar_scheduleHS.png" />
+    <Content Include="Style\foxblue\Images\cnjmsu.gif" />
+    <Content Include="Style\foxblue\Images\cross.gif" />
+    <Content Include="Style\foxblue\Images\Default.jpg" />
+    <Content Include="Style\foxblue\Images\glass.gif" />
+    <Content Include="Style\foxblue\Images\logo.jpg" />
+    <Content Include="Style\foxblue\Images\logo.png" />
+    <Content Include="Style\foxblue\Images\note_top.gif" />
+    <Content Include="Style\foxblue\Images\pageHeaderbg.jpg" />
+    <Content Include="Style\foxblue\Images\pageHeaderbg.png" />
+    <Content Include="Style\foxblue\Images\picon_topbg.gif" />
+    <Content Include="Style\foxblue\Images\read.gif" />
+    <Content Include="Style\foxblue\Images\readed.gif" />
+    <Content Include="Style\foxblue\Images\replied_mail_icon.gif" />
+    <Content Include="Style\foxblue\Images\right.gif" />
+    <Content Include="Style\foxblue\Images\slider_h_handle.gif" />
+    <Content Include="Style\foxblue\Images\slider_h_rail.gif" />
+    <Content Include="Style\foxblue\Images\slider_v_handle.gif" />
+    <Content Include="Style\foxblue\Images\slider_v_rail.gif" />
+    <Content Include="Style\foxblue\Images\style_triangle.gif" />
+    <Content Include="Style\foxblue\Images\top.gif" />
+    <Content Include="Style\foxblue\Images\toplogo.jpg" />
+    <Content Include="Style\foxblue\Images\unread.gif" />
+    <Content Include="Style\foxblue\Images\video.png" />
+    <Content Include="Style\foxblue\invite.css" />
+    <Content Include="Style\foxblue\main.css" />
+    <Content Include="Style\foxblue\master.css" />
+    <Content Include="Style\foxblue\mini.css" />
+    <Content Include="Style\foxblue\msg.css" />
+    <Content Include="Style\foxblue\myclass.css" />
+    <Content Include="Style\foxblue\mypage.css" />
+    <Content Include="Style\foxblue\photo.css" />
+    <Content Include="Style\foxblue\profile.css" />
+    <Content Include="Style\foxblue\register.css" />
+    <Content Include="Style\foxblue\Reply.css" />
+    <Content Include="Style\foxblue\skin.gif" />
+    <Content Include="Style\foxblue\system.css" />
+    <Content Include="Style\foxblue\video.css" />
+    <Content Include="Style\Other\setpicture1.css" />
+    <Content Include="Style\Other\simpleEditor.css" />
+    <Content Include="Style\Readme.txt" />
+    <Content Include="Template\Default\GroupEditor.htm" />
+    <Content Include="Template\Default\GroupItem.htm" />
+    <Content Include="Template\Default\GroupNoteItem.htm" />
+    <Content Include="Template\Default\GroupRight.htm" />
+    <Content Include="Template\Default\InformationEditItem.htm" />
+    <Content Include="Template\Default\LogBook.htm" />
+    <Content Include="Template\Default\LogBookMaster.htm" />
+    <Content Include="Template\Default\Login.htm" />
+    <Content Include="Template\Default\MessageList.htm" />
+    <Content Include="Template\Default\MessageListItem.htm" />
+    <Content Include="Template\Default\MyApplicationItem.htm" />
+    <Content Include="Template\Default\MyClass.htm" />
+    <Content Include="Template\Default\NewGroup.htm" />
+    <Content Include="Template\Default\Note.htm" />
+    <Content Include="Template\Default\NoteBookComment.htm" />
+    <Content Include="Template\Default\NoteBookCommentItem.htm" />
+    <Content Include="Template\Default\NoteBookHistory.htm" />
+    <Content Include="Template\Default\NotePage.htm" />
+    <Content Include="Template\Default\PhotosPage.htm" />
+    <Content Include="Template\Default\ReplyList.htm" />
+    <Content Include="Template\Default\ReplyListMaster.htm" />
+    <Content Include="Template\Default\ReplyListPage.htm" />
+    <Content Include="Template\Default\Request.htm" />
+    <Content Include="Template\Default\SearchUserListSample.htm" />
+    <Content Include="Template\Default\Servicesitem.htm" />
+    <Content Include="Template\Default\ServicesPage.htm" />
+    <Content Include="Template\Default\ShowLevel.htm" />
+    <Content Include="Template\Default\SubjectList.htm" />
+    <Content Include="Template\Default\SubjectListMaster.htm" />
+    <Content Include="Template\Default\SuperNoteItem.htm" />
+    <Content Include="Template\Default\SuperNotePage.htm" />
+    <Content Include="Template\Default\SuperNoteRandomPage.htm" />
+    <Content Include="Template\Default\UserList.htm" />
+    <Content Include="Template\History.htm" />
+    <Content Include="Template\Master.htm" />
+    <Content Include="Template\UpLoadFile.htm" />
+    <Content Include="Views\Readme.txt" />
+    <Content Include="Views\User\Readme.txt" />
+    <Content Include="WebServices\Application.asmx" />
+    <Content Include="WebServices\AutoComplete.asmx" />
+    <Content Include="WebServices\AutoSelect.asmx" />
+    <Content Include="WebServices\Comment.asmx" />
+    <Content Include="WebServices\Group.asmx" />
+    <Content Include="WebServices\Identity.asmx" />
+    <Content Include="WebServices\Invite.asmx" />
+    <Content Include="WebServices\Message.asmx" />
+    <Content Include="WebServices\NoteBook.asmx" />
+    <Content Include="WebServices\PageMethods.asmx" />
+    <Content Include="WebServices\Photos.asmx" />
+    <Content Include="WebServices\Profile.asmx" />
+    <Content Include="WebServices\School.asmx" />
+    <Content Include="WebServices\Search.asmx" />
+    <Content Include="WebServices\Services.asmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChAlumna.Config\ChAlumna.Config.csproj">
+      <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
+      <Name>ChAlumna.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChAlumna.Data\ChAlumna.Data.csproj">
+      <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
+      <Name>ChAlumna.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChAlumna.Models\ChAlumna.Models.csproj">
+      <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
+      <Name>ChAlumna.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chsword\ChAlumna.Core.csproj">
+      <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
+      <Name>ChAlumna.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserWebService\ChAlumna.csproj">
+      <Project>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</Project>
+      <Name>ChAlumna</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\App_Code\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>6377</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
