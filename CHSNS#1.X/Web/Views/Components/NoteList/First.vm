@@ -1,0 +1,44 @@
+﻿#*
+完整显示日志,原Watch template
+2008 1 26
+*#
+#if(!$groupid)
+#set ($groupid = 0)
+#end
+#foreach($item in $rows)
+<li>
+	<div class="article">
+		<div class="info">
+			<h4>
+				<a href="/Note.aspx?id=$item.get_item("id")">
+${item.get_item("Title")}</a></h4>
+			<p class="subinfo">
+				<cite><span class="time">${item.get_item("AddTime").ToString("MM月dd日 HH:mm")}</span> </cite>
+#if ($item.get_item("Userid") == $ChHelper.ChUser.Userid || $ChHelper.ChUser.isAdmin || $item.get_item("level") > 199 )
+<span class="edit"><a href="javascript:DeleteLogBook($item.get_item("id"),${groupid});">删除</a></span>
+#end
+			</p>
+		</div>
+		<div class="content">
+			<div class="text">
+${item.get_item("Body")}
+</div>
+			<p class="stat">
+				<a href="/Note.aspx?id=$item.get_item("id")">阅读(${item.get_item("ViewCount")})</a> <span class="pipe">|</span> <a href="/Note.aspx?id=$item.get_item("id")&#comment">
+					评论(${item.get_item("CommentCount")})</a>
+<span class="div">|</span>
+<span id="logpush">推荐(<span id="PushCount$item.get_item("id")">
+${item.get_item("PushCount")}
+</span>)
+<span id="PushCommand">
+	#if($item.get_item("isPush")) 
+我已推荐过。 
+	#else 
+<a href="javascript:PushLogBook($item.get_item("id"));">我来推荐！</a> 
+	#end
+</span></span>
+					</p>
+		</div>
+	</div>
+</li>
+#end

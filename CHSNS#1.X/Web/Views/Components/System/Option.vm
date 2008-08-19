@@ -1,0 +1,9 @@
+﻿#foreach($item in $source)
+#each
+	#if($item.get_item($id)==$selected)
+	<option value="$item.get_item(${id})" selected="selected">$item.get_item(${text})</option>
+	#else
+	<option value="$item.get_item(${id})">$item.get_item(${text})</option>
+	#end
+
+#end

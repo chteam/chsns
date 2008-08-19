@@ -1,0 +1,25 @@
+﻿#foreach($item in $userSource)
+<li id="Items$item.get_item("id")">
+	<div class="people">
+		<p class="image">
+			<a href="/User.aspx?userid=$item.get_item("Userid")">
+				<img src="$ChHelper.Path.GetFace_Middle($item.get_item("Userid"))" alt="$item.get_item("name")" /></a>
+		</p>
+		<div class="info">
+			<strong><a href="/User.aspx?userid=$item.get_item("Userid")">$item.get_item("name")</a></strong>
+			<ul>
+<li>浏览：
+<a href="/Friend.aspx?userid=$item.get_item("Userid")">好友</a>
+<span class="pipe">|</span>
+<a href="/Notebook.aspx?userid=$item.get_item("Userid")">
+	日志</a> </li>
+			</ul>
+		</div>
+		<ul class="actions">
+			<li><a href="javascript:AgreeFriend($item.get_item("Userid"),$item.get_item("id"))">接受请求</a></li>
+			<li><a href="javascript:IgnoreFriend($item.get_item("Userid"),$item.get_item("id"))">忽略请求</a></li>
+			<li><a href="/Message.aspx?mode=compose&ToId=$item.get_item("Userid")&Toname=$url.UrlEncode($item.get_item("name"))">发小条</a></li>
+		</ul>
+	</div>
+</li>
+#end

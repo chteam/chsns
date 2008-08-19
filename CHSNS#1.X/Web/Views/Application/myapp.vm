@@ -1,0 +1,72 @@
+﻿#capturefor(title) 我的应用程序 #end
+#capturefor(css)
+<link href="${ChHelper.ChSite.StylePath}/appli.css" rel="stylesheet" type="text/css" />
+#end
+#capturefor(javascript)
+<script src="/JavaScript/Client/Common.js" type="text/javascript"></script>
+<script src="/JavaScript/Application.js" type="text/javascript"></script>
+<script src="/JavaScript/Client/DraggableListItemBehavior.js" type="text/javascript"></script>
+<script src="/JavaScript/Client/DragDropScripts.js" type="text/javascript"></script>
+<script src="/JavaScript/Client/DropWatcherBehavior.js" type="text/javascript"></script>
+#end
+<div id="toc">
+	<ul id="tabs">
+		<li class="status">我的应用程序</li>
+	</ul>
+</div>
+<div class="appli">
+<fieldset>
+<legend>添加/删除菜单中的应用程序</legend>
+<div>
+<ul id="AppList">
+#foreach($item in $rows)
+#each
+#set( $id = $item.get_item("id") )
+#set( $shortname = $item.get_item("shortname") )
+#set( $fullname = $item.get_item("fullname") )
+#set( $Folder = $item.get_item("Folder") )
+#set( $icon = $item.get_item("icon") )
+#set( $isSystem = $item.get_item("isSystem") )
+
+<li id="Applist_${id}" class="appname">
+<span>程序名称:<a href="${Folder}" >${fullname}</a>
+#if(!${isSystem})
+<a href=\"javascript:Delete('${id}');\">从本列表中删除</a>
+#end
+</span>
+<a id="Applist_${id}_add" href="javascript:AddtoMenu('${id}','${shortname}','${Folder}');" class="appmast">添加到菜单</a>
+<a id="Applist_${id}_del" style="display:none" href="javascript:DelfromMenu('${id}');" class="appmast">从我的菜单中删除</a>
+</li>
+#end
+</ul>
+<ul style="visibility:hidden;display:none;">
+<li id="ReorderList_Item"></li>
+</ul>
+<input type="button" class="subbutton" value="应用" onclick="SavaOrder();" />
+<input type="button" class="subbutton" value="返回" onclick="location=referrer;" />
+</div>
+</fieldset>
+</div>
+#*
+我的应用程序 1-24
+*#
+#capturefor(endjavascript)
+var SavaOrder=function(){
+	var appstr=new Sys.StringBuilder();
+	var b=$get("MyApplication");
+	var a=b.getElementsByTagName("li");
+	for(var i=0;i<a.length;i++){
+		appstr.append(a[i].id);
+		appstr.append(',');
+	}
+	if(appstr.toString().length<3){
+		alerEx("对不起,您的菜单项过少请选择后再");
+		return;
+	}
+	alertEx("正在保存数据...");
+	$ws('Application.asmx/MyApp_Sava','{"applist":"'+appstr.toString()+'"}',function(){
+		alertEx("保存成功","location='/user.aspx'");
+	});
+};
+initThisPage();
+#end

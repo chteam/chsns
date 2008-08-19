@@ -1,0 +1,1 @@
+﻿#component(PhotoList with "albumid=$albumid" "ownerid=$ownerid" "nowpage=$nowpage")

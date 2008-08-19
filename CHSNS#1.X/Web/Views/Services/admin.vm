@@ -1,0 +1,7 @@
+﻿#capturefor(title) 提交回复 #end
+<form action="reply.ashx" method="post" id="form1">
+	当前回复ID:$request.QueryString.get_Item("id")<br />
+	<input type="hidden" name="serid" id="serid" value="$request.QueryString.get_Item("id")" />
+	<textarea id="serbody" name="serbody" cols="100" rows="20"></textarea>
+	<input type="submit" value="提交" />
+</form>

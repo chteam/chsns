@@ -1,0 +1,33 @@
+﻿当前显示 $pagerrows.FirstItem - $pagerrows.LastItem 条 共 $pagerrows.TotalItems 条
+</p>
+
+<p>
+#if ($pagerrows.HasFirst)
+    $PaginationHelper.CreatePageLink( 1, "第一页" )
+#end
+#if ($pagerrows.HasPrevious)
+    $PaginationHelper.CreatePageLink( $pagerrows.PreviousIndex, "前一页" )
+#end
+
+#set( $startn = $pagerrows.CurrentIndex - 2 )
+#set( $endn = $pagerrows.CurrentIndex+2)
+
+#foreach ( $item in [${startn}..${endn}] )
+    #if ($item>0)
+     #if ($item<$pagerrows.LastIndex)
+        #if($item==$pagerrows.CurrentIndex)
+         $item
+        #else
+         $PaginationHelper.CreatePageLink( $item, $item.toString() )
+        #end
+      #end
+    #end
+#end
+
+#if ($pagerrows.HasNext)
+    $PaginationHelper.CreatePageLink( $pagerrows.NextIndex, "后一页" )
+#end
+#if ($pagerrows.HasLast)
+    $PaginationHelper.CreatePageLink( $pagerrows.LastIndex, "末页" )
+#end
+<p>

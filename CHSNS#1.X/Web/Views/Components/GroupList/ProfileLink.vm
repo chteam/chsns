@@ -1,0 +1,6 @@
+﻿#foreach($item in $rows)
+#each
+<a href="/Group.aspx?id=${item.get_item("groupid")}&amp;">${item.get_item("groupname")}</a>
+#after
+&nbsp;
+#end

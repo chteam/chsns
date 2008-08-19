@@ -1,0 +1,18 @@
+﻿#capturefor(title) 群管理 #end
+#capturefor(css)
+<link href="${ChHelper.ChSite.StylePath}/main.css" rel="stylesheet" type="text/css" />
+#end
+
+<div style="color: red">
+$url.link("待审核班级数: $classcount","%{action='applyclass'}")
+
+</div>
+
+#*<div style="color: red">
+待审加入班级用户: $uninclass
+</div>*#
+<br />
+群数:$groupall
+
+<br />
+班级数:$classall

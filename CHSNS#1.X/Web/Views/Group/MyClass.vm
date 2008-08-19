@@ -1,0 +1,44 @@
+﻿#capturefor(css)
+<link href="${ChHelper.ChSite.StylePath}/group.css" rel="stylesheet" type="text/css" />
+#end
+#capturefor(javascript)
+<script src="/JavaScript/Client/Common.js" type="text/javascript"></script>
+<script src="/JavaScript/PageSet.js" type="text/javascript"></script>
+<script src="/WebServices/Group.asmx/js" type="text/javascript"></script>
+<script src="/JavaScript/Client/Tabs.js" type="text/javascript"></script>
+<script src="/JavaScript/GroupList.js" type="text/javascript"></script>
+<script src="/JavaScript/GroupUser.js" type="text/javascript"></script>
+#end
+#capturefor(title) 我的班级 #end
+<div id="toc">
+<ul id="tabs">
+	<li class="activetab"><a href="#">我的班级</a></li></ul>
+</div>
+<div class="ch_content">
+	<div id="myClassList" class="myClassList">
+			<div class="box">
+				<h3>我的大学</h3>
+				<div class="boxcont">
+					<ol>$Items</ol>
+				</div>
+			</div>
+			<p class="note">
+				注：如果以上班级显示不正确，请 <a href="/EditMyInfo.aspx">修改资料</a></p>
+		</div>
+	<div class="xui-g">
+		<div class="box">
+			<h3>
+				查看更多班级</h3>
+			<ul>
+				<li>
+					» <a href="/ClassList.aspx">其他班级</a></li>
+				<li>
+					» <a href="/Search.aspx">查找同班同学</a></li>
+			</ul>
+		</div>
+	</div>
+  <div id="creatClass">
+			<p class="note">
+	&gt;&gt;如果找不到自己的班级, 你可以 <a href="/createclass.aspx">创建新班级</a>&lt;&lt;</p>
+  </div>
+</div>

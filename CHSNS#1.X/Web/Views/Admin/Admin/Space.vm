@@ -1,0 +1,22 @@
+﻿#capturefor(title) 空间使用情况 #end
+#if($msg)
+	$msg
+#end
+#if($ispost)
+全部磁盘使用情况: <b>$diskall</b>
+<ul>
+<li>页面文件夹使用情况: <b>$viewpage</b></li>
+<li>用户文件夹使用情况: <b>$userFiles</b></li>
+<li>日志文件夹使用情况: <b>$debuglog</b></li>
+<li>群组文件夹使用情况: <b>$groupFiles</b></li>
+</ul>
+#end
+<form action="$url.for("%{action='space'}")" method="post">
+	<input type="submit" value="开始统计" />
+</form>
+
+
+#*
+创建:邹健
+功能:管理员页面,网站配置
+*#

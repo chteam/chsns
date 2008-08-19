@@ -1,0 +1,12 @@
+﻿<div id="picturenow" class="required">
+	<h4>当前图片</h4>
+<span id="face_span"><img src="$ChHelper.Path.GroupImg_Big($Groupid)" alt="图片预览" id="Userface"/></span>
+</div>
+<div class="narrowform">
+	<h3>上传图片</h3>
+	<div class="notes">
+		上传图片后，原先的图片将从系统中删除。<br />
+		支持 JPG、JPEG、GIF和 PNG 文件格式，最大200K。<br />
+	</div>
+	<div class="required" id="uploadfield"></div>
+</div>

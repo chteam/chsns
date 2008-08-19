@@ -1,0 +1,68 @@
+﻿#macro(showdel $id $uid )
+	#if($uid==$session.get_item("userid"))
+		<a class="icon_close" href="javascript:Event_Remove(${id});">&nbsp;&nbsp;</a>
+	#end
+#end
+
+#foreach($item in $eventrows)
+#each
+##初始化赋值部分
+#set($id = $item.get_item("id"))
+#set($fromid = $item.get_item("fromid"))
+#set($fromname = $item.get_item("fromname"))
+#set($app = $item.get_item("application"))
+#set($time = $item.get_item("addtime").ToString("MM-dd HH:mm"))
+#set($actionid = $item.get_item("actionid"))
+#set($type = $item.get_item("type"))
+##开始解决问题
+#if(${type}==1)##更改了状态
+<li class="icon_showtext" id="Profile_Event_item${id}">
+<a href="/User.aspx?userid=${fromid}">${fromname}</a>
+于${time}
+更改了状态
+<a href="/User.aspx?userid=${fromid}">${app}</a>
+#showdel( ${id} ${fromid} )
+</li>
+#elseif(${type}==2)##发表了日志
+<li class="icon_note" id="Profile_Event_item${id}">
+<a href="/User.aspx?userid=${fromid}">${fromname}</a>
+于${time}
+发表日志
+<a href="/Note.aspx?id=${actionid}">${app}</a>
+#showdel( ${id} ${fromid} )
+</li>
+#elseif(${type}==3)##建立了相册
+<li class="icon_album" id="Profile_Event_item${id}">
+<a href="/User.aspx?userid=${fromid}&amp;">${fromname}</a>
+于${time}
+建立像册
+<a href="/Album.aspx?albumid=${actionid}&amp;userid=${fromid}&amp;">${app}</a>
+#showdel( ${id} ${fromid} )
+</li>
+#elseif(${type}==4)##创建群
+<li class="icon_group" id="Profile_Event_item${id}">
+<a href="/User.aspx?userid=${fromid}&amp;">${fromname}</a>
+于 ${time}
+建立群
+<a href="/group.aspx?id=${actionid}&amp;">${app}</a>
+#showdel( ${id} ${fromid} )
+</li>
+#elseif(${type}==5)##发布了视频
+<li class="icon_supernote" id="Profile_Event_item${id}">
+<a href="/User.aspx?userid=${fromid}&amp;">${fromname}</a>
+于 ${time}
+发布视频
+<a href="/SuperNote.aspx?userid=${fromid}&amp;">${app}</a>
+#showdel( ${id} ${fromid} )
+</li>
+#elseif(${type}==6)
+<li class="icon_groupuser" id="Profile_Event_item${id}">
+<a href="/User.aspx?userid=${fromid}&amp;">${fromname}</a>
+于${time}
+加入群
+<a href="/Group.aspx?id=${actionid}&amp;">${app}</a> 
+#showdel( ${id} ${fromid} )
+</li>
+#end
+
+#end

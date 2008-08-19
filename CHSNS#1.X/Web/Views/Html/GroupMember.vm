@@ -1,0 +1,56 @@
+﻿<h3>群管理员</h3>
+<ol>
+#foreach ($item in $source)##群主
+<li id="Master$item.get_item("userid")"><span class="edit">
+	#if($item.get_item("level")==255)
+群主
+	#else
+#if ($right == 255)
+<a href="javascript:TurnCreater($item.get_item("userid"))">转让群主</a>
+<a href="javascript:TurnMember($item.get_item("userid"))">解除职务</a>
+#else
+管理员
+#end
+	#end
+</span><a href="/User.aspx?userid=$item.get_item("userid")">$item.get_item("name")</a></li>
+#end
+</ol>
+
+#if ($right == 255)##批准管理员申请
+	#if ($ApplyMasters.Count > 0)
+<h3>申请成为管理员列表</h3>
+	#end
+	#foreach ($item in $ApplyMasters)
+<li id="ApplyMaster$item.get_item("userid")"><span class="edit">
+<a href="javascript:AllowMaster($item.get_item("userid"))">允许</a>
+<a href="javascript:DisallowMaster($item.get_item("userid"))">忽略</a>
+</span><a href="/User.aspx?userid=$item.get_item("userid")">$item.get_item("name")</a></li>
+	#end
+#end
+#if ($right > 199)##批准成员
+	#if ($ApplyMembers.Count > 0)
+<h3>申请加入群列表</h3>
+	#end
+	#foreach ($item in $ApplyMembers)
+<li id="ApplyMember$item.get_item("userid")"><span class="edit">
+<a href="javascript:AllowMember($item.get_item("userid"))">允许</a>
+<a href="javascript:DisallowMember($item.get_item("userid"))">忽略</a>
+</span><a href="/User.aspx?userid=$item.get_item("userid")">$item.get_item("name")</a></li>
+	#end
+#end
+<h3>群成员</h3>
+<div id="PageUp" class="page"></div>
+<ol>
+	#if ($Memberlist.Count == 0)
+<li>列表为空<li>
+	#else
+#foreach ($item in $Memberlist)
+<li id="Member$item.get_item("userid")"><span class="edit">
+<a href="javascript:DeleteGroupUser($item.get_item("userid"))">删除</a>
+</span><a href="/User.aspx?userid=$item.get_item("userid")">$item.get_item("name")</a></li>
+#end
+	#end
+</ol>
+<div id="PageDown" class="page"></div>
+<input id="Hdpage" type="hidden" value="1" />
+<input id="HdEveryPage" type="hidden" value="20" />

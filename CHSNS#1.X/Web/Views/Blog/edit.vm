@@ -1,0 +1,66 @@
+﻿#capturefor(css)
+<link href="${ChHelper.ChSite.StylePath}/myblog.css" rel="stylesheet" type="text/css" />
+#end
+#capturefor(title) 博客设置 #end
+<div class="toplink">
+<h3>博客设置</h3>
+</div>
+#if($Flash.msg)
+<div class="notes">$Flash.msg</div>
+#end
+#if($summary)
+<div class="notes">
+    发生以下错误:<br />
+    #foreach($propName in $summary.InvalidProperties)
+    $propName: #foreach($msg in $summary.GetErrorsForProperty($propName)) $msg #end <br/>
+    #end
+    </div>
+#end
+#if($success)<div class="notes">$success</div>#end
+<div class="blogeditbody">
+<form class="setform" action="$url.for("%{action='update'}")" onsubmit="return blogsubmit();" method="post">
+	<fieldset title="blogs" >
+		<legend>博客设置</legend>
+		<li>
+		<label>
+			标题：</label>
+		<input class="inputtext" type="text" name="blog.title" value="$!{blog.title}" />
+		</li>
+		<li>
+		<label>
+			子标题：</label>
+		<input class="inputtext" type="text" name="blog.subtitle" value="$!{blog.subtitle}" />
+		</li>
+		<li>
+		<label>
+			联系Email：</label>
+		<input class="inputtext" type="text" name="blog.commentemail" value="$!{blog.commentemail}" />
+		</li>
+		<li>
+		<label>
+			笔名：</label>
+		<input class="inputtext" type="text" name="blog.writename" value="$!{blog.writename}" />
+		</li>
+		<li>
+		<label>
+			公告：</label>
+		<textarea name="blog.publish" rows="5" cols="40">$!{blog.publish}</textarea>
+		</li>
+		<li>
+		<input type="hidden" name="blog.iswebservices" value="$!{blog.iswebservices}" />
+		</li>
+		<li>
+		<label>
+			Meta Keywords</label>
+		<input class="inputtext" type="text" name="blog.metakey" value="$!{blog.metakey}" />
+		</li>
+	</fieldset>
+	<input class="subbutton" type="submit" value="更新内容" />
+</form>
+</div>
+<script type="text/javascript">
+var blogsubmit=function(){
+	return true;
+};#*注释：判断字段完整*#
+</script>
+

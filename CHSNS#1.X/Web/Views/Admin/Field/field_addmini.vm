@@ -1,0 +1,82 @@
+﻿#capturefor(title) 添加MiniField #end
+#capturefor(javascript)
+<script src="/WebServices/AutoSelect.asmx/js" type="text/javascript"></script>
+#end
+<form action="$url.for("%{action='Field_AddMini'}")" method='post'>
+
+#if($Flash.msg)
+<div class="notes">$msg</div>
+#end
+	<fieldset>
+		<legend>大学信息</legend>
+		<ul>
+			<li>
+				<label>
+					Field地区：</label>
+				<select id="Province" name="Province" tabindex="9" onchange="pchange();">
+					$provinces.replace(">黑龙江<",' selected="selected">黑龙江<')
+				</select>
+			</li>
+			<li>
+				<label>
+					Field：</label>
+				<select id="University" name="uniid" tabindex="13" >
+					<option value="">请选择</option>
+				</select><span class="tip"> - 注意：此信息提交后将不能更改</span>
+				<span id="Universitymsg" style="visibility: hidden">[请选择您所在的大学]</span>
+			</li>
+			<li>
+				<label>
+					MiniField(每行一个)：</label>
+				<span id="Xueyuan_select">
+					<textarea name="xueyuans" id="xueyuans" cols="60" rows="5" width="400px"></textarea>
+					<input type="button" onclick="$('xueyuans').value=DelHtml($('xueyuans').value);" value="过滤HTML标签" />
+				</span>
+				</li>
+		</ul>
+	</fieldset>
+<script type="text/javascript">
+function pchange(){
+		var selu=$get("University");
+		selu.options.length=0;
+		var ind=$get("Province").selectedIndex;
+		Chsword.AutoSelect.UniversityList($get("Province")[ind].text,function(r){
+			if($get("Province").options[0].text=="请选择")
+				$get("Province").removeChild($get("Province").options[0]);
+			var rows = r.rows;
+			for (var rowIndex = 0; rowIndex < rows.length; ++ rowIndex) {
+				selu.options.add(new Option(rows[rowIndex]["School"],rows[rowIndex]["id"]));
+			}
+		//	unichange();
+		},onfail);
+}
+function DelHtml(Word){
+a = Word.indexOf("<");
+b = Word.indexOf(">");
+len = Word.length;
+c = Word.substring(0, a);
+if(b == -1)
+b = a;
+d = Word.substring((b + 1), len);
+Word = c + d;
+tagCheck = Word.indexOf("<");
+if(tagCheck != -1)
+Word = DelHtml(Word);
+return Word;
+} 
+pchange();
+</script>
+ ##if(profile.field==1)
+	<ul>
+	<li>
+		<input type="submit" value="提交" class="subbutton" />
+	</li>
+	</ul>
+</form>
+
+
+
+
+#*
+添加xueyuan
+*#

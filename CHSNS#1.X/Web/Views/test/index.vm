@@ -1,0 +1,2 @@
+﻿$test
+$url.link('aaaaa',"%{area='admin',controller='profile',action='edit'}")

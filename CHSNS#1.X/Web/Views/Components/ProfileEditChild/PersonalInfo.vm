@@ -1,0 +1,53 @@
+﻿<div class="notes">
+	[本页选填] 以下内容如需填写多项，可用逗号、分号或换行分隔。如“兴趣爱好：爬山，游泳”</div>
+<div class="required">
+	<label for="gender">
+		<em>*</em>可见度：</label>
+	<div style="padding-left:160px">
+<span id="personal_slider_BoundControl"></span><input type="text" value="$Source.get_item("PersonalInfoShowLevel")" id="personal_slider"/>
+    </div>
+</div>
+<div class="optional">
+	<label for="Lovelike">
+		兴趣爱好：</label>
+	<textarea id="Lovelike" cols="40" rows="5" class="textarea">$PersonalHelper.TrimLast( $Source.get_item("Lovelike") )</textarea>
+</div>
+<div class="optional">
+	<label for="Lovebook">
+		喜欢书籍：</label>
+	<textarea id="Lovebook" cols="40" rows="5" class="textarea">$PersonalHelper.TrimLast( $Source.get_item("Lovebook"))</textarea>
+</div>
+<div class="optional">
+	<label for="Lovemusic">
+		喜欢音乐：</label>
+	<textarea id="Lovemusic" cols="40" rows="5" class="textarea">$PersonalHelper.TrimLast( $Source.get_item("Lovemusic"))</textarea>
+</div>
+<div class="optional">
+	<label for="Lovemovie">
+		喜欢电影：</label>
+	<textarea id="Lovemovie" cols="40" rows="5" class="textarea">$PersonalHelper.TrimLast( $Source.get_item("Lovemovie"))</textarea>
+</div>
+<div class="optional">
+	<label for="Lovecomic">
+		喜欢动漫：</label>
+	<textarea id="Lovecomic" cols="40" rows="5" class="textarea">$PersonalHelper.TrimLast( $Source.get_item("Lovecomic"))</textarea>
+</div>
+<div class="optional">
+	<label for="Lovesports">
+		喜欢运动：</label>
+	<textarea id="Lovesports" cols="40" rows="5" class="textarea">$PersonalHelper.TrimLast( $Source.get_item("Lovesports"))</textarea>
+</div>
+<div class="optional">
+	<label for="Lovegame">
+		玩的游戏：</label>
+	<textarea id="Lovegame" cols="40" rows="5" class="textarea">$PersonalHelper.TrimLast( $Source.get_item("Lovegame"))</textarea>
+</div>
+<div class="optional">
+	<label for="Joinsociety">
+		加入社团：</label>
+	<textarea id="Joinsociety" cols="40" rows="5" class="textarea">$PersonalHelper.TrimLast( ${Source.get_item("Joinsociety")})</textarea>
+</div>
+
+<div class="actions">
+	<input class="subbutton" type="button" value="保存修改" onclick="SubmitInfo('personal');" />
+</div>

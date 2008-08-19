@@ -1,0 +1,48 @@
+﻿#capturefor(title) 实名未审用户 #end
+#if($msg)
+<div class="notes">	$msg</div>
+#end
+<form action="$url.for("%{action='SetStar'}")" method="post" name="passit" id="passit">
+<input id="userid" name="userid" type="hidden" />
+<input id="ispass" name="ispass" type="hidden" />
+</form>
+<script type="text/javascript">
+var setvalue=function(userid,ispass){
+$v("userid",userid);
+$v("ispass",ispass);
+document.passit.submit();
+};
+</script>
+#foreach($item in $users )
+#beforeall
+<table cellspacing="0" cellpadding="4" border="0"
+style="color:#333333;border-collapse:collapse;">
+<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+<th scope="col">头像</th><th scope="col">信息</th><th scope="col">操作</th>
+</tr>
+#before
+<tr style="color:#284775;background-color:White;">
+<td>
+#each
+<a href="/User.aspx?userid=${item.userid}&" target="_blank">
+    <img src="$ChHelper.Path.GetFace_Middle(${item.userid})" alt="" />
+</a>
+</td>
+<td>
+#*$ChHelper.DataCache.GetFieldName($item.Field)&gt;
+$ChHelper.DataCache.GetMiniFieldName($item.Field,$item.MiniField)&gt;
+$item.Year&gt;
+*#
+$item.name 
+[${item.userid}]
+</td><td>
+<input type="button" value="通过审核" onclick="setvalue(${item.userid},true);" />
+<input type="button"  value="未通过" onclick="setvalue(${item.userid},false);" />
+#after
+</td>
+</tr>
+#afterall
+</table>
+#nodata
+没有请求
+#end

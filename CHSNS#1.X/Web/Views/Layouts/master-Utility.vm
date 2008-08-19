@@ -1,0 +1,20 @@
+﻿#if($ChHelper.ChUser.isLogined)
+<span class="My_Menu">
+$url.link($ChHelper.ChUser.UserName, "%{area='',controller='event',action='index'}")
+<a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
+$url.link("退出", "%{area='',controller='home',action='Logout'}")
+</span>
+#else
+<script type="text/javascript">
+function addBookmark(title,url){
+if(document.all){
+window.external.AddFavorite( url, title);
+}else if (window.sidebar){
+window.sidebar.addPanel(title, url,"");
+}else if( window.opera && window.print ){
+return true;}}
+</script>
+<a href="/">首页</a>
+<a href="javascript:addBookmark('$ChHelper.ChSite.BaseConfig.Title','$ChHelper.ChSite.BaseConfig.Url');">加入收藏</a>
+<a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
+#end

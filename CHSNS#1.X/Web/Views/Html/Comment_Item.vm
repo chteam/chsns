@@ -1,0 +1,41 @@
+﻿#foreach($item in $CommentRows)
+<li id="reply${item.id}" class="#if ($CommentType == 0)
+list
+#else
+#if($item.RowNo)
+#if ($item.RowNo % 2 == 0)even#else odd#end
+#end
+#end">
+<div class="comment">
+<div class="picture">
+<a href="/User.aspx?userid=${item.senderid}">
+<img src="$ChHelper.Path.GetFace_Middle(${item.senderid})" alt="${item.name}" /></a></div>
+<div class="author">
+<span class="floor">
+#if ($CommentType == 1&&$item.RowNo)
+$item.RowNo楼
+#end
+</span>
+<a href="/User.aspx?userid=${item.senderid}" title="点击人名查看">${item.name}</a>##$University$
+<span class="time">$item.addtime.ToString("MM-dd HH:mm")</span>
+#if ($ChHelper.ChUser.Userid!=$item.senderid)
+<span class="reply"><a href="#userTalk" onclick="onReplyClick('${item.name}','${item.senderid}'); return false;">回复</a></span>
+#end
+#if (!$item.isdel)
+	#if ($ChHelper.ChUser.Userid == $item.ownerid || $ChHelper.ChUser.Userid==$item.senderid)
+		#if ($ChHelper.ChUser.Userid!=$item.senderid)
+			<span class="pipe">|</span>
+		#end
+<span class="remove">
+<a href="#" onclick="onDeleteReply(${item.id},${item.senderid});return false;">删除</a>
+</span>
+	#end
+#end
+#if ($item.ownerid == $ChHelper.ChUser.Userid  && $ChHelper.ChUser.Userid!=$item.senderid && !$item.issee)
+<span id="comment_see_${item.id}" class="setsee"><a href="javascript:onSeeReply(${item.id});">置为已读</a></span>
+#end
+</div>
+<div class="content"><p>#if($item.isdel)已经删除#else$item.body#end</p></div>
+</div></li>
+#end
+

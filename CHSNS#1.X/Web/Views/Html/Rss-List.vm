@@ -1,0 +1,15 @@
+﻿#foreach($item in $RssSource)
+#beforeall
+<div id="readlist">
+<table><thead><tr><th class="title">主题</th><th class="time">发表时间</th><th class="group">所在群</th>
+</tr></thead><tbody id="chNewRss">
+#each
+<tr>
+<td class="title"><a href="/Note.aspx?id=$item.get_item("logid")&Groupid=$item.get_item("groupid")&amp;">$item.get_item("title")</a></td>
+<td class="time">$item.get_item("addtime").ToString("MM-dd HH:mm")</td>
+<td class="group"><a href="/group.aspx?id=$item.get_item("groupid")&amp;">$item.get_item("GroupName")</a></td></tr>
+#afterall
+</tbody></table></div>
+#nodata
+<div class="notes">无数据</div>
+#end

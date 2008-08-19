@@ -1,0 +1,33 @@
+﻿#capturefor(title) 用户管理 #end
+
+
+
+<div style="float: left">
+<div>
+<a href="#">新注册用户(未通过邮件审核):$newreg</a>
+</div>
+<div>
+$Url.Link("实名未审用户:$unstarcount","%{action='isstar'}")
+<a href="Admin_IsStar.aspx" style="color: red"></a>
+</div>
+
+
+</div>
+<div style="float:left">
+今日注册人数:$today
+<br />
+总注册人数:$allcount
+<br />
+加入Field人数:$field
+<br />
+实名人数:$star
+<br />
+管理员人数:$admincount
+
+<br />
+</div>
+#*
+创建:邹健 2007 1 20
+最后修改: 2007 1 20
+功能:管理员页面,主
+*#

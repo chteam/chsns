@@ -1,0 +1,32 @@
+﻿#capturefor(title) 用户管理 #end
+
+#foreach($item in $data )
+#beforeall
+<table cellspacing="0" cellpadding="4" border="0"
+style="color:#333333;border-collapse:collapse;">
+<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+<th scope="col">头像</th><th scope="col">状态</th><th scope="col">操作</th>
+</tr>
+#even
+<tr style="color:#284775;background-color:White;">
+#odd
+<tr style="color:#284775;background-color:LightGray;">
+#each
+<td>
+<a href="$url.for("%{area='admin',controller='UserManage',action='userset',querystring='userid=${item.userid}&'}")">
+    <img src="$ChHelper.Path.GetFace_Small($item.userid)" alt="$item.name" />
+</a>$item.name Email: $item.email
+</td>
+<td>$item.status</td>
+<td>
+
+</td>
+#after
+</tr>
+#afterall
+</table>
+#set($pagerrows=$data)
+#parse("$siteroot/html/Pager.vm")
+#nodata
+没有请求
+#end

@@ -1,0 +1,4 @@
+﻿#component(ProfileEditChild with "template=$template")
+#*
+Post Only
+*#

@@ -1,0 +1,20 @@
+﻿#capturefor(title) 日志管理 #end
+
+
+
+<div style="float: left">
+
+<div>
+$Url.Link("今日帖子:$note_today","%{action='note_today'}")
+</div>
+
+
+</div>
+<div style="float:left">
+
+</div>
+#*
+创建:邹健 2007 1 20
+最后修改: 2007 1 20
+功能:管理员页面,主
+*#

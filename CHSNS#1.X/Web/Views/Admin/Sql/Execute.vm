@@ -1,0 +1,11 @@
+﻿#capturefor(title) 执行SQL语句 #end
+
+<form action="" method="post">
+	<fieldset title="执行SQL语句">
+		<legend>执行SQL语句</legend>
+
+		<textarea type="text" name="sql" style="width:500px:height:160px" rows="5" cols="50" ></textarea>
+	</fieldset>
+	
+	<input type="submit" value="执行" />
+</form>

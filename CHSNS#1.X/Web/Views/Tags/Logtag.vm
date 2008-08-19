@@ -1,0 +1,17 @@
+﻿#capturefor(css)
+<link href="${ChHelper.ChSite.StylePath}/myblog.css" rel="stylesheet" type="text/css" />
+#end
+<div class="blogsidebar">
+	<h4>常用链接</h4>
+	<div class="notes">
+$url.link("设置","%{action='edit',controller='blog'}")
+	</div>
+	<h4>我的标签</h4>
+	<div class="notes">
+
+	</div>
+</div>
+<div class="blogmain">
+#set( $blogs = $tags )
+#parse( "$siteroot/Blog/Item-Notes.vm" )
+</div>
