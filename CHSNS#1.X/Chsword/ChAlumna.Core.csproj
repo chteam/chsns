@@ -95,7 +95,7 @@
     <Compile Include="Encrypt.cs" />
     <Compile Include="Enum\UserStatusType.cs" />
     <Compile Include="File.cs" />
-    <Compile Include="IDataOpener.cs" />
+    <Compile Include="Interface\IDataOpener.cs" />
     <Compile Include="Interface\IDataBaseExecutor.cs" />
     <Compile Include="Interface\IEmail.cs" />
     <Compile Include="NetworkCross.cs" />

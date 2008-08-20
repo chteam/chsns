@@ -7,13 +7,20 @@ using System.Data.SqlClient;
 using System.Data.Common;
 
 namespace CHSNS {
+	/// <summary>
+	/// 数据库执行者
+	/// the Executor of DataBase
+	/// </summary>
 	public class DataBaseExecutor : IDisposable {
 		IDataOpener DataOpen { get; set; }
+		/// <summary>
+		/// init
+		/// </summary>
+		/// <param name="dataopen">IDataOpener</param>
 		public DataBaseExecutor(IDataOpener dataopen) {
 			this.DataOpen = dataopen;
 		}
 
-		#region IDataBaseExecutor 成员
 
 		public void Execute(string name) {
 			Execute(name, new Dictionary());
@@ -58,7 +65,9 @@ namespace CHSNS {
 		public DataTable GetTable(string name) {
 			return GetTable(name, new Dictionary());
 		}
-
+		public DataRowCollection GetRows(string text) {
+			return GetTable(text).Rows;
+		}
 		public DataTable GetTable(string name, Dictionary dict) {
 			DataOpen.Open(name);
 			foreach (string key in dict.Keys) {
@@ -70,18 +79,19 @@ namespace CHSNS {
 			DataOpen.Close();
 			return dt;
 		}
-
+		public DataRowCollection GetRows(string text, Dictionary dict) {
+			return GetTable(text, dict).Rows;
+		}
 		public DataTable GetTable(string name, params object[] args) {
 			return GetTable(name, Dictionary.CreateFromArgs(args));
 		}
-		#endregion
-
-		#region IDisposable 成员
-
+		public DataRowCollection GetRows(string text, params object[] args) {
+			return GetTable(text, args).Rows;
+		}
 		public void Dispose() {
 			DataOpen.Dispose();
 		}
 
-		#endregion
+
 	}
 }
