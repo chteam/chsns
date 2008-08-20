@@ -83,6 +83,10 @@
     <Compile Include="ChServer.cs" />
     <Compile Include="ChSession.cs" />
     <Compile Include="ChUser.cs" />
+    <Compile Include="DataBaseExecutor.cs" />
+    <Compile Include="DataOpen\OleDbDataOpener.cs" />
+    <Compile Include="DataOpen\SqlDataOpener.cs" />
+    <Compile Include="DataOpen\SqlStoredProcedureDataOpener.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="AccessDataBase.cs" />
     <Compile Include="Debug.cs" />
@@ -91,6 +95,7 @@
     <Compile Include="Encrypt.cs" />
     <Compile Include="Enum\UserStatusType.cs" />
     <Compile Include="File.cs" />
+    <Compile Include="IDataOpener.cs" />
     <Compile Include="Interface\IDataBaseExecutor.cs" />
     <Compile Include="Interface\IEmail.cs" />
     <Compile Include="NetworkCross.cs" />

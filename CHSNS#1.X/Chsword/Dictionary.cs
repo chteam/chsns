@@ -1,4 +1,4 @@
-namespace ChAlumna
+namespace CHSNS
 {
 	using System.Collections.Generic;
 	using System;
