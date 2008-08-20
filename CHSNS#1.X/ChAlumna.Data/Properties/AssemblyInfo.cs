@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("ChAlumna.Data")]
+[assembly: AssemblyTitle("CHSNS.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("成幻小组")]
-[assembly: AssemblyProduct("ChAlumna.Data")]
+[assembly: AssemblyProduct("CHSNS.Data")]
 [assembly: AssemblyCopyright("版权所有 (C) 成幻小组 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
