@@ -18,7 +18,7 @@ namespace Chsword {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[ToolboxItem(false)]
 	[System.Web.Script.Services.ScriptService()]
-	public class Services : System.Web.Services.WebService {
+	public class Services :  WebServices {
 		#region 一般用户方法
 		[WebMethod(Description = "获得客户服务问题列表")]//不用开Session
 		public DataTable ServicesTable(int nowpage, int everypage, long userid, string Email) {
@@ -54,7 +54,7 @@ namespace Chsword {
 				else if (userid.ToString() != Session["userid"].ToString())
 					throw new Exception(Debug.TraceBack("提交[客户服务问题]需要您登录或填写Email"));
 
-			ChAlumna.DataBaseExecutor.Execute(
+			DataBaseExecutor.Execute(
 				"Services_Add",
 				"@userid", userid == null ? 0 : userid.Value,
 				"@body", body,

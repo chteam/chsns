@@ -18,7 +18,7 @@ namespace ChAlumna {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[ToolboxItem(false)]
 	[System.Web.Script.Services.ScriptService()]
-	public class Group : System.Web.Services.WebService {
+	public class Group :  WebServices {
 		#region 群操作，新建
 		/// <summary>
 		/// 新建群

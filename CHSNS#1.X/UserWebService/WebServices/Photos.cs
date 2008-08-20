@@ -17,6 +17,7 @@ namespace ChAlumna
 	using System.ComponentModel;
 	using System.Data.SqlClient;
 	using Chsword;
+	using CHSNS;
 	/// <summary>
 	/// Description of Photos
 	/// </summary>

@@ -1,12 +1,13 @@
 ﻿
 namespace ChAlumna.Controllers
 {
-	using ChAlumna.Data;
+	using CHSNS.Data;
 	using Castle.MonoRail.Framework.Helpers;
+	using CHSNS;
 	public class TagsController : BaseController
 	{
 		public void LogTag(string title) {
-			MsSqlDB ms = new MsSqlDB(new Dictionary());
+			DBExt ms = new DBExt(new Dictionary());
 			ViewData["tags"] =
 				PaginationHelper.CreatePagination(
 				this,

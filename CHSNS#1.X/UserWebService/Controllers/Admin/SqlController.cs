@@ -11,8 +11,8 @@ namespace ChAlumna.Controllers.Admin
 					return;
 				}
 				try {
-					IDataBaseExecutor idb = new MsSqlExecutor();
-					idb.SqlExecute(sql);
+				//	IDataBaseExecutor idb = new DataBaseExecutor();
+					this.DataBaseExecutor.Execute(sql);
 				} catch (Exception e) {
 					ViewData["msg"] = e.Message;
 					return;

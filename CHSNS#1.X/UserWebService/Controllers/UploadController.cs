@@ -6,6 +6,7 @@ namespace ChAlumna.Controllers
 	using System.Collections;
 	using Chsword;
 	using System.Collections.Generic;
+	using CHSNS;
 	//[Helper(typeof(ChHelper))]
 	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
 	public class UploadController : BaseBlockController

@@ -2,6 +2,7 @@
 {
 	using System;
 	using System.IO;
+	using CHSNS;
 	public class TemplateEngine
 	{
 		static public string ToString(Dictionary dict, string view) {

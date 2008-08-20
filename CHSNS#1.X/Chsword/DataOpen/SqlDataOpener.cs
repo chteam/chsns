@@ -24,7 +24,10 @@ namespace CHSNS {
 				this.Command.Connection.Open();
 		}
 		void  IDataOpener.Open(string SQLtext) {
-			Open(this.CommandType, SQLtext);
+			if (SQLtext.Trim().Contains(" "))
+				Open(this.CommandType, SQLtext);
+			else
+				Open(CommandType.StoredProcedure, SQLtext);
 		}
 
 		public void Close() {

@@ -2,7 +2,7 @@ namespace ChAlumna
 {
 	using Castle.MonoRail.Framework.Helpers;
 	using ChAlumna.Config;
-	using ChAlumna.Data;
+	using CHSNS.Data;
 	public class ChHelper : AbstractHelper
 	{
 		public SiteConfig ChSite {
@@ -24,9 +24,9 @@ namespace ChAlumna
 
 			}
 		}
-		public MsSqlDB DB {
+		public DBExt DB {
 			get {
-				return new MsSqlDB(this.CurrentContext.Session);
+				return new DBExt(this.CurrentContext.Session);
 			}
 		}
 

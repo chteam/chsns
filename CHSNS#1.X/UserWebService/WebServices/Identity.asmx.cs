@@ -6,6 +6,7 @@
 	using System.Data.SqlClient;
 	using System.Web.Services;
 	using Chsword;
+	using CHSNS;
 	/// <summary>
 	/// 进行登录注销注册等用户行为
 	/// </summary>
@@ -13,7 +14,7 @@
 	[WebService(Namespace = "ChAlumna")]
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[ToolboxItem(false)]
-	public class Identity : System.Web.Services.WebService
+	public class Identity : WebServices
 	{
 
 		#region 登录注销

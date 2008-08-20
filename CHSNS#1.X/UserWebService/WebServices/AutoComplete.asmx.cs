@@ -12,7 +12,7 @@ namespace Chsword {
 	[ToolboxItem(false)]
 	[System.Web.Script.Services.ScriptService()]
 	public class AutoComplete : System.Web.Services.WebService {
-	//	ChAlumna.DataSetCache _DataSetCache = new ChAlumna.DataSetCache();
+	//	CHSNS.DataSetCache _DataSetCache = new CHSNS.DataSetCache();
 
 		#region 邮箱提示
 

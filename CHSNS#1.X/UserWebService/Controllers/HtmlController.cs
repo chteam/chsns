@@ -5,8 +5,9 @@ namespace ChAlumna.Controllers
 	using System.Text;
 	using System;
 	using System.Linq;
-	using ChAlumna.Data;
+	using CHSNS.Data;
 	using ChAlumna.Config;
+	using CHSNS;
 	[Helper(typeof(PersonalHelper))]
 	[DefaultAction("Index")]
 	public class HtmlController : BaseBlockController
@@ -98,15 +99,15 @@ namespace ChAlumna.Controllers
 
 		[AccessibleThrough(Verb.Post)]
 		public void UserList(string template, int page, byte type) {
-			IDataBase idb = new MsSqlDB(Session);
-			ViewData["userSource"] = idb.UserListRows(ChUser.Current.Userid, page,type);
+			//IDataBase idb = new DBExt(Session);
+			ViewData["userSource"] = DBExt.UserListRows(ChUser.Current.Userid, page,type);
 
 			RenderView("html", string.Format("UserList-{0}", template));
 		}
 		[AccessibleThrough(Verb.Post)]
 		public void RssList(int count) {
-			IDataBase idb = new MsSqlDB(Session);
-			ViewData["userSource"] = idb.RssList(count);
+			//IDataBase idb = new DBExt(Session);
+			ViewData["userSource"] = DBExt.RssList(count);
 
 			RenderView("html","Rss-List");
 		}

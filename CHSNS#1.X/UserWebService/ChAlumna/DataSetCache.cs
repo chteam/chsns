@@ -7,6 +7,8 @@ namespace ChAlumna {
 	using System.Web;
 	
 	using Chsword;
+	using CHSNS;
+	using ChAlumna.Config;
 
 	public class DataSetCache : Chsword.Reader.Databases {
 	//	static DataSetCache _DataSetCache;
@@ -120,8 +122,13 @@ namespace ChAlumna {
 		}
 		static public DataTable QinshiList(string school) {
 			string name = String.Format("DataSet.Qinshi.{0}", school);
-			if (ChCache.IsNullorEmpty(name))
-				ChCache.SetCache(name, DataBaseExecutor.GetDataTable_str1(school, "@School", "GetQinShi"));
+			if (ChCache.IsNullorEmpty(name)) {
+				DataBaseExecutor _DataBaseExecutor = new DataBaseExecutor(
+		new SqlDataOpener(
+		SiteConfig.SiteConnectionString)
+		);
+				ChCache.SetCache(name, _DataBaseExecutor.GetTable(school, "@School", "GetQinShi"));
+			}
 			return HttpContext.Current.Cache[name] as DataTable;
 		}
 		static public StringBuilder QinshiOptionList(string school) {
@@ -168,7 +175,11 @@ namespace ChAlumna {
 			if (ChCache.IsNullorEmpty(name)) {
 				Dictionary dict = new Dictionary();
 				dict.Add("@pid", Province);
-				ChCache.SetCache(name, DataBaseExecutor.GetRows("CityList", dict));
+				DataBaseExecutor _DataBaseExecutor = new DataBaseExecutor(
+						new SqlDataOpener(
+						SiteConfig.SiteConnectionString)
+						);
+				ChCache.SetCache(name, _DataBaseExecutor.GetRows("CityList", dict));
 			} 
 			return HttpContext.Current.Cache[name] as DataRowCollection;
 		} 

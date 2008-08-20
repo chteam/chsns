@@ -9,6 +9,7 @@ namespace ChAlumna.Controllers
 	using Castle.MonoRail.Framework;
 	using ChAlumna.Models;
 	using ChAlumna.Config;
+	using CHSNS;
 	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
 	public class GroupController : BaseController
 	{

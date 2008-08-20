@@ -7,6 +7,7 @@ using ChAlumna.Models;
 	using System.Collections;
 	using System.Collections.Generic;
 	using System.Data;
+	using CHSNS;
 	[Filter(ExecuteEnum.BeforeAction,typeof(LoginedFilter))]
     public class AlbumController : BaseController
     {

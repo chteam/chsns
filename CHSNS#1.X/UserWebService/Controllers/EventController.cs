@@ -9,9 +9,10 @@ namespace ChAlumna.Controllers
 {
 	using System;
 	using System.Data;
-	//using ChAlumna.Data;
+	//using CHSNS.Data;
 	using Castle.MonoRail.Framework;
-	using ChAlumna.Data;
+	using CHSNS.Data;
+	using CHSNS;
 
 	/// <summary>
 	/// Description of EventController.
@@ -26,8 +27,8 @@ namespace ChAlumna.Controllers
 			ViewData.Add("CommentCount",dr["CommentCount"]);
 			ViewData.Add("NewReply", NewReplyRows());
 
-			IDataBase idb = new MsSqlDB(Session);
-			ViewData.Add("RssSource", idb.RssList(10));
+			//IDataBase idb = new DBExt(Session);
+			ViewData.Add("RssSource", this.DBExt.RssList(10));
 
 
 		}

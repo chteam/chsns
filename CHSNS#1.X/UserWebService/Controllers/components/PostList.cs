@@ -2,6 +2,7 @@ namespace ChAlumna.Controllers.components
 {
 	using System;
 	using System.Data;
+	using CHSNS;
 	public class PostList : BaseViewComponent
 	{
 		//DataRowCollection _rows;

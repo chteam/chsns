@@ -4,6 +4,7 @@ namespace ChAlumna.components
 	using System.Data;
 	using System.Collections.Generic;
 	using ChAlumna.Controllers;
+	using CHSNS;
 
 	public class ProfileEditChild : BaseViewComponent
 	{

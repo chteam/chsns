@@ -10,6 +10,7 @@ namespace ChAlumna.Controllers {
 	using ChAlumna.Config;
 	using System.Transactions;
 	using System.Data;
+	using CHSNS;
 	[Filter(ExecuteEnum.BeforeAction, typeof(PublicFilter))]
 	[DynamicActionProvider(typeof(WizardActionProvider))]
 	public class RegController : BaseController, IWizardController
@@ -182,7 +183,10 @@ namespace ChAlumna.Controllers {
 			Account account = RegSessionUtil.GetAccountFromSession(Session);
 			//using (TransactionScope ts = new TransactionScope()) {
 			try {
-				MsSqlExecutor mse = new MsSqlExecutor();
+				DataBaseExecutor mse = new DataBaseExecutor(
+new SqlDataOpener(
+SiteConfig.SiteConnectionString)
+);
 				DataRowCollection ret = mse.GetRows("Account_add",
 					"@name", account.name,
 					"@email", account.email,

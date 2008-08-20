@@ -3,22 +3,23 @@ namespace ChAlumna.Controllers
 	using System;
 	using ChAlumna.Models;
 	using Castle.MonoRail.Framework;
-	using ChAlumna.Data;
+	using CHSNS.Data;
 	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
 	[Layout("blogmaster")]
 	public class BlogController : BaseController
 	{
 		[SkipFilter]
 		public void index() {
+
 			long userid = this.QueryLong("userid");
-			MsSqlDB mb = new MsSqlDB(Session);
+			DBExt mb = new DBExt(Session);
 			var blog = mb.GetBlog(userid);
 			ViewData["userid"] = userid;
 			ViewData["blog"] = blog;
 			RenderView("index");
 		}
 		public void edit() {
-			MsSqlDB mb = new MsSqlDB(Session);
+			DBExt mb = new DBExt(Session);
 			var blog = mb.GetBlog(ChUser.Current.Userid);
 			ViewData["blog"] = blog;
 			RenderView("edit");
@@ -36,7 +37,7 @@ namespace ChAlumna.Controllers
 				return;
 			}
 			try {
-				MsSqlDB mb = new MsSqlDB(Session);
+				DBExt mb = new DBExt(Session);
 				var isexists = mb.GetBlog(ChUser.Current.Userid);
 				blog.userid = ChUser.Current.Userid;
 				if (isexists == null) {

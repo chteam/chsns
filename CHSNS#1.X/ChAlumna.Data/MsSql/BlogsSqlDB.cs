@@ -1,9 +1,10 @@
-﻿namespace ChAlumna.Data
+﻿namespace CHSNS.Data
 {
 	using System.Linq;
 	using ChAlumna.Models;
 	using System.Collections;
-	public partial class MsSqlDB : IDataBase
+	using ChAlumna;
+	public partial class DBExt
 	{
 		public bool IsBlogExists {
 			get {

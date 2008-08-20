@@ -15,7 +15,7 @@ namespace Chsword {
 	[ToolboxItem(false)]
 	[System.Web.Script.Services.ScriptService()]
 	public class AutoSelect : System.Web.Services.WebService {
-		//ChAlumna.DataSetCache _DataSetCache = new ChAlumna.DataSetCache();
+		//CHSNS.DataSetCache _DataSetCache = new CHSNS.DataSetCache();
 		[WebMethod]
 		public DataTable ProvinceList() {
 			return DataSetCache.ProvinceList();

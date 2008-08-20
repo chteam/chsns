@@ -8,6 +8,7 @@ namespace ChAlumna.Controllers
 	using System.Collections.Generic;
 	using ChAlumna.Models;
 	using ChAlumna.Config;
+	using CHSNS;
 	//using ChAlumna.TemplateEngine;
 	//using ChAlumna.components;
 	[Rescue("index")]

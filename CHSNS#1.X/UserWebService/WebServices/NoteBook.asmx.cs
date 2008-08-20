@@ -12,7 +12,8 @@ using Chsword.Execute;
 using Chsword;
 using ChAlumna.Reader;
 using ChAlumna.Models;
-using ChAlumna.Data;
+using CHSNS.Data;
+using CHSNS;
 namespace ChAlumna {
 	/// <summary>
 	/// NoteBook 的摘要说明
@@ -191,7 +192,7 @@ namespace ChAlumna {
 			n.IsPost = showlevel;
 			n.istellme = (byte)(istellme ? 1 : 0);
 
-			MsSqlDB idb = new MsSqlDB(new Dictionary());
+			DBExt idb = new DBExt(new Dictionary());
 			idb.Note_Add(n);
 
 			idb.NoteTags_Add(n.id, tags);
@@ -206,19 +207,19 @@ namespace ChAlumna {
 			n.body = body;
 			n.IsPost = showlevel;
 			n.istellme = (byte)(istellme ? 1 : 0);
-			MsSqlDB idb = new MsSqlDB(new Dictionary());
+			DBExt idb = new DBExt(new Dictionary());
 			idb.Note_Edit(n);
 			idb.NoteTags_Change(n.id, tags);
 		}
 		[WebMethod(Description = "删除日志", EnableSession = true)]
 		public void Note_Delete(long logid,long groupid) {
-			MsSqlDB idb = new MsSqlDB(new Dictionary());
+			DBExt idb = new DBExt(new Dictionary());
 			idb.NoteTags_Delete(logid);
 			idb.Note_Remove(logid, groupid);
 		}
 		[WebMethod(Description = "推荐日志", EnableSession = true)]
 		public string Note_Push(long logid) {
-			MsSqlDB idb = new MsSqlDB(new Dictionary());
+			DBExt idb = new DBExt(new Dictionary());
 			int b = idb.Note_Push(logid);
 			switch (b) {
 				case 1:

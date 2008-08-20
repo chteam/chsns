@@ -1,4 +1,4 @@
-﻿namespace ChAlumna.Data
+﻿namespace CHSNS.Data
 {
 	using System.Data;
 	using System.Collections;
@@ -7,7 +7,8 @@
 	using System;
 	using LinqToSqlExtensions;
 	using ChAlumna.Config;
-	public partial class MsSqlDB : IDataBase
+	using ChAlumna;
+	public partial class DBExt 
 	{
 	
 		/// <summary>
@@ -107,10 +108,10 @@ return -1--无权操作
 end*/
 			#endregion
 			int us = UserStatus(ChUser.Current.Userid, l.GroupId);
-			MsSqlExecutor me = new MsSqlExecutor();
+			//DataBaseExecutor me = new DataBaseExecutor();
 			Dictionary dict = new Dictionary();
 			dict.Add("@body", l.body);
-			me.SqlExecute(
+			DBE.Execute(
 				string.Format(@"UPDATE [Log] 
 SET EditTime = getdate(),
 isPost = {0},
@@ -133,15 +134,15 @@ us), dict);
 			dict.Add("@id", logid);
 			dict.Add("@userid", ChUser.Current.Userid);
 			dict.Add("@groupid", groupid);
-			MsSqlExecutor me = new MsSqlExecutor();
-			me.Execute("Note_Remove", dict);
+			//DataBaseExecutor me = new DataBaseExecutor();
+			DBE.Execute("Note_Remove", dict);
 		}
 		public int Note_Push(long logid) {
 			Dictionary d = new Dictionary();
 			d.Add("@viewerid", ChUser.Current.Userid);
 			d.Add("@Logid", logid);
-			MsSqlExecutor me = new MsSqlExecutor();
-			return (int)me.ExecuteScalar("LogPush", d);
+			//DataBaseExecutor me = new DataBaseExecutor();
+			return (int)DBE.ExecuteScalar("LogPush", d);
 		}
 	}
 }

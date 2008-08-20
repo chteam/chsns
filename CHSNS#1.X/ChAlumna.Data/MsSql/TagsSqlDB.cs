@@ -1,11 +1,12 @@
-﻿namespace ChAlumna.Data
+﻿namespace CHSNS.Data
 {
 	using System.Collections;
 	using System.Linq;
 	using ChAlumna.Models;
 	using LinqToSqlExtensions;
 	using System;
-	public partial class MsSqlDB : IDataBase
+	using ChAlumna;
+	public partial class DBExt 
 	{
 		public void NoteTags_Add(long id, string val) {
 			string[] strs = Regular.Trim(val.Split(','));
@@ -90,10 +91,10 @@
 		}
 		public IList GetNotebyTag(string title) {
 
-			MsSqlExecutor me = new MsSqlExecutor();
+//			DataBaseExecutor me = new DataBaseExecutor();
 			Dictionary d = new Dictionary();
 			d.Add("@title", title);
-			me.SqlExecute(
+			DBE.Execute(
 				"update tags set ReachTime=getdate(),Count=Count+1 where title=@title", d);
 
 			return (from l in DB.LogTag

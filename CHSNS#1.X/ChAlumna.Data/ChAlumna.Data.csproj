@@ -70,14 +70,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBaseExecutor.cs" />
     <Compile Include="Enum\FieldType.cs" />
     <Compile Include="Enum\ShowType.cs" />
     <Compile Include="Enum\TagsType.cs" />
     <Compile Include="MsSql\BlogsSqlDB.cs" />
-    <Compile Include="IDataBase.cs" />
     <Compile Include="MsSql\MsSqlDB.cs" />
-    <Compile Include="MsSqlExecutor.cs" />
     <Compile Include="MsSql\NoteSqlDB.cs" />
     <Compile Include="MsSql\TagsSqlDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

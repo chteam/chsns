@@ -12,6 +12,7 @@ namespace ChAlumna.Controllers.components
 	using System.Data.SqlClient;
 	using Chsword;
 	using Castle.MonoRail.Framework;
+	using CHSNS;
 	/// <summary>
 	/// Description of ViewList.
 	/// </summary>

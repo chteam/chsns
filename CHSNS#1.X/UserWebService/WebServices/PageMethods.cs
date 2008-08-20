@@ -19,8 +19,9 @@ using Chsword.Interface;
 using Chsword.Reader;
 using ChAlumna;
 using Chsword;
-using ChAlumna.Data;
+using CHSNS.Data;
 using ChAlumna.Models;
+using CHSNS;
 	/// <summary>
 	/// Description of PageMethods
 	/// </summary>
@@ -37,7 +38,7 @@ using ChAlumna.Models;
 	//[System.Web.Script.Services.GenerateScriptType(typeof(LogBookModel))]
 	[System.Web.Script.Services.GenerateScriptType(typeof(GroupUserType))]
 	[System.Web.Script.Services.GenerateScriptType(typeof(PageType))]
-	public class PageMethods : WebService
+	public class PageMethods : WebServices
 	{
 	#region 群功能
 	
@@ -110,8 +111,8 @@ using ChAlumna.Models;
 		//////////////////////////////////////////////////////////////////////////////////////////////////////
 		[WebMethod(EnableSession=true)]
 		public string DeleteReply(long Commentid) {//删除留言
-			IDataBase idb = new MsSqlDB(new Dictionary());
-			idb.Comment_Remove(Commentid);
+			//IDataBase idb = new DBExt(new Dictionary());
+			DBExt.Comment_Remove(Commentid);
 			return "";
 		}
 		[WebMethod(EnableSession=true)]
@@ -234,10 +235,8 @@ using ChAlumna.Models;
 			dict.Add("@FaceShowLevel", FaceShowLevel);
 			dict.Add("@AllShowLevel", AllShowLevel);
 
-			if (DataBaseExecutor.GetReturnValue("ChangeShowLevelUpdate", dict) == 1)
+			DataBaseExecutor.Execute("ChangeShowLevelUpdate", dict);
 				return "";
-			else
-				return "修改失败";
 		}
 		[WebMethod(EnableSession = true)]
 		public string ChangePassword(string oldpassword, string password) {
@@ -251,10 +250,8 @@ using ChAlumna.Models;
 			dict.Add("@Newpwd", en.MD5Encrypt(password.Trim(), 32));
 			dict.Add("@Userid", ChUser.Current.Userid);
 
-			if (DataBaseExecutor.GetReturnValue("ChangePassword", dict) == 1)
+			DataBaseExecutor.Execute("ChangePassword", dict);
 				return "";
-			else
-				return "修改失败";
 		}
 		#endregion
 		#region 班级
@@ -290,7 +287,7 @@ using ChAlumna.Models;
 			if (!long.TryParse(HttpContext.Current.Session["userid"].ToString(), out userid)) {
 				throw new Exception("非法操作.");
 			}
-			ChAlumna.DataSetCache dsc = new ChAlumna.DataSetCache();
+			DataSetCache dsc = new DataSetCache();
 			return dsc.CityOptionList(Province);
 		}
 		#endregion

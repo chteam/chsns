@@ -1,4 +1,4 @@
-namespace ChAlumna.Data
+namespace CHSNS.Data
 {
 	using System.Data;
 	using System.Collections;
@@ -7,12 +7,17 @@ namespace ChAlumna.Data
 	using System;
 	using LinqToSqlExtensions;
 	using ChAlumna.Config;
-	public partial class MsSqlDB : IDataBase
+	using ChAlumna;
+	public partial class DBExt 
 	{
 		#region IDataBase ³ÉÔ±
-		public MsSqlDB(IDictionary session) {
+		public DBExt(IDictionary session) {
 			_session = session;
 		}
+		public DBExt(ICHSNSDB ichsnsdb) {
+			DBE = ichsnsdb.DataBaseExecutor;
+		}
+		DataBaseExecutor DBE { get; set; }
 		IDictionary _session;
 		ChAlumnaDBDataContext _DB = null;
 		public ChAlumnaDBDataContext DB {
@@ -30,8 +35,7 @@ namespace ChAlumna.Data
 		}
 
 		public DataRowCollection UserListRows(long ownerid, int nowpage, byte type) {
-			IDataBaseExecutor idb = new MsSqlExecutor();
-			return idb.GetRows("UserList",
+			return DBE.GetRows("UserList",
 				"@userid", ownerid,
 				"@page", nowpage,
 				"@class", type);
@@ -39,10 +43,8 @@ namespace ChAlumna.Data
 		public DataRowCollection MyApplicationRows {
 			get {
 				if (!Session.Contains("applications")) {
-					IDataBaseExecutor idb = new MsSqlExecutor();
-
 					Session.Add("applications",
-						idb.GetRows("MyApplication",
+						DBE.GetRows("MyApplication",
 						"@userid", ChUser.Current.Userid
 						)
 					);
@@ -51,8 +53,7 @@ namespace ChAlumna.Data
 			}
 		}
 		public DataRowCollection RssList(int count) {
-			IDataBaseExecutor idb = new MsSqlExecutor();
-			return idb.GetRows("RssList",
+			return DBE.GetRows("RssList",
 				"@userid", ChUser.Current.Userid,
 				"@page", 1,
 				"@everypage", count,
@@ -108,13 +109,13 @@ END*/
 			}
 			db.Comment.Delete(c => c.id == id);
 			db.SubmitChanges();
-			MsSqlExecutor me = new MsSqlExecutor();
+			//DataBaseExecutor me = new DataBaseExecutor();
 			//me.SqlExecute(
 			//    string.Format("update comment set isdel=1 where id={0}", id)
 			//    );
 			switch (cmt.type) {
 				case 0:
-					me.SqlExecute(
+					DBE.Execute(
 	string.Format(@"update [Profile] set CommentCount=CommentCount-1       
 	WHERE     (UserId = {0}) and CommentCount>0", cmt.ownerid)
 	);
@@ -128,7 +129,7 @@ END*/
 					//);
 					break;
 				case 1:
-					me.SqlExecute(
+					DBE.Execute(
 	string.Format(@"update  [Log] set CommentCount=CommentCount-1      
 	WHERE     (Id ={0}) and CommentCount>0", cmt.Logid)
 	);
@@ -142,7 +143,7 @@ END*/
 					//);
 					break;
 				case 2:
-					me.SqlExecute(
+					DBE.Execute(
 	string.Format(@"update  photos set CommentCount=CommentCount-1      
 	WHERE     (id = {0}) and CommentCount>0", cmt.Logid)
 	);
