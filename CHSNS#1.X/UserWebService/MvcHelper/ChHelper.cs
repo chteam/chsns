@@ -1,11 +1,7 @@
-	using CHSNS.Config;
-	using CHSNS.Data;
-namespace CHSNS
-{
-	//
-
-	public class ChHelper 
-	{
+using CHSNS.Config;
+using CHSNS.Data;
+namespace CHSNS {
+	public class ChHelper {
 		public SiteConfig ChSite {
 			get {
 				return SiteConfig.Current;
