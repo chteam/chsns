@@ -68,6 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StaticAccessorHelper.cs" />
+    <Compile Include="HtmlHelperAdapter.cs" />
     <Compile Include="NVelocityView.cs" />
     <Compile Include="NVelocityViewEngine.cs" />
     <Compile Include="NVelocityViewLocator.cs" />

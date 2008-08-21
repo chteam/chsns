@@ -31,7 +31,6 @@ namespace CHSNS.NVelocityEngine
 		public NVelocityViewEngine(IDictionary properties)
 		{
 			if( properties == null ) properties = DEFAULT_PROPERTIES;
-
 			ExtendedProperties props = new ExtendedProperties();
 			foreach(string key in properties.Keys)
 			{
@@ -53,6 +52,7 @@ namespace CHSNS.NVelocityEngine
 			string controllerFolder = controllerName;
 			
 			Template viewTemplate = ResolveView(viewContext);
+			
 			Template masterTemplate = ResolveMaster(viewContext);
 			NVelocityView view = new NVelocityView(viewTemplate, masterTemplate, viewContext);
 			return view;

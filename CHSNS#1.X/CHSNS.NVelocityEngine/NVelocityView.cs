@@ -60,6 +60,31 @@ namespace CHSNS.NVelocityEngine
 		private VelocityContext CreateContext(ViewContext context)
 		{
 			Hashtable entries = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+			//常值
+			object[] builtInHelpers = new object[]{
+						new StaticAccessorHelper<Byte>(),
+						new StaticAccessorHelper<SByte>(),
+						new StaticAccessorHelper<Int16>(),
+						new StaticAccessorHelper<Int32>(),
+						new StaticAccessorHelper<Int64>(),
+						new StaticAccessorHelper<UInt16>(),
+						new StaticAccessorHelper<UInt32>(),
+						new StaticAccessorHelper<UInt64>(),
+						new StaticAccessorHelper<Single>(),
+						new StaticAccessorHelper<Double>(),
+						new StaticAccessorHelper<Boolean>(),
+						new StaticAccessorHelper<Char>(),
+						new StaticAccessorHelper<Decimal>(),
+						new StaticAccessorHelper<String>(),
+						new StaticAccessorHelper<Guid>(),
+						new StaticAccessorHelper<DateTime>()
+					};
+
+			foreach (object helper in builtInHelpers) {
+				entries[helper.GetType().GetGenericArguments()[0].Name] = helper;
+			}
+			CreateAndAddHelpers(entries, context);
+			//变值
 			if (context.ViewData != null)
 			{
 				foreach(var pair in context.ViewData)
@@ -72,15 +97,29 @@ namespace CHSNS.NVelocityEngine
 			entries["routedata"] = context.RouteData;
 			entries["controller"] = _viewContext.Controller;
 			entries["httpcontext"] = _viewContext.HttpContext;
-
-			CreateAndAddHelpers(entries, context);
+			entries["viewcontext"] = _viewContext;
+			foreach (String key in _viewContext.HttpContext.Request.QueryString.AllKeys) {
+				if (key == null) continue;
+				object value = _viewContext.HttpContext.Request.QueryString[key];
+				if (value == null) continue;
+				entries[key] = value;
+			}
+			foreach (String key in _viewContext.HttpContext.Request.Form.AllKeys) {
+				if (key == null) continue;
+				object value = _viewContext.HttpContext.Request.Form[key];
+				if (value == null) continue;
+				entries[key] = value;
+			}
+			entries["page"] = entries;
+			
 
 			return new VelocityContext(entries);
 		}
 
 		private void CreateAndAddHelpers(Hashtable entries, ViewContext context)
 		{
-			entries["html"] = entries["htmlhelper"] = new HtmlHelper(context, this);
+			//var html = ;
+			entries["html"] = entries["htmlhelper"] = new HtmlHelperAdapter(context, this);
 			entries["url"] = entries["urlhelper"] = new UrlHelper(context);
 			entries["ajax"] = entries["ajaxhelper"] = new AjaxHelper(context);
 		}
