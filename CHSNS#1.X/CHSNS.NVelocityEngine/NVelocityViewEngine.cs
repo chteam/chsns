@@ -18,7 +18,7 @@ namespace CHSNS.NVelocityEngine
 
 		static NVelocityViewEngine()
 		{
-			string targetViewFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "views");
+			string targetViewFolder = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "views");
 			DEFAULT_PROPERTIES.Add(RuntimeConstants.RESOURCE_LOADER, "file");
 			DEFAULT_PROPERTIES.Add(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, targetViewFolder);
 			DEFAULT_PROPERTIES.Add("master.folder", "masters");
