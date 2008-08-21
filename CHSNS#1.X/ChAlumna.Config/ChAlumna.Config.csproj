@@ -7,7 +7,7 @@
     <ProjectGuid>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChAlumna.Config</RootNamespace>
+    <RootNamespace>CHSNS.Config</RootNamespace>
     <AssemblyName>ChAlumna.Config</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>

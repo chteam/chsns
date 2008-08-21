@@ -1,5 +1,5 @@
 using System;
-using ChAlumna;
+using CHSNS;
 
 namespace Chsword.Execute {
 	/// <summary>

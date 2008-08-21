@@ -7,7 +7,7 @@
     <ProjectGuid>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChAlumna.Data</RootNamespace>
+    <RootNamespace>CHSNS.Data</RootNamespace>
     <AssemblyName>ChAlumna.Data</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>

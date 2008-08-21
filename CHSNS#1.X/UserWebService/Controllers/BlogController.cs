@@ -1,48 +1,59 @@
-namespace ChAlumna.Controllers
+
+using System;
+using System.Web.Mvc;
+using CHSNS.Data;
+using CHSNS.Models;
+namespace CHSNS.Controllers
 {
-	using System;
-	using ChAlumna.Models;
-	using Castle.MonoRail.Framework;
-	using CHSNS.Data;
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
-	[Layout("blogmaster")]
 	public class BlogController : BaseController
 	{
-		[SkipFilter]
-		public void index() {
+		protected override void OnResultExecuting(ResultExecutingContext filterContext) {
+			if (filterContext.Result is ViewResult) {
+				ViewResult vr = filterContext.Result as ViewResult;
+				if (string.IsNullOrEmpty(vr.MasterName))
+					vr.MasterName = "BlogMaster";
+			}
+		}
+		public ActionResult index() {
 
 			long userid = this.QueryLong("userid");
-			DBExt mb = new DBExt(Session);
-			var blog = mb.GetBlog(userid);
+			//DBExt mb = new DBExt(Session);
+			var blog = DBExt.GetBlog(userid);
 			ViewData["userid"] = userid;
 			ViewData["blog"] = blog;
-			RenderView("index");
+			//RenderView("index");
+			return View();
 		}
-		public void edit() {
-			DBExt mb = new DBExt(Session);
-			var blog = mb.GetBlog(ChUser.Current.Userid);
+		[LoginedFilter]
+		public ActionResult edit() {
+			//DBExt mb = new DBExt(Session);
+			var blog = DBExt.GetBlog(ChUser.Current.Userid);
 			ViewData["blog"] = blog;
-			RenderView("edit");
+			//RenderView("edit");
+			return View();
 		}
-		[AccessibleThrough(Verb.Post)]
-		public void Update([DataBind("blog")]Blogs blog) {
+		[MvcContrib.Filters.PostOnly]
+		[LoginedFilter]
+		public ActionResult Update() {
+			Blogs blog=null;
+			BindingHelperExtensions.UpdateFrom(blog, Request.Form, "blog.");
 			if (string.IsNullOrEmpty(blog.Title)) {
 				TempData["msg"] = "标题不能为空";
-				RedirectToReferrer();
-				return;
+				return this.RedirectToReferrer();
+
 			}
 			if (string.IsNullOrEmpty(blog.WriteName)) {
 				TempData["msg"] = "笔名不能为空";
-				RedirectToReferrer();
-				return;
+				return this.RedirectToReferrer();
+
 			}
 			try {
-				DBExt mb = new DBExt(Session);
-				var isexists = mb.GetBlog(ChUser.Current.Userid);
+			//	DBExt mb = new DBExt(Session);
+				var isexists = DBExt.GetBlog(ChUser.Current.Userid);
 				blog.userid = ChUser.Current.Userid;
 				if (isexists == null) {
 					blog.CreateTime = DateTime.Now;
-					mb.DB.Blogs.InsertOnSubmit(blog);
+					DBExt.DB.Blogs.InsertOnSubmit(blog);
 
 				} else {
 					isexists.Title = blog.Title;
@@ -53,12 +64,12 @@ namespace ChAlumna.Controllers
 					isexists.IsWebServices = blog.IsWebServices;
 					isexists.MetaKey = blog.MetaKey;
 				}
-				mb.DB.SubmitChanges();
+				DBExt.DB.SubmitChanges();
 				
 			} catch (Exception e) {
 				TempData["msg"] = e.Message;
 			}
-			RedirectToReferrer();
+			return this.RedirectToReferrer();
 		}
 	}
 }

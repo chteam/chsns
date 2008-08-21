@@ -1,4 +1,4 @@
-namespace ChAlumna.Config
+namespace CHSNS.Config
 {
 	using System;
 	//using System.Data;
@@ -23,6 +23,16 @@ namespace ChAlumna.Config
 		public string StylePath {
 			get {
 				return string.Format("{0}/Style/{1}", this.BaseConfig.Path, this.BaseConfig.Style).Replace("//", "/");
+			}
+		}
+		public string Style {
+			get {
+				return "Default";
+			}
+		}
+		public string Path {
+			get {
+				return "/";//必以／开始以／结束
 			}
 		}
 		RegVisitConfig _RegVisitConfig;
@@ -84,7 +94,7 @@ namespace ChAlumna.Config
 				HttpContext.Current.Application.UnLock();
 			}
 		}
-		public static SiteConfig Currect {
+		public static SiteConfig Current {
 			get {
 				return Load();
 			}

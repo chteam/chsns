@@ -5,19 +5,19 @@
  * 
  * 
  */
-namespace ChAlumna.Controllers
+namespace CHSNS.Controllers
 {
 	using System;
 	using System.Data;
 	//using CHSNS.Data;
-	using Castle.MonoRail.Framework;
+	
 	using CHSNS.Data;
 	using CHSNS;
 
 	/// <summary>
 	/// Description of EventController.
 	/// </summary>
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
+	[LoginedFilter]
 	public class EventController: BaseController
 	{
 		public void index(){

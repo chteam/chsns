@@ -5,7 +5,7 @@ using System.Xml;
 using System.Web;
 using System.IO;
 
-namespace ChAlumna {
+namespace CHSNS {
 	/// <summary>
 	/// 字符串格式化规则
 	/// AU:邹健

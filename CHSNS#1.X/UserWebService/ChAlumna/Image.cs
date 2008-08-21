@@ -10,7 +10,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-namespace ChAlumna
+namespace CHSNS
 {
 	/// <summary>
 	/// Description of Image.

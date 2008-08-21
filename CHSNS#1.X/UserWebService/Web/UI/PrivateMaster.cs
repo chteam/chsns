@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ChAlumna;
+using CHSNS;
 using System.Web.UI;
 namespace Chsword.Web.UI {
 	public class PrivateMaster : MasterPage {

@@ -1,11 +1,14 @@
-﻿namespace ChAlumna.Controllers.Admin
-{
-	using System;
+﻿	using System;
 	using System.Linq;
 	using System.Xml.Linq;
-	using Castle.MonoRail.Framework.Helpers;
+	
 	using System.Collections;
-	using ChAlumna.Models;
+	using CHSNS.Models;
+using MvcContrib.Pagination;
+using System.Collections.Generic;
+	namespace CHSNS.Controllers.Admin
+{
+
 	public class UserManage : BaseAdminController 
 	{
 		public void userset(long userid) {
@@ -18,17 +21,18 @@
 		}
 		public void userlist() {
 			//新用户,通过用户
-			IList data = (from a in DB.Account
+			IList<Account> data = (from a in DB.Account
 						  where a.status > 0
 						  orderby a.regtime descending
-						  select new
+						  select new Account()
 						  {
-							  a.userid,
-							  a.name,
-							  a.status,
-							  a.email
-						  }).Take(100).ToList();
-			ViewData["data"] = PaginationHelper.CreatePagination(this, data, 6);
+							 userid= a.userid,
+							 name= a.name,
+							 status= a.status,
+							 email= a.email
+						  }).Take(100).ToList<Account>();
+			//ViewData["data"] = PaginationHelper.CreatePagination(this, data, 6);
+			ViewData["data"] = PaginationHelper.AsPagination<Account>(data, 1, 6);
 		}
 	}
 }

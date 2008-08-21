@@ -4,7 +4,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web;
-using ChAlumna;
+using CHSNS;
 namespace Chsword.Reader {
 	/// <summary>
 	/// 调用日志显示的页面

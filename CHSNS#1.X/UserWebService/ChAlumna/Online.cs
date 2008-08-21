@@ -1,9 +1,10 @@
-namespace ChAlumna {
-	using System;
-	using System.Collections.Generic;
-	using System.Web;
-	
-	using Chsword;
+using System;
+using System.Collections.Generic;
+using System.Web;
+
+using Chsword;
+namespace CHSNS {
+
 
 	public class Online {
 		/// <summary>

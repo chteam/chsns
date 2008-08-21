@@ -1,9 +1,9 @@
 ﻿namespace CHSNS.Data
 {
 	using System.Linq;
-	using ChAlumna.Models;
+	using CHSNS.Models;
 	using System.Collections;
-	using ChAlumna;
+	using CHSNS;
 	public partial class DBExt
 	{
 		public bool IsBlogExists {

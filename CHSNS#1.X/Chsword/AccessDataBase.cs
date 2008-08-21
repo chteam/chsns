@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.OleDb;
 
-namespace ChAlumna {
+namespace CHSNS {
 	/// <summary>
 	/// conn 的摘要说明。
 	/// </summary>

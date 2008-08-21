@@ -1,6 +1,6 @@
 using System;
-using ChAlumna;
-namespace ChAlumna.Web.UI {
+using CHSNS;
+namespace CHSNS.Web.UI {
 	/// <summary>
 	/// 管理员页面
 	/// </summary>

@@ -1,4 +1,3 @@
-namespace ChAlumna {
 	using System;
 	using System.Collections.Generic;
 	using System.Data;
@@ -8,7 +7,8 @@ namespace ChAlumna {
 	
 	using Chsword;
 	using CHSNS;
-	using ChAlumna.Config;
+	using CHSNS.Config;
+namespace CHSNS {
 
 	public class DataSetCache : Chsword.Reader.Databases {
 	//	static DataSetCache _DataSetCache;

@@ -1,4 +1,4 @@
-﻿namespace ChAlumna
+﻿namespace CHSNS
 {
 	public enum ShowType
 	{

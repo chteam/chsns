@@ -1,19 +1,22 @@
-using System;
-using System.Data;
-using System.Configuration;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using Castle.MonoRail.Framework;
-using ChAlumna;
 
-namespace ChAlumna.Controllers {
-	[Layout("basemaster")]
-	[Helper(typeof(StringHelper),"String")]
-	[Filter(ExecuteEnum.BeforeAction, typeof(OnlineFilter))]
+using System.Web.Mvc;
+using System;
+namespace CHSNS.Controllers {
+	
+//	[Helper(typeof(StringHelper),"String")]
+	[OnlineFilter]
 	abstract public class BaseController : BaseBlockController  {
+
+		protected override void OnResultExecuting(ResultExecutingContext filterContext) {
+			
+		
+			if (filterContext.Result is ViewResult) {
+			//	ViewResult vr = filterContext.Result as ViewResult;
+				ViewResult vr = filterContext.Result as ViewResult;
+				
+				if (string.IsNullOrEmpty(vr.MasterName))
+					vr.MasterName = "Site";
+			}
+		}
 	}
 }

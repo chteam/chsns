@@ -2,12 +2,12 @@
 {
 	using System.Data;
 	using System.Collections;
-	using ChAlumna.Models;
+	using CHSNS.Models;
 	using System.Linq;
 	using System;
 	using LinqToSqlExtensions;
-	using ChAlumna.Config;
-	using ChAlumna;
+	using CHSNS.Config;
+	using CHSNS;
 	public partial class DBExt 
 	{
 	

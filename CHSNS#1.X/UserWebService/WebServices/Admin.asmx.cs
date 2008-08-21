@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Chsword;
-namespace ChAlumna {
+namespace CHSNS {
 	/// <summary>
 	/// BaseTable 的摘要说明
 	/// </summary>

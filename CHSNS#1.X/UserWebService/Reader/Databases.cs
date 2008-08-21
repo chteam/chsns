@@ -8,7 +8,7 @@ namespace Chsword.Reader {
 	using System.Data.SqlClient;
 	using System.Web;
 	using System.Text.RegularExpressions;
-	using ChAlumna;
+	using CHSNS;
 	abstract public class Databases {
 		public Databases() {
 			//if(ChCache.IsNullorEmpty("Application.Showpage")){

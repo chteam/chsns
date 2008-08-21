@@ -1,7 +1,8 @@
-namespace ChAlumna {
-	using System;
-	using System.Text.RegularExpressions;
-	using Chsword;
+using System;
+using System.Text.RegularExpressions;
+using Chsword;
+namespace CHSNS {
+
 
 	public class Media {
 		static public string[] GetMediaPic(string url) {

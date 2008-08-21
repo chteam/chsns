@@ -1,54 +1,64 @@
 
-namespace ChAlumna.Controllers.Admin
-{using ChAlumna.Config;
-	using Castle.MonoRail.Framework;
+namespace CHSNS.Controllers.Admin
+{using CHSNS.Config;
+	using System.Web.Mvc;
+	
 	public class CommonController : BaseAdminController
 	{
-		public void config([DataBind("chsite")] BaseConfig chsite) {
+		public ActionResult Config() {
+			BaseConfig chsite = null ;
 			if (this.IsPost) {
-				chsite.StyleList = SiteConfig.Currect.BaseConfig.StyleList;
-				SiteConfig.Currect.BaseConfig = chsite;
-				SiteConfig.Currect.Save();
-				Flash.Now("msg", "成功更改");
-				RedirectToReferrer();
+				BindingHelperExtensions.UpdateFrom(chsite, Request.Form, "chsite.");
+				chsite.StyleList = SiteConfig.Current.BaseConfig.StyleList;
+				SiteConfig.Current.BaseConfig = chsite;
+				SiteConfig.Current.Save();
+				TempData.Add("msg", "成功更改");
+				return this.RedirectToReferrer();
 			} else {
-				chsite = SiteConfig.Currect.BaseConfig;
+				chsite = SiteConfig.Current.BaseConfig;
 			}
 			ViewData.Add("chsite", chsite);
-		
+			return View();
 
 		}
-		public void regandvisit([DataBind("data")] RegVisitConfig data) {
+		public ActionResult Regandvisit( ) {
+			RegVisitConfig data=null;
 			if (this.IsPost) {
-				SiteConfig.Currect.RegVisitConfig = data;
-				SiteConfig.Currect.Save();
-				Flash.Now("msg", "成功更改");
-				RedirectToReferrer();
+				BindingHelperExtensions.UpdateFrom(data, Request.Form, "data.");
+				SiteConfig.Current.RegVisitConfig = data;
+				SiteConfig.Current.Save();
+				TempData.Add("msg", "成功更改");
+				return this.RedirectToReferrer();
 			} else {
-				data = SiteConfig.Currect.RegVisitConfig;
+				data = SiteConfig.Current.RegVisitConfig;
 			}
 			ViewData.Add("data", data);
+			return View();
 		}
-		public void publish([DataBind("data")] Publish data) {
+		public ActionResult Publish() {
+			Publish data = null;
 			if (this.IsPost) {
-				SiteConfig.Currect.Publish = data;
-				SiteConfig.Currect.Save();
-				Flash.Now("msg", "成功更改");
-				RedirectToReferrer();
+				BindingHelperExtensions.UpdateFrom(data, Request.Form, "data.");
+				SiteConfig.Current.Publish = data;
+				SiteConfig.Current.Save();
+				TempData.Add("msg", "成功更改");
+				return this.RedirectToReferrer();
 				
 			} else {
-				data = SiteConfig.Currect.Publish;
+				data = SiteConfig.Current.Publish;
 			}
 			ViewData.Add("data", data);
+			return View();
 		}
 		#region Style
-		public void addstyle(string style) {
+		public ActionResult AddStyle(string style) {
 			if (this.IsPost) {
-				SiteConfig.Currect.BaseConfig.StyleList += string.Format("{0}|", style);
-				SiteConfig.Currect.Save();
-				Flash.Now("msg", "成功更改");
-				RedirectToReferrer();
+				SiteConfig.Current.BaseConfig.StyleList += string.Format("{0}|", style);
+				SiteConfig.Current.Save();
+				TempData.Add("msg", "成功更改");
+				return this.RedirectToReferrer();
 			}
+			return View();
 		}
 		#endregion
 	}

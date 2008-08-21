@@ -1,20 +1,25 @@
 ﻿
-namespace ChAlumna.Controllers
+namespace CHSNS.Controllers
 {
 	using CHSNS.Data;
-	using Castle.MonoRail.Framework.Helpers;
+	
 	using CHSNS;
+	using MvcContrib.Pagination;
+	using CHSNS.Models;
+	using System.Web.Mvc;
 	public class TagsController : BaseController
 	{
-		public void LogTag(string title) {
-			DBExt ms = new DBExt(new Dictionary());
-			ViewData["tags"] =
-				PaginationHelper.CreatePagination(
-				this,
-				ms.GetNotebyTag(title),
-				10);
-			ViewData["test"] = ms.GetNotebyTag(title);
-			RenderView("logtag");
+		public ActionResult LogTag(string title) {
+			ViewData["tags"] = PaginationHelper.AsPagination<NotPas>(DBExt.GetNotebyTag(title), 1, 10);
+			//DBExt ms = new DBExt(new Dictionary());
+			//ViewData["tags"] =
+			//    PaginationHelper.CreatePagination(
+			//    this,
+			//    DBExt.GetNotebyTag(title),
+			//    10);
+			ViewData["test"] = DBExt.GetNotebyTag(title);
+			//RenderView("logtag");
+			return View();
 		}
 	}
 }

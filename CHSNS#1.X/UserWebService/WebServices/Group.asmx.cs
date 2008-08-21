@@ -7,10 +7,10 @@ using System.Web.Services.Protocols;
 using System.ComponentModel;
 using Chsword;
 using System.Data.SqlClient;
-using ChAlumna.Reader;
+using CHSNS.Reader;
 using Chsword.Datamodel;
 using Chsword.Execute;
-namespace ChAlumna {
+namespace CHSNS {
 	/// <summary>
 	/// Group 的摘要说明
 	/// </summary>

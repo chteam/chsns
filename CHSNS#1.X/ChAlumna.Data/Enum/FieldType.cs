@@ -3,7 +3,7 @@
  * Date: 2007-10-30
  * Time: 10:53
  */
-namespace ChAlumna
+namespace CHSNS
 {
     public enum FieldType
     {

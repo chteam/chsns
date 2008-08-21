@@ -1,24 +1,26 @@
-namespace ChAlumna.Controllers
-{
 	using System;
 	using System.Collections.Generic;
 	using System.Data;
 	using System.Data.SqlClient;
 	using System.Linq;
 	using Chsword;
-	using Castle.MonoRail.Framework;
-	using ChAlumna.Models;
-	using ChAlumna.Config;
+	
+	using CHSNS.Models;
+	using CHSNS.Config;
 	using CHSNS;
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
+using System.Web.Mvc;
+	namespace CHSNS.Controllers
+{
+
+	[LoginedFilter]
 	public class GroupController : BaseController
 	{
 		public void index() {
-			long Groupid = QueryLong("id");
+			long Groupid = this.QueryLong("id");
 			//ViewData.Add("Groupid", Groupid);
-			ViewData.Add("nowpage", QueryNum("p") == 0 ? 1 : QueryNum("p"));
+			ViewData.Add("nowpage", this.QueryNum("p") == 0 ? 1 : this.QueryNum("p"));
 
-			Group g = (from gr in DB.Group
+			Models.Group g = (from gr in DB.Group
 					 where gr.id == Groupid
 					 && gr.IsTrue==true
 					   select gr).FirstOrDefault();
@@ -77,22 +79,24 @@ namespace ChAlumna.Controllers
 			ViewData.Add("rows",DataBaseExecutor.GetRows(
 				"GetRelationClass", dict));
 		}
-		public void List() {
+		public ActionResult List() {
 
-			if (QueryNum("class") != 1) {
-				ViewData.Add("Tabs", QueryNum("tabs"));
+			if (this.QueryNum("class") != 1) {
+				ViewData.Add("Tabs", this.QueryNum("tabs"));
+				return View();
 			} else {
-				if (SiteConfig.Currect.BaseConfig.IsMustField && ChUser.Current.Status < UserStatusType.IsApplyToField) {
-					Redirect("/ClassList.aspx");
+				if (SiteConfig.Current.BaseConfig.IsMustField && ChUser.Current.Status < UserStatusType.IsApplyToField) {
+					return Redirect("/ClassList.aspx");
 				}
 				Chsword.Reader.GroupList gl = new Chsword.Reader.GroupList();
 				gl.Groupclass = 1;
 				gl.Type = 2;
 				gl.Userid = ChSession.Userid;
-				if (QueryString("mode") == "auto")
+				if (this.QueryString("mode") == "auto")
 					gl.Autotoclass = true;
 				ViewData.Add("Items", gl.ShowPage(gl.GetGroupList()));
-				RenderView("MyClass");
+				//RenderView("MyClass");
+				return View("MyClass");
 			}
 		}
 		public void CreateClass() {
@@ -108,10 +112,10 @@ namespace ChAlumna.Controllers
 		}
 
 		public void Manage() {
-			long Groupid = QueryLong("id");
+			long Groupid = this.QueryLong("id");
 			ViewData.Add("Groupid", Groupid);
 			int i;
-			switch (QueryString("mode")) {
+			switch (this.QueryString("mode")) {
 				case "member":
 					i = 1;
 					break;

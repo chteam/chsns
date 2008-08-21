@@ -1,29 +1,21 @@
+using System;
 
+using System.Web.Mvc;
+using CHSNS;
 
-namespace ChAlumna.Controllers {
-	using System;
-	using Castle.MonoRail.Framework;
-	using Castle.MonoRail.Framework.Helpers;
-	using ChAlumna.Models;
-	using ChAlumna.Config;
-	using Castle.MonoRail.Framework.Services;
-	public class LoginedFilter : IFilter {
-		public bool Perform(ExecuteEnum exec, IRailsEngineContext context, Controller controller) {
+namespace CHSNS {
 
+	public class LoginedFilter : ActionFilterAttribute {
+		public override void OnActionExecuting(ActionExecutingContext filterContext) {            
 			if (!ChSession.isLogined) {
-				context.Flash["msg"] = "请先<a href='/'>登录</a>，如果您没有账号，请先<a href='/reg/AgreementStep.ashx'>注册</a>";
-				context.Response.Redirect("", "home", "Error");
-				test(context, controller);
-				return false;
+				throw new Exception("请先<a href='/'>登录</a>，如果您没有账号，请先<a href='/reg/AgreementStep.ashx'>注册</a>");
 			}
 			if (ChUser.Current.Status < UserStatusType.Field) {
-				context.Flash["msg"] = "您尚未通过邮件验证<a href='/reg/resend.ashx'>重发</a>";
-				context.Response.Redirect("", "Home", "Error");
-				return false;
+				throw new Exception("您尚未通过邮件验证<a href='/reg/resend.ashx'>重发</a>");
 			}
-			if (controller.Name.ToLower() == "message") {
-				return true;
-			}
+			//if (filterContext..Name.ToLower() == "message") {
+			//    //return true;
+			//}
 			//if (controller.Name.ToLower() != "profile") {
 			//    if (ChUser.Current.Status < UserStatusType.Basic) {
 
@@ -47,13 +39,8 @@ namespace ChAlumna.Controllers {
 			//    }
 			//}
 
-			return true;
+			//return true;
 		}
-		void test(IRailsEngineContext context, Controller controller) {
-			if (controller.AreaName == "app") {
-				context.Flash["msg"] = "您的权限不足,不能够使用本站提供的应用程序";
-				context.Response.Redirect("", "Home", "Error");
-			}
-		}
+		
 	}
 }

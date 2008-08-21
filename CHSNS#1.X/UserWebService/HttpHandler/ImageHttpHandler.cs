@@ -1,10 +1,10 @@
-namespace ChAlumna
-{
+
 	using System;
 	using System.Web;
-	using ChAlumna.Models;
-	using ChAlumna.Config;
-
+	using CHSNS.Models;
+	using CHSNS.Config;
+namespace CHSNS
+{
     public class ImageHttpHandler : IHttpHandler
     {
         #region IHttpHandler 成员
@@ -20,7 +20,7 @@ namespace ChAlumna
                 context.Response.ContentType = "image/JPEG";
                 context.Response.WriteFile("~/images/no.gif");//被替换图片
             } else {
-                if (context.Request.UrlReferrer.Host.IndexOf(SiteConfig.Currect.BaseConfig.Domain) > -1) {
+                if (context.Request.UrlReferrer.Host.IndexOf(SiteConfig.Current.BaseConfig.Domain) > -1) {
                     //这里是你的域名
                     context.Response.ContentType = "image/JPEG";
                     context.Response.WriteFile(FileName);

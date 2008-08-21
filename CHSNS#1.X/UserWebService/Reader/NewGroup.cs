@@ -1,6 +1,6 @@
 using System;
 using System.Text;
-using ChAlumna;
+using CHSNS;
 using Chsword;
 namespace Chsword.Reader {
 	public class NewGroup : Databases, Interface.IShowAll {

@@ -11,10 +11,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
-using ChAlumna.Reader;
+using CHSNS.Reader;
 using Chsword;
 
-namespace ChAlumna {
+namespace CHSNS {
 	/// <summary>
 	/// 用户的个性设置
 	/// </summary>

@@ -2,12 +2,12 @@ namespace CHSNS.Data
 {
 	using System.Data;
 	using System.Collections;
-	using ChAlumna.Models;
+	using CHSNS.Models;
 	using System.Linq;
 	using System;
 	using LinqToSqlExtensions;
-	using ChAlumna.Config;
-	using ChAlumna;
+	using CHSNS.Config;
+	using CHSNS;
 	public partial class DBExt 
 	{
 		#region IDataBase ≥…‘±
@@ -16,6 +16,9 @@ namespace CHSNS.Data
 		}
 		public DBExt(ICHSNSDB ichsnsdb) {
 			DBE = ichsnsdb.DataBaseExecutor;
+		}
+		public DBExt(DataBaseExecutor dbe) {
+			DBE = dbe;
 		}
 		DataBaseExecutor DBE { get; set; }
 		IDictionary _session;
@@ -42,14 +45,9 @@ namespace CHSNS.Data
 		}
 		public DataRowCollection MyApplicationRows {
 			get {
-				if (!Session.Contains("applications")) {
-					Session.Add("applications",
-						DBE.GetRows("MyApplication",
-						"@userid", ChUser.Current.Userid
-						)
+				return DBE.GetRows("MyApplication",
+					"@userid", ChUser.Current.Userid
 					);
-				}
-				return Session["applications"] as DataRowCollection;
 			}
 		}
 		public DataRowCollection RssList(int count) {

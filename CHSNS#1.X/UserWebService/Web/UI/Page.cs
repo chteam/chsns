@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI.HtmlControls;
 using System.Xml;
 using Chsword.Web.UI;
-using ChAlumna;
+using CHSNS;
 namespace Chsword.Web.UI {
 	/// <summary>
 	/// ×÷Õß ×Þ½¡

@@ -5,7 +5,7 @@ using Chsword.Interface;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web;
-using ChAlumna;
+using CHSNS;
 
 namespace Chsword.Reader {
 	public class GroupList:Databases, IShowPage , IPageSet,IServerResponseable {

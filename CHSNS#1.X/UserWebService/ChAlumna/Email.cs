@@ -1,10 +1,10 @@
-namespace ChAlumna {
+namespace CHSNS {
 	using System;
-	using ChAlumna.Models;
+	using CHSNS.Models;
 	using Chsword;
 	using Chsword.Interface;
-	using ChAlumna.Interface;
-	using ChAlumna.Config;
+	using CHSNS.Interface;
+	using CHSNS.Config;
 
 	/// <summary>
 	/// 基本的发送邮件应用类,使用Chsword
@@ -15,7 +15,7 @@ namespace ChAlumna {
 		/// </summary>
 		static public void SystemSend(string mail_subject, string mail_body, string mail_Address,string to_name) {
 
-			BaseConfig cs = SiteConfig.Currect.BaseConfig;
+			BaseConfig cs = SiteConfig.Current.BaseConfig;
 
 			IEmail sm=new SysMailMessage();
 			sm.From = cs.SenderEmail;//"chsword@126.com";
@@ -34,7 +34,7 @@ namespace ChAlumna {
 			sm.Send();
 		}
 		static public void InviteSend(string mail_subject, string mail_body, string[] mail_Address,string from_name) {
-			BaseConfig cs = SiteConfig.Currect.BaseConfig;
+			BaseConfig cs = SiteConfig.Current.BaseConfig;
 
 			IEmail sm = new SysMailMessage();
 			sm.From = cs.SenderEmail;//"chsword@126.com";

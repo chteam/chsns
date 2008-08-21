@@ -1,1 +1,1 @@
-﻿<%@ Application Language="C#" Inherits="ChAlumna.Global" %>
+﻿<%@ Application Language="C#" Inherits="CHSNS.Global" %>

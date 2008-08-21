@@ -1,15 +1,17 @@
-namespace ChAlumna.Controllers
-{
     using System;
 	using System.Collections;
 	using System.Data;
-	using Castle.MonoRail.Framework;
+using System.Web.Mvc;
+namespace CHSNS.Controllers
+{
+
+	
 	//using NVelocity.Runtime.Directive;
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
+	[LoginedFilter]
     public class NoteController : BaseController
     {
-		public void book() {
-			long ownerid = QueryLong("userid");
+		public ActionResult book() {
+			long ownerid = this.QueryLong("userid");
 			string ownername = "我";
 			Boolean isMe = false;
 			if (ownerid == 0) {//我的情况
@@ -17,10 +19,10 @@ namespace ChAlumna.Controllers
 				isMe = true;
 			} else {
 				Identity identity = new Identity();
-				ownername = identity.GetUserName(QueryLong("userid"));
+				ownername = identity.GetUserName(this.QueryLong("userid"));
 			}
 			int tabs;
-			switch (QueryString("mode")) {
+			switch (this.QueryString("mode")) {
 				case "write"://这个无所谓,发表时
 					tabs = 2;
 					break;
@@ -36,33 +38,36 @@ namespace ChAlumna.Controllers
 			ViewData.Add("tabs", tabs);
 			ViewData.Add("isMe", isMe);
 			ViewData.Add("ownername", ownername);
+			return View();
 		}
-		public void index() {
+		public ActionResult index() {
 			Chsword.Reader.LogBook dl = new Chsword.Reader.LogBook("Note_Watch");
-			dl.Logid = QueryLong("id");
-			dl.Groupid = QueryLong("groupid");
+			dl.Logid = this.QueryLong("id");
+			dl.Groupid = this.QueryLong("groupid");
 			dl.Viewerid = ChUser.Current.Userid;
 
 			ViewData.Add("noteid", dl.Logid);
 			ViewData.Add("groupid", dl.Groupid);
-			ViewData.Add("isGroup", QueryLong("groupid") != 0);
+			ViewData.Add("isGroup", this.QueryLong("groupid") != 0);
 			DataRowCollection il = dl.GetLogBookTable(1, 4).Rows;
 
 			if (il.Count == 0) {
-				Flash["msg"] = "您访问的日志不存在.";
-				return;
+				TempData["msg"] = "您访问的日志不存在.";
+				return View();
 			}
 			ViewData.Add("note", il[0]);
 			ViewData.Add("rows", il);
+			return View();
 		}
 
-		public void New() {
+		public ActionResult New() {
 		//	Chsword.Reader.LogBook rl = new Chsword.Reader.LogBook("LogBook", 0, Viewerid);
 			//ChAlumna.Controllers.components.NoteList nl = new ChAlumna.Controllers.components.NoteList();
 		
 		//	_sbout = new StringBuilder(rl.ShowAll(rl.ShowPage(rl.GetLogBookTable(1, 0)), 1));
 			//this.Context.CurrentUser.Identity.Name
-			ViewData.Add("type", QueryNum("type"));//0 new[最新] 1 push[推荐] 
+			ViewData.Add("type", this.QueryNum("type"));//0 new[最新] 1 push[推荐] 
+			return View();
 		}
     }
 }

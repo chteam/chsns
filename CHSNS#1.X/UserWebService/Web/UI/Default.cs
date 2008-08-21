@@ -1,4 +1,4 @@
-using System;using ChAlumna;
+using System;using CHSNS;
 namespace Chsword.Web.UI {
 	/// <summary>
 	/// 用户页面(MyPage)的基类

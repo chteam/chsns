@@ -1,5 +1,5 @@
 
-namespace ChAlumna{
+namespace CHSNS{
 	using System;
 	using System.Web;
 	using System.Xml;

@@ -1,6 +1,6 @@
-namespace ChAlumna {
-	using Castle.MonoRail.Framework.Helpers;
-	public class PersonalHelper : AbstractHelper
+namespace CHSNS {
+	//
+	public class PersonalHelper
     {
 		public string TrimLast(string s) {
 			if (!string.IsNullOrEmpty(s))

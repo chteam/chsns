@@ -3,7 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Web;
 
-namespace ChAlumna {
+namespace CHSNS {
 	/// <summary>
 	/// »º´æÀà 
 	/// AU:×Þ½¡

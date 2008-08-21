@@ -21,7 +21,7 @@
 		}
 		#region 打开关闭数据库
 		void Open(CommandType type,string text){
-			_SqlConnection.ConnectionString = ChAlumna.Config.SiteConfig.SiteConnectionString;
+			_SqlConnection.ConnectionString = CHSNS.Config.SiteConfig.SiteConnectionString;
 			_SqlCommand.Connection = _SqlConnection;
 			_SqlCommand.CommandType = type;
 			_SqlCommand.CommandText = text.Trim ();

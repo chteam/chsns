@@ -1,6 +1,4 @@
-﻿namespace ChAlumna
-{
-	using System;
+﻿	using System;
 	using System.Linq;
 	using System.Data;
 	using System.Web;
@@ -8,10 +6,12 @@
 	using System.Web.Services;
 	using System.Web.Services.Protocols;
 	using System.ComponentModel;
-	using ChAlumna.Models;
+	using CHSNS.Models;
 	using System.Collections.Generic;
 	using System.Text;
-	using ChAlumna.Config;
+	using CHSNS.Config;namespace CHSNS
+{
+
     /// <summary>
     /// School 的摘要说明
     /// </summary>

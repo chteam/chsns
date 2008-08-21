@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using System.Web;
-using ChAlumna;
+using CHSNS;
 using Chsword;
 using System.Data.SqlClient;
-using ChAlumna.Models;
+using CHSNS.Models;
 namespace Chsword.Execute
 {
 	public class UserSettingExecuter{
@@ -172,7 +172,7 @@ namespace Chsword.Execute
 		internal string DeleteUserface() {
 			string p;
 			for (ImgSize i = ImgSize.tiny; i <= ImgSize.big; i++) {
-				p = ChAlumna.Path.GetFaceEmpty( ChSession.Userid.ToString(), i);
+				p = CHSNS.Path.GetFaceEmpty( ChSession.Userid.ToString(), i);
 				if (!string.IsNullOrEmpty(p))
 					System.IO.File.Delete(HttpContext.Current.Server.MapPath(p));
 			}

@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
-using ChAlumna.Reader;
+using CHSNS.Reader;
 using Chsword;
 using System.Collections.Generic;
-namespace ChAlumna {
+namespace CHSNS {
 	/// <summary>
 	/// Search 的摘要说明
 	/// </summary>

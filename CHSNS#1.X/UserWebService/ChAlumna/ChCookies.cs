@@ -1,10 +1,10 @@
-namespace ChAlumna
+namespace CHSNS
 {
 	using System;
 	using System.Web;
 	using Chsword;
-	using ChAlumna.Models;
-	using ChAlumna.Config;
+	using CHSNS.Models;
+	using CHSNS.Config;
 	/// <summary>
 	/// 用户信息 Cookies 类
 	/// AU:邹健
@@ -39,7 +39,7 @@ namespace ChAlumna
 		}
 		static public Boolean IsExists {
 			get {
-				return HttpContext.Current.Request.Cookies[SiteConfig.Currect.BaseConfig.CookieName] != null
+				return HttpContext.Current.Request.Cookies[SiteConfig.Current.BaseConfig.CookieName] != null
 					&& !string.IsNullOrEmpty(ChCookies.Username);
 			}
 		}
@@ -47,18 +47,18 @@ namespace ChAlumna
 		#region private Method
 		static Encrypt en = new Encrypt();
 		static string GetCookieItem(string field){
-			return HttpContext.Current.Request.Cookies[SiteConfig.Currect.BaseConfig.CookieName][field];
+			return HttpContext.Current.Request.Cookies[SiteConfig.Current.BaseConfig.CookieName][field];
 		}
 		static void SetCookieItem(string field,string value){
-			HttpContext.Current.Response.Cookies[SiteConfig.Currect.BaseConfig.CookieName][field] = value;
+			HttpContext.Current.Response.Cookies[SiteConfig.Current.BaseConfig.CookieName][field] = value;
 		}
 		#endregion  
 		static public void Clear(){
 			//ChCookies.Expires = DateTime.Now.AddDays(-1);
-			HttpContext.Current.Response.Cookies.Remove(SiteConfig.Currect.BaseConfig.CookieName);
+			HttpContext.Current.Response.Cookies.Remove(SiteConfig.Current.BaseConfig.CookieName);
 			HttpContext.Current.Response.Cookies.Clear();
-			if (HttpContext.Current.Request.Cookies[SiteConfig.Currect.BaseConfig.CookieName] != null) {
-				HttpCookie myCookie = new HttpCookie(SiteConfig.Currect.BaseConfig.CookieName);
+			if (HttpContext.Current.Request.Cookies[SiteConfig.Current.BaseConfig.CookieName] != null) {
+				HttpCookie myCookie = new HttpCookie(SiteConfig.Current.BaseConfig.CookieName);
 				myCookie.Expires = DateTime.Now.AddDays(-1d);
 				HttpContext.Current.Response.Cookies.Add(myCookie);
 			}
@@ -124,7 +124,7 @@ namespace ChAlumna
 		/// </summary>
 		static public DateTime Expires{
 			set{
-				HttpContext.Current.Response.Cookies[SiteConfig.Currect.BaseConfig.CookieName].Expires = value;
+				HttpContext.Current.Response.Cookies[SiteConfig.Current.BaseConfig.CookieName].Expires = value;
 			}
 		}
 		#endregion

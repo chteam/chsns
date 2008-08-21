@@ -5,7 +5,7 @@
  * 
  * 
  */
-using ChAlumna;
+using CHSNS;
 using System;
 using System.Data;
 using System.Text;

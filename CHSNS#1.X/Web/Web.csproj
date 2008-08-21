@@ -8,8 +8,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChWeb</RootNamespace>
-    <AssemblyName>ChWeb</AssemblyName>
+    <RootNamespace>CHSNS.Web</RootNamespace>
+    <AssemblyName>CHSNS.Web</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -43,11 +43,6 @@
     <Reference Include="Castle.Components.Common.EmailSender, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
-    <Reference Include="Castle.MonoRail.Framework, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
-    <Reference Include="Castle.MonoRail.ViewComponents, Version=1.0.2941.22101, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\开源产品\Castle.MonoRail.ViewComponents\Castle.MonoRail.ViewComponents.TestSite\bin\Castle.MonoRail.ViewComponents.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -216,7 +211,7 @@
     <None Include="Views\Blog\index.vm" />
     <None Include="Views\Blog\Item-Notes.vm" />
     <None Include="Views\Comment\List.vm" />
-    <None Include="Views\Components\Ad.vm" />
+    <None Include="Views\Ad\Ad.vm" />
     <None Include="Views\Components\AlbumItem.vm" />
     <None Include="Views\Components\CommentList.vm" />
     <None Include="Views\Components\Event.vm" />
@@ -268,15 +263,15 @@
     <None Include="Views\Html\UserList-Friend.vm" />
     <None Include="Views\Html\UserList-FriendRequest.vm" />
     <None Include="Views\Html\UserList-Random.vm" />
-    <None Include="Views\Layouts\Adminmaster.vm" />
-    <None Include="Views\Layouts\basemaster.vm" />
-    <None Include="Views\Layouts\BlogMaster.vm" />
-    <None Include="Views\Layouts\master-footer.vm" />
-    <None Include="Views\Layouts\master-Login.vm" />
-    <None Include="Views\Layouts\master-MyMenu.vm" />
-    <None Include="Views\Layouts\master-publicmenu.vm" />
-    <None Include="Views\Layouts\master-Utility.vm" />
-    <None Include="Views\Layouts\reg.vm" />
+    <None Include="Views\Shared\Adminmaster.vm" />
+    <None Include="Views\Shared\Site.vm" />
+    <None Include="Views\Shared\BlogMaster.vm" />
+    <None Include="Views\Shared\master-footer.vm" />
+    <None Include="Views\Shared\master-Login.vm" />
+    <None Include="Views\Shared\master-MyMenu.vm" />
+    <None Include="Views\Shared\master-publicmenu.vm" />
+    <None Include="Views\Shared\master-Utility.vm" />
+    <None Include="Views\Shared\reg.vm" />
     <None Include="Views\Mail\replyback.vm" />
     <None Include="Views\Mail\Test.vm" />
     <None Include="Views\Message\index.vm" />
@@ -633,13 +628,17 @@
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>ChAlumna.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CHSNS.NVelocityEngine\CHSNS.NVelocityEngine.csproj">
+      <Project>{F577A7E2-6B29-4322-B2C8-8567879EF25F}</Project>
+      <Name>CHSNS.NVelocityEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chsword\ChAlumna.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>ChAlumna.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UserWebService\ChAlumna.csproj">
+    <ProjectReference Include="..\UserWebService\CHSNS.csproj">
       <Project>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</Project>
-      <Name>ChAlumna</Name>
+      <Name>CHSNS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,15 @@
-namespace ChAlumna.Controllers
-{
 	using System;
-	using Castle.MonoRail.Framework;
+	
 	using System.Web;
 	using System.Collections;
 	using Chsword;
 	using System.Collections.Generic;
 	using CHSNS;
+	namespace CHSNS.Controllers
+{
+
 	//[Helper(typeof(ChHelper))]
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
+	[LoginedFilter]
 	public class UploadController : BaseBlockController
 	{
 		#region Photo
@@ -45,15 +46,15 @@ namespace ChAlumna.Controllers
 				}
 				string chfilename = GetSaveFilePath() + ext;
 
-				_photoPath = ChAlumna.Path.ClientUserPhotosFolder() + chfilename;
-				_thumbPath = ChAlumna.Path.ClientUserThumbFolder() + chfilename;
+				_photoPath = CHSNS.Path.ClientUserPhotosFolder() + chfilename;
+				_thumbPath = CHSNS.Path.ClientUserThumbFolder() + chfilename;
 				_thumbPath = _thumbPath.Replace(ext, ".jpg");
 				string photoserver = ChServer.MapPath(_photoPath);
 				string thumbserver = ChServer.MapPath(_thumbPath);
-				if (!System.IO.Directory.Exists(ChServer.MapPath(ChAlumna.Path.ClientUserPhotosFolder())))
-					System.IO.Directory.CreateDirectory(ChServer.MapPath(ChAlumna.Path.ClientUserPhotosFolder()));
-				if (!System.IO.Directory.Exists(ChServer.MapPath(ChAlumna.Path.ClientUserThumbFolder())))
-					System.IO.Directory.CreateDirectory(ChServer.MapPath(ChAlumna.Path.ClientUserThumbFolder()));
+				if (!System.IO.Directory.Exists(ChServer.MapPath(CHSNS.Path.ClientUserPhotosFolder())))
+					System.IO.Directory.CreateDirectory(ChServer.MapPath(CHSNS.Path.ClientUserPhotosFolder()));
+				if (!System.IO.Directory.Exists(ChServer.MapPath(CHSNS.Path.ClientUserThumbFolder())))
+					System.IO.Directory.CreateDirectory(ChServer.MapPath(CHSNS.Path.ClientUserThumbFolder()));
 
 
 				#region Àı¬‘Õº
@@ -94,7 +95,7 @@ namespace ChAlumna.Controllers
 				#endregion
 				if (ret != "full") {
 					file.SaveAs(photoserver);
-					ChAlumna.Image.CreateThumbnail(
+					CHSNS.Image.CreateThumbnail(
 							imgSrc,
 							thumbserver,
 							(int)imgWidth,
@@ -158,11 +159,11 @@ namespace ChAlumna.Controllers
 			string serverpath = "";
 			if (mode == "groupimg") {
 				if (!string.IsNullOrEmpty(itemID))
-					serverpath = ChAlumna.Path.GroupFolder(itemID);
+					serverpath = CHSNS.Path.GroupFolder(itemID);
 				fn = itemID;
 			}
 			if (mode == "userface") {
-				serverpath = ChAlumna.Path.UserFolder(ChUser.Current.Userid.ToString());
+				serverpath = CHSNS.Path.UserFolder(ChUser.Current.Userid.ToString());
 				fn = ChUser.Current.Userid.ToString().Substring(0, 3);
 			}
 			//Debug.Trace(mode + serverpath);
@@ -227,7 +228,7 @@ namespace ChAlumna.Controllers
 						imgHeight = 1.5 * keyvalue.Key;
 						imgWidth = 1.5 * keyvalue.Key * b;
 					}
-					ChAlumna.Image.CreateThumbnail(
+					CHSNS.Image.CreateThumbnail(
 						imgSrc,
 						string.Format("{0}{1}{3}{2}", path, fn, fileExtension, keyvalue.Value.ToString()),
 						(int)imgWidth,

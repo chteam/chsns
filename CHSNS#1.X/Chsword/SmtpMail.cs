@@ -66,7 +66,7 @@ namespace Chsword {
 	#endregion
 
 	#region .net邮件发送程
-	public class SysMailMessage : ChAlumna.Interface.IEmail {
+	public class SysMailMessage : CHSNS.Interface.IEmail {
 		private string _subject;
 		private string _body;
 		private string _from;
@@ -257,7 +257,7 @@ namespace Chsword {
 	
 	#region 邮件发送程序
 	[SmtpEmail("Discuz!NT邮件发送程序", Version = "1.0", Author = "Discuz!NT ", DllFileName = "Discuz.Common")]
-	public class SmtpMail : ChAlumna.Interface.IEmail {
+	public class SmtpMail : CHSNS.Interface.IEmail {
 		private string enter = "\r\n";
 
 		/// <summary>

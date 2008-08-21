@@ -1,5 +1,5 @@
 
-namespace ChAlumna.Config
+namespace CHSNS.Config
 {
 	using System;
 	public class Publish

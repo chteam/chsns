@@ -1,58 +1,59 @@
 
-
-namespace ChAlumna.Controllers {
-	using System;
-	using System.Linq;
-	using Castle.MonoRail.Framework;
-	using Chsword;
-	using ChAlumna.Models;
-    using System.Collections.Generic;
-    using System.Collections;
-	using ChAlumna.Config;
-	using Castle.MonoRail.Framework.Helpers;
-	[ControllerDetails(Area = "Admin")]
+using System;
+using System.Collections;
+using System.Linq;
+using CHSNS.Config;
+using CHSNS.Models;
+using System.Web.Mvc;
+using MvcContrib.Pagination;
+using System.Collections.Generic;
+	
+namespace CHSNS.Controllers {
+	
 	public partial class AdminController :BaseAdminController {
 		/// <summary>
 		/// 管理主页，清理缓存
 		/// </summary>
 		public void index() {
 			//AreaName = null;
-			LayoutName = null;
+			//LayoutName = null;
 		}
 		 
 		#region 配置
 
 		public void basic() {
-			Chsword.DoDataBase ddb = new Chsword.DoDataBase();
-			ViewData.Add("onlinecount", ChAlumna.Online.OnlineList.Count);
+			//Chsword.DoDataBase ddb = new Chsword.DoDataBase();
+			ViewData.Add("onlinecount", CHSNS.Online.OnlineList.Count);
 			ViewData.Add("cachecount", ChCache.Cache.Count);
-			ViewData.Add("regcount", ddb.getTableValue_SqlText("select count(1) from account"));
+
+			ViewData.Add("regcount", DataBaseExecutor.ExecuteScalar("select count(1) from account"));
 			ViewData.Add("version", ChAlumnaConfig.Version);
 			ViewData["appname"] = ChAlumnaConfig.AppName;
 			ViewData["programmer"] = ChAlumnaConfig.Programmer;
 			ViewData.Add("serverstart", SiteConfig.SystemUptime);
+			View();
 		}
 
 		/// <summary>
 		/// 清理缓存
 		/// </summary>
-		[AccessibleThrough(Verb.Post)]
+		[MvcContrib.Filters.PostOnly]
 		public void clearcache() {
 			ChCache.RemoveAll();
-			Flash.Now("msg", "缓存更新成功");
+			TempData.Add("msg", "缓存更新成功");
 			this.RedirectToReferrer();
 			//this.RedirectToAction("index");
 		}
 		/// <summary>
 		/// 重启服务器
 		/// </summary>
-		[AccessibleThrough(Verb.Post)]
+		[MvcContrib.Filters.PostOnly]
 		public void restart() {
 			//Log.LogEntry("Executing WebApp shutdown", EntryType.General, "SYSTEM");
 			System.Web.HttpRuntime.UnloadAppDomain();
 			Global g = new Global();
 			g.Application_Start(1, EventArgs.Empty);
-			Flash.Now("msg", "服务器重启成功");
+			TempData.Add("msg", "服务器重启成功");
 			this.RedirectToReferrer();
 		}
 #endregion
@@ -60,7 +61,7 @@ namespace ChAlumna.Controllers {
 		#region 磁盘管理
 		public void space() {
 			if (IsPost) {
-				Flash.Now("ispost", true);
+				TempData.Add("ispost", true);
 				ViewData.Add("diskall", Regular.BytesToString(Regular.DiskUsage(ChServer.MapPath("~/"))));
 				ViewData.Add("viewpage", Regular.BytesToString(Regular.DiskUsage(ChServer.MapPath("~/views/"))));
 				ViewData.Add("debuglog", Regular.BytesToString(Regular.DiskUsage(ChServer.MapPath("~/Debug/"))));
@@ -102,18 +103,18 @@ namespace ChAlumna.Controllers {
 			//from Profile_AS pas where pas.IsStar = 1 and pas.IsUpdate=0 
 			//	Profile_AS.FindByNoStar();
 		}
-        [AccessibleThrough(Verb.Post)]
-        public void SetStar(long userid, bool ispass) {
+        [MvcContrib.Filters.PostOnly]
+        public ActionResult SetStar(long userid, bool ispass) {
 			
-			ChAlumna.Admin admin = new ChAlumna.Admin();
+			CHSNS.Admin admin = new CHSNS.Admin();
             if (ispass) {
                 admin.setStar(userid.ToString(), true);
-                Flash["msg"] = userid.ToString() + "设置成功";
+                TempData["msg"] = userid.ToString() + "设置成功";
             }else {
                 admin.setStar(userid.ToString(), false);
-                Flash["msg"] = userid.ToString() + "设置成功";
+                TempData["msg"] = userid.ToString() + "设置成功";
             }
-            RedirectToReferrer();
+            return this.RedirectToReferrer();
         }
 		#endregion
         #region 群
@@ -139,11 +140,13 @@ namespace ChAlumna.Controllers {
 				));
         }
 		public void note_today() {
-			IList i = (from l in this.DB.Note
+			IList<Note> i = (from l in this.DB.Note
 					   orderby l.AddTime descending
-					   select l).ToList();
+							 select l).ToList < Note>();
+			//ViewData["rows"] =
+			//    PaginationHelper.CreatePagination(this, i, 10);
 			ViewData["rows"] =
-				PaginationHelper.CreatePagination(this, i, 10);
+		PaginationHelper.AsPagination<Note>(i, 1, 10);
 		}
         #endregion
      

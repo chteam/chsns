@@ -4,7 +4,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using Chsword;
-using ChAlumna;
+using CHSNS;
 namespace Chsword.Execute {
 	class GroupUserExecuter : Reader.Databases, Interface.IItems {
 		long _groupid;

@@ -2,11 +2,11 @@
  * ×Þ½¡ 2008-1-24 
  * 
 */
-namespace ChAlumna.Controllers
+namespace CHSNS.Controllers
 {
     using System;
-	using Castle.MonoRail.Framework;
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
+	
+	[LoginedFilter]
     public class ApplicationController : BaseController
     {
         public void myapp() {

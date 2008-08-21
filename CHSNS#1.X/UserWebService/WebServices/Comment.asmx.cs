@@ -10,8 +10,8 @@ using System.Data.SqlClient;
 using Chsword.Datamodel;
 using Chsword.Execute;
 using Chsword;
-using ChAlumna.Reader;
-namespace ChAlumna {
+using CHSNS.Reader;
+namespace CHSNS {
 	/// <summary>
 	/// Comment 的摘要说明
 	/// </summary>

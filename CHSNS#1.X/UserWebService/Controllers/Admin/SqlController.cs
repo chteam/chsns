@@ -1,6 +1,6 @@
-namespace ChAlumna.Controllers.Admin
+namespace CHSNS.Controllers.Admin
 {
-	using Castle.MonoRail.Framework;
+	
 	using System;
 	public class SqlController : BaseAdminController
 	{

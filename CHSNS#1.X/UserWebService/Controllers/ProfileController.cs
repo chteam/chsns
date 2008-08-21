@@ -1,18 +1,17 @@
-namespace ChAlumna.Controllers
-{
 	using System;
-	using System.Collections.Generic;
-	using Castle.MonoRail.Framework;
-	[Helper(typeof(PersonalHelper))]
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
+	using System.Collections.Generic;namespace CHSNS.Controllers
+{
+
+	
+	[LoginedFilter]
 	public class ProfileController : BaseController
 	{
 		public void setting() {
-			ViewData.Add("tabs", QueryNum("tabs"));
+			ViewData.Add("tabs", this.QueryNum("tabs"));
 		}
 		public void edit() {
 			int i = 0;
-			switch (QueryString("mode").ToLower()) {
+			switch (this.QueryString("mode").ToLower()) {
 				case "school":
 					i = 1;
 					break;

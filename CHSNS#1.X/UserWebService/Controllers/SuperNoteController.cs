@@ -1,8 +1,8 @@
-namespace ChAlumna.Controllers
+namespace CHSNS.Controllers
 {using System;
-	using ChAlumna.Reader;
-	using Castle.MonoRail.Framework;
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
+	using CHSNS.Reader;
+	
+	[LoginedFilter]
 	public class SuperNoteController : BaseController
 	{
 		public void video() {
@@ -10,8 +10,8 @@ namespace ChAlumna.Controllers
 			snl.Everypage = 10;
 			snl.Nowpage = 1;
 			snl.Template = "supernotepage";
-			snl.Userid = QueryLong("userid") == 0
-				? ChUser.Current.Userid : QueryLong("userid");
+			snl.Userid = this.QueryLong("userid") == 0
+				? ChUser.Current.Userid : this.QueryLong("userid");
 			ViewData["page"] = snl.CreateUserSuperNote().ToString();
 		}
 		public void randomvideo() {

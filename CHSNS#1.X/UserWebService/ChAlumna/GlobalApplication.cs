@@ -5,22 +5,16 @@
  * 
  * 
  */
-namespace ChAlumna {
 
-	using System;
-	using System.Runtime.CompilerServices;
-	using System.Web;
-	using System.Web.Profile;
-	
-	using ChAlumna.Models;
-	using Chsword;
-	using Castle.MonoRail.Framework.Configuration;
-	using ChAlumna.Config;
-	using System.IO;
-	using System.Xml.Serialization;
-	using ChAlumna.Controllers;
-	//using ChAlumna.Controllers.Ajax;
 
+using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+using CHSNS.Config;
+namespace CHSNS {
 	[CompilerGlobalScope]
 	public class Global : HttpApplication {
 		private bool __initialized;
@@ -30,7 +24,6 @@ namespace ChAlumna {
 				__initialized = true;
 			}
 		}
-
 		public void Application_Start(object sender, EventArgs e) {
 			// 在应用程序启动时运行的代码
 			//Application.Add("Application.IsMustJoinClass", true);
@@ -38,13 +31,8 @@ namespace ChAlumna {
 			SystemConfig system = SystemConfig.Currect;
 
 			ConfigPath path = new ConfigPath();
-			//Routing
-			MonoRailConfiguration.GetConfig().RoutingRules.Deserialize(
-				Xml.CreateXmlDocument(path.Routing)
-			);
-			MonoRailConfiguration.GetConfig()
-				.ControllersConfig.Assemblies = system.ControllerAssemblies.ToArray();
-
+			RegisterRoutes(RouteTable.Routes);
+			ControllerBuilder.Current.SetControllerFactory(typeof(NVelocityEngine.NVelocityControllerFactory));
 		}
 
 		public void Application_End(object sender, EventArgs e) {
@@ -64,11 +52,22 @@ namespace ChAlumna {
 							true,
 							false
 							);
-					} catch{}
+					} catch { }
 				} 
 			}
 		}
 
 		public void Session_OnEnd(object sender, EventArgs e) { }
+
+
+		public static void RegisterRoutes(RouteCollection routes) {
+			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+			routes.MapRoute(
+				"Default",                                              // Route name
+				"{controller}/{action}.ashx",                           // URL with parameters
+				new { controller = "Home", action = "Index" }  // Parameter defaults
+			);
+
+		}
 	}
 }

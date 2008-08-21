@@ -1,9 +1,9 @@
-namespace ChAlumna
-{
+
 	using System;
 	using System.Web;
 	using System.Collections;
-	/// <summary>
+namespace CHSNS
+{	/// <summary>
 	/// Services 返回的包,Template为模板,可返回可不返回,Datas为数据集Collection
 	/// </summary>
 	public class ResponsePack

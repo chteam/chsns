@@ -7,7 +7,7 @@
 
 using System;
 
-namespace ChAlumna.Interface
+namespace CHSNS.Interface
 {
 	/// <summary>
 	/// This is a Inter face of Email sender.邮件发送善类的接口

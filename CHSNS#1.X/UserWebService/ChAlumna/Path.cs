@@ -1,8 +1,8 @@
-
-namespace ChAlumna {
 	using System;
 	using System.IO;
 	using System.Web;
+namespace CHSNS {
+
 
 	/// <summary>
 	/// Õº∆¨¥Û–°

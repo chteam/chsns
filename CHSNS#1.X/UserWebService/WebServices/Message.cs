@@ -14,7 +14,7 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Data.SqlClient;
-using ChAlumna;
+using CHSNS;
 namespace Chsword
 {
 	/// <summary>

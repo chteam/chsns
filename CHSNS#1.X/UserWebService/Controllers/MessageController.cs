@@ -1,16 +1,16 @@
 /*
  * ×Þ½¡ 08-1-24
  */
-namespace ChAlumna.Controllers
+namespace CHSNS.Controllers
 {
     using System;
-	using Castle.MonoRail.Framework;
-	[Filter(ExecuteEnum.BeforeAction, typeof(LoginedFilter))]
+	
+	[LoginedFilter]
     public class MessageController : BaseController
     {
         public void index() {
             int tabs;
-            switch (QueryString("mode")) {
+			switch (this.QueryString("mode")) {
                 case "sent":
                     tabs = 1;
                     break;
@@ -26,8 +26,8 @@ namespace ChAlumna.Controllers
                     break;
             }
             ViewData.Add("tabs", tabs);
-            ViewData.Add("Toid", QueryLong("Toid"));
-			ViewData.Add("Toname", QueryString("Toname"));
+			ViewData.Add("Toid", this.QueryLong("Toid"));
+			ViewData.Add("Toname", this.QueryString("Toname"));
         }
     }
 }

@@ -1,10 +1,10 @@
-namespace ChAlumna.Controllers
-{
 	using System;
 	using System.Collections.Generic;
-	using Castle.MonoRail.Framework;
+	namespace CHSNS.Controllers
+{
+
 	// 非注册用户可以访问
-	[Filter(ExecuteEnum.BeforeAction, typeof(PublicFilter))]
+	//[Filter(ExecuteEnum.BeforeAction, typeof(PublicFilter))]
 	public class SearchController : BaseController
 	{
 		static string[] personal = { "lovelike","joinsociety","lovebook",
@@ -13,31 +13,31 @@ namespace ChAlumna.Controllers
 		static string[] school ={ "uid", "xid", "qid", "grade" };
 		public void index(){
 			Dictionary<string, object> _dict = new Dictionary<string, object>();
-			ViewData["tabs"] = QueryNum("tabs");
+			ViewData["tabs"] = this.QueryNum("tabs");
 			#region 访问搜索页
-			if (!string.IsNullOrEmpty(QueryString("action"))) {
-				switch (QueryString("action")) {
+			if (!string.IsNullOrEmpty(this.QueryString("action"))) {
+				switch (this.QueryString("action")) {
 					case "personal":
 						foreach (string str in personal) {
-							if (QueryString(str) != "")
-								_dict.Add(str, QueryString(str));
+							if (this.QueryString(str) != "")
+								_dict.Add(str, this.QueryString(str));
 						}
 						break;
 					case "show":
 						foreach (string str in school) {
-							if (QueryLong(str) != 0)
-								_dict.Add(str, QueryLong(str));
+							if (this.QueryLong(str) != 0)
+								_dict.Add(str, this.QueryLong(str));
 						}
 						break;
 					default:
 						break;
 				}
-				if (QueryString("university") != "")
-					_dict.Add("university", QueryString("university"));
-				if (QueryString("username") != "")
-					_dict.Add("username", ChServer.UrlDecode(QueryString("username")));
+				if (this.QueryString("university") != "")
+					_dict.Add("university", this.QueryString("university"));
+				if (this.QueryString("username") != "")
+					_dict.Add("username", ChServer.UrlDecode(this.QueryString("username")));
 
-				string querystring = QueryString("action");
+				string querystring = this.QueryString("action");
 				if (querystring == "name" && ChUser.Current.isLogined) {
 					querystring = "show";
 				}

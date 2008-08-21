@@ -1,21 +1,20 @@
-﻿namespace ChAlumna.Controllers
+﻿using System.Web.Mvc;
+using System;
+namespace CHSNS.Controllers
 {
-	using Castle.MonoRail.Framework;
-	[Filter(ExecuteEnum.BeforeAction, typeof(PublicFilter))]
-	[DefaultAction("Index")]
+	
+//	[Filter(ExecuteEnum.BeforeAction, typeof(PublicFilter))]
+//	[DefaultAction("Index")]
 	public class HomeController : BaseController
 	{
 		//[Cache(HttpCacheability.Public, Duration = 360, VaryByParams = "id,name")]
-		public void index() {
-			//	ViewData.Add("userid", "asdasd");
+		public ActionResult Index() {
+			return View("Index");
 		}
 		public void Logout() {
 			Identity identity = new Identity();
 			identity.Logout();
 			RedirectToAction("index");
-		}
-		public void Error() { 
-		
 		}
 	}
 }

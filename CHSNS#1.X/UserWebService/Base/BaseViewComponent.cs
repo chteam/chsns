@@ -1,15 +1,14 @@
 
 
-namespace ChAlumna.Controllers
-{
-    using Castle.MonoRail.Framework;
-	using ChAlumna.Models;
-	using ChAlumna.Config;
-	using CHSNS;
-	using System;
-	[Helper(typeof(ChHelper))]
-	abstract public class BaseViewComponent : ViewComponent, ICHSNSDB
-	{
+using CHSNS.Models;
+using CHSNS.Config;
+using CHSNS;
+using System;
+using System.Web.Mvc;
+//[Helper(typeof(ChHelper))]
+namespace CHSNS.Controllers {
+
+	abstract public class BaseViewComponent : Controller, ICHSNSDB {
 		ChAlumnaDBDataContext _DB = null;
 		protected ChAlumnaDBDataContext DB {
 			get {

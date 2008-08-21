@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-namespace ChAlumna {
+namespace CHSNS {
 	public enum UserStatusType {
 		Lock = -1,
 		Guest = 0,

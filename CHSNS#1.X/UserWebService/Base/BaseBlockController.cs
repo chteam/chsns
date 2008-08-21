@@ -1,32 +1,23 @@
-namespace ChAlumna.Controllers
-{
+using System;
+using System.Collections;
+
+using CHSNS;
+using CHSNS.Config;
+using CHSNS.Models;
+using CHSNS;
+using System.Web.Mvc;
+namespace CHSNS.Controllers {
 	//[Layout("basemaster")]
-	using System;
-	using System.Collections;
-	using Castle.MonoRail.Framework;
-	using ChAlumna;
-	using ChAlumna.Config;
-	using ChAlumna.Models;
-	using CHSNS;
-	[Helper(typeof(ChHelper))]
-	abstract public class BaseBlockController : SmartDispatcherController,ICHSNSDB
-	{
-		protected string QueryString(string QueryStringName) {
-			if (string.IsNullOrEmpty(Params[QueryStringName]))
-				return string.Empty;
-			else
-				return Params[QueryStringName].ToLower();
+
+	//[Helper(typeof(ChHelper))]
+	//[HandleError]
+	abstract public class BaseBlockController : Controller, ICHSNSDB {
+		public Boolean IsPost {
+			get {
+				return Request.Form.Count != 0;
+			}
 		}
-		protected int QueryNum(string QueryStringName) {
-			if (string.IsNullOrEmpty(QueryString(QueryStringName)))
-				return 0;
-			return Convert.ToInt32(QueryString(QueryStringName));
-		}
-		protected long QueryLong(string QueryStringName) {
-			if (string.IsNullOrEmpty(QueryString(QueryStringName)))
-				return 0;
-			return Convert.ToInt64(QueryString(QueryStringName));
-		}
+		
 		ChAlumnaDBDataContext _DB = null;
 		protected ChAlumnaDBDataContext DB {
 			get {
@@ -36,20 +27,6 @@ namespace ChAlumna.Controllers
 					);
 				}
 				return _DB;
-			}
-		}
-		//protected MsSqlDB 
-		protected IDictionary ViewData {
-			get {
-				return this.PropertyBag;
-			}
-			set {
-				this.PropertyBag = value;
-			}
-		}
-		protected IDictionary TempData {
-			get {
-				return this.Flash;
 			}
 		}
 

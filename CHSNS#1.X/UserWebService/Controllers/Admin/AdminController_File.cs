@@ -1,6 +1,6 @@
-namespace ChAlumna.Controllers {
+namespace CHSNS.Controllers {
 	using System;
-	using Castle.MonoRail.Framework;
+	
 	public partial class AdminController : BaseAdminController
 	{
 		public void file() { 

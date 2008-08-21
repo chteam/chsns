@@ -1,4 +1,4 @@
-namespace ChAlumna.Config
+namespace CHSNS.Config
 {
 	public class ConfigPath
 	{

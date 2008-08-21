@@ -1,16 +1,19 @@
-﻿namespace ChAlumna.Controllers.Admin
-{
-	using System.Linq;
+﻿	using System.Linq;
 	using System;
 	using System.Collections;
-	using ChAlumna.Models;
+	using CHSNS.Models;
+using CHSNS;
+	namespace CHSNS.Controllers.Admin
+{
+
 	public class FieldController : BaseAdminController 
 	{
 
 		#region field-school
 		public void Field_index() {
 			ViewData.Add("provinces", DataSetCache.ProvinceOptionList());
-			long pid = QueryLong("pid");
+			long pid = this.QueryLong("pid");
+	
 			if (pid == 0)
 				pid = 247102;
 			ViewData["pid"] = pid;
@@ -24,7 +27,7 @@
 			if (IsPost) {
 				IList list = xueyuans.Split('\n');
 				DoField f = new DoField();
-				Flash["msg"] = f.AddMiniField(uniid, list, 0);
+				TempData["msg"] = f.AddMiniField(uniid, list, 0);
 			}
 			ViewData.Add("provinces", DataSetCache.ProvinceOptionList());
 		}
@@ -32,7 +35,7 @@
 			if (IsPost) {
 				IList list = qinshis.Split('\n');
 				DoField school = new DoField();
-				Flash["msg"] = school.AddQinshi(uniid, list);
+				TempData["msg"] = school.AddQinshi(uniid, list);
 
 			}
 			ViewData.Add("provinces", DataSetCache.ProvinceOptionList());

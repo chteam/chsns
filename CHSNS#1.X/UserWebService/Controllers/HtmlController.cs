@@ -1,26 +1,29 @@
 
-namespace ChAlumna.Controllers
-{
-	using Castle.MonoRail.Framework;
+
 	using System.Text;
 	using System;
 	using System.Linq;
 	using CHSNS.Data;
-	using ChAlumna.Config;
+	using CHSNS.Config;
 	using CHSNS;
-	[Helper(typeof(PersonalHelper))]
-	[DefaultAction("Index")]
+	using System.Web.Mvc;
+using System.Data;
+namespace CHSNS.Controllers {
+	
+	//[Helper(typeof(PersonalHelper))]
+	//[DefaultAction("Index")]
 	public class HtmlController : BaseBlockController
 	{
-		[AccessibleThrough(Verb.Post)]
+		[MvcContrib.Filters.PostOnly]
 		public void index() { }
-		[AccessibleThrough(Verb.Post)]
-		public void ProfileEdit() {
-			ViewData.Add("template", Params["template"]);
-			this.RenderView("html", "ProfileEdit");
+		[MvcContrib.Filters.PostOnly]
+		public ActionResult ProfileEdit() {
+			ViewData.Add("template", this.QueryString("template"));
+			//this.RenderView("html", "ProfileEdit");
+			return View();
 		}
-		[AccessibleThrough(Verb.Post)]
-		public void PostList() {
+		[MvcContrib.Filters.PostOnly]
+		public ActionResult PostList() {
 			string[] plist = {
 				"Groupid",
 				"EveryPage",
@@ -30,9 +33,10 @@ namespace ChAlumna.Controllers
 			foreach (string str in plist) {
 				ViewData.Add(str, Request.Form[str]);
 			}
+			return View();
 		}
-		[AccessibleThrough(Verb.Post)]
-		public void PhotoList() {
+		[MvcContrib.Filters.PostOnly]
+		public ActionResult PhotoList() {
 			string[] plist = {
 				"Ownerid",
 				"Albumid",
@@ -43,16 +47,18 @@ namespace ChAlumna.Controllers
 			foreach (string str in plist) {
 				ViewData.Add(str, Request.Form[str]);
 			}
+			return View();
 		}
-		[AccessibleThrough(Verb.Post)]
-		public void ChangeShowLevel() {
+		[MvcContrib.Filters.PostOnly]
+		public ActionResult ChangeShowLevel() {
 			Profile p = new Profile();
-			System.Data.DataRow dr = p.ShowLevelList();
+			DataRow dr = p.ShowLevelList();
 			if (dr != null)
 				ViewData.Add("source", dr);
+			return View();
 		}
-		[AccessibleThrough(Verb.Post)]
-		public void GroupManageChild(string template, long groupid) {
+		[MvcContrib.Filters.PostOnly]
+		public ActionResult GroupManageChild(string template, long groupid) {
 			Group g=new Group();
 			ViewData.Add("groupid", groupid);
 			switch (template.ToLower()) {
@@ -60,10 +66,10 @@ namespace ChAlumna.Controllers
 					ViewData.Add("source", g.GroupSetting(groupid));
 					break;
 				case "member":
-					System.Data.DataRowCollection drc=g.GroupMember(groupid,1);
+					DataRowCollection drc=g.GroupMember(groupid,1);
 					int right = 0;
 					if (drc[0].Table.Select(string.Format("userid={0}", ChUser.Current.Userid)).Length > 0) {
-						right = System.Convert.ToInt32(drc[0]["level"]);
+						right = Convert.ToInt32(drc[0]["level"]);
 					}
 					if (ChUser.Current.isAdmin)
 						right = 255;
@@ -86,36 +92,39 @@ namespace ChAlumna.Controllers
 					break;
 			}
 		//	throw new Exception("Group" + template);
-			RenderView("html", "Group" + template);
+			//RenderView("html", "Group" + template);
+			return View("Group" + template);
 
 		}
 
 		#region search
-		[AccessibleThrough(Verb.Post)]
+		[MvcContrib.Filters.PostOnly]
 		public void SearchClass() { 
 		
 		}
 		#endregion
 
-		[AccessibleThrough(Verb.Post)]
-		public void UserList(string template, int page, byte type) {
+		[MvcContrib.Filters.PostOnly]
+		public ActionResult UserList(string template, int page, byte type) {
 			//IDataBase idb = new DBExt(Session);
 			ViewData["userSource"] = DBExt.UserListRows(ChUser.Current.Userid, page,type);
 
-			RenderView("html", string.Format("UserList-{0}", template));
+			//RenderView("html", string.Format("UserList-{0}", template));
+			return View(string.Format("UserList-{0}", template));
 		}
-		[AccessibleThrough(Verb.Post)]
-		public void RssList(int count) {
+		[MvcContrib.Filters.PostOnly]
+		public ActionResult RssList(int count) {
 			//IDataBase idb = new DBExt(Session);
 			ViewData["userSource"] = DBExt.RssList(count);
 
-			RenderView("html","Rss-List");
+		//	RenderView("html","Rss-List");
+			return View("Rss-List");
 		}
 
 #region reply
-		[AccessibleThrough(Verb.Post)]
-		public void Reply(long logid, string body, long Replyid, bool isReply, long Ownerid, byte type) {
-			ChAlumna.Models.Comment cmt = new ChAlumna.Models.Comment()
+		[MvcContrib.Filters.PostOnly]
+		public ActionResult Reply(long logid, string body, long Replyid, bool isReply, long Ownerid, byte type) {
+			CHSNS.Models.Comment cmt = new CHSNS.Models.Comment()
 			{
 				body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
 				addtime = DateTime.Now,
@@ -145,7 +154,7 @@ namespace ChAlumna.Controllers
 				//INSERT INTO Comment
 				// (Logid, ownerid, senderid, body,isreply)
 				//VALUES    (@Logid, @senderid, @senderid, @body,@isreply)
-				ChAlumna.Models.Comment cmt1 = new ChAlumna.Models.Comment()
+				CHSNS.Models.Comment cmt1 = new CHSNS.Models.Comment()
 				{
 					body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
 					addtime = DateTime.Now,
@@ -214,16 +223,17 @@ namespace ChAlumna.Controllers
 					Email.SystemSend(
 						string.Format(
 						"[{0}»Ø¸´Í¨Öª]re: {1}",
-						SiteConfig.Currect.BaseConfig.Title,
+						SiteConfig.Current.BaseConfig.Title,
 						item.title
 						),
-						Template.TemplateEngine.ToString(dict, "mail/replyback.vm"),
+						"",//Template.TemplateEngine.ToString(dict, "mail/replyback.vm"),
 						cemail.email,
 						cemail.name
 						);
 				}
 			}
-			RenderView("Comment_Item");
+			//RenderView("Comment_Item");
+			return View("Comment_Item");
 		}
 #endregion
 	}

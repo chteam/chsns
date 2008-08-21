@@ -1,13 +1,14 @@
-namespace ChAlumna.Controllers {
-	using System;
-	using Castle.MonoRail.Framework;
-	public class AdminFilter : IFilter {
-		public bool Perform(ExecuteEnum exec, IRailsEngineContext context, Controller controller) {
+
+using System;
+using System.Web.Mvc;
+using CHSNS;
+namespace CHSNS {
+	public class AdminFilter : ActionFilterAttribute {
+		public override void OnActionExecuting(ActionExecutingContext filterContext) {
 			if (!ChSession.isAdmin) {
-				context.Response.Redirect("event", "index");
-				return false;
+				throw new Exception("È¨ÏÞ²»×ã");
 			}
-			return true;
+
 		}
 	}
 }

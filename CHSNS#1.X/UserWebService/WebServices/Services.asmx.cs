@@ -6,9 +6,9 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
 using System.Data.SqlClient;
-using ChAlumna;
-using ChAlumna.Models;
-using ChAlumna.Config;
+using CHSNS;
+using CHSNS.Models;
+using CHSNS.Config;
 
 namespace Chsword {
 	/// <summary>
@@ -59,7 +59,7 @@ namespace Chsword {
 				"@userid", userid == null ? 0 : userid.Value,
 				"@body", body,
 				"@email", email);
-			Email.SystemSend(SiteConfig.Currect.BaseConfig.Title + "客服有新的问题", body, SiteConfig.Currect.BaseConfig.MasterEmail, "管理员");
+			Email.SystemSend(SiteConfig.Current.BaseConfig.Title + "客服有新的问题", body, SiteConfig.Current.BaseConfig.MasterEmail, "管理员");
 			//SqlParameter[] p = new SqlParameter[3];
 			//p[0] = new SqlParameter("@userid", SqlDbType.BigInt);
 			//p[0].Value =;

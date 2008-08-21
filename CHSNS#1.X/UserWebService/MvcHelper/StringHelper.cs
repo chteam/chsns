@@ -1,11 +1,12 @@
-namespace ChAlumna
+using System.Collections;
+using System.Web;
+	namespace CHSNS
 {
-	using Castle.MonoRail.Framework.Helpers;
-	using System.Collections;
-	public class StringHelper : AbstractHelper
+
+	public class StringHelper 
 	{
 		public string TagsEncode(string v) {
-			v = ServerUtility.UrlEncode(v);
+			//v = ServerUtility.UrlEncode(v);
 			return v.Replace(".", "%2E");
 		}
 		public string CleatHtml(string v) { 

@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 using System.Data.SqlClient;
 using Chsword;
 
-namespace ChAlumna.Reader {
+namespace CHSNS.Reader {
 	public class SuperNoteList : Chsword.Reader.Databases,Chsword.Interface.IPageSet {
 		#region к╫спЁит╠
 		long _userid;

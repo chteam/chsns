@@ -5,7 +5,7 @@ using System.Collections;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.ComponentModel;
-using ChAlumna;
+using CHSNS;
 namespace Chsword {
 	/// <summary>
 	/// AutoSelect 的摘要说明

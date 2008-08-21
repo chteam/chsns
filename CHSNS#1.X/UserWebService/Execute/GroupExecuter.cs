@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 using Chsword.Datamodel;
 using Chsword.Interface;
-using ChAlumna;
+using CHSNS;
 
 namespace Chsword.Execute {
 	public class GroupExecuter : IItems {

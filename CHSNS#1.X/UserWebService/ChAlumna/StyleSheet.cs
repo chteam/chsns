@@ -5,7 +5,7 @@
  * 
  * 
  */
-namespace ChAlumna
+namespace CHSNS
 {
 	
 using System;

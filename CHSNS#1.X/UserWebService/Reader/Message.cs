@@ -6,7 +6,7 @@ namespace Chsword.Reader{
 	using System.Data;
 	using System.Data.SqlClient;
 	using Chsword.Interface;
-	using ChAlumna;
+	using CHSNS;
 	public class Message : Databases,IPageSet,IServerResponseable {
 		//long _userid;
 		int _Nowpage;

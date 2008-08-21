@@ -1,12 +1,12 @@
-﻿namespace ChAlumna
-{
-	using System;
+﻿	using System;
 	using System.ComponentModel;
 	using System.Data;
 	using System.Data.SqlClient;
 	using System.Web.Services;
 	using Chsword;
-	using CHSNS;
+namespace CHSNS
+{
+
 	/// <summary>
 	/// 进行登录注销注册等用户行为
 	/// </summary>

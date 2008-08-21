@@ -1,6 +1,6 @@
 using System;
 
-namespace ChAlumna {
+namespace CHSNS {
 	public class ChParameter {
 		static public object canNull(long l){
 			if (l == 0)

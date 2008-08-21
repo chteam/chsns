@@ -17,10 +17,10 @@ using Chsword.Datamodel;
 using Chsword.Execute;
 using Chsword.Interface;
 using Chsword.Reader;
-using ChAlumna;
+using CHSNS;
 using Chsword;
 using CHSNS.Data;
-using ChAlumna.Models;
+using CHSNS.Models;
 using CHSNS;
 	/// <summary>
 	/// Description of PageMethods

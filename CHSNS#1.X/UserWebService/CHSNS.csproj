@@ -8,8 +8,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChAlumna</RootNamespace>
-    <AssemblyName>ChAlumna</AssemblyName>
+    <RootNamespace>CHSNS</RootNamespace>
+    <AssemblyName>CHSNS</AssemblyName>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
@@ -55,23 +55,15 @@
   <ItemGroup>
     <Reference Include="Castle.Components.Binder, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\CastleProject\Bin\net-2.0\Castle.Components.Binder.dll</HintPath>
+      <HintPath>..\DLL\Castle.Components.Binder.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\CastleProject\Bin\net-2.0\Castle.Components.Validator.dll</HintPath>
+      <HintPath>..\DLL\Castle.Components.Validator.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\CastleProject\Bin\net-2.0\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.MonoRail.Framework, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\CastleProject\Bin\net-2.0\Castle.MonoRail.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.MonoRail.Framework.Views.NVelocity, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\CastleProject\Bin\net-2.0\Castle.MonoRail.Framework.Views.NVelocity.dll</HintPath>
+      <HintPath>..\DLL\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Chsword.Ajax, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -81,9 +73,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\LinqToSqlExtensions\bin\Release\LinqToSqlExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="MvcContrib, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\MvcContrib.dll</HintPath>
+    </Reference>
     <Reference Include="NVelocity, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Youxi\YouXiArticle\YouXiArticle\bin\NVelocity.dll</HintPath>
+      <HintPath>..\DLL\NVelocity.dll</HintPath>
     </Reference>
     <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>False</Private>
@@ -109,6 +105,20 @@
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\开源产品\MVCToolkit\MVCContrib.source preview 4\src\MvcContrib.Castle\bin\Release\System.Web.Abstractions.dll</HintPath>
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\开源产品\MVCToolkit\MVCContrib.source preview 4\src\MvcContrib.Castle\bin\Release\System.Web.Routing.dll</HintPath>
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -132,9 +142,7 @@
     <Compile Include="ChAlumna\Image.cs" />
     <Compile Include="ChAlumna\Path.cs" />
     <Compile Include="ChAlumna\StyleSheet.cs" />
-    <Compile Include="Controllers\Base\BaseController.cs" />
-    <Compile Include="Controllers\components\Event.cs" />
-    <Compile Include="Controllers\components\ViewList.cs" />
+    <Compile Include="Base\BaseController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\servicesController.cs" />
@@ -186,14 +194,14 @@
     <None Include="WebServices\Profile.asmx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="System.Web.Mvc\ControllerExt.cs" />
     <Compile Include="Controllers\Admin\FieldController.cs" />
     <Compile Include="Controllers\Admin\UserManage.cs" />
     <Compile Include="Controllers\Ajax\IdentityController.cs" />
-    <Compile Include="Controllers\Helper\LinkHelper.cs" />
     <Compile Include="Controllers\TagsController.cs" />
-    <Compile Include="Reader\Template\ITemplateEngine.cs" />
-    <Compile Include="Reader\Template\NVelocityTemplateEngine.cs" />
-    <Compile Include="Reader\Template\TemplateEngine.cs" />
+    <Compile Include="Filter\PostOnlyFilter.cs" />
+    <Compile Include="MvcHelper\Include.cs" />
+    <Compile Include="System.Web.Mvc\RedirectExt.cs" />
     <Compile Include="WebServices\Admin.asmx.cs">
       <DependentUpon>Admin.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -214,45 +222,29 @@
     <Compile Include="Controllers\Admin\SqlController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
-    <Compile Include="Controllers\Base\BaseViewComponent.cs" />
-    <Compile Include="Controllers\Base\BaseBlockController.cs" />
-    <Compile Include="Controllers\Base\BaseSystemAppController.cs" />
+    <Compile Include="Base\BaseViewComponent.cs" />
+    <Compile Include="Base\BaseBlockController.cs" />
+    <Compile Include="Base\BaseSystemAppController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\components\ad.cs" />
-    <Compile Include="Controllers\components\AlbumItem.cs" />
-    <Compile Include="Controllers\components\TemplateOnly.cs" />
-    <Compile Include="Controllers\components\Option.cs" />
-    <Compile Include="Controllers\components\PostList.cs" />
-    <Compile Include="Controllers\components\ProfileEditChild.cs" />
-    <Compile Include="Controllers\components\ShowLevel.cs" />
-    <Compile Include="Controllers\components\Pager.cs" />
-    <Compile Include="Controllers\components\CommentList.cs" />
-    <Compile Include="Controllers\components\NoteList.cs" />
-    <Compile Include="Controllers\components\GroupList.cs" />
-    <Compile Include="Controllers\components\PhotoList.cs" />
-    <Compile Include="Controllers\RescuesController.cs" />
-    <Compile Include="Controllers\Filter\AdminFilter.cs" />
-    <Compile Include="Controllers\Filter\LoginedFilter.cs" />
-    <Compile Include="Controllers\Filter\OnlineFilter.cs" />
-    <Compile Include="Controllers\Filter\PublicFilter.cs" />
+    <Compile Include="Filter\AdminFilter.cs" />
+    <Compile Include="Filter\LoginedFilter.cs" />
+    <Compile Include="Filter\OnlineFilter.cs" />
     <Compile Include="Controllers\GroupController.cs" />
-    <Compile Include="Controllers\Helper\ChHelper.cs" />
-    <Compile Include="Controllers\Helper\PersonalHelper.cs" />
-    <Compile Include="Controllers\Helper\StringHelper.cs" />
+    <Compile Include="MvcHelper\ChHelper.cs" />
+    <Compile Include="MvcHelper\PersonalHelper.cs" />
+    <Compile Include="MvcHelper\StringHelper.cs" />
     <Compile Include="Controllers\HtmlController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SuperNoteController.cs" />
-    <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
-    <Compile Include="Controllers\Base\BaseAdminController.cs" />
-    <Compile Include="Controllers\Base\BaseWizardPage.cs" />
+    <Compile Include="Base\BaseAdminController.cs" />
+    <Compile Include="Base\BaseWizardPage.cs" />
     <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\RegController.cs" />
     <Compile Include="Datamodel\BaseModel.cs" />
     <Compile Include="Datamodel\GroupModel.cs" />
     <Compile Include="Datamodel\MessgeModel.cs" />
@@ -335,6 +327,10 @@
     <ProjectReference Include="..\ChAlumna.Models\ChAlumna.Models.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>ChAlumna.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHSNS.NVelocityEngine\CHSNS.NVelocityEngine.csproj">
+      <Project>{F577A7E2-6B29-4322-B2C8-8567879EF25F}</Project>
+      <Name>CHSNS.NVelocityEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chsword\ChAlumna.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>

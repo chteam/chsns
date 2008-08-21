@@ -1,7 +1,7 @@
-﻿#capturefor(css)
+﻿#*capturefor(css)
 <link href="${ChHelper.ChSite.StylePath}/main.css" rel="stylesheet" type="text/css" />
 #end
-#capturefor(title) 首页 #end
+#capturefor(title) 首页 #end*#
 <div class="column main_column">
 	<div class="floatl">
 		<span class="logo"></span>
@@ -16,7 +16,8 @@
 		*#
 		<strong>Tags:</strong>
 		#set( $tags = $ChHelper.DB.NoteTags_Top(30))
-		#parse( "$siteroot/tags/Tags.vm" )
+		$Html.UserControlRender("~/Views/tags/Tags.vm")
+		##parse( "$siteroot/tags/Tags.vm" )
 		</div>
 		<div class="search">
 			查找同学:<input type="text" id="search_username" onkeydown="SearchEnter(event,'search_username')" />

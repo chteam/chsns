@@ -10,11 +10,11 @@ using System.Data.SqlClient;
 using Chsword.Datamodel;
 using Chsword.Execute;
 using Chsword;
-using ChAlumna.Reader;
-using ChAlumna.Models;
+using CHSNS.Reader;
+using CHSNS.Models;
 using CHSNS.Data;
 using CHSNS;
-namespace ChAlumna {
+namespace CHSNS {
 	/// <summary>
 	/// NoteBook 的摘要说明
 	/// </summary>

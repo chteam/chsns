@@ -8,8 +8,8 @@
 using System;
 using System.ComponentModel;
 using System.Web.Services;
-using ChAlumna;
-using ChAlumna.Config;
+using CHSNS;
+using CHSNS.Config;
 namespace Chsword
 {
 	/// <summary>
@@ -43,8 +43,8 @@ namespace Chsword
 				string.Format(ChCache.GetConfig("Email","invite"),
 				              Session["username"].ToString(),
 				              Customstr,
-							  SiteConfig.Currect.BaseConfig.Url
-							  ,SiteConfig.Currect.BaseConfig.Title),
+							  SiteConfig.Current.BaseConfig.Url
+							  ,SiteConfig.Current.BaseConfig.Title),
 				mails,Session["username"].ToString());
 			return true;
 		}
