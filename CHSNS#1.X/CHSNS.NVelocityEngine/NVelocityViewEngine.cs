@@ -6,6 +6,7 @@ using Commons.Collections;
 using NVelocity;
 using NVelocity.App;
 using NVelocity.Runtime;
+using System.Web;
 
 namespace CHSNS.NVelocityEngine
 {
@@ -50,6 +51,7 @@ namespace CHSNS.NVelocityEngine
 		public NVelocityView CreateView(ViewContext viewContext) {
 			string controllerName = (string)viewContext.RouteData.Values["controller"];
 			string controllerFolder = controllerName;
+			
 			Template viewTemplate = ResolveView(viewContext);
 			Template masterTemplate = ResolveMaster(viewContext);
 			NVelocityView view = new NVelocityView(viewTemplate, masterTemplate, viewContext);
@@ -59,6 +61,7 @@ namespace CHSNS.NVelocityEngine
 			Template masterTemplate = null;
 			if (!string.IsNullOrEmpty(viewContext.MasterName)) {
 				string masterPath = ViewLocator.GetMasterLocation(viewContext, viewContext.MasterName);
+				
 				if (!_engine.TemplateExists(masterPath))
 					throw new InvalidOperationException("Could not find view for master template named " + viewContext.MasterName +
 														". I searched for '" + masterPath + "' file. Maybe the file doesn't exist?");
@@ -70,7 +73,6 @@ namespace CHSNS.NVelocityEngine
 		private Template ResolveView(ViewContext viewContext) {
 			string viewPath = ViewLocator.GetViewLocation(viewContext, viewContext.ViewName);
 			if (!_engine.TemplateExists(viewPath))
-
 				throw new InvalidOperationException("Could not find view " + viewContext.ViewName +
 													". I searched for '" + viewPath + "' file. Maybe the file doesn't exist?");
 			return _engine.GetTemplate(viewPath);

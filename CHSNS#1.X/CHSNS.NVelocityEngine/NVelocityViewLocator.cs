@@ -5,17 +5,20 @@ using System.Text;
 using System.Web.Mvc;
 
 namespace CHSNS.NVelocityEngine {
-	public class NVelocityViewLocator  : ViewLocator
-    {
-		public NVelocityViewLocator()
-        {
-            base.ViewLocationFormats = new string[] { "~/Views/{1}/{0}.vm",
-                                                      "~/Views/{1}/{0}.vm",
-                                                      "~/Views/Shared/{0}.vm",
-                                                      "~/Views/Shared/{0}.vm"
-            };
-            base.MasterLocationFormats = new string[] { "" };
-        }
+	public class NVelocityViewLocator : IViewLocator {
 
+		#region IViewLocator 成员
+
+		public string GetMasterLocation(System.Web.Routing.RequestContext requestContext, string masterName) {
+			return string.Format(
+				"/Shared/{0}.vm", masterName);
+		}
+
+		public string GetViewLocation(System.Web.Routing.RequestContext requestContext, string viewName) {
+			return string.Format(
+					"/{1}/{0}.vm", viewName, requestContext.RouteData.Values["Controller"]);
+		}
+
+		#endregion
 	}
 }

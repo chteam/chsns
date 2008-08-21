@@ -7,6 +7,10 @@ using NVelocity;
 
 namespace CHSNS.NVelocityEngine
 {
+	/// <summary>
+	/// NVelocity的ViewPage
+	/// 
+	/// </summary>
 	public class NVelocityView : IViewDataContainer
 	{
 		private readonly ViewContext _viewContext;
@@ -64,7 +68,7 @@ namespace CHSNS.NVelocityEngine
 				}
 			}
 			entries["viewdata"] = _viewContext.ViewData;
-
+			entries["tempdata"] = _viewContext.TempData;
 			entries["routedata"] = context.RouteData;
 			entries["controller"] = _viewContext.Controller;
 			entries["httpcontext"] = _viewContext.HttpContext;
@@ -78,6 +82,7 @@ namespace CHSNS.NVelocityEngine
 		{
 			entries["html"] = entries["htmlhelper"] = new HtmlHelper(context, this);
 			entries["url"] = entries["urlhelper"] = new UrlHelper(context);
+			entries["ajax"] = entries["ajaxhelper"] = new AjaxHelper(context);
 		}
 	}
 }
