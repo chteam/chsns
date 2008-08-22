@@ -68,10 +68,10 @@ namespace CHSNS.Controllers {
 				case "member":
 					DataRowCollection drc=g.GroupMember(groupid,1);
 					int right = 0;
-					if (drc[0].Table.Select(string.Format("userid={0}", ChUser.Current.Userid)).Length > 0) {
+					if (drc[0].Table.Select(string.Format("userid={0}", CHSNSUser.Current.Userid)).Length > 0) {
 						right = Convert.ToInt32(drc[0]["level"]);
 					}
-					if (ChUser.Current.isAdmin)
+					if (CHSNSUser.Current.isAdmin)
 						right = 255;
 					ViewData.Add("source", drc);
 					ViewData.Add("right", right);
@@ -107,7 +107,7 @@ namespace CHSNS.Controllers {
 		[PostOnlyFilter]
 		public ActionResult UserList(string template, int page, byte type) {
 			//IDataBase idb = new DBExt(Session);
-			ViewData["userSource"] = DBExt.UserListRows(ChUser.Current.Userid, page,type);
+			ViewData["userSource"] = DBExt.UserListRows(CHSNSUser.Current.Userid, page,type);
 
 			//RenderView("html", string.Format("UserList-{0}", template));
 			return View(string.Format("UserList-{0}", template));
@@ -128,7 +128,7 @@ namespace CHSNS.Controllers {
 			{
 				body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
 				addtime = DateTime.Now,
-				senderid = ChUser.Current.Userid,
+				senderid = CHSNSUser.Current.Userid,
 				IsReply = isReply,
 				Logid = logid,
 				type = type
@@ -158,8 +158,8 @@ namespace CHSNS.Controllers {
 				{
 					body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
 					addtime = DateTime.Now,
-					senderid = ChUser.Current.Userid,
-					ownerid = ChUser.Current.Userid,
+					senderid = CHSNSUser.Current.Userid,
+					ownerid = CHSNSUser.Current.Userid,
 					IsReply = isReply,
 					Logid = logid,
 					type = 0
@@ -213,9 +213,9 @@ namespace CHSNS.Controllers {
 								{
 									l.title,
 									cmt.body,
-									name = ChUser.Current.Username,
+									name = CHSNSUser.Current.Username,
 									cmt.Logid,
-									userid = ChUser.Current.Userid,
+									userid = CHSNSUser.Current.Userid,
 									l.GroupId
 								}).SingleOrDefault();
 					Dictionary dict = new Dictionary();

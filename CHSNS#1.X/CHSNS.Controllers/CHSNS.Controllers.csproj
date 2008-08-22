@@ -95,6 +95,10 @@
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="GlobalApplication.cs" />
+    <Compile Include="MvcHelper\ChHelper.cs" />
+    <Compile Include="MvcHelper\Include.cs" />
+    <Compile Include="MvcHelper\PersonalHelper.cs" />
+    <Compile Include="MvcHelper\StringHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,10 +113,6 @@
     <ProjectReference Include="..\ChAlumna.Models\CHSNS.Models.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>CHSNS.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CHSNS.NVelocityEngine\CHSNS.NVelocityEngine.csproj">
-      <Project>{F577A7E2-6B29-4322-B2C8-8567879EF25F}</Project>
-      <Name>CHSNS.NVelocityEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chsword\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>

@@ -43,7 +43,7 @@ namespace CHSNS
 				new SqlParameter("@Description", SqlDbType.NVarChar, 150),
 				new SqlParameter("@albumid", SqlDbType.BigInt),
 			};
-			sqlParameter[0].Value = ChSession.Userid;
+			sqlParameter[0].Value = CHUser.UserID;
 			sqlParameter[1].Value = Name;
 			sqlParameter[2].Value = Location;
 			sqlParameter[3].Value = Showlevel;
@@ -64,7 +64,7 @@ namespace CHSNS
 				new SqlParameter("@Showlevel", SqlDbType.TinyInt),
 				new SqlParameter("@Description", SqlDbType.NVarChar, 150)
 			};
-			sqlParameter[0].Value = ChSession.Userid;
+			sqlParameter[0].Value = CHUser.UserID;
 			sqlParameter[1].Value = Name;
 			sqlParameter[2].Value = Location;
 			sqlParameter[3].Value = Showlevel;
@@ -81,7 +81,7 @@ namespace CHSNS
 				new SqlParameter("@userid", SqlDbType.BigInt),
 				new SqlParameter("@id", SqlDbType.BigInt),
 			};
-			sp[0].Value = ChSession.Userid;
+			sp[0].Value = CHUser.UserID;
 			sp[1].Value = albumid;
 			DoDataBase db = new DoDataBase();
 			DataTable dt= db.DoDataSet("Album_SelectAllPhoto",sp).Tables[0];
@@ -106,7 +106,7 @@ namespace CHSNS
 				new SqlParameter("@Albumid", SqlDbType.BigInt),
 				new SqlParameter("@FileSizeCount", SqlDbType.BigInt)
 			};
-			sqlParameter[0].Value = ChSession.Userid;
+			sqlParameter[0].Value = CHUser.UserID;
 			sqlParameter[1].Value = albumid;
 			sqlParameter[2].Value = Path.DirectorySize(
 				new System.IO.DirectoryInfo( Server.MapPath(Path.ClientUserFolder()))
@@ -119,8 +119,8 @@ namespace CHSNS
 		[WebMethod(EnableSession=true)]
 		public DataTable AlbumsTable(long userid,int page,int everypage){
 			Chsword.Reader.Albums al = new Chsword.Reader.Albums();
-			al.Viewerid=ChSession.Userid;
-			al.Ownerid=(userid==0)?ChSession.Userid:userid;
+			al.Viewerid=CHUser.UserID;
+			al.Ownerid=(userid==0)?CHUser.UserID:userid;
 			al.Nowpage=page;
 			al.Everypage=everypage;
 			return al.GetAlbums();
@@ -128,8 +128,8 @@ namespace CHSNS
 		[WebMethod(EnableSession=true)]
 		public DataRowCollection PhotosRows(long albumid,long ownerid,int currentPage,int everypage){
 			Dictionary dict = new Dictionary();
-			dict.Add("@ownerid",(ownerid==0)?ChSession.Userid:ownerid);
-			dict.Add("@viewerid",ChUser.Current.Userid);
+			dict.Add("@ownerid",(ownerid==0)?CHUser.UserID:ownerid);
+			dict.Add("@viewerid",CHSNSUser.Current.Userid);
 			dict.Add("@page",currentPage);
 			dict.Add("@everypage",everypage);
 			dict.Add("@albumid", albumid);
@@ -156,7 +156,7 @@ namespace CHSNS
 				new SqlParameter("@photoid", SqlDbType.BigInt),
 				new SqlParameter("@FileSize", SqlDbType.BigInt)
 			};
-			sqlParameter[0].Value = ChSession.Userid;
+			sqlParameter[0].Value = CHUser.UserID;
 			sqlParameter[1].Value = photoid;
 			sqlParameter[2].Value = filesize;
 			DoDataBase db1 = new DoDataBase();
@@ -173,7 +173,7 @@ namespace CHSNS
 				new SqlParameter("@userid", SqlDbType.BigInt),
 				new SqlParameter("@photoid", SqlDbType.BigInt)
 			};
-			sqlParameter[0].Value = ChSession.Userid;
+			sqlParameter[0].Value = CHUser.UserID;
 			sqlParameter[1].Value = photoid;
 			DoDataBase db1 = new DoDataBase();
 			if(db1.DoParameterSql("Photo_Cover", sqlParameter)=="1")

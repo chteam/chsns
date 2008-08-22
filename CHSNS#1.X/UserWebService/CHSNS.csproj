@@ -172,7 +172,6 @@
   <ItemGroup>
     <Compile Include="System.Web.Mvc\ControllerExt.cs" />
     <Compile Include="Filter\PostOnlyFilter.cs" />
-    <Compile Include="MvcHelper\Include.cs" />
     <Compile Include="System.Web.Mvc\RedirectExt.cs" />
     <Compile Include="Tools\PaginationHelper\IPagination.cs" />
     <Compile Include="Tools\PaginationHelper\LazyPagination.cs" />
@@ -192,9 +191,6 @@
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />
-    <Compile Include="MvcHelper\ChHelper.cs" />
-    <Compile Include="MvcHelper\PersonalHelper.cs" />
-    <Compile Include="MvcHelper\StringHelper.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
     <Compile Include="Base\BaseAdminController.cs" />
     <Compile Include="Base\BaseWizardPage.cs" />

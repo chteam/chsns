@@ -85,7 +85,7 @@ namespace Chsword.Reader {
 				String item = ChCache.GetTemplateCache("MyClass");
 				StringBuilder temp;
 				foreach (DataRow dr in dt.Rows) {
-					if (dt.Rows.Count == 1 && Autotoclass && ChUser.Current.Status >= UserStatusType.User && true.Equals(dr["istrue"])) {
+					if (dt.Rows.Count == 1 && Autotoclass && CHSNSUser.Current.Status >= UserStatusType.User && true.Equals(dr["istrue"])) {
 						HttpContext.Current.Response.Redirect(string.Format("/group.aspx?id={0}&", dr["id"].ToString()));
 					}
 					temp = new StringBuilder(item.ToString());

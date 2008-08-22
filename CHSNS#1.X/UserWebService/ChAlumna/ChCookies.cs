@@ -23,12 +23,12 @@ namespace CHSNS
 		public void SaveAll(string userid, string username, string md5pwd,object status, Boolean isAutoLogin)
 		{
 			HttpContext.Current.Session.Clear();
-			ChSession.Userid = long.Parse(userid);
-			ChSession.Username= username;
+			CHUser.UserID = long.Parse(userid);
+			CHUser.Username= username;
 			
-			ChSession.InitStatus(status);
-			ChCookies.Username =ChSession.Username;
-			ChCookies.Userid =ChSession.Userid;
+			CHUser.InitStatus(status);
+			ChCookies.Username =CHUser.Username;
+			ChCookies.Userid =CHUser.UserID;
 			ChCookies.UserPassword = md5pwd;
 			if (isAutoLogin){
 				ChCookies.IsAutoLogin = isAutoLogin;

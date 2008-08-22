@@ -40,7 +40,7 @@ namespace CHSNS.Controllers
 		/// <returns></returns>
 		public DataRowCollection NewReplyRows() {
 			Dictionary dict = new Dictionary();
-			dict.Add("@userid", ChUser.Current.Userid);
+			dict.Add("@userid", CHSNSUser.Current.Userid);
 			return DataBaseExecutor.GetRows("Reply_New", dict);
 		}
 		/// <summary>
@@ -49,7 +49,7 @@ namespace CHSNS.Controllers
 		/// <returns></returns>
 		public DataRowCollection Gather() {
 			Dictionary dict = new Dictionary();
-			dict.Add("@userid", ChUser.Current.Userid);
+			dict.Add("@userid", CHSNSUser.Current.Userid);
 			return DataBaseExecutor.GetRows("Gather", dict);
 		}
 		#endregion

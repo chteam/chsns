@@ -12,12 +12,12 @@ namespace CHSNS.Controllers {
 			return View();
 		}
 		public ActionResult Admin() {
-			if(!ChSession.isAdmin)
+			if(!CHUser.IsAdmin)
 				Redirect("/");
 			return View();
 		}
 		public ActionResult Reply(long serid, string serbody) {
-			if(!ChSession.isAdmin)
+			if(!CHUser.IsAdmin)
 				Redirect("/");
 			DoDataBase ddb=new DoDataBase();
 			ddb.Executer_SqlText(

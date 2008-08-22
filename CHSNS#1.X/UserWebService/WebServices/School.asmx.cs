@@ -29,7 +29,7 @@
 		[WebMethod(EnableSession = true)]
 		public string AddMiniField(Int64 fieldid, IList names, int type) {
 			StringBuilder output = new StringBuilder();
-			if (ChSession.isAdmin) {
+			if (CHUser.IsAdmin) {
 										using (ChAlumnaDBDataContext Db = new ChAlumnaDBDataContext
 						(SiteConfig.SiteConnectionString)) {
 				foreach (String name in names) {
@@ -61,7 +61,7 @@
 		[WebMethod(EnableSession = true)]
 		public string AddQinshi(Int64 schoolid, IList names) {
 			StringBuilder output = new StringBuilder();
-			if (ChSession.isAdmin) {
+			if (CHUser.IsAdmin) {
 				foreach (String name in names) {
 					if (string.IsNullOrEmpty(name.Trim())) continue;
 					try {

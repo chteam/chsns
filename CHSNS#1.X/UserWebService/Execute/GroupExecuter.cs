@@ -31,7 +31,7 @@ namespace Chsword.Execute {
 			sp[1].Value = _Items.CreateUserid;
 			sp[2].Value = _Items.GroupClass;
 			sp[3].Value = _Items.GroupClass == 0 ? 50 : 0;//费掉的积分,群50,班没有
-			sp[4].Value = ChSession.Status;
+			sp[4].Value = CHUser.Status;
 			sp[5].Value = _Items.Category;
 			DoDataBase dd = new DoDataBase();
 			long i = long.Parse(dd.DoParameterSql("Group_Add", sp));

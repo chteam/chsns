@@ -12,7 +12,7 @@ namespace Chsword.Execute
 	public class UserSettingExecuter{
 		byte _olduserstatus;
 		public UserSettingExecuter(){
-			_olduserstatus=ChSession.Status;
+			_olduserstatus=CHUser.Status;
 		}
 		/// <summary>
 		/// 设置用户基础信息,暂时无效
@@ -33,7 +33,7 @@ namespace Chsword.Execute
 			};
 			sp[0].Value = dict["name"];
 			sp[1].Value = dict["sex"];
-			sp[2].Value = ChSession.Userid;
+			sp[2].Value = CHUser.UserID;
 			sp[3].Value = dict["birthday"];
 			sp[4].Value = dict["province"];
 			sp[5].Value = dict["city"];
@@ -43,14 +43,14 @@ namespace Chsword.Execute
 			if (userstatus < 0)
 				return "您的账号未激活或已经冻结.";
 			else {
-				ChSession.Username = dict["name"].ToString().Trim();
+				CHUser.Username = dict["name"].ToString().Trim();
 				//ChSession.Status = Convert.ToByte(userstatus);
 				//HttpContext.Current.Response.Cookies[ChSite.Currect.CookieName]["userstatus"]= userstatus.ToString();
-				if (ChUser.Current.Status < UserStatusType.Basic)
-					ChUser.Current.Status = UserStatusType.Basic;
+				if (CHSNSUser.Current.Status < UserStatusType.Basic)
+					CHSNSUser.Current.Status = UserStatusType.Basic;
 				//ChCookies.Status = userstatus;
 				if (_olduserstatus < 8) {
-					ChSession.Status = byte.Parse(userstatus.ToString());
+					CHUser.Status = byte.Parse(userstatus.ToString());
 					return "turn";
 				}
 				return string.Empty;
@@ -71,15 +71,15 @@ namespace Chsword.Execute
 			};
 			sp[0].Value = "";// Regular.StringNull(usm.Xueyuan);
 			sp[1].Value = dict["qinshi"];
-			sp[2].Value = ChSession.Userid;
+			sp[2].Value = CHUser.UserID;
 			sp[3].Value = "";// Regular.StringNull(usm.Highschool);
 			sp[4].Value = dict["grade"];
 			sp[5].Value = "";//Regular.StringNull(usm.Juniorschool);
 			sp[6].Value =dict["showlevel"];
 			DoDataBase db = new DoDataBase();
 			db.ExecuteSql("MySchoolUpdate", sp);
-			if (ChUser.Current.Status ==UserStatusType.Basic ) {
-				ChUser.Current.Status = UserStatusType.InfoOver;
+			if (CHSNSUser.Current.Status ==UserStatusType.Basic ) {
+				CHSNSUser.Current.Status = UserStatusType.InfoOver;
 				return "turn";
 			}
 			return string.Empty;
@@ -99,7 +99,7 @@ namespace Chsword.Execute
 			};
 			sp[0].Value = dict["telphone"];
 			sp[1].Value = dict["qq"];
-			sp[2].Value = ChSession.Userid;
+			sp[2].Value = CHUser.UserID;
 			sp[3].Value = dict["msn"];
 			sp[4].Value = "";
 			sp[5].Value = dict["mobiephone"];
@@ -126,7 +126,7 @@ namespace Chsword.Execute
 				new SqlParameter("@JoinSociety", SqlDbType.NVarChar, 4000),
 				new SqlParameter("@showlevel", SqlDbType.TinyInt)
 			};
-			sp[0].Value =  ChSession.Userid;
+			sp[0].Value =  CHUser.UserID;
 			sp[1].Value = Regular.FormatLove(dict["lovelike"]);
 			sp[2].Value = Regular.FormatLove(dict["lovebook"]);
 			sp[3].Value = Regular.FormatLove(dict["lovemusic"]);
@@ -147,7 +147,7 @@ namespace Chsword.Execute
 				new SqlParameter("@userid", SqlDbType.BigInt),
 				new SqlParameter("@MagicBox", SqlDbType.NText)
 			};
-			sp[0].Value = ChSession.Userid;
+			sp[0].Value = CHUser.UserID;
 			sp[1].Value = StyleSheet.filter(dict["magicbox"].ToString());
 			DoDataBase db = new DoDataBase();
 			db.ExecuteSql("MyMagicBoxUpDate", sp);
@@ -159,7 +159,7 @@ namespace Chsword.Execute
 			SqlParameter[] sp = new SqlParameter[1]{
 				new SqlParameter("@userid", SqlDbType.BigInt)
 			};
-			sp[0].Value =ChSession.Userid;
+			sp[0].Value =CHUser.UserID;
 			DoDataBase db = new DoDataBase();
 			db.ExecuteSql("MyMagicBoxUpBack", sp);
 			return string.Empty;
@@ -172,7 +172,7 @@ namespace Chsword.Execute
 		internal string DeleteUserface() {
 			string p;
 			for (ImgSize i = ImgSize.tiny; i <= ImgSize.big; i++) {
-				p = CHSNS.Path.GetFaceEmpty( ChSession.Userid.ToString(), i);
+				p = CHSNS.Path.GetFaceEmpty( CHUser.UserID.ToString(), i);
 				if (!string.IsNullOrEmpty(p))
 					System.IO.File.Delete(HttpContext.Current.Server.MapPath(p));
 			}

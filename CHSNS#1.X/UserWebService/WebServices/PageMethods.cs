@@ -69,7 +69,7 @@ using CHSNS;
 		[WebMethod(EnableSession=true)]
 		public ServerResponse SearchUser(Dictionary<string,object> dict, int nowpage, int everypage, string mode) {
 			Chsword.Reader.Search ds = new Chsword.Reader.Search(dict, "");
-			ds.Template = ChSession.UseridwithoutError == 0 ? "SearchUserListSample" : "UserList";
+			ds.Template = CHUser.UseridwithoutError == 0 ? "SearchUserListSample" : "UserList";
 			ds.Nowpage = nowpage;
 			ds.Everypage = everypage;
 			return ds.GetMember();
@@ -99,7 +99,7 @@ using CHSNS;
 			return dof.Remove();
 		}
 		static IItems GetFriendExecute(long Toid) {
-			return new Chsword.Execute.FriendExecuter(ChSession.Userid, Toid);
+			return new Chsword.Execute.FriendExecuter(CHUser.UserID, Toid);
 		}
 
 
@@ -122,7 +122,7 @@ using CHSNS;
 				return "undefine";
 			}
 			Chsword.Reader.Comment dc = new Chsword.Reader.Comment();
-			dc.Viewerid = ChSession.Userid;
+			dc.Viewerid = CHUser.UserID;
 			if(type==0)
 				dc.Ownerid=Ownerid;
 			else
@@ -226,11 +226,11 @@ using CHSNS;
 		#region 用户设置 setting 安全设置
 		[WebMethod(EnableSession = true)]
 		public string ChangeShowLevel(byte PersonalInfoShowLevel, byte FaceShowLevel, byte AllShowLevel) {
-			if (!ChUser.Current.isLogined) {
+			if (!CHSNSUser.Current.isLogined) {
 				throw new Exception("非法操作.");
 			}
 			Dictionary dict = new Dictionary();
-			dict.Add("@Userid", ChUser.Current.Userid);
+			dict.Add("@Userid", CHSNSUser.Current.Userid);
 			dict.Add("@PersonalInfoShowLevel", PersonalInfoShowLevel);
 			dict.Add("@FaceShowLevel", FaceShowLevel);
 			dict.Add("@AllShowLevel", AllShowLevel);
@@ -240,7 +240,7 @@ using CHSNS;
 		}
 		[WebMethod(EnableSession = true)]
 		public string ChangePassword(string oldpassword, string password) {
-			if (!ChUser.Current.isLogined) {
+			if (!CHSNSUser.Current.isLogined) {
 				throw new Exception("非法操作.");
 			}
 			Encrypt en = new Encrypt();
@@ -248,7 +248,7 @@ using CHSNS;
 			Dictionary dict = new Dictionary();
 			dict.Add("@Oldpwd", en.MD5Encrypt(oldpassword.Trim(), 32));
 			dict.Add("@Newpwd", en.MD5Encrypt(password.Trim(), 32));
-			dict.Add("@Userid", ChUser.Current.Userid);
+			dict.Add("@Userid", CHSNSUser.Current.Userid);
 
 			DataBaseExecutor.Execute("ChangePassword", dict);
 				return "";
@@ -268,11 +268,11 @@ using CHSNS;
 			}
 			GroupModel gm = new GroupModel();
 			gm.Groupname = classname;
-			gm.CreateUserid = ChSession.Userid;
+			gm.CreateUserid = CHUser.UserID;
 			gm.GroupClass = 1;//班级
 			GroupExecuter ge = new GroupExecuter(gm);
 			string ret = ge.Add();
-			if (ChSession.Status==5)
+			if (CHUser.Status==5)
 				HttpContext.Current.Session["status"] = 6;
 			return ret;
 		}
@@ -384,7 +384,7 @@ using CHSNS;
 					Identity identity = new Identity();
 					int status = identity.GetUserStatus(userid);
 					//HttpContext.Current.Session["status"] =
-					ChSession.InitStatus(status);
+					CHUser.InitStatus(status);
 					ChCookies.Status = status;
 					//HttpContext.Current.Response.Cookies[ChSite.Currect.CookieName]
 					//    ["userstatus"]
@@ -422,7 +422,7 @@ using CHSNS;
 		#region 管理，Manage Group
 		[WebMethod(EnableSession=true)]
 		public string SaveMyInfo(Dictionary<string, object> dict,string mode){
-			if (ChSession.UseridwithoutError==0) {
+			if (CHUser.UseridwithoutError==0) {
 				return "非法操作.";
 			}
 			UserSettingExecuter ui = new UserSettingExecuter();
@@ -492,10 +492,10 @@ using CHSNS;
 		[WebMethod(EnableSession=true)]
 		public MessageModel ReadMessage(long Messageid,bool isowner) {
 			Chsword.Reader.Message rm = new Chsword.Reader.Message();
-			rm.Userid = ChSession.Userid;
+			rm.Userid = CHUser.UserID;
 			rm.Isinboxer = isowner;
 			rm.Messageid = Messageid;
-			ChCache.Remove(string.Format("unReadMessage.{0}", ChSession.Userid));
+			ChCache.Remove(string.Format("unReadMessage.{0}", CHUser.UserID));
 			return rm.GetSingle();
 		}
 		[WebMethod(EnableSession=true)]

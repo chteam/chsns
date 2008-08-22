@@ -5,7 +5,7 @@ using Chsword;
 namespace Chsword.Reader {
 	public class NewGroup : Databases, Interface.IShowAll {
 		string GetMyJiFen() {
-			return base.GetObjectbyId1(ChSession.Userid, "@userid", "GetScore").ToString();
+			return base.GetObjectbyId1(CHUser.UserID, "@userid", "GetScore").ToString();
 		}
 
 		#region IShowAll ≥…‘±

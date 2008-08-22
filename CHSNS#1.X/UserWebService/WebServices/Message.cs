@@ -41,7 +41,7 @@ namespace Chsword
 				new SqlParameter("@type", SqlDbType.TinyInt)
 			};
 			p[0].Value = id;
-			p[1].Value =ChSession.Userid;
+			p[1].Value =CHUser.UserID;
 			p[2].Value = issend;
 			DoDataBase dd = new DoDataBase();
 			string ret = dd.DoParameterSql("Message_Remove_Select", p);

@@ -78,7 +78,7 @@
 				Dictionary dict = new Dictionary();
 				dict.Add("@photoname","");
 				dict.Add("@Albumid", Convert.ToInt64(Albumid));
-					dict.Add("@userid",ChUser.Current.Userid);
+					dict.Add("@userid",CHSNSUser.Current.Userid);
 					dict.Add("@Path",chfilename);
 					dict.Add("@FileSize",4000 + file.ContentLength);
 				DoDataBase dd = new DoDataBase();
@@ -163,8 +163,8 @@
 				fn = itemID;
 			}
 			if (mode == "userface") {
-				serverpath = CHSNS.Path.UserFolder(ChUser.Current.Userid.ToString());
-				fn = ChUser.Current.Userid.ToString().Substring(0, 3);
+				serverpath = CHSNS.Path.UserFolder(CHSNSUser.Current.Userid.ToString());
+				fn = CHSNSUser.Current.Userid.ToString().Substring(0, 3);
 			}
 			//Debug.Trace(mode + serverpath);
 
@@ -248,8 +248,8 @@
 				return;
 			}
 			if (mode == "userface") {
-				SetStarLevel(ChSession.Userid);//更新
-				WriteJs("parent.uploadsuccess('" + Path.GetFace(ChUser.Current.Userid.ToString(), ImgSize.big) + "','" + itemID + "'); ");
+				SetStarLevel(CHUser.UserID);//更新
+				WriteJs("parent.uploadsuccess('" + Path.GetFace(CHSNSUser.Current.Userid.ToString(), ImgSize.big) + "','" + itemID + "'); ");
 				return;
 			}
 			WriteErr("error:未知错误");

@@ -28,7 +28,7 @@ namespace CHSNS {
 				new SqlParameter("@userid", SqlDbType.BigInt)
 			};
 			p[0].Value = id;
-			p[1].Value = ChSession.Userid;
+			p[1].Value = CHUser.UserID;
 			DoDataBase dd = new DoDataBase();
 			dd.ExecuteSql("Comment_Update", p);
 			return true;
@@ -38,7 +38,7 @@ namespace CHSNS {
 			SqlParameter[] p = new SqlParameter[1] { 
 				new SqlParameter("@userid", SqlDbType.BigInt)
 			};
-			p[0].Value = ChSession.Userid;
+			p[0].Value = CHUser.UserID;
 			DoDataBase dd = new DoDataBase();
 			dd.ExecuteSql("Comment_Update2", p);
 			return true;

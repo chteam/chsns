@@ -47,7 +47,7 @@ namespace Chsword.Web.UI {
 			Page.Header.Controls.Add(myHtmlScript);
 		}
 		string isAdmin() {
-			if (ChSession.isAdmin)
+			if (CHUser.IsAdmin)
 				return " or @name=\"adminuser\"";
 			else
 				return "";
@@ -55,9 +55,9 @@ namespace Chsword.Web.UI {
 		protected void SetCssJs(string Config_fileName){
 			string Right = ChCache.GetConfig("Page",Config_fileName);
 			if (!string.IsNullOrEmpty(Right.Trim())){
-				if(!Right.Contains(string.Format("|{0}|",ChSession.Status.ToString())))
+				if(!Right.Contains(string.Format("|{0}|",CHUser.Status.ToString())))
 				{
-					Response.Redirect(string.Format("/NoRight.aspx?type={0}",ChSession.Status));
+					Response.Redirect(string.Format("/NoRight.aspx?type={0}",CHUser.Status));
 				}
 			}
 			List<string> list = new List<string>();

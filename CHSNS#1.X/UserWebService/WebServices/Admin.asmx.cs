@@ -25,7 +25,7 @@ namespace CHSNS {
         /// <param name="SchoolClass"></param>
 		[WebMethod(EnableSession=true)]
 		public void AddSchoolBat(string Province,List<string> Schoollist,int SchoolClass) {
-			if(!ChSession.isAdmin) return;
+			if(!CHUser.IsAdmin) return;
 			foreach (string school in Schoollist) {
 				SqlParameter[] sp = new SqlParameter[3] {
 					new SqlParameter("@schoolname", SqlDbType.NVarChar,50),
@@ -42,7 +42,7 @@ namespace CHSNS {
 
 		[WebMethod(EnableSession=true)]
 		public bool setStar(string userid,bool isstar){
-            if (ChSession.isAdmin) {
+            if (CHUser.IsAdmin) {
                 DoDataBase db = new DoDataBase();
                 db.Executer_SqlText(
                     string.Format("update [profile] set isstar={0},isupdate=1 where userid={1}",

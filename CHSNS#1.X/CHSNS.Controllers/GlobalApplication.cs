@@ -31,7 +31,7 @@ namespace CHSNS {
 
 			ConfigPath path = new ConfigPath();
 			RegisterRoutes(RouteTable.Routes);
-			ControllerBuilder.Current.SetControllerFactory(typeof(NVelocityEngine.NVelocityControllerFactory));
+			//ControllerBuilder.Current.SetControllerFactory(typeof(NVelocityEngine.NVelocityControllerFactory));
 		}
 
 		public void Application_End(object sender, EventArgs e) {
@@ -41,7 +41,7 @@ namespace CHSNS {
 		}
 
 		public void Session_OnStart(object sender, EventArgs e) {
-			if (!ChSession.isLogined) {	//当前不处于登录状态
+			if (!CHUser.IsLogin) {	//当前不处于登录状态
 				if (ChCookies.IsExists && ChCookies.IsAutoLogin) {
 					try {
 						string pwd = ChCookies.UserPassword;

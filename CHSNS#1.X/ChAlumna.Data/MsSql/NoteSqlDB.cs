@@ -19,7 +19,7 @@
 			l.AddTime = DateTime.Now;
 			l.EditTime = DateTime.Now;
 			l.LastCommentTime = DateTime.Now;
-			l.userid = ChUser.Current.Userid;
+			l.userid = CHSNSUser.Current.Userid;
 			ChAlumnaDBDataContext db = new ChAlumnaDBDataContext(SiteConfig.SiteConnectionString);
 			db.Note.InsertOnSubmit(l);
 			db.SubmitChanges();
@@ -107,7 +107,7 @@ begin
 return -1--无权操作
 end*/
 			#endregion
-			int us = UserStatus(ChUser.Current.Userid, l.GroupId);
+			int us = UserStatus(CHSNSUser.Current.Userid, l.GroupId);
 			//DataBaseExecutor me = new DataBaseExecutor();
 			Dictionary dict = new Dictionary();
 			dict.Add("@body", l.body);
@@ -124,7 +124,7 @@ l.IsPost,
 l.istellme,
 l.id,
 l.GroupId,
-ChUser.Current.Userid,
+CHSNSUser.Current.Userid,
 us), dict);
 		}
 
@@ -132,14 +132,14 @@ us), dict);
 		public void Note_Remove(long logid, long groupid) {
 			Dictionary dict = new Dictionary();
 			dict.Add("@id", logid);
-			dict.Add("@userid", ChUser.Current.Userid);
+			dict.Add("@userid", CHSNSUser.Current.Userid);
 			dict.Add("@groupid", groupid);
 			//DataBaseExecutor me = new DataBaseExecutor();
 			DBE.Execute("Note_Remove", dict);
 		}
 		public int Note_Push(long logid) {
 			Dictionary d = new Dictionary();
-			d.Add("@viewerid", ChUser.Current.Userid);
+			d.Add("@viewerid", CHSNSUser.Current.Userid);
 			d.Add("@Logid", logid);
 			//DataBaseExecutor me = new DataBaseExecutor();
 			return (int)DBE.ExecuteScalar("LogPush", d);

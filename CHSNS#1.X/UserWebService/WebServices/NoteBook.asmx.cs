@@ -62,7 +62,7 @@ namespace CHSNS {
 				}
 				sbout.Replace("$Summarylist$", "");
 			} else {
-				if(userid==ChSession.Userid){
+				if(userid==CHUser.UserID){
 					sbout.Replace("$Summarylist$", ChCache.GetConfig("Note","None_MyNote"));
 				}
 				else{
@@ -145,14 +145,14 @@ namespace CHSNS {
 		#region 最新日志
 		[WebMethod(EnableSession=true)]
 		public DataTable LastNoteTable(){
-			Chsword.Reader.LogBook ul = new Chsword.Reader.LogBook("LogBook", 0, ChSession.Userid);
+			Chsword.Reader.LogBook ul = new Chsword.Reader.LogBook("LogBook", 0, CHUser.UserID);
 			return 	ul.GetLogBookTable(1,0);
 		}
 		#endregion
 		#region 推荐日志
 		[WebMethod(EnableSession=true)]
 		public DataTable PushNoteTable(){
-			Chsword.Reader.LogBook ul = new Chsword.Reader.LogBook("LogBook", 0, ChSession.Userid);
+			Chsword.Reader.LogBook ul = new Chsword.Reader.LogBook("LogBook", 0, CHUser.UserID);
 			return 	ul.GetLogBookTable(1,1);
 		}
 		#endregion
@@ -160,11 +160,11 @@ namespace CHSNS {
 		#region 群置顶操作
 		[WebMethod(Description="将帖子置顶",EnableSession=true)]
 		public bool Note_Top(long logid,long groupid) {
-			return Note_top_executer(logid,groupid,ChSession.Userid,1);
+			return Note_top_executer(logid,groupid,CHUser.UserID,1);
 		}
 		[WebMethod(Description="取消帖子置顶",EnableSession=true)]
 		public bool Note_unTop(long logid,long groupid) {
-			return Note_top_executer(logid,groupid,ChSession.Userid,0);
+			return Note_top_executer(logid,groupid,CHUser.UserID,0);
 		}
 		bool Note_top_executer(long logid,long groupid,long userid,byte ispost){
 			SqlParameter[] sp = new SqlParameter[4] {
@@ -243,15 +243,15 @@ namespace CHSNS {
 				new SqlParameter("@viewerstatus", SqlDbType.TinyInt)
 			};
 			p[0].Value = id;
-			p[1].Value = ChSession.Userid;
-			p[2].Value = ChSession.Status;
+			p[1].Value = CHUser.UserID;
+			p[2].Value = CHUser.Status;
 			DoDataBase dd = new DoDataBase();
 			dd.ExecuteSql("SuperNote_Remove", p);
 			return true;
 		}
 		[WebMethod(Description = "查看日志", EnableSession = true)]
 		public string SuperNote_See(long id,byte type) {
-			if(ChSession.Userid==0){
+			if(CHUser.UserID==0){
 				return "";
 			}
 			SqlParameter[] p = new SqlParameter[2] { 
@@ -293,7 +293,7 @@ namespace CHSNS {
 			};
 			p[0].Value = url;
 			p[1].Value = System.DBNull.Value;
-			p[2].Value = ChSession.Userid;
+			p[2].Value = CHUser.UserID;
 			p[3].Value = faceurl;
 			p[4].Value = title;
 			p[5].Value =showlevel;
@@ -308,7 +308,7 @@ namespace CHSNS {
 			SuperNoteList snl = new SuperNoteList();
 			snl.Everypage = 10;
 			snl.Nowpage = page;
-			snl.Userid = userid == 0 ? ChSession.Userid : userid;
+			snl.Userid = userid == 0 ? CHUser.UserID : userid;
 			return snl.GetSuperListTable();
 		}
 		[WebMethod(EnableSession = true)]
@@ -316,7 +316,7 @@ namespace CHSNS {
 			SuperNoteList snl = new SuperNoteList();
 			snl.Everypage = 10;
 			snl.Nowpage = page;
-			snl.Userid = userid == 0 ? ChSession.Userid : userid;
+			snl.Userid = userid == 0 ? CHUser.UserID : userid;
 			snl.Template="supernotepage";
 			return snl.GetSuperListString();
 		}
@@ -327,7 +327,7 @@ namespace CHSNS {
 			snl.Nowpage=1;
 			snl.Template = "supernoterandompage";
 			snl.Type=1;
-			snl.Userid = ChSession.Userid;
+			snl.Userid = CHUser.UserID;
 			snl.SysCategory = category;
 			return snl.GetSuperListString();
 		}

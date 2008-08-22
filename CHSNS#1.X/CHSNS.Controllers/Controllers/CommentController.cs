@@ -9,12 +9,12 @@ namespace CHSNS.Controllers {
 	{
 		public ActionResult List(){
 			if (this.QueryLong("userid") == 0)
-				ViewData.Add("Ownerid", ChUser.Current.Userid);
+				ViewData.Add("Ownerid", CHSNSUser.Current.Userid);
 			else
 				ViewData.Add("Ownerid", this.QueryLong("userid"));
 			Dictionary<string, object> dict = new Dictionary<string, object>();
 			dict.Add("@OwnerId",ViewData["Ownerid"]);
-			dict.Add("@ViewerId",ChUser.Current.Userid);
+			dict.Add("@ViewerId",CHSNSUser.Current.Userid);
 
 			DoDataBase base2 = new DoDataBase();
 			DataTable dt = base2.GetDataTable("UserRelation", dict);

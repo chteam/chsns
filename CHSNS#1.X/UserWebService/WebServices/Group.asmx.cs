@@ -29,7 +29,7 @@ namespace CHSNS {
 		public string CreateGroup(string groupname,long category) {
 			GroupModel gm = new GroupModel();
 			gm.Groupname = groupname;
-			gm.CreateUserid = ChSession.Userid;
+			gm.CreateUserid = CHUser.UserID;
 			gm.GroupClass = 0;//普通群
 			gm.Category = category;
 			GroupExecuter ge = new GroupExecuter(gm);
@@ -40,7 +40,7 @@ namespace CHSNS {
 		#region 管理员用
 		[WebMethod(EnableSession = true)]
 		public bool Class_Request_Delete(long Groupid) {
-			if (ChSession.Status < 200)
+			if (CHUser.Status < 200)
 				return false;
 			SqlParameter[] sqlParameter = new SqlParameter[1]{
 					new SqlParameter("@groupid", SqlDbType.BigInt)
@@ -52,7 +52,7 @@ namespace CHSNS {
 		}
 		[WebMethod(EnableSession = true)]
 		public bool Class_Request_Allow(long Groupid,long userid) {
-			if (ChSession.Status < 200)
+			if (CHUser.Status < 200)
 				return false;
 			SqlParameter[] sqlParameter = new SqlParameter[2]{
 					new SqlParameter("@groupid", SqlDbType.BigInt),
@@ -74,10 +74,10 @@ namespace CHSNS {
 				new SqlParameter("@userid", SqlDbType.BigInt)
 				};
 			sqlParameter[0].Value = Groupid;
-			sqlParameter[1].Value = ChSession.Userid;
+			sqlParameter[1].Value = CHUser.UserID;
 			DoDataBase base2 = new DoDataBase();
 			if (base2.DoParameterSql("Class_AddorJoin_Cancle", sqlParameter) == "1") {
-				ChSession.Status = 5;
+				CHUser.Status = 5;
 				return true;
 			}
 			return false;
@@ -88,7 +88,7 @@ namespace CHSNS {
 		public DataRow GroupSetting(long groupid) { 
 			DataRowCollection ic = DataBaseExecutor.GetRows("GroupSetting_Select",
 				"@id",groupid,
-				"@Userid",ChUser.Current.Userid
+				"@Userid",CHSNSUser.Current.Userid
 			);
 			return ic.Count > 0 ? ic[0] : null;
 		}

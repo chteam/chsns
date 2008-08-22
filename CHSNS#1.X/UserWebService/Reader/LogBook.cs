@@ -219,7 +219,7 @@ public string Username {
 			}
 		}
 		string GetEdit(string id, long ownerid) {
-			if (ownerid == _viewerid||ChSession.Status>199) {
+			if (ownerid == _viewerid||CHUser.Status>199) {
 				return ChCache.GetConfig("Note","Edit");//, temp);
 			} else
 				return "";
@@ -230,7 +230,7 @@ public string Username {
 		/// <param name="Logid"></param>
 		/// <returns></returns>
 		private string GetDelete(long ownerid,int level) {
-			if (ownerid == _viewerid||level>199||ChSession.Status>199) {
+			if (ownerid == _viewerid||level>199||CHUser.Status>199) {
 				return string.Format(ChCache.GetConfig("Note","Delete"), _logid, _groupid);
 			}
 			else

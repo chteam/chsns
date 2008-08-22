@@ -25,7 +25,7 @@ using System.Web.Mvc;
 					 && gr.IsTrue==true
 					   select gr).FirstOrDefault();
 			GroupUser u = (from gu in DB.GroupUser
-					 where gu.userid == ChUser.Current.Userid
+					 where gu.userid == CHSNSUser.Current.Userid
 					 && gu.Groupid == Groupid
 						   select gu).FirstOrDefault();
 			if (g == null)
@@ -35,7 +35,7 @@ using System.Web.Mvc;
 			if (u != null && u.IsTrue) {
 				ret = 0;
 			}
-			if (ChUser.Current.isAdmin) {
+			if (CHSNSUser.Current.isAdmin) {
 				ret = 0;
 			}
 			ViewData["right"] = ret;
@@ -67,7 +67,7 @@ using System.Web.Mvc;
 						 }).ToList());
 			//ViewData.Add("group", groupmodel);
 			if (u != null )
-			if (u.Level > 199 || ChUser.Current.isAdmin) {
+			if (u.Level > 199 || CHSNSUser.Current.isAdmin) {
 				ViewData.Add("ApplyMember", ApplyCount(Groupid, 0));
 				ViewData.Add("ApplyMaster", ApplyCount(Groupid, 1));
 			}
@@ -75,7 +75,7 @@ using System.Web.Mvc;
 		public void ClassList() {
 
 			Dictionary dict = new Dictionary();
-			dict.Add("@userid", ChUser.Current.Userid);
+			dict.Add("@userid", CHSNSUser.Current.Userid);
 			ViewData.Add("rows",DataBaseExecutor.GetRows(
 				"GetRelationClass", dict));
 		}
@@ -85,13 +85,13 @@ using System.Web.Mvc;
 				ViewData.Add("Tabs", this.QueryNum("tabs"));
 				return View();
 			} else {
-				if (SiteConfig.Current.BaseConfig.IsMustField && ChUser.Current.Status < UserStatusType.IsApplyToField) {
+				if (SiteConfig.Current.BaseConfig.IsMustField && CHSNSUser.Current.Status < UserStatusType.IsApplyToField) {
 					return Redirect("/ClassList.aspx");
 				}
 				Chsword.Reader.GroupList gl = new Chsword.Reader.GroupList();
 				gl.Groupclass = 1;
 				gl.Type = 2;
-				gl.Userid = ChSession.Userid;
+				gl.Userid = CHUser.UserID;
 				if (this.QueryString("mode") == "auto")
 					gl.Autotoclass = true;
 				ViewData.Add("Items", gl.ShowPage(gl.GetGroupList()));
@@ -101,7 +101,7 @@ using System.Web.Mvc;
 		}
 		public void CreateClass() {
 			Dictionary dict=new Dictionary();
-			dict.Add("@userid",ChUser.Current.Userid);
+			dict.Add("@userid",CHSNSUser.Current.Userid);
 			DataRowCollection rows = DataBaseExecutor.GetRows(
 				"SchoolInfo", dict);
 			if (rows.Count != 0) {
@@ -136,7 +136,7 @@ using System.Web.Mvc;
 					new SqlParameter("@userid", SqlDbType.BigInt)
 				};
 			p[0].Value = Groupid;
-			p[1].Value = ChUser.Current.Userid;
+			p[1].Value = CHSNSUser.Current.Userid;
 			DoDataBase dd = new DoDataBase();
 			ViewData.Add("group", dd.DoDataSet("GroupSetting_Select", p).Tables[0].Rows);
 

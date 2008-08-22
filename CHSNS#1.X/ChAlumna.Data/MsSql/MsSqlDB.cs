@@ -46,13 +46,13 @@ namespace CHSNS.Data
 		public DataRowCollection MyApplicationRows {
 			get {
 				return DBE.GetRows("MyApplication",
-					"@userid", ChUser.Current.Userid
+					"@userid", CHSNSUser.Current.Userid
 					);
 			}
 		}
 		public DataRowCollection RssList(int count) {
 			return DBE.GetRows("RssList",
-				"@userid", ChUser.Current.Userid,
+				"@userid", CHSNSUser.Current.Userid,
 				"@page", 1,
 				"@everypage", count,
 				"@GroupClass", 0);
@@ -91,7 +91,7 @@ END*/
 			ChAlumnaDBDataContext db = new ChAlumnaDBDataContext(SiteConfig.SiteConnectionString);
 			var cmt = (from c in db.Comment
 					   where c.id == id &&
-					   (c.ownerid == ChUser.Current.Userid || c.senderid == ChUser.Current.Userid)
+					   (c.ownerid == CHSNSUser.Current.Userid || c.senderid == CHSNSUser.Current.Userid)
 					   && !c.IsDel
 					   select new
 					   {
@@ -102,7 +102,7 @@ END*/
 						   c.ownerid,
 						   c.senderid
 					   }).SingleOrDefault();
-			if (cmt.id == 0 || !(cmt.senderid == ChUser.Current.Userid || cmt.ownerid == ChUser.Current.Userid || ChUser.Current.isAdmin)) {
+			if (cmt.id == 0 || !(cmt.senderid == CHSNSUser.Current.Userid || cmt.ownerid == CHSNSUser.Current.Userid || CHSNSUser.Current.isAdmin)) {
 				return;
 			}
 			db.Comment.Delete(c => c.id == id);

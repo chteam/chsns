@@ -81,8 +81,8 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="ChCache.cs" />
     <Compile Include="ChServer.cs" />
-    <Compile Include="ChSession.cs" />
-    <Compile Include="ChUser.cs" />
+    <Compile Include="CHUser.cs" />
+    <Compile Include="CHSNSUser.cs" />
     <Compile Include="DataBaseExecutor.cs" />
     <Compile Include="DataOpen\OleDbDataOpener.cs" />
     <Compile Include="DataOpen\SqlDataOpener.cs" />

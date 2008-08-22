@@ -37,7 +37,7 @@ namespace CHSNS {
 				new SqlParameter("@userid", SqlDbType.BigInt),
 				new SqlParameter("@showtext", SqlDbType.NVarChar, 20)
 			};
-			sqlParameter[0].Value = ChSession.Userid;
+			sqlParameter[0].Value = CHUser.UserID;
 			sqlParameter[1].Value = showtext;
 			DoDataBase db = new DoDataBase();
 			db.ExecuteSql("Profile_Showtext_Update", sqlParameter);
@@ -49,7 +49,7 @@ namespace CHSNS {
 		[WebMethod(EnableSession = true)]
 		public DataRow ShowLevelList() {
 			DataRowCollection drs = DataBaseExecutor.GetRows("ChangeShowLevelSelect",
-				"@UserId", ChUser.Current.Userid);
+				"@UserId", CHSNSUser.Current.Userid);
 			if (drs.Count == 0)
 				return null;
 			else
@@ -58,7 +58,7 @@ namespace CHSNS {
 
 		[WebMethod(EnableSession = true)]
 		public void ShowLevel_Edit(string id,int value) {
-			if(!ChSession.isLogined&&value%50!=0)
+			if(!CHUser.IsLogin&&value%50!=0)
 				return;
 			DoDataBase ddb= new DoDataBase();
 			switch(id.ToLower()){
@@ -69,7 +69,7 @@ namespace CHSNS {
 						string.Format("update [profile] set {0}showlevel={1} where userid={2}"
 						              ,id.Trim()
 						              ,value%255
-						              ,ChSession.Userid
+						              ,CHUser.UserID
 						             )
 					);
 					break;
@@ -84,8 +84,8 @@ namespace CHSNS {
 		public bool Event_Remove(long id) {
 			DataBaseExecutor.Execute("Event_Remove",
 				"@id", id,
-			"@userid", ChUser.Current.Userid,
-			"@viewerstatus", ChUser.Current.Status);
+			"@userid", CHSNSUser.Current.Userid,
+			"@viewerstatus", CHSNSUser.Current.Status);
 
 			return true;
 		}
@@ -134,7 +134,7 @@ namespace CHSNS {
 			//'1 1->上传后 为1 0
 			//'1 0->上传后仍为1 0
 			#endregion
-			if (ChSession.Status == 0) {
+			if (CHUser.Status == 0) {
 				return false;
 			}
 			SqlParameter[] p = new SqlParameter[4] { 
@@ -146,7 +146,7 @@ namespace CHSNS {
 			p[0].Value = userid;
 			p[1].Value = isstar;
 			p[2].Value = isupdate;
-			p[3].Value = ChSession.Userid;
+			p[3].Value = CHUser.UserID;
 			DoDataBase dd = new DoDataBase();
 			dd.ExecuteSql("SetStarLevel", p);
 			return true;

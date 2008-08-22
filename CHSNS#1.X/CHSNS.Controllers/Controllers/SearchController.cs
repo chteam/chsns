@@ -38,13 +38,13 @@
 					_dict.Add("username", ChServer.UrlDecode(this.QueryString("username")));
 
 				string querystring = this.QueryString("action");
-				if (querystring == "name" && ChUser.Current.isLogined) {
+				if (querystring == "name" && CHSNSUser.Current.isLogined) {
 					querystring = "show";
 				}
 				Chsword.Reader.Search ds = new Chsword.Reader.Search(_dict, querystring);
 				ds.Nowpage = 1;
 				ds.Everypage = 10;
-				ds.Template = ChSession.UseridwithoutError == 0 ? "SearchUserListSample" : "UserList";
+				ds.Template = CHUser.UseridwithoutError == 0 ? "SearchUserListSample" : "UserList";
 				Chsword.Reader.ServerResponse sr = ds.GetMember();
 
 				ViewData["ResultItems"] = sr.ResponseText;

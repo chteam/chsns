@@ -14,7 +14,7 @@ namespace Chsword.Web.UI {
 					}
 				}
 			}
-			byte status = ChSession.Status;
+			byte status = CHUser.Status;
 			if (Path.urlFilename == "message") {//MessageË­¶¼ÄÜ¿´
 				return;
 			}

@@ -73,7 +73,7 @@ namespace Chsword.Execute {
 				case 0:
 					return "要退出的成员不在群中";//不是本人的群
 				case 5:
-					ChSession.Status=5;
+					CHUser.Status=5;
 					return "操作成功";
 				case 1:
 					return "操作成功";
@@ -179,7 +179,7 @@ namespace Chsword.Execute {
 			p[1].Value = _userid;
 			p[2].Value = _executerid;
 			p[3].Value = i;
-			p[4].Value= ChSession.isAdmin;
+			p[4].Value= CHUser.IsAdmin;
 			DoDataBase dd = new DoDataBase();
 			return int.Parse(dd.DoParameterSql("GroupUser_Option", p)) == 1 ? true : false;
 		}

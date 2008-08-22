@@ -32,17 +32,17 @@ namespace Chsword.Execute {
 				case 1:
 					Message.SendMessageHtml(_fromid,
 						_toid,
-						ChSession.Username + "已经同意加你为好友",
-						ChSession.Username + "已经同意加你为好友"
+						CHUser.Username + "已经同意加你为好友",
+						CHUser.Username + "已经同意加你为好友"
 						);
 					return string.Empty;
 				case 2:
 					Message.SendMessageHtml(_fromid,
 						_toid,
-						ChSession.Username + "申请加你为好友",
+						CHUser.Username + "申请加你为好友",
 						string.Format(
 						ChCache.GetConfig("Message", "ApplyFriend"),
-						ChSession.Username,
+						CHUser.Username,
 						_fromid)
 						);
 					return string.Empty;

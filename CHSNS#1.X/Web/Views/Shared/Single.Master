@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Single.Master.cs" Inherits="CHSNS.Web.Views.Shared.Single" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>注册</title>
+
+	<script type="text/javascript"></script>
+	<%=Html.CSSLink("master")%>
+	<%=Html.CSSLink("register")%>
+	<%=Html.Script("Framework") %>
+	<%=Html.Script("CHSNSLib") %>
+
+	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
+</head>
+<body>
+	<div id="header">
+	</div>
+	<div id="container">
+		<div id="intro">
+			<div id="pageHeader">
+				<div id="publicmenu" class="mainlink mymenu">
+					<%=Html.RenderUserControl("/Views/Shared/PublicMenu.ascx") %>
+				</div>
+				<div class="secondlink">
+					<%=Html.RenderUserControl("/Views/Shared/Utility.ascx") %></div>
+			</div>
+		</div>
+		<div id="content">
+			<div id="pcontent" style="height: 100%">
+				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+			</div>
+		</div>
+		<%=Html.RenderUserControl("/Views/Shared/Footer.ascx") %>
+		<div id="linkList">
+			<div id="linkList2">
+			</div>
+			<div id="ad" style="padding-top: 20px">
+			</div>
+		</div>
+	</div>
+	<div id="extendDiv1">
+		<span></span>
+	</div>
+	<div id="extendDiv2">
+		<span></span>
+	</div>
+	<div id="extendDiv3">
+		<span></span>
+	</div>
+	<div id="extendDiv4">
+		<span></span>
+	</div>
+	<div id="extendDiv5">
+		<span></span>
+	</div>
+	<div id="extendDiv6">
+		<span></span>
+	</div>
+	<asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
+</body>
+</html>

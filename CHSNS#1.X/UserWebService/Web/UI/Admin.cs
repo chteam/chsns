@@ -7,7 +7,7 @@ namespace CHSNS.Web.UI {
 	public class Admin : Chsword.Web.UI.Page {
 		protected override void OnLoad(EventArgs e) {
 			base.OnLoad(e);
-			if (ChSession.Status < 199) {
+			if (CHUser.Status < 199) {
 				Response.Redirect("/");
 			}
 			//SetCssJs("");

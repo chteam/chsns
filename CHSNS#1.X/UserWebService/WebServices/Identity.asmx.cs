@@ -73,13 +73,13 @@ namespace CHSNS
 		public void Logout() {
 			//ChCookies.Expires=DateTime.Now.AddDays(-1);
 			ChCookies.Clear();
-			ChSession.Clear();
+			CHUser.Clear();
 		}
 		#endregion
 		#region 注册Field -- 大学生
 		[WebMethod(EnableSession = true)]
 		public bool UpdateUniversityField(string uni, string xueyuan) {
-			if (ChSession.Status != 1)
+			if (CHUser.Status != 1)
 				return false;
 			SqlParameter[] sqlParameter = new SqlParameter[4]{
 					new SqlParameter("@University", SqlDbType.NVarChar, 50),
@@ -89,7 +89,7 @@ namespace CHSNS
 				};
 			sqlParameter[0].Value = uni.Trim();
 			sqlParameter[1].Value = xueyuan.Trim();
-			sqlParameter[2].Value = ChSession.Userid;
+			sqlParameter[2].Value = CHUser.UserID;
 			sqlParameter[3].Value = 1;
 			DoDataBase base2 = new DoDataBase();
 			long ret = long.Parse(base2.DoParameterSql("Field_Add", sqlParameter));

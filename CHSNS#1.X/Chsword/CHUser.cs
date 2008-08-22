@@ -20,7 +20,7 @@ namespace CHSNS
 	/// AU:邹健
 	/// LE:2007 10 10
 	/// </summary>
-	public partial class ChSession
+	public partial class CHUser
 	{
 		/// <summary>
 		/// 只有注册时才用的属性
@@ -40,7 +40,7 @@ namespace CHSNS
 		/// <summary>
 		/// 获取当前用户ID,如用户未登录则抛出异常.
 		/// </summary>
-		static public long Userid {
+		static public long UserID {
 			get {
 				if (HttpContext.Current.Session["userid"] != null) {
 					long _Userid = 0;
@@ -80,6 +80,10 @@ namespace CHSNS
 				HttpContext.Current.Session.Add("username", value);
 			}
 		}
+		/// <summary>
+		/// 初始化状态
+		/// </summary>
+		/// <param name="status"></param>
 		static public void InitStatus(object status) {
 			HttpContext.Current.Session.Add("status", status);
 		}
@@ -102,31 +106,31 @@ namespace CHSNS
 							new SqlParameter("@Userid", SqlDbType.BigInt),
 							new SqlParameter("@status", SqlDbType.TinyInt),
 					};
-					sp[0].Value = ChSession.Userid;
+					sp[0].Value = CHUser.UserID;
 					sp[1].Value = value;
 					DoDataBase db = new DoDataBase();
 					db.ExecuteSql("Status_Update", sp);
 				}
 			}
 		}
-		static public bool isAdmin {
+		static public bool IsAdmin {
 			get {
 				return Status > 199;
 			}
 		}
-		static public bool isLogined {
+		static public bool IsLogin {
 			get {
-				return ChSession.UseridwithoutError != 0;
+				return CHUser.UseridwithoutError != 0;
 			}
 		}
 		static public int unReadMessage {
 			get {
-				string name = string.Format("unReadMessage.{0}", Userid);
+				string name = string.Format("unReadMessage.{0}", UserID);
 				if (ChCache.IsNullorEmpty(name) || ChCache.GetCache(name).ToString() == "0") {
 					SqlParameter[] sp = new SqlParameter[1] { 
 					        new SqlParameter("@userid", SqlDbType.BigInt)
 					};
-					sp[0].Value = ChSession.Userid;
+					sp[0].Value = CHUser.UserID;
 					DoDataBase db = new DoDataBase();
 					ChCache.SetCache(name,
 						db.DoDataTable("unSee_Countlist", sp).Rows[0][0],

@@ -122,7 +122,7 @@ namespace CHSNS.Reader {
 					getTime(dr["addtime"]),
 					getTitle(dr["title"]),
 					getPic(dr["faceurl"]),
-					(!Template.ToLower().Equals("supernoterandompage")&&(ChSession.UseridwithoutError.Equals(dr["userid"])||ChSession.Status>199))?
+					(!Template.ToLower().Equals("supernoterandompage")&&(CHUser.UseridwithoutError.Equals(dr["userid"])||CHUser.Status>199))?
 					String.Format(ChCache.GetConfig("Note","SuperNone_Delete"),dr["id"]):"",
 					(Type==1)?string.Format(ChCache.GetConfig("UserLink"),dr["userid"],dr["name"]):"",
 					drq.Length>0?drq[0]["name"]:""
@@ -130,8 +130,8 @@ namespace CHSNS.Reader {
 				this.Username = dr["name"].ToString();
 			}
 			if (string.IsNullOrEmpty(Username)) {
-				if (Userid == ChSession.Userid) {
-					Username = ChSession.Username;
+				if (Userid == CHUser.UserID) {
+					Username = CHUser.Username;
 				} else {
 					Identity identity = new Identity();
 					Username = identity.GetUserName(Userid);
@@ -153,8 +153,8 @@ namespace CHSNS.Reader {
 			p[1].Value = Nowpage;
 			p[2].Value = Everypage;
 			p[3].Value = type;
-			p[4].Value = ChSession.Userid;
-			p[5].Value= ChSession.Status;
+			p[4].Value = CHUser.UserID;
+			p[5].Value= CHUser.Status;
 			p[6].Value = ChParameter.canNull(SysCategory);
 			DoDataBase dd = new DoDataBase();
 			return dd.DoDataSet("SuperNote_List", p).Tables[0];

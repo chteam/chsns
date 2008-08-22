@@ -39,10 +39,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Components.Binder, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
-    <Reference Include="Castle.Components.Common.EmailSender, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
-    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -54,6 +55,20 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\System.Web.Abstractions.dll</HintPath>
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\System.Web.Routing.dll</HintPath>
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -243,11 +258,9 @@
     <None Include="Views\Home\AboutUs.vm" />
     <None Include="Views\Home\Error.vm" />
     <None Include="Views\Home\GetCode.vm" />
-    <None Include="Views\Home\index.vm" />
     <None Include="Views\Home\Invite.vm" />
     <None Include="Views\Home\PrivateClaim.vm" />
     <None Include="Views\Home\SetPassword.vm" />
-    <None Include="Views\Home\About.vm" />
     <None Include="Views\Html\ChangePassword.vm" />
     <None Include="Views\Html\ChangeShowLevel.vm" />
     <None Include="Views\Html\Comment_Item.vm" />
@@ -265,13 +278,12 @@
     <None Include="Views\Html\UserList-FriendRequest.vm" />
     <None Include="Views\Html\UserList-Random.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
-    <None Include="Views\Shared\Site.vm" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\Setting.aspx" />
+    <Content Include="Views\Shared\Single.Master" />
+    <Content Include="Views\Shared\Site.Master" />
     <None Include="Views\Shared\BlogMaster.vm" />
-    <None Include="Views\Shared\master-footer.vm" />
-    <None Include="Views\Shared\master-Login.vm" />
-    <None Include="Views\Shared\master-MyMenu.vm" />
-    <None Include="Views\Shared\master-publicmenu.vm" />
-    <None Include="Views\Shared\master-Utility.vm" />
     <None Include="Views\Shared\reg.vm" />
     <None Include="Views\Mail\replyback.vm" />
     <None Include="Views\Mail\Test.vm" />
@@ -599,6 +611,12 @@
     <Content Include="Template\Master.htm" />
     <Content Include="Template\UpLoadFile.htm" />
     <Content Include="Views\Readme.txt" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\Footer.ascx" />
+    <Content Include="Views\Shared\LoginControl.ascx" />
+    <Content Include="Views\Shared\MyMenu.ascx" />
+    <Content Include="Views\Shared\PublicMenu.ascx" />
+    <Content Include="Views\Shared\Utility.ascx" />
     <Content Include="Views\User\Readme.txt" />
     <Content Include="WebServices\Application.asmx" />
     <Content Include="WebServices\AutoComplete.asmx" />
@@ -633,10 +651,6 @@
       <Project>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</Project>
       <Name>CHSNS.Controllers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.NVelocityEngine\CHSNS.NVelocityEngine.csproj">
-      <Project>{F577A7E2-6B29-4322-B2C8-8567879EF25F}</Project>
-      <Name>CHSNS.NVelocityEngine</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Chsword\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
@@ -645,6 +659,85 @@
       <Project>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</Project>
       <Name>CHSNS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Views\Home\About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Setting.aspx.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\Setting.aspx.designer.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Footer.ascx.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Footer.ascx.designer.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\LoginControl.ascx.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\LoginControl.ascx.designer.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\MyMenu.ascx.cs">
+      <DependentUpon>MyMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\MyMenu.ascx.designer.cs">
+      <DependentUpon>MyMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\PublicMenu.ascx.cs">
+      <DependentUpon>PublicMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\PublicMenu.ascx.designer.cs">
+      <DependentUpon>PublicMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Single.Master.cs">
+      <DependentUpon>Single.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Single.Master.designer.cs">
+      <DependentUpon>Single.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Utility.ascx.cs">
+      <DependentUpon>Utility.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Utility.ascx.designer.cs">
+      <DependentUpon>Utility.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\App_Code\" />
