@@ -21,10 +21,10 @@
 	<div>
 	    <h3><a href="/Application.aspx">编辑</a>菜单</h3>
 	    <ul id="MyApplication">
-#foreach($item in $ChHelper.Db.MyApplicationRows)
-#each
-<li id="$item.get_item("id")"><a href="$item.get_item("Folder")">$item.get_item("shortname")</a></li>
-#end
+			<%	 foreach (System.Data.DataRow dr in Url.CH().DB.MyApplicationRows) {%>
+			<li id="<%=dr["id"]%>"><a href="<%=dr["folder"]%>">
+				<%=dr["shortname"]%></a></li>
+			<%} %>
 	    </ul>
 	</div>
 </div>
