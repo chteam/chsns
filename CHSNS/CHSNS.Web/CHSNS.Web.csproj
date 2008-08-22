@@ -429,6 +429,7 @@
     <None Include="Style\Default\Images\Thumbs.db" />
     <None Include="Style\foxblue\Images\Thumbs.db" />
     <Content Include="Config\Sex.xml" />
+    <Content Include="Config\ThumbSize.xml" />
     <Content Include="Js\jquery-ui.js" />
     <Content Include="Js\ui.datepicker-zh-CN.js" />
     <Content Include="Log\20080713.txt" />
