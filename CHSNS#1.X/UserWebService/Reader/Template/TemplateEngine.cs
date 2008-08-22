@@ -1,8 +1,8 @@
-﻿namespace ChAlumna.Template
-{
+﻿
 	using System;
 	using System.IO;
 	using CHSNS;
+namespace CHSNS.Template {
 	public class TemplateEngine
 	{
 		static public string ToString(Dictionary dict, string view) {

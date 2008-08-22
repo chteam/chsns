@@ -1,5 +1,3 @@
-namespace ChAlumna.Template
-{
 	using System;
 	using System.Collections;
 	using System.ComponentModel;
@@ -15,6 +13,8 @@ namespace ChAlumna.Template
 	using NVelocity.App;
 	using NVelocity.Context;
 	using NVelocity.Runtime;
+namespace CHSNS.Template
+{
 
 	/// <summary>
 	/// 实现了 <see cref="ITemplateEngine"/> 接口
@@ -131,7 +131,7 @@ namespace ChAlumna.Template
 				String expandedTemplateDir = ExpandTemplateDir(templateDir);
 				log.InfoFormat("Initializing NVelocityTemplateEngine component using template directory: {0}", expandedTemplateDir);
 				
-				FileInfo propertiesFile = new FileInfo(Path.Combine(expandedTemplateDir, "nvelocity.properties"));
+				FileInfo propertiesFile = new FileInfo(System.IO.Path.Combine(expandedTemplateDir, "nvelocity.properties"));
 				if (propertiesFile.Exists)
 				{
 					log.Info("Found 'nvelocity.properties' on template dir, loading as base configuration");

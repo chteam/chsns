@@ -1,8 +1,8 @@
-namespace ChAlumna.Template
-{
 	using System;
 	using System.Collections;
-	using System.IO;
+	using System.IO;namespace CHSNS.Template
+{
+
 
 	/// <summary>
 	/// 解析脚本文件的引擎
