@@ -122,6 +122,7 @@ namespace CHSNS.NVelocityEngine
 			entries["html"] = entries["htmlhelper"] = new HtmlHelperAdapter(context, this);
 			entries["url"] = entries["urlhelper"] = new UrlHelper(context);
 			entries["ajax"] = entries["ajaxhelper"] = new AjaxHelper(context);
+			entries["ChHelper"] = entries["chhelper"] = entries["ch"] = new ChHelper();
 		}
 	}
 }

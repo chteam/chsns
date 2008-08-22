@@ -3,45 +3,50 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS", "UserWebService\CHSNS.csproj", "{078BA932-C865-43EA-81BF-EAE053DE0A6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChAlumna.Core", "Chsword\ChAlumna.Core.csproj", "{F7CF4538-9101-4328-81D0-AF1B2A8B314A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core", "Chsword\CHSNS.Core.csproj", "{F7CF4538-9101-4328-81D0-AF1B2A8B314A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChAlumna.Data", "ChAlumna.Data\ChAlumna.Data.csproj", "{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Data", "ChAlumna.Data\CHSNS.Data.csproj", "{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChAlumna.Config", "ChAlumna.Config\ChAlumna.Config.csproj", "{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Config", "ChAlumna.Config\CHSNS.Config.csproj", "{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChAlumna.Models", "ChAlumna.Models\ChAlumna.Models.csproj", "{A13FEE3F-28F9-4A9C-B774-7C958124D949}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Models", "ChAlumna.Models\CHSNS.Models.csproj", "{A13FEE3F-28F9-4A9C-B774-7C958124D949}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{565374D0-3D96-4D3B-9E95-108574BA9755}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.NVelocityEngine", "CHSNS.NVelocityEngine\CHSNS.NVelocityEngine.csproj", "{F577A7E2-6B29-4322-B2C8-8567879EF25F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Controllers", "CHSNS.Controllers\CHSNS.Controllers.csproj", "{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = ChAlumna.Config\\ChAlumna.Config.csproj
-		SccProjectName1 = ChAlumna.Config
-		SccLocalPath1 = ChAlumna.Config
-		SccProjectUniqueName2 = ChAlumna.Data\\ChAlumna.Data.csproj
-		SccProjectName2 = ChAlumna.Data
-		SccLocalPath2 = ChAlumna.Data
-		SccProjectUniqueName3 = ChAlumna.Models\\ChAlumna.Models.csproj
-		SccProjectName3 = ChAlumna.Models
-		SccLocalPath3 = ChAlumna.Models
-		SccProjectUniqueName4 = Chsword\\ChAlumna.Core.csproj
-		SccProjectName4 = Chsword
-		SccLocalPath4 = Chsword
-		SccProjectUniqueName5 = Web\\Web.csproj
-		SccProjectName5 = Web
-		SccLocalPath5 = Web
-		SccProjectUniqueName6 = UserWebService\\CHSNS.csproj
-		SccProjectName6 = UserWebService
-		SccLocalPath6 = UserWebService
-		SccProjectUniqueName7 = CHSNS.NVelocityEngine\\CHSNS.NVelocityEngine.csproj
-		SccProjectName7 = CHSNS.NVelocityEngine
-		SccLocalPath7 = CHSNS.NVelocityEngine
+		SccProjectUniqueName0 = Web\\Web.csproj
+		SccProjectName0 = Web
+		SccLocalPath0 = Web
+		SccProjectUniqueName1 = UserWebService\\CHSNS.csproj
+		SccProjectName1 = UserWebService
+		SccLocalPath1 = UserWebService
+		SccProjectUniqueName2 = CHSNS.NVelocityEngine\\CHSNS.NVelocityEngine.csproj
+		SccProjectName2 = CHSNS.NVelocityEngine
+		SccLocalPath2 = CHSNS.NVelocityEngine
+		SccProjectUniqueName3 = CHSNS.Controllers\\CHSNS.Controllers.csproj
+		SccProjectName3 = CHSNS.Controllers
+		SccLocalPath3 = CHSNS.Controllers
+		SccProjectUniqueName4 = ChAlumna.Models\\CHSNS.Models.csproj
+		SccProjectName4 = ChAlumna.Models
+		SccLocalPath4 = ChAlumna.Models
+		SccProjectUniqueName5 = ChAlumna.Data\\CHSNS.Data.csproj
+		SccProjectName5 = ChAlumna.Data
+		SccLocalPath5 = ChAlumna.Data
+		SccProjectUniqueName6 = Chsword\\CHSNS.Core.csproj
+		SccProjectName6 = Chsword
+		SccLocalPath6 = Chsword
+		SccProjectUniqueName7 = ChAlumna.Config\\CHSNS.Config.csproj
+		SccProjectName7 = ChAlumna.Config
+		SccLocalPath7 = ChAlumna.Config
+		SccLocalPath8 = .
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -122,6 +127,16 @@ Global
 		{F577A7E2-6B29-4322-B2C8-8567879EF25F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F577A7E2-6B29-4322-B2C8-8567879EF25F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F577A7E2-6B29-4322-B2C8-8567879EF25F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Release|.NET.ActiveCfg = Release|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

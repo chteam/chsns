@@ -1,5 +1,5 @@
 ﻿<ul class="tags">
 #foreach($item in $tags)
-<li class="tag_${item.count}"><a href="/logtag/${String.TagsEncode(${item.title})}.ashx" target="_blank">$item.title</a></li>
+<li class="tag_${item.count}"><a href="/logtag/${item.title}}.ashx" target="_blank">$item.title</a></li>
 #end
 </ul>

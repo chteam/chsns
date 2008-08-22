@@ -15,16 +15,16 @@ $!javascript
 #end
 	</head>
 	<body>
-$Html.Hidden("Hduserid", $session.get_Item("userid"))
+$html.Hidden("Hduserid", $session.get_item("userid"))
 				<div id="header"></div>
 				<div id="container">
 					<div id="intro">
 						<div id="pageHeader">
 							<div id="publicmenu" class="mymenu">
-							##parse("$siteroot/Layouts/master-publicmenu.vm")
+							#parse( "Shared/master-publicmenu.vm" )
 							</div>
 							<div class="secondlink">
-							##parse("$siteroot/Layouts/master-utility.vm")
+							##parse("Shared/master-utility.vm")
 							</div>
 						</div>
 					</div>
@@ -33,10 +33,10 @@ $Html.Hidden("Hduserid", $session.get_Item("userid"))
 							$childContent
 						</div>
 					</div>
-##parse("$siteroot/Layouts/master-footer.vm")##Footer部分
+##parse("Shared/master-footer.vm")##Footer部分
 					<div id="linkList">
 						<div id="linkList2">
-						##parse("$siteroot/Layouts/master-mymenu.vm")
+						##parse("Shared/master-mymenu.vm")
 						</div>
 #if($ChHelper.ChSite.Publish.IsShow)
 <div id="master-publish">

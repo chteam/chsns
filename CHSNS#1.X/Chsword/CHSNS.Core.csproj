@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
     <RootNamespace>CHSNS</RootNamespace>
-    <AssemblyName>ChAlumna.Core</AssemblyName>
+    <AssemblyName>CHSNS.Core</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -60,7 +60,7 @@
     <FileAlignment>4096</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DocumentationFile>bin\Release\ChAlumna.Core.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\CHSNS.Core.xml</DocumentationFile>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
@@ -110,9 +110,9 @@
     <Compile Include="Xml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Config\ChAlumna.Config.csproj">
+    <ProjectReference Include="..\ChAlumna.Config\CHSNS.Config.csproj">
       <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
-      <Name>ChAlumna.Config</Name>
+      <Name>CHSNS.Config</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

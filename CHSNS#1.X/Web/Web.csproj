@@ -247,6 +247,7 @@
     <None Include="Views\Home\Invite.vm" />
     <None Include="Views\Home\PrivateClaim.vm" />
     <None Include="Views\Home\SetPassword.vm" />
+    <None Include="Views\Home\About.vm" />
     <None Include="Views\Html\ChangePassword.vm" />
     <None Include="Views\Html\ChangeShowLevel.vm" />
     <None Include="Views\Html\Comment_Item.vm" />
@@ -616,25 +617,29 @@
     <Content Include="WebServices\Services.asmx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Config\ChAlumna.Config.csproj">
+    <ProjectReference Include="..\ChAlumna.Config\CHSNS.Config.csproj">
       <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
-      <Name>ChAlumna.Config</Name>
+      <Name>CHSNS.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ChAlumna.Data\ChAlumna.Data.csproj">
+    <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">
       <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
-      <Name>ChAlumna.Data</Name>
+      <Name>CHSNS.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ChAlumna.Models\ChAlumna.Models.csproj">
+    <ProjectReference Include="..\ChAlumna.Models\CHSNS.Models.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
-      <Name>ChAlumna.Models</Name>
+      <Name>CHSNS.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHSNS.Controllers\CHSNS.Controllers.csproj">
+      <Project>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</Project>
+      <Name>CHSNS.Controllers</Name>
     </ProjectReference>
     <ProjectReference Include="..\CHSNS.NVelocityEngine\CHSNS.NVelocityEngine.csproj">
       <Project>{F577A7E2-6B29-4322-B2C8-8567879EF25F}</Project>
       <Name>CHSNS.NVelocityEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Chsword\ChAlumna.Core.csproj">
+    <ProjectReference Include="..\Chsword\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
-      <Name>ChAlumna.Core</Name>
+      <Name>CHSNS.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\UserWebService\CHSNS.csproj">
       <Project>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</Project>

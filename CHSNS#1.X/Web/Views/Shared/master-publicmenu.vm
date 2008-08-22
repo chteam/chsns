@@ -1,4 +1,5 @@
-﻿#if($session.Contains("userid"))
+﻿#stop
+#if($session.Contains("userid"))
 <ul>
 	<li class="menuli">
 		$url.link("我的页面", "%{area='',controller='user',action='index'}","%{class='menu_mypage'}")

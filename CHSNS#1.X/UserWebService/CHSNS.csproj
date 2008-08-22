@@ -53,18 +53,6 @@
     <FileAlignment>4096</FileAlignment>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Components.Binder, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Castle.Components.Binder.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Components.Validator, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Castle.Components.Validator.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Chsword.Ajax, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Chsword.Ajax\bin\Release\Chsword.Ajax.dll</HintPath>
@@ -72,14 +60,6 @@
     <Reference Include="LinqToSqlExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\LinqToSqlExtensions\bin\Release\LinqToSqlExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcContrib, Version=0.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\MvcContrib.dll</HintPath>
-    </Reference>
-    <Reference Include="NVelocity, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\NVelocity.dll</HintPath>
     </Reference>
     <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>False</Private>
@@ -145,7 +125,6 @@
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="ChAlumna\DataSetCache.cs" />
     <Compile Include="ChAlumna\Email.cs" />
-    <Compile Include="ChAlumna\GlobalApplication.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Interface\IExecute.cs" />
@@ -195,6 +174,9 @@
     <Compile Include="Filter\PostOnlyFilter.cs" />
     <Compile Include="MvcHelper\Include.cs" />
     <Compile Include="System.Web.Mvc\RedirectExt.cs" />
+    <Compile Include="Tools\PaginationHelper\IPagination.cs" />
+    <Compile Include="Tools\PaginationHelper\LazyPagination.cs" />
+    <Compile Include="Tools\PaginationHelper\PaginationHelper.cs" />
     <Compile Include="WebServices\Admin.asmx.cs">
       <DependentUpon>Admin.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -287,25 +269,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Config\ChAlumna.Config.csproj">
+    <ProjectReference Include="..\ChAlumna.Config\CHSNS.Config.csproj">
       <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
-      <Name>ChAlumna.Config</Name>
+      <Name>CHSNS.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ChAlumna.Data\ChAlumna.Data.csproj">
+    <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">
       <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
-      <Name>ChAlumna.Data</Name>
+      <Name>CHSNS.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ChAlumna.Models\ChAlumna.Models.csproj">
+    <ProjectReference Include="..\ChAlumna.Models\CHSNS.Models.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
-      <Name>ChAlumna.Models</Name>
+      <Name>CHSNS.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.NVelocityEngine\CHSNS.NVelocityEngine.csproj">
-      <Project>{F577A7E2-6B29-4322-B2C8-8567879EF25F}</Project>
-      <Name>CHSNS.NVelocityEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Chsword\ChAlumna.Core.csproj">
+    <ProjectReference Include="..\Chsword\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
-      <Name>ChAlumna.Core</Name>
+      <Name>CHSNS.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
