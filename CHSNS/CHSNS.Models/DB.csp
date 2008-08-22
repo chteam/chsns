@@ -18,7 +18,7 @@
       <property name="DisableRenaming">False</property>
       <property name="DbmlFile">C:\CHSNS\CHSNS.Models\CHSNSDB.DBML</property>
       <property name="SourceDatabase">
-        <connectionString>Data Source=.;Initial Catalog=CHSNSDB;Integrated Security=True</connectionString>
+        <connectionString>Data Source=(local);Initial Catalog=CHSNSDB;Integrated Security=True</connectionString>
         <providerType>SchemaExplorer.SqlSchemaProvider,SchemaExplorer.SqlSchemaProvider</providerType>
       </property>
       <property name="EntityNamespace">CHSNS.Models</property>
