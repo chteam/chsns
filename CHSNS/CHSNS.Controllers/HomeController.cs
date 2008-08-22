@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CHSNS.Models;
-
+using System.Drawing;
 namespace CHSNS.Controllers {
 	[HandleError]
 	public class HomeController : Controller {
@@ -22,7 +22,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <returns></returns>
 		public ActionResult About() {
-			throw new Exception("关于里不知道写啥先异常一下吧");
+
 			return View();
 		}
 		/// <summary>
