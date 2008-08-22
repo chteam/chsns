@@ -1,9 +1,9 @@
 
-namespace ChAlumna.Data
+namespace CHSNS.Data
 {
-	using System.Data;
 	using System.Collections;
-using ChAlumna.Models;
+	using System.Data;
+	using ChAlumna.Models;
 	public interface IDataBase
 	{
 		IDictionary Session {
