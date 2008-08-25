@@ -37,7 +37,7 @@ namespace CHSNS {
 			return Path.GetFace(userid.ToString(), ImgSize.middle);
 		}
 		public string GetFace_Big() {
-			return GetFace_Big(CHSNSUser.Current.Userid);
+			return GetFace_Big(CHSNSUser.Current.UserID);
 		}
 		public string GetFace_Big(object userid) {
 			return Path.GetFace(userid.ToString(), ImgSize.big);

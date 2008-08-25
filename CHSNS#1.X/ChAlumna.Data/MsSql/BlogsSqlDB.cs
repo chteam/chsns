@@ -9,7 +9,7 @@
 		public bool IsBlogExists {
 			get {
 				var blog = (from b in DB.Blogs
-							where b.userid == CHSNSUser.Current.Userid
+							where b.userid == CHSNSUser.Current.UserID
 							select 1).Count();
 				return blog == 1;
 			}

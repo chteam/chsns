@@ -90,7 +90,7 @@
 			}
 			return ChCache.GetCache(cachename) as IList;
 		}
-		public IList<NotPas> GetNotebyTag(string title) {
+		public IList<NotePas> GetNotebyTag(string title) {
 			DBE.Execute(
 				"update tags set ReachTime=getdate(),Count=Count+1 where title=@title", "@title", title);
 			return (from l in DB.LogTag
@@ -98,7 +98,7 @@
 					&& l.Tags.title == title.Trim()
 					&& l.Note.IsPost == (byte)ShowType.完全公开
 					join b in DB.Blogs on l.Note.userid equals b.userid
-					select new NotPas() {
+					select new NotePas() {
 						ID = l.Note.id,
 						Title = l.Note.title,
 						ViewCount = l.Note.ViewCount,
@@ -108,7 +108,7 @@
 						UserID = b.userid,
 						Body = l.Note.body.Substring(0, 50)
 					})
-					.ToList<NotPas>();
+					.ToList<NotePas>();
 		}
 	
 

@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseAdminController.cs" />
+    <Compile Include="Base\BaseBlockController.cs" />
+    <Compile Include="Base\BaseController.cs" />
+    <Compile Include="Base\BaseSystemAppController.cs" />
+    <Compile Include="Base\BaseViewComponent.cs" />
+    <Compile Include="Base\BaseWizardPage.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\AdminController_File.cs" />
@@ -94,6 +100,7 @@
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="GlobalApplication.cs" />
     <Compile Include="MvcHelper\ChHelper.cs" />
     <Compile Include="MvcHelper\Include.cs" />

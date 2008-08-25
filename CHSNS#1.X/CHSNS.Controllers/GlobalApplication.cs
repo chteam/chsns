@@ -62,7 +62,7 @@ namespace CHSNS {
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 			routes.MapRoute(
-				"Default",                                              // Route name
+				"url",                                              // Route name
 				"{controller}/{action}.ashx",                           // URL with parameters
 				new { controller = "Home", action = "Index" }  // Parameter defaults
 			);

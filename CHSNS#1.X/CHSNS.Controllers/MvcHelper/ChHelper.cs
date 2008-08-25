@@ -7,12 +7,22 @@ namespace CHSNS {
 				return SiteConfig.Current;
 			}
 		}
-		public CHSNSUser ChUser() {
-			return CHSNS.CHSNSUser.Current;
+		public CHSNSUser User{
+			get {
+				return CHSNS.CHSNSUser.Current;
+			}
 		}
 		public Path Path {
 			get {
 				return CHSNS.Path.Current;
+			}
+		}
+		StringHelper _str = null;
+		public StringHelper Str {
+			get {
+				if (_str == null)
+					_str = new StringHelper();
+				return _str;
 			}
 		}
 		public DataSetCache DataCache {

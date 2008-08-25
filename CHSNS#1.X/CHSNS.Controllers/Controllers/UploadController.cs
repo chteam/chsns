@@ -78,7 +78,7 @@
 				Dictionary dict = new Dictionary();
 				dict.Add("@photoname","");
 				dict.Add("@Albumid", Convert.ToInt64(Albumid));
-					dict.Add("@userid",CHSNSUser.Current.Userid);
+					dict.Add("@userid",CHSNSUser.Current.UserID);
 					dict.Add("@Path",chfilename);
 					dict.Add("@FileSize",4000 + file.ContentLength);
 				DoDataBase dd = new DoDataBase();
@@ -163,8 +163,8 @@
 				fn = itemID;
 			}
 			if (mode == "userface") {
-				serverpath = CHSNS.Path.UserFolder(CHSNSUser.Current.Userid.ToString());
-				fn = CHSNSUser.Current.Userid.ToString().Substring(0, 3);
+				serverpath = CHSNS.Path.UserFolder(CHSNSUser.Current.UserID.ToString());
+				fn = CHSNSUser.Current.UserID.ToString().Substring(0, 3);
 			}
 			//Debug.Trace(mode + serverpath);
 
@@ -249,7 +249,7 @@
 			}
 			if (mode == "userface") {
 				SetStarLevel(CHUser.UserID);//¸üÐÂ
-				WriteJs("parent.uploadsuccess('" + Path.GetFace(CHSNSUser.Current.Userid.ToString(), ImgSize.big) + "','" + itemID + "'); ");
+				WriteJs("parent.uploadsuccess('" + Path.GetFace(CHSNSUser.Current.UserID.ToString(), ImgSize.big) + "','" + itemID + "'); ");
 				return;
 			}
 			WriteErr("error:Î´Öª´íÎó");

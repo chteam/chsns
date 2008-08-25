@@ -11,13 +11,13 @@ namespace CHSNS.Controllers
 		public ActionResult Index() {
 			return View("Index");
 		}
-		public ActionResult About() {
-			return View();
-		}
 		public void Logout() {
 			Identity identity = new Identity();
 			identity.Logout();
 			RedirectToAction("index");
+		}
+		protected override void HandleUnknownAction(string actionName) {
+			this.View(actionName).ExecuteResult(this.ControllerContext);
 		}
 	}
 }

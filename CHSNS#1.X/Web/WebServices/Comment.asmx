@@ -1,1 +1,1 @@
-<%@ WebService Language="C#" Class="ChAlumna.Comment" %>
+<%@ WebService Language="C#" Class="CHSNS.Comment" %>

@@ -49,7 +49,7 @@ namespace CHSNS {
 		[WebMethod(EnableSession = true)]
 		public DataRow ShowLevelList() {
 			DataRowCollection drs = DataBaseExecutor.GetRows("ChangeShowLevelSelect",
-				"@UserId", CHSNSUser.Current.Userid);
+				"@UserId", CHSNSUser.Current.UserID);
 			if (drs.Count == 0)
 				return null;
 			else
@@ -84,7 +84,7 @@ namespace CHSNS {
 		public bool Event_Remove(long id) {
 			DataBaseExecutor.Execute("Event_Remove",
 				"@id", id,
-			"@userid", CHSNSUser.Current.Userid,
+			"@userid", CHSNSUser.Current.UserID,
 			"@viewerstatus", CHSNSUser.Current.Status);
 
 			return true;

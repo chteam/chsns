@@ -68,7 +68,7 @@ namespace CHSNS.Controllers {
 				case "member":
 					DataRowCollection drc=g.GroupMember(groupid,1);
 					int right = 0;
-					if (drc[0].Table.Select(string.Format("userid={0}", CHSNSUser.Current.Userid)).Length > 0) {
+					if (drc[0].Table.Select(string.Format("userid={0}", CHSNSUser.Current.UserID)).Length > 0) {
 						right = Convert.ToInt32(drc[0]["level"]);
 					}
 					if (CHSNSUser.Current.isAdmin)
@@ -107,7 +107,7 @@ namespace CHSNS.Controllers {
 		[PostOnlyFilter]
 		public ActionResult UserList(string template, int page, byte type) {
 			//IDataBase idb = new DBExt(Session);
-			ViewData["userSource"] = DBExt.UserListRows(CHSNSUser.Current.Userid, page,type);
+			ViewData["userSource"] = DBExt.UserListRows(CHSNSUser.Current.UserID, page,type);
 
 			//RenderView("html", string.Format("UserList-{0}", template));
 			return View(string.Format("UserList-{0}", template));
@@ -128,7 +128,7 @@ namespace CHSNS.Controllers {
 			{
 				body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
 				addtime = DateTime.Now,
-				senderid = CHSNSUser.Current.Userid,
+				senderid = CHSNSUser.Current.UserID,
 				IsReply = isReply,
 				Logid = logid,
 				type = type
@@ -158,8 +158,8 @@ namespace CHSNS.Controllers {
 				{
 					body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
 					addtime = DateTime.Now,
-					senderid = CHSNSUser.Current.Userid,
-					ownerid = CHSNSUser.Current.Userid,
+					senderid = CHSNSUser.Current.UserID,
+					ownerid = CHSNSUser.Current.UserID,
 					IsReply = isReply,
 					Logid = logid,
 					type = 0
@@ -215,7 +215,7 @@ namespace CHSNS.Controllers {
 									cmt.body,
 									name = CHSNSUser.Current.Username,
 									cmt.Logid,
-									userid = CHSNSUser.Current.Userid,
+									userid = CHSNSUser.Current.UserID,
 									l.GroupId
 								}).SingleOrDefault();
 					Dictionary dict = new Dictionary();

@@ -15,12 +15,12 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		public void index() {
 			ViewData.Add("tabs", this.QueryNum("tabs"));
-			ViewData.Add("Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.Userid : this.QueryLong("userid"));
+			ViewData.Add("Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid"));
 			ViewData.Add("Albumid", this.QueryLong("albumid"));
 
 			Dictionary dict = new Dictionary();//参数
-			dict.Add("@Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.Userid : this.QueryLong("userid"));//参一
-			dict.Add("@Viewerid", CHSNSUser.Current.Userid);//参二
+			dict.Add("@Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid"));//参一
+			dict.Add("@Viewerid", CHSNSUser.Current.UserID);//参二
 			dict.Add("@albumid", this.QueryLong("albumid"));//参三
 
 			//IList<Album> i = ChAlumna.CastleExt.SpExecute.GetList<Album>("Album_Info", p);
@@ -43,8 +43,8 @@ namespace CHSNS.Controllers {
 		public void list() {
 			// index = ;
 			Chsword.Reader.Albums al = new Chsword.Reader.Albums();
-			al.Viewerid = CHSNSUser.Current.Userid;
-			al.Ownerid = this.QueryLong("userid") == 0 ? CHSNSUser.Current.Userid : this.QueryLong("userid");
+			al.Viewerid = CHSNSUser.Current.UserID;
+			al.Ownerid = this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid");
 			ViewData.Add("albums", al);
 			ViewData.Add("tabs", this.QueryNum("tabs"));
 

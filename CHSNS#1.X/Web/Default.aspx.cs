@@ -5,7 +5,7 @@ using System.Web.UI;
 namespace CHSNS.Web {
 	public partial class _Default : Page {
 		public void Page_Load(object sender, System.EventArgs e) {
-			Response.Redirect("~/Home");
+			Response.Redirect("~/Home/Index.ashx");
 		}
 	}
 }

@@ -25,7 +25,7 @@ using System.Web.Mvc;
 					 && gr.IsTrue==true
 					   select gr).FirstOrDefault();
 			GroupUser u = (from gu in DB.GroupUser
-					 where gu.userid == CHSNSUser.Current.Userid
+					 where gu.userid == CHSNSUser.Current.UserID
 					 && gu.Groupid == Groupid
 						   select gu).FirstOrDefault();
 			if (g == null)
@@ -75,7 +75,7 @@ using System.Web.Mvc;
 		public void ClassList() {
 
 			Dictionary dict = new Dictionary();
-			dict.Add("@userid", CHSNSUser.Current.Userid);
+			dict.Add("@userid", CHSNSUser.Current.UserID);
 			ViewData.Add("rows",DataBaseExecutor.GetRows(
 				"GetRelationClass", dict));
 		}
@@ -101,7 +101,7 @@ using System.Web.Mvc;
 		}
 		public void CreateClass() {
 			Dictionary dict=new Dictionary();
-			dict.Add("@userid",CHSNSUser.Current.Userid);
+			dict.Add("@userid",CHSNSUser.Current.UserID);
 			DataRowCollection rows = DataBaseExecutor.GetRows(
 				"SchoolInfo", dict);
 			if (rows.Count != 0) {
@@ -110,7 +110,6 @@ using System.Web.Mvc;
 				ViewData.Add("Grade", rows[0]["Grade"]);
 			}
 		}
-
 		public void Manage() {
 			long Groupid = this.QueryLong("id");
 			ViewData.Add("Groupid", Groupid);
@@ -136,20 +135,12 @@ using System.Web.Mvc;
 					new SqlParameter("@userid", SqlDbType.BigInt)
 				};
 			p[0].Value = Groupid;
-			p[1].Value = CHSNSUser.Current.Userid;
+			p[1].Value = CHSNSUser.Current.UserID;
 			DoDataBase dd = new DoDataBase();
 			ViewData.Add("group", dd.DoDataSet("GroupSetting_Select", p).Tables[0].Rows);
 
 
 		}
-
-
-
-
-
-
-
-
 		int ApplyCount(long groupid, int type) {//0为加入的成员，1为申请管理员的人
 			SqlParameter[] p = new SqlParameter[] {
 					new SqlParameter("@groupid", SqlDbType.BigInt),
@@ -159,6 +150,17 @@ using System.Web.Mvc;
 			p[1].Value = type;
 			DoDataBase d = new DoDataBase();
 			return int.Parse(d.DoParameterSql("GroupUser_ApplyCount", p));
+		}
+
+		public ActionResult ShowGroupList(string template,long Ownerid,
+			int groupclass,int Npage,int Epage,int type) {
+			return View(template, DataBaseExecutor.GetRows("GroupList",
+				"@userid", Ownerid
+				, "@page", Npage
+				, "@everypage", Epage
+				, "@GroupClass", groupclass
+				, "@type", type
+				));
 		}
 	}
 }

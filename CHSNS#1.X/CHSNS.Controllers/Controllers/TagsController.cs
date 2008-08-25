@@ -10,7 +10,7 @@ namespace CHSNS.Controllers
 	public class TagsController : BaseController
 	{
 		public ActionResult LogTag(string title) {
-			ViewData["tags"] = PaginationHelper.AsPagination<NotPas>(DBExt.GetNotebyTag(title), 1, 10);
+			ViewData["tags"] = PaginationHelper.AsPagination<NotePas>(DBExt.GetNotebyTag(title), 1, 10);
 			//DBExt ms = new DBExt(new Dictionary());
 			//ViewData["tags"] =
 			//    PaginationHelper.CreatePagination(

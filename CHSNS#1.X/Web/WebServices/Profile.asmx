@@ -1,3 +1,3 @@
 ﻿
-<%@ WebService  Class="ChAlumna.Profile" Language="C#" %>
+<%@ WebService  Class="CHSNS.Profile" Language="C#" %>
 

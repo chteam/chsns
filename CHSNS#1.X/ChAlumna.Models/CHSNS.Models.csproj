@@ -63,7 +63,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChAlumnaDB.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Entity\NotPas.cs" />
+    <Compile Include="EntityRender\CommentListPas.cs" />
+    <Compile Include="EntityRender\NotePas.cs" />
+    <Compile Include="EntityRender\UserPas.cs" />
+    <Compile Include="EntityRender\ViewListPas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -90,6 +93,15 @@
     <None Include="ChAlumnaDB.dbml.layout">
       <DependentUpon>ChAlumnaDB.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chsword\CHSNS.Core.csproj">
+      <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
+      <Name>CHSNS.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entity\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

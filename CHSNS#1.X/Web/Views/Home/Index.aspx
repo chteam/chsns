@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
 	CodeBehind="Index.aspx.cs" Inherits="CHSNS.Web.Views.Home.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
-<%=Html.Script("main") %>
+<%=Html.CSSLink("main")%>
 </asp:Content>
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="column main_column">
