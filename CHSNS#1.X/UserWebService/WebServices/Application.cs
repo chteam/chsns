@@ -39,7 +39,7 @@ namespace CHSNS
 				new SqlParameter("@UserId", SqlDbType.BigInt),
 				new SqlParameter("@appstr", SqlDbType.VarChar,4000)
 			};
-			sp[0].Value = CHSNSUser.Current.Userid;
+			sp[0].Value = CHSNSUser.Current.UserID;
 			sp[1].Value = applist;
 			DoDataBase db = new DoDataBase();
 			db.DoParameterSql("MyApplication_Save", sp);
@@ -51,7 +51,7 @@ namespace CHSNS
 			return DataBaseExecutor.GetRows(
 				"MyApplicationlist",
 				"@userid",
-				CHSNSUser.Current.Userid);
+				CHSNSUser.Current.UserID);
 		}
 	}
 }

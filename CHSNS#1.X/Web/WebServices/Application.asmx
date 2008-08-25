@@ -1,1 +1,1 @@
-﻿<%@ WebService  Class="ChAlumna.Application" Language="C#" %>
+﻿<%@ WebService  Class="CHSNS.Application" Language="C#" %>

@@ -1,1 +1,1 @@
-<%@ WebService Language="C#" Class="ChAlumna.Group" %>
+<%@ WebService Language="C#" Class="CHSNS.Group" %>

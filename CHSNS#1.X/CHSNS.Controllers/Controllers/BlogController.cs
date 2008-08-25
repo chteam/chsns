@@ -27,7 +27,7 @@ namespace CHSNS.Controllers
 		[LoginedFilter]
 		public ActionResult edit() {
 			//DBExt mb = new DBExt(Session);
-			var blog = DBExt.GetBlog(CHSNSUser.Current.Userid);
+			var blog = DBExt.GetBlog(CHSNSUser.Current.UserID);
 			ViewData["blog"] = blog;
 			//RenderView("edit");
 			return View();
@@ -49,8 +49,8 @@ namespace CHSNS.Controllers
 			}
 			try {
 			//	DBExt mb = new DBExt(Session);
-				var isexists = DBExt.GetBlog(CHSNSUser.Current.Userid);
-				blog.userid = CHSNSUser.Current.Userid;
+				var isexists = DBExt.GetBlog(CHSNSUser.Current.UserID);
+				blog.userid = CHSNSUser.Current.UserID;
 				if (isexists == null) {
 					blog.CreateTime = DateTime.Now;
 					DBExt.DB.Blogs.InsertOnSubmit(blog);

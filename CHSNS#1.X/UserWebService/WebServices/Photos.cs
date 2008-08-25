@@ -129,7 +129,7 @@ namespace CHSNS
 		public DataRowCollection PhotosRows(long albumid,long ownerid,int currentPage,int everypage){
 			Dictionary dict = new Dictionary();
 			dict.Add("@ownerid",(ownerid==0)?CHUser.UserID:ownerid);
-			dict.Add("@viewerid",CHSNSUser.Current.Userid);
+			dict.Add("@viewerid",CHSNSUser.Current.UserID);
 			dict.Add("@page",currentPage);
 			dict.Add("@everypage",everypage);
 			dict.Add("@albumid", albumid);

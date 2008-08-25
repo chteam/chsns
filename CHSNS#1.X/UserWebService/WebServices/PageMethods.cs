@@ -21,7 +21,6 @@ using CHSNS;
 using Chsword;
 using CHSNS.Data;
 using CHSNS.Models;
-using CHSNS;
 	/// <summary>
 	/// Description of PageMethods
 	/// </summary>
@@ -230,7 +229,7 @@ using CHSNS;
 				throw new Exception("非法操作.");
 			}
 			Dictionary dict = new Dictionary();
-			dict.Add("@Userid", CHSNSUser.Current.Userid);
+			dict.Add("@Userid", CHSNSUser.Current.UserID);
 			dict.Add("@PersonalInfoShowLevel", PersonalInfoShowLevel);
 			dict.Add("@FaceShowLevel", FaceShowLevel);
 			dict.Add("@AllShowLevel", AllShowLevel);
@@ -248,7 +247,7 @@ using CHSNS;
 			Dictionary dict = new Dictionary();
 			dict.Add("@Oldpwd", en.MD5Encrypt(oldpassword.Trim(), 32));
 			dict.Add("@Newpwd", en.MD5Encrypt(password.Trim(), 32));
-			dict.Add("@Userid", CHSNSUser.Current.Userid);
+			dict.Add("@Userid", CHSNSUser.Current.UserID);
 
 			DataBaseExecutor.Execute("ChangePassword", dict);
 				return "";

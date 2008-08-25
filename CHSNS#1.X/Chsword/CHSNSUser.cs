@@ -20,7 +20,7 @@ namespace CHSNS {
 		/// 获取当前用户ID,如用户未登录则抛出异常.
 		/// </summary>
 		long _userid;
-		public long Userid {
+		public long UserID {
 			get {
 				return _userid;
 			}
@@ -81,7 +81,7 @@ namespace CHSNS {
 		}
 		public bool isLogined {
 			get {
-				return Userid != 0;
+				return UserID != 0;
 			}
 		}
 		public static CHSNSUser Current {
@@ -89,7 +89,7 @@ namespace CHSNS {
 				if (CHUser.IsLogin) {
 					if (HttpContext.Current.Session["account"] == null) {
 						CHSNSUser cu = new CHSNSUser();
-						cu.Userid = CHUser.UserID;
+						cu.UserID = CHUser.UserID;
 						cu.Username = CHUser.Username;
 						HttpContext.Current.Session["account"] = cu;
 					}

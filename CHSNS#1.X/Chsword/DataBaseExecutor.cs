@@ -92,6 +92,25 @@ namespace CHSNS {
 			DataOpen.Dispose();
 		}
 
-
+		#region GetValue
+		public String GetValue(String text, IDictionary<string, object> dict) {
+			DataOpen.Open(text);
+			DbDataReader reader;
+			foreach (string key in dict.Keys) {
+				DataOpen.AddWithValue(key, dict[key]);
+			}
+			DataOpen.Command.Parameters["@RETURN_VALUE"].Direction = ParameterDirection.ReturnValue;
+			reader = DataOpen.Command.ExecuteReader();
+			string result = DataOpen.Command.Parameters["@RETURN_VALUE"].Value.ToString();
+			DataOpen.Close();
+			return result;
+		}
+		public String GetValue(String text, params object[] args) {
+			return GetValue(text, Dictionary.CreateFromArgs(args));
+		}
+		public String GetValue(String text) {
+			return GetValue(text,new Dictionary());
+		}
+		#endregion
 	}
 }

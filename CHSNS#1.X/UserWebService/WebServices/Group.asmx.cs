@@ -88,7 +88,7 @@ namespace CHSNS {
 		public DataRow GroupSetting(long groupid) { 
 			DataRowCollection ic = DataBaseExecutor.GetRows("GroupSetting_Select",
 				"@id",groupid,
-				"@Userid",CHSNSUser.Current.Userid
+				"@Userid",CHSNSUser.Current.UserID
 			);
 			return ic.Count > 0 ? ic[0] : null;
 		}

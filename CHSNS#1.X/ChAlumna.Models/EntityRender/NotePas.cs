@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace CHSNS.Models {
-	public class NotPas {
+	public class NotePas {
 		public long ID { get; set; }
 		public string Title { get; set; }
 		public long ViewCount { get; set; }

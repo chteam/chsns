@@ -15,7 +15,7 @@ namespace CHSNS.Controllers
 			string ownername = "我";
 			Boolean isMe = false;
 			if (ownerid == 0) {//我的情况
-				ownerid = CHSNSUser.Current.Userid;
+				ownerid = CHSNSUser.Current.UserID;
 				isMe = true;
 			} else {
 				Identity identity = new Identity();
@@ -44,7 +44,7 @@ namespace CHSNS.Controllers
 			Chsword.Reader.LogBook dl = new Chsword.Reader.LogBook("Note_Watch");
 			dl.Logid = this.QueryLong("id");
 			dl.Groupid = this.QueryLong("groupid");
-			dl.Viewerid = CHSNSUser.Current.Userid;
+			dl.Viewerid = CHSNSUser.Current.UserID;
 
 			ViewData.Add("noteid", dl.Logid);
 			ViewData.Add("groupid", dl.Groupid);

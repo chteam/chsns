@@ -228,7 +228,6 @@
     <None Include="Views\Comment\List.vm" />
     <None Include="Views\Ad\Ad.vm" />
     <None Include="Views\Components\AlbumItem.vm" />
-    <None Include="Views\Components\CommentList.vm" />
     <None Include="Views\Components\Event.vm" />
     <None Include="Views\Components\GroupList\ProfileLink.vm" />
     <None Include="Views\Components\Html\SearchClass.vm" />
@@ -247,7 +246,6 @@
     <None Include="Views\Components\ProfileEditChild\Upload.vm" />
     <None Include="Views\Components\ShowLevel.vm" />
     <None Include="Views\Components\System\Option.vm" />
-    <None Include="Views\Components\ViewList.vm" />
     <None Include="Views\Event\index.vm" />
     <None Include="Views\Group\ClassList.vm" />
     <None Include="Views\Group\CreateClass.vm" />
@@ -255,12 +253,10 @@
     <None Include="Views\Group\List.vm" />
     <None Include="Views\Group\Manage.vm" />
     <None Include="Views\Group\MyClass.vm" />
-    <None Include="Views\Home\AboutUs.vm" />
     <None Include="Views\Home\Error.vm" />
     <None Include="Views\Home\GetCode.vm" />
     <None Include="Views\Home\Invite.vm" />
     <None Include="Views\Home\PrivateClaim.vm" />
-    <None Include="Views\Home\SetPassword.vm" />
     <None Include="Views\Html\ChangePassword.vm" />
     <None Include="Views\Html\ChangeShowLevel.vm" />
     <None Include="Views\Html\Comment_Item.vm" />
@@ -278,8 +274,13 @@
     <None Include="Views\Html\UserList-FriendRequest.vm" />
     <None Include="Views\Html\UserList-Random.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
-    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Views\Comment\ShowList.ascx" />
+    <Content Include="Views\Event\Show.aspx" />
+    <Content Include="Views\Group\ShowProfileLinks.ascx" />
+    <Content Include="Views\Home\AboutUs.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\SetPassword.aspx" />
     <Content Include="Views\Home\Setting.aspx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
@@ -312,19 +313,9 @@
     <None Include="Views\test\index.vm" />
     <None Include="Views\Upload\Face.vm" />
     <None Include="Views\Upload\Photo.vm" />
-    <None Include="Views\User\EmptyMagicBox.vm" />
     <None Include="Views\User\friend.vm" />
     <None Include="Views\User\friendRequest.vm" />
-    <None Include="Views\User\index-account.vm" />
-    <None Include="Views\User\index-contact.vm" />
-    <None Include="Views\User\index-event.vm" />
-    <None Include="Views\User\index-isstar.vm" />
     <None Include="Views\User\index-Myactions.vm" />
-    <None Include="Views\User\index-mystatus.vm" />
-    <None Include="Views\User\index-noright.vm" />
-    <None Include="Views\User\index-personal.vm" />
-    <None Include="Views\User\index-school.vm" />
-    <None Include="Views\User\index.vm" />
     <None Include="Views\User\random.vm" />
     <Content Include="JavaScript\AdminUser.js" />
     <Content Include="JavaScript\Application.js" />
@@ -617,7 +608,18 @@
     <Content Include="Views\Shared\MyMenu.ascx" />
     <Content Include="Views\Shared\PublicMenu.ascx" />
     <Content Include="Views\Shared\Utility.ascx" />
+    <Content Include="Views\User\EmptyMagicBox.ascx" />
+    <Content Include="Views\User\Index-Account.ascx" />
+    <Content Include="Views\User\Index-Contact.ascx" />
+    <Content Include="Views\User\Index-IsStar.ascx" />
+    <Content Include="Views\User\Index-MyActions.ascx" />
+    <Content Include="Views\User\Index-MyStatus.ascx" />
+    <Content Include="Views\User\Index-NoRight.ascx" />
+    <Content Include="Views\User\Index-Personal.ascx" />
+    <Content Include="Views\User\Index-School.ascx" />
+    <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\Readme.txt" />
+    <Content Include="Views\View\ShowViewList.ascx" />
     <Content Include="WebServices\Application.asmx" />
     <Content Include="WebServices\AutoComplete.asmx" />
     <Content Include="WebServices\AutoSelect.asmx" />
@@ -661,12 +663,37 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\Home\About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Home\About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="Views\Comment\ShowList.ascx.cs">
+      <DependentUpon>ShowList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Comment\ShowList.ascx.designer.cs">
+      <DependentUpon>ShowList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Event\Show.aspx.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Event\Show.aspx.designer.cs">
+      <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Group\ShowProfileLinks.ascx.cs">
+      <DependentUpon>ShowProfileLinks.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Group\ShowProfileLinks.ascx.designer.cs">
+      <DependentUpon>ShowProfileLinks.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -674,6 +701,13 @@
     </Compile>
     <Compile Include="Views\Home\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\SetPassword.aspx.cs">
+      <DependentUpon>SetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\SetPassword.aspx.designer.cs">
+      <DependentUpon>SetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
@@ -737,6 +771,83 @@
     </Compile>
     <Compile Include="Views\Shared\Utility.ascx.designer.cs">
       <DependentUpon>Utility.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\EmptyMagicBox.ascx.cs">
+      <DependentUpon>EmptyMagicBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\EmptyMagicBox.ascx.designer.cs">
+      <DependentUpon>EmptyMagicBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index-Account.ascx.cs">
+      <DependentUpon>Index-Account.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index-Account.ascx.designer.cs">
+      <DependentUpon>Index-Account.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index-Contact.ascx.cs">
+      <DependentUpon>Index-Contact.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index-Contact.ascx.designer.cs">
+      <DependentUpon>Index-Contact.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index-IsStar.ascx.cs">
+      <DependentUpon>Index-IsStar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index-IsStar.ascx.designer.cs">
+      <DependentUpon>Index-IsStar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index-MyActions.ascx.cs">
+      <DependentUpon>Index-MyActions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index-MyActions.ascx.designer.cs">
+      <DependentUpon>Index-MyActions.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index-MyStatus.ascx.cs">
+      <DependentUpon>Index-MyStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index-MyStatus.ascx.designer.cs">
+      <DependentUpon>Index-MyStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index-NoRight.ascx.cs">
+      <DependentUpon>Index-NoRight.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index-NoRight.ascx.designer.cs">
+      <DependentUpon>Index-NoRight.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index-Personal.ascx.cs">
+      <DependentUpon>Index-Personal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index-Personal.ascx.designer.cs">
+      <DependentUpon>Index-Personal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index-School.ascx.cs">
+      <DependentUpon>Index-School.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index-School.ascx.designer.cs">
+      <DependentUpon>Index-School.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\View\ShowViewList.ascx.cs">
+      <DependentUpon>ShowViewList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\View\ShowViewList.ascx.designer.cs">
+      <DependentUpon>ShowViewList.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,7 @@ namespace CHSNS.Controllers
 			snl.Nowpage = 1;
 			snl.Template = "supernotepage";
 			snl.Userid = this.QueryLong("userid") == 0
-				? CHSNSUser.Current.Userid : this.QueryLong("userid");
+				? CHSNSUser.Current.UserID : this.QueryLong("userid");
 			ViewData["page"] = snl.CreateUserSuperNote().ToString();
 		}
 		public void randomvideo() {

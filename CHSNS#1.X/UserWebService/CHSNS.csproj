@@ -122,7 +122,6 @@
     <Compile Include="ChAlumna\Image.cs" />
     <Compile Include="ChAlumna\Path.cs" />
     <Compile Include="ChAlumna\StyleSheet.cs" />
-    <Compile Include="Base\BaseController.cs" />
     <Compile Include="ChAlumna\DataSetCache.cs" />
     <Compile Include="ChAlumna\Email.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
@@ -185,15 +184,10 @@
     <Compile Include="ChAlumna\Online.cs" />
     <Compile Include="ChAlumna\Reqres.cs" />
     <Compile Include="ChAlumna\ResponsePack.cs" />
-    <Compile Include="Base\BaseViewComponent.cs" />
-    <Compile Include="Base\BaseBlockController.cs" />
-    <Compile Include="Base\BaseSystemAppController.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
-    <Compile Include="Base\BaseAdminController.cs" />
-    <Compile Include="Base\BaseWizardPage.cs" />
     <Compile Include="Datamodel\BaseModel.cs" />
     <Compile Include="Datamodel\GroupModel.cs" />
     <Compile Include="Datamodel\MessgeModel.cs" />
