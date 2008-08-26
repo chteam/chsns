@@ -8,8 +8,9 @@
 	<script type="text/javascript"></script>
 
 	<%=Html.Script("Framework") %>
-	<%=Html.Script("/WebServices/PageMethods.asmx/js")%>
-	<%=Html.Script("/WebServices/Identity.asmx/js")%>
+	<%=Html.Script("ui") %>
+<%--	<%=Html.Script("/WebServices/Pag.eMethods.asmx/js")%>
+	<%=Html.Script("/WebServices/I.dentity.asmx/js")%>--%>
 
 	<%=Html.CSSLink("Master") %>
 	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
@@ -70,8 +71,9 @@
 	</div>
 	<asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
 	<script type="text/javascript">
-	chmenu("#publicmenu .menuli");
-
+		//$.ready(function() {
+			chmenu("#publicmenu .menuli");
+		//});
 	</script>
 	
 </body>
