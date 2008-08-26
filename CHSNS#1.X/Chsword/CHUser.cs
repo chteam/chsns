@@ -33,7 +33,6 @@ namespace CHSNS
 				return "未设置";
 			}
 			set {
-
 				HttpContext.Current.Session["email"] = value;
 			}
 		}
@@ -42,28 +41,15 @@ namespace CHSNS
 		/// </summary>
 		static public long UserID {
 			get {
-				if (HttpContext.Current.Session["userid"] != null) {
-					long _Userid = 0;
-					if (long.TryParse(HttpContext.Current.Session["userid"].ToString(), out _Userid))
-						return _Userid;
-				}
-				throw new Exception("请先登录 palease login first.");
-			}
-			set {
-				HttpContext.Current.Session["userid"] = value;
-			}
-		}
-		/// <summary>
-		/// 获取当前用户ID,如果未登录则返回0
-		/// </summary>
-		static public long UseridwithoutError {
-			get {
 				long _Userid = 0;
 				if (HttpContext.Current.Session["userid"] != null) {
 					if (long.TryParse(HttpContext.Current.Session["userid"].ToString(), out _Userid))
 						return _Userid;
 				}
-				return 0;
+				return _Userid;
+			}
+			set {
+				HttpContext.Current.Session["userid"] = value;
 			}
 		}
 		/// <summary>
@@ -113,14 +99,20 @@ namespace CHSNS
 				}
 			}
 		}
+		/// <summary>
+		/// 用户是否是管理员
+		/// </summary>
 		static public bool IsAdmin {
 			get {
 				return Status > 199;
 			}
 		}
+		/// <summary>
+		/// 用户是否登录
+		/// </summary>
 		static public bool IsLogin {
 			get {
-				return CHUser.UseridwithoutError != 0;
+				return CHUser.UserID != 0;
 			}
 		}
 		static public int unReadMessage {
