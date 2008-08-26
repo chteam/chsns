@@ -44,7 +44,7 @@
 				Chsword.Reader.Search ds = new Chsword.Reader.Search(_dict, querystring);
 				ds.Nowpage = 1;
 				ds.Everypage = 10;
-				ds.Template = CHUser.UseridwithoutError == 0 ? "SearchUserListSample" : "UserList";
+				ds.Template = CHUser.UserID == 0 ? "SearchUserListSample" : "UserList";
 				Chsword.Reader.ServerResponse sr = ds.GetMember();
 
 				ViewData["ResultItems"] = sr.ResponseText;

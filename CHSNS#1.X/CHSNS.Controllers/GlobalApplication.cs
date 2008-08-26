@@ -13,6 +13,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using CHSNS.Config;
+using CHSNS.Data;
 namespace CHSNS {
 	[CompilerGlobalScope]
 	public class Global : HttpApplication {
@@ -45,8 +46,9 @@ namespace CHSNS {
 				if (ChCookies.IsExists && ChCookies.IsAutoLogin) {
 					try {
 						string pwd = ChCookies.UserPassword;
-						Identity identity = new Identity();
-						identity.Login(ChCookies.Userid.ToString(),
+						DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
+						SiteConfig.SiteConnectionString)));
+						idb.Account.Login(ChCookies.Userid.ToString(),
 							pwd,
 							true,
 							false

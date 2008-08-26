@@ -5,53 +5,25 @@
  * 
  * 
  */
-namespace CHSNS.Controllers
-{
+namespace CHSNS.Controllers {
 	using System;
 	using System.Data;
 	//using CHSNS.Data;
-	
+
 	using CHSNS.Data;
 	using CHSNS;
-using System.Web.Mvc;
+	using System.Web.Mvc;
 	using System.Collections.Generic;
+	using CHSNS.Models;
 
 	/// <summary>
 	/// Description of EventController.
 	/// </summary>
 	[LoginedFilter]
-	public class EventController: BaseController
-	{
-		public void Index(){
-			DataRow dr = Gather()[0];
-			ViewData.Add("FriendRequestCount",dr["FriendRequestCount"]);
-			ViewData.Add("ViewCount",dr["ViewCount"]);
-			ViewData.Add("CommentCount",dr["CommentCount"]);
-			ViewData.Add("NewReply", NewReplyRows());
-			//IDataBase idb = new DBExt(Session);
-			ViewData.Add("RssSource", this.DBExt.RssList(10));
+	public class EventController : BaseController {
+		public ActionResult Index() {
+			return View(DBExt.Gather.EventGather());
 		}
-
-		#region DataBase
-		/// <summary>
-		/// 回复的5人列表
-		/// </summary>
-		/// <returns></returns>
-		public DataRowCollection NewReplyRows() {
-			Dictionary dict = new Dictionary();
-			dict.Add("@userid", CHSNSUser.Current.UserID);
-			return DataBaseExecutor.GetRows("Reply_New", dict);
-		}
-		/// <summary>
-		/// 我的统计
-		/// </summary>
-		/// <returns></returns>
-		public DataRowCollection Gather() {
-			Dictionary dict = new Dictionary();
-			dict.Add("@userid", CHSNSUser.Current.UserID);
-			return DataBaseExecutor.GetRows("Gather", dict);
-		}
-		#endregion
 
 		#region 组件
 		public ActionResult Show(long userid, byte type) {

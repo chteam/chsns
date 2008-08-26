@@ -82,7 +82,6 @@
     <Compile Include="Controllers\Admin\FieldController.cs" />
     <Compile Include="Controllers\Admin\SqlController.cs" />
     <Compile Include="Controllers\Admin\UserManage.cs" />
-    <Compile Include="Controllers\Ajax\IdentityController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -91,6 +90,7 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HtmlController.cs" />
+    <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />

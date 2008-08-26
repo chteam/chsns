@@ -115,7 +115,7 @@ namespace CHSNS.Controllers {
 		[PostOnlyFilter]
 		public ActionResult RssList(int count) {
 			//IDataBase idb = new DBExt(Session);
-			ViewData["userSource"] = DBExt.RssList(count);
+			ViewData["userSource"] = DBExt.Group.TakeIns(count);
 
 		//	RenderView("html","Rss-List");
 			return View("Rss-List");
@@ -126,26 +126,26 @@ namespace CHSNS.Controllers {
 		public ActionResult Reply(long logid, string body, long Replyid, bool isReply, long Ownerid, byte type) {
 			CHSNS.Models.Comment cmt = new CHSNS.Models.Comment()
 			{
-				body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
-				addtime = DateTime.Now,
-				senderid = CHSNSUser.Current.UserID,
+				Body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
+				AddTime = DateTime.Now,
+				SenderID = CHSNSUser.Current.UserID,
 				IsReply = isReply,
-				Logid = logid,
-				type = type
+				LogID = logid,
+				Type = type
 			};
 			bool IsonMyPage;
 		
 			#region 是否在自己页上以及谁是页面 的Owner
 			if (isReply && (Replyid != 0)) {
-				if (cmt.senderid == Ownerid) {
-					cmt.ownerid = Replyid;
+				if (cmt.SenderID == Ownerid) {
+					cmt.OwnerID = Replyid;
 					IsonMyPage = true;
 				} else {
-					cmt.ownerid = Ownerid;
+					cmt.OwnerID = Ownerid;
 					IsonMyPage = false;
 				}
 			} else {
-				cmt.ownerid = Ownerid;
+				cmt.OwnerID = Ownerid;
 				IsonMyPage = true;
 			}
 			#endregion
@@ -156,13 +156,13 @@ namespace CHSNS.Controllers {
 				//VALUES    (@Logid, @senderid, @senderid, @body,@isreply)
 				CHSNS.Models.Comment cmt1 = new CHSNS.Models.Comment()
 				{
-					body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
-					addtime = DateTime.Now,
-					senderid = CHSNSUser.Current.UserID,
-					ownerid = CHSNSUser.Current.UserID,
+					Body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
+					AddTime = DateTime.Now,
+					SenderID = CHSNSUser.Current.UserID,
+					OwnerID = CHSNSUser.Current.UserID,
 					IsReply = isReply,
-					Logid = logid,
-					type = 0
+					LogID = logid,
+					Type = 0
 				};
 				DB.Comment.InsertOnSubmit(cmt1);
 			}
@@ -180,41 +180,41 @@ namespace CHSNS.Controllers {
 			#endregion
 
 			var comment=(from c in DB.Comment
-				 join a in DB.Account on c.senderid equals a.userid
-				 where c.trueid == cmt.trueid
+				 join a in DB.Account on c.SenderID equals a.UserID
+				 where c.TrueID == cmt.TrueID
 				 select new
 				 {
-					 a.name,
-					 c.addtime,
-					 c.body,
-					 c.id,
+					 name = a.Name,
+					 addtime = c.AddTime,
+					 body = c.Body,
+					 id = c.ID,
 					 c.IsDel,
-					 c.ownerid,
-					 c.senderid,
-					 a.email
+					 ownerid = c.OwnerID,
+					 senderid = c.SenderID,
+					 email = a.Email
 				 }).ToList();//刚刚Insert的那个Comment
 
 			ViewData["CommentRows"] = comment;
-			ViewData["CommentType"] = cmt.type;
+			ViewData["CommentType"] = cmt.Type;
 
 			var own = (from c in DB.Note
-					   where (c.id == cmt.Logid)
+					   where (c.ID == cmt.LogID)
 					   select new
 					   {
-						   c.istellme
+						   c.Istellme
 					   }).SingleOrDefault();
-			if (own!=null && own.istellme == 1) {
+			if (own!=null && own.Istellme == 1) {
 
 				var cemail = comment.SingleOrDefault();
 				if (cemail != null) {
 					var item = (from l in DB.Note
-								where l.id == cmt.Logid
+								where l.ID == cmt.LogID
 								select new
 								{
-									l.title,
-									cmt.body,
+									l.Title,
+									body = cmt.Body,
 									name = CHSNSUser.Current.Username,
-									cmt.Logid,
+									Logid = cmt.LogID,
 									userid = CHSNSUser.Current.UserID,
 									l.GroupId
 								}).SingleOrDefault();
@@ -224,7 +224,7 @@ namespace CHSNS.Controllers {
 						string.Format(
 						"[{0}回复通知]re: {1}",
 						SiteConfig.Current.BaseConfig.Title,
-						item.title
+						item.Title
 						),
 						"",//Template.TemplateEngine.ToString(dict, "mail/replyback.vm"),
 						cemail.email,
@@ -232,7 +232,6 @@ namespace CHSNS.Controllers {
 						);
 				}
 			}
-			//RenderView("Comment_Item");
 			return View("Comment_Item");
 		}
 #endregion

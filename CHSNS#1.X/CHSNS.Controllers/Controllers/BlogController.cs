@@ -50,7 +50,7 @@ namespace CHSNS.Controllers
 			try {
 			//	DBExt mb = new DBExt(Session);
 				var isexists = DBExt.GetBlog(CHSNSUser.Current.UserID);
-				blog.userid = CHSNSUser.Current.UserID;
+				blog.UserID = CHSNSUser.Current.UserID;
 				if (isexists == null) {
 					blog.CreateTime = DateTime.Now;
 					DBExt.DB.Blogs.InsertOnSubmit(blog);

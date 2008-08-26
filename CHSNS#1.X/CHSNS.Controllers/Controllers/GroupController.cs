@@ -21,11 +21,11 @@ using System.Web.Mvc;
 			ViewData.Add("nowpage", this.QueryNum("p") == 0 ? 1 : this.QueryNum("p"));
 
 			Models.Group g = (from gr in DB.Group
-					 where gr.id == Groupid
+					 where gr.ID == Groupid
 					 && gr.IsTrue==true
 					   select gr).FirstOrDefault();
 			GroupUser u = (from gu in DB.GroupUser
-					 where gu.userid == CHSNSUser.Current.UserID
+					 where gu.UserID == CHSNSUser.Current.UserID
 					 && gu.Groupid == Groupid
 						   select gu).FirstOrDefault();
 			if (g == null)
@@ -53,7 +53,7 @@ using System.Web.Mvc;
 
 			ViewData.Add("adminRows",
 						(from gu in DB.GroupUser
-						 join a in DB.Account on gu.userid equals a.userid
+						 join a in DB.Account on gu.UserID equals a.UserID
 						 where gu.Groupid == Groupid
 							&& gu.IsTrue == true
 							 && gu.Level > 199
@@ -61,8 +61,8 @@ using System.Web.Mvc;
 						 orderby gu.Level descending
 						 select new
 						 {
-							 name = a.name,
-							 userid = gu.userid,
+							 name = a.Name,
+							 userid = gu.UserID,
 							 level = gu.Level
 						 }).ToList());
 			//ViewData.Add("group", groupmodel);

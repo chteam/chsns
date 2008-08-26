@@ -18,8 +18,8 @@ using CHSNS;
 				pid = 247102;
 			ViewData["pid"] = pid;
 			var fs = (from _f in DB.Field
-					  where _f.pid == pid
-					  orderby _f.istrue, _f.@class
+					  where _f.PID == pid
+					  orderby _f.IsTrue, _f.Class
 					  select _f).ToList();
 			ViewData["fs"] = fs;
 		}
