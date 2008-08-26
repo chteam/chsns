@@ -317,7 +317,6 @@
     <None Include="Views\Upload\Photo.vm" />
     <None Include="Views\User\friend.vm" />
     <None Include="Views\User\friendRequest.vm" />
-    <None Include="Views\User\index-Myactions.vm" />
     <None Include="Views\User\random.vm" />
     <Content Include="JavaScript\AdminUser.js" />
     <Content Include="JavaScript\Application.js" />
