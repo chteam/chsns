@@ -89,13 +89,13 @@ namespace CHSNS.Controllers {
 		public void isstar() {
 			ViewData["users"] = (from p in this.DB.Profile
 									where p.IsStar == true && p.IsUpdate == false
-									join a in DB.Account on p.UserId equals a.userid
-									join s in DB.FieldInformation on p.UserId equals s.userid
+									join a in DB.Account on p.UserId equals a.UserID
+									join s in DB.FieldInformation on p.UserId equals s.UserID
 									select new
 									{
-										a.userid,
-										a.name,
-										s.Field,
+										userid = a.UserID,
+										name = a.Name,
+										Field = s.Field,
 										s.MiniField,
 										s.Year
 									}).ToList();

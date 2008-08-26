@@ -12,8 +12,8 @@ namespace CHSNS.Controllers
 			return View("Index");
 		}
 		public void Logout() {
-			Identity identity = new Identity();
-			identity.Logout();
+			ChCookies.Clear();
+			CHUser.Clear();
 			RedirectToAction("index");
 		}
 		protected override void HandleUnknownAction(string actionName) {

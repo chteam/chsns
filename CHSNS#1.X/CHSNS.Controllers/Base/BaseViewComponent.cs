@@ -9,11 +9,11 @@ using System.Web.Mvc;
 namespace CHSNS.Controllers {
 
 	abstract public class BaseViewComponent : Controller, ICHSNSDB {
-		ChAlumnaDBDataContext _DB = null;
-		protected ChAlumnaDBDataContext DB {
+		CHSNSDBContext _DB = null;
+		protected CHSNSDBContext DB {
 			get {
 				if (_DB == null) {
-					_DB = new ChAlumnaDBDataContext(
+					_DB = new CHSNSDBContext(
 				  SiteConfig.SiteConnectionString
 					);
 				}

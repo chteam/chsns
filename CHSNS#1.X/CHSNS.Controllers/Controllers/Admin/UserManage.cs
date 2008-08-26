@@ -13,7 +13,7 @@ using System.Collections.Generic;
 	{
 		public void userset(long userid) {
 			Account ac = (from a in DB.Account
-						 where a.userid == userid
+						 where a.UserID == userid
 						 select a).SingleOrDefault();
 			ViewData["user"] = ac;
 			
@@ -22,14 +22,14 @@ using System.Collections.Generic;
 		public void userlist() {
 			//新用户,通过用户
 			IList<Account> data = (from a in DB.Account
-						  where a.status > 0
-						  orderby a.regtime descending
+						  where a.Status > 0
+						  orderby a.RegTime descending
 						  select new Account()
 						  {
-							 userid= a.userid,
-							 name= a.name,
-							 status= a.status,
-							 email= a.email
+							 UserID= a.UserID,
+							 Name= a.Name,
+							 Status= a.Status,
+							 Email= a.Email
 						  }).Take(100).ToList<Account>();
 			//ViewData["data"] = PaginationHelper.CreatePagination(this, data, 6);
 			ViewData["data"] = PaginationHelper.AsPagination<Account>(data, 1, 6);
