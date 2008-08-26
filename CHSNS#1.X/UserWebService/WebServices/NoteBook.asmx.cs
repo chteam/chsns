@@ -14,6 +14,7 @@ using CHSNS.Reader;
 using CHSNS.Models;
 using CHSNS.Data;
 using CHSNS;
+using CHSNS.Config;
 namespace CHSNS {
 	/// <summary>
 	/// NoteBook 的摘要说明
@@ -187,39 +188,44 @@ namespace CHSNS {
 		public long Note_Add(long groupid, string title, string body, byte showlevel, bool istellme, string tags) {
 			Note n = new Note();
 			n.GroupId = groupid;
-			n.title = title;
-			n.body = body;
+			n.Title = title;
+			n.Body = body;
 			n.IsPost = showlevel;
-			n.istellme = (byte)(istellme ? 1 : 0);
+			n.Istellme = (byte)(istellme ? 1 : 0);
 
-			DBExt idb = new DBExt(new Dictionary());
+			DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
+						SiteConfig.SiteConnectionString)));
 			idb.Note_Add(n);
 
-			idb.NoteTags_Add(n.id, tags);
+			idb.NoteTags_Add(n.ID, tags);
 
-			return n.id;
+			return n.ID;
 		}
 		[WebMethod(Description="编辑日志",EnableSession=true)]
 		public void Note_Edit(long groupid,long logid,string body ,byte showlevel,bool istellme,string tags) {
 			Note n = new Note();
 			n.GroupId = groupid;
-			n.id = logid;
-			n.body = body;
+			n.ID = logid;
+			n.Body = body;
 			n.IsPost = showlevel;
-			n.istellme = (byte)(istellme ? 1 : 0);
-			DBExt idb = new DBExt(new Dictionary());
+			n.Istellme = (byte)(istellme ? 1 : 0);
+			DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
+						SiteConfig.SiteConnectionString)));
 			idb.Note_Edit(n);
-			idb.NoteTags_Change(n.id, tags);
+			idb.NoteTags_Change(n.ID, tags);
 		}
 		[WebMethod(Description = "删除日志", EnableSession = true)]
 		public void Note_Delete(long logid,long groupid) {
-			DBExt idb = new DBExt(new Dictionary());
+			DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
+						SiteConfig.SiteConnectionString)));
+		
 			idb.NoteTags_Delete(logid);
 			idb.Note_Remove(logid, groupid);
 		}
 		[WebMethod(Description = "推荐日志", EnableSession = true)]
 		public string Note_Push(long logid) {
-			DBExt idb = new DBExt(new Dictionary());
+			DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
+						SiteConfig.SiteConnectionString)));
 			int b = idb.Note_Push(logid);
 			switch (b) {
 				case 1:

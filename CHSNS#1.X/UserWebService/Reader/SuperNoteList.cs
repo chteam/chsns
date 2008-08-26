@@ -122,7 +122,7 @@ namespace CHSNS.Reader {
 					getTime(dr["addtime"]),
 					getTitle(dr["title"]),
 					getPic(dr["faceurl"]),
-					(!Template.ToLower().Equals("supernoterandompage")&&(CHUser.UseridwithoutError.Equals(dr["userid"])||CHUser.Status>199))?
+					(!Template.ToLower().Equals("supernoterandompage")&&(CHUser.UserID.Equals(dr["userid"])||CHUser.Status>199))?
 					String.Format(ChCache.GetConfig("Note","SuperNone_Delete"),dr["id"]):"",
 					(Type==1)?string.Format(ChCache.GetConfig("UserLink"),dr["userid"],dr["name"]):"",
 					drq.Length>0?drq[0]["name"]:""

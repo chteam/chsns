@@ -30,7 +30,7 @@
 		public string AddMiniField(Int64 fieldid, IList names, int type) {
 			StringBuilder output = new StringBuilder();
 			if (CHUser.IsAdmin) {
-										using (ChAlumnaDBDataContext Db = new ChAlumnaDBDataContext
+										using (CHSNSDBContext Db = new CHSNSDBContext
 						(SiteConfig.SiteConnectionString)) {
 				foreach (String name in names) {
 					if (string.IsNullOrEmpty(name.Trim())) continue;
@@ -39,9 +39,9 @@
 
 						MiniField x = new MiniField();
 
-						x.pid = fieldid;
-						x.@class = type;
-						x.name = name.Trim();
+						x.Pid = fieldid;
+						x.Class = type;
+						x.Name = name.Trim();
 						Db.MiniField.InsertOnSubmit(x);
 						Db.SubmitChanges();
 					} catch {

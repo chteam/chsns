@@ -17,65 +17,7 @@ namespace CHSNS
 	public class Identity : WebServices
 	{
 
-		#region 登录注销
-		/// <summary>
-		/// 登录
-		/// </summary>
-		/// <param name="userName">用户名/Id</param>
-		/// <param name="password">密码</param>
-		/// <param name="createPersistentCookie">是否保存密码</param>
-		/// <returns>是否登录成功</returns>
-		[WebMethod(EnableSession = true)]
-		public bool Login(string userName, string password, bool createPersistentCookie) {
-			if ((Regular.Macth(userName, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*") ||
-				 Regular.Macth(userName, @"\d{5,}")) &&
-				Regular.Macth(password, @"[^']{4,}")) {//匹配成功则赋值
 
-				Int16 LoginResult = Login(userName, password, createPersistentCookie, true);
-				if (LoginResult == -1) {
-					throw new Exception("您的帐号已经被冻结，如有疑问请 <a href=\"/Services.aspx\">联系管理员</a>");
-				}
-				if (LoginResult == -999)
-					return false;
-				return (true);
-			}
-			return (false);
-		}
-		public Int16 Login(String Username, String Password, Boolean IsAutoLogin, Boolean IsPasswordMd5) {
-			Encrypt en = new Encrypt();
-			string md5pwd = IsPasswordMd5 ? en.MD5Encrypt(Password.Trim(), 32) : Password.Trim();
-			Dictionary dict = new Dictionary();
-			dict.Add(
-				Username.Contains("@") ? "@Username" : "@Userid",
-				Username.Trim()
-			);
-			dict.Add("@Password", md5pwd);
-			DataRowCollection rets = DataBaseExecutor.GetRows("[Login]", dict);
-			Int16 retint = -999;
-			if (rets.Count != 0 && !rets[0].IsNull("Status")) {
-				Int16.TryParse(rets[0]["Status"].ToString(), out retint);
-				if (retint > 0) {
-					ChCookies cks = new ChCookies();
-					cks.SaveAll(rets[0]["Userid"].ToString(),
-						rets[0]["Username"].ToString(),
-						md5pwd,
-						retint,
-						IsAutoLogin
-						);
-				}
-			}
-			return retint;
-		}
-		/// <summary>
-		/// 注销功能
-		/// </summary>
-		[WebMethod(EnableSession = true)]
-		public void Logout() {
-			//ChCookies.Expires=DateTime.Now.AddDays(-1);
-			ChCookies.Clear();
-			CHUser.Clear();
-		}
-		#endregion
 		#region 注册Field -- 大学生
 		[WebMethod(EnableSession = true)]
 		public bool UpdateUniversityField(string uni, string xueyuan) {
