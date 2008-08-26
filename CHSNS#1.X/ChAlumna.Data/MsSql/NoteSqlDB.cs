@@ -19,22 +19,22 @@
 			l.AddTime = DateTime.Now;
 			l.EditTime = DateTime.Now;
 			l.LastCommentTime = DateTime.Now;
-			l.userid = CHSNSUser.Current.UserID;
-			ChAlumnaDBDataContext db = new ChAlumnaDBDataContext(SiteConfig.SiteConnectionString);
+			l.UserID = CHSNSUser.Current.UserID;
+			CHSNSDBContext db = new CHSNSDBContext(SiteConfig.SiteConnectionString);
 			db.Note.InsertOnSubmit(l);
 			db.SubmitChanges();
 
 			if (l.GroupId > 0) {
 				//update [Group] set logcount= logcount+1 where id=@groupid
 				var group = (from g in db.Group
-							 where g.id == l.GroupId
+							 where g.ID == l.GroupId
 							 select g).Single();
 				group.LogCount++;
 			} else {
 				/*update [profile] set Score=Score+dbo.fun_GetScore(''note_add''),
 				ShowScore=ShowScore+dbo.fun_GetScore(''note_add'') where userid=@userid*/
 				var profile = (from p in db.Profile
-							   where p.UserId == l.userid
+							   where p.UserId == l.UserID
 							   select p).Single();
 				profile.LogCount++;
 				profile.ShowScore++;
@@ -69,12 +69,12 @@ VALUES     (@fromid, @toid, Getdate(), @type, @Application, @Actionid)
 				 */
 				#endregion
 				Event e = new Event();
-				e.fromid = l.userid;
-				e.toid = l.userid;
-				e.type = 2;
-				e.Application = l.title;
+				e.Fromid = l.UserID;
+				e.Toid = l.UserID;
+				e.Type = 2;
+				e.Application = l.Title;
 				e.Addtime = DateTime.Now;
-				e.Actionid = l.id;
+				e.Actionid = l.ID;
 				db.Event.InsertOnSubmit(e);
 			}
 			db.SubmitChanges();
@@ -110,8 +110,8 @@ end*/
 			int us = UserStatus(CHSNSUser.Current.UserID, l.GroupId);
 			//DataBaseExecutor me = new DataBaseExecutor();
 			Dictionary dict = new Dictionary();
-			dict.Add("@body", l.body);
-			DBE.Execute(
+			dict.Add("@body", l.Body);
+			DataBaseExecutor.Execute(
 				string.Format(@"UPDATE [Log] 
 SET EditTime = getdate(),
 isPost = {0},
@@ -121,8 +121,8 @@ WHERE ([id]={2})
 and groupid={3}
 and (userid ={4} or {5}>199)",
 l.IsPost,
-l.istellme,
-l.id,
+l.Istellme,
+l.ID,
 l.GroupId,
 CHSNSUser.Current.UserID,
 us), dict);
@@ -135,14 +135,14 @@ us), dict);
 			dict.Add("@userid", CHSNSUser.Current.UserID);
 			dict.Add("@groupid", groupid);
 			//DataBaseExecutor me = new DataBaseExecutor();
-			DBE.Execute("Note_Remove", dict);
+			DataBaseExecutor.Execute("Note_Remove", dict);
 		}
 		public int Note_Push(long logid) {
 			Dictionary d = new Dictionary();
 			d.Add("@viewerid", CHSNSUser.Current.UserID);
 			d.Add("@Logid", logid);
 			//DataBaseExecutor me = new DataBaseExecutor();
-			return (int)DBE.ExecuteScalar("LogPush", d);
+			return (int)DataBaseExecutor.ExecuteScalar("LogPush", d);
 		}
 	}
 }
