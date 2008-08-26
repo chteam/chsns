@@ -6,7 +6,7 @@ var Label_Show=function(){
 var Edit_Show=function(){
 	return $get('Profile_ShowText_Edit');
 };
-Sys.Application.add_init(AppInit);
+//Sys.Application.add_init(AppInit);
 function AppInit(sender) {
   if(Label_Show()==null||!Edit_Show())
 	return;

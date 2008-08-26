@@ -75,8 +75,8 @@
 <script type="text/javascript">
 <%//显示相应的层
 if(cl.ShowType!=1){ %>
-if ($get("$CountId")!=null){
-	$get("$CountId").innerHTML=$Count;
+if ($("#<%=cl.CountElement %>")!=null){
+	$("#<%=cl.CountElement %>").html("<%=cl.Count %>");
 }
 <%} %>
 <%if(cl.CountElement!=""){ %>

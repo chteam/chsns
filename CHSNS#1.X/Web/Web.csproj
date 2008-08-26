@@ -246,7 +246,6 @@
     <None Include="Views\Components\ProfileEditChild\Upload.vm" />
     <None Include="Views\Components\ShowLevel.vm" />
     <None Include="Views\Components\System\Option.vm" />
-    <None Include="Views\Event\index.vm" />
     <None Include="Views\Group\ClassList.vm" />
     <None Include="Views\Group\CreateClass.vm" />
     <None Include="Views\Group\index.vm" />
@@ -275,7 +274,10 @@
     <None Include="Views\Html\UserList-Random.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
     <Content Include="Default.aspx" />
+    <Content Include="JavaScript\jquery-1.2.3-intellisense.js" />
+    <Content Include="JavaScript\ui.js" />
     <Content Include="Views\Comment\ShowList.ascx" />
+    <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
     <Content Include="Views\Group\ShowProfileLinks.ascx" />
     <Content Include="Views\Home\AboutUs.aspx" />
@@ -377,73 +379,6 @@
     <Content Include="JavaScript\Setting.js" />
     <Content Include="JavaScript\Upload.js" />
     <Content Include="JavaScript\UploadPhoto.js" />
-    <Content Include="JavaScript\_source\AdminUser.js" />
-    <Content Include="JavaScript\_source\Application.js" />
-    <Content Include="JavaScript\_source\Basic.js" />
-    <Content Include="JavaScript\_source\Chinese.js" />
-    <Content Include="JavaScript\_source\Client\AccordionBehavior.js" />
-    <Content Include="JavaScript\_source\Client\AlwaysVisibleControlBehavior.js" />
-    <Content Include="JavaScript\_source\Client\AutoCompleteBehavior.js" />
-    <Content Include="JavaScript\_source\Client\CalendarBehavior.js" />
-    <Content Include="JavaScript\_source\Client\CascadingDropDownBehavior.js" />
-    <Content Include="JavaScript\_source\Client\CollapsiblePanelBehavior.js" />
-    <Content Include="JavaScript\_source\Client\Common.js" />
-    <Content Include="JavaScript\_source\Client\Common2.js" />
-    <Content Include="JavaScript\_source\Client\confirmButtonBehavior.js" />
-    <Content Include="JavaScript\_source\Client\DragDropScripts.js" />
-    <Content Include="JavaScript\_source\Client\DraggableListItemBehavior.js" />
-    <Content Include="JavaScript\_source\Client\DropWatcherBehavior.js" />
-    <Content Include="JavaScript\_source\Client\FilteredTextBoxBehavior.js" />
-    <Content Include="JavaScript\_source\Client\FloatingBehavior.js" />
-    <Content Include="JavaScript\_source\Client\HoverMenuBehavior.js" />
-    <Content Include="JavaScript\_source\Client\Input.js" />
-    <Content Include="JavaScript\_source\Client\ListSearchBehavior.js" />
-    <Content Include="JavaScript\_source\Client\MaskedEditBehavior.js" />
-    <Content Include="JavaScript\_source\Client\MaskedEditValidator.js" />
-    <Content Include="JavaScript\_source\Client\MutuallyExclusiveCheckBoxBehavior.js" />
-    <Content Include="JavaScript\_source\Client\NoBotBehavior.js" />
-    <Content Include="JavaScript\_source\Client\NumericUpDownBehavior.js" />
-    <Content Include="JavaScript\_source\Client\PagingBulletedListBehavior.js" />
-    <Content Include="JavaScript\_source\Client\PasswordStrengthExtenderBehavior.js" />
-    <Content Include="JavaScript\_source\Client\PopupControlBehavior.js" />
-    <Content Include="JavaScript\_source\Client\RatingBehavior.js" />
-    <Content Include="JavaScript\_source\Client\ResizableControlBehavior.js" />
-    <Content Include="JavaScript\_source\Client\SliderBehavior.js" />
-    <Content Include="JavaScript\_source\Client\SlideShowBehavior.js" />
-    <Content Include="JavaScript\_source\Client\Tabs.js" />
-    <Content Include="JavaScript\_source\Client\TextboxWatermark.js" />
-    <Content Include="JavaScript\_source\Client\ToggleButton.js" />
-    <Content Include="JavaScript\_source\Client\UpdatePanelAnimationBehavior.js" />
-    <Content Include="JavaScript\_source\Client\ValidatorCalloutBehavior.js" />
-    <Content Include="JavaScript\_source\EditMyInfo.js" />
-    <Content Include="JavaScript\_source\Editor.js" />
-    <Content Include="JavaScript\_source\Friend.js" />
-    <Content Include="JavaScript\_source\Globalization\Local.js" />
-    <Content Include="JavaScript\_source\Globalization\zh-CN.js" />
-    <Content Include="JavaScript\_source\Group.js" />
-    <Content Include="JavaScript\_source\GroupList.js" />
-    <Content Include="JavaScript\_source\GroupUser.js" />
-    <Content Include="JavaScript\_source\Input.js" />
-    <Content Include="JavaScript\_source\Invite.js" />
-    <Content Include="JavaScript\_source\LogBook.js" />
-    <Content Include="JavaScript\_source\ManageGroup.js" />
-    <Content Include="JavaScript\_source\Message.js" />
-    <Content Include="JavaScript\_source\MicrosoftAjax.js" />
-    <Content Include="JavaScript\_source\MicrosoftAjaxTimer.js" />
-    <Content Include="JavaScript\_source\MicrosoftAjaxWebForms.js" />
-    <Content Include="JavaScript\_source\Notebook.js" />
-    <Content Include="JavaScript\_source\PageSet.js" />
-    <Content Include="JavaScript\_source\Photos.js" />
-    <Content Include="JavaScript\_source\Preview\History.js" />
-    <Content Include="JavaScript\_source\Preview\PreviewScript.js" />
-    <Content Include="JavaScript\_source\Profile.js" />
-    <Content Include="JavaScript\_source\Registrator.js" />
-    <Content Include="JavaScript\_source\Reply.js" />
-    <Content Include="JavaScript\_source\Search.js" />
-    <Content Include="JavaScript\_source\Services.js" />
-    <Content Include="JavaScript\_source\Setting.js" />
-    <Content Include="JavaScript\_source\Upload.js" />
-    <Content Include="JavaScript\_source\UploadPhoto.js" />
     <Content Include="Style\Default\admin.css" />
     <Content Include="Style\Default\appli.css" />
     <Content Include="Style\Default\blog.css" />
@@ -673,6 +608,13 @@
     </Compile>
     <Compile Include="Views\Comment\ShowList.ascx.designer.cs">
       <DependentUpon>ShowList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Event\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Event\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Event\Show.aspx.cs">
       <DependentUpon>Show.aspx</DependentUpon>
