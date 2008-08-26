@@ -27,31 +27,9 @@ namespace CHSNS.Models.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CHSWORD;Initial Catalog=sq_menglei;Integrated Security=True")]
-        public string sq_mengleiConnectionString {
+        public string CHSNSDBConnectionString {
             get {
-                return ((string)(this["sq_mengleiConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=218.10.17.16;Initial Catalog=sq_menglei;Persist Security Info=True;Us" +
-            "er ID=sq_menglei")]
-        public string sq_mengleiConnectionString1 {
-            get {
-                return ((string)(this["sq_mengleiConnectionString1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=218.10.17.16;Initial Catalog=sq_menglei;Persist Security Info=True;Us" +
-            "er ID=sq_menglei;Password=77298666")]
-        public string sq_mengleiConnectionString2 {
-            get {
-                return ((string)(this["sq_mengleiConnectionString2"]));
+                return ((string)(this["CHSNSDBConnectionString"]));
             }
         }
     }
