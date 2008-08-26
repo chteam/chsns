@@ -31,7 +31,7 @@
 				<h3>
 					${ChHelper.ChSite.BaseConfig.Title} 人气之星</h3>
 				<div class="boxcont">
-					#component(ViewList with "type=3" "everyrow=6" "ownerid=0")
+				<% Html.RenderAction<ViewController>(c => c.ShowViewList(3, 3, 0, 6)); %>
 				</div>
 				<p class="more">
 				</p>
