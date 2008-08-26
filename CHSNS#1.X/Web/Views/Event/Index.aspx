@@ -48,8 +48,8 @@
 			</div>
 		</div>
 		<%--##新回复--%>
-		<%if (ep.NewReply.Count != 0) {%>
 		<div id="NewReply">
+		<%if (ep.NewReply.Count != 0) {%>
 			<h4>
 				最新回复</h4>
 			<ul id="chNewReply">
