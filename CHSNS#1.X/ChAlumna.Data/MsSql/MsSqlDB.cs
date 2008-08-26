@@ -10,23 +10,38 @@ namespace CHSNS.Data
 	using CHSNS;
 	public partial class DBExt 
 	{
-		#region IDataBase 成员
-		public DBExt(IDictionary session) {
-			_session = session;
+		#region IDataConcreteMediator 成员
+		public DataBaseExecutor DataBaseExecutor { get; set; }
+		public AccountMediator Account { get; set; }
+		public ViewMediator View { get; set; }
+		public ReplyMediator Comment { get; set; }
+		public GatherMediator Gather { get; set; }
+		public GroupMediator Group { get; set; }
+		public void Init() {
+			Account = new AccountMediator(this);
+			Gather = new GatherMediator(this);
+			View = new ViewMediator(this);
+			Comment = new ReplyMediator(this);
+			Group = new GroupMediator(this);
 		}
+		#endregion
+		#region IDataBase 成员
+
 		public DBExt(ICHSNSDB ichsnsdb) {
-			DBE = ichsnsdb.DataBaseExecutor;
+			DataBaseExecutor = ichsnsdb.DataBaseExecutor;
+			Init();
 		}
 		public DBExt(DataBaseExecutor dbe) {
-			DBE = dbe;
+			DataBaseExecutor = dbe;
+			Init();
 		}
-		DataBaseExecutor DBE { get; set; }
+
 		IDictionary _session;
-		ChAlumnaDBDataContext _DB = null;
-		public ChAlumnaDBDataContext DB {
+		CHSNSDBContext _DB = null;
+		public CHSNSDBContext DB {
 			get {
 				if (_DB == null)
-					_DB = new ChAlumnaDBDataContext(SiteConfig.SiteConnectionString);
+					_DB = new CHSNSDBContext(SiteConfig.SiteConnectionString);
 
 				return _DB;
 			}
@@ -38,26 +53,19 @@ namespace CHSNS.Data
 		}
 
 		public DataRowCollection UserListRows(long ownerid, int nowpage, byte type) {
-			return DBE.GetRows("UserList",
+			return DataBaseExecutor.GetRows("UserList",
 				"@userid", ownerid,
 				"@page", nowpage,
 				"@class", type);
 		}
 		public DataRowCollection MyApplicationRows {
 			get {
-				return DBE.GetRows("MyApplication",
+				return DataBaseExecutor.GetRows("MyApplication",
 					"@userid", CHSNSUser.Current.UserID
 					);
 			}
 		}
-		public DataRowCollection RssList(int count) {
-			return DBE.GetRows("RssList",
-				"@userid", CHSNSUser.Current.UserID,
-				"@page", 1,
-				"@everypage", count,
-				"@GroupClass", 0);
-		}
-
+	
 		public void Comment_Remove(long id) {
 			#region Sql
 			/*CREATE PROCEDURE [dbo].[CommentDelete]
@@ -88,34 +96,34 @@ if @type=2
 return 1;
 END*/
 			#endregion
-			ChAlumnaDBDataContext db = new ChAlumnaDBDataContext(SiteConfig.SiteConnectionString);
+			CHSNSDBContext db = new CHSNSDBContext(SiteConfig.SiteConnectionString);
 			var cmt = (from c in db.Comment
-					   where c.id == id &&
-					   (c.ownerid == CHSNSUser.Current.UserID || c.senderid == CHSNSUser.Current.UserID)
+					   where c.ID == id &&
+					   (c.OwnerID == CHSNSUser.Current.UserID || c.SenderID == CHSNSUser.Current.UserID)
 					   && !c.IsDel
 					   select new
 					   {
-						   c.id,
-						   c.Logid,
-						   c.type,
+						   Id = c.ID,
+						   Logid = c.LogID,
+						   Type = c.Type,
 						   c.IsDel,
-						   c.ownerid,
-						   c.senderid
+						   Ownerid = c.OwnerID,
+						   Senderid = c.SenderID
 					   }).SingleOrDefault();
-			if (cmt.id == 0 || !(cmt.senderid == CHSNSUser.Current.UserID || cmt.ownerid == CHSNSUser.Current.UserID || CHSNSUser.Current.isAdmin)) {
+			if (cmt.Id == 0 || !(cmt.Senderid == CHSNSUser.Current.UserID || cmt.Ownerid == CHSNSUser.Current.UserID || CHSNSUser.Current.isAdmin)) {
 				return;
 			}
-			db.Comment.Delete(c => c.id == id);
+			db.Comment.Delete(c => c.ID == id);
 			db.SubmitChanges();
 			//DataBaseExecutor me = new DataBaseExecutor();
 			//me.SqlExecute(
 			//    string.Format("update comment set isdel=1 where id={0}", id)
 			//    );
-			switch (cmt.type) {
+			switch (cmt.Type) {
 				case 0:
-					DBE.Execute(
+					DataBaseExecutor.Execute(
 	string.Format(@"update [Profile] set CommentCount=CommentCount-1       
-	WHERE     (UserId = {0}) and CommentCount>0", cmt.ownerid)
+	WHERE     (UserId = {0}) and CommentCount>0", cmt.Ownerid)
 	);
 					//db.Profile.Update(
 					//    p => new Profile
@@ -127,7 +135,7 @@ END*/
 					//);
 					break;
 				case 1:
-					DBE.Execute(
+					DataBaseExecutor.Execute(
 	string.Format(@"update  [Log] set CommentCount=CommentCount-1      
 	WHERE     (Id ={0}) and CommentCount>0", cmt.Logid)
 	);
@@ -141,7 +149,7 @@ END*/
 					//);
 					break;
 				case 2:
-					DBE.Execute(
+					DataBaseExecutor.Execute(
 	string.Format(@"update  photos set CommentCount=CommentCount-1      
 	WHERE     (id = {0}) and CommentCount>0", cmt.Logid)
 	);
@@ -187,15 +195,15 @@ END*/
 			int r = 0;
 			if (groupid == null || groupid == 0) {
 				var ret = (from a in DB.Account
-						   where a.userid == userid
+						   where a.UserID == userid
 						   select new
 						   {
-							   status = a.status
+							   status = a.Status
 						   }).SingleOrDefault();
 				r = ret.status;
 			} else {
 				var ret = (from g in DB.GroupUser
-						   where g.userid == userid && g.Groupid == groupid
+						   where g.UserID == userid && g.Groupid == groupid
 						   select new
 						   {
 							   status = g.Level
@@ -208,7 +216,5 @@ END*/
 
 
 		#endregion
-
-
 	}
 }

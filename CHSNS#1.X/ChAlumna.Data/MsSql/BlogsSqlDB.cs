@@ -9,27 +9,27 @@
 		public bool IsBlogExists {
 			get {
 				var blog = (from b in DB.Blogs
-							where b.userid == CHSNSUser.Current.UserID
+							where b.UserID == CHSNSUser.Current.UserID
 							select 1).Count();
 				return blog == 1;
 			}
 		}
 		public Blogs GetBlog(long userid) {
 			return (from b in DB.Blogs
-					where b.userid == userid
+					where b.UserID == userid
 					select b).SingleOrDefault<Blogs>();
 		}
 		public IList GetPosts(long userid) {
 			return (from b in DB.Note
-					where b.userid == userid
+					where b.UserID == userid
 					&& b.IsPost == (byte)ShowType.完全公开
 					&& b.GroupId==0
 					select new
 					{
-						b.title,
-						b.body,
+						b.Title,
+						b.Body,
 						b.AddTime,
-						b.id,
+						Id = b.ID,
 						b.CommentCount,
 						b.ViewCount
 					})

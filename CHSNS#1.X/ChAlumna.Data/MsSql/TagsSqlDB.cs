@@ -13,21 +13,21 @@
 			string[] strs = Regular.Trim(val.Split(','));
 
 			var existsTags = (from t in DB.Tags
-							  where t.type == (byte)TagsType.日志
-							  && strs.Contains(t.title)
+							  where t.Type == (byte)TagsType.日志
+							  && strs.Contains(t.Title)
 							  select t).ToList();
 
 			foreach (string s in strs) {
 				Tags tags = (from e in existsTags
-							 where e.title == s
+							 where e.Title == s
 							 select e).SingleOrDefault();
 				if (tags == null) { //插入了
 					tags = new Tags() 
 					{
 						Count = 0,
-						title = s,
-						type = (byte)TagsType.日志,
-						ReachTime = DateTime.Now 
+						Title = s,
+						Type = (byte)TagsType.日志,
+						//ReachTime = DateTime.Now 
 					};
 					DB.Tags.InsertOnSubmit(tags);
 					DB.SubmitChanges();
@@ -36,8 +36,8 @@
 				DB.LogTag.InsertOnSubmit(
 					new LogTag()
 					{
-						logid = id,
-						tagid = tags.id,
+						LogID = id,
+						TagID = tags.Id,
 					}
 					);
 			}
@@ -45,11 +45,11 @@
 		}
 		public IList NoteTags(long id) {
 			return (from l in DB.LogTag
-					where l.logid == id && l.Tags.type == (byte)TagsType.日志
+					where l.LogID == id && l.TagidTags.Type == (byte)TagsType.日志
 					select
 					new
 					{
-						l.Tags.title
+						l.TagidTags.Title
 					}).ToList();
 		}
 		public void NoteTags_Change(long id, string val) {
@@ -72,18 +72,18 @@
 
 		}
 		public void NoteTags_Delete(long id) {
-			this.DB.LogTag.Delete(item => item.logid == id);
+			this.DB.LogTag.Delete(item => item.LogID == id);
 
 		}
 		public IList NoteTags_Top(int count) {
 			string cachename=string.Format("NoteTags_Top{0}", count);
 			if (ChCache.IsNullorEmpty(cachename)) {
 				var list = (from t in DB.Tags
-							where t.type == (byte)TagsType.日志
-							orderby t.id descending
+							where t.Type == (byte)TagsType.日志
+							orderby t.Id descending
 							select new
 							{
-								Title = t.title,
+								Title = t.Title,
 								Count = t.Count.ToString().Length
 							}).Take(count).ToList();
 				ChCache.SetCache(cachename, list, TimeSpan.FromMinutes(20));
@@ -91,22 +91,22 @@
 			return ChCache.GetCache(cachename) as IList;
 		}
 		public IList<NotePas> GetNotebyTag(string title) {
-			DBE.Execute(
+			DataBaseExecutor.Execute(
 				"update tags set ReachTime=getdate(),Count=Count+1 where title=@title", "@title", title);
 			return (from l in DB.LogTag
-					where l.Tags.type == (byte)TagsType.日志
-					&& l.Tags.title == title.Trim()
-					&& l.Note.IsPost == (byte)ShowType.完全公开
-					join b in DB.Blogs on l.Note.userid equals b.userid
+					where l.TagidTags.Type == (byte)TagsType.日志
+					&& l.TagidTags.Title == title.Trim()
+					&& l.Log.IsPost == (byte)ShowType.完全公开
+					join b in DB.Blogs on l.Log.UserID equals b.UserID
 					select new NotePas() {
-						ID = l.Note.id,
-						Title = l.Note.title,
-						ViewCount = l.Note.ViewCount,
-						CommentCount = l.Note.CommentCount,
-						AddTime = l.Note.AddTime,
+						ID = l.Log.ID,
+						Title = l.Log.Title,
+						ViewCount = l.Log.ViewCount,
+						CommentCount = l.Log.CommentCount,
+						AddTime = l.Log.AddTime,
 						WriteName = b.WriteName,
-						UserID = b.userid,
-						Body = l.Note.body.Substring(0, 50)
+						UserID = b.UserID,
+						Body = l.Log.Body.Substring(0, 50)
 					})
 					.ToList<NotePas>();
 		}
