@@ -68,7 +68,7 @@ using CHSNS.Models;
 		[WebMethod(EnableSession=true)]
 		public ServerResponse SearchUser(Dictionary<string,object> dict, int nowpage, int everypage, string mode) {
 			Chsword.Reader.Search ds = new Chsword.Reader.Search(dict, "");
-			ds.Template = CHUser.UseridwithoutError == 0 ? "SearchUserListSample" : "UserList";
+			ds.Template = CHUser.UserID == 0 ? "SearchUserListSample" : "UserList";
 			ds.Nowpage = nowpage;
 			ds.Everypage = everypage;
 			return ds.GetMember();
@@ -421,7 +421,7 @@ using CHSNS.Models;
 		#region 管理，Manage Group
 		[WebMethod(EnableSession=true)]
 		public string SaveMyInfo(Dictionary<string, object> dict,string mode){
-			if (CHUser.UseridwithoutError==0) {
+			if (CHUser.UserID==0) {
 				return "非法操作.";
 			}
 			UserSettingExecuter ui = new UserSettingExecuter();

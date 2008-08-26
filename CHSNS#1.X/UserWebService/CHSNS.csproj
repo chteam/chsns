@@ -118,7 +118,6 @@
     <Content Include="WebServices\School.asmx" />
     <Content Include="WebServices\Search.asmx" />
     <Content Include="WebServices\Services.asmx" />
-    <Compile Include="ChAlumna\ChCookies.cs" />
     <Compile Include="ChAlumna\Image.cs" />
     <Compile Include="ChAlumna\Path.cs" />
     <Compile Include="ChAlumna\StyleSheet.cs" />
