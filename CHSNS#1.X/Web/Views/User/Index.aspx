@@ -6,7 +6,7 @@
 	<%=Html.CSSLink("mypage")%>
 	<%=Html.CSSLink("home")%>
 	<%=Html.CSSLink("friend")%>
-	<%=Html.Script("/WebServices/Profile.asmx/js")%>
+	<%--<%=Html.Script("/WebServices/Profile.asmx/js")%>--%>
 	<%=Html.Script("Profile")%>
 	<%=Html.Script("Reply")%>
 	<%=Html.Script("Friend")%>
@@ -53,15 +53,15 @@
 		</div>
 		<div id="userAccount">
 			<div class="box" id="UserInformation">
-				<div id="Profile_Accordion">
-					<%--##<滑动显示用户信息>--%>
-					<%=Html.RenderUserControl("~/views/user/index-account.ascx", ViewData.Model)%>
-					<%=Html.RenderUserControl("~/views/user/index-school.ascx", ViewData.Model)%>
-					<%=Html.RenderUserControl("~/views/user/index-contact.ascx", ViewData.Model)%>
-					<%=Html.RenderUserControl("~/views/user/index-personal.ascx", ViewData.Model)%>
-				</div>
+				<ul id="Profile_Accordion">
+					<li><%=Html.RenderUserControl("~/views/user/index-account.ascx", ViewData.Model)%></li>
+					<li><%=Html.RenderUserControl("~/views/user/index-school.ascx", ViewData.Model)%></li>
+					<li><%=Html.RenderUserControl("~/views/user/index-contact.ascx", ViewData.Model)%></li>
+					<li><%=Html.RenderUserControl("~/views/user/index-personal.ascx", ViewData.Model)%></li>
+				</ul>
 				<script type="text/javascript">
-					new Accordian().Show('Profile_Accordion', 3, 'accordionHeaderSelected');
+					$("#Profile_Accordion").accordion();
+				//	new Accordian().Show('#Profile_Accordion', 3, 'accordionHeaderSelected');
 				</script>
 
 				<div>

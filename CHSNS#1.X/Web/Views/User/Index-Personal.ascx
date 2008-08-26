@@ -3,11 +3,13 @@
 <% UserPas up = ViewData.Model;
    if (Convert.ToInt16(up.User["Relation"]) >= Convert.ToInt16(up.User["PersonalInfoShowLevel"]) || CHUser.IsAdmin) {
 %>
-<div class="accordionHeader" id="personal-header">
-	个人信息 Interests</div>
+<a href='#' class="accordionHeader" id="personal-header">个人信息 Interests</a>
+<%--<div class="accordionHeader" id="personal-header">
+	个人信息 Interests</div>--%>
 <div id="personal-content" class="accordionContent">
+		<ul id="chPersonalInfo">
 	<%if (up.IsMe) {%>
-	<a href="/EditMyInfo.aspx?mode=Basic" class="edit">[编辑]</a>
+	<li><a href="/EditMyInfo.aspx?mode=Basic" class="edit">[编辑]</a></li>
 	<%
 		}
    Dictionary dict = new Dictionary();
@@ -19,7 +21,6 @@
    dict.Add("喜欢运动", "lovesports");
    dict.Add("加入社团", "joinsociety");
 	%>
-	<ul id="chPersonalInfo">
 		<% foreach (KeyValuePair<string, object> kv in dict) {
 		 if (!up.User.IsNull(kv.Value.ToString()) && up.User[kv.Value.ToString()].ToString().Length > 1) {
 		%>

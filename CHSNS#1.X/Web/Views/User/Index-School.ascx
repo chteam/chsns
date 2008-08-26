@@ -4,14 +4,15 @@
 	UserPas up = ViewData.Model;
 	if (Convert.ToInt16(up.User["Relation"]) >= Convert.ToInt16(up.User["SchoolInfoShowLevel"]) || CHUser.IsAdmin) { 
 %>
-<div class="accordionHeader" id="school-header">
-	学校信息 Schools</div>
-<div id="school-content" class="accordionContent">
-	<%if (up.IsMe) {%>
-	<a href="/EditMyInfo.aspx?mode=School" class="edit">[编辑]</a>
+<%--<div class="accordionHeader" id="school-header">
+	学校信息 Schools</div>--%>
+<a href='#' class="accordionHeader" id="school-header">学校信息 Schools</a>
+<div id="school-content" class="ui-accordion-data">
+	<ul id="chSchoolInfo">
+		<%if (up.IsMe) {%>
+	<li><a href="/EditMyInfo.aspx?mode=School" class="edit">[编辑]</a></li>
 	<%
 		}%>
-	<ul id="chSchoolInfo">
 		<li><span>大　　学：</span><span>
 			<%=up.User["University"]%>
 			<%--<a href="/Search.aspx?action=show&amp;uid=$user.get_item("University_id")&amp;">
