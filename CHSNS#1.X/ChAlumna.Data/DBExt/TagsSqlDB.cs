@@ -77,7 +77,7 @@
 		}
 		public IList NoteTags_Top(int count) {
 			string cachename=string.Format("NoteTags_Top{0}", count);
-			if (ChCache.IsNullorEmpty(cachename)) {
+			if (CHCache.IsNullorEmpty(cachename)) {
 				var list = (from t in DB.Tags
 							where t.Type == (byte)TagsType.日志
 							orderby t.Id descending
@@ -86,9 +86,9 @@
 								Title = t.Title,
 								Count = t.Count.ToString().Length
 							}).Take(count).ToList();
-				ChCache.SetCache(cachename, list, TimeSpan.FromMinutes(20));
+				CHCache.SetCache(cachename, list, TimeSpan.FromMinutes(20));
 			}
-			return ChCache.GetCache(cachename) as IList;
+			return CHCache.GetCache(cachename) as IList;
 		}
 		public IList<NotePas> GetNotebyTag(string title) {
 			DataBaseExecutor.Execute(

@@ -17,12 +17,16 @@ namespace CHSNS.Data
 		public ReplyMediator Comment { get; set; }
 		public GatherMediator Gather { get; set; }
 		public GroupMediator Group { get; set; }
+		public UserInfoMediator UserInfo { get; set; }
+		public GolbalMediator Golbal { get; set; }
 		public void Init() {
 			Account = new AccountMediator(this);
 			Gather = new GatherMediator(this);
 			View = new ViewMediator(this);
 			Comment = new ReplyMediator(this);
 			Group = new GroupMediator(this);
+			UserInfo = new UserInfoMediator(this);
+			Golbal = new GolbalMediator(this);
 		}
 		#endregion
 		#region IDataBase ≥…‘±
