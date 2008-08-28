@@ -32,7 +32,7 @@ namespace CHSNS.Models
         public Push()
         {
             OnCreated();
-            _log = default(EntityRef<Note>);
+            _log = default(EntityRef<Log>);
         }
         #endregion
         
@@ -133,18 +133,18 @@ namespace CHSNS.Models
         
         #region Association Mapped Properties
         
-        private EntityRef<Note> _log;
+        private EntityRef<Log> _log;
 
         /// <summary>
         /// Gets or sets the Log association.
         /// </summary>
-        [Association(Name="FK_Push_Log", Storage="_log", ThisKey="Logid", OtherKey="Id", IsForeignKey=true)]
-        public Note Log
+        [Association(Name="FK_Push_Log", Storage="_log", ThisKey="Logid", OtherKey="ID", IsForeignKey=true)]
+        public Log Log
         {
             get { return _log.Entity; }
             set
             {
-                Note previousValue = _log.Entity;
+                Log previousValue = _log.Entity;
                 if (previousValue != value || _log.HasLoadedOrAssignedValue == false)
                 {
                     OnPropertyChanging("Log");

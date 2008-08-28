@@ -37,46 +37,24 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _trueid = default(long);
+        private int _iD;
 
         /// <summary>
-        /// Gets the trueid column value.
+        /// Gets or sets the ID column value.
         /// </summary>
-        [Column(Name="trueid", Storage="_trueid", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long Trueid
+        [Column(Name="ID", Storage="_iD", DbType="int NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
+        public int ID
         {
-            get { return _trueid; }
+            get { return _iD; }
             set
             {
-                if (_trueid != value)
+                if (_iD != value)
                 {
-                    OnTrueidChanging(value);
-                    OnPropertyChanging("Trueid");
-                    _trueid = value;
-                    OnPropertyChanged("Trueid");
-                    OnTrueidChanged();
-                }
-            }
-        }
-        
-        private Nullable<int> _id;
-
-        /// <summary>
-        /// Gets or sets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="int")]
-        public Nullable<int> Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
                 }
             }
         }
@@ -84,9 +62,9 @@ namespace CHSNS.Models
         private string _name;
 
         /// <summary>
-        /// Gets or sets the name column value.
+        /// Gets or sets the Name column value.
         /// </summary>
-        [Column(Name="name", Storage="_name", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
+        [Column(Name="Name", Storage="_name", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
         public string Name
         {
             get { return _name; }
@@ -114,16 +92,11 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Trueid is changing.</summary>
+        /// <summary>Called when ID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnTrueidChanging(long value);
-        /// <summary>Called after Trueid has Changed.</summary>
-        partial void OnTrueidChanged();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(Nullable<int> value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
+        partial void OnIDChanging(int value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
         /// <summary>Called when Name is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnNameChanging(string value);

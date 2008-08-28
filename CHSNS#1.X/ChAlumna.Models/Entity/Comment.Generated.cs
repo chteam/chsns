@@ -37,138 +37,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _trueid = default(long);
-
-        /// <summary>
-        /// Gets the trueid column value.
-        /// </summary>
-        [Column(Name="trueid", Storage="_trueid", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long TrueID
-        {
-            get { return _trueid; }
-            set
-            {
-                if (_trueid != value)
-                {
-                    OnTrueidChanging(value);
-                    OnPropertyChanging("Trueid");
-                    _trueid = value;
-                    OnPropertyChanged("Trueid");
-                    OnTrueidChanged();
-                }
-            }
-        }
-        
-        private Nullable<long> _id;
-
-        /// <summary>
-        /// Gets or sets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint")]
-        public Nullable<long> ID
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
-        private Nullable<long> _logid;
-
-        /// <summary>
-        /// Gets or sets the Logid column value.
-        /// </summary>
-        [Column(Name="Logid", Storage="_logid", DbType="bigint")]
-        public Nullable<long> LogID
-        {
-            get { return _logid; }
-            set
-            {
-                if (_logid != value)
-                {
-                    OnLogidChanging(value);
-                    OnPropertyChanging("Logid");
-                    _logid = value;
-                    OnPropertyChanged("Logid");
-                    OnLogidChanged();
-                }
-            }
-        }
-        
-        private long _ownerid;
-
-        /// <summary>
-        /// Gets or sets the ownerid column value.
-        /// </summary>
-        [Column(Name="ownerid", Storage="_ownerid", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long OwnerID
-        {
-            get { return _ownerid; }
-            set
-            {
-                if (_ownerid != value)
-                {
-                    OnOwneridChanging(value);
-                    OnPropertyChanging("Ownerid");
-                    _ownerid = value;
-                    OnPropertyChanged("Ownerid");
-                    OnOwneridChanged();
-                }
-            }
-        }
-        
-        private long _senderid;
-
-        /// <summary>
-        /// Gets or sets the senderid column value.
-        /// </summary>
-        [Column(Name="senderid", Storage="_senderid", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long SenderID
-        {
-            get { return _senderid; }
-            set
-            {
-                if (_senderid != value)
-                {
-                    OnSenderidChanging(value);
-                    OnPropertyChanging("Senderid");
-                    _senderid = value;
-                    OnPropertyChanged("Senderid");
-                    OnSenderidChanged();
-                }
-            }
-        }
-        
-        private System.DateTime _addtime;
-
-        /// <summary>
-        /// Gets or sets the addtime column value.
-        /// </summary>
-        [Column(Name="addtime", Storage="_addtime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
-        public System.DateTime AddTime
-        {
-            get { return _addtime; }
-            set
-            {
-                if (_addtime != value)
-                {
-                    OnAddtimeChanging(value);
-                    OnPropertyChanging("Addtime");
-                    _addtime = value;
-                    OnPropertyChanged("Addtime");
-                    OnAddtimeChanged();
-                }
-            }
-        }
-        
         private string _body;
 
         /// <summary>
@@ -300,6 +168,138 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _trueID = default(long);
+
+        /// <summary>
+        /// Gets the TrueID column value.
+        /// </summary>
+        [Column(Name="TrueID", Storage="_trueID", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long TrueID
+        {
+            get { return _trueID; }
+            set
+            {
+                if (_trueID != value)
+                {
+                    OnTrueIDChanging(value);
+                    OnPropertyChanging("TrueID");
+                    _trueID = value;
+                    OnPropertyChanged("TrueID");
+                    OnTrueIDChanged();
+                }
+            }
+        }
+        
+        private Nullable<long> _iD;
+
+        /// <summary>
+        /// Gets or sets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="bigint")]
+        public Nullable<long> ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        
+        private Nullable<long> _logID;
+
+        /// <summary>
+        /// Gets or sets the LogID column value.
+        /// </summary>
+        [Column(Name="LogID", Storage="_logID", DbType="bigint")]
+        public Nullable<long> LogID
+        {
+            get { return _logID; }
+            set
+            {
+                if (_logID != value)
+                {
+                    OnLogIDChanging(value);
+                    OnPropertyChanging("LogID");
+                    _logID = value;
+                    OnPropertyChanged("LogID");
+                    OnLogIDChanged();
+                }
+            }
+        }
+        
+        private long _ownerID;
+
+        /// <summary>
+        /// Gets or sets the OwnerID column value.
+        /// </summary>
+        [Column(Name="OwnerID", Storage="_ownerID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long OwnerID
+        {
+            get { return _ownerID; }
+            set
+            {
+                if (_ownerID != value)
+                {
+                    OnOwnerIDChanging(value);
+                    OnPropertyChanging("OwnerID");
+                    _ownerID = value;
+                    OnPropertyChanged("OwnerID");
+                    OnOwnerIDChanged();
+                }
+            }
+        }
+        
+        private long _senderID;
+
+        /// <summary>
+        /// Gets or sets the SenderID column value.
+        /// </summary>
+        [Column(Name="SenderID", Storage="_senderID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long SenderID
+        {
+            get { return _senderID; }
+            set
+            {
+                if (_senderID != value)
+                {
+                    OnSenderIDChanging(value);
+                    OnPropertyChanging("SenderID");
+                    _senderID = value;
+                    OnPropertyChanged("SenderID");
+                    OnSenderIDChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _addTime;
+
+        /// <summary>
+        /// Gets or sets the AddTime column value.
+        /// </summary>
+        [Column(Name="AddTime", Storage="_addTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime AddTime
+        {
+            get { return _addTime; }
+            set
+            {
+                if (_addTime != value)
+                {
+                    OnAddTimeChanging(value);
+                    OnPropertyChanging("AddTime");
+                    _addTime = value;
+                    OnPropertyChanged("AddTime");
+                    OnAddTimeChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -312,36 +312,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Trueid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnTrueidChanging(long value);
-        /// <summary>Called after Trueid has Changed.</summary>
-        partial void OnTrueidChanged();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(Nullable<long> value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
-        /// <summary>Called when Logid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnLogidChanging(Nullable<long> value);
-        /// <summary>Called after Logid has Changed.</summary>
-        partial void OnLogidChanged();
-        /// <summary>Called when Ownerid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnOwneridChanging(long value);
-        /// <summary>Called after Ownerid has Changed.</summary>
-        partial void OnOwneridChanged();
-        /// <summary>Called when Senderid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnSenderidChanging(long value);
-        /// <summary>Called after Senderid has Changed.</summary>
-        partial void OnSenderidChanged();
-        /// <summary>Called when Addtime is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnAddtimeChanging(System.DateTime value);
-        /// <summary>Called after Addtime has Changed.</summary>
-        partial void OnAddtimeChanged();
         /// <summary>Called when Body is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnBodyChanging(string value);
@@ -372,6 +342,36 @@ namespace CHSNS.Models
         partial void OnIstellmeChanging(byte value);
         /// <summary>Called after Istellme has Changed.</summary>
         partial void OnIstellmeChanged();
+        /// <summary>Called when TrueID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnTrueIDChanging(long value);
+        /// <summary>Called after TrueID has Changed.</summary>
+        partial void OnTrueIDChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(Nullable<long> value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when LogID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnLogIDChanging(Nullable<long> value);
+        /// <summary>Called after LogID has Changed.</summary>
+        partial void OnLogIDChanged();
+        /// <summary>Called when OwnerID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnOwnerIDChanging(long value);
+        /// <summary>Called after OwnerID has Changed.</summary>
+        partial void OnOwnerIDChanged();
+        /// <summary>Called when SenderID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnSenderIDChanging(long value);
+        /// <summary>Called after SenderID has Changed.</summary>
+        partial void OnSenderIDChanged();
+        /// <summary>Called when AddTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnAddTimeChanging(System.DateTime value);
+        /// <summary>Called after AddTime has Changed.</summary>
+        partial void OnAddTimeChanged();
         #endregion
         
     }

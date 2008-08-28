@@ -38,98 +38,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _trueid = default(long);
-
-        /// <summary>
-        /// Gets the trueid column value.
-        /// </summary>
-        [Column(Name="trueid", Storage="_trueid", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long Trueid
-        {
-            get { return _trueid; }
-            set
-            {
-                if (_trueid != value)
-                {
-                    OnTrueidChanging(value);
-                    OnPropertyChanging("Trueid");
-                    _trueid = value;
-                    OnPropertyChanged("Trueid");
-                    OnTrueidChanged();
-                }
-            }
-        }
-        
-        private Nullable<long> _id;
-
-        /// <summary>
-        /// Gets or sets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint")]
-        public Nullable<long> ID
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
-        private long _userid;
-
-        /// <summary>
-        /// Gets or sets the userid column value.
-        /// </summary>
-        [Column(Name="userid", Storage="_userid", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long UserID
-        {
-            get { return _userid; }
-            set
-            {
-                if (_userid != value)
-                {
-                    OnUseridChanging(value);
-                    OnPropertyChanging("Userid");
-                    _userid = value;
-                    OnPropertyChanged("Userid");
-                    OnUseridChanged();
-                }
-            }
-        }
-        
-        private long _groupid;
-
-        /// <summary>
-        /// Gets or sets the Groupid column value.
-        /// </summary>
-        [Column(Name="Groupid", Storage="_groupid", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long Groupid
-        {
-            get { return _groupid; }
-            set
-            {
-                if (_groupid != value)
-                {
-                    if (_group.HasLoadedOrAssignedValue)
-                    {
-                        throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-                    }
-                    OnGroupidChanging(value);
-                    OnPropertyChanging("Groupid");
-                    _groupid = value;
-                    OnPropertyChanged("Groupid");
-                    OnGroupidChanged();
-                }
-            }
-        }
-        
         private byte _level;
 
         /// <summary>
@@ -261,6 +169,98 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _trueID = default(long);
+
+        /// <summary>
+        /// Gets the TrueID column value.
+        /// </summary>
+        [Column(Name="TrueID", Storage="_trueID", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long TrueID
+        {
+            get { return _trueID; }
+            set
+            {
+                if (_trueID != value)
+                {
+                    OnTrueIDChanging(value);
+                    OnPropertyChanging("TrueID");
+                    _trueID = value;
+                    OnPropertyChanged("TrueID");
+                    OnTrueIDChanged();
+                }
+            }
+        }
+        
+        private Nullable<long> _iD;
+
+        /// <summary>
+        /// Gets or sets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="bigint")]
+        public Nullable<long> ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        
+        private long _userID;
+
+        /// <summary>
+        /// Gets or sets the UserID column value.
+        /// </summary>
+        [Column(Name="UserID", Storage="_userID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long UserID
+        {
+            get { return _userID; }
+            set
+            {
+                if (_userID != value)
+                {
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
+                }
+            }
+        }
+        
+        private long _groupID;
+
+        /// <summary>
+        /// Gets or sets the GroupID column value.
+        /// </summary>
+        [Column(Name="GroupID", Storage="_groupID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long GroupID
+        {
+            get { return _groupID; }
+            set
+            {
+                if (_groupID != value)
+                {
+                    if (_group.HasLoadedOrAssignedValue)
+                    {
+                        throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+                    }
+                    OnGroupIDChanging(value);
+                    OnPropertyChanging("GroupID");
+                    _groupID = value;
+                    OnPropertyChanged("GroupID");
+                    OnGroupIDChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -270,7 +270,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Group association.
         /// </summary>
-        [Association(Name="FK_GroupUser_Group", Storage="_group", ThisKey="Groupid", OtherKey="Id", IsForeignKey=true)]
+        [Association(Name="FK_GroupUser_Group", Storage="_group", ThisKey="GroupID", OtherKey="ID", IsForeignKey=true)]
         public Group Group
         {
             get { return _group.Entity; }
@@ -289,11 +289,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.GroupUserList.Add(this);
-                        _groupid = value.ID;
+                        _groupID = value.ID;
                     }
                     else
                     {
-                        _groupid = default(long);
+                        _groupID = default(long);
                     }
                     OnPropertyChanged("Group");
                 }
@@ -308,26 +308,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Trueid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnTrueidChanging(long value);
-        /// <summary>Called after Trueid has Changed.</summary>
-        partial void OnTrueidChanged();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(Nullable<long> value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
-        /// <summary>Called when Userid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnUseridChanging(long value);
-        /// <summary>Called after Userid has Changed.</summary>
-        partial void OnUseridChanged();
-        /// <summary>Called when Groupid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnGroupidChanging(long value);
-        /// <summary>Called after Groupid has Changed.</summary>
-        partial void OnGroupidChanged();
         /// <summary>Called when Level is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnLevelChanging(byte value);
@@ -358,6 +338,26 @@ namespace CHSNS.Models
         partial void OnIsRssChanging(bool value);
         /// <summary>Called after IsRss has Changed.</summary>
         partial void OnIsRssChanged();
+        /// <summary>Called when TrueID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnTrueIDChanging(long value);
+        /// <summary>Called after TrueID has Changed.</summary>
+        partial void OnTrueIDChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(Nullable<long> value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when UserID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnUserIDChanging(long value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
+        /// <summary>Called when GroupID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnGroupIDChanging(long value);
+        /// <summary>Called after GroupID has Changed.</summary>
+        partial void OnGroupIDChanged();
         #endregion
         
     }

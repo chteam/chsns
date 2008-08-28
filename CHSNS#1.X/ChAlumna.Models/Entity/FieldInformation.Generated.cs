@@ -38,32 +38,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _userid;
-
-        /// <summary>
-        /// Gets or sets the userid column value.
-        /// </summary>
-        [Column(Name="userid", Storage="_userid", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
-        public long UserID
-        {
-            get { return _userid; }
-            set
-            {
-                if (_userid != value)
-                {
-                    if (_profile.HasLoadedOrAssignedValue)
-                    {
-                        throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-                    }
-                    OnUseridChanging(value);
-                    OnPropertyChanging("Userid");
-                    _userid = value;
-                    OnPropertyChanged("Userid");
-                    OnUseridChanged();
-                }
-            }
-        }
-        
         private long _field;
 
         /// <summary>
@@ -195,6 +169,32 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _userID;
+
+        /// <summary>
+        /// Gets or sets the UserID column value.
+        /// </summary>
+        [Column(Name="UserID", Storage="_userID", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
+        public long UserID
+        {
+            get { return _userID; }
+            set
+            {
+                if (_userID != value)
+                {
+                    if (_profile.HasLoadedOrAssignedValue)
+                    {
+                        throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+                    }
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -204,7 +204,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Profile association.
         /// </summary>
-        [Association(Name="FK_FieldInformation_Profile", Storage="_profile", ThisKey="Userid", OtherKey="UserId", IsForeignKey=true)]
+        [Association(Name="FK_FieldInformation_Profile", Storage="_profile", ThisKey="UserID", OtherKey="UserId", IsForeignKey=true)]
         public Profile Profile
         {
             get { return _profile.Entity; }
@@ -223,11 +223,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.FieldInformation = this;
-                        _userid = value.UserId;
+                        _userID = value.UserId;
                     }
                     else
                     {
-                        _userid = default(long);
+                        _userID = default(long);
                     }
                     OnPropertyChanged("Profile");
                 }
@@ -242,11 +242,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Userid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnUseridChanging(long value);
-        /// <summary>Called after Userid has Changed.</summary>
-        partial void OnUseridChanged();
         /// <summary>Called when Field is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnFieldChanging(long value);
@@ -277,6 +272,11 @@ namespace CHSNS.Models
         partial void OnField2Changing(Nullable<long> value);
         /// <summary>Called after Field2 has Changed.</summary>
         partial void OnField2Changed();
+        /// <summary>Called when UserID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnUserIDChanging(long value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
         #endregion
         
     }

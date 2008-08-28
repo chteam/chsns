@@ -24,7 +24,7 @@ namespace CHSNS.Models
     /// <summary>
     /// The DataContext class for the sq_menglei database.
     /// </summary>
-    public partial class CHSNSDBContext : DataContext
+    public partial class CHSNSDBDataContext : DataContext
     {
         private static MappingSource mappingCache = new AttributeMappingSource();
         
@@ -33,15 +33,15 @@ namespace CHSNS.Models
         /// Initializes the <see cref="CHSNSDBDataContext"/> class.
         /// </summary>
         [DebuggerNonUserCodeAttribute]
-        static CHSNSDBContext()
+        static CHSNSDBDataContext()
         { }
         
         /// <summary>
         /// Initializes a new instance of the <see cref="CHSNSDBDataContext"/> class.
         /// </summary>
         [DebuggerNonUserCodeAttribute]
-        public CHSNSDBContext()
-			: base(Properties.Settings.Default.CHSNSDBConnectionString, mappingCache)
+        public CHSNSDBDataContext()
+            : base(Properties.Settings.Default.SqMengleiConnectionString, mappingCache)
         {
             OnCreated();
         }
@@ -51,7 +51,7 @@ namespace CHSNS.Models
         /// </summary>
         /// <param name="connection">The connection string.</param>
         [DebuggerNonUserCodeAttribute]
-        public CHSNSDBContext(string connection)
+        public CHSNSDBDataContext(string connection)
             : base(connection, mappingCache)
         {
             OnCreated();
@@ -62,7 +62,7 @@ namespace CHSNS.Models
         /// </summary>
         /// <param name="connection">The database connection.</param>
         [DebuggerNonUserCodeAttribute]
-        public CHSNSDBContext(IDbConnection connection)
+        public CHSNSDBDataContext(IDbConnection connection)
             : base(connection, mappingCache)
         {
             OnCreated();
@@ -74,7 +74,7 @@ namespace CHSNS.Models
         /// <param name="connection">The connection string.</param>
         /// <param name="mappingSource">The mapping source.</param>
         [DebuggerNonUserCodeAttribute]
-        public CHSNSDBContext(string connection, MappingSource mappingSource)
+        public CHSNSDBDataContext(string connection, MappingSource mappingSource)
             : base(connection, mappingSource)
         {
             OnCreated();
@@ -86,7 +86,7 @@ namespace CHSNS.Models
         /// <param name="connection">The database connection.</param>
         /// <param name="mappingSource">The mapping source.</param>
         [DebuggerNonUserCodeAttribute]
-        public CHSNSDBContext(IDbConnection connection, MappingSource mappingSource)
+        public CHSNSDBDataContext(IDbConnection connection, MappingSource mappingSource)
             : base(connection, mappingSource)
         {
             OnCreated();
@@ -191,9 +191,9 @@ namespace CHSNS.Models
         }
         
         /// <summary>Represents the dbo.Log table in the underlying database.</summary>
-        public Table<Note> Note
+        public Table<Log> LogTable
         {
-            get { return GetTable<Note>(); }
+            get { return GetTable<Log>(); }
         }
         
         /// <summary>Represents the dbo.LogTag table in the underlying database.</summary>
@@ -428,13 +428,13 @@ namespace CHSNS.Models
         partial void DeleteGroupUser(GroupUser instance);
         /// <summary>Called before a Log is inserted.</summary>
         /// <param name="instance">The instance.</param>
-        partial void InsertLog(Note instance);
+        partial void InsertLog(Log instance);
         /// <summary>Called before a Log is updated.</summary>
         /// <param name="instance">The instance.</param>
-        partial void UpdateLog(Note instance);
+        partial void UpdateLog(Log instance);
         /// <summary>Called before a Log is deleted.</summary>
         /// <param name="instance">The instance.</param>
-        partial void DeleteLog(Note instance);
+        partial void DeleteLog(Log instance);
         /// <summary>Called before a LogTag is inserted.</summary>
         /// <param name="instance">The instance.</param>
         partial void InsertLogTag(LogTag instance);

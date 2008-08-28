@@ -37,28 +37,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private string _id;
-
-        /// <summary>
-        /// Gets or sets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="varchar(50) NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
-        public string Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
         private string _fullname;
 
         /// <summary>
@@ -344,6 +322,28 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private string _iD;
+
+        /// <summary>
+        /// Gets or sets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="varchar(50) NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
+        public string ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -356,11 +356,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(string value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
         /// <summary>Called when Fullname is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnFullnameChanging(string value);
@@ -426,6 +421,11 @@ namespace CHSNS.Models
         partial void OnUserCountChanging(long value);
         /// <summary>Called after UserCount has Changed.</summary>
         partial void OnUserCountChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(string value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
         #endregion
         
     }

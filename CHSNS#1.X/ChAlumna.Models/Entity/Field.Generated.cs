@@ -37,46 +37,46 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _trueid = default(long);
+        private long _trueID = default(long);
 
         /// <summary>
-        /// Gets the trueid column value.
+        /// Gets the TrueID column value.
         /// </summary>
-        [Column(Name="trueid", Storage="_trueid", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long Trueid
+        [Column(Name="TrueID", Storage="_trueID", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long TrueID
         {
-            get { return _trueid; }
+            get { return _trueID; }
             set
             {
-                if (_trueid != value)
+                if (_trueID != value)
                 {
-                    OnTrueidChanging(value);
-                    OnPropertyChanging("Trueid");
-                    _trueid = value;
-                    OnPropertyChanged("Trueid");
-                    OnTrueidChanged();
+                    OnTrueIDChanging(value);
+                    OnPropertyChanging("TrueID");
+                    _trueID = value;
+                    OnPropertyChanged("TrueID");
+                    OnTrueIDChanged();
                 }
             }
         }
         
-        private Nullable<long> _id;
+        private Nullable<long> _iD;
 
         /// <summary>
-        /// Gets or sets the id column value.
+        /// Gets or sets the ID column value.
         /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint")]
-        public Nullable<long> Id
+        [Column(Name="ID", Storage="_iD", DbType="bigint")]
+        public Nullable<long> ID
         {
-            get { return _id; }
+            get { return _iD; }
             set
             {
-                if (_id != value)
+                if (_iD != value)
                 {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
                 }
             }
         }
@@ -84,9 +84,9 @@ namespace CHSNS.Models
         private string _name;
 
         /// <summary>
-        /// Gets or sets the name column value.
+        /// Gets or sets the Name column value.
         /// </summary>
-        [Column(Name="name", Storage="_name", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
+        [Column(Name="Name", Storage="_name", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
         public string Name
         {
             get { return _name; }
@@ -103,46 +103,46 @@ namespace CHSNS.Models
             }
         }
         
-        private Nullable<long> _pid;
+        private Nullable<long> _pID;
 
         /// <summary>
-        /// Gets or sets the pid column value.
+        /// Gets or sets the PID column value.
         /// </summary>
-        [Column(Name="pid", Storage="_pid", DbType="bigint")]
+        [Column(Name="PID", Storage="_pID", DbType="bigint")]
         public Nullable<long> PID
         {
-            get { return _pid; }
+            get { return _pID; }
             set
             {
-                if (_pid != value)
+                if (_pID != value)
                 {
-                    OnPidChanging(value);
-                    OnPropertyChanging("Pid");
-                    _pid = value;
-                    OnPropertyChanged("Pid");
-                    OnPidChanged();
+                    OnPIDChanging(value);
+                    OnPropertyChanging("PID");
+                    _pID = value;
+                    OnPropertyChanged("PID");
+                    OnPIDChanged();
                 }
             }
         }
         
-        private bool _istrue;
+        private bool _isTrue;
 
         /// <summary>
-        /// Gets or sets the istrue column value.
+        /// Gets or sets the IsTrue column value.
         /// </summary>
-        [Column(Name="istrue", Storage="_istrue", DbType="bit NOT NULL", CanBeNull=false)]
+        [Column(Name="IsTrue", Storage="_isTrue", DbType="bit NOT NULL", CanBeNull=false)]
         public bool IsTrue
         {
-            get { return _istrue; }
+            get { return _isTrue; }
             set
             {
-                if (_istrue != value)
+                if (_isTrue != value)
                 {
-                    OnIstrueChanging(value);
-                    OnPropertyChanging("Istrue");
-                    _istrue = value;
-                    OnPropertyChanged("Istrue");
-                    OnIstrueChanged();
+                    OnIsTrueChanging(value);
+                    OnPropertyChanging("IsTrue");
+                    _isTrue = value;
+                    OnPropertyChanged("IsTrue");
+                    OnIsTrueChanged();
                 }
             }
         }
@@ -150,9 +150,9 @@ namespace CHSNS.Models
         private int _class;
 
         /// <summary>
-        /// Gets or sets the class column value.
+        /// Gets or sets the Class column value.
         /// </summary>
-        [Column(Name="class", Storage="_class", DbType="int NOT NULL", CanBeNull=false)]
+        [Column(Name="Class", Storage="_class", DbType="int NOT NULL", CanBeNull=false)]
         public int Class
         {
             get { return _class; }
@@ -180,31 +180,31 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Trueid is changing.</summary>
+        /// <summary>Called when TrueID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnTrueidChanging(long value);
-        /// <summary>Called after Trueid has Changed.</summary>
-        partial void OnTrueidChanged();
-        /// <summary>Called when Id is changing.</summary>
+        partial void OnTrueIDChanging(long value);
+        /// <summary>Called after TrueID has Changed.</summary>
+        partial void OnTrueIDChanged();
+        /// <summary>Called when ID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnIdChanging(Nullable<long> value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
+        partial void OnIDChanging(Nullable<long> value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
         /// <summary>Called when Name is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnNameChanging(string value);
         /// <summary>Called after Name has Changed.</summary>
         partial void OnNameChanged();
-        /// <summary>Called when Pid is changing.</summary>
+        /// <summary>Called when PID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnPidChanging(Nullable<long> value);
-        /// <summary>Called after Pid has Changed.</summary>
-        partial void OnPidChanged();
-        /// <summary>Called when Istrue is changing.</summary>
+        partial void OnPIDChanging(Nullable<long> value);
+        /// <summary>Called after PID has Changed.</summary>
+        partial void OnPIDChanged();
+        /// <summary>Called when IsTrue is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnIstrueChanging(bool value);
-        /// <summary>Called after Istrue has Changed.</summary>
-        partial void OnIstrueChanged();
+        partial void OnIsTrueChanging(bool value);
+        /// <summary>Called after IsTrue has Changed.</summary>
+        partial void OnIsTrueChanged();
         /// <summary>Called when Class is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnClassChanging(int value);

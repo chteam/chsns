@@ -32,83 +32,83 @@ namespace CHSNS.Models
         public LogTag()
         {
             OnCreated();
-            _log = default(EntityRef<Note>);
+            _log = default(EntityRef<Log>);
             _tagidTags = default(EntityRef<Tags>);
         }
         #endregion
         
         #region Column Mapped Properties
         
-        private long _id = default(long);
+        private long _iD = default(long);
 
         /// <summary>
-        /// Gets the id column value.
+        /// Gets the ID column value.
         /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
         public long ID
         {
-            get { return _id; }
+            get { return _iD; }
             set
             {
-                if (_id != value)
+                if (_iD != value)
                 {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
                 }
             }
         }
         
-        private long _tagid;
+        private long _tagID;
 
         /// <summary>
-        /// Gets or sets the tagid column value.
+        /// Gets or sets the TagID column value.
         /// </summary>
-        [Column(Name="tagid", Storage="_tagid", DbType="bigint NOT NULL", CanBeNull=false)]
+        [Column(Name="TagID", Storage="_tagID", DbType="bigint NOT NULL", CanBeNull=false)]
         public long TagID
         {
-            get { return _tagid; }
+            get { return _tagID; }
             set
             {
-                if (_tagid != value)
+                if (_tagID != value)
                 {
                     if (_tagidTags.HasLoadedOrAssignedValue)
                     {
                         throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
                     }
-                    OnTagidChanging(value);
-                    OnPropertyChanging("Tagid");
-                    _tagid = value;
-                    OnPropertyChanged("Tagid");
-                    OnTagidChanged();
+                    OnTagIDChanging(value);
+                    OnPropertyChanging("TagID");
+                    _tagID = value;
+                    OnPropertyChanged("TagID");
+                    OnTagIDChanged();
                 }
             }
         }
         
-        private long _logid;
+        private long _logID;
 
         /// <summary>
-        /// Gets or sets the logid column value.
+        /// Gets or sets the LogID column value.
         /// </summary>
-        [Column(Name="logid", Storage="_logid", DbType="bigint NOT NULL", CanBeNull=false)]
+        [Column(Name="LogID", Storage="_logID", DbType="bigint NOT NULL", CanBeNull=false)]
         public long LogID
         {
-            get { return _logid; }
+            get { return _logID; }
             set
             {
-                if (_logid != value)
+                if (_logID != value)
                 {
                     if (_log.HasLoadedOrAssignedValue)
                     {
                         throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
                     }
-                    OnLogidChanging(value);
-                    OnPropertyChanging("Logid");
-                    _logid = value;
-                    OnPropertyChanged("Logid");
-                    OnLogidChanged();
+                    OnLogIDChanging(value);
+                    OnPropertyChanging("LogID");
+                    _logID = value;
+                    OnPropertyChanged("LogID");
+                    OnLogIDChanged();
                 }
             }
         }
@@ -116,18 +116,18 @@ namespace CHSNS.Models
         
         #region Association Mapped Properties
         
-        private EntityRef<Note> _log;
+        private EntityRef<Log> _log;
 
         /// <summary>
         /// Gets or sets the Log association.
         /// </summary>
-        [Association(Name="FK_LogTag_Log", Storage="_log", ThisKey="Logid", OtherKey="Id", IsForeignKey=true)]
-        public Note Log
+        [Association(Name="FK_LogTag_Log", Storage="_log", ThisKey="LogID", OtherKey="ID", IsForeignKey=true)]
+        public Log Log
         {
             get { return _log.Entity; }
             set
             {
-                Note previousValue = _log.Entity;
+                Log previousValue = _log.Entity;
                 if (previousValue != value || _log.HasLoadedOrAssignedValue == false)
                 {
                     OnPropertyChanging("Log");
@@ -140,11 +140,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.LogTagList.Add(this);
-                        _logid = value.ID;
+                        _logID = value.ID;
                     }
                     else
                     {
-                        _logid = default(long);
+                        _logID = default(long);
                     }
                     OnPropertyChanged("Log");
                 }
@@ -156,7 +156,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Tags association.
         /// </summary>
-        [Association(Name="FK_LogTag_Tags", Storage="_tagidTags", ThisKey="Tagid", OtherKey="Id", IsForeignKey=true)]
+        [Association(Name="FK_LogTag_Tags", Storage="_tagidTags", ThisKey="TagID", OtherKey="Id", IsForeignKey=true)]
         public Tags TagidTags
         {
             get { return _tagidTags.Entity; }
@@ -175,11 +175,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.TagidLogTagList.Add(this);
-                        _tagid = value.Id;
+                        _tagID = value.Id;
                     }
                     else
                     {
-                        _tagid = default(long);
+                        _tagID = default(long);
                     }
                     OnPropertyChanged("TagidTags");
                 }
@@ -194,21 +194,21 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Id is changing.</summary>
+        /// <summary>Called when ID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnIdChanging(long value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
-        /// <summary>Called when Tagid is changing.</summary>
+        partial void OnIDChanging(long value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when TagID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnTagidChanging(long value);
-        /// <summary>Called after Tagid has Changed.</summary>
-        partial void OnTagidChanged();
-        /// <summary>Called when Logid is changing.</summary>
+        partial void OnTagIDChanging(long value);
+        /// <summary>Called after TagID has Changed.</summary>
+        partial void OnTagIDChanged();
+        /// <summary>Called when LogID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnLogidChanging(long value);
-        /// <summary>Called after Logid has Changed.</summary>
-        partial void OnLogidChanged();
+        partial void OnLogIDChanging(long value);
+        /// <summary>Called after LogID has Changed.</summary>
+        partial void OnLogIDChanged();
         #endregion
         
     }
