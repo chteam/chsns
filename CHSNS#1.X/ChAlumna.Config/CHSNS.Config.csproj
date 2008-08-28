@@ -63,15 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseConfig.cs" />
-    <Compile Include="ChAlumnaConfig.cs" />
-    <Compile Include="ConfigPath.cs" />
-    <Compile Include="ConfigString.cs" />
-    <Compile Include="Publish\Publish.cs" />
-    <Compile Include="SiteConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegVisitConfig.cs" />
-    <Compile Include="SystemConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
