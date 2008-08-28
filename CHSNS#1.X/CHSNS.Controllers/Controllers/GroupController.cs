@@ -26,7 +26,7 @@ using System.Web.Mvc;
 					   select gr).FirstOrDefault();
 			GroupUser u = (from gu in DB.GroupUser
 					 where gu.UserID == CHSNSUser.Current.UserID
-					 && gu.Groupid == Groupid
+					 && gu.GroupID == Groupid
 						   select gu).FirstOrDefault();
 			if (g == null)
 				return;
@@ -54,7 +54,7 @@ using System.Web.Mvc;
 			ViewData.Add("adminRows",
 						(from gu in DB.GroupUser
 						 join a in DB.Account on gu.UserID equals a.UserID
-						 where gu.Groupid == Groupid
+						 where gu.GroupID == Groupid
 							&& gu.IsTrue == true
 							 && gu.Level > 199
 							 && gu.IsTrue == true

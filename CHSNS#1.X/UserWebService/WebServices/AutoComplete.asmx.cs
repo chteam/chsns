@@ -23,7 +23,7 @@ namespace Chsword {
 			List<string> items = new List<string>(count);
 
 			List<string> root;
-			if (ChCache.IsNullorEmpty(CacheName)) {
+			if (CHCache.IsNullorEmpty(CacheName)) {
 				root = new List<string>();
 				root.Add("@126.com");
 				root.Add("@163.com");
@@ -39,9 +39,9 @@ namespace Chsword {
 				root.Add("@chinaren.com");
 				root.Add("@etang.com");
 				root.Add("@hotmail.com");
-				ChCache.SetCache(CacheName, root);
+				CHCache.SetCache(CacheName, root);
 			} else {
-				root = (List<string>)ChCache.GetCache(CacheName);
+				root = (List<string>)CHCache.GetCache(CacheName);
 			}
 			string[] user = prefixText.Split('@');
 			Int16 i;

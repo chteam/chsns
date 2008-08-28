@@ -57,17 +57,17 @@ namespace Chsword.Reader {
 			if(dt.Rows.Count<1){
 				if(_type==0){
 					if((Viewerid+Ownerid)>0&&Viewerid==Ownerid){
-						return ChCache.GetConfig("Friend","None_Friend");
+						return CHCache.GetConfig("Friend","None_Friend");
 					}else{
-						return ChCache.GetConfig("Friend","None_Friend_Other");
+						return CHCache.GetConfig("Friend","None_Friend_Other");
 					}
 				}
 			}
 			StringBuilder all = new StringBuilder("");
 			String item;
-			item = ChCache.GetTemplateCache(_Template);
+			item = CHCache.GetTemplateCache(_Template);
 			if (_type == 0 && _Ownerid != _Viewerid) {
-				item = ChCache.GetTemplateCache("userlist");
+				item = CHCache.GetTemplateCache("userlist");
 			}
 		
 			StringBuilder temp;
@@ -115,7 +115,7 @@ namespace Chsword.Reader {
 
 		//public string ShowAll(String Items, int NowPage) {
 		//    StringBuilder master = new StringBuilder();
-		//    master.Append(ChCache.GetTemplateCache(String.Format("{0}Master", _Template)));
+		//    master.Append(CHCache.GetTemplateCache(String.Format("{0}Master", _Template)));
 		//    master.Replace("$Items$", Items);
 		//    if ( _type != 2 && Template!="UserList")
 		//        master.Replace("$Count$", GetCount());

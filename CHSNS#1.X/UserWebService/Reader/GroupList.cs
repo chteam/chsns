@@ -78,11 +78,11 @@ namespace Chsword.Reader {
 			if(_nowpage<=1){
 				if(_type==0)//我的群列表
 					if(dt.Rows.Count<1)
-					return ChCache.GetConfig("Group","None_MyGrouplist");
+					return CHCache.GetConfig("Group","None_MyGrouplist");
 			}
 			StringBuilder all = new StringBuilder("");
 			if (_groupclass == 1) {
-				String item = ChCache.GetTemplateCache("MyClass");
+				String item = CHCache.GetTemplateCache("MyClass");
 				StringBuilder temp;
 				foreach (DataRow dr in dt.Rows) {
 					if (dt.Rows.Count == 1 && Autotoclass && CHSNSUser.Current.Status >= UserStatusType.User && true.Equals(dr["istrue"])) {
@@ -92,9 +92,9 @@ namespace Chsword.Reader {
 					string t1;
 					if (!true.Equals(dr["istrue"])) {
 						if (dr["level"].ToString().Equals("255")) { //我创建了一个群
-							t1 = ChCache.GetConfig("Group", "Class_CreateWait");
+							t1 = CHCache.GetConfig("Group", "Class_CreateWait");
 						} else { //我申请加入了一个群
-							t1 = ChCache.GetConfig("Group", "Class_JoinWait");
+							t1 = CHCache.GetConfig("Group", "Class_JoinWait");
 						}
 					} else {//我没加入过也没创建
 						t1 = "";
@@ -120,7 +120,7 @@ namespace Chsword.Reader {
 					all.Append(temp);
 				}
 			} else {
-				String item = ChCache.GetTemplateCache("GroupItem");
+				String item = CHCache.GetTemplateCache("GroupItem");
 				StringBuilder temp;
 				for (int i = 0; i < dt.Rows.Count; i++) {
 					temp = new StringBuilder(item.ToString());

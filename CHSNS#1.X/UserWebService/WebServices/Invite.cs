@@ -40,7 +40,7 @@ namespace Chsword
 			String[] mails=mail_address.Split(',');
 			Email.InviteSend(
 				string.Format("{0}邀请您加入",Session["username"].ToString()),
-				string.Format(ChCache.GetConfig("Email","invite"),
+				string.Format(CHCache.GetConfig("Email","invite"),
 				              Session["username"].ToString(),
 				              Customstr,
 							  SiteConfig.Current.BaseConfig.Url

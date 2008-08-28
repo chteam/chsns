@@ -10,7 +10,7 @@ namespace Chsword.Reader {
 
 		#region IShowAll ≥…‘±
 		public string ShowAll(string Items, int NowPage) {
-			StringBuilder sbout = new StringBuilder(ChCache.GetTemplateCache("NewGroup"));
+			StringBuilder sbout = new StringBuilder(CHCache.GetTemplateCache("NewGroup"));
 			sbout.Replace("$Jifen$", GetMyJiFen());
 			DataSetCache dc = new DataSetCache();
 			sbout.Replace("$category$", dc.GroupCategory_List());

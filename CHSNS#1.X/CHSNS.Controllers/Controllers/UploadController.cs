@@ -113,8 +113,8 @@
 				string urlPath = _photoPath;
 				urlPath = urlPath.Replace("\\", "/");
 
-				ChCache cache = new ChCache();
-				WriteJs("parent.uploadsuccess('" + string.Format(ChCache.GetConfig("Photos", "Upload_Successed"), urlPath) + "','" + itemID + "'); ");
+				CHCache cache = new CHCache();
+				WriteJs("parent.uploadsuccess('" + string.Format(CHCache.GetConfig("Photos", "Upload_Successed"), urlPath) + "','" + itemID + "'); ");
 
 			} catch (Exception ex) {
 				WriteJs("parent.uploaderror('" + ex.Message + ex.StackTrace + "');");

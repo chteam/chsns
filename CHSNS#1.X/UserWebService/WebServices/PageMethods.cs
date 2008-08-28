@@ -494,7 +494,7 @@ using CHSNS.Models;
 			rm.Userid = CHUser.UserID;
 			rm.Isinboxer = isowner;
 			rm.Messageid = Messageid;
-			ChCache.Remove(string.Format("unReadMessage.{0}", CHUser.UserID));
+			CHCache.Remove(string.Format("unReadMessage.{0}", CHUser.UserID));
 			return rm.GetSingle();
 		}
 		[WebMethod(EnableSession=true)]

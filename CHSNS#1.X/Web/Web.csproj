@@ -185,6 +185,7 @@
     <Content Include="Config\Province.config" />
     <Content Include="Config\Regex.config" />
     <Content Include="Config\Script.config" />
+    <Content Include="Config\Sex.xml" />
     <Content Include="Config\SkyTree.config" />
     <Content Include="Config\StarSign.config" />
     <Content Include="Config\StyleSheet.config" />
@@ -193,6 +194,7 @@
     <Content Include="Config\SiteConfig.config" />
     <Content Include="Config\Style.config" />
     <Content Include="ChAlumna.config" />
+    <None Include="Style\Default\i\Thumbs.db" />
     <None Include="Template\Default\PublicMenu.htm1" />
     <None Include="Template\Default\Random.htm1" />
     <None Include="Views\Admin\Admin\ApplyClass.vm" />
@@ -238,7 +240,6 @@
     <None Include="Views\Components\Pager.vm" />
     <None Include="Views\Components\PhotoList\PhotoItem.vm" />
     <None Include="Views\Components\PostList\SubjectList.vm" />
-    <None Include="Views\Components\ProfileEditChild\Basic.vm" />
     <None Include="Views\Components\ProfileEditChild\Contact.vm" />
     <None Include="Views\Components\ProfileEditChild\MagicBox.vm" />
     <None Include="Views\Components\ProfileEditChild\PersonalInfo.vm" />
@@ -252,7 +253,6 @@
     <None Include="Views\Group\List.vm" />
     <None Include="Views\Group\Manage.vm" />
     <None Include="Views\Group\MyClass.vm" />
-    <None Include="Views\Home\Error.vm" />
     <None Include="Views\Home\GetCode.vm" />
     <None Include="Views\Home\Invite.vm" />
     <None Include="Views\Home\PrivateClaim.vm" />
@@ -273,9 +273,64 @@
     <None Include="Views\Html\UserList-FriendRequest.vm" />
     <None Include="Views\Html\UserList-Random.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
+    <Content Include="Config\ShowLevel.xml" />
+    <Content Include="Config\UserEditMenu.xml" />
     <Content Include="Default.aspx" />
     <Content Include="JavaScript\jquery-1.2.3-intellisense.js" />
     <Content Include="JavaScript\ui.js" />
+    <Content Include="Style\Default\admin.css" />
+    <Content Include="Style\Default\appli.css" />
+    <Content Include="Style\Default\blog.css" />
+    <Content Include="Style\Default\calendar.css" />
+    <Content Include="Style\Default\friend.css" />
+    <Content Include="Style\Default\group.css" />
+    <Content Include="Style\Default\home.css" />
+    <Content Include="Style\Default\invite.css" />
+    <Content Include="Style\Default\i\accordion-left-act.png" />
+    <Content Include="Style\Default\i\accordion-left-over.png" />
+    <Content Include="Style\Default\i\accordion-left.png" />
+    <Content Include="Style\Default\i\accordion-middle-act.png" />
+    <Content Include="Style\Default\i\accordion-middle-over.png" />
+    <Content Include="Style\Default\i\accordion-middle.png" />
+    <Content Include="Style\Default\i\accordion-right-act.png" />
+    <Content Include="Style\Default\i\accordion-right-over.png" />
+    <Content Include="Style\Default\i\accordion-right.png" />
+    <Content Include="Style\Default\i\dialog-e.gif" />
+    <Content Include="Style\Default\i\dialog-n.gif" />
+    <Content Include="Style\Default\i\dialog-ne.gif" />
+    <Content Include="Style\Default\i\dialog-nw.gif" />
+    <Content Include="Style\Default\i\dialog-s.gif" />
+    <Content Include="Style\Default\i\dialog-se.gif" />
+    <Content Include="Style\Default\i\dialog-sw.gif" />
+    <Content Include="Style\Default\i\dialog-title.gif" />
+    <Content Include="Style\Default\i\dialog-titlebar-close-hover.png" />
+    <Content Include="Style\Default\i\dialog-titlebar-close.png" />
+    <Content Include="Style\Default\i\dialog-w.gif" />
+    <Content Include="Style\Default\i\resizable-e.gif" />
+    <Content Include="Style\Default\i\resizable-n.gif" />
+    <Content Include="Style\Default\i\resizable-ne.gif" />
+    <Content Include="Style\Default\i\resizable-nw.gif" />
+    <Content Include="Style\Default\i\resizable-s.gif" />
+    <Content Include="Style\Default\i\resizable-se.gif" />
+    <Content Include="Style\Default\i\resizable-sw.gif" />
+    <Content Include="Style\Default\i\resizable-w.gif" />
+    <Content Include="Style\Default\i\slider-bg-1.png" />
+    <Content Include="Style\Default\i\slider-bg-2.png" />
+    <Content Include="Style\Default\i\slider-handle.gif" />
+    <Content Include="Style\Default\i\tabs.png" />
+    <Content Include="Style\Default\main.css" />
+    <Content Include="Style\Default\master.css" />
+    <Content Include="Style\Default\mini.css" />
+    <Content Include="Style\Default\msg.css" />
+    <Content Include="Style\Default\myblog.css" />
+    <Content Include="Style\Default\myclass.css" />
+    <Content Include="Style\Default\mypage.css" />
+    <Content Include="Style\Default\photo.css" />
+    <Content Include="Style\Default\profile.css" />
+    <Content Include="Style\Default\register.css" />
+    <Content Include="Style\Default\Reply.css" />
+    <Content Include="Style\Default\skin.gif" />
+    <Content Include="Style\Default\video.css" />
     <Content Include="Views\Comment\ShowList.ascx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
@@ -315,9 +370,9 @@
     <None Include="Views\test\index.vm" />
     <None Include="Views\Upload\Face.vm" />
     <None Include="Views\Upload\Photo.vm" />
-    <None Include="Views\User\friend.vm" />
-    <None Include="Views\User\friendRequest.vm" />
-    <None Include="Views\User\random.vm" />
+    <None Include="Views\Friend\friend.vm" />
+    <None Include="Views\Friend\friendRequest.vm" />
+    <None Include="Views\Friend\random.vm" />
     <Content Include="JavaScript\AdminUser.js" />
     <Content Include="JavaScript\Application.js" />
     <Content Include="JavaScript\Client\AccordionBehavior.js" />
@@ -378,13 +433,6 @@
     <Content Include="JavaScript\Setting.js" />
     <Content Include="JavaScript\Upload.js" />
     <Content Include="JavaScript\UploadPhoto.js" />
-    <Content Include="Style\Default\admin.css" />
-    <Content Include="Style\Default\appli.css" />
-    <Content Include="Style\Default\blog.css" />
-    <Content Include="Style\Default\calendar.css" />
-    <Content Include="Style\Default\friend.css" />
-    <Content Include="Style\Default\group.css" />
-    <Content Include="Style\Default\home.css" />
     <Content Include="Style\Default\Images\act_select.gif" />
     <Content Include="Style\Default\Images\bg_icon.png" />
     <Content Include="Style\Default\Images\buttonbg.jpg" />
@@ -427,20 +475,6 @@
     <Content Include="Style\Default\Images\toplogo.png" />
     <Content Include="Style\Default\Images\unread.gif" />
     <Content Include="Style\Default\Images\video.png" />
-    <Content Include="Style\Default\invite.css" />
-    <Content Include="Style\Default\main.css" />
-    <Content Include="Style\Default\master.css" />
-    <Content Include="Style\Default\mini.css" />
-    <Content Include="Style\Default\msg.css" />
-    <Content Include="Style\Default\myblog.css" />
-    <Content Include="Style\Default\myclass.css" />
-    <Content Include="Style\Default\mypage.css" />
-    <Content Include="Style\Default\photo.css" />
-    <Content Include="Style\Default\register.css" />
-    <Content Include="Style\Default\Reply.css" />
-    <Content Include="Style\Default\skin.gif" />
-    <Content Include="Style\Default\system.css" />
-    <Content Include="Style\Default\video.css" />
     <Content Include="Style\foxblue\admin.css" />
     <Content Include="Style\foxblue\appli.css" />
     <Content Include="Style\foxblue\application.css" />
@@ -542,6 +576,9 @@
     <Content Include="Views\Shared\MyMenu.ascx" />
     <Content Include="Views\Shared\PublicMenu.ascx" />
     <Content Include="Views\Shared\Utility.ascx" />
+    <Content Include="Views\User\BaseInfo.ascx" />
+    <Content Include="Views\User\Contact.ascx" />
+    <Content Include="Views\User\Edit.aspx" />
     <Content Include="Views\User\EmptyMagicBox.ascx" />
     <Content Include="Views\User\Index-Account.ascx" />
     <Content Include="Views\User\Index-Contact.ascx" />
@@ -552,7 +589,11 @@
     <Content Include="Views\User\Index-Personal.ascx" />
     <Content Include="Views\User\Index-School.ascx" />
     <Content Include="Views\User\Index.aspx" />
+    <Content Include="Views\User\MagicBox.ascx" />
+    <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\Readme.txt" />
+    <Content Include="Views\User\School.ascx" />
+    <Content Include="Views\User\Upload.ascx" />
     <Content Include="Views\View\ShowViewList.ascx" />
     <Content Include="WebServices\Application.asmx" />
     <Content Include="WebServices\AutoComplete.asmx" />
@@ -571,10 +612,6 @@
     <Content Include="WebServices\Services.asmx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Config\CHSNS.Config.csproj">
-      <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
-      <Name>CHSNS.Config</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">
       <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
       <Name>CHSNS.Data</Name>
@@ -713,6 +750,27 @@
     <Compile Include="Views\Shared\Utility.ascx.designer.cs">
       <DependentUpon>Utility.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\BaseInfo.ascx.cs">
+      <DependentUpon>BaseInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\BaseInfo.ascx.designer.cs">
+      <DependentUpon>BaseInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Contact.ascx.cs">
+      <DependentUpon>Contact.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Contact.ascx.designer.cs">
+      <DependentUpon>Contact.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\EmptyMagicBox.ascx.cs">
       <DependentUpon>EmptyMagicBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -782,6 +840,34 @@
     </Compile>
     <Compile Include="Views\User\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\MagicBox.ascx.cs">
+      <DependentUpon>MagicBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\MagicBox.ascx.designer.cs">
+      <DependentUpon>MagicBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Personal.ascx.cs">
+      <DependentUpon>Personal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Personal.ascx.designer.cs">
+      <DependentUpon>Personal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\School.ascx.cs">
+      <DependentUpon>School.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\School.ascx.designer.cs">
+      <DependentUpon>School.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Upload.ascx.cs">
+      <DependentUpon>Upload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Upload.ascx.designer.cs">
+      <DependentUpon>Upload.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\View\ShowViewList.ascx.cs">
       <DependentUpon>ShowViewList.ascx</DependentUpon>

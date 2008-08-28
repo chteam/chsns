@@ -30,7 +30,7 @@
 		public string AddMiniField(Int64 fieldid, IList names, int type) {
 			StringBuilder output = new StringBuilder();
 			if (CHUser.IsAdmin) {
-										using (CHSNSDBContext Db = new CHSNSDBContext
+										using (CHSNSDBDataContext Db = new CHSNSDBDataContext
 						(SiteConfig.SiteConnectionString)) {
 				foreach (String name in names) {
 					if (string.IsNullOrEmpty(name.Trim())) continue;

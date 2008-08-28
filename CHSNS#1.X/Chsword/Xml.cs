@@ -47,16 +47,16 @@ namespace CHSNS{
 		/// <param name="CacheName">要检测的缓存名称。</param>
 		/// <returns>返回一个Boolean，表示是否存在。</returns>
 		static Boolean XmlCacheExists(String CacheName) {
-			ChCache cache = new ChCache();
-			if (ChCache.IsNullorEmpty(CacheName))
-				if (!ChCache.SetCache(CacheName))
+			CHCache cache = new CHCache();
+			if (CHCache.IsNullorEmpty(CacheName))
+				if (!CHCache.SetCache(CacheName))
 					return false;
 			return true;
 		}
 		static Boolean XmlCacheExists(String CacheName, String CacheValue) {
-			ChCache cache = new ChCache();
-			if (ChCache.IsNullorEmpty(CacheName))
-				if (!ChCache.SetCache(CacheName, CacheValue))
+			CHCache cache = new CHCache();
+			if (CHCache.IsNullorEmpty(CacheName))
+				if (!CHCache.SetCache(CacheName, CacheValue))
 					return false;
 			return true;
 		}

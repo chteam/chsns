@@ -197,7 +197,7 @@ namespace CHSNS.Controllers {
 			ViewData["CommentRows"] = comment;
 			ViewData["CommentType"] = cmt.Type;
 
-			var own = (from c in DB.Note
+			var own = (from c in DB.LogTable
 					   where (c.ID == cmt.LogID)
 					   select new
 					   {
@@ -207,7 +207,7 @@ namespace CHSNS.Controllers {
 
 				var cemail = comment.SingleOrDefault();
 				if (cemail != null) {
-					var item = (from l in DB.Note
+					var item = (from l in DB.LogTable
 								where l.ID == cmt.LogID
 								select new
 								{
