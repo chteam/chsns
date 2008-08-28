@@ -19,8 +19,8 @@
 		<li><span>性　　别：</span><%=Convert.ToBoolean(up.User["sex"]) ? "男生" : "女生"%></li>
 		<%if (!up.User.IsNull("Birthday")) { %>
 		<li><span>出生日期：</span><%=Convert.ToDateTime(up.User["Birthday"]).ToString("yyyy-MM-dd")%></li>
-		<li><span>家　　乡：</span><%=up.User["ProvinceName"]%>-<%=up.User["cityname"]%></li>
-		<%} %>
+	<%--	<li><span>家　　乡：</span><%=up.User["ProvinceName"]%>-<%=up.User["cityname"]%></li>
+--%>		<%} %>
 
 	<%} %>
 		</ul>
