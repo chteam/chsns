@@ -62,28 +62,6 @@ namespace CHSNS.Models
             }
         }
         
-        private long _id;
-
-        /// <summary>
-        /// Gets or sets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long ID
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
         private string _groupName;
 
         /// <summary>
@@ -545,6 +523,28 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _iD;
+
+        /// <summary>
+        /// Gets or sets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -554,7 +554,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the GroupUser association.
         /// </summary>
-        [Association(Name="FK_GroupUser_Group", Storage="_groupUserList", ThisKey="Id", OtherKey="Groupid")]
+        [Association(Name="FK_GroupUser_Group", Storage="_groupUserList", ThisKey="ID", OtherKey="GroupID")]
         public EntitySet<GroupUser> GroupUserList
         {
             get { return _groupUserList; }
@@ -590,11 +590,6 @@ namespace CHSNS.Models
         partial void OnTrueidChanging(long value);
         /// <summary>Called after Trueid has Changed.</summary>
         partial void OnTrueidChanged();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(long value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
         /// <summary>Called when GroupName is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnGroupNameChanging(string value);
@@ -700,6 +695,11 @@ namespace CHSNS.Models
         partial void OnCategoryidChanging(Nullable<long> value);
         /// <summary>Called after Categoryid has Changed.</summary>
         partial void OnCategoryidChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(long value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
         #endregion
         
     }

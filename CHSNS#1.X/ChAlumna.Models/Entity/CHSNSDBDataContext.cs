@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CHSNS.Models
 {
-    public partial class CHSNSDBContext
+    public partial class CHSNSDBDataContext
     {
         #region Extensibility Method Definitions
         //TODO: Uncomment and implement partial method

@@ -753,7 +753,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the BasicInformation association.
         /// </summary>
-        [Association(Name="FK_BasicInformation_Profile", Storage="_basicInformation", ThisKey="UserId", OtherKey="Userid", IsUnique=true)]
+        [Association(Name="FK_BasicInformation_Profile", Storage="_basicInformation", ThisKey="UserId", OtherKey="UserID", IsUnique=true)]
         public BasicInformation BasicInformation
         {
             get { return _basicInformation.Entity; }
@@ -772,7 +772,7 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.Profile = this;
-                        _userId = value.Userid;
+                        _userId = value.UserID;
                     }
                     else
                     {
@@ -823,7 +823,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the FieldInformation association.
         /// </summary>
-        [Association(Name="FK_FieldInformation_Profile", Storage="_fieldInformation", ThisKey="UserId", OtherKey="Userid", IsUnique=true)]
+        [Association(Name="FK_FieldInformation_Profile", Storage="_fieldInformation", ThisKey="UserId", OtherKey="UserID", IsUnique=true)]
         public FieldInformation FieldInformation
         {
             get { return _fieldInformation.Entity; }

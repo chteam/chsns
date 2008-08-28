@@ -37,50 +37,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _id = default(long);
-
-        /// <summary>
-        /// Gets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long ID
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
-        private Nullable<long> _userid;
-
-        /// <summary>
-        /// Gets or sets the userid column value.
-        /// </summary>
-        [Column(Name="userid", Storage="_userid", DbType="bigint")]
-        public Nullable<long> UserID
-        {
-            get { return _userid; }
-            set
-            {
-                if (_userid != value)
-                {
-                    OnUseridChanging(value);
-                    OnPropertyChanging("Userid");
-                    _userid = value;
-                    OnPropertyChanged("Userid");
-                    OnUseridChanged();
-                }
-            }
-        }
-        
         private string _name;
 
         /// <summary>
@@ -213,50 +169,6 @@ namespace CHSNS.Models
             }
         }
         
-        private System.DateTime _logintime;
-
-        /// <summary>
-        /// Gets or sets the logintime column value.
-        /// </summary>
-        [Column(Name="logintime", Storage="_logintime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
-        public System.DateTime Logintime
-        {
-            get { return _logintime; }
-            set
-            {
-                if (_logintime != value)
-                {
-                    OnLogintimeChanging(value);
-                    OnPropertyChanging("Logintime");
-                    _logintime = value;
-                    OnPropertyChanged("Logintime");
-                    OnLogintimeChanged();
-                }
-            }
-        }
-        
-        private System.DateTime _regtime;
-
-        /// <summary>
-        /// Gets or sets the regtime column value.
-        /// </summary>
-        [Column(Name="regtime", Storage="_regtime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
-        public System.DateTime RegTime
-        {
-            get { return _regtime; }
-            set
-            {
-                if (_regtime != value)
-                {
-                    OnRegtimeChanging(value);
-                    OnPropertyChanging("Regtime");
-                    _regtime = value;
-                    OnPropertyChanged("Regtime");
-                    OnRegtimeChanged();
-                }
-            }
-        }
-        
         private string _truepassword;
 
         /// <summary>
@@ -322,6 +234,94 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _iD = default(long);
+
+        /// <summary>
+        /// Gets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        
+        private Nullable<long> _userID;
+
+        /// <summary>
+        /// Gets or sets the UserID column value.
+        /// </summary>
+        [Column(Name="UserID", Storage="_userID", DbType="bigint")]
+        public Nullable<long> UserID
+        {
+            get { return _userID; }
+            set
+            {
+                if (_userID != value)
+                {
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _loginTime;
+
+        /// <summary>
+        /// Gets or sets the LoginTime column value.
+        /// </summary>
+        [Column(Name="LoginTime", Storage="_loginTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime LoginTime
+        {
+            get { return _loginTime; }
+            set
+            {
+                if (_loginTime != value)
+                {
+                    OnLoginTimeChanging(value);
+                    OnPropertyChanging("LoginTime");
+                    _loginTime = value;
+                    OnPropertyChanged("LoginTime");
+                    OnLoginTimeChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _regTime;
+
+        /// <summary>
+        /// Gets or sets the RegTime column value.
+        /// </summary>
+        [Column(Name="RegTime", Storage="_regTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime RegTime
+        {
+            get { return _regTime; }
+            set
+            {
+                if (_regTime != value)
+                {
+                    OnRegTimeChanging(value);
+                    OnPropertyChanging("RegTime");
+                    _regTime = value;
+                    OnPropertyChanged("RegTime");
+                    OnRegTimeChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -334,16 +334,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(long value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
-        /// <summary>Called when Userid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnUseridChanging(Nullable<long> value);
-        /// <summary>Called after Userid has Changed.</summary>
-        partial void OnUseridChanged();
         /// <summary>Called when Name is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnNameChanging(string value);
@@ -374,16 +364,6 @@ namespace CHSNS.Models
         partial void OnCodeChanging(Nullable<long> value);
         /// <summary>Called after Code has Changed.</summary>
         partial void OnCodeChanged();
-        /// <summary>Called when Logintime is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnLogintimeChanging(System.DateTime value);
-        /// <summary>Called after Logintime has Changed.</summary>
-        partial void OnLogintimeChanged();
-        /// <summary>Called when Regtime is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnRegtimeChanging(System.DateTime value);
-        /// <summary>Called after Regtime has Changed.</summary>
-        partial void OnRegtimeChanged();
         /// <summary>Called when Truepassword is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnTruepasswordChanging(string value);
@@ -399,6 +379,26 @@ namespace CHSNS.Models
         partial void OnStatusChanging(int value);
         /// <summary>Called after Status has Changed.</summary>
         partial void OnStatusChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(long value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when UserID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnUserIDChanging(Nullable<long> value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
+        /// <summary>Called when LoginTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnLoginTimeChanging(System.DateTime value);
+        /// <summary>Called after LoginTime has Changed.</summary>
+        partial void OnLoginTimeChanged();
+        /// <summary>Called when RegTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnRegTimeChanging(System.DateTime value);
+        /// <summary>Called after RegTime has Changed.</summary>
+        partial void OnRegTimeChanged();
         #endregion
         
     }

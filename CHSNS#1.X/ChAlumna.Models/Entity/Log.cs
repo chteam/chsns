@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CHSNS.Models
 {
-    public partial class Note
+    public partial class Log
     {
         #region Extensibility Method Definitions
         //partial void OnLoaded()

@@ -38,32 +38,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _userid;
-
-        /// <summary>
-        /// Gets or sets the userid column value.
-        /// </summary>
-        [Column(Name="userid", Storage="_userid", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
-        public long Userid
-        {
-            get { return _userid; }
-            set
-            {
-                if (_userid != value)
-                {
-                    if (_profile.HasLoadedOrAssignedValue)
-                    {
-                        throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-                    }
-                    OnUseridChanging(value);
-                    OnPropertyChanging("Userid");
-                    _userid = value;
-                    OnPropertyChanged("Userid");
-                    OnUseridChanged();
-                }
-            }
-        }
-        
         private Nullable<bool> _sex;
 
         /// <summary>
@@ -86,68 +60,138 @@ namespace CHSNS.Models
             }
         }
         
-        private Nullable<System.DateTime> _birthDay;
+        private long _userID;
 
         /// <summary>
-        /// Gets or sets the BirthDay column value.
+        /// Gets or sets the UserID column value.
         /// </summary>
-        [Column(Name="BirthDay", Storage="_birthDay", DbType="smalldatetime")]
-        public Nullable<System.DateTime> BirthDay
+        [Column(Name="UserID", Storage="_userID", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
+        public long UserID
         {
-            get { return _birthDay; }
+            get { return _userID; }
             set
             {
-                if (_birthDay != value)
+                if (_userID != value)
                 {
-                    OnBirthDayChanging(value);
-                    OnPropertyChanging("BirthDay");
-                    _birthDay = value;
-                    OnPropertyChanged("BirthDay");
-                    OnBirthDayChanged();
+                    if (_profile.HasLoadedOrAssignedValue)
+                    {
+                        throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+                    }
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
                 }
             }
         }
         
-        private int _province;
+        private string _name;
 
         /// <summary>
-        /// Gets or sets the Province column value.
+        /// Gets or sets the Name column value.
         /// </summary>
-        [Column(Name="Province", Storage="_province", DbType="int NOT NULL", CanBeNull=false)]
-        public int Province
+        [Column(Name="Name", Storage="_name", DbType="nvarchar(20)")]
+        public string Name
         {
-            get { return _province; }
+            get { return _name; }
             set
             {
-                if (_province != value)
+                if (_name != value)
                 {
-                    OnProvinceChanging(value);
-                    OnPropertyChanging("Province");
-                    _province = value;
-                    OnPropertyChanged("Province");
-                    OnProvinceChanged();
+                    OnNameChanging(value);
+                    OnPropertyChanging("Name");
+                    _name = value;
+                    OnPropertyChanged("Name");
+                    OnNameChanged();
                 }
             }
         }
         
-        private long _city;
+        private byte _showLevel;
 
         /// <summary>
-        /// Gets or sets the City column value.
+        /// Gets or sets the ShowLevel column value.
         /// </summary>
-        [Column(Name="City", Storage="_city", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long City
+        [Column(Name="ShowLevel", Storage="_showLevel", DbType="tinyint NOT NULL", CanBeNull=false)]
+        public byte ShowLevel
         {
-            get { return _city; }
+            get { return _showLevel; }
             set
             {
-                if (_city != value)
+                if (_showLevel != value)
                 {
-                    OnCityChanging(value);
-                    OnPropertyChanging("City");
-                    _city = value;
-                    OnPropertyChanged("City");
-                    OnCityChanged();
+                    OnShowLevelChanging(value);
+                    OnPropertyChanging("ShowLevel");
+                    _showLevel = value;
+                    OnPropertyChanged("ShowLevel");
+                    OnShowLevelChanged();
+                }
+            }
+        }
+        
+        private Nullable<System.DateTime> _birthday;
+
+        /// <summary>
+        /// Gets or sets the Birthday column value.
+        /// </summary>
+        [Column(Name="Birthday", Storage="_birthday", DbType="smalldatetime")]
+        public Nullable<System.DateTime> Birthday
+        {
+            get { return _birthday; }
+            set
+            {
+                if (_birthday != value)
+                {
+                    OnBirthdayChanging(value);
+                    OnPropertyChanging("Birthday");
+                    _birthday = value;
+                    OnPropertyChanged("Birthday");
+                    OnBirthdayChanged();
+                }
+            }
+        }
+        
+        private int _provinceID;
+
+        /// <summary>
+        /// Gets or sets the ProvinceID column value.
+        /// </summary>
+        [Column(Name="ProvinceID", Storage="_provinceID", DbType="int NOT NULL", CanBeNull=false)]
+        public int ProvinceID
+        {
+            get { return _provinceID; }
+            set
+            {
+                if (_provinceID != value)
+                {
+                    OnProvinceIDChanging(value);
+                    OnPropertyChanging("ProvinceID");
+                    _provinceID = value;
+                    OnPropertyChanged("ProvinceID");
+                    OnProvinceIDChanged();
+                }
+            }
+        }
+        
+        private long _cityID;
+
+        /// <summary>
+        /// Gets or sets the CityID column value.
+        /// </summary>
+        [Column(Name="CityID", Storage="_cityID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long CityID
+        {
+            get { return _cityID; }
+            set
+            {
+                if (_cityID != value)
+                {
+                    OnCityIDChanging(value);
+                    OnPropertyChanging("CityID");
+                    _cityID = value;
+                    OnPropertyChanged("CityID");
+                    OnCityIDChanged();
                 }
             }
         }
@@ -160,7 +204,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Profile association.
         /// </summary>
-        [Association(Name="FK_BasicInformation_Profile", Storage="_profile", ThisKey="Userid", OtherKey="UserId", IsForeignKey=true)]
+        [Association(Name="FK_BasicInformation_Profile", Storage="_profile", ThisKey="UserID", OtherKey="UserId", IsForeignKey=true)]
         public Profile Profile
         {
             get { return _profile.Entity; }
@@ -179,11 +223,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.BasicInformation = this;
-                        _userid = value.UserId;
+                        _userID = value.UserId;
                     }
                     else
                     {
-                        _userid = default(long);
+                        _userID = default(long);
                     }
                     OnPropertyChanged("Profile");
                 }
@@ -198,31 +242,41 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Userid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnUseridChanging(long value);
-        /// <summary>Called after Userid has Changed.</summary>
-        partial void OnUseridChanged();
         /// <summary>Called when Sex is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnSexChanging(Nullable<bool> value);
         /// <summary>Called after Sex has Changed.</summary>
         partial void OnSexChanged();
-        /// <summary>Called when BirthDay is changing.</summary>
+        /// <summary>Called when UserID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnBirthDayChanging(Nullable<System.DateTime> value);
-        /// <summary>Called after BirthDay has Changed.</summary>
-        partial void OnBirthDayChanged();
-        /// <summary>Called when Province is changing.</summary>
+        partial void OnUserIDChanging(long value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
+        /// <summary>Called when Name is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnProvinceChanging(int value);
-        /// <summary>Called after Province has Changed.</summary>
-        partial void OnProvinceChanged();
-        /// <summary>Called when City is changing.</summary>
+        partial void OnNameChanging(string value);
+        /// <summary>Called after Name has Changed.</summary>
+        partial void OnNameChanged();
+        /// <summary>Called when ShowLevel is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnCityChanging(long value);
-        /// <summary>Called after City has Changed.</summary>
-        partial void OnCityChanged();
+        partial void OnShowLevelChanging(byte value);
+        /// <summary>Called after ShowLevel has Changed.</summary>
+        partial void OnShowLevelChanged();
+        /// <summary>Called when Birthday is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnBirthdayChanging(Nullable<System.DateTime> value);
+        /// <summary>Called after Birthday has Changed.</summary>
+        partial void OnBirthdayChanged();
+        /// <summary>Called when ProvinceID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnProvinceIDChanging(int value);
+        /// <summary>Called after ProvinceID has Changed.</summary>
+        partial void OnProvinceIDChanged();
+        /// <summary>Called when CityID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnCityIDChanging(long value);
+        /// <summary>Called after CityID has Changed.</summary>
+        partial void OnCityIDChanged();
         #endregion
         
     }

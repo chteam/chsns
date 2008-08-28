@@ -136,7 +136,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the LogTag association.
         /// </summary>
-        [Association(Name="FK_LogTag_Tags", Storage="_tagidLogTagList", ThisKey="Id", OtherKey="Tagid")]
+        [Association(Name="FK_LogTag_Tags", Storage="_tagidLogTagList", ThisKey="Id", OtherKey="TagID")]
         public EntitySet<LogTag> TagidLogTagList
         {
             get { return _tagidLogTagList; }

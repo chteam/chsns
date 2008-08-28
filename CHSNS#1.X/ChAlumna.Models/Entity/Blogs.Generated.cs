@@ -37,28 +37,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _userid;
-
-        /// <summary>
-        /// Gets or sets the userid column value.
-        /// </summary>
-        [Column(Name="userid", Storage="_userid", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
-        public long UserID
-        {
-            get { return _userid; }
-            set
-            {
-                if (_userid != value)
-                {
-                    OnUseridChanging(value);
-                    OnPropertyChanging("Userid");
-                    _userid = value;
-                    OnPropertyChanged("Userid");
-                    OnUseridChanged();
-                }
-            }
-        }
-        
         private System.DateTime _createTime;
 
         /// <summary>
@@ -344,6 +322,28 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _userID;
+
+        /// <summary>
+        /// Gets or sets the UserID column value.
+        /// </summary>
+        [Column(Name="UserID", Storage="_userID", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
+        public long UserID
+        {
+            get { return _userID; }
+            set
+            {
+                if (_userID != value)
+                {
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -356,11 +356,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Userid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnUseridChanging(long value);
-        /// <summary>Called after Userid has Changed.</summary>
-        partial void OnUseridChanged();
         /// <summary>Called when CreateTime is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnCreateTimeChanging(System.DateTime value);
@@ -426,6 +421,11 @@ namespace CHSNS.Models
         partial void OnTrackBackCountChanging(long value);
         /// <summary>Called after TrackBackCount has Changed.</summary>
         partial void OnTrackBackCountChanged();
+        /// <summary>Called when UserID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnUserIDChanging(long value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
         #endregion
         
     }

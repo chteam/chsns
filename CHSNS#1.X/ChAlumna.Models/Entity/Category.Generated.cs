@@ -37,72 +37,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _trueid = default(long);
-
-        /// <summary>
-        /// Gets the trueid column value.
-        /// </summary>
-        [Column(Name="trueid", Storage="_trueid", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long Trueid
-        {
-            get { return _trueid; }
-            set
-            {
-                if (_trueid != value)
-                {
-                    OnTrueidChanging(value);
-                    OnPropertyChanging("Trueid");
-                    _trueid = value;
-                    OnPropertyChanged("Trueid");
-                    OnTrueidChanged();
-                }
-            }
-        }
-        
-        private Nullable<long> _id;
-
-        /// <summary>
-        /// Gets or sets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint")]
-        public Nullable<long> Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
-        private string _name;
-
-        /// <summary>
-        /// Gets or sets the name column value.
-        /// </summary>
-        [Column(Name="name", Storage="_name", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (_name != value)
-                {
-                    OnNameChanging(value);
-                    OnPropertyChanging("Name");
-                    _name = value;
-                    OnPropertyChanged("Name");
-                    OnNameChanged();
-                }
-            }
-        }
-        
         private byte _type;
 
         /// <summary>
@@ -147,24 +81,90 @@ namespace CHSNS.Models
             }
         }
         
-        private Nullable<long> _userid;
+        private long _trueID = default(long);
 
         /// <summary>
-        /// Gets or sets the userid column value.
+        /// Gets the TrueID column value.
         /// </summary>
-        [Column(Name="userid", Storage="_userid", DbType="bigint")]
-        public Nullable<long> Userid
+        [Column(Name="TrueID", Storage="_trueID", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long TrueID
         {
-            get { return _userid; }
+            get { return _trueID; }
             set
             {
-                if (_userid != value)
+                if (_trueID != value)
                 {
-                    OnUseridChanging(value);
-                    OnPropertyChanging("Userid");
-                    _userid = value;
-                    OnPropertyChanged("Userid");
-                    OnUseridChanged();
+                    OnTrueIDChanging(value);
+                    OnPropertyChanging("TrueID");
+                    _trueID = value;
+                    OnPropertyChanged("TrueID");
+                    OnTrueIDChanged();
+                }
+            }
+        }
+        
+        private Nullable<long> _iD;
+
+        /// <summary>
+        /// Gets or sets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="bigint")]
+        public Nullable<long> ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        
+        private string _name;
+
+        /// <summary>
+        /// Gets or sets the Name column value.
+        /// </summary>
+        [Column(Name="Name", Storage="_name", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (_name != value)
+                {
+                    OnNameChanging(value);
+                    OnPropertyChanging("Name");
+                    _name = value;
+                    OnPropertyChanged("Name");
+                    OnNameChanged();
+                }
+            }
+        }
+        
+        private Nullable<long> _userID;
+
+        /// <summary>
+        /// Gets or sets the UserID column value.
+        /// </summary>
+        [Column(Name="UserID", Storage="_userID", DbType="bigint")]
+        public Nullable<long> UserID
+        {
+            get { return _userID; }
+            set
+            {
+                if (_userID != value)
+                {
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
                 }
             }
         }
@@ -180,21 +180,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Trueid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnTrueidChanging(long value);
-        /// <summary>Called after Trueid has Changed.</summary>
-        partial void OnTrueidChanged();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(Nullable<long> value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
-        /// <summary>Called when Name is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnNameChanging(string value);
-        /// <summary>Called after Name has Changed.</summary>
-        partial void OnNameChanged();
         /// <summary>Called when Type is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnTypeChanging(byte value);
@@ -205,11 +190,26 @@ namespace CHSNS.Models
         partial void OnCountChanging(long value);
         /// <summary>Called after Count has Changed.</summary>
         partial void OnCountChanged();
-        /// <summary>Called when Userid is changing.</summary>
+        /// <summary>Called when TrueID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnUseridChanging(Nullable<long> value);
-        /// <summary>Called after Userid has Changed.</summary>
-        partial void OnUseridChanged();
+        partial void OnTrueIDChanging(long value);
+        /// <summary>Called after TrueID has Changed.</summary>
+        partial void OnTrueIDChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(Nullable<long> value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when Name is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnNameChanging(string value);
+        /// <summary>Called after Name has Changed.</summary>
+        partial void OnNameChanged();
+        /// <summary>Called when UserID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnUserIDChanging(Nullable<long> value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
         #endregion
         
     }

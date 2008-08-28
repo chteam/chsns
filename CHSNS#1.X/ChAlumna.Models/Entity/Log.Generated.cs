@@ -20,7 +20,7 @@ namespace CHSNS.Models
     /// The class representing the dbo.Log table.
     /// </summary>
     [Table(Name="dbo.Log")]
-    public partial class Note
+    public partial class Log
         : LinqEntityBase
     {
         
@@ -29,7 +29,7 @@ namespace CHSNS.Models
         /// Initializes a new instance of the <see cref="Log"/> class.
         /// </summary>
         [DebuggerNonUserCodeAttribute()]
-        public Note()
+        public Log()
         {
             OnCreated();
             _logTagList = new EntitySet<LogTag>(
@@ -61,50 +61,6 @@ namespace CHSNS.Models
                     _trueid = value;
                     OnPropertyChanged("Trueid");
                     OnTrueidChanged();
-                }
-            }
-        }
-        
-        private long _id;
-
-        /// <summary>
-        /// Gets or sets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long ID
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
-        private long _userid;
-
-        /// <summary>
-        /// Gets or sets the userid column value.
-        /// </summary>
-        [Column(Name="userid", Storage="_userid", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long UserID
-        {
-            get { return _userid; }
-            set
-            {
-                if (_userid != value)
-                {
-                    OnUseridChanging(value);
-                    OnPropertyChanging("Userid");
-                    _userid = value;
-                    OnPropertyChanged("Userid");
-                    OnUseridChanged();
                 }
             }
         }
@@ -416,6 +372,50 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _iD;
+
+        /// <summary>
+        /// Gets or sets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        
+        private long _userID;
+
+        /// <summary>
+        /// Gets or sets the UserID column value.
+        /// </summary>
+        [Column(Name="UserID", Storage="_userID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long UserID
+        {
+            get { return _userID; }
+            set
+            {
+                if (_userID != value)
+                {
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -425,7 +425,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the LogTag association.
         /// </summary>
-        [Association(Name="FK_LogTag_Log", Storage="_logTagList", ThisKey="Id", OtherKey="Logid")]
+        [Association(Name="FK_LogTag_Log", Storage="_logTagList", ThisKey="ID", OtherKey="LogID")]
         public EntitySet<LogTag> LogTagList
         {
             get { return _logTagList; }
@@ -453,7 +453,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Push association.
         /// </summary>
-        [Association(Name="FK_Push_Log", Storage="_pushList", ThisKey="Id", OtherKey="Logid")]
+        [Association(Name="FK_Push_Log", Storage="_pushList", ThisKey="ID", OtherKey="Logid")]
         public EntitySet<Push> PushList
         {
             get { return _pushList; }
@@ -489,16 +489,6 @@ namespace CHSNS.Models
         partial void OnTrueidChanging(long value);
         /// <summary>Called after Trueid has Changed.</summary>
         partial void OnTrueidChanged();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(long value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
-        /// <summary>Called when Userid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnUseridChanging(long value);
-        /// <summary>Called after Userid has Changed.</summary>
-        partial void OnUseridChanged();
         /// <summary>Called when Title is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnTitleChanging(string value);
@@ -569,6 +559,16 @@ namespace CHSNS.Models
         partial void OnIstellmeChanging(byte value);
         /// <summary>Called after Istellme has Changed.</summary>
         partial void OnIstellmeChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(long value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when UserID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnUserIDChanging(long value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
         #endregion
         
     }
