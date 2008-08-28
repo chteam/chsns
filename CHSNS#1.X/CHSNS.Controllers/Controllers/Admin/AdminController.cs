@@ -24,7 +24,7 @@ namespace CHSNS.Controllers {
 		public void basic() {
 			//Chsword.DoDataBase ddb = new Chsword.DoDataBase();
 			ViewData.Add("onlinecount", CHSNS.Online.OnlineList.Count);
-			ViewData.Add("cachecount", ChCache.Cache.Count);
+			ViewData.Add("cachecount", CHCache.Cache.Count);
 
 			ViewData.Add("regcount", DataBaseExecutor.ExecuteScalar("select count(1) from account"));
 			ViewData.Add("version", ChAlumnaConfig.Version);
@@ -39,7 +39,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		[PostOnlyFilter]
 		public void clearcache() {
-			ChCache.RemoveAll();
+			CHCache.RemoveAll();
 			TempData.Add("msg", "缓存更新成功");
 			this.RedirectToReferrer();
 			//this.RedirectToAction("index");
@@ -140,13 +140,13 @@ namespace CHSNS.Controllers {
 				));
         }
 		public void note_today() {
-			IList<Note> i = (from l in this.DB.Note
+			IList<Log> i = (from l in this.DB.LogTable
 					   orderby l.AddTime descending
-							 select l).ToList < Note>();
+							 select l).ToList < Log>();
 			//ViewData["rows"] =
 			//    PaginationHelper.CreatePagination(this, i, 10);
 			ViewData["rows"] =
-		PaginationHelper.AsPagination<Note>(i, 1, 10);
+		PaginationHelper.AsPagination<Log>(i, 1, 10);
 		}
         #endregion
      

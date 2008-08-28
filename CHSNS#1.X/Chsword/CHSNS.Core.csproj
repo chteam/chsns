@@ -83,6 +83,15 @@
     <Compile Include="ChServer.cs" />
     <Compile Include="CHUser.cs" />
     <Compile Include="CHSNSUser.cs" />
+    <Compile Include="ConfigSerializer.cs" />
+    <Compile Include="Config\BaseConfig.cs" />
+    <Compile Include="Config\ChAlumnaConfig.cs" />
+    <Compile Include="Config\ConfigPath.cs" />
+    <Compile Include="Config\ConfigString.cs" />
+    <Compile Include="Config\Publish\Publish.cs" />
+    <Compile Include="Config\RegVisitConfig.cs" />
+    <Compile Include="Config\SiteConfig.cs" />
+    <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="DataBaseExecutor.cs" />
     <Compile Include="DataOpen\OleDbDataOpener.cs" />
     <Compile Include="DataOpen\SqlDataOpener.cs" />
@@ -108,12 +117,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Xml.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Config\CHSNS.Config.csproj">
-      <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
-      <Name>CHSNS.Config</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

@@ -6,11 +6,11 @@ namespace CHSNS.Controllers {
 
 	//[Helper(typeof(ChHelper))]
 	abstract public class BaseWizardPage : Controller {
-		CHSNSDBContext _DB = null;
-		protected CHSNSDBContext DB {
+		CHSNSDBDataContext _DB = null;
+		protected CHSNSDBDataContext DB {
 			get {
 				if (_DB == null) {
-					_DB = new CHSNSDBContext(
+					_DB = new CHSNSDBDataContext(
 				  SiteConfig.SiteConnectionString
 					);
 				}

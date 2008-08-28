@@ -8,7 +8,7 @@
     <ProjectGuid>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CHSNS.Controllers</RootNamespace>
+    <RootNamespace>CHSNS</RootNamespace>
     <AssemblyName>CHSNS.Controllers</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -82,11 +82,13 @@
     <Compile Include="Controllers\Admin\FieldController.cs" />
     <Compile Include="Controllers\Admin\SqlController.cs" />
     <Compile Include="Controllers\Admin\UserManage.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HtmlController.cs" />
@@ -110,10 +112,6 @@
     <Compile Include="ViewPageExtension\UrlHelperCHHelperExt.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Config\CHSNS.Config.csproj">
-      <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
-      <Name>CHSNS.Config</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">
       <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
       <Name>CHSNS.Data</Name>
@@ -130,6 +128,9 @@
       <Project>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</Project>
       <Name>CHSNS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\components\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

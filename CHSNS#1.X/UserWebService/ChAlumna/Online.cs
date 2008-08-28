@@ -53,8 +53,8 @@ namespace CHSNS {
 		}
 		static public string OnlineString(long userid) {
 			if (isOnline(userid))
-				return ChCache.GetConfig("Profile","Online");
-			return ChCache.GetConfig("Profile","Offline");
+				return CHCache.GetConfig("Profile","Online");
+			return CHCache.GetConfig("Profile","Offline");
 		}
 		static public string OnlineString(object userid) {
 			long u = 0;

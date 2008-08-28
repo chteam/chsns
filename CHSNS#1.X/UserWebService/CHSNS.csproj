@@ -258,10 +258,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Config\CHSNS.Config.csproj">
-      <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
-      <Name>CHSNS.Config</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">
       <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
       <Name>CHSNS.Data</Name>

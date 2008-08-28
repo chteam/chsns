@@ -57,12 +57,12 @@ namespace CHSNS.Reader {
 		}
 		#endregion
 		public StringBuilder CreateUserSuperNote() {
-			StringBuilder sb =new StringBuilder(ChCache.GetTemplateCache(Template));
+			StringBuilder sb =new StringBuilder(CHCache.GetTemplateCache(Template));
 			sb.Replace("$SuperNoteList$", GetSuperListString());
 			sb.Replace("$Username$", Username);
 			sb.Replace("$Count$", GetSuperListCount());
 			sb.Replace("$Ownerid$", Userid.ToString());
-			sb.Replace("$Showlevel$",ChCache.GetTemplateCache("ShowLevel").Replace("$Id$","f_showlevel"));
+			sb.Replace("$Showlevel$",CHCache.GetTemplateCache("ShowLevel").Replace("$Id$","f_showlevel"));
 			if (Type == 0) {//supernotepage
 				sb.Replace("$systemcategory$", DataSetCache.SuperCategory_List());
 				sb.Replace("$systemcategorylist$", SuperCategorylist());
@@ -78,7 +78,7 @@ namespace CHSNS.Reader {
 		private string SuperCategorylist() {
 			StringBuilder sbout = new StringBuilder();
 			foreach (DataRow dr in DataSetCache.SuperCategory_DataTable().Rows) {
-				sbout.AppendFormat(ChCache.GetConfig("Note", "Super_systemcategory"),
+				sbout.AppendFormat(CHCache.GetConfig("Note", "Super_systemcategory"),
 					dr["id"], dr["name"],dr["count"]);
 			}
 			return sbout.ToString();
@@ -86,13 +86,13 @@ namespace CHSNS.Reader {
 		#region ¶ÁÈ¡Êý¾Ý¿â
 		string getTitle(object o){
 			if(string.IsNullOrEmpty(o.ToString())){
-				return ChCache.GetConfig("Note","SuperNone_NoTitle");
+				return CHCache.GetConfig("Note","SuperNone_NoTitle");
 			}
 			return o.ToString();	
 		}
 		string getPic(object o){
 			if(string.IsNullOrEmpty(o.ToString())){
-				return ChCache.GetConfig("Note","SuperNone_NoPic");
+				return CHCache.GetConfig("Note","SuperNone_NoPic");
 			}
 			return o.ToString();
 		}
@@ -102,7 +102,7 @@ namespace CHSNS.Reader {
 		public String GetNewListString(){
 			StringBuilder sbin = new StringBuilder();
 			foreach (DataRow dr in GetSuperListTable(2).Rows) {
-				sbin.AppendFormat(ChCache.GetConfig("Note","Super_New"),
+				sbin.AppendFormat(CHCache.GetConfig("Note","Super_New"),
 					getTitle(dr["title"]),
 					dr["userid"],
 					dr["id"]
@@ -114,7 +114,7 @@ namespace CHSNS.Reader {
 			StringBuilder sbin = new StringBuilder();
 			foreach (DataRow dr in GetSuperListTable().Rows) {
 				DataRow[] drq =DataSetCache.SuperCategory_DataTable().Select("id="+dr["systemcategory"].ToString());
-				sbin.AppendFormat(ChCache.GetTemplateCache("SuperNoteItem"),
+				sbin.AppendFormat(CHCache.GetTemplateCache("SuperNoteItem"),
 					dr["id"],
 					dr["viewcount"],
 					dr["url"],
@@ -123,8 +123,8 @@ namespace CHSNS.Reader {
 					getTitle(dr["title"]),
 					getPic(dr["faceurl"]),
 					(!Template.ToLower().Equals("supernoterandompage")&&(CHUser.UserID.Equals(dr["userid"])||CHUser.Status>199))?
-					String.Format(ChCache.GetConfig("Note","SuperNone_Delete"),dr["id"]):"",
-					(Type==1)?string.Format(ChCache.GetConfig("UserLink"),dr["userid"],dr["name"]):"",
+					String.Format(CHCache.GetConfig("Note","SuperNone_Delete"),dr["id"]):"",
+					(Type==1)?string.Format(CHCache.GetConfig("UserLink"),dr["userid"],dr["name"]):"",
 					drq.Length>0?drq[0]["name"]:""
 			);
 				this.Username = dr["name"].ToString();

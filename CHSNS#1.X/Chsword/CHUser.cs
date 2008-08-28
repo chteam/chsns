@@ -118,18 +118,18 @@ namespace CHSNS
 		static public int unReadMessage {
 			get {
 				string name = string.Format("unReadMessage.{0}", UserID);
-				if (ChCache.IsNullorEmpty(name) || ChCache.GetCache(name).ToString() == "0") {
+				if (CHCache.IsNullorEmpty(name) || CHCache.GetCache(name).ToString() == "0") {
 					SqlParameter[] sp = new SqlParameter[1] { 
 					        new SqlParameter("@userid", SqlDbType.BigInt)
 					};
 					sp[0].Value = CHUser.UserID;
 					DoDataBase db = new DoDataBase();
-					ChCache.SetCache(name,
+					CHCache.SetCache(name,
 						db.DoDataTable("unSee_Countlist", sp).Rows[0][0],
 						new TimeSpan(0, 2, 0)
 						);
 				}
-				return (int)ChCache.GetCache(name);
+				return (int)CHCache.GetCache(name);
 			}
 
 		}

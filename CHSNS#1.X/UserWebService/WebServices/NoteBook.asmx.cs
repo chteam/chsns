@@ -33,7 +33,7 @@ namespace CHSNS {
 		/// <returns></returns>
 		[WebMethod(Description="显示浏览日志中的年月列表",EnableSession=true)]
 		public string GetHistoryPage(long userid) {
-			StringBuilder sbout = new StringBuilder(ChCache.GetTemplateCache("NoteBookHistory"));
+			StringBuilder sbout = new StringBuilder(CHCache.GetTemplateCache("NoteBookHistory"));
 			#region 档案列表
 			DataTable dt = HistoryTable(userid);
 			foreach (DataRow dr in dt.Rows) {
@@ -51,7 +51,7 @@ namespace CHSNS {
 				DataTable st = SummaryTable(userid, year, month);
 				foreach (DataRow dr in st.Rows) {
 					sbout.Replace("$Summarylist$",
-					              string.Format(ChCache.GetTemplateCache("Note"),
+					              string.Format(CHCache.GetTemplateCache("Note"),
 					                            Convert.ToDateTime(dr["AddTime"]).ToString("MM月dd日"),
 					                            Convert.ToDateTime(dr["AddTime"]).ToString("yyyy-MM-dd HH:mm"),
 					                            dr["id"].ToString(),
@@ -64,10 +64,10 @@ namespace CHSNS {
 				sbout.Replace("$Summarylist$", "");
 			} else {
 				if(userid==CHUser.UserID){
-					sbout.Replace("$Summarylist$", ChCache.GetConfig("Note","None_MyNote"));
+					sbout.Replace("$Summarylist$", CHCache.GetConfig("Note","None_MyNote"));
 				}
 				else{
-					sbout.Replace("$Summarylist$", ChCache.GetConfig("Note","None_MyNote_Other"));
+					sbout.Replace("$Summarylist$", CHCache.GetConfig("Note","None_MyNote_Other"));
 				}
 			}
 			sbout.Replace("$Summarylistname$", "");
@@ -99,11 +99,11 @@ namespace CHSNS {
 		#region 评论及评论分页部分代码
 		[WebMethod(Description = "显示日志评论,带分页")]
 		public string GetCommentPage(long userid) {
-			StringBuilder sbout = new StringBuilder(ChCache.GetTemplateCache("NoteBookComment"));
+			StringBuilder sbout = new StringBuilder(CHCache.GetTemplateCache("NoteBookComment"));
 			DataTable dt = CommentTable(userid,1,10);
 			foreach (DataRow dr in dt.Rows) {
 				sbout.Replace("$Commentlist$",
-				              string.Format(ChCache.GetTemplateCache("NoteBookCommentItem"),
+				              string.Format(CHCache.GetTemplateCache("NoteBookCommentItem"),
 
 				                            Convert.ToDateTime(dr["AddTime"]).ToString("MM-dd HH:mm"),
 				                            dr["senderid"].ToString(),
@@ -186,7 +186,7 @@ namespace CHSNS {
 		#region 发表及编辑日志或帖子
 		[WebMethod(Description = "发表日志", EnableSession = true)]
 		public long Note_Add(long groupid, string title, string body, byte showlevel, bool istellme, string tags) {
-			Note n = new Note();
+			Log n = new Log();
 			n.GroupId = groupid;
 			n.Title = title;
 			n.Body = body;
@@ -203,7 +203,7 @@ namespace CHSNS {
 		}
 		[WebMethod(Description="编辑日志",EnableSession=true)]
 		public void Note_Edit(long groupid,long logid,string body ,byte showlevel,bool istellme,string tags) {
-			Note n = new Note();
+			Log n = new Log();
 			n.GroupId = groupid;
 			n.ID = logid;
 			n.Body = body;

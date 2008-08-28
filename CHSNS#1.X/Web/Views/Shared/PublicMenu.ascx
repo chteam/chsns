@@ -22,12 +22,18 @@
 	</li>
 	<li class="menuli"><a href="#" class="menu_title">设置</a>
 		<ul class="menu_network">
-			<li><a href="/EditMyinfo.aspx">基本信息</a></li>
-			<li><a href="/EditMyinfo.aspx?mode=school">学校信息</a></li>
-			<li><a href="/EditMyinfo.aspx?mode=upload">头像</a></li>
-			<li><a href="/EditMyinfo.aspx?mode=magicbox">魔法盒</a></li>
-			<li><a href="/setting.aspx">隐私设置</a></li>
-			<li><a href="/setting.aspx?tabs=1">密码修改</a></li>
+		
+			<li><%=Html.ActionLink("基本信息", "Edit", "User", new { mode = "BaseInfo" })%></li>
+			<li><%=Html.ActionLink("学校信息", "Edit", "User", new { mode = "School" })%>
+			</li>
+			<li><%=Html.ActionLink("头像", "Edit", "User", new { mode = "upload" })%>
+			</li>
+			<li><%=Html.ActionLink("魔法盒", "Edit", "User", new { mode = "magicbox" })%>
+			</li>
+			<li><%=Html.ActionLink("隐私设置", "Setting", "User")%></li>
+			<li>
+			<%=Html.ActionLink("密码修改", "Setting", "User", new { tabs = 1 })%>
+			</li>
 		</ul>
 	</li>
 </ul>

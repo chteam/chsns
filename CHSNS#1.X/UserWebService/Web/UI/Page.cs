@@ -23,7 +23,7 @@ namespace Chsword.Web.UI {
 			} else {
 				writer = new FormFixerHtmlTextWriter(writer.InnerWriter);
 			}
-			Title = string.Format("{0} - {1}",Title,ChCache.GetConfig("WebName"));
+			Title = string.Format("{0} - {1}",Title,CHCache.GetConfig("WebName"));
 			base.Render(writer);
 		}
 		/// <summary>
@@ -53,7 +53,7 @@ namespace Chsword.Web.UI {
 				return "";
 		}
 		protected void SetCssJs(string Config_fileName){
-			string Right = ChCache.GetConfig("Page",Config_fileName);
+			string Right = CHCache.GetConfig("Page",Config_fileName);
 			if (!string.IsNullOrEmpty(Right.Trim())){
 				if(!Right.Contains(string.Format("|{0}|",CHUser.Status.ToString())))
 				{
@@ -66,8 +66,8 @@ namespace Chsword.Web.UI {
 			string xpath = "/root/page[@name=\"{0}\"{1}]/{2}";
 			System.Xml.XmlDocument dom = new System.Xml.XmlDocument();
 			foreach (string f in list) {
-				if (ChCache.IsNullorEmpty(f))
-					if (!ChCache.SetCache(f))
+				if (CHCache.IsNullorEmpty(f))
+					if (!CHCache.SetCache(f))
 					return;
 				dom.LoadXml(HttpContext.Current.Cache[f].ToString());
 				if (f == "StyleSheet") {

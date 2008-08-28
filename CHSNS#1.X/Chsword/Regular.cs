@@ -29,10 +29,10 @@ namespace CHSNS {
 		/// <returns>过滤后的文本</returns>
 		static public String FormatRichEdit(String str) {
 			string f = "EditFormat";
-			ChCache cache = new ChCache();
+			CHCache cache = new CHCache();
 			XmlDocument dom = new XmlDocument();
-			if (ChCache.IsNullorEmpty(f))
-				if (!ChCache.SetCache(f))
+			if (CHCache.IsNullorEmpty(f))
+				if (!CHCache.SetCache(f))
 					return "过滤配置文件无法加载";
 			dom.LoadXml(HttpContext.Current.Cache[f].ToString());
 			XmlNodeList nl = dom.SelectNodes("/root/item");

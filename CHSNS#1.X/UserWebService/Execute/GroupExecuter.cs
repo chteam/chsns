@@ -37,11 +37,11 @@ namespace Chsword.Execute {
 			long i = long.Parse(dd.DoParameterSql("Group_Add", sp));
 			switch (i) {
 				case -1:
-					return ChCache.GetConfig("Prompt","score_not_enough");
+					return CHCache.GetConfig("Prompt","score_not_enough");
 				case 0:
-					return ChCache.GetConfig("Prompt","name_exists");
+					return CHCache.GetConfig("Prompt","name_exists");
 				case -9:
-					return ChCache.GetConfig("Prompt","only_one_usiversity_class");
+					return CHCache.GetConfig("Prompt","only_one_usiversity_class");
 				default:
 					return i.ToString();
 			}

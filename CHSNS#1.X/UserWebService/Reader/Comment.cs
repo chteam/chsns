@@ -78,23 +78,23 @@ namespace Chsword.Reader {
 			StringBuilder temp;
 			string _Ownerid;
 			foreach (DataRow dr in  CommonRows.Rows) {
-				temp = new StringBuilder(ChCache.GetTemplateCache("ReplyList"));
+				temp = new StringBuilder(CHCache.GetTemplateCache("ReplyList"));
 				_Ownerid = dr["Ownerid"].ToString();
 				bool isViewer = (dr["Userid"].ToString().Equals(_Viewerid.ToString()));
 				if (!isViewer) {
-					temp.Replace("$Reply$", ChCache.GetConfig("Comment","ReplyList_ReplyButton"));
+					temp.Replace("$Reply$", CHCache.GetConfig("Comment","ReplyList_ReplyButton"));
 				}
 				//本人的帖子或本人的回复时
 				if ((this.Ownerid == this.Viewerid|| this.Viewerid.Equals(dr["Ownerid"]))
 				    && !this.Viewerid.Equals(dr["Userid"]) && !true.Equals(dr["issee"])) {
-					temp.Replace("$Ctrl$", ChCache.GetConfig("Comment", "ReplyList_SeeButton"));
+					temp.Replace("$Ctrl$", CHCache.GetConfig("Comment", "ReplyList_SeeButton"));
 				}
 
 				if (dr["IsDel"].Equals(false))
 					if (_Viewerid.ToString() == _Ownerid || isViewer) {
-					temp.Replace("$Ctrl$", ChCache.GetConfig("Comment","ReplyList_RemoveButton"));
+					temp.Replace("$Ctrl$", CHCache.GetConfig("Comment","ReplyList_RemoveButton"));
 					if (!isViewer) {
-						temp.Replace("$Div$", ChCache.GetConfig("Div"));
+						temp.Replace("$Div$", CHCache.GetConfig("Div"));
 					}
 				}
 				temp.Replace("$Reply$", "");
@@ -146,7 +146,7 @@ namespace Chsword.Reader {
 
 		public string ShowAll(String Items, int NowPage) {
 			StringBuilder master = new StringBuilder();
-			master.Append(ChCache.GetTemplateCache("ReplyListMaster"));
+			master.Append(CHCache.GetTemplateCache("ReplyListMaster"));
 			master.Replace("$Items$", Items);
 			master.Replace("$Count$", GetCount());
 			master.Replace("$NowPage$", _nowpage.ToString());

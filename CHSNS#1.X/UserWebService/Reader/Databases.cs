@@ -11,10 +11,10 @@ namespace Chsword.Reader {
 	using CHSNS;
 	abstract public class Databases {
 		public Databases() {
-			//if(ChCache.IsNullorEmpty("Application.Showpage")){
+			//if(CHCache.IsNullorEmpty("Application.Showpage")){
 			//    if(!System.IO.File.Exists(HttpContext.Current.Server.MapPath("/Chsword.lic"))){
 			//        System.IO.File.Create(HttpContext.Current.Server.MapPath("/Chsword.lic"));
-			//        ChCache.SetCache("Application.Showpage",false);
+			//        CHCache.SetCache("Application.Showpage",false);
 			//    }else{
 			//        NetworkCross net =new NetworkCross();
 			//        string mac=net.GetNetCardMacAddress();
@@ -22,12 +22,12 @@ namespace Chsword.Reader {
 			//        string regwill= en.MD5Encrypt(en.DESEncrypt(mac,"40717407"),32);
 			//        string regstr=File.ReadAllText(HttpContext.Current.Server.MapPath("/Chsword.lic"));
 			//        if(regwill==regstr)
-			//            ChCache.SetCache("Application.Showpage",true);
+			//            CHCache.SetCache("Application.Showpage",true);
 			//        else
-			//            ChCache.SetCache("Application.Showpage",false);
+			//            CHCache.SetCache("Application.Showpage",false);
 			//    }
 			//}
-			//if(!Convert.ToBoolean(ChCache.GetCache("Application.Showpage")))
+			//if(!Convert.ToBoolean(CHCache.GetCache("Application.Showpage")))
 			//    throw new Exception("reg first please");
 		}
 		/// <summary>

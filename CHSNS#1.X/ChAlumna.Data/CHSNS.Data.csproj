@@ -78,21 +78,19 @@
     <Compile Include="Enum\ShowType.cs" />
     <Compile Include="Enum\TagsType.cs" />
     <Compile Include="GatherMediator.cs" />
+    <Compile Include="GolbalMediator.cs" />
     <Compile Include="IMediator.cs" />
-    <Compile Include="MsSql\BlogsSqlDB.cs" />
-    <Compile Include="MsSql\MsSqlDB.cs" />
-    <Compile Include="MsSql\NoteSqlDB.cs" />
-    <Compile Include="MsSql\TagsSqlDB.cs" />
+    <Compile Include="DBExt\BlogsSqlDB.cs" />
+    <Compile Include="DBExt\DBExt.cs" />
+    <Compile Include="DBExt\NoteSqlDB.cs" />
+    <Compile Include="DBExt\TagsSqlDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyMediator.cs" />
+    <Compile Include="UserInfoMediator.cs" />
     <Compile Include="ViewMediator.cs" />
     <Compile Include="GroupMediator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Config\CHSNS.Config.csproj">
-      <Project>{264EE5F5-F7D9-4E3B-A9E4-F8498BCA1566}</Project>
-      <Name>CHSNS.Config</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ChAlumna.Models\CHSNS.Models.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>CHSNS.Models</Name>

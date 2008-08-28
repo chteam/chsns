@@ -17,11 +17,11 @@ namespace Chsword.Reader{
 		#region IServerResponseable ≥…‘±
 
 		public ServerResponse GetServerResponse() {
-			StringBuilder sbout = new StringBuilder(ChCache.GetTemplateCache("MessageList"));
+			StringBuilder sbout = new StringBuilder(CHCache.GetTemplateCache("MessageList"));
 			DataTable dt = GetTable();
 			//StringBuilder item = new StringBuilder(GetTemplate("MessageListItems"));
 			foreach (DataRow dr in dt.Rows) {
-				sbout.Replace("$MessageListItem$", ChCache.GetTemplateCache("MessageListItem"));
+				sbout.Replace("$MessageListItem$", CHCache.GetTemplateCache("MessageListItem"));
 				sbout.Replace("$Isread.gif$", dr["issee"].Equals(true) ? "read.gif" : "unread.gif");
 				sbout.Replace("$Isread$", dr["issee"].Equals(true) ? "“—∂¡" : "Œ¥∂¡");
 				sbout.Replace("$Messageid$", dr["id"].ToString());

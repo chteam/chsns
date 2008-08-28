@@ -41,7 +41,7 @@ namespace Chsword.Execute {
 						_toid,
 						CHUser.Username + "ÉêÇë¼ÓÄãÎªºÃÓÑ",
 						string.Format(
-						ChCache.GetConfig("Message", "ApplyFriend"),
+						CHCache.GetConfig("Message", "ApplyFriend"),
 						CHUser.Username,
 						_fromid)
 						);

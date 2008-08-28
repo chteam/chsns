@@ -98,7 +98,7 @@ public string Username {
 		}
 		//public string ShowAll(String Items, int NowPage) {
 		//    StringBuilder master = new StringBuilder();
-		//    master.Append(ChCache.GetTemplateCache(String.Format("{0}Master", _Template)));
+		//    master.Append(CHCache.GetTemplateCache(String.Format("{0}Master", _Template)));
 		//    master.Replace("$Items$", Items);
 		//    //master.Replace("$Count$", GetCount());
 		//    //master.Replace("$NowPage$", NowPage.ToString());
@@ -112,7 +112,7 @@ public string Username {
 				return "";
 			//Data.User ur = new Chsword.Data.User();//GetFace用
 			StringBuilder all = new StringBuilder("");
-			String item = ChCache.GetTemplateCache(_Template);
+			String item = CHCache.GetTemplateCache(_Template);
 			StringBuilder temp;
 			foreach (DataRow dr in dt.Rows) {
 				temp = new StringBuilder(item.ToString());
@@ -146,12 +146,12 @@ public string Username {
 				if(_type==4){//独立日志时
 					if (_groupid==0){
 						temp.Replace("$Groupright$", 
-							ChCache.GetTemplateCache("GroupRight").Replace(
+							CHCache.GetTemplateCache("GroupRight").Replace(
 							String.Format("value=\"{0}\"", dr["ispost"]),
 							String.Format("value=\"{0}\" selected=\"selected\"", dr["ispost"])
 						));
 						temp.Replace("$Back$",//返回群
-						             string.Format(ChCache.GetConfig("Note","Noteback"),
+						             string.Format(CHCache.GetConfig("Note","Noteback"),
 						                           dr["Userid"],
 						                           dr["Name"]
 						                          )
@@ -160,7 +160,7 @@ public string Username {
 					else{
 						temp.Replace("$Groupright$", "");
 						temp.Replace("$Back$",//返回群
-						             string.Format(ChCache.GetConfig("Note","Groupback"),
+						             string.Format(CHCache.GetConfig("Note","Groupback"),
 						                           _groupid.ToString()   ,
 						                           dr["GroupName"]
 						                          )
@@ -203,16 +203,16 @@ public string Username {
 
 		string GetPushText(object IsPush,string Logid,string ispost,int mylevel_in_group) {
 			if (_groupid==0){
-				return string.Format(ChCache.GetConfig("Note","Push"),
-				                     Convert.ToBoolean(IsPush)?ChCache.GetConfig("Note","Pushed"):
-				                     string.Format(ChCache.GetConfig("Note","unPush"), Logid)
+				return string.Format(CHCache.GetConfig("Note","Push"),
+				                     Convert.ToBoolean(IsPush)?CHCache.GetConfig("Note","Pushed"):
+				                     string.Format(CHCache.GetConfig("Note","unPush"), Logid)
 				                    );
 			}else{//有群的时候显示置顶选择
 				if(mylevel_in_group>199){//管理员操作列表 可置顶
 					if(ispost=="1")
-						return ChCache.GetConfig("Note","unTotop");
+						return CHCache.GetConfig("Note","unTotop");
 					else
-						return ChCache.GetConfig("Note","Totop");
+						return CHCache.GetConfig("Note","Totop");
 				}
 				else//不可操作
 					return"";
@@ -220,7 +220,7 @@ public string Username {
 		}
 		string GetEdit(string id, long ownerid) {
 			if (ownerid == _viewerid||CHUser.Status>199) {
-				return ChCache.GetConfig("Note","Edit");//, temp);
+				return CHCache.GetConfig("Note","Edit");//, temp);
 			} else
 				return "";
 		}
@@ -231,7 +231,7 @@ public string Username {
 		/// <returns></returns>
 		private string GetDelete(long ownerid,int level) {
 			if (ownerid == _viewerid||level>199||CHUser.Status>199) {
-				return string.Format(ChCache.GetConfig("Note","Delete"), _logid, _groupid);
+				return string.Format(CHCache.GetConfig("Note","Delete"), _logid, _groupid);
 			}
 			else
 				return"";

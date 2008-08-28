@@ -46,15 +46,15 @@ namespace CHSNS
 
 		[WebMethod]
 		public string GetTemplate(string name) {
-			return ChCache.GetTemplateCache(name);
+			return CHCache.GetTemplateCache(name);
 		}
 		//[WebMethod]
 		//public string GetConfig(string name) {
-		//    return ChCache.GetConfig(name);
+		//    return CHCache.GetConfig(name);
 		//}
 		//[WebMethod]
 		//public string GetConfig(string fn, string name) {
-		//    return ChCache.GetConfig(fn, name);
+		//    return CHCache.GetConfig(fn, name);
 		//}
 		#endregion
 

@@ -64,70 +64,7 @@ var $v = function(i, v) { if (isnull(v)) return $(i).val(); else $(i).val(v); };
 var $h = function(i, v) { if (isnull(v)) { return $(i).html(); } else { $(i).html(v); } };
 var $addCssClass=function(o,c){Sys.UI.DomElement.addCssClass(o,c);};
 var $removeCssClass=function(o,c){Sys.UI.DomElement.removeCssClass(o,c);};
-var $dsp=function(d,v){if(v==undefined){return d.style.display;}else{d.style.display=v;}};
-var $height=function(d,v){
-	if(v==undefined){
-		if($dsp(d)!='none'&& $dsp(d)!=''){return d.offsetHeight;}
-		var viz = d.style.visibility;
-		d.style.visibility = 'hidden';
-		var o = $dsp(d);
-		$dsp(d,'block');
-		var r = parseInt(d.offsetHeight);
-		$dsp(d,o);
-		d.style.visibility = viz;
-		return r;
-	}else{
-		d.style.height=v;
-	}
-};
-var $toJSON=function(v){return Sys.Serialization.JavaScriptSerializer.serialize(v)};
-var $toObject=function(s){return Sys.Serialization.JavaScriptSerializer.deserialize(s)};
-//Collapse & Expand
-    var ct=function(d){
-	    d = $(d);
-	    if($height(d)>1){
-		    v = Math.round($height(d)/d.s);
-		    v = (v<1) ? 1 :v ;
-		    v = ($height(d)-v);
-		    $height(d,v+'px');
-		    d.style.opacity = (v/d.maxh);
-		    d.style.filter= 'alpha(opacity='+(v*100/d.maxh)+');';
-		    d.t=setTimeout(function(){ct(d.id)},1);
-	    }else{
-		    $height(d,0);
-		    $dsp(d,'none');
-		    clearTimeout(d.t);
-	    }
-    };
-     var et=function(d){
-	    d = $(d);
-	    if($height(d)<d.maxh){
-		    v = Math.round((d.maxh-$height(d))/d.s);
-		    v = (v<1) ? 1 :v ;
-		    v = ($height(d)+v);
-		    $height(d,v+'px');
-		    d.style.opacity = (v/d.maxh);
-		    d.style.filter= 'alpha(opacity='+(v*100/d.maxh)+');';
-		    d.t=setTimeout(function(){et(d.id)},1);
-	    }else{
-		    $height(d,d.maxh);
-		    clearTimeout(d.t);
-	    }
-    };
-function $collapse(d){
-	if($dsp(d)=='block'){
-		clearTimeout(d.t);
-	    ct(d.id);
-	}
-}
-var $expand=function(d){
-	if($dsp(d)=='none'){
-		$dsp(d,'block');
-		d.style.height='0px';
-		clearTimeout(d.t);
-		et(d.id);
-	}
-};
+
 
 var isExists=function(v){return typeof v!=="undefined"&&v!=null;};
 var showMessage=function(id,message,timeout){//show Message
@@ -146,6 +83,7 @@ var showMessage=function(id,message,timeout){//show Message
 		);
 	}else alertEx(message);
 };
+function Msg(id, m) { showMessage(id, m, 1000); }
 //Jquery ext
 $.fn.serialize = function() {
     var s = [];
@@ -349,7 +287,7 @@ function FormMsg(i, m, p) {//i:id without msg,m:message,p:id withmsg or define s
     l.html(m).fadeIn();
     $(i).focus();
 }
-var validate_regex = function(id, reg, ae, m, p) {
+var v_regex = function(id, reg, ae, m, p) {
     //id:id of input,reg:regex,ae:alloweEmpty,m:msg,p:element show errormsg
     var ie = false; //is empty
     if (!ae) ie = isEmpty(id);
@@ -357,18 +295,18 @@ var validate_regex = function(id, reg, ae, m, p) {
     FormMsg(id, b ? m : '', p);
     return !b;
 };
-var validate_empty = function(id, m, p) {
+var v_empty = function(id, m, p) {
     var b = isEmpty(id);
     FormMsg(id, b ? m : '', p);
     return !b;
 };
-var validate_date = function(id, m, p) {
+var v_date = function(id, m, p) {
     var b = /Invalid|NaN/.test(new Date($(id).val()));
     FormMsg(id, b ? m : '', p);
     return !b;
 };
 
-var validate_equals = function(id1, id2, m, p) {//id2 is the span that show error
+var v_equals = function(id1, id2, m, p) {//id2 is the span that show error
     var b = $v(id1) != $v(id2);
     FormMsg(id, b ? m : '', p);
     return !b;
