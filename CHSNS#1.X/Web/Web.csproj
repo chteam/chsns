@@ -241,7 +241,6 @@
     <None Include="Views\Components\PhotoList\PhotoItem.vm" />
     <None Include="Views\Components\PostList\SubjectList.vm" />
     <None Include="Views\Components\ProfileEditChild\Contact.vm" />
-    <None Include="Views\Components\ProfileEditChild\MagicBox.vm" />
     <None Include="Views\Components\ProfileEditChild\PersonalInfo.vm" />
     <None Include="Views\Components\ProfileEditChild\School.vm" />
     <None Include="Views\Components\ProfileEditChild\Upload.vm" />
