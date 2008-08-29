@@ -1,0 +1,13 @@
+/*Reorder List*/
+#MyApplication li{cursor:move;}
+#MyApplication li a{cursor:move;}
+#MyApplication li:hover{background:url(images/bg_icon.png) no-repeat 0 -2160px;color:#333333;display:block}
+#ReorderList_Item{border:2px dotted #333333;  padding-left:10px;}
+.appli{ padding-bottom:20px;}
+.appli fieldset{ margin:0 10px; color:#3b5999; border-color:#95a5c6;}
+.appli ul{ margin-left:25px;}
+.appli ul li{ margin-top:5px;vertical-align:bottom; }
+.appli input{ margin:10px 20px}
+.appli .applimore{ text-align:right; padding:0 20px; margin-top:20px;}
+
+.callbackStyle{background:red;}
