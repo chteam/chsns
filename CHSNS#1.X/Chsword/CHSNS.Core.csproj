@@ -92,6 +92,7 @@
     <Compile Include="Config\RegVisitConfig.cs" />
     <Compile Include="Config\SiteConfig.cs" />
     <Compile Include="Config\SystemConfig.cs" />
+    <Compile Include="Config\ThumbnailPair.cs" />
     <Compile Include="DataBaseExecutor.cs" />
     <Compile Include="DataOpen\OleDbDataOpener.cs" />
     <Compile Include="DataOpen\SqlDataOpener.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Dictionary.cs" />
     <Compile Include="DoDataBase.cs" />
     <Compile Include="Encrypt.cs" />
+    <Compile Include="Enum\ImageSizeType.cs" />
     <Compile Include="Enum\UserStatusType.cs" />
     <Compile Include="File.cs" />
     <Compile Include="ICHSNSDB.cs" />
@@ -109,8 +111,10 @@
     <Compile Include="Interface\IDataBaseExecutor.cs" />
     <Compile Include="Interface\IEmail.cs" />
     <Compile Include="NetworkCross.cs" />
+    <Compile Include="Path.cs" />
     <Compile Include="Regular.cs" />
     <Compile Include="SmtpMail.cs" />
+    <Compile Include="Thumbnail.cs" />
     <Compile Include="Web\UI\FormFixer.cs" />
     <Compile Include="Web\UI\HtmlScript.cs" />
     <Compile Include="Web\UI\MasterPage.cs">
