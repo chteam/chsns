@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web.Mvc;
-using System.Data;
 
 namespace CHSNS.Controllers {
 	public class IdentityController : BaseController {

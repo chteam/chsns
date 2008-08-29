@@ -6,15 +6,9 @@
  * 
  */
 namespace CHSNS.Controllers {
-	using System;
-	using System.Data;
 	//using CHSNS.Data;
-
-	using CHSNS.Data;
 	using CHSNS;
 	using System.Web.Mvc;
-	using System.Collections.Generic;
-	using CHSNS.Models;
 
 	/// <summary>
 	/// Description of EventController.
@@ -28,7 +22,6 @@ namespace CHSNS.Controllers {
 		#region 组件
 		public ActionResult Show(long userid, byte type) {
 			ViewData["userid"] = userid;
-			//ViewData["type"] = type;
 			ViewData["eventrows"] = DataBaseExecutor.GetRows("Event_List"
 					, "@userid", userid,
 			"@type", type,
