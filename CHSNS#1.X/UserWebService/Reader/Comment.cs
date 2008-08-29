@@ -104,7 +104,7 @@ namespace Chsword.Reader {
 				temp.Replace("$Id$",dr["id"].ToString());
 
 				temp.Replace("$Username$", dr["Name"].ToString());
-				temp.Replace("$Userface$", Path.GetFace(dr["Userid"].ToString(),ImgSize.small));
+				temp.Replace("$Userface$", Path.GetFace(dr["Userid"].ToString(),ImgSizeType.Small));
 				
 				temp.Replace("$Time$", Convert.ToDateTime(dr["addtime"]).ToString("MM-dd HH:mm"));
 				if (dr["IsDel"].Equals(false))

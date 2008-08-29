@@ -53,5 +53,21 @@
 				if ('' == r) alertEx('成功提交');
 			});
 		};
+		var uploadsuccess = function(showul) {
+			alertEx("文件上传成功.");
+			$("#face_span").html(
+			'<img id="Userface" src="' + showul + '?' + Math.random() + '" alt=""/>');
+			uploadcreate($('#uploadfield'), '<%=Url.Action("File","Upload") %>', 'face');
+		};
+		var DeleteFace = function() {
+			$.post('<%=Url.Action("DeleteFace","User") %>', {}, function(r) {
+				if ('' == r) {
+					alertEx('成功删除您的头像');
+					var f = $("#face_span").html();
+					$("#face_span").html("");
+					$("#face_span").html(f);
+				}
+			});
+		};
 	</script>
 </asp:Content>

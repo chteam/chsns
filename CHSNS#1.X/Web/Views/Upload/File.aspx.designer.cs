@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CHSNS.Web.Views.User {
+namespace CHSNS.Web.Views.Upload {
     
     
-    public partial class Upload {
+    public partial class File {
     }
 }
