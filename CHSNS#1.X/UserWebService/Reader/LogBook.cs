@@ -129,7 +129,7 @@ public string Username {
 				temp.Replace("$Id$", dr["id"].ToString());
 				temp.Replace("$Userid$", dr["Userid"].ToString());
 				temp.Replace("$Username$", dr["Name"].ToString());
-				temp.Replace("$Userface$", Path.GetFace(dr["Userid"].ToString(), ImgSize.small));
+				temp.Replace("$Userface$", Path.GetFace(dr["Userid"].ToString(), ImgSizeType.Small));
 				
 				temp.Replace("$CommentCount$", dr["CommentCount"].ToString());
 				temp.Replace("$PushCount$", dr["PushCount"].ToString());

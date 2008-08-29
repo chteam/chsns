@@ -78,7 +78,7 @@ namespace Chsword.Reader {
 				temp.Replace("$Userid$", dr["Userid"].ToString());
 				temp.Replace("$Username$", dr["Name"].ToString());
 				temp.Replace("$enUsername$",ChServer.UrlEncode(dr["Name"]));
-				temp.Replace("$Userface$", Path.GetFace(dr["Userid"].ToString(),ImgSize.middle));
+				temp.Replace("$Userface$", Path.GetFace(dr["Userid"].ToString(),ImgSizeType.Middle));
 				if(_type==0){
 					temp.Replace("$isonline$", Online.OnlineString(dr["Userid"]));
 				}

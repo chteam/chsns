@@ -109,7 +109,7 @@ namespace CHSNS
 			sqlParameter[0].Value = CHUser.UserID;
 			sqlParameter[1].Value = albumid;
 			sqlParameter[2].Value = Path.DirectorySize(
-				new System.IO.DirectoryInfo( Server.MapPath(Path.ClientUserFolder()))
+				new System.IO.DirectoryInfo( Server.MapPath(Path.UserWebPath()))
 			);
 			DoDataBase db1 = new DoDataBase();
 			if(db1.DoParameterSql("Album_Remove", sqlParameter)=="1")

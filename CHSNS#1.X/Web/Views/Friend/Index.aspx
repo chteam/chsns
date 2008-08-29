@@ -1,4 +1,8 @@
-﻿#capturefor(css)
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="CHSNS.Web.Views.Friend.Index" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+#capturefor(css)
 <link href="${ChHelper.ChSite.StylePath}/friend.css" rel="stylesheet" type="text/css" />
 #end
 #capturefor(javascript)
@@ -41,3 +45,6 @@ pagefun();
 ##没有的话显示Friend.Xml None_Friend
 </form>
 #end
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
+</asp:Content>

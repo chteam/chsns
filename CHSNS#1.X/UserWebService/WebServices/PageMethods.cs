@@ -419,33 +419,33 @@ using CHSNS.Models;
 		}
 		#endregion
 		#region 管理，Manage Group
-		[WebMethod(EnableSession=true)]
-		public string SaveMyInfo(Dictionary<string, object> dict,string mode){
-			if (CHUser.UserID==0) {
-				return "非法操作.";
-			}
-			UserSettingExecuter ui = new UserSettingExecuter();
-			switch (mode.ToLower()) {
-				case "school":
-					return ui.SetUserSchoolInfo(dict);
-				case "contact":
-					return ui.SetUserContactInfo(dict);
-				case "personal":
-					return ui.SetUserPersonalInfo(dict);
-				case "magicbox":
-					return ui.SetUserMagicBoxInfo(dict);
-				case "magicboxupback":
-					ui.SetUserMagicBoxUpBack();
-					return "已经将您的MagicBox保存至信箱.";
-				case "magicboxclear":
-					ui.SetUserMagicBoxClear();
-					return "已经将您的MagicBox清理干净.";
-				case "deleteface":
-					return ui.DeleteUserface();
-				default://basic
-					return ui.SetUserBaseInfo(dict);
-			}
-		}
+		//[WebMethod(EnableSession=true)]
+		//public string SaveMyInfo(Dictionary<string, object> dict,string mode){
+		//    if (CHUser.UserID==0) {
+		//        return "非法操作.";
+		//    }
+		//    UserSettingExecuter ui = new UserSettingExecuter();
+		//    switch (mode.ToLower()) {
+		//        case "school":
+		//            return ui.SetUserSchoolInfo(dict);
+		//        case "contact":
+		//            return ui.SetUserContactInfo(dict);
+		//        case "personal":
+		//            return ui.SetUserPersonalInfo(dict);
+		//        case "magicbox":
+		//            return ui.SetUserMagicBoxInfo(dict);
+		//        case "magicboxupback":
+		//            ui.SetUserMagicBoxUpBack();
+		//            return "已经将您的MagicBox保存至信箱.";
+		//        case "magicboxclear":
+		//            ui.SetUserMagicBoxClear();
+		//            return "已经将您的MagicBox清理干净.";
+		//        case "deleteface":
+		//            return ui.DeleteUserface();
+		//        default://basic
+		//            return ui.SetUserBaseInfo(dict);
+		//    }
+		//}
 		[WebMethod(EnableSession=true)]
 		public string SetGroup(GroupModel g,PageType t) {
 			long userid = 0;

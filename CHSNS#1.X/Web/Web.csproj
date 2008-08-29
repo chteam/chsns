@@ -165,6 +165,7 @@
     <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_it.js" />
     <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_ja.js" />
     <Content Include="aspnet_client\system_web\2_0_50727\CrystalReportWebFormViewer4\js\strings_ko.js" />
+    <Content Include="Config\AllowImageExt.xml" />
     <Content Include="Config\AnimalSign.config" />
     <Content Include="Config\City.config" />
     <Content Include="Config\Comment.config" />
@@ -243,7 +244,6 @@
     <None Include="Views\Components\ProfileEditChild\Contact.vm" />
     <None Include="Views\Components\ProfileEditChild\PersonalInfo.vm" />
     <None Include="Views\Components\ProfileEditChild\School.vm" />
-    <None Include="Views\Components\ProfileEditChild\Upload.vm" />
     <None Include="Views\Components\ShowLevel.vm" />
     <None Include="Views\Components\System\Option.vm" />
     <None Include="Views\Group\ClassList.vm" />
@@ -273,6 +273,7 @@
     <None Include="Views\Html\UserList-Random.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
     <Content Include="Config\ShowLevel.xml" />
+    <Content Include="Config\ThumbnailSize.xml" />
     <Content Include="Config\UserEditMenu.xml" />
     <Content Include="Default.aspx" />
     <Content Include="JavaScript\jquery-1.2.3-intellisense.js" />
@@ -333,6 +334,7 @@
     <Content Include="Views\Comment\ShowList.ascx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
+    <Content Include="Views\Friend\Index.aspx" />
     <Content Include="Views\Group\ShowProfileLinks.ascx" />
     <Content Include="Views\Home\AboutUs.aspx" />
     <Content Include="Views\Home\Index.aspx" />
@@ -366,10 +368,7 @@
     <None Include="Views\SuperNote\video.vm" />
     <None Include="Views\Tags\Logtag.vm" />
     <None Include="Views\Tags\Tags.vm" />
-    <None Include="Views\test\index.vm" />
-    <None Include="Views\Upload\Face.vm" />
     <None Include="Views\Upload\Photo.vm" />
-    <None Include="Views\Friend\friend.vm" />
     <None Include="Views\Friend\friendRequest.vm" />
     <None Include="Views\Friend\random.vm" />
     <Content Include="JavaScript\AdminUser.js" />
@@ -430,7 +429,6 @@
     <Content Include="JavaScript\Search.js" />
     <Content Include="JavaScript\Services.js" />
     <Content Include="JavaScript\Setting.js" />
-    <Content Include="JavaScript\Upload.js" />
     <Content Include="JavaScript\UploadPhoto.js" />
     <Content Include="Style\Default\Images\act_select.gif" />
     <Content Include="Style\Default\Images\bg_icon.png" />
@@ -575,6 +573,7 @@
     <Content Include="Views\Shared\MyMenu.ascx" />
     <Content Include="Views\Shared\PublicMenu.ascx" />
     <Content Include="Views\Shared\Utility.ascx" />
+    <Content Include="Views\Upload\File.aspx" />
     <Content Include="Views\User\BaseInfo.ascx" />
     <Content Include="Views\User\Contact.ascx" />
     <Content Include="Views\User\Edit.aspx" />
@@ -590,7 +589,6 @@
     <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\MagicBox.ascx" />
     <Content Include="Views\User\Personal.ascx" />
-    <Content Include="Views\User\Readme.txt" />
     <Content Include="Views\User\School.ascx" />
     <Content Include="Views\User\Upload.ascx" />
     <Content Include="Views\View\ShowViewList.ascx" />
@@ -657,6 +655,13 @@
     </Compile>
     <Compile Include="Views\Event\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friend\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Friend\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Group\ShowProfileLinks.ascx.cs">
       <DependentUpon>ShowProfileLinks.ascx</DependentUpon>
@@ -748,6 +753,13 @@
     </Compile>
     <Compile Include="Views\Shared\Utility.ascx.designer.cs">
       <DependentUpon>Utility.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Upload\File.aspx.cs">
+      <DependentUpon>File.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Upload\File.aspx.designer.cs">
+      <DependentUpon>File.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\BaseInfo.ascx.cs">
       <DependentUpon>BaseInfo.ascx</DependentUpon>
