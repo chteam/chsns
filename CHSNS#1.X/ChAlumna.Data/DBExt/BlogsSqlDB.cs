@@ -20,7 +20,7 @@
 					select b).SingleOrDefault<Blogs>();
 		}
 		public IList GetPosts(long userid) {
-			return (from b in DB.Note
+			return (from b in DB.LogTable
 					where b.UserID == userid
 					&& b.IsPost == (byte)ShowType.完全公开
 					&& b.GroupId==0

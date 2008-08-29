@@ -41,11 +41,11 @@ namespace CHSNS.Data
 		}
 
 		IDictionary _session;
-		CHSNSDBContext _DB = null;
-		public CHSNSDBContext DB {
+		CHSNSDBDataContext _DB = null;
+		public CHSNSDBDataContext DB {
 			get {
 				if (_DB == null)
-					_DB = new CHSNSDBContext(SiteConfig.SiteConnectionString);
+					_DB = new CHSNSDBDataContext(SiteConfig.SiteConnectionString);
 
 				return _DB;
 			}
@@ -100,7 +100,7 @@ if @type=2
 return 1;
 END*/
 			#endregion
-			CHSNSDBContext db = new CHSNSDBContext(SiteConfig.SiteConnectionString);
+			CHSNSDBDataContext db = new CHSNSDBDataContext(SiteConfig.SiteConnectionString);
 			var cmt = (from c in db.Comment
 					   where c.ID == id &&
 					   (c.OwnerID == CHSNSUser.Current.UserID || c.SenderID == CHSNSUser.Current.UserID)
@@ -207,7 +207,7 @@ END*/
 				r = ret.status;
 			} else {
 				var ret = (from g in DB.GroupUser
-						   where g.UserID == userid && g.Groupid == groupid
+						   where g.UserID == userid && g.GroupID == groupid
 						   select new
 						   {
 							   status = g.Level
