@@ -15,13 +15,13 @@
 		/// log userid, body, title,isPost, AddTime, EditTime,Groupid,LastCommentUserid
 		/// </summary>
 		/// <param name="l"></param>
-		public void Note_Add(Note l) {
+		public void Note_Add(Log l) {
 			l.AddTime = DateTime.Now;
 			l.EditTime = DateTime.Now;
 			l.LastCommentTime = DateTime.Now;
 			l.UserID = CHSNSUser.Current.UserID;
-			CHSNSDBContext db = new CHSNSDBContext(SiteConfig.SiteConnectionString);
-			db.Note.InsertOnSubmit(l);
+			CHSNSDBDataContext db = new CHSNSDBDataContext(SiteConfig.SiteConnectionString);
+			db.LogTable.InsertOnSubmit(l);
 			db.SubmitChanges();
 
 			if (l.GroupId > 0) {
@@ -80,7 +80,7 @@ VALUES     (@fromid, @toid, Getdate(), @type, @Application, @Actionid)
 			db.SubmitChanges();
 		}
 
-		public void Note_Edit(Note l) {
+		public void Note_Edit(Log l) {
 			#region Sql
 			/*
 CREATE PROCEDURE [dbo].[Note_Update]
