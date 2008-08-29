@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using CHSNS.Models;
 
 namespace CHSNS.Controllers{
 	public class FriendController:BaseController {
@@ -19,14 +20,12 @@ namespace CHSNS.Controllers{
 		[LoginedFilter]
 		public ActionResult Index() {
 			var Ownerid = this.QueryLong("userid");
-			if (Ownerid == 0)
+			if (Ownerid == 0) 
 				Ownerid = CHSNSUser.Current.UserID;
-			DataRowCollection rows = DataBaseExecutor.GetRows("UserRelation",
-				"@OwnerId", Ownerid,
-				"@ViewerId", CHUser.UserID
-			);
-			if (rows.Count > 0)
-				ViewData["user"] = rows[0];
+			BasicInformation b = DBExt.UserInfo.GetUser(Ownerid);
+
+
+			ViewData["user"] = b.Name;
 			Profile p = new Profile();
 			ViewData.Add("Count", p.FriendCount(Ownerid));
 

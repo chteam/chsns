@@ -9,8 +9,7 @@ namespace CHSNS.Data {
 		public BasicInformation GetBaseInfo(long UserID) {
 			return DBExt.DB.BasicInformation.Where(c => c.UserID == UserID).FirstOrDefault();
 		}
-		public void SaveBaseInfo(BasicInformation bi)
-		{
+		public void SaveBaseInfo(BasicInformation bi) {
 			DataBaseExecutor.Execute(
 				@"UPDATE [BasicInformation]
    SET [Name] = @Name
@@ -29,6 +28,7 @@ namespace CHSNS.Data {
 				, "@UserID", bi.UserID);
 		}
 		#endregion
+		#region other info
 		public DataRowCollection GetSchoolInfo(long UserID) {
 			return DataBaseExecutor.GetRows("MySchoolSelect", "@userid", UserID);
 		}
@@ -38,35 +38,50 @@ namespace CHSNS.Data {
 		public DataRowCollection GetPersonalInfo(long UserID) {
 			return DataBaseExecutor.GetRows("MyPersonalSelect", "@userid", UserID);
 		}
+		#endregion
 		#region Magicbox
 		public string GetMagicBox(long UserID) {
 			var magicbox = (from p in DBExt.DB.Profile
-			                where p.UserId == UserID
-			                select p.MagicBox).Single();
+							where p.UserId == UserID
+							select p.MagicBox).Single();
 			return magicbox;
 		}
-		public void SaveMagicBox(string magicbox,long UserID)
-		{
+		public void SaveMagicBox(string magicbox, long UserID) {
 			DataBaseExecutor.Execute(@"Update [profile]
 set Magicbox=@magicbox where UserID=@UserID"
-			                         , "@magicbox", magicbox
-			                         , "@UserID", UserID);
+									 , "@magicbox", magicbox
+									 , "@UserID", UserID);
 		}
-		public void MagicBoxBackup()
-		{
+		public void MagicBoxBackup() {
 		}
 
 
 
 		#endregion
-
+		#region face
 		public void DeleteFace(long userid) {
 			System.IO.Directory.Delete(Path.FaceMapPath(userid), true);
 		}
+		#endregion
 
-		public byte Relation(long ownerid,long viewerid)
-		{
+		public byte Relation(long ownerid, long viewerid) {
 			return 200;
+		}
+
+		public BasicInformation GetUser(long userid) {
+			return GetUser(userid, c => new BasicInformation {
+				Name = c.Name
+			});
+		}
+
+		public BasicInformation GetUser(long userid,
+			System.Linq.Expressions.Expression<System.Func<BasicInformation, BasicInformation>> x) {
+			var ret = DBExt.DB.BasicInformation
+				.Where(c => c.UserID == userid)
+				.Select(c => new BasicInformation {
+					Name = c.Name
+				}).Single();
+			return ret;
 		}
 	}
 }
