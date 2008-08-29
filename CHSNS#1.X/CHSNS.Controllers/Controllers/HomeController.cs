@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using System;
+
 namespace CHSNS.Controllers
 {
 	
@@ -17,7 +17,7 @@ namespace CHSNS.Controllers
 			RedirectToAction("index");
 		}
 		protected override void HandleUnknownAction(string actionName) {
-			this.View(actionName).ExecuteResult(this.ControllerContext);
+			View(actionName).ExecuteResult(ControllerContext);
 		}
 	}
 }
