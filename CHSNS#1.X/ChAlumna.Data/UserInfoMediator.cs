@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Linq;
 using CHSNS.Models;
-
+using CHSNS;
 namespace CHSNS.Data {
 	public class UserInfoMediator : BaseMediator {
 		public UserInfoMediator(DBExt id) : base(id) { }
@@ -56,6 +56,17 @@ set Magicbox=@magicbox where UserID=@UserID"
 		{
 		}
 
+
+
 		#endregion
+
+		public void DeleteFace(long userid) {
+			System.IO.Directory.Delete(Path.FaceMapPath(userid), true);
+		}
+
+		public byte Relation(long ownerid,long viewerid)
+		{
+			return 200;
+		}
 	}
 }
