@@ -73,7 +73,10 @@ namespace CHSNS {
 			FileStream myFileStream = new FileStream(
 				HttpContext.Current.Server.MapPath(string.Format(PATH, key))
 				, FileMode.Open);
-			return mySerializer.Deserialize(myFileStream);
+			var x = mySerializer.Deserialize(myFileStream);
+			myFileStream.Close();
+			myFileStream.Dispose();
+			return x;
 		}
 	}
 }

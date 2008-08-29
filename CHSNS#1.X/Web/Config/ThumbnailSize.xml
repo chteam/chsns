@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfThumbnailPair xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ThumbnailPair>
+    <Size>
+      <Width>200</Width>
+      <Height>150</Height>
+    </Size>
+    <ImageType>Big</ImageType>
+  </ThumbnailPair>
+  <ThumbnailPair>
+    <Size>
+      <Width>100</Width>
+      <Height>75</Height>
+    </Size>
+    <ImageType>Middle</ImageType>
+  </ThumbnailPair>
+  <ThumbnailPair>
+    <Size>
+      <Width>60</Width>
+      <Height>45</Height>
+    </Size>
+    <ImageType>Small</ImageType>
+  </ThumbnailPair>
+  <ThumbnailPair>
+    <Size>
+      <Width>20</Width>
+      <Height>15</Height>
+    </Size>
+    <ImageType>Tiny</ImageType>
+  </ThumbnailPair>
+</ArrayOfThumbnailPair>
