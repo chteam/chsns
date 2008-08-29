@@ -1,0 +1,39 @@
+
+.person, .entry, .album { margin:10px 0; padding:10px; border:1px solid #d8dfea; background:#fff;}
+
+.people .image { overflow:hidden; float:left; width:145px; text-align:left;}
+.people .image img { padding:3px; border:1px solid #d8dfea; background:#fff;}
+.people .image a:hover { background:transparent;}
+.people .image a:hover img { border:1px solid #3B5999; background:#d8dfea;}
+.people .info { display:inline; overflow:hidden; float:left; width:300px; margin-left:10px; text-align:left;border:0px solid black; margin-top:10px;}
+.people .info h4 { color:#808080;}
+.people .info .subinfo { color:#808080;}
+.people .actions { float:right;}
+.people .actions ul { list-style-type:none;}
+.people .actions a {text-align:left;}
+.people .actions li { text-indent:5px; color:#808080; text-align:left; float:left;}
+p.image { margin:10px 0;}
+
+.people { display:block; margin:10px 0; padding:10px; border:1px solid #d8dfea; background:#fff;}
+.people:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+* html .people { height:1%;}
+*+html .people { min-height:1%;}
+
+.ch_content ul{ list-style:none;}
+.ch_content ul li{ margin-bottom:5px;}
+
+/*----photo list---*/
+#Photoitem{ list-style:none;}
+#Photoitem li{ float:left; margin:6px; border:1px solid #d8dfea; padding:5px;}
+#Photoitem li:hover{ background-color:#d8dfea;border:1px solid #95a5c6;}
+#chSee{ text-align:center; padding:10px;}
+
+.albump input{ margin:10px;}
+
+#chSet fieldset{ margin:10px; color:#3b5999; border-color:#95a5c6; padding:10px 0;}
+#chSet textarea{ width:450px; height:150px;}
+#chSet input{ width:200px;}
+#chSet ul{ margin-left:25px;}
+#chSet ul li{ margin-top:8px;vertical-align:bottom; }
+
+.pedit{ text-align:center;}

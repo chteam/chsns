@@ -1,0 +1,175 @@
+﻿/* no entry */
+#homepage .ch_content { height:auto; margin:10px -10px 0; padding:10px;}
+.person { display:block; list-style-type:none; padding:10px; border:1px solid #d8dfea; background:#fff;}
+.person:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+* html .person { height:1%;}
+*+html .person { min-height:1%;}
+.person .image { float:left; width:125px; text-align:left;}
+	.person .image img { padding:1px; border:1px solid #ccc; background:#fff;}
+.person .info { display:inline; float:left; text-align:left; line-height:24px;}
+	.person .info h4 { font-size:14px;}
+	.person .info .subinfo { color:#808080; list-style-type:none;}
+.person .actions { float:right;}
+	.person .actions ul { width:100px; list-style-type:none;}
+		.person .actions a { display:block; width:90px; padding:0 5px; border-bottom:1px solid #d8dfea; text-align:left; text-decoration:none;}
+
+.personIcon { background:#fff;}
+	.personIcon td { background:#fff;}
+
+/* ==== 1 userRelations ==== */
+#userRelations { float:left;padding-bottom:10px;width:205px; padding-left:10px;margin-top:17px;z-index:100;}
+
+
+
+/* ==== 1.15 userIntroducer ==== */
+#userIntroducer { overflow:hidden; background:#f4f4f4;}
+#userIntroducer .boxcont:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+* html #userIntroducer .boxcont { height:1%;}
+*+html #userIntroducer .boxcont { min-height:1%;}
+	#userIntroducer .boxcont { padding:0 5px 5px;}
+
+#userIntroducer .info { overflow:hidden; width:133px;}
+#userIntroducer .personIcon { float:left; margin-right:5px;}
+* html #userIntroducer .personIcon { margin-right:2px;}
+#userIntroducer .info caption { text-align:left; line-height:24px;}
+#userIntroducer .info th { width:3em; color:#808080; font-weight:normal; vertical-align:top;}
+
+/* ==== 1.2 userVisitor ==== */
+#userVisitor { overflow:hidden;}
+
+/* ==== 1.3 userFriend ==== */
+#userFriend, #userFriendSpecial { overflow:hidden;}
+	#userFriend .noncont { margin:5px; line-height:20px;}
+	#userFriend .readmore { margin:5px;}
+
+/* ==== 1.3 userFriendUniv ==== */
+#userFriendUniv { overflow:hidden;}
+	#userFriendUniv .boxcont { padding:0 5px;}
+	#userFriendUniv .noncont { margin:5px; line-height:20px;}
+
+#userFriendUniv ul { list-style-type:none; margin:5px 0;}
+#userFriendUniv ul:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+* html #userFriendUniv ul { height:1%;}
+*+html #userFriendUniv ul { min-height:1%;}
+	#userFriendUniv li { float:left; width:96px;}
+
+/* ==== 2 userUpdates ==== */
+#userUpdates {float:right;position:relative;width:420px;}
+
+/* ==== 2.05 userVacation ==== */
+#userVacation { overflow:hidden; background:#f4f4f4;}
+	#userVacation .boxcont { padding:5px 10px; border:1px solid #3B5999;}
+
+/* ==== 2.1 userProfile ==== */
+#UserInformation { overflow:hidden; padding-bottom:5px;}
+	#UserInformation .boxcont { padding:0 5px;}
+		#UserInformation .boxcont .edit { margin-left:1.5em; color:#808080; font-weight:normal;}
+		#UserInformation .boxcont .edit:hover { color:#3B5999;}
+		* html #UserInformation .boxcont .edit { margin-left:1em;}
+		*+html #UserInformation .boxcont .edit { margin-left:1em;}
+
+#UserInformation h4 { color:#3B5999; font-weight:bold; line-height:20px;}
+#UserInformation ul { margin-bottom:5px; line-height:16px;}
+#UserInformation li span {width:6em; color:#808080; font-weight:normal; text-align:left; vertical-align:top; margin-right:70px;}
+
+#PersonalInfo { color:#808080;}
+
+/* ==== 2.19 userEvent ==== */
+#userEvent { overflow:hidden;}
+	#userEvent .boxcont { padding:0 5px; color:#808080;}
+		#userEvent .boxcont p { margin:5px 0;}
+
+/* ==== 2.2 userAlbum ==== */
+#userAlbum { overflow:hidden;}
+	#userAlbum .boxcont { padding:0 5px;}
+
+#album { list-style-type:none; clear:both; margin:5px 0;}
+#album:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+* html #album { height:1%;}
+*+html #album { min-height:1%;}
+	#album li { float:left; overflow:hidden; width:192px;}
+
+#album .image { overflow:hidden; float:left; width:60px; text-align:left;}
+	#album .image a:hover { background:transparent;}
+		#album .image a img { width:50px; padding:2px; border:1px solid #d8dfea; background:#fff;}
+		#album .image a:hover img { border:1px solid #3B5999; background:#d8dfea;}
+
+#album .info { display:inline; float:left; text-align:left;}
+	#album h4 { line-height:24px;}
+	#album .subinfo { color:#808080;}
+
+/* ==== 2.4 userBlog ==== */
+#userBlog { overflow:hidden;}
+	#userBlog .boxcont { padding:0 5px;}
+
+#blog { list-style-type:none; clear:both;}
+	#blog li { margin:5px 0;  margin-left:5px;}
+		* html #blog .article { height:1%;}
+		*+html #blog .article { min-height:1%;}
+
+#blog .info { position:relative; padding:2px 0 2px 5px; border-top:1px solid #d8dfea; background:#f7f7f7; line-height:20px;}
+* html #blog .info { height:1%;}
+*+html #blog .info { min-height:1%;}
+	#blog h4 { overflow:hidden; display:block; width:250px;}
+	#blog .subinfo { position:absolute; top:0; right: 5px; color:#808080; line-height:20px;}
+		#blog .subinfo .time { color:#808080;}
+
+#blog .text { padding:5px;}
+	#blog .text img { max-width:369px;}
+	* html #blog .text img { width:expression((this.width < 369) ? "auto" : "369px");}
+#blog .stat { padding:0 5px; color:#808080; line-height:24px;}
+
+/* ==== 2.5 userPandora ==== */
+#content #userPandora { position:static;}
+	#userPandora .boxcont { padding:0 5px;}
+		#userPandora .boxcont p { margin:5px 0;}
+
+/* ==== 2.6 userGroup ==== */
+#userGroup { overflow:hidden;}
+	#userGroup .boxcont { padding:0 5px; color:#808080;}
+		#userGroup .boxcont p { margin:5px 0;}
+
+/* ==== 2.7 userTalk ==== */
+#userTalk { overflow:hidden;}
+	#userTalk .boxcont { padding:0 3px;}
+#starttalkForm p { margin:5px 0;}
+#cmtbody ,.cmtbody { width:742px; padding:3px; border:1px solid #d8dfea;}
+#content #cmtbody ,.cmtbody{ width:588px;}
+#userUpdates #cmtbody,.cmtbody { width:376px;}
+
+#talk { list-style-type:none;}
+	#talk li { padding:0 0 5px;}
+#talk .article { clear:both;}
+#talk .article:after { content:"haha"; display:block; height:0; clear:both; visibility:hidden;}
+* html #talk .article { height:1%;}
+*+html #talk .article { min-height:1%;}
+
+	#talk .picture { overflow:hidden; float:left; width:58px;}
+		#talk .thumbpic a img { padding:1px; border:1px solid #d8dfea;}
+		#talk .thumbpic a:hover img { padding:1px; border:1px solid #3B5999; background:#d8dfea;}
+	#talk .info { margin-left:2px; padding:0 5px; border-top:1px solid #d8dfea; background:#f7f7f7; line-height:20px; text-align:right;}
+	* html #talk .info { height:1%;}
+	*+html #talk .info { min-height:1%;}
+		#talk .info cite { float:left; text-align:left;}
+		#talk .info .author { float:left;}
+		#talk .info .time { color:#808080;}
+	#talk .text { margin-left:61px; padding:5px 0;}
+	* html #talk .text { margin-left:64px; text-indent:-3px;}
+
+#userTalk .readmore { margin:0 0 5px;}
+
+/* ==== 3 permalink ==== */
+#permalink { padding:5px 0; clear:both; border-left:1px solid #d8dfea; border-right:1px solid #d8dfea; border-bottom:1px solid #3B5999; background:#f7f7f7; color:#808080; text-align:center;}
+#container #permalink { margin-left:132px;}
+#content #permalink { margin:0 -10px; border:0; border-top:1px solid #d8dfea;}
+	#permalink em { font-style:normal; font-weight:bold;}
+	#permalink strong { color:#3B5999;}
+
+/* Talk Page */
+#talkpage #content { padding:10px 0 0; width:626px;}
+#talkpage #talk { overflow:hidden; width:584px; padding:10px; border:1px solid #d8dfea; background:#fff;}
+#talkpage #message { width:598px; padding:3px;}
+#talkpage #starttalk { padding-bottom:5px; border-bottom:1px solid #d8dfea;}
+#talkpage .pnav { margin:5px 0;}
+#allRead {text-align:center; margin-top:10px}
+.result_div{ border:1px solid #FF6600;padding:10px;}

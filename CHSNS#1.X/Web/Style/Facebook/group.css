@@ -1,0 +1,205 @@
+﻿.note { margin:10px 0; padding:10px; border:1px solid #d8dfea; background:#fff; text-align:center;}
+.subcontainer .note { background:#f7f7f7;}
+#sub, #editThreadForm, #deleteTribeForm, #labelForm { padding:20px; background:#fff;}
+#sub textarea { width:100%;}
+.subject { width:300px;}
+#sub li{ list-style:none;}
+/* Group*/
+.xui-t3 .xui-gf .info, .xui-t3 .xui-gf .info caption { width:230px;}
+ 
+#groupInvite { margin-top:10px}
+
+/* Form */
+/*.ch_content form, form p { margin:10px 0;}
+
+*+html form { min-height:1%;}*/
+* html form { height:1%;}
+
+
+#newTribeForm p { text-align:center;}
+#body {width:100%;}
+#textedit { width:100%;}
+#textEditSubBtn { padding:0 10px;}
+
+/* threadlist */
+.threadlist { table-layout:fixed;background:#fff;}
+.threadlist th { padding:3px; background:#f7f7f7; color:#3b5998; text-align:center; border-bottom:solid 1px #d8dfea;border-top:solid 1px #d8dfea;}
+.threadlist th.threadAuthor { width:6em;}
+.threadlist th.threadStat { width:3em;}
+.threadlist th.threadResponder { width:6em;}
+.threadlist th.threadGroup { width:5em;}
+.threadlist td { padding:1px; text-align:center; line-height:15px; vertical-align:middle;border-bottom:solid 1px #ddd;}
+.threadlist td.threadTitle { padding-left:5px; text-align:left; word-break:break-all;}
+.threadlist tbody .tit{text-align:left;line-height:25px; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.threadlist a { text-decoration:none;}
+
+.threadlist .time { color:#808080;}
+
+/* view thread */
+.ch_content h3 { margin:10px 0 5px; border-bottom:1px solid #d8dfea; color:#3b5998; line-height:20px;}
+.management { margin:10px 0; text-align:right;}
+
+#threadlist { list-style:none; margin:10px 0; border-bottom:1px solid #d8dfea; background:#fff; *zoom:1;}
+#threadlist li { border-left:1px solid #d8dfea; border-right:1px solid #d8dfea; border-top:1px solid #3b5998;}
+#threadlist .thread { position:relative; padding-left:60px; *zoom:1;}
+#threadlist .thread:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+#threadlist .picture { float:left; width:50px; padding:5px; margin-left:-60px;}
+* html #threadlist .picture { display:inline;}
+	#threadlist .picture img { width:50px;}
+#threadlist .author { padding:0 10px; background:#d8dfea; line-height:24px;}
+#threadlist .floor { float:right;}
+#threadlist .name { float:left; width:8em; white-space:nowrap; overflow:hidden;}
+#threadlist .time { float:left; width:10em;}
+#threadlist .content { padding:10px;}
+#threadlist .editrecord { color:#808080; text-align:right;}
+#threadlist .content p { word-break:break-all;}
+#threadlist .content img { max-width:520px;}
+* html #threadlist .content img { width:expression((this.width < 520) ? "auto" : "520px");}
+
+.act_share { top:2px;}
+
+.back { margin:10px 0; text-align:right;}
+
+/* viewTribe */
+/* ==== 1 groupFirstly ==== */
+.groupFirstly { overflow:hidden; float:right; width:21%; padding:10px 10px 0 0;}
+.groupFirstly h4{ background-color:#e9e9e9; color:#333333; padding-left:5px; margin:8px 0;}
+.groupFirstly .adminlist a{ width:80px;}
+.adminActions li { border-bottom:1px solid #d8dfea; color:#808080; text-indent:5px; line-height:20px; }
+.adminActions li a { display:block; width:100%; text-decoration:none; font-size:12px;padding-top:2px;}
+.adminActions li a:hover{ background-color:#6D84B4; color:White;}
+#groupPicture{margin-top:10px;}
+#groupVisitor{ margin-top:10px;}
+#groupVisitor h4{ color:#6D84B4; border-bottom:solid 1px #D8DFEA; margin-bottom:10px;}
+/*11111111111111111111111111111111111111111111111111111111111*/
+
+/* ==== 1.1 userInfo ==== */
+#groupPicture { margin-bottom:10px;}
+	#groupPicture img { width:120px; border:1px solid #d8dfea;}
+
+#groupActions { list-style:none;}
+	#groupActions li { border-bottom:1px solid #d8dfea; color:#808080; text-indent:10px; line-height:20px;}
+	* html #groupActions li { height:1%;}
+	*+html #groupActions li { min-height:1%;}
+	#groupActions li a { display:block; width:202px; text-decoration:none; font-size:12px;}
+	#groupActions li a:hover{ text-decoration:underline;}
+.groupFirstly .boxcont .inputtext{ margin-bottom:5px; height:13px;}
+/* ==== 2 groupSecondary ==== */
+.groupSecondary { overflow:hidden; float:left; width:73%; padding:10px 0 0 10px;}
+.groupSecondary li{ list-style:none; margin:5px 0 0 5px;}
+.groupSecondary li a{ margin:0 5px;}
+.groupSecondary h4{ color:#3B5999; border-bottom:solid 1px #D8DFEA;}
+.groupSecondary .announce{color:#3B5999; border-bottom:solid 1px #D8DFEA;border-top:solid 1px #D8DFEA; background-color:#F6F6F6; padding:1px;}
+.groupSecondary .notes{ text-align:left;}
+.groupSecondary .groupadmin{ float:right;}
+.groupSecondary .div2{ margin-top:10px;}
+
+#sendsubject{ margin-bottom:10px;}
+#sendsubject ul{ list-style:none;}
+#sendsubject ul li{ margin-top:10px;}
+/*11111111111111111111111111111111111111111111111111111111111*/
+/* ==== 2.3 groupForum ==== */
+#groupForum .threadlist { clear:left;}
+#groupForum .boxcont { padding:0;}
+#groupForum .threadlist, #groupForum th, #groupForum td { border:0;}
+#groupForum th.threadTitle { text-align:left;}
+#groupForum th { background:#fff; color:#000; font-weight:normal; line-height:20px;}
+#groupForum tr.odd { background:#f7f9fd;}
+#groupForum tr.even { background:#eef0f3;}
+#groupForum th, #groupForum td { padding:0;}
+#groupForum .threadTitle { padding-left:5px;}
+#groupForum td.threadTitle img { vertical-align:middle;}
+
+#groupForum #editorForm { padding:10px; border-top:1px solid #3b5998; background:#fff;}
+#groupForum #editorForm p { clear:both; margin:5px 0;}
+#groupForum #editorForm p label { float:left; width:60px; line-height:22px;}
+#groupForum #editorForm #subject { width:380px;}
+
+/* ==== 2 groupSecondary : back-compatible ==== */
+.groupSecondary h2 { height:20px; margin:8px 0; padding-left:8px; background:#d8dfea; color:#3b5998; border-top:1px solid #3b5998; font-size:12px; line-height:20px;}
+.groupSecondary .boxcont { line-height:1.25em;}
+.groupSecondary #groupBulletin .boxcont { padding:0; word-break:break-all;}
+/*11111111111111111111111111111111111111111111111111111111111*/
+.person { float:left; width:50px; margin:5px 1px 5px; padding:1px; border:1px solid #d8dfea;}
+.person table { width:auto; text-align:center;}
+
+.wrap { padding:0 10px;}
+div#actionMenu {margin:3px 0 -10px 0}
+#actionMenu a {margin:0 5px 0 0;background-color:#D8DFEA}
+#theFileDiv {position:relative; top:-4px}
+#rte {border:none; width:100%; height:300px}
+
+
+
+
+#editorForm .select{ width:100px;}
+.new{ padding:20px;}
+.new p{ margin-top:5px;}
+
+/*readlist*/
+#readlist { overflow:hidden; padding:10px;}
+#readlist table { table-layout:fixed; border-bottom:1px solid #d8dfea;}
+#readlist table thead th { background:#F6F6F6; border-top:1px solid #d8dfea; line-height:24px; font-weight:normal;}
+#readlist table td { padding:3px 0; border-top:1px solid #d8dfea;}
+#readlist table tr.odd{ background-color:#FCFCFC;}
+#readlist table .title { padding-left:10px;}
+#readlist table .time { width:90px; text-align:center;}
+#readlist table .author { width:90px; text-align:center;}
+#readlist table .group {padding-right:10px; text-align:center; width:150px;}
+
+
+
+.grouplist, .grouplist ul { list-style-type:none;}
+
+.grouplist { display:block; margin:5px; padding:10px; border:1px solid #d8dfea; background:#f6f6f6;}
+.grouplist:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+* html .grouplist { height:1%;}
+*+html .grouplist { min-height:1%;}
+
+
+.grouplist .image {  float:left; width:102px; text-align:left;}
+.grouplist .image img { border:1px solid #d8dfea; background:#fff;}
+.grouplist .image a:hover { background:transparent;}
+.grouplist .image a:hover img { border:1px solid #3B5999;}
+.grouplist .info { display:inline; overflow:hidden; float:left; width:300px; text-align:left; line-height:20px;}
+.grouplist .info h4 { color:#808080;}
+.grouplist .info .subinfo { color:#808080;}
+.grouplist .actions { float:right;}
+.grouplist .actions ul { list-style-type:none; width:100px;}
+.grouplist .actions li { text-indent:5px; border-bottom:1px solid #d8dfea; color:#808080; text-align:left;}
+.grouplist .actions a { display:block; width:90px; text-decoration:none;}
+.grouplist .actions a:hover {background:#3B5999; color:#fff; text-decoration:none;}
+.grouplist .info th { width:3em;}
+.grouplist .info{ margin-left:30px;}
+
+/*newgroup*/
+.ch_content { clear:both; padding:20px 20px; border-top:1px solid #d8dfea; border-bottom:1px solid #d8dfea; background:#f7f7f7;}
+* html .ch_content { height:1%;}
+*+html .ch_content { min-height:1%;}
+.ch_content ul{ list-style:none;}
+.ch_content ul li{ margin-bottom:5px;}
+#chcontent_body{border-top:1px solid #d8dfea; border-bottom:1px solid #d8dfea;}
+
+/*myclass*/
+.myClassList .box .boxcont{ margin-left:40px;}
+.myClassList .box{ margin-bottom:10px;}
+.myClassList .boxcont{ margin-top:10px;}
+.myclasslist .box h3{ color:#3B5999;}
+.ch_content .xui-g{ margin-top:50px;}
+#groupVisitor{ margin-bottom:10px;}
+/*setting*/
+#chChangePassword{ padding-bottom:20px;}
+#chChangePassword .required .subbutton{ margin-left:10px; height:100%}
+
+#chSetting div{ margin-bottom:10px;}
+
+/*MemberManage*/
+#chMember .edit{ float:right;}
+#chMember li{ margin-left:20px;}
+
+/*group image*/
+#picturenow h4{ margin:10px 0; padding:0;}
+
+/*View List*/
+#groupVisitor .userviewlist{width:100%;height:100px}
+#groupVisitor .userviewlist ul li{margin-left:12px;}

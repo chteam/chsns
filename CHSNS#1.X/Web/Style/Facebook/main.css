@@ -1,0 +1,30 @@
+﻿
+/* services */
+.column{ padding:35px 20px 0 20px;color:#3b5999;}
+.column h2{ color:#333333;}
+.column p{ margin-top:10px; }
+.column li{ margin:5px 20px;}
+.column .text{width:600px; color:#666; margin-top:30px;}
+.column .text .box{border-top:1px solid #336699;cursor:hand;}
+.column .margintb{ margin-bottom:30px;}
+
+.column .logtext{ width:320px;float:left; border-bottom:solid 1px #ccc;border-top:solid 1px #ccc; padding:0 20px; margin:5px 10px; color:#333;}
+.column .logo{ float:left; background: url("images/cnjmsu.gif") no-repeat; height:100px; width:200px; display:block; margin:5px;border:solid 1px #ccc;}
+
+.column .search{width:560px; text-align:right; color:#666;margin:10px 10px 0 10px;}
+
+/*ad
+.column .adpic{ margin:20px 0; width:600px; height:200px; border-top:1px solid #333;border-bottom:1px solid #333;cursor:hand;}
+*/.column .text  a{ display:block; text-decoration:none;}
+.admain{ padding:10px;}
+.adtop{width:100%; height:100px; background-image:url("/adpic/adtop.jpg");}
+.adfoot{ width:100%; height:80px; background-image:url("/adpic/adfoot.jpg"); text-align:right;}
+.adbody{ padding:10px; background-color:#DBDCD7;}
+.adbody h4{ margin:10px 0; color:#cc0000;}
+.adbody p{ margin-left:20px;}
+.adbody .chs{ width:580px; text-align:right; margin-top:10px;}
+.adbody .adtitle{ text-align:center; margin-bottom:20px;}
+.adbody li{ list-style:none; margin:20px;}
+
+
+.userviewlist ul li{margin-left:30px;}
