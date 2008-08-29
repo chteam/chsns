@@ -118,8 +118,6 @@
     <Content Include="WebServices\School.asmx" />
     <Content Include="WebServices\Search.asmx" />
     <Content Include="WebServices\Services.asmx" />
-    <Compile Include="ChAlumna\Image.cs" />
-    <Compile Include="ChAlumna\Path.cs" />
     <Compile Include="ChAlumna\StyleSheet.cs" />
     <Compile Include="ChAlumna\DataSetCache.cs" />
     <Compile Include="ChAlumna\Email.cs" />
@@ -206,7 +204,6 @@
     <Compile Include="Execute\GroupSettingExecuter.cs" />
     <Compile Include="Execute\GroupUserExecuter.cs" />
     <Compile Include="Execute\MessageExecuter.cs" />
-    <Compile Include="Execute\UserSettingExecuter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServices\AutoComplete.asmx.cs">
       <DependentUpon>AutoComplete.asmx</DependentUpon>
