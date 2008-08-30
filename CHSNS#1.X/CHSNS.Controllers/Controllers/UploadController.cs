@@ -20,7 +20,7 @@ namespace CHSNS.Controllers {
 			return View(vd);
 		}
 		[LoginedFilter]
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult Face(string mode) {
 			var li = new ListItem {
 				Text = mode,

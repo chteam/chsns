@@ -2,13 +2,12 @@
 namespace CHSNS.Controllers.Admin
 {using CHSNS.Config;
 	using System.Web.Mvc;
-	
 	public class CommonController : BaseAdminController
 	{
 		public ActionResult Config() {
 			BaseConfig chsite = null ;
 			if (this.IsPost) {
-				BindingHelperExtensions.UpdateFrom(chsite, Request.Form, "chsite.");
+				UpdateModel(chsite, Request.Form.AllKeys, "chsite.");
 				chsite.StyleList = SiteConfig.Current.BaseConfig.StyleList;
 				SiteConfig.Current.BaseConfig = chsite;
 				SiteConfig.Current.Save();
@@ -21,10 +20,11 @@ namespace CHSNS.Controllers.Admin
 			return View();
 
 		}
+
 		public ActionResult Regandvisit( ) {
 			RegVisitConfig data=null;
 			if (this.IsPost) {
-				BindingHelperExtensions.UpdateFrom(data, Request.Form, "data.");
+				UpdateModel(data, Request.Form.AllKeys, "data.");
 				SiteConfig.Current.RegVisitConfig = data;
 				SiteConfig.Current.Save();
 				TempData.Add("msg", "成功更改");
@@ -38,7 +38,7 @@ namespace CHSNS.Controllers.Admin
 		public ActionResult Publish() {
 			Publish data = null;
 			if (this.IsPost) {
-				BindingHelperExtensions.UpdateFrom(data, Request.Form, "data.");
+				UpdateModel(data, Request.Form.AllKeys, "data.");
 				SiteConfig.Current.Publish = data;
 				SiteConfig.Current.Save();
 				TempData.Add("msg", "成功更改");

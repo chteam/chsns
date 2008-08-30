@@ -32,11 +32,11 @@ namespace CHSNS.Controllers
 			//RenderView("edit");
 			return View();
 		}
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		[LoginedFilter]
 		public ActionResult Update() {
 			Blogs blog=null;
-			BindingHelperExtensions.UpdateFrom(blog, Request.Form, "blog.");
+			UpdateModel(blog, Request.Form.AllKeys, "blog.");
 			if (string.IsNullOrEmpty(blog.Title)) {
 				TempData["msg"] = "标题不能为空";
 				return this.RedirectToReferrer();

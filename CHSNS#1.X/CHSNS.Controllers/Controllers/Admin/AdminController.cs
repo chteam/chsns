@@ -37,7 +37,7 @@ namespace CHSNS.Controllers {
 		/// <summary>
 		/// 清理缓存
 		/// </summary>
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public void clearcache() {
 			CHCache.RemoveAll();
 			TempData.Add("msg", "缓存更新成功");
@@ -47,7 +47,7 @@ namespace CHSNS.Controllers {
 		/// <summary>
 		/// 重启服务器
 		/// </summary>
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public void restart() {
 			//Log.LogEntry("Executing WebApp shutdown", EntryType.General, "SYSTEM");
 			System.Web.HttpRuntime.UnloadAppDomain();
@@ -103,7 +103,7 @@ namespace CHSNS.Controllers {
 			//from Profile_AS pas where pas.IsStar = 1 and pas.IsUpdate=0 
 			//	Profile_AS.FindByNoStar();
 		}
-        [PostOnlyFilter]
+        [AcceptVerbs("Post")]
         public ActionResult SetStar(long userid, bool ispass) {
 
 			CHSNS.Admin admin = new CHSNS.Admin();
