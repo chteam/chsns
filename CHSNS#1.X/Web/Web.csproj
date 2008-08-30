@@ -60,6 +60,8 @@
       <HintPath>..\DLL\System.Web.Abstractions.dll</HintPath>
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Extensions.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\System.Web.Mvc.dll</HintPath>
@@ -187,6 +189,7 @@
     <Content Include="Config\Regex.config" />
     <Content Include="Config\Script.config" />
     <Content Include="Config\Sex.xml" />
+    <Content Include="Config\ShowLevel.xml" />
     <Content Include="Config\SkyTree.config" />
     <Content Include="Config\StarSign.config" />
     <Content Include="Config\StyleSheet.config" />
@@ -196,6 +199,7 @@
     <Content Include="Config\Style.config" />
     <Content Include="ChAlumna.config" />
     <None Include="Style\Default\i\Thumbs.db" />
+    <None Include="Style\Facebook\i\Thumbs.db" />
     <None Include="Template\Default\PublicMenu.htm1" />
     <None Include="Template\Default\Random.htm1" />
     <None Include="Views\Admin\Admin\ApplyClass.vm" />
@@ -272,7 +276,6 @@
     <None Include="Views\Html\UserList-FriendRequest.vm" />
     <None Include="Views\Html\UserList-Random.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
-    <Content Include="Config\ShowLevel.xml" />
     <Content Include="Config\ThumbnailSize.xml" />
     <Content Include="Config\UserEditMenu.xml" />
     <Content Include="Default.aspx" />
@@ -318,7 +321,6 @@
     <Content Include="Style\Default\i\slider-bg-2.png" />
     <Content Include="Style\Default\i\slider-handle.gif" />
     <Content Include="Style\Default\i\tabs.png" />
-    <Content Include="Style\Default\main.css" />
     <Content Include="Style\Default\master.css" />
     <Content Include="Style\Default\mini.css" />
     <Content Include="Style\Default\msg.css" />
@@ -331,6 +333,101 @@
     <Content Include="Style\Default\Reply.css" />
     <Content Include="Style\Default\skin.gif" />
     <Content Include="Style\Default\video.css" />
+    <Content Include="Style\Facebook\admin.css" />
+    <Content Include="Style\Facebook\appli.css" />
+    <Content Include="Style\Facebook\blog.css" />
+    <Content Include="Style\Facebook\calendar.css" />
+    <Content Include="Style\Facebook\friend.css" />
+    <Content Include="Style\Facebook\group.css" />
+    <Content Include="Style\Facebook\home.css" />
+    <Content Include="Style\Facebook\Images\act_select.gif" />
+    <Content Include="Style\Facebook\Images\bg_icon.png" />
+    <Content Include="Style\Facebook\Images\buttonbg.jpg" />
+    <Content Include="Style\Facebook\Images\buttonhover.jpg" />
+    <Content Include="Style\Facebook\Images\c.jpg" />
+    <Content Include="Style\Facebook\Images\Calendar_scheduleHS.png" />
+    <Content Include="Style\Facebook\Images\cnjmsu.gif" />
+    <Content Include="Style\Facebook\Images\cross.gif" />
+    <Content Include="Style\Facebook\Images\Default.jpg" />
+    <Content Include="Style\Facebook\Images\footbg.jpg" />
+    <Content Include="Style\Facebook\Images\glass.gif" />
+    <Content Include="Style\Facebook\Images\grippie.png" />
+    <Content Include="Style\Facebook\Images\h4bg.jpg" />
+    <Content Include="Style\Facebook\Images\headbg.jpg" />
+    <Content Include="Style\Facebook\Images\headbgl.jpg" />
+    <Content Include="Style\Facebook\Images\headbgr.jpg" />
+    <Content Include="Style\Facebook\Images\headjmsu.gif" />
+    <Content Include="Style\Facebook\Images\headlinkbg.gif" />
+    <Content Include="Style\Facebook\Images\headlinkbg.jpg" />
+    <Content Include="Style\Facebook\Images\headlinkbghover.jpg" />
+    <Content Include="Style\Facebook\Images\headlinkborder.jpg" />
+    <Content Include="Style\Facebook\Images\icon_new.gif" />
+    <Content Include="Style\Facebook\Images\if6.gif" />
+    <Content Include="Style\Facebook\Images\left.gif" />
+    <Content Include="Style\Facebook\Images\Menutab.jpg" />
+    <Content Include="Style\Facebook\Images\new.gif" />
+    <Content Include="Style\Facebook\Images\note_top.gif" />
+    <Content Include="Style\Facebook\Images\picon_topbg.gif" />
+    <Content Include="Style\Facebook\Images\read.gif" />
+    <Content Include="Style\Facebook\Images\readed.gif" />
+    <Content Include="Style\Facebook\Images\replied_mail_icon.gif" />
+    <Content Include="Style\Facebook\Images\right.gif" />
+    <Content Include="Style\Facebook\Images\slider_h_handle.gif" />
+    <Content Include="Style\Facebook\Images\slider_h_rail.gif" />
+    <Content Include="Style\Facebook\Images\slider_v_handle.gif" />
+    <Content Include="Style\Facebook\Images\slider_v_rail.gif" />
+    <Content Include="Style\Facebook\Images\style_triangle.gif" />
+    <Content Include="Style\Facebook\Images\top.gif" />
+    <Content Include="Style\Facebook\Images\toplogo.jpg" />
+    <Content Include="Style\Facebook\Images\toplogo.png" />
+    <Content Include="Style\Facebook\Images\unread.gif" />
+    <Content Include="Style\Facebook\Images\video.png" />
+    <Content Include="Style\Facebook\invite.css" />
+    <Content Include="Style\Facebook\i\accordion-left-act.png" />
+    <Content Include="Style\Facebook\i\accordion-left-over.png" />
+    <Content Include="Style\Facebook\i\accordion-left.png" />
+    <Content Include="Style\Facebook\i\accordion-middle-act.png" />
+    <Content Include="Style\Facebook\i\accordion-middle-over.png" />
+    <Content Include="Style\Facebook\i\accordion-middle.png" />
+    <Content Include="Style\Facebook\i\accordion-right-act.png" />
+    <Content Include="Style\Facebook\i\accordion-right-over.png" />
+    <Content Include="Style\Facebook\i\accordion-right.png" />
+    <Content Include="Style\Facebook\i\dialog-e.gif" />
+    <Content Include="Style\Facebook\i\dialog-n.gif" />
+    <Content Include="Style\Facebook\i\dialog-ne.gif" />
+    <Content Include="Style\Facebook\i\dialog-nw.gif" />
+    <Content Include="Style\Facebook\i\dialog-s.gif" />
+    <Content Include="Style\Facebook\i\dialog-se.gif" />
+    <Content Include="Style\Facebook\i\dialog-sw.gif" />
+    <Content Include="Style\Facebook\i\dialog-title.gif" />
+    <Content Include="Style\Facebook\i\dialog-titlebar-close-hover.png" />
+    <Content Include="Style\Facebook\i\dialog-titlebar-close.png" />
+    <Content Include="Style\Facebook\i\dialog-w.gif" />
+    <Content Include="Style\Facebook\i\resizable-e.gif" />
+    <Content Include="Style\Facebook\i\resizable-n.gif" />
+    <Content Include="Style\Facebook\i\resizable-ne.gif" />
+    <Content Include="Style\Facebook\i\resizable-nw.gif" />
+    <Content Include="Style\Facebook\i\resizable-s.gif" />
+    <Content Include="Style\Facebook\i\resizable-se.gif" />
+    <Content Include="Style\Facebook\i\resizable-sw.gif" />
+    <Content Include="Style\Facebook\i\resizable-w.gif" />
+    <Content Include="Style\Facebook\i\slider-bg-1.png" />
+    <Content Include="Style\Facebook\i\slider-bg-2.png" />
+    <Content Include="Style\Facebook\i\slider-handle.gif" />
+    <Content Include="Style\Facebook\i\tabs.png" />
+    <Content Include="Style\Facebook\main.css" />
+    <Content Include="Style\Facebook\master.css" />
+    <Content Include="Style\Facebook\mini.css" />
+    <Content Include="Style\Facebook\msg.css" />
+    <Content Include="Style\Facebook\myblog.css" />
+    <Content Include="Style\Facebook\myclass.css" />
+    <Content Include="Style\Facebook\mypage.css" />
+    <Content Include="Style\Facebook\photo.css" />
+    <Content Include="Style\Facebook\profile.css" />
+    <Content Include="Style\Facebook\register.css" />
+    <Content Include="Style\Facebook\Reply.css" />
+    <Content Include="Style\Facebook\skin.gif" />
+    <Content Include="Style\Facebook\video.css" />
     <Content Include="Views\Comment\ShowList.ascx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />

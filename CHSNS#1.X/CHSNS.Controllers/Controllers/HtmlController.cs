@@ -8,6 +8,8 @@
 	using CHSNS;
 	using System.Web.Mvc;
 using System.Data;
+	using CHSNS.Extension;
+
 namespace CHSNS.Controllers {
 	
 	//[Helper(typeof(PersonalHelper))]
@@ -126,7 +128,7 @@ namespace CHSNS.Controllers {
 		public ActionResult Reply(long logid, string body, long Replyid, bool isReply, long Ownerid, byte type) {
 			CHSNS.Models.Comment cmt = new CHSNS.Models.Comment()
 			{
-				Body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
+				Body = CHServer.HtmlEncode(body).Replace("\n", "<br />"),
 				AddTime = DateTime.Now,
 				SenderID = CHSNSUser.Current.UserID,
 				IsReply = isReply,
@@ -156,7 +158,7 @@ namespace CHSNS.Controllers {
 				//VALUES    (@Logid, @senderid, @senderid, @body,@isreply)
 				CHSNS.Models.Comment cmt1 = new CHSNS.Models.Comment()
 				{
-					Body = ChServer.HtmlEncode(body).Replace("\n", "<br />"),
+					Body = CHServer.HtmlEncode(body).Replace("\n", "<br />"),
 					AddTime = DateTime.Now,
 					SenderID = CHSNSUser.Current.UserID,
 					OwnerID = CHSNSUser.Current.UserID,

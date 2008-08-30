@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="Edit.aspx.cs" Inherits="CHSNS.Web.Views.User.Edit" %>
+	CodeBehind="Edit.aspx.cs" Inherits="CHSNS.Web.Views.User.Edit" 
+	%>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("mypage") %>
@@ -25,7 +27,6 @@
 	</div>
 	<div id="as2">
 	</div>
-
 	<script type="text/javascript">
 		$("#toc > ul").tabs({cache:true,selected:<%=current %>});
 	</script>

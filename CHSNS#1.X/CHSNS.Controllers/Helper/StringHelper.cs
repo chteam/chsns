@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Web;
-	namespace CHSNS
+
+namespace CHSNS.Helper
 {
 
 	public class StringHelper 

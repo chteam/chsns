@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Web.Mvc;
+using CHSNS.Extension;
+using CHSNS.Filter;
 using Chsword;
 using CHSNS.Models;
 using System;

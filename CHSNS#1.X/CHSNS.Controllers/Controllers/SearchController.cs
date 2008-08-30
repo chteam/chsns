@@ -1,6 +1,8 @@
 	using System;
 	using System.Collections.Generic;
-	namespace CHSNS.Controllers
+	using CHSNS.Extension;
+
+namespace CHSNS.Controllers
 {
 
 	// 非注册用户可以访问
@@ -35,7 +37,7 @@
 				if (this.QueryString("university") != "")
 					_dict.Add("university", this.QueryString("university"));
 				if (this.QueryString("username") != "")
-					_dict.Add("username", ChServer.UrlDecode(this.QueryString("username")));
+					_dict.Add("username", CHServer.UrlDecode(this.QueryString("username")));
 
 				string querystring = this.QueryString("action");
 				if (querystring == "name" && CHSNSUser.Current.isLogined) {

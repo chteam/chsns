@@ -1,22 +1,14 @@
 body{color:#000;font:12px/1.5 "Lucida Grande",SimSun,Arial,Tahoma,Helvetica,sans-serif;}
 *{margin:0; padding:0;}
 p{text-align: justify;}
-h3{color: #7D775C;}
-a{color:#3B5999; text-decoration:none;}
-a:hover{color:#3B5999; text-decoration:underline;}
 img{border:0;}
-h1{font-size:16px;}
-h2,h3{font-size:14px;}
-h4,h5,h6{font-size:12px;}
-h4{/*border-bottom:dashed 1px #2984ad; */}
-table{width:100%; border-collapse:collapse; overflow:hidden;}
-td{vertical-align:top;}
+
 /*some color*/
 .error{color:red}
 .center{text-align:center;}
 /* specific divs */
-#container{padding: 0px 0px 0px 250px;margin: 0px;}
-#header{height:0px; float:left;}
+#container{}
+#header{width:200px;height:60px;background:red}
 #intro{width:628px;}
 #pageHeader{background-color:#3b5999;padding:0px;float:left; width:628px;}
 
@@ -69,14 +61,9 @@ border:solid 1px #cccccc;border-bottom:solid 1px #3b5999;overflow:hidden;}
 
 #extendDiv1{}
 
-#linkList{background-color:#3b5999;background:url(images/toplogo.jpg) no-repeat top left;margin-left: -130px;position: absolute;top: 0px;/*right: 743px;*/
-width:130px;}
+#linkList{float:right;margin:0;}
 
-#linkList2{font-size:12px;margin-top: 55px;padding:0 5px;width:119px;overflow:hidden;background-color:#f7f7f7;border-bottom:1px solid #cccccc;}
-#linkList2 h3{color:#cccccc;font-size:12px;margin:5px 0;}
-#linkList2 h3 a{float:right; width:25px; font-weight:normal; text-align:right;} 
 
-#lselect{margin:10px 0;text-align:left;}
 #MyApplication ul{list-style-type:none;}
 #MyApplication li{margin-top:2px;}
 #MyApplication li div{
@@ -160,108 +147,6 @@ html>body #myhome,html>body #myblog,html>body #myphoto{border-bottom:0;}
 
 
 
-
-
-
-
-
-.page{position:relative; clear:both; margin:10px 0; text-align:center; line-height:24px;}
-.page:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
-* html .page{height:1%;}
-*+html .page{min-height:1%;}
-.page .this-page{margin:0 5px;padding:2px 6px; border:solid 1px #ff8844; background:#fff; color:#ff8844;font-weight:bold;}
-.page a{margin:0 5px;padding:2px 6px; border:solid 1px #d8dfea; background:#fff; color:#3B5999; text-decoration:none;}
-.page a:hover{border:solid 1px #d8dfea; color:#fff; background:#3B5999; text-decoration:none;}
-.page .pageCount{display:block; color:#808080; text-align:center;}
-.page select{float:left;}
-
-.page .page-size1{font-size:.9em;font-weight:bold;}
-.page .page-size2{font-size:.8em;font-weight:bold;}
-
-/*button text....*/
-.inputbox input{margin:10px;}
-input,textarea{font-size:1em;border:1px solid #bdc7d8; padding:1px;}
-input[type~="text"],input[type~="password"],input[type~="inputfile"]{border:1px solid #bdc7d8;line-height:16px;height:16px;layout-flow:horizontal;}
-* html .inputtext,* html .inputfile{border:1px solid #bdc7d8;}
-input[type~="text"]:focus,input[type~="password"]:focus,textarea:focus{background:#fcfcfc; border:1px solid #bdc7d8;}
-.subbutton{background:#3B5999; padding:2px;border:1px solid; border-color:#ffffff #efefef #efefef #ffffff; color:#fff; background-image:url(images/buttonbg.jpg);}
-.subbutton:hover{background-image:url(images/buttonhover.jpg);border-color:#bebebe; color:#fff;}
-input[type~="submit"],input[type~="button"]{background:#3B5999; padding:2px;border:1px solid; border-color:#d8dfea #0e1f5b #0e1f5b #d8dfea; color:#fff; background-image:url(images/buttonbg.jpg)}
-.select{border:1px solid #bdc7d8;}
-.select select{margin:-2px; font-size:1em;background:#fcfcfc;}
-/*以下 为 ajax controlpadding-right:20px*/
-.watermarked{color: #909090;border: 1px solid #bdc7d8;}
-.modalBackground{background-color:gray;filter:alpha(opacity=50);opacity:0.5;}
-.dropShadow{width:300px;background-color:#5377A9;color:white;font-weight:bold;}
-/*消息内容*/
-#message_main{border:solid 2px #3B5999;background:#f7f7f7;width:260px;min-height:135px;padding:10px;}
-#message_main input{margin-left:80px; width:85px;}
-#message_head{cursor: move;border-bottom:solid 1px #6D8484;color:#3B5999;text-align:center;font-weight:bold;font-size:10pt;}
-#message_head a{float:right; font-size:9pt; font-weight:normal;}
-#message_body{height:100%;color:#dd3c10;margin:10px;}
-
-/* Content */
-.ch_content{clear:both; padding:0 10px; border-top:1px solid #d8dfea; border-bottom:1px solid #d8dfea; background:#f7f7f7;}
-.ch_content:after{content:"."; display:block; font-size:0; clear:both; visibility:hidden;}
-* html .ch_content{height:1%;}
-*+html .ch_content{min-height:1%;}
-
-/* note */
-.notes{margin:10px 0; padding:10px; border:1px solid #d8dfea; background:#fff; text-align:center; line-height:24px;}
-.notes h4{margin:5px 60px; padding-left:20px; border-bottom:1px solid #d8dfea; color:#3B5999; font-size:12px; text-align:left; line-height:20px;}
-.notes p,form .notes ol,form .notes ul{margin:0 60px; padding-left:20px; text-align:left; line-height:24px;}
-.notes em{font-style:normal; color:#dd3c10;}
-.notes span.url{margin-left:15px;}
-
-/*required*/
-.required,form .optional{clear:both; padding:2px 0; line-height:24px;}
-.required h4,form .optional h4{margin:5px 80px 5px 150px; padding-left:10px; border-bottom:1px solid #d8dfea; color:#3B5999; font-size:12px; line-height:20px;}
-.required h4,form .optional h4,form .required p,form .optional p{margin:5px 80px 5px 150px; padding-left:10px;}
-.required label,form .optional label{float:left; width:150px; margin:0 10px 0 0; color:#808080; font-weight:bold; text-align:right;}
-.required .labelCheckbox,form .optional .labelCheckbox{display:block; float:none; width:auto; margin:0 0 0 160px; color:#000; font-weight:normal; text-align:left;}
-.required .labelCheckbox input,form .optional .labelCheckbox input{margin-right:10px;border:solid 1px #bdc7d8;}
-.required em,form .optional em{padding:0 2px; font-style:normal;}
-#privacyForm .actions{margin:10px 0; padding-left:160px;}
-.required .labelRadio,form .optional .labelRadio{display:block; float:none; width:auto; margin:0; padding-left:160px; color:#000; font-weight:normal; text-align:left;}
-.wide textarea{width:350px; margin-left:160px;}
-.required .labelRadio input,form .optional .labelRadio input{margin-right:10px;}
-
-
-
-
-.sbox{padding:10px;}
-.sbox li{margin-top:10px;}
-.sbox h4{color:#3B5999; border-bottom:solid 1px #D8DFEA;}
-.sbox h4 a{color:#333333; font-weight:normal;}
-.sbox .show255{border:1px solid #ff9900; color:#ff9900;padding:0 2px;}
-.sbox .show0{border:1px solid #95a5c6; padding:0 2px; color:#3b5999; }
-.sbox .show1{border:1px solid #95a5c6; padding:0 2px; color:#3b5999; }
-.sbox .info{border-bottom:solid 1px #95a5c6; padding:1px 5px; text-align:right; background:url(images/top.gif) no-repeat top left;background-color:#E9E9E9;}
-.sbox .text{padding:2px 10px; color:#333333;}
-.sbox .author a{float:left;}
-.sbox .result_div{color:#ff9933; padding-left:10px;}
-.sbox .inputpart li{list-style:none;}
-.sbox .inputpart textarea{width:600px; margin-top:10px; height:150px;}
-
-/*quick search*/
-.qsearch{float:right; margin-bottom:10px;}
-*html .qsearch{margin-bottom:0px;}
-.qsearch .glass{float:right; border:1px solid #bdc7d8; border-left:0px; height:18px; width:18px;}
-.qsearch .glass a img{ float:right}
-.qsearch input{width:95px; border:1px solid #bdc7d8;border-right:0px; float:right; height:16px;}
-.qsearch input:focus{border-right:0px;}
-
-/*Applist*/
-.appli .subbutton{width:100px;}
-.appname{float:left; border-bottom:1px solid #ccc; margin-right:20px;}
-.appname span{float:left;}
-.appmast{float:right; margin-right:10px;}
-/*页面顶部头像*/
-.picon{background: transparent url(images/picon_topbg.gif) repeat-x top left; margin-bottom:10px; height:80px; float:left; width:100%; }
-.pimage{float:left; padding-left:23px; overflow:hidden; margin-top:23px; height:45px;}
-.pname{float:left; padding-top:25px; margin-left:10px;}
-.pname h4{color:#333;}
-.pother{padding-top:5px;}
 
 /*applications*/
 #MyApplication li{padding-left:10px;}

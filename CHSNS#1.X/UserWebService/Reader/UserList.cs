@@ -77,7 +77,7 @@ namespace Chsword.Reader {
 					temp.Replace("$Id$", dr["id"].ToString());
 				temp.Replace("$Userid$", dr["Userid"].ToString());
 				temp.Replace("$Username$", dr["Name"].ToString());
-				temp.Replace("$enUsername$",ChServer.UrlEncode(dr["Name"]));
+				temp.Replace("$enUsername$",CHServer.UrlEncode(dr["Name"]));
 				temp.Replace("$Userface$", Path.GetFace(dr["Userid"].ToString(),ImgSizeType.Middle));
 				if(_type==0){
 					temp.Replace("$isonline$", Online.OnlineString(dr["Userid"]));
@@ -87,17 +87,17 @@ namespace Chsword.Reader {
 				}
 				if (dt.Columns.Contains("Universityid")) {
 					temp.Replace("$University$", dr["University"].ToString());
-					temp.Replace("$enUniversity$", ChServer.UrlEncode(dr["University"]));
+					temp.Replace("$enUniversity$", CHServer.UrlEncode(dr["University"]));
 					temp.Replace("$uid$", dr["Universityid"].ToString());
 				}
 				if (dt.Columns.Contains("Qinshi")) {
 					temp.Replace("$Qinshi$", dr["Qinshi"].ToString());
-					temp.Replace("$enQinshi$", ChServer.UrlEncode(dr["Qinshi"]));
+					temp.Replace("$enQinshi$", CHServer.UrlEncode(dr["Qinshi"]));
 					temp.Replace("$qid$", dr["Qinshiid"].ToString());
 				}
 				if (dt.Columns.Contains("XueYuan")) {
 					temp.Replace("$Xueyuan$", dr["XueYuan"].ToString());
-					temp.Replace("$enXueyuan$", ChServer.UrlEncode(dr["XueYuan"]));
+					temp.Replace("$enXueyuan$", CHServer.UrlEncode(dr["XueYuan"]));
 					temp.Replace("$xid$", dr["Xueyuanid"].ToString());
 				}
 				all.Append(temp);

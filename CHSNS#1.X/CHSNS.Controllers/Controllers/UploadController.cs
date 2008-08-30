@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Web;
 using System.Web.Mvc;
 using CHSNS.Config;
-using Chsword;
+using CHSNS.Filter;
 using System.Collections.Generic;
 using CHSNS;
 namespace CHSNS.Controllers {

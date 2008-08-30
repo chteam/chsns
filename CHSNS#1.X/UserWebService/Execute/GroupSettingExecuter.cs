@@ -1,6 +1,8 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using CHSNS;
+
 namespace Chsword.Execute {
 	public class GroupSettingExecuter {
 		public string SettingUpdate(Datamodel.GroupModel g) {

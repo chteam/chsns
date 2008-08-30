@@ -1,3 +1,5 @@
+using CHSNS.Filter;
+
 namespace CHSNS.Controllers {
 	//
 	

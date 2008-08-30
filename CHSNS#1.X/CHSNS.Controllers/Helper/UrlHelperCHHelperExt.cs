@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using CHSNS.Helper;
 
-namespace CHSNS  {
+namespace CHSNS.Helper {
 	public static class UrlHelperCHHelperExt {
 		public static ChHelper CH(this UrlHelper vc) {
 			return new ChHelper();

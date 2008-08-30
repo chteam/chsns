@@ -1,4 +1,4 @@
-namespace CHSNS {
+namespace CHSNS.Helper {
 	//
 	public class PersonalHelper
     {

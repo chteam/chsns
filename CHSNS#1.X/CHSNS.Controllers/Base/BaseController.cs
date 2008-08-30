@@ -1,6 +1,8 @@
 
 using System.Web.Mvc;
 using System;
+using CHSNS.Filter;
+
 namespace CHSNS.Controllers {
 	
 //	[Helper(typeof(StringHelper),"String")]

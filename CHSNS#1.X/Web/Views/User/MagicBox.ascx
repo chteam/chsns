@@ -4,7 +4,7 @@
 		备份魔法盒</a> <a href="javascript:SMagicBox('');$v('#MagicBox','')" id="clear">清空魔法盒</a>
 </div>
 <div class="required center">
-	<%=Html.TextArea("MagicBox",ViewData["magicbox"],20,90,new {@class="textarea"} )%>
+	<%=Html.TextArea("MagicBox",ViewData["magicbox"].ToString(),20,90,new {@class="textarea"} )%>
 </div>
 <div class="actions">
 	<input class="subbutton" type="button" value="保存修改" onclick="SMagicBox($v('#MagicBox'));" />

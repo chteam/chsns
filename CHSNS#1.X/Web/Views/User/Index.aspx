@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
 	CodeBehind="Index.aspx.cs" Inherits="CHSNS.Web.Views.User.Index" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("Reply")%>
 	<%=Html.CSSLink("mypage")%>
@@ -16,13 +15,15 @@
 	<% 
 		UserPas up = ViewData.Model;
 		if (up.User != null && up.IsMagicBox && !Url.CH().User.isAdmin) {%>
-	<%="<style type=\"text/css\">" + up.User["MagicBox"].ToString() + "</style>"%>
-	<%} %>
-	<%if (!(up.HasRight && up.Exists)) {
-	   if (!up.HasRight) {
-	%>
-	<%=Html.RenderUserControl("~/views/user/index-noRigh.ascx",ViewData.Model)%>
-	<%} else { %>
+	<%="<style type=\"text/css\">" + up.User["MagicBox"] + "</style>"%>
+	<%
+		}
+		if (!(up.HasRight && up.Exists)) {
+	   if (!up.HasRight)
+	   {
+	   	Html.RenderPartial("index-noRigh", ViewData.Model);
+	   }
+	   else { %>
 	<div class="notes">
 		<%if (up.IsMe) {%>
 		您尚未设置个人自信,请点击 [设置]->[基本设置] 进行完善
@@ -45,19 +46,23 @@
 					<%=up.OwnerName%>
 					
 				</h2>
-				<%=Html.RenderUserControl("~/views/user/index-isstar.ascx", ViewData.Model)/*实名*/%>
+				<% Html.RenderPartial("index-isstar", ViewData.Model);/*实名*/%>
 			</div>
 			<div class="mypage_sta">
-				<%=Html.RenderUserControl("~/views/user/index-mystatus.ascx", ViewData.Model)/*状态*/%>
+				<% Html.RenderPartial("index-mystatus", ViewData.Model);/*状态*/%>
 			</div>
 		</div>
 		<div id="userAccount">
 			<div class="box" id="UserInformation">
 				<ul id="Profile_Accordion">
-					<li><%=Html.RenderUserControl("~/views/user/index-account.ascx", ViewData.Model)%></li>
-					<li><%=Html.RenderUserControl("~/views/user/index-school.ascx", ViewData.Model)%></li>
-					<li><%=Html.RenderUserControl("~/views/user/index-contact.ascx", ViewData.Model)%></li>
-					<li><%=Html.RenderUserControl("~/views/user/index-personal.ascx", ViewData.Model)%></li>
+					<li><%
+   	Html.RenderPartial("index-account", ViewData.Model);%></li>
+					<li><%
+   	Html.RenderPartial("index-school", ViewData.Model);%></li>
+					<li><%
+   	Html.RenderPartial("index-contact", ViewData.Model);%></li>
+					<li><%
+   	Html.RenderPartial("index-personal", ViewData.Model);%></li>
 				</ul>
 				<script type="text/javascript">
 					$("#Profile_Accordion").accordion();
@@ -73,9 +78,7 @@
 						</ul>
 					</div>
 				</div>
-				<%if (up.IsMagicBox && up.IsMe) { %>
-				<%=Html.RenderUserControl("~/views/user/EmptyMagicBox.ascx")%>
-				<%} %>
+				<%if (up.IsMagicBox && up.IsMe) { Html.RenderPartial("EmptyMagicBox");} %>
 			</div>
 		</div>
 	<%--	<div class="box" id="userBlog">
@@ -139,7 +142,8 @@
 					</ul>
 				</div>
 			</div>
-			<%=Html.RenderUserControl("~/views/user/index-Myactions.ascx", ViewData.Model)%>
+			<%
+   	Html.RenderPartial("~/views/user/index-Myactions.ascx", ViewData.Model);%>
 		</div>
 		<div class="box">
 			<h3>

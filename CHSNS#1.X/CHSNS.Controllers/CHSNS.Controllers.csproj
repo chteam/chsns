@@ -103,6 +103,9 @@
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
+    <Compile Include="Filter\AdminFilter.cs" />
+    <Compile Include="Filter\LoginedFilter.cs" />
+    <Compile Include="Filter\OnlineFilter.cs" />
     <Compile Include="GlobalApplication.cs" />
     <Compile Include="Helper\ChHelper.cs">
       <SubType>Code</SubType>
@@ -117,7 +120,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewPageExtension\UrlHelperCHHelperExt.cs" />
+    <Compile Include="Helper\UrlHelperCHHelperExt.cs" />
+    <Compile Include="Extension\ControllerExt.cs" />
+    <Compile Include="Extension\RedirectExt.cs" />
+    <Compile Include="Tools\IPagination.cs" />
+    <Compile Include="Tools\LazyPagination.cs" />
+    <Compile Include="Tools\PaginationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">

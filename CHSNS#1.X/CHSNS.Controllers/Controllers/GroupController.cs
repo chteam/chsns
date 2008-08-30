@@ -3,6 +3,8 @@
 	using System.Data;
 	using System.Data.SqlClient;
 	using System.Linq;
+	using CHSNS.Extension;
+	using CHSNS.Filter;
 	using Chsword;
 	
 	using CHSNS.Models;
