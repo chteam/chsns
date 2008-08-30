@@ -1,4 +1,6 @@
 
+using CHSNS.Extension;
+
 namespace CHSNS.Controllers.Admin
 {using CHSNS.Config;
 	using System.Web.Mvc;

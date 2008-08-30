@@ -1,16 +1,11 @@
 ﻿
-namespace CHSNS.Controllers
-{
-	using CHSNS.Data;
-	
-	using CHSNS;
-	using CHSNS.Pagination;
-	using CHSNS.Models;
+
+namespace CHSNS.Controllers {
+	using Tools;
 	using System.Web.Mvc;
-	public class TagsController : BaseController
-	{
+	public class TagsController : BaseController {
 		public ActionResult LogTag(string title) {
-			ViewData["tags"] = PaginationHelper.AsPagination<NotePas>(DBExt.GetNotebyTag(title), 1, 10);
+			ViewData["tags"] = DBExt.GetNotebyTag(title).AsPagination(1, 10);
 			//DBExt ms = new DBExt(new Dictionary());
 			//ViewData["tags"] =
 			//    PaginationHelper.CreatePagination(

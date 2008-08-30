@@ -2,6 +2,8 @@
 using System;
 using System.Web.Mvc;
 using CHSNS.Data;
+using CHSNS.Extension;
+using CHSNS.Filter;
 using CHSNS.Models;
 namespace CHSNS.Controllers
 {

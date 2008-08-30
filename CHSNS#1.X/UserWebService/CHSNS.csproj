@@ -61,6 +61,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\LinqToSqlExtensions\bin\Release\LinqToSqlExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
@@ -85,18 +89,14 @@
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\开源产品\MVCToolkit\MVCContrib.source preview 4\src\MvcContrib.Castle\bin\Release\System.Web.Abstractions.dll</HintPath>
+    <Reference Include="System.Web.Abstractions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Routing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\开源产品\MVCToolkit\MVCContrib.source preview 4\src\MvcContrib.Castle\bin\Release\System.Web.Routing.dll</HintPath>
+    <Reference Include="System.Web.Routing">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web.Services" />
@@ -118,7 +118,6 @@
     <Content Include="WebServices\School.asmx" />
     <Content Include="WebServices\Search.asmx" />
     <Content Include="WebServices\Services.asmx" />
-    <Compile Include="ChAlumna\StyleSheet.cs" />
     <Compile Include="ChAlumna\DataSetCache.cs" />
     <Compile Include="ChAlumna\Email.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
@@ -166,12 +165,6 @@
     <None Include="WebServices\Profile.asmx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="System.Web.Mvc\ControllerExt.cs" />
-    <Compile Include="Filter\PostOnlyFilter.cs" />
-    <Compile Include="System.Web.Mvc\RedirectExt.cs" />
-    <Compile Include="Tools\PaginationHelper\IPagination.cs" />
-    <Compile Include="Tools\PaginationHelper\LazyPagination.cs" />
-    <Compile Include="Tools\PaginationHelper\PaginationHelper.cs" />
     <Compile Include="WebServices\Admin.asmx.cs">
       <DependentUpon>Admin.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -181,9 +174,6 @@
     <Compile Include="ChAlumna\Online.cs" />
     <Compile Include="ChAlumna\Reqres.cs" />
     <Compile Include="ChAlumna\ResponsePack.cs" />
-    <Compile Include="Filter\AdminFilter.cs" />
-    <Compile Include="Filter\LoginedFilter.cs" />
-    <Compile Include="Filter\OnlineFilter.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
     <Compile Include="Datamodel\BaseModel.cs" />
     <Compile Include="Datamodel\GroupModel.cs" />

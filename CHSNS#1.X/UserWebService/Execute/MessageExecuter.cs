@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CHSNS;
 using Chsword.Datamodel;
 using System.Data.SqlClient;
 using System.Data;

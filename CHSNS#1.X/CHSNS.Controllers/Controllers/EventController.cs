@@ -5,9 +5,10 @@
  * 
  * 
  */
+using CHSNS.Filter;
+
 namespace CHSNS.Controllers {
 	//using CHSNS.Data;
-	using CHSNS;
 	using System.Web.Mvc;
 
 	/// <summary>

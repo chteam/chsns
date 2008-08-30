@@ -1,5 +1,4 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CHSNS.Web.Views.Shared.Site" %>
-<%@ Import Namespace="CHSNS" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -24,10 +23,12 @@
 		<div id="intro">
 			<div id="pageHeader">
 				<div id="publicmenu" class="mymenu">
-					<%=Html.RenderUserControl("/Views/Shared/PublicMenu.ascx") %>
+					<%
+						Html.RenderPartial("PublicMenu"); %>
 					</div>
 				<div class="secondlink">
-					<%=Html.RenderUserControl("/Views/Shared/Utility.ascx") %>
+					<%
+						Html.RenderPartial("Utility");%>
 					</div>
 			</div>
 		</div>
@@ -36,10 +37,12 @@
 				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 			</div>
 		</div>
-		<%=Html.RenderUserControl("/Views/Shared/Footer.ascx") %>
+		<%
+						Html.RenderPartial("Footer");%>
 		<div id="linkList">
 			<div id="linkList2">
-			<%=Html.RenderUserControl("/Views/Shared/MyMenu.ascx") %>
+			<%
+						Html.RenderPartial("MyMenu");%>
 				</div>
 <%--			#if($ChHelper.ChSite.Publish.IsShow)
 			<div id="master-publish">

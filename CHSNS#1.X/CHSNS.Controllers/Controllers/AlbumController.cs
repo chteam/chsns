@@ -1,7 +1,8 @@
 
 using System;
 //using Chsword.Reader;
-
+using CHSNS.Extension;
+using CHSNS.Filter;
 using CHSNS.Models;
 using System.Collections;
 using System.Collections.Generic;

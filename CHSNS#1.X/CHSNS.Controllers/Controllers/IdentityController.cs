@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using CHSNS.Filter;
 
 namespace CHSNS.Controllers {
 	public class IdentityController : BaseController {

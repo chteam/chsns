@@ -2,6 +2,8 @@
  * ×Þ½¡ 2008-1-24 
  * 
 */
+using CHSNS.Filter;
+
 namespace CHSNS.Controllers
 {
     using System;

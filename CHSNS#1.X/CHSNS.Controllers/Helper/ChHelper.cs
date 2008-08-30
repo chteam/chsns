@@ -1,6 +1,6 @@
 using CHSNS.Config;
 using CHSNS.Data;
-namespace CHSNS {
+namespace CHSNS.Helper {
 	public class ChHelper {
 		public SiteConfig ChSite {
 			get {
@@ -9,7 +9,7 @@ namespace CHSNS {
 		}
 		public CHSNSUser User{
 			get {
-				return CHSNS.CHSNSUser.Current;
+				return CHSNSUser.Current;
 			}
 		}
 		public Path Path {
@@ -17,7 +17,7 @@ namespace CHSNS {
 				return CHSNS.Path.Current;
 			}
 		}
-		StringHelper _str = null;
+		StringHelper _str;
 		public StringHelper Str {
 			get {
 				if (_str == null)
@@ -31,7 +31,7 @@ namespace CHSNS {
 
 			}
 		}
-		DBExt _db = null;
+		DBExt _db;
 		public DBExt DB {
 			get {
 				if (_db == null)

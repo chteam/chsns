@@ -8,7 +8,7 @@
 <div class="required">
 	<label for="gender">
 		<em>*</em>可见度：</label>
-	<%=Html.DropDownList("ShowLevel", new { @class = "select" })%>
+	<%=Html.DropDownList("","ShowLevel", new { @class = "select" })%>
 </div>
 <div class="required">
 	<label for="name">
@@ -18,14 +18,14 @@
 <div class="required">
 	<label for="gender">
 		<em>*</em>性别：</label>
-	<%=Html.DropDownList("Sex", new { @class = "select" })%>
+	<%=Html.DropDownList("","Sex", new { @class = "select" })%>
 </div>
 <div class="required">
 	<label for="homeProvince">
 		<em>*</em>家乡：</label>
-	<%=Html.DropDownList("ProvinceID", new { @class = "select", onchange = "javascript:ChangeProvince()" })%>
+	<%=Html.DropDownList("","ProvinceID", new { @class = "select", onchange = "javascript:ChangeProvince()" })%>
 	<span id="CityPanel">
-		<%=Html.DropDownList("CityID", new { @class = "select" })%>
+		<%=Html.DropDownList("","CityID", new { @class = "select" })%>
 	</span><span id="CityStatus"></span>
 </div>
 <div class="required">

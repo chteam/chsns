@@ -166,7 +166,7 @@ using CHSNS.Models;
 		//    }
 
 		//    ChAlumna.Models.Comment cmt = new ChAlumna.Models.Comment();
-		//    cmt.body = ChServer.HtmlEncode(Tbody).Replace("\n", "<br />");
+		//    cmt.body = CHServer.HtmlEncode(Tbody).Replace("\n", "<br />");
 		//    cmt.addtime = DateTime.Now;
 		//    cmt.senderid = ChUser.Current.Userid;
 		//    cmt.IsReply = isReply;
@@ -196,7 +196,7 @@ using CHSNS.Models;
 		//        //VALUES    (@Logid, @senderid, @senderid, @body,@isreply)
 		//        ChAlumna.Models.Comment cmt1 = new ChAlumna.Models.Comment()
 		//        {
-		//            body = ChServer.HtmlEncode(Tbody).Replace("\n", "<br />"),
+		//            body = CHServer.HtmlEncode(Tbody).Replace("\n", "<br />"),
 		//            addtime = DateTime.Now,
 		//            senderid = ChUser.Current.Userid,
 		//            ownerid = ChUser.Current.Userid,

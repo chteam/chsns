@@ -69,10 +69,10 @@ namespace CHSNS
 		/// </summary>
 		static public string Username{
 			get{
-				return ChServer.UrlDecode(GetCookieItem("username"));
+				return CHServer.UrlDecode(GetCookieItem("username"));
 			}
 			set{
-				SetCookieItem("username",ChServer.UrlEncode(value));
+				SetCookieItem("username",CHServer.UrlEncode(value));
 			}
 		}
 		static public int Status {
@@ -111,7 +111,7 @@ namespace CHSNS
 		static public string UserPassword{
 			get{
 				if(GetCookieItem("userm").Contains("%"))
-					return en.DESDecrypt(ChServer.UrlDecode(GetCookieItem("userm")), "77298666") ;
+					return en.DESDecrypt(CHServer.UrlDecode(GetCookieItem("userm")), "77298666") ;
 				else
 					return en.DESDecrypt(GetCookieItem("userm"), "77298666") ;
 			}
