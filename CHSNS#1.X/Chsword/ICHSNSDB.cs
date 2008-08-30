@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CHSNS {
-	public interface ICHSNSDB {
+﻿namespace CHSNS
+{
+	///<summary>
+	/// ICHSNSDB接口
+	///</summary>
+	public interface ICHSNSDB
+	{
+		///<summary>要实现DataBaseExecutor方法
+		///</summary>
 		DataBaseExecutor DataBaseExecutor { get; set; }
 	}
 }

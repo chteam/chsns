@@ -80,7 +80,7 @@ namespace CHSNS {
 
 
 
-		static TimeSpan? _timespan=null;
+		static TimeSpan? _timespan;
 
 		#region 缓存过期
 		/// <summary>
@@ -88,13 +88,13 @@ namespace CHSNS {
 		/// </summary>
 		/// <param name="CacheName">缓存名称</param>
 		/// <returns>布尔型,缓存存在则返回True。</returns>
-		static public bool IsNullorEmpty(String CacheName) {
+		static public bool IsNullorEmpty(String CacheName)
+		{
 			if (HttpContext.Current.Cache[CacheName] != null)
 				return String.IsNullOrEmpty(HttpContext.Current.Cache[CacheName].ToString());
-			else
-				return true;
-
+			return true;
 		}
+
 		#endregion
 	
 		#region 获取缓存
@@ -140,6 +140,9 @@ namespace CHSNS {
 				Cache.Remove(de.Key.ToString());
 			}
 		}
+		///<summary>
+		///</summary>
+		///<param name="key"></param>
 		static public void Remove(string key) {
 			Cache.Remove(key);
 		}
@@ -170,10 +173,9 @@ namespace CHSNS {
 			try {
 				if (!IsNullorEmpty(CacheName))
 					return true;
-				else {//
-					HttpContext.Current.Cache.Add(CacheName, CacheValue, null, DateTime.MaxValue, Timespan, System.Web.Caching.CacheItemPriority.Normal, null);
-					return true;
-				}
+				//
+				HttpContext.Current.Cache.Add(CacheName, CacheValue, null, DateTime.MaxValue, Timespan, CacheItemPriority.Normal, null);
+				return true;
 			}
 			catch {
 				return false;
@@ -189,7 +191,7 @@ namespace CHSNS {
 		static public Boolean SetCache(String CacheName, Object CacheValue,TimeSpan ts) {
 			try {
 				if (IsNullorEmpty(CacheName)){//
-					HttpContext.Current.Cache.Add(CacheName, CacheValue, null, DateTime.MaxValue, ts, System.Web.Caching.CacheItemPriority.Normal, null);
+					HttpContext.Current.Cache.Add(CacheName, CacheValue, null, DateTime.MaxValue, ts, CacheItemPriority.Normal, null);
 				}
 				return true;
 			} catch {
@@ -247,11 +249,13 @@ namespace CHSNS {
 		/// 获取或设置缓存的存储时间,默认值为1天
 		/// </summary>
 		static public TimeSpan Timespan {
-			get {
+			get
+			{
 				if(_timespan==null){
 					return new TimeSpan(1, 0, 0, 0, 0);
-				}else
-					return _timespan.Value; }
+				}
+				return _timespan.Value;
+			}
 			set { _timespan = value; }
 		}
 

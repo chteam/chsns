@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using System.Text;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.Common;
 
 namespace CHSNS {
@@ -18,16 +15,25 @@ namespace CHSNS {
 		/// </summary>
 		/// <param name="dataopen">IDataOpener</param>
 		public DataBaseExecutor(IDataOpener dataopen) {
-			this.DataOpen = dataopen;
+			DataOpen = dataopen;
 		}
 
 
-		public void Execute(string name) {
-			Execute(name, new Dictionary());
+		///<summary>
+		/// 直接执行Sql语句
+		///</summary>
+		///<param name="sqltext"></param>
+		public void Execute(string sqltext) {
+			Execute(sqltext, new Dictionary());
 		}
 
-		public void Execute(string name, Dictionary dict) {
-			DataOpen.Open(name);
+		///<summary>
+		///  直接执行Sql语句
+		///</summary>
+		///<param name="sqltext"></param>
+		///<param name="dict">参数</param>
+		public void Execute(string sqltext, Dictionary dict) {
+			DataOpen.Open(sqltext);
 			foreach (string key in dict.Keys) {
 				DataOpen.AddWithValue(key, dict[key]);
 			}
@@ -39,16 +45,16 @@ namespace CHSNS {
 			DataOpen.Close();
 		}
 
-		public void Execute(string name, params object[] args) {
-			Execute(name, Dictionary.CreateFromArgs(args));
+		public void Execute(string sqltext, params object[] args) {
+			Execute(sqltext, Dictionary.CreateFromArgs(args));
 		}
 
-		public object ExecuteScalar(string name) {
-			return ExecuteScalar(name, new Dictionary());
+		public object ExecuteScalar(string sqltext) {
+			return ExecuteScalar(sqltext, new Dictionary());
 		}
 
-		public object ExecuteScalar(string name, Dictionary dict) {
-			DataOpen.Open(name);
+		public object ExecuteScalar(string sqltext, Dictionary dict) {
+			DataOpen.Open(sqltext);
 			foreach (string key in dict.Keys) {
 				DataOpen.AddWithValue(key, dict[key]);
 			}
@@ -73,7 +79,7 @@ namespace CHSNS {
 			foreach (string key in dict.Keys) {
 				DataOpen.AddWithValue(key, dict[key]);
 			}
-			DataTable dt = new DataTable();
+			var dt = new DataTable();
 			DbDataAdapter adp = DataOpen.GetAdapter();
 			adp.Fill(dt);
 			DataOpen.Close();

@@ -33,7 +33,7 @@ namespace CHSNS {
 		}
 		static public string FaceMapPath(object userid)
 		{
-			return ChServer.MapPath(string.Format("{0}face/", UserServerPath(userid)));
+			return CHServer.MapPath(string.Format("{0}face/", UserServerPath(userid)));
 		}
 		#endregion
 		#region GetFace
