@@ -22,12 +22,13 @@ namespace CHSNS.Config
 
 		public string StylePath {
 			get {
-				return string.Format("{0}/Style/{1}", this.BaseConfig.Path, this.BaseConfig.Style).Replace("//", "/");
+				return string.Format("{0}/Style/{1}", BaseConfig.Path, BaseConfig.Style).Replace("//", "/");
 			}
 		}
 		public string Style {
-			get {
-				return "Default";
+			get
+			{
+				return BaseConfig.Style;
 			}
 		}
 		public string Path {

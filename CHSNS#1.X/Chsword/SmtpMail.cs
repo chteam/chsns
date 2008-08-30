@@ -9,6 +9,7 @@ using System.Collections;
 using System.Net.Sockets;
 using System.Text;
 using System.Web.Mail;
+using CHSNS;
 
 namespace Chsword {
 
