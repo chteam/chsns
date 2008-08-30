@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CHSNS;
 using CHSNS.Config;
 using System.Web.Mvc;
 
-namespace CHSNS {
+namespace CHSNS.Helper
+{
 	static public class Include {
 		static public string Script(this HtmlHelper h, String fn) {
 			if (!fn.StartsWith("/"))
@@ -14,7 +11,7 @@ namespace CHSNS {
 
 			return
 				string.Format("<script type=\"text/javascript\" src=\"{0}\"></script>"
-				, fn);
+				              , fn);
 		}
 		static public string CSSLink(this HtmlHelper h, String fn) {
 			return string.Format(
