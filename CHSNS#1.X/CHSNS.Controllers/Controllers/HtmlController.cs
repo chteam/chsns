@@ -14,15 +14,15 @@ namespace CHSNS.Controllers {
 	//[DefaultAction("Index")]
 	public class HtmlController : BaseBlockController
 	{
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public void index() { }
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult ProfileEdit() {
 			ViewData.Add("template", this.QueryString("template"));
 			//this.RenderView("html", "ProfileEdit");
 			return View();
 		}
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult PostList() {
 			string[] plist = {
 				"Groupid",
@@ -35,7 +35,7 @@ namespace CHSNS.Controllers {
 			}
 			return View();
 		}
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult PhotoList() {
 			string[] plist = {
 				"Ownerid",
@@ -49,7 +49,7 @@ namespace CHSNS.Controllers {
 			}
 			return View();
 		}
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult ChangeShowLevel() {
 			Profile p = new Profile();
 			DataRow dr = p.ShowLevelList();
@@ -57,7 +57,7 @@ namespace CHSNS.Controllers {
 				ViewData.Add("source", dr);
 			return View();
 		}
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult GroupManageChild(string template, long groupid) {
 			Group g=new Group();
 			ViewData.Add("groupid", groupid);
@@ -98,13 +98,13 @@ namespace CHSNS.Controllers {
 		}
 
 		#region search
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public void SearchClass() { 
 		
 		}
 		#endregion
 
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult UserList(string template, int page, byte type) {
 			//IDataBase idb = new DBExt(Session);
 			ViewData["userSource"] = DBExt.UserListRows(CHSNSUser.Current.UserID, page,type);
@@ -112,7 +112,7 @@ namespace CHSNS.Controllers {
 			//RenderView("html", string.Format("UserList-{0}", template));
 			return View(string.Format("UserList-{0}", template));
 		}
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult RssList(int count) {
 			//IDataBase idb = new DBExt(Session);
 			ViewData["userSource"] = DBExt.Group.TakeIns(count);
@@ -122,7 +122,7 @@ namespace CHSNS.Controllers {
 		}
 
 #region reply
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult Reply(long logid, string body, long Replyid, bool isReply, long Ownerid, byte type) {
 			CHSNS.Models.Comment cmt = new CHSNS.Models.Comment()
 			{

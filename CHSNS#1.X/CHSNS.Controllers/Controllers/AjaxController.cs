@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace CHSNS.Controllers {
 	public class AjaxController :BaseController{
-		[PostOnlyFilter]
+		[AcceptVerbs("Post")]
 		[OutputCache(VaryByParam = "ProvinceID")]
 		public ActionResult CityList(int ProvinceID) {
 			return Json(DBExt.Golbal.GetCitys(ProvinceID));
