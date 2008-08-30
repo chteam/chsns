@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CHSNS.Data {
+﻿namespace CHSNS.Data {
 	/// <summary>
-	/// 观察者
+	/// 中介者
 	/// </summary>
 	public interface IMediator {
 		DBExt DBExt { get; set; }
