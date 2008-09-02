@@ -8,13 +8,7 @@
 邹 健
 ===================================================*/
 //显示相应的层
-function setpage(p){
-	$("HdPage").value=p;//id就是页码
-	GetVm("/html/userlist.ashx","template=friend&type=0&page="+p,function(r){
-			$("UserListItems").innerHTML=r.get_responseData();
-			pagefun();
-	});
-}
+
 
 //添加好友
 function AddFriend(Toid){

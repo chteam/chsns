@@ -72,8 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountMediator.cs" />
+    <Compile Include="ApplicationMediator.cs" />
     <Compile Include="BaseMediator.cs" />
-    <Compile Include="ChCookies.cs" />
     <Compile Include="Enum\FieldType.cs" />
     <Compile Include="Enum\ShowType.cs" />
     <Compile Include="Enum\TagsType.cs" />

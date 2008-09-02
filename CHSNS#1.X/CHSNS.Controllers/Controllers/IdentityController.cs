@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using CHSNS.Filter;
 
 namespace CHSNS.Controllers {
 	public class IdentityController : BaseController {
@@ -8,7 +7,6 @@ namespace CHSNS.Controllers {
 		/// <summary>
 		/// 注销功能
 		/// </summary>
-		[LoginedFilter]
 		public ActionResult Logout() {
 			DBExt.Account.Logout();
 			return RedirectToAction("Index","Home");
@@ -25,12 +23,13 @@ namespace CHSNS.Controllers {
 			if ((Regular.Macth(u, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*") ||
 				 Regular.Macth(u, @"\d{5,}")) &&
 				Regular.Macth(p, @"[^']{4,}")) {//匹配成功则赋值
-				Int16 LoginResult = DBExt.Account.Login(u, p, a, true);
+				int LoginResult = DBExt.Account.Login(u, p, a, true);
 				if (LoginResult == -1) {
 					throw new Exception("您的帐号已经被冻结，如有疑问请 <a href=\"/Services.aspx\">联系管理员</a>");
 				}
-				if (LoginResult == -999)
+				if (LoginResult == -999){
 					return Content("false");
+				}
 				return Content("true");
 			}
 			return Content("false");

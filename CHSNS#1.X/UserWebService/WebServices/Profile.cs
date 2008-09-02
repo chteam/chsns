@@ -153,17 +153,6 @@ namespace CHSNS {
 		}
 		#endregion
 
-		#region friend
-		[WebMethod(EnableSession = true)]
-		public int FriendCount(long userid) {
-			return Convert.ToInt32(DataBaseExecutor.ExecuteScalar("FriendCount",
-				"@userid", userid));
-		}
-		[WebMethod(EnableSession = true)]
-		public int FriendRequestCount(long userid) {
-			return Convert.ToInt32(DataBaseExecutor.ExecuteScalar("FriendRequestCount",
-				"@userid", userid));
-		}
-		#endregion
+
 	}
 }

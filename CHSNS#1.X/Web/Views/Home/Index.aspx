@@ -30,8 +30,10 @@
 			<div class="box">
 				<h3>
 					${ChHelper.ChSite.BaseConfig.Title} 人气之星</h3>
-				<div class="boxcont">
-				<% Html.RenderAction<ViewController>(c => c.ShowViewList(3, 3, 0, 6)); %>
+				<div class="boxcont"> 
+				<%
+					Html.RenderPartial("ViewList", ViewData["viewlist"]); %>
+				
 				</div>
 				<p class="more">
 				</p>

@@ -2,11 +2,10 @@ namespace CHSNS.Data
 {
 	using System.Data;
 	using System.Collections;
-	using CHSNS.Models;
+	using Models;
 	using System.Linq;
-	using System;
 	using LinqToSqlExtensions;
-	using CHSNS.Config;
+	using Config;
 	using CHSNS;
 	public partial class DBExt 
 	{
@@ -19,7 +18,11 @@ namespace CHSNS.Data
 		public GroupMediator Group { get; set; }
 		public UserInfoMediator UserInfo { get; set; }
 		public GolbalMediator Golbal { get; set; }
+		public FriendMediator Friend { get; set; }
+		public ApplicationMediator Application { get; set; }
 		public void Init() {
+			DataBaseExecutor = new DataBaseExecutor(new SqlDataOpener(SiteConfig.SiteConnectionString));
+			//_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
 			Account = new AccountMediator(this);
 			Gather = new GatherMediator(this);
 			View = new ViewMediator(this);
@@ -27,26 +30,25 @@ namespace CHSNS.Data
 			Group = new GroupMediator(this);
 			UserInfo = new UserInfoMediator(this);
 			Golbal = new GolbalMediator(this);
+			Friend = new FriendMediator(this);
+			Application = new ApplicationMediator(this);
+		
 		}
 		#endregion
 		#region IDataBase ³ÉÔ±
 
-		public DBExt(ICHSNSDB ichsnsdb) {
-			DataBaseExecutor = ichsnsdb.DataBaseExecutor;
-			Init();
-		}
-		public DBExt(DataBaseExecutor dbe) {
-			DataBaseExecutor = dbe;
+		public DBExt() {
+		//	DataBaseExecutor = ichsnsdb.DataBaseExecutor;
 			Init();
 		}
 
 		IDictionary _session;
-		CHSNSDBDataContext _DB = null;
+		CHSNSDBDataContext _DB;
 		public CHSNSDBDataContext DB {
 			get {
-				if (_DB == null)
-					_DB = new CHSNSDBDataContext(SiteConfig.SiteConnectionString);
-
+				if (_DB == null){
+					_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
+				}
 				return _DB;
 			}
 		}
@@ -62,13 +64,7 @@ namespace CHSNS.Data
 				"@page", nowpage,
 				"@class", type);
 		}
-		public DataRowCollection MyApplicationRows {
-			get {
-				return DataBaseExecutor.GetRows("MyApplication",
-					"@userid", CHSNSUser.Current.UserID
-					);
-			}
-		}
+
 	
 		public void Comment_Remove(long id) {
 			#region Sql
@@ -143,7 +139,8 @@ END*/
 	string.Format(@"update  [Log] set CommentCount=CommentCount-1      
 	WHERE     (Id ={0}) and CommentCount>0", cmt.Logid)
 	);
-					//db.Note.Update(
+					//db.Note
+					//.Update(
 					//    n => new Note
 					//    {
 					//        CommentCount = n.CommentCount - 1

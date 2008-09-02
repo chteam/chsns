@@ -1,64 +1,63 @@
-﻿using System.Data;
-using System.Web.Mvc;
-using CHSNS.Extension;
-using CHSNS.Filter;
-using CHSNS.Models;
+﻿using System.Transactions;
 
-namespace CHSNS.Controllers{
-	public class FriendController:BaseController {
-		//[SkipFilter(typeof(LoginedFilter))]
-		public ActionResult random() {
-			long Ownerid = this.QueryLong("userid");
-			if (Ownerid == 0)
-				Ownerid = CHSNSUser.Current.UserID;
-			//IDataBase idb = new DBExt(Session);
-			ViewData["userSource"] = DBExt.UserListRows(Ownerid, 1, 2);
+namespace CHSNS.Controllers {
+	using System;
+	using System.Linq;
+	using System.Web.Mvc;
+	using Extension;
+	using Filter;
+	using Tools;
+	public class FriendController : BaseController {
+		public ActionResult Random() {
+			ViewData["source"] = DBExt.Friend.GetRandoms();
 			return View();
 		}
 		[LoginedFilter]
-		public ActionResult Index() {
-			var Ownerid = this.QueryLong("userid");
-			if (Ownerid == 0) 
-				Ownerid = CHSNSUser.Current.UserID;
-			BasicInformation b = DBExt.UserInfo.GetUser(Ownerid);
-
-
-			ViewData["user"] = b.Name;
-			Profile p = new Profile();
-			ViewData.Add("Count", p.FriendCount(Ownerid));
-
-			int nowpage = this.QueryNum("p");
-			if (nowpage == 0)
-				nowpage = 1;
-
-			ViewData["userSource"] = DBExt.UserListRows(Ownerid, nowpage, 0);
-			ViewData["nowpage"] = nowpage;
-
-			return View();
+		public ActionResult RandomList() {
+			return View(DBExt.Friend.GetRandoms());
 		}
 		[LoginedFilter]
-		public ActionResult FriendRequest() {
-			long Ownerid = this.QueryLong("userid");
-			if (Ownerid == 0)
-				Ownerid = CHSNSUser.Current.UserID;
-			DataRowCollection rows = DataBaseExecutor.GetRows("UserRelation",
-			"@OwnerId", Ownerid,
-			"@ViewerId", CHUser.UserID
-		);
-			if (rows.Count > 0 && CHSNSUser.Current.UserID == Ownerid)
-				ViewData["user"] = rows[0];
-			Profile p = new Profile();
-			ViewData.Add("Count", p.FriendRequestCount(Ownerid));
+		public ActionResult Index(){
+			using (new TransactionScope()) {
+				var Ownerid = this.QueryLong("userid");
+				if (Ownerid == 0) Ownerid = CHSNSUser.Current.UserID;				
+				var b = DBExt.Friend.UserFriendInfo(Ownerid);
+				if (b == null) throw new Exception("用户不存在");
+				ViewData["Name"] = b.Name;
+				int nowpage = this.QueryNum("p") == 0 ? 1 : this.QueryNum("p");
+				ViewData["NowPage"] = nowpage ;
+				ViewData["PageCount"] = b.FriendCount;
+				ViewData["source"] = DBExt.Friend.GetFriends(Ownerid).Pager(nowpage, 10);
+				return View(b);
+			}
+		}
 
-			int nowpage = this.QueryNum("p");
-			if (nowpage == 0)
-				nowpage = 1;
-			ViewData["nowpage"] = nowpage;
-			//	IDataBase idb = new DBExt(Session);
-			ViewData["userSource"] = DBExt.UserListRows(Ownerid, nowpage, 1);
+		[LoginedFilter]
+		public ActionResult FriendList(int p, long userid){
+			using (new TransactionScope()){
+				return View(DBExt.Friend.GetFriends(userid).Pager(p, 10));
+			}
+		}
 
-			return View();
-			//	ViewData["items"] = Show(Ownerid, 1, "FriendRequest");
+		[LoginedFilter]
+		[ActionName("Request")]
+		public ActionResult FriendRequest(){
+			using (new TransactionScope()){
+				var Ownerid = CHSNSUser.Current.UserID;
+				var b = DBExt.Friend.UserFriendInfo(Ownerid);
+				if (b == null) throw new Exception("用户不存在");
+				ViewData["Name"] = b.Name;
+				int nowpage = this.QueryNum("p") == 0 ? 1 : this.QueryNum("p");
+				ViewData["NowPage"] = nowpage;
+				ViewData["PageCount"] = DBExt.Friend.GetRequests(Ownerid).Count();
+				ViewData["source"] = DBExt.Friend.GetRequests(Ownerid).Pager(nowpage, 10);
+				return View(b);
+			}
+		}
+
+		[LoginedFilter]
+		public ActionResult RequestList(int p, long userid) {
+			return View(DBExt.Friend.GetRequests(userid).Pager(p, 10));
 		}
 	}
 }

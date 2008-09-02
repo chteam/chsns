@@ -16,7 +16,7 @@
 			//新用户,通过用户
 			IList<Account> data = (from a in DB.Account
 								   where a.Status > 0
-								   orderby a.RegTime descending
+								   orderby a.ID descending
 								   select new Account {
 									   UserID = a.UserID,
 									   Name = a.Name,

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 //[Helper(typeof(ChHelper))]
 namespace CHSNS.Controllers {
 
-	abstract public class BaseViewComponent : Controller, ICHSNSDB {
+	abstract public class BaseViewComponent : Controller {
 		CHSNSDBDataContext _DB = null;
 		protected CHSNSDBDataContext DB {
 			get {
@@ -24,7 +24,7 @@ namespace CHSNS.Controllers {
 
 		public CHSNS.Data.DBExt DBExt {
 			get {
-				return new CHSNS.Data.DBExt(this);
+				return new CHSNS.Data.DBExt();
 			}
 			set {
 				throw new NotImplementedException();

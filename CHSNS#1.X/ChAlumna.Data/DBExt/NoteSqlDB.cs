@@ -34,7 +34,7 @@
 				/*update [profile] set Score=Score+dbo.fun_GetScore(''note_add''),
 				ShowScore=ShowScore+dbo.fun_GetScore(''note_add'') where userid=@userid*/
 				var profile = (from p in db.Profile
-							   where p.UserId == l.UserID
+							   where p.UserID == l.UserID
 							   select p).Single();
 				profile.LogCount++;
 				profile.ShowScore++;

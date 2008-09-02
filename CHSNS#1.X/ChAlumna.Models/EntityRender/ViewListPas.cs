@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
+﻿using System.Collections.Generic;
 
 namespace CHSNS.Models {
 	public class ViewListPas {
 		public int EveryRow { get; set; }
-		public DataRowCollection Rows { get; set; }
+		public List<UserItemPas> Rows { get; set; }
 	}
 }

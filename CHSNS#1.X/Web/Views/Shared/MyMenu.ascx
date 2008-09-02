@@ -23,12 +23,15 @@
 		<h3>
 			<a href="/Application.aspx">编辑</a>菜单</h3>
 		<ul id="MyApplication">
-			<%foreach (CHSNS.Models.Application app in Url.CH().DB.Application.GetApps(CHCookies.AppsArray)) {%>
+			<%
+				foreach (CHSNS.Models.Application app in Url.CH().DB.Application.GetApps(CHCookies.AppsArray)) {
+			%>
 			<li id="<%=app.ClassName%>">
 				<%=Html.ActionLink(app.ShortName,app.Action,app.Controller) %>
 			</li>
 			<%
-				}%>
+				}
+			%>
 		</ul>
 	</div>
 </div>

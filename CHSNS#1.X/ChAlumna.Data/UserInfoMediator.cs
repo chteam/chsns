@@ -42,7 +42,7 @@ namespace CHSNS.Data {
 		#region Magicbox
 		public string GetMagicBox(long UserID) {
 			var magicbox = (from p in DBExt.DB.Profile
-							where p.UserId == UserID
+							where p.UserID == UserID
 							select p.MagicBox).Single();
 			return magicbox;
 		}
@@ -68,19 +68,17 @@ set Magicbox=@magicbox where UserID=@UserID"
 			return 200;
 		}
 
-		public BasicInformation GetUser(long userid) {
-			return GetUser(userid, c => new BasicInformation {
+		public Profile GetUser(long userid) {
+			return GetUser(userid, c => new Profile {
 				Name = c.Name
 			});
 		}
 
-		public BasicInformation GetUser(long userid,
-			System.Linq.Expressions.Expression<System.Func<BasicInformation, BasicInformation>> x) {
-			var ret = DBExt.DB.BasicInformation
+		public Profile GetUser(long userid,
+			System.Linq.Expressions.Expression<System.Func<Profile, Profile>> x) {
+			var ret = DBExt.DB.Profile
 				.Where(c => c.UserID == userid)
-				.Select(c => new BasicInformation {
-					Name = c.Name
-				}).Single();
+				.Select(x).Single();
 			return ret;
 		}
 	}

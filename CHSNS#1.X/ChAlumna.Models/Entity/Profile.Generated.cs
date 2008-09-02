@@ -41,28 +41,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _userId;
-
-        /// <summary>
-        /// Gets or sets the UserId column value.
-        /// </summary>
-        [Column(Name="UserId", Storage="_userId", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
-        public long UserId
-        {
-            get { return _userId; }
-            set
-            {
-                if (_userId != value)
-                {
-                    OnUserIdChanging(value);
-                    OnPropertyChanging("UserId");
-                    _userId = value;
-                    OnPropertyChanged("UserId");
-                    OnUserIdChanged();
-                }
-            }
-        }
-        
         private string _showText;
 
         /// <summary>
@@ -744,6 +722,116 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _userID;
+
+        /// <summary>
+        /// Gets or sets the UserID column value.
+        /// </summary>
+        [Column(Name="UserID", Storage="_userID", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
+        public long UserID
+        {
+            get { return _userID; }
+            set
+            {
+                if (_userID != value)
+                {
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
+                }
+            }
+        }
+        
+        private string _name;
+
+        /// <summary>
+        /// Gets or sets the Name column value.
+        /// </summary>
+        [Column(Name="Name", Storage="_name", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (_name != value)
+                {
+                    OnNameChanging(value);
+                    OnPropertyChanging("Name");
+                    _name = value;
+                    OnPropertyChanged("Name");
+                    OnNameChanged();
+                }
+            }
+        }
+        
+        private int _status;
+
+        /// <summary>
+        /// Gets or sets the Status column value.
+        /// </summary>
+        [Column(Name="Status", Storage="_status", DbType="int NOT NULL", CanBeNull=false)]
+        public int Status
+        {
+            get { return _status; }
+            set
+            {
+                if (_status != value)
+                {
+                    OnStatusChanging(value);
+                    OnPropertyChanging("Status");
+                    _status = value;
+                    OnPropertyChanged("Status");
+                    OnStatusChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _regTime;
+
+        /// <summary>
+        /// Gets or sets the RegTime column value.
+        /// </summary>
+        [Column(Name="RegTime", Storage="_regTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime RegTime
+        {
+            get { return _regTime; }
+            set
+            {
+                if (_regTime != value)
+                {
+                    OnRegTimeChanging(value);
+                    OnPropertyChanging("RegTime");
+                    _regTime = value;
+                    OnPropertyChanged("RegTime");
+                    OnRegTimeChanged();
+                }
+            }
+        }
+        
+        private System.DateTime _loginTime;
+
+        /// <summary>
+        /// Gets or sets the LoginTime column value.
+        /// </summary>
+        [Column(Name="LoginTime", Storage="_loginTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
+        public System.DateTime LoginTime
+        {
+            get { return _loginTime; }
+            set
+            {
+                if (_loginTime != value)
+                {
+                    OnLoginTimeChanging(value);
+                    OnPropertyChanging("LoginTime");
+                    _loginTime = value;
+                    OnPropertyChanged("LoginTime");
+                    OnLoginTimeChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -753,7 +841,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the BasicInformation association.
         /// </summary>
-        [Association(Name="FK_BasicInformation_Profile", Storage="_basicInformation", ThisKey="UserId", OtherKey="UserID", IsUnique=true)]
+        [Association(Name="FK_BasicInformation_Profile", Storage="_basicInformation", ThisKey="UserID", OtherKey="UserID", IsUnique=true)]
         public BasicInformation BasicInformation
         {
             get { return _basicInformation.Entity; }
@@ -772,11 +860,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.Profile = this;
-                        _userId = value.UserID;
+                        _userID = value.UserID;
                     }
                     else
                     {
-                        _userId = default(long);
+                        _userID = default(long);
                     }
                     OnPropertyChanged("BasicInformation");
                 }
@@ -788,7 +876,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the ContactInformation association.
         /// </summary>
-        [Association(Name="FK_ContactInformation_Account", Storage="_contactInformation", ThisKey="UserId", OtherKey="Userid", IsUnique=true)]
+        [Association(Name="FK_ContactInformation_Account", Storage="_contactInformation", ThisKey="UserID", OtherKey="Userid", IsUnique=true)]
         public ContactInformation ContactInformation
         {
             get { return _contactInformation.Entity; }
@@ -807,11 +895,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.Profile = this;
-                        _userId = value.Userid;
+                        _userID = value.Userid;
                     }
                     else
                     {
-                        _userId = default(long);
+                        _userID = default(long);
                     }
                     OnPropertyChanged("ContactInformation");
                 }
@@ -823,7 +911,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the FieldInformation association.
         /// </summary>
-        [Association(Name="FK_FieldInformation_Profile", Storage="_fieldInformation", ThisKey="UserId", OtherKey="UserID", IsUnique=true)]
+        [Association(Name="FK_FieldInformation_Profile", Storage="_fieldInformation", ThisKey="UserID", OtherKey="UserID", IsUnique=true)]
         public FieldInformation FieldInformation
         {
             get { return _fieldInformation.Entity; }
@@ -842,11 +930,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.Profile = this;
-                        _userId = value.UserID;
+                        _userID = value.UserID;
                     }
                     else
                     {
-                        _userId = default(long);
+                        _userID = default(long);
                     }
                     OnPropertyChanged("FieldInformation");
                 }
@@ -858,7 +946,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the PersonalInformation association.
         /// </summary>
-        [Association(Name="FK_PersonalInformation_Profile", Storage="_personalInformation", ThisKey="UserId", OtherKey="Userid", IsUnique=true)]
+        [Association(Name="FK_PersonalInformation_Profile", Storage="_personalInformation", ThisKey="UserID", OtherKey="Userid", IsUnique=true)]
         public PersonalInformation PersonalInformation
         {
             get { return _personalInformation.Entity; }
@@ -877,11 +965,11 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.Profile = this;
-                        _userId = value.Userid;
+                        _userID = value.Userid;
                     }
                     else
                     {
-                        _userId = default(long);
+                        _userID = default(long);
                     }
                     OnPropertyChanged("PersonalInformation");
                 }
@@ -896,11 +984,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when UserId is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnUserIdChanging(long value);
-        /// <summary>Called after UserId has Changed.</summary>
-        partial void OnUserIdChanged();
         /// <summary>Called when ShowText is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnShowTextChanging(string value);
@@ -1056,6 +1139,31 @@ namespace CHSNS.Models
         partial void OnInFieldChanging(bool value);
         /// <summary>Called after InField has Changed.</summary>
         partial void OnInFieldChanged();
+        /// <summary>Called when UserID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnUserIDChanging(long value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
+        /// <summary>Called when Name is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnNameChanging(string value);
+        /// <summary>Called after Name has Changed.</summary>
+        partial void OnNameChanged();
+        /// <summary>Called when Status is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnStatusChanging(int value);
+        /// <summary>Called after Status has Changed.</summary>
+        partial void OnStatusChanged();
+        /// <summary>Called when RegTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnRegTimeChanging(System.DateTime value);
+        /// <summary>Called after RegTime has Changed.</summary>
+        partial void OnRegTimeChanged();
+        /// <summary>Called when LoginTime is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnLoginTimeChanging(System.DateTime value);
+        /// <summary>Called after LoginTime has Changed.</summary>
+        partial void OnLoginTimeChanged();
         #endregion
         
     }

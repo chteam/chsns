@@ -9,13 +9,15 @@ namespace CHSNS {
 	/// the Executor of DataBase
 	/// </summary>
 	public class DataBaseExecutor : IDisposable {
-		IDataOpener DataOpen { get; set; }
+		///<summary>打开者
+		///</summary>
+		public IDataOpener DataOpener { get; set; }
 		/// <summary>
 		/// init
 		/// </summary>
 		/// <param name="dataopen">IDataOpener</param>
 		public DataBaseExecutor(IDataOpener dataopen) {
-			DataOpen = dataopen;
+			DataOpener = dataopen;
 		}
 
 
@@ -33,16 +35,16 @@ namespace CHSNS {
 		///<param name="sqltext"></param>
 		///<param name="dict">参数</param>
 		public void Execute(string sqltext, Dictionary dict) {
-			DataOpen.Open(sqltext);
+			DataOpener.Open(sqltext);
 			foreach (string key in dict.Keys) {
-				DataOpen.AddWithValue(key, dict[key]);
+				DataOpener.AddWithValue(key, dict[key]);
 			}
-			ConnectionState previousConnectionState = DataOpen.Command.Connection.State;
+			ConnectionState previousConnectionState = DataOpener.Command.Connection.State;
 
 			if (previousConnectionState == ConnectionState.Closed)
-				DataOpen.Command.Connection.Open();
-			DataOpen.Command.ExecuteNonQuery(); ;
-			DataOpen.Close();
+				DataOpener.Command.Connection.Open();
+			DataOpener.Command.ExecuteNonQuery(); ;
+			DataOpener.Close();
 		}
 
 		public void Execute(string sqltext, params object[] args) {
@@ -54,12 +56,12 @@ namespace CHSNS {
 		}
 
 		public object ExecuteScalar(string sqltext, Dictionary dict) {
-			DataOpen.Open(sqltext);
+			DataOpener.Open(sqltext);
 			foreach (string key in dict.Keys) {
-				DataOpen.AddWithValue(key, dict[key]);
+				DataOpener.AddWithValue(key, dict[key]);
 			}
-			object ret = DataOpen.Command.ExecuteScalar();
-			DataOpen.Close();
+			object ret = DataOpener.Command.ExecuteScalar();
+			DataOpener.Close();
 			return ret;
 		}
 
@@ -75,14 +77,14 @@ namespace CHSNS {
 			return GetTable(text).Rows;
 		}
 		public DataTable GetTable(string name, Dictionary dict) {
-			DataOpen.Open(name);
+			DataOpener.Open(name);
 			foreach (string key in dict.Keys) {
-				DataOpen.AddWithValue(key, dict[key]);
+				DataOpener.AddWithValue(key, dict[key]);
 			}
 			var dt = new DataTable();
-			DbDataAdapter adp = DataOpen.GetAdapter();
+			DbDataAdapter adp = DataOpener.GetAdapter();
 			adp.Fill(dt);
-			DataOpen.Close();
+			DataOpener.Close();
 			return dt;
 		}
 		public DataRowCollection GetRows(string text, Dictionary dict) {
@@ -95,20 +97,20 @@ namespace CHSNS {
 			return GetTable(text, args).Rows;
 		}
 		public void Dispose() {
-			DataOpen.Dispose();
+			DataOpener.Dispose();
 		}
 
 		#region GetValue
 		public String GetValue(String text, IDictionary<string, object> dict) {
-			DataOpen.Open(text);
+			DataOpener.Open(text);
 			DbDataReader reader;
 			foreach (string key in dict.Keys) {
-				DataOpen.AddWithValue(key, dict[key]);
+				DataOpener.AddWithValue(key, dict[key]);
 			}
-			DataOpen.Command.Parameters["@RETURN_VALUE"].Direction = ParameterDirection.ReturnValue;
-			reader = DataOpen.Command.ExecuteReader();
-			string result = DataOpen.Command.Parameters["@RETURN_VALUE"].Value.ToString();
-			DataOpen.Close();
+			DataOpener.Command.Parameters["@RETURN_VALUE"].Direction = ParameterDirection.ReturnValue;
+			reader = DataOpener.Command.ExecuteReader();
+			string result = DataOpener.Command.Parameters["@RETURN_VALUE"].Value.ToString();
+			DataOpener.Close();
 			return result;
 		}
 		public String GetValue(String text, params object[] args) {

@@ -16,7 +16,7 @@
 		</div>
 		<ol id="UserListItems" class="userlist">
 			<%
-				Html.RenderAction<FriendController>(c => c.RandomList()); %>
+				Html.RenderPartial("RandomList", ViewData["source"]); %>
 		</ol>
 		<div id="PageDown" class="page">
 		</div>

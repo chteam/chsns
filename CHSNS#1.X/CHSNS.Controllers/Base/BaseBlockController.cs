@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-
 using CHSNS;
 using CHSNS.Config;
 using CHSNS.Models;
@@ -10,20 +8,18 @@ namespace CHSNS.Controllers {
 
 	//[Helper(typeof(ChHelper))]
 	//[HandleError]
-	abstract public class BaseBlockController : Controller, ICHSNSDB {
+	abstract public class BaseBlockController : Controller {
 		public Boolean IsPost {
 			get {
 				return Request.Form.Count != 0;
 			}
 		}
 		
-		CHSNSDBDataContext _DB = null;
+		CHSNSDBDataContext _DB;
 		protected CHSNSDBDataContext DB {
 			get {
 				if (_DB == null) {
-					_DB = new CHSNSDBDataContext(
-				  SiteConfig.SiteConnectionString
-					);
+					_DB = DBExt.DB;
 				}
 				return _DB;
 			}
@@ -31,22 +27,22 @@ namespace CHSNS.Controllers {
 
 		#region ICHSNSDB ≥…‘±
 
-		public CHSNS.Data.DBExt DBExt {
+		private Data.DBExt _dbext;
+		protected Data.DBExt DBExt {
 			get {
-				return new CHSNS.Data.DBExt(this);
+				if(_dbext==null)
+					_dbext = new Data.DBExt();
+				return _dbext;
 			}
 			set {
 				throw new NotImplementedException();
 			}
 		}
-		DataBaseExecutor _DataBaseExecutor = null;
-		public DataBaseExecutor DataBaseExecutor {
+		DataBaseExecutor _DataBaseExecutor;
+		protected DataBaseExecutor DataBaseExecutor {
 			get {
 				if (_DataBaseExecutor == null) {
-					_DataBaseExecutor = new DataBaseExecutor(
-						new SqlDataOpener(
-						SiteConfig.SiteConnectionString)
-						);
+					_DataBaseExecutor = DBExt.DataBaseExecutor;
 				}
 				return _DataBaseExecutor;
 			}

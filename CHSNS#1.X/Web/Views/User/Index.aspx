@@ -4,7 +4,6 @@
 	<%=Html.CSSLink("Reply")%>
 	<%=Html.CSSLink("mypage")%>
 	<%=Html.CSSLink("home")%>
-	<%=Html.CSSLink("friend")%>
 	<%--<%=Html.Script("/WebServices/Profile.asmx/js")%>--%>
 	<%=Html.Script("Profile")%>
 	<%=Html.Script("Reply")%>
@@ -23,7 +22,7 @@
 	   {
 	   	Html.RenderPartial("index-noRigh", ViewData.Model);
 	   }
-	   else { %>
+	   else { %> 
 	<div class="notes">
 		<%if (up.IsMe) {%>
 		您尚未设置个人自信,请点击 [设置]->[基本设置] 进行完善
@@ -143,7 +142,7 @@
 				</div>
 			</div>
 			<%
-   	Html.RenderPartial("~/views/user/index-Myactions.ascx", ViewData.Model);%>
+   	Html.RenderPartial("index-Myactions", ViewData.Model);%>
 		</div>
 		<div class="box">
 			<h3>
@@ -157,13 +156,15 @@
 			<div id="userViewer">
 				<h3>
 					最近访问<span class="stat">(共<span class="count"><%=up.User["ViewCount"]%></span>人看过)</span></h3>
-					<% Html.RenderAction<ViewController>(c => c.ShowViewList(0, 3, up.OwnerID, 6)); %>
+						<%
+					Html.RenderPartial("ViewList", ViewData["lastview"]); %>
 			</div>
 		</div>
 		<div class="box" id="userFriend">
 			<h3>
 				<%=up.OwnerName%>最近登录的好友</h3>
-				<% Html.RenderAction<ViewController>(c => c.ShowViewList(2, 3, up.OwnerID, 6)); %>
+					<%
+					Html.RenderPartial("ViewList", ViewData["lastfriend"]); %>
 			<span class="more">
 				<a href="/friend.aspx?userid=<%=up.OwnerID%>">more</a></span>
 		</div>

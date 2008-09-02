@@ -23,16 +23,16 @@
 	<li class="menuli"><a href="#" class="menu_title">设置</a>
 		<ul class="menu_network">
 		
-			<li><%=Html.ActionLink("基本信息", "Edit", "User", new { mode = "BaseInfo" })%></li>
-			<li><%=Html.ActionLink("学校信息", "Edit", "User", new { mode = "School" })%>
+			<li><%=Html.UserEditLink("BaseInfo","基本信息")%></li>
+			<li><%=Html.UserEditLink("School" ,"学校信息")%>
 			</li>
-			<li><%=Html.ActionLink("头像", "Edit", "User", new { mode = "upload" })%>
+			<li><%=Html.UserEditLink( "upload","头像")%>
 			</li>
-			<li><%=Html.ActionLink("魔法盒", "Edit", "User", new { mode = "magicbox" })%>
+			<li><%=Html.UserEditLink("magicbox","魔法盒")%>
 			</li>
 			<li><%=Html.ActionLink("隐私设置", "Setting", "User")%></li>
 			<li>
-			<%=Html.ActionLink("密码修改", "Setting", "User", new { tabs = 1 })%>
+			<%=Html.ActionLink("密码修改", "Setting", "User", new { tabs = 1 },null)%>
 			</li>
 		</ul>
 	</li>
