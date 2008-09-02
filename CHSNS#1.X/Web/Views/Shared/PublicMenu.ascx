@@ -9,7 +9,7 @@
 		<ul class="menu_network">
 			<li><%=Html.ActionLink("事件","Index","Event") %></li>
 			<li><a href="/Message.aspx?mode=inbox">小条</a></li>
-			<li><%=Html.ActionLink("好友请求", "FriendRequest", "User")%></li>
+			<li><%=Html.ActionLink("好友请求", "Request", "Friend")%></li>
 		</ul>
 	</li>
 	<li class="menuli"><a href="#" class="menu_title">应用</a>
