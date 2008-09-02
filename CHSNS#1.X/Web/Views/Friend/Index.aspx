@@ -18,7 +18,7 @@
 		</div>
 		<ol id="UserListItems" class="userlist">
 			<%
-				Html.RenderAction<FriendController>(c => c.FriendList(Convert.ToInt32(ViewData["NowPage"]), ViewData.Model.UserID)); %>
+				Html.RenderPartial("FriendList", ViewData["source"]); %>
 		</ol>
 		<div id="PageDown" class="page">
 		</div>

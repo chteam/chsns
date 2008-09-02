@@ -85,6 +85,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1.htm" />
     <Content Include="Admin\BaseTable.asmx" />
     <Content Include="ADpic\adfoot.jpg" />
     <Content Include="ADpic\adjmsu.jpg" />
@@ -272,9 +273,6 @@
     <None Include="Views\Html\PostList.vm" />
     <None Include="Views\Html\ProfileEdit.vm" />
     <None Include="Views\Html\Rss-List.vm" />
-    <None Include="Views\Html\UserList-Friend.vm" />
-    <None Include="Views\Html\UserList-FriendRequest.vm" />
-    <None Include="Views\Html\UserList-Random.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
     <Content Include="Config\ThumbnailSize.xml" />
     <Content Include="Config\UserEditMenu.xml" />
@@ -337,7 +335,6 @@
     <Content Include="Style\Facebook\appli.css" />
     <Content Include="Style\Facebook\blog.css" />
     <Content Include="Style\Facebook\calendar.css" />
-    <Content Include="Style\Facebook\friend.css" />
     <Content Include="Style\Facebook\group.css" />
     <Content Include="Style\Facebook\home.css" />
     <Content Include="Style\Facebook\Images\act_select.gif" />
@@ -431,7 +428,12 @@
     <Content Include="Views\Comment\ShowList.ascx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
+    <Content Include="Views\Friend\FriendList.ascx" />
     <Content Include="Views\Friend\Index.aspx" />
+    <Content Include="Views\Friend\Random.aspx" />
+    <Content Include="Views\Friend\RandomList.ascx" />
+    <Content Include="Views\Friend\Request.aspx" />
+    <Content Include="Views\Friend\RequestList.ascx" />
     <Content Include="Views\Group\ShowProfileLinks.ascx" />
     <Content Include="Views\Home\AboutUs.aspx" />
     <Content Include="Views\Home\Index.aspx" />
@@ -466,8 +468,6 @@
     <None Include="Views\Tags\Logtag.vm" />
     <None Include="Views\Tags\Tags.vm" />
     <None Include="Views\Upload\Photo.vm" />
-    <None Include="Views\Friend\friendRequest.vm" />
-    <None Include="Views\Friend\random.vm" />
     <Content Include="JavaScript\AdminUser.js" />
     <Content Include="JavaScript\Application.js" />
     <Content Include="JavaScript\Client\AccordionBehavior.js" />
@@ -670,6 +670,7 @@
     <Content Include="Views\Shared\MyMenu.ascx" />
     <Content Include="Views\Shared\PublicMenu.ascx" />
     <Content Include="Views\Shared\Utility.ascx" />
+    <Content Include="Views\Shared\ViewList.ascx" />
     <Content Include="Views\Upload\File.aspx" />
     <Content Include="Views\User\BaseInfo.ascx" />
     <Content Include="Views\User\Contact.ascx" />
@@ -688,7 +689,6 @@
     <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\School.ascx" />
     <Content Include="Views\User\Upload.ascx" />
-    <Content Include="Views\View\ShowViewList.ascx" />
     <Content Include="WebServices\Application.asmx" />
     <Content Include="WebServices\AutoComplete.asmx" />
     <Content Include="WebServices\AutoSelect.asmx" />
@@ -753,12 +753,47 @@
     <Compile Include="Views\Event\Show.aspx.designer.cs">
       <DependentUpon>Show.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Friend\FriendList.ascx.cs">
+      <DependentUpon>FriendList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Friend\FriendList.ascx.designer.cs">
+      <DependentUpon>FriendList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Friend\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Friend\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friend\Random.aspx.cs">
+      <DependentUpon>Random.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Friend\Random.aspx.designer.cs">
+      <DependentUpon>Random.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friend\RandomList.ascx.cs">
+      <DependentUpon>RandomList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Friend\RandomList.ascx.designer.cs">
+      <DependentUpon>RandomList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friend\Request.aspx.cs">
+      <DependentUpon>Request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Friend\Request.aspx.designer.cs">
+      <DependentUpon>Request.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Friend\RequestList.ascx.cs">
+      <DependentUpon>RequestList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Friend\RequestList.ascx.designer.cs">
+      <DependentUpon>RequestList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Group\ShowProfileLinks.ascx.cs">
       <DependentUpon>ShowProfileLinks.ascx</DependentUpon>
@@ -850,6 +885,13 @@
     </Compile>
     <Compile Include="Views\Shared\Utility.ascx.designer.cs">
       <DependentUpon>Utility.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\ViewList.ascx.cs">
+      <DependentUpon>ViewList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\ViewList.ascx.designer.cs">
+      <DependentUpon>ViewList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Upload\File.aspx.cs">
       <DependentUpon>File.aspx</DependentUpon>
@@ -976,13 +1018,6 @@
     </Compile>
     <Compile Include="Views\User\Upload.ascx.designer.cs">
       <DependentUpon>Upload.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\View\ShowViewList.ascx.cs">
-      <DependentUpon>ShowViewList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\View\ShowViewList.ascx.designer.cs">
-      <DependentUpon>ShowViewList.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

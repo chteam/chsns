@@ -4,11 +4,16 @@ using System.Data.OleDb;
 
 namespace CHSNS
 {
+	///<summary>OleDB的DataOpener
+	///</summary>
 	public class OleDbDataOpener : IDataOpener
 	{
 		private readonly OleDbCommand _Command;
 		private readonly OleDbConnection _Connection;
 
+		///<summary>构造函数
+		///</summary>
+		///<param name="ConnectionString">连接字符串</param>
 		public OleDbDataOpener(string ConnectionString)
 		{
 			_Connection = new OleDbConnection(ConnectionString);
@@ -55,13 +60,17 @@ namespace CHSNS
 				Command.Connection.Open();
 		}
 
-		#endregion
 
-		#region IDataOpener Members
 
 		public DbCommand Command
 		{
 			get { return _Command; }
+		}
+
+
+
+		public IDbConnection Connection {
+			get { return _Connection; }
 		}
 
 		#endregion

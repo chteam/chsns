@@ -384,7 +384,7 @@ using CHSNS.Models;
 					int status = identity.GetUserStatus(userid);
 					//HttpContext.Current.Session["status"] =
 					CHUser.InitStatus(status);
-					ChCookies.Status = status;
+				//	ChCookies.Status = status;
 					//HttpContext.Current.Response.Cookies[ChSite.Currect.CookieName]
 					//    ["userstatus"]
 					//    = HttpContext.Current.Session["status"].ToString();

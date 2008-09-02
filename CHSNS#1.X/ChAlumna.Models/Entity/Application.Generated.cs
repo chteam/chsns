@@ -37,72 +37,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private string _fullname;
-
-        /// <summary>
-        /// Gets or sets the fullname column value.
-        /// </summary>
-        [Column(Name="fullname", Storage="_fullname", DbType="nvarchar(60) NOT NULL", CanBeNull=false)]
-        public string Fullname
-        {
-            get { return _fullname; }
-            set
-            {
-                if (_fullname != value)
-                {
-                    OnFullnameChanging(value);
-                    OnPropertyChanging("Fullname");
-                    _fullname = value;
-                    OnPropertyChanged("Fullname");
-                    OnFullnameChanged();
-                }
-            }
-        }
-        
-        private string _shortname;
-
-        /// <summary>
-        /// Gets or sets the shortname column value.
-        /// </summary>
-        [Column(Name="shortname", Storage="_shortname", DbType="nvarchar(20) NOT NULL", CanBeNull=false)]
-        public string Shortname
-        {
-            get { return _shortname; }
-            set
-            {
-                if (_shortname != value)
-                {
-                    OnShortnameChanging(value);
-                    OnPropertyChanging("Shortname");
-                    _shortname = value;
-                    OnPropertyChanged("Shortname");
-                    OnShortnameChanged();
-                }
-            }
-        }
-        
-        private string _folder;
-
-        /// <summary>
-        /// Gets or sets the Folder column value.
-        /// </summary>
-        [Column(Name="Folder", Storage="_folder", DbType="nvarchar(250) NOT NULL", CanBeNull=false)]
-        public string Folder
-        {
-            get { return _folder; }
-            set
-            {
-                if (_folder != value)
-                {
-                    OnFolderChanging(value);
-                    OnPropertyChanging("Folder");
-                    _folder = value;
-                    OnPropertyChanged("Folder");
-                    OnFolderChanged();
-                }
-            }
-        }
-        
         private string _vision;
 
         /// <summary>
@@ -121,28 +55,6 @@ namespace CHSNS.Models
                     _vision = value;
                     OnPropertyChanged("Vision");
                     OnVisionChanged();
-                }
-            }
-        }
-        
-        private string _icon;
-
-        /// <summary>
-        /// Gets or sets the icon column value.
-        /// </summary>
-        [Column(Name="icon", Storage="_icon", DbType="nvarchar(250)")]
-        public string Icon
-        {
-            get { return _icon; }
-            set
-            {
-                if (_icon != value)
-                {
-                    OnIconChanging(value);
-                    OnPropertyChanging("Icon");
-                    _icon = value;
-                    OnPropertyChanged("Icon");
-                    OnIconChanged();
                 }
             }
         }
@@ -235,50 +147,6 @@ namespace CHSNS.Models
             }
         }
         
-        private bool _isSystem;
-
-        /// <summary>
-        /// Gets or sets the isSystem column value.
-        /// </summary>
-        [Column(Name="isSystem", Storage="_isSystem", DbType="bit NOT NULL", CanBeNull=false)]
-        public bool IsSystem
-        {
-            get { return _isSystem; }
-            set
-            {
-                if (_isSystem != value)
-                {
-                    OnIsSystemChanging(value);
-                    OnPropertyChanging("IsSystem");
-                    _isSystem = value;
-                    OnPropertyChanged("IsSystem");
-                    OnIsSystemChanged();
-                }
-            }
-        }
-        
-        private bool _isTrue;
-
-        /// <summary>
-        /// Gets or sets the isTrue column value.
-        /// </summary>
-        [Column(Name="isTrue", Storage="_isTrue", DbType="bit NOT NULL", CanBeNull=false)]
-        public bool IsTrue
-        {
-            get { return _isTrue; }
-            set
-            {
-                if (_isTrue != value)
-                {
-                    OnIsTrueChanging(value);
-                    OnPropertyChanging("IsTrue");
-                    _isTrue = value;
-                    OnPropertyChanged("IsTrue");
-                    OnIsTrueChanged();
-                }
-            }
-        }
-        
         private string _descriptionUrl;
 
         /// <summary>
@@ -323,13 +191,13 @@ namespace CHSNS.Models
             }
         }
         
-        private string _iD;
+        private long _iD = default(long);
 
         /// <summary>
-        /// Gets or sets the ID column value.
+        /// Gets the ID column value.
         /// </summary>
-        [Column(Name="ID", Storage="_iD", DbType="varchar(50) NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
-        public string ID
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long ID
         {
             get { return _iD; }
             set
@@ -341,6 +209,204 @@ namespace CHSNS.Models
                     _iD = value;
                     OnPropertyChanged("ID");
                     OnIDChanged();
+                }
+            }
+        }
+        
+        private string _controller;
+
+        /// <summary>
+        /// Gets or sets the Controller column value.
+        /// </summary>
+        [Column(Name="Controller", Storage="_controller", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
+        public string Controller
+        {
+            get { return _controller; }
+            set
+            {
+                if (_controller != value)
+                {
+                    OnControllerChanging(value);
+                    OnPropertyChanging("Controller");
+                    _controller = value;
+                    OnPropertyChanged("Controller");
+                    OnControllerChanged();
+                }
+            }
+        }
+        
+        private string _action;
+
+        /// <summary>
+        /// Gets or sets the Action column value.
+        /// </summary>
+        [Column(Name="Action", Storage="_action", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
+        public string Action
+        {
+            get { return _action; }
+            set
+            {
+                if (_action != value)
+                {
+                    OnActionChanging(value);
+                    OnPropertyChanging("Action");
+                    _action = value;
+                    OnPropertyChanged("Action");
+                    OnActionChanged();
+                }
+            }
+        }
+        
+        private string _paramStr;
+
+        /// <summary>
+        /// Gets or sets the ParamStr column value.
+        /// </summary>
+        [Column(Name="ParamStr", Storage="_paramStr", DbType="nvarchar(250) NOT NULL", CanBeNull=false)]
+        public string ParamStr
+        {
+            get { return _paramStr; }
+            set
+            {
+                if (_paramStr != value)
+                {
+                    OnParamStrChanging(value);
+                    OnPropertyChanging("ParamStr");
+                    _paramStr = value;
+                    OnPropertyChanged("ParamStr");
+                    OnParamStrChanged();
+                }
+            }
+        }
+        
+        private string _className;
+
+        /// <summary>
+        /// Gets or sets the ClassName column value.
+        /// </summary>
+        [Column(Name="ClassName", Storage="_className", DbType="varchar(50) NOT NULL", CanBeNull=false)]
+        public string ClassName
+        {
+            get { return _className; }
+            set
+            {
+                if (_className != value)
+                {
+                    OnClassNameChanging(value);
+                    OnPropertyChanging("ClassName");
+                    _className = value;
+                    OnPropertyChanged("ClassName");
+                    OnClassNameChanged();
+                }
+            }
+        }
+        
+        private string _fullName;
+
+        /// <summary>
+        /// Gets or sets the FullName column value.
+        /// </summary>
+        [Column(Name="FullName", Storage="_fullName", DbType="nvarchar(60) NOT NULL", CanBeNull=false)]
+        public string FullName
+        {
+            get { return _fullName; }
+            set
+            {
+                if (_fullName != value)
+                {
+                    OnFullNameChanging(value);
+                    OnPropertyChanging("FullName");
+                    _fullName = value;
+                    OnPropertyChanged("FullName");
+                    OnFullNameChanged();
+                }
+            }
+        }
+        
+        private string _shortName;
+
+        /// <summary>
+        /// Gets or sets the ShortName column value.
+        /// </summary>
+        [Column(Name="ShortName", Storage="_shortName", DbType="nvarchar(20) NOT NULL", CanBeNull=false)]
+        public string ShortName
+        {
+            get { return _shortName; }
+            set
+            {
+                if (_shortName != value)
+                {
+                    OnShortNameChanging(value);
+                    OnPropertyChanging("ShortName");
+                    _shortName = value;
+                    OnPropertyChanged("ShortName");
+                    OnShortNameChanged();
+                }
+            }
+        }
+        
+        private string _icon;
+
+        /// <summary>
+        /// Gets or sets the Icon column value.
+        /// </summary>
+        [Column(Name="Icon", Storage="_icon", DbType="nvarchar(250)")]
+        public string Icon
+        {
+            get { return _icon; }
+            set
+            {
+                if (_icon != value)
+                {
+                    OnIconChanging(value);
+                    OnPropertyChanging("Icon");
+                    _icon = value;
+                    OnPropertyChanged("Icon");
+                    OnIconChanged();
+                }
+            }
+        }
+        
+        private bool _isSystem;
+
+        /// <summary>
+        /// Gets or sets the IsSystem column value.
+        /// </summary>
+        [Column(Name="IsSystem", Storage="_isSystem", DbType="bit NOT NULL", CanBeNull=false)]
+        public bool IsSystem
+        {
+            get { return _isSystem; }
+            set
+            {
+                if (_isSystem != value)
+                {
+                    OnIsSystemChanging(value);
+                    OnPropertyChanging("IsSystem");
+                    _isSystem = value;
+                    OnPropertyChanged("IsSystem");
+                    OnIsSystemChanged();
+                }
+            }
+        }
+        
+        private bool _isTrue;
+
+        /// <summary>
+        /// Gets or sets the IsTrue column value.
+        /// </summary>
+        [Column(Name="IsTrue", Storage="_isTrue", DbType="bit NOT NULL", CanBeNull=false)]
+        public bool IsTrue
+        {
+            get { return _isTrue; }
+            set
+            {
+                if (_isTrue != value)
+                {
+                    OnIsTrueChanging(value);
+                    OnPropertyChanging("IsTrue");
+                    _isTrue = value;
+                    OnPropertyChanged("IsTrue");
+                    OnIsTrueChanged();
                 }
             }
         }
@@ -356,31 +422,11 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Fullname is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnFullnameChanging(string value);
-        /// <summary>Called after Fullname has Changed.</summary>
-        partial void OnFullnameChanged();
-        /// <summary>Called when Shortname is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnShortnameChanging(string value);
-        /// <summary>Called after Shortname has Changed.</summary>
-        partial void OnShortnameChanged();
-        /// <summary>Called when Folder is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnFolderChanging(string value);
-        /// <summary>Called after Folder has Changed.</summary>
-        partial void OnFolderChanged();
         /// <summary>Called when Vision is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnVisionChanging(string value);
         /// <summary>Called after Vision has Changed.</summary>
         partial void OnVisionChanged();
-        /// <summary>Called when Icon is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIconChanging(string value);
-        /// <summary>Called after Icon has Changed.</summary>
-        partial void OnIconChanged();
         /// <summary>Called when Authorid is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnAuthoridChanging(Nullable<long> value);
@@ -401,16 +447,6 @@ namespace CHSNS.Models
         partial void OnDescriptionChanging(string value);
         /// <summary>Called after Description has Changed.</summary>
         partial void OnDescriptionChanged();
-        /// <summary>Called when IsSystem is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIsSystemChanging(bool value);
-        /// <summary>Called after IsSystem has Changed.</summary>
-        partial void OnIsSystemChanged();
-        /// <summary>Called when IsTrue is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIsTrueChanging(bool value);
-        /// <summary>Called after IsTrue has Changed.</summary>
-        partial void OnIsTrueChanged();
         /// <summary>Called when DescriptionUrl is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnDescriptionUrlChanging(string value);
@@ -423,9 +459,54 @@ namespace CHSNS.Models
         partial void OnUserCountChanged();
         /// <summary>Called when ID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnIDChanging(string value);
+        partial void OnIDChanging(long value);
         /// <summary>Called after ID has Changed.</summary>
         partial void OnIDChanged();
+        /// <summary>Called when Controller is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnControllerChanging(string value);
+        /// <summary>Called after Controller has Changed.</summary>
+        partial void OnControllerChanged();
+        /// <summary>Called when Action is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnActionChanging(string value);
+        /// <summary>Called after Action has Changed.</summary>
+        partial void OnActionChanged();
+        /// <summary>Called when ParamStr is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnParamStrChanging(string value);
+        /// <summary>Called after ParamStr has Changed.</summary>
+        partial void OnParamStrChanged();
+        /// <summary>Called when ClassName is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnClassNameChanging(string value);
+        /// <summary>Called after ClassName has Changed.</summary>
+        partial void OnClassNameChanged();
+        /// <summary>Called when FullName is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnFullNameChanging(string value);
+        /// <summary>Called after FullName has Changed.</summary>
+        partial void OnFullNameChanged();
+        /// <summary>Called when ShortName is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnShortNameChanging(string value);
+        /// <summary>Called after ShortName has Changed.</summary>
+        partial void OnShortNameChanged();
+        /// <summary>Called when Icon is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIconChanging(string value);
+        /// <summary>Called after Icon has Changed.</summary>
+        partial void OnIconChanged();
+        /// <summary>Called when IsSystem is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIsSystemChanging(bool value);
+        /// <summary>Called after IsSystem has Changed.</summary>
+        partial void OnIsSystemChanged();
+        /// <summary>Called when IsTrue is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIsTrueChanging(bool value);
+        /// <summary>Called after IsTrue has Changed.</summary>
+        partial void OnIsTrueChanged();
         #endregion
         
     }

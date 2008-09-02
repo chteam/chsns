@@ -248,7 +248,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the Profile association.
         /// </summary>
-        [Association(Name="FK_PersonalInformation_Profile", Storage="_profile", ThisKey="Userid", OtherKey="UserId", IsForeignKey=true)]
+        [Association(Name="FK_PersonalInformation_Profile", Storage="_profile", ThisKey="Userid", OtherKey="UserID", IsForeignKey=true)]
         public Profile Profile
         {
             get { return _profile.Entity; }
@@ -267,7 +267,7 @@ namespace CHSNS.Models
                     if (value != null)
                     {
                         value.PersonalInformation = this;
-                        _userid = value.UserId;
+                        _userid = value.UserID;
                     }
                     else
                     {

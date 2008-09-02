@@ -11,7 +11,7 @@ namespace CHSNS {
 		/// 清理离线用户
 		/// </summary>
 		static public void RemoveOffline() {
-			if (CHUser.UserID > 0) {
+			if (CHUser.IsLogin) {
 				List<long> userid = new List<long>();
 				foreach (long u in OnlineList.Keys){
 					if (Date.DivMinutes(OnlineList[u]) > 10) {
@@ -29,7 +29,7 @@ namespace CHSNS {
 		/// 添加在线用户或更新
 		/// </summary>
 		static public void Update() {
-			if (CHUser.UserID > 0) {
+			if ( CHUser.IsLogin) {
 				if (Date.DivMinutes(RemoveTime) > 1) {//过了1分钟才清理
 					HttpContext.Current.Application.Lock();
 					if (!OnlineList.ContainsKey(CHUser.UserID))

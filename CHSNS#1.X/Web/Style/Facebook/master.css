@@ -323,8 +323,8 @@ background:url(images/bg_icon.png) no-repeat 0 -1400px;
 .userviewlist ul li{float:left;margin:0;height:91px;display:block}
 
 .userviewinfo { overflow:hidden; width:52px;padding:5px;}
-.userviewicon {position:relative;height:75px}
-.userviewicon div{position:absolute;bottom:0}
+.userviewicon {position:relative;height:75px;padding:0}
+.userviewicon div{position:absolute;bottom:0;left:0}
 
 .userviewicon li { width:52px;}
 .userviewicon a img { border:1px solid #d8dfea;max-height:74px;}
@@ -332,7 +332,6 @@ background:url(images/bg_icon.png) no-repeat 0 -1400px;
 
 .userviewname { padding:5px 0 2px; line-height:15px; overflow:hidden;}
 .userviewname a { display:block; white-space:nowrap;}
-
 
 
 .ui-resizable { position: relative; }
@@ -459,3 +458,19 @@ opacity:0.77;}
 #readlist table .author { width:90px; text-align:center;}
 #readlist table .group {padding-right:10px; text-align:center; width:150px;overflow:hidden;white-space:nowrap;vertical-align:middle;}
 
+
+/* useritem list new*/
+.userlist,.userlist ul { list-style-type:none;}
+.useritem { display:block; margin:10px 0; padding:10px; border:1px solid #d8dfea; background:#fff;}
+.useritem:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+* html .useritem { height:1%;}
+*+html .useritem { min-height:1%;}
+.useritem .image { overflow:hidden; float:left; width:108px; text-align:left;}
+.useritem .image img { padding:3px; border:1px solid #d8dfea; background:#fff;}
+.useritem .image a:hover { background:transparent;}
+.useritem .image a:hover img { border:1px solid #3B5999; background:#d8dfea;}
+.useritem .info { display:inline; overflow:hidden; float:left; width:300px; margin-left:10px; text-align:left;border:0px solid black;}
+.useritem .actions { float:right;}
+.useritem .actions li { text-indent:5px; border-bottom:1px solid #d8dfea; color:#808080; text-align:left;}
+.useritem .actions a { display:block; width:90px; text-decoration:none;}
+.useritem .actions a:hover {background:#3B5999; color:#fff; text-decoration:none;}

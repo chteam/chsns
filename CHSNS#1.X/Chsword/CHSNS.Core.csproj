@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="ChCache.cs" />
+    <Compile Include="CHCookies.cs" />
     <Compile Include="ChServer.cs" />
     <Compile Include="CHUser.cs" />
     <Compile Include="CHSNSUser.cs" />

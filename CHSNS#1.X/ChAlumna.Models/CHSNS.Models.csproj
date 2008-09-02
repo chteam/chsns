@@ -58,9 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CHSNSDBDataContext.cs" />
     <Compile Include="EntityRender\CommentListPas.cs" />
     <Compile Include="EntityRender\EventPagePas.cs" />
     <Compile Include="EntityRender\NotePas.cs" />
+    <Compile Include="EntityRender\UserItemPas.cs" />
     <Compile Include="EntityRender\UserPas.cs" />
     <Compile Include="EntityRender\ViewListPas.cs" />
     <Compile Include="Entity\Account.cs" />
@@ -230,7 +232,6 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="CHSNSDB.csp" />
     <None Include="CHSNSDB.dbml" />
     <None Include="Properties\Settings.settings">

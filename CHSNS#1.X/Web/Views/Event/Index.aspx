@@ -44,7 +44,8 @@
 				谁最近看过我的页面</h4>
 			<%--	##最近看过我页面的列表,一行六列,共六人--%>
 			<div class="boxcont">
-				<% Html.RenderAction<ViewController>(c => c.ShowViewList(0, 3, CHUser.UserID, 6)); %>
+			<%
+					Html.RenderPartial("ViewList", ViewData["lastview"]); %>
 			</div>
 		</div>
 		<%--##新回复--%>
@@ -105,7 +106,8 @@
 				新人秀</h4>
 			<%--	##新注册的随机列表,一行六列,共六人--%>
 			<div class="boxcont">
-				<% Html.RenderAction<ViewController>(c => c.ShowViewList(2, 3, CHUser.UserID, 6)); %>
+				<%
+					Html.RenderPartial("ViewList", ViewData["newview"]); %>
 			</div>
 		</div>
 	</div>

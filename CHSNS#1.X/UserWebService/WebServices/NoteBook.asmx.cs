@@ -23,7 +23,7 @@ namespace CHSNS {
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[ToolboxItem(false)]
 	[System.Web.Script.Services.ScriptService()]
-	public class NoteBook : WebService {
+	public class NoteBook : WebServices {
 		//[WebMethod(EnableSession=true)]
 		#region 浏览日志部分代码
 		/// <summary>
@@ -193,11 +193,10 @@ namespace CHSNS {
 			n.IsPost = showlevel;
 			n.Istellme = (byte)(istellme ? 1 : 0);
 
-			DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
-						SiteConfig.SiteConnectionString)));
-			idb.Note_Add(n);
 
-			idb.NoteTags_Add(n.ID, tags);
+			DBExt.Note_Add(n);
+
+			DBExt.NoteTags_Add(n.ID, tags);
 
 			return n.ID;
 		}
@@ -209,24 +208,18 @@ namespace CHSNS {
 			n.Body = body;
 			n.IsPost = showlevel;
 			n.Istellme = (byte)(istellme ? 1 : 0);
-			DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
-						SiteConfig.SiteConnectionString)));
-			idb.Note_Edit(n);
-			idb.NoteTags_Change(n.ID, tags);
+
+			DBExt.Note_Edit(n);
+			DBExt.NoteTags_Change(n.ID, tags);
 		}
 		[WebMethod(Description = "删除日志", EnableSession = true)]
 		public void Note_Delete(long logid,long groupid) {
-			DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
-						SiteConfig.SiteConnectionString)));
-		
-			idb.NoteTags_Delete(logid);
-			idb.Note_Remove(logid, groupid);
+			DBExt.NoteTags_Delete(logid);
+			DBExt.Note_Remove(logid, groupid);
 		}
 		[WebMethod(Description = "推荐日志", EnableSession = true)]
 		public string Note_Push(long logid) {
-			DBExt idb = new DBExt(new DataBaseExecutor(new SqlDataOpener(
-						SiteConfig.SiteConnectionString)));
-			int b = idb.Note_Push(logid);
+			int b = DBExt.Note_Push(logid);
 			switch (b) {
 				case 1:
 					return string.Empty;

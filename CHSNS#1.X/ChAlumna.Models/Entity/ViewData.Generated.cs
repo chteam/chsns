@@ -37,78 +37,12 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _id = default(long);
-
-        /// <summary>
-        /// Gets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
-        private long _ownerid;
-
-        /// <summary>
-        /// Gets or sets the Ownerid column value.
-        /// </summary>
-        [Column(Name="Ownerid", Storage="_ownerid", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long Ownerid
-        {
-            get { return _ownerid; }
-            set
-            {
-                if (_ownerid != value)
-                {
-                    OnOwneridChanging(value);
-                    OnPropertyChanging("Ownerid");
-                    _ownerid = value;
-                    OnPropertyChanged("Ownerid");
-                    OnOwneridChanged();
-                }
-            }
-        }
-        
-        private long _viewerid;
-
-        /// <summary>
-        /// Gets or sets the Viewerid column value.
-        /// </summary>
-        [Column(Name="Viewerid", Storage="_viewerid", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long Viewerid
-        {
-            get { return _viewerid; }
-            set
-            {
-                if (_viewerid != value)
-                {
-                    OnVieweridChanging(value);
-                    OnPropertyChanging("Viewerid");
-                    _viewerid = value;
-                    OnPropertyChanged("Viewerid");
-                    OnVieweridChanged();
-                }
-            }
-        }
-        
         private string _ipandComputer;
 
         /// <summary>
         /// Gets or sets the IpandComputer column value.
         /// </summary>
-        [Column(Name="IpandComputer", Storage="_ipandComputer", DbType="nvarchar(50) NOT NULL", CanBeNull=false)]
+        [Column(Name="IpandComputer", Storage="_ipandComputer", DbType="nvarchar(50)")]
         public string IpandComputer
         {
             get { return _ipandComputer; }
@@ -130,7 +64,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the ViewPageUrl column value.
         /// </summary>
-        [Column(Name="ViewPageUrl", Storage="_viewPageUrl", DbType="nvarchar(255) NOT NULL", CanBeNull=false)]
+        [Column(Name="ViewPageUrl", Storage="_viewPageUrl", DbType="nvarchar(255)")]
         public string ViewPageUrl
         {
             get { return _viewPageUrl; }
@@ -152,7 +86,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the LastUrl column value.
         /// </summary>
-        [Column(Name="LastUrl", Storage="_lastUrl", DbType="nvarchar(255) NOT NULL", CanBeNull=false)]
+        [Column(Name="LastUrl", Storage="_lastUrl", DbType="nvarchar(255)")]
         public string LastUrl
         {
             get { return _lastUrl; }
@@ -212,6 +146,72 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _iD = default(long);
+
+        /// <summary>
+        /// Gets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        
+        private long _ownerID;
+
+        /// <summary>
+        /// Gets or sets the OwnerID column value.
+        /// </summary>
+        [Column(Name="OwnerID", Storage="_ownerID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long OwnerID
+        {
+            get { return _ownerID; }
+            set
+            {
+                if (_ownerID != value)
+                {
+                    OnOwnerIDChanging(value);
+                    OnPropertyChanging("OwnerID");
+                    _ownerID = value;
+                    OnPropertyChanged("OwnerID");
+                    OnOwnerIDChanged();
+                }
+            }
+        }
+        
+        private long _viewerID;
+
+        /// <summary>
+        /// Gets or sets the ViewerID column value.
+        /// </summary>
+        [Column(Name="ViewerID", Storage="_viewerID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long ViewerID
+        {
+            get { return _viewerID; }
+            set
+            {
+                if (_viewerID != value)
+                {
+                    OnViewerIDChanging(value);
+                    OnPropertyChanging("ViewerID");
+                    _viewerID = value;
+                    OnPropertyChanged("ViewerID");
+                    OnViewerIDChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -224,21 +224,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(long value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
-        /// <summary>Called when Ownerid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnOwneridChanging(long value);
-        /// <summary>Called after Ownerid has Changed.</summary>
-        partial void OnOwneridChanged();
-        /// <summary>Called when Viewerid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnVieweridChanging(long value);
-        /// <summary>Called after Viewerid has Changed.</summary>
-        partial void OnVieweridChanged();
         /// <summary>Called when IpandComputer is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnIpandComputerChanging(string value);
@@ -264,6 +249,21 @@ namespace CHSNS.Models
         partial void OnViewClassChanging(byte value);
         /// <summary>Called after ViewClass has Changed.</summary>
         partial void OnViewClassChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(long value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when OwnerID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnOwnerIDChanging(long value);
+        /// <summary>Called after OwnerID has Changed.</summary>
+        partial void OnOwnerIDChanged();
+        /// <summary>Called when ViewerID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnViewerIDChanging(long value);
+        /// <summary>Called after ViewerID has Changed.</summary>
+        partial void OnViewerIDChanged();
         #endregion
         
     }

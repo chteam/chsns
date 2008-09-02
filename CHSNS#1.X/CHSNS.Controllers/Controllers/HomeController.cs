@@ -9,10 +9,11 @@ namespace CHSNS.Controllers
 	{
 		//[Cache(HttpCacheability.Public, Duration = 360, VaryByParams = "id,name")]
 		public ActionResult Index() {
+			ViewData["viewlist"] = DBExt.View.ViewList(3, 3, 0, 6);
 			return View("Index");
 		}
 		public void Logout() {
-			ChCookies.Clear();
+			CHCookies.Clear();
 			CHUser.Clear();
 			RedirectToAction("index");
 		}

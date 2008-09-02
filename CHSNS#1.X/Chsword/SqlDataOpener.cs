@@ -4,11 +4,21 @@ using System.Data.SqlClient;
 
 namespace CHSNS
 {
+	///<summary>SqlServer的DataOpener
+	///</summary>
 	public class SqlDataOpener : IDataOpener
 	{
 		private readonly SqlCommand _Command;
+		public DbCommand Command {
+			get { return _Command; }
+		}
 		private readonly SqlConnection _Connection;
-
+		public IDbConnection Connection {
+			get { return _Connection; }
+		}
+		///<summary>构造函数
+		///</summary>
+		///<param name="ConnectionString">连接字符串</param>
 		public SqlDataOpener(string ConnectionString)
 		{
 			_Connection = new SqlConnection(ConnectionString);
@@ -64,13 +74,5 @@ namespace CHSNS
 
 		protected CommandType CommandType { get; set; }
 
-		#region IDataOpener Members
-
-		public DbCommand Command
-		{
-			get { return _Command; }
-		}
-
-		#endregion
 	}
 }

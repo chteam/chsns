@@ -35,11 +35,7 @@ namespace CHSNS.Helper {
 		public DBExt DB {
 			get {
 				if (_db == null)
-					_db = new DBExt(
-						new DataBaseExecutor(
-								new SqlDataOpener(
-								SiteConfig.SiteConnectionString)
-								));
+					_db = new DBExt();
 				return _db;
 			}
 		}

@@ -5,9 +5,11 @@
  * 
  * 
  */
+
+
 namespace CHSNS
 {
-
+using CHSNS.Config;
 	using System;
 	using System.Data;
 	using System.Data.SqlClient;
@@ -36,16 +38,15 @@ namespace CHSNS
 				HttpContext.Current.Session["email"] = value;
 			}
 		}
+
 		/// <summary>
 		/// 获取当前用户ID,如用户未登录则抛出异常.
 		/// </summary>
 		static public long UserID {
-			get {
+			get{
 				long _Userid = 0;
-				if (HttpContext.Current.Session["userid"] != null) {
-					if (long.TryParse(HttpContext.Current.Session["userid"].ToString(), out _Userid))
-						return _Userid;
-				}
+				if (HttpContext.Current.Session["userid"] != null)
+					long.TryParse(HttpContext.Current.Session["userid"].ToString(), out _Userid);
 				return _Userid;
 			}
 			set {
@@ -57,9 +58,8 @@ namespace CHSNS
 		/// </summary>
 		static public string Username {
 			get {
-				if (HttpContext.Current.Session["username"] != null) {
+				if (HttpContext.Current.Session["username"] != null)
 					return HttpContext.Current.Session["username"].ToString();
-				}
 				return "未设置";
 			}
 			set {
@@ -76,27 +76,26 @@ namespace CHSNS
 		/// <summary>
 		/// 获取当前用户状态
 		/// </summary>
-		static public byte Status {
-			get {
-				if (HttpContext.Current.Session["userid"] != null) {
-					byte status = 0;
-					if (byte.TryParse(HttpContext.Current.Session["status"].ToString(), out status))
-						return status;
-				}
-				return 0;
+		static public int Status {
+			get{
+				int status = 0;
+				if (HttpContext.Current.Session["status"] != null)
+					int.TryParse(HttpContext.Current.Session["status"].ToString(), out status);
+				return status;
 			}
 			set {
-				HttpContext.Current.Session["status"] = value;
-				if (HttpContext.Current.Session["userid"] != null) {
-					SqlParameter[] sp = new SqlParameter[2] { 
-							new SqlParameter("@Userid", SqlDbType.BigInt),
-							new SqlParameter("@status", SqlDbType.TinyInt),
-					};
-					sp[0].Value = CHUser.UserID;
-					sp[1].Value = value;
-					DoDataBase db = new DoDataBase();
-					db.ExecuteSql("Status_Update", sp);
-				}
+				throw new Exception("邹健不允许调用这个方法");
+				//HttpContext.Current.Session["status"] = value;
+				//if (HttpContext.Current.Session["userid"] != null) {
+				//    var sp = new SqlParameter[2] { 
+				//            new SqlParameter("@Userid", SqlDbType.BigInt),
+				//            new SqlParameter("@status", SqlDbType.TinyInt),
+				//    };
+				//    sp[0].Value = CHUser.UserID;
+				//    sp[1].Value = value;
+				//    DoDataBase db = new DoDataBase();
+				//    db.ExecuteSql("Status_Update", sp);
+				//}
 			}
 		}
 		/// <summary>
@@ -112,7 +111,7 @@ namespace CHSNS
 		/// </summary>
 		static public bool IsLogin {
 			get {
-				return CHUser.UserID != 0;
+				return Status != 0;
 			}
 		}
 		static public int unReadMessage {
