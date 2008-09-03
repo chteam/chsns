@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Chsword.Datamodel {
-	public class GroupModel : BaseModel {
+	public class GroupModel  {
 		long _groupid;
 		private string _Groupname;
 		private string _summmary;

@@ -8,7 +8,7 @@ using System.Web;
 using CHSNS;
 
 namespace Chsword.Reader {
-	public class GroupList:Databases, IShowPage , IPageSet,IServerResponseable {
+	public class GroupList:Databases , IPageSet,IServerResponseable {
 		long _userid;
 		byte _groupclass = 0;
 		int _nowpage = 1;

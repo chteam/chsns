@@ -127,8 +127,6 @@
     <Compile Include="Interface\IPageSet.cs" />
     <Compile Include="Interface\IServerResponse.cs" />
     <Compile Include="Interface\IServerResponseable.cs" />
-    <Compile Include="Interface\IShowAll.cs" />
-    <Compile Include="Interface\IShowPage.cs" />
     <Compile Include="Reader\Albums.cs" />
     <Compile Include="WebServices\Application.cs">
       <DependentUpon>Application.asmx</DependentUpon>
@@ -173,9 +171,7 @@
     <Compile Include="ChAlumna\Media.cs" />
     <Compile Include="ChAlumna\Online.cs" />
     <Compile Include="ChAlumna\Reqres.cs" />
-    <Compile Include="ChAlumna\ResponsePack.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
-    <Compile Include="Datamodel\BaseModel.cs" />
     <Compile Include="Datamodel\GroupModel.cs" />
     <Compile Include="Datamodel\MessgeModel.cs" />
     <Compile Include="Reader\Comment.cs" />

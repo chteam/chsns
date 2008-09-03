@@ -3,7 +3,7 @@ using System.Text;
 using CHSNS;
 using Chsword;
 namespace Chsword.Reader {
-	public class NewGroup : Databases, Interface.IShowAll {
+	public class NewGroup : Databases{
 		string GetMyJiFen() {
 			return base.GetObjectbyId1(CHUser.UserID, "@userid", "GetScore").ToString();
 		}
