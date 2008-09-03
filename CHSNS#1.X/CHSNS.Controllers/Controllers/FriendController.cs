@@ -8,13 +8,10 @@ namespace CHSNS.Controllers {
 	using Filter;
 	using Tools;
 	public class FriendController : BaseController {
+		#region Action
 		public ActionResult Random() {
 			ViewData["source"] = DBExt.Friend.GetRandoms();
 			return View();
-		}
-		[LoginedFilter]
-		public ActionResult RandomList() {
-			return View(DBExt.Friend.GetRandoms());
 		}
 		[LoginedFilter]
 		public ActionResult Index(){
@@ -31,14 +28,6 @@ namespace CHSNS.Controllers {
 				return View(b);
 			}
 		}
-
-		[LoginedFilter]
-		public ActionResult FriendList(int p, long userid){
-			using (new TransactionScope()){
-				return View(DBExt.Friend.GetFriends(userid).Pager(p, 10));
-			}
-		}
-
 		[LoginedFilter]
 		[ActionName("Request")]
 		public ActionResult FriendRequest(){
@@ -54,10 +43,66 @@ namespace CHSNS.Controllers {
 				return View(b);
 			}
 		}
-
+		#endregion
+		#region pager ctrl
 		[LoginedFilter]
+		[AcceptVerbs("Post")]
+		public ActionResult FriendList(int p, long userid) {
+			using (new TransactionScope()) {
+				return View(DBExt.Friend.GetFriends(userid).Pager(p, 10));
+			}
+		}
+		[LoginedFilter]
+		[AcceptVerbs("Post")]
 		public ActionResult RequestList(int p, long userid) {
 			return View(DBExt.Friend.GetRequests(userid).Pager(p, 10));
 		}
+		[LoginedFilter]
+		[AcceptVerbs("Post")]
+		public ActionResult RandomList() {
+			return View(DBExt.Friend.GetRandoms());
+		}
+		#endregion
+
+		#region ajax execute
+		[LoginedFilter]
+		[AcceptVerbs("Post")]
+		public ActionResult Add(long toid) {//添加好友
+			if (DBExt.Friend.Add(CHUser.UserID, toid))
+				return Content("已经向对方发出请求");
+			return Content("对方已经是你的好友");
+		}
+		/// <summary>
+		/// 删除
+		/// </summary>
+		/// <param name="toid"></param>
+		/// <returns></returns>
+		[LoginedFilter]
+		[AcceptVerbs("Post")]
+		public ActionResult Delete(long toid) {
+			DBExt.Friend.Delete(CHUser.UserID, toid);
+			return Content("解除关系成功");
+		}
+		[LoginedFilter]
+		[AcceptVerbs("Post")]
+		public ActionResult Agree(long uid) {//添加好友
+			if (DBExt.Friend.Agree(CHUser.UserID, uid))
+				return Content("已经加对方为好友");
+			return Content("请求已经处理过了");
+		}
+		[LoginedFilter]
+		[AcceptVerbs("Post")]
+		public ActionResult Ignore(long uid) {//添加好友
+			if (DBExt.Friend.Ignore(uid, CHUser.UserID))
+				return Content("已经忽略了请求");
+			return Content("请求已经处理过了");
+		}
+		[LoginedFilter]
+		[AcceptVerbs("Post")]
+		public ActionResult IgnoreAll() {//添加好友
+			DBExt.Friend.IgnoreAll(CHUser.UserID);
+			return Content("已经忽略所有请求");
+		}
+		#endregion
 	}
 }

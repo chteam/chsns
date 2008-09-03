@@ -82,7 +82,7 @@
     <Compile Include="GolbalMediator.cs" />
     <Compile Include="IMediator.cs" />
     <Compile Include="DBExt\BlogsSqlDB.cs" />
-    <Compile Include="DBExt\DBExt.cs" />
+    <Compile Include="DBExt.cs" />
     <Compile Include="DBExt\NoteSqlDB.cs" />
     <Compile Include="DBExt\TagsSqlDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

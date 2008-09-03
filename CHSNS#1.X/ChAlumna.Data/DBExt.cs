@@ -42,7 +42,6 @@ namespace CHSNS.Data
 			Init();
 		}
 
-		IDictionary _session;
 		CHSNSDBDataContext _DB;
 		public CHSNSDBDataContext DB {
 			get {
@@ -51,11 +50,6 @@ namespace CHSNS.Data
 				}
 				return _DB;
 			}
-		}
-
-		public IDictionary Session {
-			get { return _session; }
-			set { _session = value; }
 		}
 
 		public DataRowCollection UserListRows(long ownerid, int nowpage, byte type) {

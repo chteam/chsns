@@ -25,8 +25,8 @@ namespace CHSNS {
 		/// 直接执行Sql语句
 		///</summary>
 		///<param name="sqltext"></param>
-		public void Execute(string sqltext) {
-			Execute(sqltext, new Dictionary());
+		public int Execute(string sqltext) {
+			return Execute(sqltext, new Dictionary());
 		}
 
 		///<summary>
@@ -34,7 +34,7 @@ namespace CHSNS {
 		///</summary>
 		///<param name="sqltext"></param>
 		///<param name="dict">参数</param>
-		public void Execute(string sqltext, Dictionary dict) {
+		public int Execute(string sqltext, Dictionary dict) {
 			DataOpener.Open(sqltext);
 			foreach (string key in dict.Keys) {
 				DataOpener.AddWithValue(key, dict[key]);
@@ -43,12 +43,19 @@ namespace CHSNS {
 
 			if (previousConnectionState == ConnectionState.Closed)
 				DataOpener.Command.Connection.Open();
-			DataOpener.Command.ExecuteNonQuery(); ;
+			int ret =DataOpener.Command.ExecuteNonQuery(); ;
 			DataOpener.Close();
+			return ret;
 		}
 
-		public void Execute(string sqltext, params object[] args) {
-			Execute(sqltext, Dictionary.CreateFromArgs(args));
+		///<summary>执行Sql语句并返回受影响的行数
+		/// 多进行插入删除更新等工作
+		///</summary>
+		///<param name="sqltext">Sql语句</param>
+		///<param name="args">参数</param>
+		///<returns>返回受影响的行数</returns>
+		public int Execute(string sqltext, params object[] args) {
+			return Execute(sqltext, Dictionary.CreateFromArgs(args));
 		}
 
 		public object ExecuteScalar(string sqltext) {

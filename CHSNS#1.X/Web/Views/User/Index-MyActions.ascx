@@ -15,7 +15,7 @@
 	<%} else{%>
 	<li><a href="/Message.aspx?mode=compose&ToId=<%=up.OwnerID%>&Toname=<%=up.OwnerName%>&">
 		发小条</a></li>
-	<li><a href="javascript:AddFriend(<%=up.OwnerID%>)">加为好友</a></li>
+	<li><a href="javascript:void(0);" onclick="$.post('<%=Url.Action("Add","Friend") %>', { 'toid':<%=up.OwnerID%>}, function(r) { alertEx(r); });return false;">加为好友</a></li>
 	<%
 }%>
 </ul>
