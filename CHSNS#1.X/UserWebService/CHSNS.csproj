@@ -189,7 +189,6 @@
     <Compile Include="Reader\ServerResponse.cs" />
     <Compile Include="Reader\SuperNoteList.cs" />
     <Compile Include="Reader\UserList.cs" />
-    <Compile Include="Execute\FriendExecuter.cs" />
     <Compile Include="Execute\GroupExecuter.cs" />
     <Compile Include="Execute\GroupSettingExecuter.cs" />
     <Compile Include="Execute\GroupUserExecuter.cs" />

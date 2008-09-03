@@ -506,7 +506,6 @@
     <Content Include="JavaScript\EditMyInfo.js" />
     <Content Include="JavaScript\Editor.js" />
     <Content Include="JavaScript\Framework.js" />
-    <Content Include="JavaScript\Friend.js" />
     <Content Include="JavaScript\GroupList.js" />
     <Content Include="JavaScript\GroupUser.js" />
     <Content Include="JavaScript\Input.js" />
