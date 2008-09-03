@@ -11,7 +11,7 @@
 	<%} else if (up.User["Relation"].ToString() == "150") { %>
 	<li><a href="/Message.aspx?mode=compose&ToId=<%=up.OwnerID%>&Toname=<%=up.OwnerName%>&">
 		发小条</a></li>
-	<li><a href="javascript:DeleteFriend(<%=up.OwnerID%>)">解除好友关系</a></li>
+	<li><a href="javascript:void(0);" onclick="$.post('<%=Url.Action("Delete","Friend") %>',{'toid':<%=up.OwnerID%>},function(r){alertEx(r);});return false;">解除好友关系</a></li>
 	<%} else{%>
 	<li><a href="/Message.aspx?mode=compose&ToId=<%=up.OwnerID%>&Toname=<%=up.OwnerName%>&">
 		发小条</a></li>
