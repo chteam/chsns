@@ -108,7 +108,6 @@
     <Compile Include="File.cs" />
     <Compile Include="ICHSNSDB.cs" />
     <Compile Include="Interface\IDataOpener.cs" />
-    <Compile Include="Interface\IDataBaseExecutor.cs" />
     <Compile Include="Interface\IEmail.cs" />
     <Compile Include="NetworkCross.cs" />
     <Compile Include="Path.cs" />

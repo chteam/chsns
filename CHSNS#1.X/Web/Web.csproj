@@ -86,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1.htm" />
-    <Content Include="Admin\BaseTable.asmx" />
     <Content Include="ADpic\adfoot.jpg" />
     <Content Include="ADpic\adjmsu.jpg" />
     <Content Include="ADpic\adjmsu.png" />
@@ -688,21 +687,6 @@
     <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\School.ascx" />
     <Content Include="Views\User\Upload.ascx" />
-    <Content Include="WebServices\Application.asmx" />
-    <Content Include="WebServices\AutoComplete.asmx" />
-    <Content Include="WebServices\AutoSelect.asmx" />
-    <Content Include="WebServices\Comment.asmx" />
-    <Content Include="WebServices\Group.asmx" />
-    <Content Include="WebServices\Identity.asmx" />
-    <Content Include="WebServices\Invite.asmx" />
-    <Content Include="WebServices\Message.asmx" />
-    <Content Include="WebServices\NoteBook.asmx" />
-    <Content Include="WebServices\PageMethods.asmx" />
-    <Content Include="WebServices\Photos.asmx" />
-    <Content Include="WebServices\Profile.asmx" />
-    <Content Include="WebServices\School.asmx" />
-    <Content Include="WebServices\Search.asmx" />
-    <Content Include="WebServices\Services.asmx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">
@@ -1020,7 +1004,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\App_Code\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />
