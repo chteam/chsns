@@ -28,8 +28,18 @@
 	<%=Html.Hidden("EveryPage","10") %>
 
 	<script type="text/javascript">
+		var DeleteFriend=function(id){
+			$.post('<%=Url.Action("Delete","Friend") %>', {'toid':id}, function(r) { 
+				alertEx(r);
+				var count=0;
+				count=$h("#FriendCount");
+				if(count>0)
+					$h("#FriendCount",count-1);
+				$h("#Items"+id,'已经删除');
+			});
+		};
 		var setpage = function(p) {
-			$.post("<%=Url.Action("FriendList") %>", {"p":p,"userid":<%=ViewData.Model.UserID %>}, function(r) {
+			$.post('<%=Url.Action("FriendList") %>', {"p":p,"userid":<%=ViewData.Model.UserID %>}, function(r) {
 				$h("#UserListItems",r);
 				pagefun();
 			});

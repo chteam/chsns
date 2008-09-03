@@ -87,19 +87,7 @@ using CHSNS.Models;
 		}
 		#endregion
 		#region 好友
-		[WebMethod(EnableSession=true)]
-		public string AddFriend(long Toid) {//添加好友
-			IItems dof = GetFriendExecute(Toid);
-			return dof.Add();
-		}
-		[WebMethod(EnableSession=true)]
-		public string DeleteFriend(long Toid) {//删除好友
-			IItems dof = GetFriendExecute(Toid);
-			return dof.Remove();
-		}
-		static IItems GetFriendExecute(long Toid) {
-			return new Chsword.Execute.FriendExecuter(CHUser.UserID, Toid);
-		}
+
 
 
 		#endregion

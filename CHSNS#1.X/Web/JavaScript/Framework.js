@@ -235,9 +235,8 @@ var onfail=function(_){
 
 //Enter focus
 function EnterTo(n, event) {
-    if (event.keyCode == 13) {
+    if (event.keyCode == 13)
         $("input[name=" + n + "]").focus();
-    }
 }
 
 var EnterLogin=function(event){

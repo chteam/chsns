@@ -44,7 +44,6 @@
 		}
 		$.post('<%=Url.Action("Login","Identity") %>', { "u": U, "p": P, "a": $("#Auto").attr("checked") }, function(r) {
 			if (r != "false") {
-				//$h("#linkList2", r); ;
 				location = '<%=Url.Action("Index","Event") %>';
 			}
 			else {
