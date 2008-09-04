@@ -5,7 +5,7 @@ namespace CHSNS.Controllers {
 	using System.Web.Mvc;
 	public class TagsController : BaseController {
 		public ActionResult LogTag(string title) {
-			ViewData["tags"] = DBExt.GetNotebyTag(title).AsPagination(1, 10);
+			ViewData["tags"] = DBExt.GetNotebyTag(title).Pager(1, 10);
 			//DBExt ms = new DBExt(new Dictionary());
 			//ViewData["tags"] =
 			//    PaginationHelper.CreatePagination(

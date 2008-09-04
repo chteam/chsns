@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Controllers", "CHSNS.Controllers\CHSNS.Controllers.csproj", "{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2BD4E2D4-42D2-48F8-865A-45B9534B5ABA}"
+	ProjectSection(SolutionItems) = preProject
+		CHSNS1.x.vsmdi = CHSNS1.x.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 7
@@ -37,6 +43,9 @@ Global
 		SccProjectUniqueName6 = Chsword\\CHSNS.Core.csproj
 		SccProjectName6 = Chsword
 		SccLocalPath6 = Chsword
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CHSNS1.x.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
