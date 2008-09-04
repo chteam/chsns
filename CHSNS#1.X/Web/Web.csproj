@@ -438,6 +438,10 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Home\SetPassword.aspx" />
     <Content Include="Views\Home\Setting.aspx" />
+    <Content Include="Views\Message\Details.aspx" />
+    <Content Include="Views\Message\InBox.aspx" />
+    <Content Include="Views\Message\OutBox.aspx" />
+    <Content Include="Views\Message\Write.aspx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
     <None Include="Views\Shared\BlogMaster.vm" />
@@ -812,6 +816,34 @@
     </Compile>
     <Compile Include="Views\Home\Setting.aspx.designer.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Message\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Message\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Message\InBox.aspx.cs">
+      <DependentUpon>InBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Message\InBox.aspx.designer.cs">
+      <DependentUpon>InBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Message\OutBox.aspx.cs">
+      <DependentUpon>OutBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Message\OutBox.aspx.designer.cs">
+      <DependentUpon>OutBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Message\Write.aspx.cs">
+      <DependentUpon>Write.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Message\Write.aspx.designer.cs">
+      <DependentUpon>Write.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>

@@ -9,7 +9,6 @@
 	<title>上传</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<%=Html.Script("Framework") %>
-	<%--<script src="/JavaScript/jquery-1.2.3-intellisense.js" type="text/javascript"></script>--%>
 	<style type="text/css">
 		* { margin: 0; padding: 0; }
 	</style>
