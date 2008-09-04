@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</ProjectGuid>
+    <ProjectGuid>{670276AB-4C10-419B-82EF-D4A4B2A39591}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CHSNS</RootNamespace>
-    <AssemblyName>CHSNS.Controllers</AssemblyName>
+    <RootNamespace>CHSNS.Test</RootNamespace>
+    <AssemblyName>CHSNS.Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -35,6 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\Microsoft.Web.Mvc.dll</HintPath>
@@ -43,13 +45,17 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Abstractions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\System.Web.Abstractions.dll</HintPath>
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -58,79 +64,27 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Routing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Routing, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\System.Web.Routing.dll</HintPath>
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BaseAdminController.cs" />
-    <Compile Include="Base\BaseBlockController.cs" />
-    <Compile Include="Base\BaseController.cs" />
-    <Compile Include="Base\BaseSystemAppController.cs" />
-    <Compile Include="Base\BaseViewComponent.cs" />
-    <Compile Include="Base\BaseWizardPage.cs" />
-    <Compile Include="Controllers\AdController.cs" />
-    <Compile Include="Controllers\Admin\AdminController.cs" />
-    <Compile Include="Controllers\Admin\AdminController_File.cs" />
-    <Compile Include="Controllers\Admin\CommonController.cs" />
-    <Compile Include="Controllers\Admin\FieldController.cs" />
-    <Compile Include="Controllers\Admin\SqlController.cs" />
-    <Compile Include="Controllers\Admin\UserManage.cs" />
-    <Compile Include="Controllers\AjaxController.cs" />
-    <Compile Include="Controllers\AlbumController.cs" />
-    <Compile Include="Controllers\ApplicationController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\EventController.cs" />
-    <Compile Include="Controllers\FriendController.cs" />
-    <Compile Include="Controllers\GroupController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HtmlController.cs" />
-    <Compile Include="Controllers\IdentityController.cs" />
-    <Compile Include="Controllers\MessageController.cs" />
-    <Compile Include="Controllers\NoteController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\servicesController.cs" />
-    <Compile Include="Controllers\SuperNoteController.cs" />
-    <Compile Include="Controllers\TagsController.cs" />
-    <Compile Include="Controllers\testController.cs" />
-    <Compile Include="Controllers\UploadController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Filter\AdminFilter.cs" />
-    <Compile Include="Filter\LoginedFilter.cs" />
-    <Compile Include="Filter\OnlineFilter.cs" />
-    <Compile Include="GlobalApplication.cs" />
-    <Compile Include="Helper\ChHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Helper\HtmlHelperExt.cs" />
-    <Compile Include="Helper\Include.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Helper\PersonalHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Helper\StringHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Helper\UrlHelperExt.cs" />
+    <Compile Include="ChHelperTest.cs" />
+    <Compile Include="HtmlHelperExtTest.cs" />
+    <Compile Include="IncludeTest.cs" />
+    <Compile Include="PagerExtTest.cs" />
+    <Compile Include="PersonalHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helper\UrlHelperCHHelperExt.cs" />
-    <Compile Include="Extension\ControllerExt.cs" />
-    <Compile Include="Extension\RedirectExt.cs" />
-    <Compile Include="Tools\PagerExt.cs" />
+    <Compile Include="StringHelperTest.cs" />
+    <Compile Include="UrlHelperCHHelperExtTest.cs" />
+    <Compile Include="UrlHelperExtTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">
@@ -141,6 +95,10 @@
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>CHSNS.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CHSNS.Controllers\CHSNS.Controllers.csproj">
+      <Project>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</Project>
+      <Name>CHSNS.Controllers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chsword\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
@@ -150,10 +108,7 @@
       <Name>CHSNS</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\components\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

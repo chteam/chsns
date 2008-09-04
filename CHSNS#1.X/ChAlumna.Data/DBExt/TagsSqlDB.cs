@@ -90,7 +90,7 @@
 			}
 			return CHCache.GetCache(cachename) as IList;
 		}
-		public IList<NotePas> GetNotebyTag(string title) {
+		public IQueryable<NotePas> GetNotebyTag(string title) {
 			DataBaseExecutor.Execute(
 				"update tags set ReachTime=getdate(),Count=Count+1 where title=@title", "@title", title);
 			return (from l in DB.LogTag
@@ -107,8 +107,7 @@
 						WriteName = b.WriteName,
 						UserID = b.UserID,
 						Body = l.Log.Body.Substring(0, 50)
-					})
-					.ToList<NotePas>();
+					});
 		}
 	
 

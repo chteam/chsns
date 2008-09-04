@@ -141,15 +141,16 @@ namespace CHSNS.Controllers.Admin
 			             	"select count(1) from [log] where Datediff(d, addtime, GETDATE()) = 0 and groupid=0"
 			             	));
 		}
-		public void note_today() {
-			IList<Log> i = (from l in DB.LogTable
-			                orderby l.AddTime descending
-			                select l).ToList();
+		public void note_today(){
+			var i = (from l in DB.LogTable
+			         orderby l.AddTime descending
+			         select l)
+				;
 			//ViewData["rows"] =
 			//    PaginationHelper.CreatePagination(this, i, 10);
-			ViewData["rows"] =
-				i.AsPagination(1, 10);
+			ViewData["rows"] = i.Pager(1, 10);
 		}
+
 		#endregion
      
 
