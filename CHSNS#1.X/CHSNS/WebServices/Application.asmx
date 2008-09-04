@@ -1,0 +1,1 @@
+﻿<%@ WebService  Class="ChAlumna.Application" Language="C#" %>
