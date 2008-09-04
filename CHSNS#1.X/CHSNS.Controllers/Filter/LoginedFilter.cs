@@ -12,6 +12,7 @@ namespace CHSNS.Filter {
 			if (CHSNSUser.Current.Status < UserStatusType.Field) {
 				throw new Exception("您尚未通过邮件验证<a href='/reg/resend.ashx'>重发</a>");
 			}
+			
 			//if (filterContext..Name.ToLower() == "message") {
 			//    //return true;
 			//}
