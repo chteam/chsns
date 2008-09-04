@@ -133,12 +133,6 @@
     <Compile Include="Tools\PagerExt.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserWebService\CHSNS.csproj">
-      <Project>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</Project>
-      <Name>CHSNS</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Controllers\components\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
