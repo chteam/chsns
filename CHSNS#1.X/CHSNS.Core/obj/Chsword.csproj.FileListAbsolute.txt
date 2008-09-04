@@ -1,0 +1,13 @@
+C:\Chsword\Chsword\bin\Release\Chsword.dll
+C:\Chsword\Chsword\bin\Debug\Chsword.dll
+C:\Chsword\Chsword\bin\Debug\Chsword.pdb
+C:\Chsword\Chsword\bin\Debug\Chsword.XML
+C:\Chsword\Chsword\obj\Debug\ResolveAssemblyReference.cache
+C:\Chsword\Chsword\obj\Debug\Chsword.dll
+C:\Chsword\Chsword\obj\Debug\Chsword.pdb
+C:\Chsword\Web\bin\Chsword.dll
+C:\Chsword\Chsword\obj\Release\ResolveAssemblyReference.cache
+C:\Chsword\Chsword\obj\Release\Chsword.dll
+C:\Chsword\Web\bin\Chsword.pdb
+C:\Chsword\Web\bin\Chsword.XML
+C:\Chsword\Chsword\bin\Release\Chsword.pdb

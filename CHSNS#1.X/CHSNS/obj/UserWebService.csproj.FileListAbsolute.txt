@@ -1,0 +1,15 @@
+C:\Chsword\Web\UserWebService\bin\UserWebService.dll
+C:\Chsword\Web\UserWebService\bin\UserWebService.pdb
+C:\Chsword\Web\UserWebService\obj\Debug\ResolveAssemblyReference.cache
+C:\Chsword\Web\UserWebService\obj\Debug\UserWebService.dll
+C:\Chsword\Web\UserWebService\obj\Debug\UserWebService.pdb
+C:\Chsword\UserWebService\obj\Debug\ResolveAssemblyReference.cache
+C:\Chsword\UserWebService\obj\Debug\Chsword.dll
+C:\Chsword\UserWebService\obj\Debug\Chsword.pdb
+C:\Chsword\Web\bin\ResolveAssemblyReference.cache
+C:\Chsword\UserWebService\bin\Chsword.dll
+C:\Chsword\UserWebService\bin\Chsword.pdb
+C:\Chsword\UserWebService\bin\ChAlumna.dll
+C:\Chsword\UserWebService\bin\ChAlumna.pdb
+C:\Chsword\Web\bin\ChAlumna.dll
+C:\Chsword\Web\bin\ChAlumna.pdb

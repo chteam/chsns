@@ -1,0 +1,5 @@
+C:\Chsword\UserWebService\obj\Release\ResolveAssemblyReference.cache
+C:\Chsword\Web\bin\CHSNS.dll
+C:\Chsword\Web\bin\CHSNS.pdb
+C:\Chsword\UserWebService\obj\Release\CHSNS.dll
+C:\Chsword\UserWebService\obj\Release\CHSNS.pdb
