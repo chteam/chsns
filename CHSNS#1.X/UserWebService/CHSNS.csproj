@@ -239,20 +239,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ChAlumna.Data\CHSNS.Data.csproj">
-      <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
-      <Name>CHSNS.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChAlumna.Models\CHSNS.Models.csproj">
-      <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
-      <Name>CHSNS.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Chsword\CHSNS.Core.csproj">
-      <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
-      <Name>CHSNS.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
