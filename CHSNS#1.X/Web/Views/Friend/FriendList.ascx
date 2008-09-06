@@ -21,7 +21,8 @@
 			</ul>
 		</div>
 		<ul class="actions">
-			<li><a href="/Message.aspx?mode=compose&ToId=userid&Toname=name">发小条</a></li>
+			<li>
+			<%=Html.WriteMessage(p.UserID,p.Name)%></li>
 			<li><a href="javascript:DeleteFriend(<%=p.UserID %>)">解除好友关系</a></li>
 		</ul>
 </li>

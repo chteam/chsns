@@ -305,50 +305,6 @@ namespace CHSNS.Models
             }
         }
         
-        private long _messageAll;
-
-        /// <summary>
-        /// Gets or sets the MessageAll column value.
-        /// </summary>
-        [Column(Name="MessageAll", Storage="_messageAll", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long MessageAll
-        {
-            get { return _messageAll; }
-            set
-            {
-                if (_messageAll != value)
-                {
-                    OnMessageAllChanging(value);
-                    OnPropertyChanging("MessageAll");
-                    _messageAll = value;
-                    OnPropertyChanged("MessageAll");
-                    OnMessageAllChanged();
-                }
-            }
-        }
-        
-        private long _messageCount;
-
-        /// <summary>
-        /// Gets or sets the MessageCount column value.
-        /// </summary>
-        [Column(Name="MessageCount", Storage="_messageCount", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long MessageCount
-        {
-            get { return _messageCount; }
-            set
-            {
-                if (_messageCount != value)
-                {
-                    OnMessageCountChanging(value);
-                    OnPropertyChanging("MessageCount");
-                    _messageCount = value;
-                    OnPropertyChanged("MessageCount");
-                    OnMessageCountChanged();
-                }
-            }
-        }
-        
         private long _fileSizeAll;
 
         /// <summary>
@@ -832,6 +788,50 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _outboxCount;
+
+        /// <summary>
+        /// Gets or sets the OutboxCount column value.
+        /// </summary>
+        [Column(Name="OutboxCount", Storage="_outboxCount", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long OutboxCount
+        {
+            get { return _outboxCount; }
+            set
+            {
+                if (_outboxCount != value)
+                {
+                    OnOutboxCountChanging(value);
+                    OnPropertyChanging("OutboxCount");
+                    _outboxCount = value;
+                    OnPropertyChanged("OutboxCount");
+                    OnOutboxCountChanged();
+                }
+            }
+        }
+        
+        private long _inboxCount;
+
+        /// <summary>
+        /// Gets or sets the InboxCount column value.
+        /// </summary>
+        [Column(Name="InboxCount", Storage="_inboxCount", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long InboxCount
+        {
+            get { return _inboxCount; }
+            set
+            {
+                if (_inboxCount != value)
+                {
+                    OnInboxCountChanging(value);
+                    OnPropertyChanging("InboxCount");
+                    _inboxCount = value;
+                    OnPropertyChanged("InboxCount");
+                    OnInboxCountChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -1044,16 +1044,6 @@ namespace CHSNS.Models
         partial void OnAllShowLevelChanging(byte value);
         /// <summary>Called after AllShowLevel has Changed.</summary>
         partial void OnAllShowLevelChanged();
-        /// <summary>Called when MessageAll is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnMessageAllChanging(long value);
-        /// <summary>Called after MessageAll has Changed.</summary>
-        partial void OnMessageAllChanged();
-        /// <summary>Called when MessageCount is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnMessageCountChanging(long value);
-        /// <summary>Called after MessageCount has Changed.</summary>
-        partial void OnMessageCountChanged();
         /// <summary>Called when FileSizeAll is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnFileSizeAllChanging(long value);
@@ -1164,6 +1154,16 @@ namespace CHSNS.Models
         partial void OnLoginTimeChanging(System.DateTime value);
         /// <summary>Called after LoginTime has Changed.</summary>
         partial void OnLoginTimeChanged();
+        /// <summary>Called when OutboxCount is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnOutboxCountChanging(long value);
+        /// <summary>Called after OutboxCount has Changed.</summary>
+        partial void OnOutboxCountChanged();
+        /// <summary>Called when InboxCount is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnInboxCountChanging(long value);
+        /// <summary>Called after InboxCount has Changed.</summary>
+        partial void OnInboxCountChanged();
         #endregion
         
     }

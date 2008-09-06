@@ -449,57 +449,6 @@ using CHSNS.Models;
 			return "";
 		}
 		#endregion
-		#region Message 站内小条
-		[WebMethod(EnableSession=true)]
-		public ServerResponse ResponsePage(int nowpage, int everypage, PageType type) {
-			long userid = 0;
-			if (!long.TryParse(HttpContext.Current.Session["userid"].ToString(), out userid)) {
-				throw new Exception(Debug.TraceBack("非法操作."));
-			}
-			switch (type) {
-				case PageType.Inbox:
-				case PageType.Sent:
-					#region Message 站内小条
-					Chsword.Reader.Message m = new Chsword.Reader.Message();
-					m.Nowpage = nowpage;
-					m.Everypage = everypage;
-					m.Userid = userid;
-					m.Type = type;
-					return m.GetServerResponse();
-					#endregion
-				default:
-					throw new Exception(Debug.TraceBack(" LogBookList 意外的参数传入 "));
-
-			}
-		}
-		[WebMethod(EnableSession=true)]
-		public MessageModel ReadMessage(long Messageid,bool isowner) {
-			Chsword.Reader.Message rm = new Chsword.Reader.Message();
-			rm.Userid = CHUser.UserID;
-			rm.Isinboxer = isowner;
-			rm.Messageid = Messageid;
-			CHCache.Remove(string.Format("unReadMessage.{0}", CHUser.UserID));
-			return rm.GetSingle();
-		}
-		[WebMethod(EnableSession=true)]
-		public string OptionMessage(MessageModel mm, OptionType lo) {
-			long userid = 0;
-			if (!long.TryParse(HttpContext.Current.Session["userid"].ToString(), out userid)) {
-				throw new Exception("非法操作.");
-			}
-			mm.Fromid = userid;
-			MessageExecuter dol = new MessageExecuter();
-			dol.MessageModel = mm;
-			switch (lo) {
-				case OptionType.Add:
-					return dol.Add();
-				case OptionType.Delete:
-					return dol.Remove();
-					default :
-						return "unknow";
-			}
-		}
-		#endregion
 		
 	
 	}

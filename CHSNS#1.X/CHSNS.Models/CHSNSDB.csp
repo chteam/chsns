@@ -16,7 +16,7 @@
       </property>
       <property name="EntityBase">LinqEntityBase</property>
       <property name="DisableRenaming">False</property>
-      <property name="DbmlFile">C:\Chsword\ChAlumna.Models\CHSNSDB.dbml</property>
+      <property name="DbmlFile">C:\Chsword\CHSNS.Models\CHSNSDB.dbml</property>
       <property name="SourceDatabase">
         <connectionString>Data Source=.;Initial Catalog=sq_menglei;Integrated Security=True</connectionString>
         <providerType>SchemaExplorer.SqlSchemaProvider,SchemaExplorer.SqlSchemaProvider</providerType>
@@ -25,9 +25,9 @@
       <property name="ContextNamespace">CHSNS.Models</property>
     </propertySet>
     <propertySet template="E:\Documents and Settings\Administrator\My Documents\CodeSmith\Samples\v4.1\Templates\plinqo-v1.3.3239\Entities.cst">
-      <property name="DbmlFile">C:\Chsword\ChAlumna.Models\CHSNSDB.dbml</property>
-      <property name="ProjectFile">C:\Chsword\ChAlumna.Models\CHSNS.Models.csproj</property>
-      <property name="OutputDirectory">C:\Chsword\ChAlumna.Models\Entity</property>
+      <property name="DbmlFile">C:\Chsword\CHSNS.Models\CHSNSDB.dbml</property>
+      <property name="ProjectFile">C:\Chsword\CHSNS.Models\CHSNS.Models.csproj</property>
+      <property name="OutputDirectory">C:\Chsword\CHSNS.Models\Entity</property>
     </propertySet>
   </propertySets>
 </codeSmith>

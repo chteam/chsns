@@ -1,19 +1,18 @@
-body{color:#000;font:12px/1.5 "Lucida Grande",SimSun,Arial,Tahoma,Helvetica,sans-serif;}
+body{font-family:"Î¢ÈíÑÅºÚ","»ªÎÄ¿¬Ìå",Verdana,Sans-Serif;font-size:12px;}
 *{margin:0; padding:0;}
-p{text-align: justify;}
+p{}
 h3{color: #7D775C;}
 a{color:#3B5999; text-decoration:none;}
 a:hover{color:#3B5999; text-decoration:underline;}
 img{border:0;}
-h1{font-size:16px;}
-h2,h3{font-size:14px;}
-h4,h5,h6{font-size:12px;}
-h4{/*border-bottom:dashed 1px #2984ad; */}
-table{width:100%; border-collapse:collapse; overflow:hidden;}
-td{vertical-align:top;}
+
+legend{border:solid 1px #eeeeee;padding:1px 4px 3px 6px}
+fieldset {padding:10px;	margin:10px;border:#3B5999 dashed 2px;} 
+legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:1px 4px 3px 6px} 
 /*some color*/
 .error{color:red}
 .center{text-align:center;}
+.message{border:solid 1px #5c75aa}
 /* specific divs */
 #container{padding: 0px 0px 0px 250px;margin: 0px;}
 #header{height:0px; float:left;}
@@ -38,6 +37,7 @@ td{vertical-align:top;}
 .mymenu li ul li{margin-left:0;border-bottom:1px solid #fff;}
 
 .mymenu .menuli{float:left;padding:2px 5px 5px 5px;}
+.menuli a{color:#fff}
 .menu_network a{color: #3b5999;display:block;text-decoration: none;cursor: pointer;padding:1px 0px 1px 16px;margin: 1px 0 1px 0;}
 .menu_network a:hover{background-color: #5c75aa;color: #fff;padding:1px 0px 1px 16px;}
 .menu_network{margin-left:0;border: 1px solid #3b5999;z-index: 1000;background: #fff;cursor: default;text-align:left;color: #6d84b4;padding:1px;width:90px;}
@@ -229,7 +229,8 @@ input[type~="submit"],input[type~="button"]{background:#3B5999; padding:2px;bord
 
 
 
-.sbox{padding:10px;}
+
+/*.sbox{padding:10px;}
 .sbox li{margin-top:10px;}
 .sbox h4{color:#3B5999; border-bottom:solid 1px #D8DFEA;}
 .sbox h4 a{color:#333333; font-weight:normal;}
@@ -242,8 +243,7 @@ input[type~="submit"],input[type~="button"]{background:#3B5999; padding:2px;bord
 .sbox .result_div{color:#ff9933; padding-left:10px;}
 .sbox .inputpart li{list-style:none;}
 .sbox .inputpart textarea{width:600px; margin-top:10px; height:150px;}
-
-/*quick search*/
+quick search*/
 .qsearch{float:right; margin-bottom:10px;}
 *html .qsearch{margin-bottom:0px;}
 .qsearch .glass{float:right; border:1px solid #bdc7d8; border-left:0px; height:18px; width:18px;}

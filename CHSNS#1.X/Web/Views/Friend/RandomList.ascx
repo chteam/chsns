@@ -20,7 +20,7 @@
 			</ul>
 		</div>
 		<ul class="actions">
-			<li><a href="/Message.aspx?mode=compose&ToId=userid&Toname=name">发小条</a></li>
+			<li><%=Html.WriteMessage(p.UserID,p.Name)%></li>
 			<li><a href="javascript:AddFriend(<%=p.UserID %>)">加为好友</a></li>
 		</ul>
 </li>

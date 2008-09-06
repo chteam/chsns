@@ -7,7 +7,7 @@
 	<%--<%=Html.Script("/WebServices/Profile.asmx/js")%>--%>
 	<%=Html.Script("Profile")%>
 	<%=Html.Script("Reply")%>
-	<%=Html.Script("Friend")%>
+
 	<%=Html.Script("LogBook")%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

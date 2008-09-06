@@ -194,7 +194,7 @@
     <Type Name="Friend">
       <Column Name="IsTrue" Member="IsTrue" Storage="_isTrue" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
       <Column Name="IsCommon" Member="IsCommon" Storage="_isCommon" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
-      <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FromID" Member="FromID" Storage="_fromID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="ToID" Member="ToID" Storage="_toID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="FriendType" Member="FriendType" Storage="_friendType" Type="System.Int32" DbType="int" CanBeNull="true" />
@@ -278,10 +278,6 @@
   </Table>
   <Table Name="dbo.Message" Member="Message">
     <Type Name="Message">
-      <Column Name="trueid" Member="Trueid" Storage="_trueid" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id" Member="Id" Storage="_id" Type="System.Int64" DbType="bigint" CanBeNull="true" />
-      <Column Name="FromId" Member="FromId" Storage="_fromId" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="ToId" Member="ToId" Storage="_toId" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="Title" Member="Title" Storage="_title" Type="System.String" DbType="nvarchar(200) NOT NULL" CanBeNull="false" />
       <Column Name="Body" Member="Body" Storage="_body" Type="System.String" DbType="nvarchar(4000) NOT NULL" CanBeNull="false" />
       <Column Name="SendTime" Member="SendTime" Storage="_sendTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
@@ -289,6 +285,9 @@
       <Column Name="IsFromDel" Member="IsFromDel" Storage="_isFromDel" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
       <Column Name="IsToDel" Member="IsToDel" Storage="_isToDel" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
       <Column Name="IsHtml" Member="IsHtml" Storage="_isHtml" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FromID" Member="FromID" Storage="_fromID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
+      <Column Name="ToID" Member="ToID" Storage="_toID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.MiniField" Member="MiniField">
@@ -341,8 +340,6 @@
       <Column Name="ContactInfoShowLevel" Member="ContactInfoShowLevel" Storage="_contactInfoShowLevel" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" />
       <Column Name="PersonalInfoShowLevel" Member="PersonalInfoShowLevel" Storage="_personalInfoShowLevel" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" />
       <Column Name="AllShowLevel" Member="AllShowLevel" Storage="_allShowLevel" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" />
-      <Column Name="MessageAll" Member="MessageAll" Storage="_messageAll" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="MessageCount" Member="MessageCount" Storage="_messageCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="FileSizeAll" Member="FileSizeAll" Storage="_fileSizeAll" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="FileSizeCount" Member="FileSizeCount" Storage="_fileSizeCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="FriendAll" Member="FriendAll" Storage="_friendAll" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
@@ -365,6 +362,8 @@
       <Column Name="Status" Member="Status" Storage="_status" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
       <Column Name="RegTime" Member="RegTime" Storage="_regTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
       <Column Name="LoginTime" Member="LoginTime" Storage="_loginTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
+      <Column Name="OutboxCount" Member="OutboxCount" Storage="_outboxCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
+      <Column Name="InboxCount" Member="InboxCount" Storage="_inboxCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Association Name="FK_BasicInformation_Profile" Member="BasicInformation" Storage="_basicInformation" ThisKey="UserID" OtherKey="UserID" Type="BasicInformation" Cardinality="One" />
       <Association Name="FK_ContactInformation_Account" Member="ContactInformation" Storage="_contactInformation" ThisKey="UserID" OtherKey="Userid" Type="ContactInformation" Cardinality="One" />
       <Association Name="FK_FieldInformation_Profile" Member="FieldInformation" Storage="_fieldInformation" ThisKey="UserID" OtherKey="UserID" Type="FieldInformation" Cardinality="One" />

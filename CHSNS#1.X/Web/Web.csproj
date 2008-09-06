@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity.StaticFactory, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\Microsoft.Web.Mvc.dll</HintPath>
@@ -277,6 +281,7 @@
     <Content Include="Config\UserEditMenu.xml" />
     <Content Include="Default.aspx" />
     <Content Include="JavaScript\jquery-1.2.3-intellisense.js" />
+    <Content Include="JavaScript\wysiwyg.js" />
     <Content Include="JavaScript\ui.js" />
     <Content Include="Style\Default\admin.css" />
     <Content Include="Style\Default\appli.css" />
@@ -424,6 +429,8 @@
     <Content Include="Style\Facebook\Reply.css" />
     <Content Include="Style\Facebook\skin.gif" />
     <Content Include="Style\Facebook\video.css" />
+    <Content Include="Style\Facebook\wysiwyg.css" />
+    <Content Include="Style\Facebook\Images\wysiwyg.gif" />
     <Content Include="Views\Comment\ShowList.ascx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
@@ -440,7 +447,9 @@
     <Content Include="Views\Home\Setting.aspx" />
     <Content Include="Views\Message\Details.aspx" />
     <Content Include="Views\Message\InBox.aspx" />
+    <Content Include="Views\Message\InboxList.ascx" />
     <Content Include="Views\Message\OutBox.aspx" />
+    <Content Include="Views\Message\OutboxList.ascx" />
     <Content Include="Views\Message\Write.aspx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
@@ -515,9 +524,6 @@
     <Content Include="JavaScript\Invite.js" />
     <Content Include="JavaScript\LogBook.js" />
     <Content Include="JavaScript\ManageGroup.js" />
-    <Content Include="JavaScript\Message.js" />
-    <Content Include="JavaScript\MicrosoftAjaxTimer.js" />
-    <Content Include="JavaScript\MicrosoftAjaxWebForms.js" />
     <Content Include="JavaScript\Notebook.js" />
     <Content Include="JavaScript\PageSet.js" />
     <Content Include="JavaScript\Photos.js" />
@@ -637,8 +643,6 @@
     <Content Include="Template\Default\LogBook.htm" />
     <Content Include="Template\Default\LogBookMaster.htm" />
     <Content Include="Template\Default\Login.htm" />
-    <Content Include="Template\Default\MessageList.htm" />
-    <Content Include="Template\Default\MessageListItem.htm" />
     <Content Include="Template\Default\MyApplicationItem.htm" />
     <Content Include="Template\Default\MyClass.htm" />
     <Content Include="Template\Default\NewGroup.htm" />
@@ -831,12 +835,26 @@
     <Compile Include="Views\Message\InBox.aspx.designer.cs">
       <DependentUpon>InBox.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Message\InboxList.ascx.cs">
+      <DependentUpon>InboxList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Message\InboxList.ascx.designer.cs">
+      <DependentUpon>InboxList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Message\OutBox.aspx.cs">
       <DependentUpon>OutBox.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Message\OutBox.aspx.designer.cs">
       <DependentUpon>OutBox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Message\OutboxList.ascx.cs">
+      <DependentUpon>OutboxList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Message\OutboxList.ascx.designer.cs">
+      <DependentUpon>OutboxList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Message\Write.aspx.cs">
       <DependentUpon>Write.aspx</DependentUpon>

@@ -81,12 +81,12 @@ namespace CHSNS.Models
             }
         }
         
-        private long _iD;
+        private long _iD = default(long);
 
         /// <summary>
-        /// Gets or sets the ID column value.
+        /// Gets the ID column value.
         /// </summary>
-        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL", IsPrimaryKey=true, CanBeNull=false)]
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
         public long ID
         {
             get { return _iD; }

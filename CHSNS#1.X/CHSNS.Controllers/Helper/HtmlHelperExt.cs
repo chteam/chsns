@@ -1,7 +1,18 @@
 ﻿using System.Web.Mvc;
-
+using System.Web;
 namespace CHSNS.Helper {
 	public static class HtmlHelperExt {
+
+		public static string WriteMessage(this HtmlHelper Html,string text,long toid,string toname){
+			return Html.ActionLink(text, "Write", "Message", new{toid, toname = HttpUtility.UrlEncode(toname)}, null);
+		}
+		public static string WriteMessage(this HtmlHelper Html, long toid, string toname){
+			return Html.WriteMessage("发站内信", toid, toname);
+		}
+
+		public static string MessageDetails(this HtmlHelper Html,string title,long id){
+			return Html.ActionLink(title, "Details", "Message", new{id}, null);
+		}
 		public static string UserPageLink(this HtmlHelper Html, long userid, string text) {
 			return Html.ActionLink(text, "Index", "User", new { userid }, null);
 		}

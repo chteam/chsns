@@ -22,7 +22,7 @@
 		<ul class="actions">
 			<li><a href="javascript:AgreeFriend(<%=p.UserID %>)">接受请求</a></li>
 			<li><a href="javascript:IgnoreFriend(<%=p.UserID %>)">忽略请求</a></li>
-			<li><a href="/Message.aspx?mode=compose&ToId=userid&Toname=name">发小条</a></li>
+			<li><%=Html.WriteMessage(p.UserID,p.Name)%></li>
 		</ul>
 </li>
 <%} %>
