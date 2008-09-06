@@ -305,79 +305,8 @@ var isNum = function(_) {
 };
 
 //==============================Preview
-function InitHistory(){
-	if(isIE()){//in Ie do it from iframe
-	    var i = document.createElement("<iframe id=\"__historyFrame\" style='display:none;' src='/Template/History.htm' scrolling='no' frameborder='0' />");
-	    $h("extendDiv6",i);
-	}
-	Sys.Application.add_init(function() {
-		  var h = Sys.Application.get_history();
-		  h.setServerId("History1", "History1");
-	});
-}
 
-//Cache in Client
-var GetVm=function(page,query,onsuccess){
-	var request=new Sys.Net.WebRequest();
-	request.set_url(page);
-	request.set_httpVerb("POST");
-	request.add_completed(onsuccess);
-	request.set_body(query);
-	request.invoke(); 
-};
-var GetTemplate=function(_,onsuccess,Context){//_is the template name 2007 9 26 zsword
-    ChAlumna.Identity.GetTemplate(_,onsuccess,onfail,Context);
-};
 
-var $ws=function(url,j,success){
-	var r=new Sys.Net.WebRequest();
-	r.set_url("/WebServices/"+url);
-	r.set_httpVerb("POST");
-	r.get_headers()["Content-Type"]="application/json; charset=utf-8";
-	r.add_completed(function(r){
-		if (r.get_responseAvailable()){
-		    eval("var x="+r.get_responseData()+";");
-			success(x);
-		}
-	});
-	r.set_body(j);
-	r.invoke(); 
-};
-
-function GetConfig(fn,name){
-	if(isEmpty(fn)){
-		ChAlumna.Identity.GetConfig(name,onsuccess,onfail,Context);
-	}else{
-		ChAlumna.Identity.GetConfig(fn,name,onsuccess,onfail,Context);
-	}
-}
-function QueryString(fieldName){  
-  var urlString = document.location.search;//urlString??info=1&name=2
-  if(urlString != null){
-          var typeQu = fieldName+"=";
-          var urlEnd = urlString.indexOf(typeQu);//find the postion of info=1, is 1
-		if(urlEnd != -1){
-               var paramsUrl = urlString.substring(urlEnd+typeQu.length);//paramsUrl=1&name=2
-               var isEnd =  paramsUrl.indexOf('&');
-               if(isEnd != -1){
-                    return paramsUrl.substring(0, isEnd);//info=1
-                }else{
-                    return paramsUrl;//only 1 param
-                }
-         }else 
-             return "";//there's no info=1
-    }else
-        return "";//no Url with params
-}
-var get_Viewerid=function(){
-	var viewerid=$v("Hduserid");
-	if($v("Hduserid")=="")
-	viewerid=0;
-	get_Viewerid=function(){
-		return viewerid;
-	};
-	return get_Viewerid();
-};
 //Path part
 var ClientUserFolder=function(userid){
 	var u=new String(userid);

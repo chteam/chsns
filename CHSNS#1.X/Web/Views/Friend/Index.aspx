@@ -3,7 +3,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.Script("PageSet") %>
-	<%=Html.Script("friend")%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<div id="UserListMsg">
@@ -18,7 +17,7 @@
 		</div>
 		<ol id="UserListItems" class="userlist">
 			<%
-				Html.RenderPartial("FriendList", ViewData["source"]); %>
+				Html.RenderPartial("FriendList", ViewData.Model); %>
 		</ol>
 		<div id="PageDown" class="page">
 		</div>
@@ -39,7 +38,7 @@
 			});
 		};
 		var setpage = function(p) {
-			$.post('<%=Url.Action("FriendList") %>', {"p":p,"userid":<%=ViewData.Model.UserID %>}, function(r) {
+			$.post('<%=Url.Action("FriendList") %>', {"p":p,"userid":<%=ViewData["UserID"] %>}, function(r) {
 				$h("#UserListItems",r);
 				pagefun();
 			});

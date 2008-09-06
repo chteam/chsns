@@ -20,6 +20,7 @@ namespace CHSNS.Data
 		public GolbalMediator Golbal { get; set; }
 		public FriendMediator Friend { get; set; }
 		public ApplicationMediator Application { get; set; }
+		public MessageMediator Message { get; set; }
 		public void Init() {
 			DataBaseExecutor = new DataBaseExecutor(new SqlDataOpener(SiteConfig.SiteConnectionString));
 			//_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
@@ -32,7 +33,7 @@ namespace CHSNS.Data
 			Golbal = new GolbalMediator(this);
 			Friend = new FriendMediator(this);
 			Application = new ApplicationMediator(this);
-		
+			Message = new MessageMediator(this);
 		}
 		#endregion
 		#region IDataBase ≥…‘±

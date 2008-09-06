@@ -188,7 +188,6 @@
     <Compile Include="Execute\GroupExecuter.cs" />
     <Compile Include="Execute\GroupSettingExecuter.cs" />
     <Compile Include="Execute\GroupUserExecuter.cs" />
-    <Compile Include="Execute\MessageExecuter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebServices\AutoComplete.asmx.cs">
       <DependentUpon>AutoComplete.asmx</DependentUpon>

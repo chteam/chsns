@@ -37,94 +37,6 @@ namespace CHSNS.Models
         
         #region Column Mapped Properties
         
-        private long _trueid = default(long);
-
-        /// <summary>
-        /// Gets the trueid column value.
-        /// </summary>
-        [Column(Name="trueid", Storage="_trueid", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long Trueid
-        {
-            get { return _trueid; }
-            set
-            {
-                if (_trueid != value)
-                {
-                    OnTrueidChanging(value);
-                    OnPropertyChanging("Trueid");
-                    _trueid = value;
-                    OnPropertyChanged("Trueid");
-                    OnTrueidChanged();
-                }
-            }
-        }
-        
-        private Nullable<long> _id;
-
-        /// <summary>
-        /// Gets or sets the id column value.
-        /// </summary>
-        [Column(Name="id", Storage="_id", DbType="bigint")]
-        public Nullable<long> Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    OnIdChanging(value);
-                    OnPropertyChanging("Id");
-                    _id = value;
-                    OnPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        
-        private long _fromId;
-
-        /// <summary>
-        /// Gets or sets the FromId column value.
-        /// </summary>
-        [Column(Name="FromId", Storage="_fromId", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long FromId
-        {
-            get { return _fromId; }
-            set
-            {
-                if (_fromId != value)
-                {
-                    OnFromIdChanging(value);
-                    OnPropertyChanging("FromId");
-                    _fromId = value;
-                    OnPropertyChanged("FromId");
-                    OnFromIdChanged();
-                }
-            }
-        }
-        
-        private long _toId;
-
-        /// <summary>
-        /// Gets or sets the ToId column value.
-        /// </summary>
-        [Column(Name="ToId", Storage="_toId", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long ToId
-        {
-            get { return _toId; }
-            set
-            {
-                if (_toId != value)
-                {
-                    OnToIdChanging(value);
-                    OnPropertyChanging("ToId");
-                    _toId = value;
-                    OnPropertyChanged("ToId");
-                    OnToIdChanged();
-                }
-            }
-        }
-        
         private string _title;
 
         /// <summary>
@@ -278,6 +190,72 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _iD = default(long);
+
+        /// <summary>
+        /// Gets the ID column value.
+        /// </summary>
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long ID
+        {
+            get { return _iD; }
+            set
+            {
+                if (_iD != value)
+                {
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        
+        private long _fromID;
+
+        /// <summary>
+        /// Gets or sets the FromID column value.
+        /// </summary>
+        [Column(Name="FromID", Storage="_fromID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long FromID
+        {
+            get { return _fromID; }
+            set
+            {
+                if (_fromID != value)
+                {
+                    OnFromIDChanging(value);
+                    OnPropertyChanging("FromID");
+                    _fromID = value;
+                    OnPropertyChanged("FromID");
+                    OnFromIDChanged();
+                }
+            }
+        }
+        
+        private long _toID;
+
+        /// <summary>
+        /// Gets or sets the ToID column value.
+        /// </summary>
+        [Column(Name="ToID", Storage="_toID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long ToID
+        {
+            get { return _toID; }
+            set
+            {
+                if (_toID != value)
+                {
+                    OnToIDChanging(value);
+                    OnPropertyChanging("ToID");
+                    _toID = value;
+                    OnPropertyChanged("ToID");
+                    OnToIDChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -290,26 +268,6 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Trueid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnTrueidChanging(long value);
-        /// <summary>Called after Trueid has Changed.</summary>
-        partial void OnTrueidChanged();
-        /// <summary>Called when Id is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIdChanging(Nullable<long> value);
-        /// <summary>Called after Id has Changed.</summary>
-        partial void OnIdChanged();
-        /// <summary>Called when FromId is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnFromIdChanging(long value);
-        /// <summary>Called after FromId has Changed.</summary>
-        partial void OnFromIdChanged();
-        /// <summary>Called when ToId is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnToIdChanging(long value);
-        /// <summary>Called after ToId has Changed.</summary>
-        partial void OnToIdChanged();
         /// <summary>Called when Title is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnTitleChanging(string value);
@@ -345,6 +303,21 @@ namespace CHSNS.Models
         partial void OnIsHtmlChanging(bool value);
         /// <summary>Called after IsHtml has Changed.</summary>
         partial void OnIsHtmlChanged();
+        /// <summary>Called when ID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnIDChanging(long value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when FromID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnFromIDChanging(long value);
+        /// <summary>Called after FromID has Changed.</summary>
+        partial void OnFromIDChanged();
+        /// <summary>Called when ToID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnToIDChanging(long value);
+        /// <summary>Called after ToID has Changed.</summary>
+        partial void OnToIDChanged();
         #endregion
         
     }

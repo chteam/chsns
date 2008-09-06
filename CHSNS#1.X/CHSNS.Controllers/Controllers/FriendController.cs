@@ -14,20 +14,20 @@ namespace CHSNS.Controllers {
 			return View();
 		}
 		[LoginedFilter]
-		public ActionResult Index(){
-			using (new TransactionScope()) {
-				var Ownerid = this.QueryLong("userid");
-				if (Ownerid == 0) Ownerid = CHSNSUser.Current.UserID;				
-				var b = DBExt.Friend.UserFriendInfo(Ownerid);
+		public ActionResult Index(int? p, long? userid){
+			using (new TransactionScope()){
+				if (!userid.HasValue || userid == 0) userid = CHUser.UserID;
+				if (!p.HasValue || p == 0) p = 1;
+				var b = DBExt.Friend.UserFriendInfo(userid.Value);
 				if (b == null) throw new Exception("用户不存在");
+				ViewData["UserID"] = userid;
 				ViewData["Name"] = b.Name;
-				int nowpage = this.QueryNum("p") == 0 ? 1 : this.QueryNum("p");
-				ViewData["NowPage"] = nowpage ;
+				ViewData["NowPage"] = p;
 				ViewData["PageCount"] = b.FriendCount;
-				ViewData["source"] = DBExt.Friend.GetFriends(Ownerid).Pager(nowpage, 10);
-				return View(b);
+				return FriendList(p.Value, userid.Value);
 			}
 		}
+
 		[LoginedFilter]
 		[ActionName("Request")]
 		public ActionResult FriendRequest(){
