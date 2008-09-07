@@ -199,17 +199,17 @@ namespace CHSNS.Controllers {
 			ViewData["CommentRows"] = comment;
 			ViewData["CommentType"] = cmt.Type;
 
-			var own = (from c in DB.LogTable
+			var own = (from c in DB.Note
 					   where (c.ID == cmt.LogID)
 					   select new
 					   {
-						   c.Istellme
+						   c.IsTellMe
 					   }).SingleOrDefault();
-			if (own!=null && own.Istellme == 1) {
+			if (own != null && own.IsTellMe == 1) {
 
 				var cemail = comment.SingleOrDefault();
 				if (cemail != null) {
-					var item = (from l in DB.LogTable
+					var item = (from l in DB.Note
 								where l.ID == cmt.LogID
 								select new
 								{
@@ -217,11 +217,9 @@ namespace CHSNS.Controllers {
 									body = cmt.Body,
 									name = CHSNSUser.Current.Username,
 									Logid = cmt.LogID,
-									userid = CHSNSUser.Current.UserID,
-									l.GroupId
+									userid = CHSNSUser.Current.UserID
 								}).SingleOrDefault();
-					Dictionary dict = new Dictionary();
-					dict.Add("item", item);
+					var dict = new Dictionary{{"item", item}};
 					Email.SystemSend(
 						string.Format(
 						"[{0}»Ø¸´Í¨Öª]re: {1}",

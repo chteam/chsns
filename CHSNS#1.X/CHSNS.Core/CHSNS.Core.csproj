@@ -106,14 +106,10 @@
     <Compile Include="Encrypt.cs" />
     <Compile Include="ImageSizeType.cs" />
     <Compile Include="UserStatusType.cs" />
-    <Compile Include="File.cs" />
-    <Compile Include="ICHSNSDB.cs" />
     <Compile Include="Interface\IDataOpener.cs" />
-    <Compile Include="Interface\IEmail.cs" />
     <Compile Include="NetworkCross.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="Regular.cs" />
-    <Compile Include="SmtpMail.cs" />
     <Compile Include="Thumbnail.cs" />
     <Compile Include="Web\UI\FormFixer.cs" />
     <Compile Include="Web\UI\HtmlScript.cs" />

@@ -148,12 +148,6 @@ namespace CHSNS.Models
             get { return GetTable<ContactInformation>(); }
         }
         
-        /// <summary>Represents the dbo.DelLog table in the underlying database.</summary>
-        public Table<DelLog> DelLog
-        {
-            get { return GetTable<DelLog>(); }
-        }
-        
         /// <summary>Represents the dbo.Event table in the underlying database.</summary>
         public Table<Event> Event
         {
@@ -190,12 +184,6 @@ namespace CHSNS.Models
             get { return GetTable<GroupUser>(); }
         }
         
-        /// <summary>Represents the dbo.Log table in the underlying database.</summary>
-        public Table<Log> LogTable
-        {
-            get { return GetTable<Log>(); }
-        }
-        
         /// <summary>Represents the dbo.LogTag table in the underlying database.</summary>
         public Table<LogTag> LogTag
         {
@@ -212,6 +200,12 @@ namespace CHSNS.Models
         public Table<MiniField> MiniField
         {
             get { return GetTable<MiniField>(); }
+        }
+        
+        /// <summary>Represents the dbo.Note table in the underlying database.</summary>
+        public Table<Note> Note
+        {
+            get { return GetTable<Note>(); }
         }
         
         /// <summary>Represents the dbo.PersonalInformation table in the underlying database.</summary>
@@ -363,15 +357,6 @@ namespace CHSNS.Models
         /// <summary>Called before a ContactInformation is deleted.</summary>
         /// <param name="instance">The instance.</param>
         partial void DeleteContactInformation(ContactInformation instance);
-        /// <summary>Called before a DelLog is inserted.</summary>
-        /// <param name="instance">The instance.</param>
-        partial void InsertDelLog(DelLog instance);
-        /// <summary>Called before a DelLog is updated.</summary>
-        /// <param name="instance">The instance.</param>
-        partial void UpdateDelLog(DelLog instance);
-        /// <summary>Called before a DelLog is deleted.</summary>
-        /// <param name="instance">The instance.</param>
-        partial void DeleteDelLog(DelLog instance);
         /// <summary>Called before a Event is inserted.</summary>
         /// <param name="instance">The instance.</param>
         partial void InsertEvent(Event instance);
@@ -426,15 +411,6 @@ namespace CHSNS.Models
         /// <summary>Called before a GroupUser is deleted.</summary>
         /// <param name="instance">The instance.</param>
         partial void DeleteGroupUser(GroupUser instance);
-        /// <summary>Called before a Log is inserted.</summary>
-        /// <param name="instance">The instance.</param>
-        partial void InsertLog(Log instance);
-        /// <summary>Called before a Log is updated.</summary>
-        /// <param name="instance">The instance.</param>
-        partial void UpdateLog(Log instance);
-        /// <summary>Called before a Log is deleted.</summary>
-        /// <param name="instance">The instance.</param>
-        partial void DeleteLog(Log instance);
         /// <summary>Called before a LogTag is inserted.</summary>
         /// <param name="instance">The instance.</param>
         partial void InsertLogTag(LogTag instance);
@@ -462,6 +438,15 @@ namespace CHSNS.Models
         /// <summary>Called before a MiniField is deleted.</summary>
         /// <param name="instance">The instance.</param>
         partial void DeleteMiniField(MiniField instance);
+        /// <summary>Called before a Note is inserted.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void InsertNote(Note instance);
+        /// <summary>Called before a Note is updated.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void UpdateNote(Note instance);
+        /// <summary>Called before a Note is deleted.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void DeleteNote(Note instance);
         /// <summary>Called before a PersonalInformation is inserted.</summary>
         /// <param name="instance">The instance.</param>
         partial void InsertPersonalInformation(PersonalInformation instance);

@@ -32,7 +32,7 @@ namespace CHSNS.Models
         public LogTag()
         {
             OnCreated();
-            _log = default(EntityRef<Log>);
+            _log = default(EntityRef<Note>);
             _tagidTags = default(EntityRef<Tags>);
         }
         #endregion
@@ -116,30 +116,30 @@ namespace CHSNS.Models
         
         #region Association Mapped Properties
         
-        private EntityRef<Log> _log;
+        private EntityRef<Note> _log;
 
         /// <summary>
-        /// Gets or sets the Log association.
+        /// Gets or sets the Note association.
         /// </summary>
         [Association(Name="FK_LogTag_Log", Storage="_log", ThisKey="LogID", OtherKey="ID", IsForeignKey=true)]
-        public Log Log
+        public Note Log
         {
             get { return _log.Entity; }
             set
             {
-                Log previousValue = _log.Entity;
+                Note previousValue = _log.Entity;
                 if (previousValue != value || _log.HasLoadedOrAssignedValue == false)
                 {
                     OnPropertyChanging("Log");
                     if (previousValue != null)
                     {
                         _log.Entity = null;
-                        previousValue.LogTagList.Remove(this);
+                        previousValue.LogLogTagList.Remove(this);
                     }
                     _log.Entity = value;
                     if (value != null)
                     {
-                        value.LogTagList.Add(this);
+                        value.LogLogTagList.Add(this);
                         _logID = value.ID;
                     }
                     else

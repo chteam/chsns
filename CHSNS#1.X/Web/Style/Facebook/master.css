@@ -6,9 +6,8 @@ a{color:#3B5999; text-decoration:none;}
 a:hover{color:#3B5999; text-decoration:underline;}
 img{border:0;}
 
-legend{border:solid 1px #eeeeee;padding:1px 4px 3px 6px}
 fieldset {padding:10px;	margin:10px;border:#3B5999 dashed 2px;} 
-legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:1px 4px 3px 6px} 
+legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:3px 5px} 
 /*some color*/
 .error{color:red}
 .center{text-align:center;}

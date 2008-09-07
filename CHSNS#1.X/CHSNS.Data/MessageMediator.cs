@@ -62,9 +62,9 @@ VALUES(@fromid,@toid,@title,@body,getdate(),0,0,0,@ishtml)",
 				"@body", m.IsHtml ? m.Body : HttpUtility.HtmlEncode(m.Body),
 				"@ishtml", m.IsHtml
 				);
-			DataBaseExecutor.Execute(@"update [profile] set inboxcount=inboxcount+1 where userid=@userid",
+			DataBaseExecutor.Execute(@"update [profile] set inboxcount=inboxcount+1 where userid=@userid and not inboxcount<=0",
 				"@userid",m.ToID);
-			DataBaseExecutor.Execute(@"update [profile] set outboxcount=outboxcount+1 where userid=@userid",
+			DataBaseExecutor.Execute(@"update [profile] set outboxcount=outboxcount+1 where userid=@userid and not outbox<=0",
 				"@userid", m.FromID);
 		}
 

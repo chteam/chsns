@@ -3,7 +3,7 @@ using CHSNS;
 using CHSNS.Config;
 
 namespace Chsword {
-	public class WebServices : System.Web.Services.WebService,ICHSNSDB{
+	public class WebServices : System.Web.Services.WebService{
 		#region ICHSNSDB 成员
 
 		private CHSNS.Data.DBExt _dbext;

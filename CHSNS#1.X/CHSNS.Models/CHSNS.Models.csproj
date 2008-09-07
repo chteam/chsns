@@ -153,11 +153,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Entity\LinqEntityBase.cs" />
-    <Compile Include="Entity\Log.cs" />
-    <Compile Include="Entity\Log.Generated.cs">
-      <DependentUpon>Log.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Entity\LogTag.cs" />
     <Compile Include="Entity\LogTag.Generated.cs">
       <DependentUpon>LogTag.cs</DependentUpon>
@@ -173,6 +168,8 @@
       <DependentUpon>MiniField.cs</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entity\Note.cs" />
+    <Compile Include="Entity\Note.Generated.cs" />
     <Compile Include="Entity\PersonalInformation.cs" />
     <Compile Include="Entity\PersonalInformation.Generated.cs">
       <DependentUpon>PersonalInformation.cs</DependentUpon>

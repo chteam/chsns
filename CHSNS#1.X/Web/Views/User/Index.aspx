@@ -56,15 +56,15 @@
 				<ul id="Profile_Accordion">
 					<li><%
    	Html.RenderPartial("index-account", ViewData.Model);%></li>
-					<li><%
+<%--					<li><%
    	Html.RenderPartial("index-school", ViewData.Model);%></li>
 					<li><%
    	Html.RenderPartial("index-contact", ViewData.Model);%></li>
 					<li><%
-   	Html.RenderPartial("index-personal", ViewData.Model);%></li>
+   	Html.RenderPartial("index-personal", ViewData.Model);%></li>--%>
 				</ul>
 				<script type="text/javascript">
-					$("#Profile_Accordion").accordion();
+					//$("#Profile_Accordion").accordion();
 				//	new Accordian().Show('#Profile_Accordion', 3, 'accordionHeaderSelected');
 				</script>
 
