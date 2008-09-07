@@ -20,10 +20,10 @@
 					select b).SingleOrDefault<Blogs>();
 		}
 		public IList GetPosts(long userid) {
-			return (from b in DB.LogTable
+			return (from b in DB.Note
 					where b.UserID == userid
 					&& b.IsPost == (byte)ShowType.完全公开
-					&& b.GroupId==0
+					//&& b.GroupId==0
 					select new
 					{
 						b.Title,

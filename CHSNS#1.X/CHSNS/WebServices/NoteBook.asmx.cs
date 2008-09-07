@@ -186,31 +186,31 @@ namespace CHSNS {
 		#region 发表及编辑日志或帖子
 		[WebMethod(Description = "发表日志", EnableSession = true)]
 		public long Note_Add(long groupid, string title, string body, byte showlevel, bool istellme, string tags) {
-			Log n = new Log();
-			n.GroupId = groupid;
-			n.Title = title;
-			n.Body = body;
-			n.IsPost = showlevel;
-			n.Istellme = (byte)(istellme ? 1 : 0);
+			//Log n = new Log();
+			//n.GroupId = groupid;
+			//n.Title = title;
+			//n.Body = body;
+			//n.IsPost = showlevel;
+			//n.Istellme = (byte)(istellme ? 1 : 0);
 
 
-			DBExt.Note_Add(n);
+			//DBExt.Note_Add(n);
 
-			DBExt.NoteTags_Add(n.ID, tags);
+			//DBExt.NoteTags_Add(n.ID, tags);
 
-			return n.ID;
+			return 1;//n.ID;
 		}
 		[WebMethod(Description="编辑日志",EnableSession=true)]
 		public void Note_Edit(long groupid,long logid,string body ,byte showlevel,bool istellme,string tags) {
-			Log n = new Log();
-			n.GroupId = groupid;
-			n.ID = logid;
-			n.Body = body;
-			n.IsPost = showlevel;
-			n.Istellme = (byte)(istellme ? 1 : 0);
+			//Log n = new Log();
+			//n.GroupId = groupid;
+			//n.ID = logid;
+			//n.Body = body;
+			//n.IsPost = showlevel;
+			//n.Istellme = (byte)(istellme ? 1 : 0);
 
-			DBExt.Note_Edit(n);
-			DBExt.NoteTags_Change(n.ID, tags);
+			//DBExt.Note_Edit(n);
+			//DBExt.NoteTags_Change(n.ID, tags);
 		}
 		[WebMethod(Description = "删除日志", EnableSession = true)]
 		public void Note_Delete(long logid,long groupid) {

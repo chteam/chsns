@@ -77,16 +77,7 @@
     <Compile Include="Base\BaseAdminController.cs" />
     <Compile Include="Base\BaseBlockController.cs" />
     <Compile Include="Base\BaseController.cs" />
-    <Compile Include="Base\BaseSystemAppController.cs" />
-    <Compile Include="Base\BaseViewComponent.cs" />
-    <Compile Include="Base\BaseWizardPage.cs" />
     <Compile Include="Controllers\AdController.cs" />
-    <Compile Include="Controllers\Admin\AdminController.cs" />
-    <Compile Include="Controllers\Admin\AdminController_File.cs" />
-    <Compile Include="Controllers\Admin\CommonController.cs" />
-    <Compile Include="Controllers\Admin\FieldController.cs" />
-    <Compile Include="Controllers\Admin\SqlController.cs" />
-    <Compile Include="Controllers\Admin\UserManage.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
@@ -94,7 +85,6 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
-    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HtmlController.cs" />
     <Compile Include="Controllers\IdentityController.cs" />

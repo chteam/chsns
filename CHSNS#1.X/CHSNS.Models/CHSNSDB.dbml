@@ -131,25 +131,6 @@
       <Association Name="FK_ContactInformation_Account" Member="Profile" Storage="_profile" ThisKey="Userid" OtherKey="UserID" Type="Profile" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DelLog" Member="DelLog">
-    <Type Name="DelLog">
-      <Column Name="id" Member="Id" Storage="_id" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="userid" Member="Userid" Storage="_userid" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="title" Member="Title" Storage="_title" Type="System.String" DbType="nvarchar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="body" Member="Body" Storage="_body" Type="System.String" DbType="ntext" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="IsPost" Member="IsPost" Storage="_isPost" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" />
-      <Column Name="Anonymous" Member="Anonymous" Storage="_anonymous" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
-      <Column Name="AddTime" Member="AddTime" Storage="_addTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
-      <Column Name="EditTime" Member="EditTime" Storage="_editTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
-      <Column Name="ViewCount" Member="ViewCount" Storage="_viewCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="PushCount" Member="PushCount" Storage="_pushCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="TrackBackCount" Member="TrackBackCount" Storage="_trackBackCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="CommentCount" Member="CommentCount" Storage="_commentCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="GroupId" Member="GroupId" Storage="_groupId" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="DelTime" Member="DelTime" Storage="_delTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
-      <Column Name="Executerid" Member="Executerid" Storage="_executerid" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.Event" Member="Event">
     <Type Name="Event">
       <Column Name="trueid" Member="Trueid" Storage="_trueid" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -244,35 +225,12 @@
       <Association Name="FK_GroupUser_Group" Member="Group" Storage="_group" ThisKey="GroupID" OtherKey="ID" Type="Group" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Log" Member="LogTable">
-    <Type Name="Log">
-      <Column Name="Trueid" Member="Trueid" Storage="_trueid" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="title" Member="Title" Storage="_title" Type="System.String" DbType="nvarchar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="body" Member="Body" Storage="_body" Type="System.String" DbType="ntext" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="IsPost" Member="IsPost" Storage="_isPost" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" />
-      <Column Name="Anonymous" Member="Anonymous" Storage="_anonymous" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
-      <Column Name="AddTime" Member="AddTime" Storage="_addTime" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
-      <Column Name="EditTime" Member="EditTime" Storage="_editTime" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
-      <Column Name="ViewCount" Member="ViewCount" Storage="_viewCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="PushCount" Member="PushCount" Storage="_pushCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="TrackBackCount" Member="TrackBackCount" Storage="_trackBackCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="CommentCount" Member="CommentCount" Storage="_commentCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="GroupId" Member="GroupId" Storage="_groupId" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="LastCommentUserid" Member="LastCommentUserid" Storage="_lastCommentUserid" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="LastCommentTime" Member="LastCommentTime" Storage="_lastCommentTime" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
-      <Column Name="istellme" Member="Istellme" Storage="_istellme" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" />
-      <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Member="UserID" Storage="_userID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Association Name="FK_LogTag_Log" Member="LogTagList" Storage="_logTagList" ThisKey="ID" OtherKey="LogID" Type="LogTag" />
-      <Association Name="FK_Push_Log" Member="PushList" Storage="_pushList" ThisKey="ID" OtherKey="Logid" Type="Push" />
-    </Type>
-  </Table>
   <Table Name="dbo.LogTag" Member="LogTag">
     <Type Name="LogTag">
       <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TagID" Member="TagID" Storage="_tagID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="LogID" Member="LogID" Storage="_logID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
-      <Association Name="FK_LogTag_Log" Member="Log" Storage="_log" ThisKey="LogID" OtherKey="ID" Type="Log" IsForeignKey="true" />
+      <Association Name="FK_LogTag_Log" Member="Log" Storage="_log" ThisKey="LogID" OtherKey="ID" Type="Note" IsForeignKey="true" />
       <Association Name="FK_LogTag_Tags" Member="TagidTags" Storage="_tagidTags" ThisKey="TagID" OtherKey="Id" Type="Tags" IsForeignKey="true" />
     </Type>
   </Table>
@@ -297,6 +255,27 @@
       <Column Name="name" Member="Name" Storage="_name" Type="System.String" DbType="nvarchar(50) NOT NULL" CanBeNull="false" />
       <Column Name="pid" Member="Pid" Storage="_pid" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="class" Member="Class" Storage="_class" Type="System.Int32" DbType="int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Note" Member="Note">
+    <Type Name="Note">
+      <Column Name="ID" Member="ID" Storage="_iD" Type="System.Int64" DbType="bigint NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Member="UserID" Storage="_userID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Member="Title" Storage="_title" Type="System.String" DbType="nvarchar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Member="Body" Storage="_body" Type="System.String" DbType="ntext NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="IsPost" Member="IsPost" Storage="_isPost" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" />
+      <Column Name="Anonymous" Member="Anonymous" Storage="_anonymous" Type="System.Boolean" DbType="bit" CanBeNull="true" />
+      <Column Name="AddTime" Member="AddTime" Storage="_addTime" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
+      <Column Name="EditTime" Member="EditTime" Storage="_editTime" Type="System.DateTime" DbType="datetime NOT NULL" CanBeNull="false" />
+      <Column Name="ViewCount" Member="ViewCount" Storage="_viewCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
+      <Column Name="PushCount" Member="PushCount" Storage="_pushCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
+      <Column Name="TrackBackCount" Member="TrackBackCount" Storage="_trackBackCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
+      <Column Name="CommentCount" Member="CommentCount" Storage="_commentCount" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
+      <Column Name="LastCommentUserID" Member="LastCommentUserID" Storage="_lastCommentUserID" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
+      <Column Name="LastCommentTime" Member="LastCommentTime" Storage="_lastCommentTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
+      <Column Name="IsTellMe" Member="IsTellMe" Storage="_isTellMe" Type="System.Byte" DbType="tinyint NOT NULL" CanBeNull="false" />
+      <Association Name="FK_LogTag_Log" Member="LogLogTagList" Storage="_logLogTagList" ThisKey="ID" OtherKey="LogID" Type="LogTag" />
+      <Association Name="FK_Push_Log" Member="LogidPushList" Storage="_logidPushList" ThisKey="ID" OtherKey="Logid" Type="Push" />
     </Type>
   </Table>
   <Table Name="dbo.PersonalInformation" Member="PersonalInformation">
@@ -382,7 +361,7 @@
       <Column Name="Logid" Member="Logid" Storage="_logid" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="userid" Member="Userid" Storage="_userid" Type="System.Int64" DbType="bigint NOT NULL" CanBeNull="false" />
       <Column Name="PushTime" Member="PushTime" Storage="_pushTime" Type="System.DateTime" DbType="smalldatetime NOT NULL" CanBeNull="false" />
-      <Association Name="FK_Push_Log" Member="Log" Storage="_log" ThisKey="Logid" OtherKey="ID" Type="Log" IsForeignKey="true" />
+      <Association Name="FK_Push_Log" Member="Log" Storage="_log" ThisKey="Logid" OtherKey="ID" Type="Note" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.QinShi" Member="QinShi">

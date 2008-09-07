@@ -17,50 +17,72 @@ using System.Diagnostics;
 namespace CHSNS.Models
 {
     /// <summary>
-    /// The class representing the dbo.Log table.
+    /// The class representing the dbo.Note table.
     /// </summary>
-    [Table(Name="dbo.Log")]
-    public partial class Log
+    [Table(Name="dbo.Note")]
+    public partial class Note
         : LinqEntityBase
     {
         
         #region Default Constructor
         /// <summary>
-        /// Initializes a new instance of the <see cref="Log"/> class.
+        /// Initializes a new instance of the <see cref="Note"/> class.
         /// </summary>
         [DebuggerNonUserCodeAttribute()]
-        public Log()
+        public Note()
         {
             OnCreated();
-            _logTagList = new EntitySet<LogTag>(
-                new System.Action<LogTag>(this.Attach_LogTagList),
-                new System.Action<LogTag>(this.Detach_LogTagList));
-            _pushList = new EntitySet<Push>(
-                new System.Action<Push>(this.Attach_PushList),
-                new System.Action<Push>(this.Detach_PushList));
+            _logLogTagList = new EntitySet<LogTag>(
+                new System.Action<LogTag>(this.Attach_LogLogTagList),
+                new System.Action<LogTag>(this.Detach_LogLogTagList));
+            _logidPushList = new EntitySet<Push>(
+                new System.Action<Push>(this.Attach_LogidPushList),
+                new System.Action<Push>(this.Detach_LogidPushList));
         }
         #endregion
         
         #region Column Mapped Properties
         
-        private long _trueid = default(long);
+        private long _iD = default(long);
 
         /// <summary>
-        /// Gets the Trueid column value.
+        /// Gets the ID column value.
         /// </summary>
-        [Column(Name="Trueid", Storage="_trueid", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
-        public long Trueid
+        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, CanBeNull=false)]
+        public long ID
         {
-            get { return _trueid; }
+            get { return _iD; }
             set
             {
-                if (_trueid != value)
+                if (_iD != value)
                 {
-                    OnTrueidChanging(value);
-                    OnPropertyChanging("Trueid");
-                    _trueid = value;
-                    OnPropertyChanged("Trueid");
-                    OnTrueidChanged();
+                    OnIDChanging(value);
+                    OnPropertyChanging("ID");
+                    _iD = value;
+                    OnPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        
+        private long _userID;
+
+        /// <summary>
+        /// Gets or sets the UserID column value.
+        /// </summary>
+        [Column(Name="UserID", Storage="_userID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long UserID
+        {
+            get { return _userID; }
+            set
+            {
+                if (_userID != value)
+                {
+                    OnUserIDChanging(value);
+                    OnPropertyChanging("UserID");
+                    _userID = value;
+                    OnPropertyChanged("UserID");
+                    OnUserIDChanged();
                 }
             }
         }
@@ -68,9 +90,9 @@ namespace CHSNS.Models
         private string _title;
 
         /// <summary>
-        /// Gets or sets the title column value.
+        /// Gets or sets the Title column value.
         /// </summary>
-        [Column(Name="title", Storage="_title", DbType="nvarchar(255) NOT NULL", CanBeNull=false)]
+        [Column(Name="Title", Storage="_title", DbType="nvarchar(255) NOT NULL", CanBeNull=false)]
         public string Title
         {
             get { return _title; }
@@ -90,9 +112,9 @@ namespace CHSNS.Models
         private string _body;
 
         /// <summary>
-        /// Gets or sets the body column value.
+        /// Gets or sets the Body column value.
         /// </summary>
-        [Column(Name="body", Storage="_body", DbType="ntext", UpdateCheck=UpdateCheck.Never)]
+        [Column(Name="Body", Storage="_body", DbType="ntext NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
         public string Body
         {
             get { return _body; }
@@ -131,13 +153,13 @@ namespace CHSNS.Models
             }
         }
         
-        private bool _anonymous;
+        private Nullable<bool> _anonymous;
 
         /// <summary>
         /// Gets or sets the Anonymous column value.
         /// </summary>
-        [Column(Name="Anonymous", Storage="_anonymous", DbType="bit NOT NULL", CanBeNull=false)]
-        public bool Anonymous
+        [Column(Name="Anonymous", Storage="_anonymous", DbType="bit")]
+        public Nullable<bool> Anonymous
         {
             get { return _anonymous; }
             set
@@ -285,46 +307,24 @@ namespace CHSNS.Models
             }
         }
         
-        private long _groupId;
+        private long _lastCommentUserID;
 
         /// <summary>
-        /// Gets or sets the GroupId column value.
+        /// Gets or sets the LastCommentUserID column value.
         /// </summary>
-        [Column(Name="GroupId", Storage="_groupId", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long GroupId
+        [Column(Name="LastCommentUserID", Storage="_lastCommentUserID", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long LastCommentUserID
         {
-            get { return _groupId; }
+            get { return _lastCommentUserID; }
             set
             {
-                if (_groupId != value)
+                if (_lastCommentUserID != value)
                 {
-                    OnGroupIdChanging(value);
-                    OnPropertyChanging("GroupId");
-                    _groupId = value;
-                    OnPropertyChanged("GroupId");
-                    OnGroupIdChanged();
-                }
-            }
-        }
-        
-        private long _lastCommentUserid;
-
-        /// <summary>
-        /// Gets or sets the LastCommentUserid column value.
-        /// </summary>
-        [Column(Name="LastCommentUserid", Storage="_lastCommentUserid", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long LastCommentUserid
-        {
-            get { return _lastCommentUserid; }
-            set
-            {
-                if (_lastCommentUserid != value)
-                {
-                    OnLastCommentUseridChanging(value);
-                    OnPropertyChanging("LastCommentUserid");
-                    _lastCommentUserid = value;
-                    OnPropertyChanged("LastCommentUserid");
-                    OnLastCommentUseridChanged();
+                    OnLastCommentUserIDChanging(value);
+                    OnPropertyChanging("LastCommentUserID");
+                    _lastCommentUserID = value;
+                    OnPropertyChanged("LastCommentUserID");
+                    OnLastCommentUserIDChanged();
                 }
             }
         }
@@ -334,7 +334,7 @@ namespace CHSNS.Models
         /// <summary>
         /// Gets or sets the LastCommentTime column value.
         /// </summary>
-        [Column(Name="LastCommentTime", Storage="_lastCommentTime", DbType="datetime NOT NULL", CanBeNull=false)]
+        [Column(Name="LastCommentTime", Storage="_lastCommentTime", DbType="smalldatetime NOT NULL", CanBeNull=false)]
         public System.DateTime LastCommentTime
         {
             get { return _lastCommentTime; }
@@ -351,68 +351,24 @@ namespace CHSNS.Models
             }
         }
         
-        private byte _istellme;
+        private byte _isTellMe;
 
         /// <summary>
-        /// Gets or sets the istellme column value.
+        /// Gets or sets the IsTellMe column value.
         /// </summary>
-        [Column(Name="istellme", Storage="_istellme", DbType="tinyint NOT NULL", CanBeNull=false)]
-        public byte Istellme
+        [Column(Name="IsTellMe", Storage="_isTellMe", DbType="tinyint NOT NULL", CanBeNull=false)]
+        public byte IsTellMe
         {
-            get { return _istellme; }
+            get { return _isTellMe; }
             set
             {
-                if (_istellme != value)
+                if (_isTellMe != value)
                 {
-                    OnIstellmeChanging(value);
-                    OnPropertyChanging("Istellme");
-                    _istellme = value;
-                    OnPropertyChanged("Istellme");
-                    OnIstellmeChanged();
-                }
-            }
-        }
-        
-        private long _iD;
-
-        /// <summary>
-        /// Gets or sets the ID column value.
-        /// </summary>
-        [Column(Name="ID", Storage="_iD", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long ID
-        {
-            get { return _iD; }
-            set
-            {
-                if (_iD != value)
-                {
-                    OnIDChanging(value);
-                    OnPropertyChanging("ID");
-                    _iD = value;
-                    OnPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        
-        private long _userID;
-
-        /// <summary>
-        /// Gets or sets the UserID column value.
-        /// </summary>
-        [Column(Name="UserID", Storage="_userID", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long UserID
-        {
-            get { return _userID; }
-            set
-            {
-                if (_userID != value)
-                {
-                    OnUserIDChanging(value);
-                    OnPropertyChanging("UserID");
-                    _userID = value;
-                    OnPropertyChanged("UserID");
-                    OnUserIDChanged();
+                    OnIsTellMeChanging(value);
+                    OnPropertyChanging("IsTellMe");
+                    _isTellMe = value;
+                    OnPropertyChanged("IsTellMe");
+                    OnIsTellMeChanged();
                 }
             }
         }
@@ -420,20 +376,20 @@ namespace CHSNS.Models
         
         #region Association Mapped Properties
         
-        private EntitySet<LogTag> _logTagList;
+        private EntitySet<LogTag> _logLogTagList;
         
         /// <summary>
         /// Gets or sets the LogTag association.
         /// </summary>
-        [Association(Name="FK_LogTag_Log", Storage="_logTagList", ThisKey="ID", OtherKey="LogID")]
-        public EntitySet<LogTag> LogTagList
+        [Association(Name="FK_LogTag_Log", Storage="_logLogTagList", ThisKey="ID", OtherKey="LogID")]
+        public EntitySet<LogTag> LogLogTagList
         {
-            get { return _logTagList; }
-            set { _logTagList.Assign(value); }
+            get { return _logLogTagList; }
+            set { _logLogTagList.Assign(value); }
         }
         
         [DebuggerNonUserCodeAttribute()]
-        private void Attach_LogTagList(LogTag entity)
+        private void Attach_LogLogTagList(LogTag entity)
         {
             OnPropertyChanging(null);
             entity.Log = this;
@@ -441,27 +397,27 @@ namespace CHSNS.Models
         }
         
         [DebuggerNonUserCodeAttribute()]
-        private void Detach_LogTagList(LogTag entity)
+        private void Detach_LogLogTagList(LogTag entity)
         {
             OnPropertyChanging(null);
             entity.Log = null;
             OnPropertyChanged(null);
         }
         
-        private EntitySet<Push> _pushList;
+        private EntitySet<Push> _logidPushList;
         
         /// <summary>
         /// Gets or sets the Push association.
         /// </summary>
-        [Association(Name="FK_Push_Log", Storage="_pushList", ThisKey="ID", OtherKey="Logid")]
-        public EntitySet<Push> PushList
+        [Association(Name="FK_Push_Log", Storage="_logidPushList", ThisKey="ID", OtherKey="Logid")]
+        public EntitySet<Push> LogidPushList
         {
-            get { return _pushList; }
-            set { _pushList.Assign(value); }
+            get { return _logidPushList; }
+            set { _logidPushList.Assign(value); }
         }
         
         [DebuggerNonUserCodeAttribute()]
-        private void Attach_PushList(Push entity)
+        private void Attach_LogidPushList(Push entity)
         {
             OnPropertyChanging(null);
             entity.Log = this;
@@ -469,7 +425,7 @@ namespace CHSNS.Models
         }
         
         [DebuggerNonUserCodeAttribute()]
-        private void Detach_PushList(Push entity)
+        private void Detach_LogidPushList(Push entity)
         {
             OnPropertyChanging(null);
             entity.Log = null;
@@ -484,11 +440,16 @@ namespace CHSNS.Models
         partial void OnValidate(ChangeAction action);
         /// <summary>Called when this instance is created.</summary>
         partial void OnCreated();
-        /// <summary>Called when Trueid is changing.</summary>
+        /// <summary>Called when ID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnTrueidChanging(long value);
-        /// <summary>Called after Trueid has Changed.</summary>
-        partial void OnTrueidChanged();
+        partial void OnIDChanging(long value);
+        /// <summary>Called after ID has Changed.</summary>
+        partial void OnIDChanged();
+        /// <summary>Called when UserID is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnUserIDChanging(long value);
+        /// <summary>Called after UserID has Changed.</summary>
+        partial void OnUserIDChanged();
         /// <summary>Called when Title is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnTitleChanging(string value);
@@ -506,7 +467,7 @@ namespace CHSNS.Models
         partial void OnIsPostChanged();
         /// <summary>Called when Anonymous is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnAnonymousChanging(bool value);
+        partial void OnAnonymousChanging(Nullable<bool> value);
         /// <summary>Called after Anonymous has Changed.</summary>
         partial void OnAnonymousChanged();
         /// <summary>Called when AddTime is changing.</summary>
@@ -539,36 +500,21 @@ namespace CHSNS.Models
         partial void OnCommentCountChanging(long value);
         /// <summary>Called after CommentCount has Changed.</summary>
         partial void OnCommentCountChanged();
-        /// <summary>Called when GroupId is changing.</summary>
+        /// <summary>Called when LastCommentUserID is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnGroupIdChanging(long value);
-        /// <summary>Called after GroupId has Changed.</summary>
-        partial void OnGroupIdChanged();
-        /// <summary>Called when LastCommentUserid is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnLastCommentUseridChanging(long value);
-        /// <summary>Called after LastCommentUserid has Changed.</summary>
-        partial void OnLastCommentUseridChanged();
+        partial void OnLastCommentUserIDChanging(long value);
+        /// <summary>Called after LastCommentUserID has Changed.</summary>
+        partial void OnLastCommentUserIDChanged();
         /// <summary>Called when LastCommentTime is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnLastCommentTimeChanging(System.DateTime value);
         /// <summary>Called after LastCommentTime has Changed.</summary>
         partial void OnLastCommentTimeChanged();
-        /// <summary>Called when Istellme is changing.</summary>
+        /// <summary>Called when IsTellMe is changing.</summary>
         /// <param name="value">The new value.</param>
-        partial void OnIstellmeChanging(byte value);
-        /// <summary>Called after Istellme has Changed.</summary>
-        partial void OnIstellmeChanged();
-        /// <summary>Called when ID is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnIDChanging(long value);
-        /// <summary>Called after ID has Changed.</summary>
-        partial void OnIDChanged();
-        /// <summary>Called when UserID is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnUserIDChanging(long value);
-        /// <summary>Called after UserID has Changed.</summary>
-        partial void OnUserIDChanged();
+        partial void OnIsTellMeChanging(byte value);
+        /// <summary>Called after IsTellMe has Changed.</summary>
+        partial void OnIsTellMeChanged();
         #endregion
         
     }
