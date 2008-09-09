@@ -10,17 +10,18 @@ namespace CHSNS.Data
 	public partial class DBExt 
 	{
 		#region IDataConcreteMediator 成员
-		public DataBaseExecutor DataBaseExecutor { get; set; }
-		public AccountMediator Account { get; set; }
-		public ViewMediator View { get; set; }
-		public ReplyMediator Comment { get; set; }
-		public GatherMediator Gather { get; set; }
-		public GroupMediator Group { get; set; }
-		public UserInfoMediator UserInfo { get; set; }
-		public GolbalMediator Golbal { get; set; }
-		public FriendMediator Friend { get; set; }
-		public ApplicationMediator Application { get; set; }
-		public MessageMediator Message { get; set; }
+		public DataBaseExecutor DataBaseExecutor { get; private set; }
+		public AccountMediator Account { get; private set; }
+		public ViewMediator View { get; private set; }
+		public ReplyMediator Comment { get; private set; }
+		public GatherMediator Gather { get; private set; }
+		public GroupMediator Group { get; private set; }
+		public UserInfoMediator UserInfo { get; private set; }
+		public GolbalMediator Golbal { get; private set; }
+		public FriendMediator Friend { get; private set; }
+		public ApplicationMediator Application { get; private set; }
+		public MessageMediator Message { get; private set; }
+		public NoteMediator Note { get; private set; }
 		public void Init() {
 			DataBaseExecutor = new DataBaseExecutor(new SqlDataOpener(SiteConfig.SiteConnectionString));
 			//_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
@@ -34,6 +35,7 @@ namespace CHSNS.Data
 			Friend = new FriendMediator(this);
 			Application = new ApplicationMediator(this);
 			Message = new MessageMediator(this);
+			Note = new NoteMediator(this);
 		}
 		#endregion
 		#region IDataBase 成员
@@ -158,7 +160,6 @@ END*/
 					//        && p.CommentCount > 0
 					//);
 					break;
-
 				default:
 					break;
 			}

@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using CHSNS.Models;
 
 namespace CHSNS.Data {
 	public class GroupMediator :BaseMediator {
@@ -15,5 +17,6 @@ namespace CHSNS.Data {
 				"@everypage", count,
 				"@GroupClass", 0);
 		}
+
 	}
 }
