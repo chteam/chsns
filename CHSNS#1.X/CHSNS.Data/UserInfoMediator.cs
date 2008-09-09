@@ -74,11 +74,11 @@ set Magicbox=@magicbox where UserID=@UserID"
 			});
 		}
 
-		public Profile GetUser(long userid,
-			System.Linq.Expressions.Expression<System.Func<Profile, Profile>> x) {
+		public T GetUser<T>(long userid,
+			System.Linq.Expressions.Expression<System.Func<Profile, T>> x) {
 			var ret = DBExt.DB.Profile
 				.Where(c => c.UserID == userid)
-				.Select(x).Single();
+				.Select(x).FirstOrDefault();
 			return ret;
 		}
 	}

@@ -84,12 +84,12 @@ VALUES(@fromid,@toid,@title,@body,getdate(),0,0,0,@ishtml)",
 					   join pout in DBExt.DB.Profile on m.FromID equals pout.UserID
 					   join pin in DBExt.DB.Profile on m.ToID equals pin.UserID
 					   select new MessageDetailsPas {
-						   UserInbox = new UserItemPas { UserID = pin.UserID, Name = pin.Name },
-						   UserOutbox = new UserItemPas { UserID = pout.UserID, Name = pout.Name },
+						   UserInbox = new UserItemPas { ID = pin.UserID, Name = pin.Name },
+						   UserOutbox = new UserItemPas { ID = pout.UserID, Name = pout.Name },
 						   Message = m
 					   }
 					  ).SingleOrDefault();
-			if (ret.UserInbox.UserID == userid && !ret.Message.IsSee) {//我是收件人,则表示已经看过了,可以更新
+			if (ret.UserInbox.ID == userid && !ret.Message.IsSee) {//我是收件人,则表示已经看过了,可以更新
 				DataBaseExecutor.Execute(@"update [message] set IsSee=1 where id=@id", "@id", ret.Message.ID);
 			}
 			return ret;

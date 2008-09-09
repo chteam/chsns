@@ -20,7 +20,7 @@ namespace CHSNS.Data {
 						select p
 						).OrderByDescending(c => c.LoginTime)
 						.Select(c => new UserItemPas {
-							UserID = c.UserID,
+							ID = c.UserID,
 							Name = c.Name
 						}
 						);
@@ -34,7 +34,7 @@ namespace CHSNS.Data {
 					  orderby v.ViewTime descending
 					  select new UserItemPas {
 						  Name = p.Name,
-						  UserID = p.UserID
+						  ID = p.UserID
 					  }
 							 );
 				if (type == 5) {
@@ -61,7 +61,7 @@ namespace CHSNS.Data {
 					  orderby DBExt.DB.NEWID()
 					  select new UserItemPas {
 						  Name = p.Name,
-						  UserID = p.UserID
+						  ID = p.UserID
 					  })
 					;
 			} else if (type == 4)
@@ -75,7 +75,7 @@ namespace CHSNS.Data {
 					  orderby DBExt.DB.NEWID()
 					  select new UserItemPas {
 						  Name = p.Name,
-						  UserID = p.UserID
+						  ID = p.UserID
 					  });
 			} else {//if (type==6)//--群用户随机
 				lu = (from u in DBExt.DB.GroupUser
@@ -84,7 +84,7 @@ namespace CHSNS.Data {
 					  orderby p.LoginTime descending
 					  select new UserItemPas {
 						  Name = p.Name,
-						  UserID = p.UserID
+						  ID = p.UserID
 					  }
 					 );
 			}

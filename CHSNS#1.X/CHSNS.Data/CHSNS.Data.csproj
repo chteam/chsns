@@ -90,6 +90,7 @@
     <Compile Include="DBExt\NoteSqlDB.cs" />
     <Compile Include="DBExt\TagsSqlDB.cs" />
     <Compile Include="MessageMediator.cs" />
+    <Compile Include="NoteMediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyMediator.cs" />
     <Compile Include="UserInfoMediator.cs" />

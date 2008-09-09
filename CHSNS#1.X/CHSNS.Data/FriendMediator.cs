@@ -43,7 +43,7 @@ namespace CHSNS.Data {
 								  })
 					   orderby c.UserID descending
 					   select new UserItemPas {
-						   UserID = c.UserID,
+						   ID = c.UserID,
 						   Name = c.Name,
 						   ShowText = c.ShowText,
 						   ShowTextTime = c.ShowTextTime
@@ -56,7 +56,7 @@ namespace CHSNS.Data {
 					   where p.IsStar
 					   orderby DBExt.DB.NEWID()
 					   select new UserItemPas {
-						   UserID = p.UserID,
+						   ID = p.UserID,
 						   Name = p.Name,
 						   ShowText = p.ShowText,
 						   ShowTextTime = p.ShowTextTime
@@ -71,7 +71,7 @@ namespace CHSNS.Data {
 					   where f1.ToID == userid && !f1.IsTrue
 					   orderby p1.UserID descending
 					   select new UserItemPas {
-						   UserID = p1.UserID,
+						   ID = p1.UserID,
 						   Name = p1.Name,
 						   ShowText = p1.ShowText,
 						   ShowTextTime = p1.ShowTextTime
