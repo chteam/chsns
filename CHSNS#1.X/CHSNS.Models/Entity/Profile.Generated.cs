@@ -393,28 +393,6 @@ namespace CHSNS.Models
             }
         }
         
-        private long _logCount;
-
-        /// <summary>
-        /// Gets or sets the LogCount column value.
-        /// </summary>
-        [Column(Name="LogCount", Storage="_logCount", DbType="bigint NOT NULL", CanBeNull=false)]
-        public long LogCount
-        {
-            get { return _logCount; }
-            set
-            {
-                if (_logCount != value)
-                {
-                    OnLogCountChanging(value);
-                    OnPropertyChanging("LogCount");
-                    _logCount = value;
-                    OnPropertyChanged("LogCount");
-                    OnLogCountChanged();
-                }
-            }
-        }
-        
         private long _commentCount;
 
         /// <summary>
@@ -832,6 +810,28 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private long _noteCount;
+
+        /// <summary>
+        /// Gets or sets the NoteCount column value.
+        /// </summary>
+        [Column(Name="NoteCount", Storage="_noteCount", DbType="bigint NOT NULL", CanBeNull=false)]
+        public long NoteCount
+        {
+            get { return _noteCount; }
+            set
+            {
+                if (_noteCount != value)
+                {
+                    OnNoteCountChanging(value);
+                    OnPropertyChanging("NoteCount");
+                    _noteCount = value;
+                    OnPropertyChanged("NoteCount");
+                    OnNoteCountChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -1064,11 +1064,6 @@ namespace CHSNS.Models
         partial void OnFriendCountChanging(long value);
         /// <summary>Called after FriendCount has Changed.</summary>
         partial void OnFriendCountChanged();
-        /// <summary>Called when LogCount is changing.</summary>
-        /// <param name="value">The new value.</param>
-        partial void OnLogCountChanging(long value);
-        /// <summary>Called after LogCount has Changed.</summary>
-        partial void OnLogCountChanged();
         /// <summary>Called when CommentCount is changing.</summary>
         /// <param name="value">The new value.</param>
         partial void OnCommentCountChanging(long value);
@@ -1164,6 +1159,11 @@ namespace CHSNS.Models
         partial void OnInboxCountChanging(long value);
         /// <summary>Called after InboxCount has Changed.</summary>
         partial void OnInboxCountChanged();
+        /// <summary>Called when NoteCount is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnNoteCountChanging(long value);
+        /// <summary>Called after NoteCount has Changed.</summary>
+        partial void OnNoteCountChanged();
         #endregion
         
     }

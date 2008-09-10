@@ -372,6 +372,28 @@ namespace CHSNS.Models
                 }
             }
         }
+        
+        private string _summary;
+
+        /// <summary>
+        /// Gets or sets the Summary column value.
+        /// </summary>
+        [Column(Name="Summary", Storage="_summary", DbType="nvarchar(4000)")]
+        public string Summary
+        {
+            get { return _summary; }
+            set
+            {
+                if (_summary != value)
+                {
+                    OnSummaryChanging(value);
+                    OnPropertyChanging("Summary");
+                    _summary = value;
+                    OnPropertyChanged("Summary");
+                    OnSummaryChanged();
+                }
+            }
+        }
         #endregion
         
         #region Association Mapped Properties
@@ -515,6 +537,11 @@ namespace CHSNS.Models
         partial void OnIsTellMeChanging(byte value);
         /// <summary>Called after IsTellMe has Changed.</summary>
         partial void OnIsTellMeChanged();
+        /// <summary>Called when Summary is changing.</summary>
+        /// <param name="value">The new value.</param>
+        partial void OnSummaryChanging(string value);
+        /// <summary>Called after Summary has Changed.</summary>
+        partial void OnSummaryChanged();
         #endregion
         
     }
