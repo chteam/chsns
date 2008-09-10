@@ -244,6 +244,12 @@ namespace CHSNS.Models
             get { return GetTable<QinShi>(); }
         }
         
+        /// <summary>Represents the dbo.Reply table in the underlying database.</summary>
+        public Table<Reply> Reply
+        {
+            get { return GetTable<Reply>(); }
+        }
+        
         /// <summary>Represents the dbo.Services table in the underlying database.</summary>
         public Table<Services> ServicesTable
         {
@@ -501,6 +507,15 @@ namespace CHSNS.Models
         /// <summary>Called before a QinShi is deleted.</summary>
         /// <param name="instance">The instance.</param>
         partial void DeleteQinShi(QinShi instance);
+        /// <summary>Called before a Reply is inserted.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void InsertReply(Reply instance);
+        /// <summary>Called before a Reply is updated.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void UpdateReply(Reply instance);
+        /// <summary>Called before a Reply is deleted.</summary>
+        /// <param name="instance">The instance.</param>
+        partial void DeleteReply(Reply instance);
         /// <summary>Called before a Services is inserted.</summary>
         /// <param name="instance">The instance.</param>
         partial void InsertServices(Services instance);
