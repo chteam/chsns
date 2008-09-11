@@ -1,18 +1,39 @@
     using System;
-	using System.Collections;
+
 	using System.Data;
 using System.Web.Mvc;
     using CHSNS.Extension;
     using CHSNS.Filter;
-
+    using CHSNS.Models;
+    using CHSNS.Tools;
 namespace CHSNS.Controllers
 {
 
-	
-	//using NVelocity.Runtime.Directive;
+
 	[LoginedFilter]
     public class NoteController : BaseController
     {
+		public ActionResult Index(long? userid, int? p){
+			if (!userid.HasValue) userid = CHUser.UserID;
+			if (!p.HasValue || p == 0) p = 1;
+			var user = DBExt.UserInfo.GetUser(
+				userid.Value,
+				c => new UserCountPas{
+				                     	ID = c.UserID,
+				                     	Name = c.Name,
+				                     	Count = c.NoteCount
+				                     });
+			ViewData["username"] = user.Name;
+			ViewData["userid"] = user.ID;
+			ViewData["PageCount"] = user.Count;
+			ViewData["NowPage"] = p.Value;
+			return NoteList(p.Value, 10, userid.Value);
+		}
+		[AcceptVerbs("Post")]
+		public ActionResult NoteList(int p, int ep, long userid){
+			return View(DBExt.Note.GetNotes(userid).Pager(p, ep));
+		}
+
 		public ActionResult book() {
 			long ownerid = this.QueryLong("userid");
 			string ownername = "我";
@@ -21,9 +42,10 @@ namespace CHSNS.Controllers
 				ownerid = CHSNSUser.Current.UserID;
 				isMe = true;
 			} else {
-				Identity identity = new Identity();
-				ownername = identity.GetUserName(this.QueryLong("userid"));
+				//Identity identity = new Identity();
+				//ownername = identity.GetUserName(this.QueryLong("userid"));
 			}
+		
 			int tabs;
 			switch (this.QueryString("mode")) {
 				case "write"://这个无所谓,发表时
@@ -43,7 +65,7 @@ namespace CHSNS.Controllers
 			ViewData.Add("ownername", ownername);
 			return View();
 		}
-		public ActionResult index() {
+		public ActionResult index1() {
 			Chsword.Reader.LogBook dl = new Chsword.Reader.LogBook("Note_Watch");
 			dl.Logid = this.QueryLong("id");
 			dl.Groupid = this.QueryLong("groupid");

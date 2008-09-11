@@ -25,7 +25,7 @@
 	<script type="text/javascript">
 		var frush = function() {
 		$h("#UserListItems","载入中...");
-			$.post("<%=Url.Action("RandomList") %>", {}, function(r) {
+			$.post('<%=Url.Action("RandomList") %>', {}, function(r) {
 				$h("#UserListItems",r);
 			});
 		};

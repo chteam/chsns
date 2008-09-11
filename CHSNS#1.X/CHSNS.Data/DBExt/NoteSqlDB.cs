@@ -108,25 +108,25 @@ return -1--无权操作
 end*/
 			#endregion
 
-			int us = UserStatus(CHSNSUser.Current.UserID, 1);//l.GroupId);
-			//DataBaseExecutor me = new DataBaseExecutor();
-			Dictionary dict = new Dictionary();
-			dict.Add("@body", l.Body);
-			DataBaseExecutor.Execute(
-				string.Format(@"UPDATE [Log] 
-SET EditTime = getdate(),
-isPost = {0},
-body = @body,
-istellme = {1}
-WHERE ([id]={2}) 
-and groupid={3}
-and (userid ={4} or {5}>199)",
-l.IsPost,
-l.IsTellMe,
-l.ID,
-"",
-CHSNSUser.Current.UserID,
-us), dict);
+//            int us = UserStatus(CHSNSUser.Current.UserID, 1);//l.GroupId);
+//            //DataBaseExecutor me = new DataBaseExecutor();
+//            Dictionary dict = new Dictionary();
+//            dict.Add("@body", l.Body);
+//            DataBaseExecutor.Execute(
+//                string.Format(@"UPDATE [Log] 
+//SET EditTime = getdate(),
+//isPost = {0},
+//body = @body,
+//istellme = {1}
+//WHERE ([id]={2}) 
+//and groupid={3}
+//and (userid ={4} or {5}>199)",
+//l.IsPost,
+//l.IsTellMe,
+//l.ID,
+//"",
+//CHSNSUser.Current.UserID,
+//us), dict);
 		}
 
 

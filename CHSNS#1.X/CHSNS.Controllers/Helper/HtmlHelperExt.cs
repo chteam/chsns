@@ -1,7 +1,12 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web;
 namespace CHSNS.Helper {
 	public static class HtmlHelperExt {
+
+		public static string NoteDetails(this HtmlHelper Html,string title,long id,DateTime dt){
+			return Html.ActionLink(title, "Details", "Note", new{id, y = dt.Year, m = dt.Month, d = dt.Day}, null);
+		}
 
 		public static string WriteMessage(this HtmlHelper Html,string text,long toid,string toname){
 			return Html.ActionLink(text, "Write", "Message", new{toid, toname = HttpUtility.UrlEncode(toname)}, null);

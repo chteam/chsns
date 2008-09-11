@@ -1,9 +1,4 @@
 namespace CHSNS {
-	using System;
-	using CHSNS.Models;
-	using Chsword;
-	using Chsword.Interface;
-	using CHSNS.Interface;
 	using CHSNS.Config;
 
 	/// <summary>

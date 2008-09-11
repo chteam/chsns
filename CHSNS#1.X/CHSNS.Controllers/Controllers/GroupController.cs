@@ -57,13 +57,13 @@ using System.Web.Mvc;
 						(from gu in DB.GroupUser
 						 join a in DB.Account on gu.UserID equals a.UserID
 						 where gu.GroupID == Groupid
-							&& gu.IsTrue == true
+							&& gu.IsTrue 
 							 && gu.Level > 199
-							 && gu.IsTrue == true
+							 && gu.IsTrue 
 						 orderby gu.Level descending
 						 select new
 						 {
-							 name = a.Name,
+							 name = "",//a.Name,
 							 userid = gu.UserID,
 							 level = gu.Level
 						 }).ToList());

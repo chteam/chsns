@@ -1,11 +1,9 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
+    <ProjectGuid>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</ProjectGuid>
-    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CHSNS</RootNamespace>
@@ -23,6 +21,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkSubset>Full</TargetFrameworkSubset>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -108,16 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Readme.txt" />
-    <Content Include="WebServices\Admin.asmx" />
-    <Content Include="WebServices\AutoComplete.asmx" />
-    <Content Include="WebServices\AutoSelect.asmx" />
-    <Content Include="WebServices\Comment.asmx" />
-    <Content Include="WebServices\Group.asmx" />
-    <Content Include="WebServices\Identity.asmx" />
-    <Content Include="WebServices\NoteBook.asmx" />
-    <Content Include="WebServices\School.asmx" />
-    <Content Include="WebServices\Search.asmx" />
-    <Content Include="WebServices\Services.asmx" />
     <Compile Include="ChAlumna\DataSetCache.cs" />
     <Compile Include="ChAlumna\Email.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
@@ -128,45 +117,8 @@
     <Compile Include="Interface\IServerResponse.cs" />
     <Compile Include="Interface\IServerResponseable.cs" />
     <Compile Include="Reader\Albums.cs" />
-    <Compile Include="WebServices\Application.cs">
-      <DependentUpon>Application.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Invite.cs">
-      <DependentUpon>Invite.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Message.cs">
-      <DependentUpon>Message.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\PageMethods.cs">
-      <DependentUpon>PageMethods.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Photos.cs">
-      <DependentUpon>Photos.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Profile.cs">
-      <DependentUpon>Profile.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\WebServices.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <None Include="WebServices\Application.asmx" />
-    <None Include="WebServices\Invite.asmx" />
-    <None Include="WebServices\Message.asmx" />
-    <None Include="WebServices\PageMethods.asmx" />
-    <None Include="WebServices\Photos.asmx" />
-    <None Include="WebServices\Profile.asmx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WebServices\Admin.asmx.cs">
-      <DependentUpon>Admin.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ChAlumna\ChParameter.cs" />
     <Compile Include="ChAlumna\Media.cs" />
     <Compile Include="ChAlumna\Online.cs" />
@@ -189,42 +141,6 @@
     <Compile Include="Execute\GroupSettingExecuter.cs" />
     <Compile Include="Execute\GroupUserExecuter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebServices\AutoComplete.asmx.cs">
-      <DependentUpon>AutoComplete.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\AutoSelect.asmx.cs">
-      <DependentUpon>AutoSelect.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Comment.asmx.cs">
-      <DependentUpon>Comment.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Group.asmx.cs">
-      <DependentUpon>Group.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Identity.asmx.cs">
-      <DependentUpon>Identity.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\NoteBook.asmx.cs">
-      <DependentUpon>NoteBook.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\School.asmx.cs">
-      <DependentUpon>School.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Search.asmx.cs">
-      <DependentUpon>Search.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebServices\Services.asmx.cs">
-      <DependentUpon>Services.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Web\UI\Admin.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

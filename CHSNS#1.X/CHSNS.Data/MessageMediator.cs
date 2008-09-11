@@ -64,7 +64,7 @@ VALUES(@fromid,@toid,@title,@body,getdate(),0,0,0,@ishtml)",
 				);
 			DataBaseExecutor.Execute(@"update [profile] set inboxcount=inboxcount+1 where userid=@userid and not inboxcount<=0",
 				"@userid",m.ToID);
-			DataBaseExecutor.Execute(@"update [profile] set outboxcount=outboxcount+1 where userid=@userid and not outbox<=0",
+			DataBaseExecutor.Execute(@"update [profile] set outboxcount=outboxcount+1 where userid=@userid and not outboxcount<=0",
 				"@userid", m.FromID);
 		}
 
@@ -88,7 +88,7 @@ VALUES(@fromid,@toid,@title,@body,getdate(),0,0,0,@ishtml)",
 						   UserOutbox = new UserItemPas { ID = pout.UserID, Name = pout.Name },
 						   Message = m
 					   }
-					  ).SingleOrDefault();
+					  ).FirstOrDefault();
 			if (ret.UserInbox.ID == userid && !ret.Message.IsSee) {//我是收件人,则表示已经看过了,可以更新
 				DataBaseExecutor.Execute(@"update [message] set IsSee=1 where id=@id", "@id", ret.Message.ID);
 			}

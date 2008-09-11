@@ -49,7 +49,7 @@
 			</div>
 		</div>
 		<%--##新回复--%>
-		<div id="NewReply">
+<%--		<div id="NewReply">
 		<%if (ep.NewReply.Count != 0) {%>
 			<h4>
 				最新回复</h4>
@@ -84,23 +84,23 @@
 				</li>
 				<%} %>
 			</ul>
-		</div>
+		</div>--%>
 		<%--	##新回复完毕 新帖子开始--%>
-		<%if (ep.RssSource.Count != 0) {%>
+	<%--	<%if (ep.RssSource.Count != 0) {%>
 		#if($RssSource.Count!=0)
 		<div id="NewRss" class="imgnew">
 			<h4>
 				群订阅[<a href="/GroupList.aspx?tabs=0&amp;">more</a>]</h4>
 		</div>
 		<%
-			}%>
-		<div id="Event_Event">
+			}%>--%>
+<%--		<div id="Event_Event">
 			<h4>
 				我朋友的动向</h4>
 			<ul id="Profile_Event">
 				<% Html.RenderAction<EventController>(c => c.Show(CHUser.UserID, 1));//得到朋友的事件 %>
 			</ul>
-		</div>
+		</div>--%>
 		<div class="imgnew">
 			<h4>
 				新人秀</h4>

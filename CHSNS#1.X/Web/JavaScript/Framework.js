@@ -9,41 +9,10 @@ CHSNS# JavaScript Basic Library
 ===================================================*/
 
 var isIE=function(){return jQuery.browser.msie;};
-if(!isIE()){
-    HTMLElement.prototype.__defineGetter__("innerText", 
-        function(){return this.textContent;}
-    );
-    HTMLElement.prototype.__defineSetter__("innerText", 
-        function(v){this.textContent=v;}
-    );
-}
-if (typeof (HTMLElement) != "undefined" && !window.opera) {
-    HTMLElement.prototype.__defineGetter__("outerHTML", function() {
-        var a = this.attributes, str = "<" + this.tagName, i = 0;
-        for (; i < a.length; i++) {
-            if (a[i].specified) { str += "   " + a[i].name + '="' + a[i].value + '"'; }
-        }
-        if (!this.canHaveChildren) { return str + "   />"; }
-        return str + ">" + this.innerHTML + "</" + this.tagName + ">";
-    });
-    HTMLElement.prototype.__defineSetter__("outerHTML", function(s) {
-        var d = document.createElement("DIV");
-        d.innerHTML = s;
-        for (var i = 0; i < d.childNodes.length; i++) {
-            this.parentNode.insertBefore(d.childNodes[i], this);
-        }
-        this.parentNode.removeChild(this);
-    });
-    HTMLElement.prototype.__defineGetter__("canHaveChildren", function() {
-        return !/^(area|base|basefont|col|frame|hr|img|br|input|isindex|link|meta|param)$/.test(this.tagName.toLowerCase());
-    });
-}
 
 var isnull = function(v) { return !(typeof v !== "undefined" && v != null); }
 var $v = function(i, v) { if (isnull(v)) return $(i).val(); else $(i).val(v); };
 var $h = function(i, v) { if (isnull(v)) { return $(i).html(); } else { $(i).html(v); } };
-var $addCssClass=function(o,c){Sys.UI.DomElement.addCssClass(o,c);};
-var $removeCssClass=function(o,c){Sys.UI.DomElement.removeCssClass(o,c);};
 
 
 var isExists=function(v){return typeof v!=="undefined"&&v!=null;};
@@ -101,30 +70,7 @@ var BindSelect = function(id, o, t, v) {
     for (var i = 0; i < o.length; ++i)
         s.options.add(new Option(o[i][t], o[i][v]));
 };
-//Layer Opteration
-
-var showLayer=function(_,m){//show
-	if($(_)){
-		if(isExists(m)){
-			$s(_).display=m;
-		}else{
-			$s(_).display="block";
-		}
-	}
-};
-var hideLayer = function(_) {//hide
-    $(_).hide();
-};
-
 //Html Operation
-var setfocus=function(_){//????
-	if($(_)){
-		var c = $(_);
-		if (c.type != "hidden" && !c.disabled){
-			c.focus();
-		}
-	}
-};
 var ButtonBack=function(){history.go(-1);};
 var SearchEnter=function(e,i){
 	if(e.keyCode == 13){
@@ -138,21 +84,10 @@ var HomeSearch=function(i){
 var ShoworHide=function(_,i){
 	if(!isExists(i))i = "ch"+_;
 	if($(i)&&$(_))
-		if (!$h(i)||$h(i).trim()=='')
-				hideLayer(_);
+	    if (!$h(i) || $h(i).trim() == '')
+				$(_).hide();
 };
-var SetActiveText=function(i){Sys.UI.DomElement.addCssClass(i,"activetab");};
-//------------------------------------------------Ajax Tool kit
-var InitEditW=function(i,s){
-    $v(i,s);
-    $addHandler($(i),"MouseOver",function(){$(i).focus();});
-    $addHandler($(i),"blur",function(){if(this.value ==''){this.value=s;}});
-    $addHandler($(i),"focus",function(){$(i).select();});
-    $addHandler($(i),"click",function(){if(this.value==s)this.value='';});
-    var x=new Sys.UI.Control($(i));
-    x.addCssClass("watermarked");
-};
-
+//kit
 var alertEx = function(s) {
     $("#dialog").dialog({
         modal: true,
@@ -162,70 +97,6 @@ var alertEx = function(s) {
         }
     }).html(s);
 };
-
-var W_Match=function(i,s){//
-  return $v(i)==""||$v(i)==s;
-};
-var $get_WText=function(i,s){
-    return W_Match(i,s)?"":$v(i);
-};
-
-
-
-var InitTabP=function(_){//
-	Sys.Application.add_init(function(){
-		$create(AjaxControlToolkit.TabPanel,
-		{"headerTab":$("tab"+_)},
-		null, {"owner":"chcontent"},
-		$("ch"+_));
-	});
-};
-var InitTabC=function(_,change){//
-	Sys.Application.add_init(function() {
-		$create(AjaxControlToolkit.TabContainer,
-		{"activeTabIndex":_,
-		"clientStateField":$("ClientState")},
-		 {"activeTabChanged":change==null?ActiveTabChanged:change},
-		 null, $("chcontent"));
-	});
-};
-var Tabs=function(){
-	if(!$find('chcontent')) return;
-	var i=$find('chcontent');
-	Tabs=function(){
-		return i;
-	};
-	return Tabs();
-};
-var InitCalendar=function(_){
-	Sys.Application.add_init(function() {
-		$create(AjaxControlToolkit.CalendarBehavior, {"button":$(_+"but"),"format":"yyyy-MM-dd","id":"CalendarExtender"+_}, null, null, $(_));
-	});
-};
-
-
-function InitDragItem(_){
-	Sys.Application.add_init(function() {
-		$create(AjaxControlToolkit.DraggableListItem, {
-		"handle":$(_),
-		"id":"DraggableListItem"+_}, null, null, 
-		$(_));
-	});
-}
-function InitDragWatcher(_,item){
-	Sys.Application.add_init(function() {
-		$create(AjaxControlToolkit.DragDropWatcher, {
-		"ClientStateFieldID":"ctl00_SampleContent_ReorderList1__ClientState",
-		"acceptedDataTypes":"HTML_ReorderList1",
-		"callbackCssStyle":"callbackStyle",
-		"dragDataType":"HTML_ReorderList1",
-		"dragMode":1,
-		"dropCueTemplate":$(item),
-		"id":"ReorderListItemEx"+_,
-		"postbackCode":""
-		}, null, null, $(_));
-	});
-}
 //-----------------------------------------------PageMothed--------------------------------------------------------------
 var onfail=function(_){
 	alertEx(chRes.warning + ":" + _.get_message() + "<br />");
@@ -306,35 +177,6 @@ var isNum = function(_) {
 
 //==============================Preview
 
-
-//Path part
-var ClientUserFolder=function(userid){
-	var u=new String(userid);
-	return String.format(
-	"/userFiles/{0}/{1}/{2}/{3}/", 
-	u.substring(u.length - 2,u.length - 1), 
-	u.substring(u.length - 1,u.length),
-	u.substring(u.length - 3,u.length - 2),
-	u);
-};
-var ClientUserThumbFolder=function(userid){
-	return String.format("{0}Thumb/",ClientUserFolder(userid));
-};
-var ClientUserPhotosFolder=function(userid){
-	return String.format("{0}Photos/",ClientUserFolder(userid));
-};
-var GetFileNameWithoutExtension=function(path){
-    if (path == null){return null;}
-    var length = path.lastIndexOf('.');
-    if (length == -1){return path;}
-    return path.substring(0, length);
-};
-var SendMessage=function(i,n){
-	window.open(String.format('/Message.aspx?mode=compose&ToId={0}&Toname={1}&',i,encodeURIComponent(n)));
-	return;
-};
-
-
 //menu
 var chmenu = function(x) {
     $(x).each(function(i) {
@@ -361,8 +203,7 @@ var uploadcreate = function(el, page, mode, qs) {
         "<div class=\"image\" id=\"panelViewPic\" style=\"display:none;\"></div></div>";
     $(el).html(str);
 };
-//选择文件后的事件,iframe里面调用的
-var uploading = function(imgsrc) {
+var uploading = function(imgsrc) {//选择文件后的事件,iframe里面调用的
     $("#fileuploadiframe").hide();   
     $("#fileuploadingprocessing").html("<img src='/images/ajax-loader.gif' align='absmiddle' /> 上传中...请稍候").show();
 };
@@ -370,9 +211,7 @@ var uploaderror = function(e) {
     alertEx(e);
     uploadinit();
 };
-
-//重新上传方法
-var uploadinit = function(itemid) {
+var uploadinit = function(itemid) {//重新上传方法
     $("#fileuploadingprocessing").hide();
     $("#fileuploadiframe").show();
     $("#panelViewPic").hide();

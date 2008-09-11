@@ -4,8 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <fieldset>
 <legend><%=ViewData.Model.Message.Title%></legend>
-发件人:<%=Html.UserPageLink(ViewData.Model.UserOutbox.UserID, ViewData.Model.UserOutbox.Name)%><br />
-收件人:<%=Html.UserPageLink(ViewData.Model.UserInbox.UserID, ViewData.Model.UserInbox.Name)%><br />
+发件人:<%=Html.UserPageLink(ViewData.Model.UserOutbox.ID, ViewData.Model.UserOutbox.Name)%><br />
+收件人:<%=Html.UserPageLink(ViewData.Model.UserInbox.ID, ViewData.Model.UserInbox.Name)%><br />
 发件时间:<%=ViewData.Model.Message.SendTime.ToString("yyyy-MM-dd hh:mm")%><br />
 内容:<br />
 <div class="message">
@@ -14,9 +14,9 @@
 	                  	: Html.Encode(ViewData.Model.Message.Body)%>
 </div>
 <%
-	if (ViewData.Model.UserInbox.UserID == CHUser.UserID){%>
+	if (ViewData.Model.UserInbox.ID == CHUser.UserID){%>
 		<textarea cols="40" id="Body" name="Body" rows="6"></textarea>
-		<%=Html.Hidden("ToID", ViewData.Model.UserOutbox.UserID.ToString())%><br />
+		<%=Html.Hidden("ToID", ViewData.Model.UserOutbox.ID.ToString())%><br />
 		<input class="subbutton" value="发送" type="button" onclick="sub();" />
 		<%
 	}
