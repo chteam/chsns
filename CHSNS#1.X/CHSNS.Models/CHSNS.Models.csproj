@@ -42,10 +42,18 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.58.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
       <Private>True</Private>
@@ -59,167 +67,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CHSNSDBDataContext.cs" />
+    <Compile Include="DB.Designer.cs">
+      <DependentUpon>DB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="EntityRender\CommentListPas.cs" />
     <Compile Include="EntityRender\EventPagePas.cs" />
     <Compile Include="EntityRender\MessageDetailsPas.cs" />
     <Compile Include="EntityRender\MessageItemPas.cs" />
+    <Compile Include="EntityRender\NameIDPas.cs" />
     <Compile Include="EntityRender\NotePas.cs" />
+    <Compile Include="EntityRender\ReplyPas.cs" />
     <Compile Include="EntityRender\UserItemPas.cs" />
     <Compile Include="EntityRender\UserPas.cs" />
+    <Compile Include="EntityRender\UserwithCountPas.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="EntityRender\ViewListPas.cs" />
-    <Compile Include="Entity\Account.cs" />
-    <Compile Include="Entity\Account.Generated.cs">
-      <DependentUpon>Account.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Album.cs" />
-    <Compile Include="Entity\Album.Generated.cs">
-      <DependentUpon>Album.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Application.cs" />
-    <Compile Include="Entity\Application.Generated.cs">
-      <DependentUpon>Application.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\BasicInformation.cs" />
-    <Compile Include="Entity\BasicInformation.Generated.cs">
-      <DependentUpon>BasicInformation.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Blogs.cs" />
-    <Compile Include="Entity\Blogs.Generated.cs">
-      <DependentUpon>Blogs.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Category.cs" />
-    <Compile Include="Entity\Category.Generated.cs">
-      <DependentUpon>Category.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\CHSNSDBDataContext.cs" />
-    <Compile Include="Entity\CHSNSDBDataContext.Generated.cs">
-      <DependentUpon>CHSNSDBDataContext.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\City.cs" />
-    <Compile Include="Entity\City.Generated.cs">
-      <DependentUpon>City.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Comment.cs" />
-    <Compile Include="Entity\Comment.Generated.cs">
-      <DependentUpon>Comment.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\ContactInformation.cs" />
-    <Compile Include="Entity\ContactInformation.Generated.cs">
-      <DependentUpon>ContactInformation.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\DelLog.cs" />
-    <Compile Include="Entity\DelLog.Generated.cs">
-      <DependentUpon>DelLog.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Event.cs" />
-    <Compile Include="Entity\Event.Generated.cs">
-      <DependentUpon>Event.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Field.cs" />
-    <Compile Include="Entity\Field.Generated.cs">
-      <DependentUpon>Field.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\FieldInformation.cs" />
-    <Compile Include="Entity\FieldInformation.Generated.cs">
-      <DependentUpon>FieldInformation.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Friend.cs" />
-    <Compile Include="Entity\Friend.Generated.cs">
-      <DependentUpon>Friend.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Group.cs" />
-    <Compile Include="Entity\Group.Generated.cs">
-      <DependentUpon>Group.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\GroupUser.cs" />
-    <Compile Include="Entity\GroupUser.Generated.cs">
-      <DependentUpon>GroupUser.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\LinqEntityBase.cs" />
-    <Compile Include="Entity\LogTag.cs" />
-    <Compile Include="Entity\LogTag.Generated.cs">
-      <DependentUpon>LogTag.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Message.cs" />
-    <Compile Include="Entity\Message.Generated.cs">
-      <DependentUpon>Message.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\MiniField.cs" />
-    <Compile Include="Entity\MiniField.Generated.cs">
-      <DependentUpon>MiniField.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Note.cs" />
-    <Compile Include="Entity\Note.Generated.cs" />
-    <Compile Include="Entity\PersonalInformation.cs" />
-    <Compile Include="Entity\PersonalInformation.Generated.cs">
-      <DependentUpon>PersonalInformation.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Photos.cs" />
-    <Compile Include="Entity\Photos.Generated.cs">
-      <DependentUpon>Photos.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Profile.cs" />
-    <Compile Include="Entity\Profile.Generated.cs">
-      <DependentUpon>Profile.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Province.cs" />
-    <Compile Include="Entity\Province.Generated.cs">
-      <DependentUpon>Province.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Push.cs" />
-    <Compile Include="Entity\Push.Generated.cs">
-      <DependentUpon>Push.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\QinShi.cs" />
-    <Compile Include="Entity\QinShi.Generated.cs">
-      <DependentUpon>QinShi.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Services.cs" />
-    <Compile Include="Entity\Services.Generated.cs">
-      <DependentUpon>Services.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\SuperNote.cs" />
-    <Compile Include="Entity\SuperNote.Generated.cs">
-      <DependentUpon>SuperNote.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\Tags.cs" />
-    <Compile Include="Entity\Tags.Generated.cs">
-      <DependentUpon>Tags.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Entity\ViewData.cs" />
-    <Compile Include="Entity\ViewData.Generated.cs">
-      <DependentUpon>ViewData.cs</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -231,18 +96,26 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CHSNSDB.csp" />
-    <None Include="CHSNSDB.dbml" />
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Schemas\CHSNSDB.csdl" />
+    <None Include="Schemas\CHSNSDB.msl" />
+    <None Include="Schemas\SQLite.ssdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

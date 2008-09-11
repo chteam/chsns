@@ -22,15 +22,5 @@ namespace CHSNS.Models.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CHSWORD;Initial Catalog=sq_menglei;Integrated Security=True")]
-        public string SqMengleiConnectionString {
-            get {
-                return ((string)(this["SqMengleiConnectionString"]));
-            }
-        }
     }
 }
