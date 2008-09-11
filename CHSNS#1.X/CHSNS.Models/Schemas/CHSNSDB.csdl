@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2006/04/edm" Namespace="CHSNSDB" Alias="Self">
+  <EntityContainer Name="CHSNSDBContainer" >
+    <EntitySet Name="Account" EntityType="CHSNSDB.Account" />
+    <EntitySet Name="Album" EntityType="CHSNSDB.Album" />
+    <EntitySet Name="Application" EntityType="CHSNSDB.Application" />
+    <EntitySet Name="BasicInformation" EntityType="CHSNSDB.BasicInformation" />
+    <EntitySet Name="Blogs" EntityType="CHSNSDB.Blogs" />
+    <EntitySet Name="Category" EntityType="CHSNSDB.Category" />
+    <EntitySet Name="City" EntityType="CHSNSDB.City" />
+    <EntitySet Name="Comment" EntityType="CHSNSDB.Comment" />
+    <EntitySet Name="ContactInformation" EntityType="CHSNSDB.ContactInformation" />
+    <EntitySet Name="Event" EntityType="CHSNSDB.Event" />
+    <EntitySet Name="Field" EntityType="CHSNSDB.Field" />
+    <EntitySet Name="FieldInformation" EntityType="CHSNSDB.FieldInformation" />
+    <EntitySet Name="Friend" EntityType="CHSNSDB.Friend" />
+    <EntitySet Name="Group" EntityType="CHSNSDB.Group" />
+    <EntitySet Name="GroupUser" EntityType="CHSNSDB.GroupUser" />
+    <EntitySet Name="LogTag" EntityType="CHSNSDB.LogTag" />
+    <EntitySet Name="Message" EntityType="CHSNSDB.Message" />
+    <EntitySet Name="MiniField" EntityType="CHSNSDB.MiniField" />
+    <EntitySet Name="Note" EntityType="CHSNSDB.Note" />
+    <EntitySet Name="PersonalInformation" EntityType="CHSNSDB.PersonalInformation" />
+    <EntitySet Name="Photos" EntityType="CHSNSDB.Photos" />
+    <EntitySet Name="Profile" EntityType="CHSNSDB.Profile" />
+    <EntitySet Name="Province" EntityType="CHSNSDB.Province" />
+    <EntitySet Name="Push" EntityType="CHSNSDB.Push" />
+    <EntitySet Name="QinShi" EntityType="CHSNSDB.QinShi" />
+    <EntitySet Name="Reply" EntityType="CHSNSDB.Reply" />
+    <EntitySet Name="Services" EntityType="CHSNSDB.Services" />
+    <EntitySet Name="SuperNote" EntityType="CHSNSDB.SuperNote" />
+    <EntitySet Name="Tags" EntityType="CHSNSDB.Tags" />
+    <EntitySet Name="ViewData" EntityType="CHSNSDB.ViewData" />
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" />
+    <Property Name="Question" Type="String" Nullable="true" />
+    <Property Name="Answer" Type="String" Nullable="true" />
+    <Property Name="Code" Type="Int64" Nullable="true" />
+    <Property Name="Truepassword" Type="String" Nullable="false" />
+    <Property Name="Trueemail" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="ShowLevel" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="AddTime" />
+      <PropertyRef Name="Order" />
+      <PropertyRef Name="Count" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="true" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="ShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="Order" Type="Int32" Nullable="false" />
+    <Property Name="Location" Type="String" Nullable="true" />
+    <Property Name="FaceUrl" Type="String" Nullable="true" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Controller" Type="String" Nullable="false" />
+    <Property Name="Action" Type="String" Nullable="false" />
+    <Property Name="ParamStr" Type="String" Nullable="false" />
+    <Property Name="ClassName" Type="String" Nullable="false" />
+    <Property Name="FullName" Type="String" Nullable="false" />
+    <Property Name="ShortName" Type="String" Nullable="false" />
+    <Property Name="Vision" Type="String" Nullable="false" />
+    <Property Name="Icon" Type="String" Nullable="true" />
+    <Property Name="Authorid" Type="Int64" Nullable="true" />
+    <Property Name="Addtime" Type="DateTime" Nullable="false" />
+    <Property Name="Edittime" Type="DateTime" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" />
+    <Property Name="IsSystem" Type="Boolean" Nullable="false" />
+    <Property Name="IsTrue" Type="Boolean" Nullable="false" />
+    <Property Name="DescriptionUrl" Type="String" Nullable="true" />
+    <Property Name="UserCount" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BasicInformation">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="true" />
+    <Property Name="Sex" Type="Boolean" Nullable="true" />
+    <Property Name="Birthday" Type="DateTime" Nullable="true" />
+    <Property Name="ProvinceID" Type="Int32" Nullable="false" />
+    <Property Name="CityID" Type="Int64" Nullable="false" />
+    <Property Name="ShowLevel" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Blogs">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="SubTitle" Type="String" Nullable="true" />
+    <Property Name="Publish" Type="String" Nullable="true" />
+    <Property Name="WriteName" Type="String" Nullable="false" />
+    <Property Name="CommentEmail" Type="String" Nullable="true" />
+    <Property Name="Skin" Type="String" Nullable="true" />
+    <Property Name="Css" Type="String" Nullable="true" />
+    <Property Name="MetaKey" Type="String" Nullable="true" />
+    <Property Name="IsWebServices" Type="Boolean" Nullable="false" />
+    <Property Name="PostCount" Type="Int64" Nullable="false" />
+    <Property Name="CommentCount" Type="Int64" Nullable="false" />
+    <Property Name="TrackBackCount" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Type" Type="Int16" Nullable="false" />
+    <Property Name="Count" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="true" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="PID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="LogID" Type="Int64" Nullable="true" />
+    <Property Name="OwnerID" Type="Int64" Nullable="false" />
+    <Property Name="SenderID" Type="Int64" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="Body" Type="String" Nullable="false" />
+    <Property Name="IsReply" Type="Boolean" Nullable="false" />
+    <Property Name="IsSee" Type="Boolean" Nullable="false" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="Type" Type="Int16" Nullable="false" />
+    <Property Name="IsTellMe" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContactInformation">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="true" />
+    <Property Name="QQ" Type="String" Nullable="true" />
+    <Property Name="Msn" Type="String" Nullable="true" />
+    <Property Name="WangWang" Type="String" Nullable="true" />
+    <Property Name="NeteasePop" Type="String" Nullable="true" />
+    <Property Name="UC" Type="String" Nullable="true" />
+    <Property Name="Telphone" Type="String" Nullable="true" />
+    <Property Name="Mobiephone" Type="String" Nullable="true" />
+    <Property Name="WebSite" Type="String" Nullable="true" />
+    <Property Name="TellMethod" Type="Int16" Nullable="false" />
+    <Property Name="ShowLevel" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="FromID" Type="Int64" Nullable="false" />
+    <Property Name="ToID" Type="Int64" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Application" Type="String" Nullable="true" />
+    <Property Name="ActionID" Type="Int64" Nullable="true" />
+    <Property Name="Strext1" Type="String" Nullable="true" />
+    <Property Name="Strext2" Type="String" Nullable="true" />
+    <Property Name="Strext3" Type="String" Nullable="true" />
+    <Property Name="Numext1" Type="Int64" Nullable="true" />
+    <Property Name="Numext2" Type="Int64" Nullable="true" />
+    <Property Name="Numext3" Type="Int64" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Field">
+    <Key>
+      <PropertyRef Name="TrueID" />
+    </Key>
+    <Property Name="TrueID" Type="Int64" Nullable="false" />
+    <Property Name="ID" Type="Int64" Nullable="true" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="PID" Type="Int64" Nullable="true" />
+    <Property Name="IsTrue" Type="Boolean" Nullable="false" />
+    <Property Name="Class" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FieldInformation">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Field" Type="Int64" Nullable="false" />
+    <Property Name="Year" Type="Int16" Nullable="true" />
+    <Property Name="MiniField" Type="Int64" Nullable="true" />
+    <Property Name="QinShi" Type="Int64" Nullable="true" />
+    <Property Name="Field1" Type="Int64" Nullable="true" />
+    <Property Name="Field2" Type="Int64" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Friend">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="FromID" Type="Int64" Nullable="false" />
+    <Property Name="ToID" Type="Int64" Nullable="false" />
+    <Property Name="IsTrue" Type="Boolean" Nullable="false" />
+    <Property Name="IsCommon" Type="Boolean" Nullable="false" />
+    <Property Name="FriendType" Type="Int32" Nullable="true" />
+    <Property Name="FriendSummary" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="GroupName" Type="String" Nullable="false" />
+    <Property Name="summmary" Type="String" Nullable="false" />
+    <Property Name="CreateUserid" Type="Int64" Nullable="true" />
+    <Property Name="Publish" Type="String" Nullable="false" />
+    <Property Name="GroupClass" Type="Int16" Nullable="false" />
+    <Property Name="AdminCount" Type="Int16" Nullable="false" />
+    <Property Name="LogCount" Type="Int64" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="JoinLevel" Type="Int16" Nullable="false" />
+    <Property Name="ShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="UserCount" Type="Int64" Nullable="false" />
+    <Property Name="MaxUserCount" Type="Int64" Nullable="false" />
+    <Property Name="MagicBox" Type="String" Nullable="true" />
+    <Property Name="LogoUrl" Type="String" Nullable="true" />
+    <Property Name="addtime" Type="DateTime" Nullable="false" />
+    <Property Name="Num0" Type="Int64" Nullable="true" />
+    <Property Name="Other0" Type="Int64" Nullable="true" />
+    <Property Name="Other1" Type="Int64" Nullable="true" />
+    <Property Name="Other2" Type="Int64" Nullable="true" />
+    <Property Name="IsTrue" Type="Boolean" Nullable="false" />
+    <Property Name="categoryid" Type="Int64" Nullable="true" />
+  </EntityType>
+  <EntityType Name="GroupUser">
+    <Key>
+      <PropertyRef Name="TrueID" />
+    </Key>
+    <Property Name="TrueID" Type="Int64" Nullable="false" />
+    <Property Name="ID" Type="Int64" Nullable="true" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="GroupID" Type="Int64" Nullable="false" />
+    <Property Name="Level" Type="Int16" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="LogCount" Type="Int64" Nullable="false" />
+    <Property Name="Class" Type="Int16" Nullable="false" />
+    <Property Name="IsTrue" Type="Boolean" Nullable="false" />
+    <Property Name="IsRss" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogTag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="TagID" Type="Int64" Nullable="false" />
+    <Property Name="LogID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="FromID" Type="Int64" Nullable="false" />
+    <Property Name="ToID" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="Body" Type="String" Nullable="false" />
+    <Property Name="SendTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsSee" Type="Boolean" Nullable="false" />
+    <Property Name="IsFromDel" Type="Boolean" Nullable="false" />
+    <Property Name="IsToDel" Type="Boolean" Nullable="false" />
+    <Property Name="IsHtml" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MiniField">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="PID" Type="Int64" Nullable="false" />
+    <Property Name="Class" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="Summary" Type="String" Nullable="true" />
+    <Property Name="Body" Type="String" Nullable="false" />
+    <Property Name="IsPost" Type="Int16" Nullable="false" />
+    <Property Name="Anonymous" Type="Boolean" Nullable="true" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="EditTime" Type="DateTime" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="PushCount" Type="Int64" Nullable="false" />
+    <Property Name="TrackBackCount" Type="Int64" Nullable="false" />
+    <Property Name="CommentCount" Type="Int64" Nullable="false" />
+    <Property Name="LastCommentUserID" Type="Int64" Nullable="false" />
+    <Property Name="LastCommentTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsTellMe" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonalInformation">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="LoveLike" Type="String" Nullable="true" />
+    <Property Name="LoveBook" Type="String" Nullable="true" />
+    <Property Name="LoveMusic" Type="String" Nullable="true" />
+    <Property Name="LoveMovie" Type="String" Nullable="true" />
+    <Property Name="LoveSports" Type="String" Nullable="true" />
+    <Property Name="LoveGame" Type="String" Nullable="true" />
+    <Property Name="LoveComic" Type="String" Nullable="true" />
+    <Property Name="JoinSociety" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Photos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="AlbumID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="Path" Type="String" Nullable="false" />
+    <Property Name="Order" Type="Int64" Nullable="false" />
+    <Property Name="CommentCount" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="ShowText" Type="String" Nullable="true" />
+    <Property Name="ShowTextTime" Type="DateTime" Nullable="true" />
+    <Property Name="Score" Type="Int64" Nullable="false" />
+    <Property Name="ShowScore" Type="Int64" Nullable="false" />
+    <Property Name="DelScore" Type="Int64" Nullable="false" />
+    <Property Name="MagicBox" Type="String" Nullable="false" />
+    <Property Name="FaceShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="BasicInfoShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="SchoolInfoShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="ContactInfoShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="PersonalInfoShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="AllShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="OutboxCount" Type="Int64" Nullable="false" />
+    <Property Name="InboxCount" Type="Int64" Nullable="false" />
+    <Property Name="FileSizeAll" Type="Int64" Nullable="false" />
+    <Property Name="FileSizeCount" Type="Int64" Nullable="false" />
+    <Property Name="FriendAll" Type="Int64" Nullable="false" />
+    <Property Name="FriendCount" Type="Int64" Nullable="false" />
+    <Property Name="NoteCount" Type="Int64" Nullable="false" />
+    <Property Name="CommentCount" Type="Int64" Nullable="false" />
+    <Property Name="GroupCount" Type="Int32" Nullable="false" />
+    <Property Name="IsMagicBox" Type="Boolean" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsStar" Type="Boolean" Nullable="false" />
+    <Property Name="IsUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="Applications" Type="String" Nullable="true" />
+    <Property Name="Applicationlist" Type="String" Nullable="true" />
+    <Property Name="AlbumCount" Type="Int64" Nullable="false" />
+    <Property Name="field" Type="Int16" Nullable="true" />
+    <Property Name="InField" Type="Boolean" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="RegTime" Type="DateTime" Nullable="false" />
+    <Property Name="LoginTime" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Push">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="LogID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QinShi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="QinShi1" Type="String" Nullable="false" />
+    <Property Name="SchoolID" Type="Int64" Nullable="false" />
+    <Property Name="SchoolClass" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reply">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="SenderID" Type="Int64" Nullable="false" />
+    <Property Name="Body" Type="String" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="IsSee" Type="Boolean" Nullable="false" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="IsTellMe" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Body" Type="String" Nullable="false" />
+    <Property Name="Answer" Type="String" Nullable="false" />
+    <Property Name="Status" Type="Int16" Nullable="false" />
+    <Property Name="SendTime" Type="DateTime" Nullable="false" />
+    <Property Name="AnswerTime" Type="DateTime" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="SuperNote">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="true" />
+    <Property Name="Faceurl" Type="String" Nullable="true" />
+    <Property Name="Url" Type="String" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="true" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="ViewCount" Type="Int64" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Nullable="false" />
+    <Property Name="ShowLevel" Type="Int16" Nullable="false" />
+    <Property Name="SystemCategory" Type="Int64" Nullable="true" />
+    <Property Name="Category" Type="Int64" Nullable="true" />
+    <Property Name="Type" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="Count" Type="Int64" Nullable="false" />
+    <Property Name="Type" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ViewData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="OwnerID" Type="Int64" Nullable="false" />
+    <Property Name="ViewerID" Type="Int64" Nullable="false" />
+    <Property Name="IpandComputer" Type="String" Nullable="true" />
+    <Property Name="ViewPageUrl" Type="String" Nullable="true" />
+    <Property Name="LastUrl" Type="String" Nullable="true" />
+    <Property Name="ViewTime" Type="DateTime" Nullable="false" />
+    <Property Name="ViewClass" Type="Int16" Nullable="false" />
+  </EntityType>
+</Schema>
