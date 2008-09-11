@@ -50,7 +50,7 @@ namespace CHSNS.Controllers {
 		}
 		public ActionResult Write(long toid, string toname) {
 			return View(new UserItemPas {
-				UserID = toid,
+				ID = toid,
 				Name = Server.UrlDecode(toname)
 			});
 		}

@@ -18,8 +18,8 @@ namespace CHSNS.Data {
 				ep.FriendRequestCount = Convert.ToInt32(dr["FriendRequestCount"]);
 				ep.ViewCount = Convert.ToInt32(dr["ViewCount"]);
 				ep.CommentCount = Convert.ToInt32(dr["CommentCount"]);
-				ep.NewReply = DBExt.Comment.NewFiveReply();
-				ep.RssSource = DBExt.Group.TakeIns(10);
+				ep.NewReply = null;// DBExt.Comment.NewFiveReply();
+				ep.RssSource = null;// DBExt.Group.TakeIns(10);
 			}
 			return ep;
 		}

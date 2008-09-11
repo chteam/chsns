@@ -35,12 +35,11 @@ namespace CHSNS {
 		public void Application_Error(object sender, EventArgs e) {
 		}
 
-		public void Session_OnStart(object sender, EventArgs e) {
+		public void Session_OnStart(object sender, EventArgs e){
 			using (new TransactionScope()){
 				if (!CHUser.IsLogin){
 					//当前不处于登录状态
 					if (CHCookies.IsAutoLogin){
-
 						string pwd = CHCookies.UserPassword;
 						var idb = new DBExt();
 						idb.Account.Login(CHCookies.UserID.ToString(),
@@ -59,10 +58,16 @@ namespace CHSNS {
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 			routes.MapRoute(
+				"note", // Route name
+				"Note/{y}/{m}/{d}/{id}.ashx", // URL with parameters
+				new { controller = "Note", action = "Details" } // Parameter defaults
+				);
+			routes.MapRoute(
 				"url", // Route name
 				"{controller}/{action}.ashx", // URL with parameters
-				new{controller = "Home", action = "Index"} // Parameter defaults
+				new { controller = "Home", action = "Index" } // Parameter defaults
 				);
+			
 
 		}
 	}

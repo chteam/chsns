@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mapping xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS" Space="C-S">
+  <Alias Key="Model" Value="CHSNSDB" />
+  <Alias Key="Target" Value="CHSNSDB.Store" />
+  <EntityContainerMapping CdmEntityContainer="CHSNSDBContainer" StorageEntityContainer="CHSNSDBStoreContainer">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Account)">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Trueemail" ColumnName="Trueemail" />
+          <ScalarProperty Name="Truepassword" ColumnName="Truepassword" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Album">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Album)">
+        <MappingFragment StoreEntitySet="Album">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="FaceUrl" ColumnName="FaceUrl" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Application">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Application)">
+        <MappingFragment StoreEntitySet="Application">
+          <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+          <ScalarProperty Name="DescriptionUrl" ColumnName="DescriptionUrl" />
+          <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+          <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Edittime" ColumnName="Edittime" />
+          <ScalarProperty Name="Addtime" ColumnName="Addtime" />
+          <ScalarProperty Name="Authorid" ColumnName="Authorid" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Vision" ColumnName="Vision" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ParamStr" ColumnName="ParamStr" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BasicInformation">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.BasicInformation)">
+        <MappingFragment StoreEntitySet="BasicInformation">
+          <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blogs">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Blogs)">
+        <MappingFragment StoreEntitySet="Blogs">
+          <ScalarProperty Name="TrackBackCount" ColumnName="TrackBackCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="PostCount" ColumnName="PostCount" />
+          <ScalarProperty Name="IsWebServices" ColumnName="IsWebServices" />
+          <ScalarProperty Name="MetaKey" ColumnName="MetaKey" />
+          <ScalarProperty Name="Css" ColumnName="Css" />
+          <ScalarProperty Name="Skin" ColumnName="Skin" />
+          <ScalarProperty Name="CommentEmail" ColumnName="CommentEmail" />
+          <ScalarProperty Name="WriteName" ColumnName="WriteName" />
+          <ScalarProperty Name="Publish" ColumnName="Publish" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Category)">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.City)">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Comment)">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsSee" ColumnName="IsSee" />
+          <ScalarProperty Name="IsReply" ColumnName="IsReply" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactInformation">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.ContactInformation)">
+        <MappingFragment StoreEntitySet="ContactInformation">
+          <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+          <ScalarProperty Name="TellMethod" ColumnName="TellMethod" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="Mobiephone" ColumnName="Mobiephone" />
+          <ScalarProperty Name="Telphone" ColumnName="Telphone" />
+          <ScalarProperty Name="UC" ColumnName="UC" />
+          <ScalarProperty Name="NeteasePop" ColumnName="NeteasePop" />
+          <ScalarProperty Name="WangWang" ColumnName="WangWang" />
+          <ScalarProperty Name="Msn" ColumnName="Msn" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Event">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Event)">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="Numext3" ColumnName="Numext3" />
+          <ScalarProperty Name="Numext2" ColumnName="Numext2" />
+          <ScalarProperty Name="Numext1" ColumnName="Numext1" />
+          <ScalarProperty Name="Strext3" ColumnName="Strext3" />
+          <ScalarProperty Name="Strext2" ColumnName="Strext2" />
+          <ScalarProperty Name="Strext1" ColumnName="Strext1" />
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+          <ScalarProperty Name="Application" ColumnName="Application" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="ToID" ColumnName="ToID" />
+          <ScalarProperty Name="FromID" ColumnName="FromID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Field">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Field)">
+        <MappingFragment StoreEntitySet="Field">
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TrueID" ColumnName="TrueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FieldInformation">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.FieldInformation)">
+        <MappingFragment StoreEntitySet="FieldInformation">
+          <ScalarProperty Name="Field2" ColumnName="Field2" />
+          <ScalarProperty Name="Field1" ColumnName="Field1" />
+          <ScalarProperty Name="QinShi" ColumnName="QinShi" />
+          <ScalarProperty Name="MiniField" ColumnName="MiniField" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Field" ColumnName="Field" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Friend">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Friend)">
+        <MappingFragment StoreEntitySet="Friend">
+          <ScalarProperty Name="FriendSummary" ColumnName="FriendSummary" />
+          <ScalarProperty Name="FriendType" ColumnName="FriendType" />
+          <ScalarProperty Name="IsCommon" ColumnName="IsCommon" />
+          <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+          <ScalarProperty Name="ToID" ColumnName="ToID" />
+          <ScalarProperty Name="FromID" ColumnName="FromID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Group)">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+          <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+          <ScalarProperty Name="Other2" ColumnName="Other2" />
+          <ScalarProperty Name="Other1" ColumnName="Other1" />
+          <ScalarProperty Name="Other0" ColumnName="Other0" />
+          <ScalarProperty Name="Num0" ColumnName="Num0" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+          <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+          <ScalarProperty Name="MagicBox" ColumnName="MagicBox" />
+          <ScalarProperty Name="MaxUserCount" ColumnName="MaxUserCount" />
+          <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+          <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+          <ScalarProperty Name="JoinLevel" ColumnName="JoinLevel" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="LogCount" ColumnName="LogCount" />
+          <ScalarProperty Name="AdminCount" ColumnName="AdminCount" />
+          <ScalarProperty Name="GroupClass" ColumnName="GroupClass" />
+          <ScalarProperty Name="Publish" ColumnName="Publish" />
+          <ScalarProperty Name="CreateUserid" ColumnName="CreateUserid" />
+          <ScalarProperty Name="summmary" ColumnName="summmary" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupUser">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.GroupUser)">
+        <MappingFragment StoreEntitySet="GroupUser">
+          <ScalarProperty Name="IsRss" ColumnName="IsRss" />
+          <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="LogCount" ColumnName="LogCount" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TrueID" ColumnName="TrueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogTag">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.LogTag)">
+        <MappingFragment StoreEntitySet="LogTag">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Message)">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
+          <ScalarProperty Name="IsToDel" ColumnName="IsToDel" />
+          <ScalarProperty Name="IsFromDel" ColumnName="IsFromDel" />
+          <ScalarProperty Name="IsSee" ColumnName="IsSee" />
+          <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ToID" ColumnName="ToID" />
+          <ScalarProperty Name="FromID" ColumnName="FromID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MiniField">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.MiniField)">
+        <MappingFragment StoreEntitySet="MiniField">
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Note">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Note)">
+        <MappingFragment StoreEntitySet="Note">
+          <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
+          <ScalarProperty Name="LastCommentTime" ColumnName="LastCommentTime" />
+          <ScalarProperty Name="LastCommentUserID" ColumnName="LastCommentUserID" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="TrackBackCount" ColumnName="TrackBackCount" />
+          <ScalarProperty Name="PushCount" ColumnName="PushCount" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="EditTime" ColumnName="EditTime" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Anonymous" ColumnName="Anonymous" />
+          <ScalarProperty Name="IsPost" ColumnName="IsPost" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalInformation">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.PersonalInformation)">
+        <MappingFragment StoreEntitySet="PersonalInformation">
+          <ScalarProperty Name="JoinSociety" ColumnName="JoinSociety" />
+          <ScalarProperty Name="LoveComic" ColumnName="LoveComic" />
+          <ScalarProperty Name="LoveGame" ColumnName="LoveGame" />
+          <ScalarProperty Name="LoveSports" ColumnName="LoveSports" />
+          <ScalarProperty Name="LoveMovie" ColumnName="LoveMovie" />
+          <ScalarProperty Name="LoveMusic" ColumnName="LoveMusic" />
+          <ScalarProperty Name="LoveBook" ColumnName="LoveBook" />
+          <ScalarProperty Name="LoveLike" ColumnName="LoveLike" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Photos">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Photos)">
+        <MappingFragment StoreEntitySet="Photos">
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profile">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Profile)">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="InField" ColumnName="InField" />
+          <ScalarProperty Name="field" ColumnName="field" />
+          <ScalarProperty Name="AlbumCount" ColumnName="AlbumCount" />
+          <ScalarProperty Name="Applicationlist" ColumnName="Applicationlist" />
+          <ScalarProperty Name="Applications" ColumnName="Applications" />
+          <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
+          <ScalarProperty Name="IsStar" ColumnName="IsStar" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="IsMagicBox" ColumnName="IsMagicBox" />
+          <ScalarProperty Name="GroupCount" ColumnName="GroupCount" />
+          <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+          <ScalarProperty Name="NoteCount" ColumnName="NoteCount" />
+          <ScalarProperty Name="FriendCount" ColumnName="FriendCount" />
+          <ScalarProperty Name="FriendAll" ColumnName="FriendAll" />
+          <ScalarProperty Name="FileSizeCount" ColumnName="FileSizeCount" />
+          <ScalarProperty Name="FileSizeAll" ColumnName="FileSizeAll" />
+          <ScalarProperty Name="InboxCount" ColumnName="InboxCount" />
+          <ScalarProperty Name="OutboxCount" ColumnName="OutboxCount" />
+          <ScalarProperty Name="AllShowLevel" ColumnName="AllShowLevel" />
+          <ScalarProperty Name="PersonalInfoShowLevel" ColumnName="PersonalInfoShowLevel" />
+          <ScalarProperty Name="ContactInfoShowLevel" ColumnName="ContactInfoShowLevel" />
+          <ScalarProperty Name="SchoolInfoShowLevel" ColumnName="SchoolInfoShowLevel" />
+          <ScalarProperty Name="BasicInfoShowLevel" ColumnName="BasicInfoShowLevel" />
+          <ScalarProperty Name="FaceShowLevel" ColumnName="FaceShowLevel" />
+          <ScalarProperty Name="MagicBox" ColumnName="MagicBox" />
+          <ScalarProperty Name="DelScore" ColumnName="DelScore" />
+          <ScalarProperty Name="ShowScore" ColumnName="ShowScore" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="ShowTextTime" ColumnName="ShowTextTime" />
+          <ScalarProperty Name="ShowText" ColumnName="ShowText" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Province">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Province)">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Push">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Push)">
+        <MappingFragment StoreEntitySet="Push">
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QinShi">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.QinShi)">
+        <MappingFragment StoreEntitySet="QinShi">
+          <ScalarProperty Name="SchoolClass" ColumnName="SchoolClass" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="QinShi1" ColumnName="QinShi" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reply">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Reply)">
+        <MappingFragment StoreEntitySet="Reply">
+          <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsSee" ColumnName="IsSee" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Services)">
+        <MappingFragment StoreEntitySet="Services">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
+          <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SuperNote">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.SuperNote)">
+        <MappingFragment StoreEntitySet="SuperNote">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SystemCategory" ColumnName="SystemCategory" />
+          <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Faceurl" ColumnName="Faceurl" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.Tags)">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewData">
+      <EntityTypeMapping TypeName="IsTypeOf(CHSNSDB.ViewData)">
+        <MappingFragment StoreEntitySet="ViewData">
+          <ScalarProperty Name="ViewClass" ColumnName="ViewClass" />
+          <ScalarProperty Name="ViewTime" ColumnName="ViewTime" />
+          <ScalarProperty Name="LastUrl" ColumnName="LastUrl" />
+          <ScalarProperty Name="ViewPageUrl" ColumnName="ViewPageUrl" />
+          <ScalarProperty Name="IpandComputer" ColumnName="IpandComputer" />
+          <ScalarProperty Name="ViewerID" ColumnName="ViewerID" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

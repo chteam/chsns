@@ -23,8 +23,8 @@ namespace CHSNS.Data {
 			                    && a.Password == md5pwd
 			              select a.UserID).FirstOrDefault();
 			int retint = -999;
-
-			if (userid != null && userid > 1000){
+			 
+			if (userid > 1000){
 				var person = (from p in DBExt.DB.Profile
 				              where p.UserID == userid
 				              select new{
@@ -32,7 +32,7 @@ namespace CHSNS.Data {
 				                        	p.Name,
 				                        	p.LoginTime,
 											p.Applications
-				                        }).SingleOrDefault();
+				                        }).FirstOrDefault();
 				retint = person.Status;
 			
 				if (retint > 0){
@@ -47,7 +47,7 @@ LoginTime = getdate()
 where userid=@UserID",
 						"@UserID", userid, "@s", source);
 					HttpContext.Current.Session.Clear();
-					CHUser.UserID = userid.Value;
+					CHUser.UserID = userid;
 					CHUser.Username = person.Name;
 					CHUser.InitStatus(retint);
 	

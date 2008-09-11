@@ -1,14 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
 	CodeBehind="Index.aspx.cs" Inherits="CHSNS.Web.Views.User.Index" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("Reply")%>
 	<%=Html.CSSLink("mypage")%>
 	<%=Html.CSSLink("home")%>
 	<%--<%=Html.Script("/WebServices/Profile.asmx/js")%>--%>
-	<%=Html.Script("Profile")%>
+	<%--	<%=Html.Script("Profile")%>
 	<%=Html.Script("Reply")%>
 
-	<%=Html.Script("LogBook")%>
+	<%=Html.Script("LogBook")%>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% 
@@ -18,11 +19,9 @@
 	<%
 		}
 		if (!(up.HasRight && up.Exists)) {
-	   if (!up.HasRight)
-	   {
-	   	Html.RenderPartial("index-noRigh", ViewData.Model);
-	   }
-	   else { %> 
+			if (!up.HasRight) {
+				Html.RenderPartial("index-noRigh", ViewData.Model);
+			} else { %>
 	<div class="notes">
 		<%if (up.IsMe) {%>
 		您尚未设置个人自信,请点击 [设置]->[基本设置] 进行完善
@@ -32,8 +31,8 @@
 	</div>
 	<%
 		}
-   } else { %>
-<%--	#macro(EditInfo $id)
+		} else { %>
+	<%--	#macro(EditInfo $id)
 	<%if (up.IsMe) {%>
 	<a href="/EditMyInfo.aspx?mode=$id" class="edit">[编辑]</a>
 	<%} %>
@@ -43,7 +42,6 @@
 			<div class="mypage_name">
 				<h2>
 					<%=up.OwnerName%>
-					
 				</h2>
 				<% Html.RenderPartial("index-isstar", ViewData.Model);/*实名*/%>
 			</div>
@@ -54,15 +52,17 @@
 		<div id="userAccount">
 			<div class="box" id="UserInformation">
 				<ul id="Profile_Accordion">
-					<li><%
-   	Html.RenderPartial("index-account", ViewData.Model);%></li>
-<%--					<li><%
+					<li>
+						<%
+							Html.RenderPartial("index-account", ViewData.Model);%></li>
+					<%--					<li><%
    	Html.RenderPartial("index-school", ViewData.Model);%></li>
 					<li><%
    	Html.RenderPartial("index-contact", ViewData.Model);%></li>
 					<li><%
    	Html.RenderPartial("index-personal", ViewData.Model);%></li>--%>
 				</ul>
+
 				<script type="text/javascript">
 					//$("#Profile_Accordion").accordion();
 				//	new Accordian().Show('#Profile_Accordion', 3, 'accordionHeaderSelected');
@@ -73,14 +73,14 @@
 						<h4>
 							<%=up.OwnerName%>的动向</h4>
 						<ul id="Profile_Event">
-						<% Html.RenderAction<EventController>(c => c.Show(up.OwnerID, 0)); %>
+							<% Html.RenderAction<EventController>(c => c.Show(up.OwnerID, 0)); %>
 						</ul>
 					</div>
 				</div>
-				<%if (up.IsMagicBox && up.IsMe) { Html.RenderPartial("EmptyMagicBox");} %>
+				<%if (up.IsMagicBox && up.IsMe) { Html.RenderPartial("EmptyMagicBox"); } %>
 			</div>
 		</div>
-	<%--	<div class="box" id="userBlog">
+		<%--	<div class="box" id="userBlog">
 			<h3>
 				<%=up.OwnerName%>的日志</h3>
 			<div class="boxcont">
@@ -96,28 +96,35 @@
 				<%} %>
 				<a href="/Notebook.aspx?userid=<%=up.OwnerID%>">所有日志</a>
 			</p>
-		</div>--%>
+		</div>
+		
+	<script type="text/javascript">
+		ShoworHide("#userBlog", "blog");
+	</script>
+
+		--%>
 		<div class="box" id="userTalk">
 			<h3>
 				<%=up.OwnerName%>的留言板</h3>
 			<div class="boxcont">
-				<div id="leaveWordForm">
-					<p id="starttalk">
-						<input id="starttalkBtn" class="subbutton" value="我要留言" onclick="iwillReply();" type="button" />
-						<span id="ReplyMsg"></span>
-					</p>
-					<div id="starttalkForm" style="display: none;">
-						<p>
-							<input id="Bup" type="button" value="留言" onclick="ReplyReply(<%=up.OwnerID%>);" class="subbutton"
-								tabindex="2" />
-							<span class="discription">(每条最多2000字)</span>
-							<input value="取消" class="inputbutton" onclick="cancelLeaveWord();" tabindex="3" type="button" />
-						</p>
-						<textarea id="TBody" cols="70" rows="7" onkeydown="CtrlEnterReplyUser(<%=up.OwnerID%>,event);"
-							tabindex="1" class="cmtbody"></textarea>
-					</div>
+				<p id="cmt_form1">
+					<input id="cmt_form1_btn" class="subbutton" value="我要留言" onclick="$('#cmt_form1').hide();$('#cmt_form2').show();"
+						type="button" />
+				</p>
+				<div id="cmt_form2" style="display: none;">
+					<input type="button" value="留言" onclick="ReplyReply(<%=up.OwnerID%>);" class="subbutton"
+						tabindex="2" />
+					(每条最多2000字)
+					<input value="取消" class="subbutton" onclick="$('#cmt_form2').hide();$('#cmt_form1').show();$('#comment_body').html('');"
+						tabindex="3" type="button" />
+					<textarea id="comment_body" cols="70" rows="7" onkeydown="CtrlEnterReplyUser(<%=up.OwnerID%>,event);"
+						tabindex="1" class="cmtbody"></textarea>
 				</div>
-				<% Html.RenderAction<CommentController>(c => c.ShowList(0, 1, 10, 0, up.OwnerID, "")); %>
+				<ul>
+				<%
+			Html.RenderPartial("Comment/Item", ViewData["replylist"]);
+			 %>
+			 </ul>
 			</div>
 			<p class="more">
 				<a href="/ReplyList.aspx?userid=<%=up.OwnerID%>">所有留言</a></p>
@@ -142,7 +149,7 @@
 				</div>
 			</div>
 			<%
-   	Html.RenderPartial("index-Myactions", ViewData.Model);%>
+				Html.RenderPartial("index-Myactions", ViewData.Model);%>
 		</div>
 		<div class="box">
 			<h3>
@@ -156,32 +163,26 @@
 			<div id="userViewer">
 				<h3>
 					最近访问<span class="stat">(共<span class="count"><%=up.User["ViewCount"]%></span>人看过)</span></h3>
-						<%
+				<%
 					Html.RenderPartial("ViewList", ViewData["lastview"]); %>
 			</div>
 		</div>
 		<div class="box" id="userFriend">
 			<h3>
 				<%=up.OwnerName%>最近登录的好友</h3>
-					<%
-					Html.RenderPartial("ViewList", ViewData["lastfriend"]); %>
-			<span class="more">
-				<a href="/friend.aspx?userid=<%=up.OwnerID%>">more</a></span>
+			<%
+				Html.RenderPartial("ViewList", ViewData["lastfriend"]); %>
+			<span class="more"><a href="/friend.aspx?userid=<%=up.OwnerID%>">more</a></span>
 		</div>
-		<div class="box">
+		<%--		<div class="box">
 			<h3>
 				<%=up.OwnerName%>加入的群</h3>
 			<div class="mypadding">
 				<% Html.RenderAction<GroupController>(c => c.ShowGroupList("ShowProfileLinks", up.OwnerID
-		   , 0, 1, 100, 0)); %>
+		   , 0, 1, 100, 0)); %> 
 			</div>
-		</div>
+		</div>--%>
 	</div>
-
-	<script type="text/javascript">
-		ShoworHide("userBlog", "blog");
-	</script>
-
 	<%} %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">

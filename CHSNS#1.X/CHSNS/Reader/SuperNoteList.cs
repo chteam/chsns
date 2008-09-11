@@ -133,8 +133,8 @@ namespace CHSNS.Reader {
 				if (Userid == CHUser.UserID) {
 					Username = CHUser.Username;
 				} else {
-					Identity identity = new Identity();
-					Username = identity.GetUserName(Userid);
+					//Identity identity = new Identity();
+					//Username = identity.GetUserName(Userid);
 				}
 			}
 			return sbin.ToString();

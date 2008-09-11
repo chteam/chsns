@@ -26,6 +26,11 @@ namespace CHSNS
 			_Command = new SqlCommand();
 		}
 
+		public SqlDataOpener(DbConnection conn) {
+			_Connection = conn as SqlConnection;
+			CommandType = CommandType.Text;
+			_Command = new SqlCommand();
+		}
 		#region 打开关闭数据库
 
 		void IDataOpener.Open(string SQLtext)

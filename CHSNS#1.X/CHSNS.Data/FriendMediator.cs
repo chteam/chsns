@@ -13,7 +13,7 @@ namespace CHSNS.Data {
 						   UserID = userid,
 						   p.FriendCount,
 						   p.Name
-					   }).SingleOrDefault();
+					   }).FirstOrDefault();
 			return new Profile {
 				UserID = ret.UserID,
 				FriendCount = ret.FriendCount,
