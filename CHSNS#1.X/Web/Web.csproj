@@ -138,6 +138,8 @@
     <None Include="Schemas\SQLite.ssdl" />
     <None Include="Style\Default\i\Thumbs.db" />
     <None Include="Style\Facebook\i\Thumbs.db" />
+    <None Include="Template\Default\PublicMenu.htm1" />
+    <None Include="Template\Default\Random.htm1" />
     <None Include="Views\Admin\Admin\ApplyClass.vm" />
     <None Include="Views\Admin\Admin\Basic.vm" />
     <None Include="Views\Admin\Admin\File.vm" />
@@ -208,6 +210,8 @@
     <None Include="Views\Html\PostList.vm" />
     <None Include="Views\Html\ProfileEdit.vm" />
     <None Include="Views\Html\Rss-List.vm" />
+    <None Include="Views\nvelocity.properties" />
+    <None Include="Views\Rescues\index.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
     <Content Include="Config\ThumbnailSize.xml" />
     <Content Include="Config\UserEditMenu.xml" />
@@ -363,6 +367,7 @@
     <Content Include="Style\Facebook\video.css" />
     <Content Include="Style\Facebook\wysiwyg.css" />
     <Content Include="Style\Facebook\Images\wysiwyg.gif" />
+    <Content Include="Template\Default\UserList.htm" />
     <Content Include="Views\Comment\ShowList.ascx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
