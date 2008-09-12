@@ -72,11 +72,6 @@
       <DependentUpon>CHSNSDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="CHSNSDBDataContext.cs" />
-    <Compile Include="DB.Designer.cs">
-      <DependentUpon>DB.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="EntityRender\CommentListPas.cs" />
     <Compile Include="EntityRender\EventPagePas.cs" />
     <Compile Include="EntityRender\MessageDetailsPas.cs" />
@@ -120,12 +115,6 @@
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DB.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>DB.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

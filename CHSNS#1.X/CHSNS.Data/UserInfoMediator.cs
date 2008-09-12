@@ -5,6 +5,25 @@ using CHSNS;
 namespace CHSNS.Data {
 	public class UserInfoMediator : BaseMediator {
 		public UserInfoMediator(DBExt id) : base(id) { }
+		public UserPas UserInformation(long userid) {
+			var ret = (from p in DBExt.DB.Profile
+					   join b in DBExt.DB.BasicInformation on p.UserID equals b.UserID
+					   where p.UserID == userid
+					   select new UserPas { Profile = p, Basic = b }
+						 ).FirstOrDefault();			
+			return ret;
+		}
+
+		public int Relation(long OwnerID, long ViewerID) {
+			if (OwnerID == ViewerID) return 200;
+			var x =
+				(from f in DBExt.DB.Friend
+				 where (f.FromID == OwnerID && f.ToID == ViewerID) ||
+(f.FromID == ViewerID && f.ToID == OwnerID) && f.IsTrue
+				 select 1).Count();
+			if (x > 0) return 150;
+			return 0;
+		}
 		#region BasicInfo
 		public BasicInformation GetBaseInfo(long UserID) {
 			return DBExt.DB.BasicInformation.Where(c => c.UserID == UserID).FirstOrDefault();
@@ -63,11 +82,6 @@ set Magicbox=@magicbox where UserID=@UserID"
 			System.IO.Directory.Delete(Path.FaceMapPath(userid), true);
 		}
 		#endregion
-
-		public byte Relation(long ownerid, long viewerid) {
-			return 200;
-		}
-
 		public Profile GetUser(long userid) {
 			return GetUser(userid, c => new Profile {
 				Name = c.Name

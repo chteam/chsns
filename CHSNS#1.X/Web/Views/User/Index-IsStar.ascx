@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Index_IsStar.ascx.cs"
 	Inherits="CHSNS.Web.Views.User.Index_IsStar" %>
 <%
-	if (Convert.ToBoolean(ViewData.Model.User["isstar"])) { 
+	if (ViewData.Model.Profile.IsStar) { 
 %>
 <a href="#" title="实名用户" id="Profile_Isstar">&nbsp;&nbsp;&nbsp;</a>
 <% 
@@ -11,6 +11,7 @@
 <%
 	}
 	} else {
+
 		if (CHUser.IsAdmin) {
 %>
 <a href="javascript:Admin_Isstar_Add(<%=ViewData.Model.OwnerID%>);">置为实名</a>
