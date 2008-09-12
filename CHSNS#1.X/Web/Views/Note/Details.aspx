@@ -30,6 +30,7 @@
 %>
 		</div>
 	</div>
+	
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 </asp:Content>

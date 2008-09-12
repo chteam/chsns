@@ -19,6 +19,7 @@
 %>
 		|
 		<%=Html.NoteEdit(n.ID, "编辑")%>
+		<a href="<%=n.ID %>" class="delete">删除</a>
 		<%
 			}
 %>

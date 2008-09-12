@@ -31,14 +31,24 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
 	<script type="text/javascript">
+		var init_confirm = function() {
+			$('.delete').click(function(event) {
+				var id = $(this).attr('href');
+				$.post('<%=Url.Action("Delete","Note") %>', { 'id': id }, function(r) {
+					$h("#Items" + id, '已经删除');
+				});
+			}).confirm();
+		};
 		var setpage = function(p) {
 			$h("#NoteItems", 'Loading...');
 			$.post('<%=Url.Action("NoteList") %>', { "p": p, 'ep': $v('#EveryPage'), "userid": '<%=ViewData["UserID"] %>' }, function(r) {
 				$h("#NoteItems", r);
 				pagefun();
+				init_confirm();
 			});
 		};
 		pagefun();
+		init_confirm();
 	</script>
 
 </asp:Content>
