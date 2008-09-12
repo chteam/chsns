@@ -137,6 +137,13 @@ function FormMsg(i, m, p) {//i:id without msg,m:message,p:id withmsg or define s
     l.html(m).fadeIn();
     $(i).focus();
 }
+
+var v_len = function(id, m, min, max, p) {
+    var b = (min && $h(id).toString().length < min) ||
+    (max && $h(id).toString().length > max);
+    FormMsg(id, b ? m : '', p);
+    return !b;
+};
 var v_regex = function(id, reg, ae, m, p) {
     //id:id of input,reg:regex,ae:alloweEmpty,m:msg,p:element show errormsg
     var ie = false; //is empty

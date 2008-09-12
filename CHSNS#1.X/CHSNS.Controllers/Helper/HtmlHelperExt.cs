@@ -3,11 +3,19 @@ using System.Web.Mvc;
 using System.Web;
 namespace CHSNS.Helper {
 	public static class HtmlHelperExt {
+		#region note
+		public static string NoteEdit(this HtmlHelper Html, long id, string text){
+			return Html.ActionLink(text, "Edit", "Note", new{id}, null);
+		}
 
+		public static string NoteList(this HtmlHelper Html, long userid, string text) {
+			return Html.ActionLink(text, "Index", "Note", new { userid }, null);
+		}
 		public static string NoteDetails(this HtmlHelper Html,string title,long id,DateTime dt){
 			return Html.ActionLink(title, "Details", "Note", new{id, y = dt.Year, m = dt.Month, d = dt.Day}, null);
 		}
-
+		#endregion
+		#region message
 		public static string WriteMessage(this HtmlHelper Html,string text,long toid,string toname){
 			return Html.ActionLink(text, "Write", "Message", new{toid, toname = HttpUtility.UrlEncode(toname)}, null);
 		}
@@ -18,6 +26,8 @@ namespace CHSNS.Helper {
 		public static string MessageDetails(this HtmlHelper Html,string title,long id){
 			return Html.ActionLink(title, "Details", "Message", new{id}, null);
 		}
+		#endregion
+
 		public static string UserPageLink(this HtmlHelper Html, long userid, string text) {
 			return Html.ActionLink(text, "Index", "User", new { userid }, null);
 		}

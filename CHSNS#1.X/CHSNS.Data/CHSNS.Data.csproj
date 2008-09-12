@@ -90,7 +90,6 @@
     <Compile Include="IMediator.cs" />
     <Compile Include="DBExt\BlogsSqlDB.cs" />
     <Compile Include="DBExt.cs" />
-    <Compile Include="DBExt\NoteSqlDB.cs" />
     <Compile Include="DBExt\TagsSqlDB.cs" />
     <Compile Include="MessageMediator.cs" />
     <Compile Include="NoteMediator.cs" />
