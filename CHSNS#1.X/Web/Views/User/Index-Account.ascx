@@ -7,19 +7,20 @@
 <div id="accont-content" class="accordionContent">
 	<ul>
 		<li><span>注册ＩＤ：</span><%=up.OwnerID %></li>
-		<li><span>注册时间：</span><%=Convert.ToDateTime(up.User["RegTime"]).ToString("yyyy-MM-dd")%></li>
-		<li><span>上线时间：</span><%=Convert.ToDateTime(up.User["LoginTime"]).ToString("yyyy-MM-dd HH:mm")%></li>
-		<li><span>可用积分：</span><%=up.User["Score"] %></li>
+		<li><span>注册时间：</span><%=up.Profile.RegTime.ToString("yyyy-MM-dd")%></li>
+		<li><span>上线时间：</span><%=up.Profile.LoginTime.ToString("yyyy-MM-dd HH:mm")%></li>
+		<li><span>可用积分：</span><%=up.Profile.Score%></li>
 		<%if (up.IsMe) {%>
 		<li>
 			<%=Html.UserEditLink("", "[编辑]")%></li>
+				<li><span>性 别：</span><%=up.Basic.Sex.HasValue&&up.Basic.Sex.Value ? "男生" : "女生"%></li>
 		<%
 			}
-	if (Convert.ToInt16(up.User["Relation"]) >= Convert.ToInt16(up.User["BasicInfoShowLevel"]) || CHUser.IsAdmin) {
+	if (0 == up.Basic.ShowLevel || CHUser.IsAdmin) {
 		%>
-		<li><span>性 别：</span><%=Convert.ToBoolean(up.User["sex"]) ? "男生" : "女生"%></li>
-		<%if (!up.User.IsNull("Birthday")) { %>
-		<li><span>出生日期：</span><%=Convert.ToDateTime(up.User["Birthday"]).ToString("yyyy-MM-dd")%></li>
+	
+		<%if (up.Basic.Birthday.HasValue) { %>
+		<li><span>出生日期：</span><%=up.Basic.Birthday.Value.ToString("yyyy-MM-dd")%></li>
 		<%--	<li><span>家　　乡：</span><%=up.User["ProvinceName"]%>-<%=up.User["cityname"]%></li>
 --%>
 		<%} %>

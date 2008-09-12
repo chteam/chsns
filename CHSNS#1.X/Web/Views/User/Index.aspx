@@ -14,23 +14,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% 
 		UserPas up = ViewData.Model;
-		if (up.User != null && up.IsMagicBox && !Url.CH().User.isAdmin) {%>
-	<%="<style type=\"text/css\">" + up.User["MagicBox"] + "</style>"%>
+		if (up.Exists && up.Profile.IsMagicBox) {%>
+	<%="<style type=\"text/css\">" + up.Profile.MagicBox + "</style>"%>
 	<%
 		}
-		if (!(up.HasRight && up.Exists)) {
-			if (!up.HasRight) {
+		if (!up.Exists) {
 				Html.RenderPartial("index-noRigh", ViewData.Model);
-			} else { %>
-	<div class="notes">
-		<%if (up.IsMe) {%>
-		您尚未设置个人自信,请点击 [设置]->[基本设置] 进行完善
-		<%} else { %>
-		该用户信息不存在
-		<%} %>
-	</div>
-	<%
-		}
 		} else { %>
 	<%--	#macro(EditInfo $id)
 	<%if (up.IsMe) {%>
@@ -41,7 +30,7 @@
 		<div id="userStatus">
 			<div class="mypage_name">
 				<h2>
-					<%=up.OwnerName%>
+					<%=up.Profile.Name%>
 				</h2>
 				<% Html.RenderPartial("index-isstar", ViewData.Model);/*实名*/%>
 			</div>
@@ -71,13 +60,13 @@
 				<div>
 					<div>
 						<h4>
-							<%=up.OwnerName%>的动向</h4>
+							<%=up.Profile.Name%>的动向</h4>
 						<ul id="Profile_Event">
-							<% Html.RenderAction<EventController>(c => c.Show(up.OwnerID, 0)); %>
+							<% //Html.RenderAction<EventController>(c => c.Show(up.OwnerID, 0)); %>
 						</ul>
 					</div>
 				</div>
-				<%if (up.IsMagicBox && up.IsMe) { Html.RenderPartial("EmptyMagicBox"); } %>
+				<%if (up.Profile.IsMagicBox && up.IsMe) { Html.RenderPartial("EmptyMagicBox"); } %>
 			</div>
 		</div>
 		<%--	<div class="box" id="userBlog">
@@ -105,7 +94,7 @@
 		--%>
 		<div class="box" id="userTalk">
 			<h3>
-				<%=up.OwnerName%>的留言板</h3>
+				<%=up.Profile.Name%>的留言板</h3>
 			<div class="boxcont">
 				<p id="cmt_form1">
 					<input id="cmt_form1_btn" class="subbutton" value="我要留言" onclick="$('#cmt_form1').hide();$('#cmt_form2').show();"
@@ -136,14 +125,7 @@
 				<div id="userFace">
 					<ul>
 						<li><a href="#<%=up.OwnerID%>">
-							<%
-								if (Convert.ToInt16(up.User["Relation"]) >= Convert.ToInt16(up.User["FaceShowLevel"]) || CHUser.IsAdmin) {
-							%>
-							<%=Html.Image(Url.CH().Path.GetFace_Big(up.OwnerID),up.OwnerName) %>
-							<%} else { %>
-							<%=Html.Image(Url.CH().Path.GetFace_Big(0), up.OwnerName)%>
-							>
-							<%} %>
+							<%=Html.Image(Url.CH().Path.GetFace_Big(up.OwnerID), up.Profile.Name)%>
 						</a></li>
 					</ul>
 				</div>
@@ -162,14 +144,14 @@
 		<div id="userVisitor" class="box">
 			<div id="userViewer">
 				<h3>
-					最近访问<span class="stat">(共<span class="count"><%=up.User["ViewCount"]%></span>人看过)</span></h3>
+					最近访问<span class="stat">(共<span class="count"><%=up.Profile.ViewCount%></span>人看过)</span></h3>
 				<%
 					Html.RenderPartial("ViewList", ViewData["lastview"]); %>
 			</div>
 		</div>
 		<div class="box" id="userFriend">
 			<h3>
-				<%=up.OwnerName%>最近登录的好友</h3>
+				<%=up.Profile.Name%>最近登录的好友</h3>
 			<%
 				Html.RenderPartial("ViewList", ViewData["lastfriend"]); %>
 			<span class="more"><a href="/friend.aspx?userid=<%=up.OwnerID%>">more</a></span>

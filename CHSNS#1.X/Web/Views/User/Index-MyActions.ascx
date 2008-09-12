@@ -2,7 +2,7 @@
 	Inherits="CHSNS.Web.Views.User.Index_MyActions" %>
 <%UserPas up = ViewData.Model;%>
 <ul id="userActions">
-	<%if (up.User["Relation"].ToString() == "200") { %>
+	<%if (up.IsMe) { %>
 	<li>
 		<%=Html.UserEditLink("upload", "更换头像")%>
 	</li>
@@ -13,10 +13,10 @@
 	<%} else {
 	%>
 	<li>
-		<%=Html.WriteMessage(up.OwnerID ,up.OwnerName) %></li>
+		<%=Html.WriteMessage(up.OwnerID ,up.Profile.Name) %></li>
 	<%
 		}
-   if (up.User["Relation"].ToString() == "150") { %>
+   if (up.Relation == 150) { //好友%>
 	<li><a href="javascript:void(0);" onclick="$.post('<%=Url.Action("Delete","Friend") %>',{'toid':<%=up.OwnerID%>},function(r){alertEx(r);});return false;">
 		解除好友关系</a></li>
 	<%} else {%>
