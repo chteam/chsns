@@ -423,12 +423,9 @@
     <None Include="Views\Upload\Photo.vm" />
     <Content Include="JavaScript\AdminUser.js" />
     <Content Include="JavaScript\Application.js" />
-    <Content Include="JavaScript\EditMyInfo.js" />
-    <Content Include="JavaScript\Editor.js" />
     <Content Include="JavaScript\Framework.js" />
     <Content Include="JavaScript\GroupList.js" />
     <Content Include="JavaScript\GroupUser.js" />
-    <Content Include="JavaScript\Invite.js" />
     <Content Include="JavaScript\ManageGroup.js" />
     <Content Include="JavaScript\PageSet.js" />
     <Content Include="JavaScript\Photos.js" />
