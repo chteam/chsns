@@ -37,7 +37,20 @@ namespace CHSNS.Data {
 			DBExt.DB.SaveChanges();
 		}
 		public void Edit(Note note,long userid){
-			DataBaseExecutor.Execute("");
+			DataBaseExecutor.Execute(
+				@"update [note] 
+set title=@title,body=@body,EditTime=@edittime
+where id=@id and userid=@userid",
+				"@title", note.Title,
+				"@body", note.Body,
+				"@edittime", DateTime.Now,
+				"@id", note.ID,
+				"@userid", userid);
+		}
+		public void Delete (long id,long userid){
+			DataBaseExecutor.Execute("delete [note] where id=@id and userid=@userid",
+			                         "@id", id,
+			                         "@userid", userid);
 		}
 	}
 }

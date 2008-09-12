@@ -15,6 +15,7 @@
 		<b>内容:</b><span id="Bodymsg" class="error"></span>
 		<br />
 		<textarea cols="83" id="Body" name="Body" rows="12"><%=ViewData["Body"]??"<p></p>" %></textarea>
+		<%=ViewData["ID"]!=null?Html.Hidden("ID"):"" %>
 		<input class="subbutton" value="发送" type="submit" />
 		</form>
 	</fieldset>

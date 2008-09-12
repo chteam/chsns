@@ -44,6 +44,7 @@ namespace CHSNS.Controllers
 				var mod = DBExt.Note.Details(id.Value).Note;
 				ViewData["Title"] = mod.Title;
 				ViewData["Body"] = mod.Body;
+				ViewData["ID"] = id.Value;
 			}
 			return View();
 		}
@@ -55,13 +56,18 @@ namespace CHSNS.Controllers
 				throw new Exception("请输入正确的日志内容");
 			}
 			if (id.HasValue){
-				
+				n.ID = id.Value;
+				DBExt.Note.Edit(n, CHUser.UserID);
 			} else{
 				DBExt.Note.Add(n, CHUser.UserID);
 			}
 			return RedirectToAction("Index");
 		}
-		
+		[AcceptVerbs("post")]
+		public ActionResult Delete(long id){
+			DBExt.Note.Delete(id, CHUser.UserID);
+			return Content("");
+		}
 
 		public ActionResult book() {
 			long ownerid = this.QueryLong("userid");
