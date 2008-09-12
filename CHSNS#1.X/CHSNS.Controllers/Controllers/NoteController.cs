@@ -33,6 +33,35 @@ namespace CHSNS.Controllers
 		public ActionResult NoteList(int p, int ep, long userid){
 			return View(DBExt.Note.GetNotes(userid).Pager(p, ep));
 		}
+		public ActionResult Details(long id){
+			//var user = new UserItemPas();
+			var note = DBExt.Note.Details(id);
+			return View(note);
+		}
+		public ActionResult Edit(long? id){
+			if(id.HasValue){
+				//编辑
+				var mod = DBExt.Note.Details(id.Value).Note;
+				ViewData["Title"] = mod.Title;
+				ViewData["Body"] = mod.Body;
+			}
+			return View();
+		}
+		[AcceptVerbs("post")]
+		public ActionResult Save(long? id){
+			var n = new Note();
+			UpdateModel(n, new[]{"Title", "Body"});
+			if (n.Title.Length < 1 || n.Body.Length < 10){
+				throw new Exception("请输入正确的日志内容");
+			}
+			if (id.HasValue){
+				
+			} else{
+				DBExt.Note.Add(n, CHUser.UserID);
+			}
+			return RedirectToAction("Index");
+		}
+		
 
 		public ActionResult book() {
 			long ownerid = this.QueryLong("userid");

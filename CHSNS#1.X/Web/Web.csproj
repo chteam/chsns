@@ -92,7 +92,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="1.htm" />
     <Content Include="ADpic\adfoot.jpg" />
     <Content Include="ADpic\adjmsu.jpg" />
     <Content Include="ADpic\adjmsu.png" />
@@ -131,15 +130,13 @@
     <Content Include="Config\Routing.config" />
     <Content Include="Config\SiteConfig.config" />
     <Content Include="Config\Style.config" />
-    <Content Include="ChAlumna.config" />
+    <Content Include="CHSNS.config" />
     <None Include="Data\CHSNSDB.sqlite" />
     <None Include="Schemas\CHSNSDB.csdl" />
     <None Include="Schemas\CHSNSDB.msl" />
     <None Include="Schemas\SQLite.ssdl" />
     <None Include="Style\Default\i\Thumbs.db" />
     <None Include="Style\Facebook\i\Thumbs.db" />
-    <None Include="Template\Default\PublicMenu.htm1" />
-    <None Include="Template\Default\Random.htm1" />
     <None Include="Views\Admin\Admin\ApplyClass.vm" />
     <None Include="Views\Admin\Admin\Basic.vm" />
     <None Include="Views\Admin\Admin\File.vm" />
@@ -217,6 +214,10 @@
     <Content Include="Config\UserEditMenu.xml" />
     <Content Include="Default.aspx" />
     <Content Include="JavaScript\jquery-1.2.3-intellisense.js" />
+    <Content Include="JavaScript\Source\wysiwyg\jquery.wysiwyg.jpg" />
+    <Content Include="JavaScript\Source\wysiwyg\jquery.wysiwyg.js" />
+    <Content Include="JavaScript\Source\wysiwyg\wysiwyg.css" />
+    <Content Include="JavaScript\Source\wysiwyg\wysiwyg.gif" />
     <Content Include="JavaScript\wysiwyg.js" />
     <Content Include="JavaScript\ui.js" />
     <Content Include="Style\Default\admin.css" />
@@ -388,6 +389,8 @@
     <Content Include="Views\Message\OutBox.aspx" />
     <Content Include="Views\Message\OutboxList.ascx" />
     <Content Include="Views\Message\Write.aspx" />
+    <Content Include="Views\Note\Details.aspx" />
+    <Content Include="Views\Note\Edit.aspx" />
     <Content Include="Views\Note\Index.aspx" />
     <Content Include="Views\Note\NoteList.ascx" />
     <Content Include="Views\Shared\Comment\Item.ascx" />
@@ -587,7 +590,6 @@
     <Content Include="Template\Default\Note.htm" />
     <Content Include="Template\Default\NoteBookComment.htm" />
     <Content Include="Template\Default\NoteBookCommentItem.htm" />
-    <Content Include="Template\Default\NoteBookHistory.htm" />
     <Content Include="Template\Default\NotePage.htm" />
     <Content Include="Template\Default\PhotosPage.htm" />
     <Content Include="Template\Default\ReplyList.htm" />
@@ -603,9 +605,6 @@
     <Content Include="Template\Default\SuperNoteItem.htm" />
     <Content Include="Template\Default\SuperNotePage.htm" />
     <Content Include="Template\Default\SuperNoteRandomPage.htm" />
-    <Content Include="Template\History.htm" />
-    <Content Include="Template\Master.htm" />
-    <Content Include="Template\UpLoadFile.htm" />
     <Content Include="Views\Readme.txt" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
@@ -799,6 +798,20 @@
     </Compile>
     <Compile Include="Views\Message\Write.aspx.designer.cs">
       <DependentUpon>Write.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Note\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Note\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Note\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Note\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Note\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

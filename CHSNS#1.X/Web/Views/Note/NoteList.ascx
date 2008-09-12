@@ -14,6 +14,14 @@
 		评论(<%=n.CommentCount %>)
 		|
 		推荐(<%=n.PushCount %>)
+		<%
+			if (n.UserID == CHUser.UserID){
+%>
+		|
+		<%=Html.NoteEdit(n.ID, "编辑")%>
+		<%
+			}
+%>
 	</div>
 </li>
 <%} %>

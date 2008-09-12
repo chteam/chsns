@@ -1,7 +1,0 @@
-C:\Chsword\Chsword\obj\Debug\ResolveAssemblyReference.cache
-C:\Chsword\Chsword\bin\Release\ChAlumna.Core.dll
-C:\Chsword\Chsword\bin\Release\ChAlumna.Core.pdb
-C:\Chsword\Chsword\obj\Debug\ChAlumna.Core.dll
-C:\Chsword\Chsword\obj\Debug\ChAlumna.Core.pdb
-C:\Chsword\Chsword\bin\Release\ChAlumna.Config.dll
-C:\Chsword\Chsword\bin\Release\ChAlumna.Config.pdb
