@@ -173,10 +173,6 @@
     <None Include="Views\Components\Event.vm" />
     <None Include="Views\Components\GroupList\ProfileLink.vm" />
     <None Include="Views\Components\Html\SearchClass.vm" />
-    <None Include="Views\Components\NoteList\First.vm" />
-    <None Include="Views\Components\NoteList\Full.vm" />
-    <None Include="Views\Components\NoteList\Item.vm" />
-    <None Include="Views\Components\NoteList\Second.vm" />
     <None Include="Views\Components\Pager.vm" />
     <None Include="Views\Components\PhotoList\PhotoItem.vm" />
     <None Include="Views\Components\PostList\SubjectList.vm" />
@@ -401,9 +397,6 @@
     <None Include="Views\Mail\replyback.vm" />
     <None Include="Views\Mail\Test.vm" />
     <None Include="Views\Message\index.vm" />
-    <None Include="Views\Note\book.vm" />
-    <None Include="Views\Note\index.vm" />
-    <None Include="Views\Note\new.vm" />
     <None Include="Views\Profile\Edit.vm" />
     <None Include="Views\Profile\Setting.vm" />
     <None Include="Views\Reg\AgreementStep.vm" />
@@ -546,10 +539,6 @@
     <Content Include="Template\Default\MyApplicationItem.htm" />
     <Content Include="Template\Default\MyClass.htm" />
     <Content Include="Template\Default\NewGroup.htm" />
-    <Content Include="Template\Default\Note.htm" />
-    <Content Include="Template\Default\NoteBookComment.htm" />
-    <Content Include="Template\Default\NoteBookCommentItem.htm" />
-    <Content Include="Template\Default\NotePage.htm" />
     <Content Include="Template\Default\PhotosPage.htm" />
     <Content Include="Template\Default\ReplyList.htm" />
     <Content Include="Template\Default\ReplyListMaster.htm" />
