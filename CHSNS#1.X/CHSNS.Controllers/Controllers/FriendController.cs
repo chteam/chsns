@@ -20,10 +20,13 @@ namespace CHSNS.Controllers {
 				if (!p.HasValue || p == 0) p = 1;
 				var b = DBExt.Friend.UserFriendInfo(userid.Value);
 				if (b == null) throw new Exception("用户不存在");
+				
 				ViewData["UserID"] = userid;
 				ViewData["Name"] = b.Name;
 				ViewData["NowPage"] = p;
 				ViewData["PageCount"] = b.FriendCount;
+
+				ViewData["Page_Title"] = b.Name + "的好友";
 				return FriendList(p.Value, userid.Value);
 			}
 		}
@@ -40,6 +43,8 @@ namespace CHSNS.Controllers {
 				ViewData["NowPage"] = nowpage;
 				ViewData["PageCount"] = DBExt.Friend.GetRequests(Ownerid).Count();
 				ViewData["source"] = DBExt.Friend.GetRequests(Ownerid).Pager(nowpage, 10);
+
+				ViewData["Page_Title"] = b.Name + "的好友请求";
 				return View(b);
 			}
 		}

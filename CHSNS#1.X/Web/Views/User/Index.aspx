@@ -5,27 +5,18 @@
 	<%=Html.CSSLink("Reply")%>
 	<%=Html.CSSLink("mypage")%>
 	<%=Html.CSSLink("home")%>
-	<%--<%=Html.Script("/WebServices/Profile.asmx/js")%>--%>
-	<%--	<%=Html.Script("Profile")%>
-	<%=Html.Script("Reply")%>
-
-	<%=Html.Script("LogBook")%>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% 
 		UserPas up = ViewData.Model;
-		if (up.Exists && up.Profile.IsMagicBox) {%>
+		if (!up.Exists) {
+			//Html.RenderPartial("index-noRigh", ViewData.Model);
+		} else {
+			if (up.Exists && up.Profile.IsMagicBox) {%>
 	<%="<style type=\"text/css\">" + up.Profile.MagicBox + "</style>"%>
 	<%
 		}
-		if (!up.Exists) {
-				Html.RenderPartial("index-noRigh", ViewData.Model);
-		} else { %>
-	<%--	#macro(EditInfo $id)
-	<%if (up.IsMe) {%>
-	<a href="/EditMyInfo.aspx?mode=$id" class="edit">[编辑]</a>
-	<%} %>
-	#end--%>
+	%>
 	<div id="userUpdates">
 		<div id="userStatus">
 			<div class="mypage_name">
@@ -54,7 +45,7 @@
 
 				<script type="text/javascript">
 					//$("#Profile_Accordion").accordion();
-				//	new Accordian().Show('#Profile_Accordion', 3, 'accordionHeaderSelected');
+					//	new Accordian().Show('#Profile_Accordion', 3, 'accordionHeaderSelected');
 				</script>
 
 				<div>
@@ -97,23 +88,23 @@
 				<%=up.Profile.Name%>的留言板</h3>
 			<div class="boxcont">
 				<p id="cmt_form1">
-					<input id="cmt_form1_btn" class="subbutton" value="我要留言" onclick="$('#cmt_form1').hide();$('#cmt_form2').show();"
-						type="button" />
+					<input class="subbutton" value="我要留言" onclick="ShowReply();" type="button" />
 				</p>
 				<div id="cmt_form2" style="display: none;">
-					<input type="button" value="留言" onclick="ReplyReply(<%=up.OwnerID%>);" class="subbutton"
+					<input type="button" value="留言" onclick="Reply(<%=up.OwnerID%>);" class="subbutton"
 						tabindex="2" />
 					(每条最多2000字)
-					<input value="取消" class="subbutton" onclick="$('#cmt_form2').hide();$('#cmt_form1').show();$('#comment_body').html('');"
-						tabindex="3" type="button" />
-					<textarea id="comment_body" cols="70" rows="7" onkeydown="CtrlEnterReplyUser(<%=up.OwnerID%>,event);"
+					<input value="取消" class="subbutton" onclick="HideReply();" tabindex="3" type="button" /><span
+						class="error" id="comment_bodymsg"></span>
+					<textarea id="comment_body" cols="70" rows="7" onkeydown="EnterReply(<%=up.OwnerID%>,event);"
 						tabindex="1" class="cmtbody"></textarea>
+						<input type="hidden" value="0" id="ReplyerID" />
 				</div>
-				<ul>
-				<%
-			Html.RenderPartial("Comment/Item", ViewData["replylist"]);
-			 %>
-			 </ul>
+				<ul id="ReplyItems" class="userlist">
+					<%
+						Html.RenderPartial("Comment/Item", ViewData["replylist"]);
+					%>
+				</ul>
 			</div>
 			<p class="more">
 				<a href="/ReplyList.aspx?userid=<%=up.OwnerID%>">所有留言</a></p>
@@ -137,8 +128,10 @@
 			<h3>
 				用户相关</h3>
 			<div class="mypadding">
-				<a href="/SuperNote.aspx?userid=<%=up.OwnerID%>">视频</a> <a href="/NoteBook.aspx?userid=<%=up.OwnerID%>">
-					日志</a> <a href="/Photos.aspx?userid=<%=up.OwnerID%>">相册</a>
+				<a href="/SuperNote.aspx?userid=<%=up.OwnerID%>">视频</a>
+				<%=Html.NoteList(up.OwnerID,"日志") %>
+				<a href="/NoteBook.aspx?userid=<%=up.OwnerID%>">日志</a> <a href="/Photos.aspx?userid=<%=up.OwnerID%>">
+					相册</a>
 			</div>
 		</div>
 		<div id="userVisitor" class="box">
@@ -146,7 +139,8 @@
 				<h3>
 					最近访问<span class="stat">(共<span class="count"><%=up.Profile.ViewCount%></span>人看过)</span></h3>
 				<%
-					Html.RenderPartial("ViewList", ViewData["lastview"]); %>
+					Html.RenderPartial("ViewList", ViewData["lastview"]); 
+				%>
 			</div>
 		</div>
 		<div class="box" id="userFriend">
@@ -168,4 +162,39 @@
 	<%} %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
+
+	<script type="text/javascript">
+
+		var HideReply = function() { $('#cmt_form2').hide(); $('#cmt_form1').show(); $v('#comment_body', ''); };
+		var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); $v('#comment_body', ''); };
+		var Reply = function(ownerid) {
+			if (v_empty("#comment_body", '不能为空'))
+				$.post('<%=this.Url.Action("AddReply","Comment") %>',
+				{ 'UserID': '<%=ViewData.Model.OwnerID %>', 'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
+				function(r) {
+					$('#ReplyItems').prepend(r);
+					HideReply();
+				});
+		};
+		var init_confirm = function() {
+			$('.delete').click(function(event) {
+				var id = $(this).attr('href');
+				$.post('<%=Url.Action("DeleteReply","Comment") %>', { 'id': id }, function(r) {
+					showMessage("#Item" + id, '已经删除', 1000);
+				});
+			}).confirm();
+		};
+		var WillReply = function(n, senderid) {
+			ShowReply();
+			$v('#ReplyerID', senderid);
+			$v('#comment_body', '@' + n + '\n');
+		};
+		var EnterReply = function(ownerid, event) {
+			if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83)) {
+				Reply(ownerid);
+			}
+		};
+		init_confirm();
+	</script>
+
 </asp:Content>

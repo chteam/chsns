@@ -14,25 +14,23 @@ var isnull = function(v) { return !(typeof v !== "undefined" && v != null); }
 var $v = function(i, v) { if (isnull(v)) return $(i).val(); else $(i).val(v); };
 var $h = function(i, v) { if (isnull(v)) { return $(i).html(); } else { $(i).html(v); } };
 
-
-var isExists=function(v){return typeof v!=="undefined"&&v!=null;};
-var showMessage=function(id,message,timeout){//show Message
-	var timeoutSeed;
-	if($(id)){
-		$h(id,message);
-		if(timeout==null)timeout=3000;
-		if (timeoutSeed){
-			window.clearTimeout(timeoutSeed);
-		}
-		timeoutSeed = window.setTimeout(
-			function(){
-				$h(id,""); 
+var showMessage = function(id, m, time) {//show Message
+    var ts;
+    if ($(id)) {
+        $(id).html(m);
+        $(id).addClass('error');
+        if (time == null) time = 3000;
+        if (ts) {
+            window.clearTimeout(ts);
+        }
+        ts = window.setTimeout(
+			function() {
+			    $(id).fadeOut().html('');
 			},
-			timeout || 3500
+			time || 3500
 		);
-	}else alertEx(message);
+    } else alertEx(m);
 };
-function Msg(id, m) { showMessage(id, m, 1000); }
 //Jquery ext
 $.fn.serialize = function() {
     var s = [];
@@ -82,7 +80,7 @@ var HomeSearch=function(i){
 }
 //child is empty then hide parent
 var ShoworHide=function(_,i){
-	if(!isExists(i))i = "ch"+_;
+if (isnull(i)) i = "ch" + _;
 	if($(i)&&$(_))
 	    if (!$h(i) || $h(i).trim() == '')
 				$(_).hide();
@@ -98,11 +96,6 @@ var alertEx = function(s) {
     }).html(s);
 };
 //-----------------------------------------------PageMothed--------------------------------------------------------------
-var onfail=function(_){
-	alertEx(chRes.warning + ":" + _.get_message() + "<br />");
-	Sys.Debug.traceDump(_.get_stackTrace());
-};
-//Logina and Logout
 
 //Enter focus
 function EnterTo(n, event) {
@@ -120,13 +113,7 @@ function LoginMsg(m){
 	showMessage("loginmsg",m,3000);
 }
 
-function showTabsmsg(m){
-    showMessage("TabsStatus",m,3000);
-}
-
-
 //valitate
-var Regtest = function(id, reg) { return reg.test($v(id)); };
 function FormMsg(i, m, p) {//i:id without msg,m:message,p:id withmsg or define self
     if (p == null) p = i + "msg";
     var l = $(p);

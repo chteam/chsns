@@ -53,5 +53,10 @@ namespace CHSNS.Helper {
 		public static string UserEditLink(this HtmlHelper Html, string mode, string text) {
 			return Html.ActionLink(text, "Edit", "User", new { mode }, null);
 		}
+
+		public static string EncodeBR(this HtmlHelper Html, string text) {
+			return Html.Encode(text).Replace("\n","<br/>");
+		}
+
 	}
 }

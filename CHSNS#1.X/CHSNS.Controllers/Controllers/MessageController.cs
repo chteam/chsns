@@ -17,6 +17,7 @@ namespace CHSNS.Controllers {
 		public ActionResult InBox(int? p, int? ep) {
 			using (new TransactionScope()) {
 				ViewData["PageCount"] = DBExt.Message.InboxCount(CHUser.UserID);
+				ViewData["Page_Title"] = "收件箱";
 				return InBoxList(p, ep);
 			}
 		}
@@ -30,6 +31,7 @@ namespace CHSNS.Controllers {
 		public ActionResult OutBox(int? p, int? ep) {
 			using (new TransactionScope()) {
 				ViewData["PageCount"] = DBExt.Message.OutboxCount(CHUser.UserID);
+				ViewData["Page_Title"] = "发件箱";
 				return OutBoxList(p, ep);
 			}
 		}
@@ -46,9 +48,12 @@ namespace CHSNS.Controllers {
 			return Content("");
 		}
 		public ActionResult Details(long id) {
-			return View(DBExt.Message.Details(id, CHUser.UserID));
+			var m = DBExt.Message.Details(id, CHUser.UserID);
+			ViewData["Page_Title"] = m.Message.Title;
+			return View(m);
 		}
 		public ActionResult Write(long toid, string toname) {
+			ViewData["Page_Title"] = "写站内信";
 			return View(new UserItemPas {
 				ID = toid,
 				Name = Server.UrlDecode(toname)

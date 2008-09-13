@@ -369,7 +369,7 @@
           <Property Name="FriendAll" Type="bigint" Nullable="false" />
           <Property Name="FriendCount" Type="bigint" Nullable="false" />
           <Property Name="NoteCount" Type="bigint" Nullable="false" />
-          <Property Name="CommentCount" Type="bigint" Nullable="false" />
+          <Property Name="ReplyCount" Type="bigint" Nullable="false" />
           <Property Name="GroupCount" Type="int" Nullable="false" />
           <Property Name="IsMagicBox" Type="bit" Nullable="false" />
           <Property Name="ViewCount" Type="bigint" Nullable="false" />
@@ -844,7 +844,7 @@
           <Property Name="FriendAll" Type="Int64" Nullable="false" />
           <Property Name="FriendCount" Type="Int64" Nullable="false" />
           <Property Name="NoteCount" Type="Int64" Nullable="false" />
-          <Property Name="CommentCount" Type="Int64" Nullable="false" />
+          <Property Name="ReplyCount" Type="Int64" Nullable="false" />
           <Property Name="GroupCount" Type="Int32" Nullable="false" />
           <Property Name="IsMagicBox" Type="Boolean" Nullable="false" />
           <Property Name="ViewCount" Type="Int64" Nullable="false" />
@@ -1308,7 +1308,7 @@
                 <ScalarProperty Name="FriendAll" ColumnName="FriendAll" />
                 <ScalarProperty Name="FriendCount" ColumnName="FriendCount" />
                 <ScalarProperty Name="NoteCount" ColumnName="NoteCount" />
-                <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+                <ScalarProperty Name="ReplyCount" ColumnName="ReplyCount" />
                 <ScalarProperty Name="GroupCount" ColumnName="GroupCount" />
                 <ScalarProperty Name="IsMagicBox" ColumnName="IsMagicBox" />
                 <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
