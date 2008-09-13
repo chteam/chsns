@@ -5,10 +5,11 @@
 	<%=Html.Script("PageSet") %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+	<fieldset>
+	<legend><%=ViewData["Name"]%>的好友</legend>
+	
 	<div id="UserListMsg">
 	</div>
-	<h2>
-		<%=ViewData["Name"]%>的好友</h2>
 	<a href="/Invite.aspx">邀请朋友加入</a> 
 	
 	(共有<span id="FriendCount" class="count"><%=ViewData["PageCount"]%></span>个好友)
@@ -25,7 +26,11 @@
 	<%=Html.Hidden("PageCount")%>
 	<%=Html.Hidden("NowPage") %>
 	<%=Html.Hidden("EveryPage","10") %>
+</fieldset>
 
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 	<script type="text/javascript">
 		var DeleteFriend=function(id){
 			$.post('<%=Url.Action("Delete","Friend") %>', {'toid':id}, function(r) { 
@@ -45,7 +50,4 @@
 		};
 		pagefun();
 	</script>
-
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 </asp:Content>

@@ -35,6 +35,8 @@ namespace CHSNS.Data {
 			note.UserID = userid;
 			DBExt.DB.AddToNote(note);
 			DBExt.DB.SaveChanges();
+			DataBaseExecutor.Execute("update [profile] set NoteCount=NoteCount+1 where userid=@userid",
+									 "@userid", userid);
 		}
 		public void Edit(Note note,long userid){
 			DataBaseExecutor.Execute(

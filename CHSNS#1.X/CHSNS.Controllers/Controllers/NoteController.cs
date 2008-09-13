@@ -36,15 +36,19 @@ namespace CHSNS.Controllers
 		public ActionResult Details(long id){
 			//var user = new UserItemPas();
 			var note = DBExt.Note.Details(id);
+			ViewData["Page_Title"] = note.Note.Title;
 			return View(note);
 		}
 		public ActionResult Edit(long? id){
-			if(id.HasValue){
+			if (id.HasValue) {
 				//编辑
 				var mod = DBExt.Note.Details(id.Value).Note;
 				ViewData["Title"] = mod.Title;
 				ViewData["Body"] = mod.Body;
 				ViewData["ID"] = id.Value;
+				ViewData["Page_Title"] = "修改日志";
+			} else {
+				ViewData["Page_Title"] = "发新日志";
 			}
 			return View();
 		}

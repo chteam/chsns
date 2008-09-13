@@ -16,7 +16,7 @@ namespace CHSNS.Data
 
 		public AccountMediator Account { get; private set; }
 		public ViewMediator View { get; private set; }
-		public ReplyMediator Comment { get; private set; }
+		public CommentMediator Comment { get; private set; }
 		public GatherMediator Gather { get; private set; }
 		public GroupMediator Group { get; private set; }
 		public UserInfoMediator UserInfo { get; private set; }
@@ -30,7 +30,7 @@ namespace CHSNS.Data
 			Account = new AccountMediator(this);
 			Gather = new GatherMediator(this);
 			View = new ViewMediator(this);
-			Comment = new ReplyMediator(this);
+			Comment = new CommentMediator(this);
 			Group = new GroupMediator(this);
 			UserInfo = new UserInfoMediator(this);
 			Golbal = new GolbalMediator(this);
@@ -44,7 +44,8 @@ namespace CHSNS.Data
 		public string ConnectionString { get; private set; }
 		public DBExt() {
 			ConnectionString = "name=CHSNSDBEntities";
-			EntityConnection conn = new EntityConnection(ConnectionString);
+			var conn = new EntityConnection(ConnectionString);
+		
 			_DB = new CHSNSDBDataContext(conn);
 			_dbex = new DataBaseExecutor(new SqlDataOpener(conn.StoreConnection));
 		//	DataBaseExecutor = ichsnsdb.DataBaseExecutor;

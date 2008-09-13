@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008-9-11 13:20:00
+// 生成日期: 2008-9-13 11:54:28
 namespace CHSNS.Models
 {
     
@@ -6081,7 +6081,7 @@ namespace CHSNS.Models
         /// <param name="friendAll">FriendAll 的初始值。</param>
         /// <param name="friendCount">FriendCount 的初始值。</param>
         /// <param name="noteCount">NoteCount 的初始值。</param>
-        /// <param name="commentCount">CommentCount 的初始值。</param>
+        /// <param name="replyCount">ReplyCount 的初始值。</param>
         /// <param name="groupCount">GroupCount 的初始值。</param>
         /// <param name="isMagicBox">IsMagicBox 的初始值。</param>
         /// <param name="viewCount">ViewCount 的初始值。</param>
@@ -6113,7 +6113,7 @@ namespace CHSNS.Models
                     long friendAll, 
                     long friendCount, 
                     long noteCount, 
-                    long commentCount, 
+                    long replyCount, 
                     int groupCount, 
                     bool isMagicBox, 
                     long viewCount, 
@@ -6146,7 +6146,7 @@ namespace CHSNS.Models
             profile.FriendAll = friendAll;
             profile.FriendCount = friendCount;
             profile.NoteCount = noteCount;
-            profile.CommentCount = commentCount;
+            profile.ReplyCount = replyCount;
             profile.GroupCount = groupCount;
             profile.IsMagicBox = isMagicBox;
             profile.ViewCount = viewCount;
@@ -6644,28 +6644,28 @@ namespace CHSNS.Models
         partial void OnNoteCountChanging(long value);
         partial void OnNoteCountChanged();
         /// <summary>
-        /// 架构中不存在属性 CommentCount 的注释。
+        /// 架构中不存在属性 ReplyCount 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long CommentCount
+        public long ReplyCount
         {
             get
             {
-                return this._CommentCount;
+                return this._ReplyCount;
             }
             set
             {
-                this.OnCommentCountChanging(value);
-                this.ReportPropertyChanging("CommentCount");
-                this._CommentCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("CommentCount");
-                this.OnCommentCountChanged();
+                this.OnReplyCountChanging(value);
+                this.ReportPropertyChanging("ReplyCount");
+                this._ReplyCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ReplyCount");
+                this.OnReplyCountChanged();
             }
         }
-        private long _CommentCount;
-        partial void OnCommentCountChanging(long value);
-        partial void OnCommentCountChanged();
+        private long _ReplyCount;
+        partial void OnReplyCountChanging(long value);
+        partial void OnReplyCountChanged();
         /// <summary>
         /// 架构中不存在属性 GroupCount 的注释。
         /// </summary>

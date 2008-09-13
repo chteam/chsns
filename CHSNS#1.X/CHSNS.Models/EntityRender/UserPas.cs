@@ -11,7 +11,7 @@ namespace CHSNS.Models {
 		public long OwnerID {
 			get {
 				if (_ownerID == 0)
-					_ownerID = CHSNSUser.Current.UserID;
+					_ownerID = CHUser.UserID;
 				return _ownerID;
 			}
 			set { _ownerID = value; }
@@ -21,7 +21,10 @@ namespace CHSNS.Models {
 		public bool Exists {
 			get {
 				if (_exists == null) {
-					return this.OwnerID > 999 && Profile != null && Profile.AllShowLevel < 150;
+					if (this.OwnerID < 999) return false;
+					if (Profile == null) return false;
+					if (Profile.AllShowLevel > 150) return false;
+					return true;
 				}
 				return _exists.Value;
 			}

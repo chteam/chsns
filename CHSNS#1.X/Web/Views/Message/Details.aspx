@@ -7,8 +7,8 @@
 发件人:<%=Html.UserPageLink(ViewData.Model.UserOutbox.ID, ViewData.Model.UserOutbox.Name)%><br />
 收件人:<%=Html.UserPageLink(ViewData.Model.UserInbox.ID, ViewData.Model.UserInbox.Name)%><br />
 发件时间:<%=ViewData.Model.Message.SendTime.ToString("yyyy-MM-dd hh:mm")%><br />
-内容:<br />
-<div class="message">
+<b>内容:</b><br />
+<div class="text">
 <%=ViewData.Model.Message.IsHtml
 	                  	? ViewData.Model.Message.Body
 	                  	: Html.Encode(ViewData.Model.Message.Body)%>
