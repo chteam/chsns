@@ -86,26 +86,14 @@
 		<div class="box" id="userTalk">
 			<h3>
 				<%=up.Profile.Name%>的留言板</h3>
-			<div class="boxcont">
-				<p id="cmt_form1">
-					<input class="subbutton" value="我要留言" onclick="ShowReply();" type="button" />
-				</p>
-				<div id="cmt_form2" style="display: none;">
-					<input type="button" value="留言" onclick="Reply(<%=up.OwnerID%>);" class="subbutton"
-						tabindex="2" />
-					(每条最多2000字)
-					<input value="取消" class="subbutton" onclick="HideReply();" tabindex="3" type="button" /><span
-						class="error" id="comment_bodymsg"></span>
-					<textarea id="comment_body" cols="70" rows="7" onkeydown="EnterReply(<%=up.OwnerID%>,event);"
-						tabindex="1" class="cmtbody"></textarea>
-						<input type="hidden" value="0" id="ReplyerID" />
-				</div>
-				<ul id="ReplyItems" class="userlist">
-					<%
-						Html.RenderPartial("Comment/Item", ViewData["replylist"]);
-					%>
-				</ul>
-			</div>
+			<%
+				Html.RenderPartial("Comment/TextBox", up.OwnerID);
+			%>
+			<ul id="ReplyItems" class="userlist">
+				<%
+					Html.RenderPartial("Comment/Item", ViewData["replylist"]);
+				%>
+			</ul>
 			<p class="more">
 				<a href="/ReplyList.aspx?userid=<%=up.OwnerID%>">所有留言</a></p>
 		</div>
@@ -166,7 +154,7 @@
 	<script type="text/javascript">
 
 		var HideReply = function() { $('#cmt_form2').hide(); $('#cmt_form1').show(); $v('#comment_body', ''); };
-		var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); $v('#comment_body', ''); };
+		var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); if (!n) n = ''; $('#comment_body').focus().val(n); };
 		var Reply = function(ownerid) {
 			if (v_empty("#comment_body", '不能为空'))
 				$.post('<%=this.Url.Action("AddReply","Comment") %>',
@@ -176,6 +164,7 @@
 					HideReply();
 				});
 		};
+
 		var init_confirm = function() {
 			$('.delete').click(function(event) {
 				var id = $(this).attr('href');
@@ -184,10 +173,10 @@
 				});
 			}).confirm();
 		};
+		
 		var WillReply = function(n, senderid) {
-			ShowReply();
+			ShowReply('@' + n + '\n');
 			$v('#ReplyerID', senderid);
-			$v('#comment_body', '@' + n + '\n');
 		};
 		var EnterReply = function(ownerid, event) {
 			if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83)) {

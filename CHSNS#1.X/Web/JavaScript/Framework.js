@@ -327,3 +327,4 @@ jQuery.fn.confirm = function(options) {
         $target.one(type, handler);
     });
 }
+

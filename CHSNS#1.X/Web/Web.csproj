@@ -390,6 +390,7 @@
     <Content Include="Views\Note\Index.aspx" />
     <Content Include="Views\Note\NoteList.ascx" />
     <Content Include="Views\Shared\Comment\Item.ascx" />
+    <Content Include="Views\Shared\Comment\TextBox.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
     <None Include="Views\Shared\BlogMaster.vm" />
@@ -781,6 +782,13 @@
     </Compile>
     <Compile Include="Views\Shared\Comment\Item.ascx.designer.cs">
       <DependentUpon>Item.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Comment\TextBox.ascx.cs">
+      <DependentUpon>TextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Comment\TextBox.ascx.designer.cs">
+      <DependentUpon>TextBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
