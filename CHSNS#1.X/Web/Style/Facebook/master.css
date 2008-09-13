@@ -429,7 +429,7 @@ opacity:0.77;}
 
 
 /* useritem list new*/
-.userlist,.userlist ul { list-style-type:none;}
+.userlist,.userlist ul { list-style-type:none;padding-right:5px}
 .useritem { display:block; margin:10px 0; padding:10px; border:1px solid #d8dfea; background:#fff;}
 .useritem:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
 * html .useritem { height:1%;}
