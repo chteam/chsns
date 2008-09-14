@@ -70,9 +70,8 @@ namespace CHSNS {
 		/// <returns></returns>
 		static public object _Load<T>(string key) where T : class {
 			XmlSerializer mySerializer = new XmlSerializer(typeof(T));
-			FileStream myFileStream = new FileStream(
-				HttpContext.Current.Server.MapPath(string.Format(PATH, key))
-				, FileMode.Open);
+            Stream myFileStream = new StreamReader(
+                HttpContext.Current.Server.MapPath(string.Format(PATH, key))).BaseStream;
 			var x = mySerializer.Deserialize(myFileStream);
 			myFileStream.Close();
 			myFileStream.Dispose();

@@ -62,7 +62,7 @@ namespace CHSNS.Data {
 		public string GetMagicBox(long UserID) {
 			var magicbox = (from p in DBExt.DB.Profile
 							where p.UserID == UserID
-							select p.MagicBox).Single();
+							select p.MagicBox).FirstOrDefault();
 			return magicbox;
 		}
 		public void SaveMagicBox(string magicbox, long UserID) {
