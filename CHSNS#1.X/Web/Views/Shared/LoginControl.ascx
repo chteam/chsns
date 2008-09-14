@@ -30,6 +30,7 @@
 </div>
 
 <script type="text/javascript">
+    function Regtest(id, reg) {return reg.test($v(id));}
 	function Login() {
 		var LoginMsg = function(m) { showMessage("#loginmsg", m, 3000); };
 		var U = $v("#Email");
