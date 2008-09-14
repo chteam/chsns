@@ -106,6 +106,7 @@
     <Compile Include="DoDataBase.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="ImageSizeType.cs" />
+    <Compile Include="StringExt.cs" />
     <Compile Include="UserStatusType.cs" />
     <Compile Include="Interface\IDataOpener.cs" />
     <Compile Include="NetworkCross.cs" />

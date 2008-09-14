@@ -25,8 +25,8 @@
 			<input type="button" onclick="Login()" value="登录" class="subbutton" name="SubmitL" />
 			<a href="/help/getcode.aspx">忘了密码?</a></p>
 	</div>
-	<a href="<%=Url.Action("Start", "Reg")%>" class="portal"><span>注册</span></a> <a href="<%=Url.Action("Resend", "Reg")%>"
-		class="portal"><span>没有收到验证邮件吗</span></a>
+	<a href="<%=Url.Action("Agreement", "Account")%>" class="portal"><span>注册</span></a>
+	<a href="<%=Url.Action("Remail", "Account")%>" class="portal"><span>没有收到验证邮件吗</span></a>
 </div>
 
 <script type="text/javascript">
@@ -43,7 +43,7 @@
 			LoginMsg('密码最短长度为4.');
 			return;
 		}
-		$.post('<%=Url.Action("Login","Identity") %>', { "u": U, "p": P, "a": $("#Auto").attr("checked") }, function(r) {
+		$.post('<%=Url.Action("Login","Account") %>', { "u": U, "p": P, "a": $("#Auto").attr("checked") }, function(r) {
 			if (r != "false") {
 				location = '<%=Url.Action("Index","Event") %>';
 			}

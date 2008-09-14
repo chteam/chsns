@@ -3,13 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>注册</title>
+	<title><%=ViewData["Page_Title"] %></title>
 
 	<script type="text/javascript"></script>
 	<%=Html.CSSLink("master")%>
 	<%=Html.CSSLink("register")%>
 	<%=Html.Script("Framework") %>
-	<%=Html.Script("CHSNSLib") %>
 
 	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
 </head>
@@ -20,10 +19,13 @@
 		<div id="intro">
 			<div id="pageHeader">
 				<div id="publicmenu" class="mainlink mymenu">
-					<%=Html.RenderUserControl("/Views/Shared/PublicMenu.ascx") %>
-				</div>
+					<%
+						Html.RenderPartial("PublicMenu"); %>
+					</div>
 				<div class="secondlink">
-					<%=Html.RenderUserControl("/Views/Shared/Utility.ascx") %></div>
+					<%
+						Html.RenderPartial("Utility");%>
+					</div>
 			</div>
 		</div>
 		<div id="content">
@@ -31,7 +33,8 @@
 				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 			</div>
 		</div>
-		<%=Html.RenderUserControl("/Views/Shared/Footer.ascx") %>
+		<%
+						Html.RenderPartial("Footer");%>
 		<div id="linkList">
 			<div id="linkList2">
 			</div>

@@ -163,7 +163,6 @@
     <None Include="Views\Album\list.vm" />
     <None Include="Views\Album\random.vm" />
     <None Include="Views\Application\myapp.vm" />
-    <None Include="Views\App\Train\Index.vm" />
     <None Include="Views\Blog\edit.vm" />
     <None Include="Views\Blog\index.vm" />
     <None Include="Views\Blog\Item-Notes.vm" />
@@ -203,7 +202,6 @@
     <None Include="Views\Html\PostList.vm" />
     <None Include="Views\Html\ProfileEdit.vm" />
     <None Include="Views\Html\Rss-List.vm" />
-    <None Include="Views\nvelocity.properties" />
     <None Include="Views\Rescues\index.vm" />
     <None Include="Views\Shared\Adminmaster.vm" />
     <Content Include="Config\ThumbnailSize.xml" />
@@ -365,6 +363,9 @@
     <Content Include="Style\Facebook\wysiwyg.css" />
     <Content Include="Style\Facebook\Images\wysiwyg.gif" />
     <Content Include="Template\Default\UserList.htm" />
+    <Content Include="Views\Account\Agreement.aspx" />
+    <Content Include="Views\Account\Reg-Success.aspx" />
+    <Content Include="Views\Account\RegPage.aspx" />
     <Content Include="Views\Comment\ShowList.ascx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
@@ -607,6 +608,27 @@
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\Agreement.aspx.cs">
+      <DependentUpon>Agreement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\Agreement.aspx.designer.cs">
+      <DependentUpon>Agreement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Reg-Success.aspx.cs">
+      <DependentUpon>Reg-Success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\Reg-Success.aspx.designer.cs">
+      <DependentUpon>Reg-Success.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\RegPage.aspx.cs">
+      <DependentUpon>RegPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Account\RegPage.aspx.designer.cs">
+      <DependentUpon>RegPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Comment\ShowList.ascx.cs">
       <DependentUpon>ShowList.ascx</DependentUpon>

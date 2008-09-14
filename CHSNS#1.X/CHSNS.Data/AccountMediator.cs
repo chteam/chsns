@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web;
+using CHSNS.Models;
 
 namespace CHSNS.Data {
 	public class AccountMediator : BaseMediator {
@@ -67,5 +68,16 @@ where userid=@UserID",
 		//	throw new Exception(retint.ToString());
 			return retint;
 		}
+        public bool Create(Account account ,string name) {
+            var exists = DBExt.DB.Account.Where(c => c.Email == account.Email).Select(c => 1).Count();
+            if (exists == 0)
+                return false;
+            var pas = account.Password.ToMd5();
+            DataBaseExecutor.Execute(@"INSERT INTO [sq_menglei].[dbo].[Account]
+([Email],[Password],[Question],[Answer],[Code],[Truepassword],[Trueemail])VALUES
+(@email,@pas,@question,@answer,@code,@pas,@email)", "@email", account.Email, "@pas", pas, "@question", account.Question,
+                                                  "@answer", account.Answer, "@code", DateTime.Now.Ticks);
+            return true;
+        }
 	}
 }
