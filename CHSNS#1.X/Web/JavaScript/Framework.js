@@ -150,8 +150,8 @@ var v_date = function(id, m, p) {
     return !b;
 };
 
-var v_equals = function(id1, id2, m, p) {//id2 is the span that show error
-    var b = $v(id1) != $v(id2);
+var v_equals = function(id1, id, m, p) {//id2 is the span that show error
+    var b = $v(id1) != $v(id);
     FormMsg(id, b ? m : '', p);
     return !b;
 };
