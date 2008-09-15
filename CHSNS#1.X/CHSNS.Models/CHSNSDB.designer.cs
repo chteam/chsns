@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008-9-13 11:54:28
+// 生成日期: 2008/9/15 19:31:17
 namespace CHSNS.Models
 {
     
@@ -721,18 +721,14 @@ namespace CHSNS.Models
         /// 创建新的 Account 对象。
         /// </summary>
         /// <param name="userID">UserID 的初始值。</param>
-        /// <param name="email">Email 的初始值。</param>
         /// <param name="password">Password 的初始值。</param>
-        /// <param name="truepassword">Truepassword 的初始值。</param>
-        /// <param name="trueemail">Trueemail 的初始值。</param>
-        public static Account CreateAccount(long userID, string email, string password, string truepassword, string trueemail)
+        /// <param name="username">Username 的初始值。</param>
+        public static Account CreateAccount(long userID, string password, string username)
         {
             Account account = new Account();
             account.UserID = userID;
-            account.Email = email;
             account.Password = password;
-            account.Truepassword = truepassword;
-            account.Trueemail = trueemail;
+            account.Username = username;
             return account;
         }
         /// <summary>
@@ -758,29 +754,6 @@ namespace CHSNS.Models
         private long _UserID;
         partial void OnUserIDChanging(long value);
         partial void OnUserIDChanged();
-        /// <summary>
-        /// 架构中不存在属性 Email 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email
-        {
-            get
-            {
-                return this._Email;
-            }
-            set
-            {
-                this.OnEmailChanging(value);
-                this.ReportPropertyChanging("Email");
-                this._Email = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Email");
-                this.OnEmailChanged();
-            }
-        }
-        private string _Email;
-        partial void OnEmailChanging(string value);
-        partial void OnEmailChanged();
         /// <summary>
         /// 架构中不存在属性 Password 的注释。
         /// </summary>
@@ -874,51 +847,28 @@ namespace CHSNS.Models
         partial void OnCodeChanging(global::System.Nullable<long> value);
         partial void OnCodeChanged();
         /// <summary>
-        /// 架构中不存在属性 Truepassword 的注释。
+        /// 架构中不存在属性 Username 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Truepassword
+        public string Username
         {
             get
             {
-                return this._Truepassword;
+                return this._Username;
             }
             set
             {
-                this.OnTruepasswordChanging(value);
-                this.ReportPropertyChanging("Truepassword");
-                this._Truepassword = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Truepassword");
-                this.OnTruepasswordChanged();
+                this.OnUsernameChanging(value);
+                this.ReportPropertyChanging("Username");
+                this._Username = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Username");
+                this.OnUsernameChanged();
             }
         }
-        private string _Truepassword;
-        partial void OnTruepasswordChanging(string value);
-        partial void OnTruepasswordChanged();
-        /// <summary>
-        /// 架构中不存在属性 Trueemail 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Trueemail
-        {
-            get
-            {
-                return this._Trueemail;
-            }
-            set
-            {
-                this.OnTrueemailChanging(value);
-                this.ReportPropertyChanging("Trueemail");
-                this._Trueemail = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Trueemail");
-                this.OnTrueemailChanged();
-            }
-        }
-        private string _Trueemail;
-        partial void OnTrueemailChanging(string value);
-        partial void OnTrueemailChanged();
+        private string _Username;
+        partial void OnUsernameChanging(string value);
+        partial void OnUsernameChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Album 的注释。
@@ -1643,13 +1593,15 @@ namespace CHSNS.Models
         /// <param name="provinceID">ProvinceID 的初始值。</param>
         /// <param name="cityID">CityID 的初始值。</param>
         /// <param name="showLevel">ShowLevel 的初始值。</param>
-        public static BasicInformation CreateBasicInformation(long userID, int provinceID, long cityID, byte showLevel)
+        /// <param name="isEmailTrue">IsEmailTrue 的初始值。</param>
+        public static BasicInformation CreateBasicInformation(long userID, int provinceID, long cityID, byte showLevel, bool isEmailTrue)
         {
             BasicInformation basicInformation = new BasicInformation();
             basicInformation.UserID = userID;
             basicInformation.ProvinceID = provinceID;
             basicInformation.CityID = cityID;
             basicInformation.ShowLevel = showLevel;
+            basicInformation.IsEmailTrue = isEmailTrue;
             return basicInformation;
         }
         /// <summary>
@@ -1813,6 +1765,52 @@ namespace CHSNS.Models
         private byte _ShowLevel;
         partial void OnShowLevelChanging(byte value);
         partial void OnShowLevelChanged();
+        /// <summary>
+        /// 架构中不存在属性 Email 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email
+        {
+            get
+            {
+                return this._Email;
+            }
+            set
+            {
+                this.OnEmailChanging(value);
+                this.ReportPropertyChanging("Email");
+                this._Email = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Email");
+                this.OnEmailChanged();
+            }
+        }
+        private string _Email;
+        partial void OnEmailChanging(string value);
+        partial void OnEmailChanged();
+        /// <summary>
+        /// 架构中不存在属性 IsEmailTrue 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsEmailTrue
+        {
+            get
+            {
+                return this._IsEmailTrue;
+            }
+            set
+            {
+                this.OnIsEmailTrueChanging(value);
+                this.ReportPropertyChanging("IsEmailTrue");
+                this._IsEmailTrue = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("IsEmailTrue");
+                this.OnIsEmailTrueChanged();
+            }
+        }
+        private bool _IsEmailTrue;
+        partial void OnIsEmailTrueChanging(bool value);
+        partial void OnIsEmailTrueChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Blogs 的注释。
@@ -6068,28 +6066,20 @@ namespace CHSNS.Models
         /// <param name="showScore">ShowScore 的初始值。</param>
         /// <param name="delScore">DelScore 的初始值。</param>
         /// <param name="magicBox">MagicBox 的初始值。</param>
-        /// <param name="faceShowLevel">FaceShowLevel 的初始值。</param>
-        /// <param name="basicInfoShowLevel">BasicInfoShowLevel 的初始值。</param>
-        /// <param name="schoolInfoShowLevel">SchoolInfoShowLevel 的初始值。</param>
-        /// <param name="contactInfoShowLevel">ContactInfoShowLevel 的初始值。</param>
-        /// <param name="personalInfoShowLevel">PersonalInfoShowLevel 的初始值。</param>
         /// <param name="allShowLevel">AllShowLevel 的初始值。</param>
         /// <param name="outboxCount">OutboxCount 的初始值。</param>
         /// <param name="inboxCount">InboxCount 的初始值。</param>
         /// <param name="fileSizeAll">FileSizeAll 的初始值。</param>
         /// <param name="fileSizeCount">FileSizeCount 的初始值。</param>
-        /// <param name="friendAll">FriendAll 的初始值。</param>
         /// <param name="friendCount">FriendCount 的初始值。</param>
         /// <param name="noteCount">NoteCount 的初始值。</param>
         /// <param name="replyCount">ReplyCount 的初始值。</param>
         /// <param name="groupCount">GroupCount 的初始值。</param>
         /// <param name="isMagicBox">IsMagicBox 的初始值。</param>
         /// <param name="viewCount">ViewCount 的初始值。</param>
-        /// <param name="createTime">CreateTime 的初始值。</param>
         /// <param name="isStar">IsStar 的初始值。</param>
         /// <param name="isUpdate">IsUpdate 的初始值。</param>
         /// <param name="albumCount">AlbumCount 的初始值。</param>
-        /// <param name="inField">InField 的初始值。</param>
         /// <param name="status">Status 的初始值。</param>
         /// <param name="regTime">RegTime 的初始值。</param>
         /// <param name="loginTime">LoginTime 的初始值。</param>
@@ -6100,28 +6090,20 @@ namespace CHSNS.Models
                     long showScore, 
                     long delScore, 
                     string magicBox, 
-                    byte faceShowLevel, 
-                    byte basicInfoShowLevel, 
-                    byte schoolInfoShowLevel, 
-                    byte contactInfoShowLevel, 
-                    byte personalInfoShowLevel, 
                     byte allShowLevel, 
                     long outboxCount, 
                     long inboxCount, 
                     long fileSizeAll, 
                     long fileSizeCount, 
-                    long friendAll, 
                     long friendCount, 
                     long noteCount, 
                     long replyCount, 
                     int groupCount, 
                     bool isMagicBox, 
                     long viewCount, 
-                    global::System.DateTime createTime, 
                     bool isStar, 
                     bool isUpdate, 
                     long albumCount, 
-                    bool inField, 
                     int status, 
                     global::System.DateTime regTime, 
                     global::System.DateTime loginTime)
@@ -6133,28 +6115,20 @@ namespace CHSNS.Models
             profile.ShowScore = showScore;
             profile.DelScore = delScore;
             profile.MagicBox = magicBox;
-            profile.FaceShowLevel = faceShowLevel;
-            profile.BasicInfoShowLevel = basicInfoShowLevel;
-            profile.SchoolInfoShowLevel = schoolInfoShowLevel;
-            profile.ContactInfoShowLevel = contactInfoShowLevel;
-            profile.PersonalInfoShowLevel = personalInfoShowLevel;
             profile.AllShowLevel = allShowLevel;
             profile.OutboxCount = outboxCount;
             profile.InboxCount = inboxCount;
             profile.FileSizeAll = fileSizeAll;
             profile.FileSizeCount = fileSizeCount;
-            profile.FriendAll = friendAll;
             profile.FriendCount = friendCount;
             profile.NoteCount = noteCount;
             profile.ReplyCount = replyCount;
             profile.GroupCount = groupCount;
             profile.IsMagicBox = isMagicBox;
             profile.ViewCount = viewCount;
-            profile.CreateTime = createTime;
             profile.IsStar = isStar;
             profile.IsUpdate = isUpdate;
             profile.AlbumCount = albumCount;
-            profile.InField = inField;
             profile.Status = status;
             profile.RegTime = regTime;
             profile.LoginTime = loginTime;
@@ -6345,121 +6319,6 @@ namespace CHSNS.Models
         partial void OnMagicBoxChanging(string value);
         partial void OnMagicBoxChanged();
         /// <summary>
-        /// 架构中不存在属性 FaceShowLevel 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public byte FaceShowLevel
-        {
-            get
-            {
-                return this._FaceShowLevel;
-            }
-            set
-            {
-                this.OnFaceShowLevelChanging(value);
-                this.ReportPropertyChanging("FaceShowLevel");
-                this._FaceShowLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("FaceShowLevel");
-                this.OnFaceShowLevelChanged();
-            }
-        }
-        private byte _FaceShowLevel;
-        partial void OnFaceShowLevelChanging(byte value);
-        partial void OnFaceShowLevelChanged();
-        /// <summary>
-        /// 架构中不存在属性 BasicInfoShowLevel 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public byte BasicInfoShowLevel
-        {
-            get
-            {
-                return this._BasicInfoShowLevel;
-            }
-            set
-            {
-                this.OnBasicInfoShowLevelChanging(value);
-                this.ReportPropertyChanging("BasicInfoShowLevel");
-                this._BasicInfoShowLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("BasicInfoShowLevel");
-                this.OnBasicInfoShowLevelChanged();
-            }
-        }
-        private byte _BasicInfoShowLevel;
-        partial void OnBasicInfoShowLevelChanging(byte value);
-        partial void OnBasicInfoShowLevelChanged();
-        /// <summary>
-        /// 架构中不存在属性 SchoolInfoShowLevel 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public byte SchoolInfoShowLevel
-        {
-            get
-            {
-                return this._SchoolInfoShowLevel;
-            }
-            set
-            {
-                this.OnSchoolInfoShowLevelChanging(value);
-                this.ReportPropertyChanging("SchoolInfoShowLevel");
-                this._SchoolInfoShowLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("SchoolInfoShowLevel");
-                this.OnSchoolInfoShowLevelChanged();
-            }
-        }
-        private byte _SchoolInfoShowLevel;
-        partial void OnSchoolInfoShowLevelChanging(byte value);
-        partial void OnSchoolInfoShowLevelChanged();
-        /// <summary>
-        /// 架构中不存在属性 ContactInfoShowLevel 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public byte ContactInfoShowLevel
-        {
-            get
-            {
-                return this._ContactInfoShowLevel;
-            }
-            set
-            {
-                this.OnContactInfoShowLevelChanging(value);
-                this.ReportPropertyChanging("ContactInfoShowLevel");
-                this._ContactInfoShowLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ContactInfoShowLevel");
-                this.OnContactInfoShowLevelChanged();
-            }
-        }
-        private byte _ContactInfoShowLevel;
-        partial void OnContactInfoShowLevelChanging(byte value);
-        partial void OnContactInfoShowLevelChanged();
-        /// <summary>
-        /// 架构中不存在属性 PersonalInfoShowLevel 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public byte PersonalInfoShowLevel
-        {
-            get
-            {
-                return this._PersonalInfoShowLevel;
-            }
-            set
-            {
-                this.OnPersonalInfoShowLevelChanging(value);
-                this.ReportPropertyChanging("PersonalInfoShowLevel");
-                this._PersonalInfoShowLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("PersonalInfoShowLevel");
-                this.OnPersonalInfoShowLevelChanged();
-            }
-        }
-        private byte _PersonalInfoShowLevel;
-        partial void OnPersonalInfoShowLevelChanging(byte value);
-        partial void OnPersonalInfoShowLevelChanged();
-        /// <summary>
         /// 架构中不存在属性 AllShowLevel 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
@@ -6574,29 +6433,6 @@ namespace CHSNS.Models
         private long _FileSizeCount;
         partial void OnFileSizeCountChanging(long value);
         partial void OnFileSizeCountChanged();
-        /// <summary>
-        /// 架构中不存在属性 FriendAll 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long FriendAll
-        {
-            get
-            {
-                return this._FriendAll;
-            }
-            set
-            {
-                this.OnFriendAllChanging(value);
-                this.ReportPropertyChanging("FriendAll");
-                this._FriendAll = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("FriendAll");
-                this.OnFriendAllChanged();
-            }
-        }
-        private long _FriendAll;
-        partial void OnFriendAllChanging(long value);
-        partial void OnFriendAllChanged();
         /// <summary>
         /// 架构中不存在属性 FriendCount 的注释。
         /// </summary>
@@ -6736,29 +6572,6 @@ namespace CHSNS.Models
         partial void OnViewCountChanging(long value);
         partial void OnViewCountChanged();
         /// <summary>
-        /// 架构中不存在属性 CreateTime 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.DateTime CreateTime
-        {
-            get
-            {
-                return this._CreateTime;
-            }
-            set
-            {
-                this.OnCreateTimeChanging(value);
-                this.ReportPropertyChanging("CreateTime");
-                this._CreateTime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("CreateTime");
-                this.OnCreateTimeChanged();
-            }
-        }
-        private global::System.DateTime _CreateTime;
-        partial void OnCreateTimeChanging(global::System.DateTime value);
-        partial void OnCreateTimeChanged();
-        /// <summary>
         /// 架构中不存在属性 IsStar 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
@@ -6874,52 +6687,6 @@ namespace CHSNS.Models
         partial void OnAlbumCountChanging(long value);
         partial void OnAlbumCountChanged();
         /// <summary>
-        /// 架构中不存在属性 field 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<byte> field
-        {
-            get
-            {
-                return this._field;
-            }
-            set
-            {
-                this.OnfieldChanging(value);
-                this.ReportPropertyChanging("field");
-                this._field = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("field");
-                this.OnfieldChanged();
-            }
-        }
-        private global::System.Nullable<byte> _field;
-        partial void OnfieldChanging(global::System.Nullable<byte> value);
-        partial void OnfieldChanged();
-        /// <summary>
-        /// 架构中不存在属性 InField 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public bool InField
-        {
-            get
-            {
-                return this._InField;
-            }
-            set
-            {
-                this.OnInFieldChanging(value);
-                this.ReportPropertyChanging("InField");
-                this._InField = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("InField");
-                this.OnInFieldChanged();
-            }
-        }
-        private bool _InField;
-        partial void OnInFieldChanging(bool value);
-        partial void OnInFieldChanged();
-        /// <summary>
         /// 架构中不存在属性 Status 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
@@ -6988,6 +6755,29 @@ namespace CHSNS.Models
         private global::System.DateTime _LoginTime;
         partial void OnLoginTimeChanging(global::System.DateTime value);
         partial void OnLoginTimeChanged();
+        /// <summary>
+        /// 架构中不存在属性 Field 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Nullable<byte> Field
+        {
+            get
+            {
+                return this._Field;
+            }
+            set
+            {
+                this.OnFieldChanging(value);
+                this.ReportPropertyChanging("Field");
+                this._Field = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Field");
+                this.OnFieldChanged();
+            }
+        }
+        private global::System.Nullable<byte> _Field;
+        partial void OnFieldChanging(global::System.Nullable<byte> value);
+        partial void OnFieldChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Province 的注释。

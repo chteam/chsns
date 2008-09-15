@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CHSNS.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="CHSNS.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="CHSNSModelsStoreContainer">
           <EntitySet Name="Account" EntityType="CHSNS.Models.Store.Account" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Album" EntityType="CHSNS.Models.Store.Album" store:Type="Tables" Schema="dbo" />
@@ -42,13 +42,11 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Password" Type="char" Nullable="false" MaxLength="32" />
           <Property Name="Question" Type="nvarchar" MaxLength="50" />
           <Property Name="Answer" Type="char" MaxLength="32" />
           <Property Name="Code" Type="bigint" />
-          <Property Name="Truepassword" Type="char" Nullable="false" MaxLength="32" />
-          <Property Name="Trueemail" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="Album">
           <Key>
@@ -93,6 +91,8 @@
           </Key>
           <Property Name="UserID" Type="bigint" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsEmailTrue" Type="bit" Nullable="false" />
           <Property Name="Sex" Type="bit" />
           <Property Name="Birthday" Type="smalldatetime" />
           <Property Name="ProvinceID" Type="int" Nullable="false" />
@@ -356,34 +356,26 @@
           <Property Name="ShowScore" Type="bigint" Nullable="false" />
           <Property Name="DelScore" Type="bigint" Nullable="false" />
           <Property Name="MagicBox" Type="ntext" Nullable="false" />
-          <Property Name="FaceShowLevel" Type="tinyint" Nullable="false" />
-          <Property Name="BasicInfoShowLevel" Type="tinyint" Nullable="false" />
-          <Property Name="SchoolInfoShowLevel" Type="tinyint" Nullable="false" />
-          <Property Name="ContactInfoShowLevel" Type="tinyint" Nullable="false" />
-          <Property Name="PersonalInfoShowLevel" Type="tinyint" Nullable="false" />
           <Property Name="AllShowLevel" Type="tinyint" Nullable="false" />
+          <Property Name="IsMagicBox" Type="bit" Nullable="false" />
+          <Property Name="ViewCount" Type="bigint" Nullable="false" />
+          <Property Name="IsStar" Type="bit" Nullable="false" />
+          <Property Name="IsUpdate" Type="bit" Nullable="false" />
+          <Property Name="Applications" Type="varchar(max)" />
+          <Property Name="Applicationlist" Type="varchar(max)" />
+          <Property Name="Field" Type="tinyint" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="RegTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="LoginTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="AlbumCount" Type="bigint" Nullable="false" />
           <Property Name="OutboxCount" Type="bigint" Nullable="false" />
           <Property Name="InboxCount" Type="bigint" Nullable="false" />
           <Property Name="FileSizeAll" Type="bigint" Nullable="false" />
           <Property Name="FileSizeCount" Type="bigint" Nullable="false" />
-          <Property Name="FriendAll" Type="bigint" Nullable="false" />
           <Property Name="FriendCount" Type="bigint" Nullable="false" />
           <Property Name="NoteCount" Type="bigint" Nullable="false" />
           <Property Name="ReplyCount" Type="bigint" Nullable="false" />
           <Property Name="GroupCount" Type="int" Nullable="false" />
-          <Property Name="IsMagicBox" Type="bit" Nullable="false" />
-          <Property Name="ViewCount" Type="bigint" Nullable="false" />
-          <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
-          <Property Name="IsStar" Type="bit" Nullable="false" />
-          <Property Name="IsUpdate" Type="bit" Nullable="false" />
-          <Property Name="Applications" Type="varchar" MaxLength="4000" />
-          <Property Name="Applicationlist" Type="varchar" MaxLength="4000" />
-          <Property Name="AlbumCount" Type="bigint" Nullable="false" />
-          <Property Name="field" Type="tinyint" />
-          <Property Name="InField" Type="bit" Nullable="false" />
-          <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="RegTime" Type="smalldatetime" Nullable="false" />
-          <Property Name="LoginTime" Type="smalldatetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -475,8 +467,7 @@
           <Property Name="ViewTime" Type="datetime" Nullable="false" />
           <Property Name="ViewClass" Type="tinyint" Nullable="false" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CHSNS.Models" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -517,14 +508,11 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int64" Nullable="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="true" />
           <Property Name="Question" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Answer" Type="String" MaxLength="32" Unicode="false" FixedLength="true" />
           <Property Name="Code" Type="Int64" />
-          <Property Name="Truepassword" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="true" />
-          <Property Name="Trueemail" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-        </EntityType>
+          <Property Name="Username" Type="String" Nullable="false" /></EntityType>
         <EntityType Name="Album">
           <Key>
             <PropertyRef Name="ID" />
@@ -573,7 +561,8 @@
           <Property Name="ProvinceID" Type="Int32" Nullable="false" />
           <Property Name="CityID" Type="Int64" Nullable="false" />
           <Property Name="ShowLevel" Type="Byte" Nullable="false" />
-        </EntityType>
+          <Property Name="Email" Type="String" Nullable="true" />
+          <Property Name="IsEmailTrue" Type="Boolean" Nullable="false" /></EntityType>
         <EntityType Name="Blogs">
           <Key>
             <PropertyRef Name="UserID" />
@@ -831,35 +820,26 @@
           <Property Name="ShowScore" Type="Int64" Nullable="false" />
           <Property Name="DelScore" Type="Int64" Nullable="false" />
           <Property Name="MagicBox" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="FaceShowLevel" Type="Byte" Nullable="false" />
-          <Property Name="BasicInfoShowLevel" Type="Byte" Nullable="false" />
-          <Property Name="SchoolInfoShowLevel" Type="Byte" Nullable="false" />
-          <Property Name="ContactInfoShowLevel" Type="Byte" Nullable="false" />
-          <Property Name="PersonalInfoShowLevel" Type="Byte" Nullable="false" />
           <Property Name="AllShowLevel" Type="Byte" Nullable="false" />
           <Property Name="OutboxCount" Type="Int64" Nullable="false" />
           <Property Name="InboxCount" Type="Int64" Nullable="false" />
           <Property Name="FileSizeAll" Type="Int64" Nullable="false" />
           <Property Name="FileSizeCount" Type="Int64" Nullable="false" />
-          <Property Name="FriendAll" Type="Int64" Nullable="false" />
           <Property Name="FriendCount" Type="Int64" Nullable="false" />
           <Property Name="NoteCount" Type="Int64" Nullable="false" />
           <Property Name="ReplyCount" Type="Int64" Nullable="false" />
           <Property Name="GroupCount" Type="Int32" Nullable="false" />
           <Property Name="IsMagicBox" Type="Boolean" Nullable="false" />
           <Property Name="ViewCount" Type="Int64" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
           <Property Name="IsStar" Type="Boolean" Nullable="false" />
           <Property Name="IsUpdate" Type="Boolean" Nullable="false" />
           <Property Name="Applications" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
           <Property Name="Applicationlist" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
           <Property Name="AlbumCount" Type="Int64" Nullable="false" />
-          <Property Name="field" Type="Byte" />
-          <Property Name="InField" Type="Boolean" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="RegTime" Type="DateTime" Nullable="false" />
           <Property Name="LoginTime" Type="DateTime" Nullable="false" />
-        </EntityType>
+          <Property Name="Field" Type="Byte" Nullable="true" /></EntityType>
         <EntityType Name="Province">
           <Key>
             <PropertyRef Name="ID" />
@@ -959,15 +939,13 @@
           <EntitySetMapping Name="Account">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Account)">
               <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Question" ColumnName="Question" />
                 <ScalarProperty Name="Answer" ColumnName="Answer" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Truepassword" ColumnName="Truepassword" />
-                <ScalarProperty Name="Trueemail" ColumnName="Trueemail" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Album">
@@ -1012,6 +990,8 @@
           <EntitySetMapping Name="BasicInformation">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.BasicInformation)">
               <MappingFragment StoreEntitySet="BasicInformation">
+                <ScalarProperty Name="IsEmailTrue" ColumnName="IsEmailTrue" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
@@ -1287,6 +1267,7 @@
           <EntitySetMapping Name="Profile">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Profile)">
               <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="Field" ColumnName="Field" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ShowText" ColumnName="ShowText" />
@@ -1295,31 +1276,22 @@
                 <ScalarProperty Name="ShowScore" ColumnName="ShowScore" />
                 <ScalarProperty Name="DelScore" ColumnName="DelScore" />
                 <ScalarProperty Name="MagicBox" ColumnName="MagicBox" />
-                <ScalarProperty Name="FaceShowLevel" ColumnName="FaceShowLevel" />
-                <ScalarProperty Name="BasicInfoShowLevel" ColumnName="BasicInfoShowLevel" />
-                <ScalarProperty Name="SchoolInfoShowLevel" ColumnName="SchoolInfoShowLevel" />
-                <ScalarProperty Name="ContactInfoShowLevel" ColumnName="ContactInfoShowLevel" />
-                <ScalarProperty Name="PersonalInfoShowLevel" ColumnName="PersonalInfoShowLevel" />
                 <ScalarProperty Name="AllShowLevel" ColumnName="AllShowLevel" />
                 <ScalarProperty Name="OutboxCount" ColumnName="OutboxCount" />
                 <ScalarProperty Name="InboxCount" ColumnName="InboxCount" />
                 <ScalarProperty Name="FileSizeAll" ColumnName="FileSizeAll" />
                 <ScalarProperty Name="FileSizeCount" ColumnName="FileSizeCount" />
-                <ScalarProperty Name="FriendAll" ColumnName="FriendAll" />
                 <ScalarProperty Name="FriendCount" ColumnName="FriendCount" />
                 <ScalarProperty Name="NoteCount" ColumnName="NoteCount" />
                 <ScalarProperty Name="ReplyCount" ColumnName="ReplyCount" />
                 <ScalarProperty Name="GroupCount" ColumnName="GroupCount" />
                 <ScalarProperty Name="IsMagicBox" ColumnName="IsMagicBox" />
                 <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="IsStar" ColumnName="IsStar" />
                 <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
                 <ScalarProperty Name="Applications" ColumnName="Applications" />
                 <ScalarProperty Name="Applicationlist" ColumnName="Applicationlist" />
                 <ScalarProperty Name="AlbumCount" ColumnName="AlbumCount" />
-                <ScalarProperty Name="field" ColumnName="field" />
-                <ScalarProperty Name="InField" ColumnName="InField" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="RegTime" ColumnName="RegTime" />
                 <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
@@ -1442,8 +1414,8 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="CHSNSDB">
-        <EntityTypeShape EntityType="CHSNS.Models.Account" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2966927083333331" IsExpanded="true" />
+      <Diagram Name="CHSNSDB" ZoomLevel="100">
+        <EntityTypeShape EntityType="CHSNS.Models.Account" Width="1.5" PointX="0.75" PointY="0.75" Height="2.16105224609375" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Album" Width="1.5" PointX="2.75" PointY="0.75" Height="2.6339322916666665" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Application" Width="1.5" PointX="4.75" PointY="0.75" Height="3.8142708333333326" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.BasicInformation" Width="1.5" PointX="0.75" PointY="4.75" Height="2.1280729166666674" IsExpanded="true" />
@@ -1464,7 +1436,7 @@
         <EntityTypeShape EntityType="CHSNS.Models.Note" Width="1.5" PointX="10.75" PointY="10.75" Height="3.6456510416666674" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.PersonalInformation" Width="1.5" PointX="4.75" PointY="11.75" Height="2.4653124999999996" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Photos" Width="1.5" PointX="12.75" PointY="0.75" Height="2.2966927083333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.Models.Profile" Width="1.5" PointX="12.75" PointY="4.75" Height="7.018046875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CHSNS.Models.Profile" Width="1.5" PointX="12.75" PointY="4.75" Height="6.3634855143229156" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Province" Width="1.5" PointX="12.75" PointY="12.75" Height="1.2849739583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Push" Width="1.5" PointX="6.75" PointY="13.75" Height="1.6222135416666674" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.QinShi" Width="1.5" PointX="14.75" PointY="0.75" Height="1.6222135416666672" IsExpanded="true" />
