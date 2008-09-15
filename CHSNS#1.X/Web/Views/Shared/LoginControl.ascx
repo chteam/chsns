@@ -7,22 +7,19 @@
 	<div id="loginForm">
 		<p>
 			<label class="label">
-				Email：</label>
-			<input class="inputtext" maxlength="80" onkeydown="EnterTo('Password',event)" type="text"
-				name="Email" id="Email" value="" />
+				账号：</label>
+			<input class="inputtext" maxlength="80" onkeydown="EnterTo('#login_p',event)" type="text" id="login_u" value="" />
 		</p>
 		<p>
 			<label class="label">
 				密码：</label>
-			<input class="inputtext" maxlength="32" onkeydown="EnterTo('Auto',event)" type="password"
-				name="Password" id="Password" value="" />
+			<input class="inputtext" maxlength="32" onkeydown="EnterTo('#login_a',event)" type="password" id="login_p" value="" />
 		</p>
 		<p>
-			<input type="checkbox" onkeydown="EnterTo('SubmitL',event)" value="true" name="Auto"
-				id="Auto" />&nbsp;下次自动登录
+			<input type="checkbox" onkeydown="EnterTo('#login_s',event)" value="true" id="login_a" />&nbsp;下次自动登录
 		</p>
 		<p>
-			<input type="button" onclick="Login()" value="登录" class="subbutton" name="SubmitL" />
+			<input type="button" onclick="Login()" value="登录" class="subbutton" id="login_s" />
 			<a href="/help/getcode.aspx">忘了密码?</a></p>
 	</div>
 	<a href="<%=Url.Action("Agreement", "Account")%>" class="portal"><span>注册</span></a>
@@ -31,27 +28,27 @@
 
 <script type="text/javascript">
     function Regtest(id, reg) {return reg.test($v(id));}
-	function Login() {
-		var LoginMsg = function(m) { showMessage("#loginmsg", m, 3000); };
-		var U = $v("#Email");
-		if (!Regtest("#Email", /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*|\d+/)) {
-			LoginMsg('请输入正确的用户名.');
-			return;
-		}
-		var P = $v("#Password");
-		if (P.length < 4) {
-			LoginMsg('密码最短长度为4.');
-			return;
-		}
-		$.post('<%=Url.Action("Login","Account") %>', { "u": U, "p": P, "a": $("#Auto").attr("checked") }, function(r) {
-			if (r != "false") {
-				location = '<%=Url.Action("Index","Event") %>';
-			}
-			else {
-				LoginMsg('您的用户名或密码不正确.');
-			}
-		});
-		$h("#loginmsg", '正在验证信息...');
-	}
+    function Login() {
+        var msg = function(m) { showMessage("#loginmsg", m); };
+        var U = $v("#login_u");
+        if (U.length < 4) {
+            msg('请输入正确的用户名.');
+            return;
+        }
+        var P = $v("#login_p");
+        if (P.length < 4) {
+            msg('密码最短长度为4.');
+            return;
+        }
+        $.post('<%=Url.Action("Login","Account") %>', { "u": U, "p": P, "a": $("#login_a").attr("checked") }, function(r) {
+            if (r != "false") {
+                location = '<%=Url.Action("Index","Event") %>';
+            }
+            else {
+                msg('您的用户名或密码不正确.');
+            }
+        });
+        $h("#loginmsg", '正在验证信息...');
+    }
 </script>
 
