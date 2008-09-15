@@ -25,8 +25,10 @@ namespace CHSNS.Data {
 			}
 		}
 
-		public IList<Application> GetApps(long[] ids) {
-			//throw new Exception(ids.Count().ToString());
+		public IList<Application> GetApps(long[] ids)
+		{
+			if (ids.Length == 0)
+				return Applications.Where(c => c.IsSystem).ToList();
 			return Applications.Where(c => ids.Contains(c.ID)).ToList();
 		}
 	}

@@ -15,21 +15,13 @@ var $v = function(i, v) { if (isnull(v)) return $(i).val(); else $(i).val(v); };
 var $h = function(i, v) { if (isnull(v)) { return $(i).html(); } else { $(i).html(v); } };
 
 var showMessage = function(id, m, time) {//show Message
-    var ts;
-    if ($(id)) {
-        $(id).html(m);
-        $(id).addClass('error');
-        if (time == null) time = 3000;
-        if (ts) {
-            window.clearTimeout(ts);
-        }
-        ts = window.setTimeout(
-			function() {
-			    $(id).fadeOut().html('');
-			},
-			time || 3500
-		);
-    } else alertEx(m);
+	var ts;
+	if ($(id)) {
+		$(id).fadeIn().addClass('error').html(m);
+		if (!time) time = 3000;
+		if (ts) window.clearTimeout(ts);
+		ts = window.setTimeout(function() { $(id).fadeOut().html(''); }, time || 3500);
+	} else alertEx(m);
 };
 //Jquery ext
 $.fn.serialize = function() {
@@ -100,19 +92,8 @@ var alertEx = function(s) {
 //Enter focus
 function EnterTo(n, event) {
     if (event.keyCode == 13)
-        $("input[name=" + n + "]").focus();
+        $(n[0] == '#' ? n : "input[name=" + n + "]").focus();
 }
-
-var EnterLogin=function(event){
-  if(event.keyCode == 13){ 
-	Login();
-  }
-};
-
-function LoginMsg(m){
-	showMessage("loginmsg",m,3000);
-}
-
 //valitate
 function FormMsg(i, m, p) {//i:id without msg,m:message,p:id withmsg or define self
     if (p == null) p = i + "msg";
