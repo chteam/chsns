@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using CHSNS.Models;
-
+using System.Linq;
 namespace CHSNS.Data {
 	public class GatherMediator : BaseMediator {
 		public GatherMediator(DBExt id) : base(id) { }
@@ -9,15 +9,22 @@ namespace CHSNS.Data {
 		/// 我的统计
 		/// </summary>
 		/// <returns></returns>
-		public EventPagePas EventGather() {
-			DataRowCollection drc = DataBaseExecutor.GetRows("Gather", "@userid", CHUser.UserID);
+		public EventPagePas EventGather(long userid) {
+			var r = (from p in DBExt.DB.Profile
+					 where p.UserID == userid
+					 select new
+					 {
+						 p.FriendRequestCount,
+						 p.ViewCount,
+						 p.ReplyCount
+					 }).FirstOrDefault();
 			EventPagePas ep = null;
-			if (drc.Count != 0) {
+			if (r!=null) {
 				ep = new EventPagePas();
-				DataRow dr = drc[0];
-				ep.FriendRequestCount = Convert.ToInt32(dr["FriendRequestCount"]);
-				ep.ViewCount = Convert.ToInt32(dr["ViewCount"]);
-				ep.CommentCount = Convert.ToInt32(dr["CommentCount"]);
+
+				ep.FriendRequestCount = r.FriendRequestCount;
+				ep.ViewCount = r.ViewCount;
+				ep.ReplyCount = r.ReplyCount;
 				ep.NewReply = null;// DBExt.Comment.NewFiveReply();
 				ep.RssSource = null;// DBExt.Group.TakeIns(10);
 			}

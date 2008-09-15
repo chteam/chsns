@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008/9/15 19:31:17
+// 生成日期: 2008/9/16 1:01:54
 namespace CHSNS.Models
 {
     
@@ -6083,6 +6083,7 @@ namespace CHSNS.Models
         /// <param name="status">Status 的初始值。</param>
         /// <param name="regTime">RegTime 的初始值。</param>
         /// <param name="loginTime">LoginTime 的初始值。</param>
+        /// <param name="friendRequestCount">FriendRequestCount 的初始值。</param>
         public static Profile CreateProfile(
                     long userID, 
                     string name, 
@@ -6106,7 +6107,8 @@ namespace CHSNS.Models
                     long albumCount, 
                     int status, 
                     global::System.DateTime regTime, 
-                    global::System.DateTime loginTime)
+                    global::System.DateTime loginTime, 
+                    long friendRequestCount)
         {
             Profile profile = new Profile();
             profile.UserID = userID;
@@ -6132,6 +6134,7 @@ namespace CHSNS.Models
             profile.Status = status;
             profile.RegTime = regTime;
             profile.LoginTime = loginTime;
+            profile.FriendRequestCount = friendRequestCount;
             return profile;
         }
         /// <summary>
@@ -6778,6 +6781,29 @@ namespace CHSNS.Models
         private global::System.Nullable<byte> _Field;
         partial void OnFieldChanging(global::System.Nullable<byte> value);
         partial void OnFieldChanged();
+        /// <summary>
+        /// 架构中不存在属性 FriendRequestCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long FriendRequestCount
+        {
+            get
+            {
+                return this._FriendRequestCount;
+            }
+            set
+            {
+                this.OnFriendRequestCountChanging(value);
+                this.ReportPropertyChanging("FriendRequestCount");
+                this._FriendRequestCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("FriendRequestCount");
+                this.OnFriendRequestCountChanged();
+            }
+        }
+        private long _FriendRequestCount;
+        partial void OnFriendRequestCountChanging(long value);
+        partial void OnFriendRequestCountChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Province 的注释。

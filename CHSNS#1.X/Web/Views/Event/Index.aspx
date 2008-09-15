@@ -22,7 +22,7 @@
 				统计</h4>
 			<ul>
 				<li>共<%=ep.ViewCount %>人访问</li>
-				<li><a href="/ReplyList.aspx?userid=$userid&amp;">共有<%=ep.CommentCount %>条留言</a></li>
+				<li><a href="/ReplyList.aspx?userid=$userid&amp;">共有<%=ep.ReplyCount %>条留言</a></li>
 			</ul>
 		</div>
 		<div class="notes">

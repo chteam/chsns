@@ -372,6 +372,7 @@
           <Property Name="InboxCount" Type="bigint" Nullable="false" />
           <Property Name="FileSizeAll" Type="bigint" Nullable="false" />
           <Property Name="FileSizeCount" Type="bigint" Nullable="false" />
+          <Property Name="FriendRequestCount" Type="bigint" Nullable="false" />
           <Property Name="FriendCount" Type="bigint" Nullable="false" />
           <Property Name="NoteCount" Type="bigint" Nullable="false" />
           <Property Name="ReplyCount" Type="bigint" Nullable="false" />
@@ -839,7 +840,8 @@
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="RegTime" Type="DateTime" Nullable="false" />
           <Property Name="LoginTime" Type="DateTime" Nullable="false" />
-          <Property Name="Field" Type="Byte" Nullable="true" /></EntityType>
+          <Property Name="Field" Type="Byte" Nullable="true" />
+          <Property Name="FriendRequestCount" Type="Int64" Nullable="false" /></EntityType>
         <EntityType Name="Province">
           <Key>
             <PropertyRef Name="ID" />
@@ -1267,6 +1269,7 @@
           <EntitySetMapping Name="Profile">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Profile)">
               <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="FriendRequestCount" ColumnName="FriendRequestCount" />
                 <ScalarProperty Name="Field" ColumnName="Field" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
