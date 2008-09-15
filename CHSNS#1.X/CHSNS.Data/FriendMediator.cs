@@ -91,6 +91,8 @@ namespace CHSNS.Data {
 select  @fromid, @toid,0, 1 where not exists (select 1 from Friend 
 where (fromid=@fromid and toid=@toid) or (toid=@fromid and fromid=@toid))",
 				"@fromid", FromID, "@toid", ToID);
+			if(insret==1)
+				DataBaseExecutor.Execute(@"update [profile] set friendrequestcount=friendrequestcount+1 where userid=@toid","@toid", ToID);
 			return insret == 1;
 		}
 		public bool Delete(long FromID,long ToID){
@@ -108,32 +110,39 @@ where userid=@fromid or userid =@toid", "@fromid", FromID,
 			}
 			return true;
 		}
-		public bool Agree(long FromID, long ToID){
+		public bool Agree(long OperaterID, long ToID){
 			var fin =
 				DataBaseExecutor.Execute(
 					@"update [Friend] set istrue=1 
 where istrue=0 and ((fromid=@fromid and toid=@toid) or (toid=@fromid and fromid=@toid))",
-					"@fromid", FromID, "@toid", ToID);
+					"@fromid", OperaterID, "@toid", ToID);
 			if (fin == 1){
 				DataBaseExecutor.Execute(
 					@"update [Profile] 
 set friendcount=friendcount+1
-where userid=@fromid or userid =@toid", "@fromid", FromID,
+where userid=@fromid or userid =@toid", "@fromid", OperaterID,
 					"@toid", ToID);
+				DataBaseExecutor.Execute(@"update [profile] set friendrequestcount=friendrequestcount-1 where userid=@userid",
+					"@userid", OperaterID);
 				return true;
 			}
 			return false;
 		}
 
-		public bool Ignore(long FromID, long ToID) {
-			DataBaseExecutor.Execute(@"DELETE FROM Friend
-		WHERE toid=@toid and fromid=@fromid and istrue=0", "@toid", ToID,
+		public bool Ignore(long FromID, long operaterID) {
+			int ret =DataBaseExecutor.Execute(@"DELETE FROM Friend
+		WHERE toid=@toid and fromid=@fromid and istrue=0", "@toid", operaterID,
 									 "@fromid", FromID);
+			if(ret==1)
+				DataBaseExecutor.Execute(@"update [profile] set friendrequestcount=friendrequestcount-1 where userid=@userid",
+	"@userid", operaterID);
 			return true;
 		}
 		public bool IgnoreAll(long UserID) {
 			DataBaseExecutor.Execute(@"DELETE FROM Friend
 		WHERE toid=@userid and istrue=0", "@userid", UserID);
+			DataBaseExecutor.Execute(@"update [profile] set friendrequestcount=0 where userid=@userid",
+	"@userid", UserID);
 			return true;
 		}
 	}

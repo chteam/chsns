@@ -10,6 +10,7 @@ using CHSNS.Filter;
 namespace CHSNS.Controllers {
 	//using CHSNS.Data;
 	using System.Web.Mvc;
+	using System.Transactions;
 
 	/// <summary>
 	/// Description of EventController.
@@ -17,9 +18,12 @@ namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class EventController : BaseController {
 		public ActionResult Index() {
-			ViewData["newview"] =  DBExt.View.ViewList(2, 3, CHUser.UserID, 6);
-			ViewData["lastview"] = DBExt.View.ViewList(0, 3, CHUser.UserID, 6);
-			return View(DBExt.Gather.EventGather());
+			using (new TransactionScope())
+			{
+				ViewData["newview"] = DBExt.View.ViewList(2, 3, CHUser.UserID, 6);
+				ViewData["lastview"] = DBExt.View.ViewList(0, 3, CHUser.UserID, 6);
+				return View(DBExt.Gather.EventGather(CHUser.UserID));
+			}
 		} 
 		#region 组件
 		public ActionResult Show(long userid, byte type) {
