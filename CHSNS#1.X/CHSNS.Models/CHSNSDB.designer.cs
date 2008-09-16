@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008/9/16 1:01:54
+// 生成日期: 2008/9/16 13:22:20
 namespace CHSNS.Models
 {
     
@@ -3018,18 +3018,22 @@ namespace CHSNS.Models
         /// 创建新的 Event 对象。
         /// </summary>
         /// <param name="id">ID 的初始值。</param>
-        /// <param name="fromID">FromID 的初始值。</param>
-        /// <param name="toID">ToID 的初始值。</param>
         /// <param name="addTime">AddTime 的初始值。</param>
-        /// <param name="type">Type 的初始值。</param>
-        public static Event CreateEvent(long id, long fromID, long toID, global::System.DateTime addTime, int type)
+        /// <param name="templateName">TemplateName 的初始值。</param>
+        /// <param name="ownerID">OwnerID 的初始值。</param>
+        /// <param name="showLevel">ShowLevel 的初始值。</param>
+        /// <param name="title">Title 的初始值。</param>
+        /// <param name="body">Body 的初始值。</param>
+        public static Event CreateEvent(long id, global::System.DateTime addTime, string templateName, long ownerID, int showLevel, string title, string body)
         {
             Event @event = new Event();
             @event.ID = id;
-            @event.FromID = fromID;
-            @event.ToID = toID;
             @event.AddTime = addTime;
-            @event.Type = type;
+            @event.TemplateName = templateName;
+            @event.OwnerID = ownerID;
+            @event.ShowLevel = showLevel;
+            @event.Title = title;
+            @event.Body = body;
             return @event;
         }
         /// <summary>
@@ -3056,52 +3060,6 @@ namespace CHSNS.Models
         partial void OnIDChanging(long value);
         partial void OnIDChanged();
         /// <summary>
-        /// 架构中不存在属性 FromID 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long FromID
-        {
-            get
-            {
-                return this._FromID;
-            }
-            set
-            {
-                this.OnFromIDChanging(value);
-                this.ReportPropertyChanging("FromID");
-                this._FromID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("FromID");
-                this.OnFromIDChanged();
-            }
-        }
-        private long _FromID;
-        partial void OnFromIDChanging(long value);
-        partial void OnFromIDChanged();
-        /// <summary>
-        /// 架构中不存在属性 ToID 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long ToID
-        {
-            get
-            {
-                return this._ToID;
-            }
-            set
-            {
-                this.OnToIDChanging(value);
-                this.ReportPropertyChanging("ToID");
-                this._ToID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ToID");
-                this.OnToIDChanged();
-            }
-        }
-        private long _ToID;
-        partial void OnToIDChanging(long value);
-        partial void OnToIDChanged();
-        /// <summary>
         /// 架构中不存在属性 AddTime 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
@@ -3125,212 +3083,143 @@ namespace CHSNS.Models
         partial void OnAddTimeChanging(global::System.DateTime value);
         partial void OnAddTimeChanged();
         /// <summary>
-        /// 架构中不存在属性 Type 的注释。
+        /// 架构中不存在属性 TemplateName 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public int Type
+        public string TemplateName
         {
             get
             {
-                return this._Type;
+                return this._TemplateName;
             }
             set
             {
-                this.OnTypeChanging(value);
-                this.ReportPropertyChanging("Type");
-                this._Type = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Type");
-                this.OnTypeChanged();
+                this.OnTemplateNameChanging(value);
+                this.ReportPropertyChanging("TemplateName");
+                this._TemplateName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("TemplateName");
+                this.OnTemplateNameChanged();
             }
         }
-        private int _Type;
-        partial void OnTypeChanging(int value);
-        partial void OnTypeChanged();
+        private string _TemplateName;
+        partial void OnTemplateNameChanging(string value);
+        partial void OnTemplateNameChanged();
         /// <summary>
-        /// 架构中不存在属性 Application 的注释。
+        /// 架构中不存在属性 OwnerID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long OwnerID
+        {
+            get
+            {
+                return this._OwnerID;
+            }
+            set
+            {
+                this.OnOwnerIDChanging(value);
+                this.ReportPropertyChanging("OwnerID");
+                this._OwnerID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("OwnerID");
+                this.OnOwnerIDChanged();
+            }
+        }
+        private long _OwnerID;
+        partial void OnOwnerIDChanging(long value);
+        partial void OnOwnerIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 ViewerID 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Application
+        public global::System.Nullable<long> ViewerID
         {
             get
             {
-                return this._Application;
+                return this._ViewerID;
             }
             set
             {
-                this.OnApplicationChanging(value);
-                this.ReportPropertyChanging("Application");
-                this._Application = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Application");
-                this.OnApplicationChanged();
+                this.OnViewerIDChanging(value);
+                this.ReportPropertyChanging("ViewerID");
+                this._ViewerID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ViewerID");
+                this.OnViewerIDChanged();
             }
         }
-        private string _Application;
-        partial void OnApplicationChanging(string value);
-        partial void OnApplicationChanged();
+        private global::System.Nullable<long> _ViewerID;
+        partial void OnViewerIDChanging(global::System.Nullable<long> value);
+        partial void OnViewerIDChanged();
         /// <summary>
-        /// 架构中不存在属性 ActionID 的注释。
+        /// 架构中不存在属性 ShowLevel 的注释。
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> ActionID
+        public int ShowLevel
         {
             get
             {
-                return this._ActionID;
+                return this._ShowLevel;
             }
             set
             {
-                this.OnActionIDChanging(value);
-                this.ReportPropertyChanging("ActionID");
-                this._ActionID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ActionID");
-                this.OnActionIDChanged();
+                this.OnShowLevelChanging(value);
+                this.ReportPropertyChanging("ShowLevel");
+                this._ShowLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ShowLevel");
+                this.OnShowLevelChanged();
             }
         }
-        private global::System.Nullable<long> _ActionID;
-        partial void OnActionIDChanging(global::System.Nullable<long> value);
-        partial void OnActionIDChanged();
+        private int _ShowLevel;
+        partial void OnShowLevelChanging(int value);
+        partial void OnShowLevelChanged();
         /// <summary>
-        /// 架构中不存在属性 Strext1 的注释。
+        /// 架构中不存在属性 Title 的注释。
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Strext1
+        public string Title
         {
             get
             {
-                return this._Strext1;
+                return this._Title;
             }
             set
             {
-                this.OnStrext1Changing(value);
-                this.ReportPropertyChanging("Strext1");
-                this._Strext1 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Strext1");
-                this.OnStrext1Changed();
+                this.OnTitleChanging(value);
+                this.ReportPropertyChanging("Title");
+                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Title");
+                this.OnTitleChanged();
             }
         }
-        private string _Strext1;
-        partial void OnStrext1Changing(string value);
-        partial void OnStrext1Changed();
+        private string _Title;
+        partial void OnTitleChanging(string value);
+        partial void OnTitleChanged();
         /// <summary>
-        /// 架构中不存在属性 Strext2 的注释。
+        /// 架构中不存在属性 Body 的注释。
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Strext2
+        public string Body
         {
             get
             {
-                return this._Strext2;
+                return this._Body;
             }
             set
             {
-                this.OnStrext2Changing(value);
-                this.ReportPropertyChanging("Strext2");
-                this._Strext2 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Strext2");
-                this.OnStrext2Changed();
+                this.OnBodyChanging(value);
+                this.ReportPropertyChanging("Body");
+                this._Body = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Body");
+                this.OnBodyChanged();
             }
         }
-        private string _Strext2;
-        partial void OnStrext2Changing(string value);
-        partial void OnStrext2Changed();
-        /// <summary>
-        /// 架构中不存在属性 Strext3 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Strext3
-        {
-            get
-            {
-                return this._Strext3;
-            }
-            set
-            {
-                this.OnStrext3Changing(value);
-                this.ReportPropertyChanging("Strext3");
-                this._Strext3 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Strext3");
-                this.OnStrext3Changed();
-            }
-        }
-        private string _Strext3;
-        partial void OnStrext3Changing(string value);
-        partial void OnStrext3Changed();
-        /// <summary>
-        /// 架构中不存在属性 Numext1 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> Numext1
-        {
-            get
-            {
-                return this._Numext1;
-            }
-            set
-            {
-                this.OnNumext1Changing(value);
-                this.ReportPropertyChanging("Numext1");
-                this._Numext1 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Numext1");
-                this.OnNumext1Changed();
-            }
-        }
-        private global::System.Nullable<long> _Numext1;
-        partial void OnNumext1Changing(global::System.Nullable<long> value);
-        partial void OnNumext1Changed();
-        /// <summary>
-        /// 架构中不存在属性 Numext2 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> Numext2
-        {
-            get
-            {
-                return this._Numext2;
-            }
-            set
-            {
-                this.OnNumext2Changing(value);
-                this.ReportPropertyChanging("Numext2");
-                this._Numext2 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Numext2");
-                this.OnNumext2Changed();
-            }
-        }
-        private global::System.Nullable<long> _Numext2;
-        partial void OnNumext2Changing(global::System.Nullable<long> value);
-        partial void OnNumext2Changed();
-        /// <summary>
-        /// 架构中不存在属性 Numext3 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> Numext3
-        {
-            get
-            {
-                return this._Numext3;
-            }
-            set
-            {
-                this.OnNumext3Changing(value);
-                this.ReportPropertyChanging("Numext3");
-                this._Numext3 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Numext3");
-                this.OnNumext3Changed();
-            }
-        }
-        private global::System.Nullable<long> _Numext3;
-        partial void OnNumext3Changing(global::System.Nullable<long> value);
-        partial void OnNumext3Changed();
+        private string _Body;
+        partial void OnBodyChanging(string value);
+        partial void OnBodyChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Field 的注释。
