@@ -1,27 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Single.Master" AutoEventWireup="true"
 	CodeBehind="RegPage.aspx.cs" Inherits="CHSNS.Web.Views.Account.RegPage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
-
-	<script type="text/javascript">
-		var IsRegValition = function(t) {
-		if (v_regex("#Username", /[\w\W]{4,32}/, false, '请填写正确用户名')
-	&& v_equals("#Username", "#reUsername", '请确认两次用户名一致')
-	&& v_regex("#Password", /[\w\W]{4,32}/, false, '密码必须由6-20个字符组成')
-	&& v_equals("#Password", "#rePassword", '请确认两次密码一致')
-	&& v_empty("#Name", '请填写您的姓名')) {
-				if ($("#reg_check_id").attr("checked")) {//打算添密码保护的情况下
-					if (!(v_empty('#Question', '请填写问题') && v_empty("#Answer", '请填写回答'))) return;
-				} else {
-					$v("#Question", "");
-					$v("#Answer", "");
-				}
-				$(t).submit();
-			}
-		};
-	</script>
-
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<form id="registerForm" action="<%=Url.Action("SaveReg") %>" method='post' onsubmit="IsRegValition(this);return false;">
 	<%if (TempData.ContainsKey("errors"))
@@ -37,11 +17,6 @@
 					用户名：</label>
 				<input class="inputtext" id="Username" maxlength="80" name="Username" type="text">
 				- 例如：chsword</li>
-			<li>
-				<label>
-					确认用户名：</label>
-				<input class="inputtext" id="reUsername" maxlength="80" name="reUsername" type="text">
-				- 请输入上面的Username地址 </li>
 			<li>
 				<label>
 					密码：</label>
@@ -95,14 +70,25 @@
 			<input type="submit" value="下一步" class="subbutton" tabindex="21" />
 		</span></li>
 	</ul>
-	<div id="registratormsg">
-	</div>
 	</form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
 	<script type="text/javascript">
 		$("#Username").focus();
+		var IsRegValition = function(t) {
+			if (v_regex("#Username", /[\w\W]{4,32}/, false, '请填写正确用户名')
+	&& v_regex("#Password", /[\w\W]{4,32}/, false, '密码必须由6-20个字符组成')
+	&& v_equals("#Password", "#rePassword", '请确认两次密码一致')
+	&& v_empty("#Name", '请填写您的姓名')) {
+				if ($("#reg_check_id").attr("checked")) {//打算添密码保护的情况下
+					if (!(v_empty('#Question', '请填写问题') && v_empty("#Answer", '请填写回答'))) return;
+				} else {
+					$v("#Question", "");
+					$v("#Answer", "");
+				}
+				$(t).submit();
+			}
+		};
 	</script>
-
 </asp:Content>
