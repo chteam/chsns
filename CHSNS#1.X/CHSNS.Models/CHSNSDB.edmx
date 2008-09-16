@@ -174,18 +174,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FromID" Type="bigint" Nullable="false" />
-          <Property Name="ToID" Type="bigint" Nullable="false" />
+          <Property Name="TemplateName" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="OwnerID" Type="bigint" Nullable="false" />
+          <Property Name="ViewerID" Type="bigint" />
           <Property Name="AddTime" Type="smalldatetime" Nullable="false" />
-          <Property Name="Type" Type="int" Nullable="false" />
-          <Property Name="Application" Type="nvarchar" MaxLength="50" />
-          <Property Name="ActionID" Type="bigint" />
-          <Property Name="Strext1" Type="nvarchar" />
-          <Property Name="Strext2" Type="nvarchar" />
-          <Property Name="Strext3" Type="nvarchar" />
-          <Property Name="Numext1" Type="bigint" />
-          <Property Name="Numext2" Type="bigint" />
-          <Property Name="Numext3" Type="bigint" />
+          <Property Name="ShowLevel" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Field">
           <Key>
@@ -639,19 +634,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" />
-          <Property Name="FromID" Type="Int64" Nullable="false" />
-          <Property Name="ToID" Type="Int64" Nullable="false" />
           <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="Type" Type="Int32" Nullable="false" />
-          <Property Name="Application" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="ActionID" Type="Int64" />
-          <Property Name="Strext1" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="Strext2" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="Strext3" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="Numext1" Type="Int64" />
-          <Property Name="Numext2" Type="Int64" />
-          <Property Name="Numext3" Type="Int64" />
-        </EntityType>
+          <Property Name="TemplateName" Type="String" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" Nullable="false" />
+          <Property Name="ViewerID" Type="Int64" Nullable="true" />
+          <Property Name="ShowLevel" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Body" Type="String" Nullable="false" /></EntityType>
         <EntityType Name="Field">
           <Key>
             <PropertyRef Name="TrueID" />
@@ -1082,20 +1071,15 @@
           <EntitySetMapping Name="Event">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Event)">
               <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="ViewerID" ColumnName="ViewerID" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FromID" ColumnName="FromID" />
-                <ScalarProperty Name="ToID" ColumnName="ToID" />
                 <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Application" ColumnName="Application" />
-                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
-                <ScalarProperty Name="Strext1" ColumnName="Strext1" />
-                <ScalarProperty Name="Strext2" ColumnName="Strext2" />
-                <ScalarProperty Name="Strext3" ColumnName="Strext3" />
-                <ScalarProperty Name="Numext1" ColumnName="Numext1" />
-                <ScalarProperty Name="Numext2" ColumnName="Numext2" />
-                <ScalarProperty Name="Numext3" ColumnName="Numext3" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Field">
@@ -1427,7 +1411,7 @@
         <EntityTypeShape EntityType="CHSNS.Models.City" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4535937499999998" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Comment" Width="1.5" PointX="6.75" PointY="3.75" Height="2.8025520833333335" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.ContactInformation" Width="1.5" PointX="6.75" PointY="7.75" Height="2.9711718749999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.Models.Event" Width="1.5" PointX="8.75" PointY="0.75" Height="3.1397916666666665" IsExpanded="true" />
+        <EntityTypeShape EntityType="CHSNS.Models.Event" Width="1.5" PointX="8.75" PointY="0.625" Height="2.5430916341145831" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Field" Width="1.5" PointX="8.75" PointY="4.75" Height="1.9594531249999996" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.FieldInformation" Width="1.5" PointX="8.75" PointY="7.75" Height="2.1280729166666674" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Friend" Width="1.5" PointX="10.75" PointY="0.75" Height="2.1280729166666674" IsExpanded="true" />
