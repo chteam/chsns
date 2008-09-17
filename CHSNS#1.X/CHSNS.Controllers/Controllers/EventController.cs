@@ -22,20 +22,17 @@ namespace CHSNS.Controllers {
 			{
 				ViewData["newview"] = DBExt.View.ViewList(2, 3, CHUser.UserID, 6);
 				ViewData["lastview"] = DBExt.View.ViewList(0, 3, CHUser.UserID, 6);
+				ViewData["Page_Title"] = "事件";
 				return View(DBExt.Gather.EventGather(CHUser.UserID));
 			}
 		} 
 		#region 组件
-		public ActionResult Show(long userid, byte type) {
-			ViewData["userid"] = userid;
-			ViewData["eventrows"] = DataBaseExecutor.GetRows("Event_List"
-					, "@userid", userid,
-			"@type", type,
-			"@page", 1,
-			"@everyPage", 10);
-			return View();
-		}
-
 		#endregion
+		#region Management
+		public ActionResult SystemTemplate() {
+			return View("Admin/SystemTemplate");
+		}
+		#endregion
+
 	}
 }
