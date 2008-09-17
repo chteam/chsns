@@ -101,6 +101,16 @@ namespace CHSNS {
 		public string GroupImg_Big(object groupid) {
 			return Path.GetGroupImg(groupid.ToString(), ImgSizeType.Big);
 		}
+		static public string GetRoot() {
+			return "/";
+		}
+		/// <summary>
+		/// 系统事件模板目录
+		/// </summary>
+		/// <returns></returns>
+		public static string EventSystemTemplatePath(string name) {
+			return string.Format("{0}Views/Shared/EventTemplate/{1}.ascx", GetRoot(), name);
+		}
 		#region 获取网页文件名
 		/// <summary>
 		/// 获取当前页面的名称,如http://aaa.com/x123.html 则返回x123

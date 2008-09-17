@@ -37,6 +37,7 @@ namespace CHSNS {
 			mySerializer.Serialize(myWriter, obj);
 			myWriter.Close();
 		}
+		public static void Clear(string key) { CHCache.Remove(string.Format(PATH, key)); }
 		/// <summary>
 		/// 从配置文件反序列化
 		/// </summary>

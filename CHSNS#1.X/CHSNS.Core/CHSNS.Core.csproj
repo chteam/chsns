@@ -97,6 +97,7 @@
     <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="Config\ThumbnailPair.cs" />
     <Compile Include="DataBaseExecutor.cs" />
+    <Compile Include="File.cs" />
     <Compile Include="OleDbDataOpener.cs" />
     <Compile Include="SqlDataOpener.cs" />
     <Compile Include="SqlStoredProcedureDataOpener.cs" />
