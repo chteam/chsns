@@ -3,6 +3,12 @@
 	<h1>
 		系统事件管理</h1>
 	<div class="description">
+		操作:
+		<input type="button" id="newTemp" class="x-form-button x-form-field" value="新建"
+ onclick="ShowDialog(Ext.get('newTemp'),'添加模板',function(){
+$('#win-panel').html('<div id=Addform>'+$h('#AddFormTemplate')+'</div>');
+ });"
+ /><br />
 		说明:
 	</div>
 	<div class="hr">
@@ -18,71 +24,34 @@
 				操作
 			</th>
 		</tr>
-		<tr class="method-row expandable">
+		<%foreach (System.Web.Mvc.ListItem i in ViewData["source"] as List<System.Web.Mvc.ListItem>)
+	{%>
+		<tr class="method-row alt">
 			<td class="micon">
 				<a class="exi" href="#expand">&nbsp;</a>
 			</td>
 			<td class="sig">
-				<a id="Array-indexOf"></a><b>indexOf</b>(&nbsp;<code>Object o</code>&nbsp;) : Number
+				名称:<%=i.Value %>
 				<div class="mdesc">
-					<div class="short">
-						Checks whether or not the specified object exists in the array.</div>
-					<div class="long">
-						Checks whether or not the specified object exists in the array.
-						<div class="mdetail-params">
-							<strong>Parameters:</strong>
-							<ul>
-								<li><code>o</code> : Object<div class="sub-desc">
-									The object to check for</div>
-								</li>
-							</ul>
-							<strong>Returns:</strong>
-							<ul>
-								<li><code>Number</code><div class="sub-desc">
-									The index of o in the array (or -1 if it is not found)</div>
-								</li>
-							</ul>
-						</div>
-					</div>
+					功能:<%=i.Text %>
 				</div>
 			</td>
 			<td class="msource">
-				Array
+				<input type="button" id="asdf" value="查看" onclick="ShowDialog(Ext.get('asdf'),'<%=i.Value %>',
+function(){$.get('<%=Url.Action("GetSystemTemplate","Event") %>',{'name':'<%=i.Value %>'},
+function(r){$('#win-panel').html(r);})});" />
 			</td>
-		</tr>
-		<tr class="method-row alt expandable">
-			<td class="micon">
-				<a class="exi" href="#expand">&nbsp;</a>
-			</td>
-			<td class="sig">
-				<a id="Array-remove"></a><b>remove</b>(&nbsp;<code>Object o</code>&nbsp;) : Array
-				<div class="mdesc">
-					<div class="short">
-						Removes the specified object from the array. If the object is not found nothing
-						happens.</div>
-					<div class="long">
-						Removes the specified object from the array. If the object is not found nothing
-						happens.
-						<div class="mdetail-params">
-							<strong>Parameters:</strong>
-							<ul>
-								<li><code>o</code> : Object<div class="sub-desc">
-									The object to remove</div>
-								</li>
-							</ul>
-							<strong>Returns:</strong>
-							<ul>
-								<li><code>Array</code><div class="sub-desc">
-									this array</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td class="msource">
-				Array
-			</td>
+			<%} %>
 		</tr>
 	</table>
+	<div id="AddFormTemplate" style="display: none">
+		模板名:<input id="Value" type="text" class="x-form-text x-form-field"><br>
+		模板描述:<input id="Title" type="text" class="x-form-text x-form-field"><br>
+		模板内容:<textarea cols="20" id="Content" rows="5" class="x-form-field"></textarea><br>
+		<input type="button" onclick="$.post('<%=Url.Action("AddSystemTemplate","Event") %>',
+{'v':$v('#Addform > #Value'),'t':$v('#Addform > #Title'),'c':$v('#Addform > #Content')},
+function(r){Ext.MessageBox.alert('状态', r);win.hide();});"
+value="保存" class="x-form-button x-form-field" />
+	</div>
+	<input type="button" onclick="debuger;" />
 </div>
