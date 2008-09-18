@@ -53,7 +53,9 @@
 						<h4>
 							<%=up.Profile.Name%>的动向</h4>
 						<ul id="Profile_Event">
-							<% //Html.RenderAction<EventController>(c => c.Show(up.OwnerID, 0)); %>
+							<% 
+								Html.RenderPartial("Index/Event", ViewData["event"]);
+			 %>
 						</ul>
 					</div>
 				</div>
