@@ -25,6 +25,7 @@ namespace CHSNS.Data
 		public ApplicationMediator Application { get; private set; }
 		public MessageMediator Message { get; private set; }
 		public NoteMediator Note { get; private set; }
+		public EventMediator Event { get; private set; }
 		public void Init() {
 			//_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
 			Account = new AccountMediator(this);
@@ -38,6 +39,7 @@ namespace CHSNS.Data
 			Application = new ApplicationMediator(this);
 			Message = new MessageMediator(this);
 			Note = new NoteMediator(this);
+			Event = new EventMediator(this);
 		}
 		#endregion
 		#region IDataBase ≥…‘±
