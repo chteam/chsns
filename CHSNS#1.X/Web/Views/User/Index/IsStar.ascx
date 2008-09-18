@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Index_IsStar.ascx.cs"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="IsStar.ascx.cs"
 	Inherits="CHSNS.Web.Views.User.Index_IsStar" %>
 <%
 	if (ViewData.Model.Profile.IsStar) { 

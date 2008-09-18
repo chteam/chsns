@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Index_MyActions.ascx.cs"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyActions.ascx.cs"
 	Inherits="CHSNS.Web.Views.User.Index_MyActions" %>
 <%UserPas up = ViewData.Model;%>
 <ul id="userActions">

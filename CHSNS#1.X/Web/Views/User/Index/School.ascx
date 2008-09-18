@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Index_School.ascx.cs"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="School.ascx.cs"
 	Inherits="CHSNS.Web.Views.User.Index_School" %>
 <%
 	UserPas up = ViewData.Model;
