@@ -10,7 +10,7 @@
 	<% 
 		UserPas up = ViewData.Model;
 		if (!up.Exists) {
-			//Html.RenderPartial("index-noRigh", ViewData.Model);
+			//Html.RenderPartial("index/noRigh", ViewData.Model);
 		} else {
 			if (up.Exists && up.Profile.IsMagicBox) {%>
 	<%="<style type=\"text/css\">" + up.Profile.MagicBox + "</style>"%>
@@ -23,10 +23,10 @@
 				<h2>
 					<%=up.Profile.Name%>
 				</h2>
-				<% Html.RenderPartial("index-isstar", ViewData.Model);/*实名*/%>
+				<% Html.RenderPartial("index/isstar", ViewData.Model);/*实名*/%>
 			</div>
 			<div class="mypage_sta">
-				<% Html.RenderPartial("index-mystatus", ViewData.Model);/*状态*/%>
+				<% Html.RenderPartial("index/mystatus", ViewData.Model);/*状态*/%>
 			</div>
 		</div>
 		<div id="userAccount">
@@ -34,13 +34,13 @@
 				<ul id="Profile_Accordion">
 					<li>
 						<%
-							Html.RenderPartial("index-account", ViewData.Model);%></li>
+							Html.RenderPartial("index/account", ViewData.Model);%></li>
 					<%--					<li><%
-   	Html.RenderPartial("index-school", ViewData.Model);%></li>
+   	Html.RenderPartial("index/school", ViewData.Model);%></li>
 					<li><%
-   	Html.RenderPartial("index-contact", ViewData.Model);%></li>
+   	Html.RenderPartial("index/contact", ViewData.Model);%></li>
 					<li><%
-   	Html.RenderPartial("index-personal", ViewData.Model);%></li>--%>
+   	Html.RenderPartial("index/personal", ViewData.Model);%></li>--%>
 				</ul>
 
 				<script type="text/javascript">
@@ -112,7 +112,7 @@
 				</div>
 			</div>
 			<%
-				Html.RenderPartial("index-Myactions", ViewData.Model);%>
+				Html.RenderPartial("index/Myactions", ViewData.Model);%>
 		</div>
 		<div class="box">
 			<h3>
