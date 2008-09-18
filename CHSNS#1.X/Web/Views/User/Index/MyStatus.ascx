@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Index_MyStatus.ascx.cs"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyStatus.ascx.cs"
 	Inherits="CHSNS.Web.Views.User.Index_MyStatus" %>
 <div>
 	<%if (ViewData.Model.IsOnline) { %>

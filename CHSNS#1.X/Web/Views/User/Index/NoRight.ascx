@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Index_NoRight.ascx.cs"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NoRight.ascx.cs"
 	Inherits="CHSNS.Web.Views.User.Index_NoRight" %>
 <% UserPas up = ViewData.Model;%>
 <div id="UserListMsg">

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Index_Contact.ascx.cs"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Contact.ascx.cs"
 	Inherits="CHSNS.Web.Views.User.Index_Contact" %>
 <% UserPas up = ViewData.Model;
    if (Convert.ToInt16(up.User["Relation"]) >= Convert.ToInt16(up.User["ContactInfoShowLevel"]) || CHUser.IsAdmin) {

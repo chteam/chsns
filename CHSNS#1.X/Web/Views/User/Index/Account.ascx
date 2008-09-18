@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Index_Account.ascx.cs"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Account.ascx.cs"
 	Inherits="CHSNS.Web.Views.User.Index_Account" %>
 <% UserPas up = ViewData.Model;%>
 <a href='#' class="accordionHeader" id="accont-header">账号 Account </a>
