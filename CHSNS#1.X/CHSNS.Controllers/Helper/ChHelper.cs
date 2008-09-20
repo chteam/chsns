@@ -17,20 +17,8 @@ namespace CHSNS.Helper {
 				return CHSNS.Path.Current;
 			}
 		}
-		StringHelper _str;
-		public StringHelper Str {
-			get {
-				if (_str == null)
-					_str = new StringHelper();
-				return _str;
-			}
-		}
-		public DataSetCache DataCache {
-			get {
-				return DataSetCache.Current;
 
-			}
-		}
+
 		DBExt _db;
 		public DBExt DB {
 			get {
