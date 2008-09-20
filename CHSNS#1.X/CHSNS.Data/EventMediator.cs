@@ -23,6 +23,7 @@ namespace CHSNS.Data
 		public IQueryable<Event> GetEvent(long userid) {
 			var ret = (from e in DBExt.DB.Event
 					   where e.OwnerID == userid
+					   orderby e.ID descending
 					   select e);
 			return ret;
 		}

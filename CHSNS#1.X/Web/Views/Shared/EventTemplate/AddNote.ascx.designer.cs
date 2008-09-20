@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CHSNS.Web.Views.User {
+namespace CHSNS.Web.Views.Shared.EventTemplate {
     
     
-    public partial class Event {
+    public partial class AddNote {
     }
 }

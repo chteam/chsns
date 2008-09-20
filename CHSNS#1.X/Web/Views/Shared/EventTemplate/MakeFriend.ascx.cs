@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CHSNS.Web.Views.User
+namespace CHSNS.Web.Views.Shared.EventTemplate
 {
-	public partial class Event : System.Web.Mvc.ViewUserControl<IEnumerable<Models.Event>>
+	public partial class MakeFriend : System.Web.Mvc.ViewUserControl
 	{
 	}
 }

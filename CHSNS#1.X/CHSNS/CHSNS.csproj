@@ -107,52 +107,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Readme.txt" />
-    <Compile Include="ChAlumna\DataSetCache.cs" />
-    <Compile Include="ChAlumna\Email.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="Enum.cs" />
-    <Compile Include="Interface\IExecute.cs" />
-    <Compile Include="Interface\IItems.cs" />
-    <Compile Include="Interface\IPageSet.cs" />
-    <Compile Include="Interface\IServerResponse.cs" />
-    <Compile Include="Interface\IServerResponseable.cs" />
-    <Compile Include="Reader\Albums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChAlumna\ChParameter.cs" />
     <Compile Include="ChAlumna\Media.cs" />
     <Compile Include="ChAlumna\Online.cs" />
     <Compile Include="ChAlumna\Reqres.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
-    <Compile Include="Datamodel\GroupModel.cs" />
-    <Compile Include="Datamodel\MessgeModel.cs" />
-    <Compile Include="Reader\Comment.cs" />
-    <Compile Include="Reader\Databases.cs" />
-    <Compile Include="Reader\GroupList.cs" />
-    <Compile Include="Reader\LogBook.cs" />
-    <Compile Include="Reader\Message.cs" />
-    <Compile Include="Reader\NewGroup.cs" />
-    <Compile Include="Reader\Search.cs" />
-    <Compile Include="Reader\SearchGroup.cs" />
-    <Compile Include="Reader\ServerResponse.cs" />
-    <Compile Include="Reader\SuperNoteList.cs" />
-    <Compile Include="Reader\UserList.cs" />
-    <Compile Include="Execute\GroupExecuter.cs" />
-    <Compile Include="Execute\GroupSettingExecuter.cs" />
-    <Compile Include="Execute\GroupUserExecuter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web\UI\Admin.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\UI\Default.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\UI\Page.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\UI\PrivateMaster.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
@@ -179,11 +142,6 @@
   -->
   <ProjectExtensions>
     <VisualStudio>
-      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-        <WebProjectProperties>
-          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
-        </WebProjectProperties>
-      </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
 </Project>

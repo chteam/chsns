@@ -11,6 +11,10 @@
     <RootNamespace>CHSNS.Web</RootNamespace>
     <AssemblyName>CHSNS.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SccProjectName>%24/sns/CHSNS#1.X/Web</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccAuxPath>https://tfs02.codeplex.com</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -760,12 +764,12 @@
     <Content Include="Views\Shared\Comment\Item.ascx" />
     <Content Include="Views\Shared\Comment\TextBox.ascx" />
     <Content Include="Views\Shared\EventTemplate\AddNote.ascx" />
+    <Content Include="Views\Shared\EventTemplate\MakeFriend.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
     <None Include="Views\Shared\BlogMaster.vm" />
     <None Include="Views\Mail\replyback.vm" />
     <None Include="Views\Mail\Test.vm" />
-    <None Include="Views\Profile\Edit.vm" />
     <None Include="Views\Profile\Setting.vm" />
     <None Include="Views\Search\index.vm" />
     <None Include="Views\Services\admin.vm" />
@@ -923,14 +927,15 @@
     <Content Include="Views\User\Contact.ascx" />
     <Content Include="Views\User\Edit.aspx" />
     <Content Include="Views\User\EmptyMagicBox.ascx" />
-    <Content Include="Views\User\Index-Account.ascx" />
-    <Content Include="Views\User\Index-Contact.ascx" />
-    <Content Include="Views\User\Index-IsStar.ascx" />
-    <Content Include="Views\User\Index-MyActions.ascx" />
-    <Content Include="Views\User\Index-MyStatus.ascx" />
-    <Content Include="Views\User\Index-NoRight.ascx" />
-    <Content Include="Views\User\Index-Personal.ascx" />
-    <Content Include="Views\User\Index-School.ascx" />
+    <Content Include="Views\User\Index\Account.ascx" />
+    <Content Include="Views\User\Index\Contact.ascx" />
+    <Content Include="Views\User\Index\Event.ascx" />
+    <Content Include="Views\User\Index\IsStar.ascx" />
+    <Content Include="Views\User\Index\MyActions.ascx" />
+    <Content Include="Views\User\Index\MyStatus.ascx" />
+    <Content Include="Views\User\Index\NoRight.ascx" />
+    <Content Include="Views\User\Index\Personal.ascx" />
+    <Content Include="Views\User\Index\School.ascx" />
     <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\MagicBox.ascx" />
     <Content Include="Views\User\Personal.ascx" />
@@ -1195,6 +1200,20 @@
     <Compile Include="Views\Shared\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\EventTemplate\AddNote.ascx.cs">
+      <DependentUpon>AddNote.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\EventTemplate\AddNote.ascx.designer.cs">
+      <DependentUpon>AddNote.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\EventTemplate\MakeFriend.ascx.cs">
+      <DependentUpon>MakeFriend.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\EventTemplate\MakeFriend.ascx.designer.cs">
+      <DependentUpon>MakeFriend.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shared\Footer.ascx.cs">
       <DependentUpon>Footer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1286,61 +1305,68 @@
     <Compile Include="Views\User\EmptyMagicBox.ascx.designer.cs">
       <DependentUpon>EmptyMagicBox.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Index-Account.ascx.cs">
-      <DependentUpon>Index-Account.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\Account.ascx.cs">
+      <DependentUpon>Account.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Index-Account.ascx.designer.cs">
-      <DependentUpon>Index-Account.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\Account.ascx.designer.cs">
+      <DependentUpon>Account.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Index-Contact.ascx.cs">
-      <DependentUpon>Index-Contact.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\Contact.ascx.cs">
+      <DependentUpon>Contact.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Index-Contact.ascx.designer.cs">
-      <DependentUpon>Index-Contact.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\Contact.ascx.designer.cs">
+      <DependentUpon>Contact.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Index-IsStar.ascx.cs">
-      <DependentUpon>Index-IsStar.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\Event.ascx.cs">
+      <DependentUpon>Event.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Index-IsStar.ascx.designer.cs">
-      <DependentUpon>Index-IsStar.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\Event.ascx.designer.cs">
+      <DependentUpon>Event.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Index-MyActions.ascx.cs">
-      <DependentUpon>Index-MyActions.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\IsStar.ascx.cs">
+      <DependentUpon>IsStar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Index-MyActions.ascx.designer.cs">
-      <DependentUpon>Index-MyActions.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\IsStar.ascx.designer.cs">
+      <DependentUpon>IsStar.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Index-MyStatus.ascx.cs">
-      <DependentUpon>Index-MyStatus.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\MyActions.ascx.cs">
+      <DependentUpon>MyActions.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Index-MyStatus.ascx.designer.cs">
-      <DependentUpon>Index-MyStatus.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\MyActions.ascx.designer.cs">
+      <DependentUpon>MyActions.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Index-NoRight.ascx.cs">
-      <DependentUpon>Index-NoRight.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\MyStatus.ascx.cs">
+      <DependentUpon>MyStatus.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Index-NoRight.ascx.designer.cs">
-      <DependentUpon>Index-NoRight.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\MyStatus.ascx.designer.cs">
+      <DependentUpon>MyStatus.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Index-Personal.ascx.cs">
-      <DependentUpon>Index-Personal.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\NoRight.ascx.cs">
+      <DependentUpon>NoRight.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Index-Personal.ascx.designer.cs">
-      <DependentUpon>Index-Personal.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\NoRight.ascx.designer.cs">
+      <DependentUpon>NoRight.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Index-School.ascx.cs">
-      <DependentUpon>Index-School.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\Personal.ascx.cs">
+      <DependentUpon>Personal.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Index-School.ascx.designer.cs">
-      <DependentUpon>Index-School.ascx</DependentUpon>
+    <Compile Include="Views\User\Index\Personal.ascx.designer.cs">
+      <DependentUpon>Personal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Index\School.ascx.cs">
+      <DependentUpon>School.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index\School.ascx.designer.cs">
+      <DependentUpon>School.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -1382,7 +1408,6 @@
     <Folder Include="aspnet_client\system_web\2_0_50727\" />
     <Folder Include="Images\" />
     <Folder Include="Properties\" />
-    <Folder Include="Views\User\Index\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />

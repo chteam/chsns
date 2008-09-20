@@ -6,7 +6,7 @@
 	<%} %>
 	<span id="Profile_ShowTextTime">
 		<%=(!ViewData.Model.Profile.ShowTextTime.HasValue|| string.IsNullOrEmpty(ViewData.Model.Profile.ShowText))?"":
-						Url.CH().Str.DateDiv(ViewData.Model.Profile.ShowTextTime.Value)%>
+						ViewData.Model.Profile.ShowTextTime.Value.Ago()%>
 	</span>在 <span id="Profile_ShowText">
 		<%if (!ViewData.Model.Profile.ShowTextTime.HasValue || string.IsNullOrEmpty(ViewData.Model.Profile.ShowText)) { %>
 		什么也没有做
