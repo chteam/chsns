@@ -49,29 +49,11 @@ namespace CHSNS {
 		UserStatusType _status;
 		public UserStatusType Status {
 			get {
-				//if (isLogined) {
-				//    //_status = UserStatusType.Guest;
-				//    _status = (UserStatusType)HttpContext.Current.Session["status"];
-				//} else {
-				//    _status = UserStatusType.Guest;
-				//}
 				return (UserStatusType)CHUser.Status;
-				//return _status;
 			}
 			set {
 				_status = value;
-			//	HttpContext.Current.Session["status"] = value;
-				if (_status.GetHashCode()!=0) {
-					System.Data.SqlClient.SqlParameter[] sp = new System.Data.SqlClient.SqlParameter[2] { 
-							new System.Data.SqlClient.SqlParameter("@Userid", SqlDbType.BigInt),
-							new System.Data.SqlClient.SqlParameter("@status", SqlDbType.TinyInt),
-					};
-					sp[0].Value = CHUser.UserID;
-					sp[1].Value = _status;
-
-					Chsword.DoDataBase db = new Chsword.DoDataBase();
-					db.ExecuteSql("Status_Update", sp);
-				}
+				throw new  Exception("应做写数据库实现");
 			}
 		}
 		public bool isAdmin {

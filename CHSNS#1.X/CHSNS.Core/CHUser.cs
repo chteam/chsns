@@ -85,17 +85,7 @@ using CHSNS.Config;
 			}
 			set {
 				throw new Exception("邹健不允许调用这个方法");
-				//HttpContext.Current.Session["status"] = value;
-				//if (HttpContext.Current.Session["userid"] != null) {
-				//    var sp = new SqlParameter[2] { 
-				//            new SqlParameter("@Userid", SqlDbType.BigInt),
-				//            new SqlParameter("@status", SqlDbType.TinyInt),
-				//    };
-				//    sp[0].Value = CHUser.UserID;
-				//    sp[1].Value = value;
-				//    DoDataBase db = new DoDataBase();
-				//    db.ExecuteSql("Status_Update", sp);
-				//}
+				//update profile set [status]=@status where userid=@userid
 			}
 		}
 		/// <summary>
@@ -113,24 +103,6 @@ using CHSNS.Config;
 			get {
 				return Status != 0;
 			}
-		}
-		static public int unReadMessage {
-			get {
-				string name = string.Format("unReadMessage.{0}", UserID);
-				if (CHCache.IsNullorEmpty(name) || CHCache.GetCache(name).ToString() == "0") {
-					SqlParameter[] sp = new SqlParameter[1] { 
-					        new SqlParameter("@userid", SqlDbType.BigInt)
-					};
-					sp[0].Value = CHUser.UserID;
-					DoDataBase db = new DoDataBase();
-					CHCache.SetCache(name,
-						db.DoDataTable("unSee_Countlist", sp).Rows[0][0],
-						new TimeSpan(0, 2, 0)
-						);
-				}
-				return (int)CHCache.GetCache(name);
-			}
-
 		}
 		/// <summary>
 		/// 等 同 RemoveAll
