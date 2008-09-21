@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Core\DateTimeExtensionTest.cs" />
     <Compile Include="Core\JsonExtensionTest.cs" />
+    <Compile Include="Core\DictionaryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,10 +9,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% 
 		UserPas up = ViewData.Model;
-		if (!up.Exists) {
+		if (!up.Exists)
+		{
 			//Html.RenderPartial("index/noRigh", ViewData.Model);
-		} else {
-			if (up.Exists && up.Profile.IsMagicBox) {%>
+		}
+		else
+		{
+			if (up.Exists && up.Profile.IsMagicBox)
+			{%>
 	<%="<style type=\"text/css\">" + up.Profile.MagicBox + "</style>"%>
 	<%
 		}
@@ -49,15 +53,10 @@
 				</script>
 
 				<div>
-					<div>
-						<h4>
-							<%=up.Profile.Name%>的动向</h4>
-						<ul id="Profile_Event">
-							<% 
-								Html.RenderPartial("Index/Event", ViewData["event"]);
-			 %>
-						</ul>
-					</div>
+					<h4>
+						<%=up.Profile.Name%>的动向</h4>
+					<% 
+						Html.RenderPartial("Index/Event", ViewData["event"]); %>
 				</div>
 				<%if (up.Profile.IsMagicBox && up.IsMe) { Html.RenderPartial("EmptyMagicBox"); } %>
 			</div>
@@ -175,7 +174,7 @@
 				});
 			}).confirm();
 		};
-		
+
 		var WillReply = function(n, senderid) {
 			ShowReply('@' + n + '\n');
 			$v('#ReplyerID', senderid);

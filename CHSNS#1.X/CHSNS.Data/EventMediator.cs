@@ -27,5 +27,15 @@ namespace CHSNS.Data
 					   select e);
 			return ret;
 		}
+
+		public void Add(Event e) { 
+	/*DataBaseExecutor.Execute(@"	INSERT INTO [Event]([TemplateName] ,[OwnerID],[ViewerID],
+[AddTime],[ShowLevel],[Title],[Body]) VALUES
+(@templatename,@ownerid,@viewerid,@addtime,@showlevel
+,<Title, nvarchar(max),>
+,<Body, nvarchar(max),>)"*/
+			DBExt.DB.AddToEvent(e);
+			DBExt.DB.SaveChanges();
+		}
 	}
 }
