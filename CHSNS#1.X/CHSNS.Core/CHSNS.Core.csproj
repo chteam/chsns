@@ -110,7 +110,6 @@
     <Compile Include="Date.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Dictionary.cs" />
-    <Compile Include="DoDataBase.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="ImageSizeType.cs" />
     <Compile Include="StringExt.cs" />
@@ -120,11 +119,6 @@
     <Compile Include="Path.cs" />
     <Compile Include="Regular.cs" />
     <Compile Include="Thumbnail.cs" />
-    <Compile Include="Web\UI\FormFixer.cs" />
-    <Compile Include="Web\UI\HtmlScript.cs" />
-    <Compile Include="Web\UI\MasterPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Xml.cs" />
     <Compile Include="EntityOpener.cs" />
   </ItemGroup>
