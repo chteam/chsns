@@ -5,10 +5,8 @@
  * 
  * 
  */
-using System.IO;
-using System;
 using System.Management;
-namespace Chsword
+namespace CHSNS
 {
 	/// <summary>
 	/// Description of NetworkCross.

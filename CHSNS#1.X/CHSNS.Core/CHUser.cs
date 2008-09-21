@@ -15,8 +15,6 @@ using CHSNS.Config;
 	using System.Data.SqlClient;
 	using System.Web;
 
-	using Chsword;
-
 	/// <summary>
 	///  ChSession类
 	/// AU:邹健

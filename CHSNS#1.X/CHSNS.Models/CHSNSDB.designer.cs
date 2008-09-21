@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008/9/16 13:22:20
+// 生成日期: 2008/9/21 20:40:30
 namespace CHSNS.Models
 {
     
@@ -3022,9 +3022,8 @@ namespace CHSNS.Models
         /// <param name="templateName">TemplateName 的初始值。</param>
         /// <param name="ownerID">OwnerID 的初始值。</param>
         /// <param name="showLevel">ShowLevel 的初始值。</param>
-        /// <param name="title">Title 的初始值。</param>
-        /// <param name="body">Body 的初始值。</param>
-        public static Event CreateEvent(long id, global::System.DateTime addTime, string templateName, long ownerID, int showLevel, string title, string body)
+        /// <param name="json">Json 的初始值。</param>
+        public static Event CreateEvent(long id, global::System.DateTime addTime, string templateName, long ownerID, int showLevel, string json)
         {
             Event @event = new Event();
             @event.ID = id;
@@ -3032,8 +3031,7 @@ namespace CHSNS.Models
             @event.TemplateName = templateName;
             @event.OwnerID = ownerID;
             @event.ShowLevel = showLevel;
-            @event.Title = title;
-            @event.Body = body;
+            @event.Json = json;
             return @event;
         }
         /// <summary>
@@ -3175,51 +3173,28 @@ namespace CHSNS.Models
         partial void OnShowLevelChanging(int value);
         partial void OnShowLevelChanged();
         /// <summary>
-        /// 架构中不存在属性 Title 的注释。
+        /// 架构中不存在属性 Json 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Title
+        public string Json
         {
             get
             {
-                return this._Title;
+                return this._Json;
             }
             set
             {
-                this.OnTitleChanging(value);
-                this.ReportPropertyChanging("Title");
-                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Title");
-                this.OnTitleChanged();
+                this.OnJsonChanging(value);
+                this.ReportPropertyChanging("Json");
+                this._Json = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Json");
+                this.OnJsonChanged();
             }
         }
-        private string _Title;
-        partial void OnTitleChanging(string value);
-        partial void OnTitleChanged();
-        /// <summary>
-        /// 架构中不存在属性 Body 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Body
-        {
-            get
-            {
-                return this._Body;
-            }
-            set
-            {
-                this.OnBodyChanging(value);
-                this.ReportPropertyChanging("Body");
-                this._Body = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Body");
-                this.OnBodyChanged();
-            }
-        }
-        private string _Body;
-        partial void OnBodyChanging(string value);
-        partial void OnBodyChanged();
+        private string _Json;
+        partial void OnJsonChanging(string value);
+        partial void OnJsonChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Field 的注释。

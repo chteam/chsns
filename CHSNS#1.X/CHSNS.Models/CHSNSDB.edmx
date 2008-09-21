@@ -179,8 +179,7 @@
           <Property Name="ViewerID" Type="bigint" />
           <Property Name="AddTime" Type="smalldatetime" Nullable="false" />
           <Property Name="ShowLevel" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Json" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Field">
           <Key>
@@ -639,8 +638,7 @@
           <Property Name="OwnerID" Type="Int64" Nullable="false" />
           <Property Name="ViewerID" Type="Int64" Nullable="true" />
           <Property Name="ShowLevel" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" />
-          <Property Name="Body" Type="String" Nullable="false" /></EntityType>
+          <Property Name="Json" Type="String" Nullable="false" /></EntityType>
         <EntityType Name="Field">
           <Key>
             <PropertyRef Name="TrueID" />
@@ -1071,8 +1069,7 @@
           <EntitySetMapping Name="Event">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Event)">
               <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="Body" ColumnName="Body" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Json" ColumnName="Json" />
                 <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
                 <ScalarProperty Name="ViewerID" ColumnName="ViewerID" />
                 <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
@@ -1411,7 +1408,7 @@
         <EntityTypeShape EntityType="CHSNS.Models.City" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4535937499999998" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Comment" Width="1.5" PointX="6.75" PointY="3.75" Height="2.8025520833333335" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.ContactInformation" Width="1.5" PointX="6.75" PointY="7.75" Height="2.9711718749999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.Models.Event" Width="1.5" PointX="8.75" PointY="0.625" Height="2.5430916341145831" IsExpanded="true" />
+        <EntityTypeShape EntityType="CHSNS.Models.Event" Width="1.5" PointX="8.75" PointY="0.625" Height="2.3520719401041665" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Field" Width="1.5" PointX="8.75" PointY="4.75" Height="1.9594531249999996" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.FieldInformation" Width="1.5" PointX="8.75" PointY="7.75" Height="2.1280729166666674" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Friend" Width="1.5" PointX="10.75" PointY="0.75" Height="2.1280729166666674" IsExpanded="true" />

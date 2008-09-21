@@ -60,10 +60,6 @@ namespace CHSNS{
 					return false;
 			return true;
 		}
-		static public XmlNode CreateXmlDocument(string fn){
-			XmlDocument dt=new XmlDocument();
-			dt.Load(fn);
-			return dt;
-		}
+
 	}
 }
