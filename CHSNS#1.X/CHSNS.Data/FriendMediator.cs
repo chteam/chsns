@@ -3,6 +3,7 @@
 namespace CHSNS.Data {
 	using System.Linq;
 	using Models;
+	using System;
 	public class FriendMediator : BaseMediator {
 		public FriendMediator(DBExt id) : base(id) { }
 		#region 获取
@@ -95,6 +96,13 @@ where (fromid=@fromid and toid=@toid) or (toid=@fromid and fromid=@toid))",
 				DataBaseExecutor.Execute(@"update [profile] set friendrequestcount=friendrequestcount+1 where userid=@toid","@toid", ToID);
 			return insret == 1;
 		}
+
+		/// <summary>
+		/// Deletes the specified from ID.
+		/// </summary>
+		/// <param name="FromID">From ID.</param>
+		/// <param name="ToID">To ID.</param>
+		/// <returns></returns>
 		public bool Delete(long FromID,long ToID){
 			var fin = DataBaseExecutor.Execute(
 				@"DELETE FROM Friend
@@ -110,6 +118,13 @@ where userid=@fromid or userid =@toid", "@fromid", FromID,
 			}
 			return true;
 		}
+
+		/// <summary>
+		/// Agrees the friend request.
+		/// </summary>
+		/// <param name="OperaterID">The operater ID.</param>
+		/// <param name="ToID">To ID.</param>
+		/// <returns></returns>
 		public bool Agree(long OperaterID, long ToID){
 			var fin =
 				DataBaseExecutor.Execute(
@@ -124,11 +139,30 @@ where userid=@fromid or userid =@toid", "@fromid", OperaterID,
 					"@toid", ToID);
 				DataBaseExecutor.Execute(@"update [profile] set friendrequestcount=friendrequestcount-1 where userid=@userid",
 					"@userid", OperaterID);
+				var name = DBExt.DB.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
+				DBExt.Event.Add(new Event
+				{
+					OwnerID = ToID,
+					ViewerID = OperaterID,
+					TemplateName = "MakeFriend",
+					AddTime = DateTime.Now,
+					ShowLevel = 0,
+					Title = Dictionary.CreateFromArgs("ownername", name, "sendername", CHUser.Username).ToJsonString()
+					,
+					Body = ""
+				}
+				);
 				return true;
 			}
 			return false;
 		}
 
+		/// <summary>
+		/// Ignores friend request
+		/// </summary>
+		/// <param name="FromID">From ID.</param>
+		/// <param name="operaterID">The operater ID.</param>
+		/// <returns></returns>
 		public bool Ignore(long FromID, long operaterID) {
 			int ret =DataBaseExecutor.Execute(@"DELETE FROM Friend
 		WHERE toid=@toid and fromid=@fromid and istrue=0", "@toid", operaterID,

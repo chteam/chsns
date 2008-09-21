@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CHSNS
 {
@@ -22,6 +23,15 @@ namespace CHSNS
 				dict.Add(args[i].ToString(), args[i + 1]);
 			}
 			return dict;
+		}
+		public string ToJsonString() {
+			StringBuilder sb = new StringBuilder("{");
+			foreach(KeyValuePair<string,object> p in this ){
+				sb.AppendFormat("{0}:'{1}',",p.Key, p.Value);
+			}
+			sb.Length--;
+			sb.Append("}");
+			return sb.ToString();
 		}
 	}
 }
