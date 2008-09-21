@@ -147,9 +147,7 @@ where userid=@fromid or userid =@toid", "@fromid", OperaterID,
 					TemplateName = "MakeFriend",
 					AddTime = DateTime.Now,
 					ShowLevel = 0,
-					Title = Dictionary.CreateFromArgs("ownername", name, "sendername", CHUser.Username).ToJsonString()
-					,
-					Body = ""
+					Json = Dictionary.CreateFromArgs("ownername", name, "sendername", CHUser.Username).ToJsonString()
 				}
 				);
 				return true;

@@ -217,31 +217,7 @@ namespace CHSNS {
 		}
 		#endregion
 	
-		#region 获取模板
-		/// <summary>
-		/// 读取模板文件
-		/// </summary>
-		/// <param name="master_name">模板文件名.</param>
-		/// <returns>String,模板文件内容.</returns>
-		static string GetTemplate(string master_name) {
-			String text = Xml.GetItemText("Config", "Style");
-			String filePath = HttpContext.Current.Request.MapPath(String.Format("~/Template/{0}/{1}.htm", text, master_name));
-			return Regular.ClearRemarks(File.ReadAllText(filePath).Replace("\t", ""));
-		}
-		/// <summary>
-		/// 读取模板文件,并将之缓存
-		/// </summary>
-		/// <param name="master_name">模板文件名.</param>
-		/// <returns>String,模板文件内容.</returns>
-		static public string GetTemplateCache(string master_name) {
-			//tname为模板名称
-			String CacheName = String.Format("Master.{0}", master_name);
-			if (IsNullorEmpty(CacheName)) {
-				SetCache(CacheName, GetTemplate(master_name));
-			}
-			return HttpContext.Current.Cache[CacheName].ToString();
-		}
-		#endregion
+
 
 
 		#region 属性

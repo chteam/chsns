@@ -37,6 +37,17 @@ namespace CHSNS.Data {
 			DBExt.DB.SaveChanges();
 			DataBaseExecutor.Execute("update [profile] set NoteCount=NoteCount+1 where userid=@userid",
 									 "@userid", userid);
+			DBExt.Event.Add(new Event
+			{
+				OwnerID = userid,
+				TemplateName = "AddNote",
+				AddTime = DateTime.Now,
+				ShowLevel = 0,
+				Json = Dictionary.CreateFromArgs("id", note.ID,
+				"title", note.Title, "addtime", note.AddTime, "name", CHUser.Username).ToJsonString()
+			}
+			);
+
 		}
 		public void Edit(Note note,long userid){
 			DataBaseExecutor.Execute(
