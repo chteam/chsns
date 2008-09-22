@@ -9,6 +9,5 @@
 <span id="copyright">成幻小组
 <span class="c">&nbsp;&nbsp;&nbsp;</span>
 2005-2008
-
 </span>
 </div>

@@ -264,7 +264,7 @@ background:url(images/bg_icon.png) no-repeat 0 -1400px;
 #Profile_Event li{
  padding-left:20px;
 }
-.icon_close,.icon_close:hover{
+.evt_del,.evt_del:hover{
 	font-size:10px;
 	text-decoration:none;
 	background:url(images/bg_icon.png) no-repeat -40px -640px;

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
-using System.IO;
+﻿using System.IO;
 using System.Web;
-using System.Web.Caching;
+using System.Xml.Serialization;
+using System;
 
-namespace CHSNS {
+namespace CHSNS
+{
 	/// <summary>
 	/// 配置文件序列化及反序列化
 	/// </summary>
-	public class ConfigSerializer {
+	public class ConfigSerializer
+	{
 		private const string PATH = "~/Config/{0}.xml";
 		private const string KEY = "config.{0}";
 		/// <summary>
@@ -20,7 +18,8 @@ namespace CHSNS {
 		/// <typeparam name="T">序列化此类型</typeparam>
 		/// <param name="obj">要序列化的对象</param>
 		/// <param name="key">键值</param>
-		public static void Serializer<T>(T obj, string key) where T : class {
+		public static void Serializer<T>(T obj, string key) where T : class
+		{
 			_Serializer(obj, key);
 		}
 		/// <summary>
@@ -29,13 +28,20 @@ namespace CHSNS {
 		/// <typeparam name="T">序列化此类型</typeparam>
 		/// <param name="obj">要序列化的对象</param>
 		/// <param name="key">键值</param>
-		static void _Serializer<T>(T obj, string key) where T : class {
-			XmlSerializer mySerializer = new XmlSerializer(typeof(T));
-			StreamWriter myWriter = new StreamWriter(
-				HttpContext.Current.Server.MapPath(string.Format(PATH, key))
-				);
-			mySerializer.Serialize(myWriter, obj);
-			myWriter.Close();
+		static void _Serializer<T>(T obj, string key) where T : class
+		{
+			try
+			{
+				XmlSerializer mySerializer = new XmlSerializer(typeof(T));
+				using (var myWriter = new StreamWriter(HttpContext.Current.Server.MapPath(string.Format(PATH, key))))
+				{
+					mySerializer.Serialize(myWriter, obj);
+				}
+			}
+			catch
+			{
+				throw new Exception(string.Format("存储配置文件{0}时出错,编号:{1}", key, 10359));
+			}
 		}
 		public static void Clear(string key) { CHCache.Remove(string.Format(PATH, key)); }
 		/// <summary>
@@ -45,10 +51,10 @@ namespace CHSNS {
 		/// <param name="key">键</param>
 		/// <param name="useCache">是否使用缓存的值</param>
 		/// <returns></returns>
-		public static T Load<T>(string key, bool useCache) where T : class {
-			if (useCache) {
+		public static T Load<T>(string key, bool useCache) where T : class
+		{
+			if (useCache)
 				return Load<T>(key);
-			}
 			return _Load<T>(key) as T;
 		}
 		/// <summary>
@@ -57,10 +63,10 @@ namespace CHSNS {
 		/// <typeparam name="T">反序列化的目标类型</typeparam>
 		/// <param name="key">键</param>
 		/// <returns></returns>
-		public static T Load<T>(string key) where T : class {
-			if (!CHCache.Contains(string.Format(KEY, key))) {
+		public static T Load<T>(string key) where T : class
+		{
+			if (!CHCache.Contains(string.Format(KEY, key)))
 				CHCache.Add(string.Format(KEY, key), _Load<T>(key));
-			}
 			return CHCache.Get<T>(string.Format(KEY, key));
 		}
 		/// <summary>
@@ -69,14 +75,20 @@ namespace CHSNS {
 		/// <typeparam name="T">反序列化的目标类型</typeparam>
 		/// <param name="key">键</param>
 		/// <returns></returns>
-		static public object _Load<T>(string key) where T : class {
-			XmlSerializer mySerializer = new XmlSerializer(typeof(T));
-            Stream myFileStream = new StreamReader(
-                HttpContext.Current.Server.MapPath(string.Format(PATH, key))).BaseStream;
-			var x = mySerializer.Deserialize(myFileStream);
-			myFileStream.Close();
-			myFileStream.Dispose();
-			return x;
+		static object _Load<T>(string key) where T : class
+		{
+			try
+			{
+				XmlSerializer mySerializer = new XmlSerializer(typeof(T));
+				using (var myFileStream = new StreamReader(HttpContext.Current.Server.MapPath(string.Format(PATH, key))).BaseStream)
+				{
+					return mySerializer.Deserialize(myFileStream);
+				}
+			}
+			catch
+			{
+				throw new Exception(string.Format("读取配置文件{0}时出错,编号:{1}", key, 10358));
+			}
 		}
 	}
 }
