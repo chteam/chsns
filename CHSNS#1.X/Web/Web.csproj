@@ -484,7 +484,7 @@
     <Content Include="Config\StyleSheet.config" />
     <Content Include="Config\Email.config" />
     <Content Include="Config\Routing.config" />
-    <Content Include="Config\SiteConfig.config" />
+    <Content Include="Config\Config.xml" />
     <Content Include="Config\Style.config" />
     <Content Include="CHSNS.config" />
     <None Include="AdminStyle\images\default\form\clear-trigger.psd" />

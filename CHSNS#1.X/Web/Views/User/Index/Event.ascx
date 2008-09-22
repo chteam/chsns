@@ -4,6 +4,6 @@
 	{ %>
 	<li class="evt_icon " id="evt_<%=e.ID %>">
 		<%Html.RenderPartial("EventTemplate/" + e.TemplateName, e);%>
-		#showdel( ${id} ${fromid} ) </li>
+		<a class="evt_del delete" href="<%=e.ID %>">&nbsp;&nbsp;</a> </li>
 	<%} %>
 </ul>

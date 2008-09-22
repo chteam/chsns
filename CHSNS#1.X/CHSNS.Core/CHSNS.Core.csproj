@@ -93,7 +93,6 @@
     <Compile Include="ConfigSerializer.cs" />
     <Compile Include="Config\BaseConfig.cs" />
     <Compile Include="Config\ChAlumnaConfig.cs" />
-    <Compile Include="Config\ConfigPath.cs" />
     <Compile Include="Config\ConfigString.cs" />
     <Compile Include="Config\Publish\Publish.cs" />
     <Compile Include="Config\RegVisitConfig.cs" />
