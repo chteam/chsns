@@ -1,27 +1,33 @@
 
+using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Transactions;
 using System.Web.Mvc;
-using CHSNS.Extension;
 using CHSNS.Filter;
 using CHSNS.Models;
-using System;
 namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class CommentController : BaseController {
+
+		/// <summary>
+		/// ªÿ∏¥”√ªß
+		/// </summary>
+		/// <param name="ReplyerID">The replyer ID.</param>
+		/// <returns></returns>
 		public ActionResult AddReply(long ReplyerID) {
-			var r = new Reply();
-			UpdateModel(r, new[] { "Body", "UserID" });
-			var OwnerID = r.UserID;
-			r.SenderID = CHUser.UserID;
-			r.AddTime = DateTime.Now;
-			r = DBExt.Comment.AddReply(r);
-			if (ReplyerID != OwnerID) {
-				r.UserID = ReplyerID;
-				DBExt.Comment.AddReply(r);
-			}
-			r.UserID = OwnerID;
-			var model = new List<ReplyPas>{
+			using (var ts = new TransactionScope()) {
+				var r = new Reply();
+				UpdateModel(r, new[] { "Body", "UserID" });
+				var OwnerID = r.UserID;
+				r.SenderID = CHUser.UserID;
+				r.AddTime = DateTime.Now;
+				r = DBExt.Comment.AddReply(r);
+				if (ReplyerID != OwnerID) {
+					r.UserID = ReplyerID;
+					DBExt.Comment.AddReply(r);
+				}
+				r.UserID = OwnerID;
+				var model = new List<ReplyPas>{
 				new ReplyPas{
 					Sender = new NameIDPas{
 						ID = CHUser.UserID,
@@ -30,12 +36,22 @@ namespace CHSNS.Controllers {
 					Reply = r
 				}
 			};
-			return View("Comment/Item", model);
+				ts.Complete();
+				return View("Comment/Item", model);
+			}
 		}
+		/// <summary>
+		/// Deletes the reply.
+		/// </summary>
+		/// <param name="id">The id.</param>
+		/// <returns></returns>
 		[AcceptVerbs("Post")]
 		public ActionResult DeleteReply(long id) {
-			DBExt.Comment.DeleteReply(id, CHUser.UserID);
-			return new EmptyResult();
+			using (var ts = new TransactionScope()) {
+				DBExt.Comment.DeleteReply(id, CHUser.UserID);
+				ts.Complete();
+				return new EmptyResult();
+			}
 		}
 
 	}
