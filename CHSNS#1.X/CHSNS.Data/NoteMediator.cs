@@ -64,6 +64,8 @@ where id=@id and userid=@userid",
 			DataBaseExecutor.Execute("delete [note] where id=@id and userid=@userid",
 			                         "@id", id,
 			                         "@userid", userid);
+			DataBaseExecutor.Execute("update [profile] set NoteCount=NoteCount-1 where userid=@userid",
+								 "@userid", userid);
 		}
 	}
 }

@@ -166,7 +166,7 @@ html>body #myhome,html>body #myblog,html>body #myphoto{border-bottom:0;}
 /*button text....*/
 .inputbox input{margin:10px;}
 input,textarea{font-size:1em;border:1px solid #bdc7d8; padding:1px;}
-input[type~="text"],input[type~="password"],input[type~="inputfile"]{border:1px solid #bdc7d8;line-height:16px;height:16px;layout-flow:horizontal;}
+input[type~="text"],input[type~="password"],input[type~="inputfile"]{border:1px solid #bdc7d8;line-height:16px;height:16px;}
 * html .inputtext,* html .inputfile{border:1px solid #bdc7d8;}
 input[type~="text"]:focus,input[type~="password"]:focus,textarea:focus{background:#fcfcfc; border:1px solid #bdc7d8;}
 .subbutton{background:#3B5999; padding:2px;border:1px solid; border-color:#ffffff #efefef #efefef #ffffff; color:#fff; background-image:url(images/buttonbg.jpg);}
@@ -175,9 +175,6 @@ input[type~="submit"],input[type~="button"]{background:#3B5999; padding:2px;bord
 .select{border:1px solid #bdc7d8;}
 .select select{margin:-2px; font-size:1em;background:#fcfcfc;}
 /*以下 为 ajax controlpadding-right:20px*/
-.watermarked{color: #909090;border: 1px solid #bdc7d8;}
-.modalBackground{background-color:gray;filter:alpha(opacity=50);opacity:0.5;}
-.dropShadow{width:300px;background-color:#5377A9;color:white;font-weight:bold;}
 /*消息内容*/
 #message_main{border:solid 2px #3B5999;background:#f7f7f7;width:260px;min-height:135px;padding:10px;}
 #message_main input{margin-left:80px; width:85px;}
@@ -214,7 +211,7 @@ input[type~="submit"],input[type~="button"]{background:#3B5999; padding:2px;bord
 
 
 .qsearch{float:right; margin-bottom:10px;}
-*html .qsearch{margin-bottom:0px;}
+.qsearch{margin-bottom:0px;}
 .qsearch .glass{float:right; border:1px solid #bdc7d8; border-left:0px; height:18px; width:18px;}
 .qsearch .glass a img{ float:right}
 .qsearch input{width:95px; border:1px solid #bdc7d8;border-right:0px; float:right; height:16px;}
@@ -318,7 +315,6 @@ body .ui-resizable-autohide .ui-resizable-handle { display: none; } /* use 'body
 .ui-resizable-w { cursor: w-resize; width: 6px; left: 0px; top: 0px; height: 100%;}
 .ui-resizable-n,.ui-resizable-s ,.ui-resizable-e ,.ui-resizable-w ,.ui-resizable-se,.ui-resizable-sw,.ui-resizable-nw,.ui-resizable-ne{
 background:#000;
-filter:alpha(opacity=77);
 -moz-opacity:0.77; 
 opacity:0.77;}
 /* This file skins dialog */
