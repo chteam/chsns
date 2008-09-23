@@ -20,7 +20,7 @@ namespace CHSNS
 			try
 			{
 				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-				using (var myWriter = new StreamWriter(HttpContext.Current.Server.MapPath(fn)))
+				using (var myWriter = new StreamWriter(CHServer.MapPath(fn)))
 				{
 					mySerializer.Serialize(myWriter, obj);
 				}
@@ -67,7 +67,7 @@ namespace CHSNS
 			try
 			{
 				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-				using (var myFileStream = new StreamReader(HttpContext.Current.Server.MapPath(fn)).BaseStream)
+				using (var myFileStream = new StreamReader(CHServer.MapPath(fn)).BaseStream)
 				{
 					return mySerializer.Deserialize(myFileStream);
 				}
