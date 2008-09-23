@@ -3,7 +3,7 @@
 * http协议操作模块：简化了 Get和Post请求。
 * 
 * */
-namespace Chsword {
+namespace CHSNS {
 	using System;
 	using System.Net;
 
