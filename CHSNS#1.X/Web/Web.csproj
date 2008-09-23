@@ -959,10 +959,6 @@
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>CHSNS.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS\CHSNS.csproj">
-      <Project>{078BA932-C865-43EA-81BF-EAE053DE0A6B}</Project>
-      <Name>CHSNS</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
