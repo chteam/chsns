@@ -6,6 +6,9 @@ using Chsword;
 namespace CHSNS {
 
 
+	/// <summary>
+	/// 在线
+	/// </summary>
 	public class Online {
 		/// <summary>
 		/// 清理离线用户

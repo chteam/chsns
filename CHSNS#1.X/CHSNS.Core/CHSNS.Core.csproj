@@ -102,8 +102,13 @@
     <Compile Include="DataBaseExecutor.cs" />
     <Compile Include="DateTimeExtension.cs" />
     <Compile Include="File.cs" />
+    <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
+    <Compile Include="HttpHandler\ImageHttpHandler.cs" />
     <Compile Include="JsonExtension.cs" />
+    <Compile Include="Media.cs" />
     <Compile Include="OleDbDataOpener.cs" />
+    <Compile Include="Online.cs" />
+    <Compile Include="HttpProc.cs" />
     <Compile Include="XmlSerializer.cs" />
     <Compile Include="SqlDataOpener.cs" />
     <Compile Include="SqlStoredProcedureDataOpener.cs" />
