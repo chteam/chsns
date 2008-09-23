@@ -11,7 +11,7 @@ namespace CHSNS.Config
 			set { _body = value; }
 		}
 		DateTime _addTime = DateTime.Now;
-
+		
 		public DateTime AddTime {
 			get { return _addTime; }
 			set { _addTime = value; }
