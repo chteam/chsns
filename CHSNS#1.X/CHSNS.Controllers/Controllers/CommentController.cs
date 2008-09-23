@@ -5,9 +5,27 @@ using System.Transactions;
 using System.Web.Mvc;
 using CHSNS.Filter;
 using CHSNS.Models;
+using CHSNS.Tools;
 namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class CommentController : BaseController {
+		/// <summary>
+		///回复列表
+		/// </summary>
+		/// <param name="userid">The userid.</param>
+		/// <returns></returns>
+		public ActionResult ReplyList(long? userid) {
+			if (!userid.HasValue) userid = CHUser.UserID;
+			var user = DBExt.UserInfo.GetUser(
+					userid.Value,
+					c => new UserCountPas {
+						ID = c.UserID,
+						Name = c.Name,
+						Count = c.NoteCount
+					});
+			DBExt.Comment.GetReply(userid.Value).Pager(1, 10);
+			return View();
+		}
 
 		/// <summary>
 		/// 回复用户
