@@ -13,7 +13,7 @@ using System.Collections.Generic;
 		public SystemConfig() {
 			_ControllerAssemblies = new List<string>();
 		}
-		static readonly string FILEPATH = System.Web.HttpContext.Current.Server.MapPath("~/ChAlumna.config");
+		static readonly string FILEPATH = System.Web.HttpContext.Current.Server.MapPath("~/CHSNS.config");
 		string _ConnectionString = "";
 		/// <summary>
 		/// Á¬½Ó×Ö·û´® 

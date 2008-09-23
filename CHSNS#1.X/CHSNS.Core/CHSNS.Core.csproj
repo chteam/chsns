@@ -104,6 +104,7 @@
     <Compile Include="File.cs" />
     <Compile Include="JsonExtension.cs" />
     <Compile Include="OleDbDataOpener.cs" />
+    <Compile Include="XmlSerializer.cs" />
     <Compile Include="SqlDataOpener.cs" />
     <Compile Include="SqlStoredProcedureDataOpener.cs" />
     <Compile Include="Date.cs" />
