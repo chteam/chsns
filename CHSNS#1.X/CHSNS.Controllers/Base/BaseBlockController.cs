@@ -14,23 +14,20 @@ namespace CHSNS.Controllers {
 				return Request.Form.Count != 0;
 			}
 		}
-		
+
 		CHSNSDBDataContext _DB;
 		protected CHSNSDBDataContext DB {
 			get {
-				if (_DB == null) {
+				if (_DB == null)
 					_DB = DBExt.DB;
-				}
 				return _DB;
 			}
 		}
 
-		#region ICHSNSDB ≥…‘±
-
 		private Data.DBExt _dbext;
 		protected Data.DBExt DBExt {
 			get {
-				if(_dbext==null)
+				if (_dbext == null)
 					_dbext = new Data.DBExt();
 				return _dbext;
 			}
@@ -41,9 +38,8 @@ namespace CHSNS.Controllers {
 		DataBaseExecutor _DataBaseExecutor;
 		protected DataBaseExecutor DataBaseExecutor {
 			get {
-				if (_DataBaseExecutor == null) {
+				if (_DataBaseExecutor == null) 
 					_DataBaseExecutor = DBExt.DataBaseExecutor;
-				}
 				return _DataBaseExecutor;
 			}
 			set {
@@ -51,10 +47,10 @@ namespace CHSNS.Controllers {
 			}
 		}
 
-		#endregion
 
 		protected override void OnResultExecuted(ResultExecutedContext filterContext) {
-			DataBaseExecutor.Dispose();
+			if (_dbext != null)
+				DBExt.Dispose();
 		}
 	}
 }

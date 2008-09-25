@@ -60,10 +60,13 @@ namespace CHSNS
 
 		public void Dispose()
 		{
-			if (_Connection.State != ConnectionState.Closed)
-				Command.Connection.Close();
-			Command.Dispose();
-			_Connection.Dispose();
+			if (_Command != null) 
+				Command.Dispose();
+			if (_Connection != null) {
+				if (_Connection.State != ConnectionState.Closed)
+					_Connection.Close();
+				_Connection.Dispose();
+			}
 		}
 
 		private void Open(CommandType type, string text)
