@@ -27,13 +27,15 @@ namespace CHSNS.Data
 					   select e);
 			return ret;
 		}
-
+		/// <summary>
+		/// Deletes the Event
+		/// </summary>
+		/// <param name="id">The id.</param>
+		/// <param name="ownerid">The ownerid.</param>
+		public void Delete(long id, long ownerid) {
+			DataBaseExecutor.Execute(@"delete [event] where id=@id and ownerid=@oid", "@id", id, "@oid", ownerid);
+		}
 		public void Add(Event e) { 
-	/*DataBaseExecutor.Execute(@"	INSERT INTO [Event]([TemplateName] ,[OwnerID],[ViewerID],
-[AddTime],[ShowLevel],[Title],[Body]) VALUES
-(@templatename,@ownerid,@viewerid,@addtime,@showlevel
-,<Title, nvarchar(max),>
-,<Body, nvarchar(max),>)"*/
 			DBExt.DB.AddToEvent(e);
 			DBExt.DB.SaveChanges();
 		}

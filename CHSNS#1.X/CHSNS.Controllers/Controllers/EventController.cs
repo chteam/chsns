@@ -1,34 +1,38 @@
-﻿/*
- * Created by 邹健
- * Date: 2007-12-25
- * Time: 22:39
- * 
- * 
- */
-using CHSNS.Filter;
-using System.Linq;
+﻿
 namespace CHSNS.Controllers {
-	//using CHSNS.Data;
-	using System.Web.Mvc;
-	using System.Transactions;
 	using System.Collections.Generic;
-
+	using System.Linq;
+	using System.Transactions;
+	using System.Web.Mvc;
+	using CHSNS.Data;
+	/*
+	 * Created by 邹健
+	 * Date: 2007-12-25
+	 * Time: 22:39
+	 * 
+	 * 
+	 */
+	using CHSNS.Filter;
+	using CHSNS.Tools;
 	/// <summary>
-	/// Description of EventController.
+	/// 事件的控制器
+	/// the Controller of Event.
 	/// </summary>
 	[LoginedFilter]
 	public class EventController : BaseController {
+		#region Action
+
 		public ActionResult Index() {
-			using (new TransactionScope())
-			{
+			using (var ts = DBExt.CreateTransaction()) {
 				ViewData["newview"] = DBExt.View.ViewList(2, 3, CHUser.UserID, 6);
 				ViewData["lastview"] = DBExt.View.ViewList(0, 3, CHUser.UserID, 6);
 				ViewData["Page_Title"] = "事件";
 				return View(DBExt.Gather.EventGather(CHUser.UserID));
 			}
-		} 
-		#region 组件
+		}
 		#endregion
+
+
 		#region Management
 		[AdminFilter]
 		public ActionResult SystemTemplate() {

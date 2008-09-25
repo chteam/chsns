@@ -55,8 +55,10 @@
 				<div>
 					<h4>
 						<%=up.Profile.Name%>的动向</h4>
+						<ul id="evt_list">
 					<% 
 						Html.RenderPartial("Index/Event", ViewData["event"]); %>
+						</ul>
 				</div>
 				<%if (up.Profile.IsMagicBox && up.IsMe) { Html.RenderPartial("EmptyMagicBox"); } %>
 			</div>
@@ -149,42 +151,55 @@
 		</div>--%>
 	</div>
 	<%} %>
+	
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
 	<script type="text/javascript">
+//reply
+var HideReply = function() { $('#cmt_form2').hide(); $('#cmt_form1').show(); $v('#comment_body', ''); };
+var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); if (!n) n = ''; $('#comment_body').focus().val(n); };
+var Reply = function(ownerid) {
+	if (v_empty("#comment_body", '不能为空'))
+		$.post('<%=this.Url.Action("AddReply","Comment") %>',
+		{ 'UserID': '<%=ViewData.Model.OwnerID %>', 'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
+		function(r) {
+			$('#ReplyItems').prepend(r);
+			HideReply();
+			init_Replyconfirm();
+		});
+};
+//init
+var init_Replyconfirm = function() {
+	$('.delete').click(function(event) {
+		var id = $(this).attr('href');
+		$.post('<%=Url.Action("DeleteReply","Comment") %>', { 'id': id }, function(r) {
+			showMessage("#Item" + id, '已经删除', 1000);
+		});
+	}).confirm();
+};
+var init_evt = function() {
+	$('#evt_list .evt_del').click(function(event) {
+		var id = $(this).attr('href');
+		$.post('<%=Url.Action("EventDelete") %>', { 'id': id }, function(r) {
+			$("#evt_list").html(r);
+			init_evt();
+		});
+		return false;
+	});
+};
 
-		var HideReply = function() { $('#cmt_form2').hide(); $('#cmt_form1').show(); $v('#comment_body', ''); };
-		var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); if (!n) n = ''; $('#comment_body').focus().val(n); };
-		var Reply = function(ownerid) {
-			if (v_empty("#comment_body", '不能为空'))
-				$.post('<%=this.Url.Action("AddReply","Comment") %>',
-				{ 'UserID': '<%=ViewData.Model.OwnerID %>', 'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
-				function(r) {
-					$('#ReplyItems').prepend(r);
-					HideReply();
-				});
-		};
-
-		var init_confirm = function() {
-			$('.delete').click(function(event) {
-				var id = $(this).attr('href');
-				$.post('<%=Url.Action("DeleteReply","Comment") %>', { 'id': id }, function(r) {
-					showMessage("#Item" + id, '已经删除', 1000);
-				});
-			}).confirm();
-		};
-
-		var WillReply = function(n, senderid) {
-			ShowReply('@' + n + '\n');
-			$v('#ReplyerID', senderid);
-		};
-		var EnterReply = function(ownerid, event) {
-			if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83)) {
-				Reply(ownerid);
-			}
-		};
-		init_confirm();
+var WillReply = function(n, senderid) {
+	ShowReply('@' + n + '\n');
+	$v('#ReplyerID', senderid);
+};
+var EnterReply = function(ownerid, event) {
+	if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83)) {
+		Reply(ownerid);
+	}
+};
+init_Replyconfirm();
+init_evt();
 	</script>
 
 </asp:Content>
