@@ -5,7 +5,8 @@ eval(function(p, a, c, k, e, r) { e = function(c) { return (c < a ? '' : e(parse
 /*===================================================
 CHSNS# JavaScript Basic Library
 2007 12 16 zoujian
-2008 12 28 zoujian
+2007 12 28 zoujian
+2008 09 27
 ===================================================*/
 
 var isIE=function(){return jQuery.browser.msie;};
