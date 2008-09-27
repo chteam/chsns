@@ -10,18 +10,21 @@
 		<%=Html.UserEditLink("", "编辑我的资料")%></li>
 	<li>
 		<%=Html.UserEditLink("magicbox", "编辑我魔法盒")%></li>
-	<%} else {
+	<%}
+   else {
 	%>
 	<li>
-		<%=Html.WriteMessage(up.OwnerID ,up.Profile.Name) %></li>
+		<%=Html.WriteMessage(up.OwnerID, up.Profile.Name)%></li>
 	<%
-		}
-   if (up.Relation == 150) { //好友%>
+		if (up.Relation == 150) { //好友%>
 	<li><a href="javascript:void(0);" onclick="$.post('<%=Url.Action("Delete","Friend") %>',{'toid':<%=up.OwnerID%>},function(r){alertEx(r);});return false;">
 		解除好友关系</a></li>
-	<%} else {%>
+	<%}
+		else {%>
 	<li><a href="javascript:void(0);" onclick="$.post('<%=Url.Action("Add","Friend") %>', { 'toid':<%=up.OwnerID%>}, function(r) { alertEx(r); });return false;">
 		加为好友</a></li>
 	<%
-		}%>
+		}
+   }
+%>
 </ul>

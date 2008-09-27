@@ -3,7 +3,7 @@
 <%
 	if (ViewData.Model.Profile.IsStar) { 
 %>
-<a href="#" title="实名用户" id="Profile_Isstar">&nbsp;&nbsp;&nbsp;</a>
+<a href="#" title="实名用户" id="Profile_Isstar" class="s_icon">&nbsp;&nbsp;&nbsp;</a>
 <% 
 	if (CHUser.IsAdmin) {
 %>

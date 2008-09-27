@@ -727,7 +727,6 @@
     <Content Include="Style\Facebook\myclass.css" />
     <Content Include="Style\Facebook\mypage.css" />
     <Content Include="Style\Facebook\photo.css" />
-    <Content Include="Style\Facebook\profile.css" />
     <Content Include="Style\Facebook\register.css" />
     <Content Include="Style\Facebook\Reply.css" />
     <Content Include="Style\Facebook\skin.gif" />

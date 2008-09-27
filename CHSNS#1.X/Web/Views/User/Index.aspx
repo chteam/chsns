@@ -11,7 +11,7 @@
 		UserPas up = ViewData.Model;
 		if (!up.Exists)
 		{
-			//Html.RenderPartial("index/noRigh", ViewData.Model);
+			Html.RenderPartial("index/noRigh", ViewData.Model);
 		}
 		else
 		{
@@ -23,14 +23,10 @@
 	%>
 	<div id="userUpdates">
 		<div id="userStatus">
-			<div class="mypage_name">
-				<h2>
-					<%=up.Profile.Name%>
-				</h2>
-				<% Html.RenderPartial("index/isstar", ViewData.Model);/*实名*/%>
-			</div>
+				<h2><%=up.Profile.Name%></h2>
 			<div class="mypage_sta">
 				<% Html.RenderPartial("index/mystatus", ViewData.Model);/*状态*/%>
+				<% Html.RenderPartial("index/isstar", ViewData.Model);/*实名*/%>
 			</div>
 		</div>
 		<div id="userAccount">
@@ -118,17 +114,17 @@
 		<div class="box">
 			<h3>
 				用户相关</h3>
-			<div class="mypadding">
+			<div class="mypadding"><%--
 				<a href="/SuperNote.aspx?userid=<%=up.OwnerID%>">视频</a>
+				<a href="/Photos.aspx?userid=<%=up.OwnerID%>">相册</a>--%>
 				<%=Html.NoteList(up.OwnerID,"日志") %>
-				<a href="/NoteBook.aspx?userid=<%=up.OwnerID%>">日志</a> <a href="/Photos.aspx?userid=<%=up.OwnerID%>">
-					相册</a>
+				
 			</div>
 		</div>
 		<div id="userVisitor" class="box">
 			<div id="userViewer">
 				<h3>
-					最近访问<span class="stat">(共<span class="count"><%=up.Profile.ViewCount%></span>人看过)</span></h3>
+					最近访问<span class="stat">(共<%=up.Profile.ViewCount%>人看过)</span></h3>
 				<%
 					Html.RenderPartial("ViewList", ViewData["lastview"]); 
 				%>
