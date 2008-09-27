@@ -575,6 +575,7 @@
     <Content Include="Views\Admin\About.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
+    <Content Include="Views\Event\IndexCtl\Event.ascx" />
     <Content Include="Views\Shared\Admin.Master" />
     <Content Include="Config\ThumbnailSize.xml" />
     <Content Include="Config\UserEditMenu.xml" />
@@ -1012,6 +1013,13 @@
     </Compile>
     <Compile Include="Views\Event\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Event\IndexCtl\Event.ascx.cs">
+      <DependentUpon>Event.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Event\IndexCtl\Event.ascx.designer.cs">
+      <DependentUpon>Event.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Event\Show.aspx.cs">
       <DependentUpon>Show.aspx</DependentUpon>

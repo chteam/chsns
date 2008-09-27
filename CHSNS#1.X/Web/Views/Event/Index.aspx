@@ -94,13 +94,14 @@
 		</div>
 		<%
 			}%>--%>
-<%--		<div id="Event_Event">
+		<div id="Event_Event">
 			<h4>
 				我朋友的动向</h4>
-			<ul id="Profile_Event">
-				<% Html.RenderAction<EventController>(c => c.Show(CHUser.UserID, 1));//得到朋友的事件 %>
-			</ul>
-		</div>--%>
+				<ul id="evt_list">
+					<% 
+						Html.RenderPartial("../user/Index/Event", ViewData["event"]); %>
+						</ul>
+		</div>
 		<div class="imgnew">
 			<h4>
 				新人秀</h4>
