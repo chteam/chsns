@@ -80,13 +80,7 @@ if (isnull(i)) i = "ch" + _;
 };
 //kit
 var alertEx = function(s) {
-    $("#dialog").dialog({
-        modal: true,
-        overlay: {
-            opacity: 0.5,
-            background: "black"
-        }
-    }).html(s);
+	jQuery.chbox(s);
 };
 //-----------------------------------------------PageMothed--------------------------------------------------------------
 
@@ -195,118 +189,377 @@ var uploadinit = function(itemid) {//重新上传方法
 //uploadsuccess在具体页来实现
 
 jQuery.fn.confirm = function(options) {
-    options = jQuery.extend({
-        msg: '确定 ?',
-        stopAfter: 'never',
-        wrapper: '<span class="message"></span>',
-        eventType: 'click',
-        dialogShow: 'show',
-        dialogSpeed: '',
-        timeout: 0
-    }, options);
-    options.stopAfter = options.stopAfter.toLowerCase();
-    if (!options.stopAfter in ['never', 'once', 'ok', 'cancel']) {
-        options.stopAfter = 'never';
-    }
-    options.buttons = jQuery.extend({
-        ok: 'Yes',
-        cancel: 'No',
-        wrapper: '<a href="#"></a>',
-        separator: '/'
-    }, options.buttons);
+	options = jQuery.extend({
+		msg: '确定 ?',
+		stopAfter: 'never',
+		wrapper: '<span class="message"></span>',
+		eventType: 'click',
+		dialogShow: 'show',
+		dialogSpeed: '',
+		timeout: 0
+	}, options);
+	options.stopAfter = options.stopAfter.toLowerCase();
+	if (!options.stopAfter in ['never', 'once', 'ok', 'cancel']) {
+		options.stopAfter = 'never';
+	}
+	options.buttons = jQuery.extend({
+		ok: 'Yes',
+		cancel: 'No',
+		wrapper: '<a href="#"></a>',
+		separator: '/'
+	}, options.buttons);
 
-    // Shortcut to eventType.
-    var type = options.eventType;
+	// Shortcut to eventType.
+	var type = options.eventType;
 
-    return this.each(function() {
-        var target = this;
-        var $target = jQuery(target);
-        var timer;
-        var saveHandlers = function() {
-            var events = jQuery.data(target, 'events');
-            if (!events) {
-                // There are no handlers to save.
-                return;
-            }
-            target._handlers = new Array();
-            for (var i in events[type]) {
-                target._handlers.push(events[type][i]);
-            }
-        }
+	return this.each(function() {
+		var target = this;
+		var $target = jQuery(target);
+		var timer;
+		var saveHandlers = function() {
+			var events = jQuery.data(target, 'events');
+			if (!events) {
+				// There are no handlers to save.
+				return;
+			}
+			target._handlers = new Array();
+			for (var i in events[type]) {
+				target._handlers.push(events[type][i]);
+			}
+		}
 
-        // Create ok button, and bind in to a click handler.
-        var $ok = jQuery(options.buttons.wrapper)
+		// Create ok button, and bind in to a click handler.
+		var $ok = jQuery(options.buttons.wrapper)
       .append(options.buttons.ok)
       .click(function() {
-          // Check if timeout is set.
-          if (options.timeout != 0) {
-              clearTimeout(timer);
-          }
-          $target.unbind(type, handler);
-          $target.show();
-          $dialog.hide();
-          // Rebind the saved handlers.
-          if (target._handlers != undefined) {
-              jQuery.each(target._handlers, function() {
-                  $target.click(this);
-              });
-          }
-          // Trigger click event.
-          $target.click();
-          if (options.stopAfter != 'ok' && options.stopAfter != 'once') {
-              $target.unbind(type);
-              // Rebind the confirmation handler.
-              $target.one(type, handler);
-          }
-          return false;
+      	// Check if timeout is set.
+      	if (options.timeout != 0) {
+      		clearTimeout(timer);
+      	}
+      	$target.unbind(type, handler);
+      	$target.show();
+      	$dialog.hide();
+      	// Rebind the saved handlers.
+      	if (target._handlers != undefined) {
+      		jQuery.each(target._handlers, function() {
+      			$target.click(this);
+      		});
+      	}
+      	// Trigger click event.
+      	$target.click();
+      	if (options.stopAfter != 'ok' && options.stopAfter != 'once') {
+      		$target.unbind(type);
+      		// Rebind the confirmation handler.
+      		$target.one(type, handler);
+      	}
+      	return false;
       })
 
-        var $cancel = jQuery(options.buttons.wrapper).append(options.buttons.cancel).click(function() {
-            // Check if timeout is set.
-            if (options.timeout != 0) {
-                clearTimeout(timer);
-            }
-            if (options.stopAfter != 'cancel' && options.stopAfter != 'once') {
-                $target.one(type, handler);
-            }
-            $target.show();
-            $dialog.hide();
-            return false;
-        });
+		var $cancel = jQuery(options.buttons.wrapper).append(options.buttons.cancel).click(function() {
+			// Check if timeout is set.
+			if (options.timeout != 0) {
+				clearTimeout(timer);
+			}
+			if (options.stopAfter != 'cancel' && options.stopAfter != 'once') {
+				$target.one(type, handler);
+			}
+			$target.show();
+			$dialog.hide();
+			return false;
+		});
 
-        if (options.buttons.cls) {
-            $ok.addClass(options.buttons.cls);
-            $cancel.addClass(options.buttons.cls);
-        }
+		if (options.buttons.cls) {
+			$ok.addClass(options.buttons.cls);
+			$cancel.addClass(options.buttons.cls);
+		}
 
-        var $dialog = jQuery(options.wrapper)
+		var $dialog = jQuery(options.wrapper)
     .append(options.msg)
     .append($ok)
     .append(options.buttons.separator)
     .append($cancel);
-        var handler = function() {
-            jQuery(this).hide();
+		var handler = function() {
+			jQuery(this).hide();
 
-            // Do this check because of a jQuery bug
-            if (options.dialogShow != 'show') {
-                $dialog.hide();
-            }
+			// Do this check because of a jQuery bug
+			if (options.dialogShow != 'show') {
+				$dialog.hide();
+			}
 
-            $dialog.insertBefore(this);
-            // Display the dialog.
-            $dialog[options.dialogShow](options.dialogSpeed);
-            if (options.timeout != 0) {
-                // Set timeout
-                clearTimeout(timer);
-                timer = setTimeout(function() { $cancel.click(); $target.one(type, handler); }, options.timeout);
-            }
-            return false;
-        };
-        saveHandlers();
-        $target.unbind(type);
-        target._confirm = handler
-        target._confirmEvent = type;
-        $target.one(type, handler);
-    });
-}
+			$dialog.insertBefore(this);
+			// Display the dialog.
+			$dialog[options.dialogShow](options.dialogSpeed);
+			if (options.timeout != 0) {
+				// Set timeout
+				clearTimeout(timer);
+				timer = setTimeout(function() { $cancel.click(); $target.one(type, handler); }, options.timeout);
+			}
+			return false;
+		};
+		saveHandlers();
+		$target.unbind(type);
+		target._confirm = handler
+		target._confirmEvent = type;
+		$target.one(type, handler);
+	});
+};
 
+
+//snsbox is a dialog
+(function($) {
+	$.chbox = function(data, klass) {
+		$.chbox.loading()
+
+		if (data.ajax) fillchboxFromAjax(data.ajax)
+		else if (data.image) fillchboxFromImage(data.image)
+		else if (data.div) fillchboxFromHref(data.div)
+		else if ($.isFunction(data)) data.call($)
+		else $.chbox.reveal(data, klass)
+	}
+
+	/*
+	* Public, $.chbox methods
+	*/
+
+	$.extend($.chbox, {
+		settings: {
+			opacity: 0,
+			overlay: true,
+			loadingImage: '/images/chbox/loading.gif',
+			closeImage: '/images/chbox/closelabel.gif',
+			imageTypes: ['png', 'jpg', 'jpeg', 'gif'],
+			chboxHtml: '\
+    <div id="chbox" style="display:none;"> \
+      <div class="popup"> \
+        <table> \
+          <tbody> \
+            <tr> \
+              <td class="tl"/><td class="b"/><td class="tr"/> \
+            </tr> \
+            <tr> \
+              <td class="b"/> \
+              <td class="body"> \
+                <div class="content"> \
+                </div> \
+                <div class="footer"> \
+                  <a href="#" class="close"> \
+                    <img src="/images/chbox/closelabel.gif" title="close" class="close_image" /> \
+                  </a> \
+                </div> \
+              </td> \
+              <td class="b"/> \
+            </tr> \
+            <tr> \
+              <td class="bl"/><td class="b"/><td class="br"/> \
+            </tr> \
+          </tbody> \
+        </table> \
+      </div> \
+    </div>'
+		},
+
+		loading: function() {
+			init()
+			if ($('#chbox .loading').length == 1) return true
+			showOverlay()
+
+			$('#chbox .content').empty()
+			$('#chbox .body').children().hide().end().
+        append('<div class="loading"><img src="' + $.chbox.settings.loadingImage + '"/></div>')
+
+			$('#chbox').css({
+				top: getPageScroll()[1] + (getPageHeight() / 10),
+				left: 385.5
+			}).show()
+
+			$(document).bind('keydown.chbox', function(e) {
+				if (e.keyCode == 27) $.chbox.close()
+				return true
+			})
+			$(document).trigger('loading.chbox')
+		},
+
+		reveal: function(data, klass) {
+			$(document).trigger('beforeReveal.chbox')
+			if (klass) $('#chbox .content').addClass(klass)
+			$('#chbox .content').append(data)
+			$('#chbox .loading').remove()
+			$('#chbox .body').children().fadeIn('normal')
+			$('#chbox').css('left', $(window).width() / 2 - ($('#chbox table').width() / 2))
+			$(document).trigger('reveal.chbox').trigger('afterReveal.chbox')
+		},
+
+		close: function() {
+			$(document).trigger('close.chbox')
+			return false
+		}
+	})
+
+	/*
+	* Public, $.fn methods
+	*/
+
+	$.fn.chbox = function(settings) {
+		init(settings)
+
+		function clickHandler() {
+			$.chbox.loading(true)
+
+			// support for rel="chbox.inline_popup" syntax, to add a class
+			// also supports deprecated "chbox[.inline_popup]" syntax
+			var klass = this.rel.match(/chbox\[?\.(\w+)\]?/)
+			if (klass) klass = klass[1]
+
+			fillchboxFromHref(this.href, klass)
+			return false
+		}
+
+		return this.click(clickHandler)
+	}
+
+	/*
+	* Private methods
+	*/
+
+	// called one time to setup chbox on this page
+	function init(settings) {
+		if ($.chbox.settings.inited) return true
+		else $.chbox.settings.inited = true
+
+		$(document).trigger('init.chbox')
+		makeCompatible()
+
+		var imageTypes = $.chbox.settings.imageTypes.join('|')
+		$.chbox.settings.imageTypesRegexp = new RegExp('\.' + imageTypes + '$', 'i')
+
+		if (settings) $.extend($.chbox.settings, settings)
+		$('body').append($.chbox.settings.chboxHtml)
+
+		var preload = [new Image(), new Image()]
+		preload[0].src = $.chbox.settings.closeImage
+		preload[1].src = $.chbox.settings.loadingImage
+
+		$('#chbox').find('.b:first, .bl, .br, .tl, .tr').each(function() {
+			preload.push(new Image())
+			preload.slice(-1).src = $(this).css('background-image').replace(/url\((.+)\)/, '$1')
+		})
+
+		$('#chbox .close').click($.chbox.close)
+		$('#chbox .close_image').attr('src', $.chbox.settings.closeImage)
+	}
+
+	// getPageScroll() by quirksmode.com
+	function getPageScroll() {
+		var xScroll, yScroll;
+		if (self.pageYOffset) {
+			yScroll = self.pageYOffset;
+			xScroll = self.pageXOffset;
+		} else if (document.documentElement && document.documentElement.scrollTop) {	 // Explorer 6 Strict
+			yScroll = document.documentElement.scrollTop;
+			xScroll = document.documentElement.scrollLeft;
+		} else if (document.body) {// all other Explorers
+			yScroll = document.body.scrollTop;
+			xScroll = document.body.scrollLeft;
+		}
+		return new Array(xScroll, yScroll)
+	}
+
+	// Adapted from getPageSize() by quirksmode.com
+	function getPageHeight() {
+		var windowHeight
+		if (self.innerHeight) {	// all except Explorer
+			windowHeight = self.innerHeight;
+		} else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
+			windowHeight = document.documentElement.clientHeight;
+		} else if (document.body) { // other Explorers
+			windowHeight = document.body.clientHeight;
+		}
+		return windowHeight
+	}
+
+	// Backwards compatibility
+	function makeCompatible() {
+		var $s = $.chbox.settings
+
+		$s.loadingImage = $s.loading_image || $s.loadingImage
+		$s.closeImage = $s.close_image || $s.closeImage
+		$s.imageTypes = $s.image_types || $s.imageTypes
+		$s.chboxHtml = $s.chbox_html || $s.chboxHtml
+	}
+
+	// Figures out what you want to display and displays it
+	// formats are:
+	//     div: #id
+	//   image: blah.extension
+	//    ajax: anything else
+	function fillchboxFromHref(href, klass) {
+		// div
+		if (href.match(/#/)) {
+			var url = window.location.href.split('#')[0]
+			var target = href.replace(url, '')
+			$.chbox.reveal($(target).clone().show(), klass)
+
+			// image
+		} else if (href.match($.chbox.settings.imageTypesRegexp)) {
+			fillchboxFromImage(href, klass)
+			// ajax
+		} else {
+			fillchboxFromAjax(href, klass)
+		}
+	}
+
+	function fillchboxFromImage(href, klass) {
+		var image = new Image()
+		image.onload = function() {
+			$.chbox.reveal('<div class="image"><img src="' + image.src + '" /></div>', klass)
+		}
+		image.src = href
+	}
+
+	function fillchboxFromAjax(href, klass) {
+		$.get(href, function(data) { $.chbox.reveal(data, klass) })
+	}
+
+	function skipOverlay() {
+		return $.chbox.settings.overlay == false || $.chbox.settings.opacity === null
+	}
+
+	function showOverlay() {
+		if (skipOverlay()) return
+
+		if ($('chbox_overlay').length == 0)
+			$("body").append('<div id="chbox_overlay" class="chbox_hide"></div>')
+
+		$('#chbox_overlay').hide().addClass("chbox_overlayBG")
+      .css('opacity', $.chbox.settings.opacity)
+      .click(function() { $(document).trigger('close.chbox') })
+      .fadeIn(200)
+		return false
+	}
+
+	function hideOverlay() {
+		if (skipOverlay()) return
+
+		$('#chbox_overlay').fadeOut(200, function() {
+			$("#chbox_overlay").removeClass("chbox_overlayBG")
+			$("#chbox_overlay").addClass("chbox_hide")
+			$("#chbox_overlay").remove()
+		})
+
+		return false
+	}
+
+	/*
+	* Bindings
+	*/
+
+	$(document).bind('close.chbox', function() {
+		$(document).unbind('keydown.chbox')
+		$('#chbox').fadeOut(function() {
+			$('#chbox .content').removeClass().addClass('content')
+			hideOverlay()
+			$('#chbox .loading').remove()
+		})
+	})
+
+})(jQuery);

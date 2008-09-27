@@ -48,9 +48,9 @@
 					//	new Accordian().Show('#Profile_Accordion', 3, 'accordionHeaderSelected');
 				</script>
 
-				<div>
-					<h4>
-						<%=up.Profile.Name%>的动向</h4>
+				<div class="box">
+					<h3>
+						<%=up.Profile.Name%>的动向</h3>
 						<ul id="evt_list">
 					<% 
 						Html.RenderPartial("Index/Event", ViewData["event"]); %>

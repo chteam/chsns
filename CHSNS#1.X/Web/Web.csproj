@@ -568,6 +568,13 @@
     <None Include="Views\Html\Rss-List.vm" />
     <None Include="Views\Rescues\index.vm" />
     <Content Include="Config\SystemTemplate.xml" />
+    <Content Include="Images\CHBox\b.png" />
+    <Content Include="Images\CHBox\bl.png" />
+    <Content Include="Images\CHBox\br.png" />
+    <Content Include="Images\CHBox\closelabel.gif" />
+    <Content Include="Images\CHBox\loading.gif" />
+    <Content Include="Images\CHBox\tl.png" />
+    <Content Include="Images\CHBox\tr.png" />
     <Content Include="JavaScript\Admin\docs.js" />
     <Content Include="JavaScript\Admin\ext-all.js" />
     <Content Include="JavaScript\Admin\ext-jquery-adapter.js" />
@@ -1409,7 +1416,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="aspnet_client\system_web\2_0_50727\" />
-    <Folder Include="Images\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
