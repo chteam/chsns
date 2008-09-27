@@ -17,6 +17,7 @@
 			<li id="Items<%=up.OwnerID %>">
 				<div class="people">
 					<p class="image">
+					
 						<a href="/User.aspx?userid=<%=up.OwnerID %>" target="_blank">
 							<%=Html.Image(Url.CH().Path.GetFace_Middle(up.OwnerID),up.Profile.Name) %>
 						</a>
