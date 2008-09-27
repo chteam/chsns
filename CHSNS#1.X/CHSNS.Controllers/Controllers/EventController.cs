@@ -26,6 +26,7 @@ namespace CHSNS.Controllers {
 			using (var ts = DBExt.ContextTransaction()) {
 				ViewData["newview"] = DBExt.View.ViewList(2, 3, CHUser.UserID, 6);
 				ViewData["lastview"] = DBExt.View.ViewList(0, 3, CHUser.UserID, 6);
+				ViewData["event"] = DBExt.Event.GetFriendEvent(CHUser.UserID);
 				ViewData["Page_Title"] = "事件";
 				return View(DBExt.Gather.EventGather(CHUser.UserID));
 			}

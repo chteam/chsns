@@ -27,6 +27,21 @@ namespace CHSNS.Data
 					   select e);
 			return ret;
 		}
+
+		/// <summary>
+		/// 50好友事件
+		/// </summary>
+		/// <param name="userid">The userid.</param>
+		/// <returns></returns>
+		public IQueryable<Event> GetFriendEvent(long userid) {
+			var ids=DBExt.Friend.GetFriendsID(userid);
+			var ret = (from e in DBExt.DB.Event
+					   where ids.Any(c => c == e.OwnerID)
+					   orderby e.ID descending
+					   select e).Take(50);
+			return ret;
+		}
+
 		/// <summary>
 		/// Deletes the Event
 		/// </summary>

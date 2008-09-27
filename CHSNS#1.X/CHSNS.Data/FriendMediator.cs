@@ -21,34 +21,51 @@ namespace CHSNS.Data {
 				Name = ret.Name
 			};
 		}
-
+		public IQueryable<long> GetFriendsID(long userid) {
+			return (from f1 in DBExt.DB.Friend
+					where f1.FromID == userid && f1.IsTrue
+					select f1.ToID)
+							   .Union(from f1 in DBExt.DB.Friend
+									  where f1.ToID == userid && f1.IsTrue
+									  select f1.FromID);
+		}
 		public IQueryable<UserItemPas> GetFriends(long userid) {
-			var ret = (from c in
-						   (from f1 in DBExt.DB.Friend
-							join p1 in DBExt.DB.Profile on f1.ToID equals p1.UserID
-							where f1.FromID == userid && f1.IsTrue
-							select new {
-								p1.UserID,
-								p1.Name,
-								p1.ShowText,
-								p1.ShowTextTime
-							})
-						   .Union(from f1 in DBExt.DB.Friend
-								  join p1 in DBExt.DB.Profile on f1.FromID equals p1.UserID
-								  where f1.ToID == userid && f1.IsTrue
-								  select new {
-									  p1.UserID,
-									  p1.Name,
-									  p1.ShowText,
-									  p1.ShowTextTime
-								  })
-					   orderby c.UserID descending
+			var ids=GetFriendsID(userid);
+			var ret = (from c in DBExt.DB.Profile
+					   where ids.Any(q => q == c.UserID)
+					   orderby c.UserID
 					   select new UserItemPas {
 						   ID = c.UserID,
 						   Name = c.Name,
 						   ShowText = c.ShowText,
 						   ShowTextTime = c.ShowTextTime
 					   });
+			//var ret = (from c in
+			//               (from f1 in DBExt.DB.Friend
+			//                join p1 in DBExt.DB.Profile on f1.ToID equals p1.UserID
+			//                where f1.FromID == userid && f1.IsTrue
+			//                select new {
+			//                    p1.UserID,
+			//                    p1.Name,
+			//                    p1.ShowText,
+			//                    p1.ShowTextTime
+			//                })
+			//               .Union(from f1 in DBExt.DB.Friend
+			//                      join p1 in DBExt.DB.Profile on f1.FromID equals p1.UserID
+			//                      where f1.ToID == userid && f1.IsTrue
+			//                      select new {
+			//                          p1.UserID,
+			//                          p1.Name,
+			//                          p1.ShowText,
+			//                          p1.ShowTextTime
+			//                      })
+			//           orderby c.UserID descending
+			//           select new UserItemPas {
+			//               ID = c.UserID,
+			//               Name = c.Name,
+			//               ShowText = c.ShowText,
+			//               ShowTextTime = c.ShowTextTime
+			//           });
 			return ret;
 		}
 
