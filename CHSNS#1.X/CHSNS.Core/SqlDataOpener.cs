@@ -30,6 +30,7 @@ namespace CHSNS
 			_Connection = conn as SqlConnection;
 			CommandType = CommandType.Text;
 			_Command = new SqlCommand();
+			
 		}
 		#region 打开关闭数据库
 
@@ -39,6 +40,8 @@ namespace CHSNS
 				Open(CommandType, SQLtext);
 			else
 				Open(CommandType.StoredProcedure, SQLtext);
+			//if (_Command.Transaction == null)
+			//	_Command.Transaction = _Connection.BeginTransaction();
 		}
 
 		public void Close()

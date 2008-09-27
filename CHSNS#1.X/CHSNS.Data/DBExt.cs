@@ -85,8 +85,15 @@ namespace CHSNS.Data {
 
 
 		#region Transaction
-
-		public DbTransaction CreateTransaction() {
+		public IDbTransaction ExeTransaction() {
+			var conn = DataBaseExecutor.DataOpener.Connection;
+			if (conn.State != ConnectionState.Open)
+				conn.Open();
+			var t=conn.BeginTransaction();
+			DataBaseExecutor.DataOpener.Command.Transaction = t as DbTransaction;
+			return t;
+		}
+		public IDbTransaction ContextTransaction() {
 			if (DB.Connection.State != ConnectionState.Open)
 				DB.Connection.Open();
 			return DB.Connection.BeginTransaction();

@@ -23,7 +23,7 @@ namespace CHSNS.Controllers {
 		#region Action
 
 		public ActionResult Index() {
-			using (var ts = DBExt.CreateTransaction()) {
+			using (var ts = DBExt.ContextTransaction()) {
 				ViewData["newview"] = DBExt.View.ViewList(2, 3, CHUser.UserID, 6);
 				ViewData["lastview"] = DBExt.View.ViewList(0, 3, CHUser.UserID, 6);
 				ViewData["Page_Title"] = "事件";
