@@ -303,92 +303,6 @@ background:url(images/bg_icon.png) no-repeat 0 -1400px;
 .userviewname a { display:block; white-space:nowrap;}
 
 
-.ui-resizable { position: relative; }
-
-/* Global handle styles */
-.ui-resizable-handle { position: absolute; display: none; font-size: 0.1px; }
-.ui-resizable .ui-resizable-handle { display: block; }
-body .ui-resizable-disabled .ui-resizable-handle { display: none; } /* use 'body' to make it more specific (css order) */
-body .ui-resizable-autohide .ui-resizable-handle { display: none; } /* use 'body' to make it more specific (css order) */
-
-.ui-resizable-n { cursor: n-resize;height: 6px; width: 100%; top: 0px; left: 0px;margin:0 6px}
-.ui-resizable-s { cursor: s-resize; height: 6px; width: 100%; bottom: 0px; left: 0px;margin:0 6px}
-
-.ui-resizable-e { cursor: e-resize; width: 6px; right: 0px; top: 0px; height: 100%;margin:6px 0}
-.ui-resizable-w { cursor: w-resize; width: 6px; left: 0px; top: 0px; height: 100%;}
-.ui-resizable-n,.ui-resizable-s ,.ui-resizable-e ,.ui-resizable-w ,.ui-resizable-se,.ui-resizable-sw,.ui-resizable-nw,.ui-resizable-ne{
-background:#000;
--moz-opacity:0.77; 
-opacity:0.77;}
-/* This file skins dialog */
-
-.ui-dialog {
-	background-color: #efefef;
-}
-
-.ui-dialog .ui-dialog-titlebar {
-	border-bottom: 1px solid #efefef;
-	background: #ff9900 url(i/dialog-title.gif) repeat-x;
-	padding: 0px;
-	height: 28px;
-	_height: 29px;
-	margin:0 6px
-}
-
-.ui-draggable .ui-dialog-titlebar {
-	cursor: move;
-}
-
-.ui-draggable-disabled .ui-dialog-titlebar {
-	cursor: default;
-}
-.ui-dialog .ui-dialog-titlebar-close {
-	width: 16px;
-	height: 16px;
-	background: url(i/dialog-titlebar-close.png) no-repeat;
-	position:absolute;
-	top: 6px;
-	right: 7px;
-	cursor: default;
-}
-.ui-dialog .ui-dialog-titlebar-close img{border:0;}
-
-.ui-dialog .ui-dialog-titlebar-close span {
-	display: none;
-}
-
-.ui-dialog .ui-dialog-titlebar-close-hover {
-	background: url(i/dialog-titlebar-close-hover.png) no-repeat;
-}
-
-.ui-dialog .ui-dialog-title {
-	margin-left: 5px;
-	color: white;
-	font-weight: bold;
-	position: relative;
-	top: 7px;
-	left: 4px;
-}
-
-.ui-dialog .ui-dialog-content {
-	margin: 1.2em;
-}
-
-.ui-dialog .ui-dialog-buttonpane {
-	position: absolute;
-	bottom: 8px;
-	right: 12px;
-	width: 100%;
-	text-align: right;
-}
-
-.ui-dialog .ui-dialog-buttonpane button {
-	margin: 6px;
-}
-
-
-
-
 /*ÊÂ¼þÒ³*/
 
 #pcontent{ background-color:#f7f7f7; padding-bottom:10px;}
@@ -442,3 +356,23 @@ opacity:0.77;}
 .useritem .actions li { text-indent:5px; border-bottom:1px solid #d8dfea; color:#808080; text-align:left;}
 .useritem .actions a { display:block; width:90px; text-decoration:none;}
 .useritem .actions a:hover {background:#3B5999; color:#fff; text-decoration:none;}
+/*chobx*/
+#chbox .b {background:url(/images/chbox/b.png);}
+#chbox .tl {background:url(/images/chbox/tl.png);}
+#chbox .tr {background:url(/images/chbox/tr.png);}
+#chbox .bl {background:url(/images/chbox/bl.png)}
+#chbox .br {background:url(/images/chbox/br.png);}
+#chbox {position: absolute;top: 0;left: 0;z-index: 100;text-align: left;}
+#chbox .popup {position: relative;}
+#chbox table { border-collapse: collapse;}
+#chbox td { border-bottom: 0;padding: 0;}
+#chbox .body {padding: 10px;background: #fff;width: 370px;}
+#chbox .loading {text-align: center;}
+#chbox .image {text-align: center;}
+#chbox img {border: 0;margin: 0;}
+#chbox .footer {border-top: 1px solid #DDDDDD;padding-top: 5px;margin-top: 10px;text-align: right;}
+#chbox .tl, #chbox .tr, #chbox .bl, #chbox .br {height: 10px;width: 10px;overflow: hidden;padding: 0;}
+#chbox_overlay {position: fixed;top: 0px;left: 0px;height:100%;width:100%;}
+.chbox_hide {z-index:-100;}
+.chbox_overlayBG {background-color: #000;z-index: 99;}
+* html #chbox_overlay { /* ie6 hack */position: absolute;height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');}
