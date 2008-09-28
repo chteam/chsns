@@ -14,19 +14,25 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <param name="userid">The userid.</param>
 		/// <returns></returns>
-		public ActionResult ReplyList(long? userid) {
+		public ActionResult Reply(long? userid) {
 			if (!userid.HasValue) userid = CHUser.UserID;
 			var user = DBExt.UserInfo.GetUser(
 					userid.Value,
 					c => new UserCountPas {
 						ID = c.UserID,
 						Name = c.Name,
-						Count = c.NoteCount
+						Count = c.ReplyCount
 					});
-			DBExt.Comment.GetReply(userid.Value).Pager(1, 10);
-			return View();
+			ViewData["NowPage"] = 1;
+			ViewData["PageCount"] = user.Count;
+			ViewData["replylist"] = DBExt.Comment.GetReply(user.ID).Pager(1, 10);
+			ViewData["Page_Title"] = user.Name + "的留言本";
+			return View(user);
 		}
-
+		public ActionResult ReplyList(long userid, int p) {
+			var u = DBExt.Comment.GetReply(userid).Pager(p, 10);
+			return View("Comment/Item", u);
+		}
 		/// <summary>
 		/// 回复用户
 		/// </summary>

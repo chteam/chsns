@@ -89,8 +89,7 @@
 					Html.RenderPartial("Comment/Item", ViewData["replylist"]);
 				%>
 			</ul>
-			<p class="more">
-				<a href="/ReplyList.aspx?userid=<%=up.OwnerID%>">所有留言</a></p>
+			<p class="more"><%=Html.ReplyList(up.OwnerID, "所有留言")%></p>
 		</div>
 	</div>
 	<div id="userRelations">
@@ -117,7 +116,7 @@
 				<%=Html.NoteList(up.OwnerID,"日志") %>
 			</div>
 		</div>
-		<div id="userVisitor" class="box">
+		<div class="box">
 			<div id="userViewer">
 				<h3>
 					最近访问<span class="stat">(共<%=up.Profile.ViewCount%>人看过)</span></h3>
@@ -126,7 +125,7 @@
 				%>
 			</div>
 		</div>
-		<div class="box" id="userFriend">
+		<div class="box">
 			<h3>
 				<%=up.Profile.Name%>最近登录的好友</h3>
 			<%

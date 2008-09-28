@@ -581,6 +581,7 @@
     <Content Include="JavaScript\Admin\TabCloseMenu.js" />
     <Content Include="Views\Admin\About.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
     <Content Include="Views\Event\IndexCtl\Event.ascx" />
     <Content Include="Views\Shared\Admin.Master" />
@@ -795,7 +796,6 @@
     <Content Include="JavaScript\ManageGroup.js" />
     <Content Include="JavaScript\PageSet.js" />
     <Content Include="JavaScript\Photos.js" />
-    <Content Include="JavaScript\Profile.js" />
     <Content Include="JavaScript\Reply.js" />
     <Content Include="JavaScript\Search.js" />
     <Content Include="JavaScript\Services.js" />
@@ -1006,6 +1006,13 @@
     </Compile>
     <Compile Include="Views\Admin\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Comment\Reply.aspx.cs">
+      <DependentUpon>Reply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Comment\Reply.aspx.designer.cs">
+      <DependentUpon>Reply.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Comment\ShowList.ascx.cs">
       <DependentUpon>ShowList.ascx</DependentUpon>
