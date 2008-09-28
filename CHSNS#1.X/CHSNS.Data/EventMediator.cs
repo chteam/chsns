@@ -50,9 +50,17 @@ namespace CHSNS.Data
 		public void Delete(long id, long ownerid) {
 			DataBaseExecutor.Execute(@"delete [event] where id=@id and ownerid=@oid", "@id", id, "@oid", ownerid);
 		}
-		public void Add(Event e) { 
-			DBExt.DB.AddToEvent(e);
-			DBExt.DB.SaveChanges();
+		public void Add(Event e) {
+			DataBaseExecutor.Execute(@"INSERT INTO [Event]
+([TemplateName],[OwnerID],[ViewerID],[AddTime],[ShowLevel],[Json])
+VALUES(@tname,@ownerid,@viewerid,@now,@showlevel,@json)"
+				, "@tname", e.TemplateName
+				, "@ownerid", e.OwnerID
+				, "@viewerid", e.ViewerID.Get()
+				, "@now", e.AddTime
+				, "@showlevel", e.ShowLevel
+				, "@json", e.Json
+				);
 		}
 	}
 }

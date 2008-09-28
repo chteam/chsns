@@ -2,9 +2,10 @@
 using System.Linq;
 using CHSNS.Models;
 using CHSNS;
+using System;
 namespace CHSNS.Data {
-	public class UserInfoMediator : BaseMediator {
-		public UserInfoMediator(DBExt id) : base(id) { }
+	public class UserMediator : BaseMediator {
+		public UserMediator(DBExt id) : base(id) { }
 		public UserPas UserInformation(long userid) {
 			var ret = (from p in DBExt.DB.Profile
 					   join b in DBExt.DB.BasicInformation on p.UserID equals b.UserID
@@ -88,12 +89,30 @@ set Magicbox=@magicbox where UserID=@UserID"
 			});
 		}
 
-		public T GetUser<T>(long userid,
-			System.Linq.Expressions.Expression<System.Func<Profile, T>> x) {
+		public T GetUser<T>(long userid,System.Linq.Expressions.Expression<System.Func<Profile, T>> x) {
 			var ret = DBExt.DB.Profile
 				.Where(c => c.UserID == userid)
 				.Select(x).FirstOrDefault();
 			return ret;
 		}
+		#region profile
+		public void SaveText(long userid,string text) {
+			DataBaseExecutor.Execute(@"update [profile]
+set showtext=@text,showtexttime=@now where userid=@uid;"
+			, "@text", text
+			, "@uid", userid
+			, "@now", System.DateTime.Now
+			);
+			DBExt.Event.Add(new Event {
+				OwnerID = CHUser.UserID,
+				TemplateName = "ProText",
+				AddTime = DateTime.Now,
+				ShowLevel = 0,
+				Json = Dictionary.CreateFromArgs("name", CHUser.Username,
+				"text", text).ToJsonString()
+			});
+		}
+		#endregion
+
 	}
 }

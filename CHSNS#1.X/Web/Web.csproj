@@ -772,6 +772,7 @@
     <Content Include="Views\Shared\Comment\TextBox.ascx" />
     <Content Include="Views\Shared\EventTemplate\AddNote.ascx" />
     <Content Include="Views\Shared\EventTemplate\MakeFriend.ascx" />
+    <Content Include="Views\Shared\EventTemplate\ProText.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
     <None Include="Views\Shared\BlogMaster.vm" />
@@ -937,7 +938,6 @@
     <Content Include="Views\User\Index\Account.ascx" />
     <Content Include="Views\User\Index\Contact.ascx" />
     <Content Include="Views\User\Index\Event.ascx" />
-    <Content Include="Views\User\Index\IsStar.ascx" />
     <Content Include="Views\User\Index\MyActions.ascx" />
     <Content Include="Views\User\Index\MyStatus.ascx" />
     <Content Include="Views\User\Index\NoRight.ascx" />
@@ -1224,6 +1224,13 @@
     <Compile Include="Views\Shared\EventTemplate\MakeFriend.ascx.designer.cs">
       <DependentUpon>MakeFriend.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\EventTemplate\ProText.ascx.cs">
+      <DependentUpon>ProText.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\EventTemplate\ProText.ascx.designer.cs">
+      <DependentUpon>ProText.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shared\Footer.ascx.cs">
       <DependentUpon>Footer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1335,13 +1342,6 @@
     </Compile>
     <Compile Include="Views\User\Index\Event.ascx.designer.cs">
       <DependentUpon>Event.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\User\Index\IsStar.ascx.cs">
-      <DependentUpon>IsStar.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\User\Index\IsStar.ascx.designer.cs">
-      <DependentUpon>IsStar.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\Index\MyActions.ascx.cs">
       <DependentUpon>MyActions.ascx</DependentUpon>

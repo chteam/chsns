@@ -563,3 +563,32 @@ jQuery.fn.confirm = function(options) {
 	})
 
 })(jQuery);
+
+//双击编辑功能
+
+var dc_edit = function(text, edit, time, onblur) {
+	text = $(text);
+	edit = $(edit);
+	time = $(time);
+	if (!text || !edit) return;
+	text.dblclick(function() {
+	edit.val($.trim(text.html()) == "闲着" ? '' : $.trim(text.html())).show().focus();
+		text.hide();
+	});
+	edit.blur(function() {
+		var b = $.trim(edit.val()) != $.trim(text.html());
+		text.html(edit.val());
+		if (time) time.html("刚刚");
+		if ($.trim(text.html()) == '')
+			text.html("闲着");
+		edit.hide();
+		text.show();
+		if (b) onblur(edit.val());
+	}).keydown(function(event) {
+		if (event.keyCode == 13) {
+			event.preventDefault();
+			edit.blur();
+		}
+	});
+};
+

@@ -18,7 +18,7 @@ namespace CHSNS.Data {
 		public CommentMediator Comment { get; private set; }
 		public GatherMediator Gather { get; private set; }
 		public GroupMediator Group { get; private set; }
-		public UserInfoMediator UserInfo { get; private set; }
+		public UserMediator UserInfo { get; private set; }
 		public GolbalMediator Golbal { get; private set; }
 		public FriendMediator Friend { get; private set; }
 		public ApplicationMediator Application { get; private set; }
@@ -32,7 +32,7 @@ namespace CHSNS.Data {
 			View = new ViewMediator(this);
 			Comment = new CommentMediator(this);
 			Group = new GroupMediator(this);
-			UserInfo = new UserInfoMediator(this);
+			UserInfo = new UserMediator(this);
 			Golbal = new GolbalMediator(this);
 			Friend = new FriendMediator(this);
 			Application = new ApplicationMediator(this);
