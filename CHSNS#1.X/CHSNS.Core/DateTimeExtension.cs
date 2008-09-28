@@ -11,32 +11,32 @@ namespace CHSNS
 		{
 			var result = new StringBuilder();
 			TimeSpan diff = (DateTime.Now - target.ToLocalTime());
-
-			if (diff.Days > 0)
-			{
-				result.AppendFormat("{0} 天", diff.Days);
+			if (diff.Days > 100) {
+				result.Append("很久以");
 			}
-
-			if (diff.Hours > 0)
-			{
-				if (result.Length > 0)
-				{
-					result.Append(", ");
+			else {
+				if (diff.Days > 0) {
+					result.AppendFormat("{0} 天", diff.Days);
 				}
+				else {
 
-				result.AppendFormat("{0} 小时", diff.Hours);
-			}
+					if (diff.Hours > 0) {
+						if (result.Length > 0) {
+							result.Append(", ");
+						}
 
-			if (diff.Minutes > 0)
-			{
-				if (result.Length > 0)
-				{
-					result.Append(", ");
+						result.AppendFormat("{0} 小时", diff.Hours);
+					}
+
+					if (diff.Minutes > 0) {
+						if (result.Length > 0) {
+							result.Append(", ");
+						}
+
+						result.AppendFormat("{0} 分钟", diff.Minutes);
+					}
 				}
-
-				result.AppendFormat("{0} 分钟", diff.Minutes);
 			}
-
 			if (result.Length == 0)
 			{
 				result.Append("刚刚");
