@@ -9,24 +9,21 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% 
 		UserPas up = ViewData.Model;
-		if (!up.Exists)
-		{
+		if (!up.Exists) {
 			Html.RenderPartial("index/noRigh", ViewData.Model);
 		}
-		else
-		{
-			if (up.Exists && up.Profile.IsMagicBox)
-			{%>
+		else {
+			if (up.Exists && up.Profile.IsMagicBox) {%>
 	<%="<style type=\"text/css\">" + up.Profile.MagicBox + "</style>"%>
 	<%
 		}
 	%>
 	<div id="userUpdates">
 		<div id="userStatus">
-				<h2><%=up.Profile.Name%></h2>
+			<h2>
+				<%=up.Profile.Name%></h2>
 			<div class="mypage_sta">
 				<% Html.RenderPartial("index/mystatus", ViewData.Model);/*状态*/%>
-			
 			</div>
 		</div>
 		<div id="userAccount">
@@ -51,12 +48,11 @@
 				<div class="box">
 					<h3>
 						<%=up.Profile.Name%>的动向</h3>
-						<ul id="evt_list">
-					<% 
-						Html.RenderPartial("Index/Event", ViewData["event"]); %>
-						</ul>
+					<ul id="evt_list">
+						<% 
+							Html.RenderPartial("Index/Event", ViewData["event"]); %>
+					</ul>
 				</div>
-				<%if (up.Profile.IsMagicBox && up.IsMe) { Html.RenderPartial("EmptyMagicBox"); } %>
 			</div>
 		</div>
 		<%--	<div class="box" id="userBlog">
@@ -114,11 +110,11 @@
 		<div class="box">
 			<h3>
 				用户相关</h3>
-			<div class="mypadding"><%--
+			<div class="mypadding">
+				<%--
 				<a href="/SuperNote.aspx?userid=<%=up.OwnerID%>">视频</a>
 				<a href="/Photos.aspx?userid=<%=up.OwnerID%>">相册</a>--%>
 				<%=Html.NoteList(up.OwnerID,"日志") %>
-				
 			</div>
 		</div>
 		<div id="userVisitor" class="box">
@@ -147,55 +143,54 @@
 		</div>--%>
 	</div>
 	<%} %>
-	
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
 	<script type="text/javascript">
-//reply
-var HideReply = function() { $('#cmt_form2').hide(); $('#cmt_form1').show(); $v('#comment_body', ''); };
-var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); if (!n) n = ''; $('#comment_body').focus().val(n); };
-var Reply = function(ownerid) {
-	if (v_empty("#comment_body", '不能为空'))
-		$.post('<%=this.Url.Action("AddReply","Comment") %>',
+		//reply
+		var HideReply = function() { $('#cmt_form2').hide(); $('#cmt_form1').show(); $v('#comment_body', ''); };
+		var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); if (!n) n = ''; $('#comment_body').focus().val(n); };
+		var Reply = function(ownerid) {
+			if (v_empty("#comment_body", '不能为空'))
+				$.post('<%=this.Url.Action("AddReply","Comment") %>',
 		{ 'UserID': '<%=ViewData.Model.OwnerID %>', 'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
 		function(r) {
 			$('#ReplyItems').prepend(r);
 			HideReply();
 			init_Replyconfirm();
 		});
-};
-//init
-var init_Replyconfirm = function() {
-	$('.delete').click(function(event) {
-		var id = $(this).attr('href');
-		$.post('<%=Url.Action("DeleteReply","Comment") %>', { 'id': id }, function(r) {
-			showMessage("#Item" + id, '已经删除', 1000);
-		});
-	}).confirm();
-};
-var init_evt = function() {
-	$('#evt_list .evt_del').click(function(event) {
-		var id = $(this).attr('href');
-		$.post('<%=Url.Action("EventDelete") %>', { 'id': id }, function(r) {
-			$("#evt_list").html(r);
-			init_evt();
-		});
-		return false;
-	});
-};
+		};
+		//init
+		var init_Replyconfirm = function() {
+			$('.delete').click(function(event) {
+				var id = $(this).attr('href');
+				$.post('<%=Url.Action("DeleteReply","Comment") %>', { 'id': id }, function(r) {
+					showMessage("#Item" + id, '已经删除', 1000);
+				});
+			}).confirm();
+		};
+		var init_evt = function() {
+			$('#evt_list .evt_del').click(function(event) {
+				var id = $(this).attr('href');
+				$.post('<%=Url.Action("EventDelete") %>', { 'id': id }, function(r) {
+					$("#evt_list").html(r);
+					init_evt();
+				});
+				return false;
+			});
+		};
 
-var WillReply = function(n, senderid) {
-	ShowReply('@' + n + '\n');
-	$v('#ReplyerID', senderid);
-};
-var EnterReply = function(ownerid, event) {
-	if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83)) {
-		Reply(ownerid);
-	}
-};
-init_Replyconfirm();
-init_evt();
+		var WillReply = function(n, senderid) {
+			ShowReply('@' + n + '\n');
+			$v('#ReplyerID', senderid);
+		};
+		var EnterReply = function(ownerid, event) {
+			if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83)) {
+				Reply(ownerid);
+			}
+		};
+		init_Replyconfirm();
+		init_evt();
 	</script>
 
 </asp:Content>

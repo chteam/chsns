@@ -22,7 +22,6 @@
 	if (ViewData.Model.IsOnline) { %>
 <a href="#" title="用户在线">在线</a>
 <%} %>
-
 &lt;<span id="pro_text">
 	<%if (!ViewData.Model.Profile.ShowTextTime.HasValue || string.IsNullOrEmpty(ViewData.Model.Profile.ShowText)) { %>
 	闲着
@@ -33,15 +32,15 @@
 </span>
 <%if (ViewData.Model.IsMe) { %>
 <input type="text" id="pro_edit" maxlength="12" style="display: none" />
+
 <script type="text/javascript">
 	dc_edit('#pro_text', '#pro_edit', '#pro_time', function(t) {
-	$.post('<%=Url.Action("SaveText","Profile") %>', { 'text': t });
+		$.post('<%=Url.Action("SaveText","Profile") %>', { 'text': t });
 	});
 </script>
+
 <%} %>
-&gt;
-<span id="pro_time">
+&gt; <span id="pro_time">
 	<%=(!ViewData.Model.Profile.ShowTextTime.HasValue|| string.IsNullOrEmpty(ViewData.Model.Profile.ShowText))?"":
 						ViewData.Model.Profile.ShowTextTime.Value.Ago()%>
-</span>更新
-
+</span>更新 

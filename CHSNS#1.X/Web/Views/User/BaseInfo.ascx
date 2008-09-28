@@ -21,6 +21,11 @@
 	<%=Html.DropDownList("","Sex", new { @class = "select" })%>
 </div>
 <div class="required">
+	<label for="birthyear">
+		*生日：</label>
+	<%=Html.TextBox("Birthday", new { onclick = "$('#Birthday').datepicker();$('#Birthday').datepicker('show');" })%>
+</div>
+<div class="required">
 	<label for="homeProvince">
 		<em>*</em>家乡：</label>
 	<%=Html.DropDownList("","ProvinceID", new { @class = "select", onchange = "javascript:ChangeProvince()" })%>
@@ -28,11 +33,7 @@
 		<%=Html.DropDownList("","CityID", new { @class = "select" })%>
 	</span><span id="CityStatus"></span>
 </div>
-<div class="required">
-	<label for="birthyear">
-		*生日：</label>
-	<%=Html.TextBox("Birthday", new { onclick = "$('#Birthday').datepicker();$('#Birthday').datepicker('show');" })%>
-</div>
+
 <style type="text/css">
 	.embed + img { position: relative; left: -21px; top: -1px; }
 </style>
