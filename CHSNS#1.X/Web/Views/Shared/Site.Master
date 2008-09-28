@@ -13,29 +13,23 @@
 
 </head>
 <body>
-    <%--<%=Html.Hidden("Hduserid")%>--%>
-	<div id="header">
-	</div>
 	<div id="container">
 		<div id="intro">
-			<div id="pageHeader">
 				<div id="publicmenu" class="mymenu">
 					<%
 						Html.RenderPartial("PublicMenu"); %>
-					</div>
+				
 				<div class="secondlink">
 					<%
 						Html.RenderPartial("Utility");%>
 					</div>
-			</div>
+						</div>
 		</div>
 		<div id="content">
 			<div id="pcontent" style="height: 100%">
 				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 			</div>
 		</div>
-		<%
-						Html.RenderPartial("Footer");%>
 		<div id="linkList">
 			<div id="linkList2">
 			<%
@@ -50,6 +44,9 @@
 				#component(ad)
 			</div>--%>
 		</div>
+		<%
+						Html.RenderPartial("Footer");%>
+		
 	</div>
 	<div id="extendDiv1">
 		<span></span>
