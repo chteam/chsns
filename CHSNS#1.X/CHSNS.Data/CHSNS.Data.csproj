@@ -99,7 +99,7 @@
     <Compile Include="NoteMediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CommentMediator.cs" />
-    <Compile Include="UserInfoMediator.cs" />
+    <Compile Include="UserMediator.cs" />
     <Compile Include="ViewMediator.cs" />
     <Compile Include="GroupMediator.cs" />
   </ItemGroup>

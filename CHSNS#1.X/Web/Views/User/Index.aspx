@@ -26,7 +26,7 @@
 				<h2><%=up.Profile.Name%></h2>
 			<div class="mypage_sta">
 				<% Html.RenderPartial("index/mystatus", ViewData.Model);/*状态*/%>
-				<% Html.RenderPartial("index/isstar", ViewData.Model);/*实名*/%>
+			
 			</div>
 		</div>
 		<div id="userAccount">

@@ -1,7 +1,6 @@
-	using System;
-	using System.Collections.Generic;
-	using CHSNS.Extension;
-	using CHSNS.Filter;
+using System.Web.Mvc;
+using CHSNS.Extension;
+using CHSNS.Filter;
 
 namespace CHSNS.Controllers
 {
@@ -13,6 +12,9 @@ namespace CHSNS.Controllers
 		public void setting() {
 			ViewData.Add("tabs", this.QueryNum("tabs"));
 		}
-		
+		public ActionResult SaveText(string text) {
+			DBExt.UserInfo.SaveText(CHUser.UserID, text);
+			return Content("");
+		}
 	}
 }
