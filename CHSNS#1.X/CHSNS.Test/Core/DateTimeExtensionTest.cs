@@ -21,14 +21,11 @@ namespace CHSNS.Test
 		///获取或设置测试上下文，上下文提供
 		///有关当前测试运行及其功能的信息。
 		///</summary>
-		public TestContext TestContext
-		{
-			get
-			{
+		public TestContext TestContext {
+			get {
 				return testContextInstance;
 			}
-			set
-			{
+			set {
 				testContextInstance = value;
 			}
 		}
@@ -75,8 +72,8 @@ namespace CHSNS.Test
 			Assert.AreEqual(DateTime.Now.AddHours(-11).Ago(), "11 小时前");
 			Assert.AreEqual(DateTime.Now.AddMinutes(-3).AddHours(-3).Ago(), "3 小时, 3 分钟前");
 			Assert.AreEqual(DateTime.Now.AddDays(-33).Ago(), "33 天前");
-			Assert.AreEqual(DateTime.Now.AddDays(-100).AddHours(-3).Ago(), "100 天, 3 小时前");
-			Assert.AreEqual(DateTime.Now.AddDays(-100).AddHours(-23).AddMinutes(-59).Ago(), "100 天, 23 小时, 59 分钟前");
+			Assert.AreEqual(DateTime.Now.AddDays(-101).AddHours(-3).Ago(), "很久以前");
+			Assert.AreEqual(DateTime.Now.AddDays(-10).AddHours(-23).AddMinutes(-59).Ago(), "10 天前");
 			//Assert.("验证此测试方法的正确性。");
 		}
 	}

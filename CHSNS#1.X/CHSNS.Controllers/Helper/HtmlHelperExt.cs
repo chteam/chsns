@@ -27,7 +27,11 @@ namespace CHSNS.Helper {
 			return Html.ActionLink(title, "Details", "Message", new{id}, null);
 		}
 		#endregion
-
+		#region comment
+		public static string ReplyList(this HtmlHelper Html, long userid, string text) {
+			return Html.ActionLink(text, "Reply", "Comment", new { userid }, null);
+		}
+		#endregion
 		public static string UserPageLink(this HtmlHelper Html, long userid, string text) {
 			return Html.ActionLink(text, "Index", "User", new { userid }, null);
 		}
