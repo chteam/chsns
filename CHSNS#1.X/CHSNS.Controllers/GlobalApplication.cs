@@ -67,7 +67,6 @@ namespace CHSNS {
 				"{controller}/{action}.ashx", // URL with parameters
 				new { controller = "Home", action = "Index" } // Parameter defaults
 				);
-			
 
 		}
 	}

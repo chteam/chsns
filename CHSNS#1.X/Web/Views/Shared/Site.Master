@@ -1,8 +1,10 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CHSNS.Web.Views.Shared.Site" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-	<title><%=ViewData["Page_Title"] %></title>
+	<title>
+		<%=ViewData["Page_Title"] %></title>
 
 	<script type="text/javascript"></script>
 
@@ -10,32 +12,28 @@
 	<%=Html.Script("ui") %>
 	<%=Html.CSSLink("Master") %>
 	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
-
 </head>
 <body>
 	<div id="container">
 		<div id="intro">
-				<div id="publicmenu" class="mymenu">
-					<%
-						Html.RenderPartial("PublicMenu"); %>
-				
-				<div class="secondlink">
-					<%
-						Html.RenderPartial("Utility");%>
-					</div>
-						</div>
+		
+			<div id="publicmenu" class="mymenu">
+				<%
+					Html.RenderPartial("PublicMenu");
+					Html.RenderPartial("Utility");
+					%>
+			</div>
+			<h1><%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %></h1>
 		</div>
 		<div id="content">
-			<div id="pcontent" style="height: 100%">
 				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
-			</div>
 		</div>
 		<div id="linkList">
 			<div id="linkList2">
-			<%
-						Html.RenderPartial("MyMenu");%>
-				</div>
-<%--			#if($ChHelper.ChSite.Publish.IsShow)
+				<%
+					Html.RenderPartial("MyMenu");%>
+			</div>
+			<%--			#if($ChHelper.ChSite.Publish.IsShow)
 			<div id="master-publish">
 				$ChHelper.ChSite.Publish.Body
 			</div>
@@ -45,8 +43,7 @@
 			</div>--%>
 		</div>
 		<%
-						Html.RenderPartial("Footer");%>
-		
+			Html.RenderPartial("Footer");%>
 	</div>
 	<div id="extendDiv1">
 		<span></span>
@@ -63,15 +60,16 @@
 	<div id="extendDiv5">
 		<span></span>
 	</div>
-	<div id="extendDiv6" style="display:none">
+	<div id="extendDiv6" style="display: none">
 	</div>
 	<asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
+
 	<script type="text/javascript">
 		//$.ready(function() {
 	
-			chmenu("#publicmenu .menuli");
+			chmenu("#publicmenu .menu");
 		//});
 	</script>
-	
+
 </body>
 </html>
