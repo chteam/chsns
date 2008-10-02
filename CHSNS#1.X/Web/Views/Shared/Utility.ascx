@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Utility.ascx.cs" Inherits="CHSNS.Web.Views.Shared.Utility" %>
 <div class="untityright link">
 	<%if (CHUser.IsLogin) {%>
-	<span class="menu"><a href="#" class="menu_title">应用</a>
+	<span class="menu"><a href="###" class="menu_title">应用</a>
 		<ul class="menu_network">
 			<li><a href="/SuperNoteRandom.aspx">视频</a></li>
 			<li><a href="/NewLogBook.aspx">日志</a></li>
@@ -16,7 +16,7 @@
    else { %>
 	<%=Html.ActionLink(string.Format("好友({0})", CHStatic.FriendRequestCount), "Request", "Friend")%>
 	<%}%>
-	<span class="menu"><a href="#" class="menu_title">您好！<%=CHUser.Username %></a>
+	<span class="menu"><a href="###" class="menu_title">您好！<%=CHUser.Username %></a>
 		<ul class="menu_network">
 			<li>
 				<%=Html.ActionLink("我的页面", "Index", "User")%></li>

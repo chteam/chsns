@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyMenu.ascx.cs" Inherits="CHSNS.Web.Views.Shared.MyMenu" %>
 <%
 	if (CHUser.IsLogin) {%>
-<div id="lselect">
+
 <%--	<div id="leftmenu" class="mymenu">
 		<ul>
 			<li class=""><a href="#" class="menu_title" style="color: #3B5999">查找</a>
@@ -22,25 +22,22 @@
 	<script type="text/javascript">
 		chmenu("#leftmenu");
 </script>--%>
-	<div>
+
 		<h3>
-			菜单<a href="/Application.aspx">编辑</a></h3>
-		<ul id="MyApplication">
+			菜单</h3>
+		<ul id="MyApplication" class="app_list">
 			<%
 				foreach (CHSNS.Models.Application app in Url.CH().DB.Application.GetApps(CHCookies.AppsArray)) {
 			%>
-			<li id="<%=app.ClassName%>">
+			
+			<li id="<%=app.ClassName%>"  class="<%=app.ClassName %> s_icon">
 				<%=Html.ActionLink(app.ShortName,app.Action,app.Controller) %>
 			</li>
 			<%
 				}
 			%>
 		</ul>
-	</div>
-</div>
-
-
-
+		<a href="/Application.aspx" class="portal"><span>编辑</span></a>
 <%
 	} else
 		Html.RenderPartial("LoginControl");
