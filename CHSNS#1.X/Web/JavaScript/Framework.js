@@ -149,20 +149,24 @@ var isNum = function(_) {
 
 //menu
 var chmenu = function(x) {
-    $(x).each(function(i) {
-        $(this).click(function() {
-            $(this).mouseover(function() {
-                $(this).click(function() {
-                    $(this).removeClass("sfhover");
-                });
-                $(this).addClass("sfhover");
-            });
-            $(this).addClass("sfhover");
-        })
+	$(x).each(function(i) {
+		$(this).click(function() {
+			$(this).mouseover(function() {
+				$(this).click(function() {
+					$(this).removeClass("sfhover");
+				});
+				$(this).addClass("sfhover");
+			});
+			$(this).addClass("sfhover");
+		})
 		.mousedown(function() { $(this).addClass("sfhover"); })
 		.mouseup(function() { $(this).addClass("sfhover"); })
-		.mouseout(function() { $(this).removeClass("sfhover"); });
-    });
+		.mouseout(function() {
+			var tx = $(this);
+			tx.removeClass("sfhover");
+		});
+	});
+	$(".menu_title",$(x)).each(function(){$(this).append('<image src="/images/menu.gif" />');});
 };
 //upload
 var uploadcreate = function(el, page, mode, qs) {

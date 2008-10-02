@@ -1,7 +1,7 @@
 body{font-size:9pt;margin:0px}
 h3{color: #7D775C;}
 
-a{color:#3B5999; text-decoration:none;}
+a{text-decoration:none;}
 a:hover{color:#3B5999; text-decoration:underline;}
 img{border:0;}
 
@@ -17,41 +17,24 @@ font-size:14px;
 line-height:150%;}
 /*class*/
 .title{clear:both;float:right;font-size:110%;font-weight:bold;line-height:1.5em;width:100%;border-bottom:solid 1px #2984ad}
-.title a{color:#000}
+.title a{color:#000;}
 .title a:hover{color:Orange;text-decoration:none}
 .text{clear:both;line-height:1.5em;padding:20px;width:100%;}
 .option{clear:both;color:#666666;float:right;margin-top:5px;padding-right:5px;text-align:right;width:100%;}
 .s_icon{background:url('images/bg_icon.png') no-repeat;}
-.link a{border:1px solid #C87270;color:#fff;padding:2px 3px 1px 4px;}
-.link a:hover{background-color:#9B4342}
+
+.link > a{color:#fff;padding:0px 3px 3px 4px;font-family:'@Î¢ÈíÑÅºÚ','@ËÎÌå';font-size:9pt}
+.link > a:hover{background-color:#9B4342;}
 #Profile_Isstar{background-position:0 -2080px;width:20px;height:20px;}
 #Profile_Isstar:hover{text-decoration:none;}
 /*master id*/
 #container{margin:0px auto;width:1024px;height:100%}
-#intro{width:97%;margin:0px;background-color:#801E2B;padding:0px;height:30px;}
-#intro h1{display:inline;margin:0;}
-#publicmenu{margin-left:0px;height:22px;float:right}
+#intro{width:97%;margin:0px;background-color:#801E2B;padding:0px;height:38px;}
+#intro h1{margin:0;background:url(images/logo.jpg) no-repeat;width:300px;height:38px;}
+#intro h1 span{display:none}
+#publicmenu{margin-left:0px;float:right;height:38px;}
 
-.untityright{float:right;text-align:right;padding-right:10px; }
-
-
-.menu ul{list-style:none;margin:0}
-.menu{padding:2px 5px 5px 5px;}
-.menu a{color:#fff}
-.menu_title{cursor:pointer;color:#fff;padding:2px 15px 0 5px;}
-.menu_title:hover{color:#fff;background:#6d84b4;}
-.menu_title{background-position:right;background:transparent url(images/bg_icon.png) no-repeat 30px -2195px;}
-.menu_network li a{margin-left:0px}
-.sfhover .menu_network{position: absolute;padding:0;margin:0} 
-.sfhover .menu_network li{margin-bottom:0px;} 
-.menu ul{list-style-type:none;display:block;position:absolute; margin-left:-100em;}
-.menu_network li{margin-left:0;border-bottom:1px solid #fff;}
-
-.menu_network a{color: #3b5999;display:block;text-decoration: none;cursor: pointer;padding:1px 0px 1px 16px;margin: 1px 0 1px 0;}
-.menu_network a:hover{background-color: #5c75aa;color: #fff;padding:1px 0px 1px 16px;}
-.menu_network{margin-left:0;border: 1px solid #3b5999;z-index: 1000;background: #fff;cursor: default;text-align:left;color: #6d84b4;padding:1px;width:90px;}
-
-
+.untityright{padding-right:10px;height:38px;}
 
 
 #content{clear:both;width:840px;float:right;
@@ -381,3 +364,19 @@ background:url(images/bg_icon.png) no-repeat 0 -1400px;
 .chbox_hide {z-index:-100;}
 .chbox_overlayBG {background-color: #000;z-index: 99;}
 * html #chbox_overlay { /* ie6 hack */position: absolute;height:expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');}
+
+/*menu over*/
+.menu ul{list-style:none;margin:0}
+.menu{display:inline-block;padding-right:10px}
+.menu a{color:#fff}
+.menu_title{cursor:pointer;color:#fff;padding:2px 15px 0 5px;}
+.menu_title:hover{color:#fff;background:#9B4342;}
+.menu_network li a{margin-left:0px}
+.sfhover .menu_network{position: absolute;padding:0;margin:0;margin-left:-10px;} 
+.sfhover .menu_network li{margin-bottom:0px;} 
+.menu ul{list-style-type:none;display:block;position:absolute; margin-left:-100em;}
+.menu_network li{margin-left:0;border-bottom:1px solid #fff;}
+.menu_network a{color: #000;display:block;text-decoration: none;cursor: pointer;padding:1px 0px 1px 16px;margin: 1px 0 1px 0;}
+.menu_network a:hover{background-color: #9B4342;color: #fff;padding:1px 0px 1px 16px;}
+.menu_network{margin-left:0;border: 1px solid #9a9a9a;z-index: 1000;background: #fff;cursor: default;text-align:left;color: #6d84b4;padding:1px;width:90px;}
+

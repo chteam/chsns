@@ -66,6 +66,8 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Newtonsoft.Json, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\Newtonsoft.Json.dll</HintPath>
@@ -88,6 +90,7 @@
     <Compile Include="ChCache.cs" />
     <Compile Include="CHCookies.cs" />
     <Compile Include="ChServer.cs" />
+    <Compile Include="CHSite.cs" />
     <Compile Include="CHUser.cs" />
     <Compile Include="CHSNSUser.cs" />
     <Compile Include="ConfigSerializer.cs" />

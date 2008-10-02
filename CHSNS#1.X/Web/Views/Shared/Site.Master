@@ -19,11 +19,10 @@
 		
 			<div id="publicmenu" class="mymenu">
 				<%
-					Html.RenderPartial("PublicMenu");
 					Html.RenderPartial("Utility");
 					%>
 			</div>
-			<h1><%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %></h1>
+			<h1><span><%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %></span></h1>
 		</div>
 		<div id="content">
 				<asp:ContentPlaceHolder ID="MainContent" runat="server" />

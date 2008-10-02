@@ -575,6 +575,8 @@
     <Content Include="Images\CHBox\loading.gif" />
     <Content Include="Images\CHBox\tl.png" />
     <Content Include="Images\CHBox\tr.png" />
+    <Content Include="Style\Facebook\Images\logo.jpg" />
+    <Content Include="Images\menu.gif" />
     <Content Include="JavaScript\Admin\docs.js" />
     <Content Include="JavaScript\Admin\ext-all.js" />
     <Content Include="JavaScript\Admin\ext-jquery-adapter.js" />
@@ -927,7 +929,6 @@
     <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\LoginControl.ascx" />
     <Content Include="Views\Shared\MyMenu.ascx" />
-    <Content Include="Views\Shared\PublicMenu.ascx" />
     <Content Include="Views\Shared\Utility.ascx" />
     <Content Include="Views\Shared\ViewList.ascx" />
     <Content Include="Views\Upload\File.aspx" />
@@ -1259,13 +1260,6 @@
     </Compile>
     <Compile Include="Views\Shared\MyMenu.ascx.designer.cs">
       <DependentUpon>MyMenu.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\PublicMenu.ascx.cs">
-      <DependentUpon>PublicMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\PublicMenu.ascx.designer.cs">
-      <DependentUpon>PublicMenu.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Single.Master.cs">
       <DependentUpon>Single.Master</DependentUpon>
