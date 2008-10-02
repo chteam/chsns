@@ -7,9 +7,8 @@
  */
 
 
-namespace CHSNS
-{
-using CHSNS.Config;
+namespace CHSNS {
+	using CHSNS.Config;
 	using System;
 	using System.Data;
 	using System.Data.SqlClient;
@@ -20,8 +19,7 @@ using CHSNS.Config;
 	/// AU:邹健
 	/// LE:2007 10 10
 	/// </summary>
-	public partial class CHUser
-	{
+	public class CHUser {
 		/// <summary>
 		/// 只有注册时才用的属性
 		/// </summary>
@@ -41,7 +39,7 @@ using CHSNS.Config;
 		/// 获取当前用户ID,如用户未登录则抛出异常.
 		/// </summary>
 		static public long UserID {
-			get{
+			get {
 				long _Userid = 0;
 				if (HttpContext.Current.Session["userid"] != null)
 					long.TryParse(HttpContext.Current.Session["userid"].ToString(), out _Userid);
@@ -64,6 +62,7 @@ using CHSNS.Config;
 				HttpContext.Current.Session.Add("username", value);
 			}
 		}
+
 		/// <summary>
 		/// 初始化状态
 		/// </summary>
@@ -75,14 +74,14 @@ using CHSNS.Config;
 		/// 获取当前用户状态
 		/// </summary>
 		static public int Status {
-			get{
+			get {
 				int status = 0;
 				if (HttpContext.Current.Session["status"] != null)
 					int.TryParse(HttpContext.Current.Session["status"].ToString(), out status);
 				return status;
 			}
 			set {
-				throw new Exception("邹健不允许调用这个方法");
+				throw new Exception("不允许调用这个方法");
 				//update profile set [status]=@status where userid=@userid
 			}
 		}
@@ -108,5 +107,7 @@ using CHSNS.Config;
 		static public void Clear() {
 			HttpContext.Current.Session.Clear();
 		}
+
+	
 	}
 }
