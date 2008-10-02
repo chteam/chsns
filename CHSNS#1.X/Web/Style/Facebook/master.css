@@ -22,7 +22,10 @@ line-height:150%;}
 .text{clear:both;line-height:1.5em;padding:20px;width:100%;}
 .option{clear:both;color:#666666;float:right;margin-top:5px;padding-right:5px;text-align:right;width:100%;}
 .s_icon{background:url('images/bg_icon.png') no-repeat;}
-
+.portal{display:block; padding:5px 0 5px 18px; margin:10px 0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#f7f7f7 url(images/style_triangle.gif) 8px 10px no-repeat; color:#333; font-weight:bold;}
+.portal:hover{text-decoration:none; border-color:#3B5999; background:#d8dfea url(images/style_triangle.gif) 8px 10px no-repeat; color:#000;}
+.portal span{display:block; color:#666; font-weight:normal;}
+.portal:hover span{color:#333;}
 .link > a{color:#fff;padding:0px 3px 3px 4px;font-family:'@Î¢ÈíÑÅºÚ','@ËÎÌå';font-size:9pt}
 .link > a:hover{background-color:#9B4342;}
 #Profile_Isstar{background-position:0 -2080px;width:20px;height:20px;}
@@ -49,9 +52,9 @@ border:solid 1px #cccccc;border-bottom:solid 1px #3b5999;overflow:hidden;}
 #linkList{/*background-color:#3b5999;
           background:url(images/toplogo.jpg) no-repeat top left;
           margin-left: -130px;position: absolute;*/
-width:150px;}
+width:170px;}
 
-#linkList2{font-size:12px;padding:0 5px;width:119px;background-color:#f7f7f7;border-bottom:1px solid #cccccc;}
+#linkList2{font-size:12px;padding:0 5px;width:149px;background-color:#f7f7f7;border-bottom:1px solid #cccccc;}
 #linkList2 h3{color:#cccccc;font-size:12px;margin:0px 0;}
 #linkList2 h3 a{width:25px; font-weight:normal; text-align:right;} 
 #lselect{}
@@ -69,23 +72,6 @@ width:642px;background:transparent url(images/headlinkbg.jpg) repeat-x top right
 #quicklink li a{background:transparent url(images/headlinkbg.jpg) repeat-x top right;background:transparent url(images/headlinkborder.jpg) no-repeat top left;font-size:12px;color:#333333;display:block;text-decoration:none;padding:2px 10px 1px 10px;width:60px;}
 #quicklink li a:hover{color:#fff;background:transparent url(images/headlinkbghover.jpg) repeat-x top left;}
 
-
-
-
-
-
-
-
-#extendDiv1{}
-
-
-
-
-#MyApplication ul{list-style-type:none;}
-#MyApplication li{margin-top:2px;}
-#MyApplication li div{
-background:no-repeat left bottom;padding-left:10px;height:21px;}
-#MyApplication a{width:110px;margin-left:13px;font-size:12px;line-height:18px;}
 html>body #myhome,html>body #myblog,html>body #myphoto{border-bottom:0;}
 
 #myfriend,#myphoto,#myshare{clear:left;}
@@ -99,10 +85,7 @@ html>body #myhome,html>body #myblog,html>body #myphoto{border-bottom:0;}
 #loginpanel #loginForm .inputbutton{width:50px;}
 #loginpanel .inputtext{width:114px;}
 #loginpanel #login{width:40px;}
-#loginpanel .portal{display:block; padding:5px 0 5px 18px; margin:10px 0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#f7f7f7 url(images/style_triangle.gif) 8px 10px no-repeat; color:#333; font-weight:bold;}
-#loginpanel .portal:hover{text-decoration:none; border-color:#3B5999; background:#d8dfea url(images/style_triangle.gif) 8px 10px no-repeat; color:#000;}
-#loginpanel .portal span{display:block; color:#666; font-weight:normal;}
-#loginpanel .portal:hover span{color:#333;}
+
 
 /*ËÑË÷²¿·Ö search part
 
@@ -223,32 +206,22 @@ input[type~="submit"],input[type~="button"]{background:#3B5999; padding:2px;bord
 .pother{padding-top:5px;}
 
 /*applications*/
-#MyApplication li{padding-left:10px;}
+.app_list{list-style-type:none;padding-left:16px;margin-left:0}
+.app_list li{margin-top:2px;}
+.app_list li div{
+background:no-repeat left bottom;padding-left:10px;height:21px;}
+.app_list a{width:110px;margin-left:13px;font-size:12px;line-height:18px;}
+.app_list li{padding-left:10px;}
 #AppList li{padding-left:20px;}
-#App_mynote,#Applist_App_mynote,.icon_note{
-   background:url(images/bg_icon.png) no-repeat 0 -2280px;
-}
-
-#App_photos,#Applist_App_photos,.icon_album{
-   background:url(images/bg_icon.png) no-repeat 0 -1680px;  
-}
-#App_myfriend,#Applist_App_myfriend{
-   background:url(images/bg_icon.png) no-repeat 0 -1360px; }
-
-#App_myuniversityclass,#Applist_App_myuniversityclass{
-   background:url(images/bg_icon.png) no-repeat -4px -920px;}
-
-#App_mygroup,#Applist_App_mygroup,.icon_group,.icon_groupuser{
-   background:url(images/bg_icon.png) no-repeat -3px 0;
-}
-#App_supernote,#Applist_App_supernote,.icon_supernote{
-   background:url(images/bg_icon.png) no-repeat 1px -2240px;
-}
-#App_train,#Applist_App_train{
-   background:url(images/bg_icon.png) no-repeat 1px -280px;
-}
+.App_mynote,.icon_note{background-position:0 -2280px;}
+.App_photos{background-position:0 -1680px;}
+.App_myfriend{background-position:0 -1360px; }
+.App_myuniversityclass{background-position:-4px -920px;}
+.App_mygroup,.icon_group,.icon_groupuser{background-position:-3px 0;}
+.App_supernote,.icon_supernote{background-position:1px -2240px;}
+.App_train{ background-position:1px -280px;}
 .icon_showtext{
-background:url(images/bg_icon.png) no-repeat 0 -1400px;
+background-position:0 -1400px;
 }
 .padding20{padding-left:20px;}
 #Profile_Event li{
