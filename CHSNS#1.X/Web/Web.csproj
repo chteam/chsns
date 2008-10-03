@@ -575,6 +575,7 @@
     <Content Include="Images\CHBox\loading.gif" />
     <Content Include="Images\CHBox\tl.png" />
     <Content Include="Images\CHBox\tr.png" />
+    <Content Include="Style\Facebook\Images\check_right.gif" />
     <Content Include="Style\Facebook\Images\logo.jpg" />
     <Content Include="Images\menu.gif" />
     <Content Include="JavaScript\Admin\docs.js" />
@@ -697,7 +698,6 @@
     <Content Include="Style\Facebook\blog.css" />
     <Content Include="Style\Facebook\calendar.css" />
     <Content Include="Style\Facebook\group.css" />
-    <Content Include="Style\Facebook\home.css" />
     <Content Include="Style\Facebook\Images\act_select.gif" />
     <Content Include="Style\Facebook\Images\bg_icon.png" />
     <Content Include="Style\Facebook\Images\buttonbg.jpg" />
@@ -779,7 +779,6 @@
     <Content Include="Style\Facebook\msg.css" />
     <Content Include="Style\Facebook\myblog.css" />
     <Content Include="Style\Facebook\myclass.css" />
-    <Content Include="Style\Facebook\mypage.css" />
     <Content Include="Style\Facebook\photo.css" />
     <Content Include="Style\Facebook\register.css" />
     <Content Include="Style\Facebook\Reply.css" />
@@ -841,11 +840,9 @@
     <Content Include="JavaScript\ManageGroup.js" />
     <Content Include="JavaScript\PageSet.js" />
     <Content Include="JavaScript\Photos.js" />
-    <Content Include="JavaScript\Reply.js" />
     <Content Include="JavaScript\Search.js" />
     <Content Include="JavaScript\Services.js" />
     <Content Include="JavaScript\Setting.js" />
-    <Content Include="JavaScript\UploadPhoto.js" />
     <Content Include="Style\foxblue\admin.css" />
     <Content Include="Style\foxblue\appli.css" />
     <Content Include="Style\foxblue\application.css" />

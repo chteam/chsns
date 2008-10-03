@@ -3,13 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title><%=ViewData["Page_Title"] %></title>
+	<title>
+		<%=ViewData["Page_Title"] %></title>
 
 	<script type="text/javascript"></script>
+
 	<%=Html.CSSLink("master")%>
 	<%=Html.CSSLink("register")%>
 	<%=Html.Script("Framework") %>
-
 	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
 </head>
 <body>
@@ -17,30 +18,21 @@
 	</div>
 	<div id="container">
 		<div id="intro">
-			<div id="pageHeader">
-				<div id="publicmenu" class="mainlink mymenu">
-					<%
-						Html.RenderPartial("PublicMenu"); %>
-					</div>
-				<div class="secondlink">
-					<%
-						Html.RenderPartial("Utility");%>
-					</div>
+			<div id="publicmenu" class="mymenu">
+				<%
+					Html.RenderPartial("Utility");
+				%>
 			</div>
+			<h1>
+				<span>
+					<%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %></span></h1>
 		</div>
-		<div id="content">
-			<div id="pcontent" style="height: 100%">
-				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
-			</div>
+		<div id="content" style="width:100%">
+			<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 		</div>
 		<%
-						Html.RenderPartial("Footer");%>
-		<div id="linkList">
-			<div id="linkList2">
-			</div>
-			<div id="ad" style="padding-top: 20px">
-			</div>
-		</div>
+			Html.RenderPartial("Footer");%>
+		
 	</div>
 	<div id="extendDiv1">
 		<span></span>
