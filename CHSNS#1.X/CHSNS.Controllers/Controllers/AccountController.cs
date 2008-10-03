@@ -16,36 +16,35 @@ namespace CHSNS.Controllers
 
 			return View();
 		}
-
+		/// <summary>
+		/// 注册协议页
+		/// </summary>
+		/// <returns></returns>
 		public ActionResult Agreement()
 		{
 			ViewData["Page_Title"] = "注册 - 注册协议";
 			return View();
 		}
-
-
+		/// <summary>
+		/// 注册页
+		/// </summary>
 		public ActionResult RegPage()
 		{
 			ViewData["Page_Title"] = "注册 - 注册账号";
 			return View();
 		}
+		public ActionResult UsernameCanUse(string username) {
+			return Json(DBExt.Account.IsUsernameCanUse(username));
+		}
 		[AcceptVerbs("post")]
-		public ActionResult SaveReg(string Username, string Password, string Name, string Question, string Answer)
-		{
+		public ActionResult SaveReg(string Username, string Password, string Name) {
 			if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Name))
 				throw new Exception("资料中有空项");
-			Account a = new Account
-			{
+			Account a = new Account {
 				Username = Username,
 				Password = Password,
 			};
-			if (!string.IsNullOrEmpty(Question) && !string.IsNullOrEmpty(Answer))
-			{
-				a.Question = Question; a.Answer = Answer;
-			}
-			
-			using (var ts=new TransactionScope())
-			{
+			using (var ts = new TransactionScope()) {
 				if (DBExt.Account.Create(a, Name))//DBExt.Register(a))
 				{
 					ts.Complete();

@@ -98,6 +98,7 @@ function FormMsg(i, m, p) {//i:id without msg,m:message,p:id withmsg or define s
         $(i).after(l);
     }
     l.html(m).fadeIn();
+//    if (isnull(m)) return;
     $(i).focus();
 }
 
@@ -161,10 +162,7 @@ var chmenu = function(x) {
 		})
 		.mousedown(function() { $(this).addClass("sfhover"); })
 		.mouseup(function() { $(this).addClass("sfhover"); })
-		.mouseout(function() {
-			var tx = $(this);
-			tx.removeClass("sfhover");
-		});
+		.mouseout(function() {$(this).removeClass("sfhover");});
 	});
 	$(".menu_title",$(x)).each(function(){$(this).append('<image src="/images/menu.gif" />');});
 };

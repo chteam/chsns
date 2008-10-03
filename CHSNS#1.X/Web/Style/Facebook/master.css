@@ -314,9 +314,9 @@ background-position:0 -1400px;
 .useritem .image a:hover img { border:1px solid #3B5999; background:#d8dfea;}
 .useritem .info { display:inline; overflow:hidden; float:left; width:300px; margin-left:10px; text-align:left;border:0px solid black;}
 .useritem .actions { float:right;}
-.useritem .actions li { text-indent:5px; border-bottom:1px solid #d8dfea; color:#808080; text-align:left;}
-.useritem .actions a { display:block; width:90px; text-decoration:none;}
-.useritem .actions a:hover {background:#3B5999; color:#fff; text-decoration:none;}
+.actions li { text-indent:5px; border-bottom:1px solid #d8dfea; color:#808080; text-align:left;}
+.actions a { display:block; width:90px; text-decoration:none;}
+.actions a:hover {background:#3B5999; color:#fff; text-decoration:none;}
 /*chobx*/
 #chbox .b {background:url(/images/chbox/b.png);}
 #chbox .tl {background:url(/images/chbox/tl.png);}
@@ -353,3 +353,83 @@ background-position:0 -1400px;
 .menu_network a:hover{background-color: #9B4342;color: #fff;padding:1px 0px 1px 16px;}
 .menu_network{margin-left:0;border: 1px solid #9a9a9a;z-index: 1000;background: #fff;cursor: default;text-align:left;color: #6d84b4;padding:1px;width:90px;}
 
+
+/*userpage*/
+#userRelations { float:left;padding-bottom:10px;width:205px; padding-left:10px;margin-top:17px;z-index:100;}
+#userUpdates {float:right;position:relative;width:420px;}
+#userRelations ul,#userRelations ul{list-style-type:none;}
+
+
+#userStatus{
+background:#F7F7F7 none repeat scroll 0%;
+border-bottom:1px solid #CCCCCC;
+margin:0 -10px 5px -220px;
+padding:17px 5px 10px 220px;
+z-index:-100;
+}
+#userAccount li{ margin-left:2px;}
+ .mypage_name{ font-weight:bold; margin-left:5px;}
+ .mypage_sta{ margin-top:5px;margin-left:5px;}
+#MagicBox{ margin-top:20px;}
+/* Content */
+.ch_content { clear:both; padding:0 10px; border-top:1px solid #d8dfea; border-bottom:1px solid #d8dfea; background:#f7f7f7;}
+.ch_content:after { content:"."; display:block; font-size:0; clear:both; visibility:hidden;}
+* html .ch_content { height:1%;}
+*+html .ch_content { min-height:1%;}
+
+.box { position:relative; overflow:hidden; width:100%; margin-bottom:10px;}
+.box h3 { height:20px; margin-bottom:8px; padding-left:8px; background: transparent url(images/h4bg.jpg) repeat-x bottom left; color:#444444; border-top:1px solid #95a5c6; font-size:12px; line-height:20px;}
+	.box h3 .edit a{ color:#cccccc; font-weight:normal; float:right; margin-right:10px;}
+	.box h3 .stat { height:20px; margin-left:5px; color:#000; font-size:12px; font-weight:normal; line-height:20px;}
+	.box h3 .count { padding:0 2px;}
+.box .boxcontent { padding:0 5px;}
+	.box .readmore { text-align:right;}
+.box .more { position:absolute; right:10px; top:0; line-height:24px; color:#fff;}
+	.box .more .stat { color:#3B5999;}
+.box .boxcont{ padding:0 10px;}
+
+.ch_content .cube { position:relative;}
+.ch_content .cube h3 { margin:10px 0; color:#3B5999; border-bottom:1px solid #d8dfea; font-size:14px;}
+.ch_content .cube .more { position:absolute; right:15px; top:10px; line-height:21px;}
+.ch_content .cube h3 a { text-decoration:none;}
+.ch_content .cube.text ul { padding-left:20px;}
+.ch_content .cube.text li { margin:5px 0;}
+.ch_content .cube.text p { margin:10px 0;}
+
+.ch_content .box h3 { margin:0; border:0; background:transparent;}
+
+.subcontainer { margin:10px 30px; padding:1px; border:10px solid #d8dfea; background:#3B5999;}
+
+
+.personInfo { overflow:hidden; width:91px; vertical-align:bottom;}
+	.personIcon { width:52px; overflow:hidden;}
+		.personIcon td { width:52px;}
+		.personIcon a img { width:50px; border:1px solid #d8dfea;}
+		.personIcon a:hover img { border:1px solid #3B5999;}
+.personName { padding:5px 0 2px; line-height:15px; overflow:hidden;}
+.personName a { display:block; white-space:nowrap;}
+
+/* ==== 1.1 userInfo ==== */
+#userPicture { margin-bottom:10px;}
+	#userPicture a img { border:1px solid #d8dfea;z-index:100;}
+	#userPicture a:hover img { border:1px solid #3B5999;z-index:100;}
+
+#userActions { list-style-type:none; font-family:Tahoma, Helvetica, sans-serif; margin-top:5px;}
+	#userActions li { border-bottom:1px solid #d8dfea; color:#808080; text-indent:5px; line-height:20px;}
+	* html #userActions li { height:1%;}
+	*+html #userActions li { min-height:1%;}
+	#userActions li a { display:block; width:202px; text-decoration:none; font-size:12px;}
+	#userActions li a:hover{ background-color:#3b5999; color:White;}
+	
+	
+#AccountInfo,#BasicInfo,#ContactInfo,#MagicBox{ color:#3b5999;}
+
+/*基本信息的弹出样式*/
+#accont-header{background:url('images/bg_icon.png') no-repeat right 10; padding:2px;}
+#school-header{background:url('images/bg_icon.png') no-repeat right 10; padding:2px;}
+#basic-header{  background:url('images/bg_icon.png') no-repeat right -200px; padding:2px;}
+#personal-header{ background:url('images/bg_icon.png') no-repeat right -240px;padding:2px;}
+#contact-header{background:url('images/bg_icon.png') no-repeat right -78px;padding:2px;}
+.accordionHeaderSelected{ font-weight:bold;}
+.accordionHeader{color:#3B5999;cursor:pointer}
+.accordionContent{ margin:0 5px;}

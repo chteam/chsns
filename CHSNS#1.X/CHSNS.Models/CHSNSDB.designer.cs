@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008/9/21 20:40:30
+// 生成日期: 2008/10/3 11:55:56
 namespace CHSNS.Models
 {
     
@@ -777,52 +777,6 @@ namespace CHSNS.Models
         private string _Password;
         partial void OnPasswordChanging(string value);
         partial void OnPasswordChanged();
-        /// <summary>
-        /// 架构中不存在属性 Question 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Question
-        {
-            get
-            {
-                return this._Question;
-            }
-            set
-            {
-                this.OnQuestionChanging(value);
-                this.ReportPropertyChanging("Question");
-                this._Question = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Question");
-                this.OnQuestionChanged();
-            }
-        }
-        private string _Question;
-        partial void OnQuestionChanging(string value);
-        partial void OnQuestionChanged();
-        /// <summary>
-        /// 架构中不存在属性 Answer 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Answer
-        {
-            get
-            {
-                return this._Answer;
-            }
-            set
-            {
-                this.OnAnswerChanging(value);
-                this.ReportPropertyChanging("Answer");
-                this._Answer = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Answer");
-                this.OnAnswerChanged();
-            }
-        }
-        private string _Answer;
-        partial void OnAnswerChanging(string value);
-        partial void OnAnswerChanged();
         /// <summary>
         /// 架构中不存在属性 Code 的注释。
         /// </summary>

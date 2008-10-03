@@ -8,7 +8,7 @@ namespace CHSNS.Data
     public class AccountMediator : BaseMediator
     {
         public AccountMediator(DBExt id) : base(id) { }
-        public void Logout()
+		public void Logout()
         {
             CHCookies.Clear();
             CHUser.Clear();
@@ -77,15 +77,13 @@ where userid=@UserID",
         }
         public bool Create(Account account, string name)
         {
-            var exists = DBExt.DB.Account.Where(c => c.Username == account.Username).Select(c => 1).Count();
-            if (exists != 0)
+			var canuse = IsUsernameCanUse(account.Username);
+            if (!canuse)
                 return false;
             var pas = account.Password.ToMd5();
 			DataBaseExecutor.Execute(@"INSERT INTO [Account]
-([Username],[Password],[Question],[Answer],[Code])VALUES
-(@email,@pas,@question,@answer,@code)",
-												  "@email", account.Username, "@pas", pas, "@question", account.Question ?? "",
-												  "@answer", account.Answer ?? "", "@code", DateTime.Now.Ticks);
+([Username],[Password],[Code])VALUES
+(@email,@pas,@code)","@email", account.Username, "@pas", pas,  "@code", DateTime.Now.Ticks);
             var x = DBExt.DB.Account.Where(c => c.Username == account.Username).Select(c => c.UserID).FirstOrDefault();
             if (x < 999) return false;
             var initscore = 50;
@@ -97,5 +95,10 @@ where userid=@UserID",
 ([UserID],[Name]) values(@userid,@name)", "@userid", x, "@name", name);
             return true;
         }
-    }
+		public bool IsUsernameCanUse(string username) {
+			if (username.Trim().Length < 4)
+				return false;
+			return DBExt.DB.Account.Where(c => c.Username == username).Count() == 0;
+		}
+	}
 }

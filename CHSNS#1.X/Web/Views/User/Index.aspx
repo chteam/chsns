@@ -3,8 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("Reply")%>
-	<%=Html.CSSLink("mypage")%>
-	<%=Html.CSSLink("home")%>
+<%--	<%=Html.CSSLink("mypage")%>
+	<%=Html.CSSLink("home")%>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% 

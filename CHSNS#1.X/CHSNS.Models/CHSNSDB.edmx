@@ -44,8 +44,6 @@
           <Property Name="UserID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Password" Type="char" Nullable="false" MaxLength="32" />
-          <Property Name="Question" Type="nvarchar" MaxLength="50" />
-          <Property Name="Answer" Type="char" MaxLength="32" />
           <Property Name="Code" Type="bigint" />
         </EntityType>
         <EntityType Name="Album">
@@ -504,8 +502,6 @@
           </Key>
           <Property Name="UserID" Type="Int64" Nullable="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="true" />
-          <Property Name="Question" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Answer" Type="String" MaxLength="32" Unicode="false" FixedLength="true" />
           <Property Name="Code" Type="Int64" />
           <Property Name="Username" Type="String" Nullable="false" /></EntityType>
         <EntityType Name="Album">
@@ -931,8 +927,6 @@
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Question" ColumnName="Question" />
-                <ScalarProperty Name="Answer" ColumnName="Answer" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 </MappingFragment>
             </EntityTypeMapping>
@@ -1399,7 +1393,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="CHSNSDB" ZoomLevel="100">
-        <EntityTypeShape EntityType="CHSNS.Models.Account" Width="1.5" PointX="0.75" PointY="0.75" Height="2.16105224609375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CHSNS.Models.Account" Width="1.5" PointX="0.75" PointY="0.75" Height="1.779012858072917" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Album" Width="1.5" PointX="2.75" PointY="0.75" Height="2.6339322916666665" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Application" Width="1.5" PointX="4.75" PointY="0.75" Height="3.8142708333333326" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.BasicInformation" Width="1.5" PointX="0.75" PointY="4.75" Height="2.1280729166666674" IsExpanded="true" />
