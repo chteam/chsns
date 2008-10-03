@@ -104,6 +104,9 @@
     <Compile Include="Config\ThumbnailPair.cs" />
     <Compile Include="DataBaseExecutor.cs" />
     <Compile Include="DateTimeExtension.cs" />
+    <Compile Include="Email\IEmail.cs" />
+    <Compile Include="Email\NetEmail.cs" />
+    <Compile Include="Email\WebEmail.cs" />
     <Compile Include="File.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
