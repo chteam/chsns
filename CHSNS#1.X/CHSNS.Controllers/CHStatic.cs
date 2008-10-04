@@ -7,36 +7,34 @@ using CHSNS.Models;
 
 namespace CHSNS {
 	public class CHStatic {
-		class neast {
+		class NeastStore {
 			public long FriendRequestCount {get;set;}
 			public long UnReadMessageCount { get; set; }
 		}
-		static void UploadCount() {
-			if (HttpContext.Current.Session["FriendRequestCount"] == null ||
-				HttpContext.Current.Session["UnReadMessageCount"] == null) {
-				var db = new Data.DBExt();
-				db.UserInfo.GetUser<neast>(CHUser.UserID, c=>new neast() {
-					FriendRequestCount=c.FriendRequestCount,
-					UnReadMessageCount=c.InboxCount
-				});
+		public static void Clear() {
+			HttpContext.Current.Session.Remove("CHStatic");
+		}
+		static NeastStore Storer {
+			get {
+				if (HttpContext.Current.Session["CHStatic"] == null) {
+					var db = new Data.DBExt();
+					var ret = db.UserInfo.GetUser<NeastStore>(CHUser.UserID, c => new NeastStore() {
+						FriendRequestCount = c.FriendRequestCount,
+						UnReadMessageCount = c.UnReadMessageCount
+					});
+					HttpContext.Current.Session["CHStatic"] = ret;
+				}
+				return HttpContext.Current.Session["CHStatic"] as NeastStore;
 			}
 		}
 		public static long FriendRequestCount {
 			get {
-				UploadCount();
-				long x = 0;
-				if (HttpContext.Current.Session["FriendRequestCount"] != null)
-					long.TryParse(HttpContext.Current.Session["FriendRequestCount"].ToString(), out x);
-				return x;
+				return Storer.FriendRequestCount;
 			}
 		}
 		public static long UnReadMessageCount {
 			get {
-				UploadCount();
-				long x = 0;
-				if (HttpContext.Current.Session["UnReadMessageCount"] != null)
-					long.TryParse(HttpContext.Current.Session["UnReadMessageCount"].ToString(), out x);
-				return x;
+				return Storer.UnReadMessageCount;
 			}
 		}
 	}

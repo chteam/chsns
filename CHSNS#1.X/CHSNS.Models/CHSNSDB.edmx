@@ -360,6 +360,7 @@
           <Property Name="RegTime" Type="smalldatetime" Nullable="false" />
           <Property Name="LoginTime" Type="smalldatetime" Nullable="false" />
           <Property Name="AlbumCount" Type="bigint" Nullable="false" />
+          <Property Name="UnReadMessageCount" Type="bigint" Nullable="false" />
           <Property Name="OutboxCount" Type="bigint" Nullable="false" />
           <Property Name="InboxCount" Type="bigint" Nullable="false" />
           <Property Name="FileSizeAll" Type="bigint" Nullable="false" />
@@ -824,7 +825,8 @@
           <Property Name="RegTime" Type="DateTime" Nullable="false" />
           <Property Name="LoginTime" Type="DateTime" Nullable="false" />
           <Property Name="Field" Type="Byte" Nullable="true" />
-          <Property Name="FriendRequestCount" Type="Int64" Nullable="false" /></EntityType>
+          <Property Name="FriendRequestCount" Type="Int64" Nullable="false" />
+          <Property Name="UnReadMessageCount" Type="Int64" Nullable="false" /></EntityType>
         <EntityType Name="Province">
           <Key>
             <PropertyRef Name="ID" />
@@ -1244,6 +1246,7 @@
           <EntitySetMapping Name="Profile">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Profile)">
               <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="UnReadMessageCount" ColumnName="UnReadMessageCount" />
                 <ScalarProperty Name="FriendRequestCount" ColumnName="FriendRequestCount" />
                 <ScalarProperty Name="Field" ColumnName="Field" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />

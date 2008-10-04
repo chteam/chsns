@@ -112,6 +112,7 @@
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
     <Compile Include="JsonExtension.cs" />
     <Compile Include="Media.cs" />
+    <Compile Include="MessageBoxType.cs" />
     <Compile Include="NullableExtension.cs" />
     <Compile Include="OleDbDataOpener.cs" />
     <Compile Include="Online.cs" />
