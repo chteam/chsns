@@ -62,20 +62,26 @@ VALUES(@fromid,@toid,@title,@body,getdate(),0,0,0,@ishtml)",
 				"@body", m.IsHtml ? m.Body : HttpUtility.HtmlEncode(m.Body),
 				"@ishtml", m.IsHtml
 				);
-			DataBaseExecutor.Execute(@"update [profile] set inboxcount=inboxcount+1 where userid=@userid and not inboxcount<=0",
+			DataBaseExecutor.Execute(@"update [profile] set inboxcount=inboxcount+1,unreadMessageCount=unreadMessageCount+1 where userid=@userid",
 				"@userid",m.ToID);
-			DataBaseExecutor.Execute(@"update [profile] set outboxcount=outboxcount+1 where userid=@userid and not outboxcount<=0",
+			DataBaseExecutor.Execute(@"update [profile] set outboxcount=outboxcount+1 where userid=@userid",
 				"@userid", m.FromID);
 		}
 
-		public void Delete(long id, int t, long userid) {
-			if (t == 1) {
+		public void Delete(long id, MessageBoxType t, long userid) {
+			if (t == MessageBoxType.Inbox) {
 				DataBaseExecutor.Execute("update [message] set istodel=1 where id=@id", "@id", id);
-				DataBaseExecutor.Execute("update [profile] set inboxcount=inboxcount-1 where userid=@id", "@id", userid);
-			} else {
+				DataBaseExecutor.Execute("update [profile] set inboxcount=inboxcount-1 where userid=@id and inboxcount>0", "@id", userid);
+			} else {//发件箱
 				DataBaseExecutor.Execute("update [message] set isfromdel=1 where id=@id", "@id", id);
-				DataBaseExecutor.Execute("update [profile] set outboxcount=outboxcount-1 where userid=@id", "@id", userid);
+				int tr = DataBaseExecutor.Execute(@"update [profile] 
+				set unreadMessageCount=unreadMessageCount-1,outboxcount=outboxcount-1
+where userid=@uid and unreadMessageCount>0 and outboxcount>0 and 
+exists(select 1 from [message] where id=@id and issee=0)", "@uid", userid, "@id", id);
+				if (tr != 1)//上条未更新，证明是已经读的
+					DataBaseExecutor.Execute("update [profile] set outboxcount=outboxcount-1 where userid=@id and outboxcount>0", "@id", userid);
 			}
+			// TODO:应该将所有已经双方删除的 彻底更新
 		}
 
 		public MessageDetailsPas Details(long id, long userid) {
@@ -91,6 +97,8 @@ VALUES(@fromid,@toid,@title,@body,getdate(),0,0,0,@ishtml)",
 					  ).FirstOrDefault();
 			if (ret.UserInbox.ID == userid && !ret.Message.IsSee) {//我是收件人,则表示已经看过了,可以更新
 				DataBaseExecutor.Execute(@"update [message] set IsSee=1 where id=@id", "@id", ret.Message.ID);
+				DataBaseExecutor.Execute(@"update [profile] set unreadMessageCount=unreadMessageCount-1 where userid=@userid and unreadMessageCount>0",
+	"@userid", userid);
 			}
 			return ret;
 		}

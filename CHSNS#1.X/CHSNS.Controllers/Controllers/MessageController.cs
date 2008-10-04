@@ -44,12 +44,14 @@ namespace CHSNS.Controllers {
 		}
 		[AcceptVerbs("Post")]
 		public ActionResult Delete(long id, int t) {
-			DBExt.Message.Delete(id, t, CHUser.UserID);
+			DBExt.Message.Delete(id, (MessageBoxType)t, CHUser.UserID);
+			CHStatic.Clear();
 			return Content("");
 		}
 		public ActionResult Details(long id) {
 			var m = DBExt.Message.Details(id, CHUser.UserID);
 			ViewData["Page_Title"] = m.Message.Title;
+			CHStatic.Clear();
 			return View(m);
 		}
 		public ActionResult Write(long toid, string toname) {

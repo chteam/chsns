@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008/10/3 11:55:56
+// 生成日期: 2008/10/4 23:19:56
 namespace CHSNS.Models
 {
     
@@ -5902,6 +5902,7 @@ namespace CHSNS.Models
         /// <param name="regTime">RegTime 的初始值。</param>
         /// <param name="loginTime">LoginTime 的初始值。</param>
         /// <param name="friendRequestCount">FriendRequestCount 的初始值。</param>
+        /// <param name="unReadMessageCount">UnReadMessageCount 的初始值。</param>
         public static Profile CreateProfile(
                     long userID, 
                     string name, 
@@ -5926,7 +5927,8 @@ namespace CHSNS.Models
                     int status, 
                     global::System.DateTime regTime, 
                     global::System.DateTime loginTime, 
-                    long friendRequestCount)
+                    long friendRequestCount, 
+                    long unReadMessageCount)
         {
             Profile profile = new Profile();
             profile.UserID = userID;
@@ -5953,6 +5955,7 @@ namespace CHSNS.Models
             profile.RegTime = regTime;
             profile.LoginTime = loginTime;
             profile.FriendRequestCount = friendRequestCount;
+            profile.UnReadMessageCount = unReadMessageCount;
             return profile;
         }
         /// <summary>
@@ -6622,6 +6625,29 @@ namespace CHSNS.Models
         private long _FriendRequestCount;
         partial void OnFriendRequestCountChanging(long value);
         partial void OnFriendRequestCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 UnReadMessageCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long UnReadMessageCount
+        {
+            get
+            {
+                return this._UnReadMessageCount;
+            }
+            set
+            {
+                this.OnUnReadMessageCountChanging(value);
+                this.ReportPropertyChanging("UnReadMessageCount");
+                this._UnReadMessageCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("UnReadMessageCount");
+                this.OnUnReadMessageCountChanged();
+            }
+        }
+        private long _UnReadMessageCount;
+        partial void OnUnReadMessageCountChanging(long value);
+        partial void OnUnReadMessageCountChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Province 的注释。
