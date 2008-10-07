@@ -139,7 +139,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="LogID" Type="bigint" />
+          <Property Name="ShowerID" Type="bigint" />
           <Property Name="OwnerID" Type="bigint" Nullable="false" />
           <Property Name="SenderID" Type="bigint" Nullable="false" />
           <Property Name="AddTime" Type="smalldatetime" Nullable="false" />
@@ -597,7 +597,6 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" />
-          <Property Name="LogID" Type="Int64" />
           <Property Name="OwnerID" Type="Int64" Nullable="false" />
           <Property Name="SenderID" Type="Int64" Nullable="false" />
           <Property Name="AddTime" Type="DateTime" Nullable="false" />
@@ -607,7 +606,7 @@
           <Property Name="IsDel" Type="Boolean" Nullable="false" />
           <Property Name="Type" Type="Byte" Nullable="false" />
           <Property Name="IsTellMe" Type="Byte" Nullable="false" />
-        </EntityType>
+          <Property Name="ShowerID" Type="Int64" Nullable="true" /></EntityType>
         <EntityType Name="ContactInformation">
           <Key>
             <PropertyRef Name="UserID" />
@@ -1030,8 +1029,8 @@
           <EntitySetMapping Name="Comment">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Comment)">
               <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="ShowerID" ColumnName="ShowerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LogID" ColumnName="LogID" />
                 <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
                 <ScalarProperty Name="SenderID" ColumnName="SenderID" />
                 <ScalarProperty Name="AddTime" ColumnName="AddTime" />
@@ -1403,7 +1402,7 @@
         <EntityTypeShape EntityType="CHSNS.Models.Blogs" Width="1.5" PointX="2.75" PointY="5.75" Height="3.3084114583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Category" Width="1.5" PointX="4.75" PointY="5.75" Height="1.7908333333333335" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.City" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4535937499999998" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.Models.Comment" Width="1.5" PointX="6.75" PointY="3.75" Height="2.8025520833333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="CHSNS.Models.Comment" Width="1.5" PointX="6.75" PointY="3.75" Height="3.1161507161458326" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.ContactInformation" Width="1.5" PointX="6.75" PointY="7.75" Height="2.9711718749999996" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Event" Width="1.5" PointX="8.75" PointY="0.625" Height="2.3520719401041665" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Field" Width="1.5" PointX="8.75" PointY="4.75" Height="1.9594531249999996" IsExpanded="true" />

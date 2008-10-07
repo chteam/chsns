@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008/10/4 23:19:56
+// 生成日期: 2008/10/5 11:59:36
 namespace CHSNS.Models
 {
     
@@ -2425,29 +2425,6 @@ namespace CHSNS.Models
         partial void OnIDChanging(long value);
         partial void OnIDChanged();
         /// <summary>
-        /// 架构中不存在属性 LogID 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> LogID
-        {
-            get
-            {
-                return this._LogID;
-            }
-            set
-            {
-                this.OnLogIDChanging(value);
-                this.ReportPropertyChanging("LogID");
-                this._LogID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("LogID");
-                this.OnLogIDChanged();
-            }
-        }
-        private global::System.Nullable<long> _LogID;
-        partial void OnLogIDChanging(global::System.Nullable<long> value);
-        partial void OnLogIDChanged();
-        /// <summary>
         /// 架构中不存在属性 OwnerID 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
@@ -2654,6 +2631,29 @@ namespace CHSNS.Models
         private byte _IsTellMe;
         partial void OnIsTellMeChanging(byte value);
         partial void OnIsTellMeChanged();
+        /// <summary>
+        /// 架构中不存在属性 ShowerID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Nullable<long> ShowerID
+        {
+            get
+            {
+                return this._ShowerID;
+            }
+            set
+            {
+                this.OnShowerIDChanging(value);
+                this.ReportPropertyChanging("ShowerID");
+                this._ShowerID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ShowerID");
+                this.OnShowerIDChanged();
+            }
+        }
+        private global::System.Nullable<long> _ShowerID;
+        partial void OnShowerIDChanging(global::System.Nullable<long> value);
+        partial void OnShowerIDChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.ContactInformation 的注释。
