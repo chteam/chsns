@@ -19,7 +19,7 @@ line-height:150%;}
 .title{clear:both;float:right;font-size:110%;font-weight:bold;line-height:1.5em;width:100%;border-bottom:solid 1px #2984ad}
 .title a{color:#000;}
 .title a:hover{color:Orange;text-decoration:none}
-.text{clear:both;line-height:1.5em;padding:20px;width:100%;}
+.text{clear:both;line-height:1.5em;padding:20px;}
 .option{clear:both;color:#666666;float:right;margin-top:5px;padding-right:5px;text-align:right;width:100%;}
 .s_icon{background:url('images/bg_icon.png') no-repeat;}
 .portal{display:block; padding:5px 0 5px 18px; margin:10px 0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#f7f7f7 url(images/style_triangle.gif) 8px 10px no-repeat; color:#333; font-weight:bold;}
@@ -303,7 +303,7 @@ background-position:0 -1400px;
 
 
 /* useritem list new*/
-.userlist,.userlist ul { list-style-type:none;padding-right:5px}
+.userlist,.userlist ul { list-style-type:none;padding:0px 5px}
 .useritem { display:block; margin:10px 0; padding:10px; border:1px solid #d8dfea; background:#fff;}
 .useritem:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
 * html .useritem { height:1%;}

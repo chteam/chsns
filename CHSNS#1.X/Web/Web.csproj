@@ -679,6 +679,7 @@
     <Content Include="Style\Facebook_backup\wysiwyg.css" />
     <Content Include="Views\Admin\About.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Note\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
     <Content Include="Views\Event\IndexCtl\Event.ascx" />
@@ -789,7 +790,6 @@
     <Content Include="Views\Account\Agreement.aspx" />
     <Content Include="Views\Account\Reg-Success.aspx" />
     <Content Include="Views\Account\RegPage.aspx" />
-    <Content Include="Views\Comment\ShowList.ascx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
     <Content Include="Views\Friend\FriendList.ascx" />
@@ -1006,19 +1006,19 @@
     <Compile Include="Views\Admin\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Note\CommentList.ascx.cs">
+      <DependentUpon>CommentList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Note\CommentList.ascx.designer.cs">
+      <DependentUpon>CommentList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Comment\Reply.aspx.cs">
       <DependentUpon>Reply.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Comment\Reply.aspx.designer.cs">
       <DependentUpon>Reply.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Comment\ShowList.ascx.cs">
-      <DependentUpon>ShowList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Comment\ShowList.ascx.designer.cs">
-      <DependentUpon>ShowList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Event\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

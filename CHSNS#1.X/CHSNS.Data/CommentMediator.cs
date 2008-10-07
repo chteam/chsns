@@ -2,28 +2,32 @@
 using System.Linq;
 using CHSNS.Models;
 
+
 namespace CHSNS.Data {
 	public class CommentMediator : BaseMediator {
 		public CommentMediator(DBExt id) : base(id) { }
 		public DataRowCollection NewFiveReply() {
 			return DataBaseExecutor.GetRows("Reply_New", "@userid", CHUser.UserID);
 		}
-		public IQueryable<ReplyPas> GetReply(long userid) {
+		public IQueryable<CommentPas> GetReply(long userid) {
 			var ret = (from r in DBExt.DB.Reply
 					   join p in DBExt.DB.Profile on r.SenderID equals p.UserID
 					   where r.UserID == userid
 					   orderby r.ID descending
-					   select new ReplyPas {
-						   Reply = r,
-						   Sender = new NameIDPas {
-							   ID = p.UserID,
-							   Name = p.Name
-						   }
+					   select new CommentPas {
+						   Comment = new CommentItemPas {
+							   ID = r.ID,
+							   OwnerID=r.UserID,
+							   Body = r.Body,
+							   AddTime = r.AddTime,
+							   IsDel = r.IsDel
+						   },
+						   Sender = new NameIDPas { ID = p.UserID, Name = p.Name }
 					   }
 					  );
 			return ret;
 		}
-		public Reply AddReply(Reply r){
+		public Reply AddReply(Reply r) {
 			DataBaseExecutor.Execute(
 				@"INSERT INTO [sq_menglei].[dbo].[Reply]
 ([UserID],[SenderID],[Body],[AddTime],[IsSee],[IsDel],[IsTellMe])
@@ -33,7 +37,7 @@ VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
 				"@body", r.Body,
 				"@istellme", r.IsTellMe);
 			DataBaseExecutor.Execute("update [profile] set replycount=replycount+1 where userid=@userid",
-			                         "@userid", r.UserID);
+									 "@userid", r.UserID);
 			return r;
 		}
 		public void DeleteReply(long id, long userid) {
@@ -43,6 +47,23 @@ VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
 			DataBaseExecutor.Execute(@"update [profile] set ReplyCount=ReplyCount-1
 where userid=@userid",
 				"@userid", userid);
+		}
+		public IQueryable<CommentPas> CommentList(long ShowerID, CommentType type) {
+			var ret = (from r in DBExt.DB.Comment
+					   join p in DBExt.DB.Profile on r.SenderID equals p.UserID
+					   where r.ShowerID == ShowerID && r.Type == (byte)type
+					   select new CommentPas {
+						   Comment = new CommentItemPas {
+							   ID = r.ID,
+							   OwnerID=r.OwnerID,
+							   Body = r.Body,
+							   AddTime = r.AddTime,
+							   IsDel = r.IsDel
+						   },
+						   Sender = new NameIDPas { ID = p.UserID, Name = p.Name }
+					   }
+			);
+			return ret;
 		}
 	}
 }

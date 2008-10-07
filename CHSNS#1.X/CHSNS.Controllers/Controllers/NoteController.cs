@@ -45,8 +45,11 @@ namespace CHSNS.Controllers {
 		public ActionResult Details(long id) {
 			using (var ts = new TransactionScope()) {
 				var note = DBExt.Note.Details(id);
-				//TODO:ViewCount++
+				// TODO:ViewCount++
 				ViewData["Page_Title"] = note.Note.Title;
+				ViewData["NowPage"] = 1;
+				ViewData["PageCount"] = note.User.Count;
+				ViewData["commentlist"] = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1, 100);
 				ts.Complete();
 				return View(note);
 			}

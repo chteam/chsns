@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CHSNS.Models{
-	public class ReplyPas {
+namespace CHSNS.Models {
+	public class CommentPas {
 		public NameIDPas Sender { get; set; }
-		public Reply Reply { get; set; }
+		public CommentItemPas Comment { get; set; }
 	}
 }

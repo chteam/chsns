@@ -71,14 +71,14 @@
       <DependentUpon>CHSNSDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="CHSNSDBDataContext.cs" />
-    <Compile Include="EntityRender\CommentListPas.cs" />
+    <Compile Include="EntityRender\CommentItemPas.cs" />
+    <Compile Include="EntityRender\CommentPas.cs" />
     <Compile Include="EntityRender\EventPagePas.cs" />
     <Compile Include="EntityRender\MessageDetailsPas.cs" />
     <Compile Include="EntityRender\MessageItemPas.cs" />
     <Compile Include="EntityRender\NameIDPas.cs" />
     <Compile Include="EntityRender\NoteDetailsPas.cs" />
     <Compile Include="EntityRender\NotePas.cs" />
-    <Compile Include="EntityRender\ReplyPas.cs" />
     <Compile Include="EntityRender\UserItemPas.cs" />
     <Compile Include="EntityRender\UserPas.cs" />
     <Compile Include="EntityRender\UserwithCountPas.cs">
