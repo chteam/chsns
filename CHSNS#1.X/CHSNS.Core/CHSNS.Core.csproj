@@ -93,6 +93,7 @@
     <Compile Include="CHSite.cs" />
     <Compile Include="CHUser.cs" />
     <Compile Include="CHSNSUser.cs" />
+    <Compile Include="CommentType.cs" />
     <Compile Include="ConfigSerializer.cs" />
     <Compile Include="Config\BaseConfig.cs" />
     <Compile Include="Config\ChAlumnaConfig.cs" />

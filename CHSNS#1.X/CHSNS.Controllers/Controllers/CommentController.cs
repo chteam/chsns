@@ -51,13 +51,18 @@ namespace CHSNS.Controllers {
 					DBExt.Comment.AddReply(r);
 				}
 				r.UserID = OwnerID;
-				var model = new List<ReplyPas>{
-				new ReplyPas{
+				var model = new List<CommentPas>{
+					new CommentPas{
 					Sender = new NameIDPas{
 						ID = CHUser.UserID,
 						Name = CHUser.Username
 					},
-					Reply = r
+					Comment =new CommentItemPas{ 
+						 ID = r.ID,
+						 OwnerID=r.UserID,
+							   Body = r.Body,
+							   AddTime = r.AddTime,
+							   IsDel = r.IsDel	}
 				}
 			};
 				ts.Complete();

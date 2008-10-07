@@ -19,9 +19,10 @@ namespace CHSNS.Data {
 					   where n.ID == id
 					   select new NoteDetailsPas {
 						   Note = n,
-						   User = new UserItemPas {
+						   User = new UserCountPas {
 							   ID = p.UserID,
-							   Name = p.Name
+							   Name = p.Name,
+							   Count = n.CommentCount
 						   }
 					   }
 					  ).FirstOrDefault();

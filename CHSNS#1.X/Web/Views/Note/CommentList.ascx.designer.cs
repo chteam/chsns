@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CHSNS.Web.Views.Comment {
+namespace CHSNS.Web.Views.Note {
     
     
-    public partial class ShowList {
+    public partial class CommentList {
     }
 }
