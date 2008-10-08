@@ -1,11 +1,12 @@
 using System;
-
+using System.Linq;
 using System.Web.Mvc;
 using CHSNS.Extension;
 using CHSNS.Filter;
 using CHSNS.Models;
 using CHSNS.Tools;
 using System.Transactions;
+using CHSNS.Config;
 namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class NoteController : BaseController {
@@ -45,11 +46,14 @@ namespace CHSNS.Controllers {
 		public ActionResult Details(long id) {
 			using (var ts = new TransactionScope()) {
 				var note = DBExt.Note.Details(id);
-				// TODO:ViewCount++
+				// TODO: ViewCount++
 				ViewData["Page_Title"] = note.Note.Title;
 				ViewData["NowPage"] = 1;
 				ViewData["PageCount"] = note.User.Count;
-				ViewData["commentlist"] = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1, 100);
+				var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
+					SiteConfig.Current.Note.CommentEveryPage
+					).OrderBy(c => c.Comment.ID);
+				ViewData["commentlist"] = cl;
 				ts.Complete();
 				return View(note);
 			}
@@ -101,8 +105,6 @@ namespace CHSNS.Controllers {
 				return Content("");
 			}
 		}
-
-
 
 		public ActionResult New() {
 			//	Chsword.Reader.LogBook rl = new Chsword.Reader.LogBook("LogBook", 0, Viewerid);

@@ -47,7 +47,6 @@ namespace CHSNS.Controllers {
 			}
 		}
 
-
 		protected override void OnResultExecuted(ResultExecutedContext filterContext) {
 			if (_dbext != null)
 				DBExt.Dispose();

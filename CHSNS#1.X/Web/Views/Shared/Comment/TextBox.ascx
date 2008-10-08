@@ -8,6 +8,7 @@
 	(每条最多2000字)
 	<input value="取消" class="subbutton" onclick="HideReply();" tabindex="3" type="button" />
 	<span class="error" id="comment_bodymsg"></span>
+	<br />
 	<textarea id="comment_body" cols="70" rows="7" onkeydown="EnterReply(<%=ViewData.Model%>,event);" tabindex="1" class="cmtbody"></textarea>
 	<input type="hidden" value="0" id="ReplyerID" />
 </div>

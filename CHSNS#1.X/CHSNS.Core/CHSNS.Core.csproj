@@ -98,6 +98,7 @@
     <Compile Include="Config\BaseConfig.cs" />
     <Compile Include="Config\ChAlumnaConfig.cs" />
     <Compile Include="Config\ConfigString.cs" />
+    <Compile Include="Config\NoteConfig.cs" />
     <Compile Include="Config\Publish.cs" />
     <Compile Include="Config\RegVisitConfig.cs" />
     <Compile Include="Config\SiteConfig.cs" />

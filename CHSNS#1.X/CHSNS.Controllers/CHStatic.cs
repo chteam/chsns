@@ -4,27 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using CHSNS.Models;
+using System.Web.SessionState;
 
 namespace CHSNS {
 	public class CHStatic {
+		static HttpSessionState Session {
+			get {
+				return HttpContext.Current.Session;
+			}
+		}
 		class NeastStore {
 			public long FriendRequestCount {get;set;}
 			public long UnReadMessageCount { get; set; }
 		}
 		public static void Clear() {
-			HttpContext.Current.Session.Remove("CHStatic");
+			Session.Remove("CHStatic");
 		}
 		static NeastStore Storer {
 			get {
-				if (HttpContext.Current.Session["CHStatic"] == null) {
+				if (Session["CHStatic"] == null) {
 					var db = new Data.DBExt();
 					var ret = db.UserInfo.GetUser<NeastStore>(CHUser.UserID, c => new NeastStore() {
 						FriendRequestCount = c.FriendRequestCount,
 						UnReadMessageCount = c.UnReadMessageCount
 					});
-					HttpContext.Current.Session["CHStatic"] = ret;
+					Session["CHStatic"] = ret;
 				}
-				return HttpContext.Current.Session["CHStatic"] as NeastStore;
+				return Session["CHStatic"] as NeastStore;
 			}
 		}
 		public static long FriendRequestCount {
