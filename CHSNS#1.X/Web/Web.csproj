@@ -575,6 +575,7 @@
     <Content Include="Images\CHBox\tl.png" />
     <Content Include="Images\CHBox\tr.png" />
     <Content Include="Style\Facebook\Images\check_right.gif" />
+    <Content Include="Style\Facebook\Images\curtain.png" />
     <Content Include="Style\Facebook\Images\logo.jpg" />
     <Content Include="Images\menu.gif" />
     <Content Include="JavaScript\Admin\docs.js" />
