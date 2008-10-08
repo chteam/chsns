@@ -6,9 +6,12 @@ using System.Web.Mvc;
 using CHSNS.Filter;
 using CHSNS.Models;
 using CHSNS.Tools;
+using System.Linq;
+using CHSNS.Config;
 namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class CommentController : BaseController {
+		#region reply
 		/// <summary>
 		///回复列表
 		/// </summary>
@@ -76,12 +79,57 @@ namespace CHSNS.Controllers {
 		/// <returns></returns>
 		[AcceptVerbs("Post")]
 		public ActionResult DeleteReply(long id) {
-			using (var ts = new TransactionScope()) {
+			using (var ts = DBExt.ExeTransaction()) {
 				DBExt.Comment.DeleteReply(id, CHUser.UserID);
-				ts.Complete();
+				ts.Commit();
 				return new EmptyResult();
 			}
 		}
+		#endregion
 
+		#region comment
+		public ActionResult List(long id, int p, CommentType type) {
+			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(p,
+				SiteConfig.Current.Note.CommentEveryPage
+				).OrderBy(c => c.Comment.ID);
+			return View("Comment/Item", cl);
+		}
+		public ActionResult Delete(long id) {
+			// TODO:少删除的权限判断
+			using (var ts = DBExt.ExeTransaction()) {
+				DBExt.Comment.Delete(id, CommentType.Note);
+				ts.Commit();
+				return this.Empty();
+			}
+		}
+		public ActionResult Add(long ShowerID,long OwnerID,string Body, CommentType type) {
+			var cmt = new Comment {
+				ShowerID = ShowerID,
+				OwnerID = OwnerID,
+				SenderID = CHUser.UserID,
+				Body = Body,
+				Type = (byte)type,
+				AddTime = DateTime.Now,
+				IsTellMe = 0
+			};
+			var model = new List<CommentPas>{
+					new CommentPas{
+					Sender = new NameIDPas{
+						ID = CHUser.UserID,
+						Name = CHUser.Username
+					},
+					Comment =new CommentItemPas{ 
+						 ID = cmt.ID,
+						 OwnerID=cmt.OwnerID,
+							   Body = cmt.Body,
+							   AddTime =cmt.AddTime,
+							   IsDel =cmt.IsDel
+					}
+				}
+			};
+			DBExt.Comment.Add(cmt, type);
+			return View("Comment/Item", model);
+		}
+		#endregion
 	}
 }

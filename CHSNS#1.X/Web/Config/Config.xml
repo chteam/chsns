@@ -29,4 +29,7 @@
     <AddTime>2008-02-26T13:25:08.4375+08:00</AddTime>
     <IsShow>true</IsShow>
   </Publish>
+	<Note>
+		<CommentEveryPage>50</CommentEveryPage>
+	</Note>
 </SiteConfig>

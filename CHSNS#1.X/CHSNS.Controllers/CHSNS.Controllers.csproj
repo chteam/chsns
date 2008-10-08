@@ -119,6 +119,7 @@
     <Compile Include="Helper\UrlHelperCHHelperExt.cs" />
     <Compile Include="Extension\ControllerExt.cs" />
     <Compile Include="Extension\RedirectExt.cs" />
+    <Compile Include="Tools\EmptyExt.cs" />
     <Compile Include="Tools\PagerExt.cs" />
   </ItemGroup>
   <ItemGroup>

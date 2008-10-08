@@ -85,10 +85,14 @@ var alertEx = function(s) {
 //-----------------------------------------------PageMothed--------------------------------------------------------------
 
 //Enter focus
-function EnterTo(n, event) {
-    if (event.keyCode == 13)
-        $(n[0] == '#' ? n : "input[name=" + n + "]").focus();
-}
+var EnterTo = function(n, event) {
+	if (event.keyCode == 13)
+		$(n[0] == '#' ? n : "input[name=" + n + "]").focus();
+};
+var CtrlEnter = function(event, fun) {
+	if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83))
+		fun();
+};
 //valitate
 function FormMsg(i, m, p) {//i:id without msg,m:message,p:id withmsg or define self
     if (p == null) p = i + "msg";

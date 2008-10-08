@@ -13,7 +13,7 @@
 		<%=Html.UserPageLink(dr.Sender.ID,dr.Sender.Name)%>
 				
 				<span class="time">
-					<%=dr.Comment.AddTime.ToString("MM-dd HH:mm") %></span>
+					<%=dr.Comment.AddTime.ToString("yyyy-MM-dd HH:mm") %></span>
 			<%if (dr.Sender.ID != CHUser.UserID) {%>
 			<span class="reply">
 <a href="javascript:void(0);" onclick="WillReply('<%=dr.Sender.Name%>','<%=dr.Sender.ID%>');">回复</a></span>

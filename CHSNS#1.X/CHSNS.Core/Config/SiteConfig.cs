@@ -9,6 +9,7 @@ namespace CHSNS.Config {
 		public BaseConfig BaseConfig { get; set; }
 		public RegVisitConfig RegVisitConfig { get; set; }
 		public Publish Publish { get; set; }
+		public NoteConfig Note { get; set; }
 		/// <summary>
 		/// ∑¥–Ú¡–ªØ
 		/// </summary>
@@ -30,9 +31,5 @@ namespace CHSNS.Config {
 			string fn = "Config";
 			ConfigSerializer.Serializer(this, fn);
 		}
-
-
-
-
 	}
 }

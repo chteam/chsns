@@ -460,7 +460,6 @@
     <Content Include="Config\AnimalSign.config" />
     <Content Include="Config\City.config" />
     <Content Include="Config\Comment.config" />
-    <Content Include="Config\Config.config" />
     <Content Include="Config\Date.config" />
     <Content Include="Config\EditFormat.config" />
     <Content Include="Config\Event.config" />
@@ -813,6 +812,7 @@
     <Content Include="Views\Note\Edit.aspx" />
     <Content Include="Views\Note\Index.aspx" />
     <Content Include="Views\Note\NoteList.ascx" />
+    <Content Include="Views\Shared\Comment\DirectTextBox.ascx" />
     <Content Include="Views\Shared\Comment\Item.ascx" />
     <Content Include="Views\Shared\Comment\TextBox.ascx" />
     <Content Include="Views\Shared\EventTemplate\AddNote.ascx" />
@@ -1194,6 +1194,13 @@
     </Compile>
     <Compile Include="Views\Shared\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Comment\DirectTextBox.ascx.cs">
+      <DependentUpon>DirectTextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Comment\DirectTextBox.ascx.designer.cs">
+      <DependentUpon>DirectTextBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Comment\Item.ascx.cs">
       <DependentUpon>Item.ascx</DependentUpon>
