@@ -18,6 +18,7 @@
 	<%
 		}
 	%>
+	<div class="curtain">
 	<div id="userUpdates">
 		<div id="userStatus">
 			<h2>
@@ -140,6 +141,7 @@
 		   , 0, 1, 100, 0)); %> 
 			</div>
 		</div>--%>
+	</div>
 	</div>
 	<%} %>
 </asp:Content>

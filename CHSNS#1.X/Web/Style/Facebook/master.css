@@ -1,4 +1,4 @@
-body{font-size:9pt;margin:0px}
+body{font-size:9pt;margin:0px;font-family:Tahoma, Helvetica, sans-serif;}
 h3{color: #7D775C;}
 
 a{text-decoration:none;}
@@ -16,9 +16,11 @@ legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:3px 5px}
 font-size:14px;
 line-height:150%;}
 /*class*/
-.title{clear:both;float:right;font-size:110%;font-weight:bold;line-height:1.5em;width:100%;border-bottom:solid 1px #2984ad}
-.title a{color:#000;}
-.title a:hover{color:Orange;text-decoration:none}
+.title{clear:both;float:right;font-size:12px;font-weight:600;line-height:1.5em;width:100%;
+       border-bottom:solid 1px #2984ad;
+       background:#e5e5e5}
+.title a{color:#333333;display:block}
+.title a:hover{color:red;text-decoration:none}
 .text{clear:both;line-height:1.5em;padding:20px;}
 .option{clear:both;color:#666666;float:right;margin-top:5px;padding-right:5px;text-align:right;width:100%;}
 .s_icon{background:url('images/bg_icon.png') no-repeat;}
@@ -251,7 +253,7 @@ background-position:0 -1400px;
 .tags .tag_1 a{color: #6699FF;}
 
 .userviewlist{}
-.userviewlist ul{list-style-type:none;}
+.userviewlist ul{list-style-type:none;margin:0}
 .userviewlist ul li{float:left;margin:0;height:91px;display:block}
 
 .userviewinfo { overflow:hidden; width:52px;padding:5px;}
@@ -355,18 +357,12 @@ background-position:0 -1400px;
 
 
 /*userpage*/
-#userRelations { float:left;padding-bottom:10px;width:205px; padding-left:10px;margin-top:17px;z-index:100;}
-#userUpdates {float:right;position:relative;width:420px;}
-#userRelations ul,#userRelations ul{list-style-type:none;}
-
-
-#userStatus{
-background:#F7F7F7 none repeat scroll 0%;
-border-bottom:1px solid #CCCCCC;
-margin:0 -10px 5px -220px;
-padding:17px 5px 10px 220px;
-z-index:-100;
-}
+.curtain{background:url(images/curtain.png) repeat-x top left;min-height:100px}
+#userRelations { float:right;padding-bottom:10px;width:205px; padding-left:10px;margin-top:17px;z-index:100;}
+#userUpdates {float:left;position:relative;width:600px;}
+#userRelations ul,#userRelations ul{list-style-type:none;margin-left:0;padding-left:0}
+#userStatus{}
+#userStatus h2{margin:4px;font-size:16px;}
 #userAccount li{ margin-left:2px;}
  .mypage_name{ font-weight:bold; margin-left:5px;}
  .mypage_sta{ margin-top:5px;margin-left:5px;}
@@ -378,7 +374,7 @@ z-index:-100;
 *+html .ch_content { min-height:1%;}
 
 .box { position:relative; overflow:hidden; width:100%; margin-bottom:10px;}
-.box h3 { height:20px; margin-bottom:8px; padding-left:8px; background: transparent url(images/h4bg.jpg) repeat-x bottom left; color:#444444; border-top:1px solid #95a5c6; font-size:12px; line-height:20px;}
+.box h3 { height:20px; margin-bottom:0px; padding-left:8px; background: transparent url(images/h4bg.jpg) repeat-x bottom left; color:#444444; border-top:1px solid #95a5c6; font-size:12px; line-height:20px;}
 	.box h3 .edit a{ color:#cccccc; font-weight:normal; float:right; margin-right:10px;}
 	.box h3 .stat { height:20px; margin-left:5px; color:#000; font-size:12px; font-weight:normal; line-height:20px;}
 	.box h3 .count { padding:0 2px;}
@@ -388,13 +384,6 @@ z-index:-100;
 	.box .more .stat { color:#3B5999;}
 .box .boxcont{ padding:0 10px;}
 
-.ch_content .cube { position:relative;}
-.ch_content .cube h3 { margin:10px 0; color:#3B5999; border-bottom:1px solid #d8dfea; font-size:14px;}
-.ch_content .cube .more { position:absolute; right:15px; top:10px; line-height:21px;}
-.ch_content .cube h3 a { text-decoration:none;}
-.ch_content .cube.text ul { padding-left:20px;}
-.ch_content .cube.text li { margin:5px 0;}
-.ch_content .cube.text p { margin:10px 0;}
 
 .ch_content .box h3 { margin:0; border:0; background:transparent;}
 
@@ -414,7 +403,7 @@ z-index:-100;
 	#userPicture a img { border:1px solid #d8dfea;z-index:100;}
 	#userPicture a:hover img { border:1px solid #3B5999;z-index:100;}
 
-#userActions { list-style-type:none; font-family:Tahoma, Helvetica, sans-serif; margin-top:5px;}
+#userActions { list-style-type:none; font-family:Tahoma, Helvetica, sans-serif; margin-top:5px;margin-left:0}
 	#userActions li { border-bottom:1px solid #d8dfea; color:#808080; text-indent:5px; line-height:20px;}
 	* html #userActions li { height:1%;}
 	*+html #userActions li { min-height:1%;}
@@ -424,12 +413,86 @@ z-index:-100;
 	
 #AccountInfo,#BasicInfo,#ContactInfo,#MagicBox{ color:#3b5999;}
 
-/*基本信息的弹出样式*/
-#accont-header{background:url('images/bg_icon.png') no-repeat right 10; padding:2px;}
-#school-header{background:url('images/bg_icon.png') no-repeat right 10; padding:2px;}
-#basic-header{  background:url('images/bg_icon.png') no-repeat right -200px; padding:2px;}
-#personal-header{ background:url('images/bg_icon.png') no-repeat right -240px;padding:2px;}
-#contact-header{background:url('images/bg_icon.png') no-repeat right -78px;padding:2px;}
-.accordionHeaderSelected{ font-weight:bold;}
-.accordionHeader{color:#3B5999;cursor:pointer}
-.accordionContent{ margin:0 5px;}
+
+
+
+/*toc tabs*/
+#toc{padding:0 10px; margin:10px 0;}
+.ui-tabs-nav .status{float:right; color:#808080;}
+
+
+
+
+
+
+
+/*jquery ui tabs*/
+
+/* Caution! Ensure accessibility in print and other media types... */
+@media projection, screen { /* Use class for showing/hiding tab content, so that visibility can be better controlled in different media types... */
+    .ui-tabs-hide {
+        display: none !important;
+    }
+}
+
+/* Hide useless elements in print layouts... */
+@media print {
+    .ui-tabs-nav {
+        display: none;
+    }
+}
+
+/* Skin */
+.ui-tabs-nav, .ui-tabs-panel {
+    font-family: "微软雅黑", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+.ui-tabs-nav {list-style-type:none; padding-left:10px; border-bottom:1px solid #3B5999;}
+.ui-tabs-nav:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.ui-tabs-nav li {float:left;}
+.ui-tabs-nav a, .ui-tabs-nav a span {}
+.ui-tabs-nav a {display:block; margin-right:0px; padding:2px 5px; text-decoration:none; line-height:15px; word-break:keep-all;}
+.ui-tabs-nav a:link, .ui-tabs-nav a:visited {}/**/
+.ui-tabs-nav .ui-tabs-selected a {background:#6d84b4;  margin:0px; color:#fff;}
+/**/
+.ui-tabs-nav .ui-tabs-selected a:hover{text-decoration:none; background:#d8dfea;display:block; color:#3b5999;}
+.ui-tabs-nav a:hover{color:#3b5999;padding:2px 4px; padding-bottom:1px; background:#d8dfea; text-decoration:none;border:solid 1px #d8dfea;border-width:1px 1px 0;}
+.ui-tabs-nav .ui-tabs-selected{float:left; color:#3b5999;border:solid 1px #6d84b4;border-width:1px 1px 0}
+.ui-tabs-nav .activetabhover{margin:0px; text-decoration:none; background:#3B5999;}
+.ui-tabs-nav .inactivetab:hover{color:#3B5999; background:#B6BDD2; text-decoration:none;}
+.ui-tabs-nav .tabs_hover{margin:0px; color:#3B5999; text-decoration:none;}
+
+.ui-tabs-nav a span {
+    padding-top: 1px;
+    padding-right: 0;
+    height: 20px;
+    background-position: 0 0;
+    line-height: 20px;
+}
+.ui-tabs-nav .ui-tabs-selected a span {
+    padding-top: 0;
+    height: 27px;
+    background-position: 0 -23px;
+    line-height: 27px;
+}
+.ui-tabs-nav .ui-tabs-selected a:link, .ui-tabs-nav .ui-tabs-selected a:visited,
+.ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */
+    cursor: text;
+}
+.ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active,
+.ui-tabs-nav .ui-tabs-unselect a:hover, .ui-tabs-nav .ui-tabs-unselect a:focus, .ui-tabs-nav .ui-tabs-unselect a:active { /* @ Opera, we need to be explicit again here now... */
+    cursor: pointer;
+}
+.ui-tabs-disabled {opacity: .4;filter: alpha(opacity=40);}
+.ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited {}
+.ui-tabs-panel {}
+
+/* Additional IE specific bug fixes... */
+* html .ui-tabs-nav { /* auto clear @ IE 6 & IE 7 Quirks Mode */
+    display: inline-block;
+}
+*:first-child+html .ui-tabs-nav  { /* auto clear @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */
+    display: inline-block;
+}
+* html .ui-tabs-nav{height:1%;}
+*+html .ui-tabs-nav{min-height:1%;}
