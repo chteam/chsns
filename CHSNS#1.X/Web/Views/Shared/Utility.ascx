@@ -4,7 +4,8 @@
 	<span class="menu"><a href="###" class="menu_title">应用</a>
 		<ul class="menu_network">
 			<li><a href="/SuperNoteRandom.aspx">视频</a></li>
-			<li><a href="/NewLogBook.aspx">日志</a></li>
+			
+			<li><%=Html.ActionLink("日志","News","Note") %></li>
 			<li><a href="/AlbumRandom.aspx">相册</a></li>
 			<li><a href="/GroupList.aspx?tabs=2">群组</a></li>
 		</ul>
