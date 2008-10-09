@@ -254,15 +254,18 @@ background-position:0 -1400px;
 
 .userviewlist{}
 .userviewlist ul{list-style-type:none;margin:0}
-.userviewlist ul li{float:left;margin:0;height:91px;display:block}
+.userviewlist ul li{float:left;margin:0;display:block}
 
 .userviewinfo { overflow:hidden; width:52px;padding:5px;}
-.userviewicon {position:relative;height:75px;padding:0}
-.userviewicon div{position:absolute;bottom:0;left:0}
-
+.userviewicon {position:relative;padding:0}
 .userviewicon li { width:52px;}
-.userviewicon a img { border:1px solid #d8dfea;max-height:74px;}
-.userviewicon a:hover img { border:1px solid #3B5999;}
+.userviewicon a { border:1px solid #d8dfea;
+background-position:center center;
+background-repeat:no-repeat;
+display:block;
+height:50px;
+width:50px;}
+.userviewicon a:hover { border:1px solid #3B5999;}
 
 .userviewname { padding:5px 0 2px; line-height:15px; overflow:hidden;}
 .userviewname a { display:block; white-space:nowrap;}
@@ -358,7 +361,7 @@ background-position:0 -1400px;
 
 /*userpage*/
 .curtain{background:url(images/curtain.png) repeat-x top left;min-height:100px}
-#userRelations { float:right;padding-bottom:10px;width:205px; padding-left:10px;margin-top:17px;z-index:100;}
+#userRelations { float:right;padding-bottom:10px;width:205px; padding-left:10px;margin-top:0px;z-index:100;}
 #userUpdates {float:left;position:relative;width:600px;}
 #userRelations ul,#userRelations ul{list-style-type:none;margin-left:0;padding-left:0}
 #userStatus{}
@@ -373,7 +376,7 @@ background-position:0 -1400px;
 * html .ch_content { height:1%;}
 *+html .ch_content { min-height:1%;}
 
-.box { position:relative; overflow:hidden; width:100%; margin-bottom:10px;}
+.box { position:relative; overflow:hidden; width:100%; margin-bottom:0px;}
 .box h3 { height:20px; margin-bottom:0px; padding-left:8px; background: transparent url(images/h4bg.jpg) repeat-x bottom left; color:#444444; border-top:1px solid #95a5c6; font-size:12px; line-height:20px;}
 	.box h3 .edit a{ color:#cccccc; font-weight:normal; float:right; margin-right:10px;}
 	.box h3 .stat { height:20px; margin-left:5px; color:#000; font-size:12px; font-weight:normal; line-height:20px;}

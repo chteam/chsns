@@ -3,28 +3,28 @@
   <ThumbnailPair>
     <Size>
       <Width>200</Width>
-      <Height>150</Height>
+      <Height>300</Height>
     </Size>
     <ImageType>Big</ImageType>
   </ThumbnailPair>
   <ThumbnailPair>
     <Size>
       <Width>100</Width>
-      <Height>75</Height>
+      <Height>150</Height>
     </Size>
     <ImageType>Middle</ImageType>
   </ThumbnailPair>
   <ThumbnailPair>
     <Size>
       <Width>60</Width>
-      <Height>45</Height>
+      <Height>90</Height>
     </Size>
     <ImageType>Small</ImageType>
   </ThumbnailPair>
   <ThumbnailPair>
     <Size>
       <Width>20</Width>
-      <Height>15</Height>
+      <Height>30</Height>
     </Size>
     <ImageType>Tiny</ImageType>
   </ThumbnailPair>
