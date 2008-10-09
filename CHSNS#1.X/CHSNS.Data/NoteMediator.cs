@@ -48,8 +48,7 @@ namespace CHSNS.Data {
 			DBExt.DB.SaveChanges();
 			DataBaseExecutor.Execute("update [profile] set NoteCount=NoteCount+1 where userid=@userid",
 									 "@userid", userid);
-			DBExt.Event.Add(new Event
-			{
+			DBExt.Event.Add(new Event {
 				OwnerID = userid,
 				TemplateName = "AddNote",
 				AddTime = DateTime.Now,
@@ -60,7 +59,7 @@ namespace CHSNS.Data {
 			);
 
 		}
-		public void Edit(Note note,long userid){
+		public void Edit(Note note, long userid) {
 			DataBaseExecutor.Execute(
 				@"update [note] 
 set title=@title,body=@body,EditTime=@edittime
@@ -71,12 +70,30 @@ where id=@id and userid=@userid",
 				"@id", note.ID,
 				"@userid", userid);
 		}
-		public void Delete (long id,long userid){
+		/// <summary>
+		/// Delete the note by id
+		/// </summary>
+		public void Delete(long id, long userid) {
 			DataBaseExecutor.Execute("delete [note] where id=@id and userid=@userid",
-			                         "@id", id,
-			                         "@userid", userid);
+									 "@id", id,
+									 "@userid", userid);
 			DataBaseExecutor.Execute("update [profile] set NoteCount=NoteCount-1 where userid=@userid",
 								 "@userid", userid);
+		}
+		public IQueryable<NotePas> GetLastNotes() {
+			return (from n in DBExt.DB.Note
+					join p in DBExt.DB.Profile on n.UserID equals p.UserID
+					orderby n.ID descending
+					select new NotePas {
+						AddTime = n.AddTime,
+						Body = n.Summary,
+						CommentCount = n.CommentCount,
+						ID = n.ID,
+						Title = n.Title,
+						UserID = n.UserID,
+						ViewCount = n.ViewCount,
+						WriteName = p.Name
+					}).Take(10);
 		}
 	}
 }

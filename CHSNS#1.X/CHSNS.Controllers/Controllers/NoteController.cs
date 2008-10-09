@@ -8,7 +8,7 @@ using CHSNS.Tools;
 using System.Transactions;
 using CHSNS.Config;
 namespace CHSNS.Controllers {
-	[LoginedFilter]
+
 	public class NoteController : BaseController {
 		public ActionResult Index(long? userid, int? p) {
 			using (var ts = new TransactionScope()) {
@@ -58,6 +58,7 @@ namespace CHSNS.Controllers {
 				return View(note);
 			}
 		}
+		[LoginedFilter]
 		public ActionResult Edit(long? id) {
 			using (var ts = new TransactionScope()) {
 				if (id.HasValue) {//编辑
@@ -74,6 +75,7 @@ namespace CHSNS.Controllers {
 			}
 		}
 		[AcceptVerbs("post")]
+		[LoginedFilter]
 		public ActionResult Save(long? id) {
 			using (var ts = new TransactionScope()) {
 				var n = new Note();
@@ -98,6 +100,7 @@ namespace CHSNS.Controllers {
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
 		[AcceptVerbs("post")]
+		[LoginedFilter]
 		public ActionResult Delete(long id) {
 			using (var ts = new TransactionScope()) {
 				DBExt.Note.Delete(id, CHUser.UserID);
@@ -106,14 +109,12 @@ namespace CHSNS.Controllers {
 			}
 		}
 
-		public ActionResult New() {
-			//	Chsword.Reader.LogBook rl = new Chsword.Reader.LogBook("LogBook", 0, Viewerid);
-			//ChAlumna.Controllers.components.NoteList nl = new ChAlumna.Controllers.components.NoteList();
-
-			//	_sbout = new StringBuilder(rl.ShowAll(rl.ShowPage(rl.GetLogBookTable(1, 0)), 1));
-			//this.Context.CurrentUser.Identity.Name
-			ViewData.Add("type", this.QueryNum("type"));//0 new[最新] 1 push[推荐] 
-			return View();
+		/// <summary>
+		/// 全局最新的note
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult News() {
+			return View(DBExt.Note.GetLastNotes());
 		}
 	}
 }

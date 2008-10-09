@@ -686,6 +686,7 @@
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
     <Content Include="Views\Event\IndexCtl\Event.ascx" />
+    <Content Include="Views\Note\News.aspx" />
     <Content Include="Views\Shared\Admin.Master" />
     <Content Include="Config\ThumbnailSize.xml" />
     <Content Include="Config\UserEditMenu.xml" />
@@ -1184,6 +1185,13 @@
     </Compile>
     <Compile Include="Views\Note\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Note\News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Note\News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Note\NoteList.ascx.cs">
       <DependentUpon>NoteList.ascx</DependentUpon>
