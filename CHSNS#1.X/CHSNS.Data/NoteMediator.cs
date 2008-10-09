@@ -7,11 +7,21 @@ using CHSNS.Models;
 namespace CHSNS.Data {
 	public class NoteMediator : BaseMediator {
 		public NoteMediator(DBExt id) : base(id) { }
-		public IQueryable<Note> GetNotes(long userid) {
+		public IQueryable<NotePas> GetNotes(long userid) {
 			return (from n in DBExt.DB.Note
+					join p in DBExt.DB.Profile on n.UserID equals p.UserID
 					where n.UserID == userid
 					orderby n.ID descending
-					select n);
+					select new NotePas {
+						AddTime = n.AddTime,
+						Body = n.Summary,
+						CommentCount = n.CommentCount,
+						ID = n.ID,
+						Title = n.Title,
+						UserID = n.UserID,
+						ViewCount = n.ViewCount,
+						WriteName = p.Name
+					});
 		}
 		public NoteDetailsPas Details(long id) {
 			var ret = (from n in DBExt.DB.Note
