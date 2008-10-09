@@ -114,6 +114,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <returns></returns>
 		public ActionResult News() {
+			ViewData["Page_Title"] = "ÈÕÖ¾Ê×Ò³";
 			return View(DBExt.Note.GetLastNotes());
 		}
 	}

@@ -4,9 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<fieldset>
 		<legend>
-			最新日志</legend>
-		
-			<ol id="NoteItems" class="userlist">
+			日志首页</legend>
+			<ol class="userlist">
 				<%
 					Html.RenderPartial("NoteList", ViewData.Model); %>
 			</ol>
