@@ -13,7 +13,7 @@
 				查找同学:<input type="text" id="search_username" onkeydown="SearchEnter(event,'search_username')" />
 				<input type="button" value="查找" class="subbutton" onclick="HomeSearch('search_username')" /></div>
 		</div>
-		<div class="text">
+		<div>
 			<div class="margintb">
 				<br />
 				<p>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="box">
 				<h3>
-					${ChHelper.ChSite.BaseConfig.Title} 人气之星</h3>
+				<%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %> 人气之星</h3>
 				<div class="boxcont"> 
 				<%
 					Html.RenderPartial("ViewList", ViewData["viewlist"]); %>

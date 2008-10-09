@@ -16,11 +16,8 @@
 		%>
 		<li class="userviewinfo" style="text-align: center;">
 			<div class="userviewicon">
-				<div>
-					<a href="<%=Url.UserPage(dr.ID) %>">
-						<%=Html.Image(Url.CH().Path.GetFace_Small(dr.ID), dr.Name)%>
-					</a>
-				</div>
+			<a href="<%=Url.UserPage(dr.ID) %>"
+			style="background-image: url(<%=Path.GetFace(dr.ID,ImgSizeType.Small) %>);"/>
 			</div>
 			<span class="userviewname">
 				<%=Html.UserPageLink(dr.ID,dr.Name) %></span> </li>
