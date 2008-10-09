@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ViewList.ascx.cs" Inherits="CHSNS.Web.Views.Shared.ViewList" %>
-<div class="userviewlist">
+<div class="viewlist">
 	<ul>
 		<%
 			ViewListPas vl = ViewData.Model;
@@ -14,12 +14,12 @@
 			}
 				row++;
 		%>
-		<li class="userviewinfo" style="text-align: center;">
-			<div class="userviewicon">
+		<li class="viewitem" style="text-align: center;">
+			<div class="face-small face">
 			<a href="<%=Url.UserPage(dr.ID) %>"
 			style="background-image: url(<%=Path.GetFace(dr.ID,ImgSizeType.Small) %>);"/>
 			</div>
-			<span class="userviewname">
+			<span class="name">
 				<%=Html.UserPageLink(dr.ID,dr.Name) %></span> </li>
 		<%} %>
 	</ul>
