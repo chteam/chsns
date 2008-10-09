@@ -8,7 +8,7 @@ img{border:0;}
 fieldset {padding:10px;	margin:10px;border:#3B5999 dashed 2px;} 
 legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:3px 5px} 
 /*some color*/
-.error{color:red}
+.error{color:red} 
 .center{text-align:center;}
 .message{border:solid 1px #FF8844}
 .right{float:right}
