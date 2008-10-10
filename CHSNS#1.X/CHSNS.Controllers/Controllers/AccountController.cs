@@ -10,12 +10,6 @@ namespace CHSNS.Controllers
 {
 	public class AccountController : BaseController
 	{
-		public ActionResult Index()
-		{
-			// Add action logic here
-
-			return View();
-		}
 		/// <summary>
 		/// 注册协议页
 		/// </summary>
@@ -33,6 +27,9 @@ namespace CHSNS.Controllers
 			ViewData["Page_Title"] = "注册 - 注册账号";
 			return View();
 		}
+		/// <summary>
+		/// Username can use.
+		/// </summary>
 		public ActionResult UsernameCanUse(string username) {
 			return Json(DBExt.Account.IsUsernameCanUse(username));
 		}
@@ -61,6 +58,7 @@ namespace CHSNS.Controllers
 		public ActionResult Logout()
 		{
 			DBExt.Account.Logout();
+		
 			return RedirectToAction("Index", "Home");
 		}
 		/// <summary>

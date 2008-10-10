@@ -112,6 +112,8 @@
     <Compile Include="File.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
+    <Compile Include="Interface\IApplication.cs" />
+    <Compile Include="Interface\ISingleton.cs" />
     <Compile Include="JsonExtension.cs" />
     <Compile Include="Media.cs" />
     <Compile Include="MessageBoxType.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="OleDbDataOpener.cs" />
     <Compile Include="Online.cs" />
     <Compile Include="HttpProc.cs" />
+    <Compile Include="Web\SingletonApplication.cs" />
     <Compile Include="XmlSerializer.cs" />
     <Compile Include="SqlDataOpener.cs" />
     <Compile Include="SqlStoredProcedureDataOpener.cs" />
