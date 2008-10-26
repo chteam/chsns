@@ -4,7 +4,8 @@ namespace CHSNS.Data {
 	using System.Linq;
 	using Models;
 	using System;
-	public class FriendMediator : BaseMediator {
+	using CHSNS.ModelPas;
+	public class FriendMediator : BaseMediator, CHSNS.Data.IFriendMediator {
 		public FriendMediator(DBExt id) : base(id) { }
 		#region 获取
 		public Profile UserFriendInfo(long userid) {

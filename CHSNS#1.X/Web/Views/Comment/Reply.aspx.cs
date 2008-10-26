@@ -6,6 +6,6 @@ using System.Web.Mvc;
 using CHSNS.Models;
 
 namespace CHSNS.Web.Views.Comment {
-	public partial class Reply : ViewPage<UserCountPas> {
+	public partial class Reply : ViewPage<CHSNS.ModelPas.UserCountPas> {
 	}
 }

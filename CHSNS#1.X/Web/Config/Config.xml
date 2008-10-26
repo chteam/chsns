@@ -30,6 +30,6 @@
     <IsShow>true</IsShow>
   </Publish>
 	<Note>
-		<CommentEveryPage>50</CommentEveryPage>
+		<CommentEveryPage>20</CommentEveryPage>
 	</Note>
 </SiteConfig>

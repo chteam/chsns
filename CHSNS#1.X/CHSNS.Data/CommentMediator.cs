@@ -1,10 +1,11 @@
 ﻿using System.Data;
 using System.Linq;
 using CHSNS.Models;
+using CHSNS.ModelPas;
 
 
 namespace CHSNS.Data {
-	public class CommentMediator : BaseMediator {
+	public class CommentMediator : BaseMediator, CHSNS.Data.ICommentMediator {
 		public CommentMediator(DBExt id) : base(id) { }
 		#region reply
 		public DataRowCollection NewFiveReply() {

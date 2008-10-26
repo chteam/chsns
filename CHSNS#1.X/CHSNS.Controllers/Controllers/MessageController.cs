@@ -12,6 +12,7 @@ using CHSNS.Tools;
 namespace CHSNS.Controllers {
 	using Extension;
 	using Filter;
+	using CHSNS.ModelPas;
 	[LoginedFilter]
 	public class MessageController : BaseController {
 		public ActionResult InBox(int? p, int? ep) {

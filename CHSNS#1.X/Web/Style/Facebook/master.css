@@ -20,7 +20,7 @@ legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:3px 5px}
        background:#e5e5e5}
 .title a{color:#333333;display:block}
 .title a:hover{color:red;text-decoration:none}
-.text{clear:both;line-height:1.5em;padding:20px;}
+.text{clear:both;line-height:1.5em;}
 .option{clear:both;color:#666666;float:right;margin-top:5px;padding-right:5px;text-align:right;width:100%;}
 .s_icon{background:url('images/bg_icon.png') no-repeat;}
 .portal{display:block; padding:5px 0 5px 18px; margin:10px 0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#f7f7f7 url(images/style_triangle.gif) 8px 10px no-repeat; color:#333; font-weight:bold;}

@@ -113,7 +113,6 @@
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
     <Compile Include="Interface\IApplication.cs" />
-    <Compile Include="Interface\ISingleton.cs" />
     <Compile Include="JsonExtension.cs" />
     <Compile Include="Media.cs" />
     <Compile Include="MessageBoxType.cs" />
@@ -121,7 +120,6 @@
     <Compile Include="OleDbDataOpener.cs" />
     <Compile Include="Online.cs" />
     <Compile Include="HttpProc.cs" />
-    <Compile Include="Web\SingletonApplication.cs" />
     <Compile Include="XmlSerializer.cs" />
     <Compile Include="SqlDataOpener.cs" />
     <Compile Include="SqlStoredProcedureDataOpener.cs" />
@@ -137,7 +135,6 @@
     <Compile Include="Path.cs" />
     <Compile Include="Regular.cs" />
     <Compile Include="Thumbnail.cs" />
-    <Compile Include="Xml.cs" />
     <Compile Include="EntityOpener.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,5 +156,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attribute\" />
+    <Folder Include="Web\" />
   </ItemGroup>
 </Project>

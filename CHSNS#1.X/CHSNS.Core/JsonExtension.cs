@@ -11,7 +11,7 @@ namespace CHSNS
 		public static JObject ToJObject(this string str)
 		{
 			var o = JObject.Parse(str);
-			return o;
+			return o ;
 		}
 	}
 }

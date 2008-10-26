@@ -7,6 +7,7 @@ using CHSNS.Models;
 using CHSNS.Tools;
 using System.Transactions;
 using CHSNS.Config;
+using CHSNS.ModelPas;
 namespace CHSNS.Controllers {
 
 	public class NoteController : BaseController {
@@ -44,19 +45,23 @@ namespace CHSNS.Controllers {
 				return View(d);
 		}
 		public ActionResult Details(long id) {
-			using (var ts = new TransactionScope()) {
-				var note = DBExt.Note.Details(id);
-				// TODO: ViewCount++
-				ViewData["Page_Title"] = note.Note.Title;
-				ViewData["NowPage"] = 1;
-				ViewData["PageCount"] = note.User.Count;
+			NoteDetailsPas note;
+			using (var ts = DBExt.ContextTransaction()) {
+				note = DBExt.Note.Details(id);
 				var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
 					SiteConfig.Current.Note.CommentEveryPage
 					).OrderBy(c => c.Comment.ID);
 				ViewData["commentlist"] = cl;
-				ts.Complete();
-				return View(note);
+				ts.Commit();
 			}
+			if (note.User.ID != CHUser.UserID) {
+				int r = DBExt.Note.AddViewCount(id);
+				if (r != 1) throw new Exception("参数不正确");
+			}
+			ViewData["Page_Title"] = note.Note.Title;
+			ViewData["NowPage"] = 1;
+			ViewData["PageCount"] = note.User.Count;
+			return View(note);
 		}
 		[LoginedFilter]
 		public ActionResult Edit(long? id) {

@@ -682,6 +682,7 @@
     <Content Include="Style\Facebook_backup\wysiwyg.css" />
     <Content Include="Views\Admin\About.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Album\List.aspx" />
     <Content Include="Views\Note\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
@@ -939,6 +940,7 @@
     <Content Include="Views\User\Contact.ascx" />
     <Content Include="Views\User\Edit.aspx" />
     <Content Include="Views\User\EmptyMagicBox.ascx" />
+    <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\Index\Account.ascx" />
     <Content Include="Views\User\Index\Contact.ascx" />
     <Content Include="Views\User\Index\Event.ascx" />
@@ -947,7 +949,6 @@
     <Content Include="Views\User\Index\NoRight.ascx" />
     <Content Include="Views\User\Index\Personal.ascx" />
     <Content Include="Views\User\Index\School.ascx" />
-    <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\MagicBox.ascx" />
     <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\School.ascx" />
@@ -965,6 +966,10 @@
     <ProjectReference Include="..\CHSNS.Data\CHSNS.Data.csproj">
       <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
       <Name>CHSNS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHSNS.ModelsPas\CHSNS.ModelPas.csproj">
+      <Project>{27E2B6B3-7382-4D72-A889-7FDD618126F3}</Project>
+      <Name>CHSNS.ModelPas</Name>
     </ProjectReference>
     <ProjectReference Include="..\CHSNS.Models\CHSNS.Models.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
@@ -1010,6 +1015,13 @@
     </Compile>
     <Compile Include="Views\Admin\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Album\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Album\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Note\CommentList.ascx.cs">
       <DependentUpon>CommentList.ascx</DependentUpon>
@@ -1340,6 +1352,13 @@
     <Compile Include="Views\User\EmptyMagicBox.ascx.designer.cs">
       <DependentUpon>EmptyMagicBox.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\Index\Account.ascx.cs">
       <DependentUpon>Account.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1395,13 +1414,6 @@
     </Compile>
     <Compile Include="Views\User\Index\School.ascx.designer.cs">
       <DependentUpon>School.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\User\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\User\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\MagicBox.ascx.cs">
       <DependentUpon>MagicBox.ascx</DependentUpon>

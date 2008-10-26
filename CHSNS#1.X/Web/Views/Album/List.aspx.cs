@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace CHSNS.Web.Views.User {
-	public partial class Index : ViewPage<ModelPas.UserPas> {
+namespace CHSNS.Web.Views.Album {
+	public partial class List : ViewPage {
 	}
 }

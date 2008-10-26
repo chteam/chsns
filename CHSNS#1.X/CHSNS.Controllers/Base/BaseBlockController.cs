@@ -3,11 +3,12 @@ using CHSNS;
 using CHSNS.Config;
 using CHSNS.Models;
 using System.Web.Mvc;
+using CHSNS.Data;
 namespace CHSNS.Controllers {
 	//[Layout("basemaster")]
 
 	//[Helper(typeof(ChHelper))]
-	//[HandleError]
+	[HandleError]
 	abstract public class BaseBlockController : Controller {
 		public Boolean IsPost {
 			get {
@@ -15,32 +16,12 @@ namespace CHSNS.Controllers {
 			}
 		}
 
-		CHSNSDBDataContext _DB;
-		protected CHSNSDBDataContext DB {
-			get {
-				if (_DB == null)
-					_DB = DBExt.DB;
-				return _DB;
-			}
-		}
-
-		private Data.DBExt _dbext;
-		protected Data.DBExt DBExt {
+		private IDBExt _dbext;
+		protected IDBExt DBExt {
 			get {
 				if (_dbext == null)
 					_dbext = new Data.DBExt();
 				return _dbext;
-			}
-			set {
-				throw new NotImplementedException();
-			}
-		}
-		DataBaseExecutor _DataBaseExecutor;
-		protected DataBaseExecutor DataBaseExecutor {
-			get {
-				if (_DataBaseExecutor == null) 
-					_DataBaseExecutor = DBExt.DataBaseExecutor;
-				return _DataBaseExecutor;
 			}
 			set {
 				throw new NotImplementedException();

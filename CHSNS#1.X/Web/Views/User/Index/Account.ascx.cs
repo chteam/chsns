@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CHSNS.Models;
+using CHSNS.ModelPas;
 
 namespace CHSNS.Web.Views.User {
 	public partial class Index_Account : System.Web.Mvc.ViewUserControl<UserPas> {

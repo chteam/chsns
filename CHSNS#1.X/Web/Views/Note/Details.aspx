@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<%
-		Note n = ViewData.Model.Note;
+		NotePas n = ViewData.Model.Note;
 		UserCountPas u = ViewData.Model.User;
 	%>
 	<div class="ch_content">
@@ -21,7 +21,7 @@
 				</span>
 				<%=Html.NoteList( u.ID,u.Name+"的日志") %>
 				<%=Html.UserPageLink(u.ID,u.Name) %>
-				阅读(<%=n.ViewCount %>) 评论(<%=n.CommentCount %>) 推荐(<%=n.PushCount %>)
+				阅读(<%=n.ViewCount %>) 评论(<%=n.CommentCount %>)<%-- 推荐(<%=n.PushCount %>)--%>
 				<%
 					if (n.UserID == CHUser.UserID) {
 				%>

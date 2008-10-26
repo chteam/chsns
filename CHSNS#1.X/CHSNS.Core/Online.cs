@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Linq;
 namespace CHSNS {
 
 
@@ -8,19 +9,19 @@ namespace CHSNS {
 	/// 在线
 	/// </summary>
 	public class Online {
+		static readonly string ONLINE_REMOVETIME = "useronline.time";
+		static readonly string ONLINE_LIST = "useronline";
 		/// <summary>
 		/// 清理离线用户
 		/// </summary>
 		static public void RemoveOffline() {
 			if (CHUser.IsLogin) {
-				List<long> userid = new List<long>();
-				foreach (long u in OnlineList.Keys){
-					if (Date.DivMinutes(OnlineList[u]) > 10) {
-						userid.Add(u);
-					}
-				}
+				var expies = DateTime.Now.AddMinutes(-10);
+				List<long> userid = OnlineList
+					.Where(c => c.Value < expies)
+					.Select(c => c.Key).ToList();
 				HttpContext.Current.Application.Lock();
-				foreach (long u in userid) {	
+				foreach (long u in userid) {
 					OnlineList.Remove(u);
 				}
 				HttpContext.Current.Application.UnLock();
@@ -33,7 +34,7 @@ namespace CHSNS {
 			if ( CHUser.IsLogin) {
 				if (Date.DivMinutes(RemoveTime) > 1) {//过了1分钟才清理
 					HttpContext.Current.Application.Lock();
-					if (!OnlineList.ContainsKey(CHUser.UserID))
+					if (!IsOnline(CHUser.UserID))
 						OnlineList.Add(CHUser.UserID, DateTime.Now);
 					else
 						OnlineList[CHUser.UserID] = DateTime.Now;
@@ -43,56 +44,41 @@ namespace CHSNS {
 			}
 		}
 		#region 用户是否在线
-		static public bool isOnline(long userid) {
+		static public bool IsOnline(long userid) {
 			return OnlineList.ContainsKey(userid);
 		}
-		static public bool isOnline(object userid) {
-			long u = 0;
-			if (long.TryParse(userid.ToString(), out u))
-				return isOnline(u);
-			return false;
-		}
-		static public string OnlineString(long userid) {
-			if (isOnline(userid))
-				return CHCache.GetConfig("Profile","Online");
-			return CHCache.GetConfig("Profile","Offline");
-		}
-		static public string OnlineString(object userid) {
-			long u = 0;
-			if (long.TryParse(userid.ToString(), out u))
-				return OnlineString(u);
-			return "";
-		}
 		#endregion
+
 		/// <summary>
 		/// 获取在线用户列表
 		/// </summary>
 		static public Dictionary<long, DateTime> OnlineList {
 			get {
-				if (HttpContext.Current.Application["useronline"] == null){
-					HttpContext.Current.Application.Lock();
-					HttpContext.Current.Application["useronline"] = new Dictionary<long, DateTime>();
-					HttpContext.Current.Application.UnLock();
+				if (Application[ONLINE_LIST] == null) {
+					Application.Lock();
+					Application[ONLINE_LIST] = new Dictionary<long, DateTime>();
+					Application.UnLock();
 				}
-				return HttpContext.Current.Application["useronline"] as Dictionary<long, DateTime>;
-			}
-			set {
-				//HttpContext.Current.Application.Add("useronline", list);
+				return Application[ONLINE_LIST] as Dictionary<long, DateTime>;
 			}
 		}
+		
 		static DateTime RemoveTime {
 			get {
 			//	Hashtable
-				if (HttpContext.Current.Application["useronline.time"] == null) {
-					HttpContext.Current.Application.Lock();
-					HttpContext.Current.Application["useronline.time"] = new DateTime();
-					HttpContext.Current.Application.UnLock();
+				if (Application[ONLINE_REMOVETIME] == null) {
+					Application.Lock();
+					Application[ONLINE_REMOVETIME] = new DateTime();
+					Application.UnLock();
 				}
-				return Convert.ToDateTime(HttpContext.Current.Application["useronline.time"]);
+				return Convert.ToDateTime(Application[ONLINE_REMOVETIME]);
 			}
 			set {
-				HttpContext.Current.Application.Add("useronline.time", value);
+				Application.Add(ONLINE_REMOVETIME, value);
 			}
+		}
+		static HttpApplicationState Application {
+			get { return HttpContext.Current.Application; }
 		}
 	}
 }
