@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace CHSNS.Models {
+namespace CHSNS.ModelPas {
 	public class EventPagePas {
 		public long FriendRequestCount { get; set; }
 		public long ViewCount { get; set; }

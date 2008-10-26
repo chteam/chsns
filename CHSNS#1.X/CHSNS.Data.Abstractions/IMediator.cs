@@ -3,7 +3,7 @@
 	/// 中介者
 	/// </summary>
 	public interface IMediator {
-		DBExt DBExt { get; set; }
-		DataBaseExecutor DataBaseExecutor { get; set; }
+		IDBExt DBExt { get; set; }
+	//	DataBaseExecutor DataBaseExecutor { get; set; }
 	}
 }

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CHSNS.Data.Abstractions</RootNamespace>
+    <AssemblyName>CHSNS.Data.Abstractions</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IAccountMediator.cs" />
+    <Compile Include="IApplicationMediator.cs" />
+    <Compile Include="ICommentMediator.cs" />
+    <Compile Include="IDBExt.cs" />
+    <Compile Include="IEventMediator.cs" />
+    <Compile Include="IFriendMediator.cs" />
+    <Compile Include="IGatherMediator.cs" />
+    <Compile Include="IGolbalMediator.cs" />
+    <Compile Include="IGroupMediator.cs" />
+    <Compile Include="IMediator.cs" />
+    <Compile Include="IMessageMediator.cs" />
+    <Compile Include="INoteMediator.cs" />
+    <Compile Include="IUserMediator.cs" />
+    <Compile Include="IViewMediator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
+      <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
+      <Name>CHSNS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHSNS.ModelsPas\CHSNS.ModelPas.csproj">
+      <Project>{27E2B6B3-7382-4D72-A889-7FDD618126F3}</Project>
+      <Name>CHSNS.ModelPas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHSNS.Models\CHSNS.Models.csproj">
+      <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
+      <Name>CHSNS.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
