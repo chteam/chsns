@@ -3,8 +3,9 @@
 namespace CHSNS.Data {
 	using System.Linq;
 	using Models;
+	using CHSNS.ModelPas;
 
-	public class MessageMediator : BaseMediator {
+	public class MessageMediator : BaseMediator, CHSNS.Data.IMessageMediator {
 		public MessageMediator(DBExt id) : base(id) { }
 		public IQueryable<MessageItemPas> GetInbox(long userid) {
 			var ret = (from m in DBExt.DB.Message
@@ -18,8 +19,7 @@ namespace CHSNS.Data {
 						   Title = m.Title,
 						   SendTime = m.SendTime,
 						   IsSee = m.IsSee
-					   }
-					  );
+					   });
 			return ret;
 		}
 
@@ -92,7 +92,7 @@ exists(select 1 from [message] where id=@id and issee=0)", "@uid", userid, "@id"
 					   select new MessageDetailsPas {
 						   UserInbox = new UserItemPas { ID = pin.UserID, Name = pin.Name },
 						   UserOutbox = new UserItemPas { ID = pout.UserID, Name = pout.Name },
-						   Message = m
+						   Message = new MessageItemPas { Body = m.Body, ID = m.ID, IsSee = m.IsSee, SendTime = m.SendTime, Title = m.Title }
 					   }
 					  ).FirstOrDefault();
 			if (ret.UserInbox.ID == userid && !ret.Message.IsSee) {//我是收件人,则表示已经看过了,可以更新

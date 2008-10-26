@@ -8,8 +8,9 @@ using CHSNS.Models;
 using CHSNS.Tools;
 using System.Linq;
 using CHSNS.Config;
+using CHSNS.ModelPas;
 namespace CHSNS.Controllers {
-	[LoginedFilter]
+
 	public class CommentController : BaseController {
 		#region reply
 		/// <summary>
@@ -41,6 +42,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <param name="ReplyerID">The replyer ID.</param>
 		/// <returns></returns>
+		[LoginedFilter]
 		public ActionResult AddReply(long ReplyerID) {
 			using (var ts = new TransactionScope()) {
 				var r = new Reply();
@@ -78,6 +80,7 @@ namespace CHSNS.Controllers {
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
 		[AcceptVerbs("Post")]
+		[LoginedFilter]
 		public ActionResult DeleteReply(long id) {
 			using (var ts = DBExt.ExeTransaction()) {
 				DBExt.Comment.DeleteReply(id, CHUser.UserID);
@@ -94,6 +97,7 @@ namespace CHSNS.Controllers {
 				).OrderBy(c => c.Comment.ID);
 			return View("Comment/Item", cl);
 		}
+		[LoginedFilter]
 		public ActionResult Delete(long id) {
 			// TODO:少删除的权限判断
 			using (var ts = DBExt.ExeTransaction()) {
@@ -102,6 +106,7 @@ namespace CHSNS.Controllers {
 				return this.Empty();
 			}
 		}
+		[LoginedFilter]
 		public ActionResult Add(long ShowerID,long OwnerID,string Body, CommentType type) {
 			var cmt = new Comment {
 				ShowerID = ShowerID,

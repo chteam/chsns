@@ -8,7 +8,7 @@ namespace CHSNS.Data {
 
 	using System.Web;
 	using Models;
-	public class ApplicationMediator : BaseMediator {
+	public class ApplicationMediator : BaseMediator, CHSNS.Data.IApplicationMediator {
 		private const string APPLISTALL = "APPLISTALL";
 		public ApplicationMediator(DBExt id) : base(id) { }
 		/// <summary>

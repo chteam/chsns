@@ -3,8 +3,9 @@ using System.Linq;
 using CHSNS.Models;
 using CHSNS;
 using System;
+using CHSNS.ModelPas;
 namespace CHSNS.Data {
-	public class UserMediator : BaseMediator {
+	public class UserMediator : BaseMediator, CHSNS.Data.IUserMediator {
 		public UserMediator(DBExt id) : base(id) { }
 		public UserPas UserInformation(long userid) {
 			var ret = (from p in DBExt.DB.Profile

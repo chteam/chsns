@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CHSNS.Models;
+using CHSNS.ModelPas;
 
 namespace CHSNS.Data {
-	public class NoteMediator : BaseMediator {
+	public class NoteMediator : BaseMediator, CHSNS.Data.INoteMediator {
 		public NoteMediator(DBExt id) : base(id) { }
 		public IQueryable<NotePas> GetNotes(long userid) {
 			return (from n in DBExt.DB.Note
@@ -28,7 +29,15 @@ namespace CHSNS.Data {
 					   join p in DBExt.DB.Profile on n.UserID equals p.UserID
 					   where n.ID == id
 					   select new NoteDetailsPas {
-						   Note = n,
+						   Note = new NotePas {
+							   AddTime = n.AddTime,
+							   Body = n.Body,
+							   CommentCount = n.CommentCount,
+							   ID = n.ID,
+							   Title = n.Title,
+							   UserID = n.UserID,
+							   ViewCount = n.ViewCount,
+						   },
 						   User = new UserCountPas {
 							   ID = p.UserID,
 							   Name = p.Name,
@@ -37,6 +46,9 @@ namespace CHSNS.Data {
 					   }
 					  ).FirstOrDefault();
 			return ret;
+		}
+		public int AddViewCount(long id) {
+			return DataBaseExecutor.Execute(@"update [note] set viewcount=viewcount+1 where id=@id", "@id", id);
 		}
 		/// <summary>
 		/// userid

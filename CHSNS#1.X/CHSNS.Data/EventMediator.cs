@@ -9,7 +9,7 @@ namespace CHSNS.Data
 	/// <summary>
 	/// Calling the event
 	/// </summary>
-	public class EventMediator : BaseMediator {
+	public class EventMediator : BaseMediator, CHSNS.Data.IEventMediator {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EventMediator"/> class.
 		/// </summary>

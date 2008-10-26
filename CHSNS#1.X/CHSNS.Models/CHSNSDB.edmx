@@ -220,41 +220,30 @@
           </Key>
           <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="GroupName" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="summmary" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="CreateUserid" Type="bigint" />
-          <Property Name="Publish" Type="nvarchar" Nullable="false" />
-          <Property Name="GroupClass" Type="tinyint" Nullable="false" />
+          <Property Name="Summmary" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreaterID" Type="bigint" Nullable="false" />
           <Property Name="AdminCount" Type="tinyint" Nullable="false" />
-          <Property Name="LogCount" Type="bigint" Nullable="false" />
+          <Property Name="NoteCount" Type="bigint" Nullable="false" />
           <Property Name="ViewCount" Type="bigint" Nullable="false" />
           <Property Name="JoinLevel" Type="tinyint" Nullable="false" />
           <Property Name="ShowLevel" Type="tinyint" Nullable="false" />
           <Property Name="UserCount" Type="bigint" Nullable="false" />
-          <Property Name="MaxUserCount" Type="bigint" Nullable="false" />
           <Property Name="MagicBox" Type="nvarchar" />
           <Property Name="LogoUrl" Type="nvarchar" MaxLength="250" />
-          <Property Name="addtime" Type="smalldatetime" Nullable="false" />
-          <Property Name="Num0" Type="bigint" />
-          <Property Name="Other0" Type="bigint" />
-          <Property Name="Other1" Type="bigint" />
-          <Property Name="Other2" Type="bigint" />
+          <Property Name="AddTime" Type="smalldatetime" Nullable="false" />
           <Property Name="IsTrue" Type="bit" Nullable="false" />
-          <Property Name="categoryid" Type="bigint" />
         </EntityType>
         <EntityType Name="GroupUser">
           <Key>
-            <PropertyRef Name="TrueID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="GroupID" />
           </Key>
-          <Property Name="TrueID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ID" Type="bigint" />
           <Property Name="UserID" Type="bigint" Nullable="false" />
           <Property Name="GroupID" Type="bigint" Nullable="false" />
           <Property Name="Level" Type="tinyint" Nullable="false" />
           <Property Name="AddTime" Type="smalldatetime" Nullable="false" />
-          <Property Name="LogCount" Type="bigint" Nullable="false" />
-          <Property Name="Class" Type="tinyint" Nullable="false" />
+          <Property Name="NoteCount" Type="bigint" Nullable="false" />
           <Property Name="IsTrue" Type="bit" Nullable="false" />
-          <Property Name="IsRss" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="LogTag">
           <Key>
@@ -676,42 +665,29 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" />
           <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="summmary" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="CreateUserid" Type="Int64" />
-          <Property Name="Publish" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="GroupClass" Type="Byte" Nullable="false" />
           <Property Name="AdminCount" Type="Byte" Nullable="false" />
-          <Property Name="LogCount" Type="Int64" Nullable="false" />
           <Property Name="ViewCount" Type="Int64" Nullable="false" />
           <Property Name="JoinLevel" Type="Byte" Nullable="false" />
           <Property Name="ShowLevel" Type="Byte" Nullable="false" />
           <Property Name="UserCount" Type="Int64" Nullable="false" />
-          <Property Name="MaxUserCount" Type="Int64" Nullable="false" />
           <Property Name="MagicBox" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="LogoUrl" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="addtime" Type="DateTime" Nullable="false" />
-          <Property Name="Num0" Type="Int64" />
-          <Property Name="Other0" Type="Int64" />
-          <Property Name="Other1" Type="Int64" />
-          <Property Name="Other2" Type="Int64" />
           <Property Name="IsTrue" Type="Boolean" Nullable="false" />
-          <Property Name="categoryid" Type="Int64" />
-        </EntityType>
+          <Property Name="Summmary" Type="String" Nullable="false" />
+          <Property Name="NoteCount" Type="Int64" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" />
+          <Property Name="CreaterID" Type="Int64" Nullable="false" />
+          </EntityType>
         <EntityType Name="GroupUser">
           <Key>
-            <PropertyRef Name="TrueID" />
-          </Key>
-          <Property Name="TrueID" Type="Int64" Nullable="false" />
-          <Property Name="ID" Type="Int64" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="UserID" /></Key>
           <Property Name="UserID" Type="Int64" Nullable="false" />
           <Property Name="GroupID" Type="Int64" Nullable="false" />
           <Property Name="Level" Type="Byte" Nullable="false" />
           <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="LogCount" Type="Int64" Nullable="false" />
-          <Property Name="Class" Type="Byte" Nullable="false" />
           <Property Name="IsTrue" Type="Boolean" Nullable="false" />
-          <Property Name="IsRss" Type="Boolean" Nullable="false" />
-        </EntityType>
+          <Property Name="NoteCount" Type="Int64" Nullable="false" /></EntityType>
         <EntityType Name="LogTag">
           <Key>
             <PropertyRef Name="ID" />
@@ -1115,44 +1091,32 @@
           <EntitySetMapping Name="Group">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Group)">
               <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="CreaterID" ColumnName="CreaterID" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="NoteCount" ColumnName="NoteCount" />
+                <ScalarProperty Name="Summmary" ColumnName="Summmary" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="summmary" ColumnName="summmary" />
-                <ScalarProperty Name="CreateUserid" ColumnName="CreateUserid" />
-                <ScalarProperty Name="Publish" ColumnName="Publish" />
-                <ScalarProperty Name="GroupClass" ColumnName="GroupClass" />
                 <ScalarProperty Name="AdminCount" ColumnName="AdminCount" />
-                <ScalarProperty Name="LogCount" ColumnName="LogCount" />
                 <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
                 <ScalarProperty Name="JoinLevel" ColumnName="JoinLevel" />
                 <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
                 <ScalarProperty Name="UserCount" ColumnName="UserCount" />
-                <ScalarProperty Name="MaxUserCount" ColumnName="MaxUserCount" />
                 <ScalarProperty Name="MagicBox" ColumnName="MagicBox" />
                 <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
-                <ScalarProperty Name="addtime" ColumnName="addtime" />
-                <ScalarProperty Name="Num0" ColumnName="Num0" />
-                <ScalarProperty Name="Other0" ColumnName="Other0" />
-                <ScalarProperty Name="Other1" ColumnName="Other1" />
-                <ScalarProperty Name="Other2" ColumnName="Other2" />
                 <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
-                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GroupUser">
             <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.GroupUser)">
               <MappingFragment StoreEntitySet="GroupUser">
-                <ScalarProperty Name="TrueID" ColumnName="TrueID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NoteCount" ColumnName="NoteCount" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
                 <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-                <ScalarProperty Name="LogCount" ColumnName="LogCount" />
-                <ScalarProperty Name="Class" ColumnName="Class" />
                 <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
-                <ScalarProperty Name="IsRss" ColumnName="IsRss" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1394,7 +1358,7 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="CHSNSDB" ZoomLevel="100">
+      <Diagram Name="CHSNSDB" ZoomLevel="77">
         <EntityTypeShape EntityType="CHSNS.Models.Account" Width="1.5" PointX="0.75" PointY="0.75" Height="1.779012858072917" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Album" Width="1.5" PointX="2.75" PointY="0.75" Height="2.6339322916666665" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Application" Width="1.5" PointX="4.75" PointY="0.75" Height="3.8142708333333326" IsExpanded="true" />
@@ -1408,8 +1372,8 @@
         <EntityTypeShape EntityType="CHSNS.Models.Field" Width="1.5" PointX="8.75" PointY="4.75" Height="1.9594531249999996" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.FieldInformation" Width="1.5" PointX="8.75" PointY="7.75" Height="2.1280729166666674" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Friend" Width="1.5" PointX="10.75" PointY="0.75" Height="2.1280729166666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.Models.Group" Width="1.5" PointX="0.75" PointY="10.75" Height="4.6573697916666674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.Models.GroupUser" Width="1.5" PointX="2.75" PointY="10.75" Height="2.6339322916666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="CHSNS.Models.Group" Width="1.5" PointX="0.75" PointY="10.75" Height="3.6892097981770835" IsExpanded="true" />
+        <EntityTypeShape EntityType="CHSNS.Models.GroupUser" Width="1.5" PointX="2.75" PointY="10.75" Height="2.1610522460937496" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.LogTag" Width="1.5" PointX="10.75" PointY="3.75" Height="1.4535937499999996" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.Message" Width="1.5" PointX="10.75" PointY="6.75" Height="2.6339322916666674" IsExpanded="true" />
         <EntityTypeShape EntityType="CHSNS.Models.MiniField" Width="1.5" PointX="8.75" PointY="10.75" Height="1.6222135416666674" IsExpanded="true" />

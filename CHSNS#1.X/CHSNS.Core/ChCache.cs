@@ -15,7 +15,7 @@ namespace CHSNS {
 		///<summary>
 		/// 属性
 		///</summary>
-		public static Cache Cache {
+		protected static Cache Cache {
 			get {
 				return HttpContext.Current.Cache;
 			}
@@ -110,25 +110,6 @@ namespace CHSNS {
 		}
 		#endregion
 		
-		#region 获取配置文件 Config 或其它XML
-		/// <summary>
-		/// 获取Xml配置文件的节点内容
-		/// </summary>
-		/// <param name="filename">配置文件名称</param>
-		/// <param name="Name">节点名称</param>
-		/// <returns>String,节点内容的字符串</returns>
-		static public String GetConfig(string filename,String Name) {
-			return Xml.GetItemText(filename, Name);
-		}
-		/// <summary>
-		/// 获取Config.Xml配置文件的节点内容
-		/// </summary>
-		/// <param name="Name">节点名称</param>
-		/// <returns>String,节点内容的字符串</returns>
-		static public String GetConfig(String Name) {
-			return GetConfig("Config", Name);
-		}
-		#endregion
 
 		#region 移除缓存
 		/// <summary>

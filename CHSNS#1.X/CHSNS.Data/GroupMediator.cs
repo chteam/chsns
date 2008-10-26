@@ -3,7 +3,7 @@ using System.Data;
 using CHSNS.Models;
 
 namespace CHSNS.Data {
-	public class GroupMediator :BaseMediator {
+	public class GroupMediator :BaseMediator, CHSNS.Data.IGroupMediator {
 		public GroupMediator(DBExt id) : base(id) { }
 		/// <summary>
 		/// 群订阅的信息

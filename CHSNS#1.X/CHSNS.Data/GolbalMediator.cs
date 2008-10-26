@@ -2,7 +2,7 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using Models;
-	public class GolbalMediator : BaseMediator {
+	public class GolbalMediator : BaseMediator, CHSNS.Data.IGolbalMediator {
 		public GolbalMediator(DBExt id) : base(id) { }
 		private const string CACHE_PROVINCES = "area.provinceall";
 		private const string CACHE_CITYS = "area.cityall";

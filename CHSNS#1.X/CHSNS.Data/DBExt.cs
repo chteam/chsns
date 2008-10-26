@@ -10,21 +10,21 @@ namespace CHSNS.Data {
 	using Config;
 	using CHSNS;
 	using System.Data.Common;
-	public partial class DBExt : IDisposable {
+	public partial class DBExt :  CHSNS.Data.IDBExt {
 		#region IDataConcreteMediator ≥…‘±
 
-		public AccountMediator Account { get; private set; }
-		public ViewMediator View { get; private set; }
-		public CommentMediator Comment { get; private set; }
-		public GatherMediator Gather { get; private set; }
-		public GroupMediator Group { get; private set; }
-		public UserMediator UserInfo { get; private set; }
-		public GolbalMediator Golbal { get; private set; }
-		public FriendMediator Friend { get; private set; }
-		public ApplicationMediator Application { get; private set; }
-		public MessageMediator Message { get; private set; }
-		public NoteMediator Note { get; private set; }
-		public EventMediator Event { get; private set; }
+		public IAccountMediator Account { get; private set; }
+		public IViewMediator View { get; private set; }
+		public ICommentMediator Comment { get; private set; }
+		public IGatherMediator Gather { get; private set; }
+		public IGroupMediator Group { get; private set; }
+		public IUserMediator UserInfo { get; private set; }
+		public IGolbalMediator Golbal { get; private set; }
+		public IFriendMediator Friend { get; private set; }
+		public IApplicationMediator Application { get; private set; }
+		public IMessageMediator Message { get; private set; }
+		public INoteMediator Note { get; private set; }
+		public IEventMediator Event { get; private set; }
 		public void Init() {
 			//_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
 			Account = new AccountMediator(this);
@@ -73,12 +73,6 @@ namespace CHSNS.Data {
 						);
 				return _dbex;
 			}
-		}
-		public DataRowCollection UserListRows(long ownerid, int nowpage, byte type) {
-			return DataBaseExecutor.GetRows("UserList",
-				"@userid", ownerid,
-				"@page", nowpage,
-				"@class", type);
 		}
 
 		#endregion

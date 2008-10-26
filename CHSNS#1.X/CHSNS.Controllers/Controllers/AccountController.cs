@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CHSNS.Models;
 using System.Transactions;
+using CHSNS.ModelPas;
 
 namespace CHSNS.Controllers
 {
@@ -37,16 +38,15 @@ namespace CHSNS.Controllers
 		public ActionResult SaveReg(string Username, string Password, string Name) {
 			if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Name))
 				throw new Exception("资料中有空项");
-			Account a = new Account {
+			AccountPas a = new AccountPas {
 				Username = Username,
 				Password = Password,
 			};
 			using (var ts = new TransactionScope()) {
-				if (DBExt.Account.Create(a, Name))//DBExt.Register(a))
-				{
-					ts.Complete();
+				var b = DBExt.Account.Create(a, Name);
+				ts.Complete();
+				if (b)
 					return View("Reg-Success");
-				}
 			}
 			TempData["errors"] = "用户名已经存在";
 			return RedirectToAction("RegPage");

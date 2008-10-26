@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Web;
 using CHSNS.Models;
+using CHSNS.ModelPas;
 
 namespace CHSNS.Data
 {
-    public class AccountMediator : BaseMediator
+    public class AccountMediator :BaseMediator ,IAccountMediator
     {
         public AccountMediator(DBExt id) : base(id) { }
 		public void Logout()
@@ -75,7 +76,7 @@ where userid=@UserID",
             //	throw new Exception(retint.ToString());
             return retint;
         }
-        public bool Create(Account account, string name)
+        public bool Create(AccountPas account, string name)
         {
 			var canuse = IsUsernameCanUse(account.Username);
             if (!canuse)
