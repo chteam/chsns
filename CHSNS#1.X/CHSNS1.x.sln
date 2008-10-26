@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Data.Abstractions", "
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -35,18 +35,24 @@ Global
 		SccProjectUniqueName2 = CHSNS.Controllers\\CHSNS.Controllers.csproj
 		SccProjectName2 = CHSNS.Controllers
 		SccLocalPath2 = CHSNS.Controllers
-		SccProjectUniqueName3 = CHSNS.Test\\CHSNS.Test.csproj
-		SccProjectName3 = CHSNS.Test
-		SccLocalPath3 = CHSNS.Test
-		SccProjectUniqueName4 = CHSNS.Core\\CHSNS.Core.csproj
-		SccProjectName4 = CHSNS.Core
-		SccLocalPath4 = CHSNS.Core
-		SccProjectUniqueName5 = CHSNS.Models\\CHSNS.Models.csproj
-		SccProjectName5 = CHSNS.Models
-		SccLocalPath5 = CHSNS.Models
-		SccProjectUniqueName6 = CHSNS.Data\\CHSNS.Data.csproj
-		SccProjectName6 = CHSNS.Data
-		SccLocalPath6 = CHSNS.Data
+		SccProjectUniqueName3 = CHSNS.Core\\CHSNS.Core.csproj
+		SccProjectName3 = CHSNS.Core
+		SccLocalPath3 = CHSNS.Core
+		SccProjectUniqueName4 = CHSNS.Models\\CHSNS.Models.csproj
+		SccProjectName4 = CHSNS.Models
+		SccLocalPath4 = CHSNS.Models
+		SccProjectUniqueName5 = CHSNS.Data\\CHSNS.Data.csproj
+		SccProjectName5 = CHSNS.Data
+		SccLocalPath5 = CHSNS.Data
+		SccProjectUniqueName6 = CHSNS.Core.Tests\\CHSNS.Core.Tests.csproj
+		SccProjectName6 = CHSNS.Core.Tests
+		SccLocalPath6 = CHSNS.Core.Tests
+		SccProjectUniqueName7 = CHSNS.Data.Abstractions\\CHSNS.Data.Abstractions.csproj
+		SccProjectName7 = CHSNS.Data.Abstractions
+		SccLocalPath7 = CHSNS.Data.Abstractions
+		SccProjectUniqueName8 = CHSNS.ModelsPas\\CHSNS.ModelPas.csproj
+		SccProjectName8 = CHSNS.ModelsPas
+		SccLocalPath8 = CHSNS.ModelsPas
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x1.vsmdi
