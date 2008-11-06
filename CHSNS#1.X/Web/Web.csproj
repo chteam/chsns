@@ -500,6 +500,7 @@
     <None Include="Schemas\CHSNSDB.csdl" />
     <None Include="Schemas\CHSNSDB.msl" />
     <None Include="Schemas\SQLite.ssdl" />
+    <None Include="sql.sql" />
     <None Include="Style\Facebook\i\Thumbs.db" />
     <None Include="Style\Facebook_backup\i\Thumbs.db" />
     <None Include="Views\Admin\Admin\ApplyClass.vm" />
