@@ -28,7 +28,7 @@ namespace CHSNS
 			string str = "";
 			foreach(ManagementObject mo in moc)
 			{
-				if((bool)mo["IPEnabled"] == true)
+				if((bool)mo["IPEnabled"])
 					str = mo["MacAddress"].ToString();
 				
 			}
@@ -50,7 +50,7 @@ namespace CHSNS
 		/// </summary>
 		/// <returns>CPU编号</returns>
 		public string GetCpuID(){
-			System.Management.ManagementObjectSearcher Wmi =new System.Management.ManagementObjectSearcher("SELECT * FROM Win32_Processor");
+			var Wmi =new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
 
 			string Uint32="";
 

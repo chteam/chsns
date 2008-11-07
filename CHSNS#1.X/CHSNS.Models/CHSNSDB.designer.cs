@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
+[assembly: System.Data.Objects.DataClasses.EdmSchemaAttribute]
 
 // 原始文件名:
 // 生成日期: 2008/10/5 11:59:36
@@ -18,7 +18,7 @@ namespace CHSNS.Models
     /// <summary>
     /// 架构中不存在 CHSNSDBEntities 的注释。
     /// </summary>
-    public partial class CHSNSDBEntities : global::System.Data.Objects.ObjectContext
+    public class CHSNSDBEntities : System.Data.Objects.ObjectContext
     {
         /// <summary>
         /// 请使用应用程序配置文件的“CHSNSDBEntities”部分中的连接字符串初始化新 CHSNSDBEntities 对象。
@@ -1261,7 +1261,7 @@ namespace CHSNS.Models
         {
             get
             {
-                return this._FullName;
+                return _FullName;
             }
             set
             {
@@ -8030,11 +8030,11 @@ namespace CHSNS.Models
             }
             set
             {
-                this.OnViewClassChanging(value);
-                this.ReportPropertyChanging("ViewClass");
-                this._ViewClass = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ViewClass");
-                this.OnViewClassChanged();
+                OnViewClassChanging(value);
+                ReportPropertyChanging("ViewClass");
+                _ViewClass = SetValidValue(value);
+                ReportPropertyChanged("ViewClass");
+                OnViewClassChanged();
             }
         }
         private byte _ViewClass;

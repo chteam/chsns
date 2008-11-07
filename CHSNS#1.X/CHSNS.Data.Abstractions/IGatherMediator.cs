@@ -1,6 +1,9 @@
-﻿using System;
-namespace CHSNS.Data {
-	public interface IGatherMediator {
-		CHSNS.ModelPas.EventPagePas EventGather(long userid);
+﻿using CHSNS.ModelPas;
+
+namespace CHSNS.Data
+{
+	public interface IGatherMediator
+	{
+		EventPagePas EventGather(long userid);
 	}
 }

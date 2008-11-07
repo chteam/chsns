@@ -2,9 +2,9 @@
 {
 	public class ChAlumnaConfig
 	{
-		static readonly string _AppName = "CHSNS# 学生社区版";
-		static readonly string _Version = "1.0.5 Beta";
-		static readonly string _Programmer = "成幻小组";
+		private const string _AppName = "CHSNS# 学生社区版";
+		private const string _Version = "1.0.5 Beta";
+		private const string _Programmer = "成幻小组";
 
 		static public string AppName {
 			get { return _AppName; }

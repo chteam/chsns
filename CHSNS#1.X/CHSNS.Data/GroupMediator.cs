@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using CHSNS.Models;
 
 namespace CHSNS.Data {
-	public class GroupMediator :BaseMediator, CHSNS.Data.IGroupMediator {
-		public GroupMediator(DBExt id) : base(id) { }
+	public class GroupMediator :BaseMediator, IGroupMediator {
+		public GroupMediator(IDBExt id) : base(id) { }
 		/// <summary>
 		/// 群订阅的信息
 		/// </summary>
@@ -38,7 +37,7 @@ namespace CHSNS.Data {
 			throw new System.NotImplementedException();
 		}
 
-		public System.Linq.IQueryable<CHSNS.ModelPas.NotePas> NoteList(long ID) {
+		public System.Linq.IQueryable<ModelPas.NotePas> NoteList(long ID) {
 			throw new System.NotImplementedException();
 		}
 

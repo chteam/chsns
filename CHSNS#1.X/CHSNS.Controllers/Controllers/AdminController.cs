@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CHSNS.Filter;
+﻿using CHSNS.Filter;
 using System.Web.Mvc;
 
 namespace CHSNS.Controllers

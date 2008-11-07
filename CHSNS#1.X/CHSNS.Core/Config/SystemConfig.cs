@@ -6,12 +6,12 @@ namespace CHSNS.Config
 	//using System.Web;
 	using System.IO;
 using System.Collections.Generic;
-	using System.Collections;
+
 	[Serializable]
 	public class SystemConfig
 	{
 		public SystemConfig() {
-			_ControllerAssemblies = new List<string>();
+			ControllerAssemblies = new List<string>();
 		}
 		static readonly string FILEPATH = System.Web.HttpContext.Current.Server.MapPath("~/CHSNS.config");
 		string _ConnectionString = "";
@@ -37,25 +37,19 @@ using System.Collections.Generic;
 			get { return _Path; }
 			set { _Path = value; }
 		}
-		List<string> _ControllerAssemblies;
 
-		public List<string> ControllerAssemblies {
-			get { return _ControllerAssemblies; }
-			set { _ControllerAssemblies = value; }
-		}
-
-
+		public List<string> ControllerAssemblies { get; set; }
 
 		#region 序列化
 		/// <summary>
 		/// 反序列化
 		/// </summary>
 		static public SystemConfig Load() {
-			if (!System.IO.File.Exists(FILEPATH)) {
+			if (!File.Exists(FILEPATH)) {
 				return new SystemConfig();
 			}
-			XmlSerializer mySerializer = new XmlSerializer(typeof(SystemConfig));
-			SystemConfig s = new SystemConfig();
+			var mySerializer = new XmlSerializer(typeof(SystemConfig));
+			SystemConfig s;
 			using (Stream stream = new FileStream(FILEPATH, FileMode.Open, FileAccess.Read, FileShare.Read)) {
 				s = mySerializer.Deserialize(stream) as SystemConfig;
 			}
@@ -66,7 +60,7 @@ using System.Collections.Generic;
 		/// </summary>
 		public void Save() {
 			using (Stream stream = new FileStream(FILEPATH, FileMode.Create)) {
-				XmlSerializer mySerializer = new XmlSerializer(typeof(SystemConfig));
+				var mySerializer = new XmlSerializer(typeof(SystemConfig));
 				mySerializer.Serialize(stream, this);
 			}
 		}

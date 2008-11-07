@@ -43,7 +43,7 @@ namespace CHSNS {
 
 			if (previousConnectionState == ConnectionState.Closed)
 				DataOpener.Command.Connection.Open();
-			int ret =DataOpener.Command.ExecuteNonQuery(); ;
+			int ret =DataOpener.Command.ExecuteNonQuery();
 			DataOpener.Close();
 			return ret;
 		}
@@ -110,12 +110,11 @@ namespace CHSNS {
 		#region GetValue
 		public String GetValue(String text, IDictionary<string, object> dict) {
 			DataOpener.Open(text);
-			DbDataReader reader;
 			foreach (string key in dict.Keys) {
 				DataOpener.AddWithValue(key, dict[key]);
 			}
 			DataOpener.Command.Parameters["@RETURN_VALUE"].Direction = ParameterDirection.ReturnValue;
-			reader = DataOpener.Command.ExecuteReader();
+			DataOpener.Command.ExecuteReader();
 			string result = DataOpener.Command.Parameters["@RETURN_VALUE"].Value.ToString();
 			DataOpener.Close();
 			return result;

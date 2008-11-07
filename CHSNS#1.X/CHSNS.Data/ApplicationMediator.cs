@@ -1,22 +1,29 @@
 ﻿
 
-using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using CHSNS.Models;
 
-namespace CHSNS.Data {
-	using System.Collections.Generic;
-	using System.Linq;
-
-	using System.Web;
-	using Models;
-	public class ApplicationMediator : BaseMediator, CHSNS.Data.IApplicationMediator {
+namespace CHSNS.Data
+{
+	public class ApplicationMediator : BaseMediator, IApplicationMediator
+	{
 		private const string APPLISTALL = "APPLISTALL";
-		public ApplicationMediator(DBExt id) : base(id) { }
+
+		public ApplicationMediator(IDBExt id) : base(id)
+		{
+		}
+
 		/// <summary>
 		/// 缓存的应用列表
 		/// </summary>
-		public IList<Application> Applications {
-			get {
-				if (HttpContext.Current.Application[APPLISTALL] == null) {
+		public IList<Application> Applications
+		{
+			get
+			{
+				if (HttpContext.Current.Application[APPLISTALL] == null)
+				{
 					HttpContext.Current.Application.Lock();
 					HttpContext.Current.Application[APPLISTALL] = DBExt.DB.Application.ToList();
 					HttpContext.Current.Application.UnLock();

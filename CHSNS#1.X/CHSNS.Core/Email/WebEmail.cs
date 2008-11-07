@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mail;
+﻿using System.Web.Mail;
 
 namespace CHSNS.Email {
-	public class WebEmail : CHSNS.Email.IEmail {
+	public class WebEmail : IEmail {
 	 /// <summary>
      /// 发送邮件
      /// </summary>
@@ -18,13 +14,15 @@ namespace CHSNS.Email {
      /// <param name="smtpHost">发送邮件用到的smtp主机</param>
      public void Send(string to, string from, string subject, string body, string username, string password, string smtpHost)
      {
-         MailMessage mail = new MailMessage();
-         mail.To = to;//设置收件人地址
-         mail.From = from;//设置发件人地址
-         mail.Subject = subject;//设置邮件主题
-         mail.BodyFormat = MailFormat.Html;//设置邮件以HTML格式发送
-         mail.Body = body;//设置邮件内容
-         //设置发送邮件时需要身份验证
+         var mail = new MailMessage
+                    	{
+                    		To = to,
+                    		From = from,
+                    		Subject = subject,
+                    		BodyFormat = MailFormat.Html,
+                    		Body = body
+                    	};
+	 	//设置发送邮件时需要身份验证
          mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate", "1");
          //设置登录邮件主机时的用户名，注意如果发件人地址是abc@def.com，则用户名是abc而不是abc@def.com
          mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendusername", username);

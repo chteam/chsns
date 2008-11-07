@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using CHSNS.Extension;
 using CHSNS.Filter;
 using CHSNS.Models;
 using CHSNS.Tools;
@@ -76,6 +75,7 @@ namespace CHSNS.Controllers {
 				else {
 					ViewData["Page_Title"] = "发新日志";
 				}
+				ts.Complete();
 				return View();
 			}
 		}

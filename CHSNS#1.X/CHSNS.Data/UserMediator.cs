@@ -5,8 +5,8 @@ using CHSNS;
 using System;
 using CHSNS.ModelPas;
 namespace CHSNS.Data {
-	public class UserMediator : BaseMediator, CHSNS.Data.IUserMediator {
-		public UserMediator(DBExt id) : base(id) { }
+	public class UserMediator : BaseMediator, IUserMediator {
+		public UserMediator(IDBExt id) : base(id) { }
 		public UserPas UserInformation(long userid) {
 			var ret = (from p in DBExt.DB.Profile
 					   join b in DBExt.DB.BasicInformation on p.UserID equals b.UserID
@@ -90,7 +90,7 @@ set Magicbox=@magicbox where UserID=@UserID"
 			});
 		}
 
-		public T GetUser<T>(long userid,System.Linq.Expressions.Expression<System.Func<Profile, T>> x) {
+		public T GetUser<T>(long userid,System.Linq.Expressions.Expression<Func<Profile, T>> x) {
 			var ret = DBExt.DB.Profile
 				.Where(c => c.UserID == userid)
 				.Select(x).FirstOrDefault();
@@ -102,7 +102,7 @@ set Magicbox=@magicbox where UserID=@UserID"
 set showtext=@text,showtexttime=@now where userid=@uid;"
 			, "@text", text
 			, "@uid", userid
-			, "@now", System.DateTime.Now
+			, "@now", DateTime.Now
 			);
 			DBExt.Event.Add(new Event {
 				OwnerID = CHUser.UserID,

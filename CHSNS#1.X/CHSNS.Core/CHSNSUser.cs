@@ -1,33 +1,17 @@
 namespace CHSNS {
 	using System;
-	using System.Data;
 	using System.Web;
 
-	public partial class CHSNSUser {
-		/// <summary>
-		/// 只有注册时才用的属性
-		/// </summary>
-		string _email;
-		public string Email {
-			get {
-				return _email;
-			}
-			set {
-				_email = value;
-			}
+	public class CHSNSUser {
+		public UserStatusType status
+		{
+			get { return _status; }
 		}
-		/// <summary>
-		/// 获取当前用户ID,如用户未登录则抛出异常.
-		/// </summary>
-		long _userid;
-		public long UserID {
-			get {
-				return _userid;
-			}
-			set {
-				_userid = value;
-			}
-		}
+
+		public string Email { get; set; }
+
+		public long UserID { get; set; }
+
 		/// <summary>
 		/// 获取当前用户姓名
 		/// </summary>
@@ -70,9 +54,7 @@ namespace CHSNS {
 			get {
 				if (CHUser.IsLogin) {
 					if (HttpContext.Current.Session["account"] == null) {
-						CHSNSUser cu = new CHSNSUser();
-						cu.UserID = CHUser.UserID;
-						cu.Username = CHUser.Username;
+						var cu = new CHSNSUser {UserID = CHUser.UserID, Username = CHUser.Username};
 						HttpContext.Current.Session["account"] = cu;
 					}
 					return HttpContext.Current.Session["account"] as CHSNSUser;

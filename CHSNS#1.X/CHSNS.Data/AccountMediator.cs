@@ -8,7 +8,7 @@ namespace CHSNS.Data
 {
     public class AccountMediator :BaseMediator ,IAccountMediator
     {
-        public AccountMediator(DBExt id) : base(id) { }
+        public AccountMediator(IDBExt id) : base(id) { }
 		public void Logout()
         {
             CHCookies.Clear();

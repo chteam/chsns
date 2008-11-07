@@ -156,6 +156,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attribute\" />
-    <Folder Include="Web\" />
   </ItemGroup>
 </Project>

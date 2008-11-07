@@ -1,14 +1,11 @@
-﻿using System;
-using System.Data;
-using CHSNS.Models;
-using System.Linq;
+﻿using System.Linq;
 using CHSNS.ModelPas;
 namespace CHSNS.Data {
 	/// <summary>
 	/// 统计的类
 	/// </summary>
-	public class GatherMediator : BaseMediator, CHSNS.Data.IGatherMediator {
-		public GatherMediator(DBExt id) : base(id) { }
+	public class GatherMediator : BaseMediator, IGatherMediator {
+		public GatherMediator(IDBExt id) : base(id) { }
 		/// <summary>
 		/// 我的统计
 		/// </summary>

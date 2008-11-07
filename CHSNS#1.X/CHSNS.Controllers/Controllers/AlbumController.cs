@@ -1,12 +1,6 @@
 
-using System;
-//using Chsword.Reader;
 using CHSNS.Extension;
 using CHSNS.Filter;
-using CHSNS.Models;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using CHSNS;
 namespace CHSNS.Controllers {
 	[LoginedFilter]
@@ -19,10 +13,12 @@ namespace CHSNS.Controllers {
 			ViewData.Add("Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid"));
 			ViewData.Add("Albumid", this.QueryLong("albumid"));
 
-			Dictionary dict = new Dictionary();//参数
-			dict.Add("@Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid"));//参一
-			dict.Add("@Viewerid", CHSNSUser.Current.UserID);//参二
-			dict.Add("@albumid", this.QueryLong("albumid"));//参三
+			var dict = new Dictionary
+			           	{
+			           		{"@Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid")},
+			           		{"@Viewerid", CHSNSUser.Current.UserID},
+			           		{"@albumid", this.QueryLong("albumid")}
+			           	};//参数
 
 			//IList<Album> i = ChAlumna.CastleExt.SpExecute.GetList<Album>("Album_Info", p);
 		//	DataRowCollection drs = DataBaseExecutor.GetRows("Album_Info", dict);

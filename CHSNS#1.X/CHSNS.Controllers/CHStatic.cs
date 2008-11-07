@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using CHSNS.Models;
+﻿using System.Web;
 using System.Web.SessionState;
 
 namespace CHSNS {
@@ -24,7 +19,8 @@ namespace CHSNS {
 			get {
 				if (Session["CHStatic"] == null) {
 					var db = new Data.DBExt();
-					var ret = db.UserInfo.GetUser<NeastStore>(CHUser.UserID, c => new NeastStore() {
+					var ret = db.UserInfo.GetUser(CHUser.UserID, c => new NeastStore
+					                                                  	{
 						FriendRequestCount = c.FriendRequestCount,
 						UnReadMessageCount = c.UnReadMessageCount
 					});

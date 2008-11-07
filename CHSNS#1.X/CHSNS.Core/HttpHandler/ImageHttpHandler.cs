@@ -1,7 +1,8 @@
 
 using System.Web;
 using CHSNS.Config;
-namespace CHSNS
+
+namespace CHSNS.HttpHandler
 {
 	public class ImageHttpHandler : IHttpHandler
 	{
@@ -16,7 +17,7 @@ namespace CHSNS
 		{
 			string FileName = context.Server.MapPath(context.Request.FilePath);
 			if (context.Request.UrlReferrer == null
-				|| string.IsNullOrEmpty(context.Request.UrlReferrer.Host))
+			    || string.IsNullOrEmpty(context.Request.UrlReferrer.Host))
 			{
 				context.Response.ContentType = "image/JPEG";
 				context.Response.WriteFile("~/images/no.gif");//±»Ìæ»»Í¼Æ¬

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Data.EntityClient;
-using System.Data.Linq.Mapping;
-using System.Reflection;
 
 
 namespace CHSNS.Models {
