@@ -6,7 +6,7 @@
 	public class ConfigSerializer
 	{
 		private const string PATH = "/Config/{0}.xml";
-		private const string KEY = "config.{0}";
+
 		/// <summary>
 		/// 序列化到配置文件　
 		/// </summary>
@@ -27,7 +27,7 @@
 		/// </summary>
 		/// <typeparam name="T">反序列化的目标类型</typeparam>
 		/// <param name="key">键</param>
-		/// <param name="useCache">是否使用缓存的值</param>
+		/// <param name="IsUseCache">是否使用缓存的值</param>
 		/// <returns></returns>
 		public static T Load<T>(string key, bool IsUseCache) where T : class
 		{

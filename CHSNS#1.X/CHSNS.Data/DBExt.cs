@@ -1,16 +1,11 @@
-using System;
 using System.Data.EntityClient;
 
 namespace CHSNS.Data {
 	using System.Data;
-	using System.Collections;
 	using Models;
-	using System.Linq;
-	using LinqToSqlExtensions;
-	using Config;
 	using CHSNS;
 	using System.Data.Common;
-	public partial class DBExt :  CHSNS.Data.IDBExt {
+	public partial class DBExt :  IDBExt {
 		#region IDataConcreteMediator ≥…‘±
 
 		public IAccountMediator Account { get; private set; }
@@ -68,7 +63,7 @@ namespace CHSNS.Data {
 				//	return new DataBaseExecutor(new EntityOpener(ConnectionString));
 				if (_dbex == null)
 					_dbex = new DataBaseExecutor(new EntityOpener(
-													(DB.Connection as EntityConnection).StoreConnection
+													((EntityConnection) DB.Connection).StoreConnection
 													)
 						);
 				return _dbex;

@@ -9,8 +9,8 @@ namespace CHSNS {
 	/// 在线
 	/// </summary>
 	public class Online {
-		static readonly string ONLINE_REMOVETIME = "useronline.time";
-		static readonly string ONLINE_LIST = "useronline";
+		private const string ONLINE_REMOVETIME = "useronline.time";
+		private const string ONLINE_LIST = "useronline";
 		/// <summary>
 		/// 清理离线用户
 		/// </summary>

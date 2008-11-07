@@ -1,5 +1,4 @@
 ﻿using System;
-using CHSNS.Config;
 using System.Web.Mvc;
 
 namespace CHSNS.Helper

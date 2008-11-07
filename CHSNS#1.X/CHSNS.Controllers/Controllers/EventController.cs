@@ -2,18 +2,16 @@
 namespace CHSNS.Controllers {
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Transactions;
 	using System.Web.Mvc;
-	using CHSNS.Data;
-	/*
+		/*
 	 * Created by 邹健
 	 * Date: 2007-12-25
 	 * Time: 22:39
 	 * 
 	 * 
 	 */
-	using CHSNS.Filter;
-	using CHSNS.Tools;
+	using Filter;
+
 	/// <summary>
 	/// 事件的控制器
 	/// the Controller of Event.
@@ -22,15 +20,20 @@ namespace CHSNS.Controllers {
 	public class EventController : BaseController {
 		#region Action
 
-		public ActionResult Index() {
-			using (var ts = DBExt.ContextTransaction()) {
+		public ActionResult Index()
+		{
+			using (var ts=DBExt.ContextTransaction())
+			{
 				ViewData["newview"] = DBExt.View.ViewList(2, 3, CHUser.UserID, 6);
 				ViewData["lastview"] = DBExt.View.ViewList(0, 3, CHUser.UserID, 6);
 				ViewData["event"] = DBExt.Event.GetFriendEvent(CHUser.UserID);
 				ViewData["Page_Title"] = "事件";
-				return View(DBExt.Gather.EventGather(CHUser.UserID));
+				var ret = DBExt.Gather.EventGather(CHUser.UserID);
+				ts.Commit();
+				return View(ret);
 			}
 		}
+
 		#endregion
 
 
@@ -55,11 +58,11 @@ namespace CHSNS.Controllers {
 			if (!c.Contains("<%@")) {
 				c = "<%@ Control Language=\"C#\" AutoEventWireup=\"true\" Inherits=\"System.Web.Mvc.ViewUserControl\" %>" + c;
 			}
-			ListItem li = new ListItem()
-			{
-				Text = t,
-				Value = v
-			};
+			var li = new ListItem
+			         	{
+			         		Text = t,
+			         		Value = v
+			         	};
 			var x = ConfigSerializer.Load<List<ListItem>>("SystemTemplate");
 			if (x.Where(q => q.Value == li.Value).Count() != 1)
 			{

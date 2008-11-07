@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using CHSNS.Models;
 using System.Transactions;
 using CHSNS.ModelPas;
 
@@ -38,7 +34,7 @@ namespace CHSNS.Controllers
 		public ActionResult SaveReg(string Username, string Password, string Name) {
 			if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Name))
 				throw new Exception("资料中有空项");
-			AccountPas a = new AccountPas {
+			var a = new AccountPas {
 				Username = Username,
 				Password = Password,
 			};

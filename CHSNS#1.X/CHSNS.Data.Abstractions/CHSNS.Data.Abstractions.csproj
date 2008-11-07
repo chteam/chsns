@@ -8,7 +8,7 @@
     <ProjectGuid>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CHSNS.Data.Abstractions</RootNamespace>
+    <RootNamespace>CHSNS.Data</RootNamespace>
     <AssemblyName>CHSNS.Data.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

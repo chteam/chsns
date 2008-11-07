@@ -16,9 +16,9 @@ namespace CHSNS {
 		/// </summary>
 		/// <returns>请求对象</returns>
 		private HttpWebRequest CreateRequest() {
-			HttpWebRequest 请求 = null;
+			HttpWebRequest 请求;
 
-			请求 = (HttpWebRequest)HttpWebRequest.Create(this._strUrl);//创建请求
+			请求 = (HttpWebRequest)HttpWebRequest.Create(_strUrl);//创建请求
 			请求.Accept = "*/*"; //接受任意文件
 			请求.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.1.4322)"; // 模拟使用IE在浏览
 			//请求.AllowAutoRedirect = false;//这里不允许302

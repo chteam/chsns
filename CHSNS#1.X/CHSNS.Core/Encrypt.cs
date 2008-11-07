@@ -15,8 +15,8 @@ namespace CHSNS
 	public class Encrypt
 	{
 		//private string strIN;
-		private bool isReturnNum;
-		private bool isCaseSensitive;
+		private readonly bool isReturnNum;
+		private readonly bool isCaseSensitive;
 		/// <summary>
 		/// 构造函数
 		/// </summary>
@@ -24,30 +24,22 @@ namespace CHSNS
 		/// <param name="IsReturnNum">是否返回为加密后字符的Byte代码</param>
 		public Encrypt(bool IsCaseSensitive, bool IsReturnNum)
 		{
-			this.isReturnNum = IsReturnNum;
-			this.isCaseSensitive = IsCaseSensitive;
+			isReturnNum = IsReturnNum;
+			isCaseSensitive = IsCaseSensitive;
 		}
 		/// <summary>
 		/// 构造函数，区分大小写，且返回正常码
 		/// </summary>
 		public Encrypt() {
-			this.isReturnNum = false;
-			this.isCaseSensitive =false ;
+			isReturnNum = false;
+			isCaseSensitive =false ;
 		}
 
-		private string getstrIN(string strIN)
+		public bool IsCaseSensitive
 		{
-			//string strIN = strIN;
-			if (strIN.Length == 0)
-			{
-				strIN = "~NULL~";
-			}
-			if (isCaseSensitive == false)
-			{
-				strIN = strIN.ToUpper();
-			}
-			return strIN;
+			get { return isCaseSensitive; }
 		}
+
 		/// <summary>
 		/// Md5加密
 		/// </summary>
@@ -58,7 +50,9 @@ namespace CHSNS
 		{
 			if (code == 16)
 			{
+// ReSharper disable PossibleNullReferenceException
 				return FormsAuthentication.HashPasswordForStoringInConfigFile(str.Trim(), "MD5").ToLower().Substring(8, 16);
+// ReSharper restore PossibleNullReferenceException
 			}
 			if (code == 32)
 			{
@@ -74,10 +68,9 @@ namespace CHSNS
 		public string SHA1Encrypt(string strIN)
 		{
 			//string strIN = getstrIN(strIN);
-			byte[] tmpByte;
 			SHA1 sha1 = new SHA1CryptoServiceProvider();
 
-			tmpByte = sha1.ComputeHash(GetKeyByteArray(strIN));
+			byte[] tmpByte = sha1.ComputeHash(GetKeyByteArray(strIN));
 			sha1.Clear();
 
 			return GetStringValue(tmpByte);
@@ -91,11 +84,9 @@ namespace CHSNS
 		public string SHA256Encrypt(string strIN)
 		{
 			//string strIN = getstrIN(strIN);
-			byte[] tmpByte;
 			SHA256 sha256 = new SHA256Managed();
 
-			tmpByte =
-				sha256.ComputeHash(GetKeyByteArray(strIN));
+			byte[] tmpByte = sha256.ComputeHash(GetKeyByteArray(strIN));
 			sha256.Clear();
 
 			return GetStringValue(tmpByte);
@@ -109,11 +100,9 @@ namespace CHSNS
 		public string SHA512Encrypt(string strIN)
 		{
 			//string strIN = getstrIN(strIN);
-			byte[] tmpByte;
 			SHA512 sha512 = new SHA512Managed();
 
-			tmpByte =
-				sha512.ComputeHash(GetKeyByteArray(strIN));
+			byte[] tmpByte = sha512.ComputeHash(GetKeyByteArray(strIN));
 			sha512.Clear();
 
 			return GetStringValue(tmpByte);
@@ -135,22 +124,18 @@ namespace CHSNS
 			key = key.Substring(0, 8);
 			IV = IV.Substring(0, 8);
 
-			SymmetricAlgorithm sa;
-			ICryptoTransform ct;
-			MemoryStream ms;
-			CryptoStream cs;
-			byte[] byt;
+			SymmetricAlgorithm sa = new DESCryptoServiceProvider
+			                        	{
+			                        		Key = Encoding.UTF8.GetBytes(key),
+			                        		IV = Encoding.UTF8.GetBytes(IV)
+			                        	};
+			ICryptoTransform ct = sa.CreateEncryptor();
 
-			sa = new DESCryptoServiceProvider();
-			sa.Key = Encoding.UTF8.GetBytes(key);
-			sa.IV = Encoding.UTF8.GetBytes(IV);
-			ct = sa.CreateEncryptor();
+			byte[] byt = Encoding.UTF8.GetBytes(originalValue);
 
-			byt = Encoding.UTF8.GetBytes(originalValue);
-
-			ms = new MemoryStream();
-			cs = new CryptoStream(ms, ct,
-			                      CryptoStreamMode.Write);
+			var ms = new MemoryStream();
+			var cs = new CryptoStream(ms, ct,
+			                                   CryptoStreamMode.Write);
 			cs.Write(byt, 0, byt.Length);
 			cs.FlushFinalBlock();
 
@@ -186,21 +171,17 @@ namespace CHSNS
 				key = key.Substring(0, 8);
 				IV = IV.Substring(0, 8);
 
-				SymmetricAlgorithm sa;
-				ICryptoTransform ct;
-				MemoryStream ms;
-				CryptoStream cs;
-				byte[] byt;
+				SymmetricAlgorithm sa = new DESCryptoServiceProvider
+				                        	{
+				                        		Key = Encoding.UTF8.GetBytes(key),
+				                        		IV = Encoding.UTF8.GetBytes(IV)
+				                        	};
+				ICryptoTransform ct = sa.CreateDecryptor();
 
-				sa = new DESCryptoServiceProvider();
-				sa.Key = Encoding.UTF8.GetBytes(key);
-				sa.IV = Encoding.UTF8.GetBytes(IV);
-				ct = sa.CreateDecryptor();
+				byte[] byt = Convert.FromBase64String(encryptedValue);
 
-				byt = Convert.FromBase64String(encryptedValue);
-
-				ms = new MemoryStream();
-				cs = new CryptoStream(ms, ct, CryptoStreamMode.Write);
+				var ms = new MemoryStream();
+				var cs = new CryptoStream(ms, ct, CryptoStreamMode.Write);
 				cs.Write(byt, 0, byt.Length);
 				cs.FlushFinalBlock();
 
@@ -230,9 +211,9 @@ namespace CHSNS
 		{
 			string tmpString = "";
 
-			if (this.isReturnNum == false)
+			if (isReturnNum == false)
 			{
-				ASCIIEncoding Asc = new ASCIIEncoding();
+				var Asc = new ASCIIEncoding();
 				tmpString = Asc.GetString(Byte);
 			}
 			else
@@ -243,7 +224,7 @@ namespace CHSNS
 					(iCounter = 0; iCounter < Byte.Length; iCounter++)
 				{
 					tmpString = tmpString +
-						Byte[iCounter].ToString();
+						Byte[iCounter];
 				}
 
 			}
@@ -251,15 +232,12 @@ namespace CHSNS
 			return tmpString;
 		}
 
-		private byte[] GetKeyByteArray(string strKey)
+		private static byte[] GetKeyByteArray(string strKey)
 		{
 
-			ASCIIEncoding Asc = new ASCIIEncoding();
+			var Asc = new ASCIIEncoding();
 
-			int tmpStrLen = strKey.Length;
-			byte[] tmpByte = new byte[tmpStrLen - 1];
-
-			tmpByte = Asc.GetBytes(strKey);
+			byte[] tmpByte = Asc.GetBytes(strKey);
 
 			return tmpByte;
 

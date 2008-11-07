@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using CHSNS.Config;
 
 namespace CHSNS {
@@ -32,8 +29,8 @@ namespace CHSNS {
 					tickCount += 2147483647;
 				}
 				tickCount /= 1000;
-				TimeSpan span = TimeSpan.FromSeconds((double)tickCount);
-				return ((((span.Days.ToString() + "d ") + span.Hours.ToString() + "h ") + span.Minutes.ToString() + "m ") + span.Seconds.ToString() + "s");
+				TimeSpan span = TimeSpan.FromSeconds(tickCount);
+				return ((((span.Days + "d ") + span.Hours + "h ") + span.Minutes + "m ") + span.Seconds + "s");
 			}
 		}
 	}

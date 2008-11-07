@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CHSNS
+﻿namespace CHSNS
 {
 	public class File
 	{
@@ -12,8 +7,7 @@ namespace CHSNS
 				filename = CHServer.MapPath(filename);
 			if (Exists(filename))
 				return System.IO.File.ReadAllText(filename);
-			else
-				return "Error:文件不存在";
+			return "Error:文件不存在";
 		}
 
 		public  static bool Exists(string filename)

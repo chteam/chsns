@@ -74,32 +74,32 @@ namespace CHSNS {
 			}
 		}
 		public string GetFace_Small(object userid) {
-			return Path.GetFace(userid.ToString(), ImgSizeType.Small);
+			return GetFace(userid.ToString(), ImgSizeType.Small);
 		}
 		public string GetFace_Middle(object userid) {
-			return Path.GetFace(userid.ToString(), ImgSizeType.Middle);
+			return GetFace(userid.ToString(), ImgSizeType.Middle);
 		}
 		public string GetFace_Big() {
 			return GetFace_Big(CHSNSUser.Current.UserID);
 		}
 		public string GetFace_Big(object userid) {
-			return Path.GetFace(userid.ToString(), ImgSizeType.Big);
+			return GetFace(userid.ToString(), ImgSizeType.Big);
 		}
 		public string GetThumbPhoto(long userid, string photofn) {
 			return string.Format("{0}{1}.jpg",
-				   Path.ClientUserThumbFolder(userid.ToString()),
+				   ClientUserThumbFolder(userid.ToString()),
 				   System.IO.Path.GetFileNameWithoutExtension(photofn).ToLower()
 				   );
 		}
 		public string GetPhoto(long userid, string fn) {
 			return string.Format("{0}{1}",
-				  Path.ClientUserPhotosFolder(userid.ToString()),
-				  fn.ToString()
+				  ClientUserPhotosFolder(userid.ToString()),
+				  fn
 				 );
 		}
 
 		public string GroupImg_Big(object groupid) {
-			return Path.GetGroupImg(groupid.ToString(), ImgSizeType.Big);
+			return GetGroupImg(groupid.ToString(), ImgSizeType.Big);
 		}
 		static public string GetRoot() {
 			return "/";
@@ -159,7 +159,7 @@ namespace CHSNS {
 		
 		static public string GetFaceEmpty(string userid, ImgSizeType sizeType) {//如果没有图片则返回空串
 			if (userid.Length > 3) {
-				string text = string.Format("{0}face/{1}{2}.jpg", UserWebPath(userid), userid.Substring(0, 3), sizeType.ToString());
+				string text = string.Format("{0}face/{1}{2}.jpg", UserWebPath(userid), userid.Substring(0, 3), sizeType);
 				if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
 				}
@@ -175,7 +175,7 @@ namespace CHSNS {
 		/// <param name="sizeType">图片大小</param>
 		/// <returns>群图片路径</returns>
 		static public string GetGroupImg(string Groupid, ImgSizeType sizeType) {
-			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(Groupid), Groupid, sizeType.ToString());
+			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(Groupid), Groupid, sizeType);
 			//Debug.Trace(HttpContext.Current.Request.PhysicalApplicationPath + text);
 			if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 				return text;
@@ -191,7 +191,7 @@ namespace CHSNS {
 			return GetGroupImg(Groupid, ImgSizeType.Middle);
 		}
 		public string GetGroupImg(object groupid) {
-			return Path.GetGroupImg(groupid.ToString());
+			return GetGroupImg(groupid.ToString());
 		}
 		#endregion
 		#region 服务器端路径

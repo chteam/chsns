@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.EntityClient;
-using System.Data.OleDb;
 
 namespace CHSNS
 {

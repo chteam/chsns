@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using CHSNS.Models;
 
 namespace CHSNS.Data
@@ -9,12 +6,12 @@ namespace CHSNS.Data
 	/// <summary>
 	/// Calling the event
 	/// </summary>
-	public class EventMediator : BaseMediator, CHSNS.Data.IEventMediator {
+	public class EventMediator : BaseMediator, IEventMediator {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EventMediator"/> class.
 		/// </summary>
 		/// <param name="id">The DBExt.</param>
-		public EventMediator(DBExt id) : base(id) { }
+		public EventMediator(IDBExt id) : base(id) { }
 		/// <summary>
 		/// Gets the event./获取某人的Event
 		/// </summary>
