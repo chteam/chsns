@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Category] ADD CONSTRAINT [PK_category] PRIMARY KEY CLUSTERED  ([ID]) ON [PRIMARY]
+
+

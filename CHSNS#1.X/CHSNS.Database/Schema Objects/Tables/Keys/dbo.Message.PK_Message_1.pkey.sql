@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Message] ADD CONSTRAINT [PK_Message_1] PRIMARY KEY CLUSTERED  ([ID]) ON [PRIMARY]
+
+

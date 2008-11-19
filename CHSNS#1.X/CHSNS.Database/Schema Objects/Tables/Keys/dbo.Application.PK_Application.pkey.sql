@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Application] ADD CONSTRAINT [PK_Application] PRIMARY KEY CLUSTERED  ([ID]) ON [PRIMARY]
+
+

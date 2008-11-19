@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[Comment] ADD CONSTRAINT [PK_Comment] PRIMARY KEY CLUSTERED  ([ID]) ON [PRIMARY]
+
+
