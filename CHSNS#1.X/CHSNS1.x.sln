@@ -27,6 +27,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{95
 EndProject
 Project("{A9ACE9BB-CECE-4E62-9AA4-C7E7C5BD2124}") = "CHSNS.Database", "CHSNS.Database\CHSNS.Database.dbproj", "{02841DB3-429F-4032-AE95-66DF05B701DF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{88D6EB98-3D14-4765-A930-118AC4081BE4}"
+	ProjectSection(SolutionItems) = preProject
+		DLL\Newtonsoft.Json.dll = DLL\Newtonsoft.Json.dll
+		DLL\Newtonsoft.Json.pdb = DLL\Newtonsoft.Json.pdb
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 10
