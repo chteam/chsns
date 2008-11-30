@@ -3,7 +3,7 @@
 	using System.Collections;
 	using System.Linq;
 	using CHSNS.Models;
-	using LinqToSqlExtensions;
+
 	using System;
 	using CHSNS;
 	using System.Collections.Generic;

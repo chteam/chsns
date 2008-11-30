@@ -18,7 +18,7 @@ namespace CHSNS.Models
     /// <summary>
     /// 架构中不存在 CHSNSDBEntities 的注释。
     /// </summary>
-    public class CHSNSDBEntities : System.Data.Objects.ObjectContext
+    public partial class CHSNSDBEntities : System.Data.Objects.ObjectContext
     {
         /// <summary>
         /// 请使用应用程序配置文件的“CHSNSDBEntities”部分中的连接字符串初始化新 CHSNSDBEntities 对象。
