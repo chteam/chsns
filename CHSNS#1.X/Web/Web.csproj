@@ -1287,20 +1287,6 @@
     <Compile Include="Views\Shared\EventTemplate\ProText.ascx.designer.cs">
       <DependentUpon>ProText.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shared\Footer.ascx.cs">
-      <DependentUpon>Footer.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Footer.ascx.designer.cs">
-      <DependentUpon>Footer.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\LoginControl.ascx.cs">
-      <DependentUpon>LoginControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\LoginControl.ascx.designer.cs">
-      <DependentUpon>LoginControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Shared\MyMenu.ascx.cs">
       <DependentUpon>MyMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1321,13 +1307,6 @@
     </Compile>
     <Compile Include="Views\Shared\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\Utility.ascx.cs">
-      <DependentUpon>Utility.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Utility.ascx.designer.cs">
-      <DependentUpon>Utility.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\ViewList.ascx.cs">
       <DependentUpon>ViewList.ascx</DependentUpon>
