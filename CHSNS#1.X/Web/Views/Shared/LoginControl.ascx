@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LoginControl.ascx.cs"
-	Inherits="CHSNS.Web.Views.Shared.LoginControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <span id="loginmsg"></span>
 <div id="loginpanel">
 	<h3>
@@ -27,28 +26,27 @@
 </div>
 
 <script type="text/javascript">
-    function Regtest(id, reg) {return reg.test($v(id));}
-    function Login() {
-        var msg = function(m) { showMessage("#loginmsg", m); };
-        var U = $v("#login_u");
-        if (U.length < 4) {
-            msg('请输入正确的用户名.');
-            return;
-        }
-        var P = $v("#login_p");
-        if (P.length < 4) {
-            msg('密码最短长度为4.');
-            return;
-        }
-        $.post('<%=Url.Action("Login","Account") %>', { "u": U, "p": P, "a": $("#login_a").attr("checked") }, function(r) {
-            if (r != "false") {
-                location = '<%=Url.Action("Index","Event") %>';
-            }
-            else {
-                msg('您的用户名或密码不正确.');
-            }
-        });
-        $h("#loginmsg", '正在验证信息...');
-    }
+	var Login = function() {
+		var msg = function(m) { showMessage("#loginmsg", m); };
+		var U = $v("#login_u");
+		if (U.length < 4) {
+			msg('请输入正确的用户名.');
+			return;
+		}
+		var P = $v("#login_p");
+		if (P.length < 4) {
+			msg('密码最短长度为4.');
+			return;
+		}
+		$.post('<%=Url.Action("Login","Account") %>', { "u": U, "p": P, "a": $("#login_a").attr("checked") }, function(r) {
+			if (r != "false") {
+				location = '<%=Url.Action("Index","Event") %>';
+			}
+			else {
+				msg('您的用户名或密码不正确.');
+			}
+		});
+		$h("#loginmsg", '正在验证信息...');
+	};
 </script>
 
