@@ -588,6 +588,11 @@
     <Content Include="Images\CHBox\loading.gif" />
     <Content Include="Images\CHBox\tl.png" />
     <Content Include="Images\CHBox\tr.png" />
+    <Content Include="Images\no.gif" />
+    <Content Include="Images\no_big.jpg" />
+    <Content Include="Images\no_middle.jpg" />
+    <Content Include="Images\no_small.jpg" />
+    <Content Include="Images\no_tiny.jpg" />
     <Content Include="JavaScript\effects\effects.bounce.packed.js" />
     <Content Include="JavaScript\effects\effects.core.packed.js" />
     <Content Include="JavaScript\effects\effects.scale.packed.js" />
@@ -1337,13 +1342,6 @@
     </Compile>
     <Compile Include="Views\Upload\File.aspx.designer.cs">
       <DependentUpon>File.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\User\BaseInfo.ascx.cs">
-      <DependentUpon>BaseInfo.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\User\BaseInfo.ascx.designer.cs">
-      <DependentUpon>BaseInfo.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\Contact.ascx.cs">
       <DependentUpon>Contact.ascx</DependentUpon>
