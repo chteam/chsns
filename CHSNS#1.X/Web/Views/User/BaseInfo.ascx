@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BaseInfo.ascx.cs" Inherits="CHSNS.Web.Views.User.BaseInfo" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true"  Inherits="System.Web.Mvc.ViewUserControl" %>
 <form id="BasicInfofrm">
 <div class="notes">
 	[*为必填 其它选填] 请完善以下基本信息
@@ -18,19 +18,19 @@
 <div class="required">
 	<label for="gender">
 		<em>*</em>性别：</label>
-	<%=Html.DropDownList("","Sex", new { @class = "select" })%>
+	<%=Html.DropDownList("请选择","Sex", new { @class = "select" })%>
 </div>
 <div class="required">
 	<label for="birthyear">
 		*生日：</label>
-	<%=Html.TextBox("Birthday", new { onclick = "$('#Birthday').datepicker();$('#Birthday').datepicker('show');" })%>
+	<%=Html.TextBox("Birthday",null, new { onclick = "$('#Birthday').datepicker();$('#Birthday').datepicker('show');" })%>
 </div>
 <div class="required">
 	<label for="homeProvince">
 		<em>*</em>家乡：</label>
-	<%=Html.DropDownList("","ProvinceID", new { @class = "select", onchange = "javascript:ChangeProvince()" })%>
+	<%=Html.DropDownList("请选择","ProvinceID", new { @class = "select", onchange = "javascript:ChangeProvince()" })%>
 	<span id="CityPanel">
-		<%=Html.DropDownList("","CityID", new { @class = "select" })%>
+		<%=Html.DropDownList("请选择", "CityID", new { @class = "select" })%>
 	</span><span id="CityStatus"></span>
 </div>
 
