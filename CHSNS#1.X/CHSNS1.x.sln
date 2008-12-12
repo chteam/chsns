@@ -5,12 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Controllers", "CHSNS.Controllers\CHSNS.Controllers.csproj", "{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2BD4E2D4-42D2-48F8-865A-45B9534B5ABA}"
-	ProjectSection(SolutionItems) = preProject
-		CHSNS1.x1.vsmdi = CHSNS1.x1.vsmdi
-		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core", "CHSNS.Core\CHSNS.Core.csproj", "{F7CF4538-9101-4328-81D0-AF1B2A8B314A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Models", "CHSNS.Models\CHSNS.Models.csproj", "{A13FEE3F-28F9-4A9C-B774-7C958124D949}"
@@ -47,6 +41,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{60FCF7CB-D80
 		DLL\Newtonsoft.Json.pdb = DLL\Newtonsoft.Json.pdb
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{B3184A8F-23C1-4DBB-88CC-35D18477161F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5EF50786-2492-4737-946C-906F0E62EF91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controllers", "Controllers", "{20A815C8-5BE0-4F75-850A-3F4AA4684DEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{D3F92409-02E1-4837-9974-3A7816F96EC1}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 10
@@ -54,36 +58,41 @@ Global
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Web\\Web.csproj
+		SccProjectTopLevelParentUniqueName1 = CHSNS1.x.sln
 		SccProjectName1 = Web
 		SccLocalPath1 = Web
 		SccProjectUniqueName2 = CHSNS.Controllers\\CHSNS.Controllers.csproj
+		SccProjectTopLevelParentUniqueName2 = CHSNS1.x.sln
 		SccProjectName2 = CHSNS.Controllers
 		SccLocalPath2 = CHSNS.Controllers
 		SccProjectUniqueName3 = CHSNS.Core\\CHSNS.Core.csproj
+		SccProjectTopLevelParentUniqueName3 = CHSNS1.x.sln
 		SccProjectName3 = CHSNS.Core
 		SccLocalPath3 = CHSNS.Core
 		SccProjectUniqueName4 = CHSNS.Models\\CHSNS.Models.csproj
+		SccProjectTopLevelParentUniqueName4 = CHSNS1.x.sln
 		SccProjectName4 = CHSNS.Models
 		SccLocalPath4 = CHSNS.Models
 		SccProjectUniqueName5 = CHSNS.Data\\CHSNS.Data.csproj
+		SccProjectTopLevelParentUniqueName5 = CHSNS1.x.sln
 		SccProjectName5 = CHSNS.Data
 		SccLocalPath5 = CHSNS.Data
 		SccProjectUniqueName6 = CHSNS.Core.Tests\\CHSNS.Core.Tests.csproj
+		SccProjectTopLevelParentUniqueName6 = CHSNS1.x.sln
 		SccProjectName6 = CHSNS.Core.Tests
 		SccLocalPath6 = CHSNS.Core.Tests
 		SccProjectUniqueName7 = CHSNS.Data.Abstractions\\CHSNS.Data.Abstractions.csproj
+		SccProjectTopLevelParentUniqueName7 = CHSNS1.x.sln
 		SccProjectName7 = CHSNS.Data.Abstractions
 		SccLocalPath7 = CHSNS.Data.Abstractions
 		SccProjectUniqueName8 = CHSNS.ModelsPas\\CHSNS.ModelPas.csproj
+		SccProjectTopLevelParentUniqueName8 = CHSNS1.x.sln
 		SccProjectName8 = CHSNS.ModelsPas
 		SccLocalPath8 = CHSNS.ModelsPas
 		SccProjectUniqueName9 = CHSNS.Database\\CHSNS.Database.dbproj
 		SccProjectTopLevelParentUniqueName9 = CHSNS1.x.sln
 		SccProjectName9 = CHSNS.Database
 		SccLocalPath9 = CHSNS.Database
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = CHSNS1.x1.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -244,5 +253,13 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{02841DB3-429F-4032-AE95-66DF05B701DF} = {95B541E6-765B-4E90-B6B2-6810AE9AD0AB}
+		{A13FEE3F-28F9-4A9C-B774-7C958124D949} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
+		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
+		{3836155E-981B-4C16-8F45-96D19ECC6F7E} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
+		{27E2B6B3-7382-4D72-A889-7FDD618126F3} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
+		{F7CF4538-9101-4328-81D0-AF1B2A8B314A} = {5EF50786-2492-4737-946C-906F0E62EF91}
+		{54126DEC-D878-40B2-9E49-57E8C04F0D21} = {1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}
+		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036} = {20A815C8-5BE0-4F75-850A-3F4AA4684DEE}
+		{565374D0-3D96-4D3B-9E95-108574BA9755} = {D3F92409-02E1-4837-9974-3A7816F96EC1}
 	EndGlobalSection
 EndGlobal
