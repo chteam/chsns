@@ -1,5 +1,4 @@
 using System.Web.Mvc;
-using CHSNS.Extension;
 using CHSNS.Filter;
 
 namespace CHSNS.Controllers

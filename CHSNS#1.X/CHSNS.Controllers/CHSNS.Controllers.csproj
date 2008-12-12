@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -98,6 +98,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Extension\EnumerableExtensions.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />
@@ -120,6 +121,12 @@
     <Compile Include="Helper\UrlHelperCHHelperExt.cs" />
     <Compile Include="Extension\ControllerExt.cs" />
     <Compile Include="Extension\RedirectExt.cs" />
+    <Compile Include="Result\BinaryResult.cs" />
+    <Compile Include="Result\NotFoundResult.cs" />
+    <Compile Include="Result\XmlActionResult.cs" />
+    <Compile Include="Result\XmlViewResult.cs" />
+    <Compile Include="Services\EmailTemplateService.cs" />
+    <Compile Include="Services\IEmailTemplateService.cs" />
     <Compile Include="Tools\EmptyExt.cs" />
     <Compile Include="Tools\PagerExt.cs" />
   </ItemGroup>
