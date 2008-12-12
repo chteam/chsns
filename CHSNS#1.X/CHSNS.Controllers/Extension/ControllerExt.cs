@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace CHSNS.Extension
+namespace CHSNS.Controllers
 {
 	public static class ControllerExt {
 		public static string QueryString(this Controller c,string QueryStringName)

@@ -97,7 +97,9 @@ namespace CHSNS
 		/// </summary>
 		public static bool IsAdmin
 		{
-			get { return Status > 199; }
+			get {
+				return true;// Status > 199;
+			}
 		}
 
 		/// <summary>

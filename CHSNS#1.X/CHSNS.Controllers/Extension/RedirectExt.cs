@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace CHSNS.Extension
+namespace CHSNS.Controllers
 {
 	/// <summary>
 	/// 对Controller的Redirect操作的扩展
