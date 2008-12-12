@@ -4,7 +4,7 @@ namespace CHSNS.Controllers {
 	using System;
 	using System.Linq;
 	using System.Web.Mvc;
-	using Extension;
+
 	using Filter;
 	using Tools;
 	public class FriendController : BaseController {

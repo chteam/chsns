@@ -128,6 +128,8 @@
     <Compile Include="Services\EmailTemplateService.cs" />
     <Compile Include="Services\IEmailTemplateService.cs" />
     <Compile Include="Tools\EmptyExt.cs" />
+    <Compile Include="Tools\IPagedList.cs" />
+    <Compile Include="Tools\PagedList.cs" />
     <Compile Include="Tools\PagerExt.cs" />
   </ItemGroup>
   <ItemGroup>
