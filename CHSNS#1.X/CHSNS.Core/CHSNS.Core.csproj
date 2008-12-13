@@ -94,6 +94,7 @@
     <Compile Include="CHCookies.cs" />
     <Compile Include="ChServer.cs" />
     <Compile Include="CHSite.cs" />
+    <Compile Include="CHSNSUser.cs" />
     <Compile Include="CHUser.cs" />
     <Compile Include="CommentType.cs" />
     <Compile Include="ConfigSerializer.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="DataExecute\OleDbDataOpener.cs" />
     <Compile Include="Online.cs" />
     <Compile Include="Tools\HttpProc.cs" />
+    <Compile Include="UserStatusType.cs" />
     <Compile Include="XmlSerializer.cs" />
     <Compile Include="DataExecute\SqlDataOpener.cs" />
     <Compile Include="DataExecute\SqlStoredProcedureDataOpener.cs" />
