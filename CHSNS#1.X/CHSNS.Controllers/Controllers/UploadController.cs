@@ -9,7 +9,7 @@ using CHSNS;
 namespace CHSNS.Controllers {
 	//[Helper(typeof(ChHelper))]
 	[LoginedFilter]
-	public class UploadController : BaseBlockController {
+	public class UploadController : BaseController {
 		#region Action
 		public ActionResult File(string mode) {
 			if (string.IsNullOrEmpty(mode))

@@ -1,4 +1,5 @@
 
+using System.Web.Mvc;
 using CHSNS.Filter;
 using CHSNS;
 namespace CHSNS.Controllers {
@@ -7,7 +8,8 @@ namespace CHSNS.Controllers {
 		/// <summary>
 		/// 打开一个相册,是相处列表
 		/// </summary>
-		public void index() {
+		public ActionResult Index()
+		{
 			ViewData.Add("tabs", this.QueryNum("tabs"));
 			ViewData.Add("Ownerid", this.QueryLong("userid") == 0 ? CHUser.UserID : this.QueryLong("userid"));
 			ViewData.Add("Albumid", this.QueryLong("albumid"));
@@ -17,16 +19,16 @@ namespace CHSNS.Controllers {
 			           		{"@Ownerid", this.QueryLong("userid") == 0 ? CHUser.UserID : this.QueryLong("userid")},
 			           		{"@Viewerid", CHUser.UserID},
 			           		{"@albumid", this.QueryLong("albumid")}
-			           	};//参数
+			           	}; //参数
 
 			//IList<Album> i = ChAlumna.CastleExt.SpExecute.GetList<Album>("Album_Info", p);
-		//	DataRowCollection drs = DataBaseExecutor.GetRows("Album_Info", dict);
-		//	if (drs.Count != 0)
-		//		ViewData.Add("album", drs[0]);
+			//	DataRowCollection drs = DataBaseExecutor.GetRows("Album_Info", dict);
+			//	if (drs.Count != 0)
+			//		ViewData.Add("album", drs[0]);
 			// ViewData.Add("photos", album.GetPhotos().Rows);
-			View();
-
+			return View();
 		}
+
 		//随机出
 		public void random() {
 			//Chsword.Reader.Albums al = new Chsword.Reader.Albums();
@@ -46,6 +48,11 @@ namespace CHSNS.Controllers {
 
 			//ViewData.Add("rows", al.GetAlbums().Rows);
 			//View();
+		}
+
+		public ActionResult List(long? uid)
+		{
+			return View();
 		}
 	}
 }
