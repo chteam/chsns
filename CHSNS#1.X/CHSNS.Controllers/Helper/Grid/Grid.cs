@@ -15,23 +15,23 @@ namespace CHSNS.Helepr
 	/// <typeparam name="T">Type of object to be rendered in each row.</typeparam>
 	public class Grid<T> : GridBase<T> where T : class
 	{
-		private const string Default_Css_Class = "grid";
+		private const string Default_Css_Class = "table";
 		private const string Empty_Text_Key = "empty";
 		private const string Pagination_Format_Text_Key = "paginationFormat";
-		private const string Page_Query_Name_Text_Key = "page";
+		private const string Page_Query_Name_Text_Key = "p";
 		private const string Pagination_Single_Format_Text_Key = "paginationSingleFormat";
-		private const string Pagination_First_Text_Key = "first";
-		private const string Pagination_Prev_Text_Key = "prev";
-		private const string Pagination_Next_Text_Key = "next";
-		private const string Pagination_Last_Text_Key = "last";
+		private const string Pagination_First_Text_Key = "第一页";
+		private const string Pagination_Prev_Text_Key = "上一页";
+		private const string Pagination_Next_Text_Key = "下一页";
+		private const string Pagination_Last_Text_Key = "最末页";
 
-		private string _paginationFormat = "Showing {0} - {1} of {2} ";
-		private string _paginationSingleFormat = "Showing {0} of {1} ";
-		private string _paginationFirst = "first";
-		private string _paginationPrev = "prev";
-		private string _paginationNext = "next";
-		private string _paginationLast = "last";
-		private string _pageQueryName = "page";
+		private readonly string _paginationFormat = "Showing {0} - {1} of {2} ";
+		private readonly string _paginationSingleFormat = "Showing {0} of {1} ";
+		private readonly string _paginationFirst = "第一页";
+		private readonly string _paginationPrev = "上一页";
+		private readonly string _paginationNext = "下一页";
+		private readonly string _paginationLast = "最末页";
+		private readonly string _pageQueryName = "p";
 
 		/// <summary>
 		/// Custom HTML attributes.
@@ -308,12 +308,12 @@ namespace CHSNS.Helepr
 
 			foreach(string key in values.Keys)
 			{
-				if(key == "page") //Don't re-add any existing 'page' variable to the querystring - this will be handled in CreatePageLink.
+				if (key == _pageQueryName) //Don't re-add any existing 'page' variable to the querystring - this will be handled in CreatePageLink.
 				{
 					continue;
 				}
-
-				foreach(var value in values.GetValues(key))
+				
+				foreach(var value in values.GetValues(key).ToNotNull())
 				{
 					builder.AppendFormat("&amp;{0}={1}", key, value);
 				}

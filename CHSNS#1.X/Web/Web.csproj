@@ -201,6 +201,7 @@
     <None Include="Views\Html\ProfileEdit.vm" />
     <None Include="Views\Html\Rss-List.vm" />
     <None Include="Views\Rescues\index.vm" />
+    <Content Include="Config\SystemApplication.xml" />
     <Content Include="Config\SystemTemplate.xml" />
     <Content Include="Images\CHBox\b.png" />
     <Content Include="Images\CHBox\bl.png" />
@@ -321,6 +322,7 @@
     <Content Include="Style\Facebook_backup\video.css" />
     <Content Include="Style\Facebook_backup\wysiwyg.css" />
     <Content Include="Views\Admin\About.ascx" />
+    <Content Include="Views\Admin\ApplicationManagement.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Album\List.aspx" />
     <Content Include="Views\Note\CommentList.ascx" />
@@ -643,6 +645,13 @@
     </Compile>
     <Compile Include="Views\Admin\About.ascx.designer.cs">
       <DependentUpon>About.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ApplicationManagement.aspx.cs">
+      <DependentUpon>ApplicationManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ApplicationManagement.aspx.designer.cs">
+      <DependentUpon>ApplicationManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

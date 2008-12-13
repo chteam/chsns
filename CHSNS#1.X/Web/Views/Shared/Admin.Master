@@ -35,7 +35,12 @@
                                             <%=Html.ActionLink("用户管理", "UserManage", "Admin")%></li>
                                     </ul>
                                 </li>
-                               
+                                <li class="contain"><a class="containA" href="#">应用程序管理</a>
+                                    <ul class="list_2">
+                                        <li>
+                                            <%=Html.ActionLink("管理", "ApplicationManagement", "Admin")%></li>
+                                    </ul>
+                                </li>
                             </ul>
                             <a href="#" class="hide">
                                 ss</a>
