@@ -113,6 +113,7 @@
     <Compile Include="Email\WebEmail.cs" />
     <Compile Include="Enum\RoleType.cs" />
     <Compile Include="Enum\VisitType.cs" />
+    <Compile Include="Extension\EnumExtension.cs" />
     <Compile Include="File.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
