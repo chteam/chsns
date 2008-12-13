@@ -10,6 +10,6 @@ namespace CHSNS.Config {
 		public Size Size { get; set; }
 		///<summary>类型
 		///</summary>
-		public ImgSizeType ImageType { get; set; }
+		public ThumbType ImageType { get; set; }
 	}
 }
