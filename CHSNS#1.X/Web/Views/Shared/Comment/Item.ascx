@@ -5,7 +5,7 @@
 <li id="Item<%=dr.Comment.ID%>" class="useritem">
 	<div class="comment">
 		<div class="face face-small">
-			<a href="<%=Url.UserPage(dr.Sender.ID) %>" title="<%=dr.Sender.Name %>" style="background-image: url(<%=Path.GetFace(dr.Sender.ID,ImgSizeType.Small) %>);"></a>
+			<a href="<%=Url.UserPage(dr.Sender.ID) %>" title="<%=dr.Sender.Name %>" style="background-image: url(<%=Path.GetFace(dr.Sender.ID,ThumbType.Small) %>);"></a>
 		</div>
 		<div class="author">
 			<%=Html.UserPageLink(dr.Sender.ID,dr.Sender.Name)%>
