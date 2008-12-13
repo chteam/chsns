@@ -6,6 +6,6 @@ using System.Text;
 namespace CHSNS.Config {
 	[Serializable]
 	public class SystemApplicationConfig {
-		public IEnumerable<ApplicationItem> Items { get; set; }
+		public List<ApplicationItem> Items { get; set; }
 	}
 }

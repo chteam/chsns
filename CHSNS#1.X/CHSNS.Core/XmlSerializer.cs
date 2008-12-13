@@ -13,19 +13,19 @@ namespace CHSNS
 		/// <param name="fn">键值</param>
 		public static void Save<T>(T obj, string fn) where T : class
 		{
-			try
-			{
-				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+			
+				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof (T));
 				using (var myWriter = new StreamWriter(CHServer.MapPath(fn)))
 				{
 					mySerializer.Serialize(myWriter, obj);
 				}
-			}
+				try { }
 			catch
 			{
 				throw new Exception(string.Format("存储配置文件{0}时出错,编号:{1}", fn, 10359));
 			}
 		}
+
 		public static void Clear(string fn) { CHCache.Remove(fn); }
 		/// <summary>
 		/// 从配置文件反序列化

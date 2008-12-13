@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SystemApplicationConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Items>
+    <ApplicationItem>
+      <ID>0</ID>
+      <FullName>0</FullName>
+      <AuthorID>0</AuthorID>
+      <AddTime>0001-01-01T00:00:00</AddTime>
+      <UpdateTime>0001-01-01T00:00:00</UpdateTime>
+      <IsSystem>false</IsSystem>
+      <IsTrue>false</IsTrue>
+      <UserCount>0</UserCount>
+    </ApplicationItem>
+    <ApplicationItem>
+      <ID>1</ID>
+      <FullName>1</FullName>
+      <AuthorID>0</AuthorID>
+      <AddTime>0001-01-01T00:00:00</AddTime>
+      <UpdateTime>0001-01-01T00:00:00</UpdateTime>
+      <IsSystem>false</IsSystem>
+      <IsTrue>false</IsTrue>
+      <UserCount>0</UserCount>
+    </ApplicationItem>
+  </Items>
+</SystemApplicationConfig>
