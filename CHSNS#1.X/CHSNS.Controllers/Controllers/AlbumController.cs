@@ -9,13 +9,13 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		public void index() {
 			ViewData.Add("tabs", this.QueryNum("tabs"));
-			ViewData.Add("Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid"));
+			ViewData.Add("Ownerid", this.QueryLong("userid") == 0 ? CHUser.UserID : this.QueryLong("userid"));
 			ViewData.Add("Albumid", this.QueryLong("albumid"));
 
 			var dict = new Dictionary
 			           	{
-			           		{"@Ownerid", this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid")},
-			           		{"@Viewerid", CHSNSUser.Current.UserID},
+			           		{"@Ownerid", this.QueryLong("userid") == 0 ? CHUser.UserID : this.QueryLong("userid")},
+			           		{"@Viewerid", CHUser.UserID},
 			           		{"@albumid", this.QueryLong("albumid")}
 			           	};//²ÎÊý
 

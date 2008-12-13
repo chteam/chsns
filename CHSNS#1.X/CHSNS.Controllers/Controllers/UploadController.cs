@@ -39,7 +39,7 @@ namespace CHSNS.Controllers {
 		}
 		[NonAction]
 		public string UploadImage(HttpPostedFileBase file1, string serverfullpath, bool isSaveSource) {
-			string fn = CHSNSUser.Current.UserID.ToString();
+			string fn = CHUser.UserID.ToString();
 			if (string.IsNullOrEmpty(serverfullpath) || file1 == null) return WriteErr("error:路径有错误");
 			System.IO.Directory.CreateDirectory(serverfullpath);
 			if (file1.ContentLength > 2004800) return WriteErr("error:文件请小于2M");
@@ -70,7 +70,7 @@ namespace CHSNS.Controllers {
 				return
 					WriteErr(
 						Debug.TraceBack("error:文件无法上传:" +
-						string.Format("{0}{1}{3}{2}", serverfullpath, fn, fileExtension, ImgSizeType.Big))
+						string.Format("{0}{1}{3}{2}", serverfullpath, fn, fileExtension, ThumbType.Big))
 						);
 
 			}
@@ -78,7 +78,7 @@ namespace CHSNS.Controllers {
 			#endregion
 			//SetStarLevel(CHUser.UserID); //更新
 			return
-				WriteJs("parent.uploadsuccess('" + Path.GetFace(CHSNSUser.Current.UserID.ToString(), ImgSizeType.Big) + "'); ");
+				WriteJs("parent.uploadsuccess('" + Path.GetFace(CHUser.UserID.ToString(), ThumbType.Big) + "'); ");
 		}
 
 		#endregion

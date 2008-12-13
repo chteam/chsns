@@ -35,7 +35,7 @@ namespace CHSNS.Controllers {
 		[ActionName("Request")]
 		public ActionResult FriendRequest(){
 			using (new TransactionScope()){
-				var Ownerid = CHSNSUser.Current.UserID;
+				var Ownerid = CHUser.UserID;
 				var b = DBExt.Friend.UserFriendInfo(Ownerid);
 				if (b == null) throw new Exception("用户不存在");
 				ViewData["Name"] = b.Name;
