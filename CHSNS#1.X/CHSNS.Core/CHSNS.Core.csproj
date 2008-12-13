@@ -104,6 +104,8 @@
     <Compile Include="Config\Publish.cs" />
     <Compile Include="Config\RegVisitConfig.cs" />
     <Compile Include="Config\SiteConfig.cs" />
+    <Compile Include="Config\SystemApplicationConfig.cs" />
+    <Compile Include="Config\SystemApplicationItem.cs" />
     <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="Config\ThumbnailPair.cs" />
     <Compile Include="DataExecute\DataBaseExecutor.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Enum\VisitType.cs" />
     <Compile Include="Extension\EnumExtension.cs" />
     <Compile Include="File.cs" />
+    <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
     <Compile Include="Interface\IApplication.cs" />
