@@ -182,25 +182,7 @@ namespace CHSNS {
 			return tmpStr.ToString();
 		}
 		#endregion
-		/// <summary>
-		/// NoHtml
-		/// </summary>
-		/// <param name="str"></param>
-		/// <returns></returns>
-		static public string NoHtml(string str) {
-			str = str.Replace("<br />", "[br]");
-			str = str.Replace("<br>", "[br]");
-			str = str.Replace("<br/>", "[br]");
-			str = Regex.Replace(str,
-				@"(<br\s*/+>)",
-			"[br]", RegexOptions.IgnoreCase);
-			str = Regex.Replace(str,
-				  @"(<[^>]+>)",
-					"", RegexOptions.IgnoreCase);
-			str = str.Replace("<", "");
-			str = str.Replace(">", "");
-			return str.Replace("[br]", "<br />");
-		}
+	
 		static public string SexName(object b) {
 			bool _b;
 			if (bool.TryParse(b.ToString(), out _b)) {

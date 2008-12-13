@@ -41,20 +41,20 @@ namespace CHSNS {
 		/// 用户头像
 		/// </summary>
 		/// <param name="userid"></param>
-		/// <param name="sizeType"></param>
+		/// <param name="type"></param>
 		/// <returns></returns>
-		static public string GetFace(object userid, ImgSizeType sizeType) {
+		static public string GetFace(object userid, ThumbType type) {
 			string text = string.Format("{0}Face/{1}{2}.jpg",
 			                            UserWebPath(userid.ToString()),
 			                            userid,
-			                            sizeType);
+			                            type);
 				if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
 				}
-			return EmptyUserFace(sizeType);
+			return EmptyUserFace(type);
 		}
-		static private string EmptyUserFace(ImgSizeType sizeType) {
-			return string.Format("/images/no_{0}.jpg", sizeType);
+		static private string EmptyUserFace(ThumbType type) {
+			return string.Format("/images/no_{0}.jpg", type);
 		}
 		#endregion
 
@@ -74,16 +74,16 @@ namespace CHSNS {
 			}
 		}
 		public string GetFace_Small(object userid) {
-			return GetFace(userid.ToString(), ImgSizeType.Small);
+			return GetFace(userid.ToString(), ThumbType.Small);
 		}
 		public string GetFace_Middle(object userid) {
-			return GetFace(userid.ToString(), ImgSizeType.Middle);
+			return GetFace(userid.ToString(), ThumbType.Middle);
 		}
 		public string GetFace_Big() {
-			return GetFace_Big(CHSNSUser.Current.UserID);
+			return GetFace_Big(CHUser.UserID);
 		}
 		public string GetFace_Big(object userid) {
-			return GetFace(userid.ToString(), ImgSizeType.Big);
+			return GetFace(userid.ToString(), ThumbType.Big);
 		}
 		public string GetThumbPhoto(long userid, string photofn) {
 			return string.Format("{0}{1}.jpg",
@@ -99,7 +99,7 @@ namespace CHSNS {
 		}
 
 		public string GroupImg_Big(object groupid) {
-			return GetGroupImg(groupid.ToString(), ImgSizeType.Big);
+			return GetGroupImg(groupid.ToString(), ThumbType.Big);
 		}
 		static public string GetRoot() {
 			return "/";
@@ -157,9 +157,9 @@ namespace CHSNS {
 		#region 用户头像路径
 
 		
-		static public string GetFaceEmpty(string userid, ImgSizeType sizeType) {//如果没有图片则返回空串
+		static public string GetFaceEmpty(string userid, ThumbType type) {//如果没有图片则返回空串
 			if (userid.Length > 3) {
-				string text = string.Format("{0}face/{1}{2}.jpg", UserWebPath(userid), userid.Substring(0, 3), sizeType);
+				string text = string.Format("{0}face/{1}{2}.jpg", UserWebPath(userid), userid.Substring(0, 3), type);
 				if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
 				}
@@ -172,10 +172,10 @@ namespace CHSNS {
 		/// 获取群图片
 		/// </summary>
 		/// <param name="Groupid">群ID</param>
-		/// <param name="sizeType">图片大小</param>
+		/// <param name="type">图片大小</param>
 		/// <returns>群图片路径</returns>
-		static public string GetGroupImg(string Groupid, ImgSizeType sizeType) {
-			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(Groupid), Groupid, sizeType);
+		static public string GetGroupImg(string Groupid, ThumbType type) {
+			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(Groupid), Groupid, type);
 			//Debug.Trace(HttpContext.Current.Request.PhysicalApplicationPath + text);
 			if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 				return text;
@@ -188,7 +188,7 @@ namespace CHSNS {
 		/// <param name="Groupid">群ID</param>
 		/// <returns>群图片路径</returns>
 		static public string GetGroupImg(string Groupid) {
-			return GetGroupImg(Groupid, ImgSizeType.Middle);
+			return GetGroupImg(Groupid, ThumbType.Middle);
 		}
 		public string GetGroupImg(object groupid) {
 			return GetGroupImg(groupid.ToString());
