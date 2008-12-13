@@ -9,9 +9,7 @@ namespace CHSNS.Helper
 			//v = ServerUtility.UrlEncode(v);
 			return v.Replace(".", "%2E");
 		}
-		public string CleatHtml(string v) { 
-			return Regular.NoHtml(v);
-		}
+
 		public IList Split(string str, string sp) {
 			if (str.EndsWith(sp) || str.StartsWith(sp)) {
 				str = str.Trim(sp.ToCharArray());

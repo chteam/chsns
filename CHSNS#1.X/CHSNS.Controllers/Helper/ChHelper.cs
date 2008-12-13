@@ -7,11 +7,7 @@ namespace CHSNS.Helper {
 				return SiteConfig.Current;
 			}
 		}
-		public CHSNSUser User{
-			get {
-				return CHSNSUser.Current;
-			}
-		}
+
 		public Path Path {
 			get {
 				return CHSNS.Path.Current;
