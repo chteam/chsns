@@ -4,7 +4,7 @@
 	  foreach (UserItemPas p in ViewData.Model as IEnumerable<UserItemPas>) { %>
 <li id="Items<%=p.ID %>" class="useritem">
 	<div class="face face-middle">
-		<a href="<%=Url.UserPage(p.ID) %>" title="<%=p.Name %>" style="background-image: url(<%=Path.GetFace(p.ID,ImgSizeType.Middle) %>);"></a>
+		<a href="<%=Url.UserPage(p.ID) %>" title="<%=p.Name %>" style="background-image: url(<%=Path.GetFace(p.ID,ThumbType.Middle) %>);"></a>
 	</div>
 	<div class="info">
 		<strong>
