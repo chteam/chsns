@@ -94,7 +94,6 @@
     <Compile Include="CHCookies.cs" />
     <Compile Include="ChServer.cs" />
     <Compile Include="CHSite.cs" />
-    <Compile Include="CHSNSUser.cs" />
     <Compile Include="CHUser.cs" />
     <Compile Include="CommentType.cs" />
     <Compile Include="ConfigSerializer.cs" />
