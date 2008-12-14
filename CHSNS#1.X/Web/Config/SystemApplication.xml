@@ -21,5 +21,23 @@
       <IsTrue>false</IsTrue>
       <UserCount>0</UserCount>
     </ApplicationItem>
+    <ApplicationItem>
+      <ID>wer</ID>
+      <Controller>ww</Controller>
+      <Action>ww</Action>
+      <FullName>www</FullName>
+      <ShortName />
+      <Version>qwer</Version>
+      <Icon>werds</Icon>
+      <CssName>asdf</CssName>
+      <AuthorID>0</AuthorID>
+      <AddTime>2008-12-14T23:45:22.7996864+08:00</AddTime>
+      <UpdateTime>2008-12-14T23:45:22.7996864+08:00</UpdateTime>
+      <Summary>w</Summary>
+      <Url>w</Url>
+      <IsSystem>false</IsSystem>
+      <IsTrue>true</IsTrue>
+      <UserCount>0</UserCount>
+    </ApplicationItem>
   </Items>
 </SystemApplicationConfig>

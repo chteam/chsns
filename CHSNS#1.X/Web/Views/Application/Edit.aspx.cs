@@ -5,6 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace CHSNS.Web.Views.Application {
-	public partial class Add : ViewPage {
+	public partial class Edit : ViewPage {
 	}
 }

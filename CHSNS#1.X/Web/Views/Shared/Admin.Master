@@ -38,7 +38,7 @@
                                 <li class="contain"><a class="containA" href="#">应用程序管理</a>
                                     <ul class="list_2">
                                      <li>
-                                            <%=Html.ActionLink("新建", "Add", "Application")%></li>
+                                            <%=Html.ActionLink("新建", "Edit", "Application")%></li>
                                         <li>
                                             <%=Html.ActionLink("管理", "Manage", "Application")%></li>
                                     </ul>
