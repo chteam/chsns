@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using System.Web;
 
-namespace CHSNS.Helepr
+namespace CHSNS.Helper
 {
 	/// <summary>
 	/// Implementation of the grid for rendering HTML in a gridview style.

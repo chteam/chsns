@@ -2,7 +2,7 @@ using System.Web;
 using System.Collections.Generic;
 using System.IO;
 
-namespace CHSNS.Helepr
+namespace CHSNS.Helper
 {
 
 	/// <summary>

@@ -1,8 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" AutoEventWireup="true" CodeBehind="ApplicationManagement.aspx.cs" Inherits="CHSNS.Web.Views.Admin.ApplicationManagement" %>
-
-<%@ Import Namespace="CHSNS.Helepr"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="CHSNS.Web.Views.Application.Manage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <h1>

@@ -322,9 +322,10 @@
     <Content Include="Style\Facebook_backup\video.css" />
     <Content Include="Style\Facebook_backup\wysiwyg.css" />
     <Content Include="Views\Admin\About.ascx" />
-    <Content Include="Views\Admin\ApplicationManagement.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Album\List.aspx" />
+    <Content Include="Views\Application\Add.aspx" />
+    <Content Include="Views\Application\Manage.aspx" />
     <Content Include="Views\Note\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
@@ -646,13 +647,6 @@
     <Compile Include="Views\Admin\About.ascx.designer.cs">
       <DependentUpon>About.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\ApplicationManagement.aspx.cs">
-      <DependentUpon>ApplicationManagement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\ApplicationManagement.aspx.designer.cs">
-      <DependentUpon>ApplicationManagement.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Admin\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -666,6 +660,20 @@
     </Compile>
     <Compile Include="Views\Album\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Application\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Application\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Application\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Application\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Note\CommentList.ascx.cs">
       <DependentUpon>CommentList.ascx</DependentUpon>

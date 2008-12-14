@@ -1,5 +1,5 @@
 
-namespace CHSNS.Helepr
+namespace CHSNS.Helper
 {
 	/// <summary>
 	/// Used in the construction of columns that have been specified using a lambda expression.

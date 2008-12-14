@@ -1,6 +1,6 @@
 using System;
 
-namespace CHSNS.Helepr
+namespace CHSNS.Helper
 {
 	/// <summary>
 	/// Used in the construction of grid columns.
