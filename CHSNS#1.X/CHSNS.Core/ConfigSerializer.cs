@@ -36,7 +36,7 @@
 			var fn = string.Format(PATH, key).ToLower();
 			if (IsUseCache) {
 				if (!CHCache.Contains(fn))
-					CHCache.Add(fn, Load<T>(fn));
+					CHCache.Add(fn, XmlSerializer.Load<T>(fn));
 				return CHCache.Get<T>(fn);
 			}
 			return XmlSerializer.Load<T>(fn);

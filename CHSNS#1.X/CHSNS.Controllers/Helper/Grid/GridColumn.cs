@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace CHSNS.Helepr
+namespace CHSNS.Helper
 {
 	/// <summary>
 	/// A column to be rendered as part of a grid.

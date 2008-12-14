@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CHSNS.Web.Views.Admin {
+namespace CHSNS.Web.Views.Application {
     
     
-    public partial class ApplicationManagement {
+    public partial class Manage {
     }
 }

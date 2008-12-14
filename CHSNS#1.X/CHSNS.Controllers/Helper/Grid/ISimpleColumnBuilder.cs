@@ -1,4 +1,4 @@
-namespace CHSNS.Helepr{
+namespace CHSNS.Helper{
 	using System;
 
 	/// <summary>
