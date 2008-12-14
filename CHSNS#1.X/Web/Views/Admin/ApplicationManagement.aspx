@@ -10,16 +10,19 @@
 </h1>
 <%
 	Html.Grid<CHSNS.Config.ApplicationItem>(
-		"Model", 
-		new Hash(empty => "There are no people", style => "width: 100%"),
-		column => {
-			column.For(p => p.ID, "ID Number");
-			column.For(p => p.FullName);
-			column.For("Custom Column").Do(p => { %>
-				<td>A custom column...</td>	
-			<% });
-		}
-	);
+		"Model",
+		new Hash(),
+		c =>
+			{
+				c.For(p => p.ID, "ID");
+				c.For(p => p.FullName, "全名");
+				c.For(p => p.IsTrue ? "正常" : "锁定", "状态");
+				c.For("操作").Do(p =>
+				               	{%>
+				<td>修改 删除</td>	
+			<%
+				               	});
+			});
 %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
