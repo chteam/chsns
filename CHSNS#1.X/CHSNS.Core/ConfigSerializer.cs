@@ -16,12 +16,14 @@
 		public static void Serializer<T>(T obj, string key) where T : class
 		{
 			XmlSerializer.Save(obj, string.Format(PATH, key));
+			Clear(key);
 		}
 		/// <summary>
 		/// Clears the Cache of Congig.
 		/// </summary>
 		/// <param name="key">The key.</param>
-		public static void Clear(string key) { XmlSerializer.Clear(string.Format(PATH, key)); }
+		public static void Clear(string key) { CHCache.Remove(string.Format(PATH, key).ToLower()); }
+
 		/// <summary>
 		/// 从配置文件反序列化
 		/// </summary>
@@ -31,7 +33,13 @@
 		/// <returns></returns>
 		public static T Load<T>(string key, bool IsUseCache) where T : class
 		{
-			return XmlSerializer.Load<T>(string.Format(PATH, key), IsUseCache);
+			var fn = string.Format(PATH, key).ToLower();
+			if (IsUseCache) {
+				if (!CHCache.Contains(fn))
+					CHCache.Add(fn, Load<T>(fn));
+				return CHCache.Get<T>(fn);
+			}
+			return XmlSerializer.Load<T>(fn);
 		}
 		/// <summary>
 		/// 从配置文件反序列化
@@ -41,7 +49,7 @@
 		/// <returns></returns>
 		public static T Load<T>(string key) where T : class
 		{
-			return XmlSerializer.Load<T>(string.Format(PATH, key));
+			return Load<T>(key, true);
 		}
 
 	}
