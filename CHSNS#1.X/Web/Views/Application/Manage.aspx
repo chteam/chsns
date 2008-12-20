@@ -16,7 +16,7 @@
 				c.For(p => p.IsTrue ? "正常" : "锁定", "状态");
 				c.For("操作").Do(p =>
 				               	{%>
-				<td>修改 删除</td>	
+				<td>修改 <%=Html.ActionLink("删除", "Delete", "Application", new { id=p.ID},null)%></td>	
 			<%
 				               	});
 			});

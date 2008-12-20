@@ -39,6 +39,12 @@ namespace CHSNS.Controllers {
 				ViewData["Page_Title"] = value;
 			}
 		}
+
+		public string Message {
+			set {
+				TempData["msg"] = value;
+			}
+		}
 		protected static void InitPage(ref int? p) {
 			if (!p.HasValue || p == 0) p = 1;
 		}

@@ -1,14 +1,14 @@
 ﻿CREATE TABLE [dbo].[EntryVersion](
 	[ID] [bigint] IDENTITY(1,1) NOT NULL,
-	[Reason] [text] NOT NULL,
+	[Reason] [ntext] NOT NULL,
 	[AddTime] [smalldatetime] NOT NULL,
-	[Description] [text] NOT NULL,
-	[Reference] [text] NOT NULL,
+	[Description] [ntext] NOT NULL,
+	[Reference] [ntext] NOT NULL,
 	[UserID] [bigint] NOT NULL,
 	[Status] [int] NOT NULL CONSTRAINT [DF_EntryVersion_Status]  DEFAULT ((0)),
 	[EntryID] [bigint] NULL,
-	[AreaID] [int] NOT NULL,
-	[Ext] [text] NULL,
+	[ParentText] [nvarchar] (50) NULL,
+	[Ext] [ntext] NULL,
  CONSTRAINT [PK_EntryVersion] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC

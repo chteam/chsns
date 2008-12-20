@@ -15,7 +15,16 @@ namespace CHSNS
 		{
 			try {
 				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-				using (var myWriter = new StreamWriter(CHServer.MapPath(fn))) {
+				var filepath = CHServer.MapPath(fn);
+				if (!System.IO.File.Exists(filepath))
+					System.IO.File.Create(filepath);
+				if ((System.IO.File.GetAttributes(filepath)
+					& FileAttributes.ReadOnly) == FileAttributes.ReadOnly) {
+					//   Show   the   file.  
+					System.IO.File.SetAttributes(filepath, FileAttributes.Archive);
+
+				}
+				using (var myWriter = new StreamWriter(filepath)) {
 					mySerializer.Serialize(myWriter, obj);
 				}
 			}
