@@ -3,7 +3,7 @@ using System.Data.EntityClient;
 
 
 namespace CHSNS.Models {
-	public class CHSNSDBDataContext : CHSNSDBEntities {
+	public class CHSNSDBDataContext : Entities {
 		public CHSNSDBDataContext(string s) : base(s) { }
 		public CHSNSDBDataContext(EntityConnection connection) : base(connection) { }
 

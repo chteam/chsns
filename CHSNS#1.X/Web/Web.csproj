@@ -133,7 +133,6 @@
     <Content Include="Config\Routing.config" />
     <Content Include="Config\Config.xml" />
     <Content Include="Config\Style.config" />
-    <Content Include="CHSNS.config" />
     <None Include="Data\CHSNSDB.sqlite" />
     <None Include="Style\Facebook\i\Thumbs.db" />
     <None Include="Style\Facebook_backup\i\Thumbs.db" />
@@ -326,6 +325,14 @@
     <Content Include="Views\Album\List.aspx" />
     <Content Include="Views\Application\Edit.aspx" />
     <Content Include="Views\Application\Manage.aspx" />
+    <Content Include="Views\Entry\AdminHistoryList.aspx" />
+    <Content Include="Views\Entry\Edit.aspx" />
+    <Content Include="Views\Entry\History.aspx" />
+    <Content Include="Views\Entry\HistoryList.aspx" />
+    <Content Include="Views\Entry\Index.aspx" />
+    <Content Include="Views\Entry\List.aspx" />
+    <Content Include="Views\Entry\NewList.aspx" />
+    <Content Include="Views\Entry\Wait.aspx" />
     <Content Include="Views\Note\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
@@ -674,6 +681,62 @@
     </Compile>
     <Compile Include="Views\Application\Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entry\AdminHistoryList.aspx.cs">
+      <DependentUpon>AdminHistoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Entry\AdminHistoryList.aspx.designer.cs">
+      <DependentUpon>AdminHistoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entry\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Entry\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entry\History.aspx.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Entry\History.aspx.designer.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entry\HistoryList.aspx.cs">
+      <DependentUpon>HistoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Entry\HistoryList.aspx.designer.cs">
+      <DependentUpon>HistoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entry\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Entry\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entry\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Entry\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entry\NewList.aspx.cs">
+      <DependentUpon>NewList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Entry\NewList.aspx.designer.cs">
+      <DependentUpon>NewList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Entry\Wait.aspx.cs">
+      <DependentUpon>Wait.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Entry\Wait.aspx.designer.cs">
+      <DependentUpon>Wait.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Note\CommentList.ascx.cs">
       <DependentUpon>CommentList.ascx</DependentUpon>

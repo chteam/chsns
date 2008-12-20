@@ -21,7 +21,7 @@ namespace CHSNS.Controllers.Admin {
 		}
 		[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult Edit(ApplicationItem app) {
-
+			Title = app.FullName;
 			app.AddTime = DateTime.Now;
 			app.UpdateTime = DateTime.Now;
 			app.UserCount = 0;
@@ -30,6 +30,16 @@ namespace CHSNS.Controllers.Admin {
 			ais.Items.Add(app);
 			ConfigSerializer.Serializer(ais, "SystemApplication");
 			return RedirectToAction("Manage");
+		}
+		public ActionResult Delete(string id)
+		{
+			HttpContext.Application.Lock();
+			var ais = ConfigSerializer.Load<SystemApplicationConfig>("SystemApplication", false);
+			var item = ais.Items.Where(c => c.ID == id.Trim()).FirstOrDefault();
+			ais.Items.Remove(item);
+			ConfigSerializer.Serializer(ais, "SystemApplication");
+			HttpContext.Application.UnLock();
+			return this.RedirectToReferrer();
 		}
 	}
 }

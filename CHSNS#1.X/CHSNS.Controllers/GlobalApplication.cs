@@ -59,6 +59,7 @@ namespace CHSNS {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 			routes.MapRoute("Admin", "Admin/{controller}/{Action}.ashx",
 			                new {controller = "Admin", Action = "Index"},
+			                new {controller = "Application"},
 			                new[] {"CHSNS.Controllers.Admin"}
 				);
 			routes.MapRoute(

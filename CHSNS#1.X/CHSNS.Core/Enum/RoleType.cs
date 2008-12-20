@@ -1,7 +1,9 @@
-﻿namespace CHSNS {
+﻿using System;
+namespace CHSNS {
 	/// <summary>
 	/// 用户角色类型
 	/// </summary>
+	[Flags]
 	public enum RoleType {
 		/// <summary>
 		/// 网站创建者
@@ -15,6 +17,10 @@
 		/// 网站一般用户
 		/// </summary>
 		General = 1,
+		/// <summary>
+		/// 匿名，未登录
+		/// </summary>
+		Anonymous = 0,
 		/// <summary>
 		/// 锁定用户
 		/// </summary>

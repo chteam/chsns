@@ -55,6 +55,10 @@
     <Compile Include="AccountPas.cs" />
     <Compile Include="CommentItemPas.cs" />
     <Compile Include="CommentPas.cs" />
+    <Compile Include="Entry\EntryExt.cs" />
+    <Compile Include="Entry\EntryPas.cs" />
+    <Compile Include="Entry\EntryType.cs" />
+    <Compile Include="Entry\EntryVersionType.cs" />
     <Compile Include="EventPagePas.cs" />
     <Compile Include="MessageDetailsPas.cs" />
     <Compile Include="MessageItemPas.cs" />

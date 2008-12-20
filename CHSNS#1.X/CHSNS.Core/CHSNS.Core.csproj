@@ -128,6 +128,7 @@
     <Compile Include="NullableExtension.cs" />
     <Compile Include="DataExecute\OleDbDataOpener.cs" />
     <Compile Include="Online.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="Tools\HttpProc.cs" />
     <Compile Include="UserStatusType.cs" />
     <Compile Include="XmlSerializer.cs" />

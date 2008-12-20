@@ -8,39 +8,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Data.Objects.DataClasses.EdmSchemaAttribute]
+[assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008/10/5 11:59:36
+// 生成日期: 2008/12/21 0:14:04
 namespace CHSNS.Models
 {
     
     /// <summary>
-    /// 架构中不存在 CHSNSDBEntities 的注释。
+    /// 架构中不存在 Entities 的注释。
     /// </summary>
-    public partial class CHSNSDBEntities : System.Data.Objects.ObjectContext
+    public partial class Entities : global::System.Data.Objects.ObjectContext
     {
         /// <summary>
-        /// 请使用应用程序配置文件的“CHSNSDBEntities”部分中的连接字符串初始化新 CHSNSDBEntities 对象。
+        /// 请使用应用程序配置文件的“Entities”部分中的连接字符串初始化新 Entities 对象。
         /// </summary>
-        public CHSNSDBEntities() : 
-                base("name=CHSNSDBEntities", "CHSNSDBEntities")
+        public Entities() : 
+                base("name=Entities", "Entities")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// 初始化新的 CHSNSDBEntities 对象。
+        /// 初始化新的 Entities 对象。
         /// </summary>
-        public CHSNSDBEntities(string connectionString) : 
-                base(connectionString, "CHSNSDBEntities")
+        public Entities(string connectionString) : 
+                base(connectionString, "Entities")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// 初始化新的 CHSNSDBEntities 对象。
+        /// 初始化新的 Entities 对象。
         /// </summary>
-        public CHSNSDBEntities(global::System.Data.EntityClient.EntityConnection connection) : 
-                base(connection, "CHSNSDBEntities")
+        public Entities(global::System.Data.EntityClient.EntityConnection connection) : 
+                base(connection, "Entities")
         {
             this.OnContextCreated();
         }
@@ -180,6 +180,36 @@ namespace CHSNS.Models
             }
         }
         private global::System.Data.Objects.ObjectQuery<ContactInformation> _ContactInformation;
+        /// <summary>
+        /// 架构中不存在 Entry 的注释。
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<Entry> Entry
+        {
+            get
+            {
+                if ((this._Entry == null))
+                {
+                    this._Entry = base.CreateQuery<Entry>("[Entry]");
+                }
+                return this._Entry;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<Entry> _Entry;
+        /// <summary>
+        /// 架构中不存在 EntryVersion 的注释。
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<EntryVersion> EntryVersion
+        {
+            get
+            {
+                if ((this._EntryVersion == null))
+                {
+                    this._EntryVersion = base.CreateQuery<EntryVersion>("[EntryVersion]");
+                }
+                return this._EntryVersion;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<EntryVersion> _EntryVersion;
         /// <summary>
         /// 架构中不存在 Event 的注释。
         /// </summary>
@@ -559,6 +589,20 @@ namespace CHSNS.Models
             base.AddObject("ContactInformation", contactInformation);
         }
         /// <summary>
+        /// 架构中不存在 Entry 的注释。
+        /// </summary>
+        public void AddToEntry(Entry entry)
+        {
+            base.AddObject("Entry", entry);
+        }
+        /// <summary>
+        /// 架构中不存在 EntryVersion 的注释。
+        /// </summary>
+        public void AddToEntryVersion(EntryVersion entryVersion)
+        {
+            base.AddObject("EntryVersion", entryVersion);
+        }
+        /// <summary>
         /// 架构中不存在 Event 的注释。
         /// </summary>
         public void AddToEvent(Event @event)
@@ -721,14 +765,14 @@ namespace CHSNS.Models
         /// 创建新的 Account 对象。
         /// </summary>
         /// <param name="userID">UserID 的初始值。</param>
-        /// <param name="password">Password 的初始值。</param>
         /// <param name="username">Username 的初始值。</param>
-        public static Account CreateAccount(long userID, string password, string username)
+        /// <param name="password">Password 的初始值。</param>
+        public static Account CreateAccount(long userID, string username, string password)
         {
             Account account = new Account();
             account.UserID = userID;
-            account.Password = password;
             account.Username = username;
+            account.Password = password;
             return account;
         }
         /// <summary>
@@ -754,6 +798,29 @@ namespace CHSNS.Models
         private long _UserID;
         partial void OnUserIDChanging(long value);
         partial void OnUserIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 Username 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username
+        {
+            get
+            {
+                return this._Username;
+            }
+            set
+            {
+                this.OnUsernameChanging(value);
+                this.ReportPropertyChanging("Username");
+                this._Username = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Username");
+                this.OnUsernameChanged();
+            }
+        }
+        private string _Username;
+        partial void OnUsernameChanging(string value);
+        partial void OnUsernameChanged();
         /// <summary>
         /// 架构中不存在属性 Password 的注释。
         /// </summary>
@@ -800,29 +867,6 @@ namespace CHSNS.Models
         private global::System.Nullable<long> _Code;
         partial void OnCodeChanging(global::System.Nullable<long> value);
         partial void OnCodeChanged();
-        /// <summary>
-        /// 架构中不存在属性 Username 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Username
-        {
-            get
-            {
-                return this._Username;
-            }
-            set
-            {
-                this.OnUsernameChanging(value);
-                this.ReportPropertyChanging("Username");
-                this._Username = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Username");
-                this.OnUsernameChanged();
-            }
-        }
-        private string _Username;
-        partial void OnUsernameChanging(string value);
-        partial void OnUsernameChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Album 的注释。
@@ -1261,7 +1305,7 @@ namespace CHSNS.Models
         {
             get
             {
-                return _FullName;
+                return this._FullName;
             }
             set
             {
@@ -1544,18 +1588,18 @@ namespace CHSNS.Models
         /// 创建新的 BasicInformation 对象。
         /// </summary>
         /// <param name="userID">UserID 的初始值。</param>
+        /// <param name="isEmailTrue">IsEmailTrue 的初始值。</param>
         /// <param name="provinceID">ProvinceID 的初始值。</param>
         /// <param name="cityID">CityID 的初始值。</param>
         /// <param name="showLevel">ShowLevel 的初始值。</param>
-        /// <param name="isEmailTrue">IsEmailTrue 的初始值。</param>
-        public static BasicInformation CreateBasicInformation(long userID, int provinceID, long cityID, byte showLevel, bool isEmailTrue)
+        public static BasicInformation CreateBasicInformation(long userID, bool isEmailTrue, int provinceID, long cityID, byte showLevel)
         {
             BasicInformation basicInformation = new BasicInformation();
             basicInformation.UserID = userID;
+            basicInformation.IsEmailTrue = isEmailTrue;
             basicInformation.ProvinceID = provinceID;
             basicInformation.CityID = cityID;
             basicInformation.ShowLevel = showLevel;
-            basicInformation.IsEmailTrue = isEmailTrue;
             return basicInformation;
         }
         /// <summary>
@@ -1604,6 +1648,52 @@ namespace CHSNS.Models
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
+        /// <summary>
+        /// 架构中不存在属性 Email 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email
+        {
+            get
+            {
+                return this._Email;
+            }
+            set
+            {
+                this.OnEmailChanging(value);
+                this.ReportPropertyChanging("Email");
+                this._Email = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Email");
+                this.OnEmailChanged();
+            }
+        }
+        private string _Email;
+        partial void OnEmailChanging(string value);
+        partial void OnEmailChanged();
+        /// <summary>
+        /// 架构中不存在属性 IsEmailTrue 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsEmailTrue
+        {
+            get
+            {
+                return this._IsEmailTrue;
+            }
+            set
+            {
+                this.OnIsEmailTrueChanging(value);
+                this.ReportPropertyChanging("IsEmailTrue");
+                this._IsEmailTrue = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("IsEmailTrue");
+                this.OnIsEmailTrueChanged();
+            }
+        }
+        private bool _IsEmailTrue;
+        partial void OnIsEmailTrueChanging(bool value);
+        partial void OnIsEmailTrueChanged();
         /// <summary>
         /// 架构中不存在属性 Sex 的注释。
         /// </summary>
@@ -1719,52 +1809,6 @@ namespace CHSNS.Models
         private byte _ShowLevel;
         partial void OnShowLevelChanging(byte value);
         partial void OnShowLevelChanged();
-        /// <summary>
-        /// 架构中不存在属性 Email 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email
-        {
-            get
-            {
-                return this._Email;
-            }
-            set
-            {
-                this.OnEmailChanging(value);
-                this.ReportPropertyChanging("Email");
-                this._Email = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("Email");
-                this.OnEmailChanged();
-            }
-        }
-        private string _Email;
-        partial void OnEmailChanging(string value);
-        partial void OnEmailChanged();
-        /// <summary>
-        /// 架构中不存在属性 IsEmailTrue 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsEmailTrue
-        {
-            get
-            {
-                return this._IsEmailTrue;
-            }
-            set
-            {
-                this.OnIsEmailTrueChanging(value);
-                this.ReportPropertyChanging("IsEmailTrue");
-                this._IsEmailTrue = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("IsEmailTrue");
-                this.OnIsEmailTrueChanged();
-            }
-        }
-        private bool _IsEmailTrue;
-        partial void OnIsEmailTrueChanging(bool value);
-        partial void OnIsEmailTrueChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Blogs 的注释。
@@ -2425,6 +2469,29 @@ namespace CHSNS.Models
         partial void OnIDChanging(long value);
         partial void OnIDChanged();
         /// <summary>
+        /// 架构中不存在属性 ShowerID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Nullable<long> ShowerID
+        {
+            get
+            {
+                return this._ShowerID;
+            }
+            set
+            {
+                this.OnShowerIDChanging(value);
+                this.ReportPropertyChanging("ShowerID");
+                this._ShowerID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ShowerID");
+                this.OnShowerIDChanged();
+            }
+        }
+        private global::System.Nullable<long> _ShowerID;
+        partial void OnShowerIDChanging(global::System.Nullable<long> value);
+        partial void OnShowerIDChanged();
+        /// <summary>
         /// 架构中不存在属性 OwnerID 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
@@ -2631,29 +2698,6 @@ namespace CHSNS.Models
         private byte _IsTellMe;
         partial void OnIsTellMeChanging(byte value);
         partial void OnIsTellMeChanged();
-        /// <summary>
-        /// 架构中不存在属性 ShowerID 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> ShowerID
-        {
-            get
-            {
-                return this._ShowerID;
-            }
-            set
-            {
-                this.OnShowerIDChanging(value);
-                this.ReportPropertyChanging("ShowerID");
-                this._ShowerID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ShowerID");
-                this.OnShowerIDChanged();
-            }
-        }
-        private global::System.Nullable<long> _ShowerID;
-        partial void OnShowerIDChanging(global::System.Nullable<long> value);
-        partial void OnShowerIDChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.ContactInformation 的注释。
@@ -2958,6 +3002,513 @@ namespace CHSNS.Models
         partial void OnShowLevelChanged();
     }
     /// <summary>
+    /// 架构中不存在 CHSNS.Models.Entry 的注释。
+    /// </summary>
+    /// <KeyProperties>
+    /// ID
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Entry")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Entry : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// 创建新的 Entry 对象。
+        /// </summary>
+        /// <param name="id">ID 的初始值。</param>
+        /// <param name="title">Title 的初始值。</param>
+        /// <param name="createrID">CreaterID 的初始值。</param>
+        /// <param name="updateTime">UpdateTime 的初始值。</param>
+        /// <param name="editCount">EditCount 的初始值。</param>
+        /// <param name="viewCount">ViewCount 的初始值。</param>
+        /// <param name="status">Status 的初始值。</param>
+        public static Entry CreateEntry(long id, string title, long createrID, global::System.DateTime updateTime, int editCount, long viewCount, int status)
+        {
+            Entry entry = new Entry();
+            entry.ID = id;
+            entry.Title = title;
+            entry.CreaterID = createrID;
+            entry.UpdateTime = updateTime;
+            entry.EditCount = editCount;
+            entry.ViewCount = viewCount;
+            entry.Status = status;
+            return entry;
+        }
+        /// <summary>
+        /// 架构中不存在属性 ID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this.OnIDChanging(value);
+                this.ReportPropertyChanging("ID");
+                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ID");
+                this.OnIDChanged();
+            }
+        }
+        private long _ID;
+        partial void OnIDChanging(long value);
+        partial void OnIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 Title 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title
+        {
+            get
+            {
+                return this._Title;
+            }
+            set
+            {
+                this.OnTitleChanging(value);
+                this.ReportPropertyChanging("Title");
+                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Title");
+                this.OnTitleChanged();
+            }
+        }
+        private string _Title;
+        partial void OnTitleChanging(string value);
+        partial void OnTitleChanged();
+        /// <summary>
+        /// 架构中不存在属性 CreaterID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long CreaterID
+        {
+            get
+            {
+                return this._CreaterID;
+            }
+            set
+            {
+                this.OnCreaterIDChanging(value);
+                this.ReportPropertyChanging("CreaterID");
+                this._CreaterID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("CreaterID");
+                this.OnCreaterIDChanged();
+            }
+        }
+        private long _CreaterID;
+        partial void OnCreaterIDChanging(long value);
+        partial void OnCreaterIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 UpdateTime 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.DateTime UpdateTime
+        {
+            get
+            {
+                return this._UpdateTime;
+            }
+            set
+            {
+                this.OnUpdateTimeChanging(value);
+                this.ReportPropertyChanging("UpdateTime");
+                this._UpdateTime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("UpdateTime");
+                this.OnUpdateTimeChanged();
+            }
+        }
+        private global::System.DateTime _UpdateTime;
+        partial void OnUpdateTimeChanging(global::System.DateTime value);
+        partial void OnUpdateTimeChanged();
+        /// <summary>
+        /// 架构中不存在属性 CurrentID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Nullable<long> CurrentID
+        {
+            get
+            {
+                return this._CurrentID;
+            }
+            set
+            {
+                this.OnCurrentIDChanging(value);
+                this.ReportPropertyChanging("CurrentID");
+                this._CurrentID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("CurrentID");
+                this.OnCurrentIDChanged();
+            }
+        }
+        private global::System.Nullable<long> _CurrentID;
+        partial void OnCurrentIDChanging(global::System.Nullable<long> value);
+        partial void OnCurrentIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 EditCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int EditCount
+        {
+            get
+            {
+                return this._EditCount;
+            }
+            set
+            {
+                this.OnEditCountChanging(value);
+                this.ReportPropertyChanging("EditCount");
+                this._EditCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("EditCount");
+                this.OnEditCountChanged();
+            }
+        }
+        private int _EditCount;
+        partial void OnEditCountChanging(int value);
+        partial void OnEditCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 ViewCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long ViewCount
+        {
+            get
+            {
+                return this._ViewCount;
+            }
+            set
+            {
+                this.OnViewCountChanging(value);
+                this.ReportPropertyChanging("ViewCount");
+                this._ViewCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ViewCount");
+                this.OnViewCountChanged();
+            }
+        }
+        private long _ViewCount;
+        partial void OnViewCountChanging(long value);
+        partial void OnViewCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 Status 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int Status
+        {
+            get
+            {
+                return this._Status;
+            }
+            set
+            {
+                this.OnStatusChanging(value);
+                this.ReportPropertyChanging("Status");
+                this._Status = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Status");
+                this.OnStatusChanged();
+            }
+        }
+        private int _Status;
+        partial void OnStatusChanging(int value);
+        partial void OnStatusChanged();
+        /// <summary>
+        /// 架构中不存在属性 Ext 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Ext
+        {
+            get
+            {
+                return this._Ext;
+            }
+            set
+            {
+                this.OnExtChanging(value);
+                this.ReportPropertyChanging("Ext");
+                this._Ext = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Ext");
+                this.OnExtChanged();
+            }
+        }
+        private string _Ext;
+        partial void OnExtChanging(string value);
+        partial void OnExtChanged();
+    }
+    /// <summary>
+    /// 架构中不存在 CHSNS.Models.EntryVersion 的注释。
+    /// </summary>
+    /// <KeyProperties>
+    /// ID
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="EntryVersion")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class EntryVersion : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// 创建新的 EntryVersion 对象。
+        /// </summary>
+        /// <param name="id">ID 的初始值。</param>
+        /// <param name="reason">Reason 的初始值。</param>
+        /// <param name="addTime">AddTime 的初始值。</param>
+        /// <param name="description">Description 的初始值。</param>
+        /// <param name="reference">Reference 的初始值。</param>
+        /// <param name="userID">UserID 的初始值。</param>
+        /// <param name="status">Status 的初始值。</param>
+        /// <param name="areaID">AreaID 的初始值。</param>
+        public static EntryVersion CreateEntryVersion(long id, string reason, global::System.DateTime addTime, string description, string reference, long userID, int status, int areaID)
+        {
+            EntryVersion entryVersion = new EntryVersion();
+            entryVersion.ID = id;
+            entryVersion.Reason = reason;
+            entryVersion.AddTime = addTime;
+            entryVersion.Description = description;
+            entryVersion.Reference = reference;
+            entryVersion.UserID = userID;
+            entryVersion.Status = status;
+            entryVersion.AreaID = areaID;
+            return entryVersion;
+        }
+        /// <summary>
+        /// 架构中不存在属性 ID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this.OnIDChanging(value);
+                this.ReportPropertyChanging("ID");
+                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ID");
+                this.OnIDChanged();
+            }
+        }
+        private long _ID;
+        partial void OnIDChanging(long value);
+        partial void OnIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 Reason 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Reason
+        {
+            get
+            {
+                return this._Reason;
+            }
+            set
+            {
+                this.OnReasonChanging(value);
+                this.ReportPropertyChanging("Reason");
+                this._Reason = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Reason");
+                this.OnReasonChanged();
+            }
+        }
+        private string _Reason;
+        partial void OnReasonChanging(string value);
+        partial void OnReasonChanged();
+        /// <summary>
+        /// 架构中不存在属性 AddTime 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.DateTime AddTime
+        {
+            get
+            {
+                return this._AddTime;
+            }
+            set
+            {
+                this.OnAddTimeChanging(value);
+                this.ReportPropertyChanging("AddTime");
+                this._AddTime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("AddTime");
+                this.OnAddTimeChanged();
+            }
+        }
+        private global::System.DateTime _AddTime;
+        partial void OnAddTimeChanging(global::System.DateTime value);
+        partial void OnAddTimeChanged();
+        /// <summary>
+        /// 架构中不存在属性 Description 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                this.OnDescriptionChanging(value);
+                this.ReportPropertyChanging("Description");
+                this._Description = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Description");
+                this.OnDescriptionChanged();
+            }
+        }
+        private string _Description;
+        partial void OnDescriptionChanging(string value);
+        partial void OnDescriptionChanged();
+        /// <summary>
+        /// 架构中不存在属性 Reference 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Reference
+        {
+            get
+            {
+                return this._Reference;
+            }
+            set
+            {
+                this.OnReferenceChanging(value);
+                this.ReportPropertyChanging("Reference");
+                this._Reference = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Reference");
+                this.OnReferenceChanged();
+            }
+        }
+        private string _Reference;
+        partial void OnReferenceChanging(string value);
+        partial void OnReferenceChanged();
+        /// <summary>
+        /// 架构中不存在属性 UserID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long UserID
+        {
+            get
+            {
+                return this._UserID;
+            }
+            set
+            {
+                this.OnUserIDChanging(value);
+                this.ReportPropertyChanging("UserID");
+                this._UserID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("UserID");
+                this.OnUserIDChanged();
+            }
+        }
+        private long _UserID;
+        partial void OnUserIDChanging(long value);
+        partial void OnUserIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 Status 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int Status
+        {
+            get
+            {
+                return this._Status;
+            }
+            set
+            {
+                this.OnStatusChanging(value);
+                this.ReportPropertyChanging("Status");
+                this._Status = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Status");
+                this.OnStatusChanged();
+            }
+        }
+        private int _Status;
+        partial void OnStatusChanging(int value);
+        partial void OnStatusChanged();
+        /// <summary>
+        /// 架构中不存在属性 EntryID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Nullable<long> EntryID
+        {
+            get
+            {
+                return this._EntryID;
+            }
+            set
+            {
+                this.OnEntryIDChanging(value);
+                this.ReportPropertyChanging("EntryID");
+                this._EntryID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("EntryID");
+                this.OnEntryIDChanged();
+            }
+        }
+        private global::System.Nullable<long> _EntryID;
+        partial void OnEntryIDChanging(global::System.Nullable<long> value);
+        partial void OnEntryIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 AreaID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int AreaID
+        {
+            get
+            {
+                return this._AreaID;
+            }
+            set
+            {
+                this.OnAreaIDChanging(value);
+                this.ReportPropertyChanging("AreaID");
+                this._AreaID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("AreaID");
+                this.OnAreaIDChanged();
+            }
+        }
+        private int _AreaID;
+        partial void OnAreaIDChanging(int value);
+        partial void OnAreaIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 Ext 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Ext
+        {
+            get
+            {
+                return this._Ext;
+            }
+            set
+            {
+                this.OnExtChanging(value);
+                this.ReportPropertyChanging("Ext");
+                this._Ext = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Ext");
+                this.OnExtChanged();
+            }
+        }
+        private string _Ext;
+        partial void OnExtChanging(string value);
+        partial void OnExtChanged();
+    }
+    /// <summary>
     /// 架构中不存在 CHSNS.Models.Event 的注释。
     /// </summary>
     /// <KeyProperties>
@@ -2972,18 +3523,18 @@ namespace CHSNS.Models
         /// 创建新的 Event 对象。
         /// </summary>
         /// <param name="id">ID 的初始值。</param>
-        /// <param name="addTime">AddTime 的初始值。</param>
         /// <param name="templateName">TemplateName 的初始值。</param>
         /// <param name="ownerID">OwnerID 的初始值。</param>
+        /// <param name="addTime">AddTime 的初始值。</param>
         /// <param name="showLevel">ShowLevel 的初始值。</param>
         /// <param name="json">Json 的初始值。</param>
-        public static Event CreateEvent(long id, global::System.DateTime addTime, string templateName, long ownerID, int showLevel, string json)
+        public static Event CreateEvent(long id, string templateName, long ownerID, global::System.DateTime addTime, int showLevel, string json)
         {
             Event @event = new Event();
             @event.ID = id;
-            @event.AddTime = addTime;
             @event.TemplateName = templateName;
             @event.OwnerID = ownerID;
+            @event.AddTime = addTime;
             @event.ShowLevel = showLevel;
             @event.Json = json;
             return @event;
@@ -3011,29 +3562,6 @@ namespace CHSNS.Models
         private long _ID;
         partial void OnIDChanging(long value);
         partial void OnIDChanged();
-        /// <summary>
-        /// 架构中不存在属性 AddTime 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.DateTime AddTime
-        {
-            get
-            {
-                return this._AddTime;
-            }
-            set
-            {
-                this.OnAddTimeChanging(value);
-                this.ReportPropertyChanging("AddTime");
-                this._AddTime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("AddTime");
-                this.OnAddTimeChanged();
-            }
-        }
-        private global::System.DateTime _AddTime;
-        partial void OnAddTimeChanging(global::System.DateTime value);
-        partial void OnAddTimeChanged();
         /// <summary>
         /// 架构中不存在属性 TemplateName 的注释。
         /// </summary>
@@ -3103,6 +3631,29 @@ namespace CHSNS.Models
         private global::System.Nullable<long> _ViewerID;
         partial void OnViewerIDChanging(global::System.Nullable<long> value);
         partial void OnViewerIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 AddTime 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.DateTime AddTime
+        {
+            get
+            {
+                return this._AddTime;
+            }
+            set
+            {
+                this.OnAddTimeChanging(value);
+                this.ReportPropertyChanging("AddTime");
+                this._AddTime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("AddTime");
+                this.OnAddTimeChanged();
+            }
+        }
+        private global::System.DateTime _AddTime;
+        partial void OnAddTimeChanging(global::System.DateTime value);
+        partial void OnAddTimeChanged();
         /// <summary>
         /// 架构中不存在属性 ShowLevel 的注释。
         /// </summary>
@@ -3708,34 +4259,30 @@ namespace CHSNS.Models
         /// </summary>
         /// <param name="id">ID 的初始值。</param>
         /// <param name="groupName">GroupName 的初始值。</param>
-        /// <param name="summmary">summmary 的初始值。</param>
-        /// <param name="publish">Publish 的初始值。</param>
-        /// <param name="groupClass">GroupClass 的初始值。</param>
+        /// <param name="summmary">Summmary 的初始值。</param>
+        /// <param name="createrID">CreaterID 的初始值。</param>
         /// <param name="adminCount">AdminCount 的初始值。</param>
-        /// <param name="logCount">LogCount 的初始值。</param>
+        /// <param name="noteCount">NoteCount 的初始值。</param>
         /// <param name="viewCount">ViewCount 的初始值。</param>
         /// <param name="joinLevel">JoinLevel 的初始值。</param>
         /// <param name="showLevel">ShowLevel 的初始值。</param>
         /// <param name="userCount">UserCount 的初始值。</param>
-        /// <param name="maxUserCount">MaxUserCount 的初始值。</param>
-        /// <param name="addtime">addtime 的初始值。</param>
+        /// <param name="addTime">AddTime 的初始值。</param>
         /// <param name="isTrue">IsTrue 的初始值。</param>
-        public static Group CreateGroup(long id, string groupName, string summmary, string publish, byte groupClass, byte adminCount, long logCount, long viewCount, byte joinLevel, byte showLevel, long userCount, long maxUserCount, global::System.DateTime addtime, bool isTrue)
+        public static Group CreateGroup(long id, string groupName, string summmary, long createrID, byte adminCount, long noteCount, long viewCount, byte joinLevel, byte showLevel, long userCount, global::System.DateTime addTime, bool isTrue)
         {
             Group group = new Group();
             group.ID = id;
             group.GroupName = groupName;
-            group.summmary = summmary;
-            group.Publish = publish;
-            group.GroupClass = groupClass;
+            group.Summmary = summmary;
+            group.CreaterID = createrID;
             group.AdminCount = adminCount;
-            group.LogCount = logCount;
+            group.NoteCount = noteCount;
             group.ViewCount = viewCount;
             group.JoinLevel = joinLevel;
             group.ShowLevel = showLevel;
             group.UserCount = userCount;
-            group.MaxUserCount = maxUserCount;
-            group.addtime = addtime;
+            group.AddTime = addTime;
             group.IsTrue = isTrue;
             return group;
         }
@@ -3786,97 +4333,51 @@ namespace CHSNS.Models
         partial void OnGroupNameChanging(string value);
         partial void OnGroupNameChanged();
         /// <summary>
-        /// 架构中不存在属性 summmary 的注释。
+        /// 架构中不存在属性 Summmary 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string summmary
+        public string Summmary
         {
             get
             {
-                return this._summmary;
+                return this._Summmary;
             }
             set
             {
-                this.OnsummmaryChanging(value);
-                this.ReportPropertyChanging("summmary");
-                this._summmary = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("summmary");
-                this.OnsummmaryChanged();
+                this.OnSummmaryChanging(value);
+                this.ReportPropertyChanging("Summmary");
+                this._Summmary = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Summmary");
+                this.OnSummmaryChanged();
             }
         }
-        private string _summmary;
-        partial void OnsummmaryChanging(string value);
-        partial void OnsummmaryChanged();
+        private string _Summmary;
+        partial void OnSummmaryChanging(string value);
+        partial void OnSummmaryChanged();
         /// <summary>
-        /// 架构中不存在属性 CreateUserid 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> CreateUserid
-        {
-            get
-            {
-                return this._CreateUserid;
-            }
-            set
-            {
-                this.OnCreateUseridChanging(value);
-                this.ReportPropertyChanging("CreateUserid");
-                this._CreateUserid = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("CreateUserid");
-                this.OnCreateUseridChanged();
-            }
-        }
-        private global::System.Nullable<long> _CreateUserid;
-        partial void OnCreateUseridChanging(global::System.Nullable<long> value);
-        partial void OnCreateUseridChanged();
-        /// <summary>
-        /// 架构中不存在属性 Publish 的注释。
+        /// 架构中不存在属性 CreaterID 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string Publish
+        public long CreaterID
         {
             get
             {
-                return this._Publish;
+                return this._CreaterID;
             }
             set
             {
-                this.OnPublishChanging(value);
-                this.ReportPropertyChanging("Publish");
-                this._Publish = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Publish");
-                this.OnPublishChanged();
+                this.OnCreaterIDChanging(value);
+                this.ReportPropertyChanging("CreaterID");
+                this._CreaterID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("CreaterID");
+                this.OnCreaterIDChanged();
             }
         }
-        private string _Publish;
-        partial void OnPublishChanging(string value);
-        partial void OnPublishChanged();
-        /// <summary>
-        /// 架构中不存在属性 GroupClass 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public byte GroupClass
-        {
-            get
-            {
-                return this._GroupClass;
-            }
-            set
-            {
-                this.OnGroupClassChanging(value);
-                this.ReportPropertyChanging("GroupClass");
-                this._GroupClass = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("GroupClass");
-                this.OnGroupClassChanged();
-            }
-        }
-        private byte _GroupClass;
-        partial void OnGroupClassChanging(byte value);
-        partial void OnGroupClassChanged();
+        private long _CreaterID;
+        partial void OnCreaterIDChanging(long value);
+        partial void OnCreaterIDChanged();
         /// <summary>
         /// 架构中不存在属性 AdminCount 的注释。
         /// </summary>
@@ -3901,28 +4402,28 @@ namespace CHSNS.Models
         partial void OnAdminCountChanging(byte value);
         partial void OnAdminCountChanged();
         /// <summary>
-        /// 架构中不存在属性 LogCount 的注释。
+        /// 架构中不存在属性 NoteCount 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long LogCount
+        public long NoteCount
         {
             get
             {
-                return this._LogCount;
+                return this._NoteCount;
             }
             set
             {
-                this.OnLogCountChanging(value);
-                this.ReportPropertyChanging("LogCount");
-                this._LogCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("LogCount");
-                this.OnLogCountChanged();
+                this.OnNoteCountChanging(value);
+                this.ReportPropertyChanging("NoteCount");
+                this._NoteCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("NoteCount");
+                this.OnNoteCountChanged();
             }
         }
-        private long _LogCount;
-        partial void OnLogCountChanging(long value);
-        partial void OnLogCountChanged();
+        private long _NoteCount;
+        partial void OnNoteCountChanging(long value);
+        partial void OnNoteCountChanged();
         /// <summary>
         /// 架构中不存在属性 ViewCount 的注释。
         /// </summary>
@@ -4016,29 +4517,6 @@ namespace CHSNS.Models
         partial void OnUserCountChanging(long value);
         partial void OnUserCountChanged();
         /// <summary>
-        /// 架构中不存在属性 MaxUserCount 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long MaxUserCount
-        {
-            get
-            {
-                return this._MaxUserCount;
-            }
-            set
-            {
-                this.OnMaxUserCountChanging(value);
-                this.ReportPropertyChanging("MaxUserCount");
-                this._MaxUserCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("MaxUserCount");
-                this.OnMaxUserCountChanged();
-            }
-        }
-        private long _MaxUserCount;
-        partial void OnMaxUserCountChanging(long value);
-        partial void OnMaxUserCountChanged();
-        /// <summary>
         /// 架构中不存在属性 MagicBox 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
@@ -4085,120 +4563,28 @@ namespace CHSNS.Models
         partial void OnLogoUrlChanging(string value);
         partial void OnLogoUrlChanged();
         /// <summary>
-        /// 架构中不存在属性 addtime 的注释。
+        /// 架构中不存在属性 AddTime 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.DateTime addtime
+        public global::System.DateTime AddTime
         {
             get
             {
-                return this._addtime;
+                return this._AddTime;
             }
             set
             {
-                this.OnaddtimeChanging(value);
-                this.ReportPropertyChanging("addtime");
-                this._addtime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("addtime");
-                this.OnaddtimeChanged();
+                this.OnAddTimeChanging(value);
+                this.ReportPropertyChanging("AddTime");
+                this._AddTime = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("AddTime");
+                this.OnAddTimeChanged();
             }
         }
-        private global::System.DateTime _addtime;
-        partial void OnaddtimeChanging(global::System.DateTime value);
-        partial void OnaddtimeChanged();
-        /// <summary>
-        /// 架构中不存在属性 Num0 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> Num0
-        {
-            get
-            {
-                return this._Num0;
-            }
-            set
-            {
-                this.OnNum0Changing(value);
-                this.ReportPropertyChanging("Num0");
-                this._Num0 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Num0");
-                this.OnNum0Changed();
-            }
-        }
-        private global::System.Nullable<long> _Num0;
-        partial void OnNum0Changing(global::System.Nullable<long> value);
-        partial void OnNum0Changed();
-        /// <summary>
-        /// 架构中不存在属性 Other0 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> Other0
-        {
-            get
-            {
-                return this._Other0;
-            }
-            set
-            {
-                this.OnOther0Changing(value);
-                this.ReportPropertyChanging("Other0");
-                this._Other0 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Other0");
-                this.OnOther0Changed();
-            }
-        }
-        private global::System.Nullable<long> _Other0;
-        partial void OnOther0Changing(global::System.Nullable<long> value);
-        partial void OnOther0Changed();
-        /// <summary>
-        /// 架构中不存在属性 Other1 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> Other1
-        {
-            get
-            {
-                return this._Other1;
-            }
-            set
-            {
-                this.OnOther1Changing(value);
-                this.ReportPropertyChanging("Other1");
-                this._Other1 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Other1");
-                this.OnOther1Changed();
-            }
-        }
-        private global::System.Nullable<long> _Other1;
-        partial void OnOther1Changing(global::System.Nullable<long> value);
-        partial void OnOther1Changed();
-        /// <summary>
-        /// 架构中不存在属性 Other2 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> Other2
-        {
-            get
-            {
-                return this._Other2;
-            }
-            set
-            {
-                this.OnOther2Changing(value);
-                this.ReportPropertyChanging("Other2");
-                this._Other2 = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Other2");
-                this.OnOther2Changed();
-            }
-        }
-        private global::System.Nullable<long> _Other2;
-        partial void OnOther2Changing(global::System.Nullable<long> value);
-        partial void OnOther2Changed();
+        private global::System.DateTime _AddTime;
+        partial void OnAddTimeChanging(global::System.DateTime value);
+        partial void OnAddTimeChanged();
         /// <summary>
         /// 架构中不存在属性 IsTrue 的注释。
         /// </summary>
@@ -4222,35 +4608,13 @@ namespace CHSNS.Models
         private bool _IsTrue;
         partial void OnIsTrueChanging(bool value);
         partial void OnIsTrueChanged();
-        /// <summary>
-        /// 架构中不存在属性 categoryid 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> categoryid
-        {
-            get
-            {
-                return this._categoryid;
-            }
-            set
-            {
-                this.OncategoryidChanging(value);
-                this.ReportPropertyChanging("categoryid");
-                this._categoryid = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("categoryid");
-                this.OncategoryidChanged();
-            }
-        }
-        private global::System.Nullable<long> _categoryid;
-        partial void OncategoryidChanging(global::System.Nullable<long> value);
-        partial void OncategoryidChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.GroupUser 的注释。
     /// </summary>
     /// <KeyProperties>
-    /// TrueID
+    /// UserID
+    /// GroupID
     /// </KeyProperties>
     [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="GroupUser")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
@@ -4260,79 +4624,27 @@ namespace CHSNS.Models
         /// <summary>
         /// 创建新的 GroupUser 对象。
         /// </summary>
-        /// <param name="trueID">TrueID 的初始值。</param>
         /// <param name="userID">UserID 的初始值。</param>
         /// <param name="groupID">GroupID 的初始值。</param>
         /// <param name="level">Level 的初始值。</param>
         /// <param name="addTime">AddTime 的初始值。</param>
-        /// <param name="logCount">LogCount 的初始值。</param>
-        /// <param name="class">Class 的初始值。</param>
+        /// <param name="noteCount">NoteCount 的初始值。</param>
         /// <param name="isTrue">IsTrue 的初始值。</param>
-        /// <param name="isRss">IsRss 的初始值。</param>
-        public static GroupUser CreateGroupUser(long trueID, long userID, long groupID, byte level, global::System.DateTime addTime, long logCount, byte @class, bool isTrue, bool isRss)
+        public static GroupUser CreateGroupUser(long userID, long groupID, byte level, global::System.DateTime addTime, long noteCount, bool isTrue)
         {
             GroupUser groupUser = new GroupUser();
-            groupUser.TrueID = trueID;
             groupUser.UserID = userID;
             groupUser.GroupID = groupID;
             groupUser.Level = level;
             groupUser.AddTime = addTime;
-            groupUser.LogCount = logCount;
-            groupUser.Class = @class;
+            groupUser.NoteCount = noteCount;
             groupUser.IsTrue = isTrue;
-            groupUser.IsRss = isRss;
             return groupUser;
         }
         /// <summary>
-        /// 架构中不存在属性 TrueID 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long TrueID
-        {
-            get
-            {
-                return this._TrueID;
-            }
-            set
-            {
-                this.OnTrueIDChanging(value);
-                this.ReportPropertyChanging("TrueID");
-                this._TrueID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("TrueID");
-                this.OnTrueIDChanged();
-            }
-        }
-        private long _TrueID;
-        partial void OnTrueIDChanging(long value);
-        partial void OnTrueIDChanged();
-        /// <summary>
-        /// 架构中不存在属性 ID 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<long> ID
-        {
-            get
-            {
-                return this._ID;
-            }
-            set
-            {
-                this.OnIDChanging(value);
-                this.ReportPropertyChanging("ID");
-                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ID");
-                this.OnIDChanged();
-            }
-        }
-        private global::System.Nullable<long> _ID;
-        partial void OnIDChanging(global::System.Nullable<long> value);
-        partial void OnIDChanged();
-        /// <summary>
         /// 架构中不存在属性 UserID 的注释。
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public long UserID
         {
@@ -4355,7 +4667,7 @@ namespace CHSNS.Models
         /// <summary>
         /// 架构中不存在属性 GroupID 的注释。
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public long GroupID
         {
@@ -4422,51 +4734,28 @@ namespace CHSNS.Models
         partial void OnAddTimeChanging(global::System.DateTime value);
         partial void OnAddTimeChanged();
         /// <summary>
-        /// 架构中不存在属性 LogCount 的注释。
+        /// 架构中不存在属性 NoteCount 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long LogCount
+        public long NoteCount
         {
             get
             {
-                return this._LogCount;
+                return this._NoteCount;
             }
             set
             {
-                this.OnLogCountChanging(value);
-                this.ReportPropertyChanging("LogCount");
-                this._LogCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("LogCount");
-                this.OnLogCountChanged();
+                this.OnNoteCountChanging(value);
+                this.ReportPropertyChanging("NoteCount");
+                this._NoteCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("NoteCount");
+                this.OnNoteCountChanged();
             }
         }
-        private long _LogCount;
-        partial void OnLogCountChanging(long value);
-        partial void OnLogCountChanged();
-        /// <summary>
-        /// 架构中不存在属性 Class 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public byte Class
-        {
-            get
-            {
-                return this._Class;
-            }
-            set
-            {
-                this.OnClassChanging(value);
-                this.ReportPropertyChanging("Class");
-                this._Class = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Class");
-                this.OnClassChanged();
-            }
-        }
-        private byte _Class;
-        partial void OnClassChanging(byte value);
-        partial void OnClassChanged();
+        private long _NoteCount;
+        partial void OnNoteCountChanging(long value);
+        partial void OnNoteCountChanged();
         /// <summary>
         /// 架构中不存在属性 IsTrue 的注释。
         /// </summary>
@@ -4490,29 +4779,6 @@ namespace CHSNS.Models
         private bool _IsTrue;
         partial void OnIsTrueChanging(bool value);
         partial void OnIsTrueChanged();
-        /// <summary>
-        /// 架构中不存在属性 IsRss 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsRss
-        {
-            get
-            {
-                return this._IsRss;
-            }
-            set
-            {
-                this.OnIsRssChanging(value);
-                this.ReportPropertyChanging("IsRss");
-                this._IsRss = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("IsRss");
-                this.OnIsRssChanged();
-            }
-        }
-        private bool _IsRss;
-        partial void OnIsRssChanging(bool value);
-        partial void OnIsRssChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.LogTag 的注释。
@@ -5885,24 +6151,24 @@ namespace CHSNS.Models
         /// <param name="delScore">DelScore 的初始值。</param>
         /// <param name="magicBox">MagicBox 的初始值。</param>
         /// <param name="allShowLevel">AllShowLevel 的初始值。</param>
-        /// <param name="outboxCount">OutboxCount 的初始值。</param>
-        /// <param name="inboxCount">InboxCount 的初始值。</param>
-        /// <param name="fileSizeAll">FileSizeAll 的初始值。</param>
-        /// <param name="fileSizeCount">FileSizeCount 的初始值。</param>
-        /// <param name="friendCount">FriendCount 的初始值。</param>
-        /// <param name="noteCount">NoteCount 的初始值。</param>
-        /// <param name="replyCount">ReplyCount 的初始值。</param>
-        /// <param name="groupCount">GroupCount 的初始值。</param>
         /// <param name="isMagicBox">IsMagicBox 的初始值。</param>
         /// <param name="viewCount">ViewCount 的初始值。</param>
         /// <param name="isStar">IsStar 的初始值。</param>
         /// <param name="isUpdate">IsUpdate 的初始值。</param>
-        /// <param name="albumCount">AlbumCount 的初始值。</param>
         /// <param name="status">Status 的初始值。</param>
         /// <param name="regTime">RegTime 的初始值。</param>
         /// <param name="loginTime">LoginTime 的初始值。</param>
-        /// <param name="friendRequestCount">FriendRequestCount 的初始值。</param>
+        /// <param name="albumCount">AlbumCount 的初始值。</param>
         /// <param name="unReadMessageCount">UnReadMessageCount 的初始值。</param>
+        /// <param name="outboxCount">OutboxCount 的初始值。</param>
+        /// <param name="inboxCount">InboxCount 的初始值。</param>
+        /// <param name="fileSizeAll">FileSizeAll 的初始值。</param>
+        /// <param name="fileSizeCount">FileSizeCount 的初始值。</param>
+        /// <param name="friendRequestCount">FriendRequestCount 的初始值。</param>
+        /// <param name="friendCount">FriendCount 的初始值。</param>
+        /// <param name="noteCount">NoteCount 的初始值。</param>
+        /// <param name="replyCount">ReplyCount 的初始值。</param>
+        /// <param name="groupCount">GroupCount 的初始值。</param>
         public static Profile CreateProfile(
                     long userID, 
                     string name, 
@@ -5911,24 +6177,24 @@ namespace CHSNS.Models
                     long delScore, 
                     string magicBox, 
                     byte allShowLevel, 
-                    long outboxCount, 
-                    long inboxCount, 
-                    long fileSizeAll, 
-                    long fileSizeCount, 
-                    long friendCount, 
-                    long noteCount, 
-                    long replyCount, 
-                    int groupCount, 
                     bool isMagicBox, 
                     long viewCount, 
                     bool isStar, 
                     bool isUpdate, 
-                    long albumCount, 
                     int status, 
                     global::System.DateTime regTime, 
                     global::System.DateTime loginTime, 
+                    long albumCount, 
+                    long unReadMessageCount, 
+                    long outboxCount, 
+                    long inboxCount, 
+                    long fileSizeAll, 
+                    long fileSizeCount, 
                     long friendRequestCount, 
-                    long unReadMessageCount)
+                    long friendCount, 
+                    long noteCount, 
+                    long replyCount, 
+                    int groupCount)
         {
             Profile profile = new Profile();
             profile.UserID = userID;
@@ -5938,24 +6204,24 @@ namespace CHSNS.Models
             profile.DelScore = delScore;
             profile.MagicBox = magicBox;
             profile.AllShowLevel = allShowLevel;
-            profile.OutboxCount = outboxCount;
-            profile.InboxCount = inboxCount;
-            profile.FileSizeAll = fileSizeAll;
-            profile.FileSizeCount = fileSizeCount;
-            profile.FriendCount = friendCount;
-            profile.NoteCount = noteCount;
-            profile.ReplyCount = replyCount;
-            profile.GroupCount = groupCount;
             profile.IsMagicBox = isMagicBox;
             profile.ViewCount = viewCount;
             profile.IsStar = isStar;
             profile.IsUpdate = isUpdate;
-            profile.AlbumCount = albumCount;
             profile.Status = status;
             profile.RegTime = regTime;
             profile.LoginTime = loginTime;
-            profile.FriendRequestCount = friendRequestCount;
+            profile.AlbumCount = albumCount;
             profile.UnReadMessageCount = unReadMessageCount;
+            profile.OutboxCount = outboxCount;
+            profile.InboxCount = inboxCount;
+            profile.FileSizeAll = fileSizeAll;
+            profile.FileSizeCount = fileSizeCount;
+            profile.FriendRequestCount = friendRequestCount;
+            profile.FriendCount = friendCount;
+            profile.NoteCount = noteCount;
+            profile.ReplyCount = replyCount;
+            profile.GroupCount = groupCount;
             return profile;
         }
         /// <summary>
@@ -6166,190 +6432,6 @@ namespace CHSNS.Models
         partial void OnAllShowLevelChanging(byte value);
         partial void OnAllShowLevelChanged();
         /// <summary>
-        /// 架构中不存在属性 OutboxCount 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long OutboxCount
-        {
-            get
-            {
-                return this._OutboxCount;
-            }
-            set
-            {
-                this.OnOutboxCountChanging(value);
-                this.ReportPropertyChanging("OutboxCount");
-                this._OutboxCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("OutboxCount");
-                this.OnOutboxCountChanged();
-            }
-        }
-        private long _OutboxCount;
-        partial void OnOutboxCountChanging(long value);
-        partial void OnOutboxCountChanged();
-        /// <summary>
-        /// 架构中不存在属性 InboxCount 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long InboxCount
-        {
-            get
-            {
-                return this._InboxCount;
-            }
-            set
-            {
-                this.OnInboxCountChanging(value);
-                this.ReportPropertyChanging("InboxCount");
-                this._InboxCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("InboxCount");
-                this.OnInboxCountChanged();
-            }
-        }
-        private long _InboxCount;
-        partial void OnInboxCountChanging(long value);
-        partial void OnInboxCountChanged();
-        /// <summary>
-        /// 架构中不存在属性 FileSizeAll 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long FileSizeAll
-        {
-            get
-            {
-                return this._FileSizeAll;
-            }
-            set
-            {
-                this.OnFileSizeAllChanging(value);
-                this.ReportPropertyChanging("FileSizeAll");
-                this._FileSizeAll = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("FileSizeAll");
-                this.OnFileSizeAllChanged();
-            }
-        }
-        private long _FileSizeAll;
-        partial void OnFileSizeAllChanging(long value);
-        partial void OnFileSizeAllChanged();
-        /// <summary>
-        /// 架构中不存在属性 FileSizeCount 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long FileSizeCount
-        {
-            get
-            {
-                return this._FileSizeCount;
-            }
-            set
-            {
-                this.OnFileSizeCountChanging(value);
-                this.ReportPropertyChanging("FileSizeCount");
-                this._FileSizeCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("FileSizeCount");
-                this.OnFileSizeCountChanged();
-            }
-        }
-        private long _FileSizeCount;
-        partial void OnFileSizeCountChanging(long value);
-        partial void OnFileSizeCountChanged();
-        /// <summary>
-        /// 架构中不存在属性 FriendCount 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long FriendCount
-        {
-            get
-            {
-                return this._FriendCount;
-            }
-            set
-            {
-                this.OnFriendCountChanging(value);
-                this.ReportPropertyChanging("FriendCount");
-                this._FriendCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("FriendCount");
-                this.OnFriendCountChanged();
-            }
-        }
-        private long _FriendCount;
-        partial void OnFriendCountChanging(long value);
-        partial void OnFriendCountChanged();
-        /// <summary>
-        /// 架构中不存在属性 NoteCount 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long NoteCount
-        {
-            get
-            {
-                return this._NoteCount;
-            }
-            set
-            {
-                this.OnNoteCountChanging(value);
-                this.ReportPropertyChanging("NoteCount");
-                this._NoteCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("NoteCount");
-                this.OnNoteCountChanged();
-            }
-        }
-        private long _NoteCount;
-        partial void OnNoteCountChanging(long value);
-        partial void OnNoteCountChanged();
-        /// <summary>
-        /// 架构中不存在属性 ReplyCount 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long ReplyCount
-        {
-            get
-            {
-                return this._ReplyCount;
-            }
-            set
-            {
-                this.OnReplyCountChanging(value);
-                this.ReportPropertyChanging("ReplyCount");
-                this._ReplyCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ReplyCount");
-                this.OnReplyCountChanged();
-            }
-        }
-        private long _ReplyCount;
-        partial void OnReplyCountChanging(long value);
-        partial void OnReplyCountChanged();
-        /// <summary>
-        /// 架构中不存在属性 GroupCount 的注释。
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public int GroupCount
-        {
-            get
-            {
-                return this._GroupCount;
-            }
-            set
-            {
-                this.OnGroupCountChanging(value);
-                this.ReportPropertyChanging("GroupCount");
-                this._GroupCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("GroupCount");
-                this.OnGroupCountChanged();
-            }
-        }
-        private int _GroupCount;
-        partial void OnGroupCountChanging(int value);
-        partial void OnGroupCountChanged();
-        /// <summary>
         /// 架构中不存在属性 IsMagicBox 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
@@ -6488,28 +6570,28 @@ namespace CHSNS.Models
         partial void OnApplicationlistChanging(string value);
         partial void OnApplicationlistChanged();
         /// <summary>
-        /// 架构中不存在属性 AlbumCount 的注释。
+        /// 架构中不存在属性 Field 的注释。
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long AlbumCount
+        public global::System.Nullable<byte> Field
         {
             get
             {
-                return this._AlbumCount;
+                return this._Field;
             }
             set
             {
-                this.OnAlbumCountChanging(value);
-                this.ReportPropertyChanging("AlbumCount");
-                this._AlbumCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("AlbumCount");
-                this.OnAlbumCountChanged();
+                this.OnFieldChanging(value);
+                this.ReportPropertyChanging("Field");
+                this._Field = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Field");
+                this.OnFieldChanged();
             }
         }
-        private long _AlbumCount;
-        partial void OnAlbumCountChanging(long value);
-        partial void OnAlbumCountChanged();
+        private global::System.Nullable<byte> _Field;
+        partial void OnFieldChanging(global::System.Nullable<byte> value);
+        partial void OnFieldChanged();
         /// <summary>
         /// 架构中不存在属性 Status 的注释。
         /// </summary>
@@ -6580,28 +6662,143 @@ namespace CHSNS.Models
         partial void OnLoginTimeChanging(global::System.DateTime value);
         partial void OnLoginTimeChanged();
         /// <summary>
-        /// 架构中不存在属性 Field 的注释。
+        /// 架构中不存在属性 AlbumCount 的注释。
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<byte> Field
+        public long AlbumCount
         {
             get
             {
-                return this._Field;
+                return this._AlbumCount;
             }
             set
             {
-                this.OnFieldChanging(value);
-                this.ReportPropertyChanging("Field");
-                this._Field = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Field");
-                this.OnFieldChanged();
+                this.OnAlbumCountChanging(value);
+                this.ReportPropertyChanging("AlbumCount");
+                this._AlbumCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("AlbumCount");
+                this.OnAlbumCountChanged();
             }
         }
-        private global::System.Nullable<byte> _Field;
-        partial void OnFieldChanging(global::System.Nullable<byte> value);
-        partial void OnFieldChanged();
+        private long _AlbumCount;
+        partial void OnAlbumCountChanging(long value);
+        partial void OnAlbumCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 UnReadMessageCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long UnReadMessageCount
+        {
+            get
+            {
+                return this._UnReadMessageCount;
+            }
+            set
+            {
+                this.OnUnReadMessageCountChanging(value);
+                this.ReportPropertyChanging("UnReadMessageCount");
+                this._UnReadMessageCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("UnReadMessageCount");
+                this.OnUnReadMessageCountChanged();
+            }
+        }
+        private long _UnReadMessageCount;
+        partial void OnUnReadMessageCountChanging(long value);
+        partial void OnUnReadMessageCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 OutboxCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long OutboxCount
+        {
+            get
+            {
+                return this._OutboxCount;
+            }
+            set
+            {
+                this.OnOutboxCountChanging(value);
+                this.ReportPropertyChanging("OutboxCount");
+                this._OutboxCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("OutboxCount");
+                this.OnOutboxCountChanged();
+            }
+        }
+        private long _OutboxCount;
+        partial void OnOutboxCountChanging(long value);
+        partial void OnOutboxCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 InboxCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long InboxCount
+        {
+            get
+            {
+                return this._InboxCount;
+            }
+            set
+            {
+                this.OnInboxCountChanging(value);
+                this.ReportPropertyChanging("InboxCount");
+                this._InboxCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("InboxCount");
+                this.OnInboxCountChanged();
+            }
+        }
+        private long _InboxCount;
+        partial void OnInboxCountChanging(long value);
+        partial void OnInboxCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 FileSizeAll 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long FileSizeAll
+        {
+            get
+            {
+                return this._FileSizeAll;
+            }
+            set
+            {
+                this.OnFileSizeAllChanging(value);
+                this.ReportPropertyChanging("FileSizeAll");
+                this._FileSizeAll = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("FileSizeAll");
+                this.OnFileSizeAllChanged();
+            }
+        }
+        private long _FileSizeAll;
+        partial void OnFileSizeAllChanging(long value);
+        partial void OnFileSizeAllChanged();
+        /// <summary>
+        /// 架构中不存在属性 FileSizeCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long FileSizeCount
+        {
+            get
+            {
+                return this._FileSizeCount;
+            }
+            set
+            {
+                this.OnFileSizeCountChanging(value);
+                this.ReportPropertyChanging("FileSizeCount");
+                this._FileSizeCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("FileSizeCount");
+                this.OnFileSizeCountChanged();
+            }
+        }
+        private long _FileSizeCount;
+        partial void OnFileSizeCountChanging(long value);
+        partial void OnFileSizeCountChanged();
         /// <summary>
         /// 架构中不存在属性 FriendRequestCount 的注释。
         /// </summary>
@@ -6626,28 +6823,97 @@ namespace CHSNS.Models
         partial void OnFriendRequestCountChanging(long value);
         partial void OnFriendRequestCountChanged();
         /// <summary>
-        /// 架构中不存在属性 UnReadMessageCount 的注释。
+        /// 架构中不存在属性 FriendCount 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public long UnReadMessageCount
+        public long FriendCount
         {
             get
             {
-                return this._UnReadMessageCount;
+                return this._FriendCount;
             }
             set
             {
-                this.OnUnReadMessageCountChanging(value);
-                this.ReportPropertyChanging("UnReadMessageCount");
-                this._UnReadMessageCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("UnReadMessageCount");
-                this.OnUnReadMessageCountChanged();
+                this.OnFriendCountChanging(value);
+                this.ReportPropertyChanging("FriendCount");
+                this._FriendCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("FriendCount");
+                this.OnFriendCountChanged();
             }
         }
-        private long _UnReadMessageCount;
-        partial void OnUnReadMessageCountChanging(long value);
-        partial void OnUnReadMessageCountChanged();
+        private long _FriendCount;
+        partial void OnFriendCountChanging(long value);
+        partial void OnFriendCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 NoteCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long NoteCount
+        {
+            get
+            {
+                return this._NoteCount;
+            }
+            set
+            {
+                this.OnNoteCountChanging(value);
+                this.ReportPropertyChanging("NoteCount");
+                this._NoteCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("NoteCount");
+                this.OnNoteCountChanged();
+            }
+        }
+        private long _NoteCount;
+        partial void OnNoteCountChanging(long value);
+        partial void OnNoteCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 ReplyCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public long ReplyCount
+        {
+            get
+            {
+                return this._ReplyCount;
+            }
+            set
+            {
+                this.OnReplyCountChanging(value);
+                this.ReportPropertyChanging("ReplyCount");
+                this._ReplyCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ReplyCount");
+                this.OnReplyCountChanged();
+            }
+        }
+        private long _ReplyCount;
+        partial void OnReplyCountChanging(long value);
+        partial void OnReplyCountChanged();
+        /// <summary>
+        /// 架构中不存在属性 GroupCount 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int GroupCount
+        {
+            get
+            {
+                return this._GroupCount;
+            }
+            set
+            {
+                this.OnGroupCountChanging(value);
+                this.ReportPropertyChanging("GroupCount");
+                this._GroupCount = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("GroupCount");
+                this.OnGroupCountChanged();
+            }
+        }
+        private int _GroupCount;
+        partial void OnGroupCountChanging(int value);
+        partial void OnGroupCountChanged();
     }
     /// <summary>
     /// 架构中不存在 CHSNS.Models.Province 的注释。
@@ -8030,11 +8296,11 @@ namespace CHSNS.Models
             }
             set
             {
-                OnViewClassChanging(value);
-                ReportPropertyChanging("ViewClass");
-                _ViewClass = SetValidValue(value);
-                ReportPropertyChanged("ViewClass");
-                OnViewClassChanged();
+                this.OnViewClassChanging(value);
+                this.ReportPropertyChanging("ViewClass");
+                this._ViewClass = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ViewClass");
+                this.OnViewClassChanged();
             }
         }
         private byte _ViewClass;

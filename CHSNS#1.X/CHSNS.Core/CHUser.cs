@@ -76,38 +76,30 @@ namespace CHSNS
 		/// <summary>
 		/// 获取当前用户状态
 		/// </summary>
-		public static int Status
-		{
-			get
-			{
+		static public Role Status {
+			get {
 				int status = 0;
 				if (HttpContext.Current.Session["status"] != null)
 					int.TryParse(HttpContext.Current.Session["status"].ToString(), out status);
-				return status;
+				return new Role(status);
 			}
-			set
-			{
-				throw new Exception("不允许调用这个方法");
-				//update profile set [status]=@status where userid=@userid
-			}
-		}
 
+		}
 		/// <summary>
 		/// 用户是否是管理员
 		/// </summary>
-		public static bool IsAdmin
-		{
+		static public bool IsAdmin {
 			get {
-				return true;// Status > 199;
+				return Status.Contains(RoleType.Creater, RoleType.Editor);
 			}
 		}
-
 		/// <summary>
 		/// 用户是否登录
 		/// </summary>
-		public static bool IsLogin
-		{
-			get { return Status != 0; }
+		static public bool IsLogin {
+			get {
+				return Status.IsLogin;
+			}
 		}
 
 		/// <summary>
