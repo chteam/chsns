@@ -607,6 +607,12 @@
     <Build Include="Schema Objects\Tables\dbo.ContactInformation.table.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Tables\dbo.Entry.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\dbo.EntryVersion.table.sql">
+      <SubType>Code</SubType>
+    </Build>
     <Build Include="Schema Objects\Tables\dbo.Event.table.sql">
       <SubType>Code</SubType>
     </Build>
