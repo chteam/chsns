@@ -15,6 +15,6 @@ namespace CHSNS.ModelPas
         public NameIDPas Area { get; set; }
         public int EditCount { get; set; }
         public long ViewCount { get; set; }
-        public EntryVersionType Status { get; set; }
+        public int Status { get; set; }
     }
 }

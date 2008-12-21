@@ -39,7 +39,7 @@ namespace CHSNS.Data {
 		#region IDataBase ≥…‘±
 		public string ConnectionString { get; private set; }
 		public DBExt() {
-			ConnectionString = "name=CHSNSDBEntities";
+			ConnectionString = "name=Entities";
 			var conn = new EntityConnection(ConnectionString);
 
 			_DB = new CHSNSDBDataContext(conn);
