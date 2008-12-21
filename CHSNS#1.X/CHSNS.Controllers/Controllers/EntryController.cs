@@ -103,6 +103,7 @@ namespace CHSNS.Controllers
         /// 编辑与创建词条
         /// </summary>
         /// <param name="title"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         [AcceptVerbs(HttpVerbs.Get)]
 		[AdminFilter]
@@ -146,7 +147,6 @@ namespace CHSNS.Controllers
 					if (entryversion == null) return View("Wait");
 					ViewData["entryversion.description"] = entryversion.Description;
 					var ee = JavaScriptConvert.DeserializeObject<EntryExt>(entryversion.Ext);
-
 					ViewData["tags"] = string.Join(",", ee.Tags.ToArray());
 					ViewData["entryversion.reference"] = entryversion.Reference;
 					ViewData["Page_Title"] = "编辑词条:" + entry.Title;
@@ -161,7 +161,7 @@ namespace CHSNS.Controllers
                 if (!string.IsNullOrEmpty(title))
                     ViewData["entry.title"] = title;
                     ViewData["entryversion.reason"] = "创建词条";
-                ViewData["Page_Title"] = "创建词条";
+               Title = "创建词条";
             }
             return View();
         }
@@ -193,6 +193,7 @@ namespace CHSNS.Controllers
                 entry.CreaterID = CHUser.UserID;
                 entry.UpdateTime = dt;
                 entry.EditCount = 1;
+
                 DBExt.DB.AddToEntry(entry);
                 DBExt.DB.SaveChanges();
             }
@@ -224,7 +225,7 @@ namespace CHSNS.Controllers
                     EditCount = @t.@t.e.EditCount,
                     User =
                         new NameIDPas { Name = @t.p.Name, ID = @t.p.UserID },
-                    Status = (EntryVersionType)(@t.t.v.Status)
+                    Status = (@t.t.v.Status)
                 }));
 
             ViewData["Source"] = ret;
@@ -252,13 +253,13 @@ namespace CHSNS.Controllers
                                           Title = v.Title,
                                           User = new NameIDPas {Name = p.Name, ID = p.UserID},
                                           ViewCount = v.ViewCount,
-                                          Status = (EntryVersionType) e.Status
+                                          Status = e.Status
                                       });
             IQueryable<EntryPas> li1 = newlist;
             // li1 = li1.Where(c => c.User.ID == CHUser.UserID);
             //AreaList.Load(AreaType.EntryArea).Where(
-                                                         //   c => c.ID == e.AreaID).FirstOrDefault().Name
-            ViewData["Page_Title"] = "景点列表";
+//   c => c.ID == e.AreaID).FirstOrDefault().Name
+			Title = "词条列表";
             var li = new PagedList<EntryPas>(li1, 1, 10);
             return View(li);
         }

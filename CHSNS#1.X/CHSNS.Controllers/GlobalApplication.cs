@@ -11,9 +11,12 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Transactions;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Routing;
 using CHSNS.Data;
+using CHSNS.Mvc;
+
 namespace CHSNS {
 	[CompilerGlobalScope]
 	public class Global : HttpApplication {
@@ -26,9 +29,15 @@ namespace CHSNS {
 
 			//var path = new ConfigPath();
 			RegisterRoutes(RouteTable.Routes);
+			DynamicDataInit();
 			//ControllerBuilder.Current.SetControllerFactory(typeof(NVelocityEngine.NVelocityControllerFactory));
 		}
-
+		public static void DynamicDataInit() {
+			var model = new System.Web.DynamicData.MetaModel();
+			model.RegisterContext(typeof(Models.CHSNSDBDataContext),
+				new ContextConfiguration { ScaffoldAllTables = true });
+			ModelBinders.DefaultBinder = new DynamicDataModelBinder(ModelBinders.DefaultBinder);
+		}
 		public void Application_End(object sender, EventArgs e) {
 		}
 
@@ -61,6 +70,18 @@ namespace CHSNS {
 			                new {controller = "Admin", Action = "Index"},
 			                new {controller = "Application"},
 			                new[] {"CHSNS.Controllers.Admin"}
+				);
+			routes.MapRoute(
+				"index", // Route name
+				"{Title}.ashx", // URL with parameters
+				new {controller = "Entry", action = "Index", Title = "Index"}, // Parameter defaults
+				new[] {"CHSNS.Controllers"}
+				);
+			routes.MapRoute(
+				"entry", // Route name
+				"w/{title}.ashx", // URL with parameters
+				new {controller = "Entry", action = "Index", Title = "Index"}, // Parameter defaults
+				new[] {"CHSNS.Controllers"}
 				);
 			routes.MapRoute(
 				"note", // Route name
