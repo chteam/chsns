@@ -474,6 +474,7 @@
     <Content Include="Views\Shared\EventTemplate\AddNote.ascx" />
     <Content Include="Views\Shared\EventTemplate\MakeFriend.ascx" />
     <Content Include="Views\Shared\EventTemplate\ProText.ascx" />
+    <Content Include="Views\Shared\Pager.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
     <None Include="Views\Shared\BlogMaster.vm" />
@@ -989,6 +990,13 @@
     </Compile>
     <Compile Include="Views\Shared\MyMenu.ascx.designer.cs">
       <DependentUpon>MyMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Pager.ascx.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Pager.ascx.designer.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Single.Master.cs">
       <DependentUpon>Single.Master</DependentUpon>

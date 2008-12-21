@@ -32,8 +32,8 @@
             </td>
             <td class="ln25">
                             <%=e.Status%>
-                <%=(e.Status != EntryVersionType.Common)?Html.ActionLink("通过审核","Pass",new{id=e.ID}) :""%>
-                <%=(e.Status != EntryVersionType.Lock)?Html.ActionLink("锁定", "Lock", new { id = e.ID }):""%>
+                <%=(e.Status != (int)EntryVersionType.Common)?Html.ActionLink("通过审核","Pass",new{id=e.ID}) :""%>
+                <%=(e.Status != (int)EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.ID }) : ""%>
             </td>
             <td class="ln25 f14">
             <%=e.AddTime.ToString("yyyy-MM-dd hh:mm:ss") %>版本&nbsp;&nbsp;

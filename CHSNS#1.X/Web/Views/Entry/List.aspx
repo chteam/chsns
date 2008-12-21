@@ -10,13 +10,13 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <div id="divide">
-        <span>旅游景点列表</span><span class="right">搜索到结果256项，以下是第1-20项</span></div>
+        <span>旅游词条列表</span><span class="right">搜索到结果256项，以下是第1-20项</span></div>
 
     <div class="JD_list">
     <%foreach (var e in ViewData.Model)
       {%>
         <div class="JD_list_item">
-            <img alt="uuspark景点" src="/images2/img_3.gif" />
+            <img alt="uuspark词条" src="/images2/img_3.gif" />
             <div class="msg">
                 <h4><%=Html.ActionLink(e.Title.Trim(), "Index", new { title = e.Title.Trim() })%><span>位于:
                     <%=e.Area.Name %>
