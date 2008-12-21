@@ -93,63 +93,73 @@ var CtrlEnter = function(event, fun) {
 	if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83))
 		fun();
 };
+
+
 //valitate
-function FormMsg(i, m, p) {//i:id without msg,m:message,p:id withmsg or define self
-    if (p == null) p = i + "msg";
-    var l = $(p);
-    if (!l.length) {
-        l = jQuery("<span></span>").attr("id", p.substr(1, p.length - 1)).addClass("error");
-        $(i).after(l);
-    }
-    l.html(m).fadeIn();
-//    if (isnull(m)) return;
-    $(i).focus();
+function FormMsg(i, m, p, f) {//i:id without msg,m:message,p:id withmsg or define self
+	if (p == null) p = i + "msg";
+	var l = $(p);
+	if (!l.length) {
+		l = jQuery("<span></span>").attr("id", p.substr(1, p.length - 1).replace("\\", "")).addClass("error");
+		$(i).after(l);
+	}
+	l.html(m).fadeIn();
+	if (f == null) f = true;
+	//    if (isnull(m)) return;
+	if (f) $(i).focus();
 }
 
 var v_len = function(id, m, min, max, p) {
-    var b = (min && $h(id).toString().length < min) ||
+	var b = (min && $h(id).toString().length < min) ||
     (max && $h(id).toString().length > max);
-    FormMsg(id, b ? m : '', p);
-    return !b;
+	FormMsg(id, b ? m : '', p);
+	return !b;
 };
 var v_regex = function(id, reg, ae, m, p) {
-    //id:id of input,reg:regex,ae:alloweEmpty,m:msg,p:element show errormsg
-    var ie = false; //is empty
-    if (!ae) ie = isEmpty(id);
-    var b = !reg.test($v(id)) || ie;
-    FormMsg(id, b ? m : '', p);
-    return !b;
+	//id:id of input,reg:regex,ae:alloweEmpty,m:msg,p:element show errormsg
+	var ie = false; //is empty
+	if (!ae) ie = isEmpty(id);
+	var b = !reg.test($v(id)) || ie;
+	FormMsg(id, b ? m : '', p);
+	return !b;
 };
 var v_empty = function(id, m, p) {
-    var b = isEmpty(id);
-    FormMsg(id, b ? m : '', p);
-    return !b;
+	var b = isEmpty(id);
+	FormMsg(id, b ? m : '', p);
+	return !b;
 };
 var v_date = function(id, m, p) {
-    var b = /Invalid|NaN/.test(new Date($(id).val()));
-    FormMsg(id, b ? m : '', p);
-    return !b;
+	var b = /Invalid|NaN/.test(new Date($(id).val()));
+	FormMsg(id, b ? m : '', p);
+	return !b;
 };
-
+var v_notin = function(id, l, m, p) {
+	var b = false;
+	var v = $(id).val();
+	for (var i in l) {
+		if (l[i].toString() == v) { b = true; break; }
+	}
+	FormMsg(id, b ? m : '', p);
+	return !b;
+};
 var v_equals = function(id1, id, m, p) {//id2 is the span that show error
-    var b = $v(id1) != $v(id);
-    FormMsg(id, b ? m : '', p);
-    return !b;
+	var b = $v(id1) != $v(id);
+	FormMsg(id, b ? m : '', p);
+	return !b;
 };
 var isEmpty = function(_) {
-    if ($(_)) return $.trim($v(_)).length < 1;
-    return true;
+	if ($(_)) return $.trim($v(_)).length < 1;
+	return true;
 };
 var isNum = function(_) {
-    if (!_) return false;
-    var s = /^\d+(\.\d+)?$/;
-    if (!s.test(_)) return false;
-    try {
-        if (parseFloat(_) != _) return false;
-    } catch (ex) { return false; }
-    return true;
+	if (!_) return false;
+	var s = /^\d+(\.\d+)?$/;
+	if (!s.test(_)) return false;
+	try {
+		if (parseFloat(_) != _) return false;
+	} catch (ex) { return false; }
+	return true;
 };
-
 //==============================Preview
 
 //menu

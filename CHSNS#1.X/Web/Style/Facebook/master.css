@@ -354,9 +354,9 @@ background-position:0 -1400px;
 
 /*userpage*/
 .curtain{background:url(images/curtain.png) repeat-x top left;min-height:100px}
-#userRelations { float:right;padding-bottom:10px;width:205px; padding-left:10px;margin-top:0px;z-index:100;}
-#userUpdates {float:left;position:relative;width:600px;}
-#userRelations ul,#userRelations ul{list-style-type:none;margin-left:0;padding-left:0}
+#userRelations,.right { float:right;padding-bottom:10px;width:205px; padding-left:10px;margin-top:0px;z-index:100;}
+#userUpdates,.left {float:left;position:relative;width:600px;}
+#userRelations ul,.right ul{list-style-type:none;margin-left:0;padding-left:0}
 #userStatus{}
 #userStatus h2{margin:4px;font-size:16px;}
 #userAccount li{ margin-left:2px;}

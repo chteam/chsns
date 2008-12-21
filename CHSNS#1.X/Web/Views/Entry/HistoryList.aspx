@@ -3,9 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ToolbarContent" runat="server">
-    <%Html.RenderPartial("Toolbar", ViewData); %>
-</asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 <% var e = ViewData["Source"] as IEnumerable< EntryPas>; %>
 

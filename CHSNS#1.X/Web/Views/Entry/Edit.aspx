@@ -8,13 +8,13 @@
     <form action="" method="post" id="entryform">
     <%=Html.Hidden("id")%>
     <h2>
-        景点编辑</h2>
+        词条编辑</h2>
     <h4>
         基本信息</h4>
     <table class="memu_2">
         <tr>
             <th>
-                景点名称：
+                词条名称：
             </th>
             <td>
                 <%=Html.TextBox("entry.Title", null, new { style = "width: 50%",onblur="Has(this);" })%>

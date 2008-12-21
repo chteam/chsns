@@ -43,6 +43,14 @@
                                             <%=Html.ActionLink("管理", "Manage", "Application")%></li>
                                     </ul>
                                 </li>
+                                 <li class="contain"><a class="containA" href="#">词条管理</a>
+                                    <ul class="list_2">
+                                        <li>
+                                            <%=Html.ActionLink("新建词条", "Edit", "Entry")%></li>
+                                        <li>
+                                            <%=Html.ActionLink("管理词条", "NewList", "Entry")%></li>
+                                    </ul>
+                                </li>
                             </ul>
                             <a href="#" class="hide">
                                 ss</a>

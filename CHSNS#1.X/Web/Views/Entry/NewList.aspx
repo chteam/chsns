@@ -3,17 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
  <h2>
-        景点管理<a class="searchA" href="#">景点搜索</a>
-        <%=Html.ActionLink("添加新景点", "Edit")%><span>共有记录<%=ViewData.Model.TotalCount %>条
+        词条管理<a class="searchA" href="#">词条搜索</a>
+        <%=Html.ActionLink("添加新词条", "Edit")%><span>共有记录<%=ViewData.Model.TotalCount %>条
             共<%=ViewData.Model.TotalPages %>页 当前第<%=ViewData.Model.CurrentPage %>页</span></h2>
             
     <div class="search">
         <h3>
-            景点搜索<a class="close" href="#">×</a></h3>
+            词条搜索<a class="close" href="#">×</a></h3>
         <table class="memu_1">
             <tr>
                 <td>
-                    景点名称：<input name="TextBox2" type="text" id="TextBox2" />
+                    词条名称：<input name="TextBox2" type="text" id="TextBox2" />
                     所在地区：<select name="DropDownList3" id="DropDownList3">
                     </select>
                     <select name="DropDownList4" id="DropDownList4">
@@ -23,14 +23,12 @@
             </tr>
         </table>
     </div>
-    <!--end search-->
     <table class="table">
         <tr>
             <th class="flush_center"><input type="checkbox" /></th>
             <th>序号</th>
-            <th>景点名称</th>
+            <th>词条名称</th>
             <th>添加时间</th>
-            <th>所在地区</th>
             <th>编辑次数</th>
             <th>原因</th>
             <th>状态/操作</th>
@@ -49,7 +47,6 @@
             [<%=Html.ActionLink("管理历史", "AdminHistoryList", new { title = e.Title.Trim() }, null)%>]
             </td>
             <td><%=e.AddTime.ToString("yyyy-MM-dd hh:mm:ss") %></td>
-            <td><%=e.Area.Name %></td>
             <td>
                 <a href="#"><%=e.EditCount %></a>
             </td>
@@ -58,9 +55,9 @@
             </td>
             <td>
                  <%=e.Status%>
-                <%if (CHUser.Status.Contains(RoleType.管理员, RoleType.编辑)){%>
-                <%=(e.Status != EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.ID }) : ""%>
-                <%=(e.Status != EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.ID }) : ""%>
+                <%if (CHUser.Status.Contains(RoleType.Creater, RoleType.Editor			  )){%>
+                <%=(e.Status != (int)EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.ID }) : ""%>
+                <%=(e.Status !=(int) EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.ID }) : ""%>
                 <%} %>
                 <%=Html.ActionLink("删除词条及全版本", "Delete",new { id=e.ID})%>
             </td>
