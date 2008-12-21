@@ -109,7 +109,7 @@
     <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="Config\ThumbnailPair.cs" />
     <Compile Include="DataExecute\DataBaseExecutor.cs" />
-    <Compile Include="DateTimeExtension.cs" />
+    <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="Email\IEmail.cs" />
     <Compile Include="Email\NetEmail.cs" />
     <Compile Include="Email\WebEmail.cs" />
@@ -125,7 +125,7 @@
     <Compile Include="Extension\JsonExtension.cs" />
     <Compile Include="Media\Media.cs" />
     <Compile Include="MessageBoxType.cs" />
-    <Compile Include="NullableExtension.cs" />
+    <Compile Include="Extension\NullableExtension.cs" />
     <Compile Include="DataExecute\OleDbDataOpener.cs" />
     <Compile Include="Online.cs" />
     <Compile Include="Role.cs" />
