@@ -10,8 +10,8 @@
 		var ext = ViewData["ext"] as EntryExt ?? new EntryExt { Tags = new List<string>() };
 	%>
 	<div class="left">
-		<span class="title">
-			<%=entry.Title%></span>
+		<h4>
+			<%=entry.Title%></h4>
 		<div class="body">
 			<p>
 				<%=version.Description %></p>

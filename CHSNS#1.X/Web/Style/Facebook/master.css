@@ -354,8 +354,8 @@ background-position:0 -1400px;
 
 /*userpage*/
 .curtain{background:url(images/curtain.png) repeat-x top left;min-height:100px}
-#userRelations,.right { float:right;padding-bottom:10px;width:205px; padding-left:10px;margin-top:0px;z-index:100;}
-#userUpdates,.left {float:left;position:relative;width:600px;}
+#userRelations { float:right;padding-bottom:10px;width:205px; padding-left:10px;margin-top:0px;z-index:100;}
+#userUpdates {float:left;position:relative;width:600px;}
 #userRelations ul,.right ul{list-style-type:none;margin-left:0;padding-left:0}
 #userStatus{}
 #userStatus h2{margin:4px;font-size:16px;}
@@ -363,6 +363,15 @@ background-position:0 -1400px;
  .mypage_name{ font-weight:bold; margin-left:5px;}
  .mypage_sta{ margin-top:5px;margin-left:5px;}
 #MagicBox{ margin-top:20px;}
+
+.left{float:left;position:relative;
+      width:65%;padding:2px 0px 0px 4px;
+      background:#efefef
+      }
+.right{float:right;padding-bottom:10px;width:30%;
+       padding-left:10px;margin-top:0px;
+       height:100%
+       }
 /* Content */
 .ch_content { clear:both; padding:0 10px; border-top:1px solid #d8dfea; border-bottom:1px solid #d8dfea; background:#f7f7f7;}
 .ch_content:after { content:"."; display:block; font-size:0; clear:both; visibility:hidden;}

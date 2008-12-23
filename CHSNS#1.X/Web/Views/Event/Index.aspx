@@ -11,7 +11,8 @@
 			<h4>
 				管理员</h4>
 			<ul>
-				<li><a href="/admin/admin/index.ashx">管理后台</a></li>
+				<li>
+				<%=Html.ActionLink("管理后台","Index","Admin")%></li>
 			</ul>
 		</div>
 		<%} %>
