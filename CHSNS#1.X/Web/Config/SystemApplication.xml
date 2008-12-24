@@ -2,39 +2,73 @@
 <SystemApplicationConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Items>
     <ApplicationItem>
-      <ID>0</ID>
-      <FullName>0</FullName>
+      <ID>friend</ID>
+      <Controller>Friend</Controller>
+      <Action>Index</Action>
+      <FullName>好友</FullName>
+      <ShortName>好友</ShortName>
+      <Version>1.1</Version>
+      <Icon /> 
+      <CssName />
       <AuthorID>0</AuthorID>
-      <AddTime>0001-01-01T00:00:00</AddTime>
-      <UpdateTime>0001-01-01T00:00:00</UpdateTime>
+      <AddTime>2008-12-19T00:42:46.6562793+08:00</AddTime>
+      <UpdateTime>2008-12-19T00:42:46.6562793+08:00</UpdateTime>
+      <Summary />
+      <Url />
       <IsSystem>false</IsSystem>
-      <IsTrue>false</IsTrue>
+      <IsTrue>true</IsTrue>
       <UserCount>0</UserCount>
     </ApplicationItem>
     <ApplicationItem>
-      <ID>1</ID>
-      <FullName>1</FullName>
+      <ID>note</ID>
+      <Controller>Note</Controller>
+      <Action>Index</Action>
+      <FullName>记事本功能</FullName>
+      <ShortName>记事本</ShortName>
+      <Version>v1.0</Version>
+      <Icon>note.gif</Icon>
+      <CssName>App_mynote</CssName>
       <AuthorID>0</AuthorID>
-      <AddTime>0001-01-01T00:00:00</AddTime>
-      <UpdateTime>0001-01-01T00:00:00</UpdateTime>
+      <AddTime>2008-12-24T23:27:43.5411797+08:00</AddTime>
+      <UpdateTime>2008-12-24T23:27:43.5411797+08:00</UpdateTime>
+      <Summary>用日志写出你的心情,记录下你的每一瞬息</Summary>
+      <Url />
       <IsSystem>false</IsSystem>
-      <IsTrue>false</IsTrue>
+      <IsTrue>true</IsTrue>
       <UserCount>0</UserCount>
     </ApplicationItem>
     <ApplicationItem>
-      <ID>wer</ID>
-      <Controller>ww</Controller>
-      <Action>ww</Action>
-      <FullName>www</FullName>
-      <ShortName />
-      <Version>qwer</Version>
-      <Icon>werds</Icon>
-      <CssName>asdf</CssName>
+      <ID>Album</ID>
+      <Controller>Album</Controller>
+      <Action>Index</Action>
+      <FullName>我的相册</FullName>
+      <ShortName>相册</ShortName>
+      <Version>v1.0</Version>
+      <Icon>photos.gif</Icon>
+      <CssName>App_photos</CssName>
       <AuthorID>0</AuthorID>
-      <AddTime>2008-12-14T23:45:22.7996864+08:00</AddTime>
-      <UpdateTime>2008-12-14T23:45:22.7996864+08:00</UpdateTime>
-      <Summary>w</Summary>
-      <Url>w</Url>
+      <AddTime>2008-12-24T23:28:43.9321797+08:00</AddTime>
+      <UpdateTime>2008-12-24T23:28:43.9321797+08:00</UpdateTime>
+      <Summary>相册</Summary>
+      <Url />
+      <IsSystem>false</IsSystem>
+      <IsTrue>true</IsTrue>
+      <UserCount>0</UserCount>
+    </ApplicationItem>
+    <ApplicationItem>
+      <ID>Group</ID>
+      <Controller>Group</Controller>
+      <Action>Index</Action>
+      <FullName>群组功能</FullName>
+      <ShortName>群组</ShortName>
+      <Version>v1.0</Version>
+      <Icon>group.gif</Icon>
+      <CssName>App_mygroup</CssName>
+      <AuthorID>0</AuthorID>
+      <AddTime>2008-12-24T23:29:46.3701797+08:00</AddTime>
+      <UpdateTime>2008-12-24T23:29:46.3701797+08:00</UpdateTime>
+      <Summary>可以以我感兴趣的话题,加入或创建群组</Summary>
+      <Url />
       <IsSystem>false</IsSystem>
       <IsTrue>true</IsTrue>
       <UserCount>0</UserCount>
