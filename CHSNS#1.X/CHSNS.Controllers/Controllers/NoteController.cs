@@ -25,7 +25,7 @@ namespace CHSNS.Controllers {
 				ViewData["userid"] = user.ID;
 				ViewData["PageCount"] = user.Count;
 				ViewData["NowPage"] = p.Value;
-				ViewData["Page_Title"] = user.Name + "的日志";
+				Title = user.Name + "的日志";
 				var ret = NoteList(p.Value, 10, userid.Value);
 				ts.Complete();
 				return ret;
@@ -57,36 +57,36 @@ namespace CHSNS.Controllers {
 				int r = DBExt.Note.AddViewCount(id);
 				if (r != 1) throw new Exception("参数不正确");
 			}
-			ViewData["Page_Title"] = note.Note.Title;
+			Title = note.Note.Title;
 			ViewData["NowPage"] = 1;
 			ViewData["PageCount"] = note.User.Count;
 			return View(note);
 		}
+		[AcceptVerbs(HttpVerbs.Get)]
 		[LoginedFilter]
-		public ActionResult Edit(long? id) {
+		public ActionResult Edit(long? id){
 			using (var ts = new TransactionScope()) {
-				if (id.HasValue) {//编辑
-					var mod = DBExt.Note.Details(id.Value).Note;
-					ViewData["Title"] = mod.Title;
-					ViewData["Body"] = mod.Body;
-					ViewData["ID"] = id.Value;
-					ViewData["Page_Title"] = "修改日志";
+				Note n = null;
+				if (id.HasValue) {
+					//编辑
+					n = DBExt.Note.Details(id.Value).Note;
+					Title = "修改日志";
 				}
 				else {
-					ViewData["Page_Title"] = "发新日志";
+					Title = "发新日志";
 				}
 				ts.Complete();
-				return View();
+				return View(n);
 			}
 		}
+
 		[AcceptVerbs("post")]
 		[LoginedFilter]
-		public ActionResult Save(long? id) {
+		public ActionResult Edit(long? id, Note n) {
 			using (var ts = new TransactionScope()) {
-				var n = new Note();
-				UpdateModel(n, new[] { "Title", "Body" });
 				if (n.Title.Length < 1 || n.Body.Length < 10) {
-					throw new Exception("请输入正确的日志内容");
+					Message = ("请输入正确的日志内容");
+					return View(n);
 				}
 				if (id.HasValue) {
 					n.ID = id.Value;
@@ -99,6 +99,7 @@ namespace CHSNS.Controllers {
 				return RedirectToAction("Index");
 			}
 		}
+
 		/// <summary>
 		/// Delete the Note
 		/// </summary>
@@ -119,7 +120,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <returns></returns>
 		public ActionResult News() {
-			ViewData["Page_Title"] = "日志首页";
+			Title = "日志首页";
 			return View(DBExt.Note.GetLastNotes());
 		}
 	}

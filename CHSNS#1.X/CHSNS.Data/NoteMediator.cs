@@ -9,7 +9,7 @@ namespace CHSNS.Data {
 		public IQueryable<NotePas> GetNotes(long userid) {
 			return (from n in DBExt.DB.Note
 					join p in DBExt.DB.Profile on n.UserID equals p.UserID
-					where n.UserID == userid
+					where n.UserID == userid && n.Type==(int)NoteType.Note
 					orderby n.ID descending
 					select new NotePas {
 						AddTime = n.AddTime,
@@ -25,17 +25,9 @@ namespace CHSNS.Data {
 		public NoteDetailsPas Details(long id) {
 			var ret = (from n in DBExt.DB.Note
 					   join p in DBExt.DB.Profile on n.UserID equals p.UserID
-					   where n.ID == id
+					   where n.ID == id && n.Type == (int)NoteType.Note
 					   select new NoteDetailsPas {
-						   Note = new NotePas {
-							   AddTime = n.AddTime,
-							   Body = n.Body,
-							   CommentCount = n.CommentCount,
-							   ID = n.ID,
-							   Title = n.Title,
-							   UserID = n.UserID,
-							   ViewCount = n.ViewCount,
-						   },
+						   Note = n,
 						   User = new UserCountPas {
 							   ID = p.UserID,
 							   Name = p.Name,
@@ -54,6 +46,7 @@ namespace CHSNS.Data {
 		public void Add(Note note, long userid) {
 			note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
 			note.UserID = userid;
+			note.Type = (int) NoteType.Note;
 			DBExt.DB.AddToNote(note);
 			DBExt.DB.SaveChanges();
 			DataBaseExecutor.Execute("update [profile] set NoteCount=NoteCount+1 where userid=@userid",

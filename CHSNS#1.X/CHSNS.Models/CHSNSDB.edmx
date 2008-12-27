@@ -4,40 +4,40 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
-        <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="Account" EntityType="Model.Store.Account" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Album" EntityType="Model.Store.Album" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Application" EntityType="Model.Store.Application" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="BasicInformation" EntityType="Model.Store.BasicInformation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Blogs" EntityType="Model.Store.Blogs" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Category" EntityType="Model.Store.Category" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="City" EntityType="Model.Store.City" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Comment" EntityType="Model.Store.Comment" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ContactInformation" EntityType="Model.Store.ContactInformation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Entry" EntityType="Model.Store.Entry" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="EntryVersion" EntityType="Model.Store.EntryVersion" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Event" EntityType="Model.Store.Event" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Field" EntityType="Model.Store.Field" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="FieldInformation" EntityType="Model.Store.FieldInformation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Friend" EntityType="Model.Store.Friend" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Group" EntityType="Model.Store.Group" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GroupUser" EntityType="Model.Store.GroupUser" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="LogTag" EntityType="Model.Store.LogTag" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Message" EntityType="Model.Store.Message" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MiniField" EntityType="Model.Store.MiniField" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Note" EntityType="Model.Store.Note" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PersonalInformation" EntityType="Model.Store.PersonalInformation" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Photos" EntityType="Model.Store.Photos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Profile" EntityType="Model.Store.Profile" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Province" EntityType="Model.Store.Province" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Push" EntityType="Model.Store.Push" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="QinShi" EntityType="Model.Store.QinShi" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Reply" EntityType="Model.Store.Reply" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Services" EntityType="Model.Store.Services" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SuperNote" EntityType="Model.Store.SuperNote" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Tags" EntityType="Model.Store.Tags" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ViewData" EntityType="Model.Store.ViewData" store:Type="Tables" Schema="dbo" />
+      <Schema Namespace="CHSNS.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="CHSNSModelsStoreContainer">
+          <EntitySet Name="Account" EntityType="CHSNS.Models.Store.Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Album" EntityType="CHSNS.Models.Store.Album" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Application" EntityType="CHSNS.Models.Store.Application" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BasicInformation" EntityType="CHSNS.Models.Store.BasicInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Blogs" EntityType="CHSNS.Models.Store.Blogs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="CHSNS.Models.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="City" EntityType="CHSNS.Models.Store.City" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="CHSNS.Models.Store.Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ContactInformation" EntityType="CHSNS.Models.Store.ContactInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Entry" EntityType="CHSNS.Models.Store.Entry" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EntryVersion" EntityType="CHSNS.Models.Store.EntryVersion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Event" EntityType="CHSNS.Models.Store.Event" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Field" EntityType="CHSNS.Models.Store.Field" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FieldInformation" EntityType="CHSNS.Models.Store.FieldInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Friend" EntityType="CHSNS.Models.Store.Friend" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Group" EntityType="CHSNS.Models.Store.Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GroupUser" EntityType="CHSNS.Models.Store.GroupUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LogTag" EntityType="CHSNS.Models.Store.LogTag" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Message" EntityType="CHSNS.Models.Store.Message" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MiniField" EntityType="CHSNS.Models.Store.MiniField" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Note" EntityType="CHSNS.Models.Store.Note" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PersonalInformation" EntityType="CHSNS.Models.Store.PersonalInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Photos" EntityType="CHSNS.Models.Store.Photos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Profile" EntityType="CHSNS.Models.Store.Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Province" EntityType="CHSNS.Models.Store.Province" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Push" EntityType="CHSNS.Models.Store.Push" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="QinShi" EntityType="CHSNS.Models.Store.QinShi" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reply" EntityType="CHSNS.Models.Store.Reply" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Services" EntityType="CHSNS.Models.Store.Services" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SuperNote" EntityType="CHSNS.Models.Store.SuperNote" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tags" EntityType="CHSNS.Models.Store.Tags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ViewData" EntityType="CHSNS.Models.Store.ViewData" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
         <EntityType Name="Account">
           <Key>
@@ -317,10 +317,10 @@
           <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
           <Property Name="Summary" Type="nvarchar" />
           <Property Name="Body" Type="ntext" Nullable="false" />
-          <Property Name="IsPost" Type="tinyint" Nullable="false" />
-          <Property Name="Anonymous" Type="bit" />
-          <Property Name="AddTime" Type="datetime" Nullable="false" />
-          <Property Name="EditTime" Type="datetime" Nullable="false" />
+          <Property Name="ShowLevel" Type="tinyint" Nullable="false" />
+          <Property Name="IsAnonymous" Type="bit" />
+          <Property Name="AddTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="EditTime" Type="smalldatetime" Nullable="false" />
           <Property Name="ViewCount" Type="bigint" Nullable="false" />
           <Property Name="PushCount" Type="bigint" Nullable="false" />
           <Property Name="TrackBackCount" Type="bigint" Nullable="false" />
@@ -328,6 +328,7 @@
           <Property Name="LastCommentUserID" Type="bigint" Nullable="false" />
           <Property Name="LastCommentTime" Type="smalldatetime" Nullable="false" />
           <Property Name="IsTellMe" Type="tinyint" Nullable="false" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="PersonalInformation">
           <Key>
@@ -485,40 +486,40 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <Schema Namespace="CHSNS.Models" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="Entities">
-          <EntitySet Name="Account" EntityType="Model.Account" />
-          <EntitySet Name="Album" EntityType="Model.Album" />
-          <EntitySet Name="Application" EntityType="Model.Application" />
-          <EntitySet Name="BasicInformation" EntityType="Model.BasicInformation" />
-          <EntitySet Name="Blogs" EntityType="Model.Blogs" />
-          <EntitySet Name="Category" EntityType="Model.Category" />
-          <EntitySet Name="City" EntityType="Model.City" />
-          <EntitySet Name="Comment" EntityType="Model.Comment" />
-          <EntitySet Name="ContactInformation" EntityType="Model.ContactInformation" />
-          <EntitySet Name="Entry" EntityType="Model.Entry" />
-          <EntitySet Name="EntryVersion" EntityType="Model.EntryVersion" />
-          <EntitySet Name="Event" EntityType="Model.Event" />
-          <EntitySet Name="Field" EntityType="Model.Field" />
-          <EntitySet Name="FieldInformation" EntityType="Model.FieldInformation" />
-          <EntitySet Name="Friend" EntityType="Model.Friend" />
-          <EntitySet Name="Group" EntityType="Model.Group" />
-          <EntitySet Name="GroupUser" EntityType="Model.GroupUser" />
-          <EntitySet Name="LogTag" EntityType="Model.LogTag" />
-          <EntitySet Name="Message" EntityType="Model.Message" />
-          <EntitySet Name="MiniField" EntityType="Model.MiniField" />
-          <EntitySet Name="Note" EntityType="Model.Note" />
-          <EntitySet Name="PersonalInformation" EntityType="Model.PersonalInformation" />
-          <EntitySet Name="Photos" EntityType="Model.Photos" />
-          <EntitySet Name="Profile" EntityType="Model.Profile" />
-          <EntitySet Name="Province" EntityType="Model.Province" />
-          <EntitySet Name="Push" EntityType="Model.Push" />
-          <EntitySet Name="QinShi" EntityType="Model.QinShi" />
-          <EntitySet Name="Reply" EntityType="Model.Reply" />
-          <EntitySet Name="Services" EntityType="Model.Services" />
-          <EntitySet Name="SuperNote" EntityType="Model.SuperNote" />
-          <EntitySet Name="Tags" EntityType="Model.Tags" />
-          <EntitySet Name="ViewData" EntityType="Model.ViewData" />
+          <EntitySet Name="Account" EntityType="CHSNS.Models.Account" />
+          <EntitySet Name="Album" EntityType="CHSNS.Models.Album" />
+          <EntitySet Name="Application" EntityType="CHSNS.Models.Application" />
+          <EntitySet Name="BasicInformation" EntityType="CHSNS.Models.BasicInformation" />
+          <EntitySet Name="Blogs" EntityType="CHSNS.Models.Blogs" />
+          <EntitySet Name="Category" EntityType="CHSNS.Models.Category" />
+          <EntitySet Name="City" EntityType="CHSNS.Models.City" />
+          <EntitySet Name="Comment" EntityType="CHSNS.Models.Comment" />
+          <EntitySet Name="ContactInformation" EntityType="CHSNS.Models.ContactInformation" />
+          <EntitySet Name="Entry" EntityType="CHSNS.Models.Entry" />
+          <EntitySet Name="EntryVersion" EntityType="CHSNS.Models.EntryVersion" />
+          <EntitySet Name="Event" EntityType="CHSNS.Models.Event" />
+          <EntitySet Name="Field" EntityType="CHSNS.Models.Field" />
+          <EntitySet Name="FieldInformation" EntityType="CHSNS.Models.FieldInformation" />
+          <EntitySet Name="Friend" EntityType="CHSNS.Models.Friend" />
+          <EntitySet Name="Group" EntityType="CHSNS.Models.Group" />
+          <EntitySet Name="GroupUser" EntityType="CHSNS.Models.GroupUser" />
+          <EntitySet Name="LogTag" EntityType="CHSNS.Models.LogTag" />
+          <EntitySet Name="Message" EntityType="CHSNS.Models.Message" />
+          <EntitySet Name="MiniField" EntityType="CHSNS.Models.MiniField" />
+          <EntitySet Name="Note" EntityType="CHSNS.Models.Note" />
+          <EntitySet Name="PersonalInformation" EntityType="CHSNS.Models.PersonalInformation" />
+          <EntitySet Name="Photos" EntityType="CHSNS.Models.Photos" />
+          <EntitySet Name="Profile" EntityType="CHSNS.Models.Profile" />
+          <EntitySet Name="Province" EntityType="CHSNS.Models.Province" />
+          <EntitySet Name="Push" EntityType="CHSNS.Models.Push" />
+          <EntitySet Name="QinShi" EntityType="CHSNS.Models.QinShi" />
+          <EntitySet Name="Reply" EntityType="CHSNS.Models.Reply" />
+          <EntitySet Name="Services" EntityType="CHSNS.Models.Services" />
+          <EntitySet Name="SuperNote" EntityType="CHSNS.Models.SuperNote" />
+          <EntitySet Name="Tags" EntityType="CHSNS.Models.Tags" />
+          <EntitySet Name="ViewData" EntityType="CHSNS.Models.ViewData" />
         </EntityContainer>
         <EntityType Name="Account">
           <Key>
@@ -798,8 +799,8 @@
           <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Summary" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="IsPost" Type="Byte" Nullable="false" />
-          <Property Name="Anonymous" Type="Boolean" />
+          <Property Name="ShowLevel" Type="Byte" Nullable="false" />
+          <Property Name="IsAnonymous" Type="Boolean" />
           <Property Name="AddTime" Type="DateTime" Nullable="false" />
           <Property Name="EditTime" Type="DateTime" Nullable="false" />
           <Property Name="ViewCount" Type="Int64" Nullable="false" />
@@ -809,6 +810,7 @@
           <Property Name="LastCommentUserID" Type="Int64" Nullable="false" />
           <Property Name="LastCommentTime" Type="DateTime" Nullable="false" />
           <Property Name="IsTellMe" Type="Byte" Nullable="false" />
+          <Property Name="Type" Type="Byte" Nullable="false" />
         </EntityType>
         <EntityType Name="PersonalInformation">
           <Key>
@@ -967,9 +969,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="CHSNSModelsStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Account">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Account)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Account)">
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -979,7 +981,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Album">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Album)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Album)">
               <MappingFragment StoreEntitySet="Album">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -995,7 +997,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Application">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Application)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Application)">
               <MappingFragment StoreEntitySet="Application">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Controller" ColumnName="Controller" />
@@ -1018,7 +1020,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BasicInformation">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.BasicInformation)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.BasicInformation)">
               <MappingFragment StoreEntitySet="BasicInformation">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1033,7 +1035,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Blogs">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Blogs)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Blogs)">
               <MappingFragment StoreEntitySet="Blogs">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
@@ -1053,7 +1055,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Category">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Category)">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1064,7 +1066,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.City)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.City)">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1073,7 +1075,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Comment">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Comment)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Comment)">
               <MappingFragment StoreEntitySet="Comment">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ShowerID" ColumnName="ShowerID" />
@@ -1090,7 +1092,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ContactInformation">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.ContactInformation)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.ContactInformation)">
               <MappingFragment StoreEntitySet="ContactInformation">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -1108,7 +1110,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Entry">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Entry)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Entry)">
               <MappingFragment StoreEntitySet="Entry">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1123,7 +1125,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EntryVersion">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.EntryVersion)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.EntryVersion)">
               <MappingFragment StoreEntitySet="EntryVersion">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
@@ -1139,7 +1141,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Event">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Event)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Event)">
               <MappingFragment StoreEntitySet="Event">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
@@ -1152,7 +1154,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Field">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Field)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Field)">
               <MappingFragment StoreEntitySet="Field">
                 <ScalarProperty Name="TrueID" ColumnName="TrueID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1164,7 +1166,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FieldInformation">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.FieldInformation)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.FieldInformation)">
               <MappingFragment StoreEntitySet="FieldInformation">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Field" ColumnName="Field" />
@@ -1177,7 +1179,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Friend">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Friend)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Friend)">
               <MappingFragment StoreEntitySet="Friend">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FromID" ColumnName="FromID" />
@@ -1190,7 +1192,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Group">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Group)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Group)">
               <MappingFragment StoreEntitySet="Group">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
@@ -1210,7 +1212,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GroupUser">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.GroupUser)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.GroupUser)">
               <MappingFragment StoreEntitySet="GroupUser">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="GroupID" ColumnName="GroupID" />
@@ -1222,7 +1224,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LogTag">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.LogTag)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.LogTag)">
               <MappingFragment StoreEntitySet="LogTag">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TagID" ColumnName="TagID" />
@@ -1231,7 +1233,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Message">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Message)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Message)">
               <MappingFragment StoreEntitySet="Message">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FromID" ColumnName="FromID" />
@@ -1247,7 +1249,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MiniField">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.MiniField)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.MiniField)">
               <MappingFragment StoreEntitySet="MiniField">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1257,15 +1259,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Note">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Note)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Note)">
               <MappingFragment StoreEntitySet="Note">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Summary" ColumnName="Summary" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
-                <ScalarProperty Name="IsPost" ColumnName="IsPost" />
-                <ScalarProperty Name="Anonymous" ColumnName="Anonymous" />
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
                 <ScalarProperty Name="AddTime" ColumnName="AddTime" />
                 <ScalarProperty Name="EditTime" ColumnName="EditTime" />
                 <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
@@ -1275,11 +1277,12 @@
                 <ScalarProperty Name="LastCommentUserID" ColumnName="LastCommentUserID" />
                 <ScalarProperty Name="LastCommentTime" ColumnName="LastCommentTime" />
                 <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PersonalInformation">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.PersonalInformation)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.PersonalInformation)">
               <MappingFragment StoreEntitySet="PersonalInformation">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="LoveLike" ColumnName="LoveLike" />
@@ -1294,7 +1297,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Photos">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Photos)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Photos)">
               <MappingFragment StoreEntitySet="Photos">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1308,7 +1311,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Profile">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Profile)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Profile)">
               <MappingFragment StoreEntitySet="Profile">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1344,7 +1347,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Province">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Province)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Province)">
               <MappingFragment StoreEntitySet="Province">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1352,7 +1355,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Push">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Push)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Push)">
               <MappingFragment StoreEntitySet="Push">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="LogID" ColumnName="LogID" />
@@ -1362,7 +1365,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QinShi">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.QinShi)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.QinShi)">
               <MappingFragment StoreEntitySet="QinShi">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="QinShi1" ColumnName="QinShi" />
@@ -1372,7 +1375,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reply">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Reply)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Reply)">
               <MappingFragment StoreEntitySet="Reply">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -1386,7 +1389,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Services">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Services)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Services)">
               <MappingFragment StoreEntitySet="Services">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
@@ -1400,7 +1403,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SuperNote">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.SuperNote)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.SuperNote)">
               <MappingFragment StoreEntitySet="SuperNote">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1418,7 +1421,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tags">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.Tags)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.Tags)">
               <MappingFragment StoreEntitySet="Tags">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1428,7 +1431,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ViewData">
-            <EntityTypeMapping TypeName="IsTypeOf(Model.ViewData)">
+            <EntityTypeMapping TypeName="IsTypeOf(CHSNS.Models.ViewData)">
               <MappingFragment StoreEntitySet="ViewData">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
