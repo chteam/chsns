@@ -78,7 +78,7 @@ namespace CHSNS.Data {
 				default://if (type==6)//--群用户随机
 					lu = (from u in DBExt.DB.GroupUser
 						  join p in DBExt.DB.Profile on u.UserID equals p.UserID
-						  where u.GroupID == ownerid && u.IsTrue
+						  where u.GroupID == ownerid && u.Status!=(int)GroupUserStatus.Lock
 						  orderby p.LoginTime descending
 						  select new UserItemPas {
 							  Name = p.Name,

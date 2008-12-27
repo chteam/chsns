@@ -22,5 +22,16 @@ namespace CHSNS.Models.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=CHSNS.Database_DB_a78b0e4e-b1b7-4417-8ac" +
+            "f-2d3bac37a190;Integrated Security=True")]
+        public string CHSNS_Database_DB_a78b0e4e_b1b7_4417_8acf_2d3bac37a190ConnectionString {
+            get {
+                return ((string)(this["CHSNS_Database_DB_a78b0e4e_b1b7_4417_8acf_2d3bac37a190ConnectionString"]));
+            }
+        }
     }
 }

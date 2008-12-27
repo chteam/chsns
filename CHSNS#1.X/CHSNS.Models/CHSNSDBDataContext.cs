@@ -3,18 +3,27 @@ using System.Data.EntityClient;
 
 
 namespace CHSNS.Models {
-	public class CHSNSDBDataContext : Entities {
-		public CHSNSDBDataContext()
-		{
-			this.Connection.ConnectionString = "name=Entities";
-		}
-
-		public CHSNSDBDataContext(string s) : base(s) { }
-		public CHSNSDBDataContext(EntityConnection connection) : base(connection) { }
+	public partial class CHSNSDBDataContext {
+		//public CHSNSDBDataContext(string s) : base(s) { }
+		//public CHSNSDBDataContext(EntityConnection connection) : base(connection) { }
 
 		public Guid NEWID() {
 			return Guid.NewGuid();
 		}
+
+		public void SaveChanges(){
+			this.SubmitChanges();
+		}
+		public void AddToNote(Note note){
+			this.Note.InsertOnSubmit(note);
+		}
+		public void AddToEntry(Entry entry) {
+			Entry.InsertOnSubmit(entry);
+		}
+		public void AddToEntryVersion(EntryVersion entryversion) {
+			EntryVersion.InsertOnSubmit(entryversion);
+		}
+		
 	}
 }
 

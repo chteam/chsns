@@ -321,8 +321,8 @@ namespace CHSNS.Controllers
             var vs = DBExt.DB.EntryVersion.Where(c => c.EntryID == e.ID);
 			if (e.CreaterID != CHUser.UserID) Validate404(null);
 
-            DBExt.DB.Detach(vs);
-            DBExt.DB.DeleteObject(e);
+            DBExt.DB.EntryVersion.DeleteAllOnSubmit(vs);
+            DBExt.DB.Entry.DeleteOnSubmit(e);
             DBExt.DB.SaveChanges();
             return this.RedirectToReferrer();
         }
