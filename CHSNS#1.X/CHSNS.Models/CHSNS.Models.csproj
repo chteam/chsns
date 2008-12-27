@@ -65,10 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CHSNSDB.Designer.cs">
+    <Compile Include="CHSNSDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CHSNSDB.edmx</DependentUpon>
+      <DependentUpon>CHSNSDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="CHSNSDBDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,23 +83,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EntityDeploy Include="CHSNSDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CHSNSDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <None Include="CHSNSDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>CHSNSDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Schemas\CHSNSDB.csdl" />
-    <None Include="Schemas\CHSNSDB.msl" />
-    <None Include="Schemas\SQLite.ssdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CHSNSDB.dbml.layout">
+      <DependentUpon>CHSNSDB.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

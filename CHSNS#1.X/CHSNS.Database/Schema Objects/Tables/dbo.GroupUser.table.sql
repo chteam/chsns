@@ -2,10 +2,9 @@
 (
 [UserID] [bigint] NOT NULL,
 [GroupID] [bigint] NOT NULL,
-[Level] [tinyint] NOT NULL,
 [AddTime] [smalldatetime] NOT NULL,
-[NoteCount] [bigint] NOT NULL,
-[IsTrue] [bit] NOT NULL
+[PostCount] [bigint] NOT NULL,
+[Status] [tinyint] NOT NULL
 ) ON [PRIMARY]
 
 

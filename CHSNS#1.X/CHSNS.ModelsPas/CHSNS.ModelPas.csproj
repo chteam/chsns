@@ -59,6 +59,8 @@
     <Compile Include="Entry\EntryPas.cs" />
     <Compile Include="Entry\EntryType.cs" />
     <Compile Include="Entry\EntryVersionType.cs" />
+    <Compile Include="Enum\GroupStatus.cs" />
+    <Compile Include="Enum\GroupUserStatus.cs" />
     <Compile Include="EventPagePas.cs" />
     <Compile Include="MessageDetailsPas.cs" />
     <Compile Include="MessageItemPas.cs" />

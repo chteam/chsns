@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 namespace CHSNS.Data {
 	public interface IDBExt : IDisposable {
 		string ConnectionString { get; }

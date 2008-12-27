@@ -5,8 +5,7 @@
 	using System.Linq;
 //	using CHSNS.Extension;
 	using CHSNS.Filter;
-
-	
+	using CHSNS.ModelPas;
 	using CHSNS.Models;
 	using CHSNS.Config;
 	using CHSNS;
@@ -17,12 +16,13 @@ using System.Web.Mvc;
 	[LoginedFilter]
 	public class GroupController : BaseController
 	{
-		public ActionResult index(long id,int? p) {
+		/*public ActionResult index(long id,int? p) {
 			InitPage(ref p);
 			Group g = (from gr in DBExt.DB.Group
-					 where gr.ID == id
-					 && gr.IsTrue
-					   select gr).FirstOrDefault();
+			           where gr.ID == id
+			                 && gr.Status == (byte) GroupStatus.Common
+			           select gr).FirstOrDefault();
+			
 			GroupUser u = (from gu in DBExt.DB.GroupUser
 					 where gu.UserID == CHUser.UserID
 					 && gu.GroupID == id
@@ -31,7 +31,7 @@ using System.Web.Mvc;
 				return View();
 			var ret=8;//不允许任何操作
 			ret = g.ShowLevel;
-			if (u != null && u.IsTrue) {
+			if (u != null && u.Status!=(byte)GroupUserStatus.Lock) {
 				ret = 0;
 			}
 			if (CHUser.IsAdmin) {
@@ -71,7 +71,7 @@ using System.Web.Mvc;
 			//	ViewData.Add("ApplyMaster", ApplyCount(id, 1));
 			}
 			return View();
-		}
+		}*/
 		public ActionResult List(long? uid, int? p){
 			InitPage(ref p);
 			uid = uid ?? CHUser.UserID;
