@@ -81,6 +81,7 @@ where userid=@userid",
 			IQueryable<CommentPas> ret = (from c in DBExt.DB.Comment
 			                              join p in DBExt.DB.Profile on c.SenderID equals p.UserID
 			                              where c.ShowerID == ShowerID && c.Type == t && !c.IsDel
+
 			                              orderby c.ID descending
 			                              select new CommentPas
 			                                     	{

@@ -11,17 +11,17 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // 原始文件名:
-// 生成日期: 2008/12/21 13:57:25
+// 生成日期: 2008/12/27 13:06:49
 namespace CHSNS.Models
 {
     
     /// <summary>
-    /// 架构中不存在 Entities1 的注释。
+    /// 架构中不存在 Entities 的注释。
     /// </summary>
     public partial class Entities : global::System.Data.Objects.ObjectContext
     {
         /// <summary>
-        /// 请使用应用程序配置文件的“Entities1”部分中的连接字符串初始化新 Entities1 对象。
+        /// 请使用应用程序配置文件的“Entities”部分中的连接字符串初始化新 Entities 对象。
         /// </summary>
         public Entities() : 
                 base("name=Entities", "Entities")
@@ -29,7 +29,7 @@ namespace CHSNS.Models
             this.OnContextCreated();
         }
         /// <summary>
-        /// 初始化新的 Entities1 对象。
+        /// 初始化新的 Entities 对象。
         /// </summary>
         public Entities(string connectionString) : 
                 base(connectionString, "Entities")
@@ -37,7 +37,7 @@ namespace CHSNS.Models
             this.OnContextCreated();
         }
         /// <summary>
-        /// 初始化新的 Entities1 对象。
+        /// 初始化新的 Entities 对象。
         /// </summary>
         public Entities(global::System.Data.EntityClient.EntityConnection connection) : 
                 base(connection, "Entities")
@@ -751,12 +751,12 @@ namespace CHSNS.Models
         }
     }
     /// <summary>
-    /// 架构中不存在 Model.Account 的注释。
+    /// 架构中不存在 CHSNS.Models.Account 的注释。
     /// </summary>
     /// <KeyProperties>
     /// UserID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Account")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Account")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Account : global::System.Data.Objects.DataClasses.EntityObject
@@ -869,12 +869,12 @@ namespace CHSNS.Models
         partial void OnCodeChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Album 的注释。
+    /// 架构中不存在 CHSNS.Models.Album 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Album")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Album")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Album : global::System.Data.Objects.DataClasses.EntityObject
@@ -1135,12 +1135,12 @@ namespace CHSNS.Models
         partial void OnCountChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Application 的注释。
+    /// 架构中不存在 CHSNS.Models.Application 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Application")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Application")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Application : global::System.Data.Objects.DataClasses.EntityObject
@@ -1574,12 +1574,12 @@ namespace CHSNS.Models
         partial void OnUserCountChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.BasicInformation 的注释。
+    /// 架构中不存在 CHSNS.Models.BasicInformation 的注释。
     /// </summary>
     /// <KeyProperties>
     /// UserID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="BasicInformation")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="BasicInformation")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class BasicInformation : global::System.Data.Objects.DataClasses.EntityObject
@@ -1811,12 +1811,12 @@ namespace CHSNS.Models
         partial void OnShowLevelChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Blogs 的注释。
+    /// 架构中不存在 CHSNS.Models.Blogs 的注释。
     /// </summary>
     /// <KeyProperties>
     /// UserID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Blogs")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Blogs")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Blogs : global::System.Data.Objects.DataClasses.EntityObject
@@ -2169,12 +2169,12 @@ namespace CHSNS.Models
         partial void OnTrackBackCountChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Category 的注释。
+    /// 架构中不存在 CHSNS.Models.Category 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Category")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Category")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Category : global::System.Data.Objects.DataClasses.EntityObject
@@ -2312,12 +2312,12 @@ namespace CHSNS.Models
         partial void OnUserIDChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.City 的注释。
+    /// 架构中不存在 CHSNS.Models.City 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="City")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="City")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class City : global::System.Data.Objects.DataClasses.EntityObject
@@ -2407,12 +2407,12 @@ namespace CHSNS.Models
         partial void OnPIDChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Comment 的注释。
+    /// 架构中不存在 CHSNS.Models.Comment 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Comment")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Comment")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Comment : global::System.Data.Objects.DataClasses.EntityObject
@@ -2700,12 +2700,12 @@ namespace CHSNS.Models
         partial void OnIsTellMeChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.ContactInformation 的注释。
+    /// 架构中不存在 CHSNS.Models.ContactInformation 的注释。
     /// </summary>
     /// <KeyProperties>
     /// UserID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="ContactInformation")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="ContactInformation")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class ContactInformation : global::System.Data.Objects.DataClasses.EntityObject
@@ -3002,12 +3002,12 @@ namespace CHSNS.Models
         partial void OnShowLevelChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Entry 的注释。
+    /// 架构中不存在 CHSNS.Models.Entry 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Entry")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Entry")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Entry : global::System.Data.Objects.DataClasses.EntityObject
@@ -3243,12 +3243,12 @@ namespace CHSNS.Models
         partial void OnExtChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.EntryVersion 的注释。
+    /// 架构中不存在 CHSNS.Models.EntryVersion 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="EntryVersion")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="EntryVersion")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class EntryVersion : global::System.Data.Objects.DataClasses.EntityObject
@@ -3507,12 +3507,12 @@ namespace CHSNS.Models
         partial void OnExtChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Event 的注释。
+    /// 架构中不存在 CHSNS.Models.Event 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Event")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Event")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Event : global::System.Data.Objects.DataClasses.EntityObject
@@ -3700,12 +3700,12 @@ namespace CHSNS.Models
         partial void OnJsonChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Field 的注释。
+    /// 架构中不存在 CHSNS.Models.Field 的注释。
     /// </summary>
     /// <KeyProperties>
     /// TrueID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Field")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Field")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Field : global::System.Data.Objects.DataClasses.EntityObject
@@ -3866,12 +3866,12 @@ namespace CHSNS.Models
         partial void OnClassChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.FieldInformation 的注释。
+    /// 架构中不存在 CHSNS.Models.FieldInformation 的注释。
     /// </summary>
     /// <KeyProperties>
     /// UserID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="FieldInformation")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="FieldInformation")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class FieldInformation : global::System.Data.Objects.DataClasses.EntityObject
@@ -4051,12 +4051,12 @@ namespace CHSNS.Models
         partial void OnField2Changed();
     }
     /// <summary>
-    /// 架构中不存在 Model.Friend 的注释。
+    /// 架构中不存在 CHSNS.Models.Friend 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Friend")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Friend")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Friend : global::System.Data.Objects.DataClasses.EntityObject
@@ -4242,12 +4242,12 @@ namespace CHSNS.Models
         partial void OnFriendSummaryChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Group 的注释。
+    /// 架构中不存在 CHSNS.Models.Group 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Group")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Group")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Group : global::System.Data.Objects.DataClasses.EntityObject
@@ -4608,13 +4608,13 @@ namespace CHSNS.Models
         partial void OnIsTrueChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.GroupUser 的注释。
+    /// 架构中不存在 CHSNS.Models.GroupUser 的注释。
     /// </summary>
     /// <KeyProperties>
     /// UserID
     /// GroupID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="GroupUser")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="GroupUser")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class GroupUser : global::System.Data.Objects.DataClasses.EntityObject
@@ -4779,12 +4779,12 @@ namespace CHSNS.Models
         partial void OnIsTrueChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.LogTag 的注释。
+    /// 架构中不存在 CHSNS.Models.LogTag 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="LogTag")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="LogTag")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class LogTag : global::System.Data.Objects.DataClasses.EntityObject
@@ -4874,12 +4874,12 @@ namespace CHSNS.Models
         partial void OnLogIDChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Message 的注释。
+    /// 架构中不存在 CHSNS.Models.Message 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Message")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Message")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Message : global::System.Data.Objects.DataClasses.EntityObject
@@ -5144,12 +5144,12 @@ namespace CHSNS.Models
         partial void OnIsHtmlChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.MiniField 的注释。
+    /// 架构中不存在 CHSNS.Models.MiniField 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="MiniField")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="MiniField")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class MiniField : global::System.Data.Objects.DataClasses.EntityObject
@@ -5264,12 +5264,12 @@ namespace CHSNS.Models
         partial void OnClassChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Note 的注释。
+    /// 架构中不存在 CHSNS.Models.Note 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Note")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Note")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Note : global::System.Data.Objects.DataClasses.EntityObject
@@ -5281,7 +5281,7 @@ namespace CHSNS.Models
         /// <param name="userID">UserID 的初始值。</param>
         /// <param name="title">Title 的初始值。</param>
         /// <param name="body">Body 的初始值。</param>
-        /// <param name="isPost">IsPost 的初始值。</param>
+        /// <param name="showLevel">ShowLevel 的初始值。</param>
         /// <param name="addTime">AddTime 的初始值。</param>
         /// <param name="editTime">EditTime 的初始值。</param>
         /// <param name="viewCount">ViewCount 的初始值。</param>
@@ -5291,14 +5291,15 @@ namespace CHSNS.Models
         /// <param name="lastCommentUserID">LastCommentUserID 的初始值。</param>
         /// <param name="lastCommentTime">LastCommentTime 的初始值。</param>
         /// <param name="isTellMe">IsTellMe 的初始值。</param>
-        public static Note CreateNote(long id, long userID, string title, string body, byte isPost, global::System.DateTime addTime, global::System.DateTime editTime, long viewCount, long pushCount, long trackBackCount, long commentCount, long lastCommentUserID, global::System.DateTime lastCommentTime, byte isTellMe)
+        /// <param name="type">Type 的初始值。</param>
+        public static Note CreateNote(long id, long userID, string title, string body, byte showLevel, global::System.DateTime addTime, global::System.DateTime editTime, long viewCount, long pushCount, long trackBackCount, long commentCount, long lastCommentUserID, global::System.DateTime lastCommentTime, byte isTellMe, byte type)
         {
             Note note = new Note();
             note.ID = id;
             note.UserID = userID;
             note.Title = title;
             note.Body = body;
-            note.IsPost = isPost;
+            note.ShowLevel = showLevel;
             note.AddTime = addTime;
             note.EditTime = editTime;
             note.ViewCount = viewCount;
@@ -5308,6 +5309,7 @@ namespace CHSNS.Models
             note.LastCommentUserID = lastCommentUserID;
             note.LastCommentTime = lastCommentTime;
             note.IsTellMe = isTellMe;
+            note.Type = type;
             return note;
         }
         /// <summary>
@@ -5426,51 +5428,51 @@ namespace CHSNS.Models
         partial void OnBodyChanging(string value);
         partial void OnBodyChanged();
         /// <summary>
-        /// 架构中不存在属性 IsPost 的注释。
+        /// 架构中不存在属性 ShowLevel 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public byte IsPost
+        public byte ShowLevel
         {
             get
             {
-                return this._IsPost;
+                return this._ShowLevel;
             }
             set
             {
-                this.OnIsPostChanging(value);
-                this.ReportPropertyChanging("IsPost");
-                this._IsPost = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("IsPost");
-                this.OnIsPostChanged();
+                this.OnShowLevelChanging(value);
+                this.ReportPropertyChanging("ShowLevel");
+                this._ShowLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ShowLevel");
+                this.OnShowLevelChanged();
             }
         }
-        private byte _IsPost;
-        partial void OnIsPostChanging(byte value);
-        partial void OnIsPostChanged();
+        private byte _ShowLevel;
+        partial void OnShowLevelChanging(byte value);
+        partial void OnShowLevelChanged();
         /// <summary>
-        /// 架构中不存在属性 Anonymous 的注释。
+        /// 架构中不存在属性 IsAnonymous 的注释。
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<bool> Anonymous
+        public global::System.Nullable<bool> IsAnonymous
         {
             get
             {
-                return this._Anonymous;
+                return this._IsAnonymous;
             }
             set
             {
-                this.OnAnonymousChanging(value);
-                this.ReportPropertyChanging("Anonymous");
-                this._Anonymous = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Anonymous");
-                this.OnAnonymousChanged();
+                this.OnIsAnonymousChanging(value);
+                this.ReportPropertyChanging("IsAnonymous");
+                this._IsAnonymous = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("IsAnonymous");
+                this.OnIsAnonymousChanged();
             }
         }
-        private global::System.Nullable<bool> _Anonymous;
-        partial void OnAnonymousChanging(global::System.Nullable<bool> value);
-        partial void OnAnonymousChanged();
+        private global::System.Nullable<bool> _IsAnonymous;
+        partial void OnIsAnonymousChanging(global::System.Nullable<bool> value);
+        partial void OnIsAnonymousChanged();
         /// <summary>
         /// 架构中不存在属性 AddTime 的注释。
         /// </summary>
@@ -5678,14 +5680,37 @@ namespace CHSNS.Models
         private byte _IsTellMe;
         partial void OnIsTellMeChanging(byte value);
         partial void OnIsTellMeChanged();
+        /// <summary>
+        /// 架构中不存在属性 Type 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public byte Type
+        {
+            get
+            {
+                return this._Type;
+            }
+            set
+            {
+                this.OnTypeChanging(value);
+                this.ReportPropertyChanging("Type");
+                this._Type = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Type");
+                this.OnTypeChanged();
+            }
+        }
+        private byte _Type;
+        partial void OnTypeChanging(byte value);
+        partial void OnTypeChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.PersonalInformation 的注释。
+    /// 架构中不存在 CHSNS.Models.PersonalInformation 的注释。
     /// </summary>
     /// <KeyProperties>
     /// UserID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="PersonalInformation")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="PersonalInformation")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class PersonalInformation : global::System.Data.Objects.DataClasses.EntityObject
@@ -5909,12 +5934,12 @@ namespace CHSNS.Models
         partial void OnJoinSocietyChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Photos 的注释。
+    /// 架构中不存在 CHSNS.Models.Photos 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Photos")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Photos")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Photos : global::System.Data.Objects.DataClasses.EntityObject
@@ -6129,12 +6154,12 @@ namespace CHSNS.Models
         partial void OnCommentCountChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Profile 的注释。
+    /// 架构中不存在 CHSNS.Models.Profile 的注释。
     /// </summary>
     /// <KeyProperties>
     /// UserID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Profile")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Profile")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Profile : global::System.Data.Objects.DataClasses.EntityObject
@@ -6914,12 +6939,12 @@ namespace CHSNS.Models
         partial void OnGroupCountChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Province 的注释。
+    /// 架构中不存在 CHSNS.Models.Province 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Province")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Province")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Province : global::System.Data.Objects.DataClasses.EntityObject
@@ -6984,12 +7009,12 @@ namespace CHSNS.Models
         partial void OnNameChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Push 的注释。
+    /// 架构中不存在 CHSNS.Models.Push 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Push")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Push")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Push : global::System.Data.Objects.DataClasses.EntityObject
@@ -7104,12 +7129,12 @@ namespace CHSNS.Models
         partial void OnAddTimeChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.QinShi 的注释。
+    /// 架构中不存在 CHSNS.Models.QinShi 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="QinShi")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="QinShi")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class QinShi : global::System.Data.Objects.DataClasses.EntityObject
@@ -7224,12 +7249,12 @@ namespace CHSNS.Models
         partial void OnSchoolClassChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Reply 的注释。
+    /// 架构中不存在 CHSNS.Models.Reply 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Reply")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Reply")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Reply : global::System.Data.Objects.DataClasses.EntityObject
@@ -7444,12 +7469,12 @@ namespace CHSNS.Models
         partial void OnIsTellMeChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Services 的注释。
+    /// 架构中不存在 CHSNS.Models.Services 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Services")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Services")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Services : global::System.Data.Objects.DataClasses.EntityObject
@@ -7662,12 +7687,12 @@ namespace CHSNS.Models
         partial void OnEmailChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.SuperNote 的注释。
+    /// 架构中不存在 CHSNS.Models.SuperNote 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="SuperNote")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="SuperNote")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class SuperNote : global::System.Data.Objects.DataClasses.EntityObject
@@ -7972,12 +7997,12 @@ namespace CHSNS.Models
         partial void OnTypeChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.Tags 的注释。
+    /// 架构中不存在 CHSNS.Models.Tags 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="Tags")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="Tags")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Tags : global::System.Data.Objects.DataClasses.EntityObject
@@ -8092,12 +8117,12 @@ namespace CHSNS.Models
         partial void OnTypeChanged();
     }
     /// <summary>
-    /// 架构中不存在 Model.ViewData 的注释。
+    /// 架构中不存在 CHSNS.Models.ViewData 的注释。
     /// </summary>
     /// <KeyProperties>
     /// ID
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="Model", Name="ViewData")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="CHSNS.Models", Name="ViewData")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class ViewData : global::System.Data.Objects.DataClasses.EntityObject

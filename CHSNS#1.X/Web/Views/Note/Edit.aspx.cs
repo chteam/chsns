@@ -5,6 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace CHSNS.Web.Views.Note {
-	public partial class Edit : ViewPage {
+	public partial class Edit : ViewPage<Models.Note>{
 	}
 }
