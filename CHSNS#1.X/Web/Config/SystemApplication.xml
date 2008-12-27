@@ -58,7 +58,7 @@
     <ApplicationItem>
       <ID>Group</ID>
       <Controller>Group</Controller>
-      <Action>Index</Action>
+      <Action>List</Action>
       <FullName>群组功能</FullName>
       <ShortName>群组</ShortName>
       <Version>v1.0</Version>
