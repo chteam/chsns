@@ -100,6 +100,7 @@
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\NoteController.cs" />

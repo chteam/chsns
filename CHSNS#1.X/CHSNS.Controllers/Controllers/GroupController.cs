@@ -3,9 +3,9 @@
 	using System.Data;
 	using System.Data.SqlClient;
 	using System.Linq;
-	using CHSNS.Extension;
+//	using CHSNS.Extension;
 	using CHSNS.Filter;
-	using Chsword;
+
 	
 	using CHSNS.Models;
 	using CHSNS.Config;
@@ -17,27 +17,24 @@ using System.Web.Mvc;
 	[LoginedFilter]
 	public class GroupController : BaseController
 	{
-		public void index() {
-			long Groupid = this.QueryLong("id");
-			//ViewData.Add("Groupid", Groupid);
-			ViewData.Add("nowpage", this.QueryNum("p") == 0 ? 1 : this.QueryNum("p"));
-
-			Models.Group g = (from gr in DB.Group
-					 where gr.ID == Groupid
-					 && gr.IsTrue==true
+		public ActionResult index(long id,int? p) {
+			InitPage(ref p);
+			Group g = (from gr in DBExt.DB.Group
+					 where gr.ID == id
+					 && gr.IsTrue
 					   select gr).FirstOrDefault();
-			GroupUser u = (from gu in DB.GroupUser
-					 where gu.UserID == CHSNSUser.Current.UserID
-					 && gu.GroupID == Groupid
+			GroupUser u = (from gu in DBExt.DB.GroupUser
+					 where gu.UserID == CHUser.UserID
+					 && gu.GroupID == id
 						   select gu).FirstOrDefault();
 			if (g == null)
-				return;
+				return View();
 			var ret=8;//不允许任何操作
 			ret = g.ShowLevel;
 			if (u != null && u.IsTrue) {
 				ret = 0;
 			}
-			if (CHSNSUser.Current.isAdmin) {
+			if (CHUser.IsAdmin) {
 				ret = 0;
 			}
 			ViewData["right"] = ret;
@@ -54,9 +51,9 @@ using System.Web.Mvc;
 			//endlinq
 
 			ViewData.Add("adminRows",
-						(from gu in DB.GroupUser
-						 join a in DB.Account on gu.UserID equals a.UserID
-						 where gu.GroupID == Groupid
+						(from gu in DBExt.DB.GroupUser
+						 join a in DBExt.DB.Account on gu.UserID equals a.UserID
+						 where gu.GroupID == id
 							&& gu.IsTrue 
 							 && gu.Level > 199
 							 && gu.IsTrue 
@@ -69,38 +66,34 @@ using System.Web.Mvc;
 						 }).ToList());
 			//ViewData.Add("group", groupmodel);
 			if (u != null )
-			if (u.Level > 199 || CHSNSUser.Current.isAdmin) {
-				ViewData.Add("ApplyMember", ApplyCount(Groupid, 0));
-				ViewData.Add("ApplyMaster", ApplyCount(Groupid, 1));
+			if (u.Level > 199 || CHUser.IsAdmin) {
+			//	ViewData.Add("ApplyMember", ApplyCount(id, 0));
+			//	ViewData.Add("ApplyMaster", ApplyCount(id, 1));
 			}
+			return View();
 		}
-		public void ClassList() {
+		public ActionResult List(long? uid, int? p){
+			InitPage(ref p);
+			uid = uid ?? CHUser.UserID;
+			IQueryable<Group> ret = (from gu in DBExt.DB.GroupUser
+			                         join g in DBExt.DB.Group on gu.GroupID equals g.ID
+			                         where gu.UserID == uid.Value
+			                         select g
+			                        );
+			ret = ret.OrderBy(c => c.ID);
+			var list = new PagedList<Group>(ret, p.Value, 10);
+			Title = "群列表";
+			return View(list);
+		}
+
+		/*public void ClassList() {
 
 			Dictionary dict = new Dictionary();
 			dict.Add("@userid", CHSNSUser.Current.UserID);
 			ViewData.Add("rows",DataBaseExecutor.GetRows(
 				"GetRelationClass", dict));
 		}
-		public ActionResult List() {
-
-			if (this.QueryNum("class") != 1) {
-				ViewData.Add("Tabs", this.QueryNum("tabs"));
-				return View();
-			} else {
-				if (SiteConfig.Current.BaseConfig.IsMustField && CHSNSUser.Current.Status < UserStatusType.IsApplyToField) {
-					return Redirect("/ClassList.aspx");
-				}
-				Chsword.Reader.GroupList gl = new Chsword.Reader.GroupList();
-				gl.Groupclass = 1;
-				gl.Type = 2;
-				gl.Userid = CHUser.UserID;
-				if (this.QueryString("mode") == "auto")
-					gl.Autotoclass = true;
-				ViewData.Add("Items", gl.ShowPage(gl.GetGroupList()));
-				//RenderView("MyClass");
-				return View("MyClass");
-			}
-		}
+		
 		public void CreateClass() {
 			Dictionary dict=new Dictionary();
 			dict.Add("@userid",CHSNSUser.Current.UserID);
@@ -163,6 +156,6 @@ using System.Web.Mvc;
 				, "@GroupClass", groupclass
 				, "@type", type
 				));
-		}
+		}*/
 	}
 }

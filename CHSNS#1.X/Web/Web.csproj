@@ -332,6 +332,7 @@
     <Content Include="Views\Entry\List.aspx" />
     <Content Include="Views\Entry\NewList.aspx" />
     <Content Include="Views\Entry\Wait.aspx" />
+    <Content Include="Views\Group\List.aspx" />
     <Content Include="Views\Note\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
@@ -737,6 +738,13 @@
     </Compile>
     <Compile Include="Views\Entry\Wait.aspx.designer.cs">
       <DependentUpon>Wait.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Group\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Group\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Note\CommentList.ascx.cs">
       <DependentUpon>CommentList.ascx</DependentUpon>
