@@ -39,11 +39,11 @@ namespace CHSNS.Data {
 		#region IDataBase ≥…‘±
 		public string ConnectionString { get; private set; }
 		public DBExt() {
-			ConnectionString = "name=Entities";
-			var conn = new EntityConnection(ConnectionString);
+		//	ConnectionString = "name=Entities";
+			//var conn = new EntityConnection(ConnectionString);
 
-			_DB = new CHSNSDBDataContext(conn);
-			_dbex = new DataBaseExecutor(new SqlDataOpener(conn.StoreConnection));
+			_DB = new CHSNSDBDataContext();
+			_dbex = new DataBaseExecutor(new SqlDataOpener(_DB.Connection));
 			//	DataBaseExecutor = ichsnsdb.DataBaseExecutor;
 			Init();
 		}
@@ -52,7 +52,7 @@ namespace CHSNS.Data {
 		public CHSNSDBDataContext DB {
 			get {
 				if (_DB == null)
-					_DB = new CHSNSDBDataContext(ConnectionString);
+					_DB = new CHSNSDBDataContext();
 				return _DB;
 			}
 		}
@@ -63,8 +63,8 @@ namespace CHSNS.Data {
 				//	return new DataBaseExecutor(new EntityOpener(ConnectionString));
 				if (_dbex == null)
 					_dbex = new DataBaseExecutor(new EntityOpener(
-													((EntityConnection) DB.Connection).StoreConnection
-													)
+					                             	((EntityConnection) DB.Connection).StoreConnection
+					                             	)
 						);
 				return _dbex;
 			}
