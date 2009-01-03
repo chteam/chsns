@@ -85,7 +85,58 @@ using System.Web.Mvc;
 			Title = "群列表";
 			return View(list);
 		}
+		#region Create
+		[AcceptVerbs(HttpVerbs.Get)]
+		public ActionResult Create() {
+			Title = "新建群";
+			ViewData["category"] = ConfigSerializer.GetConfig("Category").ToSelectList(c => c.Value, c => c.Text);
+			return View();
+		}
+		[AcceptVerbs(HttpVerbs.Post)]
+		public ActionResult Create(string Name) {
+			Message = "创建成功";
+			var group = new Group {
+				Name = Name,
+				Type = (byte)GroupType.Common,
+				AddTime = DateTime.Now,
+				Summmary = "",
+			};
+			DBExt.DB.Group.InsertOnSubmit(group);
+			DBExt.DB.SubmitChanges();
+			var gu = new GroupUser {
+				GroupID = group.ID,
+				Status = (byte)GroupUserStatus.Ceater,
+				UserID = CHUser.UserID,
+				AddTime = DateTime.Now
+			};
+			DBExt.DB.GroupUser.InsertOnSubmit(gu);
+			DBExt.DB.SubmitChanges();
+			return this.RedirectToReferrer();
 
+
+		}
+		#endregion
+		
+
+
+		#region 管理
+		[AcceptVerbs(HttpVerbs.Get)]
+		public ActionResult Manage(long id){
+			//TODO:限制访问人员
+			var g = DBExt.DB.Group.Where(c => c.ID == id).FirstOrDefault();
+			Validate404(g);
+			
+			return View(g);
+		}
+		[AcceptVerbs(HttpVerbs.Post)]
+		public ActionResult Manage(long id,Group group) {
+			//TODO:限制访问人员
+			var g = DBExt.DB.Group.Where(c => c.ID == id).FirstOrDefault();
+			Validate404(g);
+
+			return View(g);
+		}
+		#endregion
 		/*public void ClassList() {
 
 			Dictionary dict = new Dictionary();

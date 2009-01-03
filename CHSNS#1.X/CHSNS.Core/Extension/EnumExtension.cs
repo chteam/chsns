@@ -17,9 +17,7 @@ namespace CHSNS {
 			}
 			return dict;
 		}
-		static public int ToInt<T>(this Enum e) {
-			return (int)Enum.Parse(typeof(T), e.ToString(), false);
-		}
+
 		static public List<ListItem> ToListItem<T>() {
 			var li = new List<ListItem>();
 			foreach (int s in Enum.GetValues(typeof(T))) {

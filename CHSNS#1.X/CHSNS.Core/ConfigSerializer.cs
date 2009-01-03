@@ -1,4 +1,7 @@
-﻿namespace CHSNS
+﻿using System.Collections.Generic;
+using System.Web.UI.WebControls;
+
+namespace CHSNS
 {
 	/// <summary>
 	/// 配置文件序列化及反序列化
@@ -50,6 +53,14 @@
 		public static T Load<T>(string key) where T : class
 		{
 			return Load<T>(key, true);
+		}
+		/// <summary>
+		/// 获取配置文件
+		/// </summary>
+		/// <param name="key"></param>
+		/// <returns></returns>
+		public static List<ListItem> GetConfig(string key){
+			return Load<List<ListItem>>(key);
 		}
 
 	}

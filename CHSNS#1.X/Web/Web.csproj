@@ -201,6 +201,7 @@
     <None Include="Views\Rescues\index.vm" />
     <Content Include="Config\SystemApplication.xml" />
     <Content Include="Config\SystemTemplate.xml" />
+    <Content Include="Config\Category.xml" />
     <Content Include="Images\CHBox\b.png" />
     <Content Include="Images\CHBox\bl.png" />
     <Content Include="Images\CHBox\br.png" />
@@ -332,7 +333,9 @@
     <Content Include="Views\Entry\List.aspx" />
     <Content Include="Views\Entry\NewList.aspx" />
     <Content Include="Views\Entry\Wait.aspx" />
+    <Content Include="Views\Group\Create.aspx" />
     <Content Include="Views\Group\List.aspx" />
+    <Content Include="Views\Group\Manage.aspx" />
     <Content Include="Views\Note\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
@@ -474,6 +477,7 @@
     <Content Include="Views\Shared\EventTemplate\AddNote.ascx" />
     <Content Include="Views\Shared\EventTemplate\MakeFriend.ascx" />
     <Content Include="Views\Shared\EventTemplate\ProText.ascx" />
+    <Content Include="Views\Shared\Message_Box.ascx" />
     <Content Include="Views\Shared\Pager.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
@@ -739,12 +743,26 @@
     <Compile Include="Views\Entry\Wait.aspx.designer.cs">
       <DependentUpon>Wait.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Group\Create.aspx.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Group\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Group\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Group\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Group\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Group\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Note\CommentList.ascx.cs">
       <DependentUpon>CommentList.ascx</DependentUpon>
@@ -990,6 +1008,13 @@
     </Compile>
     <Compile Include="Views\Shared\EventTemplate\ProText.ascx.designer.cs">
       <DependentUpon>ProText.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Message_Box.ascx.cs">
+      <DependentUpon>Message_Box.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Message_Box.ascx.designer.cs">
+      <DependentUpon>Message_Box.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\MyMenu.ascx.cs">
       <DependentUpon>MyMenu.ascx</DependentUpon>
