@@ -128,6 +128,7 @@
     <Compile Include="Helper\Grid\IRootGridColumnBuilder.cs" />
     <Compile Include="Helper\Grid\ISimpleColumnBuilder.cs" />
     <Compile Include="Helper\HtmlHelperExt.cs" />
+    <Compile Include="Helper\HtmlRenderExt.cs" />
     <Compile Include="Helper\Include.cs">
       <SubType>Code</SubType>
     </Compile>

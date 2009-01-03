@@ -42,7 +42,7 @@ namespace CHSNS.Controllers {
 
 		public string Message {
 			set {
-				TempData["msg"] = value;
+				TempData["Page_Message"] = value;
 			}
 		}
 		protected static void InitPage(ref int? p) {

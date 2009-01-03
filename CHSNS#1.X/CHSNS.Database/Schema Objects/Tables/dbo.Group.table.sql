@@ -16,6 +16,7 @@
 [JoinLevel] [tinyint] NOT NULL,
 [ShowLevel] [tinyint] NOT NULL,
 [Status] [tinyint] NOT NULL,
+[Type] tinyint not Null,
 --扩展
 [Ext] [ntext] NULL
 

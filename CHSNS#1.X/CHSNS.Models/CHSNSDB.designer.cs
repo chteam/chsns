@@ -75,9 +75,6 @@ namespace CHSNS.Models
     partial void InsertFriend(Friend instance);
     partial void UpdateFriend(Friend instance);
     partial void DeleteFriend(Friend instance);
-    partial void InsertGroup(Group instance);
-    partial void UpdateGroup(Group instance);
-    partial void DeleteGroup(Group instance);
     partial void InsertGroupUser(GroupUser instance);
     partial void UpdateGroupUser(GroupUser instance);
     partial void DeleteGroupUser(GroupUser instance);
@@ -126,6 +123,9 @@ namespace CHSNS.Models
     partial void InsertApplication(Application instance);
     partial void UpdateApplication(Application instance);
     partial void DeleteApplication(Application instance);
+    partial void InsertGroup(Group instance);
+    partial void UpdateGroup(Group instance);
+    partial void DeleteGroup(Group instance);
     #endregion
 		
 		public CHSNSDBDataContext() : 
@@ -278,14 +278,6 @@ namespace CHSNS.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Group> Group
-		{
-			get
-			{
-				return this.GetTable<Group>();
-			}
-		}
-		
 		public System.Data.Linq.Table<GroupUser> GroupUser
 		{
 			get
@@ -411,6 +403,14 @@ namespace CHSNS.Models
 			get
 			{
 				return this.GetTable<Application>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Group> Group
+		{
+			get
+			{
+				return this.GetTable<Group>();
 			}
 		}
 	}
@@ -3888,380 +3888,6 @@ namespace CHSNS.Models
 					this._FriendSummary = value;
 					this.SendPropertyChanged("FriendSummary");
 					this.OnFriendSummaryChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.[Group]")]
-	public partial class Group : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _ID;
-		
-		private string _Name;
-		
-		private string _LogoUrl;
-		
-		private System.DateTime _AddTime;
-		
-		private string _Summmary;
-		
-		private long _CreaterID;
-		
-		private long _UserCount;
-		
-		private byte _AdminCount;
-		
-		private long _PostCount;
-		
-		private long _ViewCount;
-		
-		private byte _JoinLevel;
-		
-		private byte _ShowLevel;
-		
-		private byte _Status;
-		
-		private string _Ext;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(long value);
-    partial void OnIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnLogoUrlChanging(string value);
-    partial void OnLogoUrlChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
-    partial void OnAddTimeChanged();
-    partial void OnSummmaryChanging(string value);
-    partial void OnSummmaryChanged();
-    partial void OnCreaterIDChanging(long value);
-    partial void OnCreaterIDChanged();
-    partial void OnUserCountChanging(long value);
-    partial void OnUserCountChanged();
-    partial void OnAdminCountChanging(byte value);
-    partial void OnAdminCountChanged();
-    partial void OnPostCountChanging(long value);
-    partial void OnPostCountChanged();
-    partial void OnViewCountChanging(long value);
-    partial void OnViewCountChanged();
-    partial void OnJoinLevelChanging(byte value);
-    partial void OnJoinLevelChanged();
-    partial void OnShowLevelChanging(byte value);
-    partial void OnShowLevelChanged();
-    partial void OnStatusChanging(byte value);
-    partial void OnStatusChanged();
-    partial void OnExtChanging(string value);
-    partial void OnExtChanged();
-    #endregion
-		
-		public Group()
-		{
-			OnCreated();
-		}
-		
-		[Column(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_LogoUrl", DbType="NVarChar(250)")]
-		public string LogoUrl
-		{
-			get
-			{
-				return this._LogoUrl;
-			}
-			set
-			{
-				if ((this._LogoUrl != value))
-				{
-					this.OnLogoUrlChanging(value);
-					this.SendPropertyChanging();
-					this._LogoUrl = value;
-					this.SendPropertyChanged("LogoUrl");
-					this.OnLogoUrlChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
-		{
-			get
-			{
-				return this._AddTime;
-			}
-			set
-			{
-				if ((this._AddTime != value))
-				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Summmary", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Summmary
-		{
-			get
-			{
-				return this._Summmary;
-			}
-			set
-			{
-				if ((this._Summmary != value))
-				{
-					this.OnSummmaryChanging(value);
-					this.SendPropertyChanging();
-					this._Summmary = value;
-					this.SendPropertyChanged("Summmary");
-					this.OnSummmaryChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_CreaterID", DbType="BigInt NOT NULL")]
-		public long CreaterID
-		{
-			get
-			{
-				return this._CreaterID;
-			}
-			set
-			{
-				if ((this._CreaterID != value))
-				{
-					this.OnCreaterIDChanging(value);
-					this.SendPropertyChanging();
-					this._CreaterID = value;
-					this.SendPropertyChanged("CreaterID");
-					this.OnCreaterIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_UserCount", DbType="BigInt NOT NULL")]
-		public long UserCount
-		{
-			get
-			{
-				return this._UserCount;
-			}
-			set
-			{
-				if ((this._UserCount != value))
-				{
-					this.OnUserCountChanging(value);
-					this.SendPropertyChanging();
-					this._UserCount = value;
-					this.SendPropertyChanged("UserCount");
-					this.OnUserCountChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_AdminCount", DbType="TinyInt NOT NULL")]
-		public byte AdminCount
-		{
-			get
-			{
-				return this._AdminCount;
-			}
-			set
-			{
-				if ((this._AdminCount != value))
-				{
-					this.OnAdminCountChanging(value);
-					this.SendPropertyChanging();
-					this._AdminCount = value;
-					this.SendPropertyChanged("AdminCount");
-					this.OnAdminCountChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_PostCount", DbType="BigInt NOT NULL")]
-		public long PostCount
-		{
-			get
-			{
-				return this._PostCount;
-			}
-			set
-			{
-				if ((this._PostCount != value))
-				{
-					this.OnPostCountChanging(value);
-					this.SendPropertyChanging();
-					this._PostCount = value;
-					this.SendPropertyChanged("PostCount");
-					this.OnPostCountChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ViewCount", DbType="BigInt NOT NULL")]
-		public long ViewCount
-		{
-			get
-			{
-				return this._ViewCount;
-			}
-			set
-			{
-				if ((this._ViewCount != value))
-				{
-					this.OnViewCountChanging(value);
-					this.SendPropertyChanging();
-					this._ViewCount = value;
-					this.SendPropertyChanged("ViewCount");
-					this.OnViewCountChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_JoinLevel", DbType="TinyInt NOT NULL")]
-		public byte JoinLevel
-		{
-			get
-			{
-				return this._JoinLevel;
-			}
-			set
-			{
-				if ((this._JoinLevel != value))
-				{
-					this.OnJoinLevelChanging(value);
-					this.SendPropertyChanging();
-					this._JoinLevel = value;
-					this.SendPropertyChanged("JoinLevel");
-					this.OnJoinLevelChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ShowLevel", DbType="TinyInt NOT NULL")]
-		public byte ShowLevel
-		{
-			get
-			{
-				return this._ShowLevel;
-			}
-			set
-			{
-				if ((this._ShowLevel != value))
-				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Status", DbType="TinyInt NOT NULL")]
-		public byte Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Ext", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-		public string Ext
-		{
-			get
-			{
-				return this._Ext;
-			}
-			set
-			{
-				if ((this._Ext != value))
-				{
-					this.OnExtChanging(value);
-					this.SendPropertyChanging();
-					this._Ext = value;
-					this.SendPropertyChanged("Ext");
-					this.OnExtChanged();
 				}
 			}
 		}
@@ -8350,6 +7976,404 @@ namespace CHSNS.Models
 					this._UserCount = value;
 					this.SendPropertyChanged("UserCount");
 					this.OnUserCountChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.[Group]")]
+	public partial class Group : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _ID;
+		
+		private string _Name;
+		
+		private string _LogoUrl;
+		
+		private System.DateTime _AddTime;
+		
+		private string _Summmary;
+		
+		private long _CreaterID;
+		
+		private long _UserCount;
+		
+		private byte _AdminCount;
+		
+		private long _PostCount;
+		
+		private long _ViewCount;
+		
+		private byte _JoinLevel;
+		
+		private byte _ShowLevel;
+		
+		private byte _Status;
+		
+		private byte _Type;
+		
+		private string _Ext;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnLogoUrlChanging(string value);
+    partial void OnLogoUrlChanged();
+    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanged();
+    partial void OnSummmaryChanging(string value);
+    partial void OnSummmaryChanged();
+    partial void OnCreaterIDChanging(long value);
+    partial void OnCreaterIDChanged();
+    partial void OnUserCountChanging(long value);
+    partial void OnUserCountChanged();
+    partial void OnAdminCountChanging(byte value);
+    partial void OnAdminCountChanged();
+    partial void OnPostCountChanging(long value);
+    partial void OnPostCountChanged();
+    partial void OnViewCountChanging(long value);
+    partial void OnViewCountChanged();
+    partial void OnJoinLevelChanging(byte value);
+    partial void OnJoinLevelChanged();
+    partial void OnShowLevelChanging(byte value);
+    partial void OnShowLevelChanged();
+    partial void OnStatusChanging(byte value);
+    partial void OnStatusChanged();
+    partial void OnTypeChanging(byte value);
+    partial void OnTypeChanged();
+    partial void OnExtChanging(string value);
+    partial void OnExtChanged();
+    #endregion
+		
+		public Group()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LogoUrl", DbType="NVarChar(250)")]
+		public string LogoUrl
+		{
+			get
+			{
+				return this._LogoUrl;
+			}
+			set
+			{
+				if ((this._LogoUrl != value))
+				{
+					this.OnLogoUrlChanging(value);
+					this.SendPropertyChanging();
+					this._LogoUrl = value;
+					this.SendPropertyChanged("LogoUrl");
+					this.OnLogoUrlChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
+		public System.DateTime AddTime
+		{
+			get
+			{
+				return this._AddTime;
+			}
+			set
+			{
+				if ((this._AddTime != value))
+				{
+					this.OnAddTimeChanging(value);
+					this.SendPropertyChanging();
+					this._AddTime = value;
+					this.SendPropertyChanged("AddTime");
+					this.OnAddTimeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Summmary", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Summmary
+		{
+			get
+			{
+				return this._Summmary;
+			}
+			set
+			{
+				if ((this._Summmary != value))
+				{
+					this.OnSummmaryChanging(value);
+					this.SendPropertyChanging();
+					this._Summmary = value;
+					this.SendPropertyChanged("Summmary");
+					this.OnSummmaryChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CreaterID", DbType="BigInt NOT NULL")]
+		public long CreaterID
+		{
+			get
+			{
+				return this._CreaterID;
+			}
+			set
+			{
+				if ((this._CreaterID != value))
+				{
+					this.OnCreaterIDChanging(value);
+					this.SendPropertyChanging();
+					this._CreaterID = value;
+					this.SendPropertyChanged("CreaterID");
+					this.OnCreaterIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_UserCount", DbType="BigInt NOT NULL")]
+		public long UserCount
+		{
+			get
+			{
+				return this._UserCount;
+			}
+			set
+			{
+				if ((this._UserCount != value))
+				{
+					this.OnUserCountChanging(value);
+					this.SendPropertyChanging();
+					this._UserCount = value;
+					this.SendPropertyChanged("UserCount");
+					this.OnUserCountChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_AdminCount", DbType="TinyInt NOT NULL")]
+		public byte AdminCount
+		{
+			get
+			{
+				return this._AdminCount;
+			}
+			set
+			{
+				if ((this._AdminCount != value))
+				{
+					this.OnAdminCountChanging(value);
+					this.SendPropertyChanging();
+					this._AdminCount = value;
+					this.SendPropertyChanged("AdminCount");
+					this.OnAdminCountChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PostCount", DbType="BigInt NOT NULL")]
+		public long PostCount
+		{
+			get
+			{
+				return this._PostCount;
+			}
+			set
+			{
+				if ((this._PostCount != value))
+				{
+					this.OnPostCountChanging(value);
+					this.SendPropertyChanging();
+					this._PostCount = value;
+					this.SendPropertyChanged("PostCount");
+					this.OnPostCountChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ViewCount", DbType="BigInt NOT NULL")]
+		public long ViewCount
+		{
+			get
+			{
+				return this._ViewCount;
+			}
+			set
+			{
+				if ((this._ViewCount != value))
+				{
+					this.OnViewCountChanging(value);
+					this.SendPropertyChanging();
+					this._ViewCount = value;
+					this.SendPropertyChanged("ViewCount");
+					this.OnViewCountChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_JoinLevel", DbType="TinyInt NOT NULL")]
+		public byte JoinLevel
+		{
+			get
+			{
+				return this._JoinLevel;
+			}
+			set
+			{
+				if ((this._JoinLevel != value))
+				{
+					this.OnJoinLevelChanging(value);
+					this.SendPropertyChanging();
+					this._JoinLevel = value;
+					this.SendPropertyChanged("JoinLevel");
+					this.OnJoinLevelChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ShowLevel", DbType="TinyInt NOT NULL")]
+		public byte ShowLevel
+		{
+			get
+			{
+				return this._ShowLevel;
+			}
+			set
+			{
+				if ((this._ShowLevel != value))
+				{
+					this.OnShowLevelChanging(value);
+					this.SendPropertyChanging();
+					this._ShowLevel = value;
+					this.SendPropertyChanged("ShowLevel");
+					this.OnShowLevelChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Status", DbType="TinyInt NOT NULL")]
+		public byte Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Type", DbType="TinyInt NOT NULL")]
+		public byte Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Ext", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Ext
+		{
+			get
+			{
+				return this._Ext;
+			}
+			set
+			{
+				if ((this._Ext != value))
+				{
+					this.OnExtChanging(value);
+					this.SendPropertyChanging();
+					this._Ext = value;
+					this.SendPropertyChanged("Ext");
+					this.OnExtChanged();
 				}
 			}
 		}
