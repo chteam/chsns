@@ -129,7 +129,7 @@ namespace CHSNS {
 		/// </summary>
 		/// <param name="Groupid">群ID</param>
 		/// <returns>文件夹路径</returns>
-		static public string ClientGroupFolder(string Groupid) {
+		static public string ClientGroupFolder(object Groupid) {
 			return string.Format("/groupFiles/{0}/", Groupid);
 		}
 		
@@ -174,7 +174,7 @@ namespace CHSNS {
 		/// <param name="Groupid">群ID</param>
 		/// <param name="type">图片大小</param>
 		/// <returns>群图片路径</returns>
-		static public string GetGroupImg(string Groupid, ThumbType type) {
+		static public string GetGroupImg(object Groupid, ThumbType type) {
 			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(Groupid), Groupid, type);
 			//Debug.Trace(HttpContext.Current.Request.PhysicalApplicationPath + text);
 			if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {

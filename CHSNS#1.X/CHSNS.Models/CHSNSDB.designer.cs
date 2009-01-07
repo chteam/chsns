@@ -8015,7 +8015,7 @@ namespace CHSNS.Models
 		
 		private System.DateTime _AddTime;
 		
-		private string _Summmary;
+		private string _Summary;
 		
 		private long _CreaterID;
 		
@@ -8049,8 +8049,8 @@ namespace CHSNS.Models
     partial void OnLogoUrlChanged();
     partial void OnAddTimeChanging(System.DateTime value);
     partial void OnAddTimeChanged();
-    partial void OnSummmaryChanging(string value);
-    partial void OnSummmaryChanged();
+    partial void OnSummaryChanging(string value);
+    partial void OnSummaryChanged();
     partial void OnCreaterIDChanging(long value);
     partial void OnCreaterIDChanged();
     partial void OnUserCountChanging(long value);
@@ -8158,22 +8158,22 @@ namespace CHSNS.Models
 			}
 		}
 		
-		[Column(Storage="_Summmary", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Summmary
+		[Column(Storage="_Summary", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Summary
 		{
 			get
 			{
-				return this._Summmary;
+				return this._Summary;
 			}
 			set
 			{
-				if ((this._Summmary != value))
+				if ((this._Summary != value))
 				{
-					this.OnSummmaryChanging(value);
+					this.OnSummaryChanging(value);
 					this.SendPropertyChanging();
-					this._Summmary = value;
-					this.SendPropertyChanged("Summmary");
-					this.OnSummmaryChanged();
+					this._Summary = value;
+					this.SendPropertyChanged("Summary");
+					this.OnSummaryChanged();
 				}
 			}
 		}

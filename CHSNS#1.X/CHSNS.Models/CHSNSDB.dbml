@@ -398,7 +398,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="LogoUrl" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="AddTime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Summmary" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Summary" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CreaterID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="UserCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="AdminCount" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />

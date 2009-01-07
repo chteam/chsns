@@ -188,10 +188,10 @@
         <elementListCompartment Id="9b4d0f33-de63-4d02-8243-21abba2fb6fd" absoluteBounds="11.015, 20.96, 1.9700000000000002, 3.080403645833333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cc483c79-c9e1-4556-bc42-bd89c2266693" absoluteBounds="9.375, 11.875, 2, 3.3031640625">
+    <classShape Id="411dc87d-c075-4516-a1b8-98da83412dc7" absoluteBounds="9.5, 11.875, 2, 3.3031640625">
       <DataClassMoniker Name="/CHSNSDBDataContext/Group" />
       <nestedChildShapes>
-        <elementListCompartment Id="ad8bf204-1e6c-42f0-a795-4855691b9730" absoluteBounds="9.39, 12.335, 1.9700000000000002, 2.7431640625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="594dad06-5647-4240-b956-81d9e497fec3" absoluteBounds="9.515, 12.335, 1.9700000000000002, 2.7431640625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

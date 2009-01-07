@@ -14,32 +14,30 @@ using System.Web.Mvc;
 {
 
 	[LoginedFilter]
-	public class GroupController : BaseController
-	{
-		/*public ActionResult index(long id,int? p) {
+	public class GroupController : BaseController {
+		#region 主页
+			public ActionResult index(long id,int? p) {
 			InitPage(ref p);
-			Group g = (from gr in DBExt.DB.Group
-			           where gr.ID == id
-			                 && gr.Status == (byte) GroupStatus.Common
-			           select gr).FirstOrDefault();
-			
-			GroupUser u = (from gu in DBExt.DB.GroupUser
-					 where gu.UserID == CHUser.UserID
-					 && gu.GroupID == id
-						   select gu).FirstOrDefault();
-			if (g == null)
-				return View();
-			var ret=8;//不允许任何操作
-			ret = g.ShowLevel;
-			if (u != null && u.Status!=(byte)GroupUserStatus.Lock) {
-				ret = 0;
-			}
-			if (CHUser.IsAdmin) {
-				ret = 0;
-			}
-			ViewData["right"] = ret;
-			ViewData["group"] = g;
-			ViewData["user"] = u;
+			Group g = DBExt.DB.Group.Where(c => c.ID == id).FirstOrDefault();
+				Validate404(g);
+				GroupUser u = DBExt.DB.GroupUser.Where(gu => gu.UserID == CHUser.UserID && gu.GroupID == id).FirstOrDefault();
+				Validate404(u);
+				ViewData["guser"] = u;
+				ViewData["MemberList"] = DBExt.View.ViewList(6, 2, g.ID, 6);
+				ViewData["ViewList"] = DBExt.View.ViewList(1, 6, g.ID, 6);
+				//if (g == null)
+			//    return View();
+			//var ret=8;//不允许任何操作
+			//ret = g.ShowLevel;
+			//if (u != null && u.Status!=(byte)GroupUserStatus.Lock) {
+			//    ret = 0;
+			//}
+			//if (CHUser.IsAdmin) {
+			//    ret = 0;
+			//}
+			//ViewData["right"] = ret;
+			//ViewData["group"] = g;
+			//ViewData["user"] = u;
 			//var userlevel = 0;
 			//if (ChUser.Current.isAdmin) {
 			//    ret = 0;
@@ -49,29 +47,27 @@ using System.Web.Mvc;
 			//}
 
 			//endlinq
-
-			ViewData.Add("adminRows",
-						(from gu in DBExt.DB.GroupUser
-						 join a in DBExt.DB.Account on gu.UserID equals a.UserID
-						 where gu.GroupID == id
-							&& gu.IsTrue 
-							 && gu.Level > 199
-							 && gu.IsTrue 
-						 orderby gu.Level descending
-						 select new
-						 {
-							 name = "",//a.Name,
-							 userid = gu.UserID,
-							 level = gu.Level
-						 }).ToList());
+				var adminList = (from gu in DBExt.DB.GroupUser
+				                 join a in DBExt.DB.Profile on gu.UserID equals a.UserID
+				                 where gu.GroupID == id
+				                       && (gu.Status.Equals(GroupUserStatus.Ceater) ||
+				                           gu.Status.Equals(GroupUserStatus.Admin))
+				                 orderby gu.Status descending
+				                 select new UserItemPas {
+				                                        	Name = a.Name,
+				                                        	ID = a.UserID
+				                                        }).ToList();
+				ViewData["adminlist"] = adminList;
 			//ViewData.Add("group", groupmodel);
-			if (u != null )
-			if (u.Level > 199 || CHUser.IsAdmin) {
-			//	ViewData.Add("ApplyMember", ApplyCount(id, 0));
-			//	ViewData.Add("ApplyMaster", ApplyCount(id, 1));
-			}
-			return View();
-		}*/
+			//if (u != null )
+			//if (u.Level > 199 || CHUser.IsAdmin) {
+			//    ViewData.Add("ApplyMember", ApplyCount(id, 0));
+			//    ViewData.Add("ApplyMaster", ApplyCount(id, 1));
+			//}
+			return View(g);
+		}
+		#endregion
+	
 		public ActionResult List(long? uid, int? p){
 			InitPage(ref p);
 			uid = uid ?? CHUser.UserID;
@@ -99,7 +95,7 @@ using System.Web.Mvc;
 				Name = Name,
 				Type = (byte)GroupType.Common,
 				AddTime = DateTime.Now,
-				Summmary = "",
+				Summary = "",
 			};
 			DBExt.DB.Group.InsertOnSubmit(group);
 			DBExt.DB.SubmitChanges();
@@ -124,10 +120,22 @@ using System.Web.Mvc;
 		public ActionResult Manage(long id){
 			//TODO:限制访问人员
 			var g = DBExt.DB.Group.Where(c => c.ID == id).FirstOrDefault();
+			return ManageResult(g);
+		}
+		[NonAction]
+		ActionResult ManageResult(Group g){
 			Validate404(g);
 			Title = g.Name + "管理";
-			return View(g);
+			ViewData["group.ShowLevel"] = new SelectList(
+				ConfigSerializer.Load<List<ListItem>>("Group/ShowLevel"),
+				"Value", "Text", g.ShowLevel);
+			ViewData["group.JoinLevel"] = new SelectList(
+				ConfigSerializer.Load<List<ListItem>>("Group/JoinLevel"),
+				"Value", "Text", g.JoinLevel);
+			ViewData["group"] = g;
+			return View();
 		}
+
 		[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult Manage(long id,Group group) {
 			//TODO:限制访问人员
@@ -136,9 +144,9 @@ using System.Web.Mvc;
 			g.Name = group.Name;
 			g.JoinLevel = group.JoinLevel;
 			g.ShowLevel = group.ShowLevel;
-			g.Summmary = group.Summmary;
+			g.Summary = group.Summary ?? "";
 			DBExt.DB.SubmitChanges();
-			return View(g);
+			return ManageResult(g);
 		}
 		#endregion
 		/*public void ClassList() {
