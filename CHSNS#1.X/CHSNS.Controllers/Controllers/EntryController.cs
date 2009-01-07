@@ -22,14 +22,20 @@ namespace CHSNS.Controllers
             if (string.IsNullOrEmpty(title))
                 return View("wait", "site");
             var entry = DBExt.DB.Entry.Where(c => c.Title == title).FirstOrDefault();
-            ViewData["entry"] = entry;
-            var version = DBExt.DB.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
-            ViewData["version"] = version;
-            if (ViewData["entry"] == null || ViewData["version"] == null)
-                return View("wait", "site");
-            ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
-            ViewData["Page_Title"] = entry.Title;
-            return View();
+			if (entry != null) {
+				ViewData["entry"] = entry;
+				var version = DBExt.DB.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
+				Title = entry.Title;
+				if (version != null) {
+					ViewData["version"] = version;
+					if (ViewData["entry"] == null || ViewData["version"] == null)
+						return View("wait", "site");
+					ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
+				}
+			} else {
+				Title = "当前词条不存在";
+			}
+        	return View();
         }
         /// <summary>
         /// 历史词条
@@ -53,7 +59,7 @@ namespace CHSNS.Controllers
         		                                                  	}));
 
         	ViewData["Source"] = ret;
-        	ViewData["Page_Title"] = "版本比较";
+        	Title = "版本比较";
         	return View();
         }
 
@@ -68,7 +74,7 @@ namespace CHSNS.Controllers
             if (ViewData["entry"] == null || ViewData["version"] == null)
                 return View("wait", "site");
             ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
-            ViewData["Page_Title"] = entry.Title;
+            Title = entry.Title;
             return View();
         }
         /// <summary>
@@ -92,7 +98,7 @@ namespace CHSNS.Controllers
                                       Reason = v.Description,
                                       Title = e.Title,
                                   });
-            ViewData["Page_Title"] = "景点搜索 -" + wd;
+            Title = "景点搜索 -" + wd;
             var li = new PagedList<EntryPas>(ret, 1, 10);
             return View(li);
         }
@@ -149,7 +155,7 @@ namespace CHSNS.Controllers
 					var ee = JavaScriptConvert.DeserializeObject<EntryExt>(entryversion.Ext);
 					ViewData["tags"] = string.Join(",", ee.Tags.ToArray());
 					ViewData["entryversion.reference"] = entryversion.Reference;
-					ViewData["Page_Title"] = "编辑词条:" + entry.Title;
+					Title = "编辑词条:" + entry.Title;
 
 				}
 				else {
@@ -229,7 +235,7 @@ namespace CHSNS.Controllers
                 }));
 
             ViewData["Source"] = ret;
-            ViewData["Page_Title"] = "历史版本";
+            Title = "历史版本";
             return View();
         }
 
