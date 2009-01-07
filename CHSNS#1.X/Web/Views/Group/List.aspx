@@ -11,12 +11,12 @@
 				<%  foreach (CHSNS.Models.Group p in ViewData.Model.ToNotNull()) { %>
 				<li id="Items<%=p.ID %>" class="useritem">
 					<div class="face face-middle">
-						<a href="<%=Url.UserPage(p.ID) %>" title="<%=p.GroupName %>" style="background-image: url();">
+						<a href="<%=Url.UserPage(p.ID) %>" title="<%=p.Name %>" style="background-image: url();">
 						</a>
 					</div>
 					<div class="info">
 						<strong>
-							<%=Html.UserPageLink(p.ID,p.GroupName) %></strong>
+							<%=Html.UserPageLink(p.ID,p.Name) %></strong>
 						<ul>
 							<li>浏览：
 								<%=Html.FriendLink(p.ID) %>
