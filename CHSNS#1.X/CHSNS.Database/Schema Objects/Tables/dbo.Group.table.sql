@@ -5,7 +5,7 @@
 [Name] [nvarchar] (50) NOT NULL,
 [LogoUrl] [nvarchar] (250) NULL,
 [AddTime] [smalldatetime] NOT NULL,
-[Summmary] [nvarchar] (50) NOT NULL,
+[Summary] [nvarchar] (50) NOT NULL,
 [CreaterID] [bigint] NOT NULL,
 /*统计*/
 [UserCount] [bigint] NOT NULL,
