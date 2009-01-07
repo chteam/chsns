@@ -8,11 +8,11 @@ namespace CHSNS.Controllers
 	public class HomeController : BaseController
 	{
 		//[Cache(HttpCacheability.Public, Duration = 360, VaryByParams = "id,name")]
-		public ActionResult Index() {
-			ViewData["viewlist"] = DBExt.View.ViewList(3, 3, 0, 6);
-			ViewData["Page_Title"] = "首页";
-			return View("Index");
-		}
+        public ActionResult Index() {
+            //ViewData["viewlist"] = DBExt.View.ViewList(3, 3, 0, 6);
+            Title = "首页";
+            return View("Index");
+        }
 		public void Logout() {
 			CHCookies.Clear();
 			CHUser.Clear();
