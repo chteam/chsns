@@ -11,19 +11,13 @@
 				<%  foreach (CHSNS.Models.Group p in ViewData.Model.ToNotNull()) { %>
 				<li id="Items<%=p.ID %>" class="useritem">
 					<div class="face face-middle">
-						<a href="<%=Url.UserPage(p.ID) %>" title="<%=p.Name %>" style="background-image: url();">
-						</a>
+						<a href="<%=Url.LinkGroupIndex(p.ID) %>"
+						title="<%=p.Name %>" style="background-image: url();"></a>
 					</div>
 					<div class="info">
-						<strong>
-							<%=Html.UserPageLink(p.ID,p.Name) %></strong>
+						<strong><a href="<%=Url.LinkGroupIndex(p.ID) %>"><%=p.Name %></a></strong>
 						<ul>
-							<li>浏览：
-								<%=Html.FriendLink(p.ID) %>
-								|
-								<%=Html.BlogLink(p.ID) %>
-								|
-								<%=Html.AlbumLink(p.ID) %>
+							<li>
 							</li>
 						</ul>
 					</div>

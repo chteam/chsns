@@ -105,34 +105,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\AllowImageExt.xml" />
-    <Content Include="Config\AnimalSign.config" />
     <Content Include="Config\City.config" />
-    <Content Include="Config\Comment.config" />
-    <Content Include="Config\Date.config" />
     <Content Include="Config\EditFormat.config" />
-    <Content Include="Config\Event.config" />
-    <Content Include="Config\Format.config" />
-    <Content Include="Config\Friend.config" />
-    <Content Include="Config\Group.config" />
-    <Content Include="Config\Identity.config" />
-    <Content Include="Config\Message.config" />
-    <Content Include="Config\Note.config" />
-    <Content Include="Config\Page.config" />
-    <Content Include="Config\Photos.config" />
-    <Content Include="Config\Profile.config" />
-    <Content Include="Config\Prompt.config" />
+    <Content Include="Config\Group\ShowLevel.xml" />
+    <Content Include="Config\Group\JoinLevel.xml" />
     <Content Include="Config\Province.config" />
-    <Content Include="Config\Regex.config" />
-    <Content Include="Config\Script.config" />
     <Content Include="Config\Sex.xml" />
     <Content Include="Config\ShowLevel.xml" />
-    <Content Include="Config\SkyTree.config" />
-    <Content Include="Config\StarSign.config" />
-    <Content Include="Config\StyleSheet.config" />
-    <Content Include="Config\Email.config" />
-    <Content Include="Config\Routing.config" />
     <Content Include="Config\Config.xml" />
-    <Content Include="Config\Style.config" />
     <None Include="Style\Facebook\i\Thumbs.db" />
     <None Include="Style\Facebook_backup\i\Thumbs.db" />
     <None Include="Views\Admin\Admin\ApplyClass.vm" />
@@ -179,8 +159,6 @@
     <None Include="Views\Group\ClassList.vm" />
     <None Include="Views\Group\CreateClass.vm" />
     <None Include="Views\Group\index.vm" />
-    <None Include="Views\Group\List.vm" />
-    <None Include="Views\Group\Manage.vm" />
     <None Include="Views\Group\MyClass.vm" />
     <None Include="Views\Home\GetCode.vm" />
     <None Include="Views\Home\Invite.vm" />
@@ -334,6 +312,7 @@
     <Content Include="Views\Entry\NewList.aspx" />
     <Content Include="Views\Entry\Wait.aspx" />
     <Content Include="Views\Group\Create.aspx" />
+    <Content Include="Views\Group\Index.aspx" />
     <Content Include="Views\Group\List.aspx" />
     <Content Include="Views\Group\Manage.aspx" />
     <Content Include="Views\Note\CommentList.ascx" />
@@ -568,7 +547,6 @@
     <Content Include="Template\Default\GroupRight.htm" />
     <Content Include="Template\Default\MyApplicationItem.htm" />
     <Content Include="Template\Default\MyClass.htm" />
-    <Content Include="Template\Default\NewGroup.htm" />
     <Content Include="Template\Default\PhotosPage.htm" />
     <Content Include="Template\Default\Request.htm" />
     <Content Include="Template\Default\SearchUserListSample.htm" />
@@ -749,6 +727,13 @@
     </Compile>
     <Compile Include="Views\Group\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Group\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Group\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Group\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>

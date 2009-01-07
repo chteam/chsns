@@ -6,6 +6,7 @@ using System.Web;
 using Microsoft.Web.Mvc;
 namespace CHSNS.Helper {
 	public static class HtmlHelperExt {
+
 		#region note
 		public static string NoteEdit(this HtmlHelper Html, long id, string text) {
 			return Html.ActionLink(text, "Edit", "Note", new { id }, null);
