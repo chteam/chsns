@@ -125,7 +125,7 @@ using System.Web.Mvc;
 			//TODO:限制访问人员
 			var g = DBExt.DB.Group.Where(c => c.ID == id).FirstOrDefault();
 			Validate404(g);
-			
+			Title = g.Name + "管理";
 			return View(g);
 		}
 		[AcceptVerbs(HttpVerbs.Post)]
@@ -133,7 +133,11 @@ using System.Web.Mvc;
 			//TODO:限制访问人员
 			var g = DBExt.DB.Group.Where(c => c.ID == id).FirstOrDefault();
 			Validate404(g);
-
+			g.Name = group.Name;
+			g.JoinLevel = group.JoinLevel;
+			g.ShowLevel = group.ShowLevel;
+			g.Summmary = group.Summmary;
+			DBExt.DB.SubmitChanges();
 			return View(g);
 		}
 		#endregion
