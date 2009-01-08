@@ -315,6 +315,8 @@
     <Content Include="Views\Group\Index.aspx" />
     <Content Include="Views\Group\List.aspx" />
     <Content Include="Views\Group\Manage.aspx" />
+    <Content Include="Views\Group\ManageUser.aspx" />
+    <Content Include="Views\Group\Toc.ascx" />
     <Content Include="Views\Note\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
@@ -748,6 +750,20 @@
     </Compile>
     <Compile Include="Views\Group\Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Group\ManageUser.aspx.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Group\ManageUser.aspx.designer.cs">
+      <DependentUpon>ManageUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Group\Toc.ascx.cs">
+      <DependentUpon>Toc.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Group\Toc.ascx.designer.cs">
+      <DependentUpon>Toc.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Note\CommentList.ascx.cs">
       <DependentUpon>CommentList.ascx</DependentUpon>
