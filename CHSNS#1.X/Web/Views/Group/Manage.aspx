@@ -4,14 +4,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<div class="toc">
-		<ul>
-			<li class="active"><a href="#">群设置</a> </li>
-			<li><a href="#">成员管理</a> </li>
-			<li><a href="#">群图片</a> </li>
-			<li><a href="#">黑名单</a> </li>
-		</ul>
-	</div>
+	<%Html.RenderPartial("Toc");
+      
+		 %>
 	<form action="" method="post" class="ch_content formset">
 		<p>
 			<label>群名称：</label>

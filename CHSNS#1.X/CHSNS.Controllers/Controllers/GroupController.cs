@@ -25,8 +25,7 @@ using System.Web.Mvc;
 				ViewData["guser"] = u;
 				ViewData["MemberList"] = DBExt.View.ViewList(6, 2, g.ID, 6);
 				ViewData["ViewList"] = DBExt.View.ViewList(1, 6, g.ID, 6);
-				//if (g == null)
-			//    return View();
+
 			//var ret=8;//不允许任何操作
 			//ret = g.ShowLevel;
 			//if (u != null && u.Status!=(byte)GroupUserStatus.Lock) {
@@ -149,6 +148,22 @@ using System.Web.Mvc;
 			return ManageResult(g);
 		}
 		#endregion
+
+		#region 用户管理
+		public ActionResult ManageUser(long id){
+			Title = "用户管理";
+			var list = (from g in DBExt.DB.GroupUser
+			            join u in DBExt.DB.Profile on g.UserID equals u.UserID
+			            where g.GroupID == id
+			            select new UserCountPas {
+			                                    	ID = u.UserID,
+			                                    	Name = u.Name,
+			                                    	Count = g.Status
+			                                    });
+			ViewData["list"] = list;
+			return View();
+		}
+		#endregion
 		/*public void ClassList() {
 
 			Dictionary dict = new Dictionary();
@@ -167,37 +182,6 @@ using System.Web.Mvc;
 				ViewData.Add("Xueyuan", rows[0]["XueYuan"]);
 				ViewData.Add("Grade", rows[0]["Grade"]);
 			}
-		}
-		public void Manage() {
-			long Groupid = this.QueryLong("id");
-			ViewData.Add("Groupid", Groupid);
-			int i;
-			switch (this.QueryString("mode")) {
-				case "member":
-					i = 1;
-					break;
-				case "photo":
-					i = 2;
-					break;
-				case "disallow":
-					i = 3;
-					break;
-				default://setting
-					i = 0;
-					break;
-			}
-			ViewData.Add("Tabs", i);
-
-			SqlParameter[] p = new SqlParameter[] {
-					new SqlParameter("@id", SqlDbType.BigInt),
-					new SqlParameter("@userid", SqlDbType.BigInt)
-				};
-			p[0].Value = Groupid;
-			p[1].Value = CHSNSUser.Current.UserID;
-			DoDataBase dd = new DoDataBase();
-			ViewData.Add("group", dd.DoDataSet("GroupSetting_Select", p).Tables[0].Rows);
-
-
 		}
 		int ApplyCount(long groupid, int type) {//0为加入的成员，1为申请管理员的人
 			SqlParameter[] p = new SqlParameter[] {
