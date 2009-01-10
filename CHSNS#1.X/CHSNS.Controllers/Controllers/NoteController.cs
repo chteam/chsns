@@ -40,19 +40,16 @@ namespace CHSNS.Controllers {
 		/// <returns></returns>
 		[AcceptVerbs("Post")]
 		public ActionResult NoteList(int p, int ep, long userid) {
-				var d = DBExt.Note.GetNotes(userid).Pager(p, ep);
-				return View(d);
+			var d = DBExt.Note.GetNotes(userid, NoteType.Note).Pager(p, ep);
+			return View(d);
 		}
 		public ActionResult Details(long id) {
 			NoteDetailsPas note;
-			using (var ts = DBExt.ContextTransaction()) {
-				note = DBExt.Note.Details(id);
-				var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
-					SiteConfig.Current.Note.CommentEveryPage
-					).OrderBy(c => c.Comment.ID);
-				ViewData["commentlist"] = cl;
-				ts.Commit();
-			}
+			note = DBExt.Note.Details(id, NoteType.Note);
+			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
+				SiteConfig.Current.Note.CommentEveryPage
+				).OrderBy(c => c.Comment.ID);
+			ViewData["commentlist"] = cl;
 			if (note.User.ID != CHUser.UserID) {
 				int r = DBExt.Note.AddViewCount(id);
 				if (r != 1) throw new Exception("参数不正确");
@@ -64,15 +61,13 @@ namespace CHSNS.Controllers {
 		}
 		[AcceptVerbs(HttpVerbs.Get)]
 		[LoginedFilter]
-		public ActionResult Edit(long? id){
+		public ActionResult Edit(long? id) {
 			using (var ts = new TransactionScope()) {
 				Note n = null;
-				if (id.HasValue) {
-					//编辑
-					n = DBExt.Note.Details(id.Value).Note;
+				if (id.HasValue) {//编辑
+					n = DBExt.Note.Details(id.Value, NoteType.Note).Note;
 					Title = "修改日志";
-				}
-				else {
+				} else {
 					Title = "发新日志";
 				}
 				ts.Complete();
@@ -80,7 +75,7 @@ namespace CHSNS.Controllers {
 			}
 		}
 
-		[AcceptVerbs("post")]
+		[AcceptVerbs(HttpVerbs.Post)]
 		[LoginedFilter]
 		public ActionResult Edit(long? id, Note n) {
 			using (var ts = new TransactionScope()) {
@@ -88,12 +83,15 @@ namespace CHSNS.Controllers {
 					Message = ("请输入正确的日志内容");
 					return View(n);
 				}
+				n.Type = (int)NoteType.Note;
+				n.UserID = CHUser.UserID;
+				n.PID = CHUser.UserID;
 				if (id.HasValue) {
 					n.ID = id.Value;
-					DBExt.Note.Edit(n, CHUser.UserID);
+					DBExt.Note.Edit(n);
 				}
 				else {
-					DBExt.Note.Add(n, CHUser.UserID);
+					DBExt.Note.Add(n);
 				}
 				ts.Complete();
 				return RedirectToAction("Index");
@@ -109,7 +107,7 @@ namespace CHSNS.Controllers {
 		[LoginedFilter]
 		public ActionResult Delete(long id) {
 			using (var ts = new TransactionScope()) {
-				DBExt.Note.Delete(id, CHUser.UserID);
+				DBExt.Note.Delete(id, CHUser.UserID, NoteType.Note);
 				ts.Complete();
 				return Content("");
 			}
@@ -121,7 +119,7 @@ namespace CHSNS.Controllers {
 		/// <returns></returns>
 		public ActionResult News() {
 			Title = "日志首页";
-			return View(DBExt.Note.GetLastNotes());
+			return View(DBExt.Note.GetLastNotes(null));
 		}
 	}
 }

@@ -114,19 +114,19 @@
     <Compile Include="Filter\OnlineFilter.cs" />
     <Compile Include="Filter\RoleAttribute.cs" />
     <Compile Include="GlobalApplication.cs" />
+    <Compile Include="Grid\Grid.cs" />
+    <Compile Include="Grid\GridBase.cs" />
+    <Compile Include="Grid\GridColumn.cs" />
+    <Compile Include="Grid\GridColumnBuilder.cs" />
+    <Compile Include="Grid\GridHelper.cs" />
+    <Compile Include="Grid\IExpressionColumnBuilder.cs" />
+    <Compile Include="Grid\IGridSections.cs" />
+    <Compile Include="Grid\INestedGridColumnBuilder.cs" />
+    <Compile Include="Grid\IRootGridColumnBuilder.cs" />
+    <Compile Include="Grid\ISimpleColumnBuilder.cs" />
     <Compile Include="Helper\ChHelper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helper\Grid\Grid.cs" />
-    <Compile Include="Helper\Grid\GridBase.cs" />
-    <Compile Include="Helper\Grid\GridColumn.cs" />
-    <Compile Include="Helper\Grid\GridColumnBuilder.cs" />
-    <Compile Include="Helper\Grid\GridHelper.cs" />
-    <Compile Include="Helper\Grid\IExpressionColumnBuilder.cs" />
-    <Compile Include="Helper\Grid\IGridSections.cs" />
-    <Compile Include="Helper\Grid\INestedGridColumnBuilder.cs" />
-    <Compile Include="Helper\Grid\IRootGridColumnBuilder.cs" />
-    <Compile Include="Helper\Grid\ISimpleColumnBuilder.cs" />
     <Compile Include="Helper\HtmlHelperExt.cs" />
     <Compile Include="Helper\HtmlRenderExt.cs" />
     <Compile Include="Helper\Include.cs">
