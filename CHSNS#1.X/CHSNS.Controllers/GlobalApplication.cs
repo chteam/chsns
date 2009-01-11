@@ -44,17 +44,17 @@ namespace CHSNS {
 		public void Application_Error(object sender, EventArgs e) {
 		}
 
-		public void Session_OnStart(object sender, EventArgs e){
-			using (new TransactionScope()){
-				if (!CHUser.IsLogin){
+		public void Session_OnStart(object sender, EventArgs e) {
+			using (new TransactionScope()) {
+				if (!CHUser.IsLogin) {
 					//当前不处于登录状态
-					if (CHCookies.IsAutoLogin){
+					if (CHCookies.IsAutoLogin) {
 						string pwd = CHCookies.UserPassword;
 						var idb = new DBExt();
 						idb.Account.Login(CHCookies.UserID.ToString(),
-						                  pwd,
-						                  true,
-						                  false
+										  pwd,
+										  true,
+										  false
 							);
 					}
 				}
@@ -67,22 +67,27 @@ namespace CHSNS {
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 			routes.MapRoute("Admin", "Admin/{controller}/{Action}.ashx",
-			                new {controller = "Admin", Action = "Index"},
-			                new {controller = "Application"},
-			                new[] {"CHSNS.Controllers.Admin"}
+							new { controller = "Admin", Action = "Index" },
+							new { controller = "Application" },
+							new[] { "CHSNS.Controllers.Admin" }
 				);
 			routes.MapRoute(
 				"index", // Route name
 				"{Title}.ashx", // URL with parameters
-				new {controller = "Entry", action = "Index", Title = "Index"}, // Parameter defaults
-				new[] {"CHSNS.Controllers"}
+				new { controller = "Entry", action = "Index", Title = "Index" }, // Parameter defaults
+				new[] { "CHSNS.Controllers" }
 				);
 			routes.MapRoute(
 				"entry", // Route name
 				"w/{title}.ashx", // URL with parameters
-				new {controller = "Entry", action = "Index", Title = "Index"}, // Parameter defaults
-				new[] {"CHSNS.Controllers"}
+				new { controller = "Entry", action = "Index", Title = "Index" }, // Parameter defaults
+				new[] { "CHSNS.Controllers" }
 				);
+			routes.MapRoute(
+		"post", // Route name
+		"Post/{y}/{m}/{d}/{id}.ashx", // URL with parameters
+		new { controller = "Group", action = "Details" } // Parameter defaults
+		);
 			routes.MapRoute(
 				"note", // Route name
 				"Note/{y}/{m}/{d}/{id}.ashx", // URL with parameters

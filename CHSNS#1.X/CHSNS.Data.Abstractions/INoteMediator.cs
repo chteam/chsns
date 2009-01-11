@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Linq;
+using CHSNS.ModelPas;
+using CHSNS.Models;
 namespace CHSNS.Data {
 	public interface INoteMediator {
-		void Add(CHSNS.Models.Note note, long userid);
+		void Add(Note note);
 		int AddViewCount(long id);
-		void Delete(long id, long userid);
-		CHSNS.ModelPas.NoteDetailsPas Details(long id);
-		void Edit(CHSNS.Models.Note note, long userid);
-		System.Linq.IQueryable<CHSNS.ModelPas.NotePas> GetLastNotes();
-		System.Linq.IQueryable<CHSNS.ModelPas.NotePas> GetNotes(long userid);
+		void Delete(long id, long pid, NoteType nt);
+		NoteDetailsPas Details(long id, NoteType? nt);
+		void Edit(Note note);
+		IQueryable<NotePas> GetLastNotes(int? n);
+		IQueryable<NotePas> GetNotes(long pid, NoteType? nt);
 	}
 }

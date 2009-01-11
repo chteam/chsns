@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountPas.cs" />
+    <Compile Include="Area\City.cs" />
+    <Compile Include="Area\Province.cs" />
     <Compile Include="CommentItemPas.cs" />
     <Compile Include="CommentPas.cs" />
     <Compile Include="Entry\EntryExt.cs" />

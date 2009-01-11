@@ -586,9 +586,6 @@
     <Build Include="Schema Objects\Tables\dbo.Category.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\dbo.City.table.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Tables\dbo.Comment.table.sql">
       <SubType>Code</SubType>
     </Build>
@@ -602,9 +599,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\dbo.Event.table.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\dbo.Field.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\dbo.FieldInformation.table.sql">
@@ -640,13 +634,7 @@
     <Build Include="Schema Objects\Tables\dbo.Profile.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\dbo.Province.table.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Tables\dbo.Push.table.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\dbo.QinShi.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\dbo.Reply.table.sql">
