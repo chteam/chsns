@@ -116,12 +116,6 @@
         <elementListCompartment Id="b59864ef-da28-4171-83db-877aca7adfc5" absoluteBounds="12.765, 11.21, 1.9700000000000002, 0.88834635416666674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="179d5ace-e209-435f-a5a6-a6729fd40b66" absoluteBounds="12.75, 13.75, 2, 3.6404036458333309">
-      <DataClassMoniker Name="/CHSNSDBDataContext/Note" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2e4c04f1-f278-43c6-b58d-99a78624b6e2" absoluteBounds="12.765, 14.21, 1.9700000000000002, 3.080403645833333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="f84601ca-9843-4f95-8d0f-bb00b318d981" absoluteBounds="0.75, 14.75, 2, 2.2914453124999987">
       <DataClassMoniker Name="/CHSNSDBDataContext/PersonalInformation" />
       <nestedChildShapes>
@@ -192,6 +186,12 @@
       <DataClassMoniker Name="/CHSNSDBDataContext/Group" />
       <nestedChildShapes>
         <elementListCompartment Id="594dad06-5647-4240-b956-81d9e497fec3" absoluteBounds="9.515, 12.335, 1.9700000000000002, 2.7431640625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fbf6c013-738a-4acc-b935-654db9a07a51" absoluteBounds="12.625, 13.625, 2, 3.9776432291666666">
+      <DataClassMoniker Name="/CHSNSDBDataContext/Note" />
+      <nestedChildShapes>
+        <elementListCompartment Id="34cd54f8-b00a-47b0-a25a-a21e22866e93" absoluteBounds="12.64, 14.085, 1.9700000000000002, 3.4176432291666665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

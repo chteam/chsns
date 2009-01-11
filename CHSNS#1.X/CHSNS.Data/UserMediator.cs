@@ -26,11 +26,13 @@ namespace CHSNS.Data {
 			if (x > 0) return 150;
 			return 0;
 		}
+
 		#region BasicInfo
 		public BasicInformation GetBaseInfo(long UserID) {
 			return DBExt.DB.BasicInformation.Where(c => c.UserID == UserID).FirstOrDefault();
 		}
-		public void SaveBaseInfo(BasicInformation bi) {
+		public void SaveBaseInfo(BasicInformation b) {
+			if (b.UserID == 0) b.UserID = CHUser.UserID;
 			DataBaseExecutor.Execute(
 				@"UPDATE [BasicInformation]
    SET [Name] = @Name
@@ -40,13 +42,13 @@ namespace CHSNS.Data {
       ,[CityID] = @CityID
       ,[ShowLevel] = @ShowLevel
  WHERE UserID=@UserID"
-				, "@Name", bi.Name
-				, "@Sex", bi.Sex
-				, "@Birthday", bi.Birthday
-				, "@ProvinceID", bi.ProvinceID
-				, "@CityID", bi.CityID
-				, "@ShowLevel", bi.ShowLevel
-				, "@UserID", bi.UserID);
+				, "@Name", b.Name
+				, "@Sex", b.Sex
+				, "@Birthday", b.Birthday
+				, "@ProvinceID", b.ProvinceID
+				, "@CityID", b.CityID
+				, "@ShowLevel", b.ShowLevel
+				, "@UserID", b.UserID);
 		}
 		#endregion
 		#region other info

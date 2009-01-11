@@ -28,9 +28,10 @@ namespace CHSNS
 					mySerializer.Serialize(myWriter, obj);
 				}
 			}
-			catch
+			catch(Exception e)
 			{
-				throw new Exception(string.Format("存储配置文件{0}时出错,编号:{1}", fn, 10359));
+				throw new Exception(string.Format("存储配置文件{0}时出错,编号:{1}->{2}"
+					, fn, 10359,e.Message));
 			}
 		}
 

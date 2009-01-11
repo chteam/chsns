@@ -10,6 +10,10 @@ namespace CHSNS.Helper {
 		public static string LinkGroupManage(this UrlHelper Url, long id) {
 			return Url.Action("Manage", "Group", new { id }, null);
 		}
+		public static string GroupPost(this UrlHelper Url, long id, DateTime dt) {
+			return Url.Action("Details", "Group"
+				, new { id, y = dt.Year, m = dt.Month, d = dt.Day });
+		}
 		#endregion
 
 		public static String UserPage(this UrlHelper Url, long userid) {

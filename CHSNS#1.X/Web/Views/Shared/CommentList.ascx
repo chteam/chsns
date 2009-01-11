@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CommentList.ascx.cs" Inherits="CHSNS.Web.Views.Note.CommentList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <ul id="ReplyItems" class="userlist">
 	<%
 		Html.RenderPartial("Comment/Item", ViewData["commentlist"]);

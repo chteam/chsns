@@ -168,6 +168,23 @@ namespace CHSNS.Controllers {
 		#endregion
 
 		#region 帖子
+		public ActionResult Details(long id) {
+			NoteDetailsPas note;
+			note = DBExt.Note.Details(id, NoteType.GroupPost);
+			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
+				SiteConfig.Current.Note.CommentEveryPage
+				).OrderBy(c => c.Comment.ID);
+			ViewData["commentlist"] = cl;
+			if (note.User.ID != CHUser.UserID) {
+				int r = DBExt.Note.AddViewCount(id);
+				if (r != 1) throw new Exception("参数不正确");
+			}
+			Title = note.Note.Title;
+			ViewData["NowPage"] = 1;
+			ViewData["PageCount"] = note.User.Count;
+			return View(note);
+		}
+
 		[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult Post(long? id, Note post) {
 			using (var ts = new TransactionScope()) {

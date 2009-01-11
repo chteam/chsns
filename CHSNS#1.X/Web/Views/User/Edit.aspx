@@ -41,13 +41,14 @@
 			});
 		};
 		var SBaseInfo = function() {
-			
-			if (v_empty('#Name', '姓名为必添项') &&
+
+		if (v_empty('#b\\.Name', '姓名为必添项') &&
+			v_notin('#b\\.Sex',[0,""],"请选择您的性别") &&
 			 v_regex('#ProvinceID', /[^0]+/, false, '省为必选') &&
 			  v_regex('#CityID', /[^0]+/, false, '市为必选') &&
 			   v_date('#Birthday', '请写入正确日期'))
 				$.post('<%=Url.Action("SaveBaseInfo","User") %>', $("#BasicInfofrm").serialize(), function(r) {
-					$("#Name").focus();
+					$("#b\\.Name").focus();
 					if ('' == r) alertEx('成功提交');
 				});
 		};

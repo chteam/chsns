@@ -106,10 +106,12 @@
   <ItemGroup>
     <Content Include="Config\AllowImageExt.xml" />
     <Content Include="Config\City.config" />
+    <Content Include="Config\City.xml" />
     <Content Include="Config\EditFormat.config" />
     <Content Include="Config\Group\ShowLevel.xml" />
     <Content Include="Config\Group\JoinLevel.xml" />
     <Content Include="Config\Province.config" />
+    <Content Include="Config\Province.xml" />
     <Content Include="Config\Sex.xml" />
     <Content Include="Config\ShowLevel.xml" />
     <Content Include="Config\Config.xml" />
@@ -150,7 +152,6 @@
     <None Include="Views\Components\Html\SearchClass.vm" />
     <None Include="Views\Components\Pager.vm" />
     <None Include="Views\Components\PhotoList\PhotoItem.vm" />
-    <None Include="Views\Components\PostList\SubjectList.vm" />
     <None Include="Views\Components\ProfileEditChild\Contact.vm" />
     <None Include="Views\Components\ProfileEditChild\PersonalInfo.vm" />
     <None Include="Views\Components\ProfileEditChild\School.vm" />
@@ -312,12 +313,13 @@
     <Content Include="Views\Entry\NewList.aspx" />
     <Content Include="Views\Entry\Wait.aspx" />
     <Content Include="Views\Group\Create.aspx" />
+    <Content Include="Views\Group\Details.aspx" />
     <Content Include="Views\Group\Index.aspx" />
     <Content Include="Views\Group\List.aspx" />
     <Content Include="Views\Group\Manage.aspx" />
     <Content Include="Views\Group\ManageUser.aspx" />
     <Content Include="Views\Group\Toc.ascx" />
-    <Content Include="Views\Note\CommentList.ascx" />
+    <Content Include="Views\Shared\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
     <Content Include="Views\Event\IndexCtl\Event.ascx" />
@@ -460,6 +462,7 @@
     <Content Include="Views\Shared\EventTemplate\ProText.ascx" />
     <Content Include="Views\Shared\Message_Box.ascx" />
     <Content Include="Views\Shared\Pager.ascx" />
+    <Content Include="Views\Shared\Post\List.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
     <None Include="Views\Shared\BlogMaster.vm" />
@@ -730,6 +733,13 @@
     <Compile Include="Views\Group\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Group\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Group\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Group\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -764,13 +774,6 @@
     </Compile>
     <Compile Include="Views\Group\Toc.ascx.designer.cs">
       <DependentUpon>Toc.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Note\CommentList.ascx.cs">
-      <DependentUpon>CommentList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Note\CommentList.ascx.designer.cs">
-      <DependentUpon>CommentList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Comment\Reply.aspx.cs">
       <DependentUpon>Reply.aspx</DependentUpon>
@@ -1030,6 +1033,13 @@
     </Compile>
     <Compile Include="Views\Shared\Pager.ascx.designer.cs">
       <DependentUpon>Pager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Post\List.ascx.cs">
+      <DependentUpon>List.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Post\List.ascx.designer.cs">
+      <DependentUpon>List.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Single.Master.cs">
       <DependentUpon>Single.Master</DependentUpon>

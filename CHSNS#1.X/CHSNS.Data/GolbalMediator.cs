@@ -4,18 +4,12 @@
 	using Models;
 	public class GolbalMediator : BaseMediator, IGolbalMediator {
 		public GolbalMediator(IDBExt id) : base(id) { }
-		private const string CACHE_PROVINCES = "area.provinceall";
-		private const string CACHE_CITYS = "area.cityall";
-
 		/// <summary>
 		/// Get ALL Provinces or Areas
 		/// </summary>
 		public List<Province> Provinces {
 			get {
-				if (!CHCache.Contains(CACHE_PROVINCES)) {
-					CHCache.Add(CACHE_PROVINCES, DBExt.DB.Province.ToList());
-				}
-				return CHCache.Get<List<Province>>(CACHE_PROVINCES);
+				return ConfigSerializer.Load<List<Province>>("Province");
 			}
 		}
 		/// <summary>
@@ -29,10 +23,7 @@
 
 		List<City> Citys {
 			get {
-				if (!CHCache.Contains(CACHE_CITYS)) {
-					CHCache.Add(CACHE_CITYS, DBExt.DB.City.ToList());
-				}
-				return CHCache.Get<List<City>>(CACHE_CITYS);
+				return ConfigSerializer.Load<List<City>>("City");
 			}
 		}
 	}
