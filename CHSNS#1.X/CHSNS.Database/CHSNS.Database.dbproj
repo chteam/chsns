@@ -167,6 +167,9 @@
     <PostDeploy Include="Scripts\Post-Deployment\Script.PostDeployment.sql">
       <SubType>Code</SubType>
     </PostDeploy>
+    <NotInBuild Include="Script1.sql">
+      <SubType>NotInBuild</SubType>
+    </NotInBuild>
     <NotInBuild Include="Scripts\Post-Deployment\DatabaseObjectOptions.sql">
       <SubType>NotInBuild</SubType>
     </NotInBuild>
@@ -301,12 +304,6 @@
     <Build Include="Schema Objects\Tables\Constraints\dbo.Event.DF_Event_type.defconst.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Constraints\dbo.Field.DF_School_SchoolClass.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Constraints\dbo.Field.DF_School_Ucounter.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Tables\Constraints\dbo.FieldInformation.DF_SchoolInformation_Grade.defconst.sql">
       <SubType>Code</SubType>
     </Build>
@@ -344,9 +341,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Constraints\dbo.Group.DF_Group_ShowLevel.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Constraints\dbo.Group.DF_Group_summmary.defconst.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Constraints\dbo.Group.DF_Group_UserCount.defconst.sql">
@@ -503,9 +497,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Constraints\dbo.Push.DF_Push_PushTime.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Constraints\dbo.QinShi.DF_QinShi_SchoolClass.defconst.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Constraints\dbo.Reply.DF_Reply_addtime.defconst.sql">
@@ -679,12 +670,6 @@
     <Build Include="Schema Objects\Tables\Keys\dbo.Category.PK_category.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.City.IX_City.ukey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.City.PK_City.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Tables\Keys\dbo.Comment.IX_Comment.ukey.sql">
       <SubType>Code</SubType>
     </Build>
@@ -698,15 +683,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Keys\dbo.Event.PK_Event.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.Field.IX_School_id.ukey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.Field.IX_School_Name.ukey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.Field.PK_School_trueid.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Keys\dbo.FieldInformation.PK_SchoolInformation.pkey.sql">
@@ -766,25 +742,10 @@
     <Build Include="Schema Objects\Tables\Keys\dbo.Profile.PK_User_1.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.Province.IX_Province.ukey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.Province.PK_Province.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.Province.UQ_Province_name.ukey.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Tables\Keys\dbo.Push.IX_Push.ukey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Keys\dbo.Push.PK_Push.pkey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.QinShi.IX_QinShi.ukey.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Keys\dbo.QinShi.PK_QinShi.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Keys\dbo.Reply.PK_Reply_1.pkey.sql">

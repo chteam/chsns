@@ -1,32 +1,57 @@
-
+using System.Linq;
 using System.Web.Mvc;
 using CHSNS.Filter;
 using CHSNS;
+using CHSNS.Models;
 namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class AlbumController : BaseController {
 		/// <summary>
-		/// 打开一个相册,是相处列表
+		/// 我的相册列表
 		/// </summary>
-		public ActionResult Index()
-		{
-			ViewData.Add("tabs", this.QueryNum("tabs"));
-			ViewData.Add("Ownerid", this.QueryLong("userid") == 0 ? CHUser.UserID : this.QueryLong("userid"));
-			ViewData.Add("Albumid", this.QueryLong("albumid"));
-
-			var dict = new Dictionary
-			           	{
-			           		{"@Ownerid", this.QueryLong("userid") == 0 ? CHUser.UserID : this.QueryLong("userid")},
-			           		{"@Viewerid", CHUser.UserID},
-			           		{"@albumid", this.QueryLong("albumid")}
-			           	}; //参数
-
-			//IList<Album> i = ChAlumna.CastleExt.SpExecute.GetList<Album>("Album_Info", p);
-			//	DataRowCollection drs = DataBaseExecutor.GetRows("Album_Info", dict);
-			//	if (drs.Count != 0)
-			//		ViewData.Add("album", drs[0]);
-			// ViewData.Add("photos", album.GetPhotos().Rows);
+		public ActionResult Index(int? p, long? userid) {
+			var list = (from a in DBExt.DB.Album
+						where a.UserID.Equals(userid ?? CHUser.UserID)
+						select a);
+			return View(list);
+		}
+		#region 新建，编辑
+		[AcceptVerbs(HttpVerbs.Get)]
+		public ActionResult Edit(long? id) {
+			if (id.HasValue) {
+				var model = DBExt.DB.Album.Where(c => c.ID.Equals(id)).FirstOrDefault();
+				return View(model);
+			}
 			return View();
+		}
+		[AcceptVerbs(HttpVerbs.Post)]
+		public ActionResult Edit(long? id, Album a) {
+			if (id.HasValue) {
+				var al = DBExt.DB.Album.Where(c => c.ID == id.Value).FirstOrDefault();
+				al.Location = a.Location;
+				al.Description = a.Description;
+				al.ShowLevel = a.ShowLevel;
+				al.Name = a.Name;
+				DBExt.DB.SubmitChanges();
+				return RedirectToAction("Index");
+			} else {
+				a.Count = 0;
+				a.UserID = CHUser.UserID;
+				a.AddTime = System.DateTime.Now;
+				
+				DBExt.DB.Album.InsertOnSubmit(a);
+				DBExt.DB.SubmitChanges();
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+		#endregion
+
+		public ActionResult Details(long id, int? p) {
+			var list = (from a in DBExt.DB.Album
+			            where a.ID.Equals(id)
+			            select a).FirstOrDefault();
+			return View(list);
 		}
 
 		//随机出

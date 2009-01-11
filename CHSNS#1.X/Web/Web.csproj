@@ -105,12 +105,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\AllowImageExt.xml" />
-    <Content Include="Config\City.config" />
     <Content Include="Config\City.xml" />
     <Content Include="Config\EditFormat.config" />
     <Content Include="Config\Group\ShowLevel.xml" />
     <Content Include="Config\Group\JoinLevel.xml" />
-    <Content Include="Config\Province.config" />
     <Content Include="Config\Province.xml" />
     <Content Include="Config\Sex.xml" />
     <Content Include="Config\ShowLevel.xml" />
@@ -150,12 +148,10 @@
     <None Include="Views\Components\Event.vm" />
     <None Include="Views\Components\GroupList\ProfileLink.vm" />
     <None Include="Views\Components\Html\SearchClass.vm" />
-    <None Include="Views\Components\Pager.vm" />
     <None Include="Views\Components\PhotoList\PhotoItem.vm" />
     <None Include="Views\Components\ProfileEditChild\Contact.vm" />
     <None Include="Views\Components\ProfileEditChild\PersonalInfo.vm" />
     <None Include="Views\Components\ProfileEditChild\School.vm" />
-    <None Include="Views\Components\ShowLevel.vm" />
     <None Include="Views\Components\System\Option.vm" />
     <None Include="Views\Group\ClassList.vm" />
     <None Include="Views\Group\CreateClass.vm" />
@@ -301,6 +297,9 @@
     <Content Include="Style\Facebook_backup\wysiwyg.css" />
     <Content Include="Views\Admin\About.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Album\Details.aspx" />
+    <Content Include="Views\Album\Edit.aspx" />
+    <Content Include="Views\Album\Index.aspx" />
     <Content Include="Views\Album\List.aspx" />
     <Content Include="Views\Application\Edit.aspx" />
     <Content Include="Views\Application\Manage.aspx" />
@@ -463,6 +462,7 @@
     <Content Include="Views\Shared\Message_Box.ascx" />
     <Content Include="Views\Shared\Pager.ascx" />
     <Content Include="Views\Shared\Post\List.ascx" />
+    <Content Include="Views\Shared\ShowLevel.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
     <None Include="Views\Shared\BlogMaster.vm" />
@@ -647,6 +647,27 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Admin\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Album\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Album\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Album\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Album\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Album\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Album\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Album\List.aspx.cs">
@@ -1040,6 +1061,13 @@
     </Compile>
     <Compile Include="Views\Shared\Post\List.ascx.designer.cs">
       <DependentUpon>List.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\ShowLevel.ascx.cs">
+      <DependentUpon>ShowLevel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\ShowLevel.ascx.designer.cs">
+      <DependentUpon>ShowLevel.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Single.Master.cs">
       <DependentUpon>Single.Master</DependentUpon>
