@@ -13,7 +13,7 @@ namespace CHSNS.Controllers
 		/// <returns></returns>
 		public ActionResult Agreement()
 		{
-			ViewData["Page_Title"] = "注册 - 注册协议";
+			Title = "注册 - 注册协议";
 			return View();
 		}
 		/// <summary>
@@ -21,7 +21,7 @@ namespace CHSNS.Controllers
 		/// </summary>
 		public ActionResult RegPage()
 		{
-			ViewData["Page_Title"] = "注册 - 注册账号";
+			Title = "注册 - 注册账号";
 			return View();
 		}
 		/// <summary>
@@ -41,6 +41,7 @@ namespace CHSNS.Controllers
 			using (var ts = new TransactionScope()) {
 				var b = DBExt.Account.Create(a, Name);
 				ts.Complete();
+				Title = "注册成功";
 				if (b)
 					return View("Reg-Success");
 			}

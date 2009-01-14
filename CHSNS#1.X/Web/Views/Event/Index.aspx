@@ -79,12 +79,13 @@
 		<div class="graybox">
 			<h4>
 				统计</h4>
-			<span>共<%=ep.ViewCount %>人访问</span> <span><a href="/ReplyList.aspx?userid=$userid&amp;">
-				共有<%=ep.ReplyCount %>条留言</a></span>
-			<%if (ep.FriendRequestCount > 0) { %>
+			<span>共<%=ep.ViewCount %>人访问</span> 
+			<%--<span><a href="/ReplyList.aspx?userid=$userid&amp;">
+				共有<%=ep.ReplyCount %>条留言</a></span>--%>
+	<%--		<%if (ep.FriendRequestCount > 0) { %>
 			<span><a href="<%=Url.Action("request","Friend") %>"><span class="count">
 				<%=ep.FriendRequestCount %></span>个人想加你为好友 </a></span>
-			<%} %>
+			<%} %>--%>
 		</div>
 		<div class="graybox">
 			<h4>

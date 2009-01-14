@@ -24,9 +24,9 @@ namespace CHSNS.Controllers {
 				ViewData["UserID"] = userid;
 				ViewData["Name"] = b.Name;
 				ViewData["NowPage"] = p;
-				ViewData["PageCount"] = b.FriendCount;
+			//	ViewData["PageCount"] = b.FriendCount;
 
-				ViewData["Page_Title"] = b.Name + "的好友";
+				Title = b.Name + "的好友";
 				return FriendList(p.Value, userid.Value);
 			}
 		}

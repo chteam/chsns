@@ -19,7 +19,7 @@ namespace CHSNS.Controllers {
 					c => new UserCountPas {
 						ID = c.UserID,
 						Name = c.Name,
-						Count = c.NoteCount
+						//Count = c.NoteCount
 					});
 				ViewData["username"] = user.Name;
 				ViewData["userid"] = user.ID;
@@ -40,7 +40,10 @@ namespace CHSNS.Controllers {
 		/// <returns></returns>
 		[AcceptVerbs("Post")]
 		public ActionResult NoteList(int p, int ep, long userid) {
-			var d = DBExt.Note.GetNotes(userid, NoteType.Note).Pager(p, ep);
+			var d = new PagedList<NotePas>(
+				DBExt.Note.GetNotes(userid, NoteType.Note),
+				p, ep)
+				;
 			return View(d);
 		}
 		public ActionResult Details(long id) {

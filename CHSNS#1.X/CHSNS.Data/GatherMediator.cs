@@ -15,19 +15,15 @@ namespace CHSNS.Data {
 					 where p.UserID == userid
 					 select new
 					 {
-						 p.FriendRequestCount,
+						// p.FriendRequestCount,
 						 p.ViewCount,
-						 p.ReplyCount
+						// p.ReplyCount
 					 }).FirstOrDefault();
 			EventPagePas ep = null;
 			if (r!=null) {
-				ep = new EventPagePas();
-
-				ep.FriendRequestCount = r.FriendRequestCount;
-				ep.ViewCount = r.ViewCount;
-				ep.ReplyCount = r.ReplyCount;
-				ep.NewReply = null;// DBExt.Comment.NewFiveReply();
-				ep.RssSource = null;// DBExt.Group.TakeIns(10);
+				ep = new EventPagePas {NewReply = null, RssSource = null, ViewCount = r.ViewCount};
+				//ep.FriendRequestCount = r.FriendRequestCount;
+				//	ep.ReplyCount = r.ReplyCount;
 			}
 			return ep;
 		}

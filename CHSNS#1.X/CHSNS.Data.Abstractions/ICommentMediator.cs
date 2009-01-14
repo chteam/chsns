@@ -13,6 +13,6 @@ namespace CHSNS.Data
 		bool Delete(long id, CommentType type);
 		void DeleteReply(long id, long userid);
 		IQueryable<CommentPas> GetReply(long userid);
-		DataRowCollection NewFiveReply();
+
 	}
 }

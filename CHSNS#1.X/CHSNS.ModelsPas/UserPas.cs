@@ -24,7 +24,7 @@ namespace CHSNS.ModelPas {
 				if (_exists == null) {
 					if (this.OwnerID < 999) return false;
 					if (Profile == null) return false;
-					if (Profile.AllShowLevel > 150) return false;
+					if (Profile.ShowLevel > 150) return false;
 					return true;
 				}
 				return _exists.Value;

@@ -81,25 +81,40 @@ where userid=@UserID",
 			var canuse = IsUsernameCanUse(account.Username);
             if (!canuse)
                 return false;
-            var pas = account.Password.ToMd5();
-			DataBaseExecutor.Execute(@"INSERT INTO [Account]
-([Username],[Password],[Code])VALUES
-(@email,@pas,@code)","@email", account.Username, "@pas", pas,  "@code", DateTime.Now.Ticks);
-            var x = DBExt.DB.Account.Where(c => c.Username == account.Username).Select(c => c.UserID).FirstOrDefault();
-            if (x < 999) return false;
+        	var ac = new Account {
+        	                     	Username = account.Username,
+        	                     	Password = account.Password.ToMd5(),
+									Code = DateTime.Now.Ticks
+        	                     };
+        	DBExt.DB.Account.InsertOnSubmit(ac);
+        	DBExt.DB.SubmitChanges();
+            if (ac.UserID < 999) return false;
             var initscore = 50;
-            DataBaseExecutor.Execute(@"INSERT INTO [Profile]
-([UserID],[Name],[Score],[ShowScore],[Status],[RegTime],[LoginTime])values
-(@userid,@name,@initscore,@initscore,1,@time,@time)", "@userid", x, "@name", name, "@initscore", initscore,
-                                                    "@time", DateTime.Now);
-            DataBaseExecutor.Execute(@"INSERT INTO [BasicInformation]
-([UserID],[Name]) values(@userid,@name)", "@userid", x, "@name", name);
+        	DBExt.DB.Profile
+        		.InsertOnSubmit(
+        		new Profile {
+        		            	UserID = ac.UserID,
+        		            	Name = name,
+        		            	ShowScore = initscore,
+        		            	Score = initscore,
+        		            	DelScore = 0,
+        		            	RegTime = DateTime.Now,
+        		            	LoginTime = DateTime.Now,
+        		            	MagicBox = ""
+        		            });
+        	DBExt.DB.BasicInformation
+        		.InsertOnSubmit(
+        		new BasicInformation {
+        		                     	UserID = ac.UserID,
+        		                     	Name = name
+        		                     });
+        	DBExt.DB.SubmitChanges();
             return true;
         }
 		public bool IsUsernameCanUse(string username) {
 			if (username.Trim().Length < 4)
 				return false;
-			return DBExt.DB.Account.Where(c => c.Username == username).Count() == 0;
+			return DBExt.DB.Account.Where(c => c.Username == username.Trim()).Count() == 0;
 		}
 	}
 }

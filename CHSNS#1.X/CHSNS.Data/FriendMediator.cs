@@ -13,12 +13,12 @@ namespace CHSNS.Data {
 					   where p.UserID == userid
 					   select new {
 						   UserID = userid,
-						   p.FriendCount,
+						//   p.FriendCount,
 						   p.Name
 					   }).FirstOrDefault();
 			return new Profile {
 				UserID = ret.UserID,
-				FriendCount = ret.FriendCount,
+			//	FriendCount = ret.FriendCount,
 				Name = ret.Name
 			};
 		}
@@ -38,8 +38,8 @@ namespace CHSNS.Data {
 					   select new UserItemPas {
 						   ID = c.UserID,
 						   Name = c.Name,
-						   ShowText = c.ShowText,
-						   ShowTextTime = c.ShowTextTime
+						//   ShowText = c.ShowText,
+						//   ShowTextTime = c.ShowTextTime
 					   });
 			//var ret = (from c in
 			//               (from f1 in DBExt.DB.Friend
@@ -70,17 +70,14 @@ namespace CHSNS.Data {
 			return ret;
 		}
 
-		public IQueryable<UserItemPas> GetRandoms() {
+		public IQueryable<UserItemPas> GetRandoms(){
 			var ret = (from p in DBExt.DB.Profile
-					   where p.IsStar
-					   orderby DBExt.DB.NEWID()
-					   select new UserItemPas {
-						   ID = p.UserID,
-						   Name = p.Name,
-						   ShowText = p.ShowText,
-						   ShowTextTime = p.ShowTextTime
-					   }
-					  ).Take(10);
+			           where p.Status.Equals(RoleType.General)
+			           orderby DBExt.DB.NEWID()
+			           select new UserItemPas {
+			                                  	ID = p.UserID,
+			                                  	Name = p.Name,
+			                                  }).Take(10);
 			return ret;
 		}
 
@@ -92,8 +89,8 @@ namespace CHSNS.Data {
 					   select new UserItemPas {
 						   ID = p1.UserID,
 						   Name = p1.Name,
-						   ShowText = p1.ShowText,
-						   ShowTextTime = p1.ShowTextTime
+						   ShowText = "",
+						   ShowTextTime = DateTime.Now
 					   });
 			return ret;
 		}

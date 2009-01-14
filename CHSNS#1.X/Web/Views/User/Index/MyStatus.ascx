@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyStatus.ascx.cs" Inherits="CHSNS.Web.Views.User.Index_MyStatus" %>
-<%
+<%--<%
 	//实名
-	if (ViewData.Model.Profile.IsStar) { 
+	if (ViewData.Model.Profile.Status.Equals(Ro)) { 
 %>
 <a href="#" title="实名用户" id="Profile_Isstar" class="s_icon">&nbsp;&nbsp;&nbsp;</a>
 <% 
@@ -18,11 +18,12 @@
 <a href="javascript:Admin_Isstar_Add(<%=ViewData.Model.OwnerID%>);">置为实名</a>
 <%
 	}
-	}
-	if (ViewData.Model.IsOnline) { %>
+	}%>--%>
+	
+<%if (ViewData.Model.IsOnline) { %>
 <a href="#" title="用户在线">在线</a>
 <%} %>
-&lt;<span id="pro_text">
+<%--&lt;<span id="pro_text">
 	<%if (!ViewData.Model.Profile.ShowTextTime.HasValue || string.IsNullOrEmpty(ViewData.Model.Profile.ShowText)) { %>
 	闲着
 	<%}
@@ -43,4 +44,4 @@
 &gt; <span id="pro_time">
 	<%=(!ViewData.Model.Profile.ShowTextTime.HasValue|| string.IsNullOrEmpty(ViewData.Model.Profile.ShowText))?"":
 						ViewData.Model.Profile.ShowTextTime.Value.Ago()%>
-</span>更新 
+</span>更新 --%>

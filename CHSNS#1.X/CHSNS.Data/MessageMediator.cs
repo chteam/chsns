@@ -40,15 +40,11 @@ namespace CHSNS.Data {
 			return ret;
 		}
 		public long InboxCount(long userid) {
-			var ret = (from p in DBExt.DB.Profile
-					   where p.UserID == userid
-					   select p.InboxCount).FirstOrDefault();
+			var ret = DBExt.DB.Message.Where(c=>c.ToID.Equals(userid)).Count();
 			return ret;
 		}
 		public long OutboxCount(long userid) {
-			var ret = (from p in DBExt.DB.Profile
-					   where p.UserID == userid
-					   select p.OutboxCount).FirstOrDefault();
+			var ret = DBExt.DB.Message.Where(c => c.FromID.Equals(userid)).Count();
 			return ret;
 		}
 		public void Add(Message m){
@@ -62,10 +58,7 @@ VALUES(@fromid,@toid,@title,@body,getdate(),0,0,0,@ishtml)",
 				"@body", m.IsHtml ? m.Body : HttpUtility.HtmlEncode(m.Body),
 				"@ishtml", m.IsHtml
 				);
-			DataBaseExecutor.Execute(@"update [profile] set inboxcount=inboxcount+1,unreadMessageCount=unreadMessageCount+1 where userid=@userid",
-				"@userid",m.ToID);
-			DataBaseExecutor.Execute(@"update [profile] set outboxcount=outboxcount+1 where userid=@userid",
-				"@userid", m.FromID);
+
 		}
 
 		public void Delete(long id, MessageBoxType t, long userid) {

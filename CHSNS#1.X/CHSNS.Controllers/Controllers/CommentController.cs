@@ -25,12 +25,13 @@ namespace CHSNS.Controllers {
 					c => new UserCountPas {
 						ID = c.UserID,
 						Name = c.Name,
-						Count = c.ReplyCount
+						//Count = c.ReplyCount
 					});
 			ViewData["NowPage"] = 1;
 			ViewData["PageCount"] = user.Count;
-			ViewData["replylist"] = DBExt.Comment.GetReply(user.ID).Pager(1, 10);
-			ViewData["Page_Title"] = user.Name + "的留言本";
+			ViewData["replylist"] = new PagedList<CommentPas>(
+				DBExt.Comment.GetReply(user.ID), 1, 10);
+			Title = user.Name + "的留言本";
 			return View(user);
 		}
 		public ActionResult ReplyList(long userid, int p) {
@@ -41,12 +42,14 @@ namespace CHSNS.Controllers {
 		/// 回复用户
 		/// </summary>
 		/// <param name="ReplyerID">The replyer ID.</param>
+		/// <param name="Body"></param>
 		/// <returns></returns>
 		[LoginedFilter]
-		public ActionResult AddReply(long ReplyerID) {
+		public ActionResult AddReply(long ReplyerID, string Body,long UserID) {
 			using (var ts = new TransactionScope()) {
-				var r = new Reply();
-				UpdateModel(r, new[] { "Body", "UserID" });
+				var r = new Reply {Body = Body, UserID = UserID};
+				
+				//UpdateModel(r, new[] { "Body", "UserID" });
 				var OwnerID = r.UserID;
 				r.SenderID = CHUser.UserID;
 				r.AddTime = DateTime.Now;
