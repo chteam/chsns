@@ -51,7 +51,7 @@ namespace CHSNS.Data {
 					//--3全站人气之星
 					lu = (from p in
 							  (from p in DBExt.DB.Profile
-							   where p.IsStar
+							   where !p.Status.Equals(RoleType.Locked)
 							   orderby p.UserID descending
 							   select p
 							  ).Take(10)
@@ -65,7 +65,7 @@ namespace CHSNS.Data {
 					//--新人榜
 					lu = (from p in
 							  (from p in DBExt.DB.Profile
-							   where p.IsStar
+							   where !p.Status.Equals(RoleType.Locked)
 							   orderby p.RegTime descending
 							   select p
 							  ).Take(10)

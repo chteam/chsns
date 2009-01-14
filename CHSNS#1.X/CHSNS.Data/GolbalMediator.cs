@@ -1,7 +1,8 @@
-﻿namespace CHSNS.Data {
+﻿using CHSNS.ModelPas;
+
+namespace CHSNS.Data {
 	using System.Collections.Generic;
 	using System.Linq;
-	using Models;
 	public class GolbalMediator : BaseMediator, IGolbalMediator {
 		public GolbalMediator(IDBExt id) : base(id) { }
 		/// <summary>

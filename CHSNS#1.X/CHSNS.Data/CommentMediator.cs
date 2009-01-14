@@ -13,11 +13,6 @@ namespace CHSNS.Data
 
 		#region reply
 
-		public DataRowCollection NewFiveReply()
-		{
-			return DataBaseExecutor.GetRows("Reply_New", "@userid", CHUser.UserID);
-		}
-
 		public IQueryable<CommentPas> GetReply(long userid)
 		{
 			IQueryable<CommentPas> ret = (from r in DBExt.DB.Reply
@@ -43,15 +38,13 @@ namespace CHSNS.Data
 		public Reply AddReply(Reply r)
 		{
 			DataBaseExecutor.Execute(
-				@"INSERT INTO [sq_menglei].[dbo].[Reply]
+				@"INSERT INTO [dbo].[Reply]
 ([UserID],[SenderID],[Body],[AddTime],[IsSee],[IsDel],[IsTellMe])
 VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
 				"@userid", r.UserID,
 				"@senderid", r.SenderID,
 				"@body", r.Body,
 				"@istellme", r.IsTellMe);
-			DataBaseExecutor.Execute("update [profile] set replycount=replycount+1 where userid=@userid",
-			                         "@userid", r.UserID);
 			return r;
 		}
 
@@ -59,9 +52,6 @@ VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
 		{
 			DataBaseExecutor.Execute(@"delete [reply] where id=@id and userid=@userid",
 			                         "@id", id,
-			                         "@userid", userid);
-			DataBaseExecutor.Execute(@"update [profile] set ReplyCount=ReplyCount-1
-where userid=@userid",
 			                         "@userid", userid);
 		}
 

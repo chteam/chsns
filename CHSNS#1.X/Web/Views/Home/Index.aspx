@@ -32,7 +32,8 @@
 				<%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %> 人气之星</h3>
 				<div class="boxcont"> 
 				<%
-					Html.RenderPartial("ViewList", ViewData["viewlist"]); %>
+					if (ViewData.ContainsKey("viewlist"))
+						Html.RenderPartial("ViewList", ViewData["viewlist"]); %>
 				
 				</div>
 				<p class="more">

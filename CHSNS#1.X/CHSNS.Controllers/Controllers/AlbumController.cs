@@ -43,7 +43,6 @@ namespace CHSNS.Controllers {
 				DBExt.DB.SubmitChanges();
 				return RedirectToAction("Index");
 			}
-			return View();
 		}
 		#endregion
 

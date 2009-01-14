@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CHSNS.Models;
+using CHSNS.ModelPas;
 
 namespace CHSNS.Data
 {
