@@ -5,7 +5,7 @@ using CHSNS.Models;
 namespace CHSNS.Data {
 	public interface INoteMediator {
 		void Add(Note note);
-		int AddViewCount(long id);
+
 		void Delete(long id, long pid, NoteType nt);
 		NoteDetailsPas Details(long id, NoteType? nt);
 		void Edit(Note note);

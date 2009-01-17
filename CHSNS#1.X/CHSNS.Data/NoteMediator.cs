@@ -6,9 +6,6 @@ using CHSNS.ModelPas;
 namespace CHSNS.Data {
 	public class NoteMediator : BaseMediator, INoteMediator {
 		public NoteMediator(IDBExt id) : base(id) { }
-		public int AddViewCount(long id) {
-			return DataBaseExecutor.Execute(@"update [note] set viewcount=viewcount+1 where id=@id", "@id", id);
-		}
 		/// <summary>
 		/// userid
 		/// </summary>
@@ -18,9 +15,6 @@ namespace CHSNS.Data {
 			DBExt.DB.SaveChanges();
 			switch ((NoteType)note.Type) {
 				case NoteType.Note:
-					DataBaseExecutor.Execute(
-						@"update [profile] set NoteCount=NoteCount+1 where userid=@userid",
-						 "@userid", note.UserID);
 					DBExt.Event.Add(new Event {
 						OwnerID = note.UserID,
 						TemplateName = "AddNote",
@@ -31,9 +25,6 @@ namespace CHSNS.Data {
 					});
 					break;
 				case NoteType.GroupPost:
-					DataBaseExecutor.Execute(
-						@"update [Group] set PostCount=PostCount+1 where id=@id",
-						 "@id", note.PID);
 					break;
 				default:
 					break;

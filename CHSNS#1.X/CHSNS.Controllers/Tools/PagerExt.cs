@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CHSNS {
 	public static class PagerExt {
-		public static IQueryable<T> Pager<T>(this  IQueryable<T> i, int nowpage, int everypage) {
-			return i.Skip(everypage * (nowpage - 1)).Take(everypage); 
+		public static IEnumerable<T> Pager<T>
+			(this  IQueryable<T> source, int currentPage, int pageSize) {
+			return new PagedList<T>(source, currentPage, pageSize);				
 		}
 	}
 }
