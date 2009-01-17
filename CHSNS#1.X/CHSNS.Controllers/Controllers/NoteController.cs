@@ -53,10 +53,6 @@ namespace CHSNS.Controllers {
 				SiteConfig.Current.Note.CommentEveryPage
 				).OrderBy(c => c.Comment.ID);
 			ViewData["commentlist"] = cl;
-			if (note.User.ID != CHUser.UserID) {
-				int r = DBExt.Note.AddViewCount(id);
-				if (r != 1) throw new Exception("参数不正确");
-			}
 			Title = note.Note.Title;
 			ViewData["NowPage"] = 1;
 			ViewData["PageCount"] = note.User.Count;
