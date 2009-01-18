@@ -117,6 +117,7 @@
     <Compile Include="Enum\VisitType.cs" />
     <Compile Include="Extension\EnumExtension.cs" />
     <Compile Include="Extension\IEnumerableExtension.cs" />
+    <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="File.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />

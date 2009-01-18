@@ -301,6 +301,7 @@
     <Content Include="Views\Album\Edit.aspx" />
     <Content Include="Views\Album\Index.aspx" />
     <Content Include="Views\Album\List.aspx" />
+    <Content Include="Views\Album\Upload.aspx" />
     <Content Include="Views\Application\Edit.aspx" />
     <Content Include="Views\Application\Manage.aspx" />
     <Content Include="Views\Entry\AdminHistoryList.aspx" />
@@ -649,33 +650,12 @@
     <Compile Include="Views\Admin\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Album\Details.aspx.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Album\Details.aspx.designer.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Album\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Album\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Album\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Album\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Album\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Album\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Application\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>

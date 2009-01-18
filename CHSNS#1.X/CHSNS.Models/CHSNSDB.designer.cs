@@ -90,9 +90,9 @@ namespace CHSNS.Models
     partial void InsertPersonalInformation(PersonalInformation instance);
     partial void UpdatePersonalInformation(PersonalInformation instance);
     partial void DeletePersonalInformation(PersonalInformation instance);
-    partial void InsertPhotos(Photos instance);
-    partial void UpdatePhotos(Photos instance);
-    partial void DeletePhotos(Photos instance);
+    partial void InsertPhoto(Photo instance);
+    partial void UpdatePhoto(Photo instance);
+    partial void DeletePhoto(Photo instance);
     partial void InsertProfile(Profile instance);
     partial void UpdateProfile(Profile instance);
     partial void DeleteProfile(Profile instance);
@@ -303,11 +303,11 @@ namespace CHSNS.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Photos> Photos
+		public System.Data.Linq.Table<Photo> Photo
 		{
 			get
 			{
-				return this.GetTable<Photos>();
+				return this.GetTable<Photo>();
 			}
 		}
 		
@@ -5704,8 +5704,8 @@ namespace CHSNS.Models
 		}
 	}
 	
-	[Table(Name="dbo.Photos")]
-	public partial class Photos : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.Photo")]
+	public partial class Photo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -5714,17 +5714,17 @@ namespace CHSNS.Models
 		
 		private string _Name;
 		
-		private long _AlbumID;
+		private System.Nullable<long> _AlbumID;
 		
 		private long _UserID;
 		
 		private System.DateTime _AddTime;
 		
-		private string _Path;
-		
 		private long _Order;
 		
-		private long _CommentCount;
+		private string _Ext;
+		
+		private int _Status;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -5734,21 +5734,21 @@ namespace CHSNS.Models
     partial void OnIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnAlbumIDChanging(long value);
+    partial void OnAlbumIDChanging(System.Nullable<long> value);
     partial void OnAlbumIDChanged();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
     partial void OnAddTimeChanging(System.DateTime value);
     partial void OnAddTimeChanged();
-    partial void OnPathChanging(string value);
-    partial void OnPathChanged();
     partial void OnOrderChanging(long value);
     partial void OnOrderChanged();
-    partial void OnCommentCountChanging(long value);
-    partial void OnCommentCountChanged();
+    partial void OnExtChanging(string value);
+    partial void OnExtChanged();
+    partial void OnStatusChanging(int value);
+    partial void OnStatusChanged();
     #endregion
 		
-		public Photos()
+		public Photo()
 		{
 			OnCreated();
 		}
@@ -5793,8 +5793,8 @@ namespace CHSNS.Models
 			}
 		}
 		
-		[Column(Storage="_AlbumID", DbType="BigInt NOT NULL")]
-		public long AlbumID
+		[Column(Storage="_AlbumID", DbType="BigInt")]
+		public System.Nullable<long> AlbumID
 		{
 			get
 			{
@@ -5853,26 +5853,6 @@ namespace CHSNS.Models
 			}
 		}
 		
-		[Column(Storage="_Path", DbType="NVarChar(500) NOT NULL", CanBeNull=false)]
-		public string Path
-		{
-			get
-			{
-				return this._Path;
-			}
-			set
-			{
-				if ((this._Path != value))
-				{
-					this.OnPathChanging(value);
-					this.SendPropertyChanging();
-					this._Path = value;
-					this.SendPropertyChanged("Path");
-					this.OnPathChanged();
-				}
-			}
-		}
-		
 		[Column(Name="[Order]", Storage="_Order", DbType="BigInt NOT NULL")]
 		public long Order
 		{
@@ -5893,22 +5873,42 @@ namespace CHSNS.Models
 			}
 		}
 		
-		[Column(Storage="_CommentCount", DbType="BigInt NOT NULL")]
-		public long CommentCount
+		[Column(Storage="_Ext", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string Ext
 		{
 			get
 			{
-				return this._CommentCount;
+				return this._Ext;
 			}
 			set
 			{
-				if ((this._CommentCount != value))
+				if ((this._Ext != value))
 				{
-					this.OnCommentCountChanging(value);
+					this.OnExtChanging(value);
 					this.SendPropertyChanging();
-					this._CommentCount = value;
-					this.SendPropertyChanged("CommentCount");
-					this.OnCommentCountChanged();
+					this._Ext = value;
+					this.SendPropertyChanged("Ext");
+					this.OnExtChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Status", DbType="Int NOT NULL")]
+		public int Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
 				}
 			}
 		}
