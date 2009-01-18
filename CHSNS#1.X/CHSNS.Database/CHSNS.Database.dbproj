@@ -409,15 +409,6 @@
     <Build Include="Schema Objects\Tables\Constraints\dbo.Note.DF_Log_ViewCount.defconst.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Constraints\dbo.Photos.DF_Photos_CommentCount.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Constraints\dbo.Photos.DF_Photos_name.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Constraints\dbo.Photos.DF_Photos_Order.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Tables\Constraints\dbo.Profile.DF_Profile_LoginTime.defconst.sql">
       <SubType>Code</SubType>
     </Build>

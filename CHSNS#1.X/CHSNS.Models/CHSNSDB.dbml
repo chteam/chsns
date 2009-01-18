@@ -272,16 +272,16 @@
       <Column Name="JoinSociety" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Photos" Member="Photos">
-    <Type Name="Photos">
+  <Table Name="dbo.Photo" Member="Photo">
+    <Type Name="Photo">
       <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="AlbumID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="AlbumID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="AddTime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Path" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="[Order]" Member="Order" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="CommentCount" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Ext" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Profile" Member="Profile">
