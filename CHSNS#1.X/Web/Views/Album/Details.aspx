@@ -10,7 +10,7 @@
 <%if (a != null && rows.Count() == 0) {%>
 			<%if (a.UserID == CHUser.UserID) { %>
 <div class="notes">您还没上传照片 , Show出你自己吧
-<input type="button" onclick="location='<%=Url.Action("Upload","Album") %>';" value="Go-&gt;" class="subbutton" />
+<input type="button" onclick="location='<%=Url.Action("Upload","Album",new{id=a.ID}) %>';" value="Go-&gt;" class="subbutton" />
 </div>
 			<%} else { %>
 <div class="notes">相册内没有照片,或您没有权限查看这些照片</div>

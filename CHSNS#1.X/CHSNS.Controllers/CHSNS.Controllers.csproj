@@ -140,6 +140,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helper\UrlHelperExt.cs" />
+    <Compile Include="Helper\UrlStyleExtension.cs" />
     <Compile Include="IDataBinder.cs" />
     <Compile Include="Mvc\DynamicDataModelBinder.cs" />
     <Compile Include="Mvc\HtmlSerializer.cs" />

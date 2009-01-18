@@ -8,6 +8,22 @@ namespace CHSNS {
 	/// LE:2007 10 20
 	/// </summary>
 	public class Path {
+		#region Style
+		/// <summary>
+		/// like /style/facebook/images/1.jpg
+		/// </summary>
+		/// <param name="fn"></param>
+		/// <returns></returns>
+		public static string ImageInStyle(string fn) {
+			return string.Format(
+				"{0}Style/{1}/images/{2}"
+				, CHSite.BaseConfig.Path
+				, CHSite.BaseConfig.Style, fn)
+				.Replace("\\", "/")
+				.Replace("//", "/");
+		}
+		#endregion
+
 		#region 新版本的
 		#region UserWebPath
 		/// <summary>
@@ -61,6 +77,7 @@ namespace CHSNS {
 
 
 		#endregion
+		#region Face
 
 		//static Path _path;
 		static public Path Current {
@@ -111,6 +128,8 @@ namespace CHSNS {
 		public static string EventSystemTemplatePath(string name) {
 			return string.Format("{0}Views/Shared/EventTemplate/{1}.ascx", GetRoot(), name);
 		}
+
+		#endregion
 		#region 获取网页文件名
 		/// <summary>
 		/// 获取当前页面的名称,如http://aaa.com/x123.html 则返回x123

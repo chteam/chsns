@@ -23,7 +23,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 						<ul>
 							<li>[<%=p.Count %>张] 创建于<%=p.AddTime.ToString("yy年MM月dd日") %></li>
 							<li>拍摄地点:<%=p.Location %></li>
-							<li>相册描述:<%=p.Description %></span></li>
+							<li>相册描述:<%=p.Description %></li>
 						</ul>
 					</div>
 					<ul class="actions">

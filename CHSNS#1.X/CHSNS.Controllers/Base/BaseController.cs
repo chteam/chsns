@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System;
 using CHSNS.Data;
 using CHSNS.Filter;
+using System.Collections.Generic;
 
 namespace CHSNS.Controllers {
 	
@@ -49,6 +50,12 @@ namespace CHSNS.Controllers {
 			if (!p.HasValue || p == 0) p = 1;
 		}
 		protected override void OnResultExecuting(ResultExecutingContext filterContext) {
+			foreach (string key in Request.Params.Keys)
+				if (ViewData.ContainsKey(key))
+					ViewData[key] = Request.Params[key];
+			foreach (KeyValuePair<string, object> item in RouteData.Values)
+				if (ViewData.ContainsKey(item.Key))
+					ViewData[item.Key] = item.Value;
 			if (ViewData.ContainsKey("Page_Title"))
 				ViewData["Page_Title"] += "-" + Config.SiteConfig.Current.BaseConfig.Title;
 		}
