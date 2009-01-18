@@ -65,9 +65,5 @@ namespace CHSNS.Helper {
 		public static string EncodeBR(this HtmlHelper Html, string text) {
 			return Html.Encode(text).Replace("\n", "<br/>");
 		}
-		public static string ImageInStyle(this HtmlHelper Html, string fn) {
-			return Html.Image(string.Format("{0}Style/{1}/images/{2}", CHSite.BaseConfig.Path
-					, CHSite.BaseConfig.Style, fn));
-		}
 	}
 }

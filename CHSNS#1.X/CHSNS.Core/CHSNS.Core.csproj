@@ -86,6 +86,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +122,7 @@
     <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="File.cs" />
+    <Compile Include="File\FileUpload.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
@@ -136,7 +140,7 @@
     <Compile Include="DataExecute\SqlDataOpener.cs" />
     <Compile Include="DataExecute\SqlStoredProcedureDataOpener.cs" />
     <Compile Include="Date.cs" />
-    <Compile Include="Debug.cs" />
+    <Compile Include="File\Debug.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="Enum\ThumbType.cs" />

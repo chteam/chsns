@@ -3,9 +3,13 @@ using System.Web.Mvc;
 using CHSNS.Filter;
 using CHSNS;
 using CHSNS.Models;
+using System.Web;
 namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class AlbumController : BaseController {
+		#region 应用、相册列表
+
+	
 		/// <summary>
 		/// 我的相册列表
 		/// </summary>
@@ -14,7 +18,8 @@ namespace CHSNS.Controllers {
 						where a.UserID.Equals(userid ?? CHUser.UserID)
 						select a);
 			return View(list);
-		}
+		}	
+		#endregion
 		#region 新建，编辑
 		[AcceptVerbs(HttpVerbs.Get)]
 		public ActionResult Edit(long? id) {
@@ -45,39 +50,42 @@ namespace CHSNS.Controllers {
 			}
 		}
 		#endregion
-
+		#region 相册
 		public ActionResult Details(long id, int? p) {
-			var list = (from a in DBExt.DB.Album
-			            where a.ID.Equals(id)
-			            select a).FirstOrDefault();
-			return View(list);
-		}
-
-		//随机出
-		public void random() {
-			//Chsword.Reader.Albums al = new Chsword.Reader.Albums();
-			//ViewData.Add("items", al.GetAlbumRandomTable().Rows);
-			//View();
-		}
-		/// <summary>
-		/// 某人的相册列表
-		/// </summary>
-		public void list() {
-			// index = ;
-			//Chsword.Reader.Albums al = new Chsword.Reader.Albums();
-			//al.Viewerid = CHSNSUser.Current.UserID;
-			//al.Ownerid = this.QueryLong("userid") == 0 ? CHSNSUser.Current.UserID : this.QueryLong("userid");
-			//ViewData.Add("albums", al);
-			//ViewData.Add("tabs", this.QueryNum("tabs"));
-
-			//ViewData.Add("rows", al.GetAlbums().Rows);
-			//View();
-		}
-
-		public ActionResult List(long? uid)
-		{
+			InitPage(ref p);
+			var album = (from a in DBExt.DB.Album
+						 where a.ID.Equals(id)
+						 select a).FirstOrDefault();
+			var ps = (from ph in DBExt.DB.Photo
+					  where ph.AlbumID == album.ID && ph.UserID == CHUser.UserID
+					  select ph);
+			ViewData["album"] = album;
+			ViewData["photos"] = new PagedList<Photo>(ps, p.Value, 12);
+			Title = album.Name;
 			return View();
 		}
+		#endregion
+		#region 上传
+		[AcceptVerbs(HttpVerbs.Get)]
+		public ActionResult Upload(long? id){
+			var album = (from a in DBExt.DB.Album
+						 where a.ID.Equals(id)
+						 select a).FirstOrDefault();
+			ViewData["album"] = album;
+			Title = "上传";
+			return View();
+		}
+		public ActionResult UploadPhoto(string Name,long id) {
+			HttpPostedFileBase file = Request.Files["file"];
+			Photo p = new Photo();
+			p.Name = Name;
+			p.AlbumID = id;
+			FileUpload f = new FileUpload {
+				File = file, HttpContext = this.HttpContext, Path = "/phototest/a.jpg", Size = 2
+			};
+			return Content(f.Upload());
+		}
+		#endregion
 	}
 }
 

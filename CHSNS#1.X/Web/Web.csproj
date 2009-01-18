@@ -177,6 +177,7 @@
     <Content Include="Config\SystemApplication.xml" />
     <Content Include="Config\SystemTemplate.xml" />
     <Content Include="Config\Category.xml" />
+    <Content Include="Content\swfupload.swf" />
     <Content Include="Images\CHBox\b.png" />
     <Content Include="Images\CHBox\bl.png" />
     <Content Include="Images\CHBox\br.png" />
@@ -192,6 +193,10 @@
     <Content Include="JavaScript\effects\effects.bounce.packed.js" />
     <Content Include="JavaScript\effects\effects.core.packed.js" />
     <Content Include="JavaScript\effects\effects.scale.packed.js" />
+    <Content Include="JavaScript\Upload\swfupload.js" />
+    <Content Include="JavaScript\Upload\fileprogress.js" />
+    <Content Include="JavaScript\Upload\handlers.js" />
+    <Content Include="JavaScript\Upload\swfupload.swfobject.js" />
     <Content Include="Style\Facebook\Images\check_right.gif" />
     <Content Include="Style\Facebook\Images\curtain.png" />
     <Content Include="Style\Facebook\Images\logo.jpg" />
@@ -200,6 +205,7 @@
     <Content Include="JavaScript\Admin\ext-all.js" />
     <Content Include="JavaScript\Admin\ext-jquery-adapter.js" />
     <Content Include="JavaScript\Admin\TabCloseMenu.js" />
+    <Content Include="Style\Facebook\Images\Upload\XPButtonUploadText_61x22.png" />
     <Content Include="Style\Facebook_backup\admin.css" />
     <Content Include="Style\Facebook_backup\appli.css" />
     <Content Include="Style\Facebook_backup\blog.css" />
