@@ -8,6 +8,27 @@ namespace CHSNS {
 	/// LE:2007 10 20
 	/// </summary>
 	public class Path {
+		#region œ‡≤·
+		#region Õº∆¨£¨œ‡≤·
+		static public string PhotoPath(DateTime dt) {
+			return string.Format("/photos/{0}/{1}/{2}", dt.Year, dt.Month, dt.Day);
+		}
+		/// <summary>
+		/// size is s t m b or source
+		/// </summary>
+		/// <param name="UserID"></param>
+		/// <param name="dt"></param>
+		/// <param name="ext"></param>
+		/// <param name="size"></param>
+		/// <returns></returns>
+		static public string Photo(long UserID, DateTime dt, string ext, string size) {
+			return string.Format("{0}/{1}{2}{4}{3}",
+			                     PhotoPath(dt), UserID, dt.Ticks/1000000, ext, size);
+		}
+
+		#endregion
+		#endregion
+
 		#region Style
 		/// <summary>
 		/// like /style/facebook/images/1.jpg

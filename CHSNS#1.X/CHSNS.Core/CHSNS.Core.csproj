@@ -123,6 +123,7 @@
     <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="File.cs" />
     <Compile Include="File\FileUpload.cs" />
+    <Compile Include="File\ImageUpload.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />

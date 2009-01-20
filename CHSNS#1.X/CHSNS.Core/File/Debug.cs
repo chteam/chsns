@@ -23,9 +23,9 @@ namespace CHSNS
 			string fn = string.Format("{0}\\Debug\\{1}.txt", HttpContext.Current.Server.MapPath("/"), DateTime.Now.ToString("yyyyMMdd"));
 			//SaveTextFile1(fn);
 			if (HttpContext.Current.Session["userid"]!=null)
-				SaveTextFile(fn, string.Format("[{0}][用户:{2}] : {1}", DateTime.Now.ToLongTimeString(), info, HttpContext.Current.Session["userid"]));
+				SaveTextFile(fn, string.Format("{0}\t{2}\t\t{1}\t", DateTime.Now.ToLongTimeString(), info, HttpContext.Current.Session["userid"]));
 			else
-				SaveTextFile(fn, string.Format("[{0}][未登录用户:IP{2},代理IP:{3}] : {1}", 
+				SaveTextFile(fn, string.Format("{0}\t{2}IP:{3}\t\t{1}\t", 
 				                               DateTime.Now.ToLongTimeString(), info,
 				                               HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"],
 				                               HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"]));

@@ -565,7 +565,7 @@
     <Build Include="Schema Objects\Tables\dbo.PersonalInformation.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\dbo.Photos.table.sql">
+    <Build Include="Schema Objects\Tables\dbo.Photo.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\dbo.Profile.table.sql">

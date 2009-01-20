@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using CHSNS.Config;
 using CHSNS.Filter;
 using CHSNS;
 using CHSNS.Models;
@@ -80,10 +83,19 @@ namespace CHSNS.Controllers {
 			Photo p = new Photo();
 			p.Name = Name;
 			p.AlbumID = id;
-			FileUpload f = new FileUpload {
-				File = file, HttpContext = this.HttpContext, Path = "/phototest/a.jpg", Size = 2
-			};
-			return Content(f.Upload());
+			p.AddTime=DateTime.Now;
+			p.UserID = CHUser.UserID;
+			var f = new ImageUpload(file,
+			                                HttpContext,
+			                                ConfigSerializer.Load<List<string>>("AllowImageExt")
+			                                , p.AddTime,
+			                                ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize")
+				);
+			var ret = f.Upload();
+			p.Ext = f.Ext;
+			DBExt.DB.Photo.InsertOnSubmit(p);
+			DBExt.DB.SubmitChanges();
+			return RedirectToAction("details", new {id = id});
 		}
 		#endregion
 	}

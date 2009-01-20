@@ -12,7 +12,7 @@
 		<legend>Submit your Application</legend>
 		<p>
 			<label>图片介绍:</label>
-			<input name="lastname" id="lastname" type="text" style="width: 200px" />
+			<input name="name" id="lastname" type="text" style="width: 200px" />
 		</p>
 		<p>
 			<label>

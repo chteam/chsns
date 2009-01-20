@@ -5833,7 +5833,7 @@ namespace CHSNS.Models
 			}
 		}
 		
-		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
+		[Column(Storage="_AddTime", DbType="DateTime NOT NULL")]
 		public System.DateTime AddTime
 		{
 			get
