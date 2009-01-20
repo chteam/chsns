@@ -5,7 +5,7 @@
 [Name] [nvarchar] (50) NOT NULL,
 [AlbumID] [bigint] NULL,
 [UserID] [bigint] NOT NULL,
-[AddTime] [smalldatetime] NOT NULL,
+[AddTime] [datetime] NOT NULL,
 /*其它*/
 [Order] [bigint] NOT NULL,
 [Ext] [ntext] Null,

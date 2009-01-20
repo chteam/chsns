@@ -9,6 +9,10 @@ namespace CHSNS {
 	/// 生成缩略图的类
 	///</summary>
 	public class Thumbnail {
+		static public void CreateThumbnail(Image img, string newFile, Size size){
+			CreateThumbnail(img, newFile, size.Width, size.Height);
+		}
+
 		///<summary>
 		/// 生成缩略图，并自动按比例缩放
 		///</summary>
@@ -39,6 +43,7 @@ namespace CHSNS {
 			//获得包含有关内置图像编码解码器的信息的ImageCodecInfo 对象。
 			ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
 			ImageCodecInfo jpegICI = arrayICI.Where(c => c.FormatDescription.Equals("JPEG")).Single();
+			//throw new Exception(newFile);
 			if (jpegICI != null)
 				outBmp.Save(newFile, jpegICI, encoderParams);
 			else
