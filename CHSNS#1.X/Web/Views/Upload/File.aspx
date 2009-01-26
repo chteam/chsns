@@ -21,7 +21,7 @@
 
 	<script type="text/javascript">
 		var uploadSelect = function() {
-			var path = $('input[@name=file1]').val();
+			var path = $('input[name=file1]').val();
 			if (path.indexOf(".jpg") || path.indexOf(".png") || path.indexOf(".gif") || path.indexOf(".jpeg")) {
 				parent.uploading($v('#file1'));
 				$("#frmUpload").submit();
