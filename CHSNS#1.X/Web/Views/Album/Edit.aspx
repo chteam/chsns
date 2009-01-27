@@ -21,7 +21,7 @@
 			<label>
 				访问权限:</label>
 			<% Html.RenderPartial("ShowLevel",
-		  new ShowLevelOption("a.ShowLevel", ViewData.Model != null ? ViewData.Model.ShowLevel : 0)); %>
+		  new ShowLevelOption("a.ShowLevel", ViewData.Model != null ? ViewData.Model.ShowLevel : (byte)0)); %>
 		</p>
 		<p>
 			<input type="submit" value="确认提交" class="subbutton" />

@@ -148,7 +148,7 @@
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Interface\IDataOpener.cs" />
     <Compile Include="NetworkCross.cs" />
-    <Compile Include="Path.cs" />
+    <Compile Include="Path\Path.cs" />
     <Compile Include="Regular.cs" />
     <Compile Include="Image\Thumbnail.cs" />
     <Compile Include="DataExecute\EntityOpener.cs" />

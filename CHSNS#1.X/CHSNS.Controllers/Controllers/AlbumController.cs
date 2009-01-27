@@ -67,6 +67,7 @@ namespace CHSNS.Controllers {
 			Title = album.Name;
 			return View();
 		}
+
 		#endregion
 		#region 上传
 		[AcceptVerbs(HttpVerbs.Get)]
@@ -78,25 +79,27 @@ namespace CHSNS.Controllers {
 			Title = "上传";
 			return View();
 		}
-		public ActionResult UploadPhoto(string Name,long id) {
+		public ActionResult UploadPhoto(string Name, long id){
+
 			HttpPostedFileBase file = Request.Files["file"];
-			Photo p = new Photo();
-			p.Name = Name;
-			p.AlbumID = id;
-			p.AddTime=DateTime.Now;
-			p.UserID = CHUser.UserID;
+			var al = DBExt.DB.Album.Where(c => c.ID == id).FirstOrDefault();
+			Validate404(al);
+			al.Count++;
+			var p = new Photo {Name = Name, AlbumID = id, AddTime = DateTime.Now, UserID = CHUser.UserID};
 			var f = new ImageUpload(file,
-			                                HttpContext,
-			                                ConfigSerializer.Load<List<string>>("AllowImageExt")
-			                                , p.AddTime,
-			                                ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize")
+			                        HttpContext,
+			                        ConfigSerializer.Load<List<string>>("AllowImageExt")
+			                        , p.AddTime,
+			                        ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize")
 				);
 			var ret = f.Upload();
 			p.Ext = f.Ext;
 			DBExt.DB.Photo.InsertOnSubmit(p);
+
 			DBExt.DB.SubmitChanges();
 			return RedirectToAction("details", new {id = id});
 		}
+
 		#endregion
 	}
 }

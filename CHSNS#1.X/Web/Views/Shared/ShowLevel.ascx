@@ -1,11 +1,14 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ShowLevel.ascx.cs" Inherits="CHSNS.Web.Views.Shared.ShowLevel" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" 
+Inherits="System.Web.Mvc.ViewUserControl" %>
 <%
-	var model=ViewData.Model as ShowLevelOption;
-	Writer.Write(Html.DropDownList("", model.ID,
-				new SelectList(
-					ConfigSerializer.GetConfig("ShowLevel")
-					, "Value", "Text", model.SelectedValue)
-		, new { @class = "select" }));%>
+	var model = ViewData.Model as ShowLevelOption;
+	if (model != null)
+		Writer.Write(Html.DropDownList("", model.ID,
+		                               new SelectList(
+		                               	ConfigSerializer.GetConfig("ShowLevel")
+		                               	, "Value", "Text", model.SelectedValue)
+		                               , new {@class = "select"}));
+	%>
 
 
 
