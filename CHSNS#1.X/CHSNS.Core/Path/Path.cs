@@ -9,7 +9,7 @@ namespace CHSNS {
 	/// </summary>
 	public class Path {
 		#region œ‡≤·
-		#region Õº∆¨£¨œ‡≤·
+		#region Õº∆¨
 		static public string PhotoPath(DateTime dt) {
 			return string.Format("/photos/{0}/{1}/{2}", dt.Year, dt.Month, dt.Day);
 		}
@@ -24,6 +24,15 @@ namespace CHSNS {
 		static public string Photo(long UserID, DateTime dt, string ext, string size) {
 			return string.Format("{0}/{1}{2}{4}{3}",
 			                     PhotoPath(dt), UserID, dt.Ticks/1000000, ext, size);
+		}
+
+		#endregion
+		#region œ‡≤·
+		static public string AlbumFace(string url){
+			if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
+				return url;
+			else
+				return EmptyImage(ThumbType.Middle);
 		}
 
 		#endregion
@@ -88,9 +97,9 @@ namespace CHSNS {
 				if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
 				}
-			return EmptyUserFace(type);
+			return EmptyImage(type);
 		}
-		static private string EmptyUserFace(ThumbType type) {
+		static private string EmptyImage(ThumbType type) {
 			return string.Format("/images/no_{0}.jpg", type);
 		}
 		#endregion

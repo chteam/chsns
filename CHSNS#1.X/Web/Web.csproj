@@ -1048,13 +1048,6 @@
     <Compile Include="Views\Shared\Post\List.ascx.designer.cs">
       <DependentUpon>List.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shared\ShowLevel.ascx.cs">
-      <DependentUpon>ShowLevel.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\ShowLevel.ascx.designer.cs">
-      <DependentUpon>ShowLevel.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Shared\Single.Master.cs">
       <DependentUpon>Single.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
