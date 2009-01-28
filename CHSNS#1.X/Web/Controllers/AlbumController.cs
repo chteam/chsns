@@ -23,6 +23,12 @@ namespace CHSNS.Controllers {
 			return View(list);
 		}	
 		#endregion
+		#region Í¼Æ¬É¾³ý
+		public ActionResult PhotoDel(long id){
+			return this.RedirectToReferrer();
+		}
+
+		#endregion
 		#region ÐÂ½¨£¬±à¼­
 		[AcceptVerbs(HttpVerbs.Get)]
 		public ActionResult Edit(long? id) {
@@ -101,6 +107,7 @@ namespace CHSNS.Controllers {
 		}
 
 		#endregion
+
 	}
 }
 

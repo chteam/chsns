@@ -307,6 +307,7 @@
     <Content Include="Style\Facebook_backup\wysiwyg.css" />
     <Content Include="Views\Admin\About.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Album\Details.aspx" />
     <Content Include="Views\Album\Edit.aspx" />
     <Content Include="Views\Album\Index.aspx" />
     <Content Include="Views\Album\List.aspx" />
