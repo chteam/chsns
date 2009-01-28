@@ -45,8 +45,7 @@ namespace CHSNS.Controllers {
 			return View(d);
 		}
 		public ActionResult Details(long id) {
-			NoteDetailsPas note;
-			note = DBExt.Note.Details(id, NoteType.Note);
+			var note = DBExt.Note.Details(id, NoteType.Note);
 			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
 				SiteConfig.Current.Note.CommentEveryPage
 				).OrderBy(c => c.Comment.ID);
@@ -71,10 +70,10 @@ namespace CHSNS.Controllers {
 				return View(n);
 			}
 		}
-
+		[ValidateInput(false)]
 		[AcceptVerbs(HttpVerbs.Post)]
 		[LoginedFilter]
-		public ActionResult Edit(long? id, Note n) {
+		public ActionResult Edit(long? id, [Bind(Prefix="n")]Note n) {
 			using (var ts = new TransactionScope()) {
 				if (n.Title.Length < 1 || n.Body.Length < 10) {
 					Message = ("请输入正确的日志内容");

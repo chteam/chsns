@@ -488,6 +488,7 @@
     <None Include="Views\Tags\Logtag.vm" />
     <None Include="Views\Tags\Tags.vm" />
     <None Include="Views\Upload\Photo.vm" />
+    <Content Include="Views\Web.config" />
     <Content Include="JavaScript\AdminUser.js" />
     <Content Include="JavaScript\Application.js" />
     <Content Include="JavaScript\Framework.js" />
