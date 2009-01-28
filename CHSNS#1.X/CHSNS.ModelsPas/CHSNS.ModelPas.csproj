@@ -57,6 +57,7 @@
     <Compile Include="Area\Province.cs" />
     <Compile Include="CommentItemPas.cs" />
     <Compile Include="CommentPas.cs" />
+    <Compile Include="Common\ListItem.cs" />
     <Compile Include="Entry\EntryExt.cs" />
     <Compile Include="Entry\EntryPas.cs" />
     <Compile Include="Entry\EntryType.cs" />
