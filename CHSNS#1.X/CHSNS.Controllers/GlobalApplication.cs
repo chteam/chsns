@@ -36,7 +36,7 @@ namespace CHSNS {
 			var model = new System.Web.DynamicData.MetaModel();
 			model.RegisterContext(typeof(Models.CHSNSDBDataContext),
 				new ContextConfiguration { ScaffoldAllTables = true });
-			ModelBinders.DefaultBinder = new DynamicDataModelBinder(ModelBinders.DefaultBinder);
+			ModelBinders.Binders.DefaultBinder = new DynamicDataModelBinder(ModelBinders.Binders.DefaultBinder);
 		}
 		public void Application_End(object sender, EventArgs e) {
 		}

@@ -1,4 +1,6 @@
 ﻿
+using System.Web.UI.WebControls;
+
 namespace CHSNS.Controllers {
 	using System.Collections.Generic;
 	using System.Linq;
@@ -47,7 +49,7 @@ namespace CHSNS.Controllers {
 		[AdminFilter]
 		public ActionResult GetSystemTemplate(string name)
 		{
-			var ret = File.ReadAllText(Path.EventSystemTemplatePath(name));
+			var ret = CHSNS.File.ReadAllText(Path.EventSystemTemplatePath(name));
 			return Content(Server.HtmlEncode(ret));
 		}
 		[AdminFilter]
@@ -69,7 +71,7 @@ namespace CHSNS.Controllers {
 				x.Add(li);
 				ConfigSerializer.Serializer(x, "SystemTemplate");
 				ConfigSerializer.Clear("SystemTemplate");
-				File.SaveAllText(Path.EventSystemTemplatePath(li.Value), c);
+				CHSNS.File.SaveAllText(Path.EventSystemTemplatePath(li.Value), c);
 			}
 			else {
 				return Content("Error");

@@ -21,26 +21,6 @@ namespace CHSNS.Mvc {
             this.defaultBinder = defaultBinder;
         }
 
-        public ModelBinderResult BindModel(ModelBindingContext context) {
-            MetaTable table;
-
-            try {
-                // REVIEW: Why is there no TryGetTable based on the entity type?
-                table = MetaModel.Default.GetTable(context.ModelType);
-            }
-            catch (ArgumentException) {
-                return defaultBinder.BindModel(context);
-            }
-
-            // REVIEW: Why doesn't context.Model create a new object for us?
-            object entity = context.Model ?? Activator.CreateInstance(context.ModelType);
-            Hashtable hash = GetEntityHashValues(context, table);
-
-            foreach (string columnName in hash.Keys)
-                ValidateAndSetValue(context, table, hash, columnName, entity);
-
-            return new ModelBinderResult(entity);
-        }
 
         static Hashtable GetEntityHashValues(ModelBindingContext context, MetaTable table) {
             // Try binding against the direct value, it might already be a full hash
@@ -54,7 +34,7 @@ namespace CHSNS.Mvc {
 
                 // Supplement the hash with values from the form, when they're present
                 foreach (var column in table.Columns.Where(c => c.IsSerialized())) {
-                    ValueProviderResult vpr = context.ValueProvider.GetValue(GetFieldName(context, column.Name));
+                    ValueProviderResult vpr = context.ValueProvider[GetFieldName(context, column.Name)];
                     if (vpr != null)
                         hash[column.Name] = vpr.AttemptedValue;
                 }
@@ -68,7 +48,7 @@ namespace CHSNS.Mvc {
         }
 
         static Hashtable GetObjectHash(ModelBindingContext context, string fieldName) {
-            ValueProviderResult vpr = context.ValueProvider.GetValue(fieldName);
+            ValueProviderResult vpr = context.ValueProvider[fieldName];
 
             if (vpr != null && !String.IsNullOrEmpty(vpr.AttemptedValue))
                 return HtmlSerializer.Deserialize(vpr.AttemptedValue);
@@ -109,7 +89,7 @@ namespace CHSNS.Mvc {
             object propValue = hash[columnName];
             string fieldName = GetFieldName(context, columnName);
 
-            context.ModelState.SetAttemptedValue(fieldName, propValue.ToString());
+           // context.ModelState.SetAttemptedValue(fieldName, propValue.ToString());
 
             if (propValue as string == String.Empty && column.ConvertEmptyStringToNull)
                 propValue = null;
@@ -138,5 +118,30 @@ namespace CHSNS.Mvc {
                 context.ModelState.AddModelError(fieldName, e.Message);
             }
         }
-    }
+
+		#region IModelBinder 成员
+
+		public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext){
+			MetaTable table;
+
+			try {
+				// REVIEW: Why is there no TryGetTable based on the entity type?
+				table = MetaModel.Default.GetTable(bindingContext.ModelType);
+			}
+			catch (ArgumentException) {
+				return defaultBinder.BindModel(controllerContext, bindingContext);
+			}
+
+			// REVIEW: Why doesn't context.Model create a new object for us?
+			object entity = bindingContext.Model ?? Activator.CreateInstance(bindingContext.ModelType);
+			Hashtable hash = GetEntityHashValues(bindingContext, table);
+
+			foreach (string columnName in hash.Keys)
+				ValidateAndSetValue(bindingContext, table, hash, columnName, entity);
+
+			return entity;
+		}
+
+    	#endregion
+	}
 }
