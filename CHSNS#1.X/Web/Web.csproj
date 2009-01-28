@@ -325,6 +325,7 @@
     <Content Include="Views\Group\Manage.aspx" />
     <Content Include="Views\Group\ManageUser.aspx" />
     <Content Include="Views\Group\Toc.ascx" />
+    <Content Include="Views\Note\Edit.aspx" />
     <Content Include="Views\Shared\CommentList.ascx" />
     <Content Include="Views\Comment\Reply.aspx" />
     <Content Include="Views\Event\Admin\SystemTemplate.ascx" />
