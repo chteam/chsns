@@ -1,6 +1,8 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 <%=Html.CSSLink("photo") %>
+<%=Html.CSSLink("photo") %>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%var a = ViewData["album"] as Album;
@@ -15,17 +17,18 @@
 <div class="notes">相册内没有照片,或您没有权限查看这些照片</div>
 			<%} %>
 <%} %>
-<ul>
+	<div class="photolist">
+		<ul>
 <%foreach (Photo p in rows.ToNotNull()) { %>
 <li id="photo_li<%=p.ID %>">
 <a href="javascript:showPic('<%=Path.Photo(CHUser.UserID,p.AddTime,p.Ext,ThumbType.Middle.ToString() ) %>');">
 
-<img src="<%=Path.Photo(CHUser.UserID,p.AddTime,p.Ext,ThumbType.Middle.ToString() ) %>" 
+<img src="<%=Path.Photo(CHUser.UserID,p.AddTime,p.Ext,ThumbType.Middle) %>" 
 alt="<%=p.Name %> at <%=p.AddTime.ToString("yy年MM月dd日") %>" style="max-width: 130px;" /></a>
 <div class="pedit">
 <%if(CHUser.UserID==p.UserID) {%>
-<a href="">设为封皮</a>
-<%=Html.ActionLink<AlbumController>(ac => ac.PhotoDel(p.ID), "删除")%>
+<a href="">设为封皮</a> 
+<%=Html.ActionLink("删除", "PhotoDel", "Album", new { id=p.ID},null)%>
 
 <%
 }%></div>
@@ -33,10 +36,15 @@ alt="<%=p.Name %> at <%=p.AddTime.ToString("yy年MM月dd日") %>" style="max-width:
 
 <%}%>
 </ul>
+</div>
 <%
   Html.RenderPartial("Pager", rows);
 	%>
+<div class="formset" >
+<p>
 <input type="button" onclick="location='<%=Url.Action("Upload","Album",new{id=a.ID}) %>';" value="上传" class="subbutton" />
+</p>
+</div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 </asp:Content>

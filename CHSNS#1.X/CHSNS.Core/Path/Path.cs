@@ -25,6 +25,10 @@ namespace CHSNS {
 			return string.Format("{0}/{1}{2}{4}{3}",
 			                     PhotoPath(dt), UserID, dt.Ticks/1000000, ext, size);
 		}
+		static public string Photo(long UserID, DateTime dt, string ext, ThumbType t){
+			return Photo(UserID, dt, ext, t.ToString());
+		}
+
 
 		#endregion
 		#region ПаІб

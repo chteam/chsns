@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="Edit.aspx.cs" Inherits="CHSNS.Web.Views.Album.Edit" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master"
+ Inherits="System.Web.Mvc.ViewPage<Album>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
@@ -25,7 +25,7 @@
 		</p>
 		<p>
 			<input type="submit" value="确认提交" class="subbutton" />
-			<input type="button" value="取消" class="subbutton" onclick="pCancle();" />
+			<input type="button" value="取消" class="subbutton" onclick="location=document.referrer;" />
 		</p>
 		</form>
 	</fieldset>
@@ -34,6 +34,7 @@
 <script type="text/javascript">
 	function sub() {
 		return true;
+		
 	}
 </script>
 </asp:Content>

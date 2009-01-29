@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAccountMediator.cs" />
+    <Compile Include="IAlbumMediator.cs" />
     <Compile Include="IApplicationMediator.cs" />
     <Compile Include="ICommentMediator.cs" />
     <Compile Include="IDBExt.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="IMediator.cs" />
     <Compile Include="IMessageMediator.cs" />
     <Compile Include="INoteMediator.cs" />
+    <Compile Include="IPhotoMediator.cs" />
     <Compile Include="IUserMediator.cs" />
     <Compile Include="IViewMediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

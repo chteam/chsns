@@ -25,6 +25,15 @@ namespace CHSNS.Controllers {
 		#endregion
 		#region Í¼Æ¬É¾³ý
 		public ActionResult PhotoDel(long id){
+			var p = DBExt.DB.Photo.Where(c => c.ID == id).FirstOrDefault();
+			var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
+			var pathserver = CHServer.MapPath(path);
+			System.IO.File.Delete(pathserver);
+			var album = DBExt.DB.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
+			album.Count--;
+			if (album.Count < 0) album.Count = 0;
+			DBExt.DB.Photo.DeleteOnSubmit(p);
+			DBExt.DB.SubmitChanges();
 			return this.RedirectToReferrer();
 		}
 
