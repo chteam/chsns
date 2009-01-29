@@ -683,13 +683,6 @@
     <Compile Include="Views\Admin\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Album\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Album\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Application\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1053,13 +1046,6 @@
     </Compile>
     <Compile Include="Views\Shared\MyMenu.ascx.designer.cs">
       <DependentUpon>MyMenu.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\Pager.ascx.cs">
-      <DependentUpon>Pager.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Pager.ascx.designer.cs">
-      <DependentUpon>Pager.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Post\List.ascx.cs">
       <DependentUpon>List.ascx</DependentUpon>

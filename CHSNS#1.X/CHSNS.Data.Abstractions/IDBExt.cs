@@ -22,5 +22,8 @@ namespace CHSNS.Data {
 		INoteMediator Note { get; }
 		IUserMediator UserInfo { get; }
 		IViewMediator View { get; }
+		/*相册*/
+		IAlbumMediator Album { get; }
+		IPhotoMediator Photo { get; }
 	}
 }
