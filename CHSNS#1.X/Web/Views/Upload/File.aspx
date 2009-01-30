@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="File.aspx.cs" Inherits="CHSNS.Web.Views.Upload.File" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<ListItem>" %>
 
 <%if (!string.IsNullOrEmpty(ViewData.Model.Value)) { %>
 <%=ViewData.Model.Value %>
