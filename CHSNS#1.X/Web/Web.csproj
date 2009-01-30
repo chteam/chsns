@@ -197,6 +197,7 @@
     <Content Include="JavaScript\effects\effects.bounce.packed.js" />
     <Content Include="JavaScript\effects\effects.core.packed.js" />
     <Content Include="JavaScript\effects\effects.scale.packed.js" />
+    <Content Include="JavaScript\jquery-1.2.6-vsdoc.js" />
     <Content Include="JavaScript\Upload\swfupload.js" />
     <Content Include="JavaScript\Upload\fileprogress.js" />
     <Content Include="JavaScript\Upload\handlers.js" />
@@ -339,7 +340,6 @@
     <Content Include="Config\ThumbnailSize.xml" />
     <Content Include="Config\UserEditMenu.xml" />
     <Content Include="Default.aspx" />
-    <Content Include="JavaScript\jquery-1.2.3-intellisense.js" />
     <Content Include="JavaScript\Source\wysiwyg\jquery.wysiwyg.jpg" />
     <Content Include="JavaScript\Source\wysiwyg\jquery.wysiwyg.js" />
     <Content Include="JavaScript\Source\wysiwyg\wysiwyg.css" />
@@ -1060,13 +1060,6 @@
     </Compile>
     <Compile Include="Views\Shared\Single.Master.designer.cs">
       <DependentUpon>Single.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\ViewList.ascx.cs">
       <DependentUpon>ViewList.ascx</DependentUpon>
