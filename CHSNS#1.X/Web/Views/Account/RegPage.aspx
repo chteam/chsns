@@ -1,7 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Single.Master" AutoEventWireup="true"
 	CodeBehind="RegPage.aspx.cs" Inherits="CHSNS.Web.Views.Account.RegPage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server"></asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
+	<%if (false) { %>
+
+	<script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
+
+	<%} %>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<form id="registerForm" action="<%=Url.Action("SaveReg") %>" method='post'
 	onsubmit="IsRegValition(this);return false;">
