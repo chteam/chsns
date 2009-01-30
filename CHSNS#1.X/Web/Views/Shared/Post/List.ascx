@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="List.ascx.cs" Inherits="CHSNS.Web.Views.Shared.Post.List" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <div>
 <%Html.Grid<NotePas>("Model",
 	  new Hash(@class => "threadlist", Style => "width:100%"),
