@@ -9,7 +9,6 @@
 	<script type="text/javascript"></script>
 
 	<%if (false) { %>
-	
 	<script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
 	<%} %>
 	<%=Html.Script("Framework") %>
