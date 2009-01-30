@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<ListItem>" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<CHSNS.ListItem>" %>
 
 <%if (!string.IsNullOrEmpty(ViewData.Model.Value)) { %>
 <%=ViewData.Model.Value %>
