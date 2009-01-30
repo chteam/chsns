@@ -1,5 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CHSNS.Web.Views.Shared.Site"
- %>
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewMasterPage" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +8,10 @@
 
 	<script type="text/javascript"></script>
 
+	<%if (false) { %>
+	
+	<script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
+	<%} %>
 	<%=Html.Script("Framework") %>
 	<%=Html.Script("ui") %>
 	<%=Html.CSSLink("Master") %>
@@ -65,10 +68,7 @@
 	<asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
 
 	<script type="text/javascript">
-		//$.ready(function() {
-	
-			chmenu("#publicmenu .menu");
-		//});
+		chmenu("#publicmenu .menu");
 	</script>
 
 </body>

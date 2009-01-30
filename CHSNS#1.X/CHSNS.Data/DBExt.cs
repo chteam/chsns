@@ -20,6 +20,15 @@ namespace CHSNS.Data {
 		public IMessageMediator Message { get; private set; }
 		public INoteMediator Note { get; private set; }
 		public IEventMediator Event { get; private set; }
+		public IAlbumMediator Album {
+			get;
+			private set;
+		}
+
+		public IPhotoMediator Photo {
+			get;
+			private set;
+		}
 		public void Init() {
 			//_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
 			Account = new AccountMediator(this);
@@ -104,5 +113,6 @@ namespace CHSNS.Data {
 		}
 
 		#endregion
+
 	}
 }
