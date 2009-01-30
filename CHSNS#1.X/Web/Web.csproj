@@ -1019,13 +1019,6 @@
     <Compile Include="Views\Shared\EventTemplate\ProText.ascx.designer.cs">
       <DependentUpon>ProText.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Upload\File.aspx.cs">
-      <DependentUpon>File.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Upload\File.aspx.designer.cs">
-      <DependentUpon>File.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\User\Contact.ascx.cs">
       <DependentUpon>Contact.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
