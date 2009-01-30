@@ -977,13 +977,6 @@
     <Compile Include="Views\Note\NoteList.ascx.designer.cs">
       <DependentUpon>NoteList.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shared\Admin.Master.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Admin.Master.designer.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
-    </Compile>
     <Compile Include="Views\Shared\Comment\DirectTextBox.ascx.cs">
       <DependentUpon>DirectTextBox.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1004,13 +997,6 @@
     </Compile>
     <Compile Include="Views\Shared\Comment\TextBox.ascx.designer.cs">
       <DependentUpon>TextBox.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\Error.aspx.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Error.aspx.designer.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\EventTemplate\AddNote.ascx.cs">
       <DependentUpon>AddNote.ascx</DependentUpon>
@@ -1033,40 +1019,12 @@
     <Compile Include="Views\Shared\EventTemplate\ProText.ascx.designer.cs">
       <DependentUpon>ProText.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shared\Message_Box.ascx.cs">
-      <DependentUpon>Message_Box.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Message_Box.ascx.designer.cs">
-      <DependentUpon>Message_Box.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\MyMenu.ascx.cs">
-      <DependentUpon>MyMenu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\MyMenu.ascx.designer.cs">
-      <DependentUpon>MyMenu.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Shared\Post\List.ascx.cs">
       <DependentUpon>List.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Shared\Post\List.ascx.designer.cs">
       <DependentUpon>List.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\Single.Master.cs">
-      <DependentUpon>Single.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Single.Master.designer.cs">
-      <DependentUpon>Single.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\ViewList.ascx.cs">
-      <DependentUpon>ViewList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\ViewList.ascx.designer.cs">
-      <DependentUpon>ViewList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Upload\File.aspx.cs">
       <DependentUpon>File.aspx</DependentUpon>

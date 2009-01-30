@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="Error.aspx.cs" Inherits="CHSNS.Web.Views.Shared.Error" %>
+Inherits="System.Web.Mvc.ViewPage<HandleErrorInfo>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	<h2>
@@ -8,14 +8,14 @@
 	<% if (!ViewContext.HttpContext.IsCustomErrorEnabled) { %>
 	<div style="overflow: auto;">
 		<%
-			Stack<Exception> exceptions = new Stack<Exception>();
+			var exceptions = new Stack<Exception>();
 			for (Exception ex = ViewData.Model.Exception; ex != null; ex = ex.InnerException) {
 				exceptions.Push(ex);
 			}
 		%>
 		
 		<%
-			foreach (Exception ex in exceptions) {
+			foreach (var ex in exceptions) {
 		%>
 		<div class="notes">
 			<b>原因为:

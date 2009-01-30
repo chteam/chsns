@@ -1,5 +1,4 @@
-﻿<%@ Import Namespace="CHSNS.Config"%>
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyMenu.ascx.cs" Inherits="CHSNS.Web.Views.Shared.MyMenu" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%
 	if (CHUser.IsLogin) {%>
 
@@ -28,8 +27,8 @@
 			菜单</h3>
 		<ul id="MyApplication" class="app_list">
 			<%
-				foreach (ApplicationItem app in 
-				ConfigSerializer.Load<SystemApplicationConfig>("SystemApplication").Items) {
+				foreach (CHSNS.Config.ApplicationItem app in
+				ConfigSerializer.Load<CHSNS.Config.SystemApplicationConfig>("SystemApplication").Items) {
 			%>
 			
 			<li id="<%=app.CssName%>"  class="<%=app.CssName %> s_icon">
