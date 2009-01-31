@@ -16,28 +16,14 @@ namespace CHSNS.Controllers {
 		/// <summary>
 		/// 我的相册列表
 		/// </summary>
-		public ActionResult Index(int? p, long? userid) {
+		public ActionResult Index(int? p, long? uid) {
 			var list = (from a in DBExt.DB.Album
-						where a.UserID.Equals(userid ?? CHUser.UserID)
+						where a.UserID.Equals(uid ?? CHUser.UserID)
 						select a);
 			return View(list);
 		}	
 		#endregion
-		#region 图片删除
-		public ActionResult PhotoDel(long id){
-			var p = DBExt.DB.Photo.Where(c => c.ID == id).FirstOrDefault();
-			var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
-			var pathserver = CHServer.MapPath(path);
-			System.IO.File.Delete(pathserver);
-			var album = DBExt.DB.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
-			album.Count--;
-			if (album.Count < 0) album.Count = 0;
-			DBExt.DB.Photo.DeleteOnSubmit(p);
-			DBExt.DB.SubmitChanges();
-			return this.RedirectToReferrer();
-		}
-
-		#endregion
+		
 		#region 新建，编辑
 		[AcceptVerbs(HttpVerbs.Get)]
 		public ActionResult Edit(long? id) {
@@ -116,7 +102,32 @@ namespace CHSNS.Controllers {
 		}
 
 		#endregion
+		#region 图片删除
+		public ActionResult PhotoDel(long id) {
+			var p = DBExt.DB.Photo.Where(c => c.ID == id).FirstOrDefault();
+			var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
+			var pathserver = CHServer.MapPath(path);
+			System.IO.File.Delete(pathserver);
+			var album = DBExt.DB.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
+			album.Count--;
+			if (album.Count < 0) album.Count = 0;
+			DBExt.DB.Photo.DeleteOnSubmit(p);
+			DBExt.DB.SubmitChanges();
+			return this.RedirectToReferrer();
+		}
 
+		#endregion
+		#region 设置图片为封皮
+		public ActionResult SetFace(long id){
+			var p = DBExt.DB.Photo.Where(c => c.ID == id).FirstOrDefault();
+			var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
+			var album = DBExt.DB.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
+			album.FaceUrl = path;
+			DBExt.DB.SubmitChanges();
+			return Content("设置成功");
+		}
+
+		#endregion
 	}
 }
 
