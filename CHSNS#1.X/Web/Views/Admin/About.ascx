@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="About.ascx.cs" Inherits="CHSNS.Web.Views.Admin.About" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" 
+Inherits="System.Web.Mvc.ViewUserControl" %>
 <div id="welcome">
     <div class="col">
         <div id="search"> 

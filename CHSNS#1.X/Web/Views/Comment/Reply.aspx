@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="Reply.aspx.cs" Inherits="CHSNS.Web.Views.Comment.Reply" %>
+Inherits="System.Web.Mvc.ViewPage<CHSNS.ModelPas.UserCountPas>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.Script("PageSet") %>

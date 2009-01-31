@@ -648,111 +648,6 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Account\Agreement.aspx.cs">
-      <DependentUpon>Agreement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Account\Agreement.aspx.designer.cs">
-      <DependentUpon>Agreement.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Account\Reg-Success.aspx.cs">
-      <DependentUpon>Reg-Success.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Account\Reg-Success.aspx.designer.cs">
-      <DependentUpon>Reg-Success.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Account\RegPage.aspx.cs">
-      <DependentUpon>RegPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Account\RegPage.aspx.designer.cs">
-      <DependentUpon>RegPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\About.ascx.cs">
-      <DependentUpon>About.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\About.ascx.designer.cs">
-      <DependentUpon>About.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Application\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Application\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Application\Manage.aspx.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Application\Manage.aspx.designer.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Entry\AdminHistoryList.aspx.cs">
-      <DependentUpon>AdminHistoryList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Entry\AdminHistoryList.aspx.designer.cs">
-      <DependentUpon>AdminHistoryList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Entry\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Entry\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Entry\History.aspx.cs">
-      <DependentUpon>History.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Entry\History.aspx.designer.cs">
-      <DependentUpon>History.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Entry\HistoryList.aspx.cs">
-      <DependentUpon>HistoryList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Entry\HistoryList.aspx.designer.cs">
-      <DependentUpon>HistoryList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Entry\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Entry\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Entry\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Entry\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Entry\NewList.aspx.cs">
-      <DependentUpon>NewList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Entry\NewList.aspx.designer.cs">
-      <DependentUpon>NewList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Entry\Wait.aspx.cs">
-      <DependentUpon>Wait.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Entry\Wait.aspx.designer.cs">
-      <DependentUpon>Wait.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Group\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -802,26 +697,12 @@
     <Compile Include="Views\Group\Toc.ascx.designer.cs">
       <DependentUpon>Toc.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Comment\Reply.aspx.cs">
-      <DependentUpon>Reply.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Comment\Reply.aspx.designer.cs">
-      <DependentUpon>Reply.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Event\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Event\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Event\IndexCtl\Event.ascx.cs">
-      <DependentUpon>Event.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Event\IndexCtl\Event.ascx.designer.cs">
-      <DependentUpon>Event.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Event\Show.aspx.cs">
       <DependentUpon>Show.aspx</DependentUpon>
