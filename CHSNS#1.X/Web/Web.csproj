@@ -558,15 +558,6 @@
     <Content Include="Style\Other\setpicture1.css" />
     <Content Include="Style\Other\simpleEditor.css" />
     <Content Include="Style\Readme.txt" />
-    <Content Include="Template\Default\GroupEditor.htm" />
-    <Content Include="Template\Default\GroupItem.htm" />
-    <Content Include="Template\Default\GroupNoteItem.htm" />
-    <Content Include="Template\Default\GroupRight.htm" />
-    <Content Include="Template\Default\MyApplicationItem.htm" />
-    <Content Include="Template\Default\MyClass.htm" />
-    <Content Include="Template\Default\PhotosPage.htm" />
-    <Content Include="Template\Default\Request.htm" />
-    <Content Include="Template\Default\SearchUserListSample.htm" />
     <Content Include="Template\Default\Servicesitem.htm" />
     <Content Include="Template\Default\ServicesPage.htm" />
     <Content Include="Template\Default\SuperNoteItem.htm" />
