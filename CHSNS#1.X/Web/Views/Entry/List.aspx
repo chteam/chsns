@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-    CodeBehind="List.aspx.cs" Inherits="CHSNS.Web.Views.Entry.List" %>
+Inherits="System.Web.Mvc.ViewPage<PagedList<EntryPas>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 <%=Html.CSSLink("jd") %>

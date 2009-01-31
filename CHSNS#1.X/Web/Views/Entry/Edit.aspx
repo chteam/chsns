@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" AutoEventWireup="true"
-    CodeBehind="Edit.aspx.cs" Inherits="CHSNS.Web.Views.Entry.Edit" %>
+ Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
     <%=Html.Script("wysiwyg") %>
