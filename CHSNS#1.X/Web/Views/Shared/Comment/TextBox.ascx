@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TextBox.ascx.cs" Inherits="CHSNS.Web.Views.Shared.Comment.TextBox" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true"
+Inherits="System.Web.Mvc.ViewUserControl" %>
 <p id="cmt_form1">
 	<input class="subbutton" value="我要留言" onclick="ShowReply();" type="button" />
 </p>
