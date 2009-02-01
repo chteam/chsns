@@ -39,24 +39,7 @@
 			Html.RenderPartial("Footer");%>
 		
 	</div>
-	<div id="extendDiv1">
-		<span></span>
-	</div>
-	<div id="extendDiv2">
-		<span></span>
-	</div>
-	<div id="extendDiv3">
-		<span></span>
-	</div>
-	<div id="extendDiv4">
-		<span></span>
-	</div>
-	<div id="extendDiv5">
-		<span></span>
-	</div>
-	<div id="extendDiv6">
-		<span></span>
-	</div>
+	
 	<asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
 </body>
 </html>

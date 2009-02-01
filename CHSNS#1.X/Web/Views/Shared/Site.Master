@@ -3,18 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-	<title>
-		<%=ViewData["Page_Title"] %></title>
-
+	<title><%=ViewData["Page_Title"] %></title>
 	<script type="text/javascript"></script>
-
-	<%if (false) { %>
-	<script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
-	<%} %>
 	<%=Html.Script("Framework") %>
 	<%=Html.Script("ui") %>
 	<%=Html.CSSLink("Master") %>
-	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
+	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" >
+	<%if (false) { %>
+	<script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
+	<%} %>
+	</asp:ContentPlaceHolder>
 </head>
 <body>
 	<div id="container">
@@ -47,23 +45,7 @@
 		<%
 			Html.RenderPartial("Footer");%>
 	</div>
-	<div id="extendDiv1">
-		<span></span>
-	</div>
-	<div id="extendDiv2">
-		<span></span>
-	</div>
-	<div id="extendDiv3">
-		<span></span>
-	</div>
-	<div id="extendDiv4">
-		<span></span>
-	</div>
-	<div id="extendDiv5">
-		<span></span>
-	</div>
-	<div id="extendDiv6" style="display: none">
-	</div>
+	
 	<asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
 
 	<script type="text/javascript">
