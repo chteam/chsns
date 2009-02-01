@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="Index.aspx.cs" Inherits="CHSNS.Web.Views.Group.Index" %>
+Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("group") %>

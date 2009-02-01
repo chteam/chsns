@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{565374D0-3D96-4D3B-9E95-108574BA9755}</ProjectGuid>
     <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -639,146 +639,6 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Group\Create.aspx.cs">
-      <DependentUpon>Create.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Group\Create.aspx.designer.cs">
-      <DependentUpon>Create.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Group\Details.aspx.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Group\Details.aspx.designer.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Group\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Group\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Group\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Group\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Group\Manage.aspx.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Group\Manage.aspx.designer.cs">
-      <DependentUpon>Manage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Group\ManageUser.aspx.cs">
-      <DependentUpon>ManageUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Group\ManageUser.aspx.designer.cs">
-      <DependentUpon>ManageUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Group\Toc.ascx.cs">
-      <DependentUpon>Toc.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Group\Toc.ascx.designer.cs">
-      <DependentUpon>Toc.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Event\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Event\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Event\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Event\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Friend\FriendList.ascx.cs">
-      <DependentUpon>FriendList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Friend\FriendList.ascx.designer.cs">
-      <DependentUpon>FriendList.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Friend\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Friend\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Friend\Random.aspx.cs">
-      <DependentUpon>Random.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Friend\Random.aspx.designer.cs">
-      <DependentUpon>Random.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Friend\RandomList.ascx.cs">
-      <DependentUpon>RandomList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Friend\RandomList.ascx.designer.cs">
-      <DependentUpon>RandomList.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Friend\Request.aspx.cs">
-      <DependentUpon>Request.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Friend\Request.aspx.designer.cs">
-      <DependentUpon>Request.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Friend\RequestList.ascx.cs">
-      <DependentUpon>RequestList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Friend\RequestList.ascx.designer.cs">
-      <DependentUpon>RequestList.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Group\ShowProfileLinks.ascx.cs">
-      <DependentUpon>ShowProfileLinks.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Group\ShowProfileLinks.ascx.designer.cs">
-      <DependentUpon>ShowProfileLinks.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Home\AboutUs.aspx.cs">
-      <DependentUpon>AboutUs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Home\AboutUs.aspx.designer.cs">
-      <DependentUpon>AboutUs.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Home\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Home\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Home\SetPassword.aspx.cs">
-      <DependentUpon>SetPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Home\SetPassword.aspx.designer.cs">
-      <DependentUpon>SetPassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Home\Setting.aspx.cs">
-      <DependentUpon>Setting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Home\Setting.aspx.designer.cs">
-      <DependentUpon>Setting.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Message\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1028,9 +888,6 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

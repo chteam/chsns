@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Show.aspx.cs" Inherits="CHSNS.Web.Views.Event.Show" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage" %>
 
 <%
 	long UserID = Convert.ToInt64(ViewData["UserID"]);

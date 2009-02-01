@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="List.aspx.cs" Inherits="CHSNS.Web.Views.Group.List" %>
+Inherits="System.Web.Mvc.ViewPage<CHSNS.PagedList<Models.Group>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
