@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Account.ascx.cs"
-	Inherits="CHSNS.Web.Views.User.Index_Account" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true"
+Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
 <% UserPas up = ViewData.Model;%>
 <a href='#' class="accordionHeader" id="accont-header">账号 Account </a>
 <%--<div class="" id="accont-header">

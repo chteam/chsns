@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Event.ascx.cs" Inherits="CHSNS.Web.Views.User.Event" %>
+﻿<%@ Control AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Models.Event>>"
+    Language="C#" %>
 
 	<% foreach (CHSNS.Models.Event e in ViewData.Model) { %>
 	<li class="evt" id="evt_<%=e.ID %>">

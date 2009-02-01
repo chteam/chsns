@@ -1,5 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MyActions.ascx.cs"
-	Inherits="CHSNS.Web.Views.User.Index_MyActions" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
 <%UserPas up = ViewData.Model;%>
 <ul id="userActions">
 	<%if (up.IsMe) { %>
