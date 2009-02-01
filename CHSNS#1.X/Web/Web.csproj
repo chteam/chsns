@@ -640,7 +640,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="aspnet_client\system_web\2_0_50727\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
