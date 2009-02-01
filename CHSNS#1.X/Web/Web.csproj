@@ -478,7 +478,7 @@
     <None Include="Views\Shared\BlogMaster.vm" />
     <None Include="Views\Mail\replyback.vm" />
     <None Include="Views\Mail\Test.vm" />
-    <None Include="Views\Profile\Setting.vm" />
+    <None Include="Views\Home\Setting.vm" />
     <None Include="Views\Home\search.vm" />
     <None Include="Views\Services\admin.vm" />
     <None Include="Views\Services\index.vm" />
@@ -637,48 +637,6 @@
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Comment\DirectTextBox.ascx.cs">
-      <DependentUpon>DirectTextBox.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Comment\DirectTextBox.ascx.designer.cs">
-      <DependentUpon>DirectTextBox.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\Comment\Item.ascx.cs">
-      <DependentUpon>Item.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Comment\Item.ascx.designer.cs">
-      <DependentUpon>Item.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\Comment\TextBox.ascx.cs">
-      <DependentUpon>TextBox.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\Comment\TextBox.ascx.designer.cs">
-      <DependentUpon>TextBox.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\EventTemplate\AddNote.ascx.cs">
-      <DependentUpon>AddNote.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\EventTemplate\AddNote.ascx.designer.cs">
-      <DependentUpon>AddNote.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\EventTemplate\MakeFriend.ascx.cs">
-      <DependentUpon>MakeFriend.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\EventTemplate\MakeFriend.ascx.designer.cs">
-      <DependentUpon>MakeFriend.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\EventTemplate\ProText.ascx.cs">
-      <DependentUpon>ProText.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Shared\EventTemplate\ProText.ascx.designer.cs">
-      <DependentUpon>ProText.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\Contact.ascx.cs">
       <DependentUpon>Contact.ascx</DependentUpon>
