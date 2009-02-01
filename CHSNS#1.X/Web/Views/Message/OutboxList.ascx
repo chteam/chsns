@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OutboxList.ascx.cs"
-	Inherits="CHSNS.Web.Views.Message.OutboxList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true"
+Inherits="System.Web.Mvc.ViewUserControl" %>
 <%foreach (MessageItemPas ip in ViewData.Model as IEnumerable<MessageItemPas>) {%>
 <li id="Items<%=ip.ID%>" class="useritem">
 	<div class="face face-middle">

@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NoteList.ascx.cs" Inherits="CHSNS.Web.Views.Note.NoteList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true"
+Inherits="System.Web.Mvc.ViewUserControl<System.Collections.Generic.IEnumerable<NotePas>>" %>
 <%foreach(NotePas n in ViewData.Model){ %>
 <li class="useritem" id="Items<%=n.ID %>">
 	<div class="title">

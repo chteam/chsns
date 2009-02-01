@@ -177,7 +177,6 @@
     <None Include="Views\Html\PostList.vm" />
     <None Include="Views\Html\ProfileEdit.vm" />
     <None Include="Views\Html\Rss-List.vm" />
-    <None Include="Views\Rescues\index.vm" />
     <Content Include="Config\SystemApplication.xml" />
     <Content Include="Config\SystemTemplate.xml" />
     <Content Include="Config\Category.xml" />
@@ -480,7 +479,7 @@
     <None Include="Views\Mail\replyback.vm" />
     <None Include="Views\Mail\Test.vm" />
     <None Include="Views\Profile\Setting.vm" />
-    <None Include="Views\Search\index.vm" />
+    <None Include="Views\Home\search.vm" />
     <None Include="Views\Services\admin.vm" />
     <None Include="Views\Services\index.vm" />
     <None Include="Views\SuperNote\randomvideo.vm" />
@@ -638,76 +637,6 @@
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Message\Details.aspx.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Message\Details.aspx.designer.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Message\InBox.aspx.cs">
-      <DependentUpon>InBox.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Message\InBox.aspx.designer.cs">
-      <DependentUpon>InBox.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Message\InboxList.ascx.cs">
-      <DependentUpon>InboxList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Message\InboxList.ascx.designer.cs">
-      <DependentUpon>InboxList.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Message\OutBox.aspx.cs">
-      <DependentUpon>OutBox.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Message\OutBox.aspx.designer.cs">
-      <DependentUpon>OutBox.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Message\OutboxList.ascx.cs">
-      <DependentUpon>OutboxList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Message\OutboxList.ascx.designer.cs">
-      <DependentUpon>OutboxList.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Message\Write.aspx.cs">
-      <DependentUpon>Write.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Message\Write.aspx.designer.cs">
-      <DependentUpon>Write.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Note\Details.aspx.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Note\Details.aspx.designer.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Note\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Note\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Note\News.aspx.cs">
-      <DependentUpon>News.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Note\News.aspx.designer.cs">
-      <DependentUpon>News.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Note\NoteList.ascx.cs">
-      <DependentUpon>NoteList.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Note\NoteList.ascx.designer.cs">
-      <DependentUpon>NoteList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Comment\DirectTextBox.ascx.cs">
       <DependentUpon>DirectTextBox.ascx</DependentUpon>
