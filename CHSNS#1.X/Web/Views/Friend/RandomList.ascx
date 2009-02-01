@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RandomList.ascx.cs" Inherits="CHSNS.Web.Views.Friend.RandomList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%if (ViewData.Model != null)
 	  foreach (UserItemPas p in ViewData.Model as IEnumerable<UserItemPas>) { %>
 <li id="Items<%=p.ID %>" class="useritem">
