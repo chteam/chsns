@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="Edit.aspx.cs" Inherits="CHSNS.Web.Views.User.Edit" 
-	%>
+Inherits="System.Web.Mvc.ViewPage" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">

@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EmptyMagicBox.ascx.cs"
-	Inherits="CHSNS.Web.Views.User.EmptyMagicBox" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true"
+Inherits="System.Web.Mvc.ViewUserControl" %>
 <div class="box" id="MagicBox">
 	<h3>
 		<span class="edit"><a href="/EditMyInfo.aspx?mode=magicbox">修改</a> </span>魔法盒</h3>

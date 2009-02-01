@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Upload.ascx.cs" Inherits="CHSNS.Web.Views.User.Upload" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <div id="picturenow" class="required" style="width: 240px; float: right">
 	<h3>
 		当前头像</h3>
