@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="InBox.aspx.cs" Inherits="CHSNS.Web.Views.Message.InBox" %>
-
+Inherits="System.Web.Mvc.ViewUserControl" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.Script("PageSet") %>
 </asp:Content>

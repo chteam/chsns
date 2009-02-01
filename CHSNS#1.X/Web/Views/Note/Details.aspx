@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-	CodeBehind="Details.aspx.cs" Inherits="CHSNS.Web.Views.Note.Details" %>
+Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 <%=Html.Script("PageSet")%>
