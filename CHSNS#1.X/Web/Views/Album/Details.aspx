@@ -21,10 +21,16 @@
 		相册内没有照片,或您没有权限查看这些照片</div>
 	<%} %>
 	<%} %>
+	<div id="c_photo" style="display: none">
+		<a href="javascript:void(0)" onclick="showPic()">
+			<img src="" /></a>
+	</div>
+<div id="c_list">
 	<div class="photolist">
 		<ul>
 			<%foreach (Photo p in rows.ToNotNull()) { %>
-			<li id="photo_li<%=p.ID %>"><a href="javascript:showPic('<%=Path.Photo(CHUser.UserID,p.AddTime,p.Ext,ThumbType.Middle.ToString() ) %>');">
+			<li id="photo_li<%=p.ID %>">
+<a href="javascript:showPic('<%=Path.Photo(CHUser.UserID,p.AddTime,p.Ext,ThumbType.Big) %>');">
 				<img src="<%=Path.Photo(CHUser.UserID,p.AddTime,p.Ext,ThumbType.Middle) %>" alt="<%=p.Name %> at <%=p.AddTime.ToString("yy年MM月dd日") %>"
 					style="max-width: 130px;" /></a>
 				<div class="pedit">
@@ -47,10 +53,16 @@
 			<%=Html.ActionLink(a.Name,"Index","Album",new{uid=a.UserID},null) %>
 		</p>
 	</div>
+</div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
 	<script type="text/javascript">
+		function showPic(fn) {
+			$('#c_photo').toggle();
+			$('#c_list').toggle();
+			$('#c_photo img').attr('src', fn);
+		}
 		var DeletePhoto = function(id) {
 			if (confirm("您要删除这个照片吗?")) {
 				$.get('<%=Url.Action("PhotoDel","Album") %>', { 'id': id }, function() {

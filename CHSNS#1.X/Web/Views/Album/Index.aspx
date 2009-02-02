@@ -5,8 +5,8 @@ Inherits="System.Web.Mvc.ViewPage" %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<fieldset><legend>相册列表</legend>
-		<%=Html.ActionLink("新建相册","Edit","Album") %>
-		<div class="ch_content">
+		<%=Html.ActionLink("[新建相册]","Edit","Album") %>
+		<div class="ch_content"> 
 			<ul class="userlist">
 				<%  foreach (Album p in (ViewData.Model as IEnumerable<Album>).ToNotNull()) { %>
 				<li id="Items<%=p.ID %>" class="useritem">
