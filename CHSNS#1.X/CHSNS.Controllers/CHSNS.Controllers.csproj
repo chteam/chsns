@@ -132,7 +132,6 @@
     <Compile Include="Helper\UrlHelperCHHelperExt.cs" />
     <Compile Include="Extension\ControllerExt.cs" />
     <Compile Include="Extension\RedirectExt.cs" />
-    <Compile Include="Result\BinaryResult.cs" />
     <Compile Include="Result\NotFoundResult.cs" />
     <Compile Include="Result\XmlActionResult.cs" />
     <Compile Include="Result\XmlViewResult.cs" />
