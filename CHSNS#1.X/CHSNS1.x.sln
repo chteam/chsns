@@ -41,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{60FCF7CB-D80
 		DLL\Newtonsoft.Json.pdb = DLL\Newtonsoft.Json.pdb
 		DLL\Rhino.Mocks.dll = DLL\Rhino.Mocks.dll
 		DLL\Rhino.Mocks.xml = DLL\Rhino.Mocks.xml
+		DLL\System.Web.Mvc.dll = DLL\System.Web.Mvc.dll
+		DLL\System.Web.Mvc.pdb = DLL\System.Web.Mvc.pdb
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{B3184A8F-23C1-4DBB-88CC-35D18477161F}"
