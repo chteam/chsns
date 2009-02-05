@@ -86,6 +86,7 @@ set Magicbox=@magicbox where UserID=@UserID"
 			System.IO.Directory.Delete(Path.FaceMapPath(userid), true);
 		}
 		#endregion
+
 		public Profile GetUser(long userid) {
 			return GetUser(userid, c => new Profile {
 				Name = c.Name
@@ -117,5 +118,10 @@ set showtext=@text,showtexttime=@now where userid=@uid;"
 		}
 		#endregion
 
+
+		public string GetUserName(long uid) {
+			var p = DBExt.DB.Profile.Where(c => c.UserID == uid).FirstOrDefault();
+			return p==null ? "undefault" : p.Name;
+		}
 	}
 }

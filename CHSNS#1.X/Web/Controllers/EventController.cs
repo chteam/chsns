@@ -1,17 +1,12 @@
-﻿
+﻿/*
+* Created by 邹健
+* Date: 2007-12-25
+* Time: 22:39
+*/
 namespace CHSNS.Controllers {
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Web.Mvc;
-		/*
-	 * Created by 邹健
-	 * Date: 2007-12-25
-	 * Time: 22:39
-	 * 
-	 * 
-	 */
-
-
 	/// <summary>
 	/// 事件的控制器
 	/// the Controller of Event.
