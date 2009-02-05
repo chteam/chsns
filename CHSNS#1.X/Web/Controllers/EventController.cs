@@ -1,6 +1,4 @@
 ﻿
-using System.Web.UI.WebControls;
-
 namespace CHSNS.Controllers {
 	using System.Collections.Generic;
 	using System.Linq;
@@ -12,7 +10,7 @@ namespace CHSNS.Controllers {
 	 * 
 	 * 
 	 */
-	using Filter;
+
 
 	/// <summary>
 	/// 事件的控制器

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CHSNS.Config;
-using CHSNS.Filter;
+
 using CHSNS;
 using CHSNS.Models;
 using System.Web;
@@ -29,6 +29,7 @@ namespace CHSNS.Controllers {
 		public ActionResult Edit(long? id) {
 			if (id.HasValue) {
 				var model = DBExt.DB.Album.Where(c => c.ID.Equals(id)).FirstOrDefault();
+				ViewData["a"] = model;
 				return View(model);
 			}
 			return View();
@@ -43,15 +44,14 @@ namespace CHSNS.Controllers {
 				al.Name = a.Name;
 				DBExt.DB.SubmitChanges();
 				return RedirectToAction("Index");
-			} else {
-				a.Count = 0;
-				a.UserID = CHUser.UserID;
-				a.AddTime = System.DateTime.Now;
-				
-				DBExt.DB.Album.InsertOnSubmit(a);
-				DBExt.DB.SubmitChanges();
-				return RedirectToAction("Index");
 			}
+			a.Count = 0;
+			a.UserID = CHUser.UserID;
+			a.AddTime = DateTime.Now;
+				
+			DBExt.DB.Album.InsertOnSubmit(a);
+			DBExt.DB.SubmitChanges();
+			return RedirectToAction("Index");
 		}
 		#endregion
 		#region ПаІб

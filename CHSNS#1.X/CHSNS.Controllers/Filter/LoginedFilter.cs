@@ -1,9 +1,7 @@
 using System;
-
 using System.Web.Mvc;
-using CHSNS;
 
-namespace CHSNS.Filter {
+namespace CHSNS {
 	public class LoginedFilter : ActionFilterAttribute {
 		public override void OnActionExecuting(ActionExecutingContext filterContext) {
 			if (!CHUser.IsLogin) {

@@ -7,10 +7,10 @@ using System;
 using System.Transactions;
 using System.Web.Mvc;
 using CHSNS.Models;
-using CHSNS.Tools;
+
 
 namespace CHSNS.Controllers {
-	using Filter;
+
 	using ModelPas;
 	[LoginedFilter]
 	public class MessageController : BaseController {
