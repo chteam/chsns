@@ -7,7 +7,7 @@ namespace CHSNS.Data {
 		string GetMagicBox(long UserID);
 		System.Data.DataRowCollection GetPersonalInfo(long UserID);
 		System.Data.DataRowCollection GetSchoolInfo(long UserID);
-		CHSNS.Models.Profile GetUser(long userid);
+		Models.Profile GetUser(long userid);
 		T GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<CHSNS.Models.Profile, T>> x);
 		void MagicBoxBackup();
 		int Relation(long OwnerID, long ViewerID);
@@ -15,5 +15,6 @@ namespace CHSNS.Data {
 		void SaveMagicBox(string magicbox, long UserID);
 		void SaveText(long userid, string text);
 		CHSNS.ModelPas.UserPas UserInformation(long userid);
+		string GetUserName(long uid);
 	}
 }

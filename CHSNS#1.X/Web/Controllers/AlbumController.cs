@@ -17,9 +17,12 @@ namespace CHSNS.Controllers {
 		/// 我的相册列表
 		/// </summary>
 		public ActionResult Index(int? p, long? uid) {
+			uid = uid ?? CHUser.UserID;
 			var list = (from a in DBExt.DB.Album
-						where a.UserID.Equals(uid ?? CHUser.UserID)
+						where a.UserID.Equals(uid.Value)
 						select a);
+			Title = string.Format("{0}的相册",
+			                      DBExt.UserInfo.GetUserName(uid.Value));
 			return View(list);
 		}	
 		#endregion
