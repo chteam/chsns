@@ -18,8 +18,8 @@
 $user.get_item("University")</a>--%>
 		</span></li>
 		<li><span>院　　系：</span><span>
-			<%=Url.CH().DataCache.GetXueyuanName( Convert.ToInt64(up.User["University_id"]),Convert.ToInt64(up.User["Xueyuan_id"]))%>
-			<%--<a href="/Search.aspx?action=show&amp;xid=$user.get_item("Xueyuan_id")&amp;">
+			<%--<%=Url.CH().DataCache.GetXueyuanName( Convert.ToInt64(up.User["University_id"]),Convert.ToInt64(up.User["Xueyuan_id"]))%>
+			<a href="/Search.aspx?action=show&amp;xid=$user.get_item("Xueyuan_id")&amp;">
 $ChHelper.DataCache.GetXueyuanName($user.get_item("University_id"),$user.get_item("Xueyuan_id"))</a>
 --%>
 		</span></li>

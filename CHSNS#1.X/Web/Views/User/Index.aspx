@@ -98,7 +98,7 @@ Inherits="System.Web.Mvc.ViewPage<ModelPas.UserPas>" %>
 				<div id="userFace">
 					<ul>
 						<li><a href="#<%=up.OwnerID%>">
-							<%=Html.Image(Url.CH().Path.GetFace_Big(up.OwnerID), up.Profile.Name)%>
+							<%=Html.Image(Path.GetFace_Big(up.OwnerID), up.Profile.Name)%>
 						</a></li>
 					</ul>
 				</div>
