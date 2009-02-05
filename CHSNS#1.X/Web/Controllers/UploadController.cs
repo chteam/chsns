@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using CHSNS.Config;
-using CHSNS.Filter;
+
 using System.Collections.Generic;
 using CHSNS;
 using Image=System.Drawing.Image;

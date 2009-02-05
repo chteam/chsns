@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master"
- Inherits="System.Web.Mvc.ViewPage<Album>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Album>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
@@ -31,10 +30,12 @@
 	</fieldset>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
-<script type="text/javascript">
-	function sub() {
-		return true;
-		
-	}
-</script>
+
+	<script type="text/javascript">
+		function sub() {
+			return true;
+
+		}
+	</script>
+
 </asp:Content>

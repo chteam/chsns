@@ -1,7 +1,6 @@
-using CHSNS;
 using System.Web.Mvc;
 
-namespace CHSNS.Filter
+namespace CHSNS
 {
 	public class OnlineFilter : ActionFilterAttribute {
 		public override void OnActionExecuting(ActionExecutingContext filterContext) {            

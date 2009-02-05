@@ -4,7 +4,7 @@
 	using System.Data.SqlClient;
 	using System.Linq;
 //	using CHSNS.Extension;
-	using CHSNS.Filter;
+	
 	using CHSNS.ModelPas;
 	using CHSNS.Models;
 	using CHSNS.Config;

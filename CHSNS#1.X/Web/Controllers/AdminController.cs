@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using CHSNS.Config;
-using CHSNS.Filter;
+
 using System.Web.Mvc;
 
 namespace CHSNS.Controllers {
