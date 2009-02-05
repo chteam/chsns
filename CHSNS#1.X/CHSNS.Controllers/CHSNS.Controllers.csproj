@@ -102,6 +102,7 @@
     <Compile Include="Extension\Grid\INestedGridColumnBuilder.cs" />
     <Compile Include="Extension\Grid\IRootGridColumnBuilder.cs" />
     <Compile Include="Extension\Grid\ISimpleColumnBuilder.cs" />
+    <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />

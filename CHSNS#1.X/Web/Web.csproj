@@ -484,6 +484,7 @@
     <None Include="Views\Tags\Tags.vm" />
     <None Include="Views\Upload\Photo.vm" />
     <Content Include="Views\Video\Edit.aspx" />
+    <Content Include="Views\Video\Items.ascx" />
     <Content Include="Views\Video\List.aspx" />
     <Content Include="Views\Video\Random.aspx" />
     <Content Include="Views\Web.config" />

@@ -1,14 +1,30 @@
 using System;
 using System.Web.Mvc;
+using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
-	[LoginedFilter]
+	
 	public class VideoController : BaseController
 	{
+		[LoginedFilter]
+		[AcceptVerbs(HttpVerbs.Get)]
 		public ActionResult Edit(){
-
+			Title = "提交视频";
 			return View();
+		}
+		[LoginedFilter]
+		[AcceptVerbs(HttpVerbs.Post)]
+		public ActionResult Edit(SuperNote v){
+			v.AddTime = DateTime.Now;
+			var m = new Media(v.Url);
+			v.Title = v.Title ?? m.Title;
+			v.Faceurl = m.Pic;
+			v.UserID = CHUser.UserID;
+			DBExt.DB.SuperNote.InsertOnSubmit(v);
+			DBExt.DB.SubmitChanges();
+			Message = "提交成功";
+			return Edit();
 		}
 
 		public ActionResult List() {

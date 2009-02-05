@@ -22,6 +22,8 @@
 			<h1><span><%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %></span></h1>
 		</div>
 		<div id="content">
+		<%
+                  Html.RenderPartial("Message_Box"); %>
 				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
 		</div>
 		<div id="linkList">

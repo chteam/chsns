@@ -58,6 +58,8 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
+<%=Html.CSSLink("video") %>
+<%if (false) { %><script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script><%} %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 </asp:Content>
