@@ -140,6 +140,8 @@
     <Compile Include="Tools\IPagedList.cs" />
     <Compile Include="Tools\PagedList.cs" />
     <Compile Include="Tools\PagerExt.cs" />
+    <Compile Include="Update\BetaToRC1\DropDownListExt.cs" />
+    <Compile Include="Update\BetaToRC1\ListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
