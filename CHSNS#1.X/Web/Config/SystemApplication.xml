@@ -8,8 +8,8 @@
       <FullName>好友</FullName>
       <ShortName>好友</ShortName>
       <Version>1.1</Version>
-      <Icon /> 
-      <CssName />
+      <Icon />
+		<CssName>App_friend</CssName>
       <AuthorID>0</AuthorID>
       <AddTime>2008-12-19T00:42:46.6562793+08:00</AddTime>
       <UpdateTime>2008-12-19T00:42:46.6562793+08:00</UpdateTime>
@@ -73,5 +73,23 @@
       <IsTrue>true</IsTrue>
       <UserCount>0</UserCount>
     </ApplicationItem>
+	  <ApplicationItem>
+		  <ID>Video</ID>
+		  <Controller>Video</Controller>
+		  <Action>List</Action>
+		  <FullName>视频功能</FullName>
+		  <ShortName>视频</ShortName>
+		  <Version>v1.0</Version>
+		  <Icon>video.gif</Icon>
+		  <CssName>App_supernote</CssName>
+		  <AuthorID>0</AuthorID>
+		  <AddTime>2008-12-24T23:29:46.3701797+08:00</AddTime>
+		  <UpdateTime>2008-12-24T23:29:46.3701797+08:00</UpdateTime>
+		  <Summary>可以以我感兴趣的话题,加入或创建群组</Summary>
+		  <Url />
+		  <IsSystem>false</IsSystem>
+		  <IsTrue>true</IsTrue>
+		  <UserCount>0</UserCount>
+	  </ApplicationItem>
   </Items>
 </SystemApplicationConfig>
