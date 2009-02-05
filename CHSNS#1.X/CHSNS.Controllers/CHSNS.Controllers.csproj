@@ -128,7 +128,6 @@
     <Compile Include="Mvc\HtmlSerializer.cs" />
     <Compile Include="Mvc\MetaColumnExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extension\Url\UrlHelperCHHelperExt.cs" />
     <Compile Include="Extension\ControllerExt.cs" />
     <Compile Include="Extension\RedirectExt.cs" />
     <Compile Include="Result\NotFoundResult.cs" />
