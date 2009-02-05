@@ -480,11 +480,12 @@
     <None Include="Views\Home\search.vm" />
     <None Include="Views\Services\admin.vm" />
     <None Include="Views\Services\index.vm" />
-    <None Include="Views\SuperNote\randomvideo.vm" />
-    <None Include="Views\SuperNote\video.vm" />
     <None Include="Views\Tags\Logtag.vm" />
     <None Include="Views\Tags\Tags.vm" />
     <None Include="Views\Upload\Photo.vm" />
+    <Content Include="Views\Video\Edit.aspx" />
+    <Content Include="Views\Video\List.aspx" />
+    <Content Include="Views\Video\Random.aspx" />
     <Content Include="Views\Web.config" />
     <Content Include="JavaScript\AdminUser.js" />
     <Content Include="JavaScript\Application.js" />
@@ -624,6 +625,7 @@
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
