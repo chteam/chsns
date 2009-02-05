@@ -92,11 +92,6 @@
     <Compile Include="CHStatic.cs" />
     <Compile Include="DefaultDataBinder.cs" />
     <Compile Include="Extension\EnumerableExtensions.cs" />
-    <Compile Include="Filter\AdminFilter.cs" />
-    <Compile Include="Filter\LoginedFilter.cs" />
-    <Compile Include="Filter\OnlineFilter.cs" />
-    <Compile Include="Filter\RoleAttribute.cs" />
-    <Compile Include="GlobalApplication.cs" />
     <Compile Include="Extension\Grid\Grid.cs" />
     <Compile Include="Extension\Grid\GridBase.cs" />
     <Compile Include="Extension\Grid\GridColumn.cs" />
@@ -107,6 +102,11 @@
     <Compile Include="Extension\Grid\INestedGridColumnBuilder.cs" />
     <Compile Include="Extension\Grid\IRootGridColumnBuilder.cs" />
     <Compile Include="Extension\Grid\ISimpleColumnBuilder.cs" />
+    <Compile Include="Filter\AdminFilter.cs" />
+    <Compile Include="Filter\LoginedFilter.cs" />
+    <Compile Include="Filter\OnlineFilter.cs" />
+    <Compile Include="Filter\RoleAttribute.cs" />
+    <Compile Include="GlobalApplication.cs" />
     <Compile Include="Extension\ChHelper.cs">
       <SubType>Code</SubType>
     </Compile>
