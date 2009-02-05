@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -97,38 +97,38 @@
     <Compile Include="Filter\OnlineFilter.cs" />
     <Compile Include="Filter\RoleAttribute.cs" />
     <Compile Include="GlobalApplication.cs" />
-    <Compile Include="Grid\Grid.cs" />
-    <Compile Include="Grid\GridBase.cs" />
-    <Compile Include="Grid\GridColumn.cs" />
-    <Compile Include="Grid\GridColumnBuilder.cs" />
-    <Compile Include="Grid\GridHelper.cs" />
-    <Compile Include="Grid\IExpressionColumnBuilder.cs" />
-    <Compile Include="Grid\IGridSections.cs" />
-    <Compile Include="Grid\INestedGridColumnBuilder.cs" />
-    <Compile Include="Grid\IRootGridColumnBuilder.cs" />
-    <Compile Include="Grid\ISimpleColumnBuilder.cs" />
-    <Compile Include="Helper\ChHelper.cs">
+    <Compile Include="Extension\Grid\Grid.cs" />
+    <Compile Include="Extension\Grid\GridBase.cs" />
+    <Compile Include="Extension\Grid\GridColumn.cs" />
+    <Compile Include="Extension\Grid\GridColumnBuilder.cs" />
+    <Compile Include="Extension\Grid\GridHelper.cs" />
+    <Compile Include="Extension\Grid\IExpressionColumnBuilder.cs" />
+    <Compile Include="Extension\Grid\IGridSections.cs" />
+    <Compile Include="Extension\Grid\INestedGridColumnBuilder.cs" />
+    <Compile Include="Extension\Grid\IRootGridColumnBuilder.cs" />
+    <Compile Include="Extension\Grid\ISimpleColumnBuilder.cs" />
+    <Compile Include="Extension\ChHelper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helper\HtmlHelperExt.cs" />
-    <Compile Include="Helper\HtmlRenderExt.cs" />
-    <Compile Include="Helper\Include.cs">
+    <Compile Include="Extension\Html\HtmlHelperExt.cs" />
+    <Compile Include="Extension\Html\HtmlRenderExt.cs" />
+    <Compile Include="Extension\Html\Include.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helper\PersonalHelper.cs">
+    <Compile Include="Extension\PersonalHelper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helper\StringHelper.cs">
+    <Compile Include="Extension\StringHelper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helper\UrlHelperExt.cs" />
-    <Compile Include="Helper\UrlStyleExtension.cs" />
+    <Compile Include="Extension\Url\UrlHelperExt.cs" />
+    <Compile Include="Extension\Url\UrlStyleExtension.cs" />
     <Compile Include="IDataBinder.cs" />
     <Compile Include="Mvc\DynamicDataModelBinder.cs" />
     <Compile Include="Mvc\HtmlSerializer.cs" />
     <Compile Include="Mvc\MetaColumnExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helper\UrlHelperCHHelperExt.cs" />
+    <Compile Include="Extension\Url\UrlHelperCHHelperExt.cs" />
     <Compile Include="Extension\ControllerExt.cs" />
     <Compile Include="Extension\RedirectExt.cs" />
     <Compile Include="Result\NotFoundResult.cs" />
@@ -136,10 +136,10 @@
     <Compile Include="Result\XmlViewResult.cs" />
     <Compile Include="Services\EmailTemplateService.cs" />
     <Compile Include="Services\IEmailTemplateService.cs" />
-    <Compile Include="Tools\EmptyExt.cs" />
-    <Compile Include="Tools\IPagedList.cs" />
-    <Compile Include="Tools\PagedList.cs" />
-    <Compile Include="Tools\PagerExt.cs" />
+    <Compile Include="Extension\EmptyExt.cs" />
+    <Compile Include="Extension\IPagedList.cs" />
+    <Compile Include="Extension\PagedList.cs" />
+    <Compile Include="Extension\PagerExt.cs" />
     <Compile Include="Update\BetaToRC1\DropDownListExt.cs" />
     <Compile Include="Update\BetaToRC1\ListItem.cs" />
   </ItemGroup>
