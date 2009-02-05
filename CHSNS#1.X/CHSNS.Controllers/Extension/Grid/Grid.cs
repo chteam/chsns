@@ -58,7 +58,7 @@ namespace CHSNS.Helper
 
 		protected static IEnumerable<T> GetDataSourceFromViewData(string key, ViewContext context)
 		{
-			object items = new DefaultDataBinder().ExtractValue(key, context);
+            object items = key == null ? null : context.ViewData.Eval(key);
 			IEnumerable<T> collection = null;
 
 			if (items != null)
@@ -151,10 +151,13 @@ namespace CHSNS.Helper
 			RenderText("</th>");
 		}
 
-		protected override void RenderHeaderCellStart()
-		{
-			RenderText("<th>");
-		}
+        protected override void RenderHeaderCellStart(GridColumn<T> column) {
+            string attrs = BuildHtmlAttributes(column.HeaderAttributes);
+            if (attrs.Length > 0)
+                attrs = " " + attrs;
+
+            RenderText(string.Format("<th{0}>", attrs));
+        }
 
 		protected override void RenderRowStart(bool isAlternate)
 		{
@@ -195,7 +198,7 @@ namespace CHSNS.Helper
 
 		protected override void RenderGridStart()
 		{
-			string attrs = BuildHtmlAttributes();
+            string attrs = BuildHtmlAttributes(this.HtmlAttributes);
 			if (attrs.Length > 0)
 				attrs = " " + attrs;
 
@@ -300,22 +303,22 @@ namespace CHSNS.Helper
 		/// Converts the HtmlAttributes dictionary of key-value pairs into a string of HTML attributes. 
 		/// </summary>
 		/// <returns></returns>
-		private string BuildHtmlAttributes()
-		{
-			if (HtmlAttributes.Count == 0)
-			{
-				return string.Empty;
-			}
+        private static string BuildHtmlAttributes(IDictionary attributes) {
 
-			var attributes = new StringBuilder();
+            if (attributes == null || attributes.Count == 0) {
+                return string.Empty;
+            }
 
-			foreach (DictionaryEntry entry in HtmlAttributes)
-			{
-				attributes.AppendFormat("{0}=\"{1}\"", entry.Key, entry.Value);
-				attributes.Append(' ');
-			}
+            var attributeSB = new StringBuilder();
 
-			return attributes.ToString().Trim();
-		}
+
+            foreach (DictionaryEntry entry in attributes) {
+
+                attributeSB.AppendFormat("{0}=\"{1}\"", entry.Key, entry.Value);
+                attributeSB.Append(' ');
+            }
+
+            return attributeSB.ToString().Trim();
+        }
 	}
 }
