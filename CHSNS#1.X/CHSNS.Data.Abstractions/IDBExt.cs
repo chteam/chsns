@@ -25,5 +25,8 @@ namespace CHSNS.Data {
 		/*相册*/
 		IAlbumMediator Album { get; }
 		IPhotoMediator Photo { get; }
+        /*Video*/
+        ISuperNoteMediator Video { get; }
+
 	}
 }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{27E2B6B3-7382-4D72-A889-7FDD618126F3}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -65,7 +65,7 @@
     <Compile Include="Enum\GroupStatus.cs" />
     <Compile Include="Enum\GroupType.cs" />
     <Compile Include="Enum\GroupUserStatus.cs" />
-    <Compile Include="Enum\ShowType.cs" />
+    <Compile Include="Enum\SuperNoteType.cs" />
     <Compile Include="Enum\TagsType.cs" />
     <Compile Include="EventPagePas.cs" />
     <Compile Include="MessageDetailsPas.cs" />
