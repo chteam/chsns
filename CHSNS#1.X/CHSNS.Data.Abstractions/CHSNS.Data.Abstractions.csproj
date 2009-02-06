@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -59,6 +59,7 @@
     <Compile Include="IAlbumMediator.cs" />
     <Compile Include="IApplicationMediator.cs" />
     <Compile Include="ICommentMediator.cs" />
+    <Compile Include="ICURDMediator.cs" />
     <Compile Include="IDBExt.cs" />
     <Compile Include="IEventMediator.cs" />
     <Compile Include="IFriendMediator.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="IMessageMediator.cs" />
     <Compile Include="INoteMediator.cs" />
     <Compile Include="IPhotoMediator.cs" />
+    <Compile Include="ISuperNoteMediator.cs" />
     <Compile Include="IUserMediator.cs" />
     <Compile Include="IViewMediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
