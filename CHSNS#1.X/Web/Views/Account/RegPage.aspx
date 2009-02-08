@@ -11,8 +11,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<form id="registerForm" action="<%=Url.Action("SaveReg") %>" method='post'
 	onsubmit="IsRegValition(this);return false;">
-	<%if (TempData.ContainsKey("errors"))
-   { %>
+	<%if (TempData.ContainsKey("errors")) { %>
 	<div class="notes">
 		<%=TempData["errors"] %></div>
 	<%} %>
@@ -70,7 +69,7 @@
 			if (CurrentUsername != $v('#Username')) {
 				CurrentUsername = $v('#Username');
 				$.post('<%=Url.Action("UsernameCanUse") %>', { 'username': $v('#Username') }, function(r) {
-				FormMsg('#Username', r != 'true' ? '用户名已经有人使用' : '<%=Html.ImageInStyle("check_right.gif")%>');
+				FormMsg('#Username', r != 'true' ? '用户名已经有人使用' : '可以使用');
 				});
 			}
 		};
