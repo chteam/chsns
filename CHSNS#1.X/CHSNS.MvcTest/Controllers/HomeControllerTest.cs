@@ -28,7 +28,5 @@ namespace CHSNS.MvcTest.Controllers
             ViewDataDictionary viewData = result.ViewData;
             Assert.AreEqual("首页", viewData["Page_Title"]);
         }
-
-   
     }
 }
