@@ -1,4 +1,4 @@
-﻿<%@ Control AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Models.Event>>"
+﻿<%@ Control AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<CHSNS.Models.Event>>"
     Language="C#" %>
 
 	<% foreach (CHSNS.Models.Event e in ViewData.Model) { %>
