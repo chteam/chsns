@@ -20,9 +20,7 @@ namespace CHSNS
 					System.IO.File.Create(filepath);
 				if ((System.IO.File.GetAttributes(filepath)
 					& FileAttributes.ReadOnly) == FileAttributes.ReadOnly) {
-					//   Show   the   file.  
 					System.IO.File.SetAttributes(filepath, FileAttributes.Archive);
-
 				}
 				using (var myWriter = new StreamWriter(filepath)) {
 					mySerializer.Serialize(myWriter, obj);
@@ -43,14 +41,22 @@ namespace CHSNS
 		/// <returns></returns>
 		public static T Load<T>(string fn) where T : class
 		{
-			try
-			{
+			
+                var filepath = CHServer.MapPath(fn);
+                if (!System.IO.File.Exists(filepath))
+                    System.IO.File.Create(filepath);
+                if ((System.IO.File.GetAttributes(filepath)
+                    & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                {
+                    System.IO.File.SetAttributes(filepath, FileAttributes.Archive);
+                }
 				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
 				using (var myFileStream = new StreamReader(CHServer.MapPath(fn)).BaseStream)
 				{
 					return mySerializer.Deserialize(myFileStream) as T;
 				}
-			}
+		try
+			{	}
 			catch
 			{
 				throw new Exception(string.Format("读取配置文件{0}时出错,编号:{1}", fn, 10358));

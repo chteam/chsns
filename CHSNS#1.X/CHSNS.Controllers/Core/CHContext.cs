@@ -49,7 +49,7 @@ namespace CHSNS
         {
             get
             {
-                return new SiteConfig(new ConfigSerializer(this));
+                return (new SiteConfig(new ConfigSerializer(this))).Current;
             }
             set
             {
