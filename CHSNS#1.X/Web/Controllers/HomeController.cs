@@ -14,7 +14,7 @@ namespace CHSNS.Controllers
             return View("Index");
         }
 		public void Logout() {
-			CHCookies.Clear();
+			CHContext.Cookies.Clear();
 			CHUser.Clear();
 			RedirectToAction("index");
 		}

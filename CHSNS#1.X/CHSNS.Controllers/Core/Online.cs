@@ -12,7 +12,6 @@ namespace CHSNS {
         public Online(IContext context)
         {
             Context = context;
-
         }
 		private const string ONLINE_REMOVETIME = "useronline.time";
 		private const string ONLINE_LIST = "useronline";

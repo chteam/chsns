@@ -29,8 +29,8 @@ namespace CHSNS.Controllers {
 		private IDBExt _dbext;
 		protected IDBExt DBExt {
 			get {
-				if (_dbext == null)
-					_dbext = new DBExt();
+                if (_dbext == null)
+                    _dbext = new DBExt(CHContext);
 				return _dbext;
 			}
 			set {
@@ -65,11 +65,12 @@ namespace CHSNS.Controllers {
 				if (ViewData.ContainsKey(item.Key))
 					ViewData[item.Key] = item.Value;
 			if (ViewData.ContainsKey("Page_Title"))
-				ViewData["Page_Title"] += "-" + Config.SiteConfig.Current.BaseConfig.Title;
+				ViewData["Page_Title"] += "-" + CHContext.Site.BaseConfig.Title;
 		}
 		protected static void Validate404(object obj) {
 			if (obj == null)
 				throw new HttpException(404, "Not Found");
 		}
+        public IUser CHUser { get { return CHContext.User; } }
 	}
 }

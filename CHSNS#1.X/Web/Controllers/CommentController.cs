@@ -94,7 +94,7 @@ namespace CHSNS.Controllers {
 		#region comment
 		public ActionResult List(long id, int p, CommentType type) {
 			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(p,
-				SiteConfig.Current.Note.CommentEveryPage
+				CHContext.Site.Note.CommentEveryPage
 				).OrderBy(c => c.Comment.ID);
 			return View("Comment/Item", cl);
 		}
