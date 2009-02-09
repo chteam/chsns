@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <div class="untityright link">
-	<%if (CHUser.IsLogin) {%>
+	<%if (CH.Context.User.IsLogin) {%>
 	<div class="menu">
 	<a href="javascript:void(0);" class="menu_title">应用</a>
 		<ul class="menu_network">
@@ -15,7 +15,7 @@
 	<%=CHStatic.FriendRequestCount == 0?
 		Html.ActionLink("好友", "Index", "Friend"):
 		Html.ActionLink(string.Format("好友({0})", CHStatic.FriendRequestCount), "Request", "Friend")%>
-	<div class="menu"><a href="javascript:void(0);" class="menu_title">您好！<%=CHUser.Username %></a>
+	<div class="menu"><a href="javascript:void(0);" class="menu_title">您好！<%=CH.Context.User.Username %></a>
 		<ul class="menu_network">
 			<li>
 				<%=Html.ActionLink("我的页面", "Index", "User")%></li>

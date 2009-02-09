@@ -18,12 +18,12 @@ $item.RowNo楼
 </span>
 <a href="/User.aspx?userid=${item.senderid}" title="点击人名查看">${item.name}</a>##$University$
 <span class="time">$item.addtime.ToString("MM-dd HH:mm")</span>
-#if ($ChHelper.ChUser.Userid!=$item.senderid)
+#if ($ChHelper.CH.Context.User.Userid!=$item.senderid)
 <span class="reply"><a href="#userTalk" onclick="onReplyClick('${item.name}','${item.senderid}'); return false;">回复</a></span>
 #end
 #if (!$item.isdel)
-	#if ($ChHelper.ChUser.Userid == $item.ownerid || $ChHelper.ChUser.Userid==$item.senderid)
-		#if ($ChHelper.ChUser.Userid!=$item.senderid)
+	#if ($ChHelper.CH.Context.User.Userid == $item.ownerid || $ChHelper.CH.Context.User.Userid==$item.senderid)
+		#if ($ChHelper.CH.Context.User.Userid!=$item.senderid)
 			<span class="pipe">|</span>
 		#end
 <span class="remove">
@@ -31,7 +31,7 @@ $item.RowNo楼
 </span>
 	#end
 #end
-#if ($item.ownerid == $ChHelper.ChUser.Userid  && $ChHelper.ChUser.Userid!=$item.senderid && !$item.issee)
+#if ($item.ownerid == $ChHelper.CH.Context.User.Userid  && $ChHelper.CH.Context.User.Userid!=$item.senderid && !$item.issee)
 <span id="comment_see_${item.id}" class="setsee"><a href="javascript:onSeeReply(${item.id});">置为已读</a></span>
 #end
 </div>

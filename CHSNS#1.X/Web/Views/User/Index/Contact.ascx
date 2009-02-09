@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true"
 Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
 <% UserPas up = ViewData.Model;
-   if (Convert.ToInt16(up.User["Relation"]) >= Convert.ToInt16(up.User["ContactInfoShowLevel"]) || CHUser.IsAdmin) {
+   if (Convert.ToInt16(up.User["Relation"]) >= Convert.ToInt16(up.User["ContactInfoShowLevel"]) || CH.Context.User.IsAdmin) {
 %>
 <a href='#' class="accordionHeader" id="contact-header">联系方式 Contacts</a>
 <%--<div class="accordionHeader" id="contact-header">

@@ -15,7 +15,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 		您所访问的群不存在</div>
 	<%} else {
 		bool IsAdmin = guser.Status.Equals(GroupUserStatus.Admin) || guser.Status.Equals(GroupUserStatus.Ceater) ||
-					   CHUser.IsAdmin;
+					   CH.Context.User.IsAdmin;
 		int right = int.Parse(ViewData["right"].ToString());
 		int applycount = int.Parse(ViewData["Applycount"].ToString());
 	%>
@@ -94,7 +94,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 				</div>
 				<div id="Loglist">
 					<%--##<帖子列表>--%>
-					<%if (right == 8 || CHUser.IsAdmin) {%>
+					<%if (right == 8 || CH.Context.User.IsAdmin) {%>
 					<%Html.RenderPartial("Post/List", ViewData["posts"]); %>
 					<%--#component(PostList with "Groupid=$group.id" "EveryPage=20" "nowpage=$nowpage")--%>
 					<%} else { %>
@@ -110,7 +110,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 			</div>
 		</div>
 		<div>
-			<%if (right == 0 || CHUser.IsAdmin) {%>
+			<%if (right == 0 || CH.Context.User.IsAdmin) {%>
 			<h4>
 				<a href="#sendsubject">发表新主题</a></h4>
 			<form action="<%=Url.Action("Post","Group") %>" method="post" onsubmit="return sub();">

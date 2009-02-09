@@ -15,7 +15,7 @@ Inherits="System.Web.Mvc.ViewUserControl<MessageDetailsPas>" %>
 	                  	: Html.Encode(ViewData.Model.Message.Body)%>
 </div>
 <%
-	if (ViewData.Model.UserInbox.ID == CHUser.UserID){%>
+	if (ViewData.Model.UserInbox.ID == CH.Context.User.UserID){%>
 		<textarea cols="40" id="Body" name="Body" rows="6"></textarea>
 		<%=Html.Hidden("ToID", ViewData.Model.UserOutbox.ID.ToString())%><br />
 		<input class="subbutton" value="发送" type="button" onclick="sub();" />

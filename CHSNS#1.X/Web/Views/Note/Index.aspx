@@ -8,7 +8,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 	<fieldset>
 		<legend>
 			<%=ViewData["username"] %>的日志</legend>
-			<%=ViewData["UserID"].ToString()==CHUser.UserID.ToString()? Html.ActionLink("发布新日志","Edit","Note") :""%>
+			<%=ViewData["UserID"].ToString()==CH.Context.User.UserID.ToString()? Html.ActionLink("发布新日志","Edit","Note") :""%>
 		<div class="ch_content">
 			<div id="PageUp" class="page">
 			</div>

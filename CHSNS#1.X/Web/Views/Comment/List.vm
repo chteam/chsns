@@ -1,4 +1,4 @@
-﻿#if ($Relation < $AllShowLevel && !$ChHelper.ChUser.isAdmin)
+﻿#if ($Relation < $AllShowLevel && !$ChHelper.CH.Context.User.isAdmin)
 ##不是管理员或者无权限时限制
 $Response.Redirect("/Search.aspx?userid=${Ownerid}&mode=show");
 #end
@@ -30,7 +30,7 @@ function GetReplyListSuccessed(result){
 	(<span class="count" id="rCount"></span>条留言)</p>
 	<p class="crumbs">
 	<a href="/User.aspx?userid=$Ownerid">$Username</a><span class="pipe">/</span>留言板 
-	#if ($Ownerid == $ChHelper.ChUser.Userid)
+	#if ($Ownerid == $ChHelper.CH.Context.User.Userid)
 	<span class="setsee"><a href="javascript:onSeeAll();">全部置为已读</a></span>
 	#end
 	</p>
