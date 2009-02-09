@@ -127,6 +127,7 @@
     <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
+    <Compile Include="ICache.cs" />
     <Compile Include="Interface\IApplication.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
     <Compile Include="Media\Media.cs" />
