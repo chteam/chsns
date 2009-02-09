@@ -16,7 +16,7 @@ Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
 				<li><span>性 别：</span><%=up.Basic.Sex.HasValue&&up.Basic.Sex.Value ? "男生" : "女生"%></li>
 		<%
 			}
-	if (0 == up.Basic.ShowLevel || CHUser.IsAdmin) {
+	if (0 == up.Basic.ShowLevel || CH.Context.User.IsAdmin) {
 		%>
 	
 		<%if (up.Basic.Birthday.HasValue) { %>

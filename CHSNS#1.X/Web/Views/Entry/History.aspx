@@ -26,7 +26,7 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage" %>
 			<li>
 				<%=Html.ActionLink("历史版本","Historylist", new { id=entry.ID})%>
 				<span>(<%=entry.EditCount %>)</span></li>
-			<%if (CHUser.IsAdmin) { %>
+			<%if (CH.Context.User.IsAdmin) { %>
 			<li>
 				<%=Html.ActionLink("编辑词条", "Edit", new { id = entry.ID })%>
 			</li>

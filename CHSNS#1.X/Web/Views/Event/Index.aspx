@@ -6,7 +6,7 @@ Inherits="System.Web.Mvc.ViewPage<EventPagePas>" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% EventPagePas ep = ViewData.Model; %>
 	<div id="userRelations">
-		<%if (CHUser.IsAdmin) { %>
+		<%if (CH.Context.User.IsAdmin) { %>
 		<div id="Event_Admin">
 			<h4>
 				管理员</h4>
@@ -47,7 +47,7 @@ Inherits="System.Web.Mvc.ViewPage<EventPagePas>" %>
 						<%=Html.ActionLink(dr["name"].ToString(),"Index","User",new {userid=dr["userid"].ToString()}) %>
 						在
 						<%if (dr["type"].ToString() == "0") { %>
-						<%=Html.ActionLink("我的页面","Index","User",new {userid=CHUser.UserID}) %>
+						<%=Html.ActionLink("我的页面","Index","User",new {userid=CH.Context.User.UserID}) %>
 						<%} else { %>
 						<a href="/Note.aspx?id=logid&amp;groupid=$groupid&amp;">
 							<%=dr["title"] %></a>

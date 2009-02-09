@@ -34,10 +34,10 @@
 				<li>
 			<label>
 				标  题：</label>
-			$ChHelper.ChUser.Username 邀请你加入 </li>
+			$ChHelper.CH.Context.User.Username 邀请你加入 </li>
 		<li>
 			<label>发 信 人：</label>
-			$ChHelper.ChUser.Username</li>
+			$ChHelper.CH.Context.User.Username</li>
 
 		<li>
 			<label>收 信 人 Email：</label><br />

@@ -1,1 +1,1 @@
-﻿#component(Event with "type=0" "userid=$ChHelper.ChUser.Userid")
+﻿#component(Event with "type=0" "userid=$ChHelper.CH.Context.User.Userid")

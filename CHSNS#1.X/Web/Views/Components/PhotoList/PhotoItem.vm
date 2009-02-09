@@ -1,5 +1,5 @@
 ﻿#if($rows.count<1)
-			#if($ChHelper.ChUser.Userid==$Ownerid)
+			#if($ChHelper.CH.Context.User.Userid==$Ownerid)
 <li style="width:100%" class="notes">您还没上传照片 , Show出你自己吧
 <input type="button" onclick="ShowUpload();" value="Go-&gt;" class="subbutton" />
 </li>
@@ -13,7 +13,7 @@
 <li id="Photo_li$photo.get_item("id")">
 <a href="javascript:showPic('$ChHelper.Path.GetPhoto($Ownerid,$photo.get_item("path"))');">
 <img src="$ChHelper.Path.GetThumbPhoto($Ownerid,$photo.get_item("path"))" alt="$photo.get_item("Photoname") at $photo.get_item("Addtime").ToString("yy年MM月dd日")" style="max-width: 130px;" /></a>
-<div class="pedit">#if($ChHelper.ChUser.Userid==$Ownerid)
+<div class="pedit">#if($ChHelper.CH.Context.User.Userid==$Ownerid)
 <a href="javascript:Photo_Cover($photo.get_item("id"));">设为封皮</a>
 <a href="javascript:DeletePhoto($photo.get_item("id"),'$ChHelper.Path.GetPhoto($Ownerid,$photo.get_item("path"))');">删除</a>
 	    #end</div>

@@ -92,6 +92,7 @@
     <Compile Include="Base\ViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="CH.cs" />
     <Compile Include="CHStatic.cs" />
     <Compile Include="Core\CHCache.cs" />
     <Compile Include="Core\CHContext.cs" />
@@ -111,7 +112,6 @@
     <Compile Include="Extension\Grid\ISimpleColumnBuilder.cs" />
     <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
     <Compile Include="Extension\Html\ApplicationContext.cs" />
-    <Compile Include="Extension\View\ViewExtension.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />

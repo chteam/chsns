@@ -4,7 +4,7 @@
 
 #if(!$blog)
 <div class="notes">你所访问的博客不存在
-	#if($userid==$ChHelper.ChUser.Userid)
+	#if($userid==$ChHelper.CH.Context.User.Userid)
 $Url.LINK("创建","%{action='Edit',controller='Blog',area=''}")
 	#end
 </div>

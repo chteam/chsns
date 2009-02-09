@@ -12,12 +12,12 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<CommentPas>>" %>
 			<%=Html.UserPageLink(dr.Sender.ID,dr.Sender.Name)%>
 			<span class="time">
 				<%=dr.Comment.AddTime.ToString("yyyy-MM-dd HH:mm") %></span>
-			<%if (dr.Sender.ID != CHUser.UserID) {%>
+			<%if (dr.Sender.ID != CH.Context.User.UserID) {%>
 			<span class="reply"><a href="javascript:void(0);" onclick="WillReply('<%=dr.Sender.Name%>','<%=dr.Sender.ID%>');">
 				回复</a></span>
 			<%}
 	 if (!dr.Comment.IsDel) {
-		 if (dr.Comment.OwnerID == CHUser.UserID || CHUser.IsAdmin) {
+		 if (dr.Comment.OwnerID == CH.Context.User.UserID || CH.Context.User.IsAdmin) {
 			%>
 			<a href="<%=dr.Comment.ID%>" class="delete">删除</a>
 			<%}

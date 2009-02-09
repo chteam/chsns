@@ -24,7 +24,7 @@
                     <td class="nav">
                         <div class="navin">
                             <ul class="list_1">
-                            <li class="member1"><%=CHUser.Username%></li>
+                            <li class="member1"><%=CH.Context.User.Username%></li>
                                 <li class="member2">
                                 <%=Html.ActionLink("修改密码", "ChangePassword", "Account")%> |
                                     <%=Html.ActionLink("退出", "Logout", "Account")%></li>

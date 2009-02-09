@@ -19,7 +19,7 @@
 <div class="ch_content">
 <div class="box">
 <h3>其他班级</h3>
-#if($ChHelper.ChUser.Status<8)
+#if($ChHelper.CH.Context.User.Status<8)
 <ul><li class="notes">您还没有加入任何班级,请先加入班级,或自己创建一个吧</li></ul>
 #end
 <ul>

@@ -23,7 +23,7 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 				<%=Html.UserPageLink(u.ID,u.Name) %>
 				阅读(<%=n.ViewCount %>) 评论(<%=n.CommentCount %>)<%-- 推荐(<%=n.PushCount %>)--%>
 				<%
-					if (n.UserID == CHUser.UserID) {
+					if (n.UserID == CH.Context.User.UserID) {
 				%>
 				<%=Html.NoteEdit(n.ID, "编辑")%>
 				<%

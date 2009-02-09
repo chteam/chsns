@@ -56,7 +56,7 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<PagedList<EntryPas>>" %
             </td>
             <td>
                  <%=e.Status%>
-                <%if (CHUser.Status.Contains(RoleType.Creater, RoleType.Editor			  )){%>
+                <%if (CH.Context.User.Status.Contains(RoleType.Creater, RoleType.Editor			  )){%>
                 <%=(e.Status != (int)EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.ID }) : ""%>
                 <%=(e.Status !=(int) EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.ID }) : ""%>
                 <%} %>
