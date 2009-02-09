@@ -48,14 +48,14 @@ namespace CHSNS {
 		/// </summary>
 		/// <param name="fn"></param>
 		/// <returns></returns>
-		public static string ImageInStyle(string fn) {
-			return string.Format(
-				"{0}Style/{1}/images/{2}"
-				, CHSite.BaseConfig.Path
-				, CHSite.BaseConfig.Style, fn)
-				.Replace("\\", "/")
-				.Replace("//", "/");
-		}
+        //public static string ImageInStyle(string fn) {
+        //    return string.Format(
+        //        "{0}Style/{1}/images/{2}"
+        //        , CHSite.BaseConfig.Path
+        //        , CHSite.BaseConfig.Style, fn)
+        //        .Replace("\\", "/")
+        //        .Replace("//", "/");
+        //}
 		#endregion
 
 		#region ÐÂ°æ±¾µÄ

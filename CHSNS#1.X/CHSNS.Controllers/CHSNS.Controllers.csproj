@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -90,7 +90,9 @@
   <ItemGroup>
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="CHStatic.cs" />
-    <Compile Include="Core\ChCache.cs" />
+    <Compile Include="Core\CHCache.cs" />
+    <Compile Include="Core\CHContext.cs" />
+    <Compile Include="Core\CHCookies.cs" />
     <Compile Include="DefaultDataBinder.cs" />
     <Compile Include="Extension\Common\EnumerableExtensions.cs" />
     <Compile Include="Extension\Grid\Grid.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Extension\Grid\IRootGridColumnBuilder.cs" />
     <Compile Include="Extension\Grid\ISimpleColumnBuilder.cs" />
     <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
+    <Compile Include="Extension\Html\ApplicationContext.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />
@@ -129,6 +132,7 @@
     <Compile Include="Result\NotFoundResult.cs" />
     <Compile Include="Result\XmlActionResult.cs" />
     <Compile Include="Result\XmlViewResult.cs" />
+    <Compile Include="Server\Environment.cs" />
     <Compile Include="Services\EmailTemplateService.cs" />
     <Compile Include="Services\IEmailTemplateService.cs" />
     <Compile Include="Extension\Mvc\EmptyActionResultExt.cs" />

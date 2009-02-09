@@ -12,6 +12,14 @@ namespace CHSNS.Controllers {
 	[OnlineFilter]
 	[HandleError]
 	abstract public class BaseController : Controller  {
+        public IContext CHContext { get { return new CHContext(); } }
+        public ConfigSerializer ConfigSerializer
+        {
+            get
+            {
+                return new ConfigSerializer(CHContext);
+            }
+        }
 		public Boolean IsPost {
 			get {
 				return Request.Form.Count != 0;

@@ -6,7 +6,7 @@ namespace CHSNS
 	/// <summary>
 	/// 配置文件序列化及反序列化
 	/// </summary>
-	public class ConfigSerializer : CHSNS.IConfigSerializer
+	public class ConfigSerializer : CHSNS.ISerializer
 	{
         IContext Context { get; set; }
         public ConfigSerializer(IContext context) {

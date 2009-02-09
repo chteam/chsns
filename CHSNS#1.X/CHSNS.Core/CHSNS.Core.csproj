@@ -93,9 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="CHCookies.cs" />
     <Compile Include="ChServer.cs" />
-    <Compile Include="CHSite.cs" />
     <Compile Include="CHUser.cs" />
     <Compile Include="CommentType.cs" />
     <Compile Include="ConfigSerializer.cs" />
@@ -126,8 +124,8 @@
     <Compile Include="File\ImageUpload.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
-    <Compile Include="HttpHandler\ImageHttpHandler.cs" />
     <Compile Include="Context\ICache.cs" />
+    <Compile Include="ICookies.cs" />
     <Compile Include="Interface\IApplication.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
     <Compile Include="Interface\ISerializer.cs" />
