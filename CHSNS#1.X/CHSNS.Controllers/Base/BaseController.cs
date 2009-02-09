@@ -17,7 +17,7 @@ namespace CHSNS.Controllers {
         {
             get
             {
-                return new ConfigSerializer(CHContext);
+                return CHContext.ConfigSerializer as ConfigSerializer;
             }
         }
 		public Boolean IsPost {

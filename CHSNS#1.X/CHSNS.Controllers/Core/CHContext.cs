@@ -70,5 +70,22 @@ namespace CHSNS
             }
         }
 
+
+        #region IContext 成员
+
+
+        public ISerializer ConfigSerializer
+        {
+            get
+            {
+                return new ConfigSerializer(this);
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        #endregion
     }
 }
