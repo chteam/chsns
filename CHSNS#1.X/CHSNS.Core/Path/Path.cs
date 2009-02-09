@@ -68,9 +68,9 @@ namespace CHSNS {
 		static public string UserWebPath(string userid) {
 			return string.Format("/userFiles/{0}/", userid.PadLeft(12, '0').Insert(9, "/").Insert(6, "/").Insert(4, "/"));
 		}
-		static public string UserWebPath() {
-			return UserWebPath(CHUser.UserID.ToString());
-		}
+        //static public string UserWebPath() {
+        //    return UserWebPath(CHUser.UserID.ToString());
+        //}
 		#endregion
 		#region 
 		/// <summary>
@@ -130,9 +130,9 @@ namespace CHSNS {
 		public string GetFace_Middle(object userid) {
 			return GetFace(userid.ToString(), ThumbType.Middle);
 		}
-		public string GetFace_Big() {
-			return GetFace_Big(CHUser.UserID);
-		}
+        //public string GetFace_Big() {
+        //    return GetFace_Big(CHUser.UserID);
+        //}
 		public string GetFace_Big(object userid) {
 			return GetFace(userid.ToString(), ThumbType.Big);
 		}
@@ -186,23 +186,23 @@ namespace CHSNS {
 			return string.Format("/groupFiles/{0}/", Groupid);
 		}
 		
-		/// <summary>
-		/// 用户相册路径
-		/// </summary>
-		/// <returns>返回形如/userFiles/{0}/{1}/{2}/{3}/photos/的结果</returns>
-		static public string ClientUserPhotosFolder() {
-			return ClientUserPhotosFolder(CHUser.UserID.ToString());
-		}
+        ///// <summary>
+        ///// 用户相册路径
+        ///// </summary>
+        ///// <returns>返回形如/userFiles/{0}/{1}/{2}/{3}/photos/的结果</returns>
+        //static public string ClientUserPhotosFolder() {
+        //    return ClientUserPhotosFolder(CHUser.UserID.ToString());
+        //}
 		static public string ClientUserPhotosFolder(string userid) {
 			return String.Format("{0}photos/", UserWebPath(userid));
 		}
-		/// <summary>
-		/// 用户缩略图文件夹路径
-		/// </summary>
-		/// <returns>缩略图文件夹路径</returns>
-		static public string ClientUserThumbFolder() {
-			return ClientUserThumbFolder(CHUser.UserID.ToString());
-		}
+        ///// <summary>
+        ///// 用户缩略图文件夹路径
+        ///// </summary>
+        ///// <returns>缩略图文件夹路径</returns>
+        //static public string ClientUserThumbFolder() {
+        //    return ClientUserThumbFolder(CHUser.UserID.ToString());
+        //}
 		static public string ClientUserThumbFolder(string userid) {
 			return String.Format("{0}Thumb/", UserWebPath(userid));
 		}

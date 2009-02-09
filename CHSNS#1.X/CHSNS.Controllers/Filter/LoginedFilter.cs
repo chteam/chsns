@@ -3,7 +3,10 @@ using System.Web.Mvc;
 
 namespace CHSNS {
 	public class LoginedFilter : ActionFilterAttribute {
+
 		public override void OnActionExecuting(ActionExecutingContext filterContext) {
+            var CHUser = (filterContext.Controller as Controllers.BaseController).CHContext.User;
+
 			if (!CHUser.IsLogin) {
 				throw new Exception("请先<a href='/'>登录</a>，如果您没有账号，请先<a href='/reg/AgreementStep.ashx'>注册</a>");
 			}

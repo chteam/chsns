@@ -11,7 +11,7 @@ namespace CHSNS.Data {
 		/// <returns></returns>
 		public DataRowCollection TakeIns(int count){
 			return DataBaseExecutor.GetRows("RssList",
-				"@userid", CHUser.UserID,
+				"@userid", DBExt.Context.User.UserID,
 				"@page", 1,
 				"@everypage", count,
 				"@GroupClass", 0);

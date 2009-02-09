@@ -94,7 +94,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="ChServer.cs" />
-    <Compile Include="CHUser.cs" />
+    <Compile Include="Context\CHUser.cs" />
     <Compile Include="CommentType.cs" />
     <Compile Include="ConfigSerializer.cs" />
     <Compile Include="Config\BaseConfig.cs" />
@@ -129,11 +129,12 @@
     <Compile Include="Interface\IApplication.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
     <Compile Include="Interface\ISerializer.cs" />
+    <Compile Include="IOnline.cs" />
+    <Compile Include="IUser.cs" />
     <Compile Include="Media\Media.cs" />
     <Compile Include="MessageBoxType.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
     <Compile Include="DataExecute\OleDbDataOpener.cs" />
-    <Compile Include="Online.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Tools\HttpProc.cs" />
     <Compile Include="UserStatusType.cs" />

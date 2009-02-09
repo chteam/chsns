@@ -10,7 +10,8 @@ namespace CHSNS.Data {
 		/// </summary>
 		public List<Province> Provinces {
 			get {
-				return ConfigSerializer.Load<List<Province>>("Province");
+                ConfigSerializer c = new ConfigSerializer(DBExt.Context);
+				return c.Load<List<Province>>("Province");
 			}
 		}
 		/// <summary>
@@ -24,7 +25,8 @@ namespace CHSNS.Data {
 
 		List<City> Citys {
 			get {
-				return ConfigSerializer.Load<List<City>>("City");
+                ConfigSerializer c = new ConfigSerializer(DBExt.Context);
+				return c.Load<List<City>>("City");
 			}
 		}
 	}

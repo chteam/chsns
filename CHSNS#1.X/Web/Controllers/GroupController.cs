@@ -73,7 +73,7 @@ namespace CHSNS.Controllers {
 
 		public ActionResult List(long? uid, int? p) {
 			InitPage(ref p);
-			uid = uid ?? CHUser.UserID;
+			uid = uid ?? CHContext.User.UserID;
 			IQueryable<Group> ret = (from gu in DBExt.DB.GroupUser
 									 join g in DBExt.DB.Group on gu.GroupID equals g.ID
 									 where gu.UserID == uid.Value
@@ -171,8 +171,9 @@ namespace CHSNS.Controllers {
 		public ActionResult Details(long id) {
 			NoteDetailsPas note;
 			note = DBExt.Note.Details(id, NoteType.GroupPost);
+            var chsite = HttpContext.Application.CHSite();
 			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
-				SiteConfig.Current.Note.CommentEveryPage
+                chsite.Note.CommentEveryPage
 				).OrderBy(c => c.Comment.ID);
 			ViewData["commentlist"] = cl;
 			Title = note.Note.Title;
@@ -189,7 +190,7 @@ namespace CHSNS.Controllers {
 					return this.RedirectToReferrer();
 				}
 				post.Type = (int)NoteType.GroupPost;
-				post.UserID = CHUser.UserID;
+                post.UserID = CHContext.User.UserID;
 				if (id.HasValue) {
 					post.ID = id.Value;
 					DBExt.Note.Edit(post);

@@ -26,7 +26,7 @@ namespace CHSNS
 			//    return false;
 			//}
 			Online.Update();
-			Online.RemoveOffline();
+			
 		}
 	}
 }
