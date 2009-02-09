@@ -3,6 +3,7 @@ namespace CHSNS
 {
     public interface ICookies
     {
+        IContext Context { get; set; }
         string Apps { get; set; }
         long[] AppsArray { get; }
         void Clear();

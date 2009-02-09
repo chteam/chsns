@@ -14,7 +14,7 @@ namespace CHSNS
         }
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-
+            var CHUser = (filterContext.Controller as Controllers.BaseController).CHContext.User;
             if (!CHUser.Status.Contains(RoleTypes))
             {
 				filterContext.HttpContext.Response.Redirect("/Admin/Login.html");
