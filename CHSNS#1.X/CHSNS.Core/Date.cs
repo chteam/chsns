@@ -74,56 +74,6 @@ namespace CHSNS
 		}
 
 		/// <summary>
-		/// 时间与现在的时间间隔
-		/// </summary>
-		/// <param name="dt">时间</param>
-		/// <returns>间隔的中文</returns>
-		public static string GetTimeDiv(DateTime dt)
-		{
-			TimeSpan st = DateTime.Now - dt;
-			if (st.TotalDays > 3)
-			{
-				return "三天以前";
-			}
-			if (st.TotalDays > 2)
-			{
-				return "两天以前";
-			}
-			if (st.TotalDays > 1)
-			{
-				return "昨天";
-			}
-			if (st.Hours > 0)
-			{
-				return string.Format("{0}小时以前", st.Hours);
-			}
-
-			if (st.Minutes < 1)
-				return "刚刚";
-			return string.Format("{0}分钟以前", st.Minutes);
-		}
-
-		/// <summary>
-		/// 时间与现在的时间间隔
-		/// </summary>
-		/// <param name="dt">时间</param>
-		/// <returns>间隔的中文</returns>
-		public static string GetTimeDiv(string dt)
-		{
-			return GetTimeDiv(Convert.ToDateTime(dt));
-		}
-
-		/// <summary>
-		/// 时间与现在的时间间隔
-		/// </summary>
-		/// <param name="dt">时间</param>
-		/// <returns>间隔的中文</returns>
-		public static string GetTimeDiv(Object dt)
-		{
-			return GetTimeDiv(Convert.ToDateTime(dt));
-		}
-
-		/// <summary>
 		/// 获取天干或地枝的编号
 		/// </summary>
 		/// <param name="dat">要计算日期</param>
