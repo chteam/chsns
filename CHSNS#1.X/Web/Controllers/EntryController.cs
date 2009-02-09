@@ -118,7 +118,6 @@ namespace CHSNS.Controllers
             if (!string.IsNullOrEmpty(title))
                 if (title.Contains("%"))
                     title = Server.UrlDecode(title);
-          
             bool exists;
             IQueryable<Entry> data = null;
             if (!string.IsNullOrEmpty(title))
