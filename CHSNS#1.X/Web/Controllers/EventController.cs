@@ -62,8 +62,8 @@ namespace CHSNS.Controllers {
 			if (x.Where(q => q.Value == li.Value).Count() != 1)
 			{
 				x.Add(li);
-				ConfigSerializer.Serializer(x, "SystemTemplate");
-				ConfigSerializer.Clear("SystemTemplate");
+				ConfigSerializer.Save(x, "SystemTemplate");
+				ConfigSerializer.ClearCache("SystemTemplate");
 				CHSNS.File.SaveAllText(Path.EventSystemTemplatePath(li.Value), c);
 			}
 			else {

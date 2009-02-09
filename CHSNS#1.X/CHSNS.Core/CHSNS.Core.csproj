@@ -130,6 +130,7 @@
     <Compile Include="Context\ICache.cs" />
     <Compile Include="Interface\IApplication.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
+    <Compile Include="Interface\ISerializer.cs" />
     <Compile Include="Media\Media.cs" />
     <Compile Include="MessageBoxType.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
