@@ -22,7 +22,7 @@ namespace CHSNS
         {
             get
             {
-                return HttpContext.Current.Request.Cookies[SiteConfig.Current.BaseConfig.CookieName] != null;
+                return HttpContext.Current.Request.Cookies[Context.Site.BaseConfig.CookieName] != null;
             }
         }
 
@@ -30,15 +30,16 @@ namespace CHSNS
         Encrypt en = new Encrypt();
         string GetCookieItem(string field)
         {
-            if (HttpContext.Current.Request.Cookies[SiteConfig.Current.BaseConfig.CookieName] == null)
+
+            if (HttpContext.Current.Request.Cookies[Context.Site.BaseConfig.CookieName] == null)
                 return "";
-            if (HttpContext.Current.Request.Cookies[SiteConfig.Current.BaseConfig.CookieName][field] == null)
+            if (HttpContext.Current.Request.Cookies[Context.Site.BaseConfig.CookieName][field] == null)
                 return "";
-            return HttpContext.Current.Request.Cookies[SiteConfig.Current.BaseConfig.CookieName][field];
+            return HttpContext.Current.Request.Cookies[Context.Site.BaseConfig.CookieName][field];
         }
         void SetCookieItem(string field, string value)
         {
-            HttpContext.Current.Response.Cookies[SiteConfig.Current.BaseConfig.CookieName][field] = value;
+            HttpContext.Current.Response.Cookies[Context.Site.BaseConfig.CookieName][field] = value;
         }
         #endregion
         ///<summary>«Â¿ÌCookie
@@ -46,11 +47,11 @@ namespace CHSNS
         public void Clear()
         {
             //ChCookies.Expires = DateTime.Now.AddDays(-1);
-            HttpContext.Current.Response.Cookies.Remove(SiteConfig.Current.BaseConfig.CookieName);
+            HttpContext.Current.Response.Cookies.Remove(Context.Site.BaseConfig.CookieName);
             HttpContext.Current.Response.Cookies.Clear();
-            if (HttpContext.Current.Request.Cookies[SiteConfig.Current.BaseConfig.CookieName] != null)
+            if (HttpContext.Current.Request.Cookies[Context.Site.BaseConfig.CookieName] != null)
             {
-                HttpCookie myCookie = new HttpCookie(SiteConfig.Current.BaseConfig.CookieName);
+                HttpCookie myCookie = new HttpCookie(Context.Site.BaseConfig.CookieName);
                 myCookie.Expires = DateTime.Now.AddDays(-1d);
                 HttpContext.Current.Response.Cookies.Add(myCookie);
             }
@@ -140,7 +141,7 @@ namespace CHSNS
         {
             set
             {
-                HttpContext.Current.Response.Cookies[SiteConfig.Current.BaseConfig.CookieName].Expires = value;
+                HttpContext.Current.Response.Cookies[Context.Site.BaseConfig.CookieName].Expires = value;
             }
         }
         #endregion

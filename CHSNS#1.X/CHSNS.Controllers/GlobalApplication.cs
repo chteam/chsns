@@ -45,13 +45,16 @@ namespace CHSNS {
 		}
 
 		public void Session_OnStart(object sender, EventArgs e) {
+            IContext Context = new CHContext();
 			using (new TransactionScope()) {
-				if (!CHUser.IsLogin) {
+                if (!Context.User.IsLogin)
+                {
 					//当前不处于登录状态
-					if (CHCookies.IsAutoLogin) {
-						string pwd = CHCookies.UserPassword;
-						var idb = new DBExt();
-						idb.Account.Login(CHCookies.UserID.ToString(),
+                    if (Context.Cookies.IsAutoLogin)
+                    {
+                        string pwd = Context.Cookies.UserPassword;
+						var idb = new DBExt(Context);
+                        idb.Account.Login(Context.Cookies.UserID.ToString(),
 										  pwd,
 										  true,
 										  false

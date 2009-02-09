@@ -47,7 +47,7 @@ namespace CHSNS.Controllers {
 		public ActionResult Details(long id) {
 			var note = DBExt.Note.Details(id, NoteType.Note);
 			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
-				SiteConfig.Current.Note.CommentEveryPage
+				CHContext.Site.Note.CommentEveryPage
 				).OrderBy(c => c.Comment.ID);
 			ViewData["commentlist"] = cl;
 			Title = note.Note.Title;
