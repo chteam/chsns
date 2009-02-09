@@ -18,13 +18,13 @@ namespace CHSNS {
 		static NeastStore Storer {
 			get {
 				if (Session["CHStatic"] == null) {
-					var db = new Data.DBExt();
-					var ret = db.UserInfo.GetUser(CHUser.UserID, c => new NeastStore
-					                                                  	{
-					//	FriendRequestCount = c.FriendRequestCount,
-					//	UnReadMessageCount = c.UnReadMessageCount
-					});
-					Session["CHStatic"] = ret;
+					//var db = new Data.DBExt();
+                    //var ret = db.UserInfo.GetUser(CHUser.UserID, c => new NeastStore
+                    //                                                    {
+                    ////	FriendRequestCount = c.FriendRequestCount,
+                    ////	UnReadMessageCount = c.UnReadMessageCount
+                    //});
+					//Session["CHStatic"] = ret;
 				}
 				return Session["CHStatic"] as NeastStore;
 			}

@@ -12,6 +12,10 @@ namespace CHSNS
     /// </summary>
     public class CHCookies : CHSNS.ICookies
     {
+        public CHCookies(IContext context)
+        {
+            Context = context;
+        }
         ///<summary>
         ///</summary>
         public Boolean IsExists
@@ -140,5 +144,8 @@ namespace CHSNS
             }
         }
         #endregion
+
+        public IContext Context { get; set; }
+
     }
 }

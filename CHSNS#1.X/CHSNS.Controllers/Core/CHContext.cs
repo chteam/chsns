@@ -36,7 +36,7 @@ namespace CHSNS
         {
             get
             {
-                return new CHCookies();
+                return new CHCookies(this);
             }
             set
             {
