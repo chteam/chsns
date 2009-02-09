@@ -28,7 +28,7 @@ namespace CHSNS.Controllers.Admin {
 			app.IsTrue=true;
 			var ais = ConfigSerializer.Load<SystemApplicationConfig>("SystemApplication", false);
 			ais.Items.Add(app);
-			ConfigSerializer.Serializer(ais, "SystemApplication");
+			ConfigSerializer.Save(ais, "SystemApplication");
 			return RedirectToAction("Manage");
 		}
 		public ActionResult Delete(string id)
@@ -37,7 +37,7 @@ namespace CHSNS.Controllers.Admin {
 			var ais = ConfigSerializer.Load<SystemApplicationConfig>("SystemApplication", false);
 			var item = ais.Items.Where(c => c.ID == id.Trim()).FirstOrDefault();
 			ais.Items.Remove(item);
-			ConfigSerializer.Serializer(ais, "SystemApplication");
+			ConfigSerializer.Save(ais, "SystemApplication");
 			HttpContext.Application.UnLock();
 			return this.RedirectToReferrer();
 		}

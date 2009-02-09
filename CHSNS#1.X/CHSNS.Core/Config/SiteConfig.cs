@@ -6,6 +6,8 @@ namespace CHSNS.Config {
 	/// </summary>
 	[Serializable]
 	public class SiteConfig {
+
+
 		public BaseConfig BaseConfig { get; set; }
 		public RegVisitConfig RegVisitConfig { get; set; }
 		public Publish Publish { get; set; }
@@ -29,7 +31,7 @@ namespace CHSNS.Config {
 		/// </summary>
 		public void Save() {
 			string fn = "Config";
-			ConfigSerializer.Serializer(this, fn);
+			ConfigSerializer.Save(this, fn);
 		}
 	}
 }

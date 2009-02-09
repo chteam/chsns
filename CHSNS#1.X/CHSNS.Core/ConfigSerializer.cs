@@ -6,10 +6,10 @@ namespace CHSNS
 	/// <summary>
 	/// 配置文件序列化及反序列化
 	/// </summary>
-	public class ConfigSerializer
+	public class ConfigSerializer : CHSNS.IConfigSerializer
 	{
         IContext Context { get; set; }
-        public ConfigSerializer(IContext context ) {
+        public ConfigSerializer(IContext context) {
             Context = context;
         }
 		private const string PATH = "/Config/{0}.xml";
@@ -20,16 +20,16 @@ namespace CHSNS
 		/// <typeparam name="T">序列化此类型</typeparam>
 		/// <param name="obj">要序列化的对象</param>
 		/// <param name="key">键值</param>
-		public  void Serializer<T>(T obj, string key) where T : class
+		public  void Save<T>(T obj, string key) where T : class
 		{
 			XmlSerializer.Save(obj, string.Format(PATH, key));
-			Clear(key);
+			ClearCache(key);
 		}
 		/// <summary>
 		/// Clears the Cache of Congig.
 		/// </summary>
 		/// <param name="key">The key.</param>
-        public void Clear(string key) { Context.Cache.Remove(string.Format(PATH, key).ToLower()); }
+        public void ClearCache(string key) { Context.Cache.Remove(string.Format(PATH, key).ToLower()); }
 
 		/// <summary>
 		/// 从配置文件反序列化
