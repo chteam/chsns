@@ -93,7 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="ChCache.cs" />
     <Compile Include="CHCookies.cs" />
     <Compile Include="ChServer.cs" />
     <Compile Include="CHSite.cs" />
@@ -111,6 +110,7 @@
     <Compile Include="Config\SystemApplicationItem.cs" />
     <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="Config\ThumbnailPair.cs" />
+    <Compile Include="Context\IContext.cs" />
     <Compile Include="DataExecute\DataBaseExecutor.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="Email\IEmail.cs" />
@@ -127,7 +127,7 @@
     <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="HttpHandler\ImageHttpHandler.cs" />
-    <Compile Include="ICache.cs" />
+    <Compile Include="Context\ICache.cs" />
     <Compile Include="Interface\IApplication.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
     <Compile Include="Media\Media.cs" />

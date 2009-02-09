@@ -1,6 +1,6 @@
 ﻿using System;
 namespace CHSNS {
-    interface ICache {
+    public interface ICache {
         void Add(string key, object obj, TimeSpan ts);
         void Add(string key, object obj);
         bool Contains(string key);

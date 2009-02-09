@@ -8,6 +8,10 @@ namespace CHSNS
 	/// </summary>
 	public class ConfigSerializer
 	{
+        IContext Context { get; set; }
+        public ConfigSerializer(IContext context ) {
+            Context = context;
+        }
 		private const string PATH = "/Config/{0}.xml";
 
 		/// <summary>
@@ -16,7 +20,7 @@ namespace CHSNS
 		/// <typeparam name="T">序列化此类型</typeparam>
 		/// <param name="obj">要序列化的对象</param>
 		/// <param name="key">键值</param>
-		public static void Serializer<T>(T obj, string key) where T : class
+		public  void Serializer<T>(T obj, string key) where T : class
 		{
 			XmlSerializer.Save(obj, string.Format(PATH, key));
 			Clear(key);
@@ -25,7 +29,7 @@ namespace CHSNS
 		/// Clears the Cache of Congig.
 		/// </summary>
 		/// <param name="key">The key.</param>
-		public static void Clear(string key) { CHCache.Remove(string.Format(PATH, key).ToLower()); }
+        public void Clear(string key) { Context.Cache.Remove(string.Format(PATH, key).ToLower()); }
 
 		/// <summary>
 		/// 从配置文件反序列化
@@ -34,13 +38,13 @@ namespace CHSNS
 		/// <param name="key">键</param>
 		/// <param name="IsUseCache">是否使用缓存的值</param>
 		/// <returns></returns>
-		public static T Load<T>(string key, bool IsUseCache) where T : class
+		public  T Load<T>(string key, bool IsUseCache) where T : class
 		{
 			var fn = string.Format(PATH, key).ToLower();
 			if (IsUseCache) {
-				if (!CHCache.Contains(fn))
-					CHCache.Add(fn, XmlSerializer.Load<T>(fn));
-				return CHCache.Get<T>(fn);
+                if (!Context.Cache.Contains(fn))
+                    Context.Cache.Add(fn, XmlSerializer.Load<T>(fn));
+                return Context.Cache.Get<T>(fn);
 			}
 			return XmlSerializer.Load<T>(fn);
 		}
@@ -50,7 +54,7 @@ namespace CHSNS
 		/// <typeparam name="T">反序列化的目标类型</typeparam>
 		/// <param name="key">键</param>
 		/// <returns></returns>
-		public static T Load<T>(string key) where T : class
+		public  T Load<T>(string key) where T : class
 		{
 			return Load<T>(key, true);
 		}
@@ -59,7 +63,7 @@ namespace CHSNS
 		/// </summary>
 		/// <param name="key"></param>
 		/// <returns></returns>
-		public static List<ListItem> GetConfig(string key){
+		public  List<ListItem> GetConfig(string key){
 			return Load<List<ListItem>>(key);
 		}
 
