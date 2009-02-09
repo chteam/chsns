@@ -30,8 +30,8 @@ namespace CHSNS {
 		static public String FormatRichEdit(String str) {
 			const string f = "EditFormat";
 			var dom = new XmlDocument();
-			if (CHCache.IsNullorEmpty(f))
-				if (!CHCache.SetCache(f))
+			//if (CHCache.IsNullorEmpty(f))
+			//	if (!CHCache.a(f))
 					return "过滤配置文件无法加载";
 			dom.LoadXml(HttpContext.Current.Cache[f].ToString());
 			XmlNodeList nl = dom.SelectNodes("/root/item");
