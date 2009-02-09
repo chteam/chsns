@@ -15,13 +15,13 @@ namespace CHSNS.Config {
 		/// <summary>
 		/// ∑¥–Ú¡–ªØ
 		/// </summary>
-		static public SiteConfig Load() {
+		public SiteConfig Load() {
 			return ConfigSerializer.Load<SiteConfig>("Config");
 		}
 		/// <summary>
 		/// Gets the current.
 		/// </summary>
-		public static SiteConfig Current {
+		public SiteConfig Current {
 			get {
 				return Load();
 			}
