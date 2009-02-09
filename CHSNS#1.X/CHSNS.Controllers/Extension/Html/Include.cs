@@ -5,19 +5,21 @@ namespace CHSNS.Helper
 {
 	static public class Include {
 		static public string Script(this HtmlHelper h, String fn) {
+            var chsite = h.ViewContext.HttpContext.Application.CHSite();
 			if (!fn.StartsWith("/"))
 				fn = string.Format("{0}Javascript/{1}.js",
-					CHSite.BaseConfig.Path,
+                    chsite.BaseConfig.Path,
 					fn.TrimEnd(".js"));
 			return
 				string.Format("<script type=\"text/javascript\" src=\"{0}\"></script>"
 				              , fn);
 		}
 		static public string CSSLink(this HtmlHelper h, String fn) {
+            var chsite = h.ViewContext.HttpContext.Application.CHSite();
 			return string.Format(
 				"<link href=\"{0}Style/{1}/{2}.css\" rel=\"stylesheet\" type=\"text/css\" />"
-				, CHSite.BaseConfig.Path
-				, CHSite.BaseConfig.Style
+                , chsite.BaseConfig.Path
+                , chsite.BaseConfig.Style
 				, fn.TrimEnd(".css")
 				);
 		}

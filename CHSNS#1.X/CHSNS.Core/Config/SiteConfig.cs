@@ -6,24 +6,23 @@ namespace CHSNS.Config {
 	/// </summary>
 	[Serializable]
 	public class SiteConfig {
-
+        ISerializer ConfigSerializer { get; set; }
+        public SiteConfig(ISerializer serializer)
+        {
+            ConfigSerializer = serializer;
+        }
 
 		public BaseConfig BaseConfig { get; set; }
 		public RegVisitConfig RegVisitConfig { get; set; }
 		public Publish Publish { get; set; }
 		public NoteConfig Note { get; set; }
-		/// <summary>
-		/// ∑¥–Ú¡–ªØ
-		/// </summary>
-		public SiteConfig Load() {
-			return ConfigSerializer.Load<SiteConfig>("Config");
-		}
+
 		/// <summary>
 		/// Gets the current.
 		/// </summary>
 		public SiteConfig Current {
 			get {
-				return Load();
+                return ConfigSerializer.Load<SiteConfig>("Config");
 			}
 		}
 		/// <summary>
