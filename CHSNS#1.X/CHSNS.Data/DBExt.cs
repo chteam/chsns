@@ -44,16 +44,15 @@ namespace CHSNS.Data {
         #endregion
         #region IDataBase ≥…‘±
         public string ConnectionString { get; private set; }
-        public DBExt() {
+        public DBExt(IContext context) {
             //	ConnectionString = "name=Entities";
             //var conn = new EntityConnection(ConnectionString);
-
             _DB = new CHSNSDBDataContext();
             _dbex = new DataBaseExecutor(new SqlDataOpener(_DB.Connection));
-            //	DataBaseExecutor = ichsnsdb.DataBaseExecutor;
-            Init();
+            Context = context;
+            Init(); 
         }
-
+        public IContext Context { get; set; }
         private CHSNSDBDataContext _DB;
         public CHSNSDBDataContext DB {
             get {
@@ -111,5 +110,6 @@ namespace CHSNS.Data {
 
         #endregion
 
-    }
+
+        }
 }

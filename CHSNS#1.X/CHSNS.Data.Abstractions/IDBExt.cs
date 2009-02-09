@@ -3,7 +3,7 @@ using System.Linq;
 namespace CHSNS.Data {
 	public interface IDBExt : IDisposable {
 		string ConnectionString { get; }
-		
+        IContext Context { get; set; }
 		CHSNS.DataBaseExecutor DataBaseExecutor { get; }
 		CHSNS.Models.CHSNSDBDataContext DB { get; }
 

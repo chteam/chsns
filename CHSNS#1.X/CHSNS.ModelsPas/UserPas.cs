@@ -11,8 +11,6 @@ namespace CHSNS.ModelPas {
 
 		public long OwnerID {
 			get {
-				if (_ownerID == 0)
-					_ownerID = CHUser.UserID;
 				return _ownerID;
 			}
 			set { _ownerID = value; }

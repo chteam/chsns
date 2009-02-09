@@ -9,10 +9,10 @@ namespace CHSNS.Data
     public class AccountMediator :BaseMediator ,IAccountMediator
     {
         public AccountMediator(IDBExt id) : base(id) { }
-		public void Logout()
+        public void Logout()
         {
-            CHCookies.Clear();
-            CHUser.Clear();
+            DBExt.Context.Cookies.Clear();
+            DBExt.Context.User.Clear();
         }
         public int Login(String Username, String Password, Boolean IsAutoLogin, Boolean IsPasswordMd5)
         {

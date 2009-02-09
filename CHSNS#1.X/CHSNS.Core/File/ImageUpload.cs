@@ -7,7 +7,13 @@ using System.Web;
 using CHSNS.Config;
 
 namespace CHSNS {
-	public class ImageUpload {
+    public class ImageUpload
+    {
+        public IContext Context { get; set; }
+        public ImageUpload(IContext context)
+        {
+            Context = context;
+        }
 		private FileUpload FileUpload { get; set; }
 		public DateTime Time { get; set; }
 		public string Ext { get; set; }
@@ -23,7 +29,7 @@ namespace CHSNS {
 			                            	File = file,
 			                            	FileExtList = ext,
 			                            	HttpContext = context,
-			                            	Path = Path.Photo(CHUser.UserID, Time, Ext, "source"),
+                                            Path = Path.Photo(Context.User.UserID, Time, Ext, "source"),
 			                            	Size = 2,
 			                            };
 		}
@@ -37,7 +43,7 @@ namespace CHSNS {
 				Thumbnail.CreateThumbnail(
 					imgSrc,
 					FileUpload.HttpContext.Server.MapPath(
-						Path.Photo(CHUser.UserID, Time, Ext, p.ImageType.ToString())),
+                        Path.Photo(Context.User.UserID, Time, Ext, p.ImageType.ToString())),
 					p.Size
 					);
 			}

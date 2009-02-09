@@ -1,7 +1,7 @@
 ﻿using System;
 namespace CHSNS
 {
-    interface ICookies
+    public interface ICookies
     {
         string Apps { get; set; }
         long[] AppsArray { get; }
