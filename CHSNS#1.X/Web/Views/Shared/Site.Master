@@ -19,7 +19,7 @@
 			<div id="publicmenu" class="mymenu">
 				<%Html.RenderPartial("Utility");%>
 			</div>
-			<h1><span><%=this.ViewContext.HttpContext.Application.CHSite().BaseConfig.Title %></span></h1>
+			<h1><span><%= CH.Context.Site.BaseConfig.Title %></span></h1>
 		</div>
 		<div id="content">
 		<%

@@ -5,7 +5,7 @@ namespace CHSNS.Helper
 {
 	static public class Include {
 		static public string Script(this HtmlHelper h, String fn) {
-            var chsite = h.ViewContext.HttpContext.Application.CHSite();
+            var chsite = CH.Context.Site;
 			if (!fn.StartsWith("/"))
 				fn = string.Format("{0}Javascript/{1}.js",
                     chsite.BaseConfig.Path,
@@ -15,7 +15,7 @@ namespace CHSNS.Helper
 				              , fn);
 		}
 		static public string CSSLink(this HtmlHelper h, String fn) {
-            var chsite = h.ViewContext.HttpContext.Application.CHSite();
+            var chsite = CH.Context.Site;
 			return string.Format(
 				"<link href=\"{0}Style/{1}/{2}.css\" rel=\"stylesheet\" type=\"text/css\" />"
                 , chsite.BaseConfig.Path

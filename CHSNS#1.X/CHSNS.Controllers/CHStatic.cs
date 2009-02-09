@@ -15,20 +15,27 @@ namespace CHSNS {
 		public static void Clear() {
 			Session.Remove("CHStatic");
 		}
-		static NeastStore Storer {
-			get {
-				if (Session["CHStatic"] == null) {
-					//var db = new Data.DBExt();
+        static NeastStore Storer
+        {
+            get
+            {
+                if (Session["CHStatic"] == null)
+                {
+                    //var db = new Data.DBExt();
                     //var ret = db.UserInfo.GetUser(CHUser.UserID, c => new NeastStore
                     //                                                    {
                     ////	FriendRequestCount = c.FriendRequestCount,
                     ////	UnReadMessageCount = c.UnReadMessageCount
                     //});
-					//Session["CHStatic"] = ret;
-				}
-				return Session["CHStatic"] as NeastStore;
-			}
-		}
+                    Session["CHStatic"] = new NeastStore
+                    {
+                        FriendRequestCount = 0,
+                        UnReadMessageCount = 0
+                    };
+                }
+                return Session["CHStatic"] as NeastStore;
+            }
+        }
 		public static long FriendRequestCount {
 			get {
 				return Storer.FriendRequestCount;

@@ -171,7 +171,7 @@ namespace CHSNS.Controllers {
 		public ActionResult Details(long id) {
 			NoteDetailsPas note;
 			note = DBExt.Note.Details(id, NoteType.GroupPost);
-            var chsite = HttpContext.Application.CHSite();
+            var chsite = CH.Context.Site;
 			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
                 chsite.Note.CommentEveryPage
 				).OrderBy(c => c.Comment.ID);
