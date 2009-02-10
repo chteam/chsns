@@ -18,15 +18,16 @@ namespace CHSNS
 			if (args.Length%2 != 0)
 				throw new Exception("不可以有奇数个传入数据");
 			var dict = new Dictionary();
-			for (int i = 0; i < args.Length; i += 2)
+			for (var i = 0; i < args.Length; i += 2)
+
 			{
 				dict.Add(args[i].ToString(), args[i + 1]);
 			}
 			return dict;
 		}
 		public string ToJsonString() {
-			StringBuilder sb = new StringBuilder("{");
-			foreach(KeyValuePair<string,object> p in this ){
+			var sb = new StringBuilder("{");
+			foreach(var p in this ){
 				sb.AppendFormat("{0}:'{1}',",p.Key, p.Value);
 			}
 			sb.Length--;
