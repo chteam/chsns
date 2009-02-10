@@ -136,7 +136,6 @@
     <Compile Include="DataExecute\OleDbDataOpener.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Tools\HttpProc.cs" />
-    <Compile Include="UserStatusType.cs" />
     <Compile Include="XmlSerializer.cs" />
     <Compile Include="DataExecute\SqlDataOpener.cs" />
     <Compile Include="DataExecute\SqlStoredProcedureDataOpener.cs" />
