@@ -52,5 +52,6 @@ namespace CHSNS
 			str = str.Replace(">", "");
 			return str.Replace("[br]", "<br />");
 		}
+
 	}
 }

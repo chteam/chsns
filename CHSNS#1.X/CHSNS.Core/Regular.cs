@@ -58,7 +58,7 @@ namespace CHSNS {
 		}
 
 		static public string[] Trim(string[] val) {
-			for (int i = 0; i < val.Length; i++) {
+			for (var i = 0; i < val.Length; i++) {
 				val[i] = val[i].Trim();
 			}
 			return val;
