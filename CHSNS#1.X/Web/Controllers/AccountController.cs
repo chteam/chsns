@@ -69,7 +69,7 @@ namespace CHSNS.Controllers
 		{
 			//throw new Exception(u + p + a.ToString());
 			if (u.Length > 3 &&
-				Regular.Macth(p, @"[^']{4,}"))
+				Regular.Macth(p, @"[^']{4,}")) 
 			{//匹配成功则赋值
 				int LoginResult = DBExt.Account.Login(u, p, a, true);
 				if (LoginResult == -1)
