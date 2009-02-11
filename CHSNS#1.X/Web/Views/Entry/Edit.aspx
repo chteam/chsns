@@ -6,6 +6,7 @@
     <%=Html.CSSLink("wysiwyg/wysiwyg")%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<%Html.RenderPartial("ManageToc"); %>
     <form action="" method="post" id="entryform">
     <%=Html.Hidden("id")%>
     <fieldset class="formset">
