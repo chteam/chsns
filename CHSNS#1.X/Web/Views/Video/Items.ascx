@@ -1,19 +1,23 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%foreach(var item in ViewData["list"] as PagedList<SuperNote>){ %>
 
-<li id="SuperNoteItem_{0}" class="vlist">
-	<div id="showNote_{0}" class="vmedia" style="display:none"></div>
+<li id="SuperNoteItem_<%=item.ID %>" class="vlist">
+	<div id="showNote_<%=item.ID %>" class="vmedia" style="display:none"></div>
 	<div class="vicon">&nbsp;</div>
 	<div class="video">
-		<a href="javascript:ShowNote({0},'{2}');"><img style="width:128px;height:96px;" src="{6}" alt="{5}" id="SuperVideo_{0}"/></a>
+<a href="javascript:void(0)" onclick="ShowNote(<%=item.ID %>,'<%=item.Url %>');">
+<img style="width:128px;height:96px;" src="<%=item.Faceurl %>" alt="<%=item.Title %>" id="SuperVideo_<%=item.ID %>"/>
+</a>
 	</div>
 	<div class="vtext">
-		<h4><span>{4}{8}</span>{7}</h4>
+		<h4><span><%=item.AddTime.Ago() %></span>{7}</h4>
 		<div>
-			<a href="{2}" target="_blank">[{5}]</a></div>{3}
-		<div>人气:{1}</div>
-		<div>分类:{9}</div>
+			<a href="<%=item.Url %>" target="_blank">[<%=item.Title %>]</a></div><%=item.Description %>
+		<div>人气:<%=item.ViewCount %></div>
 	</div>
 </li>
+
+<%} %>
 <!--
 0 $Id$ 帖子的ID
 1 回复
