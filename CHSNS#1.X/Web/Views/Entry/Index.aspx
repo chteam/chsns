@@ -36,7 +36,10 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		</ul>
 	</div>
 	<%} else {%>
-	<div class="note">当前页面不存在</div>
+	<div class="note">当前页面不存在:
+	<%=Html.ActionLink("【创建" + this.ViewContext.RouteData.Values["title"].ToString() + "】",
+	    "Edit", "Entry", new { title = this.ViewContext.RouteData.Values["title"] },null)%>
+	</div>
 	<%} %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="FootPlaceHolder" runat="server">

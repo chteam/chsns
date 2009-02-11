@@ -1,13 +1,584 @@
 /**
- * WYSIWYG - jQuery plugin 0.4
- *
- * Copyright (c) 2008 Juan M Martinez
- * http://plugins.jquery.com/project/jWYSIWYG
- *
- * Dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
- * 
- * $Id: $
- */
-eval(function(p, a, c, k, e, d) { e = function(c) { return (c < a ? "" : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36)) }; if (!''.replace(/^/, String)) { while (c--) d[e(c)] = k[c] || e(c); k = [function(e) { return d[e] } ]; e = function() { return '\\w+' }; c = 1; }; while (c--) if (k[c]) p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]); return p; } ('(g($){$.W.K=g(){d k=5[0];7(k.2r.1y()==\'1I\')t k.1w.K;x t $(5)};$.W.1M=g(){d k=5[0];7(k.1w.K.A)t k.1w.K.A.2B().1e;x t k.1w.1i().O()};$.W.T=g(f){7(C.y>0&&C[0].1b==1A){d 1N=C[0].O();d 1R=[];R(d i=1;i<C.y;i++)1R[i-1]=C[i];7(1N S B){t 5.2k(g(){$.1f(5,\'T\').1g();B[1N].2Q(5,1R)})}x t 5}d q={};7(f&&f.q){d q=f.q;3C f.q}d f=$.15({H:\'<\'+\'?2g 3z="1.0" 3A="2d-8"?\'+\'><!3D H 3G "-//3H//25 3E 1.0 3F//3y" "10://1G.2q.2f/3r/24/25/24-3p.3q"><H 3t="10://1G.2q.2f/3x/3u" 2g:3I="3V"><2h><3W 10-3T="3U-3X" L="1e/H; 40=2d-8">2W</2h><N>2Y</N></H>\',m:{},41:h,1r:c,30:c,2F:c,q:{},X:{}},f);$.15(f.X,B.2o);$.15(f.q,B.22);R(d n S q){7(n S f.q)$.15(f.q[n],q[n]);x f.q[n]=q[n]}t 5.2k(g(){B(5,f)})};g B(k,f){t 5 3Y B?5.2p(k,f):3Z B(k,f)}$.15(B,{V:g(p,1u){d j=$.1f(5,\'T\');7(j.1b==B&&p&&p.y>0){7(1u){j.l.D(\'V\',h,\'#2j#\');d U=j.2C(\'U\',\'2s\',\'#2j#\');7(U){U.2s=p;R(d 1V S 1u){U.3S(1V,1u[1V])}}}x{j.l.D(\'V\',h,p)}}},1c:g(p){d j=$.1f(5,\'T\');7(j.1b==B&&p&&p.y>0){d A=$(j.r).1M();7(A.y>0){j.l.D(\'1F\',h,[]);j.l.D(\'1c\',h,p)}x 7(j.f.X.1h)1D(j.f.X.1h)}},27:g(){d j=$.1f(5,\'T\');j.1n(\'\');j.Q()},2o:{1h:\'2R 3K 1e 3N 3Q 3R 2V\'},22:{1Z:{9:c,o:[\'b\',\'3O\'],m:{3P:\'1Z\'}},20:{9:c,o:[\'i\',\'33\'],m:{37:\'20\'}},31:{9:c,o:[\'s\',\'35\'],m:{2a:\'36-34\'}},2c:{9:c,o:[\'u\'],m:{2a:\'2c\'}},38:{9:h,z:c},3j:{9:c,m:{1t:\'3k\'}},3h:{9:c,o:[\'29\'],m:{1t:\'29\'}},3i:{9:c,m:{1t:\'3n\'}},3o:{9:c,m:{1t:\'3m\'}},3b:{9:h,z:c},3c:{9:c},39:{9:c},3a:{9:h,z:c},3f:{9:h,o:[\'3g\']},3d:{9:h,o:[\'3e\']},32:{9:h,z:c},42:{9:h},4L:{9:h},4O:{9:h,z:c},4P:{9:c,o:[\'4M\']},4N:{9:c,o:[\'1O\']},4S:{9:c,o:[\'4T\']},4Q:{z:c},1c:{9:c,M:g(){d A=$(5.r).1M();7(A.y>0){7($.w.I)5.l.D(\'1c\',c,1a);x{d p=2b(\'26\',\'10://\');7(p&&p.y>0){5.l.D(\'1F\',h,[]);5.l.D(\'1c\',h,p)}}}x 7(5.f.X.1h)1D(5.f.X.1h)},o:[\'a\']},V:{9:c,M:g(){7($.w.I)5.l.D(\'V\',c,1a);x{d p=2b(\'26\',\'10://\');7(p&&p.y>0)5.l.D(\'V\',h,p)}},o:[\'U\']},4R:{z:c},4G:{9:c&&$.w.18,v:\'19\',G:\'1W\',C:[\'19\'],o:[\'19\']},4H:{9:c&&$.w.18,v:\'17\',G:\'1W\',C:[\'17\'],o:[\'17\']},4E:{9:c&&$.w.18,v:\'11\',G:\'1W\',C:[\'11\'],o:[\'11\']},19:{9:c&&!($.w.18),v:\'19\',G:\'1X\',C:[\'1U 1\'],o:[\'19\']},17:{9:c&&!($.w.18),v:\'17\',G:\'1X\',C:[\'1U 2\'],o:[\'17\']},11:{9:c&&!($.w.18),v:\'11\',G:\'1X\',C:[\'1U 3\'],o:[\'11\']},4I:{9:h,z:c},4J:{9:h},51:{9:h},50:{9:h},53:{9:h,z:h&&!($.w.I)},4Y:{9:h&&!($.w.I),o:[\'52\']},55:{9:h&&!($.w.I),o:[\'4U\']},4W:{z:c},H:{9:c,M:g(){7(5.1k){5.1n($(5.J).2Z());$(5.J).28()}x{5.Q();$(5.J).4X()}5.1k=!(5.1k)}},2i:{9:c,M:g(){5.l.D(\'2i\',h,[]);5.l.D(\'1F\',h,[])}},4Z:{9:c,M:g(){5.r.14(5.r.14()+1K)}},4V:{9:c,M:g(){5.r.14(5.r.14()-1K)}},54:{9:c,M:g(){4D(\'4e:<1q>4f:10://4d.4g.2e.4j/4k/<1q>1G.4i.2e.45\')},v:\'1D\'}}});$.15(B.43,{J:1a,f:{},k:1a,r:1a,2p:g(k,f){d j=5;5.r=k;5.f=f||{};$.1f(k,\'T\',5);d 12=k.1S||k.47;d Y=k.14||k.4a;7(k.2r.1y()==\'4b\'){5.J=k;7(12==0&&k.2m)12=(k.2m*8)+21;7(Y==0&&k.2l)Y=(k.2l*16)+16;d r=5.r=$(\'<1I></1I>\').m({4x:(Y-6).O()+\'1p\',1S:(12-8).O()+\'1p\'}).2n(\'23\',$(k).2n(\'23\')+\'4y\');7($.w.I){5.r.m(\'14\',(Y).O()+\'1p\');}}d F=5.F=$(\'<1O></1O>\').1j(\'F\');5.2v();5.k=$(\'<1l></1l>\').m({1S:(12>0)?(12).O()+\'1p\':\'1K%\'}).1j(\'T\').1x(F).1x($(\'<1l><!-- --></1l>\').m({27:\'4l\'})).1x(r);$(k).28().4p(5.k);5.1k=h;5.4t=Y-8;5.1Q=$(k).1e();5.2t();7(5.1Q.y==0)5.1n(\'\');7(5.f.1r)$(\'4q\').4r(g(){j.Q()})},2t:g(){d j=5;d 1P=\'\';7(5.f.m&&5.f.m.1b==1A)1P=\'<2V 4s="4m" 4o="1e/m" 4n="4A" 4z="\'+5.f.m+\'" />\';5.l=$(5.r).K();5.1o=h;2U{5.l.1g=\'2x\';5.1o=c}2G(e){$(5.l).1B(g(){j.1g()})}5.l.4C();5.l.4B(5.f.H.2X(/2Y/,5.1Q).2X(/2W/,1P));5.l.4v();5.l.4u=\'c\';7($.w.I){2M(g(){$(j.l.N).m(\'4w\',\'49\')},0)}$(5.l).48(g(Z){j.2T(Z.2w?Z.2w:Z.44)});$(5.J).1B(g(){$(j.l.N).1B()});7(5.f.1r){$(5.l).2I(g(){j.Q()}).2P(g(){j.Q()})}7(5.f.m){2M(g(){7(j.f.m.1b==1A){}x $(j.l).1T(\'N\').m(j.f.m)},0)}$(5.l).2I(g(Z){7($.w.I&&j.f.2F&&Z.46==13){d 1m=j.2K();1m.4h(\'<1q />\');1m.4c(h);1m.2R();t h}})},1g:g(){7(!(5.1o)){2U{5.l.1g=\'2x\';5.1o=c}2G(e){}}},1i:g(){t(2J.1i)?2J.1i():K.A},2K:g(){d A=5.1i();7(!(A))t 1a;t(A.4K>0)?A.4F(0):A.2B()},2A:g(){t $($(5.r).K()).1T(\'N\').H()},1n:g(2z){$($(5.r).K()).1T(\'N\').H(2z)},Q:g(){7(5.J){d L=5.2A();7(5.f.30)L=(L.1J(-4)==\'<1q>\')?L.1J(0,L.y-4):L;$(5.J).2Z(L)}},2N:g(1Y,1s,v,W){d j=5;d 1s=1s||[];$(\'<1v></1v>\').1x($(\'<a><!-- --></a>\').1j(v||1Y)).2P(g(){7(W)W.2Q(j);x j.l.D(1Y,h,1s);7(j.f.1r)j.Q()}).2u(5.F)},2y:g(){$(\'<1v 3l="z"></1v>\').2u(5.F)},2v:g(){R(d P S 5.f.q){d n=5.f.q[P];7(n.z){7(n.9!==h)5.2y()}x 7(n.9){5.2N(n.G||P,n.C||[],n.v||n.G||P||\'2O\',n.M)}}},2T:g(k){R(d P S 5.f.q){d n=5.f.q[P];d v=n.v||n.G||P||\'2O\';$(\'.\'+v,5.F).3J(\'1H\');7(n.o){d E=k;2D{7(E.2H!=1)2E;7($.3M(E.1C.1y(),n.o)!=-1)$(\'.\'+v,5.F).1j(\'1H\')}2L(E=E.3L)}7(n.m){d E=$(k);2D{7(E[0].2H!=1)2E;R(d 1E S n.m)7(E.m(1E).O().1y()==n.m[1E])$(\'.\'+v,5.F).1j(\'1H\')}2L(E=E.3v())}}},2C:g(1C,2S,1L){d 1z=5.l.3w(1C);R(d i=0;i<1z.y;i++){d 1d=1z[i].3s(2S);7($.w.I){1d=1d.1J(1d.y-1L.y)}7(1d==1L)t 1z[i]}t h}})})(3B);', 62, 316, '|||||this||if||visible|||true|var||options|function|false||self|element|editorDoc|css|control|tags|szURL|controls|editor||return||className|browser|else|length|separator|selection|Wysiwyg|arguments|execCommand|elm|panel|command|html|msie|original|document|content|exec|body|toString|name|saveContent|for|in|wysiwyg|img|insertImage|fn|messages|newY|event|http|h3|newX||height|extend||h2|mozilla|h1|null|constructor|createLink|value|text|data|designMode|nonSelection|getSelection|addClass|viewHTML|div|rng|setContent|editorDoc_designMode|px|br|autoSave|args|textAlign|attributes|li|contentWindow|append|toLowerCase|elements|String|focus|tagName|alert|cssProperty|unlink|www|active|iframe|substr|100|attributeValue|documentSelection|action|ul|style|initialContent|params|width|find|Heading|attribute|heading|formatBlock|cmd|bold|italic||TOOLBAR|id|xhtml1|DTD|URL|clear|hide|center|textDecoration|prompt|underline|UTF|com|org|xml|head|removeFormat|jwysiwyg|each|rows|cols|attr|MSGS_EN|init|w3|nodeName|src|initFrame|appendTo|appendControls|target|on|appendMenuSeparator|newContent|getContent|createRange|getElementByAttributeValue|do|break|brIE|catch|nodeType|keydown|window|getRange|while|setTimeout|appendMenu|empty|mousedown|apply|select|attributeName|checkTargets|try|link|STYLE_SHEET|replace|INITIAL_CONTENT|val|rmUnwantedBr|strikeThrough|separator03|em|through|strike|line|fontStyle|separator00|outdent|separator02|separator01|indent|superscript|sup|subscript|sub|justifyCenter|justifyRight|justifyLeft|left|class|justify|right|justifyFull|strict|dtd|TR|getAttribute|xmlns|xhtml|parent|getElementsByTagName|1999|EN|version|encoding|jQuery|delete|DOCTYPE|XHTML|Strict|PUBLIC|W3C|lang|removeClass|the|parentNode|inArray|you|strong|fontWeight|wish|to|setAttribute|equiv|Content|en|meta|Type|instanceof|new|charset|debug|undo|prototype|srcElement|cn|keyCode|clientWidth|click|none|clientHeight|textarea|collapse|projects|About|Provider|bundleweb|pasteHTML|eice|ar|jWYSIWYG|both|stylesheet|media|type|before|form|submit|rel|initialHeight|contentEditable|close|border|minHeight|IFrame|href|screen|write|open|alertEx|h3mozilla|getRangeAt|h1mozilla|h2mozilla|separator07|cut|rangeCount|redo|ol|insertUnorderedList|separator04|insertOrderedList|separator05|separator06|insertHorizontalRule|hr|small|smaller|separator09|show|increaseFontSize|bigger|paste|copy|big|separator08|about|decreaseFontSize'.split('|'), 0, {}));
+* WYSIWYG - jQuery plugin 0.5
+*
+* Copyright (c) 2008-2009 Juan M Martinez
+* http://plugins.jquery.com/project/jWYSIWYG
+*
+* Dual licensed under the MIT and GPL licenses:
+*   http://www.opensource.org/licenses/mit-license.php
+*   http://www.gnu.org/licenses/gpl.html
+*
+* $Id: $
+*/
+(function($) {
+    $.fn.document = function() {
+        var element = this[0];
+
+        if (element.nodeName.toLowerCase() == 'iframe')
+            return element.contentWindow.document;
+        /*
+        return ( $.browser.msie )
+        ? document.frames[element.id].document
+        : element.contentWindow.document // contentDocument;
+        */
+        else
+            return $(this);
+    };
+
+    $.fn.documentSelection = function() {
+        var element = this[0];
+
+        if (element.contentWindow.document.selection)
+            return element.contentWindow.document.selection.createRange().text;
+        else
+            return element.contentWindow.getSelection().toString();
+    };
+
+    $.fn.wysiwyg = function(options) {
+        if (arguments.length > 0 && arguments[0].constructor == String) {
+            var action = arguments[0].toString();
+            var params = [];
+
+            for (var i = 1; i < arguments.length; i++)
+                params[i - 1] = arguments[i];
+
+            if (action in Wysiwyg) {
+                return this.each(function() {
+                    $.data(this, 'wysiwyg')
+                     .designMode();
+
+                    Wysiwyg[action].apply(this, params);
+                });
+            }
+            else return this;
+        }
+
+        var controls = {};
+
+        /**
+        * If the user set custom controls, we catch it, and merge with the
+        * defaults controls later.
+        */
+        if (options && options.controls) {
+            var controls = options.controls;
+            delete options.controls;
+        }
+
+        var options = $.extend({
+            html: '<' + '?xml version="1.0" encoding="UTF-8"?' + '><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">STYLE_SHEET</head><body>INITIAL_CONTENT</body></html>',
+            css: {},
+
+            debug: false,
+
+            autoSave: true,  // http://code.google.com/p/jwysiwyg/issues/detail?id=11
+            rmUnwantedBr: true,  // http://code.google.com/p/jwysiwyg/issues/detail?id=15
+            brIE: true,
+
+            controls: {},
+            messages: {}
+        }, options);
+
+        options.messages = $.extend(true, options.messages, Wysiwyg.MSGS_EN);
+        options.controls = $.extend(true, options.controls, Wysiwyg.TOOLBAR);
+
+        for (var control in controls) {
+            if (control in options.controls)
+                $.extend(options.controls[control], controls[control]);
+            else
+                options.controls[control] = controls[control];
+        }
+
+        // not break the chain
+        return this.each(function() {
+            Wysiwyg(this, options);
+        });
+    };
+
+    function Wysiwyg(element, options) {
+        return this instanceof Wysiwyg
+            ? this.init(element, options)
+            : new Wysiwyg(element, options);
+    }
+
+    $.extend(Wysiwyg, {
+        insertImage: function(szURL, attributes) {
+            var self = $.data(this, 'wysiwyg');
+
+            if (self.constructor == Wysiwyg && szURL && szURL.length > 0) {
+                if (attributes) {
+                    self.editorDoc.execCommand('insertImage', false, '#jwysiwyg#');
+                    var img = self.getElementByAttributeValue('img', 'src', '#jwysiwyg#');
+
+                    if (img) {
+                        img.src = szURL;
+
+                        for (var attribute in attributes) {
+                            img.setAttribute(attribute, attributes[attribute]);
+                        }
+                    }
+                }
+                else {
+                    self.editorDoc.execCommand('insertImage', false, szURL);
+                }
+            }
+        },
+
+        createLink: function(szURL) {
+            var self = $.data(this, 'wysiwyg');
+
+            if (self.constructor == Wysiwyg && szURL && szURL.length > 0) {
+                var selection = $(self.editor).documentSelection();
+
+                if (selection.length > 0) {
+                    self.editorDoc.execCommand('unlink', false, []);
+                    self.editorDoc.execCommand('createLink', false, szURL);
+                }
+                else if (self.options.messages.nonSelection)
+                    alert(self.options.messages.nonSelection);
+            }
+        },
+
+        setContent: function(newContent) {
+            var self = $.data(this, 'wysiwyg');
+            self.setContent(newContent);
+            self.saveContent();
+        },
+
+        clear: function() {
+            var self = $.data(this, 'wysiwyg');
+            self.setContent('');
+            self.saveContent();
+        },
+
+        MSGS_EN: {
+            nonSelection: 'select the text you wish to link'
+        },
+
+        TOOLBAR: {
+            bold: { visible: true, tags: ['b', 'strong'], css: { fontWeight: 'bold'} },
+            italic: { visible: true, tags: ['i', 'em'], css: { fontStyle: 'italic'} },
+            strikeThrough: { visible: false, tags: ['s', 'strike'], css: { textDecoration: 'line-through'} },
+            underline: { visible: false, tags: ['u'], css: { textDecoration: 'underline'} },
+
+            separator00: { visible: false, separator: true },
+
+            justifyLeft: { visible: false, css: { textAlign: 'left'} },
+            justifyCenter: { visible: false, tags: ['center'], css: { textAlign: 'center'} },
+            justifyRight: { visible: false, css: { textAlign: 'right'} },
+            justifyFull: { visible: false, css: { textAlign: 'justify'} },
+
+            separator01: { visible: false, separator: true },
+
+            indent: { visible: false },
+            outdent: { visible: false },
+
+            separator02: { visible: false, separator: true },
+
+            subscript: { visible: false, tags: ['sub'] },
+            superscript: { visible: false, tags: ['sup'] },
+
+            separator03: { visible: false, separator: true },
+
+            undo: { visible: false },
+            redo: { visible: false },
+
+            separator04: { visible: false, separator: true },
+
+            insertOrderedList: { visible: false, tags: ['ol'] },
+            insertUnorderedList: { visible: false, tags: ['ul'] },
+            insertHorizontalRule: { visible: false, tags: ['hr'] },
+
+            separator05: { separator: true },
+
+            createLink: {
+                visible: true,
+                exec: function() {
+                    var selection = $(this.editor).documentSelection();
+
+                    if (selection.length > 0) {
+                        if ($.browser.msie)
+                            this.editorDoc.execCommand('createLink', true, null);
+                        else {
+                            var szURL = prompt('URL', 'http://');
+
+                            if (szURL && szURL.length > 0) {
+                                this.editorDoc.execCommand('unlink', false, []);
+                                this.editorDoc.execCommand('createLink', false, szURL);
+                            }
+                        }
+                    }
+                    else if (this.options.messages.nonSelection)
+                        alert(this.options.messages.nonSelection);
+                },
+
+                tags: ['a']
+            },
+
+            insertImage: {
+                visible: true,
+                exec: function() {
+                    if ($.browser.msie)
+                        this.editorDoc.execCommand('insertImage', true, null);
+                    else {
+                        var szURL = prompt('URL', 'http://');
+
+                        if (szURL && szURL.length > 0)
+                            this.editorDoc.execCommand('insertImage', false, szURL);
+                    }
+                },
+
+                tags: ['img']
+            },
+
+            separator06: { separator: true },
+
+            h1mozilla: { visible: true && $.browser.mozilla, className: 'h1', command: 'heading', arguments: ['h1'], tags: ['h1'] },
+            h2mozilla: { visible: true && $.browser.mozilla, className: 'h2', command: 'heading', arguments: ['h2'], tags: ['h2'] },
+            h3mozilla: { visible: true && $.browser.mozilla, className: 'h3', command: 'heading', arguments: ['h3'], tags: ['h3'] },
+
+            h1: { visible: true && !($.browser.mozilla), className: 'h1', command: 'formatBlock', arguments: ['Heading 1'], tags: ['h1'] },
+            h2: { visible: true && !($.browser.mozilla), className: 'h2', command: 'formatBlock', arguments: ['Heading 2'], tags: ['h2'] },
+            h3: { visible: true && !($.browser.mozilla), className: 'h3', command: 'formatBlock', arguments: ['Heading 3'], tags: ['h3'] },
+
+            separator07: { visible: false, separator: true },
+
+            cut: { visible: false },
+            copy: { visible: false },
+            paste: { visible: false },
+
+            separator08: { separator: true && !($.browser.msie) },
+
+            increaseFontSize: { visible: true && !($.browser.msie), tags: ['big'] },
+            decreaseFontSize: { visible: true && !($.browser.msie), tags: ['small'] },
+
+            separator09: { separator: true },
+
+            html: {
+                visible: false,
+                exec: function() {
+                    if (this.viewHTML) {
+                        this.setContent($(this.original).val());
+                        $(this.original).hide();
+                    }
+                    else {
+                        this.saveContent();
+                        $(this.original).show();
+                    }
+
+                    this.viewHTML = !(this.viewHTML);
+                }
+            },
+
+            removeFormat: {
+                visible: true,
+                exec: function() {
+                    this.editorDoc.execCommand('removeFormat', false, []);
+                    this.editorDoc.execCommand('unlink', false, []);
+                }
+            }
+        }
+    });
+
+    $.extend(Wysiwyg.prototype,
+    {
+        original: null,
+        options: {},
+
+        element: null,
+        editor: null,
+
+        init: function(element, options) {
+            var self = this;
+
+            this.editor = element;
+            this.options = options || {};
+
+            $.data(element, 'wysiwyg', this);
+
+            var newX = element.width || element.clientWidth;
+            var newY = element.height || element.clientHeight;
+
+            if (element.nodeName.toLowerCase() == 'textarea') {
+                this.original = element;
+
+                if (newX == 0 && element.cols)
+                    newX = (element.cols * 8) + 21;
+
+                if (newY == 0 && element.rows)
+                    newY = (element.rows * 16) + 16;
+
+                var editor = this.editor = $('<iframe></iframe>').css({
+                    minHeight: (newY - 6).toString() + 'px',
+                    width: (newX - 8).toString() + 'px'
+                }).attr('id', $(element).attr('id') + 'IFrame');
+
+                if ($.browser.msie) {
+                    this.editor
+                        .css('height', (newY).toString() + 'px');
+
+                    /**
+                    var editor = $('<span></span>').css({
+                    width     : ( newX - 6 ).toString() + 'px',
+                    height    : ( newY - 8 ).toString() + 'px'
+                    }).attr('id', $(element).attr('id') + 'IFrame');
+
+                    editor.outerHTML = this.editor.outerHTML;
+                    */
+                }
+            }
+
+            var panel = this.panel = $('<ul></ul>').addClass('panel');
+
+            this.appendControls();
+            this.element = $('<div></div>').css({
+                width: (newX > 0) ? (newX).toString() + 'px' : '100%'
+            }).addClass('wysiwyg')
+              .append(panel)
+              .append($('<div><!-- --></div>').css({ clear: 'both' }))
+              .append(editor);
+
+            $(element)
+            // .css('display', 'none')
+            .hide()
+            .before(this.element);
+
+            this.viewHTML = false;
+
+            this.initialHeight = newY - 8;
+
+            /**
+            * @link http://code.google.com/p/jwysiwyg/issues/detail?id=52
+            */
+            this.initialContent = $(element).val();
+
+            this.initFrame();
+
+            if (this.initialContent.length == 0)
+                this.setContent('');
+
+            if (this.options.autoSave)
+                $('form').submit(function() { self.saveContent(); });
+
+            $('form').bind('reset', function() {
+                self.setContent(self.initialContent);
+                self.saveContent();
+            });
+        },
+
+        initFrame: function() {
+            var self = this;
+            var style = '';
+
+            /**
+            * @link http://code.google.com/p/jwysiwyg/issues/detail?id=14
+            */
+            if (this.options.css && this.options.css.constructor == String)
+                style = '<link rel="stylesheet" type="text/css" media="screen" href="' + this.options.css + '" />';
+
+            this.editorDoc = $(this.editor).document();
+            this.editorDoc_designMode = false;
+
+            try {
+                this.editorDoc.designMode = 'on';
+                this.editorDoc_designMode = true;
+            } catch (e) {
+                // Will fail on Gecko if the editor is placed in an hidden container element
+                // The design mode will be set ones the editor is focused
+
+                $(this.editorDoc).focus(function() {
+                    self.designMode();
+                });
+            }
+
+            this.editorDoc.open();
+            this.editorDoc.write(
+                this.options.html
+                    .replace(/INITIAL_CONTENT/, this.initialContent)
+                    .replace(/STYLE_SHEET/, style)
+            );
+            this.editorDoc.close();
+            this.editorDoc.contentEditable = 'true';
+
+            if ($.browser.msie) {
+                /**
+                * Remove the horrible border it has on IE.
+                */
+                setTimeout(function() { $(self.editorDoc.body).css('border', 'none'); }, 0);
+            }
+
+            $(this.editorDoc).click(function(event) {
+                self.checkTargets(event.target ? event.target : event.srcElement);
+            });
+
+            /**
+            * @link http://code.google.com/p/jwysiwyg/issues/detail?id=20
+            */
+            $(this.original).focus(function() {
+                $(self.editorDoc.body).focus();
+            });
+
+            if (this.options.autoSave) {
+                /**
+                * @link http://code.google.com/p/jwysiwyg/issues/detail?id=11
+                */
+                $(this.editorDoc).keydown(function() { self.saveContent(); })
+                                 .keyup(function() { self.saveContent(); })
+                                 .mousedown(function() { self.saveContent(); });
+            }
+
+            if (this.options.css) {
+                setTimeout(function() {
+                    if (self.options.css.constructor == String) {
+                        /**
+                        * $(self.editorDoc)
+                        * .find('head')
+                        * .append(
+                        *     $('<link rel="stylesheet" type="text/css" media="screen" />')
+                        *     .attr('href', self.options.css)
+                        * );
+                        */
+                    }
+                    else
+                        $(self.editorDoc).find('body').css(self.options.css);
+                }, 0);
+            }
+
+            $(this.editorDoc).keydown(function(event) {
+                if ($.browser.msie && self.options.brIE && event.keyCode == 13) {
+                    var rng = self.getRange();
+                    rng.pasteHTML('<br />');
+                    rng.collapse(false);
+                    rng.select();
+
+                    return false;
+                }
+            });
+        },
+
+        designMode: function() {
+            if (!(this.editorDoc_designMode)) {
+                try {
+                    this.editorDoc.designMode = 'on';
+                    this.editorDoc_designMode = true;
+                } catch (e) { }
+            }
+        },
+
+        getSelection: function() {
+            return (window.getSelection) ? window.getSelection() : document.selection;
+        },
+
+        getRange: function() {
+            var selection = this.getSelection();
+
+            if (!(selection))
+                return null;
+
+            return (selection.rangeCount > 0) ? selection.getRangeAt(0) : selection.createRange();
+        },
+
+        getContent: function() {
+            return $($(this.editor).document()).find('body').html();
+        },
+
+        setContent: function(newContent) {
+            $($(this.editor).document()).find('body').html(newContent);
+        },
+
+        saveContent: function() {
+            if (this.original) {
+                var content = this.getContent();
+
+                if (this.options.rmUnwantedBr)
+                    content = (content.substr(-4) == '<br>') ? content.substr(0, content.length - 4) : content;
+
+                $(this.original).val(content);
+            }
+        },
+
+        appendMenu: function(cmd, args, className, fn) {
+            var self = this;
+            var args = args || [];
+
+            $('<li></li>').append(
+                $('<a><!-- --></a>').addClass(className || cmd)
+            ).mousedown(function() {
+                if (fn) fn.apply(self); else self.editorDoc.execCommand(cmd, false, args);
+                if (self.options.autoSave) self.saveContent();
+            }).appendTo(this.panel);
+        },
+
+        appendMenuSeparator: function() {
+            $('<li class="separator"></li>').appendTo(this.panel);
+        },
+
+        appendControls: function() {
+            for (var name in this.options.controls) {
+                var control = this.options.controls[name];
+
+                if (control.separator) {
+                    if (control.visible !== false)
+                        this.appendMenuSeparator();
+                }
+                else if (control.visible) {
+                    this.appendMenu(
+                        control.command || name, control.arguments || [],
+                        control.className || control.command || name || 'empty', control.exec
+                    );
+                }
+            }
+        },
+
+        checkTargets: function(element) {
+            for (var name in this.options.controls) {
+                var control = this.options.controls[name];
+                var className = control.className || control.command || name || 'empty';
+
+                $('.' + className, this.panel).removeClass('active');
+
+                if (control.tags) {
+                    var elm = element;
+
+                    do {
+                        if (elm.nodeType != 1)
+                            break;
+
+                        if ($.inArray(elm.tagName.toLowerCase(), control.tags) != -1)
+                            $('.' + className, this.panel).addClass('active');
+                    } while (elm = elm.parentNode);
+                }
+
+                if (control.css) {
+                    var elm = $(element);
+
+                    do {
+                        if (elm[0].nodeType != 1)
+                            break;
+
+                        for (var cssProperty in control.css)
+                            if (elm.css(cssProperty).toString().toLowerCase() == control.css[cssProperty])
+                            $('.' + className, this.panel).addClass('active');
+                    } while (elm = elm.parent());
+                }
+            }
+        },
+
+        getElementByAttributeValue: function(tagName, attributeName, attributeValue) {
+            var elements = this.editorDoc.getElementsByTagName(tagName);
+
+            for (var i = 0; i < elements.length; i++) {
+                var value = elements[i].getAttribute(attributeName);
+
+                if ($.browser.msie) {
+                    /** IE add full path, so I check by the last chars. */
+                    value = value.substr(value.length - attributeValue.length);
+                }
+
+                if (value == attributeValue)
+                    return elements[i];
+            }
+
+            return false;
+        }
+    });
+})(jQuery);
