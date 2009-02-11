@@ -3,27 +3,8 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<PagedList<EntryPas>>" %
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
- <h2>
-        词条管理<a class="searchA" href="#">词条搜索</a>
-        <%=Html.ActionLink("添加新词条", "Edit")%><span>共有记录<%=ViewData.Model.TotalCount %>条
-            共<%=ViewData.Model.TotalPages %>页 当前第<%=ViewData.Model.CurrentPage %>页</span></h2>
-            
-    <div class="search">
-        <h3>
-            词条搜索<a class="close" href="#">×</a></h3>
-        <table class="memu_1">
-            <tr>
-                <td>
-                    词条名称：<input name="TextBox2" type="text" id="TextBox2" />
-                    所在地区：<select name="DropDownList3" id="DropDownList3">
-                    </select>
-                    <select name="DropDownList4" id="DropDownList4">
-                    </select>
-                    <input type="submit" name="Button1" value="搜索" id="Button1" class="button_1" />
-                </td>
-            </tr>
-        </table>
-    </div>
+ <h2>词条管理</h2>
+            <%Html.RenderPartial("ManageToc"); %>
     <table class="table">
         <tr>
             <th class="flush_center"><input type="checkbox" /></th>
