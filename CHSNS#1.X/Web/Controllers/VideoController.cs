@@ -16,7 +16,7 @@ namespace CHSNS.Controllers {
         public ActionResult Edit(SuperNote v) {
             DBExt.Video.Create(v);
             Message = "提交成功";
-            return Edit();
+            return RedirectToAction("List");
         }
         /// <summary>
         /// 我的列表
@@ -25,6 +25,7 @@ namespace CHSNS.Controllers {
         public ActionResult List(long? uid, int? p) {
             InitPage(ref p);
             ViewData["list"] = DBExt.Video.List(uid).Pager(p.Value, 10);
+            Title = "视频列表";
             return View();
         }
         public ActionResult Del(long[] uid) {

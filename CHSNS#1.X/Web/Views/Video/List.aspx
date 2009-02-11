@@ -1,31 +1,19 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<div class="sbox">
 	<div class="vmain">
-		<h4>
-			$Username$的视频</h4>
+		<h4>视频列表</h4>
+		<%=Html.ActionLink("添加","Edit","Video") %>
 		<ol id="SuperNoteList">
-		
+		 <%Html.RenderPartial("Items", ViewData["list"]); %>
 		</ol>
+		<%Html.RenderPartial("Pager", ViewData["list"]); %>
 	</div>
-	
-</div>
 <script type="text/javascript">
-var $supernoteshow;
-
 function SuperNote_Remove(id){
 	alertEx('正在提交...');
 	ChAlumna.NoteBook.SuperNote_Remove(id,function(r){
 	if(r) {alertEx('删除成功');setSuperNotePage(1);}else alertEx('失败');
-	},onfail);
-}
-PageSet_chSetPage("PageUp","PageDown","HdPage","HdCount","HdEveryPage","setSuperNotePage");
-function setSuperNotePage(page){
-	$get("HdPage").value=page;
-	ChAlumna.NoteBook.SuperNote_ListString(page,$get("HdOwnerid").value,function(r){
-	$get("SuperNoteList").innerHTML=r;
-	PageSet_chSetPage("PageUp","PageDown","HdPage","HdCount","HdEveryPage","setSuperNotePage");
 	},onfail);
 }
 function ShowNote(id,url){
@@ -51,7 +39,7 @@ function ShowNote(id,url){
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 <%=Html.CSSLink("video") %>
-<%if (false) { %><script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script><%} %>
+<%if (false) { %><script src="../../JavaScript/vsdoc.js" type="text/javascript"></script><%} %>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
