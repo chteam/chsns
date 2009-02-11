@@ -11,7 +11,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		<ul>
 			<%
 				int current = 0, i = 0;
-				foreach (System.Web.Mvc.ListItem kv in (List<System.Web.Mvc.ListItem>) ViewData["menulist"]) {
+				foreach (CHSNS.ListItem kv in (List<CHSNS.ListItem>) ViewData["menulist"]) {
 					if (ViewData["mode"].ToString().Equals(kv.Value)) 
 						current = i;
 					i++;
@@ -41,13 +41,13 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		};
 		var SBaseInfo = function() {
 
-		if (v_empty('#b\\.Name', '姓名为必添项') &&
-			v_notin('#b\\.Sex',[0,""],"请选择您的性别") &&
+		if (v_empty('#b_Name', '姓名为必添项') &&
+			v_notin('#b_Sex',[0,""],"请选择您的性别") &&
 			 v_regex('#ProvinceID', /[^0]+/, false, '省为必选') &&
 			  v_regex('#CityID', /[^0]+/, false, '市为必选') &&
 			   v_date('#Birthday', '请写入正确日期'))
 				$.post('<%=Url.Action("SaveBaseInfo","User") %>', $("#BasicInfofrm").serialize(), function(r) {
-					$("#b\\.Name").focus();
+					$("#b_Name").focus();
 					if ('' == r) alertEx('成功提交');
 				});
 		};

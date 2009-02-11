@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{565374D0-3D96-4D3B-9E95-108574BA9755}</ProjectGuid>
     <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -209,6 +209,7 @@
     <Content Include="JavaScript\Admin\ext-jquery-adapter.js" />
     <Content Include="JavaScript\Admin\TabCloseMenu.js" />
     <Content Include="Style\Facebook\Images\Upload\XPButtonUploadText_61x22.png" />
+    <Content Include="Style\Facebook\wysiwyg\jquery.wysiwyg.gif" />
     <Content Include="Style\Facebook_backup\admin.css" />
     <Content Include="Style\Facebook_backup\appli.css" />
     <Content Include="Style\Facebook_backup\blog.css" />
@@ -435,7 +436,7 @@
     <Content Include="Style\Facebook\Reply.css" />
     <Content Include="Style\Facebook\skin.gif" />
     <Content Include="Style\Facebook\video.css" />
-    <Content Include="Style\Facebook\wysiwyg.css" />
+    <Content Include="Style\Facebook\wysiwyg\wysiwyg.css" />
     <Content Include="Style\Facebook\Images\wysiwyg.gif" />
     <Content Include="Views\Account\Agreement.aspx" />
     <Content Include="Views\Account\Reg-Success.aspx" />
@@ -659,6 +660,9 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

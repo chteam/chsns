@@ -37,7 +37,7 @@
 			</li>
 		</ul>
 	</div>
-	<%=Html.ActionLink("首页","Index","Home") %>
+	<%=Html.RouteLink("首页", "index",null)%>
 	<%=(CHStatic.UnReadMessageCount == 0) ?
 	Html.ActionLink("站内信","Inbox","Message") :
 		Html.ActionLink(string.Format("站内信({0})", CHStatic.UnReadMessageCount), "Inbox", "Message")%>
@@ -45,7 +45,7 @@
 	<%=Html.ActionLink("注销","Logout","Account") %>
 	<%}
    else { %>
-	<a href="/">首页</a>
+<%=Html.RouteLink("首页", "index",null)%>
 	<a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
 	<%} %>
 </div>
