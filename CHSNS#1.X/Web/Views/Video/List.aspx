@@ -6,7 +6,8 @@
 		<h4>
 			$Username$µÄÊÓÆµ</h4>
 		<ol id="SuperNoteList">
-			$SuperNoteList$</ol>
+		
+		</ol>
 	</div>
 	
 </div>
