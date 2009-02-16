@@ -66,9 +66,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOW", "WOW\WOW.csproj", "{E247666D-4278-453B-9CD3-3C45EAA6ED6C}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -112,6 +114,10 @@ Global
 		SccProjectTopLevelParentUniqueName10 = CHSNS1.x.sln
 		SccProjectName10 = CHSNS.MvcTest
 		SccLocalPath10 = CHSNS.MvcTest
+		SccProjectUniqueName11 = WOW\\WOW.csproj
+		SccProjectTopLevelParentUniqueName11 = CHSNS1.x.sln
+		SccProjectName11 = WOW
+		SccLocalPath11 = WOW
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x.vsmdi
@@ -284,12 +290,28 @@ Global
 		{8F0BA039-9A35-43AD-BEAE-A8D5D7800590}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F0BA039-9A35-43AD-BEAE-A8D5D7800590}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8F0BA039-9A35-43AD-BEAE-A8D5D7800590}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Default|.NET.ActiveCfg = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Release|.NET.ActiveCfg = Release|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{565374D0-3D96-4D3B-9E95-108574BA9755} = {D3F92409-02E1-4837-9974-3A7816F96EC1}
+		{E247666D-4278-453B-9CD3-3C45EAA6ED6C} = {D3F92409-02E1-4837-9974-3A7816F96EC1}
 		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036} = {20A815C8-5BE0-4F75-850A-3F4AA4684DEE}
 		{F7CF4538-9101-4328-81D0-AF1B2A8B314A} = {5EF50786-2492-4737-946C-906F0E62EF91}
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}

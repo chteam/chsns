@@ -179,6 +179,7 @@
     <Content Include="Config\SystemTemplate.xml" />
     <Content Include="Config\Category.xml" />
     <Content Include="Content\swfupload.swf" />
+    <Content Include="DefaultWsdlHelpGenerator.aspx" />
     <Content Include="Images\CHBox\b.png" />
     <Content Include="Images\CHBox\bl.png" />
     <Content Include="Images\CHBox\br.png" />
@@ -200,6 +201,7 @@
     <Content Include="JavaScript\Upload\fileprogress.js" />
     <Content Include="JavaScript\Upload\handlers.js" />
     <Content Include="JavaScript\Upload\swfupload.swfobject.js" />
+    <Content Include="Service\Users.asmx" />
     <Content Include="Style\Facebook\Images\check_right.gif" />
     <Content Include="Style\Facebook\Images\curtain.png" />
     <Content Include="Style\Facebook\Images\logo.jpg" />
@@ -636,6 +638,10 @@
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Service\Users.asmx.cs">
+      <DependentUpon>Users.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
