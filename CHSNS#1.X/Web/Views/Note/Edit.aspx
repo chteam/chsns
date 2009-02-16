@@ -26,7 +26,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 
 	<%=Html.Script("wysiwyg") %>
-	<%=Html.CSSLink("wysiwyg") %>
+	<%=Html.CSSLink("wysiwyg/wysiwyg")%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
