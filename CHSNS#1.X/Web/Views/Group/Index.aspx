@@ -3,7 +3,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("group") %>
-	<%=Html.CSSLink("wysiwyg")%>
+	<%=Html.CSSLink("wysiwyg/wysiwyg")%>
 	<%=Html.Script("wysiwyg")%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
