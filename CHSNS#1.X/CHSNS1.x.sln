@@ -70,7 +70,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOW", "WOW\WOW.csproj", "{E
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -114,10 +114,6 @@ Global
 		SccProjectTopLevelParentUniqueName10 = CHSNS1.x.sln
 		SccProjectName10 = CHSNS.MvcTest
 		SccLocalPath10 = CHSNS.MvcTest
-		SccProjectUniqueName11 = WOW\\WOW.csproj
-		SccProjectTopLevelParentUniqueName11 = CHSNS1.x.sln
-		SccProjectName11 = WOW
-		SccLocalPath11 = WOW
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x.vsmdi
