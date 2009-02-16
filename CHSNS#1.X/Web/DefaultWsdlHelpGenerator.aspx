@@ -11,7 +11,7 @@
 <%@ Import Namespace="System.Resources" %>
 <%@ Import Namespace="System.Diagnostics" %>
 <%@ Import Namespace="System.Net" %>
-<%@ Import Namespace="System.Web.Services.Description" %>
+
 <html>
 
     <script language="C#" runat="server">
@@ -260,7 +260,7 @@
         else return ns + "/encodedTypes";
     }
 
-    void WriteSoapMessage(System.Web.Services.Description.Message messageBinding, System.Web.Services.Description.Message message, bool soap12) {
+    void WriteSoapMessage(MessageBinding messageBinding,System.Web.Services.Description.Message message, bool soap12) {
         objectId = 0;
         SoapOperationBinding soapBinding;
         SoapBodyBinding soapBodyBinding;
@@ -304,7 +304,7 @@
         if (headers.Length > 0) {
             xmlWriter.WriteStartElement("Header", envelopeNs);
             foreach (SoapHeaderBinding header in headers) {
-                Message headerMessage = serviceDescriptions.GetMessage(header.Message);
+              System.Web.Services.Description.Message headerMessage = serviceDescriptions.GetMessage(header.Message);
                 if (headerMessage != null) {
                     MessagePart part = headerMessage.Parts[header.Part];
                     if (part != null) {
@@ -400,7 +400,7 @@
         get { 
             if (HttpGetOperationBinding == null) return "";
             if (HttpGetOperationBinding.Output == null) return "";
-            Message message = serviceDescriptions.GetMessage(HttpGetOperation.Messages.Output.Message);
+          System.Web.Services.Description.Message message = serviceDescriptions.GetMessage(HttpGetOperation.Messages.Output.Message);
             WriteBegin();
             Write("HTTP/1.1 200 OK");
             WriteLine();
@@ -501,7 +501,7 @@
         get { 
             if (HttpPostOperationBinding == null) return "";
             if (HttpPostOperationBinding.Output == null) return "";
-            Message message = serviceDescriptions.GetMessage(HttpPostOperation.Messages.Output.Message);
+          System.Web.Services.Description.Message message = serviceDescriptions.GetMessage(HttpPostOperation.Messages.Output.Message);
             WriteBegin();
             Write("HTTP/1.1 200 OK");
             WriteLine();
@@ -545,7 +545,7 @@
     MessagePart[] TryGetMessageParts {
         get { 
             if (HttpGetOperationBinding == null) return new MessagePart[0];
-            Message message = serviceDescriptions.GetMessage(HttpGetOperation.Messages.Input.Message);
+          System.Web.Services.Description.Message message = serviceDescriptions.GetMessage(HttpGetOperation.Messages.Input.Message);
             MessagePart[] parts = new MessagePart[message.Parts.Count];
             message.Parts.CopyTo(parts, 0);
             return parts;
@@ -555,7 +555,7 @@
     bool ShowGetTestForm {
         get {
             if (!ShowingHttpGet) return false;
-            Message message = serviceDescriptions.GetMessage(HttpGetOperation.Messages.Input.Message);
+          System.Web.Services.Description.Message message = serviceDescriptions.GetMessage(HttpGetOperation.Messages.Input.Message);
             foreach (MessagePart part in message.Parts) {
                 if (part.Type.Namespace != XmlSchema.Namespace && part.Type.Namespace != msTypesNs)
                     return false;
@@ -582,7 +582,7 @@
     MessagePart[] TryPostMessageParts {
         get { 
             if (HttpPostOperationBinding == null) return new MessagePart[0];
-            Message message = serviceDescriptions.GetMessage(HttpPostOperation.Messages.Input.Message);
+          System.Web.Services.Description.Message message = serviceDescriptions.GetMessage(HttpPostOperation.Messages.Input.Message);
             MessagePart[] parts = new MessagePart[message.Parts.Count];
             message.Parts.CopyTo(parts, 0);
             return parts;
@@ -592,7 +592,7 @@
     bool ShowPostTestForm {
         get {
             if (!ShowingHttpPost) return false;
-            Message message = serviceDescriptions.GetMessage(HttpPostOperation.Messages.Input.Message);
+          System.Web.Services.Description.Message message = serviceDescriptions.GetMessage(HttpPostOperation.Messages.Input.Message);
             foreach (MessagePart part in message.Parts) {
                 if (part.Type.Namespace != XmlSchema.Namespace && part.Type.Namespace != msTypesNs)
                     return false;
@@ -1445,7 +1445,7 @@
 
   </script>
 
-  <head runat=server>
+  <head id="Head1" runat=server>
 
     <link rel="alternate" type="text/xml" href='<%#Uri.EscapeUriString(Request.Path).Replace("#", "%23") + "?disco"%>'/>
 
@@ -1487,11 +1487,11 @@
 
       <p class="heading1"><%#ServiceName%></p><br>
 
-      <span visible='<%#ShowingMethodList && ServiceDocumentation.Length > 0%>' runat=server>
+      <span id="Span1" visible='<%#ShowingMethodList && ServiceDocumentation.Length > 0%>' runat=server>
           <p class="intro"><%#ServiceDocumentation%></p>
       </span>
 
-      <span visible='<%#ShowingMethodList%>' runat=server>
+      <span id="Span2" visible='<%#ShowingMethodList%>' runat=server>
 
           <p class="intro"><%#GetLocalizedText("OperationsIntro", new object[] { EscapedFileName + "?WSDL" })%> </p>
           
@@ -1504,10 +1504,10 @@
             <itemtemplate>
               <li>
                 <a href="<%#EscapedFileName%>?op=<%#EscapeParam(DataBinder.Eval(Container.DataItem, "Key").ToString())%>"><%#XmlConvert.DecodeName((string)DataBinder.Eval(Container.DataItem, "Value.Name"))%></a>
-                <span visible='<%#((string)DataBinder.Eval(Container.DataItem, "Key")) != (string)DataBinder.Eval(Container.DataItem, "Value.Name") %>' runat=server>
+                <span id="Span3" visible='<%#((string)DataBinder.Eval(Container.DataItem, "Key")) != (string)DataBinder.Eval(Container.DataItem, "Value.Name") %>' runat=server>
                   <br>MessageName="<%#DataBinder.Eval(Container.DataItem, "Key")%>"
                 </span>
-                <span visible='<%#((string)DataBinder.Eval(Container.DataItem, "Value.Documentation")).Length>0%>' runat=server>
+                <span id="Span4" visible='<%#((string)DataBinder.Eval(Container.DataItem, "Value.Documentation")).Length>0%>' runat=server>
                   <br><%#DataBinder.Eval(Container.DataItem, "Value.Documentation")%>
                 </span>
               </li>
@@ -1520,7 +1520,7 @@
           </asp:repeater>
       </span>
 
-      <span visible='<%#!ShowingMethodList && OperationExists%>' runat=server>
+      <span id="Span5" visible='<%#!ShowingMethodList && OperationExists%>' runat=server>
           <p class="intro"><%#GetLocalizedText("LinkBack", new object[] { EscapedFileName })%></p>
           <h2><%#OperationName%></h2>
           <p class="intro"><%#SoapOperationBinding == null ? "" : SoapOperation.Documentation%></p>
@@ -1540,11 +1540,11 @@
                       <%#GetLocalizedText("TestText")%>
 
                       <form target="_blank" action='<%#TryGetUrl == null ? "" : TryGetUrl.AbsoluteUri%>' method="GET">
-                        <asp:repeater datasource='<%#TryGetMessageParts%>' runat=server>
+                        <asp:repeater ID="Repeater1" datasource='<%#TryGetMessageParts%>' runat=server>
 
                         <headertemplate>
                            <table cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
-  						   <tr visible='<%# TryGetMessageParts.Length > 0%>' runat=server>
+  						   <tr id="Tr1" visible='<%# TryGetMessageParts.Length > 0%>' runat=server>
                             <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white;"><%#GetLocalizedText("Parameter")%></td>
                             <td class="frmHeader" background="#dcdcdc"><%#GetLocalizedText("Value")%></td>
                           </tr>
@@ -1592,11 +1592,11 @@
 
 
                       <form target="_blank" action='<%#TryPostUrl == null ? "" : TryPostUrl.AbsoluteUri%>' method="POST">                      
-                        <asp:repeater datasource='<%#TryPostMessageParts%>' runat=server>
+                        <asp:repeater ID="Repeater2" datasource='<%#TryPostMessageParts%>' runat=server>
 
                         <headertemplate>
                           <table cellspacing="0" cellpadding="4" frame="box" bordercolor="#dcdcdc" rules="none" style="border-collapse: collapse;">
-                          <tr visible='<%# TryPostMessageParts.Length > 0%>' runat=server>
+                          <tr id="Tr2" visible='<%# TryPostMessageParts.Length > 0%>' runat=server>
                             <td class="frmHeader" background="#dcdcdc" style="border-right: 2px solid white;"><%#GetLocalizedText("Parameter")%></td>
                             <td class="frmHeader" background="#dcdcdc"><%#GetLocalizedText("Value")%></td>
                           </tr>
@@ -1622,7 +1622,7 @@
                   <% }
                  }
              } %>
-          <span visible='<%#ShowingSoap%>' runat=server>
+          <span id="Span6" visible='<%#ShowingSoap%>' runat=server>
               <h3><%#GetLocalizedText("SoapTitle")%></h3>
               <p><%#GetLocalizedText("SoapText")%></p>
 
@@ -1631,7 +1631,7 @@
               <pre><%#GetSoapOperationOutput(false)%></pre>
           </span>
 
-          <span visible='<%#ShowingSoap12%>' runat=server>
+          <span id="Span7" visible='<%#ShowingSoap12%>' runat=server>
               <h3><%#GetLocalizedText("Soap1_2Title")%></h3>
               <p><%#GetLocalizedText("Soap1_2Text")%></p>
 
@@ -1640,7 +1640,7 @@
               <pre><%#GetSoapOperationOutput(true)%></pre>
           </span>
 
-          <span visible='<%#ShowingHttpGet%>' runat=server>
+          <span id="Span8" visible='<%#ShowingHttpGet%>' runat=server>
               <h3><%#GetLocalizedText("HttpGetTitle")%></h3>
               <p><%#GetLocalizedText("HttpGetText")%></p>
 
@@ -1649,7 +1649,7 @@
               <pre><%#HttpGetOperationOutput%></pre>
           </span>
 
-          <span visible='<%#ShowingHttpPost%>' runat=server>
+          <span id="Span9" visible='<%#ShowingHttpPost%>' runat=server>
               <h3><%#GetLocalizedText("HttpPostTitle")%></h3>
               <p><%#GetLocalizedText("HttpPostText")%></p>
 
@@ -1661,8 +1661,8 @@
       </span>
       
 
-    <span visible='<%#ShowingMethodList%>' runat=server>
-        <span visible='<%#Warnings.Count > 0%>' runat=server>
+    <span id="Span10" visible='<%#ShowingMethodList%>' runat=server>
+        <span id="Span11" visible='<%#Warnings.Count > 0%>' runat=server>
             <hr>
             <h3><font class="error"><%#GetLocalizedText("ServiceConformance")%></font></h3>
             <p class="intro"><%#GetLocalizedText("ServiceConformanceDetails")%></p>
@@ -1679,18 +1679,18 @@
 
         <h3><%#GetLocalizedText("ServiceConformanceList")%></h3>
         
-        <asp:repeater datasource='<%#Warnings%>' runat=server>
+        <asp:repeater ID="Repeater3" datasource='<%#Warnings%>' runat=server>
             <itemtemplate>
                 <br><font class=error><%#((BasicProfileViolation)Container.DataItem).NormativeStatement%></font>: <%#((BasicProfileViolation)Container.DataItem).Details%>
                 
-                <asp:repeater datasource='<%#((BasicProfileViolation)Container.DataItem).Elements%>' runat=server>
+                <asp:repeater ID="Repeater4" datasource='<%#((BasicProfileViolation)Container.DataItem).Elements%>' runat=server>
                     <itemtemplate>
                         <br>  
                         -  <%#Container.DataItem%>
                     </itemtemplate>   
                 </asp:repeater>
 
-                <span visible='<%#((BasicProfileViolation)Container.DataItem).Recommendation != null%>' runat=server>
+                <span id="Span12" visible='<%#((BasicProfileViolation)Container.DataItem).Recommendation != null%>' runat=server>
                     <br><font class=key><%#GetLocalizedText("Recommendation")%>:</font> <%#((BasicProfileViolation)Container.DataItem).Recommendation%>
                 </span>
                 <br>                
@@ -1701,7 +1701,7 @@
         </span>
     </span>
     
-      <span visible='<%#ShowingMethodList && ServiceNamespace == "http://tempuri.org/"%>' runat=server>
+      <span id="Span13" visible='<%#ShowingMethodList && ServiceNamespace == "http://tempuri.org/"%>' runat=server>
           <hr>
           <h3><%#GetLocalizedText("DefaultNamespaceWarning1")%></h3>
           <h3><%#GetLocalizedText("DefaultNamespaceWarning2")%></h3>
@@ -1728,7 +1728,7 @@ public ref class MyWebService {
           <p class="intro"><%#GetLocalizedText("DefaultNamespaceHelp6")%></p>
       </span>
 
-      <span visible='<%#!ShowingMethodList && !OperationExists%>' runat=server>
+      <span id="Span14" visible='<%#!ShowingMethodList && !OperationExists%>' runat=server>
           <%#GetLocalizedText("LinkBack", new object[] { EscapedFileName })%>
           <h2><%#GetLocalizedText("MethodNotFound")%></h2>
           <%#GetLocalizedText("MethodNotFoundText", new object[] { Server.HtmlEncode(OperationName), ServiceName })%>
