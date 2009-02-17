@@ -2,8 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>我的招募</h2>
-
+    <h2>消费区</h2>
+<%
+    var d = new Dictionary<int, string>();
+    d.Add(0, "等待中");
+    d.Add(1, "已完成");
+    d.Add(2, "已结算");
+     %>
+  
     <table class=table>
         <tr>
             <th></th>
@@ -37,7 +43,7 @@
     
         <tr>
             <td>
-                 <%=Html.ActionLink("查看", "TaskDetails", new { id=item.ID                })%>
+                <%=Html.ActionLink("我要加入", "TaskDetails", new { id=item.ID                })%>
             </td>
             <td>
                 <%= Html.Encode(item.Title) %>
@@ -61,7 +67,7 @@
                 <%= Html.Encode(item.GB) %>
             </td>
             <td>
-                <%= Html.Encode(item.Status) %>
+                <%= Html.Encode(d[item.Status]) %>
             </td>
         </tr>
     
@@ -70,8 +76,7 @@
     </table>
 
     <p>
-    <%=Html.ActionLink("返回Ｇ团招募", "Index") %>
-        <%= Html.ActionLink("发起悬赏", "AddTask")%>
+        <%=Html.ActionLink("返回Ｇ团招募", "Index") %>
     </p>
 
 </asp:Content>

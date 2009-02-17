@@ -601,7 +601,11 @@
     <Content Include="Views\Wow\Index.aspx" />
     <Content Include="Views\Wow\Join.aspx" />
     <Content Include="Views\Wow\SetRole.aspx" />
+    <Content Include="Views\Wow\Task.aspx" />
+    <Content Include="Views\Wow\TaskDetails.aspx" />
     <Content Include="Views\Wow\TaskList.aspx" />
+    <Content Include="Views\Wow\Work.aspx" />
+    <Content Include="Views\Wow\WorkDetails.aspx" />
     <Content Include="Views\Wow\WorkList.aspx" />
   </ItemGroup>
   <ItemGroup>

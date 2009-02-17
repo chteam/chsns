@@ -8,11 +8,11 @@ using CHSNS.Web;
 
 namespace CHSNS.Controllers
 {
-    public class WowController :BaseController
+    public class WowController : BaseController
     {
         //
         // GET: /Wow/
-
+        int initGB = 1;
         public ActionResult Index()
         {
             using (var w = new WOWDataContext())
@@ -22,13 +22,15 @@ namespace CHSNS.Controllers
                 if (u.Character.Count == 0) return View("EditRole");//没创建角色
                 if (u.Character1 == null) return View("SetRole", u.Character);//没设置当前角色
                 //可以使用了
+                Title = "G团招募";
                 return View(u);
+
             }
 
         }
         #region Role
 
-        
+
         public ActionResult Join()
         {
             using (var w = new WOWDataContext())
@@ -40,7 +42,7 @@ namespace CHSNS.Controllers
                     {
                         ConsumerGB = 0,
                         Evaluation = 0,
-                        GB = 100,
+                        GB = 1000 * initGB,
                         UID = CHUser.UserID,
                         WorkerGB = 0
                     };
@@ -62,6 +64,7 @@ namespace CHSNS.Controllers
                     ViewData["c"] =
                         w.Character.Where(c1 => c1.ID == ID.Value).FirstOrDefault();
                 }
+                Title = "新建游戏角色";
             }
             return View();
         }
@@ -111,7 +114,8 @@ namespace CHSNS.Controllers
 
         #region task
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult AddTask() {
+        public ActionResult AddTask()
+        {
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
@@ -119,24 +123,49 @@ namespace CHSNS.Controllers
         {
             using (var w = new WOWDataContext())
             {
+                var u = w.CurrentUser.Where(c => c.UID == CHUser.UserID).FirstOrDefault();
+                u.GB -= (initGB + t.GB);
                 t.AddTime = DateTime.Now;
                 t.CreateUserID = CHUser.UserID;
                 t.Status = 0;//招中
                 w.Task.InsertOnSubmit(t);
                 w.SubmitChanges();
+                Title = "新建计划";
                 return RedirectToAction("TaskList");
             }
         }
-        public ActionResult TaskList(int? p) {
+        public ActionResult TaskList(int? p)
+        {
             using (var w = new WOWDataContext())
             {
                 return View(w.Task.Where(c => c.CreateUserID == CHUser.UserID).ToList());
             }
         }
+        public ActionResult TaskDetails(long id)
+        {
+            using (var w = new WOWDataContext())
+            {
+                var t = w.Task.Where(c => c.ID == id).FirstOrDefault();
+                ViewData["wid"] = new SelectList(w.Worker.Where(c => c.Status == 0 && c.UID == CHUser.UserID).ToList(),"ID","Description");
+                return View(t);
+            }
+        }
+        public ActionResult JoinTask(long wid, long tid)
+        {
+            using (var w = new WOWDataContext())
+            {
+                var t = w.Worker.Where(c => c.ID == wid).FirstOrDefault();
+                if (t != null) { t.TaskID = tid;
+                t.Status = 1;
+                }
+                w.SubmitChanges();
+                return RedirectToAction("index");
+            }
+        }
         #endregion
         #region work
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult AddWork(long ? taskid)
+        public ActionResult AddWork(long? taskid)
         {
             ViewData["t.TaskID"] = taskid;
             return View();
@@ -146,11 +175,15 @@ namespace CHSNS.Controllers
         {
             using (var w = new WOWDataContext())
             {
+                var u = w.CurrentUser.Where(c => c.UID == CHUser.UserID).FirstOrDefault();
+                u.GB -= initGB;
+
                 t.AddTime = DateTime.Now;
                 t.UID = CHUser.UserID;
                 t.Status = 0;//招中
-                
-                
+
+
+
                 w.Worker.InsertOnSubmit(t);
                 w.SubmitChanges();
 
@@ -164,6 +197,58 @@ namespace CHSNS.Controllers
                 return View(w.Worker.Where(c => c.UID == CHUser.UserID).ToList());
             }
         }
+        public ActionResult  WorkDetails(long id){
+            using (var w = new WOWDataContext())
+            {
+                return View(w.Worker.Where(c => c.ID==id).FirstOrDefault());
+            }
+        }
         #endregion
+
+        #region 两大区
+        public ActionResult Work(int? p)
+        {
+            using (var w = new WOWDataContext())
+            {
+                return View(w.Worker.Where(c => c.Status == 0));
+            }
+        }
+        public ActionResult Task(int? p)
+        {
+            using (var w = new WOWDataContext())
+            {
+                return View(w.Task.Where(c => c.Status == 0).ToList());
+            }
+        }
+
+        public ActionResult SetWorkStatus(long id, int s) {
+            using (var w = new WOWDataContext())
+            {
+                var o=w.Worker.Where(c => c.ID == id).FirstOrDefault();
+                o.Status = s;
+                w.SubmitChanges();
+                return this.RedirectToReferrer() ;
+            }
+        }
+        #endregion
+#region    pay
+        public ActionResult PayTask(long id){
+            using (var w = new WOWDataContext())
+            {
+                var o = w.Task.Where(c => c.ID == id).FirstOrDefault();
+                o.Status = 2;
+                var m = o.GB;
+                var n = o.Worker.Count-initGB;
+                foreach (var w1 in o.Worker)
+                {
+                    w1.CurrentUser.GB += o.GB / n;
+                    w1.CurrentUser.WorkerGB += o.GB / n;
+                    w1.Status = 2;
+                }
+                w.SubmitChanges();
+                return this.RedirectToAction("index");
+            }
+        }
+#endregion
     }
 }
