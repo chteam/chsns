@@ -22,6 +22,11 @@
   <%=Html.ActionLink("我要打工", "AddWork")%>  <%=Html.ActionLink("我的打工计划", "WorkList")%>
    </p>
     </fieldset>
+    
+    <p>
+<%--  <%=Html.ActionLink("打工区", "Work")%>--%>
+    <%=Html.ActionLink("消费区", "Task")%>
+   </p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>

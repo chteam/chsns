@@ -1,4 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="WOW">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.5" name="WOW">
   <DataContextMoniker Name="/WOWDataContext" />
+  <nestedChildShapes>
+    <classShape Id="399add45-db47-44cd-8ae0-712fe240c6b7" absoluteBounds="3.5, 9.375, 2, 2.9086836751302059">
+      <DataClassMoniker Name="/WOWDataContext/Character" />
+      <nestedChildShapes>
+        <elementListCompartment Id="debf07d9-d24f-48c7-8ea5-306ad292ad3f" absoluteBounds="3.515, 9.835, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9172d84a-f45f-4409-bf80-d82059c7cf75" absoluteBounds="6.25, 5.625, 2, 2.3356245930989594">
+      <DataClassMoniker Name="/WOWDataContext/Worker" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38982d7e-fb97-4805-a79e-a174843693a9" absoluteBounds="6.265, 6.085, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dec29df2-6d8f-4a96-8456-3254ddf77d1f" absoluteBounds="0.75, 5, 2, 1.9535852050781255">
+      <DataClassMoniker Name="/WOWDataContext/CurrentUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="de32e033-eda8-4bec-bd6c-54f0e24d4b26" absoluteBounds="0.765, 5.46, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="36c3f5ee-beb2-4f16-acfd-44f4fba9cfbf" absoluteBounds="3.5, 5.875, 2, 2.7176639811197916">
+      <DataClassMoniker Name="/WOWDataContext/Task" />
+      <nestedChildShapes>
+        <elementListCompartment Id="87dd0631-1059-4e59-8d60-3ba8ff9d876b" absoluteBounds="3.515, 6.335, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 6.95358520507813); (1.75 : 10.8293418375651); (3.5 : 10.8293418375651)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WOWDataContext/CurrentUser/CurrentUser_Character" />
+      <nodes>
+        <classShapeMoniker Id="dec29df2-6d8f-4a96-8456-3254ddf77d1f" />
+        <classShapeMoniker Id="399add45-db47-44cd-8ae0-712fe240c6b7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.71875); (6.25 : 5.71875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WOWDataContext/CurrentUser/CurrentUser_Worker" />
+      <nodes>
+        <classShapeMoniker Id="dec29df2-6d8f-4a96-8456-3254ddf77d1f" />
+        <classShapeMoniker Id="9172d84a-f45f-4409-bf80-d82059c7cf75" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 10.0709184187826); (2.2812525 : 10.0709184187826); (2.2812525 : 6.95358520507813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WOWDataContext/Character/Character_CurrentUser" />
+      <nodes>
+        <classShapeMoniker Id="399add45-db47-44cd-8ae0-712fe240c6b7" />
+        <classShapeMoniker Id="dec29df2-6d8f-4a96-8456-3254ddf77d1f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.91781229654948); (6.25 : 6.91781229654948)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WOWDataContext/Task/Task_Worker" />
+      <nodes>
+        <classShapeMoniker Id="36c3f5ee-beb2-4f16-acfd-44f4fba9cfbf" />
+        <classShapeMoniker Id="9172d84a-f45f-4409-bf80-d82059c7cf75" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.41429260253906); (3.5 : 6.41429260253906)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WOWDataContext/CurrentUser/CurrentUser_Task" />
+      <nodes>
+        <classShapeMoniker Id="dec29df2-6d8f-4a96-8456-3254ddf77d1f" />
+        <classShapeMoniker Id="36c3f5ee-beb2-4f16-acfd-44f4fba9cfbf" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
 </ordesignerObjectsDiagram>

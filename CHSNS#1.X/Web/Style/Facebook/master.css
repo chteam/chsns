@@ -519,3 +519,9 @@ padding:2px 5px;
 .formset p{padding-left:122px}
 .formset p label{margin-left:-122px;float:left;width:120px;text-align:right}
 .formset p input[type=text],.formset p textarea{width:400px}
+
+.table{ width:100%; margin-top:10px;}
+.table th{ background-color:#DBDBDB; height:28px; *height:22px; padding:3px; text-align:center; vertical-align:middle; font-weight:bold; border:1px solid #CACACA; border-bottom:none;}
+.table td{ border:1px solid #DBDBDB; height:28px; *height:22px; padding:3px; text-align:center; vertical-align:middle; color:#333;}
+.table td a{ color:#0132CC; text-decoration:none;}
+.table td a:hover{ text-decoration:underline; }

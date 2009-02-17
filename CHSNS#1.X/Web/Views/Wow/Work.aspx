@@ -7,7 +7,7 @@
     d.Add(1, "已通过审核");
     d.Add(2, "终止");
      %>
-    <h2>我的打工计划</h2>
+    <h2>打工区</h2>
 
     <table class="table">
         <tr>
@@ -27,10 +27,10 @@
     
         <tr>
             <td>
-                <%= Html.ActionLink("终止", "SetWorkStatus", new { id=item.ID,s=2 }) %>
+                <%= Html.ActionLink("查看详细信息", "WorkDetails", new { id=item.ID }) %>
             </td>
             <td>
-                <%= Html.Encode(item.Description) %>
+                <%= Html.Encode(item.Description) %><br />
             </td>
             <td>
                 <%= Html.Encode(item.EvaluationWork) %>
@@ -45,8 +45,7 @@
     </table>
 
     <p>
-     <%=Html.ActionLink("返回Ｇ团招募", "Index") %>
-   <%=Html.ActionLink("我要打工", "AddWork")%>
+       <%=Html.ActionLink("返回Ｇ团招募", "Index") %>
     </p>
 
 </asp:Content>
