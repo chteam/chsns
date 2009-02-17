@@ -178,6 +178,7 @@
     <Content Include="Config\SystemApplication.xml" />
     <Content Include="Config\SystemTemplate.xml" />
     <Content Include="Config\Category.xml" />
+    <Content Include="Config\WowTaskType.xml" />
     <Content Include="Content\swfupload.swf" />
     <Content Include="DefaultWsdlHelpGenerator.aspx" />
     <Content Include="Images\CHBox\b.png" />
@@ -593,9 +594,15 @@
     <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\School.ascx" />
     <Content Include="Views\User\Upload.ascx" />
+    <Content Include="Views\Wow\AddTask.aspx" />
+    <Content Include="Views\Wow\AddWork.aspx" />
     <Content Include="Views\Wow\CreateRole.aspx" />
+    <Content Include="Views\Wow\EditRole.aspx" />
     <Content Include="Views\Wow\Index.aspx" />
     <Content Include="Views\Wow\Join.aspx" />
+    <Content Include="Views\Wow\SetRole.aspx" />
+    <Content Include="Views\Wow\TaskList.aspx" />
+    <Content Include="Views\Wow\WorkList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Controllers\CHSNS.Controllers.csproj">

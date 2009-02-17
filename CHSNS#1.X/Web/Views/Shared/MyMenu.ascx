@@ -18,7 +18,7 @@
                 }
 			%>
 		    <li id="Li1"  class=" s_icon">
-				<%=Html.ActionLink("角色设置", "Index", "Wow")%>
+				<%=Html.ActionLink("应用程序", "Index", "Wow")%>
 			</li>
 		</ul>
 		<a href="/Application.aspx" class="portal"><span>编辑</span></a>

@@ -11,7 +11,7 @@ namespace CHSNS.Controllers
         public ActionResult Index() {
             //ViewData["viewlist"] = DBExt.View.ViewList(3, 3, 0, 6);
             Title = "首页";
-            return View("Index");
+            return RedirectToAction("index", "Entry", new { title = "index" });
         }
 		public void Logout() {
 			CHContext.Cookies.Clear();

@@ -13,7 +13,7 @@ namespace CHSNS
 		/// <param name="fn">键值</param>
 		public static void Save<T>(T obj, string fn) where T : class
 		{
-			try {
+			
 				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
 				var filepath = CHServer.MapPath(fn);
 				if (!System.IO.File.Exists(filepath))
@@ -25,7 +25,7 @@ namespace CHSNS
 				using (var myWriter = new StreamWriter(filepath)) {
 					mySerializer.Serialize(myWriter, obj);
 				}
-			}
+			try {}
 			catch(Exception e)
 			{
 				throw new Exception(string.Format("存储配置文件{0}时出错,编号:{1}->{2}"
@@ -41,8 +41,7 @@ namespace CHSNS
 		/// <returns></returns>
 		public static T Load<T>(string fn) where T : class
 		{
-			try
-			{
+			
                 var filepath = CHServer.MapPath(fn);
                 if (!System.IO.File.Exists(filepath))
                     System.IO.File.Create(filepath);
@@ -56,7 +55,8 @@ namespace CHSNS
 				{
 					return mySerializer.Deserialize(myFileStream) as T;
 				}
-			}
+			try
+			{}
 			catch
 			{
 				throw new Exception(string.Format("读取配置文件{0}时出错,编号:{1}", fn, 10358));

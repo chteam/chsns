@@ -29,8 +29,8 @@
 				%>
 			</div>
 			<h1>
-				<span>
-					<%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %></span></h1>
+				<span> 
+					<%= CH.Context.Site.BaseConfig.Title %></span></h1>
 		</div>
 		<div id="content" style="width:100%">
 			<asp:ContentPlaceHolder ID="MainContent" runat="server" />
