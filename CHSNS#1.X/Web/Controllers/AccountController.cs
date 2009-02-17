@@ -51,7 +51,7 @@ namespace CHSNS.Controllers {
         public ActionResult Logout() {
             DBExt.Account.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("index", "Entry", new { title="index"});
         }
         /// <summary>
         /// 登录
