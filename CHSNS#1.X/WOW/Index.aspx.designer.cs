@@ -11,7 +11,7 @@
 namespace WOW {
     
     
-    public partial class _Default {
+    public partial class Index {
         
         /// <summary>
         /// form1 控件。

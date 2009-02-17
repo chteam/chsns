@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Wow" Class="WOWDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=Wow;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="WowConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Character" Member="Character">
+    <Type Name="Character">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Race" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RealM" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BattleGroup" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Class" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Faction" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="lastLoginDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Gend" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Character_CurrentUser" Member="CurrentUser1" ThisKey="ID" OtherKey="CurrentCID" Type="CurrentUser" />
+      <Association Name="CurrentUser_Character" Member="CurrentUser" ThisKey="UID" OtherKey="UID" Type="CurrentUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Worker" Member="Worker">
+    <Type Name="Worker">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TaskID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Description" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Evaluation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CurrentUser_Worker" Member="CurrentUser" ThisKey="UID" OtherKey="UID" Type="CurrentUser" IsForeignKey="true" />
+      <Association Name="Task_Worker" Member="Task" ThisKey="TaskID" OtherKey="ID" Type="Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CurrentUser" Member="CurrentUser">
+    <Type Name="CurrentUser">
+      <Column Name="UID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CurrentCID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Evaluation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConsumerGB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkerGB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CurrentUser_Character" Member="Character" ThisKey="UID" OtherKey="UID" Type="Character" />
+      <Association Name="CurrentUser_Worker" Member="Worker" ThisKey="UID" OtherKey="UID" Type="Worker" />
+      <Association Name="CurrentUser_Task" Member="Task" ThisKey="UID" OtherKey="CreateUserID" Type="Task" />
+      <Association Name="Character_CurrentUser" Member="Character1" ThisKey="CurrentCID" OtherKey="ID" Type="Character" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Task" Member="Task">
+    <Type Name="Task">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PersonCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BeginTime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AddTime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreateUserID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TaskType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Task_Worker" Member="Worker" ThisKey="ID" OtherKey="TaskID" Type="Worker" />
+      <Association Name="CurrentUser_Task" Member="CurrentUser" ThisKey="CreateUserID" OtherKey="UID" Type="CurrentUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
