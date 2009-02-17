@@ -673,6 +673,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="1.sql" />
+    <None Include="2.sql" />
     <None Include="WOW.dbml.layout">
       <DependentUpon>WOW.dbml</DependentUpon>
     </None>
