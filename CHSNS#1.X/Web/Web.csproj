@@ -488,6 +488,11 @@
     <None Include="Views\Tags\Logtag.vm" />
     <None Include="Views\Tags\Tags.vm" />
     <None Include="Views\Upload\Photo.vm" />
+    <None Include="WOW.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>WOW.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Views\Video\Edit.aspx" />
     <Content Include="Views\Video\Items.ascx" />
     <Content Include="Views\Video\List.aspx" />
@@ -588,6 +593,9 @@
     <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\School.ascx" />
     <Content Include="Views\User\Upload.ascx" />
+    <Content Include="Views\Wow\CreateRole.aspx" />
+    <Content Include="Views\Wow\Index.aspx" />
+    <Content Include="Views\Wow\Join.aspx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Controllers\CHSNS.Controllers.csproj">
@@ -635,6 +643,7 @@
     <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WowController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -643,6 +652,19 @@
       <DependentUpon>Users.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WOW.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WOW.dbml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WOW.dbml.layout">
+      <DependentUpon>WOW.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
