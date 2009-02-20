@@ -5,6 +5,7 @@ namespace CHSNS.Data {
     using Models;
     using CHSNS;
     using System.Data.Common;
+    using System.Configuration;
     public partial class DBExt : IDBExt {
         #region IDataConcreteMediator ≥…‘±
 
@@ -47,7 +48,7 @@ namespace CHSNS.Data {
         public DBExt(IContext context) {
             //	ConnectionString = "name=Entities";
             //var conn = new EntityConnection(ConnectionString);
-            _DB = new CHSNSDBDataContext();
+            _DB = new CHSNSDBDataContext(ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString);
             _dbex = new DataBaseExecutor(new SqlDataOpener(_DB.Connection));
             Context = context;
             Init(); 

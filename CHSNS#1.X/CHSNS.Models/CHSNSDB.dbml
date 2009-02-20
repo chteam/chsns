@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Database Name="CHSNS.Database_DB_0d1a7df4-999c-4ef4-8074-83a3fe2a0ffd" Class="CHSNSDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=CHSNS.Database_DB_0d1a7df4-999c-4ef4-8074-83a3fe2a0ffd;Integrated Security=True" SettingsObjectName="CHSNS.Models.Properties.Settings" SettingsPropertyName="CHSNS_Database_DB_0d1a7df4_999c_4ef4_8074_83a3fe2a0ffdConnectionString" Provider="System.Data.SqlClient" />
+<Database Name="CHSNS.Database" Class="CHSNSDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=CHSNS.Database;Integrated Security=True" SettingsObjectName="CHSNS.Models.Properties.Settings" SettingsPropertyName="CHSNS_DatabaseConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Account">
     <Type Name="Account">
       <Column Name="UserID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
