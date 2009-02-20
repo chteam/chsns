@@ -44,5 +44,15 @@ namespace CHSNS.Models.Properties {
                 return ((string)(this["CHSNS_Database_DB_0d1a7df4_999c_4ef4_8074_83a3fe2a0ffdConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=CHSNS.Database;Integrated Security=True")]
+        public string CHSNS_DatabaseConnectionString {
+            get {
+                return ((string)(this["CHSNS_DatabaseConnectionString"]));
+            }
+        }
     }
 }

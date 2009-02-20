@@ -22,7 +22,7 @@ namespace CHSNS.Models
 	using System;
 	
 	
-	[System.Data.Linq.Mapping.DatabaseAttribute(Name="CHSNS.Database_DB_0d1a7df4-999c-4ef4-8074-83a3fe2a0ffd")]
+	[System.Data.Linq.Mapping.DatabaseAttribute(Name="CHSNS.Database")]
 	public partial class CHSNSDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -114,7 +114,7 @@ namespace CHSNS.Models
     #endregion
 		
 		public CHSNSDBDataContext() : 
-				base(global::CHSNS.Models.Properties.Settings.Default.CHSNS_Database_DB_0d1a7df4_999c_4ef4_8074_83a3fe2a0ffdConnectionString, mappingSource)
+				base(global::CHSNS.Models.Properties.Settings.Default.CHSNS_DatabaseConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
