@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-Inherits="System.Web.Mvc.ViewPage<ModelPas.UserPas>" %>
+Inherits="System.Web.Mvc.ViewPage<CHSNS.ModelPas.UserPas>" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("Reply")%>
 <%--	<%=Html.CSSLink("mypage")%>
@@ -9,7 +9,7 @@ Inherits="System.Web.Mvc.ViewPage<ModelPas.UserPas>" %>
 	<% 
 		UserPas up = ViewData.Model;
 		if (!up.Exists) {
-			Html.RenderPartial("index/noRigh", ViewData.Model);
+			Html.RenderPartial("index/noRight", ViewData.Model);
 		}
 		else {
 			if (up.Exists && up.Profile.IsMagicBox) {%>
@@ -98,7 +98,7 @@ Inherits="System.Web.Mvc.ViewPage<ModelPas.UserPas>" %>
 				<div id="userFace">
 					<ul>
 						<li><a href="#<%=up.OwnerID%>">
-							<%=Html.Image(Path.GetFace_Big(up.OwnerID), up.Profile.Name)%>
+							<%=Html.Image(Path.GetFace(up.OwnerID,ThumbType.Big), up.Profile.Name)%>
 						</a></li>
 					</ul>
 				</div>

@@ -18,12 +18,12 @@
 					<p class="image">
 					
 						<a href="/User.aspx?userid=<%=up.OwnerID %>" target="_blank">
-							<%=Html.Image(Path.GetFace_Middle(up.OwnerID),up.Profile.Name) %>
+							<%=Html.Image(Path.GetFace(up.OwnerID,ThumbType.Middle),"") %>
 						</a>
 					</p>
 					<div class="info">
 						<strong><a href="/User.aspx?userid=<%=up.OwnerID %>" target="_blank">
-							<%=up.Profile.Name%></a> </strong>
+							<%--<%=up.Profile.Name%>--%></a> </strong>
 						<ul>
 							<li></li>
 						</ul>
@@ -32,7 +32,7 @@
 						<li><a href="javascript:void(0);" onclick="$.post('<%=Url.Action("Add","Friend") %>', { 'toid':<%=up.OwnerID%>}, function(r) { alertEx(r); });return false;">
 							加为好友</a></li>
 						<li>
-							<%=Html.WriteMessage(up.OwnerID ,up.Profile.Name) %></li>
+							<%--<%=Html.WriteMessage(up.OwnerID ,up.Profile.Name) %>--%></li>
 					</ul>
 				</div>
 			</li>

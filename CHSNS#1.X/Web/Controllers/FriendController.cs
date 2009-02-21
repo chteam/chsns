@@ -52,7 +52,9 @@ namespace CHSNS.Controllers {
 		[AcceptVerbs("Post")]
 		public ActionResult FriendList(int p, long userid) {
 			using (new TransactionScope()) {
-				return View(DBExt.Friend.GetFriends(userid).Pager(p, 10));
+                var list=DBExt.Friend.GetFriends(userid).Pager(p, 10);
+                ViewData["PageCount"] = list.TotalPages;
+				return View(list);
 			}
 		}
 		[LoginedFilter]

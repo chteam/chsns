@@ -90,18 +90,18 @@ where userid=@UserID",
         	DBExt.DB.SubmitChanges();
             if (ac.UserID < 999) return false;
             var initscore = 50;
-        	DBExt.DB.Profile
-        		.InsertOnSubmit(
-        		new Profile {
-        		            	UserID = ac.UserID,
-        		            	Name = name,
-        		            	ShowScore = initscore,
-        		            	Score = initscore,
-        		            	DelScore = 0,
-        		            	RegTime = DateTime.Now,
-        		            	LoginTime = DateTime.Now,
-        		            	MagicBox = ""
-        		            });
+            DBExt.DB.Profile.InsertOnSubmit(new Profile
+                {
+                    UserID = ac.UserID,
+                    Name = name,
+                    ShowScore = initscore,
+                    Score = initscore,
+                    DelScore = 0,
+                    Status = (int)RoleType.General,
+                    RegTime = DateTime.Now,
+                    LoginTime = DateTime.Now,
+                    MagicBox = ""
+                });
         	DBExt.DB.BasicInformation
         		.InsertOnSubmit(
         		new BasicInformation {
