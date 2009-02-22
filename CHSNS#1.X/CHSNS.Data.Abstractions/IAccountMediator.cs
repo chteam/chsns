@@ -6,5 +6,9 @@ namespace CHSNS.Data {
 		bool IsUsernameCanUse(string username);
 		int Login(string Username, string Password, bool IsAutoLogin, bool IsPasswordMd5);
 		void Logout();
-	}
+        /// <summary>
+        /// 初始化创建者
+        /// </summary>
+        void InitCreater();
+    }
 }
