@@ -75,7 +75,8 @@ namespace CHSNS.Controllers {
 
         #endregion
         #region 设置管理员
-        public ActionResult InitAdmin(){
+        public ActionResult InitCreater()
+        {
             DBExt.Account.InitCreater();
             return View();
         }
