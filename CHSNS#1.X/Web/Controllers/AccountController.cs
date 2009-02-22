@@ -72,6 +72,14 @@ namespace CHSNS.Controllers {
             }
             return Content("false");
         }
+
+        #endregion
+        #region 设置管理员
+        public ActionResult InitAdmin(){
+            DBExt.Account.InitCreater();
+            return View();
+        }
         #endregion
     }
+
 }

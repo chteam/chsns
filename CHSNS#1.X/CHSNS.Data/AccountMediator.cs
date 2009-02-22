@@ -116,5 +116,15 @@ where userid=@UserID",
 				return false;
 			return DBExt.DB.Account.Where(c => c.Username == username.Trim()).Count() == 0;
 		}
-	}
+
+
+        public void InitCreater()
+        {
+            var p = DBExt.DB.Profile.FirstOrDefault();
+            if (p != null)
+            {
+                p.Status = (int)RoleType.Creater;
+            }
+        }
+    }
 }
