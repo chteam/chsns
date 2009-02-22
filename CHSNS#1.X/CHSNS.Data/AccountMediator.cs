@@ -124,6 +124,8 @@ where userid=@UserID",
             if (p != null)
             {
                 p.Status = (int)RoleType.Creater;
+
+                DBExt.DB.SubmitChanges();
             }
         }
     }
