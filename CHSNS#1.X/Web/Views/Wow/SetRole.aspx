@@ -78,7 +78,7 @@
     </table>
 
     <p>
-        <%= Html.ActionLink("返回应用", "Index") %>
+        <%= Html.ActionLink("返回应用", "Index") %>   <%=Html.ActionLink("新建角色","EditRole") %>
     </p>
 
 </asp:Content>

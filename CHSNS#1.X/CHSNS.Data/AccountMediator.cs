@@ -9,6 +9,9 @@ namespace CHSNS.Data
     public class AccountMediator :BaseMediator ,IAccountMediator
     {
         public AccountMediator(IDBExt id) : base(id) { }
+        /// <summary>
+        /// 注销
+        /// </summary>
         public void Logout()
         {
             DBExt.Context.Cookies.Clear();
@@ -111,11 +114,12 @@ where userid=@UserID",
         	DBExt.DB.SubmitChanges();
             return true;
         }
-		public bool IsUsernameCanUse(string username) {
-			if (username.Trim().Length < 4)
-				return false;
-			return DBExt.DB.Account.Where(c => c.Username == username.Trim()).Count() == 0;
-		}
+        public bool IsUsernameCanUse(string username)
+        {
+            if (username.Trim().Length < 4)
+                return false;
+            return DBExt.DB.Account.Where(c => c.Username == username.Trim()).Count() == 0;
+        }
 
 
         public void InitCreater()
