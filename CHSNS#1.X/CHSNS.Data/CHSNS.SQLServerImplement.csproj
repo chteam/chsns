@@ -81,7 +81,7 @@
     <Compile Include="FriendMediator.cs" />
     <Compile Include="GatherMediator.cs" />
     <Compile Include="GolbalMediator.cs" />
-    <Compile Include="DBExt.cs" />
+    <Compile Include="SQLServerDBManager.cs" />
     <Compile Include="MessageMediator.cs" />
     <Compile Include="NoteMediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
