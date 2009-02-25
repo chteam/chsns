@@ -4,7 +4,7 @@ using CHSNS.ModelPas;
 
 namespace CHSNS.Data {
 	public class ViewMediator : BaseMediator, IViewMediator {
-		public ViewMediator(IDBExt id) : base(id) { }
+		public ViewMediator(IDBManager id) : base(id) { }
 		public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count) {
 			IQueryable<UserItemPas> lu;
 			switch (type) {

@@ -6,7 +6,7 @@ namespace CHSNS.Data {
     using CHSNS;
     using System.Data.Common;
     using System.Configuration;
-    public partial class DBExt : IDBExt {
+    public partial class DBExt : IDBManager {
         #region IDataConcreteMediator ≥…‘±
 
         public IAccountMediator Account { get; private set; }

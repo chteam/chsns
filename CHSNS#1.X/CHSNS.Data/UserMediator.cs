@@ -6,7 +6,7 @@ using System;
 using CHSNS.ModelPas;
 namespace CHSNS.Data {
 	public class UserMediator : BaseMediator, IUserMediator {
-		public UserMediator(IDBExt id) : base(id) { }
+		public UserMediator(IDBManager id) : base(id) { }
 		public UserPas UserInformation(long userid) {
 			var ret = (from p in DBExt.DB.Profile
 					   join b in DBExt.DB.BasicInformation on p.UserID equals b.UserID

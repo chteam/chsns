@@ -4,7 +4,7 @@ namespace CHSNS.Data {
 	using System.Collections.Generic;
 	using System.Linq;
 	public class GolbalMediator : BaseMediator, IGolbalMediator {
-		public GolbalMediator(IDBExt id) : base(id) { }
+		public GolbalMediator(IDBManager id) : base(id) { }
 		/// <summary>
 		/// Get ALL Provinces or Areas
 		/// </summary>

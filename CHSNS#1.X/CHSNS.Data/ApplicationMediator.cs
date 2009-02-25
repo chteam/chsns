@@ -11,7 +11,7 @@ namespace CHSNS.Data
 	{
 		private const string APPLISTALL = "APPLISTALL";
 
-		public ApplicationMediator(IDBExt id) : base(id)
+		public ApplicationMediator(IDBManager id) : base(id)
 		{
 		}
 

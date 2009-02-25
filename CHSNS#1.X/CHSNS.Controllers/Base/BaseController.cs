@@ -26,8 +26,8 @@ namespace CHSNS.Controllers {
 			}
 		}
 		#region Êý¾Ý²Ù×÷
-		private IDBExt _dbext;
-		protected IDBExt DBExt {
+		private IDBManager _dbext;
+		protected IDBManager DBExt {
 			get {
                 if (_dbext == null)
                     _dbext = new DBExt(CHContext);
