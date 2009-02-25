@@ -7,8 +7,28 @@ namespace CHSNS.Data {
     using System.Data.Common;
     using System.Configuration;
     public partial class SQLServerDBManager : IDBManager {
-        #region IDataConcreteMediator 成员
 
+
+        public string ConnectionString { get; private set; }
+        public IContext Context { get; set; }
+        public SQLServerDBManager(IContext context) {
+            //	ConnectionString = "name=Entities";
+            //var conn = new EntityConnection(ConnectionString);
+            ConnectionString = ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString;
+         
+            Context = context;
+            Init();
+        }
+
+
+        public CHSNSDBDataContext DB {
+            get {
+                CHSNSDBDataContext db = new CHSNSDBDataContext(ConnectionString);
+                db.DeferredLoadingEnabled = false;
+                return db;
+            }
+        }
+ 
         public IAccountMediator Account { get; private set; }
         public IViewMediator View { get; private set; }
         public ICommentMediator Comment { get; private set; }
@@ -21,7 +41,7 @@ namespace CHSNS.Data {
         public IMessageMediator Message { get; private set; }
         public INoteMediator Note { get; private set; }
         public IEventMediator Event { get; private set; }
-        public IAlbumMediator Album {  get; private set;}
+        public IAlbumMediator Album { get; private set; }
         public IPhotoMediator Photo { get; private set; }
         public ISuperNoteMediator Video { get; private set; }
 
@@ -42,75 +62,37 @@ namespace CHSNS.Data {
             Event = new EventMediator(this);
             Video = new VideoMediator(this);
         }
-        #endregion
-        #region IDataBase 成员
-        public string ConnectionString { get; private set; }
-        public SQLServerDBManager(IContext context) {
-            //	ConnectionString = "name=Entities";
-            //var conn = new EntityConnection(ConnectionString);
-            _DB = new CHSNSDBDataContext(ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString);
-            _dbex = new DataBaseExecutor(new SqlDataOpener(_DB.Connection));
-            Context = context;
-            Init(); 
-        }
-        public IContext Context { get; set; }
-        private CHSNSDBDataContext _DB;
-        public CHSNSDBDataContext DB {
-            get {
-                if (_DB == null)
-                    _DB = new CHSNSDBDataContext();
-                return _DB;
-            }
-        }
+
+
+
 
         private DataBaseExecutor _dbex;
         public DataBaseExecutor DataBaseExecutor {
             get {
                 //	return new DataBaseExecutor(new EntityOpener(ConnectionString));
                 if (_dbex == null)
-                    _dbex = new DataBaseExecutor(new EntityOpener(
-                                                    ((EntityConnection)DB.Connection).StoreConnection
-                                                    )
-                        );
+                    _dbex = new DataBaseExecutor(new SqlDataOpener(ConnectionString));
                 return _dbex;
             }
         }
 
-        #endregion
 
-
-        #region Transaction
-        public IDbTransaction ExeTransaction() {
-            var conn = DataBaseExecutor.DataOpener.Connection;
-            if (conn.State != ConnectionState.Open)
-                conn.Open();
-            var t = conn.BeginTransaction();
-            DataBaseExecutor.DataOpener.Command.Transaction = t as DbTransaction;
-            return t;
-        }
-        public IDbTransaction ContextTransaction() {
-            if (DB.Connection.State != ConnectionState.Open)
-                DB.Connection.Open();
-            return DB.Connection.BeginTransaction();
-        }
-        #endregion
-        #region IDisposable 成员
 
         public void Dispose() {
+
             if (_dbex != null)
                 DataBaseExecutor.Dispose();
-            if (_DB != null) {
-                if (DB.Connection != null) {
-                    if (DB.Connection.State != ConnectionState.Closed)
-                        DB.Connection.Close();
-                    DB.Connection.Dispose();
-                }
-                DB.Dispose();
-            }
+            //if (_DB != null) {
+            //    if (DB.Connection != null) {
+            //        if (DB.Connection.State != ConnectionState.Closed)
+            //            DB.Connection.Close();
+            //        DB.Connection.Dispose();
+            //    }
+            //    DB.Dispose();
+            //}
         }
 
-        #endregion
 
 
-        }
+    }
 }
