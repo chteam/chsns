@@ -22,9 +22,6 @@
 			<li>
 				<%=Html.UserEditLink("BaseInfo","基本信息")%></li>
 			<li>
-				<%=Html.UserEditLink("School" ,"学校信息")%>
-			</li>
-			<li>
 				<%=Html.UserEditLink( "upload","头像")%>
 			</li>
 			<li>
