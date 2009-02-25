@@ -51,7 +51,7 @@ namespace CHSNS {
                     //当前不处于登录状态
                     if (Context.Cookies.IsAutoLogin) {
                         string pwd = Context.Cookies.UserPassword;
-                        var idb = new DBExt(Context);
+                        var idb = new SQLServerDBManager(Context);
                         idb.Account.Login(Context.Cookies.UserID.ToString(),
                                           pwd,
                                           true,

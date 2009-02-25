@@ -30,7 +30,7 @@ namespace CHSNS.Controllers {
 		protected IDBManager DBExt {
 			get {
                 if (_dbext == null)
-                    _dbext = new DBExt(CHContext);
+                    _dbext = new SQLServerDBManager(CHContext);
 				return _dbext;
 			}
 			set {

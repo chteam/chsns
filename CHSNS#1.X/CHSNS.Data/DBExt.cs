@@ -6,7 +6,7 @@ namespace CHSNS.Data {
     using CHSNS;
     using System.Data.Common;
     using System.Configuration;
-    public partial class DBExt : IDBManager {
+    public partial class SQLServerDBManager : IDBManager {
         #region IDataConcreteMediator 成员
 
         public IAccountMediator Account { get; private set; }
@@ -45,7 +45,7 @@ namespace CHSNS.Data {
         #endregion
         #region IDataBase 成员
         public string ConnectionString { get; private set; }
-        public DBExt(IContext context) {
+        public SQLServerDBManager(IContext context) {
             //	ConnectionString = "name=Entities";
             //var conn = new EntityConnection(ConnectionString);
             _DB = new CHSNSDBDataContext(ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString);
