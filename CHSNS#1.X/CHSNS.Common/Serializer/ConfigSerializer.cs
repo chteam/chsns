@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Web.UI.WebControls;
+
 
 namespace CHSNS
 {
@@ -58,14 +58,7 @@ namespace CHSNS
 		{
 			return Load<T>(key, true);
 		}
-		/// <summary>
-		/// 获取配置文件
-		/// </summary>
-		/// <param name="key"></param>
-		/// <returns></returns>
-		public  List<ListItem> GetConfig(string key){
-			return Load<List<ListItem>>(key);
-		}
+
 
 	}
 }

@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="CH.cs" />
     <Compile Include="CHStatic.cs" />
+    <Compile Include="ConfigSerializerExt.cs" />
     <Compile Include="Core\CHCache.cs" />
     <Compile Include="Core\CHContext.cs" />
     <Compile Include="Core\CHCookies.cs" />
@@ -148,6 +149,10 @@
     <Compile Include="Update\BetaToRC1\ListItem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CHSNS.Common\CHSNS.Common.csproj">
+      <Project>{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}</Project>
+      <Name>CHSNS.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
