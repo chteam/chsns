@@ -9,13 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core", "CHSNS.Core\CH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Models", "CHSNS.Models\CHSNS.Models.csproj", "{A13FEE3F-28F9-4A9C-B774-7C958124D949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Data", "CHSNS.Data\CHSNS.Data.csproj", "{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.SQLServerImplement", "CHSNS.Data\CHSNS.SQLServerImplement.csproj", "{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.ModelPas", "CHSNS.ModelsPas\CHSNS.ModelPas.csproj", "{27E2B6B3-7382-4D72-A889-7FDD618126F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.ViewModel", "CHSNS.ModelsPas\CHSNS.ViewModel.csproj", "{27E2B6B3-7382-4D72-A889-7FDD618126F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core.Tests", "CHSNS.Core.Tests\CHSNS.Core.Tests.csproj", "{54126DEC-D878-40B2-9E49-57E8C04F0D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Data.Abstractions", "CHSNS.Data.Abstractions\CHSNS.Data.Abstractions.csproj", "{3836155E-981B-4C16-8F45-96D19ECC6F7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Abstractions", "CHSNS.Data.Abstractions\CHSNS.Abstractions.csproj", "{3836155E-981B-4C16-8F45-96D19ECC6F7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{95B541E6-765B-4E90-B6B2-6810AE9AD0AB}"
 EndProject
@@ -70,6 +70,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implement", "Implement", "{EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Abstractions", "Abstractions", "{CD9C6228-899D-49E6-B02E-B0FBAE650CEB}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 11
@@ -92,30 +96,30 @@ Global
 		SccProjectTopLevelParentUniqueName4 = CHSNS1.x.sln
 		SccProjectName4 = CHSNS.Models
 		SccLocalPath4 = CHSNS.Models
-		SccProjectUniqueName5 = CHSNS.Data\\CHSNS.Data.csproj
+		SccProjectUniqueName5 = CHSNS.Core.Tests\\CHSNS.Core.Tests.csproj
 		SccProjectTopLevelParentUniqueName5 = CHSNS1.x.sln
-		SccProjectName5 = CHSNS.Data
-		SccLocalPath5 = CHSNS.Data
-		SccProjectUniqueName6 = CHSNS.Core.Tests\\CHSNS.Core.Tests.csproj
+		SccProjectName5 = CHSNS.Core.Tests
+		SccLocalPath5 = CHSNS.Core.Tests
+		SccProjectUniqueName6 = CHSNS.Database\\CHSNS.Database.dbproj
 		SccProjectTopLevelParentUniqueName6 = CHSNS1.x.sln
-		SccProjectName6 = CHSNS.Core.Tests
-		SccLocalPath6 = CHSNS.Core.Tests
-		SccProjectUniqueName7 = CHSNS.Data.Abstractions\\CHSNS.Data.Abstractions.csproj
+		SccProjectName6 = CHSNS.Database
+		SccLocalPath6 = CHSNS.Database
+		SccProjectUniqueName7 = CHSNS.MvcTest\\CHSNS.MvcTest.csproj
 		SccProjectTopLevelParentUniqueName7 = CHSNS1.x.sln
-		SccProjectName7 = CHSNS.Data.Abstractions
-		SccLocalPath7 = CHSNS.Data.Abstractions
-		SccProjectUniqueName8 = CHSNS.ModelsPas\\CHSNS.ModelPas.csproj
+		SccProjectName7 = CHSNS.MvcTest
+		SccLocalPath7 = CHSNS.MvcTest
+		SccProjectUniqueName8 = CHSNS.Data.Abstractions\\CHSNS.Abstractions.csproj
 		SccProjectTopLevelParentUniqueName8 = CHSNS1.x.sln
-		SccProjectName8 = CHSNS.ModelsPas
-		SccLocalPath8 = CHSNS.ModelsPas
-		SccProjectUniqueName9 = CHSNS.Database\\CHSNS.Database.dbproj
+		SccProjectName8 = CHSNS.Data.Abstractions
+		SccLocalPath8 = CHSNS.Data.Abstractions
+		SccProjectUniqueName9 = CHSNS.Data\\CHSNS.SQLServerImplement.csproj
 		SccProjectTopLevelParentUniqueName9 = CHSNS1.x.sln
-		SccProjectName9 = CHSNS.Database
-		SccLocalPath9 = CHSNS.Database
-		SccProjectUniqueName10 = CHSNS.MvcTest\\CHSNS.MvcTest.csproj
+		SccProjectName9 = CHSNS.Data
+		SccLocalPath9 = CHSNS.Data
+		SccProjectUniqueName10 = CHSNS.ModelsPas\\CHSNS.ViewModel.csproj
 		SccProjectTopLevelParentUniqueName10 = CHSNS1.x.sln
-		SccProjectName10 = CHSNS.MvcTest
-		SccLocalPath10 = CHSNS.MvcTest
+		SccProjectName10 = CHSNS.ModelsPas
+		SccLocalPath10 = CHSNS.ModelsPas
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x.vsmdi
@@ -296,13 +300,13 @@ Global
 		{565374D0-3D96-4D3B-9E95-108574BA9755} = {D3F92409-02E1-4837-9974-3A7816F96EC1}
 		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036} = {20A815C8-5BE0-4F75-850A-3F4AA4684DEE}
 		{F7CF4538-9101-4328-81D0-AF1B2A8B314A} = {5EF50786-2492-4737-946C-906F0E62EF91}
-		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
 		{27E2B6B3-7382-4D72-A889-7FDD618126F3} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
 		{A13FEE3F-28F9-4A9C-B774-7C958124D949} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
 		{54126DEC-D878-40B2-9E49-57E8C04F0D21} = {1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}
 		{8F0BA039-9A35-43AD-BEAE-A8D5D7800590} = {1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}
 		{0D847749-2B28-4F34-B80A-1D52EF641B2F} = {1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}
 		{02841DB3-429F-4032-AE95-66DF05B701DF} = {95B541E6-765B-4E90-B6B2-6810AE9AD0AB}
+		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}
+		{3836155E-981B-4C16-8F45-96D19ECC6F7E} = {CD9C6228-899D-49E6-B02E-B0FBAE650CEB}
 	EndGlobalSection
 EndGlobal

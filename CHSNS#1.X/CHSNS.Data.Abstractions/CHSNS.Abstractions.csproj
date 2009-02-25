@@ -8,8 +8,8 @@
     <ProjectGuid>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CHSNS.Data</RootNamespace>
-    <AssemblyName>CHSNS.Data.Abstractions</AssemblyName>
+    <RootNamespace>CHSNS</RootNamespace>
+    <AssemblyName>CHSNS.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -55,6 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ICache.cs" />
+    <Compile Include="Context\IContext.cs" />
+    <Compile Include="Context\ICookies.cs" />
+    <Compile Include="Context\IOnline.cs" />
+    <Compile Include="Context\IUser.cs" />
     <Compile Include="IAccountMediator.cs" />
     <Compile Include="IAlbumMediator.cs" />
     <Compile Include="IApplicationMediator.cs" />
@@ -80,9 +85,9 @@
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.ModelsPas\CHSNS.ModelPas.csproj">
+    <ProjectReference Include="..\CHSNS.ModelsPas\CHSNS.ViewModel.csproj">
       <Project>{27E2B6B3-7382-4D72-A889-7FDD618126F3}</Project>
-      <Name>CHSNS.ModelPas</Name>
+      <Name>CHSNS.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\CHSNS.Models\CHSNS.Models.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
