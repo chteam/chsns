@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{60FCF7CB-D80
 		DLL\Microsoft.Practices.Unity.StaticFactory.pdb = DLL\Microsoft.Practices.Unity.StaticFactory.pdb
 		DLL\Microsoft.Web.Mvc.dll = DLL\Microsoft.Web.Mvc.dll
 		DLL\Microsoft.Web.Mvc.pdb = DLL\Microsoft.Web.Mvc.pdb
+		DLL\Microsoft.Web.Testing.Light.dll = DLL\Microsoft.Web.Testing.Light.dll
+		DLL\Microsoft.Web.Testing.Light.pdb = DLL\Microsoft.Web.Testing.Light.pdb
 		DLL\Moq.dll = DLL\Moq.dll
 		DLL\Moq.pdb = DLL\Moq.pdb
 		DLL\Moq.xml = DLL\Moq.xml
@@ -46,6 +48,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{60FCF7CB-D80
 		DLL\Rhino.Mocks.xml = DLL\Rhino.Mocks.xml
 		DLL\System.Web.Mvc.dll = DLL\System.Web.Mvc.dll
 		DLL\System.Web.Mvc.pdb = DLL\System.Web.Mvc.pdb
+		DLL\UnitView.dll = DLL\UnitView.dll
+		DLL\UnitView.pdb = DLL\UnitView.pdb
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{B3184A8F-23C1-4DBB-88CC-35D18477161F}"
