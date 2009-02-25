@@ -82,7 +82,6 @@
     <Compile Include="GatherMediator.cs" />
     <Compile Include="GolbalMediator.cs" />
     <Compile Include="DBExt.cs" />
-    <Compile Include="Image\ImageUpload.cs" />
     <Compile Include="MessageMediator.cs" />
     <Compile Include="NoteMediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
