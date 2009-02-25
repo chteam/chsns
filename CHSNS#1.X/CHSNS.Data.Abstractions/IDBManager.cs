@@ -7,9 +7,6 @@ namespace CHSNS.Data {
 		CHSNS.DataBaseExecutor DataBaseExecutor { get; }
 		CHSNS.Models.CHSNSDBDataContext DB { get; }
 
-		System.Data.IDbTransaction ContextTransaction();
-		System.Data.IDbTransaction ExeTransaction();
-
 		IAccountMediator Account { get; }
 		IApplicationMediator Application { get; }
 		ICommentMediator Comment { get; }
