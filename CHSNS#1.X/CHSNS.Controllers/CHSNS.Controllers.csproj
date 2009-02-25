@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -152,17 +152,17 @@
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.Data.Abstractions\CHSNS.Data.Abstractions.csproj">
+    <ProjectReference Include="..\CHSNS.Data.Abstractions\CHSNS.Abstractions.csproj">
       <Project>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</Project>
-      <Name>CHSNS.Data.Abstractions</Name>
+      <Name>CHSNS.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.Data\CHSNS.Data.csproj">
+    <ProjectReference Include="..\CHSNS.Data\CHSNS.SQLServerImplement.csproj">
       <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
-      <Name>CHSNS.Data</Name>
+      <Name>CHSNS.SQLServerImplement</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.ModelsPas\CHSNS.ModelPas.csproj">
+    <ProjectReference Include="..\CHSNS.ModelsPas\CHSNS.ViewModel.csproj">
       <Project>{27E2B6B3-7382-4D72-A889-7FDD618126F3}</Project>
-      <Name>CHSNS.ModelPas</Name>
+      <Name>CHSNS.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\CHSNS.Models\CHSNS.Models.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
