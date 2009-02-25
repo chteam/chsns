@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Web\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -72,7 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="HomeControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +85,14 @@
     <ProjectReference Include="..\CHSNS.Controllers\CHSNS.Controllers.csproj">
       <Project>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</Project>
       <Name>CHSNS.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
+      <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
+      <Name>CHSNS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHSNS.Models\CHSNS.Models.csproj">
+      <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
+      <Name>CHSNS.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web\Web.csproj">
       <Project>{565374D0-3D96-4D3B-9E95-108574BA9755}</Project>
