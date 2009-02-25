@@ -3,35 +3,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-	<title><%=ViewData["Page_Title"] %></title>
-	<script type="text/javascript"></script>
-	<%=Html.Script("Framework") %>
-	<%=Html.Script("ui") %>
-	<%=Html.CSSLink("Master") %>
-	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" >
-	<%if (false) { %><script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script><%} %>
-	</asp:ContentPlaceHolder>
+    <title>
+        <%=ViewData["Page_Title"] %></title>
+
+    <script type="text/javascript"></script>
+
+    <%=Html.Script("Framework") %>
+    <%=Html.Script("ui") %>
+    <%=Html.CSSLink("Master") %>
+    <asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server">
+        <%if (false)
+          { %><script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script><%} %>
+    </asp:ContentPlaceHolder>
 </head>
 <body>
-	<div id="container">
-		<div id="intro">
-		
-			<div id="publicmenu" class="mymenu">
-				<%Html.RenderPartial("Utility");%>
-			</div>
-			<h1><span><%= CH.Context.Site.BaseConfig.Title %></span></h1>
-		</div>
-		<div id="content">
-		<%
-                  Html.RenderPartial("Message_Box"); %>
-				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
-		</div>
-		<div id="linkList">
-			<div id="linkList2">
-				<%
-					Html.RenderPartial("MyMenu");%>
-			</div>
-			<%--			#if($ChHelper.ChSite.Publish.IsShow)
+    <div id="container">
+        <div id="intro">
+            <div id="publicmenu" class="mymenu">
+                <%Html.RenderPartial("Utility");%>
+            </div>
+            <h1><span>
+                <%= CH.Context.Site.BaseConfig.Title %></span></h1>
+        </div>
+        <div id="content">
+            <%
+                Html.RenderPartial("Message_Box"); %>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div id="linkList">
+            <div id="linkList2">
+                <%
+                    Html.RenderPartial("MyMenu");%>
+            </div>
+            <%--			#if($ChHelper.ChSite.Publish.IsShow)
 			<div id="master-publish">
 				$ChHelper.ChSite.Publish.Body
 			</div>
@@ -39,16 +43,15 @@
 			<div id="ad" style="padding-top: 20px">
 				#component(ad)
 			</div>--%>
-		</div>
-		<%
-			Html.RenderPartial("Footer");%>
-	</div>
-	
-	<asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
+        </div>
+        <%
+            Html.RenderPartial("Footer");%>
+    </div>
+    <asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
 
-	<script type="text/javascript">
+    <script type="text/javascript">
 		chmenu("#publicmenu .menu");
-	</script>
+    </script>
 
 </body>
 </html>
