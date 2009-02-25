@@ -5,7 +5,7 @@ using CHSNS.ModelPas;
 
 namespace CHSNS.Data {
 	public class NoteMediator : BaseMediator, INoteMediator {
-		public NoteMediator(IDBExt id) : base(id) { }
+		public NoteMediator(IDBManager id) : base(id) { }
 		/// <summary>
 		/// userid
 		/// </summary>

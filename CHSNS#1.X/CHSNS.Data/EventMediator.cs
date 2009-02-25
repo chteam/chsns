@@ -11,7 +11,7 @@ namespace CHSNS.Data
 		/// Initializes a new instance of the <see cref="EventMediator"/> class.
 		/// </summary>
 		/// <param name="id">The DBExt.</param>
-		public EventMediator(IDBExt id) : base(id) { }
+		public EventMediator(IDBManager id) : base(id) { }
 		/// <summary>
 		/// Gets the event./获取某人的Event
 		/// </summary>

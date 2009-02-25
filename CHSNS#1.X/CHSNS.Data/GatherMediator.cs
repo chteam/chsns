@@ -5,7 +5,7 @@ namespace CHSNS.Data {
 	/// 统计的类
 	/// </summary>
 	public class GatherMediator : BaseMediator, IGatherMediator {
-		public GatherMediator(IDBExt id) : base(id) { }
+		public GatherMediator(IDBManager id) : base(id) { }
 		/// <summary>
 		/// 我的统计
 		/// </summary>

@@ -3,7 +3,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Data {
 	public class GroupMediator :BaseMediator, IGroupMediator {
-		public GroupMediator(IDBExt id) : base(id) { }
+		public GroupMediator(IDBManager id) : base(id) { }
 		/// <summary>
 		/// 群订阅的信息
 		/// </summary>

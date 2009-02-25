@@ -65,7 +65,7 @@
     <Compile Include="IApplicationMediator.cs" />
     <Compile Include="ICommentMediator.cs" />
     <Compile Include="ICURDMediator.cs" />
-    <Compile Include="IDBExt.cs" />
+    <Compile Include="IDBManager.cs" />
     <Compile Include="IEventMediator.cs" />
     <Compile Include="IFriendMediator.cs" />
     <Compile Include="IGatherMediator.cs" />

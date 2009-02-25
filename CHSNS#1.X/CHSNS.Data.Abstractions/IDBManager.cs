@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 namespace CHSNS.Data {
-	public interface IDBExt : IDisposable {
+	public interface IDBManager : IDisposable {
 		string ConnectionString { get; }
         IContext Context { get; set; }
 		CHSNS.DataBaseExecutor DataBaseExecutor { get; }

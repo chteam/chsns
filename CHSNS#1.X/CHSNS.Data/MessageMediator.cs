@@ -6,7 +6,7 @@ namespace CHSNS.Data {
 	using ModelPas;
 
 	public class MessageMediator : BaseMediator, IMessageMediator {
-		public MessageMediator(IDBExt id) : base(id) { }
+		public MessageMediator(IDBManager id) : base(id) { }
 		public IQueryable<MessageItemPas> GetInbox(long userid) {
 			var ret = (from m in DBExt.DB.Message
 					   join p in DBExt.DB.Profile on m.FromID equals p.UserID

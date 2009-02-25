@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CHSNS.Data {
     public class VideoMediator : BaseMediator, ISuperNoteMediator {
-        public VideoMediator(IDBExt id) : base(id) { }
+        public VideoMediator(IDBManager id) : base(id) { }
         #region ICURDMediator<SuperNote> 成员
 
         public void Create(CHSNS.Models.SuperNote content) {

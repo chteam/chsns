@@ -7,7 +7,7 @@ namespace CHSNS.Data
 {
 	public class CommentMediator : BaseMediator, ICommentMediator
 	{
-		public CommentMediator(IDBExt id) : base(id)
+		public CommentMediator(IDBManager id) : base(id)
 		{
 		}
 

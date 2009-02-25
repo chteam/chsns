@@ -8,7 +8,7 @@ namespace CHSNS.Data
 {
     public class AccountMediator :BaseMediator ,IAccountMediator
     {
-        public AccountMediator(IDBExt id) : base(id) { }
+        public AccountMediator(IDBManager id) : base(id) { }
         /// <summary>
         /// 注销
         /// </summary>
