@@ -25,59 +25,55 @@ namespace CHSNS.Data
             var md5pwd = IsPasswordMd5 ? en.MD5Encrypt(Password.Trim(), 32) : Password.Trim();
             long UserID = 0;
             long.TryParse(Username.Trim(), out UserID);
-
-            var userid = (from a in DBExt.DB.Account
-                          where (a.Username == Username || a.UserID == UserID)
-                                && a.Password == md5pwd
-                          select a.UserID).FirstOrDefault();
+            long userid;
+            Profile profile;
             int retint = -999;
-
-            if (userid > 1000)
+            using (var db = DBExt.DB)
             {
-                var person = (from p in DBExt.DB.Profile
-                              where p.UserID == userid
-                              select new
-                              {
-                                  p.Status,
-                                  p.Name,
-                                  p.LoginTime,
-                                  p.Applications
-                              }).FirstOrDefault();
-                retint = person.Status;
+                userid = (from a in db.Account
+                              where (a.Username == Username || a.UserID == UserID)
+                                    && a.Password == md5pwd
+                              select a.UserID).FirstOrDefault();
+                if (userid <= 1000) return retint;
+                profile = db.Profile.FirstOrDefault(p => p.UserID == userid);
+                retint = profile.Status;
+                if (retint <= 0) return -1;
+                long score = (profile.LoginTime.Date != DateTime.Now.Date) ? 2 : 0;
+                #region    更新
 
-                if (retint > 0)
-                {
-                    int source = 0;
-                    if (person.LoginTime.Date != DateTime.Now.Date)
-                        source = 2;
-                    DataBaseExecutor.Execute(
-                        @"UPDATE [profile] 
-SET Score =Score+@s,
-ShowScore =ShowScore+@s, 
-LoginTime = getdate() 
-where userid=@UserID",
-                        "@UserID", userid, "@s", source);
-                    HttpContext.Current.Session.Clear();
-                    CHUser.UserID = userid;
-                    CHUser.Username = person.Name;
-                    CHUser.InitStatus(retint);
-
-					CHCookies.Apps = person.Applications ?? "";
-                    if (IsAutoLogin)
-                    {
-                        CHCookies.UserID = CHUser.UserID;
-                        CHCookies.UserPassword = md5pwd;
-                        CHCookies.IsAutoLogin = IsAutoLogin;
-                        CHCookies.Expires = DateTime.Now.AddDays(365);
-                    }
-                    //else
-                    //	CHCookies.Expires = DateTime.Now.AddDays(-1);
-                }
-                else
-                    return -1;
+                profile.Score += score;
+                profile.ShowScore += score;
+                profile.LoginTime = DateTime.Now;
+                db.SubmitChanges();
+                //                        DataBaseExecutor.Execute(
+                //                            @"UPDATE [profile] 
+                //SET Score =Score+@s,
+                //ShowScore =ShowScore+@s, 
+                //LoginTime = getdate() 
+                //where userid=@UserID",
+                //                            "@UserID", userid, "@s", source);
+                #endregion
             }
-            //	throw new Exception(retint.ToString());
+            HttpContext.Current.Session.Clear();
+            CHUser.UserID = userid;
+            CHUser.Username = profile.Name;
+            CHUser.InitStatus(retint);
+
+            CHCookies.Apps = profile.Applications ?? "";
+            if (IsAutoLogin)
+            {
+                CHCookies.UserID = CHUser.UserID;
+                CHCookies.UserPassword = md5pwd;
+                CHCookies.IsAutoLogin = IsAutoLogin;
+                CHCookies.Expires = DateTime.Now.AddDays(365);
+            }
+            //else
+            //	CHCookies.Expires = DateTime.Now.AddDays(-1);
+
             return retint;
+
+            //	throw new Exception(retint.ToString());
+
         }
         public bool Create(AccountPas account, string name)
         {
