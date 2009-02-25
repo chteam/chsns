@@ -12,15 +12,10 @@ namespace CHSNS.Data {
         public string ConnectionString { get; private set; }
         public IContext Context { get; set; }
         public SQLServerDBManager(IContext context) {
-            //	ConnectionString = "name=Entities";
-            //var conn = new EntityConnection(ConnectionString);
             ConnectionString = ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString;
-         
             Context = context;
             Init();
         }
-
-
         public CHSNSDBDataContext DB {
             get {
                 CHSNSDBDataContext db = new CHSNSDBDataContext(ConnectionString);
@@ -28,7 +23,8 @@ namespace CHSNS.Data {
                 return db;
             }
         }
- 
+        #region ²Ù×÷µ¥Àý
+
         public IAccountMediator Account { get; private set; }
         public IViewMediator View { get; private set; }
         public ICommentMediator Comment { get; private set; }
@@ -45,6 +41,7 @@ namespace CHSNS.Data {
         public IPhotoMediator Photo { get; private set; }
         public ISuperNoteMediator Video { get; private set; }
 
+        #endregion
 
         public void Init() {
             //_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
