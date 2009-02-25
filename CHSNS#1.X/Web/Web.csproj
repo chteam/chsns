@@ -611,9 +611,9 @@
     <Content Include="Views\Wow\WorkList.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CHSNS.Controllers\CHSNS.Controllers.csproj">
+    <ProjectReference Include="..\CHSNS.Controllers\CHSNS.MVCHelper.csproj">
       <Project>{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}</Project>
-      <Name>CHSNS.Controllers</Name>
+      <Name>CHSNS.MVCHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>

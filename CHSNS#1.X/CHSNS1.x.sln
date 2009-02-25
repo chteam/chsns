@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{565374D0-3D96-4D3B-9E95-108574BA9755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Controllers", "CHSNS.Controllers\CHSNS.Controllers.csproj", "{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.MVCHelper", "CHSNS.Controllers\CHSNS.MVCHelper.csproj", "{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core", "CHSNS.Core\CHSNS.Core.csproj", "{F7CF4538-9101-4328-81D0-AF1B2A8B314A}"
 EndProject
@@ -58,7 +58,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5EF50786-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controllers", "Controllers", "{20A815C8-5BE0-4F75-850A-3F4AA4684DEE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVCHelper", "MVCHelper", "{20A815C8-5BE0-4F75-850A-3F4AA4684DEE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{D3F92409-02E1-4837-9974-3A7816F96EC1}"
 EndProject
@@ -84,42 +84,42 @@ Global
 		SccProjectTopLevelParentUniqueName1 = CHSNS1.x.sln
 		SccProjectName1 = Web
 		SccLocalPath1 = Web
-		SccProjectUniqueName2 = CHSNS.Controllers\\CHSNS.Controllers.csproj
+		SccProjectUniqueName2 = CHSNS.Core\\CHSNS.Core.csproj
 		SccProjectTopLevelParentUniqueName2 = CHSNS1.x.sln
-		SccProjectName2 = CHSNS.Controllers
-		SccLocalPath2 = CHSNS.Controllers
-		SccProjectUniqueName3 = CHSNS.Core\\CHSNS.Core.csproj
+		SccProjectName2 = CHSNS.Core
+		SccLocalPath2 = CHSNS.Core
+		SccProjectUniqueName3 = CHSNS.Models\\CHSNS.Models.csproj
 		SccProjectTopLevelParentUniqueName3 = CHSNS1.x.sln
-		SccProjectName3 = CHSNS.Core
-		SccLocalPath3 = CHSNS.Core
-		SccProjectUniqueName4 = CHSNS.Models\\CHSNS.Models.csproj
+		SccProjectName3 = CHSNS.Models
+		SccLocalPath3 = CHSNS.Models
+		SccProjectUniqueName4 = CHSNS.Core.Tests\\CHSNS.Core.Tests.csproj
 		SccProjectTopLevelParentUniqueName4 = CHSNS1.x.sln
-		SccProjectName4 = CHSNS.Models
-		SccLocalPath4 = CHSNS.Models
-		SccProjectUniqueName5 = CHSNS.Core.Tests\\CHSNS.Core.Tests.csproj
+		SccProjectName4 = CHSNS.Core.Tests
+		SccLocalPath4 = CHSNS.Core.Tests
+		SccProjectUniqueName5 = CHSNS.Database\\CHSNS.Database.dbproj
 		SccProjectTopLevelParentUniqueName5 = CHSNS1.x.sln
-		SccProjectName5 = CHSNS.Core.Tests
-		SccLocalPath5 = CHSNS.Core.Tests
-		SccProjectUniqueName6 = CHSNS.Database\\CHSNS.Database.dbproj
+		SccProjectName5 = CHSNS.Database
+		SccLocalPath5 = CHSNS.Database
+		SccProjectUniqueName6 = CHSNS.MvcTest\\CHSNS.MvcTest.csproj
 		SccProjectTopLevelParentUniqueName6 = CHSNS1.x.sln
-		SccProjectName6 = CHSNS.Database
-		SccLocalPath6 = CHSNS.Database
-		SccProjectUniqueName7 = CHSNS.MvcTest\\CHSNS.MvcTest.csproj
+		SccProjectName6 = CHSNS.MvcTest
+		SccLocalPath6 = CHSNS.MvcTest
+		SccProjectUniqueName7 = CHSNS.Data.Abstractions\\CHSNS.Abstractions.csproj
 		SccProjectTopLevelParentUniqueName7 = CHSNS1.x.sln
-		SccProjectName7 = CHSNS.MvcTest
-		SccLocalPath7 = CHSNS.MvcTest
-		SccProjectUniqueName8 = CHSNS.Data.Abstractions\\CHSNS.Abstractions.csproj
+		SccProjectName7 = CHSNS.Data.Abstractions
+		SccLocalPath7 = CHSNS.Data.Abstractions
+		SccProjectUniqueName8 = CHSNS.Data\\CHSNS.SQLServerImplement.csproj
 		SccProjectTopLevelParentUniqueName8 = CHSNS1.x.sln
-		SccProjectName8 = CHSNS.Data.Abstractions
-		SccLocalPath8 = CHSNS.Data.Abstractions
-		SccProjectUniqueName9 = CHSNS.Data\\CHSNS.SQLServerImplement.csproj
+		SccProjectName8 = CHSNS.Data
+		SccLocalPath8 = CHSNS.Data
+		SccProjectUniqueName9 = CHSNS.ModelsPas\\CHSNS.ViewModel.csproj
 		SccProjectTopLevelParentUniqueName9 = CHSNS1.x.sln
-		SccProjectName9 = CHSNS.Data
-		SccLocalPath9 = CHSNS.Data
-		SccProjectUniqueName10 = CHSNS.ModelsPas\\CHSNS.ViewModel.csproj
+		SccProjectName9 = CHSNS.ModelsPas
+		SccLocalPath9 = CHSNS.ModelsPas
+		SccProjectUniqueName10 = CHSNS.Controllers\\CHSNS.MVCHelper.csproj
 		SccProjectTopLevelParentUniqueName10 = CHSNS1.x.sln
-		SccProjectName10 = CHSNS.ModelsPas
-		SccLocalPath10 = CHSNS.ModelsPas
+		SccProjectName10 = CHSNS.Controllers
+		SccLocalPath10 = CHSNS.Controllers
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x.vsmdi
