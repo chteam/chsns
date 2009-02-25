@@ -24,11 +24,12 @@
                     <td class="nav">
                         <div class="navin">
                             <ul class="list_1">
-                            <li class="member1"><%=CH.Context.User.Username%></li>
+                                <li class="member1">
+                                    <%=CH.Context.User.Username%></li>
                                 <li class="member2">
-                                <%=Html.ActionLink("修改密码", "ChangePassword", "Account")%> |
+                                    <%=Html.ActionLink("修改密码", "ChangePassword", "Account")%>
+                                    |
                                     <%=Html.ActionLink("退出", "Logout", "Account")%></li>
-                           
                                 <li class="contain"><a class="containA" href="#">用户管理</a>
                                     <ul class="list_2">
                                         <li>
@@ -37,13 +38,13 @@
                                 </li>
                                 <li class="contain"><a class="containA" href="#">应用程序管理</a>
                                     <ul class="list_2">
-                                     <li>
+                                        <li>
                                             <%=Html.ActionLink("新建", "Edit", "Application")%></li>
                                         <li>
                                             <%=Html.ActionLink("管理", "Manage", "Application")%></li>
                                     </ul>
                                 </li>
-                                 <li class="contain"><a class="containA" href="#">词条管理</a>
+                                <li class="contain"><a class="containA" href="#">词条管理</a>
                                     <ul class="list_2">
                                         <li>
                                             <%=Html.ActionLink("新建词条", "Edit", "Entry")%></li>
@@ -52,8 +53,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <a href="#" class="hide">
-                                ss</a>
+                            <a href="#" class="hide">ss</a>
                         </div>
                     </td>
                     <td class="content">
@@ -63,9 +63,10 @@
             </table>
         </div>
         <%
-Html.RenderPartial("Footer");%>
+            Html.RenderPartial("Footer");%>
     </div>
     <asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
+
     <script type="text/javascript">
     	$(function() {
     		$('.nav').height($('.list_1').height()); //当LIST隐藏后保证背景线存在，所在要给NAV加一个高度
@@ -112,5 +113,6 @@ Html.RenderPartial("Footer");%>
     	});
 
     </script>
+
 </body>
 </html>
