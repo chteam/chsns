@@ -18,11 +18,14 @@ namespace CHSNS.Data
 		/// <param name="userid">The userid.</param>
 		/// <returns></returns>
 		public IQueryable<Event> GetEvent(long userid) {
-			var ret = (from e in DBExt.DB.Event
-					   where e.OwnerID == userid
-					   orderby e.ID descending
-					   select e);
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from e in db.Event
+                           where e.OwnerID == userid
+                           orderby e.ID descending
+                           select e);
+                return ret;
+            }
 		}
 
 		/// <summary>
@@ -32,11 +35,14 @@ namespace CHSNS.Data
 		/// <returns></returns>
 		public IQueryable<Event> GetFriendEvent(long userid) {
 			var ids=DBExt.Friend.GetFriendsID(userid);
-			var ret = (from e in DBExt.DB.Event
-					   where ids.Any(c => c == e.OwnerID)
-					   orderby e.ID descending
-					   select e).Take(50);
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from e in db.Event
+                           where ids.Any(c => c == e.OwnerID)
+                           orderby e.ID descending
+                           select e).Take(50);
+                return ret;
+            }
 		}
 
 		/// <summary>
