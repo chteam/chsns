@@ -1,12 +1,10 @@
-using System.Data.EntityClient;
-
+using System;
 namespace CHSNS.Data {
     using System.Data;
     using Models;
     using CHSNS;
-    using System.Data.Common;
     using System.Configuration;
-    public partial class SQLServerDBManager : IDBManager {
+    public class SQLServerDBManager : IDBManager {
 
 
         public string ConnectionString { get; private set; }
@@ -16,9 +14,20 @@ namespace CHSNS.Data {
             Context = context;
             Init();
         }
+        CHSNSDBDataContext _DB;
+        [Obsolete("过时属性用using(Instance)")]
         public CHSNSDBDataContext DB {
             get {
-                CHSNSDBDataContext db = new CHSNSDBDataContext(ConnectionString);
+                if (_DB == null) {
+                    _DB = new CHSNSDBDataContext(ConnectionString);
+                }
+                //db.DeferredLoadingEnabled = false;
+                return _DB;
+            }
+        }
+        public CHSNSDBDataContext Instance {
+            get {
+                var db = new CHSNSDBDataContext(ConnectionString);
                 db.DeferredLoadingEnabled = false;
                 return db;
             }
@@ -79,14 +88,13 @@ namespace CHSNS.Data {
 
             if (_dbex != null)
                 DataBaseExecutor.Dispose();
-            //if (_DB != null) {
-            //    if (DB.Connection != null) {
-            //        if (DB.Connection.State != ConnectionState.Closed)
-            //            DB.Connection.Close();
-            //        DB.Connection.Dispose();
-            //    }
-            //    DB.Dispose();
-            //}
+            if (_DB == null) return;
+            if (DB.Connection != null) {
+                if (DB.Connection.State != ConnectionState.Closed)
+                    DB.Connection.Close();
+                DB.Connection.Dispose();
+            }
+            DB.Dispose();
         }
 
 

@@ -10,25 +10,32 @@ namespace CHSNS.Data {
 		/// userid
 		/// </summary>
 		public void Add(Note note) {
-			note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
-			DBExt.DB.Note.InsertOnSubmit(note);
-			DBExt.DB.SaveChanges();
-			switch ((NoteType)note.Type) {
-				case NoteType.Note:
-					DBExt.Event.Add(new Event {
-						OwnerID = note.UserID,
-						TemplateName = "AddNote",
-						AddTime = DateTime.Now,
-						ShowLevel = 0,
-						Json = Dictionary.CreateFromArgs("id", note.ID,
-						"title", note.Title, "addtime", note.AddTime, "name", CHUser.Username).ToJsonString()
-					});
-					break;
-				case NoteType.GroupPost:
-					break;
-				default:
-					break;
-			}
+            using (var db = DBExt.Instance)
+            {
+                note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
+                db.Note.InsertOnSubmit(note);
+                db.SaveChanges();
+                switch ((NoteType) note.Type)
+                {
+                    case NoteType.Note:
+                        DBExt.Event.Add(new Event
+                                            {
+                                                OwnerID = note.UserID,
+                                                TemplateName = "AddNote",
+                                                AddTime = DateTime.Now,
+                                                ShowLevel = 0,
+                                                Json = Dictionary.CreateFromArgs("id", note.ID,
+                                                                                 "title", note.Title, "addtime",
+                                                                                 note.AddTime, "name", CHUser.Username).
+                                                    ToJsonString()
+                                            });
+                        break;
+                    case NoteType.GroupPost:
+                        break;
+                    default:
+                        break;
+                }
+            }
 		}
 		public void Edit(Note note) {
 			DataBaseExecutor.Execute(
@@ -67,52 +74,65 @@ where id=@id and userid=@userid",
 
 
 		public NoteDetailsPas Details(long id, NoteType? nt) {
-			var ret = (from n in DBExt.DB.Note
-					   join p in DBExt.DB.Profile on n.UserID equals p.UserID
-					   where n.ID == id && n.Type.Equals(nt ?? NoteType.Note)
-					   select new NoteDetailsPas {
-						   Note = n,
-						   User = new UserCountPas {
-							   ID = p.UserID,
-							   Name = p.Name,
-							   Count = n.CommentCount
-						   }
-					   }
-					  ).FirstOrDefault();
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from n in db.Note
+                           join p in db.Profile on n.UserID equals p.UserID
+                           where n.ID == id && n.Type.Equals(nt ?? NoteType.Note)
+                           select new NoteDetailsPas
+                                      {
+                                          Note = n,
+                                          User = new UserCountPas
+                                                     {
+                                                         ID = p.UserID,
+                                                         Name = p.Name,
+                                                         Count = n.CommentCount
+                                                     }
+                                      }
+                          ).FirstOrDefault();
+                return ret;
+            }
 		}
 
 		public IQueryable<NotePas> GetLastNotes(int? ni) {
-			return (from n in DBExt.DB.Note
-					join p in DBExt.DB.Profile on n.UserID equals p.UserID
-					orderby n.ID descending
-					select new NotePas {
-						AddTime = n.AddTime,
-						Body = n.Summary,
-						CommentCount = n.CommentCount,
-						ID = n.ID,
-						Title = n.Title,
-						UserID = n.UserID,
-						ViewCount = n.ViewCount,
-						WriteName = p.Name
-					}).Take(ni ?? 10);
+            using (var db = DBExt.Instance)
+            {
+                return (from n in db.Note
+                        join p in db.Profile on n.UserID equals p.UserID
+                        orderby n.ID descending
+                        select new NotePas
+                                   {
+                                       AddTime = n.AddTime,
+                                       Body = n.Summary,
+                                       CommentCount = n.CommentCount,
+                                       ID = n.ID,
+                                       Title = n.Title,
+                                       UserID = n.UserID,
+                                       ViewCount = n.ViewCount,
+                                       WriteName = p.Name
+                                   }).Take(ni ?? 10);
+            }
 		}
 
 		public IQueryable<NotePas> GetNotes(long pid, NoteType? nt) {
-			return (from n in DBExt.DB.Note
-					join p in DBExt.DB.Profile on n.UserID equals p.UserID
-					where n.PID == pid && n.Type.Equals(nt ?? NoteType.Note)
-					orderby n.ID descending
-					select new NotePas {
-						AddTime = n.AddTime,
-						Body = n.Summary,
-						CommentCount = n.CommentCount,
-						ID = n.ID,
-						Title = n.Title,
-						UserID = n.UserID,
-						ViewCount = n.ViewCount,
-						WriteName = p.Name
-					});
+            using (var db = DBExt.Instance)
+            {
+                return (from n in db.Note
+                        join p in db.Profile on n.UserID equals p.UserID
+                        where n.PID == pid && n.Type.Equals(nt ?? NoteType.Note)
+                        orderby n.ID descending
+                        select new NotePas
+                                   {
+                                       AddTime = n.AddTime,
+                                       Body = n.Summary,
+                                       CommentCount = n.CommentCount,
+                                       ID = n.ID,
+                                       Title = n.Title,
+                                       UserID = n.UserID,
+                                       ViewCount = n.ViewCount,
+                                       WriteName = p.Name
+                                   });
+            }
 		}
 
 		#endregion

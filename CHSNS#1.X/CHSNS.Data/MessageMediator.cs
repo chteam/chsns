@@ -8,44 +8,58 @@ namespace CHSNS.Data {
 	public class MessageMediator : BaseMediator, IMessageMediator {
 		public MessageMediator(IDBManager id) : base(id) { }
 		public IQueryable<MessageItemPas> GetInbox(long userid) {
-			var ret = (from m in DBExt.DB.Message
-					   join p in DBExt.DB.Profile on m.FromID equals p.UserID
-					   where m.ToID == userid && !m.IsToDel
-					   orderby m.IsSee, m.ID descending
-					   select new MessageItemPas {
-						   ID = m.ID,
-						   Username = p.Name,
-						   UserID = p.UserID,
-						   Title = m.Title,
-						   SendTime = m.SendTime,
-						   IsSee = m.IsSee
-					   });
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from m in db.Message
+                           join p in db.Profile on m.FromID equals p.UserID
+                           where m.ToID == userid && !m.IsToDel
+                           orderby m.IsSee , m.ID descending
+                           select new MessageItemPas
+                                      {
+                                          ID = m.ID,
+                                          Username = p.Name,
+                                          UserID = p.UserID,
+                                          Title = m.Title,
+                                          SendTime = m.SendTime,
+                                          IsSee = m.IsSee
+                                      });
+                return ret;
+            }
 		}
 
 		public IQueryable<MessageItemPas> GetOutbox(long userid) {
-			var ret = (from m in DBExt.DB.Message
-					   join p in DBExt.DB.Profile on m.ToID equals p.UserID
-					   where m.FromID == userid && !m.IsFromDel
-					   orderby m.ID descending
-					   select new MessageItemPas {
-						   ID = m.ID,
-						   Username = p.Name,
-						   UserID = p.UserID,
-						   Title = m.Title,
-						   SendTime = m.SendTime,
-						   IsSee = m.IsSee
-					   }
-					  );
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from m in db.Message
+                           join p in db.Profile on m.ToID equals p.UserID
+                           where m.FromID == userid && !m.IsFromDel
+                           orderby m.ID descending
+                           select new MessageItemPas
+                                      {
+                                          ID = m.ID,
+                                          Username = p.Name,
+                                          UserID = p.UserID,
+                                          Title = m.Title,
+                                          SendTime = m.SendTime,
+                                          IsSee = m.IsSee
+                                      }
+                          );
+                return ret;
+            }
 		}
 		public long InboxCount(long userid) {
-			var ret = DBExt.DB.Message.Where(c=>c.ToID.Equals(userid)).Count();
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = db.Message.Where(c => c.ToID.Equals(userid)).Count();
+                return ret;
+            }
 		}
 		public long OutboxCount(long userid) {
-			var ret = DBExt.DB.Message.Where(c => c.FromID.Equals(userid)).Count();
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = db.Message.Where(c => c.FromID.Equals(userid)).Count();
+                return ret;
+            }
 		}
 		public void Add(Message m){
 			DataBaseExecutor.Execute(// 发送站内信
@@ -78,17 +92,30 @@ exists(select 1 from [message] where id=@id and issee=0)", "@uid", userid, "@id"
 		}
 
 		public MessageDetailsPas Details(long id, long userid) {
-			var ret = (from m in DBExt.DB.Message
-					   where m.ID == id
-					   join pout in DBExt.DB.Profile on m.FromID equals pout.UserID
-					   join pin in DBExt.DB.Profile on m.ToID equals pin.UserID
-					   select new MessageDetailsPas {
-						   UserInbox = new UserItemPas { ID = pin.UserID, Name = pin.Name },
-						   UserOutbox = new UserItemPas { ID = pout.UserID, Name = pout.Name },
-						   Message = new MessageItemPas { Body = m.Body, ID = m.ID, IsSee = m.IsSee, SendTime = m.SendTime, Title = m.Title }
-					   }
-					  ).FirstOrDefault();
-			if (ret.UserInbox.ID == userid && !ret.Message.IsSee) {//我是收件人,则表示已经看过了,可以更新
+		    MessageDetailsPas ret;
+            using (var db = DBExt.Instance)
+            {
+                 ret = (from m in db.Message
+                           where m.ID == id
+                           join pout in db.Profile on m.FromID equals pout.UserID
+                           join pin in db.Profile on m.ToID equals pin.UserID
+                           select new MessageDetailsPas
+                                      {
+                                          UserInbox = new UserItemPas {ID = pin.UserID, Name = pin.Name},
+                                          UserOutbox = new UserItemPas {ID = pout.UserID, Name = pout.Name},
+                                          Message =
+                                              new MessageItemPas
+                                                  {
+                                                      Body = m.Body,
+                                                      ID = m.ID,
+                                                      IsSee = m.IsSee,
+                                                      SendTime = m.SendTime,
+                                                      Title = m.Title
+                                                  }
+                                      }
+                          ).FirstOrDefault();
+            }
+		    if (ret.UserInbox.ID == userid && !ret.Message.IsSee) {//我是收件人,则表示已经看过了,可以更新
 				DataBaseExecutor.Execute(@"update [message] set IsSee=1 where id=@id", "@id", ret.Message.ID);
 				DataBaseExecutor.Execute(@"update [profile] set unreadMessageCount=unreadMessageCount-1 where userid=@userid and unreadMessageCount>0",
 	"@userid", userid);

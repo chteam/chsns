@@ -18,10 +18,14 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		public ActionResult Index(int? p, long? uid) {
 			uid = uid ?? CHUser.UserID;
-			var list = (from a in DBExt.DB.Album
-						where a.UserID.Equals(uid.Value)
-						select a);
-			Title = string.Format("{0}的相册",
+		    List<Album> list;
+            using (var db = DBExt.Instance)
+            {
+                 list = (from a in db.Album
+                            where a.UserID.Equals(uid.Value)
+                            select a).ToList();
+            }
+		    Title = string.Format("{0}的相册",
 			                      DBExt.UserInfo.GetUserName(uid.Value));
 			return View(list);
 		}	
@@ -30,104 +34,125 @@ namespace CHSNS.Controllers {
 		#region 新建，编辑
 		[AcceptVerbs(HttpVerbs.Get)]
 		public ActionResult Edit(long? id) {
-			if (id.HasValue) {
-				var model = DBExt.DB.Album.Where(c => c.ID.Equals(id)).FirstOrDefault();
-				ViewData["a"] = model;
-				return View(model);
-			}
+            if (id.HasValue) {
+                using (var db = DBExt.Instance)
+                {
+                    var model = db.Album.Where(c => c.ID.Equals(id)).FirstOrDefault();
+                    ViewData["a"] = model;
+                    return View(model);
+                }
+            }
 			return View();
 		}
 		[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult Edit(long? id, Album a) {
-			if (id.HasValue) {
-				var al = DBExt.DB.Album.Where(c => c.ID == id.Value).FirstOrDefault();
-				al.Location = a.Location;
-				al.Description = a.Description;
-				al.ShowLevel = a.ShowLevel;
-				al.Name = a.Name;
-				DBExt.DB.SubmitChanges();
-				return RedirectToAction("Index");
-			}
-			a.Count = 0;
-			a.UserID = CHUser.UserID;
-			a.AddTime = DateTime.Now;
-				
-			DBExt.DB.Album.InsertOnSubmit(a);
-			DBExt.DB.SubmitChanges();
-			return RedirectToAction("Index");
+            using (var db = DBExt.Instance)
+            {
+                if (id.HasValue)
+                {
+                    var al = db.Album.Where(c => c.ID == id.Value).FirstOrDefault();
+                    al.Location = a.Location;
+                    al.Description = a.Description;
+                    al.ShowLevel = a.ShowLevel;
+                    al.Name = a.Name;
+                    db.SubmitChanges();
+                    return RedirectToAction("Index");
+                }
+                a.Count = 0;
+                a.UserID = CHUser.UserID;
+                a.AddTime = DateTime.Now;
+
+                db.Album.InsertOnSubmit(a);
+                db.SubmitChanges();
+            }
+		    return RedirectToAction("Index");
 		}
 		#endregion
 		#region 相册
 		public ActionResult Details(long id, int? p) {
 			InitPage(ref p);
-			var album = (from a in DBExt.DB.Album
-						 where a.ID.Equals(id)
-						 select a).FirstOrDefault();
-			var ps = (from ph in DBExt.DB.Photo
-					  where ph.AlbumID == album.ID && ph.UserID == CHUser.UserID
-					  select ph);
-			ViewData["album"] = album;
-			ViewData["photos"] = new PagedList<Photo>(ps, p.Value, 12);
-			Title = album.Name;
-			return View();
+            using (var db = DBExt.Instance)
+            {
+                var album = (from a in db.Album
+                             where a.ID.Equals(id)
+                             select a).FirstOrDefault();
+                var ps = (from ph in db.Photo
+                          where ph.AlbumID == album.ID && ph.UserID == CHUser.UserID
+                          select ph);
+                ViewData["album"] = album;
+                ViewData["photos"] = new PagedList<Photo>(ps, p.Value, 12);
+                Title = album.Name;
+            }
+		    return View();
 		}
 
 		#endregion
 		#region 上传
 		[AcceptVerbs(HttpVerbs.Get)]
 		public ActionResult Upload(long? id){
-			var album = (from a in DBExt.DB.Album
-						 where a.ID.Equals(id)
-						 select a).FirstOrDefault();
-			ViewData["album"] = album;
-			Title = "上传";
+            using (var db = DBExt.Instance)
+            {
+                var album = (from a in db.Album
+                             where a.ID.Equals(id)
+                             select a).FirstOrDefault();
+                ViewData["album"] = album;
+            }
+		    Title = "上传";
 			return View();
 		}
-		public ActionResult UploadPhoto(string Name, long id){
+		public ActionResult UploadPhoto(string Name, long id,HttpPostedFileBase file){
 
-			HttpPostedFileBase file = Request.Files["file"];
-			var al = DBExt.DB.Album.Where(c => c.ID == id).FirstOrDefault();
-			Validate404(al);
-			al.Count++;
-			var p = new Photo {Name = Name, AlbumID = id, AddTime = DateTime.Now, UserID = CHUser.UserID};
-			var f = new ImageUpload(file,
-			                        HttpContext,
-			                        ConfigSerializer.Load<List<string>>("AllowImageExt")
-			                        , p.AddTime,
-			                        ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize")
-				);
-			var ret = f.Upload();
-			p.Ext = f.Ext;
-			DBExt.DB.Photo.InsertOnSubmit(p);
+            using (var db = DBExt.Instance)
+            {
+                var al = db.Album.Where(c => c.ID == id).FirstOrDefault();
+                Validate404(al);
+                al.Count++;
+                var p = new Photo {Name = Name, AlbumID = id, AddTime = DateTime.Now, UserID = CHUser.UserID};
+                var f = new ImageUpload(file,
+                                        HttpContext,
+                                        ConfigSerializer.Load<List<string>>("AllowImageExt")
+                                        , p.AddTime,
+                                        ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize")
+                    );
+                var ret = f.Upload();
+                p.Ext = f.Ext;
+                db.Photo.InsertOnSubmit(p);
 
-			DBExt.DB.SubmitChanges();
-			return RedirectToAction("details", new {id = id});
+                db.SubmitChanges();
+            }
+		    return RedirectToAction("details", new {id = id});
 		}
 
 		#endregion
 		#region 图片删除
 		public ActionResult PhotoDel(long id) {
-			var p = DBExt.DB.Photo.Where(c => c.ID == id).FirstOrDefault();
-			var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
-			var pathserver = CHServer.MapPath(path);
-			System.IO.File.Delete(pathserver);
-			var album = DBExt.DB.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
-			album.Count--;
-			if (album.Count < 0) album.Count = 0;
-			DBExt.DB.Photo.DeleteOnSubmit(p);
-			DBExt.DB.SubmitChanges();
-			return this.RedirectToReferrer();
+            using (var db = DBExt.Instance)
+            {
+                var p = db.Photo.Where(c => c.ID == id).FirstOrDefault();
+                var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
+                var pathserver = CHServer.MapPath(path);
+                System.IO.File.Delete(pathserver);
+                var album = db.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
+                album.Count--;
+                if (album.Count < 0) album.Count = 0;
+                db.Photo.DeleteOnSubmit(p);
+                db.SubmitChanges();
+            }
+		    return this.RedirectToReferrer();
 		}
 
 		#endregion
 		#region 设置图片为封皮
 		public ActionResult SetFace(long id){
-			var p = DBExt.DB.Photo.Where(c => c.ID == id).FirstOrDefault();
-			var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
-			var album = DBExt.DB.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
-			album.FaceUrl = path;
-			DBExt.DB.SubmitChanges();
-			return Content("设置成功");
+            using (var db = DBExt.Instance)
+            {
+                var p = db.Photo.Where(c => c.ID == id).FirstOrDefault();
+                var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
+                var album = db.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
+                album.FaceUrl = path;
+                db.SubmitChanges();
+            }
+		    return Content("设置成功");
 		}
 
 		#endregion

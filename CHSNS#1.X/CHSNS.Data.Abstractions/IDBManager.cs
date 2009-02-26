@@ -5,8 +5,9 @@ namespace CHSNS.Data {
 		string ConnectionString { get; }
         IContext Context { get; set; }
 		CHSNS.DataBaseExecutor DataBaseExecutor { get; }
+        [Obsolete("过时")]
 		CHSNS.Models.CHSNSDBDataContext DB { get; }
-
+        CHSNS.Models.CHSNSDBDataContext Instance { get; }
 		IAccountMediator Account { get; }
 		IApplicationMediator Application { get; }
 		ICommentMediator Comment { get; }
