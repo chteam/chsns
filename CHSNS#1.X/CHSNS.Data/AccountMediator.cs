@@ -28,7 +28,7 @@ namespace CHSNS.Data
             long userid;
             Profile profile;
             int retint = -999;
-            using (var db = DBExt.DB)
+            using (var db = DBExt.Instance)
             {
                 userid = (from a in db.Account
                               where (a.Username == Username || a.UserID == UserID)
@@ -85,47 +85,57 @@ namespace CHSNS.Data
         	                     	Password = account.Password.ToMd5(),
 									Code = DateTime.Now.Ticks
         	                     };
-        	DBExt.DB.Account.InsertOnSubmit(ac);
-        	DBExt.DB.SubmitChanges();
-            if (ac.UserID < 999) return false;
-            var initscore = 50;
-            DBExt.DB.Profile.InsertOnSubmit(new Profile
-                {
-                    UserID = ac.UserID,
-                    Name = name,
-                    ShowScore = initscore,
-                    Score = initscore,
-                    DelScore = 0,
-                    Status = (int)RoleType.General,
-                    RegTime = DateTime.Now,
-                    LoginTime = DateTime.Now,
-                    MagicBox = ""
-                });
-        	DBExt.DB.BasicInformation
-        		.InsertOnSubmit(
-        		new BasicInformation {
-        		                     	UserID = ac.UserID,
-        		                     	Name = name
-        		                     });
-        	DBExt.DB.SubmitChanges();
-            return true;
+            using (var db = DBExt.Instance)
+            {
+                db.Account.InsertOnSubmit(ac);
+                db.SubmitChanges();
+                if (ac.UserID < 999) return false;
+                var initscore = 50;
+                db.Profile.InsertOnSubmit(new Profile
+                    {
+                        UserID = ac.UserID,
+                        Name = name,
+                        ShowScore = initscore,
+                        Score = initscore,
+                        DelScore = 0,
+                        Status = (int)RoleType.General,
+                        RegTime = DateTime.Now,
+                        LoginTime = DateTime.Now,
+                        MagicBox = ""
+                    });
+                db.BasicInformation
+                    .InsertOnSubmit(
+                    new BasicInformation
+                    {
+                        UserID = ac.UserID,
+                        Name = name
+                    });
+                db.SubmitChanges();
+                return true;
+            }
         }
         public bool IsUsernameCanUse(string username)
         {
             if (username.Trim().Length < 4)
                 return false;
-            return DBExt.DB.Account.Where(c => c.Username == username.Trim()).Count() == 0;
+            using (var db = DBExt.Instance)
+            {
+                return db.Account.Where(c => c.Username == username.Trim()).Count() == 0;
+            }
         }
 
 
         public void InitCreater()
         {
-            var p = DBExt.DB.Profile.FirstOrDefault();
-            if (p != null)
+            using (var db = DBExt.Instance)
             {
-                p.Status = (int)RoleType.Creater;
+                var p = db.Profile.FirstOrDefault();
+                if (p != null)
+                {
+                    p.Status = (int)RoleType.Creater;
 
-                DBExt.DB.SubmitChanges();
+                    db.SubmitChanges();
+                }
             }
         }
     }

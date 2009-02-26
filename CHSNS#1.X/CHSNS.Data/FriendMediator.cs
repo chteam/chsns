@@ -9,90 +9,113 @@ namespace CHSNS.Data {
 		public FriendMediator(IDBManager id) : base(id) { }
 		#region 获取
 		public Profile UserFriendInfo(long userid) {
-			var ret = (from p in DBExt.DB.Profile
-					   where p.UserID == userid
-					   select new {
-						   UserID = userid,
-						//   p.FriendCount,
-						   p.Name
-					   }).FirstOrDefault();
-			return new Profile {
-				UserID = ret.UserID,
-			//	FriendCount = ret.FriendCount,
-				Name = ret.Name
-			};
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from p in db.Profile
+                           where p.UserID == userid
+                           select new
+                           {
+                               UserID = userid,
+                               //   p.FriendCount,
+                               p.Name
+                           }).FirstOrDefault();
+                return new Profile
+                {
+                    UserID = ret.UserID,
+                    //	FriendCount = ret.FriendCount,
+                    Name = ret.Name
+                };
+            }
 		}
 		public IQueryable<long> GetFriendsID(long userid) {
-			return (from f1 in DBExt.DB.Friend
-					where f1.FromID == userid && f1.IsTrue
-					select f1.ToID)
-							   .Union(from f1 in DBExt.DB.Friend
-									  where f1.ToID == userid && f1.IsTrue
-									  select f1.FromID);
+            using (var db = DBExt.Instance)
+            {
+                return (from f1 in db.Friend
+                        where f1.FromID == userid && f1.IsTrue
+                        select f1.ToID)
+                                   .Union(from f1 in db.Friend
+                                          where f1.ToID == userid && f1.IsTrue
+                                          select f1.FromID);
+            }
 		}
 		public IQueryable<UserItemPas> GetFriends(long userid) {
 			var ids=GetFriendsID(userid);
-			var ret = (from c in DBExt.DB.Profile
-					   where ids.Any(q => q == c.UserID)
-					   orderby c.UserID
-					   select new UserItemPas {
-						   ID = c.UserID,
-						   Name = c.Name,
-						//   ShowText = c.ShowText,
-						//   ShowTextTime = c.ShowTextTime
-					   });
-			//var ret = (from c in
-			//               (from f1 in DBExt.DB.Friend
-			//                join p1 in DBExt.DB.Profile on f1.ToID equals p1.UserID
-			//                where f1.FromID == userid && f1.IsTrue
-			//                select new {
-			//                    p1.UserID,
-			//                    p1.Name,
-			//                    p1.ShowText,
-			//                    p1.ShowTextTime
-			//                })
-			//               .Union(from f1 in DBExt.DB.Friend
-			//                      join p1 in DBExt.DB.Profile on f1.FromID equals p1.UserID
-			//                      where f1.ToID == userid && f1.IsTrue
-			//                      select new {
-			//                          p1.UserID,
-			//                          p1.Name,
-			//                          p1.ShowText,
-			//                          p1.ShowTextTime
-			//                      })
-			//           orderby c.UserID descending
-			//           select new UserItemPas {
-			//               ID = c.UserID,
-			//               Name = c.Name,
-			//               ShowText = c.ShowText,
-			//               ShowTextTime = c.ShowTextTime
-			//           });
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from c in db.Profile
+                           where ids.Any(q => q == c.UserID)
+                           orderby c.UserID
+                           select new UserItemPas
+                           {
+                               ID = c.UserID,
+                               Name = c.Name,
+                               //   ShowText = c.ShowText,
+                               //   ShowTextTime = c.ShowTextTime
+                           });
+                #region    注
+
+                //var ret = (from c in
+                //               (from f1 in DBExt.DB.Friend
+                //                join p1 in DBExt.DB.Profile on f1.ToID equals p1.UserID
+                //                where f1.FromID == userid && f1.IsTrue
+                //                select new {
+                //                    p1.UserID,
+                //                    p1.Name,
+                //                    p1.ShowText,
+                //                    p1.ShowTextTime
+                //                })
+                //               .Union(from f1 in DBExt.DB.Friend
+                //                      join p1 in DBExt.DB.Profile on f1.FromID equals p1.UserID
+                //                      where f1.ToID == userid && f1.IsTrue
+                //                      select new {
+                //                          p1.UserID,
+                //                          p1.Name,
+                //                          p1.ShowText,
+                //                          p1.ShowTextTime
+                //                      })
+                //           orderby c.UserID descending
+                //           select new UserItemPas {
+                //               ID = c.UserID,
+                //               Name = c.Name,
+                //               ShowText = c.ShowText,
+                //               ShowTextTime = c.ShowTextTime
+                //           });
+                #endregion
+                return ret;
+            }
 		}
 
 		public IQueryable<UserItemPas> GetRandoms(){
-			var ret = (from p in DBExt.DB.Profile
-			           where p.Status.Equals(RoleType.General)
-			           orderby DBExt.DB.NEWID()
-			           select new UserItemPas {
-			                                  	ID = p.UserID,
-			                                  	Name = p.Name,
-			                                  }).Take(10);
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from p in db.Profile
+                           where p.Status.Equals(RoleType.General)
+                           orderby db.NEWID()
+                           select new UserItemPas
+                           {
+                               ID = p.UserID,
+                               Name = p.Name,
+                           }).Take(10);
+                return ret;
+            }
 		}
 
 		public IQueryable<UserItemPas> GetRequests(long userid) {
-			var ret = (from f1 in DBExt.DB.Friend
-					   join p1 in DBExt.DB.Profile on f1.FromID equals p1.UserID
-					   where f1.ToID == userid && !f1.IsTrue
-					   orderby p1.UserID descending
-					   select new UserItemPas {
-						   ID = p1.UserID,
-						   Name = p1.Name,
-						   ShowText = "",
-						   ShowTextTime = DateTime.Now
-					   });
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                var ret = (from f1 in db.Friend
+                           join p1 in db.Profile on f1.FromID equals p1.UserID
+                           where f1.ToID == userid && !f1.IsTrue
+                           orderby p1.UserID descending
+                           select new UserItemPas
+                           {
+                               ID = p1.UserID,
+                               Name = p1.Name,
+                               ShowText = "",
+                               ShowTextTime = DateTime.Now
+                           });
+                return ret;
+            }
 		}
 		#endregion
 		/// <summary>
@@ -154,8 +177,13 @@ where userid=@fromid or userid =@toid", "@fromid", OperaterID,
 					"@toid", ToID);
 				DataBaseExecutor.Execute(@"update [profile] set friendrequestcount=friendrequestcount-1 where userid=@userid",
 					"@userid", OperaterID);
-				var name = DBExt.DB.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
-				DBExt.Event.Add(new Event
+
+				string name;
+                using (var db = DBExt.Instance)
+                {
+                    name = db.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
+                }
+                DBExt.Event.Add(new Event
 				{
 					OwnerID = ToID,
 					ViewerID = OperaterID,

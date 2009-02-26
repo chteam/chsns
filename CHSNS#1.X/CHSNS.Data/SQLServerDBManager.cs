@@ -14,17 +14,7 @@ namespace CHSNS.Data {
             Context = context;
             Init();
         }
-        CHSNSDBDataContext _DB;
-        [Obsolete("过时属性用using(Instance)")]
-        public CHSNSDBDataContext DB {
-            get {
-                if (_DB == null) {
-                    _DB = new CHSNSDBDataContext(ConnectionString);
-                }
-                //db.DeferredLoadingEnabled = false;
-                return _DB;
-            }
-        }
+
         public CHSNSDBDataContext Instance {
             get {
                 var db = new CHSNSDBDataContext(ConnectionString);
@@ -85,16 +75,8 @@ namespace CHSNS.Data {
 
 
         public void Dispose() {
-
             if (_dbex != null)
                 DataBaseExecutor.Dispose();
-            if (_DB == null) return;
-            if (DB.Connection != null) {
-                if (DB.Connection.State != ConnectionState.Closed)
-                    DB.Connection.Close();
-                DB.Connection.Dispose();
-            }
-            DB.Dispose();
         }
 
 

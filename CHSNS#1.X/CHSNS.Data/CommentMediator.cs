@@ -15,24 +15,27 @@ namespace CHSNS.Data
 
 		public IQueryable<CommentPas> GetReply(long userid)
 		{
-			IQueryable<CommentPas> ret = (from r in DBExt.DB.Reply
-			                              join p in DBExt.DB.Profile on r.SenderID equals p.UserID
-			                              where r.UserID == userid
-			                              orderby r.ID descending
-			                              select new CommentPas
-			                                     	{
-			                                     		Comment = new CommentItemPas
-			                                     		          	{
-			                                     		          		ID = r.ID,
-			                                     		          		OwnerID = r.UserID,
-			                                     		          		Body = r.Body,
-			                                     		          		AddTime = r.AddTime,
-			                                     		          		IsDel = r.IsDel
-			                                     		          	},
-			                                     		Sender = new NameIDPas {ID = p.UserID, Name = p.Name}
-			                                     	}
-			                             );
-			return ret;
+            using (var db = DBExt.Instance)
+            {
+                IQueryable<CommentPas> ret = (from r in db.Reply
+                                              join p in db.Profile on r.SenderID equals p.UserID
+                                              where r.UserID == userid
+                                              orderby r.ID descending
+                                              select new CommentPas
+                                                        {
+                                                            Comment = new CommentItemPas
+                                                                        {
+                                                                            ID = r.ID,
+                                                                            OwnerID = r.UserID,
+                                                                            Body = r.Body,
+                                                                            AddTime = r.AddTime,
+                                                                            IsDel = r.IsDel
+                                                                        },
+                                                            Sender = new NameIDPas { ID = p.UserID, Name = p.Name }
+                                                        }
+                                             );
+                return ret;
+            }
 		}
 
 		public Reply AddReply(Reply r)
@@ -66,27 +69,30 @@ VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
 		/// <param name="type">The type.</param>
 		/// <returns></returns>
 		public IQueryable<CommentPas> CommentList(long ShowerID, CommentType type)
-		{
-			var t = (int) type;
-			IQueryable<CommentPas> ret = (from c in DBExt.DB.Comment
-			                              join p in DBExt.DB.Profile on c.SenderID equals p.UserID
-			                              where c.ShowerID == ShowerID && c.Type == t && !c.IsDel
+        {
+            using (var db = DBExt.Instance)
+            {
+                var t = (int)type;
+                IQueryable<CommentPas> ret = (from c in db.Comment
+                                              join p in db.Profile on c.SenderID equals p.UserID
+                                              where c.ShowerID == ShowerID && c.Type == t && !c.IsDel
 
-			                              orderby c.ID descending
-			                              select new CommentPas
-			                                     	{
-			                                     		Comment = new CommentItemPas
-			                                     		          	{
-			                                     		          		ID = c.ID,
-			                                     		          		OwnerID = c.OwnerID,
-			                                     		          		Body = c.Body,
-			                                     		          		AddTime = c.AddTime,
-			                                     		          		IsDel = c.IsDel
-			                                     		          	},
-			                                     		Sender = new NameIDPas {ID = p.UserID, Name = p.Name}
-			                                     	}
-			                             );
-			return ret;
+                                              orderby c.ID descending
+                                              select new CommentPas
+                                                        {
+                                                            Comment = new CommentItemPas
+                                                                        {
+                                                                            ID = c.ID,
+                                                                            OwnerID = c.OwnerID,
+                                                                            Body = c.Body,
+                                                                            AddTime = c.AddTime,
+                                                                            IsDel = c.IsDel
+                                                                        },
+                                                            Sender = new NameIDPas { ID = p.UserID, Name = p.Name }
+                                                        }
+                                             );
+                return ret;
+            }
 		}
 
 		/// <summary>

@@ -25,7 +25,10 @@ namespace CHSNS.Data
 				if (HttpContext.Current.Application[APPLISTALL] == null)
 				{
 					HttpContext.Current.Application.Lock();
-					HttpContext.Current.Application[APPLISTALL] = DBExt.DB.Application.ToList();
+                    using (var db = DBExt.Instance)
+                    {
+                        HttpContext.Current.Application[APPLISTALL] = db.Application.ToList();
+                    }
 					HttpContext.Current.Application.UnLock();
 				}
 				return HttpContext.Current.Application[APPLISTALL] as IList<Application>;
