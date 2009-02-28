@@ -39,26 +39,3 @@ var hideInfo=function(){
     $('hintdivup').style.display='none';
     $('hintdivdown').style.display='none';
 };
-var showInfo=function(obj, objleftoffset,objtopoffset, title, info , objheight, showtype ,objtopfirefoxoffset){
-   var p = getPosition(obj);
-   if((showtype==null)||(showtype =="")) {showtype =="up";}
-   $('hintiframe'+showtype).style.height= objheight + "px";
-   $('hintinfo'+showtype).innerHTML = info;
-   $('hintdiv'+showtype).style.display='block';
-   
-   if(objtopfirefoxoffset != null && objtopfirefoxoffset !=0 && !isie())
-   {
-        $('hintdiv'+showtype).style.top=p['y']+parseInt(objtopfirefoxoffset)+"px";
-   }else{
-        if(objtopoffset == 0){ 
-			if(showtype=="up"){
-				 $('hintdiv'+showtype).style.top=p['y']-$('hintinfo'+showtype).offsetHeight-40+"px";
-			}else{
-				 $('hintdiv'+showtype).style.top=p['y']+obj.offsetHeight+5+"px";
-			}
-        }else{
-			$('hintdiv'+showtype).style.top=p['y']+objtopoffset+"px";
-        }
-   }
-   $('hintdiv'+showtype).style.left=p['x']+objleftoffset+"px";
-};
