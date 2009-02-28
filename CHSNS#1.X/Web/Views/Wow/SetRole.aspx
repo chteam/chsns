@@ -1,10 +1,10 @@
-`<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<CHSNS.Web.Character>>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<CHSNS.Web.Character>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>设置我的默认角色</h2>
 
-    <table class=".table">
+    <table class="table">
         <tr>
             <th>
             </th>
@@ -30,7 +30,7 @@
                 种族
             </th>
             <th>
-                lastLoginDate
+                最后登录时间
             </th>
             <th>
                 性别
@@ -79,7 +79,8 @@
     </table>
 
     <p>
-        <%= Html.ActionLink("返回应用", "Index") %>   <%=Html.ActionLink("新建角色","EditRole") %>
+        <%= Html.ActionLink("返回应用", "Index") %>
+        <%=Html.ActionLink("新建角色","CreateBegin")%>
     </p>
 
 </asp:Content>

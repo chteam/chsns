@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using CHSNS.Web;
-
+using System.Net;
+using System.Xml;
+using System.Xml.Linq;
 namespace CHSNS.Controllers
 {
     public class WowController : BaseController
@@ -29,8 +31,38 @@ namespace CHSNS.Controllers
 
         }
         #region Role
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult CreateBegin() {
+            ViewData["ServerName"]=new List<SelectListItem>();
+            return View();
+        }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult CreateBegin(string rolename, string servername, string servernametxt)
+        {
+            HttpProc proc = new HttpProc(string.Format(
+                     "http://cn.wowarmory.com/character-sheet.xml?r={0}&n={1}",
+                     Server.UrlEncode(servername ?? servernametxt),
+                    Server.UrlEncode(rolename)
+                     ));
+            proc.encoding = System.Text.Encoding.UTF8;
+            string xml = proc.Proc();
+            XDocument xdoc = XDocument.Load(new System.IO.StringReader(xml));
+            ViewData["c"] = (from c in xdoc.Descendants()
+                             where c.Name == "character"
+                             select new Character
+                             {
+                                 Name = c.Attribute("name").Value,
+                                 Gend = c.Attribute("gender").Value,
+                                 Class = c.Attribute("class").Value,
+                                 Faction = c.Attribute("faction").Value,
+                                 RealM = c.Attribute("realm").Value,
+                                 Level = int.Parse(c.Attribute("level").Value),
+                                 BattleGroup =c.Attribute("battleGroup").Value,
+                                 Race = c.Attribute("race").Value 
+                             }).FirstOrDefault();
 
-
+            return View("EditRole");
+        }
         public ActionResult Join()
         {
             using (var w = new WOWDataContext())
@@ -93,7 +125,7 @@ namespace CHSNS.Controllers
                 }
                 w.SubmitChanges();
             }
-            return RedirectToAction("index");
+            return RedirectToAction("SetRole");
         }
         public ActionResult SetRole(long? id)
         {
@@ -106,6 +138,7 @@ namespace CHSNS.Controllers
                     w.SubmitChanges();
                 }
                 ViewData["cid"] = u.CurrentCID ?? -1;
+                Title = "设置用户角色";
                 return View(u.Character.ToList());
             }
 

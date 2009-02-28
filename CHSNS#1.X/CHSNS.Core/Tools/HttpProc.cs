@@ -25,7 +25,7 @@ namespace CHSNS {
 			请求.CookieContainer = new CookieContainer();//cookie容器，
 			请求.Referer = this.strRefUrl; //当前页面的引用
 
-
+            请求.Headers["Accept-Language"] = "	zh-cn,zh;q=0.5";   
 			//使用代理
 			//WebProxy myProxy = new WebProxy();
 			//if (config.Proxy_DEF != "0") {
