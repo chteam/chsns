@@ -3,7 +3,7 @@
 	<h3>
 		当前头像</h3>
 	<div id="face_span">
-		<%=Html.Image(Path.GetFace_Big(), "头像预览",new { id="Userface"})%>
+		<%=Html.Image(Path.GetFace(CH.Context.User.UserID, ThumbType.Big), "头像预览", new { id = "Userface" })%>
 	</div>
 	<div class="required" id="uploadfield">
 		<input class="subbutton" type="button" value="上传" onclick="uploadcreate($('#uploadfield'),'<%=Url.Action("File","Upload") %>','face');" />
@@ -17,7 +17,7 @@
 		<em>如果希望成为实名用户，请使用真实写实的照片作为头像。</em><br />
 		支持 BMP、JPG、JPEG、GIF和 PNG 文件格式，最大2M。<br />
 		头像高度超出宽度1.5倍的部分会被切除。</div>
-	<%if (!Path.GetFace_Big().Contains("no_")) {%>
+	<%if (!Path.GetFace(CH.Context.User.UserID,ThumbType.Big).Contains("no_")) {%>
 	<h3>
 		删除头像</h3>
 	<div class="notes">

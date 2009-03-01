@@ -677,6 +677,7 @@
   <ItemGroup>
     <None Include="1.sql" />
     <None Include="2.sql" />
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="UnitView\ViewHostHandler.ashx" />
     <Content Include="UnitView\Web.config" />
     <Content Include="Views\Wow\CreateBegin.aspx" />
