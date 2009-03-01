@@ -2,6 +2,7 @@
 using System.Linq;
 using CHSNS.Models;
 using CHSNS.ModelPas;
+using System.Collections.Generic;
 
 namespace CHSNS.Data {
 	public class NoteMediator : BaseMediator, INoteMediator {
@@ -94,7 +95,7 @@ where id=@id and userid=@userid",
             }
 		}
 
-		public IQueryable<NotePas> GetLastNotes(int? ni) {
+		public List<NotePas> GetLastNotes(int? ni) {
             using (var db = DBExt.Instance)
             {
                 return (from n in db.Note
@@ -110,15 +111,16 @@ where id=@id and userid=@userid",
                                        UserID = n.UserID,
                                        ViewCount = n.ViewCount,
                                        WriteName = p.Name
-                                   }).Take(ni ?? 10);
+                                   }).Take(ni ?? 10).ToList();
             }
 		}
 
-		public IQueryable<NotePas> GetNotes(long pid, NoteType? nt) {
+        public PagedList<NotePas> GetNotes(long pid, NoteType? nt, int p, int ep)
+        {
             using (var db = DBExt.Instance)
             {
                 return (from n in db.Note
-                        join p in db.Profile on n.UserID equals p.UserID
+                        join pr in db.Profile on n.UserID equals pr.UserID
                         where n.PID == pid && n.Type.Equals(nt ?? NoteType.Note)
                         orderby n.ID descending
                         select new NotePas
@@ -130,10 +132,10 @@ where id=@id and userid=@userid",
                                        Title = n.Title,
                                        UserID = n.UserID,
                                        ViewCount = n.ViewCount,
-                                       WriteName = p.Name
-                                   });
+                                       WriteName = pr.Name
+                                   }).Pager(p, ep);
             }
-		}
+        }
 
 		#endregion
 	}

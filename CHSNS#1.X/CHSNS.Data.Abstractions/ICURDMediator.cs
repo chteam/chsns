@@ -8,6 +8,6 @@ namespace CHSNS.Data {
         void Create(T content);
         void Update(T content);
         void Remove(params long[] uid);
-        IQueryable<T> List(long? uid);
+        PagedList<T> List(long? uid, int p, int ep);
     }
 }
