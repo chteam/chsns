@@ -38,10 +38,9 @@ namespace CHSNS.Controllers {
 		/// <returns></returns>
 		[AcceptVerbs("Post")]
 		public ActionResult NoteList(int p, int ep, long userid) {
-			var d = new PagedList<NotePas>(
-				DBExt.Note.GetNotes(userid, NoteType.Note),
-				p, ep)
-				;
+            var d =
+                DBExt.Note.GetNotes(userid, NoteType.Note, p, ep)
+                ;
 			return View(d);
 		}
 		public ActionResult Details(long id) {

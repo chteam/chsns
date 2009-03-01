@@ -48,15 +48,14 @@ namespace CHSNS.Controllers {
 		}
 		#endregion
 		#region pager ctrl
-		[LoginedFilter]
-		[AcceptVerbs("Post")]
-		public ActionResult FriendList(int p, long userid) {
-			using (new TransactionScope()) {
-                var list=DBExt.Friend.GetFriends(userid).Pager(p, 10);
-                ViewData["PageCount"] = list.TotalPages;
-				return View(list);
-			}
-		}
+        [LoginedFilter]
+        [AcceptVerbs("Post")]
+        public ActionResult FriendList(int p, long userid)
+        {
+            var list = DBExt.Friend.GetFriends(userid, p, 10);
+            ViewData["PageCount"] = list.TotalPages;
+            return View(list);
+        }
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
 		public ActionResult RequestList(int p, long userid) {

@@ -5,6 +5,7 @@ namespace CHSNS.Data {
 	using Models;
 	using System;
 	using ModelPas;
+    using System.Collections.Generic;
 	public class FriendMediator : BaseMediator, IFriendMediator {
 		public FriendMediator(IDBManager id) : base(id) { }
 		#region 获取
@@ -27,7 +28,7 @@ namespace CHSNS.Data {
                 };
             }
 		}
-		public IQueryable<long> GetFriendsID(long userid) {
+		public List<long> GetFriendsID(long userid) {
             using (var db = DBExt.Instance)
             {
                 return (from f1 in db.Friend
@@ -35,15 +36,16 @@ namespace CHSNS.Data {
                         select f1.ToID)
                                    .Union(from f1 in db.Friend
                                           where f1.ToID == userid && f1.IsTrue
-                                          select f1.FromID);
+                                          select f1.FromID).ToList();
             }
 		}
-		public IQueryable<UserItemPas> GetFriends(long userid) {
-			var ids=GetFriendsID(userid);
+        public PagedList<UserItemPas> GetFriends(long uid, int p, int ep)
+        {
+			var ids=GetFriendsID(uid);
             using (var db = DBExt.Instance)
             {
                 var ret = (from c in db.Profile
-                           where ids.Any(q => q == c.UserID)
+                           where ids.Contains(c.UserID)
                            orderby c.UserID
                            select new UserItemPas
                            {
@@ -81,7 +83,7 @@ namespace CHSNS.Data {
                 //               ShowTextTime = c.ShowTextTime
                 //           });
                 #endregion
-                return ret;
+                return ret.Pager(p, ep);
             }
 		}
 

@@ -6,6 +6,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.PagedList<CHSNS.Models.Group>>" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<fieldset>
 		<legend>群列表</legend>
+		<%=Html.ActionLink("新建", "Create")%>
 		<div class="ch_content">
 			<ul class="userlist">
 				<%  foreach (CHSNS.Models.Group p in ViewData.Model.ToNotNull()) { %>

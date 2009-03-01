@@ -16,7 +16,7 @@ namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class GroupController : BaseController {
 		#region 主页
-		public ActionResult index(long id, int? p) {
+		public ActionResult Index(long id, int? p) {
 			InitPage(ref p);
 			#region 群信息和用户
             Group g;
@@ -47,7 +47,8 @@ namespace CHSNS.Controllers {
 			} else {
 				userlevel = u.Status;
 			}
-			ViewData["right"] = ret;
+            ViewData["right"] = userlevel;
+            ViewData["showlevel"] = ret;
 			#endregion
 			#region 统计
 			ViewData["MemberList"] = DBExt.View.ViewList(6, 2, g.ID, 6);
@@ -70,8 +71,8 @@ namespace CHSNS.Controllers {
                 ViewData["adminlist"] = adminList;
             }
 			#endregion
-			var posts = DBExt.Note.GetNotes(id, NoteType.GroupPost);
-			ViewData["posts"] = new PagedList<NotePas>(posts, p.Value, 20);
+            var posts = DBExt.Note.GetNotes(id, NoteType.GroupPost, p.Value, 20);
+            ViewData["posts"] = posts;
 			return View(g);
 		}
 
@@ -160,8 +161,8 @@ namespace CHSNS.Controllers {
                 g.JoinLevel = group.JoinLevel;
                 g.ShowLevel = group.ShowLevel;
                 g.Summary = group.Summary ?? "";
-                db.SubmitChanges(); 
-                return ManageResult(g);
+                db.SubmitChanges();
+                return RedirectToAction("Manage", new { id });
             }
 
         }
@@ -179,7 +180,7 @@ namespace CHSNS.Controllers {
                                 Name = u.Name,
                                 Count = g.Status
                             });
-                ViewData["list"] = list;
+                ViewData["list"] = list.ToList();
             }
 			return View();
 		}

@@ -39,13 +39,13 @@ namespace CHSNS.Data {
             }
         }
 
-        public IQueryable<CHSNS.Models.SuperNote> List(long? uid) {
+        public PagedList<CHSNS.Models.SuperNote> List(long? uid,int p,int ep) {
             //类型,时间排序,用户
             using (var db = DBExt.Instance)
             {
-                return db.SuperNote.Where(c => c.Type == (byte) SuperNoteType.Video
+                return db.SuperNote.Where(c => c.Type == (byte)SuperNoteType.Video
                                                      && c.UserID == (uid ?? CHUser.UserID)).OrderByDescending(
-                    c => c.AddTime);
+                    c => c.AddTime).Pager(p, ep);
             }
         }
 

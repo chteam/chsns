@@ -24,7 +24,7 @@ namespace CHSNS.Controllers {
         /// <returns></returns>
         public ActionResult List(long? uid, int? p) {
             InitPage(ref p);
-            ViewData["list"] = DBExt.Video.List(uid).Pager(p.Value, 10);
+            ViewData["list"] = DBExt.Video.List(uid,p.Value, 10);
             Title = " ”∆µ¡–±Ì";
             return View();
         }

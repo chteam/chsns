@@ -2,6 +2,7 @@
 using System.Linq;
 using CHSNS.ModelPas;
 using CHSNS.Models;
+using System.Collections.Generic;
 namespace CHSNS.Data {
 	public interface INoteMediator {
 		void Add(Note note);
@@ -9,7 +10,7 @@ namespace CHSNS.Data {
 		void Delete(long id, long pid, NoteType nt);
 		NoteDetailsPas Details(long id, NoteType? nt);
 		void Edit(Note note);
-		IQueryable<NotePas> GetLastNotes(int? n);
-		IQueryable<NotePas> GetNotes(long pid, NoteType? nt);
+        List<NotePas> GetLastNotes(int? n);
+        PagedList<NotePas> GetNotes(long pid, NoteType? nt, int p, int ep);
 	}
 }
