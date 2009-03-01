@@ -59,7 +59,7 @@ namespace CHSNS.Controllers {
 		}
 		protected override void OnResultExecuting(ResultExecutingContext filterContext) {
 			foreach (string key in Request.Params.Keys)
-				if (ViewData.ContainsKey(key))
+				if (!string.IsNullOrEmpty(key)&&ViewData.ContainsKey(key))
 					ViewData[key] = Request.Params[key];
 			foreach (KeyValuePair<string, object> item in RouteData.Values)
 				if (ViewData.ContainsKey(item.Key))
