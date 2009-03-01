@@ -1,24 +1,29 @@
-ï»¿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
 Inherits="System.Web.Mvc.ViewPage" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("calendar")%>
+	<%if (false)        { %>
+	<script type="text/javascript" src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
+   <%-- <script type="text/javascript" src="../../JavaScript/ui.js"></script>--%>
+    <%} %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<div id="toc">
 		<ul>
 			<%
 				int current = 0, i = 0;
-				foreach (CHSNS.ListItem kv in (List<CHSNS.ListItem>) ViewData["menulist"]) {
-					if (ViewData["mode"].ToString().Equals(kv.Value)) 
-						current = i;
-					i++;
+                foreach (CHSNS.ListItem kv in ViewData["menulist"].ToNotNull<CHSNS.ListItem>())
+                {
+                    if (ViewData["mode"].ToString().Equals(kv.Value))
+                        current = i;
+                    i++;
 			%>
 			<li>
 				<%=Html.ActionLink(kv.Text, kv.Value, "User")%></li>
 			<%
-				}
+                }
 			%>
 			<li class="status"></li>
 		</ul>
@@ -32,7 +37,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 	<script type="text/javascript">
-		var ChangeProvince = function() {
+	    var ChangeProvince = function() {
 			showMessage('#CityStatus', 'Loading...');
 			$.postJSON('<%=Url.Action("CityList","Ajax") %>', { "ProvinceID": $("#ProvinceID").val() }, function(r) {
 				BindSelect('#CityID', r, 'Name', 'ID');
@@ -40,23 +45,23 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		};
 		var SBaseInfo = function() {
 
-		if (v_empty('#b_Name', 'å§“åä¸ºå¿…æ·»é¡¹') &&
-			v_notin('#b_Sex',[0,""],"è¯·é€‰æ‹©æ‚¨çš„æ€§åˆ«") &&
-			 v_regex('#ProvinceID', /[^0]+/, false, 'çœä¸ºå¿…é€‰') &&
-			  v_regex('#CityID', /[^0]+/, false, 'å¸‚ä¸ºå¿…é€‰') &&
-			   v_date('#Birthday', 'è¯·å†™å…¥æ­£ç¡®æ—¥æœŸ'))
+		if (v_empty('#b_Name', 'ĞÕÃûÎª±ØÌíÏî') &&
+			v_notin('#b_Sex',[0,""],"ÇëÑ¡ÔñÄúµÄĞÔ±ğ") &&
+			 v_regex('#ProvinceID', /[^0]+/, false, 'Ê¡Îª±ØÑ¡') &&
+			  v_regex('#CityID', /[^0]+/, false, 'ÊĞÎª±ØÑ¡') &&
+			   v_date('#Birthday', 'ÇëĞ´ÈëÕıÈ·ÈÕÆÚ'))
 				$.post('<%=Url.Action("SaveBaseInfo","User") %>', $("#BasicInfofrm").serialize(), function(r) {
 					$("#b_Name").focus();
-					if ('' == r) alertEx('æˆåŠŸæäº¤');
+					if ('' == r) alertEx('³É¹¦Ìá½»');
 				});
 		};
 		var SMagicBox = function(s) {
 			$.post('<%=Url.Action("SaveMagicBox","User") %>', { "magicbox": s }, function(r) {
-				if ('' == r) alertEx('æˆåŠŸæäº¤');
+				if ('' == r) alertEx('³É¹¦Ìá½»');
 			});
 		};
 		var uploadsuccess = function(showul) {
-			alertEx("æ–‡ä»¶ä¸Šä¼ æˆåŠŸ.");
+			alertEx("ÎÄ¼şÉÏ´«³É¹¦.");
 			$("#face_span").html(
 			'<img id="Userface" src="' + showul + '?' + Math.random() + '" alt=""/>');
 			uploadcreate($('#uploadfield'), '<%=Url.Action("File","Upload") %>', 'face');
@@ -64,7 +69,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		var DeleteFace = function() {
 			$.post('<%=Url.Action("DeleteFace","User") %>', {}, function(r) {
 				if ('' == r) {
-					alertEx('æˆåŠŸåˆ é™¤æ‚¨çš„å¤´åƒ');
+					alertEx('³É¹¦É¾³ıÄúµÄÍ·Ïñ');
 					var f = $("#face_span").html();
 					$("#face_span").html("");
 					$("#face_span").html(f);

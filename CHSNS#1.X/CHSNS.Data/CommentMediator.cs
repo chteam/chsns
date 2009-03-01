@@ -10,34 +10,42 @@ namespace CHSNS.Data
 		public CommentMediator(IDBManager id) : base(id)
 		{
 		}
-
+     
 		#region reply
-
+   private IQueryable<CommentPas> GetReplyPrivate(CHSNSDBDataContext db, long uid) {
+            IQueryable<CommentPas> ret = (from r in db.Reply
+                                          join p in db.Profile on r.SenderID equals p.UserID
+                                          where r.UserID == uid
+                                          orderby r.ID descending
+                                          select new CommentPas
+                                          {
+                                              Comment = new CommentItemPas
+                                              {
+                                                  ID = r.ID,
+                                                  OwnerID = r.UserID,
+                                                  Body = r.Body,
+                                                  AddTime = r.AddTime,
+                                                  IsDel = r.IsDel
+                                              },
+                                              Sender = new NameIDPas { ID = p.UserID, Name = p.Name }
+                                          }
+                                               );
+            return ret;
+        }
 		public IQueryable<CommentPas> GetReply(long userid)
 		{
             using (var db = DBExt.Instance)
             {
-                IQueryable<CommentPas> ret = (from r in db.Reply
-                                              join p in db.Profile on r.SenderID equals p.UserID
-                                              where r.UserID == userid
-                                              orderby r.ID descending
-                                              select new CommentPas
-                                                        {
-                                                            Comment = new CommentItemPas
-                                                                        {
-                                                                            ID = r.ID,
-                                                                            OwnerID = r.UserID,
-                                                                            Body = r.Body,
-                                                                            AddTime = r.AddTime,
-                                                                            IsDel = r.IsDel
-                                                                        },
-                                                            Sender = new NameIDPas { ID = p.UserID, Name = p.Name }
-                                                        }
-                                             );
-                return ret;
+                return GetReplyPrivate(db,userid);
             }
 		}
-
+        public PagedList<CommentPas> GetReply(long uid, int p, int ep)
+        {
+            using (var db = DBExt.Instance)
+            {
+                return GetReplyPrivate(db, uid).Pager(p, ep);
+            }
+        }
 		public Reply AddReply(Reply r)
 		{
 			DataBaseExecutor.Execute(
@@ -145,5 +153,5 @@ where id=@id", "@id", cmt.ShowerID);
 		}
 
 		#endregion
-	}
+    }
 }

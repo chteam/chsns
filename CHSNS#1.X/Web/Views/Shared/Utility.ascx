@@ -30,7 +30,7 @@
 			<li>
 				<%=Html.ActionLink("隐私设置", "Setting", "User")%></li>
 			<li>
-				<%=Html.ActionLink("密码修改", "Setting", "User", new { tabs = 1 },null)%>
+				<%=Html.ActionLink("密码修改", "ChangePassword", "Account")%>
 			</li>
 		</ul>
 	</div>
