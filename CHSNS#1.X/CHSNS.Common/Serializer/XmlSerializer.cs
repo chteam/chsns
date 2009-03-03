@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-
+using System.Web;
 namespace CHSNS
 {
 	public class XmlSerializer
@@ -15,7 +15,7 @@ namespace CHSNS
 		{
 			
 				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-				var filepath = CHServer.MapPath(fn);
+				var filepath = HttpContext.Current.Server.MapPath(fn);
 				if (!System.IO.File.Exists(filepath))
 					System.IO.File.Create(filepath);
 				if ((System.IO.File.GetAttributes(filepath)
@@ -36,13 +36,13 @@ namespace CHSNS
 		/// <summary>
 		/// 从配置文件反序列化
 		/// </summary>
-		/// <typeparam name="T">反序列化的目标类型</typeparam>
+		/// <parameters name="T">反序列化的目标类型</typeparam>
 		/// <param name="fn">键</param>
 		/// <returns></returns>
 		public static T Load<T>(string fn) where T : class
 		{
 			
-                var filepath = CHServer.MapPath(fn);
+                var filepath = HttpContext.Current.Server.MapPath(fn);
                 if (!System.IO.File.Exists(filepath))
                     System.IO.File.Create(filepath);
                 if ((System.IO.File.GetAttributes(filepath)
@@ -51,7 +51,7 @@ namespace CHSNS
                     System.IO.File.SetAttributes(filepath, FileAttributes.Archive);
                 }
 				var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-				using (var myFileStream = new StreamReader(CHServer.MapPath(fn)).BaseStream)
+                using (var myFileStream = new StreamReader(HttpContext.Current.Server.MapPath(fn)).BaseStream)
 				{
 					return mySerializer.Deserialize(myFileStream) as T;
 				}

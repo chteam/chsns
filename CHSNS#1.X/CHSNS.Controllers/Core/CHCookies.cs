@@ -110,7 +110,7 @@ namespace CHSNS
             get
             {
                 if (GetCookieItem("apps").Contains("%"))
-                    return en.DESDecrypt(CHServer.UrlDecode(GetCookieItem("userm")), "77298666");
+                    return en.DESDecrypt(HttpUtility.UrlDecode(GetCookieItem("userm")), "77298666");
                 return en.DESDecrypt(GetCookieItem("apps"), "77298666");
             }
             set
@@ -126,7 +126,7 @@ namespace CHSNS
             get
             {
                 if (GetCookieItem("userm").Contains("%"))
-                    return en.DESDecrypt(CHServer.UrlDecode(GetCookieItem("userm")), "77298666");
+                    return en.DESDecrypt(HttpUtility.UrlDecode(GetCookieItem("userm")), "77298666");
                 return en.DESDecrypt(GetCookieItem("userm"), "77298666");
             }
             set

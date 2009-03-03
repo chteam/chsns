@@ -83,7 +83,7 @@ namespace CHSNS {
 		}
 		static public string FaceMapPath(object userid)
 		{
-			return CHServer.MapPath(string.Format("{0}face/", UserServerPath(userid)));
+			return HttpContext.Current.Server.MapPath(string.Format("{0}face/", UserServerPath(userid)));
 		}
 		#endregion
 		#region GetFace
@@ -98,7 +98,7 @@ namespace CHSNS {
 			                            UserWebPath(userid.ToString()),
 			                            userid,
 			                            type);
-				if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+				if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
 				}
 			return EmptyImage(type);
