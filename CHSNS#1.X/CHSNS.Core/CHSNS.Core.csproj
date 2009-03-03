@@ -93,19 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="ChServer.cs" />
     <Compile Include="CommentType.cs" />
-    <Compile Include="Config\BaseConfig.cs" />
-    <Compile Include="Config\ChAlumnaConfig.cs" />
-    <Compile Include="Config\ConfigString.cs" />
-    <Compile Include="Config\NoteConfig.cs" />
-    <Compile Include="Config\Publish.cs" />
-    <Compile Include="Config\RegVisitConfig.cs" />
-    <Compile Include="Config\SiteConfig.cs" />
-    <Compile Include="Config\SystemApplicationConfig.cs" />
-    <Compile Include="Config\SystemApplicationItem.cs" />
-    <Compile Include="Config\SystemConfig.cs" />
-    <Compile Include="Config\ThumbnailPair.cs" />
     <Compile Include="DataExecute\DataBaseExecutor.cs" />
     <Compile Include="Extension\Data\IPagedList.cs" />
     <Compile Include="Extension\Data\PagedList.cs" />
@@ -114,12 +102,9 @@
     <Compile Include="Email\IEmail.cs" />
     <Compile Include="Email\NetEmail.cs" />
     <Compile Include="Email\WebEmail.cs" />
-    <Compile Include="Enum\RoleType.cs" />
-    <Compile Include="Enum\VisitType.cs" />
     <Compile Include="Extension\EnumExtension.cs" />
     <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
-    <Compile Include="File.cs" />
     <Compile Include="File\FileUpload.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
@@ -130,20 +115,16 @@
     <Compile Include="MessageBoxType.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
     <Compile Include="DataExecute\OleDbDataOpener.cs" />
-    <Compile Include="Role.cs" />
     <Compile Include="Tools\HttpProc.cs" />
-    <Compile Include="XmlSerializer.cs" />
     <Compile Include="DataExecute\SqlDataOpener.cs" />
     <Compile Include="DataExecute\SqlStoredProcedureDataOpener.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="File\Debug.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Encrypt.cs" />
-    <Compile Include="Enum\ThumbType.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Interface\IDataOpener.cs" />
     <Compile Include="NetworkCross.cs" />
-    <Compile Include="Path\Path.cs" />
     <Compile Include="Regular.cs" />
     <Compile Include="Image\Thumbnail.cs" />
     <Compile Include="DataExecute\EntityOpener.cs" />

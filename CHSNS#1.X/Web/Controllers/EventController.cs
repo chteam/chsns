@@ -42,7 +42,7 @@ namespace CHSNS.Controllers {
 		[AdminFilter]
 		public ActionResult GetSystemTemplate(string name)
 		{
-			var ret = CHSNS.File.ReadAllText(Path.EventSystemTemplatePath(name));
+            var ret = "";// CHSNS.File.ReadAllText(Path.EventSystemTemplatePath(name));
 			return Content(Server.HtmlEncode(ret));
 		}
 		[AdminFilter]
@@ -64,7 +64,7 @@ namespace CHSNS.Controllers {
 				x.Add(li);
 				ConfigSerializer.Save(x, "SystemTemplate");
 				ConfigSerializer.ClearCache("SystemTemplate");
-				CHSNS.File.SaveAllText(Path.EventSystemTemplatePath(li.Value), c);
+			//	CHSNS.File.SaveAllText(Path.EventSystemTemplatePath(li.Value), c);
 			}
 			else {
 				return Content("Error");
