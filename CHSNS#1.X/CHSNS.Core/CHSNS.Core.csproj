@@ -92,7 +92,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Attribute\AssemblyInfo.cs" />
     <Compile Include="CommentType.cs" />
     <Compile Include="DataExecute\DataBaseExecutor.cs" />
     <Compile Include="Extension\Data\IPagedList.cs" />
@@ -145,8 +145,5 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Attribute\" />
   </ItemGroup>
 </Project>
