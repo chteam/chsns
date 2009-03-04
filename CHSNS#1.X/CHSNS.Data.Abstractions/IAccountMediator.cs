@@ -9,6 +9,6 @@ namespace CHSNS.Data {
         /// <summary>
         /// 初始化创建者
         /// </summary>
-        void InitCreater();
+        void InitCreater(); 
     }
 }
