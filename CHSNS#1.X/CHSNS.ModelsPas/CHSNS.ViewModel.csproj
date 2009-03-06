@@ -8,8 +8,8 @@
     <ProjectGuid>{27E2B6B3-7382-4D72-A889-7FDD618126F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CHSNS.ModelPas</RootNamespace>
-    <AssemblyName>CHSNS.ModelPas</AssemblyName>
+    <RootNamespace>CHSNS.ViewModel</RootNamespace>
+    <AssemblyName>CHSNS.ViewModel</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -56,6 +56,7 @@
     <Compile Include="AccountPas.cs" />
     <Compile Include="Area\City.cs" />
     <Compile Include="Area\Province.cs" />
+    <Compile Include="Base\BaseViewModel.cs" />
     <Compile Include="CommentItemPas.cs" />
     <Compile Include="CommentPas.cs" />
     <Compile Include="Config\BaseConfig.cs" />
@@ -82,7 +83,8 @@
     <Compile Include="Enum\TagsType.cs" />
     <Compile Include="Enum\ThumbType.cs" />
     <Compile Include="Enum\VisitType.cs" />
-    <Compile Include="EventPagePas.cs" />
+    <Compile Include="Event\EventIndexViewModel.cs" />
+    <Compile Include="Event\EventPagePas.cs" />
     <Compile Include="MessageDetailsPas.cs" />
     <Compile Include="MessageItemPas.cs" />
     <Compile Include="NameIDPas.cs" />
