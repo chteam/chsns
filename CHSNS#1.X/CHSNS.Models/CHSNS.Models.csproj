@@ -69,7 +69,6 @@
     <Compile Include="AccountPas.cs" />
     <Compile Include="Area\City.cs" />
     <Compile Include="Area\Province.cs" />
-    <Compile Include="Base\BaseViewModel.cs" />
     <Compile Include="CHSNSDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
