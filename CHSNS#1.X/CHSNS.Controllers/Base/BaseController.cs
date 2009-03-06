@@ -5,6 +5,7 @@ using System;
 using CHSNS.Data;
 
 using System.Collections.Generic;
+using CHSNS.ViewModel;
 
 namespace CHSNS.Controllers {
 	
@@ -66,6 +67,9 @@ namespace CHSNS.Controllers {
 					ViewData[item.Key] = item.Value;
 			if (ViewData.ContainsKey("Page_Title"))
 				ViewData["Page_Title"] += "-" + CHContext.Site.BaseConfig.Title;
+            var m = ViewData.Model as BaseViewModel;
+            if (m != null)
+                m.Content = this.CHContext;
 		}
 		protected static void Validate404(object obj) {
 			if (obj == null)

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master"
 Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
@@ -6,7 +6,8 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% EventPagePas ep = ViewData.Model.Page; %>
 	<div id="userRelations">
-		<%if (CH.Context.User.IsAdmin) { %>
+		<%if (ViewData.Model.Content.User.IsAdmin)
+    { %>
 		<div id="Event_Admin">
 			<h4>
 				管理员</h4>
@@ -20,13 +21,13 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 			<h4>
 				谁最近看过我的页面</h4>
 			<%
-				Html.RenderPartial("ViewList", ViewData["lastview"]); %>
+				Html.RenderPartial("ViewList", ViewData.Model.LastViews); %>
 		</div>
 		<div class="box">
 			<h4>
 				好友</h4>
 			<%
-				Html.RenderPartial("ViewList", ViewData["newview"]); %>
+                Html.RenderPartial("ViewList", ViewData.Model.NewViews); %>
 		</div>
 	</div>
 	<div id="userUpdates">
@@ -92,7 +93,7 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 				我朋友的动向</h4>
 			<ul id="evt_list">
 				<% 
-					Html.RenderPartial("../user/Index/Event", ViewData["event"]); %>
+                    Html.RenderPartial("../user/Index/Event", ViewData.Model.Events); %>
 			</ul>
 		</div>
 	</div>
