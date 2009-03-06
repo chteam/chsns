@@ -53,51 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountPas.cs" />
-    <Compile Include="Area\City.cs" />
-    <Compile Include="Area\Province.cs" />
-    <Compile Include="Base\BaseViewModel.cs" />
-    <Compile Include="CommentItemPas.cs" />
-    <Compile Include="CommentPas.cs" />
-    <Compile Include="Config\BaseConfig.cs" />
-    <Compile Include="Config\ChAlumnaConfig.cs" />
-    <Compile Include="Config\ConfigString.cs" />
-    <Compile Include="Config\NoteConfig.cs" />
-    <Compile Include="Config\Publish.cs" />
-    <Compile Include="Config\RegVisitConfig.cs" />
-    <Compile Include="Config\SiteConfig.cs" />
-    <Compile Include="Config\SystemApplicationConfig.cs" />
-    <Compile Include="Config\SystemApplicationItem.cs" />
-    <Compile Include="Config\SystemConfig.cs" />
-    <Compile Include="Config\ThumbnailPair.cs" />
-    <Compile Include="Entry\EntryExt.cs" />
-    <Compile Include="Entry\EntryPas.cs" />
-    <Compile Include="Entry\EntryType.cs" />
-    <Compile Include="Entry\EntryVersionType.cs" />
-    <Compile Include="Enum\FieldType.cs" />
-    <Compile Include="Enum\GroupStatus.cs" />
-    <Compile Include="Enum\GroupType.cs" />
-    <Compile Include="Enum\GroupUserStatus.cs" />
-    <Compile Include="Enum\RoleType.cs" />
-    <Compile Include="Enum\SuperNoteType.cs" />
-    <Compile Include="Enum\TagsType.cs" />
-    <Compile Include="Enum\ThumbType.cs" />
-    <Compile Include="Enum\VisitType.cs" />
-    <Compile Include="Event\EventIndexViewModel.cs" />
-    <Compile Include="Event\EventPagePas.cs" />
-    <Compile Include="MessageDetailsPas.cs" />
-    <Compile Include="MessageItemPas.cs" />
-    <Compile Include="NameIDPas.cs" />
-    <Compile Include="NoteDetailsPas.cs" />
-    <Compile Include="NotePas.cs" />
-    <Compile Include="Enum\NoteType.cs" />
+    <Compile Include="EventIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs" />
-    <Compile Include="ShowLevelOption.cs" />
-    <Compile Include="UserItemPas.cs" />
-    <Compile Include="UserPas.cs" />
-    <Compile Include="UserwithCountPas.cs" />
-    <Compile Include="ViewListPas.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
