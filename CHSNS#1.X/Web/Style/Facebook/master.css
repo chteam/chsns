@@ -339,7 +339,7 @@ background-position:0 -1400px;
 
 /*menu over*/
 .menu ul{list-style:none;margin:0}
-.menu{display:inline-block;padding-right:10px}
+.menu{display:inline;padding-right:10px}
 .menu a{color:#fff}
 .menu_title{cursor:pointer;color:#fff;padding:2px 15px 0 5px;}
 .menu_title:hover{color:#fff;background:#9B4342;}
