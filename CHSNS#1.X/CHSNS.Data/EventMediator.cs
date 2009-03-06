@@ -13,38 +13,23 @@ namespace CHSNS.Data
         /// </summary>
         /// <param name="id">The DBExt.</param>
         public EventMediator(IDBManager id) : base(id) { }
-        /// <summary>
-        /// Gets the event./获取某人的Event
-        /// </summary>
-        /// <param name="userid">The userid.</param>
-        /// <returns></returns>
-        public IQueryable<Event> GetEvent(long userid)
-        {
-            using (var db = DBExt.Instance)
-            {
-                var ret = (from e in db.Event
-                           where e.OwnerID == userid
-                           orderby e.ID descending
-                           select e);
-                return ret;
-            }
-        }
+
 
         /// <summary>
         /// 50好友事件
         /// </summary>
         /// <param name="userid">The userid.</param>
         /// <returns></returns>
-        public IQueryable<Event> GetFriendEvent(long userid)
+        public PagedList<Event> GetFriendEvent(long userid, int p, int ep)
         {
             var ids = DBExt.Friend.GetFriendsID(userid);
             using (var db = DBExt.Instance)
             {
                 var ret = (from e in db.Event
-                           where ids.Any(c => c == e.OwnerID)
+                           where ids.Contains(e.OwnerID)
                            orderby e.ID descending
-                           select e).Take(50);
-                return ret;
+                           select e);
+                return ret.Pager(p, ep);
             }
         }
 
