@@ -1,12 +1,14 @@
-﻿/*
+﻿using CHSNS.ModelPas;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+/*
 * Created by 邹健
 * Date: 2007-12-25
 * Time: 22:39
 */
 namespace CHSNS.Controllers {
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Web.Mvc;
+
 	/// <summary>
 	/// 事件的控制器
 	/// the Controller of Event.
@@ -15,19 +17,18 @@ namespace CHSNS.Controllers {
 	public class EventController : BaseController {
 		#region Action
 
-		public ActionResult Index()
-		{
-			//using (var ts=DBExt.ContextTransaction())
-			//{}
-				ViewData["newview"] = DBExt.View.ViewList(2, 3, CHUser.UserID, 6);
-				ViewData["lastview"] = DBExt.View.ViewList(0, 3, CHUser.UserID, 6);
-				ViewData["event"] = DBExt.Event.GetFriendEvent(CHUser.UserID);
-				Title = "事件";
-				var ret = DBExt.Gather.EventGather(CHUser.UserID);
-			//	ts.Commit();
-				return View(ret);
-			
-		}
+        public ActionResult Index()
+        {
+            Title = "事件";
+            var m = new EventIndexViewModel
+            {
+                Events = DBExt.Event.GetFriendEvent(CHUser.UserID, 1, 20),
+                LastViews = DBExt.View.ViewList(0, 3, CHUser.UserID, 6),
+                NewViews = DBExt.View.ViewList(2, 3, CHUser.UserID, 6),
+                Page = DBExt.Gather.EventGather(CHUser.UserID)
+            };
+            return View(m);
+        }
 
 		#endregion
 
