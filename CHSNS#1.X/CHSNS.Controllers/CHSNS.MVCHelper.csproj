@@ -117,7 +117,6 @@
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />
     <Compile Include="Filter\RoleAttribute.cs" />
-    <Compile Include="GlobalApplication.cs" />
     <Compile Include="Extension\Html\HtmlHelperExt.cs" />
     <Compile Include="Extension\Html\HtmlRenderExt.cs" />
     <Compile Include="Extension\Html\Include.cs">

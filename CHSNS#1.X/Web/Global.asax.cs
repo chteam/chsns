@@ -2,11 +2,7 @@
  * Created by 邹健
  * Date: 2007-10-19
  * Time: 22:51
- * 
- * 
  */
-
-
 using System;
 using System.Runtime.CompilerServices;
 using System.Transactions;
@@ -17,11 +13,14 @@ using System.Web.Routing;
 using CHSNS.Data;
 using CHSNS.Mvc;
 
-namespace CHSNS {
+namespace CHSNS
+{
     [CompilerGlobalScope]
-    public class Global : HttpApplication {
+    public class Global : HttpApplication
+    {
 
-        public void Application_Start(object sender, EventArgs e) {
+        public void Application_Start(object sender, EventArgs e)
+        {
             // 在应用程序启动时运行的代码
             //Application.Add("Application.IsMustJoinClass", true);
             //网站设置，是否必须加入班级
@@ -32,44 +31,48 @@ namespace CHSNS {
             DynamicDataInit();
             //ControllerBuilder.Current.SetControllerFactory(typeof(NVelocityEngine.NVelocityControllerFactory));
         }
-        public static void DynamicDataInit() {
+        public static void DynamicDataInit()
+        {
             var model = new System.Web.DynamicData.MetaModel();
             model.RegisterContext(typeof(Models.CHSNSDBDataContext),
                 new ContextConfiguration { ScaffoldAllTables = true });
             ModelBinders.Binders.DefaultBinder = new DynamicDataModelBinder(ModelBinders.Binders.DefaultBinder);
         }
-        public void Application_End(object sender, EventArgs e) {
+        public void Application_End(object sender, EventArgs e)
+        {
         }
 
-        public void Application_Error(object sender, EventArgs e) {
+        public void Application_Error(object sender, EventArgs e)
+        {
         }
 
-        public void Session_OnStart(object sender, EventArgs e) {
+        public void Session_OnStart(object sender, EventArgs e)
+        {
             IContext Context = new CHContext();
-            using (new TransactionScope()) {
-                if (!Context.User.IsLogin) {
-                    //当前不处于登录状态
-                    if (Context.Cookies.IsAutoLogin) {
-                        string pwd = Context.Cookies.UserPassword;
-                        var idb = new SQLServerDBManager(Context);
-                        idb.Account.Login(Context.Cookies.UserID.ToString(),
-                                          pwd,
-                                          true,
-                                          false
-                            );
-                    }
-                }
-            }
+            if (Context.User.IsLogin) return;            //当前不处于登录状态
+            if (!Context.Cookies.IsAutoLogin) return;
+            string pwd = Context.Cookies.UserPassword;
+            var idb = Context.DBManager;
+            idb.Account.Login(Context.Cookies.UserID.ToString(),
+                              pwd,
+                              true,
+                              false
+                );
         }
 
         public void Session_OnEnd(object sender, EventArgs e) { }
 
 
-        public static void RegisterRoutes(RouteCollection routes) {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
 
             var ext = "asbx";
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+       "indexf", // Route name
+       "", // URL with parameters
+       new { controller = "Entry", action = "Index", Title = "Index" }// Parameter defaults
+       );
             routes.MapRoute(
                 "index", // Route name
                 "{Title}." + ext, // URL with parameters
