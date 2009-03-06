@@ -9,22 +9,26 @@ using Rhino.Mocks;
 using Microsoft.Web.Testing.Light;
 using UnitView;
 using CHSNS.Models;
-namespace CHSNS.MvcTest.Controllers
+using CHSNS.ViewModel;
+namespace CHSNS.MvcTest
 {
     [WebTestClass]
-
-    public class HomeTest {
+    public class Event
+    {
         [WebTestMethod]
-        public void Index() {
-            var data = new TestViewData<Note> {
+        public void Index()
+        {
+            var data = new TestViewData<EventIndexViewModel>
+            {
                 ControllerName = "Home",
                 ActionName = "Index",
-                Model = null
+                Model = new EventIndexViewModel
+                {
+                }
             };
             HtmlPage page = new HtmlPage(TestViewData.GenerateHostUrl(data));
             // Assert title
-            Assert.AreEqual("", page.Elements.Find("title", 0).GetInnerText());
+            Assert.AreEqual("UUSPARK旅游搜索 - 首页", page.Elements.Find("title", 0).GetInnerText());
         }
     }
 }
- 
