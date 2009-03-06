@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage<EventPagePas>" %>
+Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<% EventPagePas ep = ViewData.Model; %>
+	<% EventPagePas ep = ViewData.Model.Page; %>
 	<div id="userRelations">
 		<%if (CH.Context.User.IsAdmin) { %>
 		<div id="Event_Admin">
