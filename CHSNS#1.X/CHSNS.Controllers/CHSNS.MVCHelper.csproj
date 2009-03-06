@@ -89,8 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseController.cs" />
-    <Compile Include="Base\ViewContext.cs">
-    </Compile>
     <Compile Include="CH.cs" />
     <Compile Include="CHStatic.cs" />
     <Compile Include="ConfigSerializerExt.cs" />
