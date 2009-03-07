@@ -1,6 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<PagedList<NotePas>>" %>
 <div>
-<%Html.Grid<NotePas>("Model",
+<%Html.Grid<NotePas>(Model,
 	  new Hash(@class => "threadlist", Style => "width:100%"),
 	  c => {
 		  c.For("主题").Do(p => { %><td>

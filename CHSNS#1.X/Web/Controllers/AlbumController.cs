@@ -38,16 +38,18 @@ namespace CHSNS.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(long? id)
         {
-            if (id.HasValue)
+            if (!id.HasValue)
             {
-                using (var db = DBExt.Instance)
-                {
-                    var model = db.Album.Where(c => c.ID.Equals(id)).FirstOrDefault();
-                    ViewData["a"] = model;
-                    return View(model);
-                }
+                Title = "新建相册";
+                return View();
             }
-            return View();
+            Title = "编辑相册";
+            using (var db = DBExt.Instance)
+            {
+                var model = db.Album.FirstOrDefault(c => c.ID.Equals(id));
+              ViewData["a"] = model;
+                return View(model);
+            }
         }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(long? id, Album a)
@@ -56,7 +58,7 @@ namespace CHSNS.Controllers
             {
                 if (id.HasValue)
                 {
-                    var al = db.Album.Where(c => c.ID == id.Value).FirstOrDefault();
+                    var al = db.Album.FirstOrDefault(c => c.ID == id.Value);
                     al.Location = a.Location;
                     al.Description = a.Description;
                     al.ShowLevel = a.ShowLevel;

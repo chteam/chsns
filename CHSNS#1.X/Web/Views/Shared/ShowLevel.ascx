@@ -6,7 +6,7 @@ Inherits="System.Web.Mvc.ViewUserControl<ShowLevelOption>" %>
 	if (model != null)
 		Writer.Write(Html.DropDownList(model.ID,
 		                               new SelectList(
-                                           ViewContext.CH().ConfigSerializer.Load<List<CHSNS.ListItem>>("ShowLevel")
+                                           CH.Context.ConfigSerializer.Load<List<CHSNS.ListItem>>("ShowLevel")
 		                               	, "Value", "Text", model.SelectedValue)
 		                               , new {@class = "select"}));
 	%>
