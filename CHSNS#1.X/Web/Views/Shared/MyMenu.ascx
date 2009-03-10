@@ -5,7 +5,7 @@
 			菜单</h3>
 		<ul id="MyApplication" class="app_list">
 			    <li id="Li1"  class=" s_icon">
-				<%=Html.ActionLink("G团招募", "Index", "Wow")%>
+				<%=Html.ActionLink("G团招募", "Index", "GTuan")%>
 			</li>
 					    <li id="Li2"  class="s_icon">
 				<%=Html.ActionLink("自强组队", "Index", "Wow")%>

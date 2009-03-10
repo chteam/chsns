@@ -15,21 +15,7 @@ namespace CHSNS.Controllers
         //
         // GET: /Wow/
         int initGB = 1;
-        public ActionResult Index()
-        {
-            using (var w = new WOWDataContext())
-            {
-                var u = w.CurrentUser.Where(c => c.UID == CHUser.UserID).FirstOrDefault();
-                if (u == null) return View("join"); //参加应用
-                if (u.Character.Count == 0) return View("EditRole");//没创建角色
-                if (u.Character1 == null) return View("SetRole", u.Character);//没设置当前角色
-                //可以使用了
-                Title = "G团招募";
-                return View(u);
 
-            }
-
-        }
         #region Role
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult CreateBegin() {
@@ -146,27 +132,8 @@ namespace CHSNS.Controllers
         #endregion
 
         #region Question
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult AddQuestion()
-        {
-            return View();
-        }
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddQuestion(Question t)
-        {
-            using (var w = new WOWDataContext())
-            {
-                var u = w.CurrentUser.FirstOrDefault(c => c.UID == CHUser.UserID);
-//                u.GB -= (initGB + t.GB);
-                t.AddTime = DateTime.Now;
-                t.UID = CHUser.UserID;
-                t.Type = 0;//招中
-                w.Question.InsertOnSubmit(t);
-                w.SubmitChanges();
-                Title = "新建计划";
-                return RedirectToAction("QuestionList");
-            }
-        }
+ 
+
         public ActionResult QuestionList(int? p)
         {
             using (var w = new WOWDataContext())
