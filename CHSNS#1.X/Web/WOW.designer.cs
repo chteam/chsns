@@ -30,15 +30,15 @@ namespace CHSNS.Web
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertQuestion(Question instance);
+    partial void UpdateQuestion(Question instance);
+    partial void DeleteQuestion(Question instance);
     partial void InsertCharacter(Character instance);
     partial void UpdateCharacter(Character instance);
     partial void DeleteCharacter(Character instance);
     partial void InsertCurrentUser(CurrentUser instance);
     partial void UpdateCurrentUser(CurrentUser instance);
     partial void DeleteCurrentUser(CurrentUser instance);
-    partial void InsertQuestion(Question instance);
-    partial void UpdateQuestion(Question instance);
-    partial void DeleteQuestion(Question instance);
     partial void InsertAnswer(Answer instance);
     partial void UpdateAnswer(Answer instance);
     partial void DeleteAnswer(Answer instance);
@@ -74,6 +74,14 @@ namespace CHSNS.Web
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Question> Question
+		{
+			get
+			{
+				return this.GetTable<Question>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Character> Character
 		{
 			get
@@ -90,20 +98,383 @@ namespace CHSNS.Web
 			}
 		}
 		
-		public System.Data.Linq.Table<Question> Question
-		{
-			get
-			{
-				return this.GetTable<Question>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Answer> Answer
 		{
 			get
 			{
 				return this.GetTable<Answer>();
 			}
+		}
+	}
+	
+	[Table(Name="dbo.Question")]
+	public partial class Question : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _ID;
+		
+		private string _Title;
+		
+		private long _UID;
+		
+		private System.DateTime _BeginTime;
+		
+		private System.DateTime _AddTime;
+		
+		private byte _ForType;
+		
+		private int _TaskID;
+		
+		private string _TaskName;
+		
+		private string _Description;
+		
+		private string _Example;
+		
+		private byte _Type;
+		
+		private EntitySet<Answer> _Answer;
+		
+		private EntityRef<CurrentUser> _CurrentUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(System.Guid value);
+    partial void OnIDChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnUIDChanging(long value);
+    partial void OnUIDChanged();
+    partial void OnBeginTimeChanging(System.DateTime value);
+    partial void OnBeginTimeChanged();
+    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanged();
+    partial void OnForTypeChanging(byte value);
+    partial void OnForTypeChanged();
+    partial void OnTaskIDChanging(int value);
+    partial void OnTaskIDChanged();
+    partial void OnTaskNameChanging(string value);
+    partial void OnTaskNameChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnExampleChanging(string value);
+    partial void OnExampleChanged();
+    partial void OnTypeChanging(byte value);
+    partial void OnTypeChanged();
+    #endregion
+		
+		public Question()
+		{
+			this._Answer = new EntitySet<Answer>(new Action<Answer>(this.attach_Answer), new Action<Answer>(this.detach_Answer));
+			this._CurrentUser = default(EntityRef<CurrentUser>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_ID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Title", DbType="NVarChar(50)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_UID", DbType="BigInt NOT NULL")]
+		public long UID
+		{
+			get
+			{
+				return this._UID;
+			}
+			set
+			{
+				if ((this._UID != value))
+				{
+					if (this._CurrentUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUIDChanging(value);
+					this.SendPropertyChanging();
+					this._UID = value;
+					this.SendPropertyChanged("UID");
+					this.OnUIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_BeginTime", DbType="SmallDateTime NOT NULL")]
+		public System.DateTime BeginTime
+		{
+			get
+			{
+				return this._BeginTime;
+			}
+			set
+			{
+				if ((this._BeginTime != value))
+				{
+					this.OnBeginTimeChanging(value);
+					this.SendPropertyChanging();
+					this._BeginTime = value;
+					this.SendPropertyChanged("BeginTime");
+					this.OnBeginTimeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
+		public System.DateTime AddTime
+		{
+			get
+			{
+				return this._AddTime;
+			}
+			set
+			{
+				if ((this._AddTime != value))
+				{
+					this.OnAddTimeChanging(value);
+					this.SendPropertyChanging();
+					this._AddTime = value;
+					this.SendPropertyChanged("AddTime");
+					this.OnAddTimeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ForType", DbType="TinyInt NOT NULL")]
+		public byte ForType
+		{
+			get
+			{
+				return this._ForType;
+			}
+			set
+			{
+				if ((this._ForType != value))
+				{
+					this.OnForTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ForType = value;
+					this.SendPropertyChanged("ForType");
+					this.OnForTypeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_TaskID", DbType="Int NOT NULL")]
+		public int TaskID
+		{
+			get
+			{
+				return this._TaskID;
+			}
+			set
+			{
+				if ((this._TaskID != value))
+				{
+					this.OnTaskIDChanging(value);
+					this.SendPropertyChanging();
+					this._TaskID = value;
+					this.SendPropertyChanged("TaskID");
+					this.OnTaskIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_TaskName", DbType="NVarChar(50)")]
+		public string TaskName
+		{
+			get
+			{
+				return this._TaskName;
+			}
+			set
+			{
+				if ((this._TaskName != value))
+				{
+					this.OnTaskNameChanging(value);
+					this.SendPropertyChanging();
+					this._TaskName = value;
+					this.SendPropertyChanged("TaskName");
+					this.OnTaskNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Description", DbType="NVarChar(50)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Example", DbType="NVarChar(MAX)")]
+		public string Example
+		{
+			get
+			{
+				return this._Example;
+			}
+			set
+			{
+				if ((this._Example != value))
+				{
+					this.OnExampleChanging(value);
+					this.SendPropertyChanging();
+					this._Example = value;
+					this.SendPropertyChanged("Example");
+					this.OnExampleChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Type", DbType="TinyInt NOT NULL")]
+		public byte Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Question_Answer", Storage="_Answer", ThisKey="ID", OtherKey="QuestionID")]
+		public EntitySet<Answer> Answer
+		{
+			get
+			{
+				return this._Answer;
+			}
+			set
+			{
+				this._Answer.Assign(value);
+			}
+		}
+		
+		[Association(Name="CurrentUser_Question", Storage="_CurrentUser", ThisKey="UID", OtherKey="UID", IsForeignKey=true)]
+		public CurrentUser CurrentUser
+		{
+			get
+			{
+				return this._CurrentUser.Entity;
+			}
+			set
+			{
+				CurrentUser previousValue = this._CurrentUser.Entity;
+				if (((previousValue != value) 
+							|| (this._CurrentUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CurrentUser.Entity = null;
+						previousValue.Question.Remove(this);
+					}
+					this._CurrentUser.Entity = value;
+					if ((value != null))
+					{
+						value.Question.Add(this);
+						this._UID = value.UID;
+					}
+					else
+					{
+						this._UID = default(long);
+					}
+					this.SendPropertyChanged("CurrentUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Answer(Answer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Question = this;
+		}
+		
+		private void detach_Answer(Answer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Question = null;
 		}
 	}
 	
@@ -496,7 +867,11 @@ namespace CHSNS.Web
 		
 		private int _WorkerGB;
 		
+		private EntitySet<Question> _Question;
+		
 		private EntitySet<Character> _Character;
+		
+		private EntitySet<Answer> _Answer;
 		
 		private EntityRef<Character> _Character1;
 		
@@ -520,7 +895,9 @@ namespace CHSNS.Web
 		
 		public CurrentUser()
 		{
+			this._Question = new EntitySet<Question>(new Action<Question>(this.attach_Question), new Action<Question>(this.detach_Question));
 			this._Character = new EntitySet<Character>(new Action<Character>(this.attach_Character), new Action<Character>(this.detach_Character));
+			this._Answer = new EntitySet<Answer>(new Action<Answer>(this.attach_Answer), new Action<Answer>(this.detach_Answer));
 			this._Character1 = default(EntityRef<Character>);
 			OnCreated();
 		}
@@ -649,6 +1026,19 @@ namespace CHSNS.Web
 			}
 		}
 		
+		[Association(Name="CurrentUser_Question", Storage="_Question", ThisKey="UID", OtherKey="UID")]
+		public EntitySet<Question> Question
+		{
+			get
+			{
+				return this._Question;
+			}
+			set
+			{
+				this._Question.Assign(value);
+			}
+		}
+		
 		[Association(Name="CurrentUser_Character", Storage="_Character", ThisKey="UID", OtherKey="UID")]
 		public EntitySet<Character> Character
 		{
@@ -659,6 +1049,19 @@ namespace CHSNS.Web
 			set
 			{
 				this._Character.Assign(value);
+			}
+		}
+		
+		[Association(Name="CurrentUser_Answer", Storage="_Answer", ThisKey="UID", OtherKey="UID")]
+		public EntitySet<Answer> Answer
+		{
+			get
+			{
+				return this._Answer;
+			}
+			set
+			{
+				this._Answer.Assign(value);
 			}
 		}
 		
@@ -716,6 +1119,18 @@ namespace CHSNS.Web
 			}
 		}
 		
+		private void attach_Question(Question entity)
+		{
+			this.SendPropertyChanging();
+			entity.CurrentUser = this;
+		}
+		
+		private void detach_Question(Question entity)
+		{
+			this.SendPropertyChanging();
+			entity.CurrentUser = null;
+		}
+		
 		private void attach_Character(Character entity)
 		{
 			this.SendPropertyChanging();
@@ -727,335 +1142,17 @@ namespace CHSNS.Web
 			this.SendPropertyChanging();
 			entity.CurrentUser = null;
 		}
-	}
-	
-	[Table(Name="dbo.Question")]
-	public partial class Question : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _ID;
-		
-		private string _Title;
-		
-		private long _UID;
-		
-		private System.DateTime _BeginTime;
-		
-		private System.DateTime _AddTime;
-		
-		private byte _ForType;
-		
-		private int _TaskID;
-		
-		private string _TaskName;
-		
-		private string _Description;
-		
-		private string _Example;
-		
-		private byte _Type;
-		
-		private EntitySet<Answer> _Answer;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(System.Guid value);
-    partial void OnIDChanged();
-    partial void OnTitleChanging(string value);
-    partial void OnTitleChanged();
-    partial void OnUIDChanging(long value);
-    partial void OnUIDChanged();
-    partial void OnBeginTimeChanging(System.DateTime value);
-    partial void OnBeginTimeChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
-    partial void OnAddTimeChanged();
-    partial void OnForTypeChanging(byte value);
-    partial void OnForTypeChanged();
-    partial void OnTaskIDChanging(int value);
-    partial void OnTaskIDChanged();
-    partial void OnTaskNameChanging(string value);
-    partial void OnTaskNameChanged();
-    partial void OnDescriptionChanging(string value);
-    partial void OnDescriptionChanged();
-    partial void OnExampleChanging(string value);
-    partial void OnExampleChanged();
-    partial void OnTypeChanging(byte value);
-    partial void OnTypeChanged();
-    #endregion
-		
-		public Question()
-		{
-			this._Answer = new EntitySet<Answer>(new Action<Answer>(this.attach_Answer), new Action<Answer>(this.detach_Answer));
-			OnCreated();
-		}
-		
-		[Column(Storage="_ID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Title", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Title
-		{
-			get
-			{
-				return this._Title;
-			}
-			set
-			{
-				if ((this._Title != value))
-				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_UID", DbType="BigInt NOT NULL")]
-		public long UID
-		{
-			get
-			{
-				return this._UID;
-			}
-			set
-			{
-				if ((this._UID != value))
-				{
-					this.OnUIDChanging(value);
-					this.SendPropertyChanging();
-					this._UID = value;
-					this.SendPropertyChanged("UID");
-					this.OnUIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_BeginTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime BeginTime
-		{
-			get
-			{
-				return this._BeginTime;
-			}
-			set
-			{
-				if ((this._BeginTime != value))
-				{
-					this.OnBeginTimeChanging(value);
-					this.SendPropertyChanging();
-					this._BeginTime = value;
-					this.SendPropertyChanged("BeginTime");
-					this.OnBeginTimeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
-		{
-			get
-			{
-				return this._AddTime;
-			}
-			set
-			{
-				if ((this._AddTime != value))
-				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ForType", DbType="TinyInt NOT NULL")]
-		public byte ForType
-		{
-			get
-			{
-				return this._ForType;
-			}
-			set
-			{
-				if ((this._ForType != value))
-				{
-					this.OnForTypeChanging(value);
-					this.SendPropertyChanging();
-					this._ForType = value;
-					this.SendPropertyChanged("ForType");
-					this.OnForTypeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_TaskID", DbType="Int NOT NULL")]
-		public int TaskID
-		{
-			get
-			{
-				return this._TaskID;
-			}
-			set
-			{
-				if ((this._TaskID != value))
-				{
-					this.OnTaskIDChanging(value);
-					this.SendPropertyChanging();
-					this._TaskID = value;
-					this.SendPropertyChanged("TaskID");
-					this.OnTaskIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_TaskName", DbType="NVarChar(50)")]
-		public string TaskName
-		{
-			get
-			{
-				return this._TaskName;
-			}
-			set
-			{
-				if ((this._TaskName != value))
-				{
-					this.OnTaskNameChanging(value);
-					this.SendPropertyChanging();
-					this._TaskName = value;
-					this.SendPropertyChanged("TaskName");
-					this.OnTaskNameChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Description", DbType="NVarChar(50)")]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Example", DbType="NVarChar(MAX)")]
-		public string Example
-		{
-			get
-			{
-				return this._Example;
-			}
-			set
-			{
-				if ((this._Example != value))
-				{
-					this.OnExampleChanging(value);
-					this.SendPropertyChanging();
-					this._Example = value;
-					this.SendPropertyChanged("Example");
-					this.OnExampleChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Type", DbType="TinyInt NOT NULL")]
-		public byte Type
-		{
-			get
-			{
-				return this._Type;
-			}
-			set
-			{
-				if ((this._Type != value))
-				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Question_Answer", Storage="_Answer", ThisKey="ID", OtherKey="QuestionID")]
-		public EntitySet<Answer> Answer
-		{
-			get
-			{
-				return this._Answer;
-			}
-			set
-			{
-				this._Answer.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
 		
 		private void attach_Answer(Answer entity)
 		{
 			this.SendPropertyChanging();
-			entity.Question = this;
+			entity.CurrentUser = this;
 		}
 		
 		private void detach_Answer(Answer entity)
 		{
 			this.SendPropertyChanging();
-			entity.Question = null;
+			entity.CurrentUser = null;
 		}
 	}
 	
@@ -1079,6 +1176,10 @@ namespace CHSNS.Web
 		
 		private System.DateTime _AddTime;
 		
+		private System.Nullable<byte> _Role;
+		
+		private EntityRef<CurrentUser> _CurrentUser;
+		
 		private EntityRef<Question> _Question;
 		
     #region Extensibility Method Definitions
@@ -1099,10 +1200,13 @@ namespace CHSNS.Web
     partial void OnStatusChanged();
     partial void OnAddTimeChanging(System.DateTime value);
     partial void OnAddTimeChanged();
+    partial void OnRoleChanging(System.Nullable<byte> value);
+    partial void OnRoleChanged();
     #endregion
 		
 		public Answer()
 		{
+			this._CurrentUser = default(EntityRef<CurrentUser>);
 			this._Question = default(EntityRef<Question>);
 			OnCreated();
 		}
@@ -1162,6 +1266,10 @@ namespace CHSNS.Web
 			{
 				if ((this._UID != value))
 				{
+					if (this._CurrentUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnUIDChanging(value);
 					this.SendPropertyChanging();
 					this._UID = value;
@@ -1247,6 +1355,60 @@ namespace CHSNS.Web
 					this._AddTime = value;
 					this.SendPropertyChanged("AddTime");
 					this.OnAddTimeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Role", DbType="TinyInt")]
+		public System.Nullable<byte> Role
+		{
+			get
+			{
+				return this._Role;
+			}
+			set
+			{
+				if ((this._Role != value))
+				{
+					this.OnRoleChanging(value);
+					this.SendPropertyChanging();
+					this._Role = value;
+					this.SendPropertyChanged("Role");
+					this.OnRoleChanged();
+				}
+			}
+		}
+		
+		[Association(Name="CurrentUser_Answer", Storage="_CurrentUser", ThisKey="UID", OtherKey="UID", IsForeignKey=true)]
+		public CurrentUser CurrentUser
+		{
+			get
+			{
+				return this._CurrentUser.Entity;
+			}
+			set
+			{
+				CurrentUser previousValue = this._CurrentUser.Entity;
+				if (((previousValue != value) 
+							|| (this._CurrentUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CurrentUser.Entity = null;
+						previousValue.Answer.Remove(this);
+					}
+					this._CurrentUser.Entity = value;
+					if ((value != null))
+					{
+						value.Answer.Add(this);
+						this._UID = value.UID;
+					}
+					else
+					{
+						this._UID = default(long);
+					}
+					this.SendPropertyChanged("CurrentUser");
 				}
 			}
 		}

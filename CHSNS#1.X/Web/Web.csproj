@@ -600,7 +600,7 @@
     <Content Include="Views\Wow\AddWork.aspx" />
     <Content Include="Views\Wow\CreateRole.aspx" />
     <Content Include="Views\Wow\EditRole.aspx" />
-    <Content Include="Views\Wow\Index.aspx" />
+    <Content Include="Views\GTuan\Index.aspx" />
     <Content Include="Views\Wow\Join.aspx" />
     <Content Include="Views\Wow\SetRole.aspx" />
     <Content Include="Views\Wow\Task.aspx" />
@@ -660,7 +660,9 @@
     <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\Wow\GTuanController.cs" />
     <Compile Include="Controllers\Wow\WowController.cs" />
+    <Compile Include="Controllers\Wow\ZQiangController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -686,7 +688,10 @@
     <Content Include="UnitView\ViewHostHandler.ashx" />
     <Content Include="UnitView\Web.config" />
     <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\GTuan\Details.aspx" />
     <Content Include="Views\Wow\CreateBegin.aspx" />
+    <Content Include="Views\ZQiang\Details.aspx" />
+    <Content Include="Views\ZQiang\Index.aspx" />
     <None Include="WOW.dbml.layout">
       <DependentUpon>WOW.dbml</DependentUpon>
     </None>
