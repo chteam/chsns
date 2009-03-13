@@ -32,14 +32,12 @@ namespace CHSNS {
 
 		#endregion
 		#region 相册
-		static public string AlbumFace(string url){
-			if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
-				return url;
-			else
-				return EmptyImage(ThumbType.Middle);
+		static public string AlbumFace(string url)
+		{
+		    return Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute) ? url : EmptyImage(ThumbType.Middle);
 		}
 
-		#endregion
+	    #endregion
 		#endregion
 
 		#region Style
@@ -98,7 +96,7 @@ namespace CHSNS {
 			                            UserWebPath(userid.ToString()),
 			                            userid,
 			                            type);
-				if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+				if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
 				}
 			return EmptyImage(type);
@@ -213,7 +211,7 @@ namespace CHSNS {
 		static public string GetFaceEmpty(string userid, ThumbType type) {//如果没有图片则返回空串
 			if (userid.Length > 3) {
 				string text = string.Format("{0}face/{1}{2}.jpg", UserWebPath(userid), userid.Substring(0, 3), type);
-				if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+				if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
 				}
 			}
@@ -230,7 +228,7 @@ namespace CHSNS {
 		static public string GetGroupImg(object Groupid, ThumbType type) {
 			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(Groupid), Groupid, type);
 			//Debug.Trace(HttpContext.Current.Request.PhysicalApplicationPath + text);
-			if (System.IO.File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+			if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 				return text;
 			}
 			return "/images/logoMain.jpg";

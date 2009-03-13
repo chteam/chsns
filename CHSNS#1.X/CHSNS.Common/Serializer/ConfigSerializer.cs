@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-
-
-namespace CHSNS
+﻿namespace CHSNS
 {
 	/// <summary>
 	/// 配置文件序列化及反序列化
 	/// </summary>
-	public class ConfigSerializer : CHSNS.ISerializer
+	public class ConfigSerializer : ISerializer
 	{
         IContext Context { get; set; }
         public ConfigSerializer(IContext context) {
