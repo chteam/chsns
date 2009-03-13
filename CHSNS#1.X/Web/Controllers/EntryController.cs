@@ -367,7 +367,7 @@ namespace CHSNS.Controllers
         }
 
         #endregion
-
+         
         #region Ajax
         public ActionResult Has(string title) {
             using (var db = DBExt.Instance)
