@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Linq;
+
 namespace CHSNS.Data {
 	public interface IDBManager : IDisposable {
 		string ConnectionString { get; }
         IContext Context { get; set; }
-		CHSNS.DataBaseExecutor DataBaseExecutor { get; }
-        CHSNS.Models.CHSNSDBDataContext Instance { get; }
+		DataBaseExecutor DataBaseExecutor { get; }
+        Models.CHSNSDBDataContext Instance { get; }
 		IAccountMediator Account { get; }
 		IApplicationMediator Application { get; }
 		ICommentMediator Comment { get; }
