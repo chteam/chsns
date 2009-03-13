@@ -5,7 +5,6 @@ using System.Transactions;
 using System.Web.Mvc;
 using CHSNS.Models;
 using System.Linq;
-using CHSNS.Config;
 using CHSNS.ModelPas;
 namespace CHSNS.Controllers {
 
@@ -41,6 +40,7 @@ namespace CHSNS.Controllers {
         /// </summary>
         /// <param name="ReplyerID">The replyer ID.</param>
         /// <param name="Body"></param>
+        /// <param name="UserID"></param>
         /// <returns></returns>
         [LoginedFilter]
         public ActionResult AddReply(long ReplyerID, string Body, long UserID) {

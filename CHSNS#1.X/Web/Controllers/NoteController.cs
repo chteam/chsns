@@ -3,7 +3,6 @@ using System.Web.Mvc;
 
 using CHSNS.Models;
 using System.Transactions;
-using CHSNS.Config;
 using CHSNS.ModelPas;
 namespace CHSNS.Controllers {
 

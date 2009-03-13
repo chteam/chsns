@@ -1,11 +1,9 @@
 using System;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using CHSNS.Config;
 
 using System.Collections.Generic;
-using CHSNS;
 using Image=System.Drawing.Image;
 
 namespace CHSNS.Controllers {

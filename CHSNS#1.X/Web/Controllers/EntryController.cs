@@ -150,7 +150,7 @@ namespace CHSNS.Controllers
                 var entry = data.FirstOrDefault();
 				if ((entry.Status == (int)EntryType.Common || HasManageRight()))
 				{
-					ViewData["exists"] = exists;
+					ViewData["exists"] = true;
 					ViewData["entry.Title"] = entry.Title;
 					ViewData["id"] = entry.ID;
                     using (var db = DBExt.Instance)
