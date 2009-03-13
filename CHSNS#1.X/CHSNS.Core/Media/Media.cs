@@ -1,5 +1,5 @@
 using System.Text.RegularExpressions;
-using CHSNS;
+
 namespace CHSNS {
 	public class Media {
 		public string Title { get; set; }

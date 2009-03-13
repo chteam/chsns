@@ -135,18 +135,21 @@ namespace CHSNS {
 	//	this.strUrl = "验证码URL";
 			System.Drawing.Image img = null;
 			HttpWebRequest 请求 = CreateRequest();
-			HttpWebResponse 响应 = null; ;
+			HttpWebResponse 响应; ;
 			try {
 				响应 = (HttpWebResponse)请求.GetResponse();
 				img = System.Drawing.Image.FromStream(响应.GetResponseStream());//直接作为stream创建图象。
 				//得到cookie
-				if (响应.Cookies.Count > 0) {
-					this._cookieGet = 响应.Cookies;
-				}
-			} catch (System.Exception ex) {
-				Console.WriteLine(ex.Message);
+			    if (响应.Cookies.Count > 0)
+			    {
+			        _cookieGet = 响应.Cookies;
+			    }
 			}
-			return img;
+			catch (Exception ex)
+			{
+			    Console.WriteLine(ex.Message);
+			}
+		    return img;
 		}
 
 
@@ -159,9 +162,10 @@ namespace CHSNS {
 		/// </summary>
 		/// <param name="地址">发送的地址</param>
 		/// <param name="要发送的cookie">要发送cookies集合</param>
-		public HttpProc(string 地址, System.Net.CookieCollection 要发送的cookie) {
-			this._strUrl = 地址;
-			this._cookiePost = 要发送的cookie;
+		public HttpProc(string 地址, CookieCollection 要发送的cookie)
+		{
+		    _strUrl = 地址;
+		    _cookiePost = 要发送的cookie;
 		}
 
 		/// <summary>
@@ -169,9 +173,10 @@ namespace CHSNS {
 		/// </summary>
 		/// <param name="地址">发送的地址</param>
 		/// <param name="发送数据">要发送的数据</param>
-		public HttpProc(string 地址, string 发送数据) {
-			this._strUrl = 地址;
-			this._strPostdata = 发送数据;
+		public HttpProc(string 地址, string 发送数据)
+		{
+		    _strUrl = 地址;
+		    _strPostdata = 发送数据;
 
 		}
 
@@ -181,7 +186,7 @@ namespace CHSNS {
 		/// </summary>
 		/// <param name="地址">发送的地址</param>
 		public HttpProc(string 地址) {
-			this._strUrl = 地址;
+			_strUrl = 地址;
 		}
 
 
@@ -191,10 +196,11 @@ namespace CHSNS {
 		/// <param name="地址">发送的地址</param>
 		/// <param name="发送数据">要发送的数据</param>
 		/// <param name="要发送的cookie">要发送cookies集合</param>
-		public HttpProc(string 地址, string 发送数据, System.Net.CookieCollection 要发送的cookie) {
-			this._strUrl = 地址;
-			this._strPostdata = 发送数据;
-			this._cookiePost = 要发送的cookie;
+		public HttpProc(string 地址, string 发送数据, CookieCollection 要发送的cookie)
+		{
+		    _strUrl = 地址;
+		    _strPostdata = 发送数据;
+		    _cookiePost = 要发送的cookie;
 		}
 		#endregion
 
@@ -234,17 +240,17 @@ namespace CHSNS {
 		/// 发送出去的数据
 		/// </summary>
 		public string strPostdata {
-			get { return this._strPostdata; }
-			set { this._strPostdata = value; }
+			get { return _strPostdata; }
+			set { _strPostdata = value; }
 		}
 		#endregion
 
 		#region 要发送的cookie集合
-		private System.Net.CookieCollection _cookiePost;
+		private CookieCollection _cookiePost;
 		/// <summary>
 		/// 发送的cookie集合
 		/// </summary>
-		public System.Net.CookieCollection cookiePost {
+		public CookieCollection cookiePost {
 			get {
 				return _cookiePost;
 			}
@@ -253,11 +259,11 @@ namespace CHSNS {
 		#endregion
 
 		#region 获取的cookie集合
-		private System.Net.CookieCollection _cookieGet = new CookieCollection();
+		private CookieCollection _cookieGet = new CookieCollection();
 		/// <summary>
 		/// 发送的cookie集合
 		/// </summary>
-		public System.Net.CookieCollection cookieGet {
+		public CookieCollection cookieGet {
 			get {
 				return _cookieGet;
 			}
@@ -269,15 +275,12 @@ namespace CHSNS {
 
 		#region 代理
 
-		private System.Net.IWebProxy _Proxy;
-		/// <summary>
-		/// 代理服务器
-		/// </summary>
-		public System.Net.IWebProxy Proxy {
-			get { return this._Proxy; }
-			set { this._Proxy = value; }
-		}
-		#endregion
+	    /// <summary>
+	    /// 代理服务器
+	    /// </summary>
+	    public IWebProxy Proxy { get; set; }
+
+	    #endregion
 
 		#region 是否发送成功
 		private bool _succeed;
