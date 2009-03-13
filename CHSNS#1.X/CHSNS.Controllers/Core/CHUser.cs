@@ -9,7 +9,6 @@
 
 namespace CHSNS
 {
-    using System;
     using System.Web;
 
     /// <summary>
@@ -17,7 +16,7 @@ namespace CHSNS
     /// AU:邹健
     /// LE:2007 10 10
     /// </summary>
-    public class CHUser : CHSNS.IUser
+    public class CHUser : IUser
     {
         /// <summary>
         /// 只有注册时才用的属性

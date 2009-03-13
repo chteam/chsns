@@ -9,12 +9,12 @@ namespace CHSNS {
     /// AU:邹健
     /// LE:2007 10 24
     /// </summary>
-    public class CHCache : CHSNS.ICache {
+    public class CHCache : ICache {
         #region 新加属性
         ///<summary>
         /// 属性
         ///</summary>
-        protected Cache Cache {
+        protected static Cache Cache {
             get {
                 return HttpContext.Current.Cache;
             }

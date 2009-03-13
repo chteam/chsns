@@ -4,13 +4,13 @@ namespace CHSNS
 {
     using System;
     using System.Web;
-    using Config;
+
     /// <summary>
     /// 用户信息 Cookies 类
     /// AU:邹健
     /// EL: 2007 10 25
     /// </summary>
-    public class CHCookies : CHSNS.ICookies
+    public class CHCookies : ICookies
     {
         public CHCookies(IContext context)
         {

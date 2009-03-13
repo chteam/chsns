@@ -8,7 +8,7 @@ namespace CHSNS {
 	/// <summary>
 	/// ÔÚÏß
 	/// </summary>
-	public class Online : CHSNS.IOnline {
+	public class Online : IOnline {
         public Online(IContext context)
         {
             Context = context;
@@ -83,7 +83,8 @@ namespace CHSNS {
 				Application.Add(ONLINE_REMOVETIME, value);
 			}
 		}
-		 HttpApplicationState Application {
+
+	    static HttpApplicationState Application {
 			get { return HttpContext.Current.Application; }
 		}
 
