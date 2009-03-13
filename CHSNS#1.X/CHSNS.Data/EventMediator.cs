@@ -19,6 +19,7 @@ namespace CHSNS.Data
         /// 50好友事件
         /// </summary>
         /// <param name="userid">The userid.</param>
+        /// <param name="p"></param>
         /// <returns></returns>
         public PagedList<Event> GetFriendEvent(long userid, int p, int ep)
         {

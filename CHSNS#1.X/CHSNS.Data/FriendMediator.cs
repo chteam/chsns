@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace CHSNS.Data {
+﻿namespace CHSNS.Data {
 	using System.Linq;
 	using Models;
 	using System;

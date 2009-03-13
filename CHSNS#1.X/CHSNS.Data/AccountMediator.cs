@@ -23,7 +23,7 @@ namespace CHSNS.Data
                 throw new Exception("用户名不能为空");
             var en = new Encrypt();
             var md5pwd = IsPasswordMd5 ? en.MD5Encrypt(Password.Trim(), 32) : Password.Trim();
-            long UserID = 0;
+            long UserID;
             long.TryParse(Username.Trim(), out UserID);
             long userid;
             Profile profile;
@@ -64,7 +64,7 @@ namespace CHSNS.Data
             {
                 CHCookies.UserID = CHUser.UserID;
                 CHCookies.UserPassword = md5pwd;
-                CHCookies.IsAutoLogin = IsAutoLogin;
+                CHCookies.IsAutoLogin = true;
                 CHCookies.Expires = DateTime.Now.AddDays(365);
             }
             //else

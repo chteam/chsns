@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CHSNS.Data {
     public class VideoMediator : BaseMediator, ISuperNoteMediator {
         public VideoMediator(IDBManager id) : base(id) { }
         #region ICURDMediator<SuperNote> 成员
 
-        public void Create(CHSNS.Models.SuperNote content) {
+        public void Create(Models.SuperNote content) {
             using (var db = DBExt.Instance)
             {
                 content.AddTime = DateTime.Now;
@@ -22,7 +20,7 @@ namespace CHSNS.Data {
             }
         }
 
-        public void Update(CHSNS.Models.SuperNote content) {
+        public void Update(Models.SuperNote content) {
             throw new NotImplementedException();
         }
 
@@ -39,7 +37,7 @@ namespace CHSNS.Data {
             }
         }
 
-        public PagedList<CHSNS.Models.SuperNote> List(long? uid,int p,int ep) {
+        public PagedList<Models.SuperNote> List(long? uid,int p,int ep) {
             //类型,时间排序,用户
             using (var db = DBExt.Instance)
             {
