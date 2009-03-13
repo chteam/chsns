@@ -1,7 +1,11 @@
-﻿using System;
-namespace CHSNS.Data {
-	public interface IApplicationMediator {
-		System.Collections.Generic.IList<CHSNS.Models.Application> Applications { get; }
-		System.Collections.Generic.IList<CHSNS.Models.Application> GetApps(long[] ids);
-	}
+﻿using System.Collections.Generic;
+using CHSNS.Models;
+
+namespace CHSNS.Data
+{
+    public interface IApplicationMediator
+    {
+        IList<Application> Applications { get; }
+        IList<Application> GetApps(long[] ids);
+    }
 }

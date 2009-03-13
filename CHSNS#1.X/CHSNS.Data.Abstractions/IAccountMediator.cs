@@ -1,5 +1,4 @@
-﻿using System;
-using CHSNS.ModelPas;
+﻿using CHSNS.ModelPas;
 namespace CHSNS.Data {
 	public interface IAccountMediator {
 		bool Create(AccountPas account, string name);
