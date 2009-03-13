@@ -1,15 +1,11 @@
 	using System;
 	using System.Collections.Generic;
-	using System.Data;
-	using System.Data.SqlClient;
 	using System.Linq;
 //	using CHSNS.Extension;
 	
 	using CHSNS.ModelPas;
 	using CHSNS.Models;
-	using CHSNS.Config;
-	using CHSNS;
-using System.Web.Mvc;
+	using System.Web.Mvc;
 using System.Transactions;
 namespace CHSNS.Controllers {
 
@@ -31,8 +27,8 @@ namespace CHSNS.Controllers {
             }
 			#endregion
 			#region 权限计算
-			var ret = 8; //不允许任何操作
-			ret = g.ShowLevel;
+
+		    int ret = g.ShowLevel;
 			if (u != null && u.Status != (byte)GroupUserStatus.Lock) {
 				ret = 0;
 			}
@@ -40,12 +36,12 @@ namespace CHSNS.Controllers {
 				ret = 0;
 			}
 
-			int userlevel = 0;
+			var userlevel = 0;
 			if (CHUser.IsAdmin) {
 				ret = 0;
 				userlevel = 255;
 			} else {
-				userlevel = u.Status;
+			    if (u != null) userlevel = u.Status;
 			}
             ViewData["right"] = userlevel;
             ViewData["showlevel"] = ret;

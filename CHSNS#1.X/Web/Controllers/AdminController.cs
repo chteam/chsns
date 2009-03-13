@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using CHSNS.Config;
-
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace CHSNS.Controllers {
 	[AdminFilter]

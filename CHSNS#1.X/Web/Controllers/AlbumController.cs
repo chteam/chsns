@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using CHSNS.Config;
-
-using CHSNS;
 using CHSNS.Models;
 using System.Web;
 namespace CHSNS.Controllers
@@ -125,13 +123,13 @@ namespace CHSNS.Controllers
                                         , p.AddTime,
                                         ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize")
                     );
-                var ret = f.Upload();
+                f.Upload();
                 p.Ext = f.Ext;
                 db.Photo.InsertOnSubmit(p);
 
                 db.SubmitChanges();
             }
-            return RedirectToAction("details", new { id = id });
+            return RedirectToAction("details", new {id });
         }
 
         #endregion

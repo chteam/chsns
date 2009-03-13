@@ -1,13 +1,9 @@
-using System.Collections;
-
 namespace CHSNS.Controllers
 {
 	//using Castle.Components.Common.EmailSender;
 	using System.Web.Mvc;
-	using CHSNS.ModelPas;
-	using System.Collections.Generic;
-	using System.Data;
-	//using ChAlumna.TemplateEngine;
+
+    //using ChAlumna.TemplateEngine;
 	//using ChAlumna.components;
 //	[Rescue("index")]
 	public class TestController : BaseController 
