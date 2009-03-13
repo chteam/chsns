@@ -1,5 +1,4 @@
-﻿using System;
-namespace CHSNS {
+﻿namespace CHSNS {
     public interface ISerializer {
         void ClearCache(string key);
         T Load<T>(string key) where T : class;
