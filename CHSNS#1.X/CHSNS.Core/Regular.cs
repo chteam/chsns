@@ -1,7 +1,6 @@
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml;
 using System.Web;
 using System.IO;
 
@@ -28,21 +27,21 @@ namespace CHSNS {
 		/// <param name="str">源文本</param>
 		/// <returns>过滤后的文本</returns>
 		static public String FormatRichEdit(String str) {
-			const string f = "EditFormat";
-			var dom = new XmlDocument();
+            //const string f = "EditFormat";
+            //var dom = new XmlDocument();
 			//if (CHCache.IsNullorEmpty(f))
 			//	if (!CHCache.a(f))
 					return "过滤配置文件无法加载";
-			dom.LoadXml(HttpContext.Current.Cache[f].ToString());
-			XmlNodeList nl = dom.SelectNodes("/root/item");
-			if (nl != null)
-				foreach (XmlNode xn in nl) {
-					str = Regex.Replace(str,
-					                    xn.InnerText,
-					                    @"", RegexOptions.IgnoreCase);
-				}
-			//str = str.Replace("\n", "<br>");
-			return str;
+            //dom.LoadXml(HttpContext.Current.Cache[f].ToString());
+            //XmlNodeList nl = dom.SelectNodes("/root/item");
+            //if (nl != null)
+            //    foreach (XmlNode xn in nl) {
+            //        str = Regex.Replace(str,
+            //                            xn.InnerText,
+            //                            @"", RegexOptions.IgnoreCase);
+            //    }
+            ////str = str.Replace("\n", "<br>");
+            //return str;
 		}
 		#endregion
 		#region 正则匹配

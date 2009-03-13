@@ -110,7 +110,7 @@ namespace CHSNS {
 
             // Make optionLabel the first item that gets rendered.
             if (optionLabel != null) {
-                listItemBuilder.AppendLine(ListItemToOption(new SelectListItem() { Text = optionLabel, Value = String.Empty, Selected = false }));
+                listItemBuilder.AppendLine(ListItemToOption(new SelectListItem { Text = optionLabel, Value = String.Empty, Selected = false }));
             }
 
             foreach (SelectListItem item in selectList) {

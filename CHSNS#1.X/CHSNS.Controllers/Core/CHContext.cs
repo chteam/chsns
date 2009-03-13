@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CHSNS.Config;
+﻿using CHSNS.Config;
 using CHSNS.Data;
 
 namespace CHSNS {
@@ -45,7 +41,7 @@ namespace CHSNS {
         #endregion
         #region Site
         SiteConfig _site;
-        public CHSNS.Config.SiteConfig Site {
+        public SiteConfig Site {
             get {
                 return _site ??
                     (_site = (new SiteConfig(new ConfigSerializer(this))).Current);
