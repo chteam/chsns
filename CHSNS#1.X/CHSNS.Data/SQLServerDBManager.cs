@@ -1,6 +1,4 @@
-using System;
 namespace CHSNS.Data {
-    using System.Data;
     using Models;
     using CHSNS;
     using System.Configuration;
