@@ -481,7 +481,6 @@
     <Content Include="Views\Shared\ShowLevel.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
-    <None Include="Views\Shared\BlogMaster.vm" />
     <None Include="Views\Mail\replyback.vm" />
     <None Include="Views\Mail\Test.vm" />
     <None Include="Views\Home\Setting.vm" />
@@ -491,11 +490,6 @@
     <None Include="Views\Tags\Logtag.vm" />
     <None Include="Views\Tags\Tags.vm" />
     <None Include="Views\Upload\Photo.vm" />
-    <None Include="WOW.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>WOW.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Video\Edit.aspx" />
     <Content Include="Views\Video\Items.ascx" />
     <Content Include="Views\Video\List.aspx" />
@@ -596,19 +590,6 @@
     <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\School.ascx" />
     <Content Include="Views\User\Upload.ascx" />
-    <Content Include="Views\Wow\AddTask.aspx" />
-    <Content Include="Views\Wow\AddWork.aspx" />
-    <Content Include="Views\Wow\CreateRole.aspx" />
-    <Content Include="Views\Wow\EditRole.aspx" />
-    <Content Include="Views\GTuan\Index.aspx" />
-    <Content Include="Views\Wow\Join.aspx" />
-    <Content Include="Views\Wow\SetRole.aspx" />
-    <Content Include="Views\Wow\Task.aspx" />
-    <Content Include="Views\Wow\TaskDetails.aspx" />
-    <Content Include="Views\Wow\TaskList.aspx" />
-    <Content Include="Views\Wow\Work.aspx" />
-    <Content Include="Views\Wow\WorkDetails.aspx" />
-    <Content Include="Views\Wow\WorkList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Common\CHSNS.Common.csproj">
@@ -672,29 +653,15 @@
       <DependentUpon>Users.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WOW.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WOW.dbml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="1.sql" />
-    <None Include="2.sql" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="UnitView\ViewHostHandler.ashx" />
     <Content Include="UnitView\Web.config" />
     <Content Include="Views\Account\ChangePassword.aspx" />
-    <Content Include="Views\GTuan\Details.aspx" />
-    <Content Include="Views\Wow\CreateBegin.aspx" />
-    <Content Include="Views\ZQiang\Details.aspx" />
-    <Content Include="Views\ZQiang\Index.aspx" />
-    <None Include="WOW.dbml.layout">
-      <DependentUpon>WOW.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
