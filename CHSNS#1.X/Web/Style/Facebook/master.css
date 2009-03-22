@@ -338,19 +338,21 @@ background-position:0 -1400px;
 * html #chbox_overlay { /* ie6 hack */position: absolute;height:expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');}
 
 /*menu over*/
-.menu ul{list-style:none;margin:0}
-.menu{display:inline;padding-right:10px}
+.menu ul{list-style:none;margin:0;
+         margin-left:0;border: 1px solid #9a9a9a;z-index: 1000;background: #fff;
+              left: 0px; top:16px; position: absolute;
+               display:none;
+              cursor: default;text-align:left;color: #6d84b4;padding:1px;width:90px;
+         }
+.menu{display:inline;padding-right:10px;position:relative; }
 .menu a{color:#fff}
 .menu_title{cursor:pointer;color:#fff;padding:2px 15px 0 5px;}
 .menu_title:hover{color:#fff;background:#9B4342;}
-.menu_network li a{margin-left:0px}
-.sfhover .menu_network{position: absolute;padding:0;margin:0;margin-left:-10px;} 
-.sfhover .menu_network li{margin-bottom:0px;} 
-.menu ul{list-style-type:none;display:block;position:absolute; margin-left:-100em;}
 .menu_network li{margin-left:0;border-bottom:1px solid #fff;}
-.menu_network a{color: #000;display:block;text-decoration: none;cursor: pointer;padding:1px 0px 1px 16px;margin: 1px 0 1px 0;}
+.menu_network a{color: #000;display:block;text-decoration: none;
+                 clear: both; margin-left:0px;
+                cursor: pointer;padding:1px 0px 1px 16px;margin: 1px 0 1px 0;}
 .menu_network a:hover{background-color: #9B4342;color: #fff;padding:1px 0px 1px 16px;}
-.menu_network{margin-left:0;border: 1px solid #9a9a9a;z-index: 1000;background: #fff;cursor: default;text-align:left;color: #6d84b4;padding:1px;width:90px;}
 
 
 /*userpage*/
@@ -365,8 +367,8 @@ background-position:0 -1400px;
  .mypage_sta{ margin-top:5px;margin-left:5px;}
 #MagicBox{ margin-top:20px;}
 
-.left{float:left;position:relative;
-      width:65%;padding:2px 0px 0px 4px;
+.left{float:left;width:65%;
+      padding:2px 0px 0px 4px;
       background:#efefef
       }
 .right{float:right;padding-bottom:10px;width:30%;

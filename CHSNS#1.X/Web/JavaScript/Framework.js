@@ -142,24 +142,23 @@ var isNum = function(_) {
 	return true;
 };
 //==============================Preview
-
 //menu
 var chmenu = function(x) {
-	$(x).each(function(i) {
-		$(this).click(function() {
-			$(this).mouseover(function() {
-				$(this).click(function() {
-					$(this).removeClass("sfhover");
-				});
-				$(this).addClass("sfhover");
-			});
-			$(this).addClass("sfhover");
-		})
-		.mousedown(function() { $(this).addClass("sfhover"); })
-		.mouseup(function() { $(this).addClass("sfhover"); })
-		.mouseout(function() {$(this).removeClass("sfhover");});
-	});
-	$(".menu_title",$(x)).each(function(){$(this).append('<image src="/images/menu.gif" />');});
+    $(x).each(function() {
+        $('.menu_title', $(this).parent()).hover(function() {
+            $('.menu_network', $(this).parent()).show();
+        }, function() {
+            $('.menu_network', $(this).parent()).hide();
+        });
+        $('.menu_network', $(this).parent()).hover(
+        function() {
+            $('.menu_network', $(this).parent()).show();
+        }, function() {
+            $('.menu_network', $(this).parent()).hide();
+        }
+        );
+    });
+    $(".menu_title", $(x)).each(function() { $(this).append('<image src="/images/menu.gif" />'); });
 };
 //upload
 var uploadcreate = function(el, page, mode, qs) {
