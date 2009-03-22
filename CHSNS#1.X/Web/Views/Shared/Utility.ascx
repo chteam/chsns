@@ -35,7 +35,6 @@
 		</ul>
 	</div>
 	<%=Html.RouteLink("首页", "index",null)%>
-	 <%=Html.ActionLink("角色切换","SetRole","Wow") %>
 	<%=(CHStatic.UnReadMessageCount == 0) ?
 	Html.ActionLink("站内信","Inbox","Message") :
 		Html.ActionLink(string.Format("站内信({0})", CHStatic.UnReadMessageCount), "Inbox", "Message")%>
