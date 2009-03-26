@@ -96,6 +96,7 @@
     <Compile Include="Enum\GroupStatus.cs" />
     <Compile Include="Enum\GroupType.cs" />
     <Compile Include="Enum\GroupUserStatus.cs" />
+    <Compile Include="Enum\MessageBoxType.cs" />
     <Compile Include="Enum\NoteType.cs" />
     <Compile Include="Enum\RoleType.cs" />
     <Compile Include="Enum\SuperNoteType.cs" />
