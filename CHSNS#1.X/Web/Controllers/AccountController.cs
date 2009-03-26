@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Transactions;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 
 namespace CHSNS.Controllers
 {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using CHSNS.Models;
 
-namespace CHSNS.Data
+namespace CHSNS.Service
 {
     /// <summary>
     /// Calling the event

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 
-using CHSNS.ModelPas;
+using CHSNS.Model;
 using CHSNS.Models;
 using Newtonsoft.Json;
 

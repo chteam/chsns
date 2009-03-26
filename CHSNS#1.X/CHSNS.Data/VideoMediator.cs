@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace CHSNS.Data {
+namespace CHSNS.Service {
     public class VideoService : BaseService, ISuperNoteService {
         public VideoService(IDBManager id) : base(id) { }
         #region ICURDService<SuperNote> 成员

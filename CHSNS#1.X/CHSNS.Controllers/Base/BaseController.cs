@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using System;
-using CHSNS.Data;
+using CHSNS.Service;
 
 using System.Collections.Generic;
 using CHSNS.ViewModel;

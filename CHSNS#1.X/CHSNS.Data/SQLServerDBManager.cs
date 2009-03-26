@@ -1,4 +1,4 @@
-namespace CHSNS.Data {
+namespace CHSNS.Service {
     using Models;
     using CHSNS;
     using System.Configuration;

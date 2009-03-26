@@ -1,9 +1,9 @@
 ﻿using System.Web;
-
-namespace CHSNS.Data {
+using CHSNS.Model;
+namespace CHSNS.Service {
 	using System.Linq;
 	using Models;
-	using ModelPas;
+
 
 	public class MessageService : BaseService, IMessageService {
 		public MessageService(IDBManager id) : base(id) { }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using CHSNS.Models;
 
-namespace CHSNS.Data
+namespace CHSNS.Service
 {
     public interface IApplicationService
     {

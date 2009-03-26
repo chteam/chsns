@@ -109,9 +109,11 @@ namespace CHSNS
 
         /// <summary>
         /// 等 同 RemoveAll
+        /// <code>HttpContext.Current.Session.Clear();</code>
         /// </summary>
         public void Clear()
         {
+
             HttpContext.Current.Session.Clear();
         }
     }

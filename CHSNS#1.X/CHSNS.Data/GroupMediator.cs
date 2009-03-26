@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using CHSNS.Models;
 
-namespace CHSNS.Data {
+namespace CHSNS.Service {
 	public class GroupService :BaseService, IGroupService {
 		public GroupService(IDBManager id) : base(id) { }
 		/// <summary>
@@ -37,7 +37,7 @@ namespace CHSNS.Data {
 			throw new System.NotImplementedException();
 		}
 
-		public System.Linq.IQueryable<ModelPas.NotePas> NoteList(long ID) {
+		public System.Linq.IQueryable<Model.NotePas> NoteList(long ID) {
 			throw new System.NotImplementedException();
 		}
 

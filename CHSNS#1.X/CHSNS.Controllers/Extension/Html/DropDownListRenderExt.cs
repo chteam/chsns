@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 
 namespace CHSNS {
 	public static class DropDownListRenderExt {

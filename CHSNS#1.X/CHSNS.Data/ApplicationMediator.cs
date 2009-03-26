@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using CHSNS.Models;
 
-namespace CHSNS.Data
+namespace CHSNS.Service
 {
 	public class ApplicationService : BaseService, IApplicationService
 	{

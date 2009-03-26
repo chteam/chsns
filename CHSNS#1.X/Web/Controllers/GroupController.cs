@@ -3,7 +3,7 @@
 	using System.Linq;
 //	using CHSNS.Extension;
 	
-	using CHSNS.ModelPas;
+	using CHSNS.Model;
 	using CHSNS.Models;
 	using System.Web.Mvc;
 using System.Transactions;

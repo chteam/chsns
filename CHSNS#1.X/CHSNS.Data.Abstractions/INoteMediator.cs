@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 using CHSNS.Models;
 using System.Collections.Generic;
-namespace CHSNS.Data {
+namespace CHSNS.Service {
 	public interface INoteService {
 		void Add(Note note);
 

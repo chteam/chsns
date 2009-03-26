@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using CHSNS.ModelPas;
-namespace CHSNS.Data {
+using CHSNS.Model;
+namespace CHSNS.Service {
 	/// <summary>
 	/// 统计的类
 	/// </summary>

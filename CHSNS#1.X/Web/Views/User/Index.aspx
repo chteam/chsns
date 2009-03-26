@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-Inherits="System.Web.Mvc.ViewPage<CHSNS.ModelPas.UserPas>" %>
+Inherits="System.Web.Mvc.ViewPage<CHSNS.Model.UserPas>" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("Reply")%>
 <%--	<%=Html.CSSLink("mypage")%>

@@ -1,8 +1,8 @@
-﻿namespace CHSNS.Data {
+﻿namespace CHSNS.Service {
 	using System.Linq;
 	using Models;
 	using System;
-	using ModelPas;
+	using Model;
     using System.Collections.Generic;
 	public class FriendService : BaseService, IFriendService {
 		public FriendService(IDBManager id) : base(id) { }

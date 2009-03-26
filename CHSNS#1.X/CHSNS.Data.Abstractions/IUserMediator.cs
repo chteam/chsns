@@ -1,5 +1,5 @@
 ﻿using System;
-namespace CHSNS.Data {
+namespace CHSNS.Service {
 	public interface IUserService {
 		void DeleteFace(long userid);
 		CHSNS.Models.BasicInformation GetBaseInfo(long UserID);
@@ -14,7 +14,7 @@ namespace CHSNS.Data {
 		void SaveBaseInfo(CHSNS.Models.BasicInformation bi);
 		void SaveMagicBox(string magicbox, long UserID);
 		void SaveText(long userid, string text);
-		CHSNS.ModelPas.UserPas UserInformation(long userid);
+		CHSNS.Model.UserPas UserInformation(long userid);
 		string GetUserName(long uid);
 	}
 }

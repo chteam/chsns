@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using CHSNS.Models;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 using System.Collections.Generic;
 
-namespace CHSNS.Data {
+namespace CHSNS.Service {
 	public class NoteService : BaseService, INoteService {
 		public NoteService(IDBManager id) : base(id) { }
 		/// <summary>

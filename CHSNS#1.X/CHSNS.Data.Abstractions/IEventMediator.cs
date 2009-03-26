@@ -1,4 +1,4 @@
-﻿namespace CHSNS.Data {
+﻿namespace CHSNS.Service {
 	public interface IEventService {
 		void Add(Models.Event e);
 		void Delete(long id, long ownerid);

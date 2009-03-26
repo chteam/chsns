@@ -1,5 +1,5 @@
 ﻿using CHSNS.Config;
-using CHSNS.Data;
+using CHSNS.Service;
 
 namespace CHSNS {
     public class CHContext : IContext {

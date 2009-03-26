@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CHSNS.ModelPas {
+namespace CHSNS.Model {
 	public class MessageItemPas {
 		public long ID { get; set; }
 		public long UserID { get; set; }

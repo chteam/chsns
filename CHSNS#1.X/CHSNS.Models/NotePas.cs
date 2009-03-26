@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CHSNS.ModelPas {
+namespace CHSNS.Model {
 	public class NotePas {
 		public long ID { get; set; }
 		public string Title { get; set; }

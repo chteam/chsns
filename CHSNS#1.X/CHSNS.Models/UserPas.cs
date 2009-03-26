@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using CHSNS;
 using CHSNS.Models;
-namespace CHSNS.ModelPas {
+namespace CHSNS.Model {
 	public class UserPas {
 		long _ownerID = 0;
 

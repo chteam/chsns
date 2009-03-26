@@ -1,4 +1,4 @@
-namespace CHSNS.Data{
+namespace CHSNS.Service{
 	public interface IAlbumService{
 		
 	}
