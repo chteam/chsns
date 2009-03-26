@@ -85,7 +85,7 @@
     <Compile Include="IGolbalMediator.cs" />
     <Compile Include="IGroupMediator.cs" />
     <Compile Include="IMediator.cs" />
-    <Compile Include="IMessageMediator.cs" />
+    <Compile Include="IMessageService.cs" />
     <Compile Include="INoteMediator.cs" />
     <Compile Include="IPhotoMediator.cs" />
     <Compile Include="ISuperNoteMediator.cs" />

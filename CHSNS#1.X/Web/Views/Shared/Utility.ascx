@@ -12,7 +12,7 @@
 		</ul>
 	</div>
 	<%=Html.ActionLink("事件","Index","Event") %>
-	<%=CHStatic.FriendRequestCount == 0?
+	<%=0 == 0?
 		Html.ActionLink("好友", "Index", "Friend"):
 		Html.ActionLink("好友", "Request", "Friend")%>
 	<div class="menu"><a href="javascript:void(0);" class="menu_title">您好！<%=CH.Context.User.Username %></a>
@@ -35,9 +35,7 @@
 		</ul>
 	</div>
 	<%=Html.RouteLink("首页", "index",null)%>
-	<%=(CHStatic.UnReadMessageCount == 0) ?
-	Html.ActionLink("站内信","Inbox","Message") :
-		Html.ActionLink("站内信", "Inbox", "Message")%>
+	<%=Html.ActionLink("站内信", "Inbox", "Message")%>
 	<a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
 	<%=Html.ActionLink("注销","Logout","Account") %>
 	<%}
