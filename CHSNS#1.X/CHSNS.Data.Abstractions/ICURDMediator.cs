@@ -1,4 +1,4 @@
-﻿namespace CHSNS.Data {
+﻿namespace CHSNS.Service {
     public interface ICURDService<T> {
         void Create(T content);
         void Update(T content);

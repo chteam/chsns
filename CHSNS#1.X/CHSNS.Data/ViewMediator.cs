@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 
-namespace CHSNS.Data {
+namespace CHSNS.Service {
 	public class ViewService : BaseService, IViewService {
 		public ViewService(IDBManager id) : base(id) { }
 		public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count) {

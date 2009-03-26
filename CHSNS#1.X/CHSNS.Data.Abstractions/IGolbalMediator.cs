@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 
-namespace CHSNS.Data
+namespace CHSNS.Service
 {
 	public interface IGolbalService
 	{

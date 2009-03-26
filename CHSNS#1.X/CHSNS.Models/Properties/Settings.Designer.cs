@@ -26,7 +26,7 @@ namespace CHSNS.Models.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=CHSNS.Database_DB_a78b0e4e-b1b7-4417-8ac" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=CHSNS.Servicebase_DB_a78b0e4e-b1b7-4417-8ac" +
             "f-2d3bac37a190;Integrated Security=True")]
         public string CHSNS_Database_DB_a78b0e4e_b1b7_4417_8acf_2d3bac37a190ConnectionString {
             get {
@@ -37,7 +37,7 @@ namespace CHSNS.Models.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=CHSNS.Database_DB_0d1a7df4-999c-4ef4-807" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=CHSNS.Servicebase_DB_0d1a7df4-999c-4ef4-807" +
             "4-83a3fe2a0ffd;Integrated Security=True")]
         public string CHSNS_Database_DB_0d1a7df4_999c_4ef4_8074_83a3fe2a0ffdConnectionString {
             get {
@@ -48,7 +48,7 @@ namespace CHSNS.Models.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=CHSNS.Database;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=CHSNS.Servicebase;Integrated Security=True")]
         public string CHSNS_DatabaseConnectionString {
             get {
                 return ((string)(this["CHSNS_DatabaseConnectionString"]));

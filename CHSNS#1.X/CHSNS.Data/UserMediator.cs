@@ -2,8 +2,8 @@
 using System.Linq;
 using CHSNS.Models;
 using System;
-using CHSNS.ModelPas;
-namespace CHSNS.Data {
+using CHSNS.Model;
+namespace CHSNS.Service {
 	public class UserService : BaseService, IUserService {
 		public UserService(IDBManager id) : base(id) { }
 		public UserPas UserInformation(long userid) {

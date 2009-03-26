@@ -22,7 +22,7 @@ namespace CHSNS.Models
 	using System;
 	
 	
-	[System.Data.Linq.Mapping.DatabaseAttribute(Name="CHSNS.Database")]
+	[System.Data.Linq.Mapping.DatabaseAttribute(Name="CHSNS.Servicebase")]
 	public partial class CHSNSDBDataContext : System.Data.Linq.DataContext
 	{
 		

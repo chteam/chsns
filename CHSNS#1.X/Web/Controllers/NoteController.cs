@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 using CHSNS.Models;
 using System.Transactions;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 namespace CHSNS.Controllers {
 
 	public class NoteController : BaseController {

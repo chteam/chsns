@@ -1,5 +1,5 @@
-﻿using CHSNS.ModelPas;
-namespace CHSNS.Data {
+﻿using CHSNS.Model;
+namespace CHSNS.Service {
 	public interface IAccountService {
 		bool Create(AccountPas account, string name);
 		bool IsUsernameCanUse(string username);

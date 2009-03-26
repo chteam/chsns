@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Routing;
-using CHSNS.Data;
+using CHSNS.Service;
 using CHSNS.Mvc;
 
 namespace CHSNS

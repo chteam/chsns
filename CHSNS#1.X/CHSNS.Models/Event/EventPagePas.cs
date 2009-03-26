@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace CHSNS.ModelPas
+namespace CHSNS.Model
 {
     public class EventPagePas
     {

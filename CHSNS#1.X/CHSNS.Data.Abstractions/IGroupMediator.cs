@@ -1,7 +1,7 @@
 ﻿using CHSNS.Models;
 using System.Linq;
-using CHSNS.ModelPas;
-namespace CHSNS.Data {
+using CHSNS.Model;
+namespace CHSNS.Service {
 	public interface IGroupService {
 		System.Data.DataRowCollection TakeIns(int count);
 		#region group

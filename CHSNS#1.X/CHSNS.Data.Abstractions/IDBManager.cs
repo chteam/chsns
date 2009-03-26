@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CHSNS.Data {
+namespace CHSNS.Service {
 	public interface IDBManager : IDisposable {
 		string ConnectionString { get; }
         IContext Context { get; set; }

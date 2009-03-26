@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Web;
 using CHSNS.Models;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 
-namespace CHSNS.Data
+namespace CHSNS.Service
 {
     public class AccountService :BaseService ,IAccountService
     {
@@ -19,8 +18,7 @@ namespace CHSNS.Data
         }
         public int Login(String Username, String Password, Boolean IsAutoLogin, Boolean IsPasswordMd5)
         {
-            if (string.IsNullOrEmpty(Username.Trim()))
-                throw new Exception("用户名不能为空");
+            if (string.IsNullOrEmpty(Username.Trim())) throw new Exception("用户名不能为空");
             var en = new Encrypt();
             var md5pwd = IsPasswordMd5 ? en.MD5Encrypt(Password.Trim(), 32) : Password.Trim();
             long UserID;
@@ -31,14 +29,15 @@ namespace CHSNS.Data
             using (var db = DBExt.Instance)
             {
                 userid = (from a in db.Account
-                              where (a.Username == Username || a.UserID == UserID)
-                                    && a.Password == md5pwd
-                              select a.UserID).FirstOrDefault();
+                          where (a.Username == Username || a.UserID == UserID)
+                                && a.Password == md5pwd
+                          select a.UserID).FirstOrDefault();
                 if (userid <= 1000) return retint;
                 profile = db.Profile.FirstOrDefault(p => p.UserID == userid);
                 retint = profile.Status;
                 if (retint <= 0) return -1;
                 long score = (profile.LoginTime.Date != DateTime.Now.Date) ? 2 : 0;
+
                 #region    更新
 
                 profile.Score += score;
@@ -52,21 +51,21 @@ namespace CHSNS.Data
                 //LoginTime = getdate() 
                 //where userid=@UserID",
                 //                            "@UserID", userid, "@s", source);
+
                 #endregion
             }
-            HttpContext.Current.Session.Clear();
+            DBExt.Context.User.Clear();
             CHUser.UserID = userid;
             CHUser.Username = profile.Name;
             CHUser.InitStatus(retint);
 
             CHCookies.Apps = profile.Applications ?? "";
-            if (IsAutoLogin)
-            {
-                CHCookies.UserID = CHUser.UserID;
-                CHCookies.UserPassword = md5pwd;
-                CHCookies.IsAutoLogin = true;
-                CHCookies.Expires = DateTime.Now.AddDays(365);
-            }
+            if (!IsAutoLogin) return retint;
+            CHCookies.UserID = CHUser.UserID;
+            CHCookies.UserPassword = md5pwd;
+            CHCookies.IsAutoLogin = true;
+            CHCookies.Expires = DateTime.Now.AddDays(365);
+
             //else
             //	CHCookies.Expires = DateTime.Now.AddDays(-1);
 
@@ -75,6 +74,7 @@ namespace CHSNS.Data
             //	throw new Exception(retint.ToString());
 
         }
+
         public bool Create(AccountPas account, string name)
         {
 			var canuse = IsUsernameCanUse(account.Username);
@@ -130,12 +130,10 @@ namespace CHSNS.Data
             using (var db = DBExt.Instance)
             {
                 var p = db.Profile.FirstOrDefault();
-                if (p != null)
-                {
-                    p.Status = (int)RoleType.Creater;
+                if (p == null) return;
+                p.Status = (int)RoleType.Creater;
 
-                    db.SubmitChanges();
-                }
+                db.SubmitChanges();
             }
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 
 namespace CHSNS.ViewModel
 {

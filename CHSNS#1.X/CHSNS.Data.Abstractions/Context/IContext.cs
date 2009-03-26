@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CHSNS.Config;
-using CHSNS.Data;
+using CHSNS.Service;
 
 namespace CHSNS
 {

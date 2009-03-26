@@ -5,7 +5,7 @@ using System.Transactions;
 using System.Web.Mvc;
 using CHSNS.Models;
 using System.Linq;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 namespace CHSNS.Controllers {
 
     public class CommentController : BaseController {

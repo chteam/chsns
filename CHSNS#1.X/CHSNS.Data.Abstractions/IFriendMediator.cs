@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CHSNS.ModelPas;
+using CHSNS.Model;
 using CHSNS.Models;
 
-namespace CHSNS.Data
+namespace CHSNS.Service
 {
     public interface IFriendService
     {

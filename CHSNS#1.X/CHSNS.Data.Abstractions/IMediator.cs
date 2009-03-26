@@ -1,4 +1,4 @@
-﻿namespace CHSNS.Data {
+﻿namespace CHSNS.Service {
 	/// <summary>
 	/// 中介者
 	/// </summary>

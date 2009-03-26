@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CHSNS.ModelPas {
+namespace CHSNS.Model {
 	public class MessageDetailsPas {
 		public NameIDPas UserInbox { set; get; }
 		public NameIDPas UserOutbox { set; get; }

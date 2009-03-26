@@ -1,4 +1,5 @@
-﻿namespace CHSNS.Data {
+﻿
+namespace CHSNS.Service {
 	public class BaseService : IService {
 
 		#region IService 成员
