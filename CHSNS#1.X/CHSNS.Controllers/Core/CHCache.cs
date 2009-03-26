@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Web;
 using System.Web.Caching;
 
 namespace CHSNS {
@@ -10,13 +9,18 @@ namespace CHSNS {
     /// LE:2007 10 24
     /// </summary>
     public class CHCache : ICache {
+        public IContext Context { get; set; }
+        public CHCache(IContext context)
+        {
+            Context = context;
+        }
         #region 新加属性
         ///<summary>
         /// 属性
         ///</summary>
-        protected static Cache Cache {
+        protected Cache Cache {
             get {
-                return HttpContext.Current.Cache;
+                return Context.HttpContext.Cache;
             }
         }
         ///<summary>

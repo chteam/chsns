@@ -42,7 +42,7 @@ namespace CHSNS.Controllers {
 				ViewData["PageCount"] = DBExt.Friend.GetRequests(Ownerid).Count();
 				ViewData["source"] = DBExt.Friend.GetRequests(Ownerid).Pager(nowpage, 10);
 
-				ViewData["Page_Title"] = b.Name + "的好友请求";
+				Title = b.Name + "的好友请求";
 				return View(b);
 			}
 		}

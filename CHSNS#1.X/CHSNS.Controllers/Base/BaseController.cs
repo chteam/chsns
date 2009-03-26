@@ -46,7 +46,7 @@ namespace CHSNS.Controllers {
 		#endregion
 		public string Title {
 			set {
-				ViewData["Page_Title"] = value;
+                ViewData["Page_Title"] = value;
 			}
 		}
 
@@ -58,7 +58,12 @@ namespace CHSNS.Controllers {
 		protected static void InitPage(ref int? p) {
 			if (!p.HasValue || p == 0) p = 1;
 		}
-		protected override void OnResultExecuting(ResultExecutingContext filterContext) {
+        protected static void InitPage(ref int? p, int def)
+        {
+            if (!p.HasValue || p == 0) p = def;
+        }
+
+	    protected override void OnResultExecuting(ResultExecutingContext filterContext) {
 			foreach (string key in Request.Params.Keys)
 				if (!string.IsNullOrEmpty(key)&&ViewData.ContainsKey(key))
 					ViewData[key] = Request.Params[key];
@@ -66,7 +71,7 @@ namespace CHSNS.Controllers {
 				if (ViewData.ContainsKey(item.Key))
 					ViewData[item.Key] = item.Value;
 			if (ViewData.ContainsKey("Page_Title"))
-				ViewData["Page_Title"] += "-" + CHContext.Site.BaseConfig.Title;
+                ViewData["Page_Title"] += "-" + CHContext.Site.BaseConfig.Title;
             var m = ViewData.Model as BaseViewModel;
             if (m != null)
                 m.Content = CHContext;
