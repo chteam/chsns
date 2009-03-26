@@ -641,9 +641,6 @@
     <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\Wow\GTuanController.cs" />
-    <Compile Include="Controllers\Wow\WowController.cs" />
-    <Compile Include="Controllers\Wow\ZQiangController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
