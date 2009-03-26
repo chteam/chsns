@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using CHSNS.Config;
 using CHSNS.Service;
 
@@ -16,5 +17,6 @@ namespace CHSNS
         SiteConfig Site { get; set; }
         ISerializer ConfigSerializer { get; set; }
         IDBManager DBManager { get; set; }
+        HttpContextBase HttpContext { get; set; }
     }
 }

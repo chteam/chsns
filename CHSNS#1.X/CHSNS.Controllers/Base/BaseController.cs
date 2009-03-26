@@ -13,7 +13,7 @@ namespace CHSNS.Controllers {
 	[OnlineFilter]
 	[HandleError]
 	abstract public class BaseController : Controller  {
-        public IContext CHContext { get { return new CHContext(); } }
+        public IContext CHContext { get { return new CHContext(HttpContext); } }
         public ConfigSerializer ConfigSerializer
         {
             get

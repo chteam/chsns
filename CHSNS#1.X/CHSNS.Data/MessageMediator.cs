@@ -62,14 +62,21 @@ namespace CHSNS.Service {
             }
 		}
 		public void Add(Message m){
-			DataBaseExecutor.Execute(// 发送站内信
+            using (var db = DBExt.Instance)
+            {
+                m.Title = HttpContext.Server.HtmlEncode(m.Title);
+                
+            }
+
+
+		    DataBaseExecutor.Execute(// 发送站内信
 				@"INSERT INTO [Message]
            ([FromID],[ToID],[Title],[Body],[SendTime],[IsSee],[IsFromDel],[IsToDel] ,[IsHtml])
 VALUES(@fromid,@toid,@title,@body,getdate(),0,0,0,@ishtml)",
 				"@fromid", m.FromID,
 				"@toid", m.ToID,
-				"@title", HttpUtility.HtmlEncode(m.Title),
-				"@body", m.IsHtml ? m.Body : HttpUtility.HtmlEncode(m.Body),
+                "@title", HttpContext.Server.HtmlEncode(m.Title),
+                "@body", m.IsHtml ? m.Body : HttpContext.Server.HtmlEncode(m.Body),
 				"@ishtml", m.IsHtml
 				);
 

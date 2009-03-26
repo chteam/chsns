@@ -1,8 +1,21 @@
-﻿using CHSNS.Config;
+﻿using System.Web;
+using CHSNS.Config;
 using CHSNS.Service;
 
 namespace CHSNS {
+    /// <summary>
+    /// CHSNS实现，WEB实现
+    /// </summary>
     public class CHContext : IContext {
+        /// <summary>
+        /// 构造函数唯一
+        /// </summary>
+        /// <param name="context"></param>
+        public CHContext(HttpContextBase context)
+        {
+            HttpContext = context;
+        }
+
         #region Cache
         ICache _cahce;
         /// <summary>
@@ -83,6 +96,12 @@ namespace CHSNS {
                 _dbmanager = value;
             }
         }
+
+        public HttpContextBase HttpContext
+        {
+            get; set;
+        }
+
         #endregion
     }
 }
