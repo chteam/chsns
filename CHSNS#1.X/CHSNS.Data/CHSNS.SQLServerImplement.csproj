@@ -78,13 +78,13 @@
   <ItemGroup>
     <Compile Include="AccountService.cs" />
     <Compile Include="ApplicationMediator.cs" />
-    <Compile Include="BaseMediator.cs" />
+    <Compile Include="BaseService.cs" />
     <Compile Include="EventMediator.cs" />
     <Compile Include="FriendMediator.cs" />
     <Compile Include="GatherMediator.cs" />
     <Compile Include="GolbalMediator.cs" />
     <Compile Include="SQLServerDBManager.cs" />
-    <Compile Include="MessageMediator.cs" />
+    <Compile Include="MessageService.cs" />
     <Compile Include="NoteMediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CommentMediator.cs" />

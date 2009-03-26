@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CHSNS.Model {
 	public class MessageItemPas {
@@ -11,6 +8,7 @@ namespace CHSNS.Model {
 		public string Title { get; set; }
 		public DateTime SendTime { get; set; }
 		public bool IsSee { get; set; }
+        public bool IsHtml { get; set; }
 		public string Body { get; set; }
 	}
 }
