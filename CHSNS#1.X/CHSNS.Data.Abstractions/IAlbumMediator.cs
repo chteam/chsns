@@ -1,5 +1,5 @@
 namespace CHSNS.Data{
-	public interface IAlbumMediator{
+	public interface IAlbumService{
 		
 	}
 }

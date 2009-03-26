@@ -7,11 +7,11 @@ using CHSNS.Models;
 
 namespace CHSNS.Data
 {
-	public class ApplicationMediator : BaseMediator, IApplicationMediator
+	public class ApplicationService : BaseService, IApplicationService
 	{
 		private const string APPLISTALL = "APPLISTALL";
 
-		public ApplicationMediator(IDBManager id) : base(id)
+		public ApplicationService(IDBManager id) : base(id)
 		{
 		}
 

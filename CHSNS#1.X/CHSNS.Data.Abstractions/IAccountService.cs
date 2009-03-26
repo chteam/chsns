@@ -1,6 +1,6 @@
 ﻿using CHSNS.ModelPas;
 namespace CHSNS.Data {
-	public interface IAccountMediator {
+	public interface IAccountService {
 		bool Create(AccountPas account, string name);
 		bool IsUsernameCanUse(string username);
 		int Login(string Username, string Password, bool IsAutoLogin, bool IsPasswordMd5);

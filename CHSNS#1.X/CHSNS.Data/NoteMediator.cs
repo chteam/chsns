@@ -5,8 +5,8 @@ using CHSNS.ModelPas;
 using System.Collections.Generic;
 
 namespace CHSNS.Data {
-	public class NoteMediator : BaseMediator, INoteMediator {
-		public NoteMediator(IDBManager id) : base(id) { }
+	public class NoteService : BaseService, INoteService {
+		public NoteService(IDBManager id) : base(id) { }
 		/// <summary>
 		/// userid
 		/// </summary>
@@ -71,7 +71,7 @@ where id=@id and userid=@userid",
 
 		}
 
-		#region INoteMediator 成员
+		#region INoteService 成员
 
 
 		public NoteDetailsPas Details(long id, NoteType? nt) {

@@ -1,5 +1,5 @@
 ﻿namespace CHSNS.Data {
-    public interface ICURDMediator<T> {
+    public interface ICURDService<T> {
         void Create(T content);
         void Update(T content);
         void Remove(params long[] uid);

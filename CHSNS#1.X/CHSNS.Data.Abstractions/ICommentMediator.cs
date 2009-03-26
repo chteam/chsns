@@ -4,7 +4,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Data
 {
-	public interface ICommentMediator
+	public interface ICommentService
 	{
 		void Add(Comment cmt, CommentType type);
 		Reply AddReply(Reply r);

@@ -4,7 +4,7 @@ using CHSNS.ModelPas;
 using CHSNS.Models;
 using System.Collections.Generic;
 namespace CHSNS.Data {
-	public interface INoteMediator {
+	public interface INoteService {
 		void Add(Note note);
 
 		void Delete(long id, long pid, NoteType nt);

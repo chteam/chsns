@@ -1,6 +1,6 @@
 ﻿using System;
 namespace CHSNS.Data {
-	public interface IMessageMediator {
+	public interface IMessageService {
 		void Add(CHSNS.Models.Message m);
 		void Delete(long id, CHSNS.MessageBoxType t, long userid);
 		CHSNS.ModelPas.MessageDetailsPas Details(long id, long userid);

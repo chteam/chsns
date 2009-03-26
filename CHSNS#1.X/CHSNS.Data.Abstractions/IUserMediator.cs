@@ -1,6 +1,6 @@
 ﻿using System;
 namespace CHSNS.Data {
-	public interface IUserMediator {
+	public interface IUserService {
 		void DeleteFace(long userid);
 		CHSNS.Models.BasicInformation GetBaseInfo(long UserID);
 		System.Data.DataRowCollection GetContactInfo(long UserID);

@@ -3,8 +3,8 @@ using System;
 using CHSNS.ModelPas;
 
 namespace CHSNS.Data {
-	public class ViewMediator : BaseMediator, IViewMediator {
-		public ViewMediator(IDBManager id) : base(id) { }
+	public class ViewService : BaseService, IViewService {
+		public ViewService(IDBManager id) : base(id) { }
 		public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count) {
             using (var db = DBExt.Instance)
             {

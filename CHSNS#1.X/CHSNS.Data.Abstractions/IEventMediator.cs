@@ -1,5 +1,5 @@
 ﻿namespace CHSNS.Data {
-	public interface IEventMediator {
+	public interface IEventService {
 		void Add(Models.Event e);
 		void Delete(long id, long ownerid);
         PagedList<Models.Event> GetEvent(long userid, int p, int ep);

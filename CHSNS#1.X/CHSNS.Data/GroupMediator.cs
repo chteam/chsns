@@ -2,8 +2,8 @@
 using CHSNS.Models;
 
 namespace CHSNS.Data {
-	public class GroupMediator :BaseMediator, IGroupMediator {
-		public GroupMediator(IDBManager id) : base(id) { }
+	public class GroupService :BaseService, IGroupService {
+		public GroupService(IDBManager id) : base(id) { }
 		/// <summary>
 		/// 群订阅的信息
 		/// </summary>
@@ -18,7 +18,7 @@ namespace CHSNS.Data {
 		}
 
 
-		#region IGroupMediator 成员
+		#region IGroupService 成员
 
 
 		public Group Info(long ID) {

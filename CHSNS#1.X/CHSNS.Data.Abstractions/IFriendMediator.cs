@@ -5,7 +5,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Data
 {
-    public interface IFriendMediator
+    public interface IFriendService
     {
         bool Add(long FromID, long ToID);
         bool Agree(long OperaterID, long ToID);

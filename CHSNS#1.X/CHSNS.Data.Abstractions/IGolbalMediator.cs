@@ -3,7 +3,7 @@ using CHSNS.ModelPas;
 
 namespace CHSNS.Data
 {
-	public interface IGolbalMediator
+	public interface IGolbalService
 	{
 		List<Province> Provinces { get; }
 		List<City> GetCitys(int ProvinceID);
