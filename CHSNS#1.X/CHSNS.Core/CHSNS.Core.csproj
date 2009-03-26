@@ -112,7 +112,6 @@
     <Compile Include="Extension\JsonExtension.cs" />
     <Compile Include="Interface\ISerializer.cs" />
     <Compile Include="Media\Media.cs" />
-    <Compile Include="MessageBoxType.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
     <Compile Include="DataExecute\OleDbDataOpener.cs" />
     <Compile Include="Tools\HttpProc.cs" />
