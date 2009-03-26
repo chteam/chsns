@@ -7,7 +7,11 @@ namespace CHSNS
     {
         public static SiteConfig CHSite(this HttpApplicationStateBase application)
         {
-            return new SiteConfig(new ConfigSerializer(new CHContext()));
+            return new SiteConfig(
+                new ConfigSerializer(
+                    new CHContext(new HttpContextWrapper(HttpContext.Current))
+                    )
+                );
             // TODO:
         }
     }

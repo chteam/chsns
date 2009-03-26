@@ -5,12 +5,10 @@
  */
 using System;
 using System.Runtime.CompilerServices;
-using System.Transactions;
 using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Routing;
-using CHSNS.Service;
 using CHSNS.Mvc;
 
 namespace CHSNS
@@ -33,7 +31,7 @@ namespace CHSNS
         }
         public static void DynamicDataInit()
         {
-            var model = new System.Web.DynamicData.MetaModel();
+            var model = new MetaModel();
             model.RegisterContext(typeof(Models.CHSNSDBDataContext),
                 new ContextConfiguration { ScaffoldAllTables = true });
             ModelBinders.Binders.DefaultBinder = new DynamicDataModelBinder(ModelBinders.Binders.DefaultBinder);
@@ -48,12 +46,13 @@ namespace CHSNS
 
         public void Session_OnStart(object sender, EventArgs e)
         {
-            IContext Context = new CHContext();
-            if (Context.User.IsLogin) return;            //当前不处于登录状态
-            if (!Context.Cookies.IsAutoLogin) return;
-            string pwd = Context.Cookies.UserPassword;
-            var idb = Context.DBManager;
-            idb.Account.Login(Context.Cookies.UserID.ToString(),
+
+            IContext context1 = new CHContext(new HttpContextWrapper(Context));
+            if (context1.User.IsLogin) return;            //当前不处于登录状态
+            if (!context1.Cookies.IsAutoLogin) return;
+            var pwd = context1.Cookies.UserPassword;
+            var idb = context1.DBManager;
+            idb.Account.Login(context1.Cookies.UserID.ToString(),
                               pwd,
                               true,
                               false

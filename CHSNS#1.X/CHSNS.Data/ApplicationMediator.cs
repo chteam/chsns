@@ -22,16 +22,16 @@ namespace CHSNS.Service
 		{
 			get
 			{
-				if (HttpContext.Current.Application[APPLISTALL] == null)
+				if (HttpContext.Application[APPLISTALL] == null)
 				{
-					HttpContext.Current.Application.Lock();
+					HttpContext.Application.Lock();
                     using (var db = DBExt.Instance)
                     {
-                        HttpContext.Current.Application[APPLISTALL] = db.Application.ToList();
+                        HttpContext.Application[APPLISTALL] = db.Application.ToList();
                     }
-					HttpContext.Current.Application.UnLock();
+					HttpContext.Application.UnLock();
 				}
-				return HttpContext.Current.Application[APPLISTALL] as IList<Application>;
+				return HttpContext.Application[APPLISTALL] as IList<Application>;
 			}
 		}
 
