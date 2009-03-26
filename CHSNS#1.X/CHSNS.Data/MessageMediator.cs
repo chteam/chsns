@@ -5,8 +5,8 @@ namespace CHSNS.Data {
 	using Models;
 	using ModelPas;
 
-	public class MessageMediator : BaseMediator, IMessageMediator {
-		public MessageMediator(IDBManager id) : base(id) { }
+	public class MessageService : BaseService, IMessageService {
+		public MessageService(IDBManager id) : base(id) { }
 		public IQueryable<MessageItemPas> GetInbox(long userid) {
             using (var db = DBExt.Instance)
             {

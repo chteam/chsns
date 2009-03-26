@@ -6,13 +6,13 @@ namespace CHSNS.Data
     /// <summary>
     /// Calling the event
     /// </summary>
-    public class EventMediator : BaseMediator, IEventMediator
+    public class EventService : BaseService, IEventService
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventMediator"/> class.
+        /// Initializes a new instance of the <see cref="EventService"/> class.
         /// </summary>
         /// <param name="id">The DBExt.</param>
-        public EventMediator(IDBManager id) : base(id) { }
+        public EventService(IDBManager id) : base(id) { }
 
 
         /// <summary>
@@ -57,7 +57,7 @@ VALUES(@tname,@ownerid,@viewerid,@now,@showlevel,@json)"
                 );
         }
 
-        #region IEventMediator 成员
+        #region IEventService 成员
 
 
         public PagedList<Event> GetEvent(long userid, int p, int ep)

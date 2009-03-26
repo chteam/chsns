@@ -5,6 +5,6 @@ using System.Text;
 using CHSNS.Models;
 
 namespace CHSNS.Data {
-    public interface ISuperNoteMediator : ICURDMediator<SuperNote> {
+    public interface ISuperNoteService : ICURDService<SuperNote> {
     }
 }

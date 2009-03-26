@@ -1,5 +1,5 @@
 namespace CHSNS.Data{
-	public interface IPhotoMediator{
+	public interface IPhotoService{
 		
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace CHSNS.Data
 {
-	public interface IGatherMediator
+	public interface IGatherService
 	{
 		EventPagePas EventGather(long userid);
 	}

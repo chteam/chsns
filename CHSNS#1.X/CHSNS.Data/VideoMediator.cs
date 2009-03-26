@@ -2,9 +2,9 @@
 using System.Linq;
 
 namespace CHSNS.Data {
-    public class VideoMediator : BaseMediator, ISuperNoteMediator {
-        public VideoMediator(IDBManager id) : base(id) { }
-        #region ICURDMediator<SuperNote> 成员
+    public class VideoService : BaseService, ISuperNoteService {
+        public VideoService(IDBManager id) : base(id) { }
+        #region ICURDService<SuperNote> 成员
 
         public void Create(Models.SuperNote content) {
             using (var db = DBExt.Instance)

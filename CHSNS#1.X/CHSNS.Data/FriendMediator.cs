@@ -4,8 +4,8 @@
 	using System;
 	using ModelPas;
     using System.Collections.Generic;
-	public class FriendMediator : BaseMediator, IFriendMediator {
-		public FriendMediator(IDBManager id) : base(id) { }
+	public class FriendService : BaseService, IFriendService {
+		public FriendService(IDBManager id) : base(id) { }
 		#region 获取
 		public Profile UserFriendInfo(long userid) {
             using (var db = DBExt.Instance)

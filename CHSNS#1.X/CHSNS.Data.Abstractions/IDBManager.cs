@@ -6,23 +6,23 @@ namespace CHSNS.Data {
         IContext Context { get; set; }
 		DataBaseExecutor DataBaseExecutor { get; }
         Models.CHSNSDBDataContext Instance { get; }
-		IAccountMediator Account { get; }
-		IApplicationMediator Application { get; }
-		ICommentMediator Comment { get; }
-		IEventMediator Event { get; }
-		IFriendMediator Friend { get; }
-		IGatherMediator Gather { get; }
-		IGolbalMediator Golbal { get; }
-		IGroupMediator Group { get; }
-		IMessageMediator Message { get; }
-		INoteMediator Note { get; }
-		IUserMediator UserInfo { get; }
-		IViewMediator View { get; }
+		IAccountService Account { get; }
+		IApplicationService Application { get; }
+		ICommentService Comment { get; }
+		IEventService Event { get; }
+		IFriendService Friend { get; }
+		IGatherService Gather { get; }
+		IGolbalService Golbal { get; }
+		IGroupService Group { get; }
+		IMessageService Message { get; }
+		INoteService Note { get; }
+		IUserService UserInfo { get; }
+		IViewService View { get; }
 		/*相册*/
-		IAlbumMediator Album { get; }
-		IPhotoMediator Photo { get; }
+		IAlbumService Album { get; }
+		IPhotoService Photo { get; }
         /*Video*/
-        ISuperNoteMediator Video { get; }
+        ISuperNoteService Video { get; }
 
 	}
 }

@@ -3,8 +3,8 @@
 namespace CHSNS.Data {
 	using System.Collections.Generic;
 	using System.Linq;
-	public class GolbalMediator : BaseMediator, IGolbalMediator {
-		public GolbalMediator(IDBManager id) : base(id) { }
+	public class GolbalService : BaseService, IGolbalService {
+		public GolbalService(IDBManager id) : base(id) { }
 		/// <summary>
 		/// Get ALL Provinces or Areas
 		/// </summary>

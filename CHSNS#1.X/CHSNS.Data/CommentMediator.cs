@@ -4,9 +4,9 @@ using CHSNS.Models;
 
 namespace CHSNS.Data
 {
-	public class CommentMediator : BaseMediator, ICommentMediator
+	public class CommentService : BaseService, ICommentService
 	{
-		public CommentMediator(IDBManager id) : base(id)
+		public CommentService(IDBManager id) : base(id)
 		{
 		}
      

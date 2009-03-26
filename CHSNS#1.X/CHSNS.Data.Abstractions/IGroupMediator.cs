@@ -2,7 +2,7 @@
 using System.Linq;
 using CHSNS.ModelPas;
 namespace CHSNS.Data {
-	public interface IGroupMediator {
+	public interface IGroupService {
 		System.Data.DataRowCollection TakeIns(int count);
 		#region group
 		Group Info(long ID);

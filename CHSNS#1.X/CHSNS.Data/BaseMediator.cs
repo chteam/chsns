@@ -1,8 +1,8 @@
 ﻿namespace CHSNS.Data {
-	public class BaseMediator : IMediator {
+	public class BaseService : IService {
 
-		#region IMediator 成员
-		public BaseMediator(IDBManager id) {
+		#region IService 成员
+		public BaseService(IDBManager id) {
 			DBExt = id;
 			DataBaseExecutor = id.DataBaseExecutor;
 		}

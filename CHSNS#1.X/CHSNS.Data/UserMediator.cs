@@ -4,8 +4,8 @@ using CHSNS.Models;
 using System;
 using CHSNS.ModelPas;
 namespace CHSNS.Data {
-	public class UserMediator : BaseMediator, IUserMediator {
-		public UserMediator(IDBManager id) : base(id) { }
+	public class UserService : BaseService, IUserService {
+		public UserService(IDBManager id) : base(id) { }
 		public UserPas UserInformation(long userid) {
             using (var db = DBExt.Instance)
             {

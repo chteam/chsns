@@ -4,8 +4,8 @@ namespace CHSNS.Data {
 	/// <summary>
 	/// 统计的类
 	/// </summary>
-	public class GatherMediator : BaseMediator, IGatherMediator {
-		public GatherMediator(IDBManager id) : base(id) { }
+	public class GatherService : BaseService, IGatherService {
+		public GatherService(IDBManager id) : base(id) { }
 		/// <summary>
 		/// 我的统计
 		/// </summary>

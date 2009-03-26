@@ -6,9 +6,9 @@ using CHSNS.ModelPas;
 
 namespace CHSNS.Data
 {
-    public class AccountMediator :BaseMediator ,IAccountMediator
+    public class AccountService :BaseService ,IAccountService
     {
-        public AccountMediator(IDBManager id) : base(id) { }
+        public AccountService(IDBManager id) : base(id) { }
         /// <summary>
         /// 注销
         /// </summary>

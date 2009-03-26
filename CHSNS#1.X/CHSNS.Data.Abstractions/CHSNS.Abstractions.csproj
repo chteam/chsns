@@ -70,7 +70,7 @@
     <Compile Include="Context\IUser.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IAccountMediator.cs" />
+    <Compile Include="IAccountService.cs" />
     <Compile Include="IAlbumMediator.cs" />
     <Compile Include="IApplicationMediator.cs" />
     <Compile Include="ICommentMediator.cs" />
