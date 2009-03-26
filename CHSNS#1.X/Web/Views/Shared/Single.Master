@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>
-		<%=ViewData["Page_Title"] %></title>
+		<%=ViewData["Page_Title"]%></title>
 
 	<script type="text/javascript"></script>
 

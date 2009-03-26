@@ -23,7 +23,7 @@ namespace CHSNS {
         /// </summary>
         public ICache Cache {
             get {
-                return _cahce ?? (_cahce = new CHCache());
+                return _cahce ?? (_cahce = new CHCache(this));
             }
             set {
                 _cahce = value;

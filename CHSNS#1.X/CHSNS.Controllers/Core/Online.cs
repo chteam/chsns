@@ -24,12 +24,12 @@ namespace CHSNS {
             List<long> userid = Items
                 .Where(c => c.Value < expies)
                 .Select(c => c.Key).ToList();
-            HttpContext.Current.Application.Lock();
+            Application.Lock();
             foreach (long u in userid)
             {
                 Items.Remove(u);
             }
-            HttpContext.Current.Application.UnLock();
+           Application.UnLock();
         }
 		/// <summary>
 		/// 添加在线用户或更新
@@ -38,13 +38,13 @@ namespace CHSNS {
              if (Context.User.IsLogin)
              {
 				if (Date.DivMinutes(RemoveTime) > 1) {//过了1分钟才清理
-					HttpContext.Current.Application.Lock();
+					Application.Lock();
                     if (!IsOnline(Context.User.UserID))
                         Items.Add(Context.User.UserID, DateTime.Now);
 					else
                         Items[Context.User.UserID] = DateTime.Now;
 					RemoveTime = DateTime.Now;
-					HttpContext.Current.Application.UnLock();
+					Application.UnLock();
 				}
                 RemoveOffline();
 			}
@@ -84,8 +84,8 @@ namespace CHSNS {
 			}
 		}
 
-	    static HttpApplicationState Application {
-			get { return HttpContext.Current.Application; }
+	    HttpApplicationStateBase Application {
+            get { return Context.HttpContext.Application; }
 		}
 
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using System.Transactions;
 using CHSNS.Model;
 
 namespace CHSNS.Controllers
@@ -31,27 +30,27 @@ namespace CHSNS.Controllers
         {
             return Json(DBExt.Account.IsUsernameCanUse(username));
         }
-        [AcceptVerbs("post")]
+     [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SaveReg(string Username, string Password, string Name)
         {
             if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Name))
                 throw new Exception("资料中有空项");
             var a = new AccountPas
-            {
-                Username = Username,
-                Password = Password,
-            };
-            using (var ts = new TransactionScope())
-            {
-                var b = DBExt.Account.Create(a, Name);
-                ts.Complete();
-                Title = "注册成功";
-                if (b)
-                    return View("Reg-Success");
-            }
+                        {
+                            Username = Username,
+                            Password = Password,
+                        };
+
+            var b = DBExt.Account.Create(a, Name);
+
+            Title = "注册成功";
+            if (b)
+                return View("Reg-Success");
+
             TempData["errors"] = "用户名已经存在";
             return RedirectToAction("RegPage");
         }
+
         #region 登录注销
         /// <summary>
         /// 注销功能
