@@ -120,7 +120,6 @@
     <Content Include="Config\Province.xml" />
     <Content Include="Config\Sex.xml" />
     <Content Include="Config\ShowLevel.xml" />
-    <Content Include="Config\Config.xml" />
     <None Include="Style\Facebook\i\Thumbs.db" />
     <None Include="Style\Facebook_backup\i\Thumbs.db" />
     <None Include="Views\Admin\Admin\ApplyClass.vm" />
@@ -653,6 +652,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\ajax-loader.gif" />
