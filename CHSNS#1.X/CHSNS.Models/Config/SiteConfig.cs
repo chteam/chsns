@@ -1,7 +1,6 @@
+using System;
 namespace CHSNS.Config
 {
-    using System;
-
     /// <summary>
     /// Õ¯’æ≈‰÷√
     /// </summary>
@@ -19,7 +18,7 @@ namespace CHSNS.Config
         public RegVisitConfig RegVisitConfig { get; set; }
         public Publish Publish { get; set; }
         public NoteConfig Note { get; set; }
-
+        public EveryPageConfig EveryPage { get; set; }
         /// <summary>
         /// Gets the current.
         /// </summary>
@@ -35,7 +34,7 @@ namespace CHSNS.Config
         /// </summary>
         public void Save()
         {
-            string fn = "Config";
+            const string fn = "Config";
             ConfigSerializer.Save(this, fn);
         }
     }

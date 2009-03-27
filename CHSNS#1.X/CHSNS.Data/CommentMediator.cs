@@ -92,7 +92,7 @@ VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
                                                             Sender = new NameIDPas { ID = p1.UserID, Name = p1.Name }
                                                         }
                                              );
-                return ret.Pager(p, DBExt.Context.Site.Note.CommentEveryPage);
+                return ret.Pager(p, Site.EveryPage.NoteComment);
             }
 		}
 

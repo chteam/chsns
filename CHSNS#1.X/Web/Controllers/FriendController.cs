@@ -8,7 +8,7 @@ namespace CHSNS.Controllers {
 	public class FriendController : BaseController {
 		#region Action
 		public ActionResult Random() {
-			ViewData["source"] = DBExt.Friend.GetRandoms();
+			ViewData["source"] = DBExt.Friend.GetRandoms(10);
 			return View();
 		}
 		[LoginedFilter]
@@ -39,8 +39,10 @@ namespace CHSNS.Controllers {
 				ViewData["Name"] = b.Name;
 				int nowpage = this.QueryNum("p") == 0 ? 1 : this.QueryNum("p");
 				ViewData["NowPage"] = nowpage;
-				ViewData["PageCount"] = DBExt.Friend.GetRequests(Ownerid).Count();
-				ViewData["source"] = DBExt.Friend.GetRequests(Ownerid).Pager(nowpage, 10);
+                var source = DBExt.Friend.GetRequests(Ownerid, nowpage);
+
+			    ViewData["PageCount"] = source.TotalPages;
+			    ViewData["source"] = source;
 
 				Title = b.Name + "的好友请求";
 				return View(b);
@@ -52,19 +54,19 @@ namespace CHSNS.Controllers {
         [AcceptVerbs("Post")]
         public ActionResult FriendList(int p, long userid)
         {
-            var list = DBExt.Friend.GetFriends(userid, p, 10);
+            var list = DBExt.Friend.GetFriends(userid, p);
             ViewData["PageCount"] = list.TotalPages;
             return View(list);
         }
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
 		public ActionResult RequestList(int p, long userid) {
-			return View(DBExt.Friend.GetRequests(userid).Pager(p, 10));
+			return View(DBExt.Friend.GetRequests(userid,p));
 		}
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
 		public ActionResult RandomList() {
-			return View(DBExt.Friend.GetRandoms());
+			return View(DBExt.Friend.GetRandoms(10));
 		}
 		#endregion
 

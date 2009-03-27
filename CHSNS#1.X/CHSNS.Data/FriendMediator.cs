@@ -26,7 +26,7 @@
                 };
             }
 		}
-		public List<long> GetFriendsID(long userid) {
+		public IList<long> GetFriendsID(long userid) {
             using (var db = DBExt.Instance)
             {
                 return (from f1 in db.Friend
@@ -37,7 +37,7 @@
                                           select f1.FromID).ToList();
             }
 		}
-        public PagedList<UserItemPas> GetFriends(long uid, int p, int ep)
+        public PagedList<UserItemPas> GetFriends(long uid, int p)
         {
 			var ids=GetFriendsID(uid);
             using (var db = DBExt.Instance)
@@ -81,11 +81,12 @@
                 //               ShowTextTime = c.ShowTextTime
                 //           });
                 #endregion
-                return ret.Pager(p, ep);
+                return ret.Pager(p, Site.EveryPage.Friend);
+                
             }
 		}
 
-		public IQueryable<UserItemPas> GetRandoms(){
+        public IList<UserItemPas> GetRandoms(int n) {
             using (var db = DBExt.Instance)
             {
                 var ret = (from p in db.Profile
@@ -95,12 +96,12 @@
                            {
                                ID = p.UserID,
                                Name = p.Name,
-                           }).Take(10);
-                return ret;
+                           }).Take(n);
+                return ret.ToList();
             }
 		}
 
-		public IQueryable<UserItemPas> GetRequests(long userid) {
+		public PagedList<UserItemPas> GetRequests(long userid,int p) {
             using (var db = DBExt.Instance)
             {
                 var ret = (from f1 in db.Friend
@@ -114,7 +115,7 @@
                                ShowText = "",
                                ShowTextTime = DateTime.Now
                            });
-                return ret;
+                return ret.Pager(p,Site.EveryPage.FriendRequest);
             }
 		}
 		#endregion
