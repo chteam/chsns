@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Web.Mvc;
 
 using CHSNS.Models;
@@ -44,9 +43,7 @@ namespace CHSNS.Controllers {
 		}
 		public ActionResult Details(long id) {
 			var note = DBExt.Note.Details(id, NoteType.Note);
-			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
-				CHContext.Site.Note.CommentEveryPage
-				).OrderBy(c => c.Comment.ID);
+			var cl = DBExt.Comment.CommentList(id, CommentType.Note,1);
 			ViewData["commentlist"] = cl;
 			Title = note.Note.Title;
 			ViewData["NowPage"] = 1;

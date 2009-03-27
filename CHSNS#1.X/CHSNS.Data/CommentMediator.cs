@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using CHSNS.Model;
 using CHSNS.Models;
 
@@ -11,7 +12,7 @@ namespace CHSNS.Service
 		}
      
 		#region reply
-   private IQueryable<CommentPas> GetReplyPrivate(CHSNSDBDataContext db, long uid) {
+   private static IQueryable<CommentPas> GetReplyPrivate(CHSNSDBDataContext db, long uid) {
             IQueryable<CommentPas> ret = (from r in db.Reply
                                           join p in db.Profile on r.SenderID equals p.UserID
                                           where r.UserID == uid
@@ -31,11 +32,11 @@ namespace CHSNS.Service
                                                );
             return ret;
         }
-		public IQueryable<CommentPas> GetReply(long userid)
+		public IList<CommentPas> GetReply(long userid)
 		{
             using (var db = DBExt.Instance)
             {
-                return GetReplyPrivate(db,userid);
+                return GetReplyPrivate(db, userid).ToList();
             }
 		}
         public PagedList<CommentPas> GetReply(long uid, int p, int ep)
@@ -74,17 +75,17 @@ VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
 		/// </summary>
 		/// <param name="ShowerID">The shower ID.</param>
 		/// <param name="type">The type.</param>
+		/// <param name="p"></param>
 		/// <returns></returns>
-		public IQueryable<CommentPas> CommentList(long ShowerID, CommentType type)
+        public PagedList<CommentPas> CommentList(long ShowerID, CommentType type,int p)
         {
             using (var db = DBExt.Instance)
             {
                 var t = (int)type;
                 IQueryable<CommentPas> ret = (from c in db.Comment
-                                              join p in db.Profile on c.SenderID equals p.UserID
+                                              join p1 in db.Profile on c.SenderID equals p1.UserID
                                               where c.ShowerID == ShowerID && c.Type == t && !c.IsDel
-
-                                              orderby c.ID descending
+                                              orderby c.ID
                                               select new CommentPas
                                                         {
                                                             Comment = new CommentItemPas
@@ -95,10 +96,10 @@ VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
                                                                             AddTime = c.AddTime,
                                                                             IsDel = c.IsDel
                                                                         },
-                                                            Sender = new NameIDPas { ID = p.UserID, Name = p.Name }
+                                                            Sender = new NameIDPas { ID = p1.UserID, Name = p1.Name }
                                                         }
                                              );
-                return ret;
+                return ret.Pager(p, DBExt.Context.Site.Note.CommentEveryPage);
             }
 		}
 
