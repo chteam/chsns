@@ -6,28 +6,31 @@ using CHSNS.Model;
 namespace CHSNS.Controllers {
 
 	public class NoteController : BaseController {
-		public ActionResult Index(long? userid, int? p) {
-			using (var ts = new TransactionScope()) {
-				if (!userid.HasValue) userid = CHUser.UserID;
-				if (!p.HasValue || p == 0) p = 1;
-				var user = DBExt.UserInfo.GetUser(
-					userid.Value,
-					c => new UserCountPas {
-						ID = c.UserID,
-						Name = c.Name,
-						//Count = c.NoteCount
-					});
-				ViewData["username"] = user.Name;
-				ViewData["userid"] = user.ID;
-				ViewData["PageCount"] = user.Count;
-				ViewData["NowPage"] = p.Value;
-				Title = user.Name + "的日志";
-				var ret = NoteList(p.Value, 10, userid.Value);
-				ts.Complete();
-				return ret;
-			}
-		}
-		/// <summary>
+        public ActionResult Index(long? userid, int? p)
+        {
+
+            if (!userid.HasValue) userid = CHUser.UserID;
+            if (!p.HasValue || p == 0) p = 1;
+            var user = DBExt.UserInfo.GetUser(
+                userid.Value,
+                c => new UserCountPas
+                         {
+                             ID = c.UserID,
+                             Name = c.Name,
+                             //Count = c.NoteCount
+                         });
+            ViewData["username"] = user.Name;
+            ViewData["userid"] = user.ID;
+            ViewData["PageCount"] = user.Count;
+            ViewData["NowPage"] = p.Value;
+            Title = user.Name + "的日志";
+            var ret = NoteList(p.Value, 10, userid.Value);
+
+            return ret;
+
+        }
+
+	    /// <summary>
 		/// Notes the list.
 		/// </summary>
 		/// <param name="p">The p.</param>
