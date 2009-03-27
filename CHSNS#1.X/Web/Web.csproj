@@ -655,6 +655,7 @@
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\Config.xml" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="UnitView\ViewHostHandler.ashx" />
     <Content Include="UnitView\Web.config" />
