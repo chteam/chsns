@@ -1,5 +1,4 @@
 ﻿using CHSNS.Models;
-using System.Linq;
 using CHSNS.Model;
 namespace CHSNS.Service {
 	public interface IGroupService {
@@ -9,7 +8,7 @@ namespace CHSNS.Service {
 		bool Add(Group group);
 		bool Delete(long ID);
 		bool Update(Group group);
-		IQueryable<NotePas> NoteList(long ID);
+	    PagedList<NotePas> NoteList(long ID, int p);
 		#endregion
 		#region groupuser
 		bool Join(GroupUser guser);
