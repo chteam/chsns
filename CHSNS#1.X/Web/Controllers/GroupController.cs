@@ -13,7 +13,7 @@ namespace CHSNS.Controllers {
 	public class GroupController : BaseController {
 		#region 主页
 		public ActionResult Index(long id, int? p) {
-			InitPage(ref p);
+			InitPage(ref p); 
 			#region 群信息和用户
             Group g;
             GroupUser u;
@@ -76,7 +76,7 @@ namespace CHSNS.Controllers {
 
         public ActionResult List(long? uid, int? p) {
             InitPage(ref p);
-            uid = uid ?? CHContext.User.UserID;
+            uid = uid ?? CHUser.UserID;
             using (var db = DBExt.Instance) {
                 IQueryable<Group> ret = (from gu in db.GroupUser
                                          join g in db.Group on gu.GroupID equals g.ID
@@ -184,13 +184,8 @@ namespace CHSNS.Controllers {
 
 		#region 帖子
 		public ActionResult Details(long id) {
-			NoteDetailsPas note;
-
-			note = DBExt.Note.Details(id, NoteType.GroupPost);
-            var chsite = CH.Context.Site;
-			var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(1,
-                chsite.Note.CommentEveryPage
-				).OrderBy(c => c.Comment.ID);
+		    NoteDetailsPas note = DBExt.Note.Details(id, NoteType.GroupPost);
+		    var cl = DBExt.Comment.CommentList(id, CommentType.Note,1);
 			ViewData["commentlist"] = cl;
 			Title = note.Note.Title;
 			ViewData["NowPage"] = 1;

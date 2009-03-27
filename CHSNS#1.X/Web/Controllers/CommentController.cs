@@ -32,7 +32,7 @@ namespace CHSNS.Controllers {
             return View(user);
         }
         public ActionResult ReplyList(long userid, int p) {
-            var u = DBExt.Comment.GetReply(userid).Pager(p, 10);
+            var u = DBExt.Comment.GetReply(userid, p, 10);
             return View("Comment/Item", u);
         }
         /// <summary>
@@ -93,9 +93,7 @@ namespace CHSNS.Controllers {
 
         #region comment
         public ActionResult List(long id, int p, CommentType type) {
-            var cl = DBExt.Comment.CommentList(id, CommentType.Note).Pager(p,
-                CHContext.Site.Note.CommentEveryPage
-                ).OrderBy(c => c.Comment.ID);
+            var cl = DBExt.Comment.CommentList(id, CommentType.Note, p);
             return View("Comment/Item", cl);
         }
         [LoginedFilter]
