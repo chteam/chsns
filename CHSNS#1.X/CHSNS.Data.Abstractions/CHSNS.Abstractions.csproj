@@ -74,23 +74,23 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IAccountService.cs" />
-    <Compile Include="IAlbumMediator.cs" />
-    <Compile Include="IApplicationMediator.cs" />
-    <Compile Include="ICommentMediator.cs" />
-    <Compile Include="ICURDMediator.cs" />
+    <Compile Include="IAlbumService.cs" />
+    <Compile Include="IApplicationService.cs" />
+    <Compile Include="ICommentService.cs" />
+    <Compile Include="ICURDService.cs" />
     <Compile Include="IDBManager.cs" />
-    <Compile Include="IEventMediator.cs" />
-    <Compile Include="IFriendMediator.cs" />
-    <Compile Include="IGatherMediator.cs" />
-    <Compile Include="IGolbalMediator.cs" />
-    <Compile Include="IGroupMediator.cs" />
-    <Compile Include="IMediator.cs" />
+    <Compile Include="IEventService.cs" />
+    <Compile Include="IFriendService.cs" />
+    <Compile Include="IGatherService.cs" />
+    <Compile Include="IGolbalService.cs" />
+    <Compile Include="IGroupService.cs" />
+    <Compile Include="IService.cs" />
     <Compile Include="IMessageService.cs" />
-    <Compile Include="INoteMediator.cs" />
-    <Compile Include="IPhotoMediator.cs" />
-    <Compile Include="ISuperNoteMediator.cs" />
-    <Compile Include="IUserMediator.cs" />
-    <Compile Include="IViewMediator.cs" />
+    <Compile Include="INoteService.cs" />
+    <Compile Include="IPhotoService.cs" />
+    <Compile Include="ISuperNoteService.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="IViewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
