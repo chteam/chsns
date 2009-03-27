@@ -37,7 +37,7 @@ namespace CHSNS.Service {
 			throw new System.NotImplementedException();
 		}
 
-		public System.Linq.IQueryable<Model.NotePas> NoteList(long ID) {
+		public PagedList<Model.NotePas> NoteList(long ID,int p) {
 			throw new System.NotImplementedException();
 		}
 

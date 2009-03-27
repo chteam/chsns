@@ -79,6 +79,7 @@
     <Compile Include="AccountService.cs" />
     <Compile Include="ApplicationService.cs" />
     <Compile Include="BaseService.cs" />
+    <Compile Include="CommenService.cs" />
     <Compile Include="EventService.cs" />
     <Compile Include="GatherService.cs" />
     <Compile Include="GolbalService.cs" />
@@ -86,7 +87,6 @@
     <Compile Include="MessageService.cs" />
     <Compile Include="NoteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CommentService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="VideoService.cs" />
     <Compile Include="ViewService.cs" />
