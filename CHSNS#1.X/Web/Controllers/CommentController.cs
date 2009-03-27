@@ -26,8 +26,7 @@ namespace CHSNS.Controllers {
                     });
             ViewData["NowPage"] = 1;
             ViewData["PageCount"] = user.Count;
-            ViewData["replylist"] = new PagedList<CommentPas>(
-                DBExt.Comment.GetReply(user.ID), 1, 10);
+            ViewData["replylist"] = DBExt.Comment.GetReply(user.ID, 1, 10);
             Title = user.Name + "µƒ¡Ù—‘±æ";
             return View(user);
         }

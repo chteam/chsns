@@ -32,13 +32,6 @@ namespace CHSNS.Service
                                                );
             return ret;
         }
-		public IList<CommentPas> GetReply(long userid)
-		{
-            using (var db = DBExt.Instance)
-            {
-                return GetReplyPrivate(db, userid).ToList();
-            }
-		}
         public PagedList<CommentPas> GetReply(long uid, int p, int ep)
         {
             using (var db = DBExt.Instance)
