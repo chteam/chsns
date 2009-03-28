@@ -17,17 +17,17 @@ namespace CHSNS.Controllers
     [LoginedFilter]
     public class MessageController : BaseController
     {
-        public ActionResult InBox(int? p, int? ep)
+        public ActionResult InBox(int? p)
         {
             Title = "收件箱";
-            return InBoxList(p, ep);
+            return InBoxList(p);
         }
         [AcceptVerbs("Post")]
-        public ActionResult InBoxList(int? p, int? ep)
+        public ActionResult InBoxList(int? p)
         {
             InitPage(ref p);
-            InitPage(ref ep, 10);
-            var m = DBExt.Message.GetInbox(CHUser.UserID, p.Value, ep.Value);
+          //  InitPage(ref ep, 10);
+            var m = DBExt.Message.GetInbox(CHUser.UserID, p.Value);
             ViewData["NowPage"] = p;
             ViewData["PageCount"] = m.TotalPages;
             return View(m);
@@ -35,15 +35,15 @@ namespace CHSNS.Controllers
         public ActionResult OutBox(int? p, int? ep)
         {
             Title = "发件箱";
-            return OutBoxList(p, ep);
+            return OutBoxList(p);
         }
 
         [AcceptVerbs("Post")]
-        public ActionResult OutBoxList(int? p, int? ep)
+        public ActionResult OutBoxList(int? p)
         {
             InitPage(ref p);
-            InitPage(ref ep, 10);
-            var m = DBExt.Message.GetOutbox(CHUser.UserID, p.Value, ep.Value);
+           // InitPage(ref ep, 10);
+            var m = DBExt.Message.GetOutbox(CHUser.UserID, p.Value);
             ViewData["NowPage"] = p;
             ViewData["PageCount"] = m.TotalPages;
             return View(m);

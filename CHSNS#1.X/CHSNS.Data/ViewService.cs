@@ -2,10 +2,13 @@
 using System;
 using CHSNS.Model;
 
-namespace CHSNS.Service {
-	public class ViewService : BaseService, IViewService {
-		public ViewService(IDBManager id) : base(id) { }
-		public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count) {
+namespace CHSNS.Service
+{
+    public class ViewService : BaseService, IViewService
+    {
+        public ViewService(IDBManager id) : base(id) { }
+        public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count)
+        {
             using (var db = DBExt.Instance)
             {
                 IQueryable<UserItemPas> lu;
@@ -86,7 +89,7 @@ namespace CHSNS.Service {
                     default: //if (type==6)//--群用户随机
                         lu = (from u in db.GroupUser
                               join p in db.Profile on u.UserID equals p.UserID
-                              where u.GroupID == ownerid && u.Status != (int) GroupUserStatus.Lock
+                              where u.GroupID == ownerid && u.Status != (int)GroupUserStatus.Lock
                               orderby p.LoginTime descending
                               select new UserItemPas
                                          {
@@ -102,60 +105,82 @@ namespace CHSNS.Service {
                                Rows = lu.Take(count).ToList()
                            };
             }
-		}
+        }
 
-		public void ViewCreate(byte type, int everyrow, long ownerid) {
-			if (ownerid == CHUser.UserID) return;
+        public void Update(byte type, long ownerid)
+        {
+            if (ownerid == CHUser.UserID) return;
+            using (var db = DBExt.Instance)
+            {
+                var vd = db.ViewData.FirstOrDefault(c =>
+                                                    c.ViewClass == type && c.ViewerID == CHUser.UserID &&
+                                                    c.OwnerID == ownerid);
+                if (null != vd) return;
 
-
-			var x = DataBaseExecutor.Execute(@"UPDATE [ViewData] SET ViewTime = @now
-WHERE (Ownerid = @ownerid) AND (Viewerid = @viewerid) AND (ViewClass = @viewclass)"
-					, "@now", DateTime.Now
-					, "@ownerid", ownerid
-					, "@viewerid", CHUser.UserID
-					, "@viewclass", type
-					);
-
-			if (x == 0) {
-				switch (type) {
-					case 0:
-						DataBaseExecutor.Execute(@"UPDATE [profile]
+                #region sql
+//                var x =
+//    DataBaseExecutor.Execute(
+//        @"UPDATE [ViewData] SET ViewTime = @now
+//WHERE (Ownerid = @ownerid) AND (Viewerid = @viewerid) AND (ViewClass = @viewclass)"
+//        , "@now", DateTime.Now
+//        , "@ownerid", ownerid
+//        , "@viewerid", CHUser.UserID
+//        , "@viewclass", type
+//        );
+                #endregion
+                switch (type)
+                {
+                    case 0:
+                        DataBaseExecutor.Execute(
+                            @"UPDATE [profile]
 SET ViewCount = ViewCount + 1 
-WHERE [profile].UserID = @ownerid", "@ownerid", ownerid);
-						break;
-					case 1:
-						DataBaseExecutor.Execute(@"UPDATE    [group]
+WHERE [profile].UserID = @ownerid",
+                            "@ownerid", ownerid);
+                        break;
+                    case 1:
+                        DataBaseExecutor.Execute(
+                            @"UPDATE    [group]
 			SET              ViewCount = ViewCount + 1 
-			WHERE     ([group].Id = @ownerid)", "@ownerid", ownerid);
-						break;
-					case 5:
-						DataBaseExecutor.Execute(@"UPDATE    [Note]
+			WHERE     ([group].Id = @ownerid)",
+                            "@ownerid", ownerid);
+                        break;
+                    case 5:
+                        DataBaseExecutor.Execute(
+                            @"UPDATE    [Note]
 			SET              ViewCount = ViewCount + 1 
-			WHERE     ([Note].Id = @ownerid)", "@ownerid", ownerid);
-						break;
-					default:
-						break;
-				}
-				//更新相关数据完毕
-				var num = DataBaseExecutor.Execute(@"UPDATE [ViewData]
+			WHERE     ([Note].Id = @ownerid)",
+                            "@ownerid", ownerid);
+                        break;
+                    default:
+                        break;
+                }
+                //更新相关数据完毕
+                var num =
+                    DataBaseExecutor.Execute(
+                        @"UPDATE [ViewData]
 SET ViewTime = @now,Viewerid = @viewerid
-WHERE ID IN	(SELECT top (1) [id] FROM ViewData WHERE  Ownerid = @ownerid AND ViewClass = @viewclass
-order by ViewTime) and @num < All(SELECT count(1) FROM ViewData WHERE  Ownerid = @ownerid and viewclass=@viewclass)"
-					, "@now", DateTime.Now
-					, "@ownerid", ownerid
-					, "@viewerid", CHUser.UserID
-					, "@viewclass", type
-					, "@num", 50
-					);
-				if (num == 0) {
-					DataBaseExecutor.Execute(@"INSERT INTO ViewData(Viewerid, Ownerid, ViewTime,viewclass)
+WHERE ID IN	(SELECT top (1) [id] FROM ViewData
+WHERE  Ownerid = @ownerid AND ViewClass = @viewclass
+order by ViewTime) 
+and 
+@num < All(SELECT count(1) FROM ViewData WHERE  Ownerid = @ownerid and viewclass=@viewclass)"
+                        , "@now", DateTime.Now
+                        , "@ownerid", ownerid
+                        , "@viewerid", CHUser.UserID
+                        , "@viewclass", type
+                        , "@num", 50
+                        );
+                if (num == 0)
+                {
+                    DataBaseExecutor.Execute(
+                        @"INSERT INTO ViewData(Viewerid, Ownerid, ViewTime,viewclass)
 VALUES(@Viewerid,@ownerid, @now,@viewclass)"
-						, "@now", DateTime.Now
-					, "@ownerid", ownerid
-					, "@viewerid", CHUser.UserID
-					, "@viewclass", type);
-				}
-			}
-		}
-	}
+                        , "@now", DateTime.Now
+                        , "@ownerid", ownerid
+                        , "@viewerid", CHUser.UserID
+                        , "@viewclass", type);
+                }
+            }
+        }
+    }
 }
