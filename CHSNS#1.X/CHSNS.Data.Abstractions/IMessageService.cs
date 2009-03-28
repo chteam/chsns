@@ -6,10 +6,10 @@ namespace CHSNS.Service
     public interface IMessageService
     {
         void Add(Message m);
-        void Delete(long id, MessageBoxType t, long userid);
-        MessageDetailsPas Details(long id, long userid);
-        PagedList<MessageItemPas> GetInbox(long userid, int p, int ep);
-        PagedList<MessageItemPas> GetOutbox(long userid, int p, int ep);
+        void Delete(long id, MessageBoxType t, long uid);
+        MessageDetailsPas Details(long id, long uid);
+        PagedList<MessageItemPas> GetInbox(long uid, int p);
+        PagedList<MessageItemPas> GetOutbox(long uid, int p);
         //  long InboxCount(long userid);
         // long OutboxCount(long userid);
     }
