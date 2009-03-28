@@ -67,21 +67,37 @@ namespace CHSNS.Service
 
         public void Delete(long id, MessageBoxType t, long uid)
         {
-            if (t == MessageBoxType.Inbox)
+            using (var db = DBExt.Instance)
             {
-                DataBaseExecutor.Execute("update [message] set istodel=1 where id=@id", "@id", id);
-                DataBaseExecutor.Execute("update [profile] set inboxcount=inboxcount-1 where userid=@id and inboxcount>0", "@id", uid);
+                var message = (from m in db.Message
+                               where m.ID == id && !m.IsToDel
+                               select m
+                              ).FirstOrDefault();
+                if (null == message) return;
+                if (t == MessageBoxType.Inbox)
+                    message.IsToDel = true;
+                else
+                    message.IsFromDel = true;
+                db.SubmitChanges();
             }
-            else
-            {//发件箱
-                DataBaseExecutor.Execute("update [message] set isfromdel=1 where id=@id", "@id", id);
-                int tr = DataBaseExecutor.Execute(@"update [profile] 
-				set unreadMessageCount=unreadMessageCount-1,outboxcount=outboxcount-1
-where userid=@uid and unreadMessageCount>0 and outboxcount>0 and 
-exists(select 1 from [message] where id=@id and issee=0)", "@uid", uid, "@id", id);
-                if (tr != 1)//上条未更新，证明是已经读的
-                    DataBaseExecutor.Execute("update [profile] set outboxcount=outboxcount-1 where userid=@id and outboxcount>0", "@id", uid);
-            }
+            #region sql
+//            if (t == MessageBoxType.Inbox)
+//            {
+//                DataBaseExecutor.Execute("update [message] set istodel=1 where id=@id", "@id", id);
+//                DataBaseExecutor.Execute("update [profile] set inboxcount=inboxcount-1 where userid=@id and inboxcount>0", "@id", uid);
+//            }
+//            else
+//            {//发件箱
+//                DataBaseExecutor.Execute("update [message] set isfromdel=1 where id=@id", "@id", id);
+//                int tr = DataBaseExecutor.Execute(@"update [profile] 
+//				set unreadMessageCount=unreadMessageCount-1,outboxcount=outboxcount-1
+//where userid=@uid and unreadMessageCount>0 and outboxcount>0 and 
+//exists(select 1 from [message] where id=@id and issee=0)", "@uid", uid, "@id", id);
+//                if (tr != 1)//上条未更新，证明是已经读的
+//                    DataBaseExecutor.Execute("update [profile] set outboxcount=outboxcount-1 where userid=@id and outboxcount>0", "@id", uid);
+//            }
+            #endregion
+      
             // TODO:应该将所有已经双方删除的 彻底更新
         }
 
