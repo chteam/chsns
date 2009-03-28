@@ -10,58 +10,77 @@ namespace CHSNS.Service {
 		/// <summary>
 		/// userid
 		/// </summary>
-		public void Add(Note note) {
+        public void Add(Note note)
+		{
+		    using (var db = DBExt.Instance)
+		    {
+		        note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
+		        db.Note.InsertOnSubmit(note);
+		        db.SaveChanges();
+		    }
+		    switch ((NoteType) note.Type)
+		    {
+		        case NoteType.Note:
+		            DBExt.Event.Add(new Event
+		                                {
+		                                    OwnerID = note.UserID,
+		                                    TemplateName = "AddNote",
+		                                    AddTime = DateTime.Now,
+		                                    ShowLevel = 0,
+		                                    Json = Dictionary.CreateFromArgs("id", note.ID,
+		                                                                     "title", note.Title, "addtime",
+		                                                                     note.AddTime, "name", CHUser.Username).
+		                                        ToJsonString()
+		                                });
+		            break;
+		        case NoteType.GroupPost:
+		            break;
+		        default:
+		            break;
+		    }
+		}
+
+        public void Edit(Note note)
+        {
             using (var db = DBExt.Instance)
             {
-                note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
-                db.Note.InsertOnSubmit(note);
-                db.SaveChanges();
-                switch ((NoteType) note.Type)
-                {
-                    case NoteType.Note:
-                        DBExt.Event.Add(new Event
-                                            {
-                                                OwnerID = note.UserID,
-                                                TemplateName = "AddNote",
-                                                AddTime = DateTime.Now,
-                                                ShowLevel = 0,
-                                                Json = Dictionary.CreateFromArgs("id", note.ID,
-                                                                                 "title", note.Title, "addtime",
-                                                                                 note.AddTime, "name", CHUser.Username).
-                                                    ToJsonString()
-                                            });
-                        break;
-                    case NoteType.GroupPost:
-                        break;
-                    default:
-                        break;
-                }
+                var n = db.Note.FirstOrDefault(c => c.UserID == note.UserID && c.ID == note.ID);
+                n.Title = HttpContext.Server.HtmlEncode(note.Title);
+                n.Body = note.Body;
+                n.EditTime = DateTime.Now;
+                db.SubmitChanges();
             }
-		}
-		public void Edit(Note note) {
-			DataBaseExecutor.Execute(
-				@"update [note] 
+            #region sql
+
+            DataBaseExecutor.Execute(
+                @"update [note] 
 set title=@title,body=@body,EditTime=@edittime
 where id=@id and userid=@userid",
-				"@title", note.Title,
-				"@body", note.Body,
-				"@edittime", DateTime.Now,
-				"@id", note.ID,
-				"@userid", note.UserID);
-		}
-		/// <summary>
-		/// Delete the note by id
+                "@title", note.Title,
+                "@body", note.Body,
+                "@edittime", DateTime.Now,
+                "@id", note.ID,
+                "@userid", note.UserID);
+
+            #endregion
+        }
+
+	    /// <summary>
+		/// Delete the not e by id
 		/// </summary>
 		public void Delete(long id, long pid, NoteType nt) {
-			switch (nt) { 
+            using (var db = DBExt.Instance)
+            {
+                var n = db.Note.FirstOrDefault(c => c.ID == id && c.UserID == pid);
+                if(null!=n)
+                {
+                    db.Note.DeleteOnSubmit(n);
+                    db.SubmitChanges();
+                }
+
+            }
+	        switch (nt) { 
 				case NoteType.Note:
-					DataBaseExecutor.Execute(
-						@"delete [note] where id=@id and userid=@userid",
-						 "@id", id,
-						 "@userid", pid);
-					DataBaseExecutor.Execute(
-						@"update [profile] set NoteCount=NoteCount-1 where userid=@userid",
-										 "@userid", pid);
 					break;
 				case NoteType.GroupPost:
 					break;
@@ -70,9 +89,6 @@ where id=@id and userid=@userid",
 			}
 
 		}
-
-		#region INoteService 成员
-
 
 		public NoteDetailsPas Details(long id, NoteType? nt) {
             using (var db = DBExt.Instance)
@@ -137,6 +153,5 @@ where id=@id and userid=@userid",
             }
         }
 
-		#endregion
 	}
 }
