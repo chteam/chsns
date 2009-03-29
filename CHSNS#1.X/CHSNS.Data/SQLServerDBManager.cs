@@ -60,21 +60,21 @@ namespace CHSNS.Service {
 
 
 
-        private DataBaseExecutor _dbex;
-        public DataBaseExecutor DataBaseExecutor {
-            get {
-                //	return new DataBaseExecutor(new EntityOpener(ConnectionString));
-                if (_dbex == null)
-                    _dbex = new DataBaseExecutor(new SqlDataOpener(ConnectionString));
-                return _dbex;
-            }
-        }
+        //private DataBaseExecutor _dbex;
+        //public DataBaseExecutor DataBaseExecutor {
+        //    get {
+        //        //	return new DataBaseExecutor(new EntityOpener(ConnectionString));
+        //        if (_dbex == null)
+        //            _dbex = new DataBaseExecutor(new SqlDataOpener(ConnectionString));
+        //        return _dbex;
+        //    }
+        //}
 
 
 
         public void Dispose() {
-            if (_dbex != null)
-                DataBaseExecutor.Dispose();
+            //if (_dbex != null)
+            //    DataBaseExecutor.Dispose();
         }
 
 

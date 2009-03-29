@@ -4,7 +4,7 @@ namespace CHSNS.Service {
 	public interface IDBManager : IDisposable {
 		string ConnectionString { get; }
         IContext Context { get; set; }
-		DataBaseExecutor DataBaseExecutor { get; }
+		//DataBaseExecutor DataBaseExecutor { get; }
         Models.CHSNSDBDataContext Instance { get; }
 		IAccountService Account { get; }
 		IApplicationService Application { get; }
