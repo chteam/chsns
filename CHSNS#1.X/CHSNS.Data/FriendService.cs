@@ -170,18 +170,18 @@
         /// <returns></returns>
         public bool Delete(long FromID, long ToID)
         {
-            var fin = DataBaseExecutor.Execute(
-                @"DELETE FROM Friend
-WHERE (fromid=@FromID and toid=@ToID)or (toid=@fromid and fromid=@toid) and istrue=1",
-                "@fromid", FromID, "@toid", ToID);
-            if (fin == 1)
+            using (var db = DBExt.Instance)
             {
-                DataBaseExecutor.Execute(
-                    @"update [Profile] 
-set friendcount=friendcount-1
-where userid=@fromid or userid =@toid", "@fromid", FromID,
-                    "@toid", ToID);
-                return true;
+                var f = db.Friend.FirstOrDefault(
+                    c =>
+                    (c.ToID == ToID && c.FromID == FromID)
+                    ||
+                    (c.ToID == FromID && c.FromID == ToID)
+                    &&
+                    c.IsTrue
+                    );
+                db.Friend.DeleteOnSubmit(f);
+                db.SubmitChanges();
             }
             return true;
         }
@@ -194,39 +194,32 @@ where userid=@fromid or userid =@toid", "@fromid", FromID,
         /// <returns></returns>
         public bool Agree(long OperaterID, long ToID)
         {
-            var fin =
-                DataBaseExecutor.Execute(
-                    @"update [Friend] set istrue=1 
-where istrue=0 and ((fromid=@fromid and toid=@toid) or (toid=@fromid and fromid=@toid))",
-                    "@fromid", OperaterID, "@toid", ToID);
-            if (fin == 1)
+            string name;
+            using (var db = DBExt.Instance)
             {
-                DataBaseExecutor.Execute(
-                    @"update [Profile] 
-set friendcount=friendcount+1
-where userid=@fromid or userid =@toid", "@fromid", OperaterID,
-                    "@toid", ToID);
-                DataBaseExecutor.Execute(@"update [profile] set friendrequestcount=friendrequestcount-1 where userid=@userid",
-                    "@userid", OperaterID);
-
-                string name;
-                using (var db = DBExt.Instance)
-                {
-                    name = db.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
-                }
-                DBExt.Event.Add(new Event
-                {
-                    OwnerID = ToID,
-                    ViewerID = OperaterID,
-                    TemplateName = "MakeFriend",
-                    AddTime = DateTime.Now,
-                    ShowLevel = 0,
-                    Json = Dictionary.CreateFromArgs("ownername", name, "sendername", CHUser.Username).ToJsonString()
-                }
-                );
-                return true;
+                var f = db.Friend.FirstOrDefault(
+                    c =>
+                    (c.ToID == ToID && c.FromID == OperaterID) ||
+                    (c.ToID == OperaterID && c.FromID == ToID) && !c.IsTrue
+                    );
+                if (f == null) return false;
+                f.IsTrue = true;
+                db.SubmitChanges();
+                name = db.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
             }
-            return false;
+            DBExt.Event.Add(new Event
+                                {
+                                    OwnerID = ToID,
+                                    ViewerID = OperaterID,
+                                    TemplateName = "MakeFriend",
+                                    AddTime = DateTime.Now,
+                                    ShowLevel = 0,
+                                    Json =
+                                        Dictionary.CreateFromArgs("ownername", name, "sendername", CHUser.Username).
+                                        ToJsonString()
+                                }
+                );
+            return true;
         }
 
         /// <summary>
