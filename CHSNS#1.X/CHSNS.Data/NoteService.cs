@@ -52,15 +52,15 @@ namespace CHSNS.Service {
             }
             #region sql
 
-            DataBaseExecutor.Execute(
-                @"update [note] 
-set title=@title,body=@body,EditTime=@edittime
-where id=@id and userid=@userid",
-                "@title", note.Title,
-                "@body", note.Body,
-                "@edittime", DateTime.Now,
-                "@id", note.ID,
-                "@userid", note.UserID);
+//            DataBaseExecutor.Execute(
+//                @"update [note] 
+//set title=@title,body=@body,EditTime=@edittime
+//where id=@id and userid=@userid",
+//                "@title", note.Title,
+//                "@body", note.Body,
+//                "@edittime", DateTime.Now,
+//                "@id", note.ID,
+//                "@userid", note.UserID);
 
             #endregion
         }

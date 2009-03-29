@@ -35,5 +35,6 @@
     <NoteComment>10</NoteComment>
     <Friend>10</Friend>
     <FriendRequest>10</FriendRequest>
+	  <MessageBox>10</MessageBox>
   </EveryPage>
 </SiteConfig>

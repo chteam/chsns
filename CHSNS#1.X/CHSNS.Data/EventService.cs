@@ -41,20 +41,34 @@ namespace CHSNS.Service
         /// <param name="ownerid">The ownerid.</param>
         public void Delete(long id, long ownerid)
         {
-            DataBaseExecutor.Execute(@"delete [event] where id=@id and ownerid=@oid", "@id", id, "@oid", ownerid);
+            using (var db = DBExt.Instance)
+            {
+                var e = db.Event.FirstOrDefault(c => c.ID == id && c.OwnerID == ownerid);
+                if (e == null) return;
+                db.Event.DeleteOnSubmit(e);
+                db.SubmitChanges();
+            }
         }
         public void Add(Event e)
         {
-            DataBaseExecutor.Execute(@"INSERT INTO [Event]
-([TemplateName],[OwnerID],[ViewerID],[AddTime],[ShowLevel],[Json])
-VALUES(@tname,@ownerid,@viewerid,@now,@showlevel,@json)"
-                , "@tname", e.TemplateName
-                , "@ownerid", e.OwnerID
-                , "@viewerid", e.ViewerID.Get()
-                , "@now", e.AddTime
-                , "@showlevel", e.ShowLevel
-                , "@json", e.Json
-                );
+            using (var db = DBExt.Instance)
+            {
+                db.Event.InsertOnSubmit(e);
+                db.SubmitChanges();
+            }
+            #region sql
+//           DataBaseExecutor.Execute(@"INSERT INTO [Event]
+//([TemplateName],[OwnerID],[ViewerID],[AddTime],[ShowLevel],[Json])
+//VALUES(@tname,@ownerid,@viewerid,@now,@showlevel,@json)"
+//                , "@tname", e.TemplateName
+//                , "@ownerid", e.OwnerID
+//                , "@viewerid", e.ViewerID.Get()
+//                , "@now", e.AddTime
+//                , "@showlevel", e.ShowLevel
+//                , "@json", e.Json
+//                );
+            #endregion
+ 
         }
 
         #region IEventService 成员

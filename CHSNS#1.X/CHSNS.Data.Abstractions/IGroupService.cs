@@ -2,7 +2,7 @@
 using CHSNS.Model;
 namespace CHSNS.Service {
 	public interface IGroupService {
-		System.Data.DataRowCollection TakeIns(int count);
+		//System.Data.DataRowCollection TakeIns(int count);
 		#region group
 		Group Info(long ID);
 		bool Add(Group group);

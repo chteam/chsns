@@ -8,7 +8,7 @@ namespace CHSNS.Service {
 		#region IService 成员
 		public BaseService(IDBManager id) {
 			DBExt = id;
-			DataBaseExecutor = id.DataBaseExecutor;
+			//DataBaseExecutor = id.DataBaseExecutor;
 		}
 		public IDBManager DBExt { get; set; }
         public HttpContextBase HttpContext
