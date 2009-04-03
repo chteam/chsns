@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\NetEmail.cs" />
+    <Compile Include="Email\WebEmail.cs" />
     <Compile Include="File\Debug.cs" />
     <Compile Include="File\FileUpload.cs" />
     <Compile Include="Image\ImageUpload.cs" />
