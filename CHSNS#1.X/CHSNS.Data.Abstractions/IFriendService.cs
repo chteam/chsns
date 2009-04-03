@@ -13,8 +13,8 @@ namespace CHSNS.Service
         bool IgnoreAll(long UserID);
 
         PagedList<UserItemPas> GetFriends(long uid, int p);
-        IList<long> GetFriendsID(long userid);
-        IList<UserItemPas> GetRandoms(int n);
+        List<long> GetFriendsID(long userid);
+        List<UserItemPas> GetRandoms(int n);
         PagedList<UserItemPas> GetRequests(long userid,int p);
 
         Profile UserFriendInfo(long userid);

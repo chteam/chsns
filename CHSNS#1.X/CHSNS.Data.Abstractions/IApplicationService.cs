@@ -5,7 +5,7 @@ namespace CHSNS.Service
 {
     public interface IApplicationService
     {
-        IList<Application> Applications { get; }
-        IList<Application> GetApps(long[] ids);
+        List<Application> Applications { get; }
+        List<Application> GetApps(long[] ids);
     }
 }

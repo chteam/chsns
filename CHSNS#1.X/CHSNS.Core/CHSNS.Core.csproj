@@ -94,7 +94,6 @@
   <ItemGroup>
     <Compile Include="Attribute\AssemblyInfo.cs" />
     <Compile Include="CommentType.cs" />
-    <Compile Include="DataExecute\DataBaseExecutor.cs" />
     <Compile Include="Extension\Data\IPagedList.cs" />
     <Compile Include="Extension\Data\PagedList.cs" />
     <Compile Include="Extension\Data\PagerExt.cs" />
@@ -105,7 +104,6 @@
     <Compile Include="Extension\EnumExtension.cs" />
     <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
-    <Compile Include="File\FileUpload.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="Interface\IApplication.cs" />
@@ -113,12 +111,8 @@
     <Compile Include="Interface\ISerializer.cs" />
     <Compile Include="Media\Media.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
-    <Compile Include="DataExecute\OleDbDataOpener.cs" />
     <Compile Include="Tools\HttpProc.cs" />
-    <Compile Include="DataExecute\SqlDataOpener.cs" />
-    <Compile Include="DataExecute\SqlStoredProcedureDataOpener.cs" />
     <Compile Include="Date.cs" />
-    <Compile Include="File\Debug.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="Extension\StringExtension.cs" />
@@ -126,7 +120,6 @@
     <Compile Include="NetworkCross.cs" />
     <Compile Include="Regular.cs" />
     <Compile Include="Image\Thumbnail.cs" />
-    <Compile Include="DataExecute\EntityOpener.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

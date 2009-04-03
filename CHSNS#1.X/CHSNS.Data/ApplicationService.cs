@@ -18,7 +18,7 @@ namespace CHSNS.Service
 		/// <summary>
 		/// 缓存的应用列表
 		/// </summary>
-		public IList<Application> Applications
+		public List<Application> Applications
 		{
 			get
 			{
@@ -31,15 +31,13 @@ namespace CHSNS.Service
                     }
 					HttpContext.Application.UnLock();
 				}
-				return HttpContext.Application[APPLISTALL] as IList<Application>;
+				return HttpContext.Application[APPLISTALL] as List<Application>;
 			}
 		}
 
-		public IList<Application> GetApps(long[] ids)
+		public List<Application> GetApps(long[] ids)
 		{
-			if (ids.Length == 0)
-				return Applications.Where(c => c.IsSystem).ToList();
-			return Applications.Where(c => ids.Contains(c.ID)).ToList();
+		    return ids.Length == 0 ? Applications.Where(c => c.IsSystem).ToList() : Applications.Where(c => ids.Contains(c.ID)).ToList();
 		}
 	}
 }
