@@ -59,6 +59,9 @@
     <Compile Include="File\Debug.cs" />
     <Compile Include="File\FileUpload.cs" />
     <Compile Include="Image\ImageUpload.cs" />
+    <Compile Include="Image\Thumbnail.cs" />
+    <Compile Include="Media\Media.cs" />
+    <Compile Include="NetworkCross.cs" />
     <Compile Include="Path\Path.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializer\ConfigSerializer.cs" />

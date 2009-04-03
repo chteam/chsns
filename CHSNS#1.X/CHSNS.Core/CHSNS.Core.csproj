@@ -107,16 +107,13 @@
     <Compile Include="Interface\IApplication.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
     <Compile Include="Interface\ISerializer.cs" />
-    <Compile Include="Media\Media.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Interface\IDataOpener.cs" />
-    <Compile Include="NetworkCross.cs" />
     <Compile Include="Regular.cs" />
-    <Compile Include="Image\Thumbnail.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
