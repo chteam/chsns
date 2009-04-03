@@ -109,7 +109,6 @@
     <Compile Include="Interface\ISerializer.cs" />
     <Compile Include="Media\Media.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
-    <Compile Include="Tools\HttpProc.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Encrypt.cs" />

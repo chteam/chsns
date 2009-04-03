@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializer\ConfigSerializer.cs" />
     <Compile Include="Serializer\XmlSerializer.cs" />
+    <Compile Include="Tools\HttpProc.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
