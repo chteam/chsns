@@ -98,7 +98,7 @@
     <Compile Include="Extension\Data\PagedList.cs" />
     <Compile Include="Extension\Data\PagerExt.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
-    <Compile Include="Email\IEmail.cs" />
+    <Compile Include="IEmail.cs" />
     <Compile Include="Extension\EnumExtension.cs" />
     <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
@@ -131,5 +131,8 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Email\" />
   </ItemGroup>
 </Project>
