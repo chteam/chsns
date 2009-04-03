@@ -132,7 +132,4 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Email\" />
-  </ItemGroup>
 </Project>
