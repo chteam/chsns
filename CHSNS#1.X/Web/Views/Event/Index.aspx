@@ -5,7 +5,7 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% EventPagePas ep = ViewData.Model.Page; %>
-	<div id="userRelations">
+	<div class="right">
 		<%if (ViewData.Model.Content.User.IsAdmin)
     { %>
 		<div id="Event_Admin">
@@ -30,7 +30,7 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
                 Html.RenderPartial("ViewList", ViewData.Model.NewViews); %>
 		</div>
 	</div>
-	<div id="userUpdates">
+	<div class="left">
 		<%--##新回复--%>
 		<%--		<div id="NewReply">
 		<%if (ep.NewReply.Count != 0) {%>
@@ -92,8 +92,8 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 			<h4>
 				我朋友的动向</h4>
 			<ul id="evt_list">
-				<% 
-                    Html.RenderPartial("../user/Index/Event", ViewData.Model.Events); %>
+		<%--		<% 
+                    Html.RenderPartial("../user/Index/Event", ViewData.Model.Events); %>--%>
 			</ul>
 		</div>
 	</div>

@@ -29,7 +29,7 @@
                 };
             }
         }
-        public IList<long> GetFriendsID(long userid)
+        public List<long> GetFriendsID(long userid)
         {
             using (var db = DBExt.Instance)
             {
@@ -90,7 +90,7 @@
             }
         }
 
-        public IList<UserItemPas> GetRandoms(int n)
+        public List<UserItemPas> GetRandoms(int n)
         {
             using (var db = DBExt.Instance)
             {

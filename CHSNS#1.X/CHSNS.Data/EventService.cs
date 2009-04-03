@@ -20,10 +20,12 @@ namespace CHSNS.Service
         /// </summary>
         /// <param name="userid">The userid.</param>
         /// <param name="p"></param>
+        /// <param name="ep"></param>
         /// <returns></returns>
         public PagedList<Event> GetFriendEvent(long userid, int p, int ep)
         {
             var ids = DBExt.Friend.GetFriendsID(userid);
+          //  throw new System.Exception(ids.Count.ToString());
             using (var db = DBExt.Instance)
             {
                 var ret = (from e in db.Event
