@@ -94,16 +94,15 @@
   <ItemGroup>
     <Compile Include="Attribute\AssemblyInfo.cs" />
     <Compile Include="CommentType.cs" />
-    <Compile Include="Extension\Data\IPagedList.cs" />
-    <Compile Include="Extension\Data\PagedList.cs" />
-    <Compile Include="Extension\Data\PagerExt.cs" />
+    <Compile Include="Extension\Pager\IPagedList.cs" />
+    <Compile Include="Extension\Pager\PagedList.cs" />
+    <Compile Include="Extension\Pager\PagerExt.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="IEmail.cs" />
     <Compile Include="Extension\EnumExtension.cs" />
     <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="Hash.cs" />
-    <Compile Include="HttpHandler\CompressionHttpHandler.cs" />
     <Compile Include="Interface\IApplication.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
     <Compile Include="Interface\ISerializer.cs" />
