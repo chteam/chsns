@@ -93,7 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attribute\AssemblyInfo.cs" />
-    <Compile Include="CommentType.cs" />
     <Compile Include="Extension\Pager\IPagedList.cs" />
     <Compile Include="Extension\Pager\PagedList.cs" />
     <Compile Include="Extension\Pager\PagerExt.cs" />
@@ -103,15 +102,14 @@
     <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Extension\ObjectExtension.cs" />
     <Compile Include="Hash.cs" />
-    <Compile Include="Interface\IApplication.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
+    <Compile Include="Interface\IFileProcess.cs" />
     <Compile Include="Interface\ISerializer.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="Extension\StringExtension.cs" />
-    <Compile Include="Interface\IDataOpener.cs" />
     <Compile Include="Regular.cs" />
   </ItemGroup>
   <ItemGroup>

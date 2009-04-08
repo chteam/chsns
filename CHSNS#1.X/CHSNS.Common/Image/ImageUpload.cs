@@ -26,8 +26,8 @@ namespace CHSNS {
 			FileUpload = new FileUpload {
 			                            	File = file,
 			                            	FileExtList = ext,
-			                            	HttpContext = context,
-                                            Path = Path.Photo(Context.User.UserID, Time, Ext, "source"),
+			                            	//HttpContext = context,
+                                            ServerPath = Path.Photo(Context.User.UserID, Time, Ext, "source"),
 			                            	Size = 2,
 			                            };
 		}
@@ -35,12 +35,12 @@ namespace CHSNS {
 			if (!FileUpload.Validate()) return FileUpload.Log;
 			#region 按比例生成缩略图
 
-			FileUpload.ExistsCreateDictionary(FileUpload.HttpContext.Server.MapPath(FileUpload.Path));
+            FileUpload.ExistsCreateDictionary(Context.HttpContext.Server.MapPath(FileUpload.ServerPath));
 			var imgSrc = Image.FromStream(FileUpload.File.InputStream);
 			foreach (var p in ThumbDict) {
 				Thumbnail.CreateThumbnail(
 					imgSrc,
-					FileUpload.HttpContext.Server.MapPath(
+					Context.HttpContext.Server.MapPath(
                         Path.Photo(Context.User.UserID, Time, Ext, p.ImageType.ToString())),
 					p.Size
 					);
@@ -49,7 +49,7 @@ namespace CHSNS {
 
 			#endregion
 
-			return FileUpload.Path;
+			return FileUpload.ServerPath;
 		}
 	}
 }
