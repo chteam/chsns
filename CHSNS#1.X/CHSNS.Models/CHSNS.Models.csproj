@@ -93,6 +93,7 @@
     <Compile Include="Entry\EntryPas.cs" />
     <Compile Include="Entry\EntryType.cs" />
     <Compile Include="Entry\EntryVersionType.cs" />
+    <Compile Include="Enum\CommentType.cs" />
     <Compile Include="Enum\FieldType.cs" />
     <Compile Include="Enum\GroupStatus.cs" />
     <Compile Include="Enum\GroupType.cs" />

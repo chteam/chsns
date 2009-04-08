@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 namespace CHSNS {
-	public class FileUpload {
+    public class FileUpload : IFileProcess{
 		public HttpPostedFileBase File { get; set; }
-		public HttpContextBase HttpContext { get; set; }
 		/// <summary>
 		/// 单位：M
 		/// </summary>
 		public double Size { get; set; }
-		public string Path { get; set; }
+		public string ServerPath { get; set; }
 		public IEnumerable<String> FileExtList { get; set; }
 		public string Log { get; set; }
 		public void ExistsCreateDictionary(string path){
@@ -24,7 +23,7 @@ namespace CHSNS {
 				Log = "error:您上传的文件扩展名不正确";
 				return false;
 			}
-			if (string.IsNullOrEmpty(Path) || File == null) {
+			if (string.IsNullOrEmpty(ServerPath) || File == null) {
 				Log = "error:路径有错误,无文件或目录为空";
 				return false;
 			}
@@ -34,62 +33,11 @@ namespace CHSNS {
 			}
 			return true;
 		}
-		public string Upload() {
-			if (!Validate())
-				return Log;
-			var serverfullpath = HttpContext.Server.MapPath(Path);
-			ExistsCreateDictionary(serverfullpath);
-			File.SaveAs(serverfullpath);
-			return Path;
-		}
-
-//        string UploadImage(HttpPostedFileBase file1, bool isSaveSource) {
-//            var dt = DateTime.Now;
-//            var path = Path.PhotoPath(dt);
-
-////			var serverfullpath = Server.MapPath(path);
-//            //if (string.IsNullOrEmpty(serverfullpath) || file1 == null) return "error:路径有错误,无文件或目录为空";
-//            //if (file1.ContentLength > 2004800) return "error:文件请小于2M";
-
-//            //System.IO.Directory.CreateDirectory(serverfullpath);
-
-//        //	var fileExtension = System.IO.Path.GetExtension(file1.FileName).ToLower();
-//        //	var AllowImageExt = ConfigSerializer.Load<List<string>>("AllowImageExt");
-
-//        //	var fileOK = AllowImageExt.Contains(fileExtension);
-//        //	if (!fileOK) return "error:您上传的文件扩展名不正确";
-//            //  fileExtension = ".jpg";
-//            var sourcefn = Path.SourcePhoto(CHUser.UserID, dt, fileExtension);
-//            var photo = Path.Photo(CHUser.UserID, dt, fileExtension, "");
-//            var ThumbPhoto = Path.ThumbPhoto(CHUser.UserID, dt, fileExtension);
-//            try {
-//                if (isSaveSource) file1.SaveAs(Server.MapPath(sourcefn));
-//            } catch (Exception) {
-//                return "error:文件无法上传，源文件无法保存";
-//            }
-
-//            #region 按比例生成缩略图
-//            var imgSrc = Image.FromStream(file1.InputStream);
-//            try {
-//                Thumbnail.CreateThumbnail(
-//                    imgSrc,
-//                    Server.MapPath(photo),
-//                    800,
-//                    600
-//                    );
-//                Thumbnail.CreateThumbnail(
-//                    imgSrc,
-//                    Server.MapPath(ThumbPhoto),
-//                    140,
-//                    140
-//                    );
-//            } catch (Exception) {
-//                return "error:文件无法上传，图没缩略";
-//            }
-//            imgSrc.Dispose();
-//            #endregion
-//            //SetStarLevel(CHUser.UserID); //更新
-//            return photo;
-//        }
-	}
+        public string Save(){
+            if (!Validate()) return Log;
+            ExistsCreateDictionary(ServerPath);
+            File.SaveAs(ServerPath);
+            return ServerPath;
+        }
+    }
 }
