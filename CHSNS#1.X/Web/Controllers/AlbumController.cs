@@ -118,7 +118,7 @@ namespace CHSNS.Controllers
                 al.Count++;
                 var p = new Photo { Name = Name, AlbumID = id, AddTime = DateTime.Now, UserID = CHUser.UserID };
                 var f = new ImageUpload(file,
-                                        HttpContext,
+                                        CHContext,
                                         ConfigSerializer.Load<List<string>>("AllowImageExt")
                                         , p.AddTime,
                                         ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize")
