@@ -10,10 +10,10 @@ namespace CHSNS {
         /// 单位：M
         /// </summary>
         double Size { get; set; }
-        string ServerPath { get; set; }
+        IPathBuilder PathBuilder { get; set; }
         IEnumerable<String> FileExtList { get; set; }
         string Log { get; set; }
-        void ExistsCreateDictionary(string path);
+        void ExistsCreateDictionary();
         bool Validate();
         string Save();
     }
