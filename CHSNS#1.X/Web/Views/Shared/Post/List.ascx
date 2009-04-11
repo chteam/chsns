@@ -11,10 +11,10 @@
 		  c.For("作者").Do(p => { %><td><%=Html.UserPageLink(p.UserID,p.WriteName) %></td><%});
 		  c.For(p => p.CommentCount, "回复");
 		  c.For(p => p.ViewCount,"阅读");
-		  c.For("最后回复");
+		  c.For(p=>p.AddTime.ToString(),"最后回复");
 	  }
 	  ); %>
-
+ 
 <%--<table id="Subjectlist" class="threadlist" style="">
 <thead>
 <tr>
