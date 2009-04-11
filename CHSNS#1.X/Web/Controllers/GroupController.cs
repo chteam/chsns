@@ -183,17 +183,17 @@ namespace CHSNS.Controllers {
 		#endregion
 
 		#region Ьћзг
-		public ActionResult Details(long id) {
-		    NoteDetailsPas note = DBExt.Note.Details(id, NoteType.GroupPost);
-		    var cl = DBExt.Comment.CommentList(id, CommentType.Note,1);
-			ViewData["commentlist"] = cl;
-			Title = note.Note.Title;
-			ViewData["NowPage"] = 1;
-			ViewData["PageCount"] = note.User.Count;
-			return View(note);
-		}
+        public ActionResult Details(long id){
+            var note = DBExt.Note.Details(id, NoteType.GroupPost);
+            var cl = DBExt.Comment.CommentList(id, CommentType.Note, 1);
+            ViewData["commentlist"] = cl;
+            Title = note.Note.Title;
+            //	ViewData["NowPage"] = 1;
+            //		ViewData["PageCount"] = note.User.Count;
+            return View(note);
+        }
 
-		[AcceptVerbs(HttpVerbs.Post)]
+	    [AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult Post(long? id, Note post) {
 			using (var ts = new TransactionScope()) {
 				if (post.Title.Length < 1 || post.Body.Length < 1) {
