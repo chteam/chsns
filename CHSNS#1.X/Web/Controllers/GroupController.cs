@@ -185,7 +185,7 @@ namespace CHSNS.Controllers {
 		#region Ьћзг
         public ActionResult Details(long id){
             var note = DBExt.Note.Details(id, NoteType.GroupPost);
-            var cl = DBExt.Comment.CommentList(id, CommentType.Note, 1);
+            var cl = DBExt.Comment.CommentList(id, CommentType.Note, 1,CHContext.Site);
             ViewData["commentlist"] = cl;
             Title = note.Note.Title;
             //	ViewData["NowPage"] = 1;
@@ -206,7 +206,7 @@ namespace CHSNS.Controllers {
 					post.ID = id.Value;
 					DBExt.Note.Edit(post);
 				} else {
-					DBExt.Note.Add(post);
+					DBExt.Note.Add(post,CHUser);
 				}
 				ts.Complete();
 				return this.RedirectToReferrer();

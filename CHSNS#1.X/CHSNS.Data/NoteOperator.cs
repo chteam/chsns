@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace CHSNS.Operator {
 	public class NoteOperator : BaseOperator, INoteOperator {
-		public NoteOperator(IDBManager id) : base(id) { }
 		/// <summary>
 		/// userid
 		/// </summary>
@@ -18,26 +17,7 @@ namespace CHSNS.Operator {
 		        db.Note.InsertOnSubmit(note);
 		        db.SaveChanges();
 		    }
-		    switch ((NoteType) note.Type)
-		    {
-		        case NoteType.Note:
-		            DBExt.Event.Add(new Event
-		                                {
-		                                    OwnerID = note.UserID,
-		                                    TemplateName = "AddNote",
-		                                    AddTime = DateTime.Now,
-		                                    ShowLevel = 0,
-		                                    Json = Dictionary.CreateFromArgs("id", note.ID,
-		                                                                     "title", note.Title, "addtime",
-		                                                                     note.AddTime, "name", CHUser.Username).
-		                                        ToJsonString()
-		                                });
-		            break;
-		        case NoteType.GroupPost:
-		            break;
-		        default:
-		            break;
-		    }
+		    
 		}
 
         public void Edit(Note note)
@@ -45,7 +25,7 @@ namespace CHSNS.Operator {
             using (var db = DBExtInstance)
             {
                 var n = db.Note.FirstOrDefault(c => c.UserID == note.UserID && c.ID == note.ID);
-                n.Title = HttpContext.Server.HtmlEncode(note.Title);
+                n.Title = note.Title;
                 n.Body = note.Body;
                 n.EditTime = DateTime.Now;
                 db.SubmitChanges();
@@ -53,14 +33,14 @@ namespace CHSNS.Operator {
             #region sql
 
 //            DataBaseExecutor.Execute(
-//                @"update [note] 
+//                @"update [n ote] 
 //set title=@title,body=@body,EditTime=@edittime
 //where id=@id and userid=@userid",
-//                "@title", note.Title,
-//                "@body", note.Body,
+//                "@title", not e.Title,
+//                "@body", n ote.Body,
 //                "@edittime", DateTime.Now,
-//                "@id", note.ID,
-//                "@userid", note.UserID);
+//                "@id", no te.ID,
+//                "@userid", no te.UserID);
 
             #endregion
         }

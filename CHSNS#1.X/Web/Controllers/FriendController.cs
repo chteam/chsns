@@ -39,7 +39,7 @@ namespace CHSNS.Controllers {
 				ViewData["Name"] = b.Name;
 				int nowpage = this.QueryNum("p") == 0 ? 1 : this.QueryNum("p");
 				ViewData["NowPage"] = nowpage;
-                var source = DBExt.Friend.GetRequests(Ownerid, nowpage);
+                var source = DBExt.Friend.GetRequests(Ownerid, nowpage, CHContext.Site);
 
 			    ViewData["PageCount"] = source.TotalPages;
 			    ViewData["source"] = source;
@@ -54,14 +54,14 @@ namespace CHSNS.Controllers {
         [AcceptVerbs("Post")]
         public ActionResult FriendList(int p, long userid)
         {
-            var list = DBExt.Friend.GetFriends(userid, p);
+            var list = DBExt.Friend.GetFriends(userid, p, CHContext.Site);
             ViewData["PageCount"] = list.TotalPages;
             return View(list);
         }
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
 		public ActionResult RequestList(int p, long userid) {
-			return View(DBExt.Friend.GetRequests(userid,p));
+            return View(DBExt.Friend.GetRequests(userid, p, CHContext.Site));
 		}
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
@@ -104,7 +104,7 @@ namespace CHSNS.Controllers {
 		{//添加好友
 			using (var ts = new TransactionScope())
 			{
-				var r = DBExt.Friend.Agree(CHUser.UserID, uid);
+				var r = DBExt.Friend.Agree(CHUser.UserID, uid,CHUser);
 				ts.Complete();
 				if (r) return Content("已经加对方为好友");
 				return Content("请求已经处理过了");

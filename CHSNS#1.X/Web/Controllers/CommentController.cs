@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Transactions;
 using System.Web.Mvc;
 using CHSNS.Models;
-using System.Linq;
 using CHSNS.Model;
 namespace CHSNS.Controllers {
 
@@ -91,10 +90,11 @@ namespace CHSNS.Controllers {
         #endregion
 
         #region comment
-        public ActionResult List(long id, int p, CommentType type) {
-            var cl = DBExt.Comment.CommentList(id, CommentType.Note, p);
+        public ActionResult List(long id, int p, CommentType type){
+            var cl = DBExt.Comment.CommentList(id, CommentType.Note, p, CHContext.Site);
             return View("Comment/Item", cl);
         }
+
         [LoginedFilter]
         public ActionResult Delete(long id) {
             // TODO:少删除的权限判断

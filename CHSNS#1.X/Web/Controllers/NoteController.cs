@@ -46,7 +46,7 @@ namespace CHSNS.Controllers {
 		}
 		public ActionResult Details(long id) {
 			var note = DBExt.Note.Details(id, NoteType.Note);
-			var cl = DBExt.Comment.CommentList(id, CommentType.Note,1);
+            var cl = DBExt.Comment.CommentList(id, CommentType.Note, 1, CHContext.Site);
 			ViewData["commentlist"] = cl;
 			Title = note.Note.Title;
 			ViewData["NowPage"] = 1;
@@ -85,7 +85,7 @@ namespace CHSNS.Controllers {
 					DBExt.Note.Edit(n);
 				}
 				else {
-					DBExt.Note.Add(n);
+					DBExt.Note.Add(n,CHUser);
 				}
 				ts.Complete();
 				return RedirectToAction("Index");

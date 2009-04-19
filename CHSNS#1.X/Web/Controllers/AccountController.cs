@@ -57,7 +57,7 @@ namespace CHSNS.Controllers
         /// </summary>
         public ActionResult Logout()
         {
-            DBExt.Account.Logout();
+            DBExt.Account.Logout(CHContext);
 
             return RedirectToAction("index", "Entry", new { title = "index" });
         }
@@ -74,7 +74,7 @@ namespace CHSNS.Controllers
             if (u.Length > 3 &&
                 Regular.Macth(p, @"[^']{4,}"))
             {//匹配成功则赋值
-                var LoginResult = DBExt.Account.Login(u, p, a, true);
+                var LoginResult = DBExt.Account.Login(u, p, a, true,CHContext);
                 if (LoginResult == -1)
                 {
                     throw new Exception("您的帐号已经被冻结，如有疑问请 <a href=\"/Services.aspx\">联系管理员</a>");

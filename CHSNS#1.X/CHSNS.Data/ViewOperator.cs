@@ -7,7 +7,6 @@ namespace CHSNS.Operator
 {
     public class ViewOperator : BaseOperator, IViewOperator
     {
-        public ViewOperator(IDBManager id) : base(id) { }
         public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count)
         {
             using (var db = DBExtInstance)
@@ -108,13 +107,13 @@ namespace CHSNS.Operator
             }
         }
 
-        public void Update(byte type, long ownerid)
+        public void Update(byte type, long ownerid, long myId)
         {
-            if (ownerid == CHUser.UserID) return;
+            if (ownerid == myId) return;
             using (var db = DBExtInstance)
             {
                 var vd = db.ViewData.FirstOrDefault(c =>
-                                                    c.ViewClass == type && c.ViewerID == CHUser.UserID &&
+                                                    c.ViewClass == type && c.ViewerID == myId &&
                                                     c.OwnerID == ownerid);
                 if (null != vd) return;
 
@@ -159,9 +158,9 @@ namespace CHSNS.Operator
                         if (n != null) n.ViewCount++;
                         #region sql
 //                        DataBaseExecutor.Execute(
-//                            @"UPDATE    [Note]
+//                            @"UPDATE    [N ote]
 //			SET              ViewCount = ViewCount + 1 
-//			WHERE     ([Note].Id = @ownerid)",
+//			WHERE     ([No te].Id = @ownerid)",
 //                            "@ownerid", ownerid);
                         #endregion
 
@@ -175,7 +174,7 @@ namespace CHSNS.Operator
                 var v = vds.LastOrDefault();
                 if(null!=v)
                 {
-                    v.ViewerID = CHUser.UserID;
+                    v.ViewerID = myId;
                     v.ViewTime = DateTime.Now;
                 }
                 #region sql
@@ -201,7 +200,7 @@ namespace CHSNS.Operator
                 {
                     db.ViewData.InsertOnSubmit(new ViewData
                                                    {
-                                                       ViewerID = CHUser.UserID,
+                                                       ViewerID = myId,
                                                        OwnerID = ownerid,
                                                        ViewClass = type,
                                                        ViewTime = DateTime.Now
