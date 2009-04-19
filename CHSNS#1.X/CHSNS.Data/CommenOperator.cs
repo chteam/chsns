@@ -6,10 +6,6 @@ namespace CHSNS.Operator
 {
 	public class CommentOperator : BaseOperator, ICommentOperator
 	{
-		public CommentOperator(IDBManager id) : base(id)
-		{
-		}
-     
 		#region reply
    private static IQueryable<CommentPas> GetReplyPrivate(CHSNSDBDataContext db, long uid) {
             IQueryable<CommentPas> ret = (from r in db.Reply
@@ -87,8 +83,10 @@ namespace CHSNS.Operator
 		/// <param name="ShowerID">The shower ID.</param>
 		/// <param name="type">The type.</param>
 		/// <param name="p"></param>
+		/// <param name="pageSize"></param>
 		/// <returns></returns>
-        public PagedList<CommentPas> CommentList(long ShowerID, CommentType type,int p)
+        public PagedList<CommentPas> CommentList(long ShowerID, CommentType type, int p,
+            int pageSize)
         {
             using (var db = DBExtInstance)
             {
@@ -110,7 +108,7 @@ namespace CHSNS.Operator
                                                             Sender = new NameIDPas { ID = p1.UserID, Name = p1.Name }
                                                         }
                                              );
-                return ret.Pager(p, Site.EveryPage.NoteComment);
+                return ret.Pager(p, pageSize);//Site.EveryPage.NoteComment
             }
 		}
 

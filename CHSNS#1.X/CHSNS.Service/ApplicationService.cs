@@ -1,43 +1,33 @@
 ﻿
 
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using CHSNS.Models;
+using CHSNS.Operator;
 
-namespace CHSNS.Service
-{
-	public class ApplicationService : BaseService, IApplicationService
-	{
-		private const string APPLISTALL = "APPLISTALL";
+namespace CHSNS.Service {
+    public class ApplicationService {
 
-		public ApplicationService(IDBManager id) : base(id)
-		{
-		}
+        static readonly ApplicationService _instance = new ApplicationService();
+        private readonly IApplicationOperator Application;
+        public ApplicationService() {
+            Application = new ApplicationOperator();
+        }
 
-		/// <summary>
-		/// 缓存的应用列表
-		/// </summary>
-		public List<Application> Applications
-		{
-			get
-			{
-				if (HttpContext.Application[APPLISTALL] == null)
-				{
-					HttpContext.Application.Lock();
-                    using (var db = DBExt.Instance)
-                    {
-                        HttpContext.Application[APPLISTALL] = db.Application.ToList();
-                    }
-					HttpContext.Application.UnLock();
-				}
-				return HttpContext.Application[APPLISTALL] as List<Application>;
-			}
-		}
+        public static ApplicationService GetInstance() {
+            return _instance;
+        }
+       // private const string APPLISTALL = "APPLISTALL";
+        /// <summary>
+        /// 缓存的应用列表
+        /// </summary>
+        public List<Application> Applications {
+            get {
+                return Application.Applications;
+            }
+        }
 
-		public List<Application> GetApps(long[] ids)
-		{
-		    return ids.Length == 0 ? Applications.Where(c => c.IsSystem).ToList() : Applications.Where(c => ids.Contains(c.ID)).ToList();
-		}
-	}
+        public List<Application> GetApps(long[] ids) {
+            return Application.GetApps(ids);
+        }
+    }
 }
