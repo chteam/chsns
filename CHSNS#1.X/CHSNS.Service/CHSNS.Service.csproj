@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="AccountService.cs" />
     <Compile Include="ApplicationService.cs" />
-    <Compile Include="BaseService.cs" />
     <Compile Include="CommenService.cs" />
     <Compile Include="EventService.cs" />
     <Compile Include="FriendService.cs" />

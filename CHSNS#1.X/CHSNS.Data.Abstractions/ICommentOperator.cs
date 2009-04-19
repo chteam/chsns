@@ -8,7 +8,7 @@ namespace CHSNS.Operator
 	{
 		void Add(Comment cmt, CommentType type);
 		Reply AddReply(Reply r);
-        PagedList<CommentPas> CommentList(long ShowerID, CommentType type, int p);
+        PagedList<CommentPas> CommentList(long ShowerID, CommentType type, int p,int pageSize);
 		bool Delete(long id, CommentType type);
 		void DeleteReply(long id, long userid);
         //IList<CommentPas> GetReply(long userid);
