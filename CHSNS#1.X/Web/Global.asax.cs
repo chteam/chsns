@@ -10,6 +10,7 @@ using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Routing;
 using CHSNS.Mvc;
+using CHSNS.Service;
 
 namespace CHSNS
 {
@@ -44,18 +45,17 @@ namespace CHSNS
         {
         }
 
-        public void Session_OnStart(object sender, EventArgs e)
-        {
+        public void Session_OnStart(object sender, EventArgs e){
 
             IContext context1 = new CHContext(new HttpContextWrapper(Context));
-            if (context1.User.IsLogin) return;            //当前不处于登录状态
+            if (context1.User.IsLogin) return; //当前不处于登录状态
             if (!context1.Cookies.IsAutoLogin) return;
             var pwd = context1.Cookies.UserPassword;
-            var idb = context1.DBManager;
+            var idb = new DBManager();
             idb.Account.Login(context1.Cookies.UserID.ToString(),
                               pwd,
                               true,
-                              false
+                              false, context1
                 );
         }
 

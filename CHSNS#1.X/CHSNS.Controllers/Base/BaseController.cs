@@ -2,9 +2,9 @@
 using System.Web;
 using System.Web.Mvc;
 using System;
-using CHSNS.Service;
 
 using System.Collections.Generic;
+using CHSNS.Service;
 using CHSNS.ViewModel;
 
 namespace CHSNS.Controllers {
@@ -27,11 +27,11 @@ namespace CHSNS.Controllers {
 			}
 		}
 		#region Êý¾Ý²Ù×÷
-		private IDBManager _dbext;
-		protected IDBManager DBExt {
+		private DBManager _dbext;
+		protected DBManager DBExt {
 			get {
                 if (_dbext == null)
-                    _dbext = new SQLServerDBManager(CHContext);
+                    _dbext = new DBManager();
 				return _dbext;
 			}
 			set {

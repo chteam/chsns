@@ -3,107 +3,51 @@ using System.Linq;
 using CHSNS.Models;
 using System;
 using CHSNS.Model;
+using CHSNS.Operator;
+
 namespace CHSNS.Service {
-	public class UserService : BaseService, IUserService {
-		public UserService(IDBManager id) : base(id) { }
-		public UserPas UserInformation(long userid) {
-            using (var db = DBExt.Instance)
-            {
-                var ret = (from p in db.Profile
-                           join b in db.BasicInformation on p.UserID equals b.UserID
-                           where p.UserID == userid
-                           select new UserPas {Profile = p, Basic = b}
-                          ).FirstOrDefault();
-                return ret;
-            }
+	public class UserService{
+                static readonly UserService _instance = new UserService();
+                private readonly IUserOperator User;
+                private readonly IEventOperator Event;
+        public UserService() {
+                    User = new UserOperator();
+            Event = new EventOperator();
+        }
+
+        public static UserService GetInstance(){
+            return _instance;
+        }
+
+	    public UserPas UserInformation(long userid) {
+	        return User.UserInformation(userid);
 		}
 
 		public int Relation(long OwnerID, long ViewerID) {
-            using (var db = DBExt.Instance)
-            {
-                if (OwnerID == ViewerID) return 200;
-                var x =
-                    (from f in db.Friend
-                     where (f.FromID == OwnerID && f.ToID == ViewerID) ||
-                           (f.FromID == ViewerID && f.ToID == OwnerID) && f.IsTrue
-                     select 1).Count();
-                return x > 0 ? 150 : 0;
-            }
+		    return User.Relation(OwnerID, ViewerID);
 		}
 
 		#region BasicInfo
 		public BasicInformation GetBaseInfo(long UserID) {
-            using (var db = DBExt.Instance)
-            {
-                return db.BasicInformation.Where(c => c.UserID == UserID).FirstOrDefault();
-            }
+		    return User.GetBaseInfo(UserID);
 		}
-        public void SaveBaseInfo(BasicInformation b)
+        public void SaveBaseInfo(BasicInformation b,IContext context)
         {
-            if (b.UserID == 0) b.UserID = CHUser.UserID;
-            using (var db = DBExt.Instance)
-            {
-                var bi = db.BasicInformation.FirstOrDefault(c => c.UserID == b.UserID);
-                if (null == bi) return;
-                bi.Name = b.Name;
-                bi.Sex = b.Sex;
-                bi.Birthday = b.Birthday;
-                bi.ProvinceID = b.ProvinceID;
-                bi.CityID = b.CityID;
-                bi.ShowLevel = b.ShowLevel;
-                db.SubmitChanges();
-            }
-
-            #region sql
-
-            //            DataBaseExecutor.Execute(
-            //                @"UPDATE [BasicInformation]
-            //   SET [Name] = @Name
-            //      ,[Sex] = @Sex
-            //      ,[Birthday] = @Birthday
-            //      ,[ProvinceID] = @ProvinceID
-            //      ,[CityID] = @CityID
-            //      ,[ShowLevel] = @ShowLevel
-            // WHERE UserID=@UserID"
-            //                , "@Name", b.Name
-            //                , "@Sex", b.Sex
-            //                , "@Birthday", b.Birthday
-            //                , "@ProvinceID", b.ProvinceID
-            //                , "@CityID", b.CityID
-            //                , "@ShowLevel", b.ShowLevel
-            //                , "@UserID", b.UserID);
-
-            #endregion
+            if (b.UserID == 0) b.UserID = context.User.UserID;
+            User.SaveBaseInfo(b);
         }
 
 	    #endregion
 
 		#region Magicbox
 		public string GetMagicBox(long UserID) {
-            using (var db = DBExt.Instance)
-            {
-                var magicbox = (from p in db.Profile
-                                where p.UserID == UserID
-                                select p.MagicBox).FirstOrDefault();
-                return magicbox;
-            }
+		    return User.GetMagicBox(UserID);
 		}
 		public void SaveMagicBox(string magicbox, long uid) {
-            using (var db = DBExt.Instance)
-            {
-                var p = db.Profile.FirstOrDefault(c => c.UserID == uid);
-                if (null == p) return;
-                p.MagicBox = magicbox;
-                db.SubmitChanges();
-            }
-            #region sql
-           //            DataBaseExecutor.Execute(@"Update [profile]
-//set Magicbox=@magicbox where UserID=@UserID"
-//                                     , "@magicbox", magicbox
-//                                     , "@UserID", UserID);
-            #endregion
+		    User.SaveMagicBox(magicbox, uid);
 		}
 		public void MagicBoxBackup() {
+		    User.MagicBoxBackup();
 		}
 
 
@@ -122,39 +66,19 @@ namespace CHSNS.Service {
 		}
 
 		public T GetUser<T>(long userid,System.Linq.Expressions.Expression<Func<Profile, T>> x) {
-
-            using (var db = DBExt.Instance)
-            {
-                var ret = db.Profile
-                    .Where(c => c.UserID == userid)
-                    .Select(x).FirstOrDefault();
-                return ret;
-            }
+		    return User.GetUser<T>(userid, x);
 		}
 		#region profile
-        public void SaveText(long uid, string text)
+        public void SaveText(long uid, string text,IContext context)
         {
-            using (var db = DBExt.Instance)
-            {
-                var p = db.Profile.FirstOrDefault(c => c.UserID == uid);
-                if (null == p) return;
-  //              p.show = magicbox;
-                db.SubmitChanges();
-            }
-            // TODO:个人签名的表
-//            DataBaseExecutor.Execute(@"update [profile]
-//set showtext=@text,showtexttime=@now where userid=@uid;"
-//                                     , "@text", text
-//                                     , "@uid", userid
-//                                     , "@now", DateTime.Now
-//                );
-            DBExt.Event.Add(new Event
+            User.SaveText(uid, text);
+            Event.Add(new Event
                                 {
-                                    OwnerID = CHUser.UserID,
+                                    OwnerID = context.User.UserID,
                                     TemplateName = "ProText",
                                     AddTime = DateTime.Now,
                                     ShowLevel = 0,
-                                    Json = Dictionary.CreateFromArgs("name", CHUser.Username,
+                                    Json = Dictionary.CreateFromArgs("name", context.User.Username,
                                                                      "text", text).ToJsonString()
                                 });
         }
@@ -163,11 +87,7 @@ namespace CHSNS.Service {
 
 
 		public string GetUserName(long uid) {
-            using (var db = DBExt.Instance)
-            {
-                var p = db.Profile.Where(c => c.UserID == uid).FirstOrDefault();
-                return p == null ? "undefault" : p.Name;
-            }
+		    return User.GetUserName(uid);
 		}
 	}
 }

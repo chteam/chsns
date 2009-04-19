@@ -1,11 +1,10 @@
-﻿using System.Data;
-using System.Linq;
+﻿using System.Linq;
 using CHSNS.Models;
 using System;
 using CHSNS.Model;
 namespace CHSNS.Operator {
 	public class UserOperator : BaseOperator, IUserOperator {
-		public UserOperator(IDBManager id) : base(id) { }
+
 		public UserPas UserInformation(long userid) {
             using (var db = DBExtInstance)
             {
@@ -40,7 +39,7 @@ namespace CHSNS.Operator {
 		}
         public void SaveBaseInfo(BasicInformation b)
         {
-            if (b.UserID == 0) b.UserID = CHUser.UserID;
+          //  if (b.UserID == 0) b.UserID = user.UserID;
             using (var db = DBExtInstance)
             {
                 var bi = db.BasicInformation.FirstOrDefault(c => c.UserID == b.UserID);
@@ -148,15 +147,15 @@ namespace CHSNS.Operator {
 //                                     , "@uid", userid
 //                                     , "@now", DateTime.Now
 //                );
-            DBExt.Event.Add(new Event
-                                {
-                                    OwnerID = CHUser.UserID,
-                                    TemplateName = "ProText",
-                                    AddTime = DateTime.Now,
-                                    ShowLevel = 0,
-                                    Json = Dictionary.CreateFromArgs("name", CHUser.Username,
-                                                                     "text", text).ToJsonString()
-                                });
+            //DBExt.Event.Add(new Event
+            //                    {
+            //                        OwnerID = CHUser.UserID,
+            //                        TemplateName = "ProText",
+            //                        AddTime = DateTime.Now,
+            //                        ShowLevel = 0,
+            //                        Json = Dictionary.CreateFromArgs("name", CHUser.Username,
+            //                                                         "text", text).ToJsonString()
+            //                    });
         }
 
 	    #endregion

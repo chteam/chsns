@@ -1,6 +1,5 @@
 ﻿using System.Web;
 using CHSNS.Config;
-using CHSNS.Service;
 
 namespace CHSNS {
     /// <summary>
@@ -87,15 +86,15 @@ namespace CHSNS {
         }
         #endregion
         #region DBManager
-        IDBManager _dbmanager;
-        public IDBManager DBManager {
-            get {
-                return _dbmanager ?? (_dbmanager = new SQLServerDBManager(this));
-            }
-            set {
-                _dbmanager = value;
-            }
-        }
+        //IDBManager _dbmanager;
+        //public IDBManager DBManager {
+        //    get {
+        //        return _dbmanager ?? (_dbmanager = new SQLServerDBManager(this));
+        //    }
+        //    set {
+        //        _dbmanager = value;
+        //    }
+        //}
 
         public HttpContextBase HttpContext
         {
