@@ -3,11 +3,11 @@ using System.Linq;
 using CHSNS.Models;
 using CHSNS.Model;
 
-namespace CHSNS.Service
+namespace CHSNS.Operator
 {
-    public class AccountService :BaseService ,IAccountService
+    public class AccountOperator :BaseOperator ,IAccountOperator
     {
-        public AccountService(IDBManager id) : base(id) { }
+        public AccountOperator(IDBManager id) : base(id) { }
         /// <summary>
         /// 注销
         /// </summary>
