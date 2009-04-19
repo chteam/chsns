@@ -12,10 +12,10 @@ namespace CHSNS.Operator
         bool Ignore(long FromID, long operaterID);
         bool IgnoreAll(long UserID);
 
-        PagedList<UserItemPas> GetFriends(long uid, int p);
+        PagedList<UserItemPas> GetFriends(long uid, int page,int pageSize);
         List<long> GetFriendsID(long userid);
         List<UserItemPas> GetRandoms(int n);
-        PagedList<UserItemPas> GetRequests(long userid,int p);
+        PagedList<UserItemPas> GetRequests(long userid, int page, int pageSize);
 
         Profile UserFriendInfo(long userid);
 

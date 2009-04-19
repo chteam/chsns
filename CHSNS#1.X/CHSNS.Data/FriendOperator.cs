@@ -7,7 +7,7 @@
     using System.Collections.Generic;
     public class FriendOperator : BaseOperator, IFriendOperator
     {
-        public FriendOperator(IDBManager id) : base(id) { }
+
         #region 获取
         public Profile UserFriendInfo(long userid)
         {
@@ -41,7 +41,7 @@
                                           select f1.FromID).ToList();
             }
         }
-        public PagedList<UserItemPas> GetFriends(long uid, int p)
+        public PagedList<UserItemPas> GetFriends(long uid, int page,int pageSize)
         {
             var ids = GetFriendsID(uid);
             using (var db = DBExtInstance)
@@ -85,7 +85,7 @@
                 //               ShowTextTime = c.ShowTextTime
                 //           });
                 #endregion
-                return ret.Pager(p, Site.EveryPage.Friend);
+                return ret.Pager(page,pageSize);// Site.EveryPage.Friend);
 
             }
         }
@@ -106,7 +106,7 @@
             }
         }
 
-        public PagedList<UserItemPas> GetRequests(long userid, int p)
+        public PagedList<UserItemPas> GetRequests(long userid, int page, int pageSize)
         {
             using (var db = DBExtInstance)
             {
@@ -121,7 +121,7 @@
                                ShowText = "",
                                ShowTextTime = DateTime.Now
                            });
-                return ret.Pager(p, Site.EveryPage.FriendRequest);
+                return ret.Pager(page,pageSize);//, Site.EveryPage.FriendRequest);
             }
         }
         #endregion
@@ -207,18 +207,18 @@
                 db.SubmitChanges();
                 name = db.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
             }
-            DBExt.Event.Add(new Event
-                                {
-                                    OwnerID = ToID,
-                                    ViewerID = OperaterID,
-                                    TemplateName = "MakeFriend",
-                                    AddTime = DateTime.Now,
-                                    ShowLevel = 0,
-                                    Json =
-                                        Dictionary.CreateFromArgs("ownername", name, "sendername", CHUser.Username).
-                                        ToJsonString()
-                                }
-                );
+            //DBExt.Event.Add(new Event
+            //                    {
+            //                        OwnerID = ToID,
+            //                        ViewerID = OperaterID,
+            //                        TemplateName = "MakeFriend",
+            //                        AddTime = DateTime.Now,
+            //                        ShowLevel = 0,
+            //                        Json =
+            //                            Dictionary.CreateFromArgs("ownername", name, "sendername", CHUser.Username).
+            //                            ToJsonString()
+            //                    }
+            //    );
             return true;
         }
 

@@ -8,23 +8,16 @@ namespace CHSNS.Operator
     /// </summary>
     public class EventOperator : BaseOperator, IEventOperator
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EventOperator"/> class.
-        /// </summary>
-        /// <param name="id">The DBExt.</param>
-        public EventOperator(IDBManager id) : base(id) { }
-
-
-        /// <summary>
-        /// 50好友事件
-        /// </summary>
-        /// <param name="userid">The userid.</param>
-        /// <param name="p"></param>
-        /// <param name="ep"></param>
-        /// <returns></returns>
-        public PagedList<Event> GetFriendEvent(long userid, int p, int ep)
+/// <summary>
+/// 
+/// </summary>
+/// <param name="ids"></param>
+/// <param name="page"></param>
+/// <param name="pageSize"></param>
+/// <returns></returns>
+        public PagedList<Event> GetUsersEvent(long[] ids, int page, int pageSize)
         {
-            var ids = DBExt.Friend.GetFriendsID(userid);
+           // var ids = DBExt.Friend.GetFriendsID(userid);
           //  throw new System.Exception(ids.Count.ToString());
             using (var db = DBExtInstance)
             {
@@ -32,7 +25,7 @@ namespace CHSNS.Operator
                            where ids.Contains(e.OwnerID)
                            orderby e.ID descending
                            select e);
-                return ret.Pager(p, ep);
+                return ret.Pager(page, pageSize);
             }
         }
 
