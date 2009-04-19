@@ -7,29 +7,29 @@ namespace CHSNS.Operator
 {
     public class AccountOperator :BaseOperator ,IAccountOperator
     {
-        public AccountOperator(IDBManager id) : base(id) { }
+      
         /// <summary>
         /// 注销
         /// </summary>
-        public void Logout()
+        public void Logout(IContext context)
         {
-            DBExt.Context.Cookies.Clear();
-            DBExt.Context.User.Clear();
+            context.Cookies.Clear();
+            context.User.Clear();
         }
-        public int Login(String Username, String Password, Boolean IsAutoLogin, Boolean IsPasswordMd5)
+        public int Login(String userName, String password, Boolean autoLogin, Boolean isPasswordMd5,IContext context)
         {
-            if (string.IsNullOrEmpty(Username.Trim())) throw new Exception("用户名不能为空");
+            if (string.IsNullOrEmpty(userName.Trim())) throw new Exception("用户名不能为空");
             var en = new Encrypt();
-            var md5pwd = IsPasswordMd5 ? en.MD5Encrypt(Password.Trim(), 32) : Password.Trim();
+            var md5pwd = isPasswordMd5 ? en.MD5Encrypt(password.Trim(), 32) : password.Trim();
             long UserID;
-            long.TryParse(Username.Trim(), out UserID);
+            long.TryParse(userName.Trim(), out UserID);
             long userid;
             Profile profile;
             int retint = -999;
             using (var db = DBExtInstance)
             {
                 userid = (from a in db.Account
-                          where (a.Username == Username || a.UserID == UserID)
+                          where (a.Username == userName || a.UserID == UserID)
                                 && a.Password == md5pwd
                           select a.UserID).FirstOrDefault();
                 if (userid <= 1000) return retint;
@@ -54,17 +54,17 @@ namespace CHSNS.Operator
 
                 #endregion
             }
-            DBExt.Context.User.Clear();
-            CHUser.UserID = userid;
-            CHUser.Username = profile.Name;
-            CHUser.InitStatus(retint);
+            context.User.Clear();
+            context.User.UserID = userid;
+            context.User.Username = profile.Name;
+            context.User.InitStatus(retint);
 
-            CHCookies.Apps = profile.Applications ?? "";
-            if (!IsAutoLogin) return retint;
-            CHCookies.UserID = CHUser.UserID;
-            CHCookies.UserPassword = md5pwd;
-            CHCookies.IsAutoLogin = true;
-            CHCookies.Expires = DateTime.Now.AddDays(365);
+            context.Cookies.Apps = profile.Applications ?? "";
+            if (!autoLogin) return retint;
+            context.Cookies.UserID = context.User.UserID;
+            context.Cookies.UserPassword = md5pwd;
+            context.Cookies.IsAutoLogin = true;
+            context.Cookies.Expires = DateTime.Now.AddDays(365);
 
             //else
             //	CHCookies.Expires = DateTime.Now.AddDays(-1);
