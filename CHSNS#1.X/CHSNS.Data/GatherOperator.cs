@@ -5,7 +5,6 @@ namespace CHSNS.Operator {
 	/// 统计的类
 	/// </summary>
 	public class GatherOperator : BaseOperator, IGatherOperator {
-		public GatherOperator(IDBManager id) : base(id) { }
 		/// <summary>
 		/// 我的统计
 		/// </summary>

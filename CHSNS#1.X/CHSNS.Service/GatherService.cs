@@ -1,36 +1,26 @@
-﻿using System.Linq;
-using CHSNS.Model;
+﻿using CHSNS.Model;
+using CHSNS.Operator;
+
 namespace CHSNS.Service {
 	/// <summary>
 	/// 统计的类
 	/// </summary>
-	public class GatherService : BaseService, IGatherService {
-		public GatherService(IDBManager id) : base(id) { }
+	public class GatherService{
+        static readonly GatherService _instance = new GatherService();
+        private readonly IGatherOperator Gather;
+        public GatherService() {
+            Gather = new GatherOperator();
+        }
+
+        public static GatherService GetInstance() {
+            return _instance;
+        }
 		/// <summary>
 		/// 我的统计
 		/// </summary>
 		/// <returns></returns>
-		public EventPagePas EventGather(long userid) {
-            EventPagePas ep = null;
-            using (var db = DBExt.Instance)
-            {
-                var r = (from p in db.Profile
-                         where p.UserID == userid
-                         select new
-                         {
-                             // p.FriendRequestCount,
-                             p.ViewCount,
-                             // p.ReplyCount
-                         }).FirstOrDefault();
-
-                if (r != null)
-                {
-                    ep = new EventPagePas { NewReply = null, RssSource = null, ViewCount = r.ViewCount };
-                    //ep.FriendRequestCount = r.FriendRequestCount;
-                    //	ep.ReplyCount = r.ReplyCount;
-                }
-            }
-			return ep;
+        public EventPagePas EventGather(long uId) {
+		    return Gather.EventGather(uId);
 		}
 	}
 }
