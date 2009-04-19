@@ -2,9 +2,9 @@
 using CHSNS.Model;
 using CHSNS.Models;
 
-namespace CHSNS.Service
+namespace CHSNS.Operator
 {
-    public interface IFriendService
+    public interface IFriendOperator
     {
         bool Add(long FromID, long ToID);
         bool Agree(long OperaterID, long ToID);

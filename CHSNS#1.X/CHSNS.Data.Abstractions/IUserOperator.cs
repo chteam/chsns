@@ -1,6 +1,6 @@
 ﻿using System;
-namespace CHSNS.Service {
-	public interface IUserService {
+namespace CHSNS.Operator {
+	public interface IUserOperator {
 		void DeleteFace(long userid);
 		Models.BasicInformation GetBaseInfo(long UserID);
 		string GetMagicBox(long UserID);

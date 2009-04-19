@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using CHSNS.Model;
 
-namespace CHSNS.Service
+namespace CHSNS.Operator
 {
-	public interface IGolbalService
+	public interface IGolbalOperator
 	{
 		List<Province> Provinces { get; }
 		List<City> GetCitys(int ProvinceID);

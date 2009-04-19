@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using CHSNS.Models;
 
-namespace CHSNS.Service
+namespace CHSNS.Operator
 {
-    public interface IApplicationService
+    public interface IApplicationOperator
     {
         List<Application> Applications { get; }
         List<Application> GetApps(long[] ids);
