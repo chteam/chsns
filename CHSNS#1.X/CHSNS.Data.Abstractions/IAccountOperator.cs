@@ -1,6 +1,6 @@
 ﻿using CHSNS.Model;
-namespace CHSNS.Service {
-	public interface IAccountService {
+namespace CHSNS.Operator {
+	public interface IAccountOperator {
 		bool Create(AccountPas account, string name);
 		bool IsUsernameCanUse(string username);
 		int Login(string Username, string Password, bool IsAutoLogin, bool IsPasswordMd5);

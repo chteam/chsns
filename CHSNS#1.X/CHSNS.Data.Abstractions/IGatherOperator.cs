@@ -1,8 +1,8 @@
 ﻿using CHSNS.Model;
 
-namespace CHSNS.Service
+namespace CHSNS.Operator
 {
-	public interface IGatherService
+	public interface IGatherOperator
 	{
 		EventPagePas EventGather(long userid);
 	}

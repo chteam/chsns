@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using CHSNS.Models;
 
-namespace CHSNS.Service {
-    public interface ISuperNoteService : ICURDService<SuperNote> {
+namespace CHSNS.Operator {
+    public interface ISuperNoteOperator : ICURDOperator<SuperNote> {
     }
 }

@@ -1,5 +1,5 @@
-﻿namespace CHSNS.Service {
-    public interface ICURDService<T> {
+﻿namespace CHSNS.Operator {
+    public interface ICURDOperator<T> {
         void Create(T content);
         void Update(T content);
         void Remove(params long[] uid);

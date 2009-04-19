@@ -1,9 +1,9 @@
 ﻿using CHSNS.Model;
 using CHSNS.Models;
 
-namespace CHSNS.Service
+namespace CHSNS.Operator
 {
-    public interface IMessageService
+    public interface IMessageOperator
     {
         void Add(Message m);
         void Delete(long id, MessageBoxType t, long uid);

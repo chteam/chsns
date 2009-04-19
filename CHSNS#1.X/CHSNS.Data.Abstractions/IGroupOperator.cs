@@ -1,7 +1,7 @@
 ﻿using CHSNS.Models;
 using CHSNS.Model;
-namespace CHSNS.Service {
-	public interface IGroupService {
+namespace CHSNS.Operator {
+	public interface IGroupOperator {
 		//System.Data.DataRowCollection TakeIns(int count);
 		#region group
 		Group Info(long ID);

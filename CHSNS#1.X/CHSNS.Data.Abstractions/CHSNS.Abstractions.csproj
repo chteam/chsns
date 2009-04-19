@@ -73,24 +73,24 @@
     <Compile Include="Context\IUser.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IAccountService.cs" />
-    <Compile Include="IAlbumService.cs" />
-    <Compile Include="IApplicationService.cs" />
-    <Compile Include="ICommentService.cs" />
-    <Compile Include="ICURDService.cs" />
+    <Compile Include="IAccountOperator.cs" />
+    <Compile Include="IAlbumOperator.cs" />
+    <Compile Include="IApplicationOperator.cs" />
+    <Compile Include="ICommentOperator.cs" />
+    <Compile Include="ICURDOperator.cs" />
     <Compile Include="IDBManager.cs" />
-    <Compile Include="IEventService.cs" />
-    <Compile Include="IFriendService.cs" />
-    <Compile Include="IGatherService.cs" />
-    <Compile Include="IGolbalService.cs" />
-    <Compile Include="IGroupService.cs" />
+    <Compile Include="IEventOperator.cs" />
+    <Compile Include="IFriendOperator.cs" />
+    <Compile Include="IGatherOperator.cs" />
+    <Compile Include="IGolbalOperator.cs" />
+    <Compile Include="IGroupOperator.cs" />
     <Compile Include="IService.cs" />
-    <Compile Include="IMessageService.cs" />
-    <Compile Include="INoteService.cs" />
-    <Compile Include="IPhotoService.cs" />
-    <Compile Include="ISuperNoteService.cs" />
-    <Compile Include="IUserService.cs" />
-    <Compile Include="IViewService.cs" />
+    <Compile Include="IMessageOperator.cs" />
+    <Compile Include="INoteOperator.cs" />
+    <Compile Include="IPhotoOperator.cs" />
+    <Compile Include="ISuperNoteOperator.cs" />
+    <Compile Include="IUserOperator.cs" />
+    <Compile Include="IViewOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

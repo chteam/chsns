@@ -2,9 +2,9 @@
 using CHSNS.Model;
 using CHSNS.Models;
 
-namespace CHSNS.Service
+namespace CHSNS.Operator
 {
-	public interface ICommentService
+	public interface ICommentOperator
 	{
 		void Add(Comment cmt, CommentType type);
 		Reply AddReply(Reply r);

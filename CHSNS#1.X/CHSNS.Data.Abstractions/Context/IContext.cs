@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using CHSNS.Config;
-using CHSNS.Service;
+using CHSNS.Operator;
 
 namespace CHSNS
 {
@@ -16,7 +16,7 @@ namespace CHSNS
         IOnline Online { get; set; }
         SiteConfig Site { get; set; }
         ISerializer ConfigSerializer { get; set; }
-        IDBManager DBManager { get; set; }
+        //IDBManager DBManager { get; set; }
         HttpContextBase HttpContext { get; set; }
     }
 }

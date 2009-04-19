@@ -1,5 +1,5 @@
-﻿namespace CHSNS.Service {
-	public interface IEventService {
+﻿namespace CHSNS.Operator {
+	public interface IEventOperator {
 		void Add(Models.Event e);
 		void Delete(long id, long ownerid);
         PagedList<Models.Event> GetEvent(long userid, int p, int ep);
