@@ -76,22 +76,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountService.cs" />
-    <Compile Include="ApplicationService.cs" />
-    <Compile Include="BaseService.cs" />
-    <Compile Include="CommenService.cs" />
-    <Compile Include="EventService.cs" />
-    <Compile Include="FriendService.cs" />
-    <Compile Include="GatherService.cs" />
-    <Compile Include="GolbalService.cs" />
+    <Compile Include="AccountOperator.cs" />
+    <Compile Include="ApplicationOperator.cs" />
+    <Compile Include="BaseOperator.cs" />
+    <Compile Include="CommenOperator.cs" />
+    <Compile Include="EventOperator.cs" />
+    <Compile Include="FriendOperator.cs" />
+    <Compile Include="GatherOperator.cs" />
+    <Compile Include="GolbalOperator.cs" />
     <Compile Include="SQLServerDBManager.cs" />
-    <Compile Include="MessageService.cs" />
-    <Compile Include="NoteService.cs" />
+    <Compile Include="MessageOperator.cs" />
+    <Compile Include="NoteOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserService.cs" />
-    <Compile Include="VideoService.cs" />
-    <Compile Include="ViewService.cs" />
-    <Compile Include="GroupService.cs" />
+    <Compile Include="UserOperator.cs" />
+    <Compile Include="VideoOperator.cs" />
+    <Compile Include="ViewOperator.cs" />
+    <Compile Include="GroupOperator.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

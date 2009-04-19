@@ -75,9 +75,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Abstractions", "Abstraction
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Common", "CHSNS.Common\CHSNS.Common.csproj", "{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{4D062B38-5AF9-4E5E-8D92-5310078CFBDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Service", "CHSNS.Service\CHSNS.Service.csproj", "{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 13
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -125,6 +129,10 @@ Global
 		SccProjectTopLevelParentUniqueName11 = CHSNS1.x.sln
 		SccProjectName11 = CHSNS.Common
 		SccLocalPath11 = CHSNS.Common
+		SccProjectUniqueName12 = CHSNS.Service\\CHSNS.Service.csproj
+		SccProjectTopLevelParentUniqueName12 = CHSNS1.x.sln
+		SccProjectName12 = CHSNS.Service
+		SccLocalPath12 = CHSNS.Service
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x.vsmdi
@@ -312,6 +320,21 @@ Global
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Default|.NET.ActiveCfg = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Release|.NET.ActiveCfg = Release|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -329,5 +352,6 @@ Global
 		{0D847749-2B28-4F34-B80A-1D52EF641B2F} = {1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}
 		{3836155E-981B-4C16-8F45-96D19ECC6F7E} = {CD9C6228-899D-49E6-B02E-B0FBAE650CEB}
 		{02841DB3-429F-4032-AE95-66DF05B701DF} = {95B541E6-765B-4E90-B6B2-6810AE9AD0AB}
+		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66} = {4D062B38-5AF9-4E5E-8D92-5310078CFBDD}
 	EndGlobalSection
 EndGlobal

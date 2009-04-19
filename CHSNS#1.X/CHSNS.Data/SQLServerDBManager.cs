@@ -1,4 +1,4 @@
-namespace CHSNS.Service {
+namespace CHSNS.Operator {
     using Models;
     using CHSNS;
     using System.Configuration;
@@ -22,39 +22,39 @@ namespace CHSNS.Service {
         }
         #region ²Ù×÷µ¥Àý
 
-        public IAccountService Account { get; private set; }
-        public IViewService View { get; private set; }
-        public ICommentService Comment { get; private set; }
-        public IGatherService Gather { get; private set; }
-        public IGroupService Group { get; private set; }
-        public IUserService UserInfo { get; private set; }
-        public IGolbalService Golbal { get; private set; }
-        public IFriendService Friend { get; private set; }
-        public IApplicationService Application { get; private set; }
-        public IMessageService Message { get; private set; }
-        public INoteService Note { get; private set; }
-        public IEventService Event { get; private set; }
-        public IAlbumService Album { get; private set; }
-        public IPhotoService Photo { get; private set; }
-        public ISuperNoteService Video { get; private set; }
+        public IAccountOperator Account { get; private set; }
+        public IViewOperator View { get; private set; }
+        public ICommentOperator Comment { get; private set; }
+        public IGatherOperator Gather { get; private set; }
+        public IGroupOperator Group { get; private set; }
+        public IUserOperator UserInfo { get; private set; }
+        public IGolbalOperator Golbal { get; private set; }
+        public IFriendOperator Friend { get; private set; }
+        public IApplicationOperator Application { get; private set; }
+        public IMessageOperator Message { get; private set; }
+        public INoteOperator Note { get; private set; }
+        public IEventOperator Event { get; private set; }
+        public IAlbumOperator Album { get; private set; }
+        public IPhotoOperator Photo { get; private set; }
+        public ISuperNoteOperator Video { get; private set; }
 
         #endregion
 
         public void Init() {
             //_DB = new CHSNSDBDataContext(DataBaseExecutor.DataOpener.Connection);
-            Account = new AccountService(this);
-            Gather = new GatherService(this);
-            View = new ViewService(this);
-            Comment = new CommentService(this);
-            Group = new GroupService(this);
-            UserInfo = new UserService(this);
-            Golbal = new GolbalService(this);
-            Friend = new FriendService(this);
-            Application = new ApplicationService(this);
-            Message = new MessageService(this);
-            Note = new NoteService(this);
-            Event = new EventService(this);
-            Video = new VideoService(this);
+            Account = new AccountOperator(this);
+            Gather = new GatherOperator(this);
+            View = new ViewOperator(this);
+            Comment = new CommentOperator(this);
+            Group = new GroupOperator(this);
+            UserInfo = new UserOperator(this);
+            Golbal = new GolbalOperator(this);
+            Friend = new FriendOperator(this);
+            Application = new ApplicationOperator(this);
+            Message = new MessageOperator(this);
+            Note = new NoteOperator(this);
+            Event = new EventOperator(this);
+            Video = new VideoOperator(this);
         }
 
 
