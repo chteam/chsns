@@ -26,7 +26,7 @@ namespace CHSNS.Operator
         {
             var ids = DBExt.Friend.GetFriendsID(userid);
           //  throw new System.Exception(ids.Count.ToString());
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from e in db.Event
                            where ids.Contains(e.OwnerID)
@@ -43,7 +43,7 @@ namespace CHSNS.Operator
         /// <param name="ownerid">The ownerid.</param>
         public void Delete(long id, long ownerid)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var e = db.Event.FirstOrDefault(c => c.ID == id && c.OwnerID == ownerid);
                 if (e == null) return;
@@ -53,7 +53,7 @@ namespace CHSNS.Operator
         }
         public void Add(Event e)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 db.Event.InsertOnSubmit(e);
                 db.SubmitChanges();
@@ -78,7 +78,7 @@ namespace CHSNS.Operator
 
         public PagedList<Event> GetEvent(long userid, int p, int ep)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from e in db.Event
                            where e.OwnerID == userid

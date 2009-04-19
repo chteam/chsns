@@ -7,7 +7,7 @@ namespace CHSNS.Operator {
         #region ICURDOperator<SuperNote> 成员
 
         public void Create(Models.SuperNote content) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 content.AddTime = DateTime.Now;
                 var m = new Media(content.Url);
@@ -25,7 +25,7 @@ namespace CHSNS.Operator {
         }
 
         public void Remove(params long[] uid) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var es = db.SuperNote
                     .Where(c =>
@@ -39,7 +39,7 @@ namespace CHSNS.Operator {
 
         public PagedList<Models.SuperNote> List(long? uid,int p,int ep) {
             //类型,时间排序,用户
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 return db.SuperNote.Where(c => c.Type == (byte)SuperNoteType.Video
                                                      && c.UserID == (uid ?? CHUser.UserID)).OrderByDescending(

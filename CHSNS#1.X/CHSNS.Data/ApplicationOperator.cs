@@ -25,7 +25,7 @@ namespace CHSNS.Operator
 				if (HttpContext.Application[APPLISTALL] == null)
 				{
 					HttpContext.Application.Lock();
-                    using (var db = DBExt.Instance)
+                    using (var db = DBExtInstance)
                     {
                         HttpContext.Application[APPLISTALL] = db.Application.ToList();
                     }

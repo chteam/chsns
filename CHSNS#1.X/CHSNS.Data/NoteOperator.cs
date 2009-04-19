@@ -12,7 +12,7 @@ namespace CHSNS.Operator {
 		/// </summary>
         public void Add(Note note)
 		{
-		    using (var db = DBExt.Instance)
+		    using (var db = DBExtInstance)
 		    {
 		        note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
 		        db.Note.InsertOnSubmit(note);
@@ -42,7 +42,7 @@ namespace CHSNS.Operator {
 
         public void Edit(Note note)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var n = db.Note.FirstOrDefault(c => c.UserID == note.UserID && c.ID == note.ID);
                 n.Title = HttpContext.Server.HtmlEncode(note.Title);
@@ -69,7 +69,7 @@ namespace CHSNS.Operator {
 		/// Delete the not e by id
 		/// </summary>
 		public void Delete(long id, long pid, NoteType nt) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var n = db.Note.FirstOrDefault(c => c.ID == id && c.UserID == pid);
                 if(null!=n)
@@ -91,7 +91,7 @@ namespace CHSNS.Operator {
 		}
 
 		public NoteDetailsPas Details(long id, NoteType? nt) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from n in db.Note
                            join p in db.Profile on n.UserID equals p.UserID
@@ -112,7 +112,7 @@ namespace CHSNS.Operator {
 		}
 
 		public List<NotePas> GetLastNotes(int? ni) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 return (from n in db.Note
                         join p in db.Profile on n.UserID equals p.UserID
@@ -133,7 +133,7 @@ namespace CHSNS.Operator {
 
         public PagedList<NotePas> GetNotes(long pid, NoteType? nt, int p, int ep)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 return (from n in db.Note
                         join pr in db.Profile on n.UserID equals pr.UserID
