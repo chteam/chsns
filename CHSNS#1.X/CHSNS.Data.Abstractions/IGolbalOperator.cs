@@ -5,7 +5,7 @@ namespace CHSNS.Operator
 {
 	public interface IGolbalOperator
 	{
-		List<Province> Provinces { get; }
-		List<City> GetCitys(int ProvinceID);
+	    List<Province> Provinces(IContext context);
+		List<City> GetCitys(IContext context,int ProvinceID);
 	}
 }
