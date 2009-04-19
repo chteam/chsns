@@ -1,19 +1,25 @@
 ﻿using System.Linq;
 using CHSNS.Models;
+using CHSNS.Operator;
 
 namespace CHSNS.Service
 {
     /// <summary>
     /// Calling the event
     /// </summary>
-    public class EventService : BaseService, IEventService
+    public class EventService 
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EventService"/> class.
-        /// </summary>
-        /// <param name="id">The DBExt.</param>
-        public EventService(IDBManager id) : base(id) { }
+        static readonly EventService _instance = new EventService();
+        private readonly IEventOperator Event;
+        private readonly IFriendOperator Friend;
+        public EventService() {
+            Event = new EventOperator();
+            Friend = new FriendOperator();
+        }
 
+        public static EventService GetInstance() {
+            return _instance;
+        }
 
         /// <summary>
         /// 50好友事件
@@ -24,53 +30,22 @@ namespace CHSNS.Service
         /// <returns></returns>
         public PagedList<Event> GetFriendEvent(long userid, int p, int ep)
         {
-            var ids = DBExt.Friend.GetFriendsID(userid);
-          //  throw new System.Exception(ids.Count.ToString());
-            using (var db = DBExt.Instance)
-            {
-                var ret = (from e in db.Event
-                           where ids.Contains(e.OwnerID)
-                           orderby e.ID descending
-                           select e);
-                return ret.Pager(p, ep);
-            }
+            var ids = Friend.GetFriendsID(userid);
+            return Event.GetUsersEvent(ids.ToArray(), p, ep);
         }
 
         /// <summary>
         /// Deletes the Event
         /// </summary>
         /// <param name="id">The id.</param>
-        /// <param name="ownerid">The ownerid.</param>
-        public void Delete(long id, long ownerid)
+        /// <param name="ownerId"></param>
+        public void Delete(long id, long ownerId)
         {
-            using (var db = DBExt.Instance)
-            {
-                var e = db.Event.FirstOrDefault(c => c.ID == id && c.OwnerID == ownerid);
-                if (e == null) return;
-                db.Event.DeleteOnSubmit(e);
-                db.SubmitChanges();
-            }
+            Event.Delete(id, ownerId);
         }
         public void Add(Event e)
         {
-            using (var db = DBExt.Instance)
-            {
-                db.Event.InsertOnSubmit(e);
-                db.SubmitChanges();
-            }
-            #region sql
-//           DataBaseExecutor.Execute(@"INSERT INTO [Event]
-//([TemplateName],[OwnerID],[ViewerID],[AddTime],[ShowLevel],[Json])
-//VALUES(@tname,@ownerid,@viewerid,@now,@showlevel,@json)"
-//                , "@tname", e.TemplateName
-//                , "@ownerid", e.OwnerID
-//                , "@viewerid", e.ViewerID.Get()
-//                , "@now", e.AddTime
-//                , "@showlevel", e.ShowLevel
-//                , "@json", e.Json
-//                );
-            #endregion
- 
+            Event.Add(e);
         }
 
         #region IEventService 成员
@@ -78,14 +53,7 @@ namespace CHSNS.Service
 
         public PagedList<Event> GetEvent(long userid, int p, int ep)
         {
-            using (var db = DBExt.Instance)
-            {
-                var ret = (from e in db.Event
-                           where e.OwnerID == userid
-                           orderby e.ID descending
-                           select e);
-                return ret.Pager(p, ep);
-            }
+            return Event.GetEvent(userid, p, ep);
         }
 
         #endregion
