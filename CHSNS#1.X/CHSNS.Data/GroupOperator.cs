@@ -1,9 +1,8 @@
-﻿using System.Data;
-using CHSNS.Models;
+﻿using CHSNS.Models;
 
 namespace CHSNS.Operator {
 	public class GroupOperator :BaseOperator, IGroupOperator {
-		public GroupOperator(IDBManager id) : base(id) { }
+
 		#region IGroupOperator 成员
 
 

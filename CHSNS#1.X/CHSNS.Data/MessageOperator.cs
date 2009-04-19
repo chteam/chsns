@@ -10,8 +10,7 @@ namespace CHSNS.Operator
     /// </summary>
     public class MessageOperator : BaseOperator, IMessageOperator
     {
-        public MessageOperator(IDBManager id) : base(id) { }
-        public PagedList<MessageItemPas> GetInbox(long uid, int p)
+        public PagedList<MessageItemPas> GetInbox(long uid, int page,int pageSize)
         {
             using (var db = DBExtInstance)
             {
@@ -28,11 +27,11 @@ namespace CHSNS.Operator
                                SendTime = m.SendTime,
                                IsSee = m.IsSee
                            });
-                return ret.Pager(p, Site.EveryPage.MessageBox);
+                return ret.Pager(page, pageSize);
             }
         }
 
-        public PagedList<MessageItemPas> GetOutbox(long uid, int p)
+        public PagedList<MessageItemPas> GetOutbox(long uid, int page,int pageSize)
         {
             using (var db = DBExtInstance)
             {
@@ -50,15 +49,16 @@ namespace CHSNS.Operator
                                IsSee = m.IsSee
                            }
                           );
-                return ret.Pager(p, Site.EveryPage.MessageBox);
+                return ret.Pager(page, pageSize);
             }
         }
-        public void Add(Message m)
+        public void Add(Message m,System.Web.HttpServerUtilityBase server)
         {
             using (var db = DBExtInstance)
             {
-                m.Title = HttpContext.Server.HtmlEncode(m.Title ?? "");
-                m.Body = m.IsHtml ? m.Body : HttpContext.Server.HtmlEncode(m.Body);
+
+                m.Title = server.HtmlEncode(m.Title ?? "");
+                m.Body = m.IsHtml ? m.Body : server.HtmlEncode(m.Body);
                 m.SendTime = DateTime.Now;
                 db.Message.InsertOnSubmit(m);
                 db.SubmitChanges();
