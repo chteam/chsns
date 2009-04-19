@@ -13,7 +13,7 @@ namespace CHSNS.Operator
         public MessageOperator(IDBManager id) : base(id) { }
         public PagedList<MessageItemPas> GetInbox(long uid, int p)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from m in db.Message
                            join p1 in db.Profile on m.FromID equals p1.UserID
@@ -34,7 +34,7 @@ namespace CHSNS.Operator
 
         public PagedList<MessageItemPas> GetOutbox(long uid, int p)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from m in db.Message
                            join p1 in db.Profile on m.ToID equals p1.UserID
@@ -55,7 +55,7 @@ namespace CHSNS.Operator
         }
         public void Add(Message m)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 m.Title = HttpContext.Server.HtmlEncode(m.Title ?? "");
                 m.Body = m.IsHtml ? m.Body : HttpContext.Server.HtmlEncode(m.Body);
@@ -67,7 +67,7 @@ namespace CHSNS.Operator
 
         public void Delete(long id, MessageBoxType t, long uid)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var message = db.Message.FirstOrDefault(m => m.ID == id);
                 if (null == message) return;
@@ -104,7 +104,7 @@ namespace CHSNS.Operator
         public MessageDetailsPas Details(long id, long uid)
         {
             MessageDetailsPas ret;
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret1 = (from m in db.Message
                             where m.ID == id

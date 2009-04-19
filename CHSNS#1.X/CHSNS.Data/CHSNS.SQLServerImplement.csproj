@@ -84,7 +84,6 @@
     <Compile Include="FriendOperator.cs" />
     <Compile Include="GatherOperator.cs" />
     <Compile Include="GolbalOperator.cs" />
-    <Compile Include="SQLServerDBManager.cs" />
     <Compile Include="MessageOperator.cs" />
     <Compile Include="NoteOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

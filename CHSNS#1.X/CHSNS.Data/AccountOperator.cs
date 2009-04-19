@@ -26,7 +26,7 @@ namespace CHSNS.Operator
             long userid;
             Profile profile;
             int retint = -999;
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 userid = (from a in db.Account
                           where (a.Username == Username || a.UserID == UserID)
@@ -85,7 +85,7 @@ namespace CHSNS.Operator
         	                     	Password = account.Password.ToMd5(),
 									Code = DateTime.Now.Ticks
         	                     };
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 db.Account.InsertOnSubmit(ac);
                 db.SubmitChanges();
@@ -118,7 +118,7 @@ namespace CHSNS.Operator
         {
             if (username.Trim().Length < 4)
                 return false;
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 return db.Account.Where(c => c.Username == username.Trim()).Count() == 0;
             }
@@ -127,7 +127,7 @@ namespace CHSNS.Operator
 
         public void InitCreater()
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var p = db.Profile.FirstOrDefault();
                 if (p == null) return;

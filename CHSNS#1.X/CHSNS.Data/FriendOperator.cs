@@ -11,7 +11,7 @@
         #region 获取
         public Profile UserFriendInfo(long userid)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from p in db.Profile
                            where p.UserID == userid
@@ -31,7 +31,7 @@
         }
         public List<long> GetFriendsID(long userid)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 return (from f1 in db.Friend
                         where f1.FromID == userid && f1.IsTrue
@@ -44,7 +44,7 @@
         public PagedList<UserItemPas> GetFriends(long uid, int p)
         {
             var ids = GetFriendsID(uid);
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from c in db.Profile
                            where ids.Contains(c.UserID)
@@ -92,7 +92,7 @@
 
         public List<UserItemPas> GetRandoms(int n)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from p in db.Profile
                            where p.Status.Equals(RoleType.General)
@@ -108,7 +108,7 @@
 
         public PagedList<UserItemPas> GetRequests(long userid, int p)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from f1 in db.Friend
                            join p1 in db.Profile on f1.FromID equals p1.UserID
@@ -133,7 +133,7 @@
         /// <returns>已经是好友则返回False，如果还不是，则返回True，并发送一个好友请求</returns>
         public bool Add(long FromID, long ToID)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
@@ -170,7 +170,7 @@
         /// <returns></returns>
         public bool Delete(long FromID, long ToID)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
@@ -195,7 +195,7 @@
         public bool Agree(long OperaterID, long ToID)
         {
             string name;
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
@@ -230,7 +230,7 @@
         /// <returns></returns>
         public bool Ignore(long FromID, long operaterID)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var f = db.Friend.FirstOrDefault(c => c.ToID == operaterID && c.FromID == FromID && !c.IsTrue);
                 if (f == null) return false;
@@ -241,7 +241,7 @@
         }
         public bool IgnoreAll(long UserID)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var f = db.Friend.Where(c => c.ToID == UserID && !c.IsTrue);
                 db.Friend.DeleteAllOnSubmit(f);

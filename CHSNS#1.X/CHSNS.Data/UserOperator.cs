@@ -7,7 +7,7 @@ namespace CHSNS.Operator {
 	public class UserOperator : BaseOperator, IUserOperator {
 		public UserOperator(IDBManager id) : base(id) { }
 		public UserPas UserInformation(long userid) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = (from p in db.Profile
                            join b in db.BasicInformation on p.UserID equals b.UserID
@@ -19,7 +19,7 @@ namespace CHSNS.Operator {
 		}
 
 		public int Relation(long OwnerID, long ViewerID) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 if (OwnerID == ViewerID) return 200;
                 var x =
@@ -33,7 +33,7 @@ namespace CHSNS.Operator {
 
 		#region BasicInfo
 		public BasicInformation GetBaseInfo(long UserID) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 return db.BasicInformation.Where(c => c.UserID == UserID).FirstOrDefault();
             }
@@ -41,7 +41,7 @@ namespace CHSNS.Operator {
         public void SaveBaseInfo(BasicInformation b)
         {
             if (b.UserID == 0) b.UserID = CHUser.UserID;
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var bi = db.BasicInformation.FirstOrDefault(c => c.UserID == b.UserID);
                 if (null == bi) return;
@@ -80,7 +80,7 @@ namespace CHSNS.Operator {
 
 		#region Magicbox
 		public string GetMagicBox(long UserID) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var magicbox = (from p in db.Profile
                                 where p.UserID == UserID
@@ -89,7 +89,7 @@ namespace CHSNS.Operator {
             }
 		}
 		public void SaveMagicBox(string magicbox, long uid) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var p = db.Profile.FirstOrDefault(c => c.UserID == uid);
                 if (null == p) return;
@@ -123,7 +123,7 @@ namespace CHSNS.Operator {
 
 		public T GetUser<T>(long userid,System.Linq.Expressions.Expression<Func<Profile, T>> x) {
 
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var ret = db.Profile
                     .Where(c => c.UserID == userid)
@@ -134,7 +134,7 @@ namespace CHSNS.Operator {
 		#region profile
         public void SaveText(long uid, string text)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var p = db.Profile.FirstOrDefault(c => c.UserID == uid);
                 if (null == p) return;
@@ -163,7 +163,7 @@ namespace CHSNS.Operator {
 
 
 		public string GetUserName(long uid) {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var p = db.Profile.Where(c => c.UserID == uid).FirstOrDefault();
                 return p == null ? "undefault" : p.Name;

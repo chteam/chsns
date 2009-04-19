@@ -33,14 +33,14 @@ namespace CHSNS.Operator
         }
         public PagedList<CommentPas> GetReply(long uid, int p, int ep)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 return GetReplyPrivate(db, uid).Pager(p, ep);
             }
         }
 		public Reply AddReply(Reply r)
 		{
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 db.Reply.InsertOnSubmit(new Reply
                                             {
@@ -67,7 +67,7 @@ namespace CHSNS.Operator
 
 		public void DeleteReply(long id, long userid)
 		{
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 db.Reply.DeleteOnSubmit(db.Reply.FirstOrDefault(c => c.ID == id && c.UserID == userid));
                 db.SubmitChanges();
@@ -90,7 +90,7 @@ namespace CHSNS.Operator
 		/// <returns></returns>
         public PagedList<CommentPas> CommentList(long ShowerID, CommentType type,int p)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var t = (int)type;
                 IQueryable<CommentPas> ret = (from c in db.Comment
@@ -122,7 +122,7 @@ namespace CHSNS.Operator
 		/// <returns></returns>
         public bool Delete(long id, CommentType type)
 		{
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var com = db.Comment.FirstOrDefault(c => c.ID == id);
                 if (null == com) return false;
@@ -156,7 +156,7 @@ namespace CHSNS.Operator
 
 	    public void Add(Comment cmt, CommentType type)
 		{
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 db.Comment.InsertOnSubmit(new Comment
                                               {

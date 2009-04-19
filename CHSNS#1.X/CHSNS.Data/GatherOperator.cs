@@ -12,7 +12,7 @@ namespace CHSNS.Operator {
 		/// <returns></returns>
 		public EventPagePas EventGather(long userid) {
             EventPagePas ep = null;
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var r = (from p in db.Profile
                          where p.UserID == userid

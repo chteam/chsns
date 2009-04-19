@@ -10,7 +10,7 @@ namespace CHSNS.Operator
         public ViewOperator(IDBManager id) : base(id) { }
         public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count)
         {
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 IQueryable<UserItemPas> lu;
                 switch (type)
@@ -111,7 +111,7 @@ namespace CHSNS.Operator
         public void Update(byte type, long ownerid)
         {
             if (ownerid == CHUser.UserID) return;
-            using (var db = DBExt.Instance)
+            using (var db = DBExtInstance)
             {
                 var vd = db.ViewData.FirstOrDefault(c =>
                                                     c.ViewClass == type && c.ViewerID == CHUser.UserID &&
