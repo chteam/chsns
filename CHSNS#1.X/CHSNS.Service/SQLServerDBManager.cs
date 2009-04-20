@@ -1,6 +1,4 @@
 namespace CHSNS.Service {
-    using Models;
-
     using System.Configuration;
     public class DBManager {
 
@@ -13,12 +11,12 @@ namespace CHSNS.Service {
             Init();
         }
 
-        public CHSNSDBDataContext Instance {
-            get {
-                var db = new CHSNSDBDataContext(ConnectionString){DeferredLoadingEnabled = false};
-                return db;
-            }
-        }
+        //public CHSNSDBDataContext Instance {
+        //    get {
+        //        var db = new CHSNSDBDataContext(ConnectionString){DeferredLoadingEnabled = false};
+        //        return db;
+        //    }
+        //}
         #region ²Ù×÷µ¥Àý
 
         public AccountService Account {
@@ -35,8 +33,8 @@ namespace CHSNS.Service {
         public MessageService Message { get { return MessageService.GetInstance(); } }
         public NoteService Note { get { return NoteService.GetInstance(); } }
         public EventService Event { get { return EventService.GetInstance(); } }
-    //    public AlbumService Album {get { return AccountService.GetInstance(); }}
-     //   public PhotoService Photo {get { return AccountService.GetInstance(); }}
+        public AlbumService Album { get { return AlbumService.GetInstance(); } }
+        public PhotoService Photo { get { return PhotoService.GetInstance(); } }
         public VideoService Video { get { return VideoService.GetInstance(); } }
 
         #endregion
