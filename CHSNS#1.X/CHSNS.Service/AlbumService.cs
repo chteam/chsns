@@ -5,10 +5,10 @@ using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Service {
     public class AlbumService {
-           static readonly AlbumService _instance = new AlbumService();
-           private readonly IAlbumOperator Album;
+        static readonly AlbumService _instance = new AlbumService();
+        private readonly IAlbumOperator Album;
         public AlbumService() {
-               Album = new AlbumOperator();
+            Album = new AlbumOperator();
         }
 
         public static AlbumService GetInstance() {
@@ -33,7 +33,8 @@ namespace CHSNS.Service {
         public List<Photo> GetPhotos(long id, long uId, int page, int pageSize) {
             return Album.GetPhotos(id, uId, page, pageSize);
         }
-        public Album GetCountChange(long id,int num) {
+        public Album GetCountChange(long id, int num) {
             return Album.GetCountChange(id, num);
+        }
     }
 }
