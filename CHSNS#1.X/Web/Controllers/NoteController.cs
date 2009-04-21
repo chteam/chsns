@@ -13,15 +13,15 @@ namespace CHSNS.Controllers {
             if (!p.HasValue || p == 0) p = 1;
             var user = DBExt.UserInfo.GetUser(
                 userid.Value,
-                c => new UserCountPas
+                c => new ProfileImplement
                          {
-                             ID = c.UserID,
+                             UserID=c.UserID,
                              Name = c.Name,
                              //Count = c.NoteCount
                          });
             ViewData["username"] = user.Name;
-            ViewData["userid"] = user.ID;
-            ViewData["PageCount"] = user.Count;
+            ViewData["userid"] = user.UserID;
+            ViewData["PageCount"] = 0;// user.Count;
             ViewData["NowPage"] = p.Value;
             Title = user.Name + "的日志";
             var ret = NoteList(p.Value, 10, userid.Value);
@@ -71,7 +71,7 @@ namespace CHSNS.Controllers {
 		[ValidateInput(false)]
 		[AcceptVerbs(HttpVerbs.Post)]
 		[LoginedFilter]
-		public ActionResult Edit(long? id, [Bind(Prefix="n")]INote n) {
+		public ActionResult Edit(long? id, [Bind(Prefix="n")]NoteImplement n) {
 			using (var ts = new TransactionScope()) {
 				if (n.Title.Length < 1 || n.Body.Length < 10) {
 					Message = ("请输入正确的日志内容");

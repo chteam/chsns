@@ -18,15 +18,15 @@ namespace CHSNS.Controllers {
         public ActionResult Reply(long? userid) {
             if (!userid.HasValue) userid = CHUser.UserID;
             var user = DBExt.UserInfo.GetUser(
-                    userid.Value,
-                    c => new UserCountPas {
-                        ID = c.UserID,
-                        Name = c.Name,
-                        //Count = c.ReplyCount
-                    });
+                userid.Value,
+                c => new ProfileImplement{
+                                             UserID = c.UserID,
+                                             Name = c.Name,
+                                             //Count = c.NoteCount
+                                         });
             ViewData["NowPage"] = 1;
-            ViewData["PageCount"] = user.Count;
-            ViewData["replylist"] = DBExt.Comment.GetReply(user.ID, 1, 10);
+            ViewData["PageCount"] = 0;// user.Count;
+            ViewData["replylist"] = DBExt.Comment.GetReply(user.UserID, 1, 10);
             Title = user.Name + "µƒ¡Ù—‘±æ";
             return View(user);
         }
