@@ -1,6 +1,6 @@
 ﻿using CHSNS.Config;
 using CHSNS.Model;
-using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service {
@@ -20,7 +20,7 @@ namespace CHSNS.Service {
         public PagedList<CommentPas> GetReply(long uid, int p, int ep) {
             return Comment.GetReply(uid, p, ep);
         }
-        public Reply AddReply(Reply r) {
+        public IReply AddReply(IReply r) {
             return Comment.AddReply(r);
         }
 
@@ -58,7 +58,7 @@ namespace CHSNS.Service {
         }
 
 
-        public void Add(Comment cmt, CommentType type) {
+        public void Add(IComment cmt, CommentType type) {
             Comment.Add(cmt, type);
         }
 

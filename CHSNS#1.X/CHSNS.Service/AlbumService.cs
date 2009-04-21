@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement;
 
@@ -15,25 +15,25 @@ namespace CHSNS.Service {
             return _instance;
         }
 
-        public List<Album> Items(long uId) {
+        public List<IAlbum> Items(long uId) {
             return Album.Items(uId);
         }
 
-        public Album Get(long id) {
+        public IAlbum Get(long id) {
             return Album.Get(id);
         }
 
-        public void Add(Album album, long uId) {
+        public void Add(IAlbum album, long uId) {
             Album.Add(album, uId);
         }
 
-        public void Update(Album album) {
+        public void Update(IAlbum album) {
             Album.Update(album);
         }
-        public List<Photo> GetPhotos(long id, long uId, int page, int pageSize) {
+        public List<IPhoto> GetPhotos(long id, long uId, int page, int pageSize) {
             return Album.GetPhotos(id, uId, page, pageSize);
         }
-        public Album GetCountChange(long id, int num) {
+        public IAlbum GetCountChange(long id, int num) {
             return Album.GetCountChange(id, num);
         }
     }

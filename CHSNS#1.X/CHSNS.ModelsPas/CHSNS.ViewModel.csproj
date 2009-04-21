@@ -66,9 +66,9 @@
       <Project>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</Project>
       <Name>CHSNS.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.Models\CHSNS.Models.csproj">
+    <ProjectReference Include="..\CHSNS.Models\CHSNS.Model.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
-      <Name>CHSNS.Models</Name>
+      <Name>CHSNS.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

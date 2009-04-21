@@ -2,37 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.SQLServerImplement {
     public class AlbumOperator:BaseOperator,IAlbumOperator {
         #region IAlbumOperator 成员
 
-        public List<Album> Items(long uId) {
+        public List<IAlbum> Items(long uId) {
             using (var db = DBExtInstance) {
                 return (from a in db.Album
                         where a.UserID.Equals(uId)
-                        select a).ToList();
+                        select a).Cast<IAlbum>().ToList();
             }
         }
 
-        public Album Get(long id){
+        public IAlbum Get(long id) {
             using (var db = DBExtInstance){
                 return db.Album.FirstOrDefault(c => c.ID.Equals(id));
             }
         }
 
-        public void Add(Album album, long uId){
+        public void Add(IAlbum album, long uId) {
             using (var db = DBExtInstance){
                 album.Count = 0;
                 album.UserID = uId;
                 album.AddTime = DateTime.Now;
-                db.Album.InsertOnSubmit(album);
+                db.Album.InsertOnSubmit(album as Album);
                 db.SubmitChanges();
             }
         }
 
-        public void Update(Album album){
+        public void Update(IAlbum album) {
             using (var db = DBExtInstance){
                 var al = db.Album.FirstOrDefault(c => c.ID == album.ID);
                 al.Location = album.Location;
@@ -43,15 +44,15 @@ namespace CHSNS.SQLServerImplement {
             }
         }
 
-        public List<Photo> GetPhotos(long id, long uId,int page, int pageSize) {
+        public List<IPhoto> GetPhotos(long id, long uId,int page, int pageSize) {
             using (var db = DBExtInstance){
                 return  (from ph in db.Photo
                           where ph.AlbumID == id && ph.UserID ==uId
-                          select ph).Pager(page,pageSize);
+                         select ph).Cast<IPhoto>().Pager(page, pageSize);
             }
         }
 
-        public Album GetCountChange(long id, int num){
+        public IAlbum GetCountChange(long id, int num){
             using (var db = DBExtInstance){
                 var a = db.Album.FirstOrDefault(c => c.ID.Equals(id));
                 if (num != 0){

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using CHSNS.Model;
 using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 
 namespace CHSNS.Operator {
 	public class GroupOperator :BaseOperator, IGroupOperator {
-        public Group Get(long groupId)
+        public IGroup Get(long groupId)
         {
             using (var db = DBExtInstance)
             {
@@ -14,10 +15,10 @@ namespace CHSNS.Operator {
             }
         }
 
-	    public bool Add(Group group, long uId)
+        public bool Add(IGroup group, long uId)
 	    {
             using (var db = DBExtInstance) {
-                db.Group.InsertOnSubmit(group);
+                db.Group.InsertOnSubmit(group as Group);
                 db.SubmitChanges();
                 var gu = new GroupUser {
                     GroupID = group.ID,
@@ -33,7 +34,7 @@ namespace CHSNS.Operator {
 
 
 
-	    public bool Update(Group group)
+        public bool Update(IGroup group)
 	    {
             using (var db = DBExtInstance){
                 var g = db.Group.Where(c => c.ID == group.ID).FirstOrDefault();
@@ -48,7 +49,7 @@ namespace CHSNS.Operator {
 	    }
 
 
-        public GroupUser GetGroupUser(long gId, long uId)
+        public IGroupUser GetGroupUser(long gId, long uId)
         {
             using (var db = DBExtInstance)
             {
@@ -85,7 +86,7 @@ namespace CHSNS.Operator {
             }
         }
 
-        public PagedList<Group> GetList(long uId, int page, int pageSize)
+        public PagedList<IGroup> GetList(long uId, int page, int pageSize)
         {
             using (var db = DBExtInstance)
             {
@@ -93,7 +94,7 @@ namespace CHSNS.Operator {
                                          join g in db.Group on gu.GroupID equals g.ID
                                          where gu.UserID == uId
                                          select g
-                                        );
+                                        ).Cast<IGroup>();
                 ret = ret.OrderBy(c => c.ID);
                 return ret.Pager(page, pageSize);
             }

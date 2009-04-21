@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Linq;
+using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 
 namespace CHSNS.Operator {
     public class VideoOperator : BaseOperator, ISuperNoteOperator {
       
         #region ICURDOperator<SuperNote> 成员
 
-        public void Create(Models.SuperNote content) {
+        public void Create(ISuperNote content) {
             using (var db = DBExtInstance)
             {
                 content.AddTime = DateTime.Now;
@@ -15,12 +17,14 @@ namespace CHSNS.Operator {
                 content.Faceurl = m.Pic;
                // content.UserID = CHUser.UserID;
                 content.Type = (byte) SuperNoteType.Video;
-                db.SuperNote.InsertOnSubmit(content);
+                var inval = content as SuperNote;
+                if (inval == null) return;
+                db.SuperNote.InsertOnSubmit(inval);
                 db.SubmitChanges();
             }
         }
 
-        public void Update(Models.SuperNote content) {
+        public void Update(ISuperNote content) {
             throw new NotImplementedException();
         }
 
@@ -37,13 +41,12 @@ namespace CHSNS.Operator {
             }
         }
 
-        public PagedList<Models.SuperNote> List(long uid,int p,int ep) {
+        public PagedList<ISuperNote> List(long uid, int p, int ep){
             //类型,时间排序,用户
-            using (var db = DBExtInstance)
-            {
-                return db.SuperNote.Where(c => c.Type == (byte)SuperNoteType.Video
-                                                     && c.UserID == uid).OrderByDescending(
-                    c => c.AddTime).Pager(p, ep);
+            using (var db = DBExtInstance){
+                return db.SuperNote.Where(c => c.Type == (byte) SuperNoteType.Video
+                                               && c.UserID == uid).OrderByDescending(
+                    c => c.AddTime).Cast<ISuperNote>().Pager(p, ep);
             }
         }
 

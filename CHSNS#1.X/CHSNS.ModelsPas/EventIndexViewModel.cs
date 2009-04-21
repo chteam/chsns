@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CHSNS.Model;
+﻿using CHSNS.Model;
+using CHSNS.Models.Abstractions;
 
 namespace CHSNS.ViewModel
 {
@@ -10,7 +7,7 @@ namespace CHSNS.ViewModel
     {
         public ViewListPas NewViews { get; set; }
         public ViewListPas LastViews { get; set; }
-        public PagedList<Models.Event> Events { get; set; }
+        public PagedList<IEvent> Events { get; set; }
         public EventPagePas Page { get; set; }
     }
 }
