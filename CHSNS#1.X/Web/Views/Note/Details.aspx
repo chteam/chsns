@@ -3,10 +3,10 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 <%=Html.Script("PageSet")%>
-</asp:Content>
+</asp:Content> 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<%
-		Note n = ViewData.Model.Note;
+		INote n = ViewData.Model.Note;
 		UserCountPas u = ViewData.Model.User;
 	%>
 	<div class="ch_content">
@@ -40,7 +40,7 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 	<script type="text/javascript">
 		var Reply = function(showerid) {
 			if (v_empty("#comment_body", '不能为空'))
-				$.post('<%=this.Url.Action("Add","Comment") %>',
+				$.post('<%=Url.Action("Add","Comment") %>',
 				{ 'ShowerID': showerid, 'OwnerID': '<%=ViewData.Model.Note.UserID %>',
 					'Body': $v('#comment_body'), 'type': 0
 				}, function(r) {

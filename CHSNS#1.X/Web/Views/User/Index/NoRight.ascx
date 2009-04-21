@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
-<% UserPas up = ViewData.Model;%>
+<% UserPas up = ViewData.Model; %>
 <div id="UserListMsg">
 </div>
 <div style="height: 100%">
@@ -18,7 +18,7 @@
 					<p class="image">
 					
 						<a href="/User.aspx?userid=<%=up.OwnerID %>" target="_blank">
-							<%=Html.Image(Path.GetFace(up.OwnerID,ThumbType.Middle),"") %>
+							<%=Html.Image(CHSNS.Path.GetFace(up.OwnerID,ThumbType.Middle),"") %>
 						</a>
 					</p>
 					<div class="info">

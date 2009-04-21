@@ -6,8 +6,9 @@ Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 	<%
 		if (ViewData["entry"] != null && ViewData["version"] != null) {
-			var entry = ViewData["entry"] as Entry ?? new Entry();
-			var version = ViewData["version"] as EntryVersion ?? new EntryVersion();
+			var entry = ViewData["entry"] as IEntry;
+			var version = ViewData["version"] as IEntryVersion;
+            
 			var ext = ViewData["ext"] as EntryExt ?? new EntryExt { Tags = new List<string>() };
 	%>
 	<div class="left">

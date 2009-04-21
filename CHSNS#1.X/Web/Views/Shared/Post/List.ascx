@@ -1,8 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<PagedList<NotePas>>" %>
 <div>
-<%Html.Grid<NotePas>(Model,
+<%Html.Grid(Model,
 	  new Hash(@class => "threadlist", Style => "width:100%"),
-	  c => {
+	  c => { 
 		  c.For("主题").Do(p => { %><td>
 		  <%--#if($item.get_item("ispost")==1)
 <img src="/images/note_top.gif" alt="置顶" />

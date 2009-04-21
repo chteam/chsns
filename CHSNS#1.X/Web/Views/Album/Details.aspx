@@ -6,8 +6,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<%
-		var a = ViewData["album"] as Album;
-		IEnumerable<Photo> rows = ViewData["photos"] as PagedList<Photo>;
+		var a = ViewData["album"] as IAlbum;
+        IEnumerable<IPhoto> rows = ViewData["photos"] as PagedList<IPhoto>;
 	%>
 	<%if (a != null && (rows == null || rows.Count() == 0)) {%>
 	<%if (a.UserID == CH.Context.User.UserID) { %>
@@ -28,7 +28,7 @@
 <div id="c_list">
 	<div class="photolist">
 		<ul>
-			<%foreach (Photo p in rows.ToNotNull()) { %>
+			<%foreach (IPhoto p in rows.ToNotNull()) { %>
 			<li id="photo_li<%=p.ID %>">
 <a href="javascript:showPic('<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Ext,ThumbType.Big) %>');">
 				<img src="<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Ext,ThumbType.Middle) %>" alt="<%=p.Name %> at <%=p.AddTime.ToString("yyÄêMMÔÂddÈÕ") %>"

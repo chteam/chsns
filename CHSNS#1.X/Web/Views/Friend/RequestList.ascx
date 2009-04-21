@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true"
-	Inherits="System.Web.Mvc.ViewUserControl" %>
+	Inherits="System.Web.Mvc.ViewUserControl" %> 
 <%if (ViewData.Model != null)
-	  foreach (UserItemPas p in ViewData.Model as IEnumerable<UserItemPas>) { %>
+      foreach (UserItemPas p in ViewData.Model.ToNotNull<UserItemPas>()) { %>
 <li id="Items<%=p.ID %>" class="useritem">
 	<div class="face face-middle">
 		<a href="<%=Url.UserPage(p.ID) %>" title="<%=p.Name %>" style="background-image: url(<%=Path.GetFace(p.ID,ThumbType.Middle) %>);"></a>

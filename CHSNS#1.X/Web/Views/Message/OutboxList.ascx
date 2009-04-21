@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewUserControl" %>
-<%foreach (MessageItemPas ip in ViewData.Model as IEnumerable<MessageItemPas>) {%>
+Inherits="System.Web.Mvc.ViewUserControl" %> 
+<%foreach (MessageItemPas ip in ViewData.Model.ToNotNull<MessageItemPas>()) {%>
 <li id="Items<%=ip.ID%>" class="useritem">
 	<div class="face face-middle">
 	

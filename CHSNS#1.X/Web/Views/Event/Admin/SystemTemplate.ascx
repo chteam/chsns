@@ -24,7 +24,7 @@ $('#win-panel').html('<div id=Addform>'+$h('#AddFormTemplate')+'</div>');
 				操作
 			</th>
 		</tr>
-		<%foreach (System.Web.Mvc.ListItem i in ViewData["source"] as List<System.Web.Mvc.ListItem>)
+		<%foreach (SelectListItem i in ViewData["source"] as List<SelectListItem>)
 	{%>
 		<tr class="method-row alt">
 			<td class="micon">

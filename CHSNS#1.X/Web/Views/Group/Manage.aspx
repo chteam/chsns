@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
+Inherits="System.Web.Mvc.ViewPage<IGroup>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<%Html.RenderPartial("Toc");
-      
+       
 		 %>
 	<form action="" method="post" class="ch_content formset">
 		<p>

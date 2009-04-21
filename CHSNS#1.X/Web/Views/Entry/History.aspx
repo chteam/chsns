@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" 
 AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
-</asp:Content>
+</asp:Content> 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 <%
-   var entry = ViewData["entry"] as Entry;
-  var version = ViewData["version"] as EntryVersion;
+   var entry = ViewData["entry"] as IEntry;
+  var version = ViewData["version"] as IEntryVersion;
   var ext = ViewData["ext"] as EntryExt;
   if (ext == null) ext = new EntryExt {Tags = new List<string>()};
      %>

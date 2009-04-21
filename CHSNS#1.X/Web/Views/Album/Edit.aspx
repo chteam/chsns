@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master"
- Inherits="System.Web.Mvc.ViewPage<Album>" %>
+ Inherits="System.Web.Mvc.ViewPage<IAlbum>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>

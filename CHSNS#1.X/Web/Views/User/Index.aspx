@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-Inherits="System.Web.Mvc.ViewPage<CHSNS.Model.UserPas>" %>
+Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("Reply")%>
 <%--	<%=Html.CSSLink("mypage")%>
@@ -39,7 +39,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Model.UserPas>" %>
 					<li><%
    	Html.RenderPartial("index/personal", ViewData.Model);%></li>--%>
 				</ul>
-
+ 
 				<script type="text/javascript">
 					//$("#Profile_Accordion").accordion();
 					//	new Accordian().Show('#Profile_Accordion', 3, 'accordionHeaderSelected');
@@ -98,7 +98,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Model.UserPas>" %>
 				<div id="userFace">
 					<ul>
 						<li><a href="#<%=up.OwnerID%>">
-							<%=Html.Image(Path.GetFace(up.OwnerID,ThumbType.Big), up.Profile.Name)%>
+							<%=Html.Image(CHSNS.Path.GetFace(up.OwnerID,ThumbType.Big), up.Profile.Name)%>
 						</a></li>
 					</ul>
 				</div>
@@ -152,7 +152,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Model.UserPas>" %>
 		var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); if (!n) n = ''; $('#comment_body').focus().val(n); };
 		var Reply = function(ownerid) {
 			if (v_empty("#comment_body", '不能为空'))
-				$.post('<%=this.Url.Action("AddReply","Comment") %>',
+				$.post('<%=Url.Action("AddReply","Comment") %>',
 		{ 'UserID': '<%=ViewData.Model.OwnerID %>', 'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
 		function(r) {
 			$('#ReplyItems').prepend(r);

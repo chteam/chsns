@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
+Inherits="System.Web.Mvc.ViewPage<IGroup>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("group") %>
@@ -9,7 +9,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<%
 		var g = ViewData.Model;
-		var guser = ViewData["guser"] as GroupUser;
+		var guser = ViewData["guser"] as IGroupUser;
 		if (g == null || guser == null) { %>
 	<div class="notes">
 		您所访问的群不存在</div>
