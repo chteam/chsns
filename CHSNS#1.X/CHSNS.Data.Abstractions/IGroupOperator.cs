@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using CHSNS.Models;
 using CHSNS.Model;
+using CHSNS.Models.Abstractions;
+
 namespace CHSNS.Operator {
 	public interface IGroupOperator {
 		//System.Data.DataRowCollection TakeIns(int count);
@@ -10,16 +11,16 @@ namespace CHSNS.Operator {
         /// </summary>
         /// <param name="groupId"></param>
         /// <returns></returns>
-		Group Get(long groupId);
+		IGroup Get(long groupId);
 
-	    bool Add(Group group, long uId);
+        bool Add(IGroup group, long uId);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="group"></param>
         /// <returns></returns>
-		bool Update(Group group);
+        bool Update(IGroup group);
 		#endregion
         /// <summary>
         /// 得到用户权限
@@ -27,7 +28,7 @@ namespace CHSNS.Operator {
         /// <param name="gId"></param>
         /// <param name="uId"></param>
         /// <returns></returns>
-	    GroupUser GetGroupUser(long gId, long uId);
+	    IGroupUser GetGroupUser(long gId, long uId);
         /// <summary>
         /// 等待加入的人数
         /// </summary>
@@ -47,7 +48,7 @@ namespace CHSNS.Operator {
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-	    PagedList<Group> GetList(long uId, int page, int pageSize);
+	    PagedList<IGroup> GetList(long uId, int page, int pageSize);
 
 	    List<UserCountPas> GetGroupUser(long groupId);
 

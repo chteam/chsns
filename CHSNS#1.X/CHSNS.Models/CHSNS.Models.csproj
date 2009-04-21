@@ -69,13 +69,19 @@
     <Compile Include="Abstractions\IAlbum.cs" />
     <Compile Include="Abstractions\IApplication.cs" />
     <Compile Include="Abstractions\IBasicInformation.cs" />
+    <Compile Include="Abstractions\IComment.cs" />
+    <Compile Include="Abstractions\IEntry.cs" />
+    <Compile Include="Abstractions\IEntryVersion.cs" />
     <Compile Include="Abstractions\IEvent.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Abstractions\IGroup.cs" />
+    <Compile Include="Abstractions\IGroupUser.cs" />
     <Compile Include="Abstractions\IMessage.cs" />
     <Compile Include="Abstractions\INote.cs" />
     <Compile Include="Abstractions\IPhoto.cs" />
     <Compile Include="Abstractions\IProfile.cs" />
+    <Compile Include="Abstractions\IReply.cs" />
     <Compile Include="Abstractions\ISuperNote.cs" />
     <Compile Include="AccountPas.cs" />
     <Compile Include="Area\City.cs" />
