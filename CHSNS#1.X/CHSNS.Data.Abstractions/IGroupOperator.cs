@@ -13,9 +13,13 @@ namespace CHSNS.Operator {
 		Group Get(long groupId);
 
 	    bool Add(Group group, long uId);
-		bool Delete(long id);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
 		bool Update(Group group);
-	    PagedList<NotePas> NoteList(long id, int p);
 		#endregion
         /// <summary>
         /// 得到用户权限
@@ -44,12 +48,10 @@ namespace CHSNS.Operator {
         /// <param name="pageSize"></param>
         /// <returns></returns>
 	    PagedList<Group> GetList(long uId, int page, int pageSize);
-		#region groupuser
-		bool Join(GroupUser guser);
-		bool Level(GroupUser guser);
-		bool ToAdmin(GroupUser guser, long operaterId);
-		bool ToCommonUser(GroupUser guser, long operaterId);
-		#endregion
+
+	    List<UserCountPas> GetGroupUser(long groupId);
+
+
 
 	}
 }

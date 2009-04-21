@@ -41,5 +41,12 @@ namespace CHSNS.Service {
             };
             return Group.Add(group, uId);
         }
+        public bool Update(long groupId, Group group) {
+            group.ID = groupId;
+            return Group.Update(group);
+        }
+        public List<UserCountPas> GetGroupUser(long groupId){
+            return Group.GetGroupUser(groupId);
+        }
     }
 }

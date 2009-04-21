@@ -31,20 +31,22 @@ namespace CHSNS.Operator {
 	        return true;
 	    }
 
-	    public bool Delete(long id)
-	    {
-	        throw new NotImplementedException();
-	    }
+
 
 	    public bool Update(Group group)
 	    {
-	        throw new NotImplementedException();
+            using (var db = DBExtInstance){
+                var g = db.Group.Where(c => c.ID == group.ID).FirstOrDefault();
+                if (g == null) return false;
+                g.Name = group.Name;
+                g.JoinLevel = group.JoinLevel;
+                g.ShowLevel = group.ShowLevel;
+                g.Summary = group.Summary ?? "";
+                db.SubmitChanges();
+            }
+            return true;
 	    }
 
-	    public PagedList<NotePas> NoteList(long id, int p)
-	    {
-	        throw new NotImplementedException();
-	    }
 
         public GroupUser GetGroupUser(long gId, long uId)
         {
@@ -97,24 +99,19 @@ namespace CHSNS.Operator {
             }
         }
 
-	    public bool Join(GroupUser guser)
-	    {
-	        throw new NotImplementedException();
-	    }
+        public List<UserCountPas> GetGroupUser(long groupId){
+            using (var db = DBExtInstance){
+                var list = (from g in db.GroupUser
+                            join u in db.Profile on g.UserID equals u.UserID
+                            where g.GroupID == groupId
+                            select new UserCountPas{
+                                                       ID = u.UserID,
+                                                       Name = u.Name,
+                                                       Count = g.Status
+                                                   });
+                return list.ToList();
+            }
+        }
 
-	    public bool Level(GroupUser guser)
-	    {
-	        throw new NotImplementedException();
-	    }
-
-	    public bool ToAdmin(GroupUser guser, long operaterId)
-	    {
-	        throw new NotImplementedException();
-	    }
-
-	    public bool ToCommonUser(GroupUser guser, long operaterId)
-	    {
-	        throw new NotImplementedException();
-	    }
 	}
 }

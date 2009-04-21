@@ -1,6 +1,4 @@
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
+using System.Collections.Generic;
 //	using CHSNS.Extension;
 	
 	using CHSNS.Model;
@@ -119,36 +117,19 @@ namespace CHSNS.Controllers {
 		}
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Manage(long id, Group group) {
+        public ActionResult Manage(long id, Group group){
             //TODO:限制访问人员
-            using (var db = DBExt.Instance) {
-                var g = db.Group.Where(c => c.ID == id).FirstOrDefault();
-                Validate404(g);
-                g.Name = group.Name;
-                g.JoinLevel = group.JoinLevel;
-                g.ShowLevel = group.ShowLevel;
-                g.Summary = group.Summary ?? "";
-                db.SubmitChanges();
-                return RedirectToAction("Manage", new { id });
-            }
-
+            DBExt.Group.Update(id, group);
+            return RedirectToAction("Manage", new{id});
         }
-		#endregion
+
+	    #endregion
 
 		#region 用户管理
 		public ActionResult ManageUser(long id) {
 			Title = "用户管理";
-            using (var db = DBExt.Instance) {
-                var list = (from g in db.GroupUser
-                            join u in db.Profile on g.UserID equals u.UserID
-                            where g.GroupID == id
-                            select new UserCountPas {
-                                ID = u.UserID,
-                                Name = u.Name,
-                                Count = g.Status
-                            });
-                ViewData["list"] = list.ToList();
-            }
+		    ViewData["list"] = DBExt.Group.GetGroupUser(id);
+            
 			return View();
 		}
 		#endregion
