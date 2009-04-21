@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Transactions;
 using System.Web.Mvc;
-using CHSNS.Models;
 using CHSNS.Model;
+using CHSNS.Models.Abstractions;
+
 namespace CHSNS.Controllers {
 
     public class CommentController : BaseController {
@@ -43,7 +44,7 @@ namespace CHSNS.Controllers {
         [LoginedFilter]
         public ActionResult AddReply(long ReplyerID, string Body, long UserID) {
             using (var ts = new TransactionScope()) {
-                var r = new Reply { Body = Body, UserID = UserID };
+                IReply r = new ReplyImplement { Body = Body, UserID = UserID };
 
                 //UpdateModel(r, new[] { "Body", "UserID" });
                 var OwnerID = r.UserID;
@@ -105,7 +106,7 @@ namespace CHSNS.Controllers {
         }
         [LoginedFilter]
         public ActionResult Add(long ShowerID, long OwnerID, string Body, CommentType type) {
-            var cmt = new Comment {
+            var cmt = new CommentImplement {
                 ShowerID = ShowerID,
                 OwnerID = OwnerID,
                 SenderID = CHUser.UserID,

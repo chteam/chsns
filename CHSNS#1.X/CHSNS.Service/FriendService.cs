@@ -1,4 +1,5 @@
 ﻿using CHSNS.Config;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service {
@@ -21,7 +22,7 @@ namespace CHSNS.Service {
             return _instance;
         }
         #region 获取
-        public Profile UserFriendInfo(long userid) {
+        public IProfile UserFriendInfo(long userid) {
             return Friend.UserFriendInfo(userid);
         }
         public List<long> GetFriendsID(long userid) {
@@ -71,7 +72,7 @@ namespace CHSNS.Service {
             var b = Friend.Agree(OperaterID, ToID);
             string name = User.GetUserName(ToID);
 
-            Event.Add(new Event {
+            Event.Add(new EventImplement {
                 OwnerID = ToID,
                 ViewerID = OperaterID,
                 TemplateName = "MakeFriend",

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Routing;
+using CHSNS.Models.Abstractions;
 using CHSNS.Mvc;
 using CHSNS.Service;
 
@@ -32,10 +33,12 @@ namespace CHSNS
         }
         public static void DynamicDataInit()
         {
-            var model = new MetaModel();
-            model.RegisterContext(typeof(Models.CHSNSDBDataContext),
-                new ContextConfiguration { ScaffoldAllTables = true });
-            ModelBinders.Binders.DefaultBinder = new DynamicDataModelBinder(ModelBinders.Binders.DefaultBinder);
+           // var model = new MetaModel();
+           // //model.RegisterContext(typeof(Models.CHSNSDBDataContext),
+           ////     new ContextConfiguration { ScaffoldAllTables = true });
+           // model.RegisterContext(typeof(INote),
+           //      new ContextConfiguration { ScaffoldAllTables = true });
+           // ModelBinders.Binders.DefaultBinder = new DynamicDataModelBinder(ModelBinders.Binders.DefaultBinder);
         }
         public void Application_End(object sender, EventArgs e)
         {

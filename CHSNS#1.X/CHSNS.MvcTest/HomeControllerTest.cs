@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using CHSNS;
 using CHSNS.Controllers;
+using CHSNS.Models.Abstractions;
 using Rhino.Mocks;
 using Microsoft.Web.Testing.Light;
 using UnitView;
@@ -16,7 +17,7 @@ namespace CHSNS.MvcTest.Controllers
     public class HomeTest {
         [WebTestMethod]
         public void Index() {
-            var data = new TestViewData<Note> {
+            var data = new TestViewData<INote> {
                 ControllerName = "Home",
                 ActionName = "Index",
                 Model = null

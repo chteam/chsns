@@ -7,7 +7,7 @@
 using System;
 using System.Web.Mvc;
 using CHSNS.Model;
-using CHSNS.Models;
+
 namespace CHSNS.Controllers
 {
 
@@ -76,7 +76,7 @@ namespace CHSNS.Controllers
         void SavaProc()
         {
 
-            var m = new Message
+            var m = new MessageImplement
             {
                 FromID = CHUser.UserID,
                 SendTime = DateTime.Now
