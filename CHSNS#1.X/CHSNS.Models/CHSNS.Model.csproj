@@ -121,6 +121,7 @@
     <Compile Include="Implement\EventImplement.cs" />
     <Compile Include="Implement\GroupImplement.cs" />
     <Compile Include="Implement\MessageImplement.cs" />
+    <Compile Include="Implement\NoteImplement.cs" />
     <Compile Include="Implement\PhotoImplement.cs" />
     <Compile Include="Implement\ProfileImplement.cs" />
     <Compile Include="Implement\ReplyImplement.cs" />

@@ -47,9 +47,17 @@ namespace CHSNS.Operator
         }
         public void Add(IEvent e)
         {
+            var et = new Event{
+                                    AddTime = e.AddTime,
+                                    Json = e.Json,
+                                    OwnerID = e.OwnerID,
+                                    TemplateName = e.TemplateName,
+                                    ShowLevel = e.ShowLevel,
+                                    ViewerID = e.ViewerID,
+                                };
             using (var db = DBExtInstance)
             {
-                db.Event.InsertOnSubmit(e as Event);
+                db.Event.InsertOnSubmit(et);
                 db.SubmitChanges();
             }
             #region sql

@@ -66,8 +66,8 @@ namespace CHSNS.Service {
 			});
 		}
 
-        public T GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<IProfile, T>> x) {
-		    return User.GetUser(userid, x);
+        public IProfile GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<IProfile, T>> x) {
+		    return User.GetUser(userid,x);
 		}
 		#region profile
         public void SaveText(long uid, string text,IContext context)
