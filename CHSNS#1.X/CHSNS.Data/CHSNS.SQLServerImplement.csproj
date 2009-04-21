@@ -81,6 +81,7 @@
     <Compile Include="ApplicationOperator.cs" />
     <Compile Include="BaseOperator.cs" />
     <Compile Include="CommenOperator.cs" />
+    <Compile Include="EntryOperator.cs" />
     <Compile Include="EventOperator.cs" />
     <Compile Include="FriendOperator.cs" />
     <Compile Include="GatherOperator.cs" />

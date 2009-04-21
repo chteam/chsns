@@ -36,6 +36,7 @@ namespace CHSNS.Service {
         public AlbumService Album { get { return AlbumService.GetInstance(); } }
         public PhotoService Photo { get { return PhotoService.GetInstance(); } }
         public VideoService Video { get { return VideoService.GetInstance(); } }
+        public EntryService Entry { get { return EntryService.GetInstance(); } }
 
         #endregion
 

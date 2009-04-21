@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
 
 using CHSNS.Model;
@@ -17,31 +16,26 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         public ActionResult Index(string title)
         {
+            Title = "当前词条不存在";
             if (string.IsNullOrEmpty(title))
                 return View("wait", "site");
-            using (var db = DBExt.Instance)
+            var entry = DBExt.Entry.Get(title);
+            if (entry == null ||
+                !entry.CurrentID.HasValue) return View("wait", "site");
+
+            ViewData["entry"] = entry;
+            var version = DBExt.Entry.GetVersion(entry.CurrentID.Value);
+            Title = entry.Title;
+            if (version != null)
             {
-                var entry = db.Entry.Where(c => c.Title == title).FirstOrDefault();
-                if (entry != null)
-                {
-                    ViewData["entry"] = entry;
-                    var version = db.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
-                    Title = entry.Title;
-                    if (version != null)
-                    {
-                        ViewData["version"] = version;
-                        if (ViewData["entry"] == null || ViewData["version"] == null)
-                            return View("wait", "site");
-                        ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
-                    }
-                }
-                else
-                {
-                    Title = "当前词条不存在";
-                }
+                ViewData["version"] = version;
+                if (ViewData["entry"] == null || ViewData["version"] == null)
+                    return View("wait", "site");
+                ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
             }
             return View();
         }
+
         /// <summary>
         /// 历史词条
         /// </summary>
@@ -50,67 +44,54 @@ namespace CHSNS.Controllers
         {
         	// var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
 
-            using (var db = DBExt.Instance) {
-                var ret = (db.EntryVersion.Join(db.Entry, v => v.EntryID, e => e.ID, (v, e) => new { v, e }).Join(
-              db.Profile, @t => @t.v.UserID, p => p.UserID, (@t, p) => new { @t, p }).Where(@t => @t.@t.e.ID == id)
-              .OrderByDescending(@t => @t.@t.v.ID).Select(@t => new EntryPas {
-                  ID = @t.@t.v.ID,
-                  AddTime = @t.@t.v.AddTime,
 
-                  Reason = @t.@t.v.Reason,
-                  Title = @t.@t.e.Title,
-                  EditCount = @t.@t.e.EditCount,
-                  User =
-                      new NameIDPas { Name = @t.p.Name, ID = @t.p.UserID },
-              }));
-
-                ViewData["Source"] = ret;
-            }
+            ViewData["Source"] = DBExt.Entry.Historys(id);
         	Title = "版本比较";
         	return View();
         }
 
-        public ActionResult History(long id) {
-            using (var db = DBExt.Instance) {
-                var version = db.EntryVersion.Where(c => c.ID == id).FirstOrDefault();
-                ViewData["version"] = version;
+        public ActionResult History(long id)
+        {
 
-                var entry = db.Entry.Where(c => c.ID == version.EntryID).FirstOrDefault();
-                ViewData["entry"] = entry;
+            var version = DBExt.Entry.GetVersion(id);
+            ViewData["version"] = version;
+            if (version == null) return View("wait", "site");
+            var entry = DBExt.Entry.Get(version.EntryID.Value);
+            ViewData["entry"] = entry;
 
-                if (ViewData["entry"] == null || ViewData["version"] == null)
-                    return View("wait", "site");
-                ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
-                Title = entry.Title;
-            }
+            if (ViewData["entry"] == null || ViewData["version"] == null)
+                return View("wait", "site");
+            ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
+            Title = entry.Title;
             return View();
 
         }
+
         /// <summary>
         /// 搜索词条
         /// </summary>
         /// <returns></returns>
-        public ActionResult List(string wd) {
-            if (!string.IsNullOrEmpty(wd))
-                wd = wd.Trim();
-            ViewData["wd"] = wd;
-            Title = "景点搜索 -" + wd;
-            using (var db = DBExt.Instance) {
-                var ret = (from e in db.Entry
-                           join v in db.EntryVersion on e.CurrentID equals v.ID
-                           where e.Status == (int)EntryType.Common && v.Status == (int)EntryVersionType.Common
-                           && (string.IsNullOrEmpty(wd) || e.Title.Contains(wd))
-                           select new EntryPas {
-                               ID = e.ID,
-                               AddTime = v.AddTime,
-                               Reason = v.Description,
-                               Title = e.Title,
-                           });
+        //public ActionResult List(string wd) {
+        //    if (!string.IsNullOrEmpty(wd))
+        //        wd = wd.Trim();
+        //    ViewData["wd"] = wd;
+        //    Title = "搜索词条 -" + wd;
+        //    using (var db = DBExt.Instance) {
+        //        var ret = (from e in db.Entry
+        //                   join v in db.EntryVersion on e.CurrentID equals v.ID
+        //                   where e.Status == (int)EntryType.Common && v.Status == (int)EntryVersionType.Common
+        //                   && (string.IsNullOrEmpty(wd) || e.Title.Contains(wd))
+        //                   select new EntryPas {
+        //                       ID = e.ID,
+        //                       AddTime = v.AddTime,
+        //                       Reason = v.Description,
+        //                       Title = e.Title,
+        //                   });
 
-                var li = new PagedList<EntryPas>(ret, 1, 10);
-                return View(li);
-            }
-        }
+        //        var li = new PagedList<EntryPas>(ret, 1, 10);
+        //        return View(li);
+        //    }
+        //}
 
         #endregion
         #region 管理员后台
@@ -127,56 +108,43 @@ namespace CHSNS.Controllers
             if (!string.IsNullOrEmpty(title))
                 if (title.Contains("%"))
                     title = Server.UrlDecode(title);
-            bool exists;
-            IQueryable<Entry> data = null;
-            using (var db = DBExt.Instance) {
-                if (!string.IsNullOrEmpty(title)) {
-                    data = db.Entry.Where(c => c.Title == title);
-                    exists = data.Count() != 0;
+     
+            Entry data = null;
+            if (!string.IsNullOrEmpty(title))
+                data = DBExt.Entry.Get(title);
+            else if (id.HasValue)
+                data = DBExt.Entry.Get(id.Value);
+
+
+            if (data != null) {
+                //修改
+                var entry = data;
+                if ((entry.Status == (int)EntryType.Common || HasManageRight())) {
+                    ViewData["exists"] = true;
+                    ViewData["entry.Title"] = entry.Title;
+                    ViewData["id"] = entry.ID;
+
+                    var entryversion = DBExt.Entry.GetVersion(entry.CurrentID ?? 0);
+                    //db.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
+                    if (entryversion == null) return View("Wait");
+                    ViewData["entryversion.description"] = entryversion.Description;
+                    var ee = JavaScriptConvert.DeserializeObject<EntryExt>(entryversion.Ext);
+                    ViewData["tags"] = string.Join(",", ee.Tags.ToArray());
+                    ViewData["entryversion.reference"] = entryversion.Reference;
+
+                    Title = "编辑词条:" + entry.Title;
                 }
                 else {
-                    if (id.HasValue) {
-                        data = db.Entry.Where(c => c.ID == id.Value);
-                        exists = data.Count() != 0;
-                    }
-                    else
-                        exists = false;
-
+                    return View("Wait");
                 }
             }
-            if (exists)
-            {
-//修改
-                var entry = data.FirstOrDefault();
-				if ((entry.Status == (int)EntryType.Common || HasManageRight()))
-				{
-					ViewData["exists"] = true;
-					ViewData["entry.Title"] = entry.Title;
-					ViewData["id"] = entry.ID;
-                    using (var db = DBExt.Instance)
-                    {
-                        var entryversion =
-                            db.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
-                        if (entryversion == null) return View("Wait");
-                        ViewData["entryversion.description"] = entryversion.Description;
-                        var ee = JavaScriptConvert.DeserializeObject<EntryExt>(entryversion.Ext);
-                        ViewData["tags"] = string.Join(",", ee.Tags.ToArray());
-                        ViewData["entryversion.reference"] = entryversion.Reference;
-                    }
-				  
-					Title = "编辑词条:" + entry.Title;
-
-				}
-				else {
-					return View("Wait");
-				}
-            }
             else
-            {//新建
+            {
+//新建
                 if (!string.IsNullOrEmpty(title))
                     ViewData["entry.title"] = title;
-                    ViewData["entryversion.reason"] = "创建词条";
-               Title = "创建词条";
+                ViewData["entryversion.reason"] = "创建词条";
+                Title = "创建词条";
             }
             return View();
         }
@@ -193,109 +161,32 @@ namespace CHSNS.Controllers
 		[AdminFilter]
         public ActionResult Edit(long? id,Entry entry,EntryVersion entryversion,string  tags)
         {
-            var dt = DateTime.Now;
-            using (var db = DBExt.Instance)
-            {
-                if (id.HasValue)
-                {
-                    entry = db.Entry.Where(c => c.ID == id.Value).FirstOrDefault();
-                    entry.UpdateTime = dt;
-                    entry.EditCount += 1;
-
-                }
-                else
-                {
-                    var old = db.Entry.Where(c => c.Title == entry.Title.Trim()).Count();
-                    if (old > 0) throw new Exception("标题已存在");
-                    entry.Status = (int) EntryType.Common;
-                    entry.CreaterID = CHUser.UserID;
-                    entry.UpdateTime = dt;
-                    entry.EditCount = 1;
-
-                    db.AddToEntry(entry);
-                    db.SaveChanges();
-                }
-                entryversion.UserID = CHUser.UserID;
-                entryversion.Status = (int) (CHUser.IsAdmin ? EntryType.Common : EntryType.Wait);
-                entryversion.EntryID = entry.ID;
-                entryversion.AddTime = dt;
-                entryversion.Reference += "";
-                entryversion.Ext = JavaScriptConvert.SerializeObject(new EntryExt {Tags = tags.Split(',').ToList()});
-
-                db.AddToEntryVersion(entryversion);
-                db.SaveChanges();
-                entry.CurrentID = entryversion.ID;
-                db.SaveChanges();
-            }
+            var b = DBExt.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
+            if (!b) throw new Exception("标题已存在");
             return RedirectToAction("NewList");
         }
 		[AdminFilter]
         public ActionResult AdminHistoryList(string title) {
             title = title.Trim();
-            using (var db = DBExt.Instance)
-            {
-                var ret =
-                    (db.EntryVersion.Join(db.Entry, v => v.EntryID, e => e.ID, (v, e) => new {v, e}).Join(
-                        db.Profile, @t => @t.v.UserID, p => p.UserID, (@t, p) => new {@t, p}).Where(
-                        @t => @t.@t.e.Title == title)
-                        .OrderByDescending(@t => @t.@t.v.ID).Select(@t => new EntryPas
-                                                                              {
-                                                                                  ID = @t.@t.v.ID,
-                                                                                  AddTime = @t.@t.v.AddTime,
-                                                                                  Reason = @t.@t.v.Reason,
-                                                                                  Title = @t.@t.e.Title,
-                                                                                  EditCount = @t.@t.e.EditCount,
-                                                                                  User =
-                                                                                      new NameIDPas
-                                                                                          {
-                                                                                              Name = @t.p.Name,
-                                                                                              ID = @t.p.UserID
-                                                                                          },
-                                                                                  Status = (@t.t.v.Status)
-                                                                              }));
-
-                ViewData["Source"] = ret;
-            }
+		    ViewData["Source"] = DBExt.Entry.Historys(title);
 		    Title = "历史版本";
             return View();
         }
 
         /// <summary>
-        /// 新建景点列表
+        /// 新建词条列表
         /// </summary>
         /// <returns></returns>
         [AdminFilter]
         public ActionResult NewList()
         {
-            using (var db = DBExt.Instance)
-            {
-                var newlist = (from e in db.EntryVersion
-                               join v in db.Entry on e.EntryID equals v.ID
-                               join p in db.Profile on e.UserID equals p.UserID
-                               orderby e.ID descending
-                               select new EntryPas
-                                          {
-                                              ID = e.ID,
-                                              AddTime = e.AddTime,
-                                              EditCount = v.EditCount,
-                                              Reason = e.Reason,
-                                              Title = v.Title,
-                                              User = new NameIDPas {Name = p.Name, ID = p.UserID},
-                                              ViewCount = v.ViewCount,
-                                              Status = e.Status
-                                          });
-                IQueryable<EntryPas> li1 = newlist;
-                // li1 = li1.Where(c => c.User.ID == CHUser.UserID);
-                //AreaList.Load(AreaType.EntryArea).Where(
-                //   c => c.ID == e.AreaID).FirstOrDefault().Name
-                Title = "词条列表";
-                var li = new PagedList<EntryPas>(li1, 1, 10);
-                return View(li);
-            }
+            var li = DBExt.Entry.List(1, 10);
+            Title = "词条列表";
+            return View(li);
         }
 
         /// <summary>
-        /// 编辑景点列表
+        /// 编辑词条列表
         /// </summary>
         /// <returns></returns>
         public ActionResult EditList()
@@ -314,14 +205,7 @@ namespace CHSNS.Controllers
              * 1.设置当前版本为最新版本词条
              * 2.将当前版本状态改为常规状态
              */
-            using (var db = DBExt.Instance)
-            {
-                var ev = db.EntryVersion.Where(c => c.ID == id).FirstOrDefault();
-                ev.Status = (int) EntryVersionType.Common;
-                var e = db.Entry.Where(c => c.ID == ev.EntryID).SingleOrDefault();
-                e.CurrentID = ev.ID;
-        db.SaveChanges();
-            }
+            DBExt.Entry.PassWaitVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -335,12 +219,7 @@ namespace CHSNS.Controllers
             /*
              * 锁定当前版本
              */
-            using (var db = DBExt.Instance)
-            {
-                var ev = db.EntryVersion.Where(c => c.ID == id).FirstOrDefault();
-                ev.Status = (int) EntryVersionType.Lock;
-             db.SaveChanges();
-            }
+            DBExt.Entry.LockCommonVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -350,19 +229,7 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AdminFilter]
         public ActionResult Delete(long id) {
-            using (var db = DBExt.Instance)
-            {
-                var v = db.EntryVersion.Where(c => c.ID == id).FirstOrDefault();
-                Validate404(v);
-                var e = db.Entry.Where(c => c.ID == v.EntryID).FirstOrDefault();
-                Validate404(e);
-                var vs = db.EntryVersion.Where(c => c.EntryID == e.ID);
-                if (e.CreaterID != CHUser.UserID) Validate404(null);
-
-                db.EntryVersion.DeleteAllOnSubmit(vs);
-                db.Entry.DeleteOnSubmit(e);
-                db.SaveChanges();
-            }
+            DBExt.Entry.DeleteByVersionId(id, CHUser.UserID);
             return this.RedirectToReferrer();
         }
 
@@ -370,11 +237,8 @@ namespace CHSNS.Controllers
          
         #region Ajax
         public ActionResult Has(string title) {
-            using (var db = DBExt.Instance)
-            {
-                var exists = db.Entry.Where(c => c.Title == title).Count() != 0;
-           
-            return Json(exists); }
+            var exists = DBExt.Entry.HasTitle(title);
+            return Json(exists); 
         }
 
         #endregion

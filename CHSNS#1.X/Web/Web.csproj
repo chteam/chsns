@@ -323,7 +323,6 @@
     <Content Include="Views\Entry\History.aspx" />
     <Content Include="Views\Entry\HistoryList.aspx" />
     <Content Include="Views\Entry\Index.aspx" />
-    <Content Include="Views\Entry\List.aspx" />
     <Content Include="Views\Entry\ManageToc.ascx" />
     <Content Include="Views\Entry\NewList.aspx" />
     <Content Include="Views\Entry\Wait.aspx" />

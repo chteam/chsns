@@ -79,6 +79,7 @@
     <Compile Include="ICommentOperator.cs" />
     <Compile Include="ICURDOperator.cs" />
     <Compile Include="IDBManager.cs" />
+    <Compile Include="IEntryOperator.cs" />
     <Compile Include="IEventOperator.cs" />
     <Compile Include="IFriendOperator.cs" />
     <Compile Include="IGatherOperator.cs" />
