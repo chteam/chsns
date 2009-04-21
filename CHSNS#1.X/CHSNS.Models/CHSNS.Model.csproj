@@ -117,7 +117,13 @@
     <Compile Include="Enum\ThumbType.cs" />
     <Compile Include="Enum\VisitType.cs" />
     <Compile Include="Event\EventPagePas.cs" />
+    <Compile Include="Implement\CommentImplement.cs" />
+    <Compile Include="Implement\EventImplement.cs" />
     <Compile Include="Implement\GroupImplement.cs" />
+    <Compile Include="Implement\MessageImplement.cs" />
+    <Compile Include="Implement\PhotoImplement.cs" />
+    <Compile Include="Implement\ProfileImplement.cs" />
+    <Compile Include="Implement\ReplyImplement.cs" />
     <Compile Include="MessageDetailsPas.cs" />
     <Compile Include="MessageItemPas.cs" />
     <Compile Include="NameIDPas.cs" />

@@ -1,6 +1,6 @@
 ﻿using CHSNS.Config;
 using CHSNS.Model;
-using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service
@@ -32,7 +32,7 @@ namespace CHSNS.Service
             return Message.GetOutbox(uid, p, site.EveryPage.MessageBox);
             
         }
-        public void Add(Message m,IContext context)
+        public void Add(IMessage m,IContext context)
         {
             Message.Add(m, context.HttpContext.Server);
         }

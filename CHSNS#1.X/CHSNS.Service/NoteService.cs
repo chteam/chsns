@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Linq;
-using CHSNS.Models;
 using CHSNS.Model;
 using System.Collections.Generic;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service {
@@ -21,13 +20,13 @@ namespace CHSNS.Service {
 		/// <summary>
 		/// userid
 		/// </summary>
-        public void Add(Note note,IUser user)
+        public void Add(INote note,IUser user)
 		{
 		    Note.Add(note);
 		    switch ((NoteType) note.Type)
 		    {
 		        case NoteType.Note:
-		            Event.Add(new Event
+                    Event.Add(new EventImplement
 		                                {
 		                                    OwnerID = note.UserID,
 		                                    TemplateName = "AddNote",
@@ -46,7 +45,7 @@ namespace CHSNS.Service {
 		    }
 		}
 
-        public void Edit(Note note)
+        public void Edit(INote note)
         {
             Note.Edit(note);
         }

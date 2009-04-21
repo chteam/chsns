@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using CHSNS.Model;
-using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement;
 
@@ -38,19 +38,19 @@ namespace CHSNS.Service {
         public List<EntryPas> Historys(long entryId) {
             return Entry.Historys(entryId);
         }
-        public bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags, IUser user)
+        public bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags, IUser user)
         {
             return Entry.AddVersion(id, entry, entryVersion, tags, user);
         }
-        public EntryVersion GetVersion(long versionId)
+        public IEntryVersion GetVersion(long versionId)
         {
             return Entry.GetVersion(versionId);
         }
-        public Entry Get(long entryId) {
+        public IEntry Get(long entryId) {
            return  Entry.Get(entryId);
         }
 
-        public Entry Get(string title) {
+        public IEntry Get(string title) {
             return Entry.Get(title);
         }
     }

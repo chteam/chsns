@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 
 using CHSNS.Model;
-using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using Newtonsoft.Json;
 
 namespace CHSNS.Controllers
@@ -109,7 +109,7 @@ namespace CHSNS.Controllers
                 if (title.Contains("%"))
                     title = Server.UrlDecode(title);
      
-            Entry data = null;
+            IEntry data = null;
             if (!string.IsNullOrEmpty(title))
                 data = DBExt.Entry.Get(title);
             else if (id.HasValue)
@@ -159,7 +159,7 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AcceptVerbs(HttpVerbs.Post)]
 		[AdminFilter]
-        public ActionResult Edit(long? id,Entry entry,EntryVersion entryversion,string  tags)
+        public ActionResult Edit(long? id,IEntry entry,IEntryVersion entryversion,string  tags)
         {
             var b = DBExt.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
             if (!b) throw new Exception("标题已存在");

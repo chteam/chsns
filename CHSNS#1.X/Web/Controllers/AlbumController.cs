@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using CHSNS.Config;
+using CHSNS.Model;
 using CHSNS.Models;
 using System.Web;
+using CHSNS.Models.Abstractions;
+
 namespace CHSNS.Controllers
 {
     [LoginedFilter]
@@ -40,7 +43,7 @@ namespace CHSNS.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(long? id, Album a){
+        public ActionResult Edit(long? id, IAlbum a){
             if (id.HasValue){
                 DBExt.Album.Update(a);
                 return RedirectToAction("Index");
@@ -74,7 +77,7 @@ namespace CHSNS.Controllers
         public ActionResult UploadPhoto(string Name, long id, HttpPostedFileBase file){
             var al = DBExt.Album.GetCountChange(id,1);
             Validate404(al);
-            var p = new Photo{Name = Name, AlbumID = id, AddTime = DateTime.Now, UserID = CHUser.UserID};
+            var p = new PhotoImplement { Name = Name, AlbumID = id, AddTime = DateTime.Now, UserID = CHUser.UserID };
             var f = new ImageUpload(file,
                                     CHContext,
                                     ConfigSerializer.Load<List<string>>("AllowImageExt")

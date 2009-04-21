@@ -1,8 +1,8 @@
 using System.Web.Mvc;
-
-using CHSNS.Models;
 using System.Transactions;
 using CHSNS.Model;
+using CHSNS.Models.Abstractions;
+
 namespace CHSNS.Controllers {
 
 	public class NoteController : BaseController {
@@ -57,7 +57,7 @@ namespace CHSNS.Controllers {
 		[LoginedFilter]
 		public ActionResult Edit(long? id) {
 			using (var ts = new TransactionScope()) {
-				Note n = null;
+				INote n = null;
 				if (id.HasValue) {//编辑
 					n = DBExt.Note.Details(id.Value, NoteType.Note).Note;
 					Title = "修改日志";
@@ -71,7 +71,7 @@ namespace CHSNS.Controllers {
 		[ValidateInput(false)]
 		[AcceptVerbs(HttpVerbs.Post)]
 		[LoginedFilter]
-		public ActionResult Edit(long? id, [Bind(Prefix="n")]Note n) {
+		public ActionResult Edit(long? id, [Bind(Prefix="n")]INote n) {
 			using (var ts = new TransactionScope()) {
 				if (n.Title.Length < 1 || n.Body.Length < 10) {
 					Message = ("请输入正确的日志内容");

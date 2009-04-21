@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service
@@ -28,7 +29,7 @@ namespace CHSNS.Service
         /// <param name="p"></param>
         /// <param name="ep"></param>
         /// <returns></returns>
-        public PagedList<Event> GetFriendEvent(long userid, int p, int ep)
+        public PagedList<IEvent> GetFriendEvent(long userid, int p, int ep)
         {
             var ids = Friend.GetFriendsID(userid);
             return Event.GetUsersEvent(ids.ToArray(), p, ep);
@@ -43,7 +44,7 @@ namespace CHSNS.Service
         {
             Event.Delete(id, ownerId);
         }
-        public void Add(Event e)
+        public void Add(IEvent e)
         {
             Event.Add(e);
         }
@@ -51,7 +52,7 @@ namespace CHSNS.Service
         #region IEventService 成员
 
 
-        public PagedList<Event> GetEvent(long userid, int p, int ep)
+        public PagedList<IEvent> GetEvent(long userid, int p, int ep)
         {
             return Event.GetEvent(userid, p, ep);
         }

@@ -2,9 +2,10 @@ using System.Collections.Generic;
 //	using CHSNS.Extension;
 	
 	using CHSNS.Model;
-	using CHSNS.Models;
-	using System.Web.Mvc;
+using System.Web.Mvc;
 using System.Transactions;
+using CHSNS.Models.Abstractions;
+
 namespace CHSNS.Controllers {
 
 	[LoginedFilter]
@@ -103,7 +104,7 @@ namespace CHSNS.Controllers {
         }
 
 	    [NonAction]
-		ActionResult ManageResult(Group g) {
+		ActionResult ManageResult(IGroup g) {
 			Validate404(g);
 			Title = g.Name + "管理";
 			ViewData["group.ShowLevel"] = new SelectList(
@@ -117,7 +118,7 @@ namespace CHSNS.Controllers {
 		}
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Manage(long id, Group group){
+        public ActionResult Manage(long id, IGroup group){
             //TODO:限制访问人员
             DBExt.Group.Update(id, group);
             return RedirectToAction("Manage", new{id});
@@ -146,7 +147,7 @@ namespace CHSNS.Controllers {
         }
 
 	    [AcceptVerbs(HttpVerbs.Post)]
-		public ActionResult Post(long? id, Note post) {
+		public ActionResult Post(long? id, INote post) {
 			using (var ts = new TransactionScope()) {
 				if (post.Title.Length < 1 || post.Body.Length < 1) {
 					Message = "请输入正确的日志内容";

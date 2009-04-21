@@ -122,12 +122,12 @@ namespace CHSNS.Operator {
 			});
 		}
 
-		T GetUser<T>(long userid,System.Linq.Expressions.Expression<Func<Profile, T>> x) {
+		public T GetUser<T>(long userid,System.Linq.Expressions.Expression<Func<IProfile, T>> x) {
             using (var db = DBExtInstance)
             {
                 var ret = db.Profile
                     .Where(c => c.UserID == userid)
-                    .Select(x).FirstOrDefault();
+                    .Select(x as Func<Profile, T>).FirstOrDefault();
                 return ret;
             }
 		}

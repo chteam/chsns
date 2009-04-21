@@ -7,7 +7,7 @@ namespace CHSNS.Operator {
 		IBasicInformation GetBaseInfo(long UserID);
 		string GetMagicBox(long UserID);
 		IProfile GetUser(long userid);
-	//	T GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<IProfile, T>> x);
+		T GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<IProfile, T>> x);
 		void MagicBoxBackup();
 		int Relation(long OwnerID, long ViewerID);
 		void SaveBaseInfo(IBasicInformation bi);
