@@ -1,5 +1,5 @@
 using System.Web.Mvc;
-using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 
 namespace CHSNS.Controllers {
 
@@ -12,7 +12,7 @@ namespace CHSNS.Controllers {
         }
         [LoginedFilter]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(SuperNote v) {
+        public ActionResult Edit(ISuperNote v) {
             DBExt.Video.Create(CHUser,v);
             Message = "提交成功";
             return RedirectToAction("List");

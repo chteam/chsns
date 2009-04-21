@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CHSNS.Model;
 using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 
 namespace CHSNS.Operator
 {
@@ -13,11 +14,11 @@ namespace CHSNS.Operator
         PagedList<EntryPas> List(int page, int pageSize);
         List<EntryPas> Historys(string title);
         List<EntryPas> Historys(long entryId);
-        bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags, IUser user);
+        bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags, IUser user);
 
    
-        EntryVersion GetVersion(long versionId);
-        Entry Get(long entryId);
-        Entry Get(string title);
+        IEntryVersion GetVersion(long versionId);
+        IEntry Get(long entryId);
+        IEntry Get(string title);
     }
 }

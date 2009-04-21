@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service {
@@ -15,12 +15,12 @@ namespace CHSNS.Service {
         }
         #region ICURDService<SuperNote> 成员
 
-        public void Create(IUser user, Models.SuperNote content) {
+        public void Create(IUser user, ISuperNote content) {
             content.UserID = user.UserID;
             Video.Create(content);
         }
 
-        public void Update(Models.SuperNote content) {
+        public void Update(ISuperNote content) {
             throw new NotImplementedException();
         }
 
@@ -28,7 +28,7 @@ namespace CHSNS.Service {
             Video.Remove(user.UserID, uid);
         }
 
-        public PagedList<Models.SuperNote> List(long? uid,int p,int ep,IUser user) {
+        public PagedList<ISuperNote> List(long? uid,int p,int ep,IUser user) {
             //类型,时间排序,用户
             return Video.List(uid ?? user.UserID, p, ep);
         }
