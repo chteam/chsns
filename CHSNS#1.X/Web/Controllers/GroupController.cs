@@ -12,84 +12,76 @@ namespace CHSNS.Controllers {
 	[LoginedFilter]
 	public class GroupController : BaseController {
 		#region 主页
-		public ActionResult Index(long id, int? p) {
-			InitPage(ref p); 
-			#region 群信息和用户
-            Group g;
-            GroupUser u;
-            using (var db = DBExt.Instance) {
-                g = db.Group.Where(c => c.ID == id).FirstOrDefault();
-                Validate404(g);
-                 u = db.GroupUser.Where(gu => gu.UserID == CHUser.UserID && gu.GroupID == id).FirstOrDefault();
-                Validate404(u);
-                ViewData["guser"] = u;
-                Title = g.Name;
+        public ActionResult Index(long id, int? p)
+        {
+            InitPage(ref p);
+
+            #region 群信息和用户
+
+            var g = DBExt.Group.Get(id);
+            Validate404(g);
+            var u = DBExt.Group.GetGroupUser(id, CHUser.UserID);
+            Validate404(u);
+            ViewData["guser"] = u;
+            Title = g.Name;
+
+            #endregion
+
+            #region 权限计算
+
+            int ret = g.ShowLevel;
+            if (u != null && u.Status != (byte) GroupUserStatus.Wait)
+            {
+                ret = 0;
             }
-			#endregion
-			#region 权限计算
+            if (CHUser.IsAdmin)
+            {
+                ret = 0;
+            }
 
-		    int ret = g.ShowLevel;
-			if (u != null && u.Status != (byte)GroupUserStatus.Lock) {
-				ret = 0;
-			}
-			if (CHUser.IsAdmin) {
-				ret = 0;
-			}
-
-			var userlevel = 0;
-			if (CHUser.IsAdmin) {
-				ret = 0;
-				userlevel = 255;
-			} else {
-			    if (u != null) userlevel = u.Status;
-			}
+            var userlevel = 0;
+            if (CHUser.IsAdmin)
+            {
+                ret = 0;
+                userlevel = 255;
+            }
+            else
+            {
+                if (u != null) userlevel = u.Status;
+            }
             ViewData["right"] = userlevel;
             ViewData["showlevel"] = ret;
-			#endregion
-			#region 统计
-			ViewData["MemberList"] = DBExt.View.ViewList(6, 2, g.ID, 6);
-			ViewData["ViewList"] = DBExt.View.ViewList(1, 6, g.ID, 6);
-            using (var db = DBExt.Instance) {
-                ViewData["Applycount"] = db.GroupUser.Where(
-                    c => c.GroupID == id
-                         && c.Status.Equals(GroupUserStatus.Lock)
-                    ).Count();
-                var adminList = (from gu in db.GroupUser
-                                 join a in db.Profile on gu.UserID equals a.UserID
-                                 where gu.GroupID == id
-                                       && (gu.Status.Equals(GroupUserStatus.Ceater) ||
-                                           gu.Status.Equals(GroupUserStatus.Admin))
-                                 orderby gu.Status descending
-                                 select new UserItemPas {
-                                     Name = a.Name,
-                                     ID = a.UserID
-                                 }).ToList();
-                ViewData["adminlist"] = adminList;
-            }
-			#endregion
+
+            #endregion
+
+            #region 统计
+
+            ViewData["MemberList"] = DBExt.View.ViewList(6, 2, g.ID, 6);
+            ViewData["ViewList"] = DBExt.View.ViewList(1, 6, g.ID, 6);
+
+            ViewData["Applycount"] = DBExt.Group.WaitJoinCount(id);
+
+            var adminList = DBExt.Group.GetAdmins(id);
+            ViewData["adminlist"] = adminList;
+
+            #endregion
+
             var posts = DBExt.Note.GetNotes(id, NoteType.GroupPost, p.Value, 20);
             ViewData["posts"] = posts;
-			return View(g);
-		}
+            return View(g);
+        }
 
-		#endregion
+	    #endregion
 
-        public ActionResult List(long? uid, int? p) {
+        public ActionResult List(long? uid, int? p)
+        {
             InitPage(ref p);
             uid = uid ?? CHUser.UserID;
-            using (var db = DBExt.Instance) {
-                IQueryable<Group> ret = (from gu in db.GroupUser
-                                         join g in db.Group on gu.GroupID equals g.ID
-                                         where gu.UserID == uid.Value
-                                         select g
-                                        );
-                ret = ret.OrderBy(c => c.ID);
-                var list = new PagedList<Group>(ret, p.Value, 10);
-                Title = "群列表";
-                return View(list);
-            }
+            Title = "群列表";
+            return View(DBExt.Group.GetList(uid.Value, p.Value, 10));
         }
-		#region Create
+
+	    #region Create
 		[AcceptVerbs(HttpVerbs.Get)]
 		public ActionResult Create() {
 			Title = "新建群";
@@ -97,43 +89,22 @@ namespace CHSNS.Controllers {
 			return View();
 		}
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(string Name) {
+        public ActionResult Create(string name) {
             Message = "创建成功";
-            var group = new Group {
-                Name = Name,
-                Type = (byte)GroupType.Common,
-                AddTime = DateTime.Now,
-                Summary = "",
-            };
-            using (var db = DBExt.Instance) {
-                db.Group.InsertOnSubmit(group);
-                db.SubmitChanges();
-                var gu = new GroupUser {
-                    GroupID = group.ID,
-                    Status = (byte)GroupUserStatus.Ceater,
-                    UserID = CHUser.UserID,
-                    AddTime = DateTime.Now
-                };
-                db.GroupUser.InsertOnSubmit(gu);
-                db.SubmitChanges();
-            }
+            DBExt.Group.Add(name, CHUser.UserID);
             return this.RedirectToReferrer();
-
-
         }
 		#endregion
 
 		#region 管理
-		[AcceptVerbs(HttpVerbs.Get)]
-		public ActionResult Manage(long id) {
-			//TODO:限制访问人员
-            using (var db = DBExt.Instance) {
-                var g = db.Group.Where(c => c.ID == id).FirstOrDefault();
-                return ManageResult(g);
-            }
-			
-		}
-		[NonAction]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Manage(long id)
+        {
+            //TODO:限制访问人员
+            return ManageResult(DBExt.Group.Get(id));
+        }
+
+	    [NonAction]
 		ActionResult ManageResult(Group g) {
 			Validate404(g);
 			Title = g.Name + "管理";

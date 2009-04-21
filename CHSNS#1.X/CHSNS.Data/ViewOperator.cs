@@ -89,7 +89,7 @@ namespace CHSNS.Operator
                     default: //if (type==6)//--群用户随机
                         lu = (from u in db.GroupUser
                               join p in db.Profile on u.UserID equals p.UserID
-                              where u.GroupID == ownerid && u.Status != (int)GroupUserStatus.Lock
+                              where u.GroupID == ownerid && u.Status != (int)GroupUserStatus.Wait
                               orderby p.LoginTime descending
                               select new UserItemPas
                                          {
