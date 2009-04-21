@@ -1,37 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using CHSNS;
-using CHSNS.Models;
-namespace CHSNS.Model {
-	public class UserPas {
-		long _ownerID = 0;
+﻿using CHSNS.Models.Abstractions;
 
-		public long OwnerID {
-			get {
-				return _ownerID;
-			}
-			set { _ownerID = value; }
-		}
-		public long ViewerID { get; set; }
-		bool? _exists = null;
-		public bool Exists {
-			get {
-				if (_exists == null) {
-					if (this.OwnerID < 999) return false;
-					if (Profile == null) return false;
-					if (Profile.ShowLevel > 150) return false;
-					return true;
-				}
-				return _exists.Value;
-			}
-		}
-		public Profile Profile { get; set; }
-		public BasicInformation Basic { get; set; }
-		public int Relation { get; set; }
-		public bool IsMe { get { return OwnerID == ViewerID; } }
-		public bool IsOnline { get; set; }
-	}
+namespace CHSNS.Model {
+    public class UserPas {
+        public UserPas(bool? _exists) {
+            this._exists = _exists;
+        }
+        public UserPas() { }
+        public long OwnerID { get; set; }
+
+        public long ViewerID { get; set; }
+        bool? _exists;
+        public bool Exists {
+            get {
+                if (_exists == null) {
+                    if (OwnerID < 999) return false;
+                    if (Profile == null) return false;
+                    return Profile.ShowLevel <= 150;
+                }
+                return _exists.Value;
+            }
+        }
+        public IProfile Profile { get; set; }
+        public IBasicInformation Basic { get; set; }
+        public int Relation { get; set; }
+        public bool IsMe { get { return OwnerID == ViewerID; } }
+        public bool IsOnline { get; set; }
+    }
 }

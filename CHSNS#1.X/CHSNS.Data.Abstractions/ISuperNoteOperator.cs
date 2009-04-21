@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CHSNS.Models;
+﻿using CHSNS.Models.Abstractions;
 
 namespace CHSNS.Operator {
-    public interface ISuperNoteOperator : ICURDOperator<SuperNote> {
+    public interface ISuperNoteOperator : ICURDOperator<ISuperNote> {
     }
 }
