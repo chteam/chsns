@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewUserControl<CHSNS.Models.Event>" %>
+Inherits="System.Web.Mvc.ViewUserControl<IEvent>" %>
 <% Newtonsoft.Json.Linq.JObject e = ViewData.Model.Json.ToJObject(); %>
 
 <%=Html.UserPageLink(ViewData.Model.OwnerID,e.Value<string>("name")) %>

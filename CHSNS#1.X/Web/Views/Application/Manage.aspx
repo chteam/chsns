@@ -6,7 +6,7 @@
 <h1>
 
 </h1>
-<%
+<% 
 	Html.Grid<CHSNS.Config.ApplicationItem>(
 		"Model",
 		new Hash(),

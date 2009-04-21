@@ -1,10 +1,10 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Note>"%>
-
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<INote>"%>
+ 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 	<h2>
 		编辑</h2>
 	<%
-		Note n = ViewData.Model ?? new Note(); %>
+		INote n = ViewData.Model; %>
 	<fieldset>
 		<legend>发布新日志</legend>
 		<form action="" method="post" onsubmit="sub(this);return false;" class="formset">

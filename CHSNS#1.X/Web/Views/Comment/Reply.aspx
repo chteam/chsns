@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage<CHSNS.Model.UserCountPas>" %>
+Inherits="System.Web.Mvc.ViewPage<UserCountPas>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.Script("PageSet") %>
@@ -35,7 +35,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Model.UserCountPas>" %>
 		var ShowReply = function(n) { $('#cmt_form1').hide(); $('#cmt_form2').show(); if (!n) n = ''; $('#comment_body').focus().val(n); };
 		var Reply = function(ownerid) {
 			if (v_empty("#comment_body", '不能为空'))
-				$.post('<%=this.Url.Action("AddReply","Comment") %>',
+				$.post('<%=Url.Action("AddReply","Comment") %>',
 		{ 'UserID': '<%=ViewData.Model.ID %>',
 		'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
 		function(r) {

@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
-<%--<%
+<%--<% 
 	//实名
 	if (ViewData.Model.Profile.Status.Equals(Ro)) { 
 %>

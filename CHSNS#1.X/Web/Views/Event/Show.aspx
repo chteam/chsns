@@ -3,7 +3,7 @@
 <%
 	long UserID = Convert.ToInt64(ViewData["UserID"]);
 	//byte type = Convert.ToByte(ViewData["Type"]);
-	
+	 
 %>
 <%--#macro(showdel $id $uid )
 	#if($uid==$session.get_item("userid"))

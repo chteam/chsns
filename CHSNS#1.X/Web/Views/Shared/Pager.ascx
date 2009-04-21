@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<IPagedList>" %>
 <div class="page">
-    <%
+    <% 
         foreach (string key in Request.QueryString.Keys)
             if (Request.QueryString[key] != null && !string.IsNullOrEmpty(key))
                 this.ViewContext.RouteData.Values[key] = Request.QueryString[key];

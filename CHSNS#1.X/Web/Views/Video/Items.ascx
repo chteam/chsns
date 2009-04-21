@@ -1,5 +1,5 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
-<%foreach(var item in ViewData["list"] as PagedList<SuperNote>){ %>
+<%foreach(var item in ViewData["list"] as PagedList<ISuperNote>){ %>
 
 <li id="SuperNoteItem_<%=item.ID %>" class="vlist">
 	<div id="showNote_<%=item.ID %>" class="vmedia" style="display:none"></div>

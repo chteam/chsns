@@ -2,7 +2,7 @@
 Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 <%=Html.CSSLink("main")%>
-</asp:Content>
+</asp:Content> 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="column main_column">
 		<div class="floatl">

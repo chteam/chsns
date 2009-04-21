@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
-<%
+<% 
 	if (CH.Context.User.IsLogin) {%>
 		<h3>
 			菜单</h3>
