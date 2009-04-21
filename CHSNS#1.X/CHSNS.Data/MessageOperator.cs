@@ -2,6 +2,8 @@
 using CHSNS.Model;
 using System.Linq;
 using CHSNS.Models;
+using CHSNS.Models.Abstractions;
+
 namespace CHSNS.Operator
 {
     /// <summary>
@@ -52,7 +54,7 @@ namespace CHSNS.Operator
                 return ret.Pager(page, pageSize);
             }
         }
-        public void Add(Message m,System.Web.HttpServerUtilityBase server)
+        public void Add(IMessage m,System.Web.HttpServerUtilityBase server)
         {
             using (var db = DBExtInstance)
             {
@@ -60,7 +62,7 @@ namespace CHSNS.Operator
                 m.Title = server.HtmlEncode(m.Title ?? "");
                 m.Body = m.IsHtml ? m.Body : server.HtmlEncode(m.Body);
                 m.SendTime = DateTime.Now;
-                db.Message.InsertOnSubmit(m);
+                db.Message.InsertOnSubmit(m as Message );
                 db.SubmitChanges();
             }
         }

@@ -8,8 +8,8 @@
     <ProjectGuid>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CHSNS.Models</RootNamespace>
-    <AssemblyName>CHSNS.Models</AssemblyName>
+    <RootNamespace>CHSNS.Model</RootNamespace>
+    <AssemblyName>CHSNS.Model</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -117,6 +117,7 @@
     <Compile Include="Enum\ThumbType.cs" />
     <Compile Include="Enum\VisitType.cs" />
     <Compile Include="Event\EventPagePas.cs" />
+    <Compile Include="Implement\GroupImplement.cs" />
     <Compile Include="MessageDetailsPas.cs" />
     <Compile Include="MessageItemPas.cs" />
     <Compile Include="NameIDPas.cs" />

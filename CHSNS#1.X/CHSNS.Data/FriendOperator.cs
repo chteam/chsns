@@ -1,4 +1,6 @@
-﻿namespace CHSNS.Operator
+﻿using CHSNS.Models.Abstractions;
+
+namespace CHSNS.Operator
 {
     using System.Linq;
     using Models;
@@ -9,7 +11,7 @@
     {
 
         #region 获取
-        public Profile UserFriendInfo(long userid)
+        public IProfile UserFriendInfo(long userid)
         {
             using (var db = DBExtInstance)
             {

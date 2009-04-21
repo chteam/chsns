@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using CHSNS.Model;
 using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 
 namespace CHSNS.Operator
 {
@@ -34,7 +35,7 @@ namespace CHSNS.Operator
                 return GetReplyPrivate(db, uid).Pager(p, ep);
             }
         }
-		public Reply AddReply(Reply r)
+		public IReply AddReply(IReply r)
 		{
             using (var db = DBExtInstance)
             {
@@ -152,7 +153,7 @@ namespace CHSNS.Operator
 		    #endregion
 		}
 
-	    public void Add(Comment cmt, CommentType type)
+        public void Add(IComment cmt, CommentType type)
 		{
             using (var db = DBExtInstance)
             {

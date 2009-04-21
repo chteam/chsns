@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.SQLServerImplement {
     public class PhotoOperator:BaseOperator,IPhotoOperator  {
         #region IPhotoOperator 成员
 
-        public void Add(Photo photo){
+        public void Add(IPhoto photo){
             using (var db = DBExtInstance){
-                db.Photo.InsertOnSubmit(photo);
+                db.Photo.InsertOnSubmit(photo as Photo);
                 db.SubmitChanges();
             }
         }
 
-        public Photo Get(long id){
+        public IPhoto Get(long id) {
             using (var db = DBExtInstance) {
                 var p = db.Photo.Where(c => c.ID == id).FirstOrDefault();
                 return p;

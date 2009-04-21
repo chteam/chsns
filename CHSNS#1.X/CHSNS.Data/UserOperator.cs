@@ -2,6 +2,8 @@
 using CHSNS.Models;
 using System;
 using CHSNS.Model;
+using CHSNS.Models.Abstractions;
+
 namespace CHSNS.Operator {
 	public class UserOperator : BaseOperator, IUserOperator {
 
@@ -31,13 +33,13 @@ namespace CHSNS.Operator {
 		}
 
 		#region BasicInfo
-		public BasicInformation GetBaseInfo(long UserID) {
+		public IBasicInformation GetBaseInfo(long UserID) {
             using (var db = DBExtInstance)
             {
                 return db.BasicInformation.Where(c => c.UserID == UserID).FirstOrDefault();
             }
 		}
-        public void SaveBaseInfo(BasicInformation b)
+        public void SaveBaseInfo(IBasicInformation b)
         {
           //  if (b.UserID == 0) b.UserID = user.UserID;
             using (var db = DBExtInstance)
@@ -114,14 +116,13 @@ namespace CHSNS.Operator {
 		}
 		#endregion
 
-		public Profile GetUser(long userid) {
+		public IProfile GetUser(long userid) {
 			return GetUser(userid, c => new Profile {
 				Name = c.Name
 			});
 		}
 
-		public T GetUser<T>(long userid,System.Linq.Expressions.Expression<Func<Profile, T>> x) {
-
+		T GetUser<T>(long userid,System.Linq.Expressions.Expression<Func<Profile, T>> x) {
             using (var db = DBExtInstance)
             {
                 var ret = db.Profile

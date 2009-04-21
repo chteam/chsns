@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CHSNS.Model;
 using CHSNS.Models;
+using CHSNS.Models.Abstractions;
 using CHSNS.Operator;
 using Newtonsoft.Json;
 
@@ -129,8 +130,8 @@ namespace CHSNS.SQLServerImplement {
                 return li1.ToList();
             }
         }
-
-        public bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags,IUser user)
+        
+        public bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags,IUser user)
         {
             var dt = DateTime.Now;
             using (var db = DBExtInstance) { 
@@ -146,7 +147,7 @@ namespace CHSNS.SQLServerImplement {
                     entry.CreaterID = user.UserID;
                     entry.UpdateTime = dt;
                     entry.EditCount = 1;
-                    db.AddToEntry(entry);
+                    db.AddToEntry(entry as Entry);
                     db.SaveChanges();
                 }
                 entryVersion.UserID = user.UserID;
@@ -155,7 +156,7 @@ namespace CHSNS.SQLServerImplement {
                 entryVersion.AddTime = dt;
                 entryVersion.Reference += "";
                 entryVersion.Ext = JavaScriptConvert.SerializeObject(new EntryExt { Tags = tags.Split(',').ToList() });
-                db.AddToEntryVersion(entryVersion);
+                db.AddToEntryVersion(entryVersion as EntryVersion);
                 db.SaveChanges();
                 entry.CurrentID = entryVersion.ID;
                 db.SaveChanges();
@@ -163,7 +164,7 @@ namespace CHSNS.SQLServerImplement {
             return true;
         }
 
-        public EntryVersion GetVersion(long versionId)
+        public IEntryVersion GetVersion(long versionId)
         {
             using (var db = DBExtInstance)
             {
@@ -172,14 +173,14 @@ namespace CHSNS.SQLServerImplement {
             }
         }
 
-        public Entry Get(long entryId)
+        public IEntry Get(long entryId)
         {
             using (var db = DBExtInstance) {
                 return db.Entry.FirstOrDefault(c => c.ID == entryId);
             }
         }
 
-        public Entry Get(string title)
+        public IEntry Get(string title)
         {
             using (var db = DBExtInstance) {
               return  db.Entry.FirstOrDefault(c => c.Title == title);  
