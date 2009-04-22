@@ -19,6 +19,7 @@ namespace CHSNS.Config
         public Publish Publish { get; set; }
         public NoteConfig Note { get; set; }
         public EveryPageConfig EveryPage { get; set; }
+        public ScoreConfig Score { get; set; }
         /// <summary>
         /// Gets the current.
         /// </summary>

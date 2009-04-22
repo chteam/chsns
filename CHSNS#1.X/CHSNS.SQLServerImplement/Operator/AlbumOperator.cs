@@ -24,10 +24,18 @@ namespace CHSNS.SQLServerImplement {
 
         public void Add(IAlbum album, long uId) {
             using (var db = DBExtInstance){
-                album.Count = 0;
-                album.UserID = uId;
-                album.AddTime = DateTime.Now;
-                db.Album.InsertOnSubmit(album as Album);
+                db.Album.InsertOnSubmit(new Album
+                                            {
+                                                AddTime = DateTime.Now,
+                                                UserID = uId,
+                                                Count = 0,
+                                                Description = album.Description,
+                                                FaceUrl = album.FaceUrl,
+                                                Location = album.Location,
+                                                Name = album.Name,
+                                                Order = album.Order,
+                                                ShowLevel = album.ShowLevel
+                                            });
                 db.SubmitChanges();
             }
         }
