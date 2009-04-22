@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
 
 namespace CHSNS {
     public interface IFileProcess {
-        HttpPostedFileBase File { get; set; }
+        //HttpPostedFileBase File { get; set; }
 
         /// <summary>
         /// 单位：M

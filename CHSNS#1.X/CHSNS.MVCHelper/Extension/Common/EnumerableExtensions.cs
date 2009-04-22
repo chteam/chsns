@@ -9,8 +9,18 @@ namespace CHSNS
 	/// <summary>
 	/// Extension methods on IEnumerable.
 	/// </summary>
-	public static class EnumerableExtensions
-	{
+	public static class EnumerableExtensions {
+        static public List<ListItem> ToListItem<T>() {
+            var li = new List<ListItem>();
+            foreach (int s in Enum.GetValues(typeof(T))) {
+                li.Add(new ListItem {
+                    Value = s.ToString(),
+                    Text = Enum.GetName(typeof(T), s)
+                }
+                );
+            }
+            return li;
+        }
 		/// <summary>
 		/// Converts an enumerable into a SelectList.
 		/// </summary>
