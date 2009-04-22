@@ -195,7 +195,7 @@ namespace CHSNS.Operator
         /// <returns></returns>
         public bool Agree(long OperaterID, long ToID)
         {
-            string name;
+            //string name;
             using (var db = DBExtInstance)
             {
                 var f = db.Friend.FirstOrDefault(
@@ -206,8 +206,8 @@ namespace CHSNS.Operator
                 if (f == null) return false;
                 f.IsTrue = true;
                 db.SubmitChanges();
-                name = db.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
             }
+            //  name = db.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
             //DBExt.Event.Add(new Event
             //                    {
             //                        OwnerID = ToID,
