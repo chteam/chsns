@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Operator
 {

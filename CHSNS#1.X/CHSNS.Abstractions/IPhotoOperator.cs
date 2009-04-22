@@ -1,9 +1,9 @@
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
-namespace CHSNS.Operator{
-	public interface IPhotoOperator{
-	    void Add(IPhoto photo);
-	   IPhoto Get(long id);
-	    void Delete(long id);
-	}
+namespace CHSNS.Operator {
+    public interface IPhotoOperator {
+        void Add(IPhoto photo);
+        IPhoto Get(long id);
+        void Delete(long id);
+    }
 }

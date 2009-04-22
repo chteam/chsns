@@ -1,7 +1,7 @@
 ﻿
 
 using System.Collections.Generic;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service {

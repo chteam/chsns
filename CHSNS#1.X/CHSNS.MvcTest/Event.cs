@@ -8,7 +8,6 @@ using CHSNS.Controllers;
 using Rhino.Mocks;
 using Microsoft.Web.Testing.Light;
 using UnitView;
-using CHSNS.Models;
 using CHSNS.ViewModel;
 namespace CHSNS.MvcTest
 {

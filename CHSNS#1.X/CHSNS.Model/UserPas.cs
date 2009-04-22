@@ -1,4 +1,4 @@
-﻿using CHSNS.Models.Abstractions;
+﻿using CHSNS.Abstractions;
 
 namespace CHSNS.Model {
     public class UserPas {

@@ -1,6 +1,6 @@
 ﻿using CHSNS.Config;
 using CHSNS.Model;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service

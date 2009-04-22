@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Routing;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 using CHSNS.Mvc;
 using CHSNS.Service;
 

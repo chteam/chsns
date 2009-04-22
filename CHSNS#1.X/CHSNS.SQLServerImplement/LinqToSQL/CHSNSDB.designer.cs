@@ -4,7 +4,7 @@ namespace CHSNS.Operator
     using System.Data.Linq.Mapping;
     using System.ComponentModel;
 	using System;
-    using CHSNS.Models.Abstractions;
+    using Abstractions;
 	
 	
 	[DatabaseAttribute(Name="CHSNS.Servicebase")]

@@ -5,11 +5,11 @@ using System.Text;
 using System.Web.Mvc;
 using CHSNS;
 using CHSNS.Controllers;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 using Rhino.Mocks;
 using Microsoft.Web.Testing.Light;
 using UnitView;
-using CHSNS.Models;
+
 namespace CHSNS.MvcTest.Controllers
 {
     [WebTestClass]

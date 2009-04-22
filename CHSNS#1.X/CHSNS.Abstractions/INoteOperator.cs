@@ -1,6 +1,6 @@
 ﻿using CHSNS.Model;
 using System.Collections.Generic;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Operator {
 	public interface INoteOperator {

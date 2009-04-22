@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using CHSNS.Config;
 using CHSNS.Model;
-using CHSNS.Models;
 using System.Web;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Controllers
 {

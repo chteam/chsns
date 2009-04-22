@@ -1,6 +1,5 @@
 ﻿using System.Linq;
-using CHSNS.Models;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.SQLServerImplement {
