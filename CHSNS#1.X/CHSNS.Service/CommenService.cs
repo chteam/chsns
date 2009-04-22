@@ -5,14 +5,14 @@ using CHSNS.Operator;
 
 namespace CHSNS.Service {
     public class CommentService {
-        static readonly CommentService _instance = new CommentService();
+        static readonly CommentService Instance = new CommentService();
         private readonly ICommentOperator Comment;
         public CommentService() {
             Comment = new CommentOperator();
         }
 
         public static CommentService GetInstance() {
-            return _instance;
+            return Instance;
         }
 
         #region reply

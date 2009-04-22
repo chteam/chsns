@@ -5,14 +5,14 @@ using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Service {
     public class AlbumService {
-        static readonly AlbumService _instance = new AlbumService();
+        static readonly AlbumService Instance = new AlbumService();
         private readonly IAlbumOperator Album;
         public AlbumService() {
             Album = new AlbumOperator();
         }
 
         public static AlbumService GetInstance() {
-            return _instance;
+            return Instance;
         }
 
         public List<IAlbum> Items(long uId) {

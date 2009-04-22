@@ -7,14 +7,14 @@ using CHSNS.Operator;
 namespace CHSNS.Service {
     public class ApplicationService {
 
-        static readonly ApplicationService _instance = new ApplicationService();
+        static readonly ApplicationService Instance = new ApplicationService();
         private readonly IApplicationOperator Application;
         public ApplicationService() {
             Application = new ApplicationOperator();
         }
 
         public static ApplicationService GetInstance() {
-            return _instance;
+            return Instance;
         }
        // private const string APPLISTALL = "APPLISTALL";
         /// <summary>
