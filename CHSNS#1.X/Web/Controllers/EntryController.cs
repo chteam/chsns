@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 
 using CHSNS.Model;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 using Newtonsoft.Json;
 
 namespace CHSNS.Controllers

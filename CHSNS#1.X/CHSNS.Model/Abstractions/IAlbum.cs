@@ -1,4 +1,4 @@
-namespace CHSNS.Models.Abstractions {
+namespace CHSNS.Abstractions {
     public interface IAlbum {
         long ID { get; set; }
 

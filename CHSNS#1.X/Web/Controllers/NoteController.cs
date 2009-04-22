@@ -1,7 +1,7 @@
 using System.Web.Mvc;
 using System.Transactions;
 using CHSNS.Model;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Controllers {
 

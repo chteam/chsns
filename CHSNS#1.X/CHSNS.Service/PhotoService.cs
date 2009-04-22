@@ -1,4 +1,4 @@
-﻿using CHSNS.Models.Abstractions;
+﻿using CHSNS.Abstractions;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement;
 

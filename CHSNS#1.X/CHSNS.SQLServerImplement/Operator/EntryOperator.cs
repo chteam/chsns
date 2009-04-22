@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CHSNS.Model;
-using CHSNS.Models;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 using CHSNS.Operator;
 using Newtonsoft.Json;
 

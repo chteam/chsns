@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Transactions;
 using System.Web.Mvc;
 using CHSNS.Model;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Controllers {
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
-using CHSNS.Models;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Operator {
     public class VideoOperator : BaseOperator, ISuperNoteOperator {

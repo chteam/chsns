@@ -1,4 +1,4 @@
-namespace CHSNS.Models.Abstractions {
+namespace CHSNS.Abstractions {
     public interface IGroup {
         long ID { get; set; }
 

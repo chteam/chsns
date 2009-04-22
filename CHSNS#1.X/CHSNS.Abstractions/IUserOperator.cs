@@ -1,5 +1,5 @@
 ﻿using System;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Operator {
 	public interface IUserOperator {

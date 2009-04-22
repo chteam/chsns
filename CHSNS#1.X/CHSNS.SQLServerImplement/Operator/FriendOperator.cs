@@ -1,9 +1,8 @@
-﻿using CHSNS.Models.Abstractions;
+﻿using CHSNS.Abstractions;
 
 namespace CHSNS.Operator
 {
     using System.Linq;
-    using Models;
     using System;
     using Model;
     using System.Collections.Generic;

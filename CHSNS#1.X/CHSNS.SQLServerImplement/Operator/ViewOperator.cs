@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System;
 using CHSNS.Model;
-using CHSNS.Models;
 
 namespace CHSNS.Operator
 {

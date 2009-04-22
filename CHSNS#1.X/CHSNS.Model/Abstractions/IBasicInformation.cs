@@ -1,6 +1,6 @@
 using System;
 
-namespace CHSNS.Models.Abstractions {
+namespace CHSNS.Abstractions {
     public interface IBasicInformation {
         long UserID { get; set; }
 

@@ -1,9 +1,8 @@
 ﻿using System.Data;
 using System.Linq;
-using CHSNS.Models;
 using System;
 using CHSNS.Model;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 using CHSNS.Operator;
 
 namespace CHSNS.Service {

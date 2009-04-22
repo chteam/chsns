@@ -1,4 +1,4 @@
-namespace CHSNS.Models.Abstractions{
+namespace CHSNS.Abstractions{
     public interface IEntry{
          long ID{get;set;}
 

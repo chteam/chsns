@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using CHSNS.Model;
-using CHSNS.Models.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Operator {
 	public interface IGroupOperator {
