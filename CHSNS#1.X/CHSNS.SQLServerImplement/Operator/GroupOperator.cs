@@ -17,7 +17,7 @@ namespace CHSNS.Operator {
         public bool Add(IGroup group, long uId)
 	    {
             using (var db = DBExtInstance) {
-                db.Group.InsertOnSubmit(group as Group);
+                db.Group.InsertOnSubmit(CastTool.Cast<Group>( group));
                 db.SubmitChanges();
                 var gu = new GroupUser {
                     GroupID = group.ID,

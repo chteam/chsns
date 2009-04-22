@@ -1,4 +1,5 @@
-﻿using CHSNS.Config;
+﻿using System;
+using CHSNS.Config;
 using CHSNS.Model;
 using CHSNS.Abstractions;
 using CHSNS.Operator;
@@ -21,6 +22,7 @@ namespace CHSNS.Service {
             return Comment.GetReply(uid, p, ep);
         }
         public IReply AddReply(IReply r) {
+            r.AddTime = DateTime.Now;
             return Comment.AddReply(r);
         }
 
@@ -59,6 +61,7 @@ namespace CHSNS.Service {
 
 
         public void Add(IComment cmt, CommentType type) {
+            cmt.AddTime = DateTime.Now;
             Comment.Add(cmt, type);
         }
 

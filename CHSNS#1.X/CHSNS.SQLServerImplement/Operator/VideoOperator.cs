@@ -10,13 +10,7 @@ namespace CHSNS.Operator {
         public void Create(ISuperNote content) {
             using (var db = DBExtInstance)
             {
-                content.AddTime = DateTime.Now;
-                var m = new Media(content.Url);
-                content.Title = content.Title ?? m.Title;
-                content.Faceurl = m.Pic;
-               // content.UserID = CHUser.UserID;
-                content.Type = (byte) SuperNoteType.Video;
-                var inval = content as SuperNote;
+                var inval = CastTool.Cast<SuperNote>(content);
                 if (inval == null) return;
                 db.SuperNote.InsertOnSubmit(inval);
                 db.SubmitChanges();

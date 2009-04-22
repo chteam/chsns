@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CHSNS.Abstractions;
 using CHSNS.Operator;
@@ -24,18 +23,7 @@ namespace CHSNS.SQLServerImplement {
 
         public void Add(IAlbum album, long uId) {
             using (var db = DBExtInstance){
-                db.Album.InsertOnSubmit(new Album
-                                            {
-                                                AddTime = DateTime.Now,
-                                                UserID = uId,
-                                                Count = 0,
-                                                Description = album.Description,
-                                                FaceUrl = album.FaceUrl,
-                                                Location = album.Location,
-                                                Name = album.Name,
-                                                Order = album.Order,
-                                                ShowLevel = album.ShowLevel
-                                            });
+                db.Album.InsertOnSubmit(CastTool.Cast<Album>(album));
                 db.SubmitChanges();
             }
         }

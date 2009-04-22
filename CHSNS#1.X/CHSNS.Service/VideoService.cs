@@ -17,6 +17,11 @@ namespace CHSNS.Service {
 
         public void Create(IUser user, ISuperNote content) {
             content.UserID = user.UserID;
+            content.AddTime = DateTime.Now;
+            var m = new Media(content.Url);
+            content.Title = content.Title ?? m.Title;
+            content.Faceurl = m.Pic;
+            content.Type = (byte)SuperNoteType.Video;
             Video.Create(content);
         }
 

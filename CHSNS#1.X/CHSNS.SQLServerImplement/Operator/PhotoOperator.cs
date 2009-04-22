@@ -8,7 +8,7 @@ namespace CHSNS.SQLServerImplement {
 
         public void Add(IPhoto photo){
             using (var db = DBExtInstance){
-                db.Photo.InsertOnSubmit(photo as Photo);
+                db.Photo.InsertOnSubmit(CastTool.Cast<Photo>( photo));
                 db.SubmitChanges();
             }
         }
