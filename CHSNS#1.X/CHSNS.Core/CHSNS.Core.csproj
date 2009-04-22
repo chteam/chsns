@@ -81,6 +81,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\JsonAdapter.cs" />
     <Compile Include="Attribute\AssemblyInfo.cs" />
     <Compile Include="Extension\Pager\IPagedList.cs" />
     <Compile Include="Extension\Pager\PagedList.cs" />

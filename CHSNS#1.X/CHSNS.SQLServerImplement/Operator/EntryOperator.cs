@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using CHSNS.Model;
 using CHSNS.Abstractions;
 using CHSNS.Operator;
-using Newtonsoft.Json;
 
 namespace CHSNS.SQLServerImplement {
     public class EntryOperator : BaseOperator, IEntryOperator {
@@ -37,7 +35,17 @@ namespace CHSNS.SQLServerImplement {
             {
                 var ev = db.EntryVersion.FirstOrDefault(c => c.ID == versionId);
                 ev.Status = (int)EntryVersionType.Lock;
-                //TODO:还要将最新的未锁定版本设置为当前版本
+               
+                var lastv =
+                    db.EntryVersion.Where(
+                        c => c.EntryID == ev.EntryID && c.Status == (int) EntryVersionType.Common)
+                        .OrderByDescending(c=>c.AddTime)
+                        .FirstOrDefault();
+                if(lastv !=null)
+                {
+                    var e = db.Entry.FirstOrDefault(c => c.ID == ev.EntryID);
+                    e.CurrentID = lastv.ID;
+                }
                 db.SaveChanges();
             }
         }
@@ -130,31 +138,22 @@ namespace CHSNS.SQLServerImplement {
             }
         }
         
-        public bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags,IUser user)
+        public bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags)
         {
-            var dt = DateTime.Now;
+           
             using (var db = DBExtInstance) { 
                 if (id.HasValue) {
                     entry = db.Entry.Where(c => c.ID == id.Value).FirstOrDefault();
-                    entry.UpdateTime = dt;
+                    entry.UpdateTime = DateTime.Now;
                     entry.EditCount += 1;
                 }
                 else {
                     var old = db.Entry.Where(c => c.Title == entry.Title.Trim()).Count();
                     if (old > 0) return false;
-                    entry.Status = (int)EntryType.Common;
-                    entry.CreaterID = user.UserID;
-                    entry.UpdateTime = dt;
-                    entry.EditCount = 1;
                     db.AddToEntry(entry as Entry);
                     db.SaveChanges();
                 }
-                entryVersion.UserID = user.UserID;
-                entryVersion.Status = (int)(user.IsAdmin ? EntryType.Common : EntryType.Wait);
                 entryVersion.EntryID = entry.ID;
-                entryVersion.AddTime = dt;
-                entryVersion.Reference += "";
-                entryVersion.Ext = JavaScriptConvert.SerializeObject(new EntryExt { Tags = tags.Split(',').ToList() });
                 db.AddToEntryVersion(entryVersion as EntryVersion);
                 db.SaveChanges();
                 entry.CurrentID = entryVersion.ID;

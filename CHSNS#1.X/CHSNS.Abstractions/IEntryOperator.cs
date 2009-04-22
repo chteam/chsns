@@ -13,7 +13,7 @@ namespace CHSNS.Operator
         PagedList<EntryPas> List(int page, int pageSize);
         List<EntryPas> Historys(string title);
         List<EntryPas> Historys(long entryId);
-        bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags, IUser user);
+        bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags);
 
    
         IEntryVersion GetVersion(long versionId);

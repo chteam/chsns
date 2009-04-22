@@ -91,7 +91,7 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var t = (int)type;
-                IQueryable<CommentPas> ret = (from c in db.Comment
+                var ret = (from c in db.Comment
                                               join p1 in db.Profile on c.SenderID equals p1.UserID
                                               where c.ShowerID == showerId && c.Type == t && !c.IsDel
                                               orderby c.ID

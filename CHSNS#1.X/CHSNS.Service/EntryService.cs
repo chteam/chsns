@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CHSNS.Model;
 using CHSNS.Abstractions;
 using CHSNS.Operator;
@@ -6,14 +8,14 @@ using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Service {
     public class EntryService {
-        static readonly EntryService _instance = new EntryService();
+        static readonly EntryService Instance = new EntryService();
         private readonly IEntryOperator Entry;
         public EntryService() {
             Entry = new EntryOperator();
         }
 
         public static EntryService GetInstance() {
-            return _instance;
+            return Instance;
         }
         public bool HasTitle(string title) {
             return Entry.HasTitle(title);
@@ -38,9 +40,22 @@ namespace CHSNS.Service {
         public List<EntryPas> Historys(long entryId) {
             return Entry.Historys(entryId);
         }
-        public bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags, IUser user)
-        {
-            return Entry.AddVersion(id, entry, entryVersion, tags, user);
+        public bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags, IUser user) {
+            var dt = DateTime.Now;
+            if(!id.HasValue)
+            {
+                entry.Status = (int)EntryType.Common;
+                entry.CreaterID = user.UserID;
+                entry.UpdateTime = dt;
+                entry.EditCount = 1;
+            }
+            entryVersion.UserID = user.UserID;
+            entryVersion.Status = (int)(user.IsAdmin ? EntryType.Common : EntryType.Wait);
+            entryVersion.AddTime = dt;
+            entryVersion.Reference += "";
+            entryVersion.Ext = JsonAdapter.Serialize(new EntryExt { Tags = tags.Split(',').ToList() });
+                
+            return Entry.AddVersion(id, entry, entryVersion, tags);
         }
         public IEntryVersion GetVersion(long versionId)
         {

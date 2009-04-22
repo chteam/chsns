@@ -31,7 +31,7 @@ namespace CHSNS.Controllers
                 ViewData["version"] = version;
                 if (ViewData["entry"] == null || ViewData["version"] == null)
                     return View("wait", "site");
-                ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
+                ViewData["ext"] = JsonAdapter.Deserialize<EntryExt>(version.Ext);
             }
             return View();
         }
@@ -61,7 +61,7 @@ namespace CHSNS.Controllers
 
             if (ViewData["entry"] == null || ViewData["version"] == null)
                 return View("wait", "site");
-            ViewData["ext"] = JavaScriptConvert.DeserializeObject<EntryExt>(version.Ext);
+            ViewData["ext"] = JsonAdapter.Deserialize<EntryExt>(version.Ext);
             Title = entry.Title;
             return View();
 
@@ -128,7 +128,7 @@ namespace CHSNS.Controllers
                     //db.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
                     if (entryversion == null) return View("Wait");
                     ViewData["entryversion.description"] = entryversion.Description;
-                    var ee = JavaScriptConvert.DeserializeObject<EntryExt>(entryversion.Ext);
+                    var ee = JsonAdapter.Deserialize<EntryExt>(entryversion.Ext);
                     ViewData["tags"] = string.Join(",", ee.Tags.ToArray());
                     ViewData["entryversion.reference"] = entryversion.Reference;
 
