@@ -14,9 +14,7 @@ namespace CHSNS.Operator {
 		    using (var db = DBExtInstance)
 		    {
 		        note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
-		        var n = note as Note;
-                if (n == null) return;
-		        db.Note.InsertOnSubmit(n);
+		        db.Note.InsertOnSubmit(CastTool.Cast<Note>(note));
 		        db.SaveChanges();
 		    }
 		    

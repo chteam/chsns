@@ -38,14 +38,7 @@ namespace CHSNS.Operator
 		{
             using (var db = DBExtInstance)
             {
-                db.Reply.InsertOnSubmit(new Reply
-                                            {
-                                                UserID = r.UserID,
-                                                SenderID = r.SenderID,
-                                                Body = r.Body,
-                                                IsTellMe = r.IsTellMe,
-                                                AddTime = System.DateTime.Now
-                                            });
+                db.Reply.InsertOnSubmit(CastTool.Cast<Reply>(r));
                 db.SubmitChanges();
             }
             #region sql
@@ -156,16 +149,7 @@ namespace CHSNS.Operator
 		{
             using (var db = DBExtInstance)
             {
-                db.Comment.InsertOnSubmit(new Comment
-                                              {
-                                                  ShowerID = cmt.ShowerID,
-                                                  OwnerID = cmt.OwnerID,
-                                                  SenderID = cmt.SenderID,
-                                                  AddTime = System.DateTime.Now,
-                                                  Body = cmt.Body,
-                                                  Type = cmt.Type,
-                                                  IsTellMe = cmt.IsTellMe
-                                              });
+                db.Comment.InsertOnSubmit(CastTool.Cast<Comment>(cmt));
                 switch (type)
                 {
                     case CommentType.Note:
