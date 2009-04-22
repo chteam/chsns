@@ -118,7 +118,7 @@ namespace CHSNS.Controllers {
 		}
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Manage(long id, IGroup group){
+        public ActionResult Manage(long id, GroupImplement group) {
             //TODO:限制访问人员
             DBExt.Group.Update(id, group);
             return RedirectToAction("Manage", new{id});
@@ -147,7 +147,7 @@ namespace CHSNS.Controllers {
         }
 
 	    [AcceptVerbs(HttpVerbs.Post)]
-		public ActionResult Post(long? id, INote post) {
+        public ActionResult Post(long? id, NoteImplement post) {
 			using (var ts = new TransactionScope()) {
 				if (post.Title.Length < 1 || post.Body.Length < 1) {
 					Message = "请输入正确的日志内容";

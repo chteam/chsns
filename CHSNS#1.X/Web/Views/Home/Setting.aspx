@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
 Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="CHSNS.Config"%>
   
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("mypage") %>
@@ -12,7 +13,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 			<%		
 				int num = 0;
 				int currentnum = 0;
-				foreach (ISystemApplication ip in UnitySingleton.CurrentSystemApplication) {
+				foreach (ApplicationItem ip in UnitySingleton.CurrentSystemApplication) {
 					if (ip.ControllerName.ToLower() == ViewData["current"].ToString()) {
 						currentnum = num;
 					}
