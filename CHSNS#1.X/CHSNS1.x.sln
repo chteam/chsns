@@ -79,11 +79,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{4D06
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Service", "CHSNS.Service\CHSNS.Service.csproj", "{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.SQLServerLinqToSQL", "CHSNS.SQLServerLinqToSQL\CHSNS.SQLServerLinqToSQL.csproj", "{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}"
-EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 14
+		SccNumberOfProjects = 13
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -131,14 +129,10 @@ Global
 		SccProjectTopLevelParentUniqueName11 = CHSNS1.x.sln
 		SccProjectName11 = CHSNS.Service
 		SccLocalPath11 = CHSNS.Service
-		SccProjectUniqueName12 = CHSNS.SQLServerLinqToSQL\\CHSNS.SQLServerLinqToSQL.csproj
+		SccProjectUniqueName12 = CHSNS.Models\\CHSNS.Model.csproj
 		SccProjectTopLevelParentUniqueName12 = CHSNS1.x.sln
-		SccProjectName12 = CHSNS.SQLServerLinqToSQL
-		SccLocalPath12 = CHSNS.SQLServerLinqToSQL
-		SccProjectUniqueName13 = CHSNS.Models\\CHSNS.Model.csproj
-		SccProjectTopLevelParentUniqueName13 = CHSNS1.x.sln
-		SccProjectName13 = CHSNS.Models
-		SccLocalPath13 = CHSNS.Models
+		SccProjectName12 = CHSNS.Models
+		SccLocalPath12 = CHSNS.Models
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x.vsmdi
@@ -341,21 +335,6 @@ Global
 		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Default|.NET.ActiveCfg = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Default|Any CPU.Build.0 = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Release|.NET.ActiveCfg = Release|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -368,7 +347,6 @@ Global
 		{A13FEE3F-28F9-4A9C-B774-7C958124D949} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}
-		{1ED2D641-8042-4093-A5E8-A8D7F93D97FA} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}
 		{54126DEC-D878-40B2-9E49-57E8C04F0D21} = {1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}
 		{8F0BA039-9A35-43AD-BEAE-A8D5D7800590} = {1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}
 		{0D847749-2B28-4F34-B80A-1D52EF641B2F} = {1A2C5B71-4BBE-4CE7-812C-AFCAC1F7964E}
