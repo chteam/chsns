@@ -76,24 +76,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountOperator.cs" />
-    <Compile Include="AlbumOperator.cs" />
-    <Compile Include="ApplicationOperator.cs" />
-    <Compile Include="BaseOperator.cs" />
-    <Compile Include="CommenOperator.cs" />
-    <Compile Include="EntryOperator.cs" />
-    <Compile Include="EventOperator.cs" />
-    <Compile Include="FriendOperator.cs" />
-    <Compile Include="GatherOperator.cs" />
-    <Compile Include="GolbalOperator.cs" />
-    <Compile Include="MessageOperator.cs" />
-    <Compile Include="NoteOperator.cs" />
-    <Compile Include="PhotoOperator.cs" />
+    <Compile Include="LinqToSQL\CHSNSDBDataContext.cs" />
+    <Compile Include="Operator\AccountOperator.cs" />
+    <Compile Include="Operator\AlbumOperator.cs" />
+    <Compile Include="Operator\ApplicationOperator.cs" />
+    <Compile Include="Operator\BaseOperator.cs" />
+    <Compile Include="Operator\CommenOperator.cs" />
+    <Compile Include="Operator\EntryOperator.cs" />
+    <Compile Include="Operator\EventOperator.cs" />
+    <Compile Include="Operator\FriendOperator.cs" />
+    <Compile Include="Operator\GatherOperator.cs" />
+    <Compile Include="Operator\GolbalOperator.cs" />
+    <Compile Include="Operator\MessageOperator.cs" />
+    <Compile Include="Operator\NoteOperator.cs" />
+    <Compile Include="Operator\PhotoOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserOperator.cs" />
-    <Compile Include="VideoOperator.cs" />
-    <Compile Include="ViewOperator.cs" />
-    <Compile Include="GroupOperator.cs" />
+    <Compile Include="Operator\UserOperator.cs" />
+    <Compile Include="Operator\VideoOperator.cs" />
+    <Compile Include="Operator\ViewOperator.cs" />
+    <Compile Include="Operator\GroupOperator.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
@@ -137,6 +138,21 @@
       <Project>{1ED2D641-8042-4093-A5E8-A8D7F93D97FA}</Project>
       <Name>CHSNS.SQLServerLinqToSQL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LinqToSQL\CHSNSDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>CHSNSDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LinqToSQL\CHSNSDB.dbml.layout">
+      <DependentUpon>CHSNSDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
