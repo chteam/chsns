@@ -17,7 +17,7 @@ namespace CHSNS.Operator
 /// <returns></returns>
         public PagedList<IEvent> GetUsersEvent(long[] ids, int page, int pageSize)
         {
-           // var ids = DBExt.Friend.GetFriendsID(userid);
+           // var ids = DBExt.Friend.GetFriendsId(userid);
           //  throw new System.Exception(ids.Count.ToString());
             using (var db = DBExtInstance)
             {

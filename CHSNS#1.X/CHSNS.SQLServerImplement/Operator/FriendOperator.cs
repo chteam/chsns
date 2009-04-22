@@ -30,7 +30,7 @@ namespace CHSNS.Operator
                 };
             }
         }
-        public List<long> GetFriendsID(long userid)
+        public List<long> GetFriendsId(long userid)
         {
             using (var db = DBExtInstance)
             {
@@ -44,7 +44,7 @@ namespace CHSNS.Operator
         }
         public PagedList<UserItemPas> GetFriends(long uid, int page,int pageSize)
         {
-            var ids = GetFriendsID(uid);
+            var ids = GetFriendsId(uid);
             using (var db = DBExtInstance)
             {
                 var ret = (from c in db.Profile

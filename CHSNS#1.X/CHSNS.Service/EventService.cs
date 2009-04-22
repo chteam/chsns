@@ -30,7 +30,7 @@ namespace CHSNS.Service
         /// <returns></returns>
         public PagedList<IEvent> GetFriendEvent(long userid, int p, int ep)
         {
-            var ids = Friend.GetFriendsID(userid);
+            var ids = Friend.GetFriendsId(userid);
             return Event.GetUsersEvent(ids.ToArray(), p, ep);
         }
 
