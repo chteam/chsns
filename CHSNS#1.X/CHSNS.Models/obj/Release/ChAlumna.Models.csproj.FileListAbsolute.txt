@@ -1,0 +1,10 @@
+C:\Chsword\ChAlumna.Models\bin\Release\ChAlumna.Models.dll.config
+C:\Chsword\ChAlumna.Models\bin\Release\ChAlumna.Models.dll
+C:\Chsword\ChAlumna.Models\bin\Release\ChAlumna.Models.pdb
+C:\Chsword\ChAlumna.Models\bin\Release\System.Core.dll
+C:\Chsword\ChAlumna.Models\bin\Release\System.Data.DataSetExtensions.dll
+C:\Chsword\ChAlumna.Models\bin\Release\System.Data.Linq.dll
+C:\Chsword\ChAlumna.Models\bin\Release\System.Xml.Linq.dll
+C:\Chsword\ChAlumna.Models\obj\Release\ResolveAssemblyReference.cache
+C:\Chsword\ChAlumna.Models\obj\Release\ChAlumna.Models.dll
+C:\Chsword\ChAlumna.Models\obj\Release\ChAlumna.Models.pdb
