@@ -30,18 +30,20 @@ namespace CHSNS.Controllers
         {
             return Json(DBExt.Account.IsUsernameCanUse(username));
         }
-     [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult SaveReg(string Username, string Password, string Name)
-        {
-            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(Name))
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult SaveReg(string userName, string password, string name) {
+            if (!(userName.Length > 3 && StringTool.Macth(password, @"[^']{4,}")))
+                return this.RedirectToReferrer();
+            
+            if (string.IsNullOrEmpty(name))
                 throw new Exception("资料中有空项");
             var a = new AccountPas
                         {
-                            Username = Username,
-                            Password = Password,
+                            UserName = userName,
+                            Password = password,
                         };
 
-            var b = DBExt.Account.Create(a, Name);
+            var b = DBExt.Account.Create(a, name, CHContext.Site);
 
             Title = "注册成功";
             if (b)
@@ -70,16 +72,11 @@ namespace CHSNS.Controllers
         /// <returns>是否登录成功</returns>
         public ActionResult Login(string u, string p, bool a)
         {
-            //throw new Exception(u + p + a.ToString());
-            if (u.Length > 3 &&
-                StringTool.Macth(p, @"[^']{4,}"))
-            {//匹配成功则赋值
-                var LoginResult = DBExt.Account.Login(u, p, a, true,CHContext);
-                if (LoginResult == -1)
-                {
-                    throw new Exception("您的帐号已经被冻结，如有疑问请 <a href=\"/Services.aspx\">联系管理员</a>");
-                }
-                return LoginResult == -999 ? Content("false") : Content("true");
+            if (u.Length > 3 && StringTool.Macth(p, @"[^']{4,}"))
+            {
+                //匹配成功则赋值
+                var loginResult = DBExt.Account.Login(u, p, a, true, CHContext);
+                return loginResult <= 0 ? Content("false") : Content("true");
             }
             return Content("false");
         }

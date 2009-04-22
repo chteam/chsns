@@ -37,4 +37,8 @@
     <FriendRequest>10</FriendRequest>
 	  <MessageBox>10</MessageBox>
   </EveryPage>
+  <ScoreConfig>
+    <Init>50</Init>
+    <LogOn>2</LogOn>
+  </ScoreConfig>
 </SiteConfig>

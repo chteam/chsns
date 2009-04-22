@@ -4,7 +4,6 @@ using System.Web.Mvc;
 using CHSNS.Config;
 using CHSNS.Model;
 using System.Web;
-using CHSNS.Abstractions;
 
 namespace CHSNS.Controllers
 {
@@ -43,6 +42,7 @@ namespace CHSNS.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(long? id, AlbumImplement a) {
             if (id.HasValue){
+                a.ID = id.Value;
                 DBExt.Album.Update(a);
                 return RedirectToAction("Index");
             }

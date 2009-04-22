@@ -95,6 +95,7 @@
     <Compile Include="Config\NoteConfig.cs" />
     <Compile Include="Config\Publish.cs" />
     <Compile Include="Config\RegVisitConfig.cs" />
+    <Compile Include="Config\ScoreConfig.cs" />
     <Compile Include="Config\SiteConfig.cs" />
     <Compile Include="Config\SystemApplicationConfig.cs" />
     <Compile Include="Config\SystemApplicationItem.cs" />
