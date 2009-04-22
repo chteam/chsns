@@ -37,13 +37,12 @@ namespace CHSNS.Controllers
             }
             Title = "±à¼­Ïà²á";
             var model = DBExt.Album.Get(id.Value);
-            //db.Album.FirstOrDefault(c => c.ID.Equals(id));
             ViewData["a"] = model;
             return View(model);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(long? id, IAlbum a){
+        public ActionResult Edit(long? id, AlbumImplement a) {
             if (id.HasValue){
                 DBExt.Album.Update(a);
                 return RedirectToAction("Index");

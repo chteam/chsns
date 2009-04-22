@@ -159,7 +159,7 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AcceptVerbs(HttpVerbs.Post)]
 		[AdminFilter]
-        public ActionResult Edit(long? id,IEntry entry,IEntryVersion entryversion,string  tags)
+        public ActionResult Edit(long? id, EntryImplement entry, EntryVersionImplement entryversion, string tags)
         {
             var b = DBExt.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
             if (!b) throw new Exception("标题已存在");
