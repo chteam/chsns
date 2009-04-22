@@ -1,6 +1,6 @@
 ﻿using System;
-namespace CHSNS.Models {
-	public partial class CHSNSDBDataContext {
+namespace CHSNS.Operator {
+	internal partial class CHSNSDBDataContext {
 		//public CHSNSDBDataContext(string s) : base(s) { }
 		//public CHSNSDBDataContext(EntityConnection connection) : base(connection) { }
 
@@ -14,7 +14,7 @@ namespace CHSNS.Models {
 		public void AddToNote(Note note){
 			this.Note.InsertOnSubmit(note);
 		}
-		public void AddToEntry(Entry entry) {
+		public void AddToEntry(Entry entry) { 
 			Entry.InsertOnSubmit(entry);
 		}
 		public void AddToEntryVersion(EntryVersion entryversion) {

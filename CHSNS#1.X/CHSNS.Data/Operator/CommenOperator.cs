@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using CHSNS.Model;
-using CHSNS.Models;
 using CHSNS.Models.Abstractions;
 
 namespace CHSNS.Operator
@@ -81,12 +80,12 @@ namespace CHSNS.Operator
 		/// <summary>
 		/// Comments the list.
 		/// </summary>
-		/// <param name="ShowerID">The shower ID.</param>
+		/// <param name="showerId">The shower ID.</param>
 		/// <param name="type">The type.</param>
 		/// <param name="p"></param>
 		/// <param name="pageSize"></param>
 		/// <returns></returns>
-        public PagedList<CommentPas> CommentList(long ShowerID, CommentType type, int p,
+        public PagedList<CommentPas> CommentList(long showerId, CommentType type, int p,
             int pageSize)
         {
             using (var db = DBExtInstance)
@@ -94,7 +93,7 @@ namespace CHSNS.Operator
                 var t = (int)type;
                 IQueryable<CommentPas> ret = (from c in db.Comment
                                               join p1 in db.Profile on c.SenderID equals p1.UserID
-                                              where c.ShowerID == ShowerID && c.Type == t && !c.IsDel
+                                              where c.ShowerID == showerId && c.Type == t && !c.IsDel
                                               orderby c.ID
                                               select new CommentPas
                                                         {

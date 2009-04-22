@@ -1,10 +1,9 @@
 ﻿
 using System.Configuration;
-using CHSNS.Models;
 
 namespace CHSNS.Operator {
-    public class BaseOperator {//} : IOperator {
-        public CHSNSDBDataContext DBExtInstance {
+     public class BaseOperator {//} : IOperator {
+         internal CHSNSDBDataContext DBExtInstance {
             get {
                 var db = new CHSNSDBDataContext(
                     ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString
