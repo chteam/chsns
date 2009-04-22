@@ -4,7 +4,7 @@ namespace CHSNS
 	using System.IO;
 	using System.Security.Cryptography;
 	using System.Text;
-	using System.Web.Security;
+
 
 	/// <summary>
 	/// 加密类,进行Has加密
@@ -40,26 +40,6 @@ namespace CHSNS
 			get { return isCaseSensitive; }
 		}
 
-		/// <summary>
-		/// Md5加密
-		/// </summary>
-		/// <param name="str">要加密的字符串</param>
-		/// <param name="code">生成MD5码的位数16/32</param>
-		/// <returns>返回MD5码</returns>
-		public string MD5Encrypt(string str,int code)
-		{
-			if (code == 16)
-			{
-// ReSharper disable PossibleNullReferenceException
-				return FormsAuthentication.HashPasswordForStoringInConfigFile(str.Trim(), "MD5").ToLower().Substring(8, 16);
-// ReSharper restore PossibleNullReferenceException
-			}
-			if (code == 32)
-			{
-				return FormsAuthentication.HashPasswordForStoringInConfigFile(str.Trim(), "MD5");
-			}
-			return "00000000000000000000000000000000";
-		}
 		/// <summary>
 		/// 进行SHA1(白宫密码)加密
 		/// </summary>

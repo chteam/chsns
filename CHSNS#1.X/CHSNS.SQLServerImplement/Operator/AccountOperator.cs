@@ -18,18 +18,18 @@ namespace CHSNS.Operator
         public int Login(String userName, String password, Boolean autoLogin, Boolean isPasswordMd5,IContext context)
         {
             if (string.IsNullOrEmpty(userName.Trim())) throw new Exception("用户名不能为空");
-            var en = new Encrypt();
-            var md5pwd = isPasswordMd5 ? en.MD5Encrypt(password.Trim(), 32) : password.Trim();
-            long UserID;
-            long.TryParse(userName.Trim(), out UserID);
+
+            var md5Pwd = isPasswordMd5 ? password.Trim().ToMd5() : password.Trim();
+            long userId;
+            long.TryParse(userName.Trim(), out userId);
             long userid;
             Profile profile;
             int retint = -999;
             using (var db = DBExtInstance)
             {
                 userid = (from a in db.Account
-                          where (a.Username == userName || a.UserID == UserID)
-                                && a.Password == md5pwd
+                          where (a.Username == userName || a.UserID == userId)
+                                && a.Password == md5Pwd
                           select a.UserID).FirstOrDefault();
                 if (userid <= 1000) return retint;
                 profile = db.Profile.FirstOrDefault(p => p.UserID == userid);
@@ -61,7 +61,7 @@ namespace CHSNS.Operator
             context.Cookies.Apps = profile.Applications ?? "";
             if (!autoLogin) return retint;
             context.Cookies.UserID = context.User.UserID;
-            context.Cookies.UserPassword = md5pwd;
+            context.Cookies.UserPassword = md5Pwd;
             context.Cookies.IsAutoLogin = true;
             context.Cookies.Expires = DateTime.Now.AddDays(365);
 
@@ -89,7 +89,7 @@ namespace CHSNS.Operator
                 db.Account.InsertOnSubmit(ac);
                 db.SubmitChanges();
                 if (ac.UserID < 999) return false;
-                var initscore = 50;
+                const int initscore = 50;
                 db.Profile.InsertOnSubmit(new Profile
                     {
                         UserID = ac.UserID,

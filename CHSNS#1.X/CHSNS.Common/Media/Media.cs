@@ -21,7 +21,7 @@ namespace CHSNS {
 			var m = re.Match(html);
 			if (!m.Success) return;
 			Pic = m.Groups[1].Value;//0ÊÇurl
-			Title = Regular.UnicodeToChinese(m.Groups[2].Value);//1ÊÇtitle
+			Title = StringTool.UnicodeToChinese(m.Groups[2].Value);//1ÊÇtitle
 		}
 	}
 }

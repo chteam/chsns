@@ -76,6 +76,10 @@
     <Compile Include="ViewService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CHSNS.Abstractions\CHSNS.Abstractions.csproj">
+      <Project>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</Project>
+      <Name>CHSNS.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CHSNS.Common\CHSNS.Common.csproj">
       <Project>{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}</Project>
       <Name>CHSNS.Common</Name>
@@ -84,21 +88,17 @@
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.Data.Abstractions\CHSNS.Abstractions.csproj">
-      <Project>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</Project>
-      <Name>CHSNS.Abstractions</Name>
+    <ProjectReference Include="..\CHSNS.Model\CHSNS.Model.csproj">
+      <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
+      <Name>CHSNS.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.Data\CHSNS.SQLServerImplement.csproj">
+    <ProjectReference Include="..\CHSNS.SQLServerImplement\CHSNS.SQLServerImplement.csproj">
       <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
       <Name>CHSNS.SQLServerImplement</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.ModelsPas\CHSNS.ViewModel.csproj">
+    <ProjectReference Include="..\CHSNS.ViewModel\CHSNS.ViewModel.csproj">
       <Project>{27E2B6B3-7382-4D72-A889-7FDD618126F3}</Project>
       <Name>CHSNS.ViewModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CHSNS.Models\CHSNS.Model.csproj">
-      <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
-      <Name>CHSNS.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,7 @@
-﻿using System.Text.RegularExpressions;
-using System.Web.Security;
+﻿using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
+
 
 namespace CHSNS
 {
@@ -34,8 +36,20 @@ namespace CHSNS
 		/// <param name="str"></param>
 		/// <returns></returns>
 		public static string ToMd5(this string str) {
-			return FormsAuthentication.HashPasswordForStoringInConfigFile(str.Trim(), "MD5");
+            var data=MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(str.Trim()));
+            return BytesToHexString(data);
+			//FormsAuthentication.HashPasswordForStoringInConfigFile(str, "MD5");
 		}
+        private static string BytesToHexString(byte[] data) //加密转码
+              {
+            var codes = new StringBuilder();
+            for (var i = 0; i < data.Length; ++i) {
+                codes.Append(data[i].ToString("x2"));
+            }
+            return codes.ToString().ToUpper();
+        }
+
+
 		/// <summary>
 		/// NoHtml
 		/// </summary>

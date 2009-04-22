@@ -71,15 +71,15 @@
     <Compile Include="Tools\HttpProc.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CHSNS.Abstractions\CHSNS.Abstractions.csproj">
+      <Project>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</Project>
+      <Name>CHSNS.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.Data.Abstractions\CHSNS.Abstractions.csproj">
-      <Project>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</Project>
-      <Name>CHSNS.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CHSNS.Models\CHSNS.Model.csproj">
+    <ProjectReference Include="..\CHSNS.Model\CHSNS.Model.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>CHSNS.Model</Name>
     </ProjectReference>

@@ -1,37 +1,37 @@
-using System;
+ï»¿using System;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.IO;
 
 namespace CHSNS {
 	/// <summary>
-	/// ×Ö·û´®¸ñÊ½»¯¹æÔò
-	/// AU:×Ş½¡
+	/// å­—ç¬¦ä¸²æ ¼å¼åŒ–è§„åˆ™
+	/// AU:é‚¹å¥
 	/// </summary>
-	public class Regular {
+	public class StringTool {
 
-		#region ¶Ô¸»ÎÄ±¾±à¼­Æ÷ÄÚÈİ½øĞĞ¸ñÊ½»¯
+		#region å¯¹å¯Œæ–‡æœ¬ç¼–è¾‘å™¨å†…å®¹è¿›è¡Œæ ¼å¼åŒ–
 		/// <summary>
-		/// ¸ñÊ½»¯title
+		/// æ ¼å¼åŒ–title
 		/// </summary>
-		/// <param name="str">Òª¸ñÊ½»¯µÄ×Ö·û´®</param>
+		/// <param name="str">è¦æ ¼å¼åŒ–çš„å­—ç¬¦ä¸²</param>
 		/// <returns></returns>
 		public string FormatTitle(string str) {
 			return str;
 		}
 
 		/// <summary>
-		/// ¸»ÎÄ±¾¹ıÂË
+		/// å¯Œæ–‡æœ¬è¿‡æ»¤
 		/// </summary>
-		/// <param name="str">Ô´ÎÄ±¾</param>
-		/// <returns>¹ıÂËºóµÄÎÄ±¾</returns>
+		/// <param name="str">æºæ–‡æœ¬</param>
+		/// <returns>è¿‡æ»¤åçš„æ–‡æœ¬</returns>
 		static public String FormatRichEdit(String str) {
             //const string f = "EditFormat";
             //var dom = new XmlDocument();
 			//if (CHCache.IsNullorEmpty(f))
 			//	if (!CHCache.a(f))
-					return "¹ıÂËÅäÖÃÎÄ¼şÎŞ·¨¼ÓÔØ";
+					return "è¿‡æ»¤é…ç½®æ–‡ä»¶æ— æ³•åŠ è½½";
             //dom.LoadXml(HttpContext.Current.Cache[f].ToString());
             //XmlNodeList nl = dom.SelectNodes("/root/item");
             //if (nl != null)
@@ -44,16 +44,16 @@ namespace CHSNS {
             //return str;
 		}
 		#endregion
-		#region ÕıÔòÆ¥Åä
+		#region æ­£åˆ™åŒ¹é…
 		/// <summary>
-		/// ×Ö·û´®ÊÇ·ñ·ûºÏ¹æÔò
+		/// å­—ç¬¦ä¸²æ˜¯å¦ç¬¦åˆè§„åˆ™
 		/// </summary>
-		/// <param name="s">Òª²éÑ¯µÄ×Ö·û´®</param>
-		/// <param name="right">ÕıÔò±í´ïÊ½</param>
-		/// <returns>ÊÇ·ñÆ¥Åä</returns>
+		/// <param name="s">è¦æŸ¥è¯¢çš„å­—ç¬¦ä¸²</param>
+		/// <param name="right">æ­£åˆ™è¡¨è¾¾å¼</param>
+		/// <returns>æ˜¯å¦åŒ¹é…</returns>
 		static public Boolean Macth(String s, String right) {
-			var Regex = new Regex(right, RegexOptions.IgnoreCase);
-			return Regex.IsMatch(s);
+			var regex = new Regex(right, RegexOptions.IgnoreCase);
+			return regex.IsMatch(s);
 		}
 
 		static public string[] Trim(string[] val) {
@@ -66,40 +66,101 @@ namespace CHSNS {
 		#endregion
 
 
-		#region ĞËÈ¤°®ºÃ¸ñÊ½»¯
+		#region å…´è¶£çˆ±å¥½æ ¼å¼åŒ–
 		/// <summary>
-		/// ½«·Ö¸ô·û¹æ·¶»¯Îª','
+		/// å°†åˆ†éš”ç¬¦è§„èŒƒåŒ–ä¸º','
 		/// </summary>
-		/// <param name="str">Òª¹æ·¶µÄÎÄ±¾</param>
-		/// <returns>¹æ·¶ºóµÄÎÄ±¾,ÒÔ','½áÊø</returns>
+		/// <param name="str">è¦è§„èŒƒçš„æ–‡æœ¬</param>
+		/// <returns>è§„èŒƒåçš„æ–‡æœ¬,ä»¥','ç»“æŸ</returns>
 		static public String FormatJoin(String str) {
 			if (String.IsNullOrEmpty(str))
 				return ",";
 			var sbout = new StringBuilder(str);
 			sbout.Replace("\n", ",");
 			sbout.Replace(";", ",");
-			sbout.Replace("£¬", ",");
-			sbout.Replace("¡¢", ",");
+			sbout.Replace("ï¼Œ", ",");
+			sbout.Replace("ã€", ",");
 			if (!sbout.ToString().EndsWith(","))
 				sbout.Append(",");
-			return HttpContext.Current.Server.HtmlEncode(sbout.ToString().Trim());
-		}
-		/// <summary>
-		/// ½«·Ö¸ô·û¹æ·¶»¯Îª',',ÒÔ´«µİ¸øÊı¾İ¿â
+			return HtmlEncode(sbout.ToString().Trim());
+        }
+        public static string HtmlEncode(string s) {
+            if (s == null) {
+                return null;
+            }
+            var sb = new StringBuilder();
+            var output = new StringWriter(sb);
+            HtmlEncode(s, output);
+            return sb.ToString();
+        }
+
+
+
+        public static void HtmlEncode(string s, TextWriter output)
+        {
+            if (s == null) return;
+            var length = s.Length;
+            for (var i = 0; i < length; i++)
+            {
+                var ch = s[i];
+                var ch2 = ch;
+                if (ch2 != '"')
+                {
+                    switch (ch2)
+                    {
+                        case '<':
+                            output.Write("&lt;");
+                            goto Label_00AE;
+
+                        case '=':
+                            goto Label_0071;
+
+                        case '>':
+                            output.Write("&gt;");
+                            goto Label_00AE;
+
+                        case '&':
+                            goto Label_0064;
+                    }
+                    goto Label_0071;
+                }
+                output.Write("&quot;");
+                goto Label_00AE;
+                Label_0064:
+                output.Write("&amp;");
+                goto Label_00AE;
+                Label_0071:
+                if ((ch >= '\x00a0') && (ch < 'Ä€'))
+                {
+                    output.Write("&#" + ((int) ch).ToString(NumberFormatInfo.InvariantInfo) + ";");
+                }
+                else
+                {
+                    output.Write(ch);
+                }
+                Label_00AE:
+                ;
+            }
+        }
+
+
+
+	    /// <summary>
+		/// å°†åˆ†éš”ç¬¦è§„èŒƒåŒ–ä¸º',',ä»¥ä¼ é€’ç»™æ•°æ®åº“
 		/// </summary>
-		/// <param name="str">Òª¹æ·¶µÄÎÄ±¾</param>
-		/// <returns>¹æ·¶ºóµÄÎÄ±¾,ÒÔ','½áÊø,µ«Èç¹û×Ö·û´®Îª¿Õ,Ôò·µ»ØSystem.DBNull.Value</returns>
+		/// <param name="str">è¦è§„èŒƒçš„æ–‡æœ¬</param>
+		/// <returns>è§„èŒƒåçš„æ–‡æœ¬,ä»¥','ç»“æŸ,ä½†å¦‚æœå­—ç¬¦ä¸²ä¸ºç©º,åˆ™è¿”å›System.DBNull.Value</returns>
 		static public Object FormatLove(object str) {
-			string ret = FormatJoin(str.ToString());
+			var ret = FormatJoin(str.ToString());
 			if (ret == "," || string.IsNullOrEmpty(ret))
 				return DBNull.Value;
 			return ret;
 		}
 		#endregion
 
-		#region È¥³ıHTML×¢ÊÍ
+		#region å»é™¤HTMLæ³¨é‡Š
 		/// <summary>
-		/// È¥³ıHTML×¢ÊÍ
+		/// å»é™¤HTMLæ³¨é‡Š
 		/// </summary>
 		/// <param name="str"></param>
 		/// <returns></returns>
@@ -111,9 +172,9 @@ namespace CHSNS {
 		}
 		#endregion
 
-		#region Çå³ı×Ö·û´®ÖĞµÄÍ¨Åä·û....
+		#region æ¸…é™¤å­—ç¬¦ä¸²ä¸­çš„é€šé…ç¬¦....
 		/// <summary>
-		/// È¥³ıÎÄ±¾ÖĞµÄÍ¨Æ¥·û
+		/// å»é™¤æ–‡æœ¬ä¸­çš„é€šåŒ¹ç¬¦
 		/// </summary>
 		/// <param name="str"></param>
 		/// <returns></returns>
@@ -121,28 +182,28 @@ namespace CHSNS {
 			return str.Replace("%", "").Replace("*", "");
 		}
 		#endregion
-		#region ÖĞÎÄÊı×Ö×ª°¢À­²®Êı×Ö
-		static readonly string[] _HuaNum ={
-			"Ò»","¶ş","Èı","ËÄ","Îå","Áù","Æß","°Ë","¾Å"
+		#region ä¸­æ–‡æ•°å­—è½¬é˜¿æ‹‰ä¼¯æ•°å­—
+		static readonly string[] HuaNum ={
+			"ä¸€","äºŒ","ä¸‰","å››","äº”","å…­","ä¸ƒ","å…«","ä¹"
 		};
-		static readonly string[] _Number ={
+		static readonly string[] Number ={
 			"1","2","3","4","5","6","7","8","9"
 		};
 		/// <summary>
-		/// ÖĞÎÄÊı×Ö×ª°¢À­²®Êı×Ö
+		/// ä¸­æ–‡æ•°å­—è½¬é˜¿æ‹‰ä¼¯æ•°å­—
 		/// </summary>
 		/// <param name="str"></param>
 		/// <returns></returns>
 		static public string HuaNumtoNumber(string str) {
 			var sbout = new StringBuilder(str);
-			for (int i = 0; i < _HuaNum.Length; i++) {
-				sbout.Replace(_HuaNum[i], _Number[i]);
+			for (var i = 0; i < HuaNum.Length; i++) {
+				sbout.Replace(HuaNum[i], Number[i]);
 			}
 			return sbout.ToString();
 		}
 		#endregion
 		/// <summary>
-		/// ×Ö·û´®Îª''»ò¿ÕÊ±×ªÎªSystem.DBNull.Value
+		/// å­—ç¬¦ä¸²ä¸º''æˆ–ç©ºæ—¶è½¬ä¸ºSystem.DBNull.Value
 		/// </summary>
 		/// <param name="str"></param>
 		/// <returns></returns>
@@ -153,7 +214,7 @@ namespace CHSNS {
 			return str.Trim();
 		}
 
-		#region UTFÓëºº×Ö±àÂë
+		#region UTFä¸æ±‰å­—ç¼–ç 
 		/// <summary>
 		/// 
 		/// </summary>
@@ -183,14 +244,14 @@ namespace CHSNS {
 		#endregion
 	
 		static public string SexName(object b) {
-			bool _b;
-			if (bool.TryParse(b.ToString(), out _b)) {
-				return _b ? "ÄĞÉú" : "Å®Éú";
+			bool isb;
+			if (bool.TryParse(b.ToString(), out isb)) {
+				return isb ? "ç”·ç”Ÿ" : "å¥³ç”Ÿ";
 			}
-			return "Î´ÉèÖÃ";
+			return "æœªè®¾ç½®";
 		}
 		/// <summary>
-		/// ×Ö½ÚÓëÎÄ¼ş´óĞ¡×Ö·û´®±È½Ï
+		/// å­—èŠ‚ä¸æ–‡ä»¶å¤§å°å­—ç¬¦ä¸²æ¯”è¾ƒ
 		/// </summary>
 		/// <param name="bytes"></param>
 		/// <returns></returns>
@@ -201,25 +262,22 @@ namespace CHSNS {
 			if (bytes < 1048576L) {
 				return string.Format("{0:N2} KB", bytes / 1024f);
 			}
-			if (bytes < 1073741824L) {
-				return string.Format("{0:N2} MB", bytes / 1048576f);
-			}
-			return string.Format("{0:N2} GB", bytes / 1.073742E+09f);
+			return bytes < 1073741824L ? string.Format("{0:N2} MB", bytes / 1048576f) : string.Format("{0:N2} GB", bytes / 1.073742E+09f);
 		}
 		/// <summary>
-		/// ÎÄ¼ş¼Ğ×Ö½Ú´óĞ¡
+		/// æ–‡ä»¶å¤¹å­—èŠ‚å¤§å°
 		/// </summary>
 		/// <param name="dir"></param>
 		/// <returns></returns>
 		public static long DiskUsage(string dir) {
-			string[] files = Directory.GetFiles(dir);
-			string[] directories = Directory.GetDirectories(dir);
-			long num = 0L;
-			for (int i = 0; i < files.Length; i++) {
+			var files = Directory.GetFiles(dir);
+			var directories = Directory.GetDirectories(dir);
+			var num = 0L;
+			for (var i = 0; i < files.Length; i++) {
 				var info = new FileInfo(files[i]);
 				num += info.Length;
 			}
-			for (int j = 0; j < directories.Length; j++) {
+			for (var j = 0; j < directories.Length; j++) {
 				num += DiskUsage(directories[j]);
 			}
 			return num;

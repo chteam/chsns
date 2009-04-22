@@ -31,22 +31,8 @@ namespace CHSNS.Core.Tests
             }
         }
 
-        /// <summary>
-        ///ToListItem 的测试
-        ///</summary>
-        public void ToListItemTestHelper<T>() {
-            List<ListItem> expected = null; // TODO: 初始化为适当的值
-            List<ListItem> actual;
-            actual = EnumExtension.ToListItem<T>();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("验证此测试方法的正确性。");
-        }
 
-        [TestMethod()]
-        public void ToListItemTest() {
-            ToListItemTestHelper<GenericParameterHelper>();
-        }
-
+   
         /// <summary>
         ///ToDictionary 的测试
         ///</summary>
