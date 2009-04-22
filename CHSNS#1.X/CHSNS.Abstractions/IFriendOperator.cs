@@ -6,18 +6,18 @@ namespace CHSNS.Operator
 {
     public interface IFriendOperator
     {
-        bool Add(long FromID, long ToID);
-        bool Agree(long OperaterID, long ToID);
-        bool Delete(long FromID, long ToID);
-        bool Ignore(long FromID, long operaterID);
-        bool IgnoreAll(long UserID);
+        bool Add(long fromId, long toId);
+        bool Agree(long operaterId, long toId);
+        bool Delete(long fromId, long toId);
+        bool Ignore(long fromId, long operaterId);
+        bool IgnoreAll(long userId);
 
-        PagedList<UserItemPas> GetFriends(long uid, int page,int pageSize);
-        List<long> GetFriendsID(long userid);
+        PagedList<UserItemPas> GetFriends(long userId, int page,int pageSize);
+        List<long> GetFriendsId(long userId);
         List<UserItemPas> GetRandoms(int n);
-        PagedList<UserItemPas> GetRequests(long userid, int page, int pageSize);
+        PagedList<UserItemPas> GetRequests(long userId, int page, int pageSize);
 
-        IProfile UserFriendInfo(long userid);
+        IProfile UserFriendInfo(long userId);
 
 	}
 }

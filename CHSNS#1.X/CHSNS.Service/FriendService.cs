@@ -7,7 +7,7 @@ namespace CHSNS.Service {
     using Model;
     using System.Collections.Generic;
     public class FriendService {
-        static readonly FriendService _instance = new FriendService();
+        static readonly FriendService Instance = new FriendService();
         private readonly IFriendOperator Friend;
         private readonly IUserOperator User;
         private readonly IEventOperator Event;
@@ -18,14 +18,14 @@ namespace CHSNS.Service {
         }
 
         public static FriendService GetInstance() {
-            return _instance;
+            return Instance;
         }
         #region 获取
         public IProfile UserFriendInfo(long userid) {
             return Friend.UserFriendInfo(userid);
         }
         public List<long> GetFriendsID(long userid) {
-            return Friend.GetFriendsID(userid);
+            return Friend.GetFriendsId(userid);
         }
         public PagedList<UserItemPas> GetFriends(long uid, int p, SiteConfig site) {
             return Friend.GetFriends(uid, p, site.EveryPage.Friend);
