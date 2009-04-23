@@ -1,8 +1,9 @@
 ﻿CREATE TABLE [dbo].[Profile]
 (
-[UserID] [bigint] NOT NULL,
+[UserId] [bigint] NOT NULL,
 /*信息*/
 [Name] [nvarchar] (50) NOT NULL,
+[Face] [nvarchar] (300) Null,
 [Status] [int] NOT NULL,
 /*分数*/
 [Score] [bigint] NOT NULL,
@@ -11,7 +12,7 @@
 /*权限*/
 [ShowLevel] [tinyint] NOT NULL,
 /*魔法盒*/
-[MagicBox] [ntext] NOT NULL,
+[MagicBox] [nvarchar] (Max) NOT NULL,
 [IsMagicBox] [bit] NOT NULL,
 /*统计*/
 [RegTime] [smalldatetime] NOT NULL,

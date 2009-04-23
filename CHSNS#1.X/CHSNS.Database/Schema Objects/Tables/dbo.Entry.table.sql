@@ -1,16 +1,16 @@
 ﻿CREATE TABLE [dbo].[Entry](
-	[ID] [bigint] IDENTITY(10000,1) NOT NULL,
+	[Id] [bigint] IDENTITY(10000,1) NOT NULL,
 	[Title] [nvarchar](50) NOT NULL,
-	[CreaterID] [bigint] NOT NULL,
+	[CreaterId] [bigint] NOT NULL,
 	[UpdateTime] [smalldatetime] NOT NULL CONSTRAINT [DF_Entry_UpdateTime]  DEFAULT (getdate()),
-	[CurrentID] [bigint] NULL,
+	[CurrentId] [bigint] NULL,
 	[EditCount] [int] NOT NULL,
 	[ViewCount] [bigint] NOT NULL,
 	[Status] [int] NOT NULL,
 	[Ext] [ntext] NULL,
 CONSTRAINT [PK_Entry] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+	[Id] ASC
 )WITH (PAD_INDEX  = OFF, 
 	STATISTICS_NORECOMPUTE  = OFF, 
 	IGNORE_DUP_KEY = OFF,

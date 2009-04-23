@@ -1,17 +1,17 @@
 ﻿CREATE TABLE [dbo].[EntryVersion](
-	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Reason] [ntext] NOT NULL,
 	[AddTime] [smalldatetime] NOT NULL,
 	[Description] [ntext] NOT NULL,
 	[Reference] [ntext] NOT NULL,
-	[UserID] [bigint] NOT NULL,
+	[UserId] [bigint] NOT NULL,
 	[Status] [int] NOT NULL CONSTRAINT [DF_EntryVersion_Status]  DEFAULT ((0)),
-	[EntryID] [bigint] NULL,
+	[EntryId] [bigint] NULL,
 	[ParentText] [nvarchar] (50) NULL,
 	[Ext] [ntext] NULL,
  CONSTRAINT [PK_EntryVersion] PRIMARY KEY CLUSTERED 
 (
-	[ID] ASC
+	[Id] ASC
 )WITH (PAD_INDEX  = OFF, 
 		STATISTICS_NORECOMPUTE  = OFF, 
 		IGNORE_DUP_KEY = OFF, 

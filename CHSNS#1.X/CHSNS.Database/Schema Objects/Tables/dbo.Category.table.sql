@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[Category]
 (
-[ID] [bigint] NOT NULL IDENTITY(1, 1),
+[Id] [bigint] NOT NULL IDENTITY(1, 1),
 [Name] [nvarchar] (50) NOT NULL,
 [Type] [tinyint] NOT NULL,
 [Count] [bigint] NOT NULL,
-[UserID] [bigint] NULL
+[UserId] [bigint] NULL
 ) ON [PRIMARY]
 
 

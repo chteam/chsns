@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Message]
 (
-[ID] [bigint] NOT NULL IDENTITY(1, 1),
-[FromID] [bigint] NOT NULL,
-[ToID] [bigint] NOT NULL,
+[Id] [bigint] NOT NULL IdENTITY(1, 1),
+[FromId] [bigint] NOT NULL,
+[ToId] [bigint] NOT NULL,
 [Title] [nvarchar] (200) NOT NULL,
 [Body] [nvarchar] (4000) NOT NULL,
 [SendTime] [smalldatetime] NOT NULL,

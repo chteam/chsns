@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[ContactInformation]
 (
-[UserID] [bigint] NOT NULL,
+[UserId] [bigint] NOT NULL,
 [Address] [nvarchar] (100) NULL,
 [QQ] [nvarchar] (50) NULL,
 [Msn] [nvarchar] (50) NULL,
