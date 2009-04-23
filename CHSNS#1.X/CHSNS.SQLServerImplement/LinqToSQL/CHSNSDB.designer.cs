@@ -1,10 +1,10 @@
 ﻿using System.Data.Linq;
 namespace CHSNS.Operator
 {
-    using System.Data.Linq.Mapping;
     using System.ComponentModel;
 	using System;
     using Abstractions;
+    using System.Data.Linq.Mapping;
 	
 	
 	[DatabaseAttribute(Name="CHSNS.Servicebase")]
@@ -111,23 +111,23 @@ namespace CHSNS.Operator
 			OnCreated();
 		}
 		
-		public CHSNSDBDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public CHSNSDBDataContext(string connection, MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public CHSNSDBDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public CHSNSDBDataContext(System.Data.IDbConnection connection, MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Account> Account
+		public Table<Account> Account
 		{
 			get
 			{
-				return this.GetTable<Account>();
+				return GetTable<Account>();
 			}
 		}
 		
@@ -135,207 +135,207 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this.GetTable<ViewData>();
+				return GetTable<ViewData>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Album> Album
+		public Table<Album> Album
 		{
 			get
 			{
-				return this.GetTable<Album>();
+				return GetTable<Album>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Application> Application
+		public Table<Application> Application
 		{
 			get
 			{
-				return this.GetTable<Application>();
+				return GetTable<Application>();
 			}
 		}
 		
-		public System.Data.Linq.Table<BasicInformation> BasicInformation
+		public Table<BasicInformation> BasicInformation
 		{
 			get
 			{
-				return this.GetTable<BasicInformation>();
+				return GetTable<BasicInformation>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Blogs> Blogs
+		public Table<Blogs> Blogs
 		{
 			get
 			{
-				return this.GetTable<Blogs>();
+				return GetTable<Blogs>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Category> Category
+		public Table<Category> Category
 		{
 			get
 			{
-				return this.GetTable<Category>();
+				return GetTable<Category>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Comment> Comment
+		public Table<Comment> Comment
 		{
 			get
 			{
-				return this.GetTable<Comment>();
+				return GetTable<Comment>();
 			}
 		}
 		
-		public System.Data.Linq.Table<ContactInformation> ContactInformation
+		public Table<ContactInformation> ContactInformation
 		{
 			get
 			{
-				return this.GetTable<ContactInformation>();
+				return GetTable<ContactInformation>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Entry> Entry
+		public Table<Entry> Entry
 		{
 			get
 			{
-				return this.GetTable<Entry>();
+				return GetTable<Entry>();
 			}
 		}
 		
-		public System.Data.Linq.Table<EntryVersion> EntryVersion
+		public Table<EntryVersion> EntryVersion
 		{
 			get
 			{
-				return this.GetTable<EntryVersion>();
+				return GetTable<EntryVersion>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Event> Event
+		public Table<Event> Event
 		{
 			get
 			{
-				return this.GetTable<Event>();
+				return GetTable<Event>();
 			}
 		}
 		
-		public System.Data.Linq.Table<FieldInformation> FieldInformation
+		public Table<FieldInformation> FieldInformation
 		{
 			get
 			{
-				return this.GetTable<FieldInformation>();
+				return GetTable<FieldInformation>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Friend> Friend
+		public Table<Friend> Friend
 		{
 			get
 			{
-				return this.GetTable<Friend>();
+				return GetTable<Friend>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Group> Group
+		public Table<Group> Group
 		{
 			get
 			{
-				return this.GetTable<Group>();
+				return GetTable<Group>();
 			}
 		}
 		
-		public System.Data.Linq.Table<GroupUser> GroupUser
+		public Table<GroupUser> GroupUser
 		{
 			get
 			{
-				return this.GetTable<GroupUser>();
+				return GetTable<GroupUser>();
 			}
 		}
 		
-		public System.Data.Linq.Table<LogTag> LogTag
+		public Table<LogTag> LogTag
 		{
 			get
 			{
-				return this.GetTable<LogTag>();
+				return GetTable<LogTag>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Message> Message
+		public Table<Message> Message
 		{
 			get
 			{
-				return this.GetTable<Message>();
+				return GetTable<Message>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Note> Note
+		public Table<Note> Note
 		{
 			get
 			{
-				return this.GetTable<Note>();
+				return GetTable<Note>();
 			}
 		}
 		
-		public System.Data.Linq.Table<PersonalInformation> PersonalInformation
+		public Table<PersonalInformation> PersonalInformation
 		{
 			get
 			{
-				return this.GetTable<PersonalInformation>();
+				return GetTable<PersonalInformation>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Photo> Photo
+		public Table<Photo> Photo
 		{
 			get
 			{
-				return this.GetTable<Photo>();
+				return GetTable<Photo>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Profile> Profile
+		public Table<Profile> Profile
 		{
 			get
 			{
-				return this.GetTable<Profile>();
+				return GetTable<Profile>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Push> Push
+		public Table<Push> Push
 		{
 			get
 			{
-				return this.GetTable<Push>();
+				return GetTable<Push>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Reply> Reply
+		public Table<Reply> Reply
 		{
 			get
 			{
-				return this.GetTable<Reply>();
+				return GetTable<Reply>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Services> Services
+		public Table<Services> Services
 		{
 			get
 			{
-				return this.GetTable<Services>();
+				return GetTable<Services>();
 			}
 		}
 		
-		public System.Data.Linq.Table<SuperNote> SuperNote
+		public Table<SuperNote> SuperNote
 		{
 			get
 			{
-				return this.GetTable<SuperNote>();
+				return GetTable<SuperNote>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Tags> Tags
+		public Table<Tags> Tags
 		{
 			get
 			{
-				return this.GetTable<Tags>();
+				return GetTable<Tags>();
 			}
 		}
 	}
@@ -356,7 +356,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
@@ -378,17 +378,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -398,17 +398,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Username;
+				return _Username;
 			}
 			set
 			{
-				if ((this._Username != value))
+				if ((_Username != value))
 				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
+					OnUsernameChanging(value);
+					SendPropertyChanging();
+					_Username = value;
+					SendPropertyChanged("Username");
+					OnUsernameChanged();
 				}
 			}
 		}
@@ -418,17 +418,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Password;
+				return _Password;
 			}
 			set
 			{
-				if ((this._Password != value))
+				if ((_Password != value))
 				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
+					OnPasswordChanging(value);
+					SendPropertyChanging();
+					_Password = value;
+					SendPropertyChanged("Password");
+					OnPasswordChanged();
 				}
 			}
 		}
@@ -438,17 +438,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Code;
+				return _Code;
 			}
 			set
 			{
-				if ((this._Code != value))
+				if ((_Code != value))
 				{
-					this.OnCodeChanging(value);
-					this.SendPropertyChanging();
-					this._Code = value;
-					this.SendPropertyChanged("Code");
-					this.OnCodeChanged();
+					OnCodeChanging(value);
+					SendPropertyChanging();
+					_Code = value;
+					SendPropertyChanged("Code");
+					OnCodeChanged();
 				}
 			}
 		}
@@ -459,17 +459,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -492,13 +492,13 @@ namespace CHSNS.Operator
 		
 		private string _LastUrl;
 		
-		private System.DateTime _ViewTime;
+		private DateTime _ViewTime;
 		
 		private byte _ViewClass;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -512,7 +512,7 @@ namespace CHSNS.Operator
     partial void OnViewPageUrlChanged();
     partial void OnLastUrlChanging(string value);
     partial void OnLastUrlChanged();
-    partial void OnViewTimeChanging(System.DateTime value);
+    partial void OnViewTimeChanging(DateTime value);
     partial void OnViewTimeChanged();
     partial void OnViewClassChanging(byte value);
     partial void OnViewClassChanged();
@@ -528,17 +528,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -548,17 +548,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._OwnerID;
+				return _OwnerID;
 			}
 			set
 			{
-				if ((this._OwnerID != value))
+				if ((_OwnerID != value))
 				{
-					this.OnOwnerIDChanging(value);
-					this.SendPropertyChanging();
-					this._OwnerID = value;
-					this.SendPropertyChanged("OwnerID");
-					this.OnOwnerIDChanged();
+					OnOwnerIDChanging(value);
+					SendPropertyChanging();
+					_OwnerID = value;
+					SendPropertyChanged("OwnerID");
+					OnOwnerIDChanged();
 				}
 			}
 		}
@@ -568,17 +568,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewerID;
+				return _ViewerID;
 			}
 			set
 			{
-				if ((this._ViewerID != value))
+				if ((_ViewerID != value))
 				{
-					this.OnViewerIDChanging(value);
-					this.SendPropertyChanging();
-					this._ViewerID = value;
-					this.SendPropertyChanged("ViewerID");
-					this.OnViewerIDChanged();
+					OnViewerIDChanging(value);
+					SendPropertyChanging();
+					_ViewerID = value;
+					SendPropertyChanged("ViewerID");
+					OnViewerIDChanged();
 				}
 			}
 		}
@@ -588,17 +588,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IpandComputer;
+				return _IpandComputer;
 			}
 			set
 			{
-				if ((this._IpandComputer != value))
+				if ((_IpandComputer != value))
 				{
-					this.OnIpandComputerChanging(value);
-					this.SendPropertyChanging();
-					this._IpandComputer = value;
-					this.SendPropertyChanged("IpandComputer");
-					this.OnIpandComputerChanged();
+					OnIpandComputerChanging(value);
+					SendPropertyChanging();
+					_IpandComputer = value;
+					SendPropertyChanged("IpandComputer");
+					OnIpandComputerChanged();
 				}
 			}
 		}
@@ -608,17 +608,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewPageUrl;
+				return _ViewPageUrl;
 			}
 			set
 			{
-				if ((this._ViewPageUrl != value))
+				if ((_ViewPageUrl != value))
 				{
-					this.OnViewPageUrlChanging(value);
-					this.SendPropertyChanging();
-					this._ViewPageUrl = value;
-					this.SendPropertyChanged("ViewPageUrl");
-					this.OnViewPageUrlChanged();
+					OnViewPageUrlChanging(value);
+					SendPropertyChanging();
+					_ViewPageUrl = value;
+					SendPropertyChanged("ViewPageUrl");
+					OnViewPageUrlChanged();
 				}
 			}
 		}
@@ -628,37 +628,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LastUrl;
+				return _LastUrl;
 			}
 			set
 			{
-				if ((this._LastUrl != value))
+				if ((_LastUrl != value))
 				{
-					this.OnLastUrlChanging(value);
-					this.SendPropertyChanging();
-					this._LastUrl = value;
-					this.SendPropertyChanged("LastUrl");
-					this.OnLastUrlChanged();
+					OnLastUrlChanging(value);
+					SendPropertyChanging();
+					_LastUrl = value;
+					SendPropertyChanged("LastUrl");
+					OnLastUrlChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_ViewTime", DbType="DateTime NOT NULL")]
-		public System.DateTime ViewTime
+		public DateTime ViewTime
 		{
 			get
 			{
-				return this._ViewTime;
+				return _ViewTime;
 			}
 			set
 			{
-				if ((this._ViewTime != value))
+				if ((_ViewTime != value))
 				{
-					this.OnViewTimeChanging(value);
-					this.SendPropertyChanging();
-					this._ViewTime = value;
-					this.SendPropertyChanged("ViewTime");
-					this.OnViewTimeChanged();
+					OnViewTimeChanging(value);
+					SendPropertyChanging();
+					_ViewTime = value;
+					SendPropertyChanged("ViewTime");
+					OnViewTimeChanged();
 				}
 			}
 		}
@@ -668,17 +668,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewClass;
+				return _ViewClass;
 			}
 			set
 			{
-				if ((this._ViewClass != value))
+				if ((_ViewClass != value))
 				{
-					this.OnViewClassChanging(value);
-					this.SendPropertyChanging();
-					this._ViewClass = value;
-					this.SendPropertyChanged("ViewClass");
-					this.OnViewClassChanged();
+					OnViewClassChanging(value);
+					SendPropertyChanging();
+					_ViewClass = value;
+					SendPropertyChanged("ViewClass");
+					OnViewClassChanged();
 				}
 			}
 		}
@@ -689,17 +689,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -718,7 +718,7 @@ namespace CHSNS.Operator
 		
 		private string _Description;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private string _FaceUrl;
 		
@@ -732,7 +732,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -742,7 +742,7 @@ namespace CHSNS.Operator
     partial void OnLocationChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnFaceUrlChanging(string value);
     partial void OnFaceUrlChanged();
@@ -766,17 +766,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -786,17 +786,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Name;
+				return _Name;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((_Name != value))
 				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					OnNameChanging(value);
+					SendPropertyChanging();
+					_Name = value;
+					SendPropertyChanged("Name");
+					OnNameChanged();
 				}
 			}
 		}
@@ -806,17 +806,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Location;
+				return _Location;
 			}
 			set
 			{
-				if ((this._Location != value))
+				if ((_Location != value))
 				{
-					this.OnLocationChanging(value);
-					this.SendPropertyChanging();
-					this._Location = value;
-					this.SendPropertyChanged("Location");
-					this.OnLocationChanged();
+					OnLocationChanging(value);
+					SendPropertyChanging();
+					_Location = value;
+					SendPropertyChanged("Location");
+					OnLocationChanged();
 				}
 			}
 		}
@@ -826,37 +826,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Description;
+				return _Description;
 			}
 			set
 			{
-				if ((this._Description != value))
+				if ((_Description != value))
 				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
+					OnDescriptionChanging(value);
+					SendPropertyChanging();
+					_Description = value;
+					SendPropertyChanged("Description");
+					OnDescriptionChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -866,17 +866,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._FaceUrl;
+				return _FaceUrl;
 			}
 			set
 			{
-				if ((this._FaceUrl != value))
+				if ((_FaceUrl != value))
 				{
-					this.OnFaceUrlChanging(value);
-					this.SendPropertyChanging();
-					this._FaceUrl = value;
-					this.SendPropertyChanged("FaceUrl");
-					this.OnFaceUrlChanged();
+					OnFaceUrlChanging(value);
+					SendPropertyChanging();
+					_FaceUrl = value;
+					SendPropertyChanged("FaceUrl");
+					OnFaceUrlChanged();
 				}
 			}
 		}
@@ -886,17 +886,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Count;
+				return _Count;
 			}
 			set
 			{
-				if ((this._Count != value))
+				if ((_Count != value))
 				{
-					this.OnCountChanging(value);
-					this.SendPropertyChanging();
-					this._Count = value;
-					this.SendPropertyChanged("Count");
-					this.OnCountChanged();
+					OnCountChanging(value);
+					SendPropertyChanging();
+					_Count = value;
+					SendPropertyChanged("Count");
+					OnCountChanged();
 				}
 			}
 		}
@@ -906,17 +906,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -926,17 +926,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Order;
+				return _Order;
 			}
 			set
 			{
-				if ((this._Order != value))
+				if ((_Order != value))
 				{
-					this.OnOrderChanging(value);
-					this.SendPropertyChanging();
-					this._Order = value;
-					this.SendPropertyChanged("Order");
-					this.OnOrderChanged();
+					OnOrderChanging(value);
+					SendPropertyChanging();
+					_Order = value;
+					SendPropertyChanged("Order");
+					OnOrderChanged();
 				}
 			}
 		}
@@ -946,17 +946,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowLevel;
+				return _ShowLevel;
 			}
 			set
 			{
-				if ((this._ShowLevel != value))
+				if ((_ShowLevel != value))
 				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
+					OnShowLevelChanging(value);
+					SendPropertyChanging();
+					_ShowLevel = value;
+					SendPropertyChanged("ShowLevel");
+					OnShowLevelChanged();
 				}
 			}
 		}
@@ -967,17 +967,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1006,11 +1006,11 @@ namespace CHSNS.Operator
 		
 		private string _Icon;
 		
-		private System.Nullable<long> _Authorid;
+		private long? _Authorid;
 		
-		private System.DateTime _Addtime;
+		private DateTime _Addtime;
 		
-		private System.DateTime _Edittime;
+		private DateTime _Edittime;
 		
 		private string _Description;
 		
@@ -1024,7 +1024,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -1044,11 +1044,11 @@ namespace CHSNS.Operator
     partial void OnVisionChanged();
     partial void OnIconChanging(string value);
     partial void OnIconChanged();
-    partial void OnAuthoridChanging(System.Nullable<long> value);
+    partial void OnAuthoridChanging(long? value);
     partial void OnAuthoridChanged();
-    partial void OnAddtimeChanging(System.DateTime value);
+    partial void OnAddtimeChanging(DateTime value);
     partial void OnAddtimeChanged();
-    partial void OnEdittimeChanging(System.DateTime value);
+    partial void OnEdittimeChanging(DateTime value);
     partial void OnEdittimeChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
@@ -1072,17 +1072,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -1092,17 +1092,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Controller;
+				return _Controller;
 			}
 			set
 			{
-				if ((this._Controller != value))
+				if ((_Controller != value))
 				{
-					this.OnControllerChanging(value);
-					this.SendPropertyChanging();
-					this._Controller = value;
-					this.SendPropertyChanged("Controller");
-					this.OnControllerChanged();
+					OnControllerChanging(value);
+					SendPropertyChanging();
+					_Controller = value;
+					SendPropertyChanged("Controller");
+					OnControllerChanged();
 				}
 			}
 		}
@@ -1112,17 +1112,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Action;
+				return _Action;
 			}
 			set
 			{
-				if ((this._Action != value))
+				if ((_Action != value))
 				{
-					this.OnActionChanging(value);
-					this.SendPropertyChanging();
-					this._Action = value;
-					this.SendPropertyChanged("Action");
-					this.OnActionChanged();
+					OnActionChanging(value);
+					SendPropertyChanging();
+					_Action = value;
+					SendPropertyChanged("Action");
+					OnActionChanged();
 				}
 			}
 		}
@@ -1132,17 +1132,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ParamStr;
+				return _ParamStr;
 			}
 			set
 			{
-				if ((this._ParamStr != value))
+				if ((_ParamStr != value))
 				{
-					this.OnParamStrChanging(value);
-					this.SendPropertyChanging();
-					this._ParamStr = value;
-					this.SendPropertyChanged("ParamStr");
-					this.OnParamStrChanged();
+					OnParamStrChanging(value);
+					SendPropertyChanging();
+					_ParamStr = value;
+					SendPropertyChanged("ParamStr");
+					OnParamStrChanged();
 				}
 			}
 		}
@@ -1152,17 +1152,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ClassName;
+				return _ClassName;
 			}
 			set
 			{
-				if ((this._ClassName != value))
+				if ((_ClassName != value))
 				{
-					this.OnClassNameChanging(value);
-					this.SendPropertyChanging();
-					this._ClassName = value;
-					this.SendPropertyChanged("ClassName");
-					this.OnClassNameChanged();
+					OnClassNameChanging(value);
+					SendPropertyChanging();
+					_ClassName = value;
+					SendPropertyChanged("ClassName");
+					OnClassNameChanged();
 				}
 			}
 		}
@@ -1172,17 +1172,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._FullName;
+				return _FullName;
 			}
 			set
 			{
-				if ((this._FullName != value))
+				if ((_FullName != value))
 				{
-					this.OnFullNameChanging(value);
-					this.SendPropertyChanging();
-					this._FullName = value;
-					this.SendPropertyChanged("FullName");
-					this.OnFullNameChanged();
+					OnFullNameChanging(value);
+					SendPropertyChanging();
+					_FullName = value;
+					SendPropertyChanged("FullName");
+					OnFullNameChanged();
 				}
 			}
 		}
@@ -1192,17 +1192,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShortName;
+				return _ShortName;
 			}
 			set
 			{
-				if ((this._ShortName != value))
+				if ((_ShortName != value))
 				{
-					this.OnShortNameChanging(value);
-					this.SendPropertyChanging();
-					this._ShortName = value;
-					this.SendPropertyChanged("ShortName");
-					this.OnShortNameChanged();
+					OnShortNameChanging(value);
+					SendPropertyChanging();
+					_ShortName = value;
+					SendPropertyChanged("ShortName");
+					OnShortNameChanged();
 				}
 			}
 		}
@@ -1212,17 +1212,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Vision;
+				return _Vision;
 			}
 			set
 			{
-				if ((this._Vision != value))
+				if ((_Vision != value))
 				{
-					this.OnVisionChanging(value);
-					this.SendPropertyChanging();
-					this._Vision = value;
-					this.SendPropertyChanged("Vision");
-					this.OnVisionChanged();
+					OnVisionChanging(value);
+					SendPropertyChanging();
+					_Vision = value;
+					SendPropertyChanged("Vision");
+					OnVisionChanged();
 				}
 			}
 		}
@@ -1232,17 +1232,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Icon;
+				return _Icon;
 			}
 			set
 			{
-				if ((this._Icon != value))
+				if ((_Icon != value))
 				{
-					this.OnIconChanging(value);
-					this.SendPropertyChanging();
-					this._Icon = value;
-					this.SendPropertyChanged("Icon");
-					this.OnIconChanged();
+					OnIconChanging(value);
+					SendPropertyChanging();
+					_Icon = value;
+					SendPropertyChanged("Icon");
+					OnIconChanged();
 				}
 			}
 		}
@@ -1252,57 +1252,57 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Authorid;
+				return _Authorid;
 			}
 			set
 			{
-				if ((this._Authorid != value))
+				if ((_Authorid != value))
 				{
-					this.OnAuthoridChanging(value);
-					this.SendPropertyChanging();
-					this._Authorid = value;
-					this.SendPropertyChanged("Authorid");
-					this.OnAuthoridChanged();
+					OnAuthoridChanging(value);
+					SendPropertyChanging();
+					_Authorid = value;
+					SendPropertyChanged("Authorid");
+					OnAuthoridChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_Addtime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime Addtime
+		public DateTime Addtime
 		{
 			get
 			{
-				return this._Addtime;
+				return _Addtime;
 			}
 			set
 			{
-				if ((this._Addtime != value))
+				if ((_Addtime != value))
 				{
-					this.OnAddtimeChanging(value);
-					this.SendPropertyChanging();
-					this._Addtime = value;
-					this.SendPropertyChanged("Addtime");
-					this.OnAddtimeChanged();
+					OnAddtimeChanging(value);
+					SendPropertyChanging();
+					_Addtime = value;
+					SendPropertyChanged("Addtime");
+					OnAddtimeChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_Edittime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime Edittime
+		public DateTime Edittime
 		{
 			get
 			{
-				return this._Edittime;
+				return _Edittime;
 			}
 			set
 			{
-				if ((this._Edittime != value))
+				if ((_Edittime != value))
 				{
-					this.OnEdittimeChanging(value);
-					this.SendPropertyChanging();
-					this._Edittime = value;
-					this.SendPropertyChanged("Edittime");
-					this.OnEdittimeChanged();
+					OnEdittimeChanging(value);
+					SendPropertyChanging();
+					_Edittime = value;
+					SendPropertyChanged("Edittime");
+					OnEdittimeChanged();
 				}
 			}
 		}
@@ -1312,17 +1312,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Description;
+				return _Description;
 			}
 			set
 			{
-				if ((this._Description != value))
+				if ((_Description != value))
 				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
+					OnDescriptionChanging(value);
+					SendPropertyChanging();
+					_Description = value;
+					SendPropertyChanged("Description");
+					OnDescriptionChanged();
 				}
 			}
 		}
@@ -1332,17 +1332,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsSystem;
+				return _IsSystem;
 			}
 			set
 			{
-				if ((this._IsSystem != value))
+				if ((_IsSystem != value))
 				{
-					this.OnIsSystemChanging(value);
-					this.SendPropertyChanging();
-					this._IsSystem = value;
-					this.SendPropertyChanged("IsSystem");
-					this.OnIsSystemChanged();
+					OnIsSystemChanging(value);
+					SendPropertyChanging();
+					_IsSystem = value;
+					SendPropertyChanged("IsSystem");
+					OnIsSystemChanged();
 				}
 			}
 		}
@@ -1352,17 +1352,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsTrue;
+				return _IsTrue;
 			}
 			set
 			{
-				if ((this._IsTrue != value))
+				if ((_IsTrue != value))
 				{
-					this.OnIsTrueChanging(value);
-					this.SendPropertyChanging();
-					this._IsTrue = value;
-					this.SendPropertyChanged("IsTrue");
-					this.OnIsTrueChanged();
+					OnIsTrueChanging(value);
+					SendPropertyChanging();
+					_IsTrue = value;
+					SendPropertyChanged("IsTrue");
+					OnIsTrueChanged();
 				}
 			}
 		}
@@ -1372,17 +1372,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._DescriptionUrl;
+				return _DescriptionUrl;
 			}
 			set
 			{
-				if ((this._DescriptionUrl != value))
+				if ((_DescriptionUrl != value))
 				{
-					this.OnDescriptionUrlChanging(value);
-					this.SendPropertyChanging();
-					this._DescriptionUrl = value;
-					this.SendPropertyChanged("DescriptionUrl");
-					this.OnDescriptionUrlChanged();
+					OnDescriptionUrlChanging(value);
+					SendPropertyChanging();
+					_DescriptionUrl = value;
+					SendPropertyChanged("DescriptionUrl");
+					OnDescriptionUrlChanged();
 				}
 			}
 		}
@@ -1392,17 +1392,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserCount;
+				return _UserCount;
 			}
 			set
 			{
-				if ((this._UserCount != value))
+				if ((_UserCount != value))
 				{
-					this.OnUserCountChanging(value);
-					this.SendPropertyChanging();
-					this._UserCount = value;
-					this.SendPropertyChanged("UserCount");
-					this.OnUserCountChanged();
+					OnUserCountChanging(value);
+					SendPropertyChanging();
+					_UserCount = value;
+					SendPropertyChanged("UserCount");
+					OnUserCountChanged();
 				}
 			}
 		}
@@ -1413,17 +1413,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1444,7 +1444,7 @@ namespace CHSNS.Operator
 		
 		private System.Nullable<bool> _Sex;
 		
-		private System.Nullable<System.DateTime> _Birthday;
+		private System.Nullable<DateTime> _Birthday;
 		
 		private int _ProvinceID;
 		
@@ -1454,7 +1454,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
@@ -1466,7 +1466,7 @@ namespace CHSNS.Operator
     partial void OnIsEmailTrueChanged();
     partial void OnSexChanging(System.Nullable<bool> value);
     partial void OnSexChanged();
-    partial void OnBirthdayChanging(System.Nullable<System.DateTime> value);
+    partial void OnBirthdayChanging(System.Nullable<DateTime> value);
     partial void OnBirthdayChanged();
     partial void OnProvinceIDChanging(int value);
     partial void OnProvinceIDChanged();
@@ -1486,17 +1486,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -1506,17 +1506,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Name;
+				return _Name;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((_Name != value))
 				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					OnNameChanging(value);
+					SendPropertyChanging();
+					_Name = value;
+					SendPropertyChanged("Name");
+					OnNameChanged();
 				}
 			}
 		}
@@ -1526,17 +1526,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Email;
+				return _Email;
 			}
 			set
 			{
-				if ((this._Email != value))
+				if ((_Email != value))
 				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
+					OnEmailChanging(value);
+					SendPropertyChanging();
+					_Email = value;
+					SendPropertyChanged("Email");
+					OnEmailChanged();
 				}
 			}
 		}
@@ -1546,78 +1546,69 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsEmailTrue;
+				return _IsEmailTrue;
 			}
 			set
 			{
-				if ((this._IsEmailTrue != value))
+				if ((_IsEmailTrue != value))
 				{
-					this.OnIsEmailTrueChanging(value);
-					this.SendPropertyChanging();
-					this._IsEmailTrue = value;
-					this.SendPropertyChanged("IsEmailTrue");
-					this.OnIsEmailTrueChanged();
+					OnIsEmailTrueChanging(value);
+					SendPropertyChanging();
+					_IsEmailTrue = value;
+					SendPropertyChanged("IsEmailTrue");
+					OnIsEmailTrueChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_Sex", DbType="Bit")]
-		public System.Nullable<bool> Sex
+		public bool? Sex
 		{
 			get
 			{
-				return this._Sex;
+				return _Sex;
 			}
 			set
 			{
-				if ((this._Sex != value))
-				{
-					this.OnSexChanging(value);
-					this.SendPropertyChanging();
-					this._Sex = value;
-					this.SendPropertyChanged("Sex");
-					this.OnSexChanged();
-				}
+			    if ((_Sex == value)) return;
+			    OnSexChanging(value);
+			    SendPropertyChanging();
+			    _Sex = value;
+			    SendPropertyChanged("Sex");
+			    OnSexChanged();
 			}
 		}
-		
-		[Column(Storage="_Birthday", DbType="SmallDateTime")]
-		public System.Nullable<System.DateTime> Birthday
-		{
-			get
-			{
-				return this._Birthday;
-			}
-			set
-			{
-				if ((this._Birthday != value))
-				{
-					this.OnBirthdayChanging(value);
-					this.SendPropertyChanging();
-					this._Birthday = value;
-					this.SendPropertyChanged("Birthday");
-					this.OnBirthdayChanged();
-				}
-			}
-		}
+
+        [Column(Storage = "_Birthday", DbType = "SmallDateTime")]
+        public DateTime? Birthday {
+            get {
+                return _Birthday;
+            }
+            set {
+                if ((_Birthday == value)) return;
+                OnBirthdayChanging(value);
+                SendPropertyChanging();
+                _Birthday = value;
+                SendPropertyChanged("Birthday");
+                OnBirthdayChanged();
+            }
+        }
 		
 		[Column(Storage="_ProvinceID", DbType="Int NOT NULL")]
 		public int ProvinceID
 		{
 			get
 			{
-				return this._ProvinceID;
+				return _ProvinceID;
 			}
 			set
 			{
-				if ((this._ProvinceID != value))
-				{
-					this.OnProvinceIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProvinceID = value;
-					this.SendPropertyChanged("ProvinceID");
-					this.OnProvinceIDChanged();
-				}
+			    if ((_ProvinceID == value)) return;
+			    OnProvinceIDChanging(value);
+			    SendPropertyChanging();
+			    _ProvinceID = value;
+			    SendPropertyChanged("ProvinceID");
+			    OnProvinceIDChanged();
 			}
 		}
 		
@@ -1626,18 +1617,16 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._CityID;
+				return _CityID;
 			}
 			set
 			{
-				if ((this._CityID != value))
-				{
-					this.OnCityIDChanging(value);
-					this.SendPropertyChanging();
-					this._CityID = value;
-					this.SendPropertyChanged("CityID");
-					this.OnCityIDChanged();
-				}
+			    if ((_CityID == value)) return;
+			    OnCityIDChanging(value);
+			    SendPropertyChanging();
+			    _CityID = value;
+			    SendPropertyChanged("CityID");
+			    OnCityIDChanged();
 			}
 		}
 		
@@ -1646,18 +1635,16 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowLevel;
+				return _ShowLevel;
 			}
 			set
 			{
-				if ((this._ShowLevel != value))
-				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
-				}
+			    if ((_ShowLevel == value)) return;
+			    OnShowLevelChanging(value);
+			    SendPropertyChanging();
+			    _ShowLevel = value;
+			    SendPropertyChanged("ShowLevel");
+			    OnShowLevelChanged();
 			}
 		}
 		
@@ -1667,17 +1654,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1690,7 +1677,7 @@ namespace CHSNS.Operator
 		
 		private long _UserID;
 		
-		private System.DateTime _CreateTime;
+		private DateTime _CreateTime;
 		
 		private string _Title;
 		
@@ -1718,11 +1705,11 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
-    partial void OnCreateTimeChanging(System.DateTime value);
+    partial void OnCreateTimeChanging(DateTime value);
     partial void OnCreateTimeChanged();
     partial void OnTitleChanging(string value);
     partial void OnTitleChanged();
@@ -1760,37 +1747,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_CreateTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime CreateTime
+		public DateTime CreateTime
 		{
 			get
 			{
-				return this._CreateTime;
+				return _CreateTime;
 			}
 			set
 			{
-				if ((this._CreateTime != value))
+				if ((_CreateTime != value))
 				{
-					this.OnCreateTimeChanging(value);
-					this.SendPropertyChanging();
-					this._CreateTime = value;
-					this.SendPropertyChanged("CreateTime");
-					this.OnCreateTimeChanged();
+					OnCreateTimeChanging(value);
+					SendPropertyChanging();
+					_CreateTime = value;
+					SendPropertyChanged("CreateTime");
+					OnCreateTimeChanged();
 				}
 			}
 		}
@@ -1800,17 +1787,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Title;
+				return _Title;
 			}
 			set
 			{
-				if ((this._Title != value))
+				if ((_Title != value))
 				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
+					OnTitleChanging(value);
+					SendPropertyChanging();
+					_Title = value;
+					SendPropertyChanged("Title");
+					OnTitleChanged();
 				}
 			}
 		}
@@ -1820,17 +1807,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._SubTitle;
+				return _SubTitle;
 			}
 			set
 			{
-				if ((this._SubTitle != value))
+				if ((_SubTitle != value))
 				{
-					this.OnSubTitleChanging(value);
-					this.SendPropertyChanging();
-					this._SubTitle = value;
-					this.SendPropertyChanged("SubTitle");
-					this.OnSubTitleChanged();
+					OnSubTitleChanging(value);
+					SendPropertyChanging();
+					_SubTitle = value;
+					SendPropertyChanged("SubTitle");
+					OnSubTitleChanged();
 				}
 			}
 		}
@@ -1840,17 +1827,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Publish;
+				return _Publish;
 			}
 			set
 			{
-				if ((this._Publish != value))
+				if ((_Publish != value))
 				{
-					this.OnPublishChanging(value);
-					this.SendPropertyChanging();
-					this._Publish = value;
-					this.SendPropertyChanged("Publish");
-					this.OnPublishChanged();
+					OnPublishChanging(value);
+					SendPropertyChanging();
+					_Publish = value;
+					SendPropertyChanged("Publish");
+					OnPublishChanged();
 				}
 			}
 		}
@@ -1860,17 +1847,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._WriteName;
+				return _WriteName;
 			}
 			set
 			{
-				if ((this._WriteName != value))
+				if ((_WriteName != value))
 				{
-					this.OnWriteNameChanging(value);
-					this.SendPropertyChanging();
-					this._WriteName = value;
-					this.SendPropertyChanged("WriteName");
-					this.OnWriteNameChanged();
+					OnWriteNameChanging(value);
+					SendPropertyChanging();
+					_WriteName = value;
+					SendPropertyChanged("WriteName");
+					OnWriteNameChanged();
 				}
 			}
 		}
@@ -1880,17 +1867,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._CommentEmail;
+				return _CommentEmail;
 			}
 			set
 			{
-				if ((this._CommentEmail != value))
+				if ((_CommentEmail != value))
 				{
-					this.OnCommentEmailChanging(value);
-					this.SendPropertyChanging();
-					this._CommentEmail = value;
-					this.SendPropertyChanged("CommentEmail");
-					this.OnCommentEmailChanged();
+					OnCommentEmailChanging(value);
+					SendPropertyChanging();
+					_CommentEmail = value;
+					SendPropertyChanged("CommentEmail");
+					OnCommentEmailChanged();
 				}
 			}
 		}
@@ -1900,17 +1887,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Skin;
+				return _Skin;
 			}
 			set
 			{
-				if ((this._Skin != value))
+				if ((_Skin != value))
 				{
-					this.OnSkinChanging(value);
-					this.SendPropertyChanging();
-					this._Skin = value;
-					this.SendPropertyChanged("Skin");
-					this.OnSkinChanged();
+					OnSkinChanging(value);
+					SendPropertyChanging();
+					_Skin = value;
+					SendPropertyChanged("Skin");
+					OnSkinChanged();
 				}
 			}
 		}
@@ -1920,17 +1907,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Css;
+				return _Css;
 			}
 			set
 			{
-				if ((this._Css != value))
+				if ((_Css != value))
 				{
-					this.OnCssChanging(value);
-					this.SendPropertyChanging();
-					this._Css = value;
-					this.SendPropertyChanged("Css");
-					this.OnCssChanged();
+					OnCssChanging(value);
+					SendPropertyChanging();
+					_Css = value;
+					SendPropertyChanged("Css");
+					OnCssChanged();
 				}
 			}
 		}
@@ -1940,17 +1927,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._MetaKey;
+				return _MetaKey;
 			}
 			set
 			{
-				if ((this._MetaKey != value))
+				if ((_MetaKey != value))
 				{
-					this.OnMetaKeyChanging(value);
-					this.SendPropertyChanging();
-					this._MetaKey = value;
-					this.SendPropertyChanged("MetaKey");
-					this.OnMetaKeyChanged();
+					OnMetaKeyChanging(value);
+					SendPropertyChanging();
+					_MetaKey = value;
+					SendPropertyChanged("MetaKey");
+					OnMetaKeyChanged();
 				}
 			}
 		}
@@ -1960,17 +1947,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsWebServices;
+				return _IsWebServices;
 			}
 			set
 			{
-				if ((this._IsWebServices != value))
+				if ((_IsWebServices != value))
 				{
-					this.OnIsWebServicesChanging(value);
-					this.SendPropertyChanging();
-					this._IsWebServices = value;
-					this.SendPropertyChanged("IsWebServices");
-					this.OnIsWebServicesChanged();
+					OnIsWebServicesChanging(value);
+					SendPropertyChanging();
+					_IsWebServices = value;
+					SendPropertyChanged("IsWebServices");
+					OnIsWebServicesChanged();
 				}
 			}
 		}
@@ -1980,17 +1967,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._PostCount;
+				return _PostCount;
 			}
 			set
 			{
-				if ((this._PostCount != value))
+				if ((_PostCount != value))
 				{
-					this.OnPostCountChanging(value);
-					this.SendPropertyChanging();
-					this._PostCount = value;
-					this.SendPropertyChanged("PostCount");
-					this.OnPostCountChanged();
+					OnPostCountChanging(value);
+					SendPropertyChanging();
+					_PostCount = value;
+					SendPropertyChanged("PostCount");
+					OnPostCountChanged();
 				}
 			}
 		}
@@ -2000,17 +1987,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._CommentCount;
+				return _CommentCount;
 			}
 			set
 			{
-				if ((this._CommentCount != value))
+				if ((_CommentCount != value))
 				{
-					this.OnCommentCountChanging(value);
-					this.SendPropertyChanging();
-					this._CommentCount = value;
-					this.SendPropertyChanged("CommentCount");
-					this.OnCommentCountChanged();
+					OnCommentCountChanging(value);
+					SendPropertyChanging();
+					_CommentCount = value;
+					SendPropertyChanged("CommentCount");
+					OnCommentCountChanged();
 				}
 			}
 		}
@@ -2020,17 +2007,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._TrackBackCount;
+				return _TrackBackCount;
 			}
 			set
 			{
-				if ((this._TrackBackCount != value))
+				if ((_TrackBackCount != value))
 				{
-					this.OnTrackBackCountChanging(value);
-					this.SendPropertyChanging();
-					this._TrackBackCount = value;
-					this.SendPropertyChanged("TrackBackCount");
-					this.OnTrackBackCountChanged();
+					OnTrackBackCountChanging(value);
+					SendPropertyChanging();
+					_TrackBackCount = value;
+					SendPropertyChanged("TrackBackCount");
+					OnTrackBackCountChanged();
 				}
 			}
 		}
@@ -2041,17 +2028,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -2074,7 +2061,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -2098,17 +2085,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -2118,17 +2105,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Name;
+				return _Name;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((_Name != value))
 				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					OnNameChanging(value);
+					SendPropertyChanging();
+					_Name = value;
+					SendPropertyChanged("Name");
+					OnNameChanged();
 				}
 			}
 		}
@@ -2138,17 +2125,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Type;
+				return _Type;
 			}
 			set
 			{
-				if ((this._Type != value))
+				if ((_Type != value))
 				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
+					OnTypeChanging(value);
+					SendPropertyChanging();
+					_Type = value;
+					SendPropertyChanged("Type");
+					OnTypeChanged();
 				}
 			}
 		}
@@ -2158,17 +2145,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Count;
+				return _Count;
 			}
 			set
 			{
-				if ((this._Count != value))
+				if ((_Count != value))
 				{
-					this.OnCountChanging(value);
-					this.SendPropertyChanging();
-					this._Count = value;
-					this.SendPropertyChanged("Count");
-					this.OnCountChanged();
+					OnCountChanging(value);
+					SendPropertyChanging();
+					_Count = value;
+					SendPropertyChanged("Count");
+					OnCountChanged();
 				}
 			}
 		}
@@ -2178,17 +2165,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -2199,17 +2186,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -2222,13 +2209,13 @@ namespace CHSNS.Operator
 		
 		private long _ID;
 		
-		private System.Nullable<long> _ShowerID;
+		private long? _ShowerID;
 		
 		private long _OwnerID;
 		
 		private long _SenderID;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private string _Body;
 		
@@ -2244,7 +2231,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -2254,7 +2241,7 @@ namespace CHSNS.Operator
     partial void OnOwnerIDChanged();
     partial void OnSenderIDChanging(long value);
     partial void OnSenderIDChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnBodyChanging(string value);
     partial void OnBodyChanged();
@@ -2280,17 +2267,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -2300,17 +2287,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowerID;
+				return _ShowerID;
 			}
 			set
 			{
-				if ((this._ShowerID != value))
+				if ((_ShowerID != value))
 				{
-					this.OnShowerIDChanging(value);
-					this.SendPropertyChanging();
-					this._ShowerID = value;
-					this.SendPropertyChanged("ShowerID");
-					this.OnShowerIDChanged();
+					OnShowerIDChanging(value);
+					SendPropertyChanging();
+					_ShowerID = value;
+					SendPropertyChanged("ShowerID");
+					OnShowerIDChanged();
 				}
 			}
 		}
@@ -2320,17 +2307,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._OwnerID;
+				return _OwnerID;
 			}
 			set
 			{
-				if ((this._OwnerID != value))
+				if ((_OwnerID != value))
 				{
-					this.OnOwnerIDChanging(value);
-					this.SendPropertyChanging();
-					this._OwnerID = value;
-					this.SendPropertyChanged("OwnerID");
-					this.OnOwnerIDChanged();
+					OnOwnerIDChanging(value);
+					SendPropertyChanging();
+					_OwnerID = value;
+					SendPropertyChanged("OwnerID");
+					OnOwnerIDChanged();
 				}
 			}
 		}
@@ -2340,37 +2327,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._SenderID;
+				return _SenderID;
 			}
 			set
 			{
-				if ((this._SenderID != value))
+				if ((_SenderID != value))
 				{
-					this.OnSenderIDChanging(value);
-					this.SendPropertyChanging();
-					this._SenderID = value;
-					this.SendPropertyChanged("SenderID");
-					this.OnSenderIDChanged();
+					OnSenderIDChanging(value);
+					SendPropertyChanging();
+					_SenderID = value;
+					SendPropertyChanged("SenderID");
+					OnSenderIDChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -2380,17 +2367,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Body;
+				return _Body;
 			}
 			set
 			{
-				if ((this._Body != value))
+				if ((_Body != value))
 				{
-					this.OnBodyChanging(value);
-					this.SendPropertyChanging();
-					this._Body = value;
-					this.SendPropertyChanged("Body");
-					this.OnBodyChanged();
+					OnBodyChanging(value);
+					SendPropertyChanging();
+					_Body = value;
+					SendPropertyChanged("Body");
+					OnBodyChanged();
 				}
 			}
 		}
@@ -2400,17 +2387,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsReply;
+				return _IsReply;
 			}
 			set
 			{
-				if ((this._IsReply != value))
+				if ((_IsReply != value))
 				{
-					this.OnIsReplyChanging(value);
-					this.SendPropertyChanging();
-					this._IsReply = value;
-					this.SendPropertyChanged("IsReply");
-					this.OnIsReplyChanged();
+					OnIsReplyChanging(value);
+					SendPropertyChanging();
+					_IsReply = value;
+					SendPropertyChanged("IsReply");
+					OnIsReplyChanged();
 				}
 			}
 		}
@@ -2420,17 +2407,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsSee;
+				return _IsSee;
 			}
 			set
 			{
-				if ((this._IsSee != value))
+				if ((_IsSee != value))
 				{
-					this.OnIsSeeChanging(value);
-					this.SendPropertyChanging();
-					this._IsSee = value;
-					this.SendPropertyChanged("IsSee");
-					this.OnIsSeeChanged();
+					OnIsSeeChanging(value);
+					SendPropertyChanging();
+					_IsSee = value;
+					SendPropertyChanged("IsSee");
+					OnIsSeeChanged();
 				}
 			}
 		}
@@ -2440,17 +2427,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsDel;
+				return _IsDel;
 			}
 			set
 			{
-				if ((this._IsDel != value))
+				if ((_IsDel != value))
 				{
-					this.OnIsDelChanging(value);
-					this.SendPropertyChanging();
-					this._IsDel = value;
-					this.SendPropertyChanged("IsDel");
-					this.OnIsDelChanged();
+					OnIsDelChanging(value);
+					SendPropertyChanging();
+					_IsDel = value;
+					SendPropertyChanged("IsDel");
+					OnIsDelChanged();
 				}
 			}
 		}
@@ -2460,17 +2447,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Type;
+				return _Type;
 			}
 			set
 			{
-				if ((this._Type != value))
+				if ((_Type != value))
 				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
+					OnTypeChanging(value);
+					SendPropertyChanging();
+					_Type = value;
+					SendPropertyChanged("Type");
+					OnTypeChanged();
 				}
 			}
 		}
@@ -2480,17 +2467,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsTellMe;
+				return _IsTellMe;
 			}
 			set
 			{
-				if ((this._IsTellMe != value))
+				if ((_IsTellMe != value))
 				{
-					this.OnIsTellMeChanging(value);
-					this.SendPropertyChanging();
-					this._IsTellMe = value;
-					this.SendPropertyChanged("IsTellMe");
-					this.OnIsTellMeChanged();
+					OnIsTellMeChanging(value);
+					SendPropertyChanging();
+					_IsTellMe = value;
+					SendPropertyChanged("IsTellMe");
+					OnIsTellMeChanged();
 				}
 			}
 		}
@@ -2501,17 +2488,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -2548,7 +2535,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
@@ -2586,17 +2573,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -2606,17 +2593,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Address;
+				return _Address;
 			}
 			set
 			{
-				if ((this._Address != value))
+				if ((_Address != value))
 				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
+					OnAddressChanging(value);
+					SendPropertyChanging();
+					_Address = value;
+					SendPropertyChanged("Address");
+					OnAddressChanged();
 				}
 			}
 		}
@@ -2626,17 +2613,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._QQ;
+				return _QQ;
 			}
 			set
 			{
-				if ((this._QQ != value))
+				if ((_QQ != value))
 				{
-					this.OnQQChanging(value);
-					this.SendPropertyChanging();
-					this._QQ = value;
-					this.SendPropertyChanged("QQ");
-					this.OnQQChanged();
+					OnQQChanging(value);
+					SendPropertyChanging();
+					_QQ = value;
+					SendPropertyChanged("QQ");
+					OnQQChanged();
 				}
 			}
 		}
@@ -2646,17 +2633,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Msn;
+				return _Msn;
 			}
 			set
 			{
-				if ((this._Msn != value))
+				if ((_Msn != value))
 				{
-					this.OnMsnChanging(value);
-					this.SendPropertyChanging();
-					this._Msn = value;
-					this.SendPropertyChanged("Msn");
-					this.OnMsnChanged();
+					OnMsnChanging(value);
+					SendPropertyChanging();
+					_Msn = value;
+					SendPropertyChanged("Msn");
+					OnMsnChanged();
 				}
 			}
 		}
@@ -2666,17 +2653,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._WangWang;
+				return _WangWang;
 			}
 			set
 			{
-				if ((this._WangWang != value))
+				if ((_WangWang != value))
 				{
-					this.OnWangWangChanging(value);
-					this.SendPropertyChanging();
-					this._WangWang = value;
-					this.SendPropertyChanged("WangWang");
-					this.OnWangWangChanged();
+					OnWangWangChanging(value);
+					SendPropertyChanging();
+					_WangWang = value;
+					SendPropertyChanged("WangWang");
+					OnWangWangChanged();
 				}
 			}
 		}
@@ -2686,17 +2673,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._NeteasePop;
+				return _NeteasePop;
 			}
 			set
 			{
-				if ((this._NeteasePop != value))
+				if ((_NeteasePop != value))
 				{
-					this.OnNeteasePopChanging(value);
-					this.SendPropertyChanging();
-					this._NeteasePop = value;
-					this.SendPropertyChanged("NeteasePop");
-					this.OnNeteasePopChanged();
+					OnNeteasePopChanging(value);
+					SendPropertyChanging();
+					_NeteasePop = value;
+					SendPropertyChanged("NeteasePop");
+					OnNeteasePopChanged();
 				}
 			}
 		}
@@ -2706,17 +2693,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UC;
+				return _UC;
 			}
 			set
 			{
-				if ((this._UC != value))
+				if ((_UC != value))
 				{
-					this.OnUCChanging(value);
-					this.SendPropertyChanging();
-					this._UC = value;
-					this.SendPropertyChanged("UC");
-					this.OnUCChanged();
+					OnUCChanging(value);
+					SendPropertyChanging();
+					_UC = value;
+					SendPropertyChanged("UC");
+					OnUCChanged();
 				}
 			}
 		}
@@ -2726,17 +2713,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Telphone;
+				return _Telphone;
 			}
 			set
 			{
-				if ((this._Telphone != value))
+				if ((_Telphone != value))
 				{
-					this.OnTelphoneChanging(value);
-					this.SendPropertyChanging();
-					this._Telphone = value;
-					this.SendPropertyChanged("Telphone");
-					this.OnTelphoneChanged();
+					OnTelphoneChanging(value);
+					SendPropertyChanging();
+					_Telphone = value;
+					SendPropertyChanged("Telphone");
+					OnTelphoneChanged();
 				}
 			}
 		}
@@ -2746,17 +2733,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Mobiephone;
+				return _Mobiephone;
 			}
 			set
 			{
-				if ((this._Mobiephone != value))
+				if ((_Mobiephone != value))
 				{
-					this.OnMobiephoneChanging(value);
-					this.SendPropertyChanging();
-					this._Mobiephone = value;
-					this.SendPropertyChanged("Mobiephone");
-					this.OnMobiephoneChanged();
+					OnMobiephoneChanging(value);
+					SendPropertyChanging();
+					_Mobiephone = value;
+					SendPropertyChanged("Mobiephone");
+					OnMobiephoneChanged();
 				}
 			}
 		}
@@ -2766,17 +2753,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._WebSite;
+				return _WebSite;
 			}
 			set
 			{
-				if ((this._WebSite != value))
+				if ((_WebSite != value))
 				{
-					this.OnWebSiteChanging(value);
-					this.SendPropertyChanging();
-					this._WebSite = value;
-					this.SendPropertyChanged("WebSite");
-					this.OnWebSiteChanged();
+					OnWebSiteChanging(value);
+					SendPropertyChanging();
+					_WebSite = value;
+					SendPropertyChanged("WebSite");
+					OnWebSiteChanged();
 				}
 			}
 		}
@@ -2786,17 +2773,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._TellMethod;
+				return _TellMethod;
 			}
 			set
 			{
-				if ((this._TellMethod != value))
+				if ((_TellMethod != value))
 				{
-					this.OnTellMethodChanging(value);
-					this.SendPropertyChanging();
-					this._TellMethod = value;
-					this.SendPropertyChanged("TellMethod");
-					this.OnTellMethodChanged();
+					OnTellMethodChanging(value);
+					SendPropertyChanging();
+					_TellMethod = value;
+					SendPropertyChanged("TellMethod");
+					OnTellMethodChanged();
 				}
 			}
 		}
@@ -2806,17 +2793,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowLevel;
+				return _ShowLevel;
 			}
 			set
 			{
-				if ((this._ShowLevel != value))
+				if ((_ShowLevel != value))
 				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
+					OnShowLevelChanging(value);
+					SendPropertyChanging();
+					_ShowLevel = value;
+					SendPropertyChanged("ShowLevel");
+					OnShowLevelChanged();
 				}
 			}
 		}
@@ -2827,17 +2814,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -2854,7 +2841,7 @@ namespace CHSNS.Operator
 		
 		private long _CreaterID;
 		
-		private System.DateTime _UpdateTime;
+		private DateTime _UpdateTime;
 		
 		private System.Nullable<long> _CurrentID;
 		
@@ -2868,7 +2855,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -2876,7 +2863,7 @@ namespace CHSNS.Operator
     partial void OnTitleChanged();
     partial void OnCreaterIDChanging(long value);
     partial void OnCreaterIDChanged();
-    partial void OnUpdateTimeChanging(System.DateTime value);
+    partial void OnUpdateTimeChanging(DateTime value);
     partial void OnUpdateTimeChanged();
     partial void OnCurrentIDChanging(System.Nullable<long> value);
     partial void OnCurrentIDChanged();
@@ -2900,17 +2887,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -2920,17 +2907,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Title;
+				return _Title;
 			}
 			set
 			{
-				if ((this._Title != value))
+				if ((_Title != value))
 				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
+					OnTitleChanging(value);
+					SendPropertyChanging();
+					_Title = value;
+					SendPropertyChanged("Title");
+					OnTitleChanged();
 				}
 			}
 		}
@@ -2940,37 +2927,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._CreaterID;
+				return _CreaterID;
 			}
 			set
 			{
-				if ((this._CreaterID != value))
+				if ((_CreaterID != value))
 				{
-					this.OnCreaterIDChanging(value);
-					this.SendPropertyChanging();
-					this._CreaterID = value;
-					this.SendPropertyChanged("CreaterID");
-					this.OnCreaterIDChanged();
+					OnCreaterIDChanging(value);
+					SendPropertyChanging();
+					_CreaterID = value;
+					SendPropertyChanged("CreaterID");
+					OnCreaterIDChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_UpdateTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime UpdateTime
+		public DateTime UpdateTime
 		{
 			get
 			{
-				return this._UpdateTime;
+				return _UpdateTime;
 			}
 			set
 			{
-				if ((this._UpdateTime != value))
+				if ((_UpdateTime != value))
 				{
-					this.OnUpdateTimeChanging(value);
-					this.SendPropertyChanging();
-					this._UpdateTime = value;
-					this.SendPropertyChanged("UpdateTime");
-					this.OnUpdateTimeChanged();
+					OnUpdateTimeChanging(value);
+					SendPropertyChanging();
+					_UpdateTime = value;
+					SendPropertyChanged("UpdateTime");
+					OnUpdateTimeChanged();
 				}
 			}
 		}
@@ -2980,17 +2967,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._CurrentID;
+				return _CurrentID;
 			}
 			set
 			{
-				if ((this._CurrentID != value))
+				if ((_CurrentID != value))
 				{
-					this.OnCurrentIDChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentID = value;
-					this.SendPropertyChanged("CurrentID");
-					this.OnCurrentIDChanged();
+					OnCurrentIDChanging(value);
+					SendPropertyChanging();
+					_CurrentID = value;
+					SendPropertyChanged("CurrentID");
+					OnCurrentIDChanged();
 				}
 			}
 		}
@@ -3000,17 +2987,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._EditCount;
+				return _EditCount;
 			}
 			set
 			{
-				if ((this._EditCount != value))
+				if ((_EditCount != value))
 				{
-					this.OnEditCountChanging(value);
-					this.SendPropertyChanging();
-					this._EditCount = value;
-					this.SendPropertyChanged("EditCount");
-					this.OnEditCountChanged();
+					OnEditCountChanging(value);
+					SendPropertyChanging();
+					_EditCount = value;
+					SendPropertyChanged("EditCount");
+					OnEditCountChanged();
 				}
 			}
 		}
@@ -3020,17 +3007,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewCount;
+				return _ViewCount;
 			}
 			set
 			{
-				if ((this._ViewCount != value))
+				if ((_ViewCount != value))
 				{
-					this.OnViewCountChanging(value);
-					this.SendPropertyChanging();
-					this._ViewCount = value;
-					this.SendPropertyChanged("ViewCount");
-					this.OnViewCountChanged();
+					OnViewCountChanging(value);
+					SendPropertyChanging();
+					_ViewCount = value;
+					SendPropertyChanged("ViewCount");
+					OnViewCountChanged();
 				}
 			}
 		}
@@ -3040,17 +3027,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Status;
+				return _Status;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((_Status != value))
 				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
+					OnStatusChanging(value);
+					SendPropertyChanging();
+					_Status = value;
+					SendPropertyChanged("Status");
+					OnStatusChanged();
 				}
 			}
 		}
@@ -3060,17 +3047,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Ext;
+				return _Ext;
 			}
 			set
 			{
-				if ((this._Ext != value))
+				if ((_Ext != value))
 				{
-					this.OnExtChanging(value);
-					this.SendPropertyChanging();
-					this._Ext = value;
-					this.SendPropertyChanged("Ext");
-					this.OnExtChanged();
+					OnExtChanging(value);
+					SendPropertyChanging();
+					_Ext = value;
+					SendPropertyChanged("Ext");
+					OnExtChanged();
 				}
 			}
 		}
@@ -3081,17 +3068,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -3106,7 +3093,7 @@ namespace CHSNS.Operator
 		
 		private string _Reason;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private string _Description;
 		
@@ -3124,13 +3111,13 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
     partial void OnReasonChanging(string value);
     partial void OnReasonChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
@@ -3158,17 +3145,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -3178,37 +3165,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Reason;
+				return _Reason;
 			}
 			set
 			{
-				if ((this._Reason != value))
+				if ((_Reason != value))
 				{
-					this.OnReasonChanging(value);
-					this.SendPropertyChanging();
-					this._Reason = value;
-					this.SendPropertyChanged("Reason");
-					this.OnReasonChanged();
+					OnReasonChanging(value);
+					SendPropertyChanging();
+					_Reason = value;
+					SendPropertyChanged("Reason");
+					OnReasonChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -3218,17 +3205,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Description;
+				return _Description;
 			}
 			set
 			{
-				if ((this._Description != value))
+				if ((_Description != value))
 				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
+					OnDescriptionChanging(value);
+					SendPropertyChanging();
+					_Description = value;
+					SendPropertyChanged("Description");
+					OnDescriptionChanged();
 				}
 			}
 		}
@@ -3238,17 +3225,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Reference;
+				return _Reference;
 			}
 			set
 			{
-				if ((this._Reference != value))
+				if ((_Reference != value))
 				{
-					this.OnReferenceChanging(value);
-					this.SendPropertyChanging();
-					this._Reference = value;
-					this.SendPropertyChanged("Reference");
-					this.OnReferenceChanged();
+					OnReferenceChanging(value);
+					SendPropertyChanging();
+					_Reference = value;
+					SendPropertyChanged("Reference");
+					OnReferenceChanged();
 				}
 			}
 		}
@@ -3258,17 +3245,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -3278,57 +3265,50 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Status;
+				return _Status;
 			}
 			set
 			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
+			    if ((_Status == value)) return;
+			    OnStatusChanging(value);
+			    SendPropertyChanging();
+			    _Status = value;
+			    SendPropertyChanged("Status");
+			    OnStatusChanged();
 			}
 		}
-		
-		[Column(Storage="_EntryID", DbType="BigInt")]
-		public System.Nullable<long> EntryID
-		{
-			get
-			{
-				return this._EntryID;
-			}
-			set
-			{
-				if ((this._EntryID != value))
-				{
-					this.OnEntryIDChanging(value);
-					this.SendPropertyChanging();
-					this._EntryID = value;
-					this.SendPropertyChanged("EntryID");
-					this.OnEntryIDChanged();
-				}
-			}
-		}
+
+        [Column(Storage = "_EntryID", DbType = "BigInt")]
+        public long? EntryID {
+            get {
+                return _EntryID;
+            }
+            set {
+                if ((_EntryID == value)) return;
+                OnEntryIDChanging(value);
+                SendPropertyChanging();
+                _EntryID = value;
+                SendPropertyChanged("EntryID");
+                OnEntryIDChanged();
+            }
+        }
 		
 		[Column(Storage="_ParentText", DbType="NVarChar(50)")]
 		public string ParentText
 		{
 			get
 			{
-				return this._ParentText;
+				return _ParentText;
 			}
 			set
 			{
-				if ((this._ParentText != value))
+				if ((_ParentText != value))
 				{
-					this.OnParentTextChanging(value);
-					this.SendPropertyChanging();
-					this._ParentText = value;
-					this.SendPropertyChanged("ParentText");
-					this.OnParentTextChanged();
+					OnParentTextChanging(value);
+					SendPropertyChanging();
+					_ParentText = value;
+					SendPropertyChanged("ParentText");
+					OnParentTextChanged();
 				}
 			}
 		}
@@ -3338,17 +3318,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Ext;
+				return _Ext;
 			}
 			set
 			{
-				if ((this._Ext != value))
+				if ((_Ext != value))
 				{
-					this.OnExtChanging(value);
-					this.SendPropertyChanging();
-					this._Ext = value;
-					this.SendPropertyChanged("Ext");
-					this.OnExtChanged();
+					OnExtChanging(value);
+					SendPropertyChanging();
+					_Ext = value;
+					SendPropertyChanged("Ext");
+					OnExtChanged();
 				}
 			}
 		}
@@ -3359,17 +3339,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -3388,7 +3368,7 @@ namespace CHSNS.Operator
 		
 		private System.Nullable<long> _ViewerID;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private int _ShowLevel;
 		
@@ -3396,7 +3376,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -3406,7 +3386,7 @@ namespace CHSNS.Operator
     partial void OnOwnerIDChanged();
     partial void OnViewerIDChanging(System.Nullable<long> value);
     partial void OnViewerIDChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnShowLevelChanging(int value);
     partial void OnShowLevelChanged();
@@ -3424,17 +3404,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -3444,17 +3424,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._TemplateName;
+				return _TemplateName;
 			}
 			set
 			{
-				if ((this._TemplateName != value))
+				if ((_TemplateName != value))
 				{
-					this.OnTemplateNameChanging(value);
-					this.SendPropertyChanging();
-					this._TemplateName = value;
-					this.SendPropertyChanged("TemplateName");
-					this.OnTemplateNameChanged();
+					OnTemplateNameChanging(value);
+					SendPropertyChanging();
+					_TemplateName = value;
+					SendPropertyChanged("TemplateName");
+					OnTemplateNameChanged();
 				}
 			}
 		}
@@ -3464,17 +3444,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._OwnerID;
+				return _OwnerID;
 			}
 			set
 			{
-				if ((this._OwnerID != value))
+				if ((_OwnerID != value))
 				{
-					this.OnOwnerIDChanging(value);
-					this.SendPropertyChanging();
-					this._OwnerID = value;
-					this.SendPropertyChanged("OwnerID");
-					this.OnOwnerIDChanged();
+					OnOwnerIDChanging(value);
+					SendPropertyChanging();
+					_OwnerID = value;
+					SendPropertyChanged("OwnerID");
+					OnOwnerIDChanged();
 				}
 			}
 		}
@@ -3484,37 +3464,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewerID;
+				return _ViewerID;
 			}
 			set
 			{
-				if ((this._ViewerID != value))
+				if ((_ViewerID != value))
 				{
-					this.OnViewerIDChanging(value);
-					this.SendPropertyChanging();
-					this._ViewerID = value;
-					this.SendPropertyChanged("ViewerID");
-					this.OnViewerIDChanged();
+					OnViewerIDChanging(value);
+					SendPropertyChanging();
+					_ViewerID = value;
+					SendPropertyChanged("ViewerID");
+					OnViewerIDChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -3524,17 +3504,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowLevel;
+				return _ShowLevel;
 			}
 			set
 			{
-				if ((this._ShowLevel != value))
+				if ((_ShowLevel != value))
 				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
+					OnShowLevelChanging(value);
+					SendPropertyChanging();
+					_ShowLevel = value;
+					SendPropertyChanged("ShowLevel");
+					OnShowLevelChanged();
 				}
 			}
 		}
@@ -3544,17 +3524,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Json;
+				return _Json;
 			}
 			set
 			{
-				if ((this._Json != value))
+				if ((_Json != value))
 				{
-					this.OnJsonChanging(value);
-					this.SendPropertyChanging();
-					this._Json = value;
-					this.SendPropertyChanged("Json");
-					this.OnJsonChanged();
+					OnJsonChanging(value);
+					SendPropertyChanging();
+					_Json = value;
+					SendPropertyChanged("Json");
+					OnJsonChanged();
 				}
 			}
 		}
@@ -3565,17 +3545,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -3590,19 +3570,19 @@ namespace CHSNS.Operator
 		
 		private long _Field;
 		
-		private System.Nullable<short> _Year;
+		private short? _Year;
 		
-		private System.Nullable<long> _MiniField;
+		private long? _MiniField;
 		
-		private System.Nullable<long> _QinShi;
+		private long? _QinShi;
 		
-		private System.Nullable<long> _Field1;
+		private long? _Field1;
 		
-		private System.Nullable<long> _Field2;
+		private long? _Field2;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
@@ -3630,17 +3610,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -3650,17 +3630,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Field;
+				return _Field;
 			}
 			set
 			{
-				if ((this._Field != value))
+				if ((_Field != value))
 				{
-					this.OnFieldChanging(value);
-					this.SendPropertyChanging();
-					this._Field = value;
-					this.SendPropertyChanged("Field");
-					this.OnFieldChanged();
+					OnFieldChanging(value);
+					SendPropertyChanging();
+					_Field = value;
+					SendPropertyChanged("Field");
+					OnFieldChanged();
 				}
 			}
 		}
@@ -3670,17 +3650,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Year;
+				return _Year;
 			}
 			set
 			{
-				if ((this._Year != value))
+				if ((_Year != value))
 				{
-					this.OnYearChanging(value);
-					this.SendPropertyChanging();
-					this._Year = value;
-					this.SendPropertyChanged("Year");
-					this.OnYearChanged();
+					OnYearChanging(value);
+					SendPropertyChanging();
+					_Year = value;
+					SendPropertyChanged("Year");
+					OnYearChanged();
 				}
 			}
 		}
@@ -3690,17 +3670,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._MiniField;
+				return _MiniField;
 			}
 			set
 			{
-				if ((this._MiniField != value))
+				if ((_MiniField != value))
 				{
-					this.OnMiniFieldChanging(value);
-					this.SendPropertyChanging();
-					this._MiniField = value;
-					this.SendPropertyChanged("MiniField");
-					this.OnMiniFieldChanged();
+					OnMiniFieldChanging(value);
+					SendPropertyChanging();
+					_MiniField = value;
+					SendPropertyChanged("MiniField");
+					OnMiniFieldChanged();
 				}
 			}
 		}
@@ -3710,17 +3690,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._QinShi;
+				return _QinShi;
 			}
 			set
 			{
-				if ((this._QinShi != value))
+				if ((_QinShi != value))
 				{
-					this.OnQinShiChanging(value);
-					this.SendPropertyChanging();
-					this._QinShi = value;
-					this.SendPropertyChanged("QinShi");
-					this.OnQinShiChanged();
+					OnQinShiChanging(value);
+					SendPropertyChanging();
+					_QinShi = value;
+					SendPropertyChanged("QinShi");
+					OnQinShiChanged();
 				}
 			}
 		}
@@ -3730,17 +3710,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Field1;
+				return _Field1;
 			}
 			set
 			{
-				if ((this._Field1 != value))
+				if ((_Field1 != value))
 				{
-					this.OnField1Changing(value);
-					this.SendPropertyChanging();
-					this._Field1 = value;
-					this.SendPropertyChanged("Field1");
-					this.OnField1Changed();
+					OnField1Changing(value);
+					SendPropertyChanging();
+					_Field1 = value;
+					SendPropertyChanged("Field1");
+					OnField1Changed();
 				}
 			}
 		}
@@ -3750,17 +3730,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Field2;
+				return _Field2;
 			}
 			set
 			{
-				if ((this._Field2 != value))
+				if ((_Field2 != value))
 				{
-					this.OnField2Changing(value);
-					this.SendPropertyChanging();
-					this._Field2 = value;
-					this.SendPropertyChanged("Field2");
-					this.OnField2Changed();
+					OnField2Changing(value);
+					SendPropertyChanging();
+					_Field2 = value;
+					SendPropertyChanged("Field2");
+					OnField2Changed();
 				}
 			}
 		}
@@ -3771,17 +3751,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -3808,7 +3788,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -3836,17 +3816,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -3856,17 +3836,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._FromID;
+				return _FromID;
 			}
 			set
 			{
-				if ((this._FromID != value))
+				if ((_FromID != value))
 				{
-					this.OnFromIDChanging(value);
-					this.SendPropertyChanging();
-					this._FromID = value;
-					this.SendPropertyChanged("FromID");
-					this.OnFromIDChanged();
+					OnFromIDChanging(value);
+					SendPropertyChanging();
+					_FromID = value;
+					SendPropertyChanged("FromID");
+					OnFromIDChanged();
 				}
 			}
 		}
@@ -3876,17 +3856,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ToID;
+				return _ToID;
 			}
 			set
 			{
-				if ((this._ToID != value))
+				if ((_ToID != value))
 				{
-					this.OnToIDChanging(value);
-					this.SendPropertyChanging();
-					this._ToID = value;
-					this.SendPropertyChanged("ToID");
-					this.OnToIDChanged();
+					OnToIDChanging(value);
+					SendPropertyChanging();
+					_ToID = value;
+					SendPropertyChanged("ToID");
+					OnToIDChanged();
 				}
 			}
 		}
@@ -3896,17 +3876,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsTrue;
+				return _IsTrue;
 			}
 			set
 			{
-				if ((this._IsTrue != value))
+				if ((_IsTrue != value))
 				{
-					this.OnIsTrueChanging(value);
-					this.SendPropertyChanging();
-					this._IsTrue = value;
-					this.SendPropertyChanged("IsTrue");
-					this.OnIsTrueChanged();
+					OnIsTrueChanging(value);
+					SendPropertyChanging();
+					_IsTrue = value;
+					SendPropertyChanged("IsTrue");
+					OnIsTrueChanged();
 				}
 			}
 		}
@@ -3916,17 +3896,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsCommon;
+				return _IsCommon;
 			}
 			set
 			{
-				if ((this._IsCommon != value))
+				if ((_IsCommon != value))
 				{
-					this.OnIsCommonChanging(value);
-					this.SendPropertyChanging();
-					this._IsCommon = value;
-					this.SendPropertyChanged("IsCommon");
-					this.OnIsCommonChanged();
+					OnIsCommonChanging(value);
+					SendPropertyChanging();
+					_IsCommon = value;
+					SendPropertyChanged("IsCommon");
+					OnIsCommonChanged();
 				}
 			}
 		}
@@ -3936,17 +3916,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._FriendType;
+				return _FriendType;
 			}
 			set
 			{
-				if ((this._FriendType != value))
+				if ((_FriendType != value))
 				{
-					this.OnFriendTypeChanging(value);
-					this.SendPropertyChanging();
-					this._FriendType = value;
-					this.SendPropertyChanged("FriendType");
-					this.OnFriendTypeChanged();
+					OnFriendTypeChanging(value);
+					SendPropertyChanging();
+					_FriendType = value;
+					SendPropertyChanged("FriendType");
+					OnFriendTypeChanged();
 				}
 			}
 		}
@@ -3956,17 +3936,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._FriendSummary;
+				return _FriendSummary;
 			}
 			set
 			{
-				if ((this._FriendSummary != value))
+				if ((_FriendSummary != value))
 				{
-					this.OnFriendSummaryChanging(value);
-					this.SendPropertyChanging();
-					this._FriendSummary = value;
-					this.SendPropertyChanged("FriendSummary");
-					this.OnFriendSummaryChanged();
+					OnFriendSummaryChanging(value);
+					SendPropertyChanging();
+					_FriendSummary = value;
+					SendPropertyChanged("FriendSummary");
+					OnFriendSummaryChanged();
 				}
 			}
 		}
@@ -3977,17 +3957,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -4004,7 +3984,7 @@ namespace CHSNS.Operator
 		
 		private string _LogoUrl;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private string _Summary;
 		
@@ -4030,7 +4010,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -4038,7 +4018,7 @@ namespace CHSNS.Operator
     partial void OnNameChanged();
     partial void OnLogoUrlChanging(string value);
     partial void OnLogoUrlChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnSummaryChanging(string value);
     partial void OnSummaryChanged();
@@ -4074,17 +4054,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -4094,17 +4074,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Name;
+				return _Name;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((_Name != value))
 				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					OnNameChanging(value);
+					SendPropertyChanging();
+					_Name = value;
+					SendPropertyChanged("Name");
+					OnNameChanged();
 				}
 			}
 		}
@@ -4114,37 +4094,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LogoUrl;
+				return _LogoUrl;
 			}
 			set
 			{
-				if ((this._LogoUrl != value))
+				if ((_LogoUrl != value))
 				{
-					this.OnLogoUrlChanging(value);
-					this.SendPropertyChanging();
-					this._LogoUrl = value;
-					this.SendPropertyChanged("LogoUrl");
-					this.OnLogoUrlChanged();
+					OnLogoUrlChanging(value);
+					SendPropertyChanging();
+					_LogoUrl = value;
+					SendPropertyChanged("LogoUrl");
+					OnLogoUrlChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -4154,17 +4134,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Summary;
+				return _Summary;
 			}
 			set
 			{
-				if ((this._Summary != value))
+				if ((_Summary != value))
 				{
-					this.OnSummaryChanging(value);
-					this.SendPropertyChanging();
-					this._Summary = value;
-					this.SendPropertyChanged("Summary");
-					this.OnSummaryChanged();
+					OnSummaryChanging(value);
+					SendPropertyChanging();
+					_Summary = value;
+					SendPropertyChanged("Summary");
+					OnSummaryChanged();
 				}
 			}
 		}
@@ -4174,17 +4154,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._CreaterID;
+				return _CreaterID;
 			}
 			set
 			{
-				if ((this._CreaterID != value))
+				if ((_CreaterID != value))
 				{
-					this.OnCreaterIDChanging(value);
-					this.SendPropertyChanging();
-					this._CreaterID = value;
-					this.SendPropertyChanged("CreaterID");
-					this.OnCreaterIDChanged();
+					OnCreaterIDChanging(value);
+					SendPropertyChanging();
+					_CreaterID = value;
+					SendPropertyChanged("CreaterID");
+					OnCreaterIDChanged();
 				}
 			}
 		}
@@ -4194,17 +4174,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserCount;
+				return _UserCount;
 			}
 			set
 			{
-				if ((this._UserCount != value))
+				if ((_UserCount != value))
 				{
-					this.OnUserCountChanging(value);
-					this.SendPropertyChanging();
-					this._UserCount = value;
-					this.SendPropertyChanged("UserCount");
-					this.OnUserCountChanged();
+					OnUserCountChanging(value);
+					SendPropertyChanging();
+					_UserCount = value;
+					SendPropertyChanged("UserCount");
+					OnUserCountChanged();
 				}
 			}
 		}
@@ -4214,17 +4194,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._AdminCount;
+				return _AdminCount;
 			}
 			set
 			{
-				if ((this._AdminCount != value))
+				if ((_AdminCount != value))
 				{
-					this.OnAdminCountChanging(value);
-					this.SendPropertyChanging();
-					this._AdminCount = value;
-					this.SendPropertyChanged("AdminCount");
-					this.OnAdminCountChanged();
+					OnAdminCountChanging(value);
+					SendPropertyChanging();
+					_AdminCount = value;
+					SendPropertyChanged("AdminCount");
+					OnAdminCountChanged();
 				}
 			}
 		}
@@ -4234,17 +4214,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._PostCount;
+				return _PostCount;
 			}
 			set
 			{
-				if ((this._PostCount != value))
+				if ((_PostCount != value))
 				{
-					this.OnPostCountChanging(value);
-					this.SendPropertyChanging();
-					this._PostCount = value;
-					this.SendPropertyChanged("PostCount");
-					this.OnPostCountChanged();
+					OnPostCountChanging(value);
+					SendPropertyChanging();
+					_PostCount = value;
+					SendPropertyChanged("PostCount");
+					OnPostCountChanged();
 				}
 			}
 		}
@@ -4254,17 +4234,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewCount;
+				return _ViewCount;
 			}
 			set
 			{
-				if ((this._ViewCount != value))
+				if ((_ViewCount != value))
 				{
-					this.OnViewCountChanging(value);
-					this.SendPropertyChanging();
-					this._ViewCount = value;
-					this.SendPropertyChanged("ViewCount");
-					this.OnViewCountChanged();
+					OnViewCountChanging(value);
+					SendPropertyChanging();
+					_ViewCount = value;
+					SendPropertyChanged("ViewCount");
+					OnViewCountChanged();
 				}
 			}
 		}
@@ -4274,17 +4254,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._JoinLevel;
+				return _JoinLevel;
 			}
 			set
 			{
-				if ((this._JoinLevel != value))
+				if ((_JoinLevel != value))
 				{
-					this.OnJoinLevelChanging(value);
-					this.SendPropertyChanging();
-					this._JoinLevel = value;
-					this.SendPropertyChanged("JoinLevel");
-					this.OnJoinLevelChanged();
+					OnJoinLevelChanging(value);
+					SendPropertyChanging();
+					_JoinLevel = value;
+					SendPropertyChanged("JoinLevel");
+					OnJoinLevelChanged();
 				}
 			}
 		}
@@ -4294,17 +4274,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowLevel;
+				return _ShowLevel;
 			}
 			set
 			{
-				if ((this._ShowLevel != value))
+				if ((_ShowLevel != value))
 				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
+					OnShowLevelChanging(value);
+					SendPropertyChanging();
+					_ShowLevel = value;
+					SendPropertyChanged("ShowLevel");
+					OnShowLevelChanged();
 				}
 			}
 		}
@@ -4314,17 +4294,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Status;
+				return _Status;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((_Status != value))
 				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
+					OnStatusChanging(value);
+					SendPropertyChanging();
+					_Status = value;
+					SendPropertyChanged("Status");
+					OnStatusChanged();
 				}
 			}
 		}
@@ -4334,17 +4314,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Type;
+				return _Type;
 			}
 			set
 			{
-				if ((this._Type != value))
+				if ((_Type != value))
 				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
+					OnTypeChanging(value);
+					SendPropertyChanging();
+					_Type = value;
+					SendPropertyChanged("Type");
+					OnTypeChanged();
 				}
 			}
 		}
@@ -4354,17 +4334,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Ext;
+				return _Ext;
 			}
 			set
 			{
-				if ((this._Ext != value))
+				if ((_Ext != value))
 				{
-					this.OnExtChanging(value);
-					this.SendPropertyChanging();
-					this._Ext = value;
-					this.SendPropertyChanged("Ext");
-					this.OnExtChanged();
+					OnExtChanging(value);
+					SendPropertyChanging();
+					_Ext = value;
+					SendPropertyChanged("Ext");
+					OnExtChanged();
 				}
 			}
 		}
@@ -4375,17 +4355,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -4400,7 +4380,7 @@ namespace CHSNS.Operator
 		
 		private long _GroupID;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private long _PostCount;
 		
@@ -4408,13 +4388,13 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
     partial void OnGroupIDChanging(long value);
     partial void OnGroupIDChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnPostCountChanging(long value);
     partial void OnPostCountChanged();
@@ -4432,17 +4412,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -4452,37 +4432,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._GroupID;
+				return _GroupID;
 			}
 			set
 			{
-				if ((this._GroupID != value))
+				if ((_GroupID != value))
 				{
-					this.OnGroupIDChanging(value);
-					this.SendPropertyChanging();
-					this._GroupID = value;
-					this.SendPropertyChanged("GroupID");
-					this.OnGroupIDChanged();
+					OnGroupIDChanging(value);
+					SendPropertyChanging();
+					_GroupID = value;
+					SendPropertyChanged("GroupID");
+					OnGroupIDChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -4492,17 +4472,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._PostCount;
+				return _PostCount;
 			}
 			set
 			{
-				if ((this._PostCount != value))
+				if ((_PostCount != value))
 				{
-					this.OnPostCountChanging(value);
-					this.SendPropertyChanging();
-					this._PostCount = value;
-					this.SendPropertyChanged("PostCount");
-					this.OnPostCountChanged();
+					OnPostCountChanging(value);
+					SendPropertyChanging();
+					_PostCount = value;
+					SendPropertyChanged("PostCount");
+					OnPostCountChanged();
 				}
 			}
 		}
@@ -4512,17 +4492,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Status;
+				return _Status;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((_Status != value))
 				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
+					OnStatusChanging(value);
+					SendPropertyChanging();
+					_Status = value;
+					SendPropertyChanged("Status");
+					OnStatusChanged();
 				}
 			}
 		}
@@ -4533,17 +4513,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -4562,7 +4542,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -4582,17 +4562,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -4602,17 +4582,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._TagID;
+				return _TagID;
 			}
 			set
 			{
-				if ((this._TagID != value))
+				if ((_TagID != value))
 				{
-					this.OnTagIDChanging(value);
-					this.SendPropertyChanging();
-					this._TagID = value;
-					this.SendPropertyChanged("TagID");
-					this.OnTagIDChanged();
+					OnTagIDChanging(value);
+					SendPropertyChanging();
+					_TagID = value;
+					SendPropertyChanged("TagID");
+					OnTagIDChanged();
 				}
 			}
 		}
@@ -4622,17 +4602,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LogID;
+				return _LogID;
 			}
 			set
 			{
-				if ((this._LogID != value))
+				if ((_LogID != value))
 				{
-					this.OnLogIDChanging(value);
-					this.SendPropertyChanging();
-					this._LogID = value;
-					this.SendPropertyChanged("LogID");
-					this.OnLogIDChanged();
+					OnLogIDChanging(value);
+					SendPropertyChanging();
+					_LogID = value;
+					SendPropertyChanged("LogID");
+					OnLogIDChanged();
 				}
 			}
 		}
@@ -4643,17 +4623,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -4674,7 +4654,7 @@ namespace CHSNS.Operator
 		
 		private string _Body;
 		
-		private System.DateTime _SendTime;
+		private DateTime _SendTime;
 		
 		private bool _IsSee;
 		
@@ -4686,7 +4666,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -4698,7 +4678,7 @@ namespace CHSNS.Operator
     partial void OnTitleChanged();
     partial void OnBodyChanging(string value);
     partial void OnBodyChanged();
-    partial void OnSendTimeChanging(System.DateTime value);
+    partial void OnSendTimeChanging(DateTime value);
     partial void OnSendTimeChanged();
     partial void OnIsSeeChanging(bool value);
     partial void OnIsSeeChanged();
@@ -4720,17 +4700,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -4740,17 +4720,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._FromID;
+				return _FromID;
 			}
 			set
 			{
-				if ((this._FromID != value))
+				if ((_FromID != value))
 				{
-					this.OnFromIDChanging(value);
-					this.SendPropertyChanging();
-					this._FromID = value;
-					this.SendPropertyChanged("FromID");
-					this.OnFromIDChanged();
+					OnFromIDChanging(value);
+					SendPropertyChanging();
+					_FromID = value;
+					SendPropertyChanged("FromID");
+					OnFromIDChanged();
 				}
 			}
 		}
@@ -4760,17 +4740,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ToID;
+				return _ToID;
 			}
 			set
 			{
-				if ((this._ToID != value))
+				if ((_ToID != value))
 				{
-					this.OnToIDChanging(value);
-					this.SendPropertyChanging();
-					this._ToID = value;
-					this.SendPropertyChanged("ToID");
-					this.OnToIDChanged();
+					OnToIDChanging(value);
+					SendPropertyChanging();
+					_ToID = value;
+					SendPropertyChanged("ToID");
+					OnToIDChanged();
 				}
 			}
 		}
@@ -4780,17 +4760,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Title;
+				return _Title;
 			}
 			set
 			{
-				if ((this._Title != value))
+				if ((_Title != value))
 				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
+					OnTitleChanging(value);
+					SendPropertyChanging();
+					_Title = value;
+					SendPropertyChanged("Title");
+					OnTitleChanged();
 				}
 			}
 		}
@@ -4800,37 +4780,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Body;
+				return _Body;
 			}
 			set
 			{
-				if ((this._Body != value))
+				if ((_Body != value))
 				{
-					this.OnBodyChanging(value);
-					this.SendPropertyChanging();
-					this._Body = value;
-					this.SendPropertyChanged("Body");
-					this.OnBodyChanged();
+					OnBodyChanging(value);
+					SendPropertyChanging();
+					_Body = value;
+					SendPropertyChanged("Body");
+					OnBodyChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_SendTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime SendTime
+		public DateTime SendTime
 		{
 			get
 			{
-				return this._SendTime;
+				return _SendTime;
 			}
 			set
 			{
-				if ((this._SendTime != value))
+				if ((_SendTime != value))
 				{
-					this.OnSendTimeChanging(value);
-					this.SendPropertyChanging();
-					this._SendTime = value;
-					this.SendPropertyChanged("SendTime");
-					this.OnSendTimeChanged();
+					OnSendTimeChanging(value);
+					SendPropertyChanging();
+					_SendTime = value;
+					SendPropertyChanged("SendTime");
+					OnSendTimeChanged();
 				}
 			}
 		}
@@ -4840,17 +4820,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsSee;
+				return _IsSee;
 			}
 			set
 			{
-				if ((this._IsSee != value))
+				if ((_IsSee != value))
 				{
-					this.OnIsSeeChanging(value);
-					this.SendPropertyChanging();
-					this._IsSee = value;
-					this.SendPropertyChanged("IsSee");
-					this.OnIsSeeChanged();
+					OnIsSeeChanging(value);
+					SendPropertyChanging();
+					_IsSee = value;
+					SendPropertyChanged("IsSee");
+					OnIsSeeChanged();
 				}
 			}
 		}
@@ -4860,17 +4840,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsFromDel;
+				return _IsFromDel;
 			}
 			set
 			{
-				if ((this._IsFromDel != value))
+				if ((_IsFromDel != value))
 				{
-					this.OnIsFromDelChanging(value);
-					this.SendPropertyChanging();
-					this._IsFromDel = value;
-					this.SendPropertyChanged("IsFromDel");
-					this.OnIsFromDelChanged();
+					OnIsFromDelChanging(value);
+					SendPropertyChanging();
+					_IsFromDel = value;
+					SendPropertyChanged("IsFromDel");
+					OnIsFromDelChanged();
 				}
 			}
 		}
@@ -4880,17 +4860,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsToDel;
+				return _IsToDel;
 			}
 			set
 			{
-				if ((this._IsToDel != value))
+				if ((_IsToDel != value))
 				{
-					this.OnIsToDelChanging(value);
-					this.SendPropertyChanging();
-					this._IsToDel = value;
-					this.SendPropertyChanged("IsToDel");
-					this.OnIsToDelChanged();
+					OnIsToDelChanging(value);
+					SendPropertyChanging();
+					_IsToDel = value;
+					SendPropertyChanged("IsToDel");
+					OnIsToDelChanged();
 				}
 			}
 		}
@@ -4900,17 +4880,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsHtml;
+				return _IsHtml;
 			}
 			set
 			{
-				if ((this._IsHtml != value))
+				if ((_IsHtml != value))
 				{
-					this.OnIsHtmlChanging(value);
-					this.SendPropertyChanging();
-					this._IsHtml = value;
-					this.SendPropertyChanged("IsHtml");
-					this.OnIsHtmlChanged();
+					OnIsHtmlChanging(value);
+					SendPropertyChanging();
+					_IsHtml = value;
+					SendPropertyChanged("IsHtml");
+					OnIsHtmlChanged();
 				}
 			}
 		}
@@ -4921,17 +4901,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -4950,9 +4930,9 @@ namespace CHSNS.Operator
 		
 		private string _Body;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
-		private System.DateTime _EditTime;
+		private DateTime _EditTime;
 		
 		private byte _Type;
 		
@@ -4962,7 +4942,7 @@ namespace CHSNS.Operator
 		
 		private byte _IsTellMe;
 		
-		private System.Nullable<bool> _IsAnonymous;
+		private  bool? _IsAnonymous;
 		
 		private byte _ShowLevel;
 		
@@ -4976,13 +4956,13 @@ namespace CHSNS.Operator
 		
 		private long _LastCommentUserID;
 		
-		private System.DateTime _LastCommentTime;
+		private DateTime _LastCommentTime;
 		
 		private string _Ext;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -4992,9 +4972,9 @@ namespace CHSNS.Operator
     partial void OnSummaryChanged();
     partial void OnBodyChanging(string value);
     partial void OnBodyChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
-    partial void OnEditTimeChanging(System.DateTime value);
+    partial void OnEditTimeChanging(DateTime value);
     partial void OnEditTimeChanged();
     partial void OnTypeChanging(byte value);
     partial void OnTypeChanged();
@@ -5004,7 +4984,7 @@ namespace CHSNS.Operator
     partial void OnUserIDChanged();
     partial void OnIsTellMeChanging(byte value);
     partial void OnIsTellMeChanged();
-    partial void OnIsAnonymousChanging(System.Nullable<bool> value);
+    partial void OnIsAnonymousChanging(bool? value);
     partial void OnIsAnonymousChanged();
     partial void OnShowLevelChanging(byte value);
     partial void OnShowLevelChanged();
@@ -5018,7 +4998,7 @@ namespace CHSNS.Operator
     partial void OnCommentCountChanged();
     partial void OnLastCommentUserIDChanging(long value);
     partial void OnLastCommentUserIDChanged();
-    partial void OnLastCommentTimeChanging(System.DateTime value);
+    partial void OnLastCommentTimeChanging(DateTime value);
     partial void OnLastCommentTimeChanged();
     partial void OnExtChanging(string value);
     partial void OnExtChanged();
@@ -5034,17 +5014,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -5054,17 +5034,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Title;
+				return _Title;
 			}
 			set
 			{
-				if ((this._Title != value))
+				if ((_Title != value))
 				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
+					OnTitleChanging(value);
+					SendPropertyChanging();
+					_Title = value;
+					SendPropertyChanged("Title");
+					OnTitleChanged();
 				}
 			}
 		}
@@ -5074,17 +5054,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Summary;
+				return _Summary;
 			}
 			set
 			{
-				if ((this._Summary != value))
+				if ((_Summary != value))
 				{
-					this.OnSummaryChanging(value);
-					this.SendPropertyChanging();
-					this._Summary = value;
-					this.SendPropertyChanged("Summary");
-					this.OnSummaryChanged();
+					OnSummaryChanging(value);
+					SendPropertyChanging();
+					_Summary = value;
+					SendPropertyChanged("Summary");
+					OnSummaryChanged();
 				}
 			}
 		}
@@ -5094,57 +5074,57 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Body;
+				return _Body;
 			}
 			set
 			{
-				if ((this._Body != value))
+				if ((_Body != value))
 				{
-					this.OnBodyChanging(value);
-					this.SendPropertyChanging();
-					this._Body = value;
-					this.SendPropertyChanged("Body");
-					this.OnBodyChanged();
+					OnBodyChanging(value);
+					SendPropertyChanging();
+					_Body = value;
+					SendPropertyChanged("Body");
+					OnBodyChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_EditTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime EditTime
+		public DateTime EditTime
 		{
 			get
 			{
-				return this._EditTime;
+				return _EditTime;
 			}
 			set
 			{
-				if ((this._EditTime != value))
+				if ((_EditTime != value))
 				{
-					this.OnEditTimeChanging(value);
-					this.SendPropertyChanging();
-					this._EditTime = value;
-					this.SendPropertyChanged("EditTime");
-					this.OnEditTimeChanged();
+					OnEditTimeChanging(value);
+					SendPropertyChanging();
+					_EditTime = value;
+					SendPropertyChanged("EditTime");
+					OnEditTimeChanged();
 				}
 			}
 		}
@@ -5154,17 +5134,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Type;
+				return _Type;
 			}
 			set
 			{
-				if ((this._Type != value))
+				if ((_Type != value))
 				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
+					OnTypeChanging(value);
+					SendPropertyChanging();
+					_Type = value;
+					SendPropertyChanged("Type");
+					OnTypeChanged();
 				}
 			}
 		}
@@ -5174,17 +5154,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._PID;
+				return _PID;
 			}
 			set
 			{
-				if ((this._PID != value))
+				if ((_PID != value))
 				{
-					this.OnPIDChanging(value);
-					this.SendPropertyChanging();
-					this._PID = value;
-					this.SendPropertyChanged("PID");
-					this.OnPIDChanged();
+					OnPIDChanging(value);
+					SendPropertyChanging();
+					_PID = value;
+					SendPropertyChanged("PID");
+					OnPIDChanged();
 				}
 			}
 		}
@@ -5194,17 +5174,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -5214,17 +5194,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsTellMe;
+				return _IsTellMe;
 			}
 			set
 			{
-				if ((this._IsTellMe != value))
+				if ((_IsTellMe != value))
 				{
-					this.OnIsTellMeChanging(value);
-					this.SendPropertyChanging();
-					this._IsTellMe = value;
-					this.SendPropertyChanged("IsTellMe");
-					this.OnIsTellMeChanged();
+					OnIsTellMeChanging(value);
+					SendPropertyChanging();
+					_IsTellMe = value;
+					SendPropertyChanged("IsTellMe");
+					OnIsTellMeChanged();
 				}
 			}
 		}
@@ -5234,17 +5214,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsAnonymous;
+				return _IsAnonymous;
 			}
 			set
 			{
-				if ((this._IsAnonymous != value))
+				if ((_IsAnonymous != value))
 				{
-					this.OnIsAnonymousChanging(value);
-					this.SendPropertyChanging();
-					this._IsAnonymous = value;
-					this.SendPropertyChanged("IsAnonymous");
-					this.OnIsAnonymousChanged();
+					OnIsAnonymousChanging(value);
+					SendPropertyChanging();
+					_IsAnonymous = value;
+					SendPropertyChanged("IsAnonymous");
+					OnIsAnonymousChanged();
 				}
 			}
 		}
@@ -5254,17 +5234,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowLevel;
+				return _ShowLevel;
 			}
 			set
 			{
-				if ((this._ShowLevel != value))
+				if ((_ShowLevel != value))
 				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
+					OnShowLevelChanging(value);
+					SendPropertyChanging();
+					_ShowLevel = value;
+					SendPropertyChanged("ShowLevel");
+					OnShowLevelChanged();
 				}
 			}
 		}
@@ -5274,17 +5254,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewCount;
+				return _ViewCount;
 			}
 			set
 			{
-				if ((this._ViewCount != value))
+				if ((_ViewCount != value))
 				{
-					this.OnViewCountChanging(value);
-					this.SendPropertyChanging();
-					this._ViewCount = value;
-					this.SendPropertyChanged("ViewCount");
-					this.OnViewCountChanged();
+					OnViewCountChanging(value);
+					SendPropertyChanging();
+					_ViewCount = value;
+					SendPropertyChanged("ViewCount");
+					OnViewCountChanged();
 				}
 			}
 		}
@@ -5294,17 +5274,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._PushCount;
+				return _PushCount;
 			}
 			set
 			{
-				if ((this._PushCount != value))
+				if ((_PushCount != value))
 				{
-					this.OnPushCountChanging(value);
-					this.SendPropertyChanging();
-					this._PushCount = value;
-					this.SendPropertyChanged("PushCount");
-					this.OnPushCountChanged();
+					OnPushCountChanging(value);
+					SendPropertyChanging();
+					_PushCount = value;
+					SendPropertyChanged("PushCount");
+					OnPushCountChanged();
 				}
 			}
 		}
@@ -5314,17 +5294,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._TrackBackCount;
+				return _TrackBackCount;
 			}
 			set
 			{
-				if ((this._TrackBackCount != value))
+				if ((_TrackBackCount != value))
 				{
-					this.OnTrackBackCountChanging(value);
-					this.SendPropertyChanging();
-					this._TrackBackCount = value;
-					this.SendPropertyChanged("TrackBackCount");
-					this.OnTrackBackCountChanged();
+					OnTrackBackCountChanging(value);
+					SendPropertyChanging();
+					_TrackBackCount = value;
+					SendPropertyChanged("TrackBackCount");
+					OnTrackBackCountChanged();
 				}
 			}
 		}
@@ -5334,17 +5314,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._CommentCount;
+				return _CommentCount;
 			}
 			set
 			{
-				if ((this._CommentCount != value))
+				if ((_CommentCount != value))
 				{
-					this.OnCommentCountChanging(value);
-					this.SendPropertyChanging();
-					this._CommentCount = value;
-					this.SendPropertyChanged("CommentCount");
-					this.OnCommentCountChanged();
+					OnCommentCountChanging(value);
+					SendPropertyChanging();
+					_CommentCount = value;
+					SendPropertyChanged("CommentCount");
+					OnCommentCountChanged();
 				}
 			}
 		}
@@ -5354,37 +5334,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LastCommentUserID;
+				return _LastCommentUserID;
 			}
 			set
 			{
-				if ((this._LastCommentUserID != value))
+				if ((_LastCommentUserID != value))
 				{
-					this.OnLastCommentUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._LastCommentUserID = value;
-					this.SendPropertyChanged("LastCommentUserID");
-					this.OnLastCommentUserIDChanged();
+					OnLastCommentUserIDChanging(value);
+					SendPropertyChanging();
+					_LastCommentUserID = value;
+					SendPropertyChanged("LastCommentUserID");
+					OnLastCommentUserIDChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_LastCommentTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime LastCommentTime
+		public DateTime LastCommentTime
 		{
 			get
 			{
-				return this._LastCommentTime;
+				return _LastCommentTime;
 			}
 			set
 			{
-				if ((this._LastCommentTime != value))
+				if ((_LastCommentTime != value))
 				{
-					this.OnLastCommentTimeChanging(value);
-					this.SendPropertyChanging();
-					this._LastCommentTime = value;
-					this.SendPropertyChanged("LastCommentTime");
-					this.OnLastCommentTimeChanged();
+					OnLastCommentTimeChanging(value);
+					SendPropertyChanging();
+					_LastCommentTime = value;
+					SendPropertyChanged("LastCommentTime");
+					OnLastCommentTimeChanged();
 				}
 			}
 		}
@@ -5394,17 +5374,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Ext;
+				return _Ext;
 			}
 			set
 			{
-				if ((this._Ext != value))
+				if ((_Ext != value))
 				{
-					this.OnExtChanging(value);
-					this.SendPropertyChanging();
-					this._Ext = value;
-					this.SendPropertyChanged("Ext");
-					this.OnExtChanged();
+					OnExtChanging(value);
+					SendPropertyChanging();
+					_Ext = value;
+					SendPropertyChanged("Ext");
+					OnExtChanged();
 				}
 			}
 		}
@@ -5415,17 +5395,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -5456,7 +5436,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
@@ -5488,17 +5468,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -5508,17 +5488,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LoveLike;
+				return _LoveLike;
 			}
 			set
 			{
-				if ((this._LoveLike != value))
+				if ((_LoveLike != value))
 				{
-					this.OnLoveLikeChanging(value);
-					this.SendPropertyChanging();
-					this._LoveLike = value;
-					this.SendPropertyChanged("LoveLike");
-					this.OnLoveLikeChanged();
+					OnLoveLikeChanging(value);
+					SendPropertyChanging();
+					_LoveLike = value;
+					SendPropertyChanged("LoveLike");
+					OnLoveLikeChanged();
 				}
 			}
 		}
@@ -5528,17 +5508,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LoveBook;
+				return _LoveBook;
 			}
 			set
 			{
-				if ((this._LoveBook != value))
+				if ((_LoveBook != value))
 				{
-					this.OnLoveBookChanging(value);
-					this.SendPropertyChanging();
-					this._LoveBook = value;
-					this.SendPropertyChanged("LoveBook");
-					this.OnLoveBookChanged();
+					OnLoveBookChanging(value);
+					SendPropertyChanging();
+					_LoveBook = value;
+					SendPropertyChanged("LoveBook");
+					OnLoveBookChanged();
 				}
 			}
 		}
@@ -5548,17 +5528,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LoveMusic;
+				return _LoveMusic;
 			}
 			set
 			{
-				if ((this._LoveMusic != value))
+				if ((_LoveMusic != value))
 				{
-					this.OnLoveMusicChanging(value);
-					this.SendPropertyChanging();
-					this._LoveMusic = value;
-					this.SendPropertyChanged("LoveMusic");
-					this.OnLoveMusicChanged();
+					OnLoveMusicChanging(value);
+					SendPropertyChanging();
+					_LoveMusic = value;
+					SendPropertyChanged("LoveMusic");
+					OnLoveMusicChanged();
 				}
 			}
 		}
@@ -5568,17 +5548,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LoveMovie;
+				return _LoveMovie;
 			}
 			set
 			{
-				if ((this._LoveMovie != value))
+				if ((_LoveMovie != value))
 				{
-					this.OnLoveMovieChanging(value);
-					this.SendPropertyChanging();
-					this._LoveMovie = value;
-					this.SendPropertyChanged("LoveMovie");
-					this.OnLoveMovieChanged();
+					OnLoveMovieChanging(value);
+					SendPropertyChanging();
+					_LoveMovie = value;
+					SendPropertyChanged("LoveMovie");
+					OnLoveMovieChanged();
 				}
 			}
 		}
@@ -5588,17 +5568,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LoveSports;
+				return _LoveSports;
 			}
 			set
 			{
-				if ((this._LoveSports != value))
+				if ((_LoveSports != value))
 				{
-					this.OnLoveSportsChanging(value);
-					this.SendPropertyChanging();
-					this._LoveSports = value;
-					this.SendPropertyChanged("LoveSports");
-					this.OnLoveSportsChanged();
+					OnLoveSportsChanging(value);
+					SendPropertyChanging();
+					_LoveSports = value;
+					SendPropertyChanged("LoveSports");
+					OnLoveSportsChanged();
 				}
 			}
 		}
@@ -5608,17 +5588,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LoveGame;
+				return _LoveGame;
 			}
 			set
 			{
-				if ((this._LoveGame != value))
+				if ((_LoveGame != value))
 				{
-					this.OnLoveGameChanging(value);
-					this.SendPropertyChanging();
-					this._LoveGame = value;
-					this.SendPropertyChanged("LoveGame");
-					this.OnLoveGameChanged();
+					OnLoveGameChanging(value);
+					SendPropertyChanging();
+					_LoveGame = value;
+					SendPropertyChanged("LoveGame");
+					OnLoveGameChanged();
 				}
 			}
 		}
@@ -5628,17 +5608,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LoveComic;
+				return _LoveComic;
 			}
 			set
 			{
-				if ((this._LoveComic != value))
+				if ((_LoveComic != value))
 				{
-					this.OnLoveComicChanging(value);
-					this.SendPropertyChanging();
-					this._LoveComic = value;
-					this.SendPropertyChanged("LoveComic");
-					this.OnLoveComicChanged();
+					OnLoveComicChanging(value);
+					SendPropertyChanging();
+					_LoveComic = value;
+					SendPropertyChanged("LoveComic");
+					OnLoveComicChanged();
 				}
 			}
 		}
@@ -5648,17 +5628,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._JoinSociety;
+				return _JoinSociety;
 			}
 			set
 			{
-				if ((this._JoinSociety != value))
+				if ((_JoinSociety != value))
 				{
-					this.OnJoinSocietyChanging(value);
-					this.SendPropertyChanging();
-					this._JoinSociety = value;
-					this.SendPropertyChanged("JoinSociety");
-					this.OnJoinSocietyChanged();
+					OnJoinSocietyChanging(value);
+					SendPropertyChanging();
+					_JoinSociety = value;
+					SendPropertyChanged("JoinSociety");
+					OnJoinSocietyChanged();
 				}
 			}
 		}
@@ -5669,17 +5649,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -5694,11 +5674,11 @@ namespace CHSNS.Operator
 		
 		private string _Name;
 		
-		private System.Nullable<long> _AlbumID;
+		private long? _AlbumID;
 		
 		private long _UserID;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private long _Order;
 		
@@ -5708,7 +5688,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -5718,7 +5698,7 @@ namespace CHSNS.Operator
     partial void OnAlbumIDChanged();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnOrderChanging(long value);
     partial void OnOrderChanged();
@@ -5738,17 +5718,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -5758,17 +5738,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Name;
+				return _Name;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((_Name != value))
 				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					OnNameChanging(value);
+					SendPropertyChanging();
+					_Name = value;
+					SendPropertyChanged("Name");
+					OnNameChanged();
 				}
 			}
 		}
@@ -5778,17 +5758,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._AlbumID;
+				return _AlbumID;
 			}
 			set
 			{
-				if ((this._AlbumID != value))
+				if ((_AlbumID != value))
 				{
-					this.OnAlbumIDChanging(value);
-					this.SendPropertyChanging();
-					this._AlbumID = value;
-					this.SendPropertyChanged("AlbumID");
-					this.OnAlbumIDChanged();
+					OnAlbumIDChanging(value);
+					SendPropertyChanging();
+					_AlbumID = value;
+					SendPropertyChanged("AlbumID");
+					OnAlbumIDChanged();
 				}
 			}
 		}
@@ -5798,37 +5778,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="DateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -5838,17 +5818,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Order;
+				return _Order;
 			}
 			set
 			{
-				if ((this._Order != value))
+				if ((_Order != value))
 				{
-					this.OnOrderChanging(value);
-					this.SendPropertyChanging();
-					this._Order = value;
-					this.SendPropertyChanged("Order");
-					this.OnOrderChanged();
+					OnOrderChanging(value);
+					SendPropertyChanging();
+					_Order = value;
+					SendPropertyChanged("Order");
+					OnOrderChanged();
 				}
 			}
 		}
@@ -5858,17 +5838,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Ext;
+				return _Ext;
 			}
 			set
 			{
-				if ((this._Ext != value))
+				if ((_Ext != value))
 				{
-					this.OnExtChanging(value);
-					this.SendPropertyChanging();
-					this._Ext = value;
-					this.SendPropertyChanged("Ext");
-					this.OnExtChanged();
+					OnExtChanging(value);
+					SendPropertyChanging();
+					_Ext = value;
+					SendPropertyChanged("Ext");
+					OnExtChanged();
 				}
 			}
 		}
@@ -5878,17 +5858,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Status;
+				return _Status;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((_Status != value))
 				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
+					OnStatusChanging(value);
+					SendPropertyChanging();
+					_Status = value;
+					SendPropertyChanged("Status");
+					OnStatusChanged();
 				}
 			}
 		}
@@ -5899,17 +5879,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -5921,7 +5901,8 @@ namespace CHSNS.Operator
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private long _UserID;
-		
+
+	    private string _Face;
 		private string _Name;
 		
 		private int _Status;
@@ -5938,9 +5919,9 @@ namespace CHSNS.Operator
 		
 		private bool _IsMagicBox;
 		
-		private System.DateTime _RegTime;
+		private DateTime _RegTime;
 		
-		private System.DateTime _LoginTime;
+		private DateTime _LoginTime;
 		
 		private long _ViewCount;
 		
@@ -5956,7 +5937,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
@@ -5976,9 +5957,9 @@ namespace CHSNS.Operator
     partial void OnMagicBoxChanged();
     partial void OnIsMagicBoxChanging(bool value);
     partial void OnIsMagicBoxChanged();
-    partial void OnRegTimeChanging(System.DateTime value);
+    partial void OnRegTimeChanging(DateTime value);
     partial void OnRegTimeChanged();
-    partial void OnLoginTimeChanging(System.DateTime value);
+    partial void OnLoginTimeChanging(DateTime value);
     partial void OnLoginTimeChanged();
     partial void OnViewCountChanging(long value);
     partial void OnViewCountChanged();
@@ -5998,64 +5979,65 @@ namespace CHSNS.Operator
 		{
 			OnCreated();
 		}
-		
-		[Column(Storage="_UserID", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
-		public long UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
+
+        [Column(Storage = "_UserID", DbType = "BigInt NOT NULL", IsPrimaryKey = true)]
+        public long UserID {
+            get {
+                return _UserID;
+            }
+            set {
+                if ((_UserID == value)) return;
+                OnUserIDChanging(value);
+                SendPropertyChanging();
+                _UserID = value;
+                SendPropertyChanged("UserID");
+                OnUserIDChanged();
+            }
+        }
+
+        [Column(Storage = "_Name", DbType = "NVarChar(50) NOT NULL", CanBeNull = false)]
+        public string Name {
+            get {
+                return _Name;
+            }
+            set {
+                if (_Name == value) return;
+                OnNameChanging(value);
+                SendPropertyChanging();
+                _Name = value;
+                SendPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        [Column(Storage = "_Face", DbType = "NVarChar(300) NULL", UpdateCheck = UpdateCheck.Never)]
+        public string Face {
+            get {
+                return _Face;
+            }
+            set {
+                if (_Face == value) return;
+                OnNameChanging(value);
+                SendPropertyChanging();
+                _Face = value;
+                SendPropertyChanged("Face");
+                OnNameChanged();
+            }
+        }
 		[Column(Storage="_Status", DbType="Int NOT NULL")]
 		public int Status
 		{
 			get
 			{
-				return this._Status;
+				return _Status;
 			}
 			set
 			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
+			    if ((_Status == value)) return;
+			    OnStatusChanging(value);
+			    SendPropertyChanging();
+			    _Status = value;
+			    SendPropertyChanged("Status");
+			    OnStatusChanged();
 			}
 		}
 		
@@ -6064,17 +6046,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Score;
+				return _Score;
 			}
 			set
 			{
-				if ((this._Score != value))
+				if ((_Score != value))
 				{
-					this.OnScoreChanging(value);
-					this.SendPropertyChanging();
-					this._Score = value;
-					this.SendPropertyChanged("Score");
-					this.OnScoreChanged();
+					OnScoreChanging(value);
+					SendPropertyChanging();
+					_Score = value;
+					SendPropertyChanged("Score");
+					OnScoreChanged();
 				}
 			}
 		}
@@ -6084,17 +6066,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowScore;
+				return _ShowScore;
 			}
 			set
 			{
-				if ((this._ShowScore != value))
+				if ((_ShowScore != value))
 				{
-					this.OnShowScoreChanging(value);
-					this.SendPropertyChanging();
-					this._ShowScore = value;
-					this.SendPropertyChanged("ShowScore");
-					this.OnShowScoreChanged();
+					OnShowScoreChanging(value);
+					SendPropertyChanging();
+					_ShowScore = value;
+					SendPropertyChanged("ShowScore");
+					OnShowScoreChanged();
 				}
 			}
 		}
@@ -6104,17 +6086,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._DelScore;
+				return _DelScore;
 			}
 			set
 			{
-				if ((this._DelScore != value))
+				if ((_DelScore != value))
 				{
-					this.OnDelScoreChanging(value);
-					this.SendPropertyChanging();
-					this._DelScore = value;
-					this.SendPropertyChanged("DelScore");
-					this.OnDelScoreChanged();
+					OnDelScoreChanging(value);
+					SendPropertyChanging();
+					_DelScore = value;
+					SendPropertyChanged("DelScore");
+					OnDelScoreChanged();
 				}
 			}
 		}
@@ -6124,17 +6106,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowLevel;
+				return _ShowLevel;
 			}
 			set
 			{
-				if ((this._ShowLevel != value))
+				if ((_ShowLevel != value))
 				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
+					OnShowLevelChanging(value);
+					SendPropertyChanging();
+					_ShowLevel = value;
+					SendPropertyChanged("ShowLevel");
+					OnShowLevelChanged();
 				}
 			}
 		}
@@ -6144,17 +6126,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._MagicBox;
+				return _MagicBox;
 			}
 			set
 			{
-				if ((this._MagicBox != value))
+				if ((_MagicBox != value))
 				{
-					this.OnMagicBoxChanging(value);
-					this.SendPropertyChanging();
-					this._MagicBox = value;
-					this.SendPropertyChanged("MagicBox");
-					this.OnMagicBoxChanged();
+					OnMagicBoxChanging(value);
+					SendPropertyChanging();
+					_MagicBox = value;
+					SendPropertyChanged("MagicBox");
+					OnMagicBoxChanged();
 				}
 			}
 		}
@@ -6164,57 +6146,57 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsMagicBox;
+				return _IsMagicBox;
 			}
 			set
 			{
-				if ((this._IsMagicBox != value))
+				if ((_IsMagicBox != value))
 				{
-					this.OnIsMagicBoxChanging(value);
-					this.SendPropertyChanging();
-					this._IsMagicBox = value;
-					this.SendPropertyChanged("IsMagicBox");
-					this.OnIsMagicBoxChanged();
+					OnIsMagicBoxChanging(value);
+					SendPropertyChanging();
+					_IsMagicBox = value;
+					SendPropertyChanged("IsMagicBox");
+					OnIsMagicBoxChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_RegTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime RegTime
+		public DateTime RegTime
 		{
 			get
 			{
-				return this._RegTime;
+				return _RegTime;
 			}
 			set
 			{
-				if ((this._RegTime != value))
+				if ((_RegTime != value))
 				{
-					this.OnRegTimeChanging(value);
-					this.SendPropertyChanging();
-					this._RegTime = value;
-					this.SendPropertyChanged("RegTime");
-					this.OnRegTimeChanged();
+					OnRegTimeChanging(value);
+					SendPropertyChanging();
+					_RegTime = value;
+					SendPropertyChanged("RegTime");
+					OnRegTimeChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_LoginTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime LoginTime
+		public DateTime LoginTime
 		{
 			get
 			{
-				return this._LoginTime;
+				return _LoginTime;
 			}
 			set
 			{
-				if ((this._LoginTime != value))
+				if ((_LoginTime != value))
 				{
-					this.OnLoginTimeChanging(value);
-					this.SendPropertyChanging();
-					this._LoginTime = value;
-					this.SendPropertyChanged("LoginTime");
-					this.OnLoginTimeChanged();
+					OnLoginTimeChanging(value);
+					SendPropertyChanging();
+					_LoginTime = value;
+					SendPropertyChanged("LoginTime");
+					OnLoginTimeChanged();
 				}
 			}
 		}
@@ -6224,17 +6206,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewCount;
+				return _ViewCount;
 			}
 			set
 			{
-				if ((this._ViewCount != value))
+				if ((_ViewCount != value))
 				{
-					this.OnViewCountChanging(value);
-					this.SendPropertyChanging();
-					this._ViewCount = value;
-					this.SendPropertyChanged("ViewCount");
-					this.OnViewCountChanged();
+					OnViewCountChanging(value);
+					SendPropertyChanging();
+					_ViewCount = value;
+					SendPropertyChanged("ViewCount");
+					OnViewCountChanged();
 				}
 			}
 		}
@@ -6244,17 +6226,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._FileSizeAll;
+				return _FileSizeAll;
 			}
 			set
 			{
-				if ((this._FileSizeAll != value))
+				if ((_FileSizeAll != value))
 				{
-					this.OnFileSizeAllChanging(value);
-					this.SendPropertyChanging();
-					this._FileSizeAll = value;
-					this.SendPropertyChanged("FileSizeAll");
-					this.OnFileSizeAllChanged();
+					OnFileSizeAllChanging(value);
+					SendPropertyChanging();
+					_FileSizeAll = value;
+					SendPropertyChanged("FileSizeAll");
+					OnFileSizeAllChanged();
 				}
 			}
 		}
@@ -6264,17 +6246,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._FileSizeCount;
+				return _FileSizeCount;
 			}
 			set
 			{
-				if ((this._FileSizeCount != value))
+				if ((_FileSizeCount != value))
 				{
-					this.OnFileSizeCountChanging(value);
-					this.SendPropertyChanging();
-					this._FileSizeCount = value;
-					this.SendPropertyChanged("FileSizeCount");
-					this.OnFileSizeCountChanged();
+					OnFileSizeCountChanging(value);
+					SendPropertyChanging();
+					_FileSizeCount = value;
+					SendPropertyChanged("FileSizeCount");
+					OnFileSizeCountChanged();
 				}
 			}
 		}
@@ -6284,17 +6266,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Applications;
+				return _Applications;
 			}
 			set
 			{
-				if ((this._Applications != value))
+				if ((_Applications != value))
 				{
-					this.OnApplicationsChanging(value);
-					this.SendPropertyChanging();
-					this._Applications = value;
-					this.SendPropertyChanged("Applications");
-					this.OnApplicationsChanged();
+					OnApplicationsChanging(value);
+					SendPropertyChanging();
+					_Applications = value;
+					SendPropertyChanged("Applications");
+					OnApplicationsChanged();
 				}
 			}
 		}
@@ -6304,17 +6286,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Applicationlist;
+				return _Applicationlist;
 			}
 			set
 			{
-				if ((this._Applicationlist != value))
+				if ((_Applicationlist != value))
 				{
-					this.OnApplicationlistChanging(value);
-					this.SendPropertyChanging();
-					this._Applicationlist = value;
-					this.SendPropertyChanged("Applicationlist");
-					this.OnApplicationlistChanged();
+					OnApplicationlistChanging(value);
+					SendPropertyChanging();
+					_Applicationlist = value;
+					SendPropertyChanged("Applicationlist");
+					OnApplicationlistChanged();
 				}
 			}
 		}
@@ -6324,18 +6306,16 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Ext;
+				return _Ext;
 			}
 			set
 			{
-				if ((this._Ext != value))
-				{
-					this.OnExtChanging(value);
-					this.SendPropertyChanging();
-					this._Ext = value;
-					this.SendPropertyChanged("Ext");
-					this.OnExtChanged();
-				}
+			    if ((_Ext == value)) return;
+			    OnExtChanging(value);
+			    SendPropertyChanging();
+			    _Ext = value;
+			    SendPropertyChanged("Ext");
+			    OnExtChanged();
 			}
 		}
 		
@@ -6345,17 +6325,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -6372,11 +6352,11 @@ namespace CHSNS.Operator
 		
 		private long _UserID;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -6384,7 +6364,7 @@ namespace CHSNS.Operator
     partial void OnLogIDChanged();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     #endregion
 		
@@ -6398,17 +6378,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -6418,17 +6398,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._LogID;
+				return _LogID;
 			}
 			set
 			{
-				if ((this._LogID != value))
+				if ((_LogID != value))
 				{
-					this.OnLogIDChanging(value);
-					this.SendPropertyChanging();
-					this._LogID = value;
-					this.SendPropertyChanged("LogID");
-					this.OnLogIDChanged();
+					OnLogIDChanging(value);
+					SendPropertyChanging();
+					_LogID = value;
+					SendPropertyChanged("LogID");
+					OnLogIDChanged();
 				}
 			}
 		}
@@ -6438,37 +6418,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -6479,17 +6459,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -6508,7 +6488,7 @@ namespace CHSNS.Operator
 		
 		private string _Body;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private bool _IsSee;
 		
@@ -6518,7 +6498,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -6528,7 +6508,7 @@ namespace CHSNS.Operator
     partial void OnSenderIDChanged();
     partial void OnBodyChanging(string value);
     partial void OnBodyChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnIsSeeChanging(bool value);
     partial void OnIsSeeChanged();
@@ -6548,17 +6528,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -6568,17 +6548,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -6588,17 +6568,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._SenderID;
+				return _SenderID;
 			}
 			set
 			{
-				if ((this._SenderID != value))
+				if ((_SenderID != value))
 				{
-					this.OnSenderIDChanging(value);
-					this.SendPropertyChanging();
-					this._SenderID = value;
-					this.SendPropertyChanged("SenderID");
-					this.OnSenderIDChanged();
+					OnSenderIDChanging(value);
+					SendPropertyChanging();
+					_SenderID = value;
+					SendPropertyChanged("SenderID");
+					OnSenderIDChanged();
 				}
 			}
 		}
@@ -6608,37 +6588,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Body;
+				return _Body;
 			}
 			set
 			{
-				if ((this._Body != value))
+				if ((_Body != value))
 				{
-					this.OnBodyChanging(value);
-					this.SendPropertyChanging();
-					this._Body = value;
-					this.SendPropertyChanged("Body");
-					this.OnBodyChanged();
+					OnBodyChanging(value);
+					SendPropertyChanging();
+					_Body = value;
+					SendPropertyChanged("Body");
+					OnBodyChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -6648,17 +6628,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsSee;
+				return _IsSee;
 			}
 			set
 			{
-				if ((this._IsSee != value))
+				if ((_IsSee != value))
 				{
-					this.OnIsSeeChanging(value);
-					this.SendPropertyChanging();
-					this._IsSee = value;
-					this.SendPropertyChanged("IsSee");
-					this.OnIsSeeChanged();
+					OnIsSeeChanging(value);
+					SendPropertyChanging();
+					_IsSee = value;
+					SendPropertyChanged("IsSee");
+					OnIsSeeChanged();
 				}
 			}
 		}
@@ -6668,17 +6648,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsDel;
+				return _IsDel;
 			}
 			set
 			{
-				if ((this._IsDel != value))
+				if ((_IsDel != value))
 				{
-					this.OnIsDelChanging(value);
-					this.SendPropertyChanging();
-					this._IsDel = value;
-					this.SendPropertyChanged("IsDel");
-					this.OnIsDelChanged();
+					OnIsDelChanging(value);
+					SendPropertyChanging();
+					_IsDel = value;
+					SendPropertyChanged("IsDel");
+					OnIsDelChanged();
 				}
 			}
 		}
@@ -6688,17 +6668,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._IsTellMe;
+				return _IsTellMe;
 			}
 			set
 			{
-				if ((this._IsTellMe != value))
+				if ((_IsTellMe != value))
 				{
-					this.OnIsTellMeChanging(value);
-					this.SendPropertyChanging();
-					this._IsTellMe = value;
-					this.SendPropertyChanged("IsTellMe");
-					this.OnIsTellMeChanged();
+					OnIsTellMeChanging(value);
+					SendPropertyChanging();
+					_IsTellMe = value;
+					SendPropertyChanged("IsTellMe");
+					OnIsTellMeChanged();
 				}
 			}
 		}
@@ -6709,17 +6689,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -6738,9 +6718,9 @@ namespace CHSNS.Operator
 		
 		private byte _Status;
 		
-		private System.DateTime _SendTime;
+		private DateTime _SendTime;
 		
-		private System.DateTime _AnswerTime;
+		private DateTime _AnswerTime;
 		
 		private long _UserID;
 		
@@ -6748,7 +6728,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -6758,9 +6738,9 @@ namespace CHSNS.Operator
     partial void OnAnswerChanged();
     partial void OnStatusChanging(byte value);
     partial void OnStatusChanged();
-    partial void OnSendTimeChanging(System.DateTime value);
+    partial void OnSendTimeChanging(DateTime value);
     partial void OnSendTimeChanged();
-    partial void OnAnswerTimeChanging(System.DateTime value);
+    partial void OnAnswerTimeChanging(DateTime value);
     partial void OnAnswerTimeChanged();
     partial void OnUserIDChanging(long value);
     partial void OnUserIDChanged();
@@ -6778,17 +6758,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -6798,17 +6778,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Body;
+				return _Body;
 			}
 			set
 			{
-				if ((this._Body != value))
+				if ((_Body != value))
 				{
-					this.OnBodyChanging(value);
-					this.SendPropertyChanging();
-					this._Body = value;
-					this.SendPropertyChanged("Body");
-					this.OnBodyChanged();
+					OnBodyChanging(value);
+					SendPropertyChanging();
+					_Body = value;
+					SendPropertyChanged("Body");
+					OnBodyChanged();
 				}
 			}
 		}
@@ -6818,17 +6798,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Answer;
+				return _Answer;
 			}
 			set
 			{
-				if ((this._Answer != value))
+				if ((_Answer != value))
 				{
-					this.OnAnswerChanging(value);
-					this.SendPropertyChanging();
-					this._Answer = value;
-					this.SendPropertyChanged("Answer");
-					this.OnAnswerChanged();
+					OnAnswerChanging(value);
+					SendPropertyChanging();
+					_Answer = value;
+					SendPropertyChanged("Answer");
+					OnAnswerChanged();
 				}
 			}
 		}
@@ -6838,57 +6818,57 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Status;
+				return _Status;
 			}
 			set
 			{
-				if ((this._Status != value))
+				if ((_Status != value))
 				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
+					OnStatusChanging(value);
+					SendPropertyChanging();
+					_Status = value;
+					SendPropertyChanged("Status");
+					OnStatusChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_SendTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime SendTime
+		public DateTime SendTime
 		{
 			get
 			{
-				return this._SendTime;
+				return _SendTime;
 			}
 			set
 			{
-				if ((this._SendTime != value))
+				if ((_SendTime != value))
 				{
-					this.OnSendTimeChanging(value);
-					this.SendPropertyChanging();
-					this._SendTime = value;
-					this.SendPropertyChanged("SendTime");
-					this.OnSendTimeChanged();
+					OnSendTimeChanging(value);
+					SendPropertyChanging();
+					_SendTime = value;
+					SendPropertyChanged("SendTime");
+					OnSendTimeChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AnswerTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AnswerTime
+		public DateTime AnswerTime
 		{
 			get
 			{
-				return this._AnswerTime;
+				return _AnswerTime;
 			}
 			set
 			{
-				if ((this._AnswerTime != value))
+				if ((_AnswerTime != value))
 				{
-					this.OnAnswerTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AnswerTime = value;
-					this.SendPropertyChanged("AnswerTime");
-					this.OnAnswerTimeChanged();
+					OnAnswerTimeChanging(value);
+					SendPropertyChanging();
+					_AnswerTime = value;
+					SendPropertyChanged("AnswerTime");
+					OnAnswerTimeChanged();
 				}
 			}
 		}
@@ -6898,17 +6878,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -6918,7 +6898,7 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Email;
+				return _Email;
 			}
 			set
 			{
@@ -6937,17 +6917,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -6972,7 +6952,7 @@ namespace CHSNS.Operator
 		
 		private long _ViewCount;
 		
-		private System.DateTime _AddTime;
+		private DateTime _AddTime;
 		
 		private byte _ShowLevel;
 		
@@ -6984,7 +6964,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -7000,13 +6980,13 @@ namespace CHSNS.Operator
     partial void OnUserIDChanged();
     partial void OnViewCountChanging(long value);
     partial void OnViewCountChanged();
-    partial void OnAddTimeChanging(System.DateTime value);
+    partial void OnAddTimeChanging(DateTime value);
     partial void OnAddTimeChanged();
     partial void OnShowLevelChanging(byte value);
     partial void OnShowLevelChanged();
-    partial void OnSystemCategoryChanging(System.Nullable<long> value);
+    partial void OnSystemCategoryChanging(long? value);
     partial void OnSystemCategoryChanged();
-    partial void OnCategoryChanging(System.Nullable<long> value);
+    partial void OnCategoryChanging(long? value);
     partial void OnCategoryChanged();
     partial void OnTypeChanging(byte value);
     partial void OnTypeChanged();
@@ -7022,17 +7002,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -7042,17 +7022,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Title;
+				return _Title;
 			}
 			set
 			{
-				if ((this._Title != value))
+				if ((_Title != value))
 				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
+					OnTitleChanging(value);
+					SendPropertyChanging();
+					_Title = value;
+					SendPropertyChanged("Title");
+					OnTitleChanged();
 				}
 			}
 		}
@@ -7062,18 +7042,16 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Faceurl;
+				return _Faceurl;
 			}
 			set
 			{
-				if ((this._Faceurl != value))
-				{
-					this.OnFaceurlChanging(value);
-					this.SendPropertyChanging();
-					this._Faceurl = value;
-					this.SendPropertyChanged("Faceurl");
-					this.OnFaceurlChanged();
-				}
+			    if ((_Faceurl == value)) return;
+			    OnFaceurlChanging(value);
+			    SendPropertyChanging();
+			    _Faceurl = value;
+			    SendPropertyChanged("Faceurl");
+			    OnFaceurlChanged();
 			}
 		}
 		
@@ -7082,18 +7060,16 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Url;
+				return _Url;
 			}
 			set
 			{
-				if ((this._Url != value))
-				{
-					this.OnUrlChanging(value);
-					this.SendPropertyChanging();
-					this._Url = value;
-					this.SendPropertyChanged("Url");
-					this.OnUrlChanged();
-				}
+			    if ((_Url == value)) return;
+			    OnUrlChanging(value);
+			    SendPropertyChanging();
+			    _Url = value;
+			    SendPropertyChanged("Url");
+			    OnUrlChanged();
 			}
 		}
 		
@@ -7102,17 +7078,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Description;
+				return _Description;
 			}
 			set
 			{
-				if ((this._Description != value))
+				if ((_Description != value))
 				{
-					this.OnDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._Description = value;
-					this.SendPropertyChanged("Description");
-					this.OnDescriptionChanged();
+					OnDescriptionChanging(value);
+					SendPropertyChanging();
+					_Description = value;
+					SendPropertyChanged("Description");
+					OnDescriptionChanged();
 				}
 			}
 		}
@@ -7122,17 +7098,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._UserID;
+				return _UserID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((_UserID != value))
 				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					OnUserIDChanging(value);
+					SendPropertyChanging();
+					_UserID = value;
+					SendPropertyChanged("UserID");
+					OnUserIDChanged();
 				}
 			}
 		}
@@ -7142,37 +7118,37 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ViewCount;
+				return _ViewCount;
 			}
 			set
 			{
-				if ((this._ViewCount != value))
+				if ((_ViewCount != value))
 				{
-					this.OnViewCountChanging(value);
-					this.SendPropertyChanging();
-					this._ViewCount = value;
-					this.SendPropertyChanged("ViewCount");
-					this.OnViewCountChanged();
+					OnViewCountChanging(value);
+					SendPropertyChanging();
+					_ViewCount = value;
+					SendPropertyChanged("ViewCount");
+					OnViewCountChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_AddTime", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime AddTime
+		public DateTime AddTime
 		{
 			get
 			{
-				return this._AddTime;
+				return _AddTime;
 			}
 			set
 			{
-				if ((this._AddTime != value))
+				if ((_AddTime != value))
 				{
-					this.OnAddTimeChanging(value);
-					this.SendPropertyChanging();
-					this._AddTime = value;
-					this.SendPropertyChanged("AddTime");
-					this.OnAddTimeChanged();
+					OnAddTimeChanging(value);
+					SendPropertyChanging();
+					_AddTime = value;
+					SendPropertyChanged("AddTime");
+					OnAddTimeChanged();
 				}
 			}
 		}
@@ -7182,57 +7158,55 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ShowLevel;
+				return _ShowLevel;
 			}
 			set
 			{
-				if ((this._ShowLevel != value))
+				if ((_ShowLevel != value))
 				{
-					this.OnShowLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ShowLevel = value;
-					this.SendPropertyChanged("ShowLevel");
-					this.OnShowLevelChanged();
+					OnShowLevelChanging(value);
+					SendPropertyChanging();
+					_ShowLevel = value;
+					SendPropertyChanged("ShowLevel");
+					OnShowLevelChanged();
 				}
 			}
 		}
 		
 		[Column(Storage="_SystemCategory", DbType="BigInt")]
-		public System.Nullable<long> SystemCategory
+		public long? SystemCategory
 		{
 			get
 			{
-				return this._SystemCategory;
+				return _SystemCategory;
 			}
 			set
 			{
-				if ((this._SystemCategory != value))
-				{
-					this.OnSystemCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._SystemCategory = value;
-					this.SendPropertyChanged("SystemCategory");
-					this.OnSystemCategoryChanged();
-				}
+			    if ((_SystemCategory == value)) return;
+			    OnSystemCategoryChanging(value);
+			    SendPropertyChanging();
+			    _SystemCategory = value;
+			    SendPropertyChanged("SystemCategory");
+			    OnSystemCategoryChanged();
 			}
 		}
 		
 		[Column(Storage="_Category", DbType="BigInt")]
-		public System.Nullable<long> Category
+		public long? Category
 		{
 			get
 			{
-				return this._Category;
+				return _Category;
 			}
 			set
 			{
-				if ((this._Category != value))
+				if ((_Category != value))
 				{
-					this.OnCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._Category = value;
-					this.SendPropertyChanged("Category");
-					this.OnCategoryChanged();
+					OnCategoryChanging(value);
+					SendPropertyChanging();
+					_Category = value;
+					SendPropertyChanged("Category");
+					OnCategoryChanged();
 				}
 			}
 		}
@@ -7242,17 +7216,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Type;
+				return _Type;
 			}
 			set
 			{
-				if ((this._Type != value))
+				if ((_Type != value))
 				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
+					OnTypeChanging(value);
+					SendPropertyChanging();
+					_Type = value;
+					SendPropertyChanged("Type");
+					OnTypeChanged();
 				}
 			}
 		}
@@ -7263,17 +7237,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -7294,7 +7268,7 @@ namespace CHSNS.Operator
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnValidate(ChangeAction action);
     partial void OnCreated();
     partial void OnIDChanging(long value);
     partial void OnIDChanged();
@@ -7316,17 +7290,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._ID;
+				return _ID;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((_ID != value))
 				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					OnIDChanging(value);
+					SendPropertyChanging();
+					_ID = value;
+					SendPropertyChanged("ID");
+					OnIDChanged();
 				}
 			}
 		}
@@ -7336,17 +7310,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Title;
+				return _Title;
 			}
 			set
 			{
-				if ((this._Title != value))
+				if ((_Title != value))
 				{
-					this.OnTitleChanging(value);
-					this.SendPropertyChanging();
-					this._Title = value;
-					this.SendPropertyChanged("Title");
-					this.OnTitleChanged();
+					OnTitleChanging(value);
+					SendPropertyChanging();
+					_Title = value;
+					SendPropertyChanged("Title");
+					OnTitleChanged();
 				}
 			}
 		}
@@ -7356,17 +7330,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Count;
+				return _Count;
 			}
 			set
 			{
-				if ((this._Count != value))
+				if ((_Count != value))
 				{
-					this.OnCountChanging(value);
-					this.SendPropertyChanging();
-					this._Count = value;
-					this.SendPropertyChanged("Count");
-					this.OnCountChanged();
+					OnCountChanging(value);
+					SendPropertyChanging();
+					_Count = value;
+					SendPropertyChanged("Count");
+					OnCountChanged();
 				}
 			}
 		}
@@ -7376,17 +7350,17 @@ namespace CHSNS.Operator
 		{
 			get
 			{
-				return this._Type;
+				return _Type;
 			}
 			set
 			{
-				if ((this._Type != value))
+				if ((_Type != value))
 				{
-					this.OnTypeChanging(value);
-					this.SendPropertyChanging();
-					this._Type = value;
-					this.SendPropertyChanged("Type");
-					this.OnTypeChanged();
+					OnTypeChanging(value);
+					SendPropertyChanging();
+					_Type = value;
+					SendPropertyChanged("Type");
+					OnTypeChanged();
 				}
 			}
 		}
@@ -7397,17 +7371,17 @@ namespace CHSNS.Operator
 		
 		protected virtual void SendPropertyChanging()
 		{
-			if ((this.PropertyChanging != null))
+			if ((PropertyChanging != null))
 			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
+				PropertyChanging(this, emptyChangingEventArgs);
 			}
 		}
 		
 		protected virtual void SendPropertyChanged(String propertyName)
 		{
-			if ((this.PropertyChanged != null))
+			if ((PropertyChanged != null))
 			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

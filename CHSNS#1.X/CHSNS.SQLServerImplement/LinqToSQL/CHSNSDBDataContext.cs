@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace CHSNS.Operator {
 	internal partial class CHSNSDBDataContext {
 		//public CHSNSDBDataContext(string s) : base(s) { }
