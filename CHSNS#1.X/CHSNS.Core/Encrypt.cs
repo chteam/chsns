@@ -1,9 +1,9 @@
-namespace CHSNS
-{
 	using System;
 	using System.IO;
 	using System.Security.Cryptography;
 	using System.Text;
+namespace CHSNS
+{
 
 
 	/// <summary>

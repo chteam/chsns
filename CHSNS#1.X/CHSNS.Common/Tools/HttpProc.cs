@@ -3,6 +3,8 @@
 * http协议操作模块：简化了 Get和Post请求。
 * 
 * */
+using System.IO;
+
 namespace CHSNS {
 	using System;
 	using System.Net;
@@ -71,7 +73,7 @@ namespace CHSNS {
 				//发送http数据：朝请求流中写post的数据
 				byte[] b = this._encoding.GetBytes(this._strPostdata);
 				请求.ContentLength = b.Length;
-				System.IO.Stream sw = null;
+				Stream sw = null;
 				try {
 					sw = 请求.GetRequestStream();
 					sw.Write(b, 0, b.Length);
@@ -95,7 +97,7 @@ namespace CHSNS {
 			HttpWebRequest 请求 = CreateRequest();//请求
 			HttpWebResponse 响应 = null; ;
 
-			System.IO.StreamReader sr = null;
+		StreamReader sr = null;
 
 
 			try {
@@ -103,7 +105,7 @@ namespace CHSNS {
 
 				响应 = (HttpWebResponse)请求.GetResponse();
 
-				sr = new System.IO.StreamReader(响应.GetResponseStream(), this.encoding);
+				sr = new StreamReader(响应.GetResponseStream(), this.encoding);
 
 				this._ResHtml = sr.ReadToEnd(); // 这里假定响应的都是html文本
 			} catch (System.Exception ex) {

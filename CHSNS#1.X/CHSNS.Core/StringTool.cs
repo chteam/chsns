@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.IO;
 
 namespace CHSNS {
 	/// <summary>
@@ -264,24 +264,7 @@ namespace CHSNS {
 			}
 			return bytes < 1073741824L ? string.Format("{0:N2} MB", bytes / 1048576f) : string.Format("{0:N2} GB", bytes / 1.073742E+09f);
 		}
-		/// <summary>
-		/// 文件夹字节大小
-		/// </summary>
-		/// <param name="dir"></param>
-		/// <returns></returns>
-		public static long DiskUsage(string dir) {
-			var files = Directory.GetFiles(dir);
-			var directories = Directory.GetDirectories(dir);
-			var num = 0L;
-			for (var i = 0; i < files.Length; i++) {
-				var info = new FileInfo(files[i]);
-				num += info.Length;
-			}
-			for (var j = 0; j < directories.Length; j++) {
-				num += DiskUsage(directories[j]);
-			}
-			return num;
-		}
+
 
 	}
 }

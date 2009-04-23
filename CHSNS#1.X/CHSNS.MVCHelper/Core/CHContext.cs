@@ -16,7 +16,17 @@ namespace CHSNS {
         }
 
         #region Cache
-        ICache _cahce;
+
+        private IIOFactory _IOFactory;
+        public IIOFactory IOFactory {
+            get {
+                return _IOFactory ?? (_IOFactory = new IOFactory(this));
+            }
+            set {
+                _IOFactory = value;
+            }
+        }
+ ICache _cahce;
         /// <summary>
         /// 缓存单例
         /// </summary>

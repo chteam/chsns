@@ -12,6 +12,9 @@ namespace CHSNS.Controllers {
     [HandleError]
     abstract public class BaseController : Controller {
         public IContext CHContext { get { return new CHContext(HttpContext); } }
+       protected IIOFactory IOFactory {
+            get { return CHContext.IOFactory; }
+        }
         public ConfigSerializer ConfigSerializer {
             get {
                 return CHContext.ConfigSerializer as ConfigSerializer;

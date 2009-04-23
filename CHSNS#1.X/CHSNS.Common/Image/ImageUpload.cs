@@ -20,8 +20,8 @@ namespace CHSNS {
 			ThumbDict = thumbdict;
 			Time = dt;
             Context = context;
-			Ext = System.IO.Path.GetExtension(file.FileName);
-		    FileUpload = new FileUpload{
+			Ext =  System.IO.Path.GetExtension(file.FileName);
+            FileUpload = new FileUpload(Context.IOFactory) {
 		                                   File = file,
 		                                   FileExtList = ext,
 		                                   //HttpContext = context,

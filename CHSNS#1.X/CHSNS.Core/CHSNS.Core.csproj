@@ -101,6 +101,8 @@
     <Compile Include="Dictionary.cs" />
     <Compile Include="Encrypt.cs" />
     <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="Store\IFolder.cs" />
+    <Compile Include="Store\IStoreFile.cs" />
     <Compile Include="StringTool.cs" />
   </ItemGroup>
   <ItemGroup>

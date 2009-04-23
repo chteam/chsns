@@ -67,6 +67,7 @@
     <Compile Include="Context\ICookies.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Context\IIOFactory.cs" />
     <Compile Include="Context\IOnline.cs">
       <SubType>Code</SubType>
     </Compile>
