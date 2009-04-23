@@ -111,7 +111,7 @@ namespace CHSNS.Operator {
 		#endregion
 		#region face
 		public void DeleteFace(long userid) {
-			System.IO.Directory.Delete(Path.FaceMapPath(userid), true);
+		    //IOFactory.Folder.Delete(Path.FaceMapPath(userid), true);
 		}
 		#endregion
 

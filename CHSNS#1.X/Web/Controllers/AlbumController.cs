@@ -93,8 +93,8 @@ namespace CHSNS.Controllers
         public ActionResult PhotoDel(long id){
             var p = DBExt.Photo.Get(id);
             var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
-            var pathserver = Server.MapPath(path);
-            System.IO.File.Delete(pathserver);
+
+            IOFactory.StoreFile.Delete(path);
             var album = DBExt.Album.GetCountChange(p.AlbumID.Value, -1);
             DBExt.Photo.Delete(p.ID);
             return this.RedirectToReferrer();

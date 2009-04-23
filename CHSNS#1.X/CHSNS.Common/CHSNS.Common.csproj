@@ -62,6 +62,9 @@
     <Compile Include="File\FileUpload.cs" />
     <Compile Include="Image\ImageUpload.cs" />
     <Compile Include="Image\Thumbnail.cs" />
+    <Compile Include="IOFactory.cs" />
+    <Compile Include="LocalImplement\LocalFolder.cs" />
+    <Compile Include="LocalImplement\LocalStoreFile.cs" />
     <Compile Include="Media\Media.cs" />
     <Compile Include="NetworkCross.cs" />
     <Compile Include="PathBuilder\ServerPathBuilder.cs" />

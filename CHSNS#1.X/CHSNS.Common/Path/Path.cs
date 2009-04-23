@@ -1,5 +1,5 @@
 	using System;
-	using System.IO;
+using System.IO;
 	using System.Web;
 namespace CHSNS {
 
@@ -96,9 +96,9 @@ namespace CHSNS {
 			                            UserWebPath(userid.ToString()),
 			                            userid,
 			                            type);
-				if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+            //if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
-				}
+			//	}
 			return EmptyImage(type);
 		}
 		static private string EmptyImage(ThumbType type) {
@@ -137,7 +137,7 @@ namespace CHSNS {
 		public string GetThumbPhoto(long userid, string photofn) {
 			return string.Format("{0}{1}.jpg",
 				   ClientUserThumbFolder(userid.ToString()),
-				   System.IO.Path.GetFileNameWithoutExtension(photofn).ToLower()
+				System.IO. Path.GetFileNameWithoutExtension(photofn).ToLower()
 				   );
 		}
 		public string GetPhoto(long userid, string fn) {
@@ -168,7 +168,7 @@ namespace CHSNS {
 		/// </summary>
 		static public string urlFilename {
 			get {
-				return System.IO.Path.GetFileNameWithoutExtension(
+                return System.IO.Path.GetFileNameWithoutExtension(
 					HttpContext.Current.Server.MapPath(HttpContext.Current.Request.Path)
 				).ToLower();
 			}
@@ -211,9 +211,9 @@ namespace CHSNS {
 		static public string GetFaceEmpty(string userid, ThumbType type) {//如果没有图片则返回空串
 			if (userid.Length > 3) {
 				string text = string.Format("{0}face/{1}{2}.jpg", UserWebPath(userid), userid.Substring(0, 3), type);
-				if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+          //      if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
-				}
+		//		}
 			}
 			return String.Empty;
 		}
@@ -228,9 +228,9 @@ namespace CHSNS {
 		static public string GetGroupImg(object Groupid, ThumbType type) {
 			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(Groupid), Groupid, type);
 			//Debug.Trace(HttpContext.Current.Request.PhysicalApplicationPath + text);
-			if (File.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+           // if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 				return text;
-			}
+			//}
 			return "/images/logoMain.jpg";
 		}
 		/// <summary>
@@ -256,35 +256,35 @@ namespace CHSNS {
 		}
 
 		#endregion
-		#region 计算服务器上文件夹/文件大小
-		/// <summary>
-		/// 递归算文件夹大小
-		/// </summary>
-		/// <param name="d"></param>
-		/// <returns>文件夹的大小(字节)</returns>
-		static public long DirectorySize(DirectoryInfo d) {
-			long Size = 0;
-			// 所有文件大小.
-			FileInfo[] fis = d.GetFiles();
-			foreach (FileInfo fi in fis) {
-				Size += fi.Length;
-			}
-			// 遍历出当前目录的所有文件夹.
-			DirectoryInfo[] dis = d.GetDirectories();
-			foreach (DirectoryInfo di in dis) {
-				Size += DirectorySize(di);   //这就用到递归了，调用父方法,注意，这里并不是直接返回值，而是调用父返回来的
-			}
-			return (Size);
-		}
-		/// <summary>
-		/// 获取文件大小
-		/// </summary>
-		/// <param name="path">文件路径</param>
-		/// <returns>文件的大小(字节)</returns>
-		static public long FileSize(string path) {
-			FileInfo fi = new FileInfo(path);
-			return fi.Length;
-		}
-		#endregion
+        //#region 计算服务器上文件夹/文件大小
+        // <summary>
+        // 递归算文件夹大小
+        // </summary>
+        // <param name="d"></param>
+        // <returns>文件夹的大小(字节)</returns>
+        //static public long DirectorySize(DirectoryInfo d) {
+        //    long Size = 0;
+        //     所有文件大小.
+        //    FileInfo[] fis = d.GetFiles();
+        //    foreach (FileInfo fi in fis) {
+        //        Size += fi.Length;
+        //    }
+        //     遍历出当前目录的所有文件夹.
+        //    DirectoryInfo[] dis = d.GetDirectories();
+        //    foreach (DirectoryInfo di in dis) {
+        //        Size += DirectorySize(di);   //这就用到递归了，调用父方法,注意，这里并不是直接返回值，而是调用父返回来的
+        //    }
+        //    return (Size);
+        //}
+        // <summary>
+        // 获取文件大小
+        // </summary>
+        // <param name="path">文件路径</param>
+        // <returns>文件的大小(字节)</returns>
+        //static public long FileSize(string path) {
+        //    FileInfo fi = new FileInfo(path);
+        //    return fi.Length;
+        //}
+        //#endregion
 	}
 }

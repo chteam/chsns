@@ -9,10 +9,7 @@ namespace CHSNS
 	public class Debug {
 		static void SaveTextFile(string path, string text)
 		{
-			using (var sw = new System.IO.StreamWriter(path, true))
-			{
-				sw.WriteLine(text);
-			}
+		   // IOFactory.StoreFile.WriteLine(path, text);
 		}
 
 		/// <summary>

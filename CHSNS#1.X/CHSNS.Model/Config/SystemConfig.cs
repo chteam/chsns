@@ -2,9 +2,6 @@
 namespace CHSNS.Config
 {
 	using System;
-	using System.Xml.Serialization;
-	//using System.Web;
-	using System.IO;
 using System.Collections.Generic;
 
 	[Serializable]

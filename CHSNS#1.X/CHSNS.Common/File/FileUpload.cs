@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Web;
 namespace CHSNS {
     public class FileUpload : IFileProcess{
+        IIOFactory IOFactory { get; set; }
+        public FileUpload(IIOFactory ioFactory){
+            IOFactory = ioFactory;
+        }
 		public HttpPostedFileBase File { get; set; }
 		/// <summary>
 		/// 单位：M
@@ -14,12 +19,12 @@ namespace CHSNS {
 		public string Log { get; set; }
         public void ExistsCreateDictionary(){
             var path = System.IO.Path.GetDirectoryName(PathBuilder.DescPath);
-            if (!System.IO.Directory.Exists(path))
-                System.IO.Directory.CreateDirectory(path);
+            if (! IOFactory.Folder.Exists(path))
+                IOFactory.Folder.Create(path);
         }
 
         public bool Validate(){
-			var ext = System.IO.Path.GetExtension(File.FileName).ToLower();
+            var ext = System.IO.Path.GetExtension(File.FileName).ToLower();
 			if (FileExtList != null && FileExtList.Count() != 0 && !FileExtList.Contains(ext)) {
 				Log = "error:您上传的文件扩展名不正确";
 				return false;

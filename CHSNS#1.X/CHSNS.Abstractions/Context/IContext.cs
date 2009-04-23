@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.Web;
 using CHSNS.Config;
-using CHSNS.Operator;
 
 namespace CHSNS
 {
     public interface IContext
     {
+        IIOFactory IOFactory { get; set; }
         ICache Cache { get; set; }
         IUser User { get; set; }
         ICookies Cookies { get; set; }
