@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Reply]
 (
-[ID] [bigint] NOT NULL IDENTITY(1, 1),
-[UserID] [bigint] NOT NULL,
-[SenderID] [bigint] NOT NULL,
+[Id] [bigint] NOT NULL IdENTITY(1, 1),
+[UserId] [bigint] NOT NULL,
+[SenderId] [bigint] NOT NULL,
 [Body] [nvarchar] (4000) NOT NULL,
 [AddTime] [smalldatetime] NOT NULL,
 [IsSee] [bit] NOT NULL,

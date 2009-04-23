@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Album]
 (
 /*基本信息*/
-[ID] [bigint] NOT NULL IDENTITY(1, 1),
+[Id] [bigint] NOT NULL IDENTITY(1, 1),
 [Name] [nvarchar] (50) NOT NULL,
 [Location] [nvarchar] (50) NULL,
 [Description] [nvarchar] (150) NOT NULL,
@@ -9,7 +9,7 @@
 [FaceUrl] [nvarchar] (250) NULL,
 
 [Count] [int] NOT NULL,
-[UserID] [bigint] NOT NULL,
+[UserId] [bigint] NOT NULL,
 
 [Order] [int] NOT NULL,
 [ShowLevel] [tinyint] NOT NULL

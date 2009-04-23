@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[LogTag]
 (
-[ID] [bigint] NOT NULL IDENTITY(1, 1),
-[TagID] [bigint] NOT NULL,
-[LogID] [bigint] NOT NULL
+[Id] [bigint] NOT NULL IdENTITY(1, 1),
+[TagId] [bigint] NOT NULL,
+[LogId] [bigint] NOT NULL
 ) ON [PRIMARY]
 
 

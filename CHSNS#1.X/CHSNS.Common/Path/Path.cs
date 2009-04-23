@@ -99,7 +99,7 @@ namespace CHSNS {
             //if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 					return text;
 			//	}
-			return EmptyImage(type);
+			//return EmptyImage(type);
 		}
 		static private string EmptyImage(ThumbType type) {
 			return string.Format("/images/no_{0}.jpg", type);

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[FieldInformation]
 (
-[UserID] [bigint] NOT NULL,
+[UserId] [bigint] NOT NULL,
 [Field] [bigint] NOT NULL,
 [Year] [smallint] NULL,
 [MiniField] [bigint] NULL,

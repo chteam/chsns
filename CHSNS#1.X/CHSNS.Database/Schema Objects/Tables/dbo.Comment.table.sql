@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[Comment]
 (
-[ID] [bigint] NOT NULL IDENTITY(1, 1),
-[ShowerID] [bigint] NULL,
-[OwnerID] [bigint] NOT NULL,
-[SenderID] [bigint] NOT NULL,
+[Id] [bigint] NOT NULL IDENTITY(1, 1),
+[ShowerId] [bigint] NULL,
+[OwnerId] [bigint] NOT NULL,
+[SenderId] [bigint] NOT NULL,
 [AddTime] [smalldatetime] NOT NULL,
 [Body] [ntext] NOT NULL,
 [IsReply] [bit] NOT NULL,

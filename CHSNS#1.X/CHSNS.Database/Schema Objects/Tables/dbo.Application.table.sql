@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Application]
 (
-[ID] [bigint] NOT NULL IDENTITY(1000, 1),
+[Id] [bigint] NOT NULL IDENTITY(1000, 1),
 [Controller] [nvarchar] (50) NOT NULL,
 [Action] [nvarchar] (50) NOT NULL,
 [ParamStr] [nvarchar] (250) NOT NULL,

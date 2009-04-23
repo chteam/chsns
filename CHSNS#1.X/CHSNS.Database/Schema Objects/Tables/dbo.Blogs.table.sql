@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Blogs]
 (
-[UserID] [bigint] NOT NULL,
+[UserId] [bigint] NOT NULL,
 [CreateTime] [smalldatetime] NOT NULL,
 [Title] [nvarchar] (50) NOT NULL,
 [SubTitle] [nvarchar] (500) NULL,

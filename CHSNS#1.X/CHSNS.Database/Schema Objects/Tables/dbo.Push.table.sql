@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Push]
 (
-[ID] [bigint] NOT NULL IDENTITY(1, 1),
-[LogID] [bigint] NOT NULL,
-[UserID] [bigint] NOT NULL,
+[Id] [bigint] NOT NULL IdENTITY(1, 1),
+[LogId] [bigint] NOT NULL,
+[UserId] [bigint] NOT NULL,
 [AddTime] [smalldatetime] NOT NULL
 ) ON [PRIMARY]
 

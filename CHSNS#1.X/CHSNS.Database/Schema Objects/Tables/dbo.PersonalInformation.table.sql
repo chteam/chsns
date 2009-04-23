@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[PersonalInformation]
 (
-[UserID] [bigint] NOT NULL,
+[UserId] [bigint] NOT NULL,
 [LoveLike] [nvarchar] (255) NULL,
 [LoveBook] [nvarchar] (255) NULL,
 [LoveMusic] [nvarchar] (255) NULL,

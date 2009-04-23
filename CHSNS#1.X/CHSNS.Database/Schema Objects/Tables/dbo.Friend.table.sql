@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Friend]
 (
-[ID] [bigint] NOT NULL IDENTITY(1, 1),
-[FromID] [bigint] NOT NULL,
-[ToID] [bigint] NOT NULL,
+[Id] [bigint] NOT NULL IdENTITY(1, 1),
+[FromId] [bigint] NOT NULL,
+[ToId] [bigint] NOT NULL,
 [IsTrue] [bit] NOT NULL,
 [IsCommon] [bit] NOT NULL,
 [FriendType] [int] NULL,
