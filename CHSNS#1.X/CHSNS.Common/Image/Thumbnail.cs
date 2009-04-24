@@ -24,10 +24,10 @@ namespace CHSNS {
 		{
 			//System.Drawing.Image img = bigimg;
 			//System.Drawing.Imaging.ImageFormat thisFormat = ;
-			Size newSize = NewSize(maxWidth, maxHeight, img.Width, img.Height);
+			var newSize = NewSize(maxWidth, maxHeight, img.Width, img.Height);
 			var outBmp = new Bitmap(newSize.Width, newSize.Height);
 
-			Graphics g = Graphics.FromImage(outBmp);
+			var g = Graphics.FromImage(outBmp);
 			// 设置画布的描绘质量
 			g.CompositingQuality = CompositingQuality.HighQuality;
 			g.SmoothingMode = SmoothingMode.HighQuality;
@@ -41,11 +41,11 @@ namespace CHSNS {
 			var encoderParam = new EncoderParameter(Encoder.Quality, quality);
 			encoderParams.Param[0] = encoderParam;
 			//获得包含有关内置图像编码解码器的信息的ImageCodecInfo 对象。
-			ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
-			ImageCodecInfo jpegICI = arrayICI.Where(c => c.FormatDescription.Equals("JPEG")).Single();
+			var arrayIci = ImageCodecInfo.GetImageEncoders();
+			var jpegIci = arrayIci.Where(c => c.FormatDescription.Equals("JPEG")).Single();
 			//throw new Exception(newFile);
-			if (jpegICI != null)
-				outBmp.Save(newFile, jpegICI, encoderParams);
+			if (jpegIci != null)
+				outBmp.Save(newFile, jpegIci, encoderParams);
 			else
 				outBmp.Save(newFile, img.RawFormat);
 			//img.Dispose();
@@ -75,7 +75,7 @@ namespace CHSNS {
 		/// 图片横纵比处理
 		/// </summary>
 		/// <returns></returns>
-		static public double ImageWHB(Image img) {
+		static public double ImageWhb(Image img) {
 			if (img.Height == 0)
 				return 0;
 			//System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(fn, true);
