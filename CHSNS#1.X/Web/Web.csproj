@@ -493,17 +493,8 @@
     <Content Include="Views\Video\List.aspx" />
     <Content Include="Views\Video\Random.aspx" />
     <Content Include="Views\Web.config" />
-    <Content Include="JavaScript\AdminUser.js" />
-    <Content Include="JavaScript\Application.js" />
     <Content Include="JavaScript\Framework.js" />
-    <Content Include="JavaScript\GroupList.js" />
-    <Content Include="JavaScript\GroupUser.js" />
-    <Content Include="JavaScript\ManageGroup.js" />
     <Content Include="JavaScript\PageSet.js" />
-    <Content Include="JavaScript\Photos.js" />
-    <Content Include="JavaScript\Search.js" />
-    <Content Include="JavaScript\Services.js" />
-    <Content Include="JavaScript\Setting.js" />
     <Content Include="Style\foxblue\admin.css" />
     <Content Include="Style\foxblue\appli.css" />
     <Content Include="Style\foxblue\application.css" />

@@ -24,7 +24,7 @@ namespace CHSNS.Service {
         public IProfile UserFriendInfo(long userid) {
             return Friend.UserFriendInfo(userid);
         }
-        public List<long> GetFriendsID(long userid) {
+        public List<long> GetFriendsId(long userid) {
             return Friend.GetFriendsId(userid);
         }
         public PagedList<UserItemPas> GetFriends(long uid, int p, SiteConfig site) {
@@ -43,37 +43,37 @@ namespace CHSNS.Service {
         /// <summary>
         /// 加为好友
         /// </summary>
-        /// <param name="FromID"></param>
-        /// <param name="ToID"></param>
+        /// <param name="fromId"></param>
+        /// <param name="toId"></param>
         /// <returns>已经是好友则返回False，如果还不是，则返回True，并发送一个好友请求</returns>
-        public bool Add(long FromID, long ToID) {
-            return Friend.Add(FromID, ToID);
+        public bool Add(long fromId, long toId) {
+            return Friend.Add(fromId, toId);
         }
 
         /// <summary>
         /// Deletes the specified from ID.
         /// </summary>
-        /// <param name="FromID">From ID.</param>
-        /// <param name="ToID">To ID.</param>
+        /// <param name="fromId">From ID.</param>
+        /// <param name="toId">To ID.</param>
         /// <returns></returns>
-        public bool Delete(long FromID, long ToID) {
-            return Friend.Delete(FromID, ToID);
+        public bool Delete(long fromId, long toId) {
+            return Friend.Delete(fromId, toId);
         }
 
         /// <summary>
         /// Agrees the friend request.
         /// </summary>
-        /// <param name="OperaterID">The operater ID.</param>
-        /// <param name="ToID">To ID.</param>
+        /// <param name="operaterId">The operater ID.</param>
+        /// <param name="toId">To ID.</param>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool Agree(long OperaterID, long ToID, IUser user) {
-            var b = Friend.Agree(OperaterID, ToID);
-            string name = User.GetUserName(ToID);
+        public bool Agree(long operaterId, long toId, IUser user) {
+            var b = Friend.Agree(operaterId, toId);
+            string name = User.GetUserName(toId);
 
             Event.Add(new EventImplement {
-                OwnerID = ToID,
-                ViewerID = OperaterID,
+                OwnerID = toId,
+                ViewerID = operaterId,
                 TemplateName = "MakeFriend",
                 AddTime = DateTime.Now,
                 ShowLevel = 0,
@@ -88,11 +88,11 @@ namespace CHSNS.Service {
         /// <summary>
         /// Ignores friend request
         /// </summary>
-        /// <param name="FromID">From ID.</param>
-        /// <param name="operaterID">The operater ID.</param>
+        /// <param name="fromId">From ID.</param>
+        /// <param name="operaterId">The operater ID.</param>
         /// <returns></returns>
-        public bool Ignore(long FromID, long operaterID) {
-            return Friend.Ignore(FromID, operaterID);
+        public bool Ignore(long fromId, long operaterId) {
+            return Friend.Ignore(fromId, operaterId);
         }
         public bool IgnoreAll(long uId) {
             return Friend.IgnoreAll(uId);

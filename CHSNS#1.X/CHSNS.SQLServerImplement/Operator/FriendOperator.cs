@@ -129,33 +129,33 @@ namespace CHSNS.Operator
         /// <summary>
         /// 加为好友
         /// </summary>
-        /// <param name="FromID"></param>
-        /// <param name="ToID"></param>
+        /// <param name="fromId"></param>
+        /// <param name="toId"></param>
         /// <returns>已经是好友则返回False，如果还不是，则返回True，并发送一个好友请求</returns>
-        public bool Add(long FromID, long ToID)
+        public bool Add(long fromId, long toId)
         {
             using (var db = DBExtInstance)
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
-                    (c.ToID == ToID && c.FromID == FromID)
+                    (c.ToID == toId && c.FromID == fromId)
                     ||
-                    (c.ToID == FromID && c.FromID == ToID)
+                    (c.ToID == fromId && c.FromID == toId)
                     );
                 if (f == null)
                 {
                     db.Friend.InsertOnSubmit(
                         new Friend
                             {
-                                FromID = FromID,
-                                ToID = ToID,
+                                FromID = fromId,
+                                ToID = toId,
                                 IsTrue = false,
                                 IsCommon = true
                             });
                 }
                 else
                 {//update
-                    if (f.FromID == ToID)
+                    if (f.FromID == toId)
                         f.IsTrue = true;
                 }
                 db.SubmitChanges();
@@ -166,18 +166,18 @@ namespace CHSNS.Operator
         /// <summary>
         /// Deletes the specified from ID.
         /// </summary>
-        /// <param name="FromID">From ID.</param>
-        /// <param name="ToID">To ID.</param>
+        /// <param name="fromId">From ID.</param>
+        /// <param name="toId">To ID.</param>
         /// <returns></returns>
-        public bool Delete(long FromID, long ToID)
+        public bool Delete(long fromId, long toId)
         {
             using (var db = DBExtInstance)
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
-                    (c.ToID == ToID && c.FromID == FromID)
+                    (c.ToID == toId && c.FromID == fromId)
                     ||
-                    (c.ToID == FromID && c.FromID == ToID)
+                    (c.ToID == fromId && c.FromID == toId)
                     &&
                     c.IsTrue
                     );
@@ -190,28 +190,28 @@ namespace CHSNS.Operator
         /// <summary>
         /// Agrees the friend request.
         /// </summary>
-        /// <param name="OperaterID">The operater ID.</param>
-        /// <param name="ToID">To ID.</param>
+        /// <param name="operaterId">The operater ID.</param>
+        /// <param name="toId">To ID.</param>
         /// <returns></returns>
-        public bool Agree(long OperaterID, long ToID)
+        public bool Agree(long operaterId, long toId)
         {
             //string name;
             using (var db = DBExtInstance)
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
-                    (c.ToID == ToID && c.FromID == OperaterID) ||
-                    (c.ToID == OperaterID && c.FromID == ToID) && !c.IsTrue
+                    (c.ToID == toId && c.FromID == operaterId) ||
+                    (c.ToID == operaterId && c.FromID == toId) && !c.IsTrue
                     );
                 if (f == null) return false;
                 f.IsTrue = true;
                 db.SubmitChanges();
             }
-            //  name = db.Profile.Where(q => q.UserID == ToID).Select(q => q.Name).FirstOrDefault();
+            //  name = db.Profile.Where(q => q.UserID == toId).Select(q => q.Name).FirstOrDefault();
             //DBExt.Event.Add(new Event
             //                    {
-            //                        OwnerID = ToID,
-            //                        ViewerID = OperaterID,
+            //                        OwnerID = toId,
+            //                        ViewerID = operaterId,
             //                        TemplateName = "MakeFriend",
             //                        AddTime = DateTime.Now,
             //                        ShowLevel = 0,
@@ -226,25 +226,25 @@ namespace CHSNS.Operator
         /// <summary>
         /// Ignores friend request
         /// </summary>
-        /// <param name="FromID">From ID.</param>
-        /// <param name="operaterID">The operater ID.</param>
+        /// <param name="fromId">From ID.</param>
+        /// <param name="operaterId">The operater ID.</param>
         /// <returns></returns>
-        public bool Ignore(long FromID, long operaterID)
+        public bool Ignore(long fromId, long operaterId)
         {
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.FirstOrDefault(c => c.ToID == operaterID && c.FromID == FromID && !c.IsTrue);
+                var f = db.Friend.FirstOrDefault(c => c.ToID == operaterId && c.FromID == fromId && !c.IsTrue);
                 if (f == null) return false;
                 db.Friend.DeleteOnSubmit(f);
                 db.SubmitChanges();
                 return true;
             }
         }
-        public bool IgnoreAll(long UserID)
+        public bool IgnoreAll(long userId)
         {
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.Where(c => c.ToID == UserID && !c.IsTrue);
+                var f = db.Friend.Where(c => c.ToID == userId && !c.IsTrue);
                 db.Friend.DeleteAllOnSubmit(f);
                 db.SubmitChanges();
                 return true;
