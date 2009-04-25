@@ -26,21 +26,18 @@ namespace CHSNS.Controllers {
             }
         }
         #region Êý¾Ý²Ù×÷
-        private DBManager _dbext;
-        protected DBManager DBExt {
+        private DBManager _dbExt;
+        protected DBManager DbExt {
             get {
-                if (_dbext == null)
-                    _dbext = new DBManager();
-                return _dbext;
-            }
-            set {
-                throw new NotImplementedException();
+                if (_dbExt == null)
+                    _dbExt = new DBManager();
+                return _dbExt;
             }
         }
 
         protected override void OnResultExecuted(ResultExecutedContext filterContext) {
-            if (_dbext != null)
-                DBExt.Dispose();
+            if (_dbExt != null)
+                DbExt.Dispose();
         }
         #endregion
         public string Title {

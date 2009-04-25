@@ -18,9 +18,9 @@ namespace CHSNS.Controllers
             var model = new EntryIndexViewModel();
             Title = "页面不存在";
             if (string.IsNullOrEmpty(title)) return Wait();
-            model.Entry = DBExt.Entry.Get(title);
+            model.Entry = DbExt.Entry.Get(title);
             if (model.Entry == null || !model.Entry.CurrentID.HasValue) return Wait();
-            var version = DBExt.Entry.GetVersion(model.Entry.CurrentID.Value);
+            var version = DbExt.Entry.GetVersion(model.Entry.CurrentID.Value);
             if (version == null) return Wait();
             model.Version = version;
             model.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
@@ -41,7 +41,7 @@ namespace CHSNS.Controllers
         	// var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
 
 
-            ViewData["Source"] = DBExt.Entry.Historys(id);
+            ViewData["Source"] = DbExt.Entry.Historys(id);
         	Title = "版本比较";
         	return View();
         }
@@ -49,10 +49,10 @@ namespace CHSNS.Controllers
         public ActionResult History(long id)
         {
 
-            var version = DBExt.Entry.GetVersion(id);
+            var version = DbExt.Entry.GetVersion(id);
             ViewData["version"] = version;
             if (version == null) return View("wait", "site");
-            var entry = DBExt.Entry.Get(version.EntryID.Value);
+            var entry = DbExt.Entry.Get(version.EntryID.Value);
             ViewData["entry"] = entry;
 
             if (ViewData["entry"] == null || ViewData["version"] == null)
@@ -107,9 +107,9 @@ namespace CHSNS.Controllers
      
             IEntry data = null;
             if (!string.IsNullOrEmpty(title))
-                data = DBExt.Entry.Get(title);
+                data = DbExt.Entry.Get(title);
             else if (id.HasValue)
-                data = DBExt.Entry.Get(id.Value);
+                data = DbExt.Entry.Get(id.Value);
 
 
             if (data != null) {
@@ -120,7 +120,7 @@ namespace CHSNS.Controllers
                     ViewData["entry.Title"] = entry.Title;
                     ViewData["id"] = entry.ID;
 
-                    var entryversion = DBExt.Entry.GetVersion(entry.CurrentID ?? 0);
+                    var entryversion = DbExt.Entry.GetVersion(entry.CurrentID ?? 0);
                     //db.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
                     if (entryversion == null) return View("Wait");
                     ViewData["entryversion.description"] = entryversion.Description;
@@ -157,14 +157,14 @@ namespace CHSNS.Controllers
 		[AdminFilter]
         public ActionResult Edit(long? id, EntryImplement entry, EntryVersionImplement entryversion, string tags)
         {
-            var b = DBExt.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
+            var b = DbExt.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
             if (!b) throw new Exception("标题已存在");
             return RedirectToAction("NewList");
         }
 		[AdminFilter]
         public ActionResult AdminHistoryList(string title) {
             title = title.Trim();
-		    ViewData["Source"] = DBExt.Entry.Historys(title);
+		    ViewData["Source"] = DbExt.Entry.Historys(title);
 		    Title = "历史版本";
             return View();
         }
@@ -176,7 +176,7 @@ namespace CHSNS.Controllers
         [AdminFilter]
         public ActionResult NewList()
         {
-            var li = DBExt.Entry.List(1, 10);
+            var li = DbExt.Entry.List(1, 10);
             Title = "词条列表";
             return View(li);
         }
@@ -201,7 +201,7 @@ namespace CHSNS.Controllers
              * 1.设置当前版本为最新版本词条
              * 2.将当前版本状态改为常规状态
              */
-            DBExt.Entry.PassWaitVersion(id);
+            DbExt.Entry.PassWaitVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -215,7 +215,7 @@ namespace CHSNS.Controllers
             /*
              * 锁定当前版本
              */
-            DBExt.Entry.LockCommonVersion(id);
+            DbExt.Entry.LockCommonVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -225,7 +225,7 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AdminFilter]
         public ActionResult Delete(long id) {
-            DBExt.Entry.DeleteByVersionId(id, CHUser.UserID);
+            DbExt.Entry.DeleteByVersionId(id, CHUser.UserID);
             return this.RedirectToReferrer();
         }
 
@@ -233,7 +233,7 @@ namespace CHSNS.Controllers
          
         #region Ajax
         public ActionResult Has(string title) {
-            var exists = DBExt.Entry.HasTitle(title);
+            var exists = DbExt.Entry.HasTitle(title);
             return Json(exists); 
         }
 

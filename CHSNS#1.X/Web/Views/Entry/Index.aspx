@@ -11,8 +11,7 @@ Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
 			var ext = Model.Ext;
 	%>
 	<div class="left">
-		<h4>
-			<%=entry.Title%></h4>
+		<h4><%=entry.Title%></h4>
 		<div class="body">
 			<p>
 				<%=version.Description%></p>
