@@ -24,7 +24,7 @@ namespace CHSNS.Service {
         }
         public int Login(String userName, String password, Boolean isAutoLogin, Boolean isPasswordMd5, IContext context) {
             if (string.IsNullOrEmpty(userName.Trim())) throw new Exception("用户名不能为空");
-            var md5Pwd = isPasswordMd5 ? password.Trim().ToMd5() : password.Trim();
+            password = isPasswordMd5 ? password.Trim().ToMd5() : password.Trim();
             var profile = Account.Login(userName, password, context.Site.Score.LogOn);
             if (profile == null) return -1;//无账号
             Logout(context);
@@ -34,7 +34,7 @@ namespace CHSNS.Service {
             context.Cookies.Apps = profile.Applications ?? "";
             if (!isAutoLogin) return profile.Status;
             context.Cookies.UserID = context.User.UserID;
-            context.Cookies.UserPassword = md5Pwd;
+            context.Cookies.UserPassword = password;
             context.Cookies.IsAutoLogin = true;
             context.Cookies.Expires = DateTime.Now.AddDays(365);
             return profile.Status;
