@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 using CHSNS.Model;
 using CHSNS.Abstractions;
-using Newtonsoft.Json;
+using CHSNS.ViewModel;
 
 namespace CHSNS.Controllers
 {
@@ -14,27 +14,23 @@ namespace CHSNS.Controllers
         /// 显示当前词条
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index(string title)
-        {
-            Title = "当前词条不存在";
-            if (string.IsNullOrEmpty(title))
-                return View("wait", "site");
-            var entry = DBExt.Entry.Get(title);
-            if (entry == null ||
-                !entry.CurrentID.HasValue) return View("wait", "site");
-
-            ViewData["entry"] = entry;
-            var version = DBExt.Entry.GetVersion(entry.CurrentID.Value);
-            Title = entry.Title;
-            if (version != null)
-            {
-                ViewData["version"] = version;
-                if (ViewData["entry"] == null || ViewData["version"] == null)
-                    return View("wait", "site");
-                ViewData["ext"] = JsonAdapter.Deserialize<EntryExt>(version.Ext);
-            }
-            return View();
+        public ActionResult Index(string title){
+            var model = new EntryIndexViewModel();
+            Title = "页面不存在";
+            if (string.IsNullOrEmpty(title)) return Wait();
+            model.Entry = DBExt.Entry.Get(title);
+            if (model.Entry == null || !model.Entry.CurrentID.HasValue) return Wait();
+            var version = DBExt.Entry.GetVersion(model.Entry.CurrentID.Value);
+            if (version == null) return Wait();
+            model.Version = version;
+            model.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
+            Title = model.Entry.Title;
+            return View(model);
         }
+
+        [NonAction]
+        public ActionResult Wait() {
+            return View("wait", "site"); }
 
         /// <summary>
         /// 历史词条
