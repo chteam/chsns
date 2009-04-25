@@ -1,15 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" 
+AutoEventWireup="true"
+Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 	<%
-		if (ViewData["entry"] != null && ViewData["version"] != null) {
-			var entry = ViewData["entry"] as IEntry;
-			var version = ViewData["version"] as IEntryVersion;
-            
-			var ext = ViewData["ext"] as EntryExt ?? new EntryExt { Tags = new List<string>() };
+			var entry = Model.Entry;
+			var version = Model.Version;
+			var ext = Model.Ext;
 	%>
 	<div class="left">
 		<h4>
@@ -36,12 +35,6 @@ Inherits="System.Web.Mvc.ViewPage" %>
 			</li>
 		</ul>
 	</div>
-	<%} else {%>
-	<div class="note">当前页面不存在:
-	<%=Html.ActionLink("【创建" + this.ViewContext.RouteData.Values["title"].ToString() + "】",
-	    "Edit", "Entry", new { title = this.ViewContext.RouteData.Values["title"] },null)%>
-	</div>
-	<%} %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 </asp:Content>
