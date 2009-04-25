@@ -26,6 +26,7 @@ namespace CHSNS.Controllers
             model.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
             Title = model.Entry.Title;
             return View(model);
+           
         }
 
         [NonAction]
@@ -39,8 +40,6 @@ namespace CHSNS.Controllers
 		public ActionResult HistoryList(long id)
         {
         	// var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
-
-
             ViewData["Source"] = DbExt.Entry.Historys(id);
         	Title = "版本比较";
         	return View();

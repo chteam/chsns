@@ -6,7 +6,7 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% EventPagePas ep = ViewData.Model.Page; %>
 	<div class="right">
-		<%if (ViewData.Model.Content.User.IsAdmin)
+		<%if (ViewData.Model.Context.User.IsAdmin)
     { %>
 		<div id="Event_Admin">
 			<h4>
