@@ -17,7 +17,7 @@ namespace CHSNS.Controllers {
         /// <returns></returns>
         public ActionResult Reply(long? userid) {
             if (!userid.HasValue) userid = CHUser.UserID;
-            var user = DBExt.UserInfo.GetUser(
+            var user = DbExt.UserInfo.GetUser(
                 userid.Value,
                 c => new ProfileImplement{
                                              UserID = c.UserID,
@@ -26,12 +26,12 @@ namespace CHSNS.Controllers {
                                          });
             ViewData["NowPage"] = 1;
             ViewData["PageCount"] = 0;// user.Count;
-            ViewData["replylist"] = DBExt.Comment.GetReply(user.UserID, 1, 10);
+            ViewData["replylist"] = DbExt.Comment.GetReply(user.UserID, 1, 10);
             Title = user.Name + "的留言本";
             return View(user);
         }
         public ActionResult ReplyList(long userid, int p) {
-            var u = DBExt.Comment.GetReply(userid, p, 10);
+            var u = DbExt.Comment.GetReply(userid, p, 10);
             return View("Comment/Item", u);
         }
         /// <summary>
@@ -50,10 +50,10 @@ namespace CHSNS.Controllers {
                 var OwnerID = r.UserID;
                 r.SenderID = CHUser.UserID;
                 r.AddTime = DateTime.Now;
-                r = DBExt.Comment.AddReply(r);
+                r = DbExt.Comment.AddReply(r);
                 if (ReplyerID != OwnerID) {
                     r.UserID = ReplyerID;
-                    DBExt.Comment.AddReply(r);
+                    DbExt.Comment.AddReply(r);
                 }
                 r.UserID = OwnerID;
                 var model = new List<CommentPas>{
@@ -83,7 +83,7 @@ namespace CHSNS.Controllers {
         [LoginedFilter]
         public ActionResult DeleteReply(long id) {
 
-            DBExt.Comment.DeleteReply(id, CHUser.UserID);
+            DbExt.Comment.DeleteReply(id, CHUser.UserID);
 
             return new EmptyResult();
 
@@ -92,7 +92,7 @@ namespace CHSNS.Controllers {
 
         #region comment
         public ActionResult List(long id, int p, CommentType type){
-            var cl = DBExt.Comment.CommentList(id, CommentType.Note, p, CHContext.Site);
+            var cl = DbExt.Comment.CommentList(id, CommentType.Note, p, CHContext.Site);
             return View("Comment/Item", cl);
         }
 
@@ -100,7 +100,7 @@ namespace CHSNS.Controllers {
         public ActionResult Delete(long id) {
             // TODO:少删除的权限判断
 
-            DBExt.Comment.Delete(id, CommentType.Note);
+            DbExt.Comment.Delete(id, CommentType.Note);
 
             return this.Empty();
         }
@@ -130,7 +130,7 @@ namespace CHSNS.Controllers {
 					}
 				}
 			};
-            DBExt.Comment.Add(cmt, type);
+            DbExt.Comment.Add(cmt, type);
             return View("Comment/Item", model);
         }
         #endregion

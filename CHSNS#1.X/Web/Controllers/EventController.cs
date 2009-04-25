@@ -20,13 +20,12 @@ namespace CHSNS.Controllers {
         public ActionResult Index()
         {
             Title = "事件";
-            var m = new EventIndexViewModel
-            {
-           //     Events = DBExt.Event.GetFriendEvent(CHUser.UserID, 1, 20),
-                LastViews = DBExt.View.ViewList(0, 3, CHUser.UserID, 6),
-                NewViews = DBExt.View.ViewList(2, 3, CHUser.UserID, 6),
-                Page = DBExt.Gather.EventGather(CHUser.UserID)
-            };
+            var m = new EventIndexViewModel{
+                                                 //     Events = DBExt.Event.GetFriendEvent(CHUser.UserID, 1, 20),
+                                                 LastViews = DbExt.View.ViewList(0, 3, CHUser.UserID, 6),
+                                                 NewViews = DbExt.View.ViewList(2, 3, CHUser.UserID, 6),
+                                                 Page = DbExt.Gather.EventGather(CHUser.UserID)
+                                             };
             return View(m);
         }
 
