@@ -10,7 +10,7 @@ namespace CHSNS.Controllers {
     //[Helper(typeof(ChHelper))]
     [LoginedFilter]
     public class UploadController : BaseController {
-        #region Action
+
         public ActionResult File(string mode) {
             if (string.IsNullOrEmpty(mode))
                 throw new Exception("²»ÐíÎª¿Õ");
@@ -81,6 +81,6 @@ namespace CHSNS.Controllers {
             return
                 WriteJs("parent.uploadsuccess('" + Path.GetFace(CHUser.UserID.ToString(), ThumbType.Big) + "'); ");
         }
-        #endregion
+
     }
 }

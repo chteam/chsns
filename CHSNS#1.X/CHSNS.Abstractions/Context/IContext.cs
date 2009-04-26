@@ -1,10 +1,9 @@
 ﻿using System.Web;
 using CHSNS.Config;
 
-namespace CHSNS
-{
-    public interface IContext
-    {
+namespace CHSNS {
+    public interface IContext {
+        IPathGenerate Path { get; set; }
         IIOFactory IOFactory { get; set; }
         ICache Cache { get; set; }
         IUser User { get; set; }

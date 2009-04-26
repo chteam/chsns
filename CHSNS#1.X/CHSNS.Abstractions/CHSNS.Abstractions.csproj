@@ -71,6 +71,7 @@
     <Compile Include="Context\IOnline.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Context\IPathGenerate.cs" />
     <Compile Include="Context\IUser.cs">
       <SubType>Code</SubType>
     </Compile>
