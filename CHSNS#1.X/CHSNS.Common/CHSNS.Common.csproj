@@ -64,6 +64,7 @@
     <Compile Include="Image\Thumbnail.cs" />
     <Compile Include="IOFactory.cs" />
     <Compile Include="LocalImplement\LocalFolder.cs" />
+    <Compile Include="LocalImplement\LocalPathGenerate.cs" />
     <Compile Include="LocalImplement\LocalStoreFile.cs" />
     <Compile Include="Media\Media.cs" />
     <Compile Include="NetworkCross.cs" />

@@ -1,4 +1,5 @@
 using System.IO;
+using System.Security.AccessControl;
 using CHSNS.Store;
 
 namespace CHSNS.LocalImplement {
@@ -18,7 +19,8 @@ namespace CHSNS.LocalImplement {
         }
 
         public void Create(string path) {
-            throw new System.NotImplementedException();
+            
+            System.IO.Directory.CreateDirectory(path);
         }
 
         public bool Exists(string path) {
