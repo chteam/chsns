@@ -1,5 +1,7 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using CHSNS.Config;
+using CHSNS.LocalImplement;
 
 namespace CHSNS {
     /// <summary>
@@ -17,6 +19,17 @@ namespace CHSNS {
 
         #region Cache
 
+
+        private static IPathGenerate SingletonPath;
+        public IPathGenerate Path {
+            get {
+                if (SingletonPath == null) {
+                    SingletonPath = new LocalPathGenerate();
+                }
+                return SingletonPath;
+            }
+            set { throw new NotImplementedException(); }
+        }
         private IIOFactory _IOFactory;
         public IIOFactory IOFactory {
             get {
