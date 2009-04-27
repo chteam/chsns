@@ -21,11 +21,12 @@ namespace CHSNS.Controllers {
         }
         [LoginedFilter]
         [AcceptVerbs("Post")]
-        public ActionResult Face(string mode) {
-            var li = new ListItem {
-                Text = mode,
-                Value = UploadImage(Request.Files["file1"], Path.FaceMapPath(CHUser.UserID), true)
-            };
+        public ActionResult Face(string mode ,HttpPostedFileBase file1) {
+            var li = new ListItem
+                         {
+                             Text = mode,
+                             Value = UploadImage(file1, true)
+                         };
             return View("File", li);
         }
         [NonAction]
@@ -37,45 +38,52 @@ namespace CHSNS.Controllers {
             return "<script type='text/javascript'>" + jsContent.Replace(@"\", @"\\") + "</script>";
         }
         [NonAction]
-        public string UploadImage(HttpPostedFileBase file1, string serverfullpath, bool isSaveSource) {
-            var fn = CHUser.UserID.ToString();
-            if (string.IsNullOrEmpty(serverfullpath) || file1 == null) return WriteErr("error:路径有错误");
-            IOFactory.Folder.Create(serverfullpath);
+        public string UploadImage(HttpPostedFileBase file1, bool isSaveSource) {
+            string uploadPath = CHContext.Path.UploadPath(CHUser.UserID);
+            if (string.IsNullOrEmpty(uploadPath) || file1 == null) return WriteErr("error:路径有错误");
+
+            IOFactory.Folder.Create(uploadPath);
+
             if (file1.ContentLength > 2004800) return WriteErr("error:文件请小于2M");
+
             var fileExtension = System.IO.Path.GetExtension(file1.FileName).ToLower();
             var allowImageExt = ConfigSerializer.Load<List<string>>("AllowImageExt");
 
             var fileOK = allowImageExt.Contains(fileExtension);
             if (!fileOK) return WriteErr("error:您上传的文件扩展名不正确");
             fileExtension = ".jpg";
+            var fileName = CHContext.Path.NewPhoto(CHUser.UserID, fileExtension);
 
-            try {
-                if (isSaveSource)
-                    file1.SaveAs(string.Format("{0}{1}{2}", serverfullpath, fn, fileExtension));
+            if (isSaveSource)
+            {
+                IOFactory.StoreFile.Save(file1.InputStream, System.IO.Path.Combine(uploadPath, fileName));
+                //   file1.SaveAs(string.Format("{0}{1}{2}", serverfullpath, fn, fileExtension));
             }
-            catch (Exception ex) {
-                return WriteErr("error:文件无法上传:" + ex.Message);
-            }
+            //try {   }
+           // catch (Exception ex) {
+           //     return WriteErr("error:文件无法上传:" + ex.Message);
+           // }
             #region 按比例生成缩略图
-            var imgSrc = Image.FromStream(file1.InputStream);
-
-            try {
+            using(var imgSrc = Image.FromStream(file1.InputStream))
+            {
                 foreach (var keyvalue in ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize"))
                     Thumbnail.CreateThumbnail(
                         imgSrc,
-                        string.Format("{0}{1}{2}{3}", serverfullpath, fn, keyvalue.ImageType, fileExtension),
+                        CHContext.Path.ThumbPhoto(fileName, keyvalue.ImageType)
+                        ,
                         keyvalue.Size.Width,
-                        keyvalue.Size.Height
+                        keyvalue.Size.Height,IOFactory
                         );
+                //try {  }
+                // catch (Exception) {
+                //     return "";
+                //     //WriteErr(
+                //     //    Debug.TraceBack("error:文件无法上传:" +
+                //     //    string.Format("{0}{1}{3}{2}", serverfullpath, fn, fileExtension, ThumbType.Big))
+                //     //    );
+                // }
             }
-            catch (Exception) {
-                return "";
-                //WriteErr(
-                //    Debug.TraceBack("error:文件无法上传:" +
-                //    string.Format("{0}{1}{3}{2}", serverfullpath, fn, fileExtension, ThumbType.Big))
-                //    );
-            }
-            imgSrc.Dispose();
+
             #endregion
             //SetStarLevel(CHUser.UserID); //更新
             return
