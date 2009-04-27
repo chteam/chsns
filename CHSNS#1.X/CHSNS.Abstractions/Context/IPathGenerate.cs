@@ -10,5 +10,9 @@ namespace CHSNS{
         /// <param name="fileExt"></param>
         /// <returns></returns>
         string NewPhoto(long userId, string fileExt);
+
+        string ThumbPhoto(string path, ThumbType thumbType);
+
+        string UploadPath(long userId);
     }
 }

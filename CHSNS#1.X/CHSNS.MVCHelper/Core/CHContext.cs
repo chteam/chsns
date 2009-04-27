@@ -12,24 +12,19 @@ namespace CHSNS {
         /// 构造函数唯一
         /// </summary>
         /// <param name="context"></param>
-        public CHContext(HttpContextBase context)
-        {
+        public CHContext(HttpContextBase context) {
             HttpContext = context;
         }
-
-        #region Cache
-
-
-        private static IPathGenerate SingletonPath;
         public IPathGenerate Path {
             get {
-                if (SingletonPath == null) {
-                    SingletonPath = new LocalPathGenerate();
-                }
-                return SingletonPath;
+                return LocalPathGenerate.Intance;
             }
             set { throw new NotImplementedException(); }
         }
+        #region Cache
+
+
+
         private IIOFactory _IOFactory;
         public IIOFactory IOFactory {
             get {
@@ -39,7 +34,7 @@ namespace CHSNS {
                 _IOFactory = value;
             }
         }
- ICache _cahce;
+        ICache _cahce;
         /// <summary>
         /// 缓存单例
         /// </summary>
@@ -72,7 +67,7 @@ namespace CHSNS {
             set {
                 _cookies = value;
             }
-        }        
+        }
         #endregion
         #region Site
         SiteConfig _site;
@@ -119,9 +114,9 @@ namespace CHSNS {
         //    }
         //}
 
-        public HttpContextBase HttpContext
-        {
-            get; set;
+        public HttpContextBase HttpContext {
+            get;
+            set;
         }
 
         #endregion

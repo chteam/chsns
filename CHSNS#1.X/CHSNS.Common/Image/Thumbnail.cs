@@ -9,8 +9,8 @@ namespace CHSNS {
 	/// 生成缩略图的类
 	///</summary>
 	public class Thumbnail {
-		static public void CreateThumbnail(Image img, string newFile, Size size){
-			CreateThumbnail(img, newFile, size.Width, size.Height);
+        static public void CreateThumbnail(Image img, string newFile, Size size, IIOFactory ioFactory) {
+            CreateThumbnail(img, newFile, size.Width, size.Height, ioFactory);
 		}
 
 		///<summary>
@@ -20,7 +20,8 @@ namespace CHSNS {
 		///<param name="newFile">要存的地址</param>
 		///<param name="maxWidth">最大宽</param>
 		///<param name="maxHeight">最大高</param>
-		static public void CreateThumbnail(Image img, string newFile, int maxWidth, int maxHeight)
+		///<param name="ioFactory"></param>
+		static public void CreateThumbnail(Image img, string newFile, int maxWidth, int maxHeight,IIOFactory ioFactory)
 		{
 			//System.Drawing.Image img = bigimg;
 			//System.Drawing.Imaging.ImageFormat thisFormat = ;
@@ -55,10 +56,10 @@ namespace CHSNS {
 		static private Size NewSize(int maxWidth, int maxHeight, int width, int height) {
 			double w;
 			double h;
-			double sw = Convert.ToDouble(width);
-			double sh = Convert.ToDouble(height);
-			double mw = Convert.ToDouble(maxWidth);
-			double mh = Convert.ToDouble(maxHeight);
+			var sw = Convert.ToDouble(width);
+			var sh = Convert.ToDouble(height);
+			var mw = Convert.ToDouble(maxWidth);
+			var mh = Convert.ToDouble(maxHeight);
 			if (sw < mw && sh < mh) {
 				w = sw;
 				h = sh;

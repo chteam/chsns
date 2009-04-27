@@ -18,13 +18,13 @@ namespace CHSNS.LocalImplement{
            
         }
 
-        public void Save(Stream inputStream, string filename)
+        public void Save(Stream inputStream, string fileName)
         {
             var s = inputStream; //这是你获得的流  
             var buffer = new byte[s.Length];
             s.Read(buffer, 0, buffer.Length); //将流的内容读到缓冲区  
             using (var fs = new FileStream(
-                Context.HttpContext.Server.MapPath(filename),
+                Context.HttpContext.Server.MapPath(fileName),
                 FileMode.OpenOrCreate, FileAccess.Write))
             {
                 fs.Write(buffer, 0, buffer.Length);

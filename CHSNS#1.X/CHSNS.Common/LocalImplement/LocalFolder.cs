@@ -1,5 +1,4 @@
 using System.IO;
-using System.Security.AccessControl;
 using CHSNS.Store;
 
 namespace CHSNS.LocalImplement {
@@ -19,8 +18,8 @@ namespace CHSNS.LocalImplement {
         }
 
         public void Create(string path) {
-            
-            System.IO.Directory.CreateDirectory(path);
+            var serverPath = Context.HttpContext.Server.MapPath(path);
+            Directory.CreateDirectory(serverPath);
         }
 
         public bool Exists(string path) {
