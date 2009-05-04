@@ -5,7 +5,7 @@ using CHSNS.Operator;
 
 namespace CHSNS.Service {
     public class UserService {
-        static readonly UserService _instance = new UserService();
+        static readonly UserService Instance = new UserService();
         private readonly IUserOperator User;
         private readonly IEventOperator Event;
         public UserService() {
@@ -14,20 +14,20 @@ namespace CHSNS.Service {
         }
 
         public static UserService GetInstance() {
-            return _instance;
+            return Instance;
         }
 
         public UserPas UserInformation(long userid) {
             return User.UserInformation(userid);
         }
 
-        public int Relation(long OwnerID, long ViewerID) {
-            return User.Relation(OwnerID, ViewerID);
+        public int Relation(long ownerId, long viewerId) {
+            return User.Relation(ownerId, viewerId);
         }
 
         #region BasicInfo
-        public IBasicInformation GetBaseInfo(long UserID) {
-            return User.GetBaseInfo(UserID);
+        public IBasicInformation GetBaseInfo(long userId) {
+            return User.GetBaseInfo(userId);
         }
         public void SaveBaseInfo(IBasicInformation b, IContext context) {
             if (b.UserID == 0) b.UserID = context.User.UserID;
@@ -37,8 +37,8 @@ namespace CHSNS.Service {
         #endregion
 
         #region Magicbox
-        public string GetMagicBox(long UserID) {
-            return User.GetMagicBox(UserID);
+        public string GetMagicBox(long userId) {
+            return User.GetMagicBox(userId);
         }
         public void SaveMagicBox(string magicbox, long uid) {
             User.SaveMagicBox(magicbox, uid);
