@@ -9,5 +9,6 @@ namespace CHSNS.Store{
 
 
         void Save(Stream inputStream, string fileName);
+
     }
 }

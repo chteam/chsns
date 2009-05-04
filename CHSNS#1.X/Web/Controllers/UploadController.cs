@@ -53,16 +53,10 @@ namespace CHSNS.Controllers {
             if (!fileOK) return WriteErr("error:您上传的文件扩展名不正确");
             fileExtension = ".jpg";
             var fileName = CHContext.Path.NewPhoto(CHUser.UserID, fileExtension);
-
             if (isSaveSource)
             {
                 IOFactory.StoreFile.Save(file1.InputStream, System.IO.Path.Combine(uploadPath, fileName));
-                //   file1.SaveAs(string.Format("{0}{1}{2}", serverfullpath, fn, fileExtension));
             }
-            //try {   }
-           // catch (Exception ex) {
-           //     return WriteErr("error:文件无法上传:" + ex.Message);
-           // }
             #region 按比例生成缩略图
             using(var imgSrc = Image.FromStream(file1.InputStream))
             {
@@ -74,14 +68,6 @@ namespace CHSNS.Controllers {
                         keyvalue.Size.Width,
                         keyvalue.Size.Height,IOFactory
                         );
-                //try {  }
-                // catch (Exception) {
-                //     return "";
-                //     //WriteErr(
-                //     //    Debug.TraceBack("error:文件无法上传:" +
-                //     //    string.Format("{0}{1}{3}{2}", serverfullpath, fn, fileExtension, ThumbType.Big))
-                //     //    );
-                // }
             }
 
             #endregion

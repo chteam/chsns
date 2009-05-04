@@ -37,18 +37,20 @@ namespace CHSNS {
 			#region 按比例生成缩略图
 
             FileUpload.ExistsCreateDictionary();
-			var imgSrc = Image.FromStream(FileUpload.File.InputStream);
-			foreach (var p in ThumbDict) {
-				Thumbnail.CreateThumbnail(
-					imgSrc,
-					Context.HttpContext.Server.MapPath(
-                        Path.Photo(Context.User.UserID, Time, Ext, p.ImageType.ToString())),
-					p.Size
-					);
+			using(var imgSrc = Image.FromStream(FileUpload.File.InputStream))
+			{
+			    foreach (var p in ThumbDict)
+			    {
+			        Thumbnail.CreateThumbnail(
+			            imgSrc,
+			            Context.HttpContext.Server.MapPath(
+			                Path.Photo(Context.User.UserID, Time, Ext, p.ImageType.ToString())),
+			            p.Size, Context.IOFactory
+			            );
+			    }
 			}
-			imgSrc.Dispose();
 
-			#endregion
+		    #endregion
 
 		    return FileUpload.PathBuilder.DescPath;
 		}
