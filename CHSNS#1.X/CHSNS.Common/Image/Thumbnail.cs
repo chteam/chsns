@@ -4,7 +4,6 @@ using System.Linq;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Web;
 
 namespace CHSNS {
 	///<summary>
@@ -26,42 +25,34 @@ namespace CHSNS {
         static public void CreateThumbnail(Image img, string fileName, int maxWidth, int maxHeight, IIOFactory ioFactory)
 		{
 		    var newSize = NewSize(maxWidth, maxHeight, img.Width, img.Height);
-
-		    var i = img.GetThumbnailImage(newSize.Width, newSize.Height, null, IntPtr.Zero);
-		    using (Stream stream = new MemoryStream())
+		    using (var outBmp = new Bitmap(newSize.Width, newSize.Height))
 		    {
-		        i.Save(stream, img.RawFormat);
-		        ioFactory.StoreFile.SaveImage(stream, fileName);
+		        using (var g = Graphics.FromImage(outBmp))
+		        {
+		            // 设置画布的描绘质量
+		            g.CompositingQuality = CompositingQuality.HighQuality;
+		            g.SmoothingMode = SmoothingMode.HighQuality;
+		            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+		            g.DrawImage(img, new Rectangle(0, 0, newSize.Width, newSize.Height), 0, 0, img.Width, img.Height,
+		                        GraphicsUnit.Pixel);
+		        }
+		        // 以下代码为保存图片时，设置压缩质量
+
+		        var quality = new long[] {90};
+		        var encoderParam = new EncoderParameter(Encoder.Quality, quality);
+		        var encoderParams = new EncoderParameters();
+		        encoderParams.Param[0] = encoderParam;
+		        //获得包含有关内置图像编码解码器的信息的ImageCodecInfo 对象。
+		        var jpegIci = ImageCodecInfo.GetImageEncoders().Where(c => c.FormatDescription.Equals("JPEG")).Single();
+		        using (Stream stream = new MemoryStream())
+		        {
+		            if (jpegIci != null)
+		                outBmp.Save(stream, jpegIci, encoderParams);
+		            else
+		                outBmp.Save(stream, img.RawFormat);
+		            ioFactory.StoreFile.SaveImage(stream, fileName);
+		        }
 		    }
-		    return;
-		    //using (var g = Graphics.FromImage(outBmp))
-		    //{
-		    //    // 设置画布的描绘质量
-		    //    g.CompositingQuality = CompositingQuality.HighQuality;
-		    //    g.SmoothingMode = SmoothingMode.HighQuality;
-		    //    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-		    //    g.DrawImage(img, new Rectangle(0, 0, newSize.Width, newSize.Height), 0, 0, img.Width, img.Height,
-		    //                GraphicsUnit.Pixel);
-		    //}
-		    //// 以下代码为保存图片时，设置压缩质量
-
-		    //var quality = new long[] {90};
-		    //var encoderParam = new EncoderParameter(Encoder.Quality, quality);
-		    //var encoderParams = new EncoderParameters();
-		    //encoderParams.Param[0] = encoderParam;
-		    ////获得包含有关内置图像编码解码器的信息的ImageCodecInfo 对象。
-		    ////   var arrayIci =;
-		    //var jpegIci = ImageCodecInfo.GetImageEncoders().Where(c => c.FormatDescription.Equals("JPEG")).Single();
-		    ////throw new Exception(fileName);
-		    //using (Stream stream = new MemoryStream())
-		    //{
-		    //    if (jpegIci != null)
-		    //        outBmp.Save(stream, jpegIci, encoderParams);
-		    //    else
-		    //        outBmp.Save(stream, img.RawFormat);
-		    //    ioFactory.StoreFile.Save(stream, fileName);
-		    //}
-
 		}
 
 	    static private Size NewSize(int maxWidth, int maxHeight, int width, int height) {

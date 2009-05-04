@@ -1,4 +1,5 @@
-﻿using CHSNS.Abstractions;
+﻿using System;
+using CHSNS.Abstractions;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement;
 
@@ -14,6 +15,7 @@ namespace CHSNS.Service {
             return _instance;
         }
         public void Add(IPhoto photo) {
+            photo.AddTime = DateTime.Now;
             Photo.Add(photo);
         }
 
