@@ -222,11 +222,11 @@ namespace CHSNS {
 		/// <summary>
 		/// 获取群图片
 		/// </summary>
-		/// <param name="Groupid">群ID</param>
+		/// <param name="groupId">群ID</param>
 		/// <param name="type">图片大小</param>
 		/// <returns>群图片路径</returns>
-		static public string GetGroupImg(object Groupid, ThumbType type) {
-			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(Groupid), Groupid, type);
+		static public string GetGroupImg(object groupId, ThumbType type) {
+			string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(groupId), groupId, type);
 			//Debug.Trace(HttpContext.Current.Request.PhysicalApplicationPath + text);
            // if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 				return text;
@@ -238,11 +238,11 @@ namespace CHSNS {
 		/// </summary>
 		/// <param name="Groupid">群ID</param>
 		/// <returns>群图片路径</returns>
-		static public string GetGroupImg(string Groupid) {
-			return GetGroupImg(Groupid, ThumbType.Middle);
+        static public string GetGroupImg(string groupId) {
+            return GetGroupImg(groupId, ThumbType.Middle);
 		}
-		public string GetGroupImg(object groupid) {
-			return GetGroupImg(groupid.ToString());
+        public string GetGroupImg(object groupId) {
+            return GetGroupImg(groupId.ToString());
 		}
 		#endregion
 		#region 服务器端路径

@@ -42,7 +42,7 @@ namespace CHSNS.Test {
         ///</summary>
         [TestMethod()]
         public void CreateFromArgsTest() {
-            object[] args = null; // TODO: 初始化为适当的值
+       //     object[] args = null; // TODO: 初始化为适当的值
             Dictionary expected = new Dictionary(); // TODO: 初始化为适当的值
             expected.Add("id", 1);
             expected.Add("name", "xx");

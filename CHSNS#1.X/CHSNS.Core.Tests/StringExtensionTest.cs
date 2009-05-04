@@ -99,8 +99,8 @@ namespace CHSNS.Core.Tests
         [TestMethod()]
         public void SubStrTest() {
             string str = "whatisyourname"; // TODO: 初始化为适当的值
-            int n = 0; // TODO: 初始化为适当的值
-            string actual;
+         //   int n = 0; // TODO: 初始化为适当的值
+          //  string actual;
             Assert.AreEqual(str.SubStr(100), "whatisyourname");
             Assert.AreEqual(str.SubStr(4), "what");
         }
