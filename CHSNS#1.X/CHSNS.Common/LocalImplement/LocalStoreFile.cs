@@ -1,3 +1,5 @@
+using System;
+using System.Drawing;
 using System.IO;
 using CHSNS.Store;
 
@@ -32,10 +34,15 @@ namespace CHSNS.LocalImplement{
             }
         }
 
+        public void SaveImage(Stream inputStream, string fileName)
+        {
+            Image img = new Bitmap(inputStream);
+            img.Save(Context.HttpContext.Server.MapPath(fileName));
+        }
+
         public void WriteLine(string path, string text){
             using (var sw = new StreamWriter(path, true)) {
                 sw.WriteLine(text);
-                
             }
         }
 

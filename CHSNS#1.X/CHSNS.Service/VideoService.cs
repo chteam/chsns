@@ -4,14 +4,14 @@ using CHSNS.Operator;
 
 namespace CHSNS.Service {
     public class VideoService {
-        static readonly VideoService _instance = new VideoService();
+        static readonly VideoService Instance = new VideoService();
         private readonly ISuperNoteOperator Video;
         public VideoService() {
             Video = new VideoOperator();
         }
 
         public static VideoService GetInstance() {
-            return _instance;
+            return Instance;
         }
         #region ICURDService<SuperNote> 成员
 

@@ -9,6 +9,7 @@ namespace CHSNS.Store{
 
 
         void Save(Stream inputStream, string fileName);
+        void SaveImage(Stream inputStream, string fileName);
 
     }
 }
