@@ -14,7 +14,7 @@ namespace CHSNS.LocalImplement {
         public string ThumbPhoto(string path, ThumbType thumbType)
         {
             var x = path.LastIndexOf(".");
-            return path.Insert(x - 1, thumbType.ToString()).ToLower();
+            return x > 0 ? path.Insert(x - 1, thumbType.ToString()).ToLower() : "";
         }
 
         public string ThumbUrl(string url, ThumbType thumbType,IContext context)
