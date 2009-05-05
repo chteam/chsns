@@ -6,7 +6,7 @@ Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
 	</div>--%>
 <div id="accont-content" class="accordionContent">
 	<ul>
-		<li><span>注册ＩＤ：</span><%=up.OwnerID  %></li>
+		<li><span>注册ＩＤ：</span><%=up.OwnerId  %></li>
 		<li><span>注册时间：</span><%=up.Profile.RegTime.ToString("yyyy-MM-dd")%></li>
 		<li><span>上线时间：</span><%=up.Profile.LoginTime.ToString("yyyy-MM-dd HH:mm")%></li>
 		<li><span>可用积分：</span><%=up.Profile.Score%></li>

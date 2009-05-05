@@ -89,7 +89,6 @@
     <Compile Include="CommentItemPas.cs" />
     <Compile Include="CommentPas.cs" />
     <Compile Include="Config\BaseConfig.cs" />
-    <Compile Include="Config\ChAlumnaConfig.cs" />
     <Compile Include="Config\EveryPageConfig.cs" />
     <Compile Include="Config\NoteConfig.cs" />
     <Compile Include="Config\Publish.cs" />
@@ -140,7 +139,6 @@
     <Compile Include="Role.cs" />
     <Compile Include="ShowLevelOption.cs" />
     <Compile Include="UserItemPas.cs" />
-    <Compile Include="UserPas.cs" />
     <Compile Include="UserwithCountPas.cs" />
     <Compile Include="ViewListPas.cs" />
   </ItemGroup>
