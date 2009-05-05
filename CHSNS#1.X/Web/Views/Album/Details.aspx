@@ -30,8 +30,8 @@
 		<ul>
 			<%foreach (IPhoto p in rows.ToNotNull()) { %>
 			<li id="photo_li<%=p.Id %>">
-<a href="javascript:showPic('<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Ext,ThumbType.Big) %>');">
-				<img src="<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Ext,ThumbType.Middle) %>" alt="<%=p.Title %> at <%=p.AddTime.ToString("yy年MM月dd日") %>"
+<a href="javascript:showPic('<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Summary,ThumbType.Big) %>');">
+				<img src="<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Summary,ThumbType.Middle) %>" alt="<%=p.Title %> at <%=p.AddTime.ToString("yy年MM月dd日") %>"
 					style="max-width: 130px;" /></a>
 				<div class="pedit">
 					<%if (CH.Context.User.UserID == p.UserId) {%>
