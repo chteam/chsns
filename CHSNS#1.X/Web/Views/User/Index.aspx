@@ -82,14 +82,14 @@ Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 			<h3>
 				<%=up.Profile.Name%>的留言板</h3>
 			<%
-				Html.RenderPartial("Comment/TextBox", up.OwnerID);
+				Html.RenderPartial("Comment/TextBox", up.OwnerId);
 			%>
 			<ul id="ReplyItems" class="userlist">
 				<%
 					Html.RenderPartial("Comment/Item", ViewData["replylist"]);
 				%>
 			</ul>
-			<p class="more"><%=Html.ReplyList(up.OwnerID, "所有留言")%></p>
+			<p class="more"><%=Html.ReplyList(up.OwnerId, "所有留言")%></p>
 		</div>
 	</div>
 	<div id="userRelations">
@@ -97,8 +97,10 @@ Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 			<div id="userPicture">
 				<div id="userFace">
 					<ul>
-						<li><a href="#<%=up.OwnerID%>">
-							<%=Html.Image(CHSNS.Path.GetFace(up.OwnerID,ThumbType.Big), up.Profile.Name)%>
+						<li><a href="#<%=up.OwnerId%>">
+						<img src="" alt="<%=up.Profile.Name %>" />
+						<%=up.Profile.Face %>
+							
 						</a></li>
 					</ul>
 				</div>
@@ -113,7 +115,7 @@ Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 				<%--
 				<a href="/SuperNote.aspx?userid=<%=up.OwnerID%>">视频</a>
 				<a href="/Photos.aspx?userid=<%=up.OwnerID%>">相册</a>--%>
-				<%=Html.NoteList(up.OwnerID,"日志") %>
+				<%=Html.NoteList(up.OwnerId,"日志") %>
 			</div>
 		</div>
 		<div class="box">
@@ -130,7 +132,7 @@ Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 				<%=up.Profile.Name%>最近登录的好友</h3>
 			<%
 				Html.RenderPartial("ViewList", ViewData["lastfriend"]); %>
-			<span class="more"><a href="/friend.aspx?userid=<%=up.OwnerID%>">more</a></span>
+			<span class="more"><a href="/friend.aspx?userid=<%=up.OwnerId%>">more</a></span>
 		</div>
 		<%--		<div class="box">
 			<h3>
@@ -153,7 +155,7 @@ Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 		var Reply = function(ownerid) {
 			if (v_empty("#comment_body", '不能为空'))
 				$.post('<%=Url.Action("AddReply","Comment") %>',
-		{ 'UserID': '<%=ViewData.Model.OwnerID %>', 'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
+		{ 'UserID': '<%=ViewData.Model.OwnerId %>', 'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
 		function(r) {
 			$('#ReplyItems').prepend(r);
 			HideReply();

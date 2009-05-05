@@ -4,6 +4,8 @@ namespace CHSNS.Abstractions {
 
         string Name { get; set; }
 
+        string Face { get; set; }
+
         int Status { get; set; }
 
         long Score { get; set; }
