@@ -10,5 +10,3 @@
 [CityId] [bigint] NOT NULL,
 [ShowLevel] [tinyint] NOT NULL
 ) ON [PRIMARY]
-
-

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Profile]
 (
-[UserId] [bigint] NOT NULL,
+[UserId] [bigint] NOT NULL,/*用户唯一标识*/
 /*信息*/
 [Name] [nvarchar] (50) NOT NULL,
 [Face] [nvarchar] (300) Null,
@@ -13,7 +13,7 @@
 [ShowLevel] [tinyint] NOT NULL,
 /*魔法盒*/
 [MagicBox] [nvarchar] (Max) NOT NULL,
-[IsMagicBox] [bit] NOT NULL,
+[HasMagicBox] [bit] NOT NULL,
 /*统计*/
 [RegTime] [smalldatetime] NOT NULL,
 [LoginTime] [smalldatetime] NOT NULL,
@@ -22,12 +22,5 @@
 [FileSizeCount] [bigint] NOT NULL,
 /*应用*/
 [Applications] [ntext] NULL,
-[Applicationlist] [ntext] NULL,
-/*扩展*/
-[Ext] [ntext] NULL
+[Applicationlist] [ntext] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
-
-GO
-EXEC sp_addextendedproperty N'MS_Description', N'用户唯一标识', 'SCHEMA', N'dbo', 'TABLE', N'Profile', 'COLUMN', N'UserID'
-

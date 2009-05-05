@@ -2,7 +2,7 @@
 (
 [Id] [bigint] NOT NULL IdENTITY(1, 1),
 [Title] [nvarchar] (50) NULL,
-[Faceurl] [nvarchar] (500) NULL,
+[FaceURL] [nvarchar] (500) NULL,
 [Url] [nvarchar] (500) NOT NULL,
 [Description] [nvarchar] (50) NULL,
 [UserId] [bigint] NOT NULL,

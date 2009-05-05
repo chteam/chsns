@@ -38,7 +38,7 @@
     <AnsiNullDefault>True</AnsiNullDefault>
     <DefaultCollation>Chinese_PRC_CI_AS</DefaultCollation>
     <DefaultFileStructure>BySchemaType</DefaultFileStructure>
-    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseChaining>True</DatabaseChaining>
     <EnableServiceBroker>False</EnableServiceBroker>
     <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
     <Trustworthy>False</Trustworthy>
@@ -89,8 +89,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.\sql\</OutputPath>
-    <AutoGenerateBuildScriptName>False</AutoGenerateBuildScriptName>
-    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <AutoGenerateBuildScriptName>True</AutoGenerateBuildScriptName>
+    <BuildScriptName>CHSNS.Database.(local)_SQLEXPRESS.CHSNS_Database.sql</BuildScriptName>
     <TargetConnectionString>
     </TargetConnectionString>
     <TargetDatabase>
@@ -428,9 +428,6 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Constraints\dbo.Profile.DF_User_FileSizeCount.defconst.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Tables\Constraints\dbo.Profile.DF_User_IsMusic.defconst.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Constraints\dbo.Profile.DF_User_MagicBox.defconst.sql">
