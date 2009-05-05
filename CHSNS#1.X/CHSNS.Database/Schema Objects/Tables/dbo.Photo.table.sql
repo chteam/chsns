@@ -8,7 +8,7 @@
 [AddTime] [datetime] NOT NULL,/*提交时间*/
 /*图片存储*/
 [Domain] [nvarchar] (255) NOT NULL,/*图片放置的域名*/
-[URL] [nvarchar] (244) NOT NULL,/*图片URL*/
+[Url] nvarchar (255) NOT NULL,/*图片URL*/
 /*其它*/
 [Order] [bigint] NOT NULL,/*顺序*/
 [Status] [int] Not Null/*状态*/

@@ -9,6 +9,8 @@ namespace CHSNS.Model{
         public long? AlbumId { get; set; }
         public long UserId { get; set; }
         public DateTime AddTime { get; set; }
+        public string Url { get; set; }
+        public string Domain { get; set; }
         public long Order { get; set; }
         public string Summary { get; set; }
         public int Status { get; set; }

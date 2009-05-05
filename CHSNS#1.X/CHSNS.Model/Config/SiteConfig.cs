@@ -1,16 +1,13 @@
 using System;
-namespace CHSNS.Config
-{
+namespace CHSNS.Config {
     /// <summary>
     /// Õ¯’æ≈‰÷√
     /// </summary>
     [Serializable]
-    public class SiteConfig
-    {
+    public class SiteConfig {
         public SiteConfig() { }
         ISerializer ConfigSerializer { get; set; }
-        public SiteConfig(ISerializer serializer)
-        {
+        public SiteConfig(ISerializer serializer) {
             ConfigSerializer = serializer;
         }
 
@@ -20,21 +17,19 @@ namespace CHSNS.Config
         public NoteConfig Note { get; set; }
         public EveryPageConfig EveryPage { get; set; }
         public ScoreConfig Score { get; set; }
+        public UploadConfig Upload { get; set; }
         /// <summary>
         /// Gets the current.
         /// </summary>
-        public SiteConfig Current
-        {
-            get
-            {
+        public SiteConfig Current {
+            get {
                 return ConfigSerializer.Load<SiteConfig>("Config");
             }
         }
         /// <summary>
         /// –Ú¡–ªØŒ™xml
         /// </summary>
-        public void Save()
-        {
+        public void Save() {
             const string fn = "Config";
             ConfigSerializer.Save(this, fn);
         }

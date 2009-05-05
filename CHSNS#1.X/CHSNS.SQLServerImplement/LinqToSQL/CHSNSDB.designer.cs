@@ -5408,7 +5408,7 @@ namespace CHSNS.SQLServerImplement
 		}
 		
 		[Column(Storage="_URL", DbType="NVarChar(244) NOT NULL", CanBeNull=false)]
-		public string URL
+		public string Url
 		{
 			get
 			{

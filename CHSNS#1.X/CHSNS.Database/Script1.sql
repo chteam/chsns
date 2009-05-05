@@ -11,7 +11,7 @@ VALUES
 set @e = @@error+@e
 declare @id bigint;
 set @id=@@identity;
-INSERT INTO [Profile] ([UserId],[Name],showlevel,[status])VALUES(@id,'Admin',0,255);
+INSERT INTO [Profile] ([UserId],[Name],showlevel,[status],HasMagicBox)VALUES(@id,'Admin',0,255,1);
 set @e = @@error+@e
 INSERT INTO[BasicInformation] ([UserId],[Name],ShowLevel)VALUES(@id ,'Admin',0);
 set @e = @@error+@e

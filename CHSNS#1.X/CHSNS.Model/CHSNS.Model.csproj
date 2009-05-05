@@ -90,7 +90,6 @@
     <Compile Include="CommentPas.cs" />
     <Compile Include="Config\BaseConfig.cs" />
     <Compile Include="Config\ChAlumnaConfig.cs" />
-    <Compile Include="Config\ConfigString.cs" />
     <Compile Include="Config\EveryPageConfig.cs" />
     <Compile Include="Config\NoteConfig.cs" />
     <Compile Include="Config\Publish.cs" />
@@ -101,6 +100,7 @@
     <Compile Include="Config\SystemApplicationItem.cs" />
     <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="Config\ThumbnailPair.cs" />
+    <Compile Include="Config\UploadConfig.cs" />
     <Compile Include="Entry\EntryExt.cs" />
     <Compile Include="Entry\EntryPas.cs" />
     <Compile Include="Entry\EntryType.cs" />

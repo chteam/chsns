@@ -84,5 +84,13 @@ namespace CHSNS.Service {
         public string GetUserName(long uid) {
             return User.GetUserName(uid);
         }
+        /// <summary>
+        /// 修改头像
+        /// </summary>
+        /// <param name="userId">用户Id</param>
+        /// <param name="url">头像地址，（全）</param>
+        public void ChangeFace(long userId, string url) {
+            User.ChangeFace(userId, url);
+        }
     }
 }
