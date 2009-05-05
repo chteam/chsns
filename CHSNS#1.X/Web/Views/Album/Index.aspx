@@ -9,14 +9,14 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		<div class="ch_content"> 
 			<ul class="userlist">
 				<%  foreach (IAlbum p in (ViewData.Model as IEnumerable<IAlbum>).ToNotNull()) { %>
-				<li id="Items<%=p.ID %>" class="useritem">
+				<li id="Items<%=p.Id %>" class="useritem">
 					<div class="face face-middle">
-						<a href="<%=Url.Action("Details", "Album", new { id=p.ID})%>"
+						<a href="<%=Url.Action("Details", "Album", new { id=p.Id})%>"
 						 title="<%=p.Name %>" style="background-image: url(<%=Path.AlbumFace(p.FaceUrl) %>);">
 						</a>
 					</div>
 					<div class="info">
-						<strong><a href="<%=Url.Action("Details", "Album", new { id=p.ID})%>">
+						<strong><a href="<%=Url.Action("Details", "Album", new { id=p.Id})%>">
 							<%=p.Name %></a></strong>
 						<ul>
 							<li>[<%=p.Count %>张] 创建于<%=p.AddTime.ToString("yy年MM月dd日") %></li>
@@ -25,7 +25,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 						</ul>
 					</div>
 					<ul class="actions">
-						<li><%=Html.ActionLink("编辑", "Edit", "Album", new { id=p.ID},null)%></li>
+						<li><%=Html.ActionLink("编辑", "Edit", "Album", new { id=p.Id},null)%></li>
 						<li><a href="javascript:DeleteAlbum(1);">删除</a> </li>
 					</ul>
 				</li>

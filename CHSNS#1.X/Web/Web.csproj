@@ -199,7 +199,7 @@
     <Content Include="JavaScript\effects\effects.bounce.packed.js" />
     <Content Include="JavaScript\effects\effects.core.packed.js" />
     <Content Include="JavaScript\effects\effects.scale.packed.js" />
-    <Content Include="JavaScript\jquery-1.2.6-vsdoc.js" />
+    <Content Include="JavaScript\jquery-vsdoc.js" />
     <Content Include="JavaScript\vsdoc.js" />
     <Content Include="JavaScript\Upload\swfupload.js" />
     <Content Include="JavaScript\Upload\fileprogress.js" />
@@ -617,6 +617,7 @@
   <ItemGroup>
     <Content Include="Config\Config.xml" />
     <Content Include="Images\ajax-loader.gif" />
+    <Content Include="JavaScript\jquery.js" />
     <Content Include="UnitView\ViewHostHandler.ashx" />
     <Content Include="UnitView\Web.config" />
     <Content Include="Views\Account\ChangePassword.aspx" />
