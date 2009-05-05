@@ -42,7 +42,7 @@ namespace CHSNS.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(long? id, AlbumImplement a) {
             if (id.HasValue){
-                a.ID = id.Value;
+                a.Id = id.Value;
                 DbExt.Album.Update(a);
                 return RedirectToAction("Index");
             }
@@ -55,7 +55,7 @@ namespace CHSNS.Controllers
         public ActionResult Details(long id, int? p){
             InitPage(ref p);
             var album = DbExt.Album.Get(id);
-            var photos = DbExt.Album.GetPhotos(album.ID, CHUser.UserID, p.Value, 12);
+            var photos = DbExt.Album.GetPhotos(album.Id, CHUser.UserID, p.Value, 12);
             ViewData["album"] = album;
             ViewData["photos"] = photos;
             Title = album.Name;
@@ -72,10 +72,10 @@ namespace CHSNS.Controllers
             return View();
         }
 
-        public ActionResult UploadPhoto(string Name, long id, HttpPostedFileBase file){
+        public ActionResult UploadPhoto(string name,  long id, HttpPostedFileBase file){
             var al = DbExt.Album.GetCountChange(id,1);
             Validate404(al);
-            var p = new PhotoImplement { Name = Name, AlbumID = id, AddTime = DateTime.Now, UserID = CHUser.UserID };
+            var p = new PhotoImplement { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = CHUser.UserID };
             var f = new ImageUpload(file,
                                     CHContext,
                                     ConfigSerializer.Load<List<string>>("AllowImageExt")
@@ -83,7 +83,7 @@ namespace CHSNS.Controllers
                                     ConfigSerializer.Load<List<ThumbnailPair>>("ThumbnailSize")
                 );
             f.Upload();
-            p.Ext = f.Ext;
+            p.Summary = f.Ext;
             DbExt.Photo.Add(p);
             return RedirectToAction("details", new{id});
         }
@@ -92,11 +92,11 @@ namespace CHSNS.Controllers
         #region Í¼Æ¬É¾³ý
         public ActionResult PhotoDel(long id){
             var p = DbExt.Photo.Get(id);
-            var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
+            var path = Path.Photo(CHUser.UserID, p.AddTime, p.Summary, ThumbType.Middle);
 
             IOFactory.StoreFile.Delete(path);
-            var album = DbExt.Album.GetCountChange(p.AlbumID.Value, -1);
-            DbExt.Photo.Delete(p.ID);
+            DbExt.Album.GetCountChange(p.AlbumId.Value, -1);
+            DbExt.Photo.Delete(p.Id);
             return this.RedirectToReferrer();
         }
 
@@ -106,9 +106,9 @@ namespace CHSNS.Controllers
 
 
             var p = DbExt.Photo.Get(id);
-            var path = Path.Photo(CHUser.UserID, p.AddTime, p.Ext, ThumbType.Middle);
+            var path = Path.Photo(CHUser.UserID, p.AddTime, p.Summary, ThumbType.Middle);
 
-            var album = DbExt.Album.Get(p.AlbumID.Value);
+            var album = DbExt.Album.Get(p.AlbumId.Value);
             // db.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
             album.FaceUrl = path;
             DbExt.Album.Update(album);

@@ -12,7 +12,7 @@ namespace CHSNS.Abstractions {
 
         long Order { get; set; }
 
-        string Ext { get; set; }
+        string Summary { get; set; }
 
         int Status { get; set; }
     }
