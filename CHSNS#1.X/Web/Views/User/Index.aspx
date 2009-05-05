@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
+Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("Reply")%>
 <%--	<%=Html.CSSLink("mypage")%>
@@ -7,7 +7,7 @@ Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<% 
-		UserPas up = ViewData.Model;
+		UserIndexViewModel up = ViewData.Model;
 		if (!up.Exists) {
 			Html.RenderPartial("index/noRight", ViewData.Model);
 		}
@@ -98,9 +98,7 @@ Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 				<div id="userFace">
 					<ul>
 						<li><a href="#<%=up.OwnerId%>">
-						<img src="" alt="<%=up.Profile.Name %>" />
-						<%=up.Profile.Face %>
-							
+						<img src="<%=Model.Context.Path.ThumbUrl(up.Profile.Face,ThumbType.Big,Model.Context) %>" alt="<%=up.Profile.Name %>" />
 						</a></li>
 					</ul>
 				</div>
