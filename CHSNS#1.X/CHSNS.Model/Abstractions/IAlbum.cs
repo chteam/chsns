@@ -1,6 +1,6 @@
 namespace CHSNS.Abstractions {
     public interface IAlbum {
-        long ID { get; set; }
+        long Id { get; set; }
 
         string Name { get; set; }
 
@@ -14,7 +14,7 @@ namespace CHSNS.Abstractions {
 
         int Count { get; set; }
 
-        long UserID { get; set; }
+        long UserId { get; set; }
 
         int Order { get; set; }
 

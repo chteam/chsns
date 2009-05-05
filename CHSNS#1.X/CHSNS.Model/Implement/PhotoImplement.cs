@@ -5,10 +5,10 @@ namespace CHSNS.Model{
     public class PhotoImplement :IPhoto{
         #region Implementation of IPhoto
 
-        public long ID { get; set; }
-        public string Name { get; set; }
-        public long? AlbumID { get; set; }
-        public long UserID { get; set; }
+        public long Id { get; set; }
+        public string Title { get; set; }
+        public long? AlbumId { get; set; }
+        public long UserId { get; set; }
         public DateTime AddTime { get; set; }
         public long Order { get; set; }
         public string Ext { get; set; }
