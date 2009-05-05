@@ -46,7 +46,7 @@ namespace CHSNS.Controllers {
             using (var ts = new TransactionScope()) {
                 IReply r = new ReplyImplement { Body = Body, UserID = UserID };
 
-                //UpdateModel(r, new[] { "Body", "UserID" });
+                //UpdateModel(r, new[] { "Body", "UserId" });
                 var OwnerID = r.UserID;
                 r.SenderID = CHUser.UserID;
                 r.AddTime = DateTime.Now;

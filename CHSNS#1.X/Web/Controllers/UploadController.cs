@@ -61,10 +61,12 @@ namespace CHSNS.Controllers {
                         IOFactory
                         );
             }
-            //SetStarLevel(CHUser.UserID); //更新
+            //SetStarLevel(CHUser.UserId); //更新
             DbExt.Photo.Add(new PhotoImplement
-                                {./
-                                    Name = "头像" + DateTime.Now.ToString("yyyyMMddhhmm"),
+                                {
+                                    Title = "头像" + DateTime.Now.ToString("yyyyMMddhhmm"),
+                                    UserId=CHUser.UserID,
+                                    
                                 });
             //更新头像地址
             //将新头像地址存入相册
