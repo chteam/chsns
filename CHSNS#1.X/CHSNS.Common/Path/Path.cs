@@ -1,5 +1,4 @@
 	using System;
-using System.IO;
 	using System.Web;
 namespace CHSNS {
 
@@ -67,7 +66,7 @@ namespace CHSNS {
 			return string.Format("/userFiles/{0}/", userid.PadLeft(12, '0').Insert(9, "/").Insert(6, "/").Insert(4, "/"));
 		}
         //static public string UserWebPath() {
-        //    return UserWebPath(CHUser.UserID.ToString());
+        //    return UserWebPath(CHUser.UserId.ToString());
         //}
 		#endregion
 		#region 
@@ -129,7 +128,7 @@ namespace CHSNS {
 			return GetFace(userid.ToString(), ThumbType.Middle);
 		}
         //public string GetFace_Big() {
-        //    return GetFace_Big(CHUser.UserID);
+        //    return GetFace_Big(CHUser.UserId);
         //}
 		public string GetFace_Big(object userid) {
 			return GetFace(userid.ToString(), ThumbType.Big);
@@ -189,7 +188,7 @@ namespace CHSNS {
         ///// </summary>
         ///// <returns>返回形如/userFiles/{0}/{1}/{2}/{3}/photos/的结果</returns>
         //static public string ClientUserPhotosFolder() {
-        //    return ClientUserPhotosFolder(CHUser.UserID.ToString());
+        //    return ClientUserPhotosFolder(CHUser.UserId.ToString());
         //}
 		static public string ClientUserPhotosFolder(string userid) {
 			return String.Format("{0}photos/", UserWebPath(userid));
@@ -199,7 +198,7 @@ namespace CHSNS {
         ///// </summary>
         ///// <returns>缩略图文件夹路径</returns>
         //static public string ClientUserThumbFolder() {
-        //    return ClientUserThumbFolder(CHUser.UserID.ToString());
+        //    return ClientUserThumbFolder(CHUser.UserId.ToString());
         //}
 		static public string ClientUserThumbFolder(string userid) {
 			return String.Format("{0}Thumb/", UserWebPath(userid));
