@@ -48,7 +48,8 @@ namespace CHSNS.Controllers {
             if (!ConfigSerializer.Load<List<string>>("AllowImageExt").Contains(fileExtension)) 
                 return WriteErr("error:您上传的文件扩展名不正确");
             var fileName = CHContext.Path.NewPhoto(CHUser.UserID, fileExtension);
-            if (isSaveSource) IOFactory.StoreFile.Save(file1.InputStream, System.IO.Path.Combine(uploadPath, fileName));
+            var photourl = System.IO.Path.Combine(uploadPath, fileName);
+            if (isSaveSource) IOFactory.StoreFile.Save(file1.InputStream,photourl );
             //按比例生成缩略图
             using (var imgSrc = Image.FromStream(file1.InputStream))
             {
@@ -65,13 +66,16 @@ namespace CHSNS.Controllers {
             DbExt.Photo.Add(new PhotoImplement
                                 {
                                     Title = "头像" + DateTime.Now.ToString("yyyyMMddhhmm"),
-                                    UserId=CHUser.UserID,
-                                    
+                                    UserId = CHUser.UserID,
+                                    Summary = "",
+                                    Domain = CHContext.Site.Upload.Domain,
+                                    Url = photourl
                                 });
+            DbExt.UserInfo.ChangeFace(CHUser.UserID, System.IO.Path.Combine(CHContext.Site.Upload.Domain, photourl));
             //更新头像地址
             //将新头像地址存入相册
             return
-                WriteJs("parent.uploadsuccess('" + Path.GetFace(CHUser.UserID.ToString(), ThumbType.Big) + "'); ");
+                WriteJs("parent.uploadsuccess('" + CHContext.Path.ThumbUrl(photourl, ThumbType.Big, CHContext) + "'); ");
         }
 
     }

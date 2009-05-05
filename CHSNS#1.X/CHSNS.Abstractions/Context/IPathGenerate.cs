@@ -13,6 +13,8 @@ namespace CHSNS{
 
         string ThumbPhoto(string path, ThumbType thumbType);
 
+        string ThumbUrl(string url, ThumbType thumbType, IContext context);
+
         string UploadPath(long userId);
     }
 }

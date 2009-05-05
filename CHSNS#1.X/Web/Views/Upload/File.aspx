@@ -8,6 +8,7 @@
 <head>
 	<title>上传</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<%=Html.Script("jquery") %>
 	<%=Html.Script("Framework") %>
 	<style type="text/css">
 		* { margin: 0; padding: 0; }

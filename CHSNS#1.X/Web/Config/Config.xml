@@ -41,4 +41,7 @@
     <Init>50</Init>
     <LogOn>2</LogOn>
   </Score>
+  <Upload>
+    <Domain></Domain>
+  </Upload>
 </SiteConfig>

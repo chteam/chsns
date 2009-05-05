@@ -10,6 +10,10 @@ namespace CHSNS.Abstractions {
 
         System.DateTime AddTime { get; set; }
 
+        string Url { get; set; }
+
+        string Domain { get; set; }
+
         long Order { get; set; }
 
         string Summary { get; set; }
