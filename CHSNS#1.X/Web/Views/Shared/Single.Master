@@ -8,14 +8,11 @@
 
 	<script type="text/javascript"></script>
 
-	<%if (false) { %>
-
-	<script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
-
-	<%} %>
-	<%=Html.CSSLink("master")%>
-	<%=Html.CSSLink("register")%>
-	<%=Html.Script("Framework") %>
+	<%if (false) { %><script src="../../JavaScript/jquery-vsdoc.js"></script><%} %>
+	<%=Html.CSSLink("master")%> 
+	<%=Html.CSSLink("register")%> 
+	<%=Html.Script("jquery")%>
+    <%=Html.Script("Framework") %>
 	<asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
 </head>
 <body>

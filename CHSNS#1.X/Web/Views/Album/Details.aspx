@@ -10,10 +10,10 @@
         IEnumerable<IPhoto> rows = ViewData["photos"] as PagedList<IPhoto>;
 	%>
 	<%if (a != null && (rows == null || rows.Count() == 0)) {%>
-	<%if (a.UserID == CH.Context.User.UserID) { %>
+	<%if (a.UserId == CH.Context.User.UserID) { %>
 	<div class="notes">
 		您还没上传照片 , Show出你自己吧
-		<input type="button" onclick="location='<%=Url.Action("Upload","Album",new{id=a.ID}) %>';"
+		<input type="button" onclick="location='<%=Url.Action("Upload","Album",new{id=a.Id}) %>';"
 			value="Go-&gt;" class="subbutton" />
 	</div>
 	<%} else { %>
@@ -29,14 +29,14 @@
 	<div class="photolist">
 		<ul>
 			<%foreach (IPhoto p in rows.ToNotNull()) { %>
-			<li id="photo_li<%=p.ID %>">
+			<li id="photo_li<%=p.Id %>">
 <a href="javascript:showPic('<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Ext,ThumbType.Big) %>');">
-				<img src="<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Ext,ThumbType.Middle) %>" alt="<%=p.Name %> at <%=p.AddTime.ToString("yy年MM月dd日") %>"
+				<img src="<%=Path.Photo(CH.Context.User.UserID,p.AddTime,p.Ext,ThumbType.Middle) %>" alt="<%=p.Title %> at <%=p.AddTime.ToString("yy年MM月dd日") %>"
 					style="max-width: 130px;" /></a>
 				<div class="pedit">
-					<%if (CH.Context.User.UserID == p.UserID) {%>
-					<a href="javascript:void(0)" onclick="SetFace(<%=p.ID %>)">设为封皮</a>
-					<a href="javascript:void(0)" onclick="DeletePhoto(<%=p.ID %>)">删除</a>
+					<%if (CH.Context.User.UserID == p.UserId) {%>
+					<a href="javascript:void(0)" onclick="SetFace(<%=p.Id %>)">设为封皮</a>
+					<a href="javascript:void(0)" onclick="DeletePhoto(<%=p.Id %>)">删除</a>
 					<%
 						}%></div>
 			</li>
@@ -48,9 +48,9 @@
 	%>
 	<div class="formset">
 		<p>
-			<input type="button" onclick="location='<%=Url.Action("Upload","Album",new{id=a.ID}) %>';"
+			<input type="button" onclick="location='<%=Url.Action("Upload","Album",new{id=a.Id}) %>';"
 				value="上传" class="subbutton" />
-			<%=Html.ActionLink(a.Name,"Index","Album",new{uid=a.UserID},null) %>
+			<%=Html.ActionLink(a.Name,"Index","Album",new{uid=a.UserId},null) %>
 		</p>
 	</div>
 </div>

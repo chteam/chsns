@@ -6,13 +6,12 @@
         <%=ViewData["Page_Title"]%></title>
 
     <script type="text/javascript"></script>
-
+    <%=Html.Script("jquery")%>
     <%=Html.Script("Framework") %>
-    <%=Html.Script("ui") %>
     <%=Html.CSSLink("Master") %>
     <asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server">
         <%if (false)
-          { %><script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script><%} %>
+          { %><script src="../../JavaScript/jquery-vsdoc.js"></script><%} %>
     </asp:ContentPlaceHolder>
 </head>
 <body>

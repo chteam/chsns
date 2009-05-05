@@ -14,16 +14,16 @@
         <%
             foreach (var ex in exceptions)
             {
-        %>
+%>
         <div class="notes">
-            <%//= Html.Encode(ex.GetType().FullName)%>
-            <%= ex.Message%>
+            <% //= Html.Encode(ex.GetType().FullName)%>
+            <%=ex.Message%>
         </div>
         <%--<div>
 <pre style="font-size: medium;"><%= Html.Encode(ex.StackTrace)%></pre>
 </div>--%>
         <%
-            }  
-        %>
+            }
+%>
     </div>
 </asp:Content>
