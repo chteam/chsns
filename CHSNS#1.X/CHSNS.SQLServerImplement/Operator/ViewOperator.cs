@@ -123,7 +123,7 @@ namespace CHSNS.Operator
 //WHERE (Ownerid = @ownerid) AND (Viewerid = @viewerid) AND (ViewClass = @viewclass)"
 //        , "@now", DateTime.Now
 //        , "@ownerid", ownerid
-//        , "@viewerid", CHUser.UserID
+//        , "@viewerid", CHUser.UserId
 //        , "@viewclass", type
 //        );
                 #endregion
@@ -136,7 +136,7 @@ namespace CHSNS.Operator
 //                                                DataBaseExecutor.Execute(
 //                            @"UPDATE [profile]
 //SET ViewCount = ViewCount + 1 
-//WHERE [profile].UserID = @ownerid",
+//WHERE [profile].UserId = @ownerid",
 //                            "@ownerid", ownerid);
                         #endregion
                         break;
@@ -190,7 +190,7 @@ namespace CHSNS.Operator
 //Ownerid = @ownerid and viewclass=@viewclass)"
 //                        , "@now", DateTime.Now
 //                        , "@ownerid", ownerid
-//                        , "@viewerid", CHUser.UserID
+//                        , "@viewerid", CHUser.UserId
 //                        , "@viewclass", type
 //                        , "@num", 50
 //                        );
@@ -210,7 +210,7 @@ namespace CHSNS.Operator
 //VALUES(@Viewerid,@ownerid, @now,@viewclass)"
 //                        , "@now", DateTime.Now
 //                        , "@ownerid", ownerid
-//                        , "@viewerid", CHUser.UserID
+//                        , "@viewerid", CHUser.UserId
 //                        , "@viewclass", type);
                     #endregion
  

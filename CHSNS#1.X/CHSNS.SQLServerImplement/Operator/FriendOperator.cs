@@ -1,4 +1,4 @@
-Ôªøusing CHSNS.Abstractions;
+using CHSNS.Abstractions;
 
 namespace CHSNS.Operator
 {
@@ -9,7 +9,7 @@ namespace CHSNS.Operator
     public class FriendOperator : BaseOperator, IFriendOperator
     {
 
-        #region Ëé∑Âèñ
+        #region ªÒ»°
         public IProfile UserFriendInfo(long userid)
         {
             using (var db = DBExtInstance)
@@ -57,31 +57,31 @@ namespace CHSNS.Operator
                                //   ShowText = c.ShowText,
                                //   ShowTextTime = c.ShowTextTime
                            });
-                #region    Ê≥®
+                #region    ◊¢
 
                 //var ret = (from c in
                 //               (from f1 in DBExt.DB.Friend
-                //                join p1 in DBExt.DB.Profile on f1.ToID equals p1.UserID
+                //                join p1 in DBExt.DB.Profile on f1.ToID equals p1.UserId
                 //                where f1.FromID == userid && f1.IsTrue
                 //                select new {
-                //                    p1.UserID,
-                //                    p1.Name,
+                //                    p1.UserId,
+                //                    p1.Title,
                 //                    p1.ShowText,
                 //                    p1.ShowTextTime
                 //                })
                 //               .Union(from f1 in DBExt.DB.Friend
-                //                      join p1 in DBExt.DB.Profile on f1.FromID equals p1.UserID
+                //                      join p1 in DBExt.DB.Profile on f1.FromID equals p1.UserId
                 //                      where f1.ToID == userid && f1.IsTrue
                 //                      select new {
-                //                          p1.UserID,
-                //                          p1.Name,
+                //                          p1.UserId,
+                //                          p1.Title,
                 //                          p1.ShowText,
                 //                          p1.ShowTextTime
                 //                      })
-                //           orderby c.UserID descending
+                //           orderby c.UserId descending
                 //           select new UserItemPas {
-                //               ID = c.UserID,
-                //               Name = c.Name,
+                //               ID = c.UserId,
+                //               Title = c.Title,
                 //               ShowText = c.ShowText,
                 //               ShowTextTime = c.ShowTextTime
                 //           });
@@ -97,7 +97,7 @@ namespace CHSNS.Operator
             {
                 var ret = (from p in db.Profile
                            where p.Status.Equals(RoleType.General)
-                           orderby db.NEWID()
+                           orderby db.Newid()
                            select new UserItemPas
                            {
                                ID = p.UserID,
@@ -127,11 +127,11 @@ namespace CHSNS.Operator
         }
         #endregion
         /// <summary>
-        /// Âä†‰∏∫Â•ΩÂèã
+        /// º”Œ™∫√”—
         /// </summary>
         /// <param name="fromId"></param>
         /// <param name="toId"></param>
-        /// <returns>Â∑≤ÁªèÊòØÂ•ΩÂèãÂàôËøîÂõûFalseÔºåÂ¶ÇÊûúËøò‰∏çÊòØÔºåÂàôËøîÂõûTrueÔºåÂπ∂ÂèëÈÄÅ‰∏Ä‰∏™Â•ΩÂèãËØ∑Ê±Ç</returns>
+        /// <returns>“—æ≠ «∫√”—‘Ú∑µªÿFalse£¨»Áπ˚ªπ≤ª «£¨‘Ú∑µªÿTrue£¨≤¢∑¢ÀÕ“ª∏ˆ∫√”—«Î«Û</returns>
         public bool Add(long fromId, long toId)
         {
             using (var db = DBExtInstance)
@@ -207,7 +207,7 @@ namespace CHSNS.Operator
                 f.IsTrue = true;
                 db.SubmitChanges();
             }
-            //  name = db.Profile.Where(q => q.UserID == toId).Select(q => q.Name).FirstOrDefault();
+            //  name = db.Profile.Where(q => q.UserId == toId).Select(q => q.Title).FirstOrDefault();
             //DBExt.Event.Add(new Event
             //                    {
             //                        OwnerID = toId,

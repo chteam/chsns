@@ -10,14 +10,14 @@ namespace CHSNS.SQLServerImplement {
         public List<IAlbum> Items(long uId) {
             using (var db = DBExtInstance) {
                 return (from a in db.Album
-                        where a.UserID.Equals(uId)
+                        where a.UserId.Equals(uId)
                         select a).Cast<IAlbum>().ToList();
             }
         }
 
         public IAlbum Get(long id) {
             using (var db = DBExtInstance){
-                return db.Album.FirstOrDefault(c => c.ID.Equals(id));
+                return db.Album.FirstOrDefault(c => c.Id.Equals(id));
             }
         }
 
@@ -30,7 +30,7 @@ namespace CHSNS.SQLServerImplement {
 
         public void Update(IAlbum album) {
             using (var db = DBExtInstance){
-                var al = db.Album.FirstOrDefault(c => c.ID == album.ID);
+                var al = db.Album.FirstOrDefault(c => c.Id == album.Id);
                 al.Location = album.Location;
                 al.Description = album.Description;
                 al.ShowLevel = album.ShowLevel;
@@ -42,14 +42,14 @@ namespace CHSNS.SQLServerImplement {
         public List<IPhoto> GetPhotos(long id, long uId,int page, int pageSize) {
             using (var db = DBExtInstance){
                 return  (from ph in db.Photo
-                          where ph.AlbumID == id && ph.UserID ==uId
+                          where ph.AlbumId == id && ph.UserId ==uId
                          select ph).Cast<IPhoto>().Pager(page, pageSize);
             }
         }
 
         public IAlbum GetCountChange(long id, int num){
             using (var db = DBExtInstance){
-                var a = db.Album.FirstOrDefault(c => c.ID.Equals(id));
+                var a = db.Album.FirstOrDefault(c => c.Id.Equals(id));
                 if (num != 0){
                     a.Count += num;
                     if (a.Count < 0) a.Count = 0;

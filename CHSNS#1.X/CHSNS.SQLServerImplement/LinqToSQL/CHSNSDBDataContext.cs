@@ -1,27 +1,14 @@
 ﻿using System;
 
-namespace CHSNS.Operator {
-	internal partial class CHSNSDBDataContext {
+namespace CHSNS.SQLServerImplement {
+    internal partial class CHSNSDBDataContext {
 		//public CHSNSDBDataContext(string s) : base(s) { }
 		//public CHSNSDBDataContext(EntityConnection connection) : base(connection) { }
 
-		public Guid NEWID() {
+		public Guid Newid() {
+        
 			return Guid.NewGuid();
 		}
-
-		public void SaveChanges(){
-			this.SubmitChanges();
-		}
-		public void AddToNote(Note note){
-			this.Note.InsertOnSubmit(note);
-		}
-		public void AddToEntry(Entry entry) { 
-			Entry.InsertOnSubmit(entry);
-		}
-		public void AddToEntryVersion(EntryVersion entryversion) {
-			EntryVersion.InsertOnSubmit(entryversion);
-		}
-		
 	}
 }
 

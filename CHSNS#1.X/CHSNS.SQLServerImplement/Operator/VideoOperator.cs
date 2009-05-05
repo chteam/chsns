@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CHSNS.Abstractions;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator {
     public class VideoOperator : BaseOperator, ISuperNoteOperator {
@@ -27,8 +28,8 @@ namespace CHSNS.Operator {
                 var es = db.SuperNote
                     .Where(c =>
                            c.Type == (byte) SuperNoteType.Video
-                               && c.UserID == uid
-                           && uids.Contains(c.ID));
+                               && c.UserId == uid
+                           && uids.Contains(c.Id));
                 db.SuperNote.DeleteAllOnSubmit(es);
                 db.SubmitChanges();
             }
@@ -38,7 +39,7 @@ namespace CHSNS.Operator {
             //类型,时间排序,用户
             using (var db = DBExtInstance){
                 return db.SuperNote.Where(c => c.Type == (byte) SuperNoteType.Video
-                                               && c.UserID == uid).OrderByDescending(
+                                               && c.UserId == uid).OrderByDescending(
                     c => c.AddTime).Cast<ISuperNote>().Pager(p, ep);
             }
         }

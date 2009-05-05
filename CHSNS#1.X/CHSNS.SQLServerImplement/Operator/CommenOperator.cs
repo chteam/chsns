@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using CHSNS.Model;
 using CHSNS.Abstractions;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator
 {
@@ -9,20 +10,20 @@ namespace CHSNS.Operator
 		#region reply
    private static IQueryable<CommentPas> GetReplyPrivate(CHSNSDBDataContext db, long uid) {
             IQueryable<CommentPas> ret = (from r in db.Reply
-                                          join p in db.Profile on r.SenderID equals p.UserID
-                                          where r.UserID == uid
-                                          orderby r.ID descending
+                                          join p in db.Profile on r.SenderId equals p.UserId
+                                          where r.UserId == uid
+                                          orderby r.Id descending
                                           select new CommentPas
                                           {
                                               Comment = new CommentItemPas
                                               {
-                                                  ID = r.ID,
-                                                  OwnerID = r.UserID,
+                                                  ID = r.Id,
+                                                  OwnerID = r.UserId,
                                                   Body = r.Body,
                                                   AddTime = r.AddTime,
                                                   IsDel = r.IsDel
                                               },
-                                              Sender = new NameIDPas { ID = p.UserID, Name = p.Name }
+                                              Sender = new NameIDPas { ID = p.UserId, Name = p.Name }
                                           }
                                                );
             return ret;
@@ -44,9 +45,9 @@ namespace CHSNS.Operator
             #region sql
 //            DataBaseExecutor.Execute(
 //                @"INSERT INTO [dbo].[Reply]
-//([UserID],[SenderID],[Body],[AddTime],[IsSee],[IsDel],[IsTellMe])
+//([UserId],[SenderID],[Body],[AddTime],[IsSee],[IsDel],[IsTellMe])
 //VALUES(@userid,@senderid,@body,getdate(),0,0,@istellme)",
-//                "@userid", r.UserID,
+//                "@userid", r.UserId,
 //                "@senderid", r.SenderID,
 //                "@body", r.Body,
 //                "@istellme", r.IsTellMe);
@@ -58,7 +59,7 @@ namespace CHSNS.Operator
 		{
             using (var db = DBExtInstance)
             {
-                db.Reply.DeleteOnSubmit(db.Reply.FirstOrDefault(c => c.ID == id && c.UserID == userid));
+                db.Reply.DeleteOnSubmit(db.Reply.FirstOrDefault(c => c.Id == id && c.UserId == userid));
                 db.SubmitChanges();
             }
             //DataBaseExecutor.Execute(@"delete [reply] where id=@id and userid=@userid",
@@ -85,20 +86,20 @@ namespace CHSNS.Operator
             {
                 var t = (int)type;
                 var ret = (from c in db.Comment
-                                              join p1 in db.Profile on c.SenderID equals p1.UserID
-                                              where c.ShowerID == showerId && c.Type == t && !c.IsDel
-                                              orderby c.ID
+                           join p1 in db.Profile on c.SenderId equals p1.UserId
+                                              where c.ShowerId == showerId && c.Type == t && !c.IsDel
+                                              orderby c.Id
                                               select new CommentPas
                                                         {
                                                             Comment = new CommentItemPas
                                                                         {
-                                                                            ID = c.ID,
-                                                                            OwnerID = c.OwnerID,
+                                                                            ID = c.Id,
+                                                                            OwnerID = c.OwnerId,
                                                                             Body = c.Body,
                                                                             AddTime = c.AddTime,
                                                                             IsDel = c.IsDel
                                                                         },
-                                                            Sender = new NameIDPas { ID = p1.UserID, Name = p1.Name }
+                                                            Sender = new NameIDPas { ID = p1.UserId, Name = p1.Name }
                                                         }
                                              );
                 return ret.Pager(p, pageSize);//Site.EveryPage.NoteComment
@@ -115,12 +116,12 @@ namespace CHSNS.Operator
 		{
             using (var db = DBExtInstance)
             {
-                var com = db.Comment.FirstOrDefault(c => c.ID == id);
+                var com = db.Comment.FirstOrDefault(c => c.Id == id);
                 if (null == com) return false;
                 com.IsDel = true;
                 if (type == CommentType.Note)
                 {
-                    var n = db.Note.FirstOrDefault(c => c.ID == com.ShowerID && c.CommentCount > 0);
+                    var n = db.Note.FirstOrDefault(c => c.Id == com.ShowerId && c.CommentCount > 0);
                     if (null != n) n.CommentCount--;
                 }
                 db.SubmitChanges();
@@ -153,7 +154,7 @@ namespace CHSNS.Operator
                 switch (type)
                 {
                     case CommentType.Note:
-                        var n = db.Note.FirstOrDefault(c => c.ID == cmt.ShowerID);
+                        var n = db.Note.FirstOrDefault(c => c.Id == cmt.ShowerID);
                         n.CommentCount++;
                         break;
                     default:

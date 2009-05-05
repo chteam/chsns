@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CHSNS.Model;
@@ -81,9 +81,9 @@ namespace CHSNS.SQLServerImplement {
                                               Status = v.Status
                                           });
                 var li1 = newlist;
-                // li1 = li1.Where(c => c.User.ID == CHUser.UserID);
+                // li1 = li1.Where(c => c.User.ID == CHUser.UserId);
                 //AreaList.Load(AreaType.EntryArea).Where(
-                //   c => c.ID == e.AreaID).FirstOrDefault().Name
+                //   c => c.ID == e.AreaID).FirstOrDefault().Title
                 return li1.Pager(page, pageSize);
             }
         }

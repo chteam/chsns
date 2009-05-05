@@ -2,6 +2,7 @@
 using System.Linq;
 using CHSNS.Abstractions;
 using CHSNS.Model;
+using CHSNS.SQLServerImplement.LinqToSQL;
 
 namespace CHSNS.Operator {
     public class AccountOperator : BaseOperator, IAccountOperator {
