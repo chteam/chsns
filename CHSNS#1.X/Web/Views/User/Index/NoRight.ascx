@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
-<% UserPas up = ViewData.Model; %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<UserIndexViewModel>" %>
+<% UserIndexViewModel up = ViewData.Model; %>
 <div id="UserListMsg">
 </div>
 <div style="height: 100%">

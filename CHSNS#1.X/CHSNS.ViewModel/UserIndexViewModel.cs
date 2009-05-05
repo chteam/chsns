@@ -1,11 +1,11 @@
 ﻿using CHSNS.Abstractions;
 
 namespace CHSNS.ViewModel {
-    public class UserPas : BaseViewModel{
-        public UserPas(bool? exists) {
+    public class UserIndexViewModel : BaseViewModel{
+        public UserIndexViewModel(bool? exists) {
             _exists = exists;
         }
-        public UserPas() { }
+        public UserIndexViewModel() { }
         public long OwnerId { get; set; }
 
         public long ViewerId { get; set; }

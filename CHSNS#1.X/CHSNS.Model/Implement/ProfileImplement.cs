@@ -6,6 +6,11 @@ namespace CHSNS.Model{
     {
         public long UserId { get; set; }
         public string Name { get; set; }
+        public string Face {
+            get;
+            set;
+        }
+
         public int Status { get; set; }
         public long Score { get; set; }
         public long ShowScore { get; set; }

@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<UserPas>" %>
-<% UserPas up = ViewData.Model;
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<UserIndexViewModel>" %>
+<% UserIndexViewModel up = ViewData.Model;
    if (Convert.ToInt16(up.User["Relation"]) >= Convert.ToInt16(up.User["PersonalInfoShowLevel"]) || CH.Context.User.IsAdmin) {
 %>
 <a href='#' class="accordionHeader" id="personal-header">个人信息 Interests</a>
