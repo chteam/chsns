@@ -1,4 +1,4 @@
-ï»¿using System.Transactions;
+using System.Transactions;
 
 namespace CHSNS.Controllers {
 	using System;
@@ -17,14 +17,14 @@ namespace CHSNS.Controllers {
 				if (!userid.HasValue || userid == 0) userid = CHUser.UserID;
 				if (!p.HasValue || p == 0) p = 1;
 				var b = DbExt.Friend.UserFriendInfo(userid.Value);
-				if (b == null) throw new Exception("ç”¨æˆ·ä¸å­˜åœ¨");
+				if (b == null) throw new Exception("ÓÃ»§²»´æÔÚ");
 				
-				ViewData["UserID"] = userid;
-				ViewData["Name"] = b.Name;
+				ViewData["UserId"] = userid;
+				ViewData["Title"] = b.Name;
 				ViewData["NowPage"] = p;
 			//	ViewData["PageCount"] = b.FriendCount;
 
-				Title = b.Name + "çš„å¥½å‹";
+				Title = b.Name + "µÄºÃÓÑ";
 				return FriendList(p.Value, userid.Value);
 			}
 		}
@@ -35,8 +35,8 @@ namespace CHSNS.Controllers {
 			using (new TransactionScope()){
 				var Ownerid = CHUser.UserID;
 				var b = DbExt.Friend.UserFriendInfo(Ownerid);
-				if (b == null) throw new Exception("ç”¨æˆ·ä¸å­˜åœ¨");
-				ViewData["Name"] = b.Name;
+				if (b == null) throw new Exception("ÓÃ»§²»´æÔÚ");
+				ViewData["Title"] = b.Name;
 				int nowpage = this.QueryNum("p") == 0 ? 1 : this.QueryNum("p");
 				ViewData["NowPage"] = nowpage;
                 var source = DbExt.Friend.GetRequests(Ownerid, nowpage, CHContext.Site);
@@ -44,7 +44,7 @@ namespace CHSNS.Controllers {
 			    ViewData["PageCount"] = source.TotalPages;
 			    ViewData["source"] = source;
 
-				Title = b.Name + "çš„å¥½å‹è¯·æ±‚";
+				Title = b.Name + "µÄºÃÓÑÇëÇó";
 				return View(b);
 			}
 		}
@@ -74,17 +74,17 @@ namespace CHSNS.Controllers {
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
 		public ActionResult Add(long toid)
-		{//æ·»åŠ å¥½å‹
+		{//Ìí¼ÓºÃÓÑ
 			using (var ts = new TransactionScope())
 			{
 				var x = DbExt.Friend.Add(CHUser.UserID, toid);
 				ts.Complete();
-				if (x) return Content("å·²ç»å‘å¯¹æ–¹å‘å‡ºè¯·æ±‚");
-				return Content("å¯¹æ–¹å·²ç»æ˜¯ä½ çš„å¥½å‹");
+				if (x) return Content("ÒÑ¾­Ïò¶Ô·½·¢³öÇëÇó");
+				return Content("¶Ô·½ÒÑ¾­ÊÇÄãµÄºÃÓÑ");
 			}
 		}
 		/// <summary>
-		/// åˆ é™¤
+		/// É¾³ı
 		/// </summary>
 		/// <param name="toid"></param>
 		/// <returns></returns>
@@ -95,40 +95,40 @@ namespace CHSNS.Controllers {
 			{
 				DbExt.Friend.Delete(CHUser.UserID, toid);
 				ts.Complete();
-				return Content("è§£é™¤å…³ç³»æˆåŠŸ");
+				return Content("½â³ı¹ØÏµ³É¹¦");
 			}
 		}
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
 		public ActionResult Agree(long uid)
-		{//æ·»åŠ å¥½å‹
+		{//Ìí¼ÓºÃÓÑ
 			using (var ts = new TransactionScope())
 			{
 				var r = DbExt.Friend.Agree(CHUser.UserID, uid,CHUser);
 				ts.Complete();
-				if (r) return Content("å·²ç»åŠ å¯¹æ–¹ä¸ºå¥½å‹");
-				return Content("è¯·æ±‚å·²ç»å¤„ç†è¿‡äº†");
+				if (r) return Content("ÒÑ¾­¼Ó¶Ô·½ÎªºÃÓÑ");
+				return Content("ÇëÇóÒÑ¾­´¦Àí¹ıÁË");
 			}
 		}
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
-		public ActionResult Ignore(long uid) {//æ·»åŠ å¥½å‹
+		public ActionResult Ignore(long uid) {//Ìí¼ÓºÃÓÑ
 			using (var ts = new TransactionScope())
 			{
 				var r=DbExt.Friend.Ignore(uid, CHUser.UserID);
 				ts.Complete();
-				if (r)	return Content("å·²ç»å¿½ç•¥äº†è¯·æ±‚");
-				return Content("è¯·æ±‚å·²ç»å¤„ç†è¿‡äº†");
+				if (r)	return Content("ÒÑ¾­ºöÂÔÁËÇëÇó");
+				return Content("ÇëÇóÒÑ¾­´¦Àí¹ıÁË");
 			}
 		}
 		[LoginedFilter]
 		[AcceptVerbs("Post")]
-		public ActionResult IgnoreAll() {//æ·»åŠ å¥½å‹
+		public ActionResult IgnoreAll() {//Ìí¼ÓºÃÓÑ
 			using (var ts = new TransactionScope())
 			{
 				DbExt.Friend.IgnoreAll(CHUser.UserID);
 				ts.Complete();
-				return Content("å·²ç»å¿½ç•¥æ‰€æœ‰è¯·æ±‚");
+				return Content("ÒÑ¾­ºöÂÔËùÓĞÇëÇó");
 			}
 		}
 		#endregion

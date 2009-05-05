@@ -167,14 +167,14 @@ namespace CHSNS.Controllers {
 		/*public void ClassList() {
 
 			Dictionary dict = new Dictionary();
-			dict.Add("@userid", CHSNSUser.Current.UserID);
+			dict.Add("@userid", CHSNSUser.Current.UserId);
 			ViewData.Add("rows",DataBaseExecutor.GetRows(
 				"GetRelationClass", dict));
 		}
 		
 		public void CreateClass() {
 			Dictionary dict=new Dictionary();
-			dict.Add("@userid",CHSNSUser.Current.UserID);
+			dict.Add("@userid",CHSNSUser.Current.UserId);
 			DataRowCollection rows = DataBaseExecutor.GetRows(
 				"SchoolInfo", dict);
 			if (rows.Count != 0) {
