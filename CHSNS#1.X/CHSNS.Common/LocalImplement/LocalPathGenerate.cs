@@ -19,7 +19,8 @@ namespace CHSNS.LocalImplement {
 
         public string ThumbUrl(string url, ThumbType thumbType,IContext context)
         {
-            return System.IO.Path.Combine(context.Site.Upload.Domain, ThumbPhoto(url, thumbType));
+            return string.IsNullOrEmpty(url) ? "" :
+                System.IO.Path.Combine(context.Site.Upload.Domain, ThumbPhoto(url, thumbType));
         }
 
         public string UploadPath(long userId)
