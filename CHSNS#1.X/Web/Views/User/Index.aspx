@@ -12,7 +12,7 @@ Inherits="System.Web.Mvc.ViewPage<UserPas>" %>
 			Html.RenderPartial("index/noRight", ViewData.Model);
 		}
 		else {
-			if (up.Exists && up.Profile.IsMagicBox) {%>
+			if (up.Exists && up.Profile.HasMagicBox) {%>
 	<%="<style type=\"text/css\">" + up.Profile.MagicBox + "</style>"%>
 	<%
 		}

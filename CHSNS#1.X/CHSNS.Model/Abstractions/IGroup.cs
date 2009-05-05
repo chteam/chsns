@@ -1,6 +1,6 @@
 namespace CHSNS.Abstractions {
     public interface IGroup {
-        long ID { get; set; }
+        long Id { get; set; }
 
         string Name { get; set; }
 
@@ -10,7 +10,7 @@ namespace CHSNS.Abstractions {
 
         string Summary { get; set; }
 
-        long CreaterID { get; set; }
+        long CreaterId { get; set; }
 
         long UserCount { get; set; }
 

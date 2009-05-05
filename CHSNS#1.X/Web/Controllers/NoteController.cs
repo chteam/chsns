@@ -15,12 +15,12 @@ namespace CHSNS.Controllers {
                 userid.Value,
                 c => new ProfileImplement
                          {
-                             UserID=c.UserID,
+                             UserId=c.UserId,
                              Name = c.Name,
                              //Count = c.NoteCount
                          });
             ViewData["username"] = user.Name;
-            ViewData["userid"] = user.UserID;
+            ViewData["userid"] = user.UserId;
             ViewData["PageCount"] = 0;// user.Count;
             ViewData["NowPage"] = p.Value;
             Title = user.Name + "µƒ»’÷æ";
@@ -78,10 +78,10 @@ namespace CHSNS.Controllers {
 					return View(n);
 				}
 				n.Type = (int)NoteType.Note;
-				n.UserID = CHUser.UserID;
-				n.PID = CHUser.UserID;
+				n.UserId = CHUser.UserID;
+				n.ParentId = CHUser.UserID;
 				if (id.HasValue) {
-					n.ID = id.Value;
+					n.Id = id.Value;
 					DbExt.Note.Edit(n);
 				}
 				else {

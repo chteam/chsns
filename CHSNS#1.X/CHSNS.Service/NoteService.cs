@@ -28,11 +28,11 @@ namespace CHSNS.Service {
 		        case NoteType.Note:
                     Event.Add(new EventImplement
 		                                {
-		                                    OwnerID = note.UserID,
+		                                    OwnerID = note.UserId,
 		                                    TemplateName = "AddNote",
 		                                    AddTime = DateTime.Now,
 		                                    ShowLevel = 0,
-		                                    Json = Dictionary.CreateFromArgs("id", note.ID,
+		                                    Json = Dictionary.CreateFromArgs("id", note.Id,
 		                                                                     "title", note.Title, "addtime",
                                                                              note.AddTime, "name", user.Username).
 		                                        ToJsonString()

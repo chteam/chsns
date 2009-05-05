@@ -28,7 +28,7 @@ namespace CHSNS.Service {
             var profile = Account.Login(userName, password, context.Site.Score.LogOn);
             if (profile == null) return -1;//无账号
             Logout(context);
-            context.User.UserID = profile.UserID;
+            context.User.UserID = profile.UserId;
             context.User.Username = profile.Name;
             context.User.InitStatus(profile.Status);
             context.Cookies.Apps = profile.Applications ?? "";

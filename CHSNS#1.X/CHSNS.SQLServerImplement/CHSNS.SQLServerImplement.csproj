@@ -77,13 +77,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LinqToSQL\Album.cs" />
+    <Compile Include="LinqToSQL\BasicInformation.cs" />
     <Compile Include="LinqToSQL\CHSNSDB.designer.cs">
-      <DependentUpon>CHSNSDB.dbml</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHSNSDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="LinqToSQL\CHSNSDBDataContext.cs" />
+    <Compile Include="LinqToSQL\EntryVersion.cs" />
+    <Compile Include="LinqToSQL\Group.cs" />
+    <Compile Include="LinqToSQL\GroupUser.cs" />
+    <Compile Include="LinqToSQL\Message.cs" />
+    <Compile Include="LinqToSQL\Note.cs" />
     <Compile Include="LinqToSQL\Photo.cs" />
+    <Compile Include="LinqToSQL\Profile.cs" />
     <Compile Include="Operator\AccountOperator.cs" />
     <Compile Include="Operator\AlbumOperator.cs" />
     <Compile Include="Operator\ApplicationOperator.cs" />
@@ -126,16 +133,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="LinqToSQL\CHSNSDB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>CHSNSDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="LinqToSQL\CHSNSDB.dbml.layout">
-      <DependentUpon>CHSNSDB.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -166,6 +168,11 @@
       <Project>{27E2B6B3-7382-4D72-A889-7FDD618126F3}</Project>
       <Name>CHSNS.ViewModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LinqToSQL\CHSNSDB.dbml.layout">
+      <DependentUpon>CHSNSDB.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -20,11 +20,11 @@ Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
 	<div class="right">
 		<ul>
 			<li>
-				<%=Html.ActionLink("历史版本", "Historylist", new { id = entry.ID })%>
+				<%=Html.ActionLink("历史版本", "Historylist", new { id = entry.Id })%>
 				<span>(<%=entry.EditCount%>)</span></li>
 			<%if (Model.Context.User.IsAdmin) { %>
 			<li>
-				<%=Html.ActionLink("编辑词条", "Edit", new { id = entry.ID })%>
+				<%=Html.ActionLink("编辑词条", "Edit", new { id = entry.Id })%>
 			</li>
 			<li><a href="#">新建词条</a></li>
 			<%} %>

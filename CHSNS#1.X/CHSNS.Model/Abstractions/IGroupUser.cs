@@ -1,8 +1,8 @@
 namespace CHSNS.Abstractions {
     public interface IGroupUser {
-        long UserID { get; set; }
+        long UserId { get; set; }
 
-        long GroupID { get; set; }
+        long GroupId { get; set; }
 
         System.DateTime AddTime { get; set; }
 

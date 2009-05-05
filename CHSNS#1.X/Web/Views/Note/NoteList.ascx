@@ -1,11 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true"
 Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<NotePas>>" %>
 <%foreach(NotePas n in ViewData.Model){ %>
-<li class="useritem" id="Items<%=n.ID %>">
+<li class="useritem" id="Items<%=n.Id %>">
 	<div class="title">
-	<%=Html.NoteDetails(n.Title,n.ID ,n.AddTime) %></div>
+	<%=Html.NoteDetails(n.Title,n.Id ,n.AddTime) %></div>
 	<div class="text">
-		<p><%=n.Body %><%=Html.NoteDetails("[查看全文]",n.ID,n.AddTime ) %>
+		<p><%=n.Body %><%=Html.NoteDetails("[查看全文]",n.Id,n.AddTime ) %>
 		</p>
 	</div>
 	<div class="right option">
@@ -15,11 +15,11 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<NotePas>>" %>
 		|
 		评论(<%=n.CommentCount %>)
 		<%
-			if (n.UserID == CH.Context.User.UserID){
+			if (n.UserId == CH.Context.User.UserID){
 %>
 		|
-		<%=Html.NoteEdit(n.ID, "编辑")%>
-		<a href="<%=n.ID %>" class="delete">删除</a>
+		<%=Html.NoteEdit(n.Id, "编辑")%>
+		<a href="<%=n.Id %>" class="delete">删除</a>
 		<%
 			}
 %>

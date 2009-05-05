@@ -16,16 +16,16 @@ namespace CHSNS.SQLServerImplement {
 
         public void DeleteByVersionId(long versionId, long uId) {
             using (var db = DBExtInstance) {
-                var v = db.EntryVersion.FirstOrDefault(c => c.ID == versionId);
+                var v = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
                 if (v == null) return;
-                var e = db.Entry.FirstOrDefault(c => c.ID == v.EntryID);
+                var e = db.Entry.FirstOrDefault(c => c.Id == v.EntryId);
                 if (e == null) return;
-                var vs = db.EntryVersion.Where(c => c.EntryID == e.ID);
-                if (e.CreaterID != uId) return;
+                var vs = db.EntryVersion.Where(c => c.EntryId == e.Id);
+                if (e.CreaterId != uId) return;
 
                 db.EntryVersion.DeleteAllOnSubmit(vs);
                 db.Entry.DeleteOnSubmit(e);
-                db.SaveChanges();
+                db.SubmitChanges();
             }
         }
 
@@ -33,31 +33,31 @@ namespace CHSNS.SQLServerImplement {
         {
             using (var db = DBExtInstance)
             {
-                var ev = db.EntryVersion.FirstOrDefault(c => c.ID == versionId);
+                var ev = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
                 ev.Status = (int)EntryVersionType.Lock;
                
                 var lastv =
                     db.EntryVersion.Where(
-                        c => c.EntryID == ev.EntryID && c.Status == (int) EntryVersionType.Common)
+                        c => c.EntryId == ev.EntryId && c.Status == (int) EntryVersionType.Common)
                         .OrderByDescending(c=>c.AddTime)
                         .FirstOrDefault();
                 if(lastv !=null)
                 {
-                    var e = db.Entry.FirstOrDefault(c => c.ID == ev.EntryID);
-                    e.CurrentID = lastv.ID;
+                    var e = db.Entry.FirstOrDefault(c => c.Id == ev.EntryId);
+                    e.CurrentId = lastv.Id;
                 }
-                db.SaveChanges();
+                db.SubmitChanges();
             }
         }
 
         public void PassWaitVersion(long versionId)
         {
             using (var db = DBExtInstance) {
-                var ev = db.EntryVersion.FirstOrDefault(c => c.ID == versionId);
+                var ev = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
                 ev.Status = (int)EntryVersionType.Common;
-                var e = db.Entry.Where(c => c.ID == ev.EntryID).SingleOrDefault();
-                e.CurrentID = ev.ID;
-                db.SaveChanges();
+                var e = db.Entry.Where(c => c.Id == ev.EntryId).SingleOrDefault();
+                e.CurrentId = ev.Id;
+                db.SubmitChanges();
             }
         }
 
@@ -66,24 +66,24 @@ namespace CHSNS.SQLServerImplement {
             using (var db = DBExtInstance)
             {
                 var newlist = (from v in db.EntryVersion
-                               join e in db.Entry on v.EntryID equals e.ID
-                               join p in db.Profile on v.UserID equals p.UserID
-                               orderby v.ID descending
+                               join e in db.Entry on v.EntryId equals e.Id
+                               join p in db.Profile on v.UserId equals p.UserId
+                               orderby v.Id descending
                                select new EntryPas
                                           {
-                                              ID = v.ID,
+                                              Id = v.Id,
                                               AddTime = v.AddTime,
                                               EditCount = e.EditCount,
                                               Reason = v.Reason,
                                               Title = e.Title,
-                                              User = new NameIDPas {Name = p.Name, ID = p.UserID},
+                                              User = new NameIdPas {Name = p.Name, Id = p.UserId},
                                               ViewCount = e.ViewCount,
                                               Status = v.Status
                                           });
                 var li1 = newlist;
-                // li1 = li1.Where(c => c.User.ID == CHUser.UserId);
+                // li1 = li1.Where(c => c.User.Id == CHUser.UserId);
                 //AreaList.Load(AreaType.EntryArea).Where(
-                //   c => c.ID == e.AreaID).FirstOrDefault().Title
+                //   c => c.Id == e.AreaId).FirstOrDefault().Title
                 return li1.Pager(page, pageSize);
             }
         }
@@ -93,18 +93,18 @@ namespace CHSNS.SQLServerImplement {
             using (var db = DBExtInstance)
             {
                 var newlist = (from v in db.EntryVersion
-                               join e in db.Entry on v.EntryID equals e.ID
-                               join p in db.Profile on v.UserID equals p.UserID
+                               join e in db.Entry on v.EntryId equals e.Id
+                               join p in db.Profile on v.UserId equals p.UserId
                                where e.Title == title
-                               orderby v.ID descending
+                               orderby v.Id descending
                                select new EntryPas
                                           {
-                                              ID = v.ID,
+                                              Id = v.Id,
                                               AddTime = v.AddTime,
                                               EditCount = e.EditCount,
                                               Reason = v.Reason,
                                               Title = e.Title,
-                                              User = new NameIDPas {Name = p.Name, ID = p.UserID},
+                                              User = new NameIdPas {Name = p.Name, Id = p.UserId},
                                               ViewCount = e.ViewCount,
                                               Status = v.Status
                                           });
@@ -118,18 +118,18 @@ namespace CHSNS.SQLServerImplement {
             using (var db = DBExtInstance)
             {
                 var newlist = (from v in db.EntryVersion
-                               join e in db.Entry on v.EntryID equals e.ID
-                               join p in db.Profile on v.UserID equals p.UserID
-                               where e.ID == entryId
-                               orderby v.ID descending
+                               join e in db.Entry on v.EntryId equals e.Id
+                               join p in db.Profile on v.UserId equals p.UserId
+                               where e.Id == entryId
+                               orderby v.Id descending
                                select new EntryPas
                                           {
-                                              ID = v.ID,
+                                              Id = v.Id,
                                               AddTime = v.AddTime,
                                               EditCount = e.EditCount,
                                               Reason = v.Reason,
                                               Title = e.Title,
-                                              User = new NameIDPas {Name = p.Name, ID = p.UserID},
+                                              User = new NameIdPas {Name = p.Name, Id = p.UserId},
                                               ViewCount = e.ViewCount,
                                               Status = v.Status
                                           });
@@ -143,21 +143,21 @@ namespace CHSNS.SQLServerImplement {
            
             using (var db = DBExtInstance) { 
                 if (id.HasValue) {
-                    entry = db.Entry.Where(c => c.ID == id.Value).FirstOrDefault();
+                    entry = db.Entry.Where(c => c.Id == id.Value).FirstOrDefault();
                     entry.UpdateTime = DateTime.Now;
                     entry.EditCount += 1;
                 }
                 else {
                     var old = db.Entry.Where(c => c.Title == entry.Title.Trim()).Count();
                     if (old > 0) return false;
-                    db.AddToEntry(entry as Entry);
-                    db.SaveChanges();
+                    db.Entry.InsertOnSubmit(entry as Entry);
+                    db.SubmitChanges();
                 }
-                entryVersion.EntryID = entry.ID;
-                db.AddToEntryVersion(entryVersion as EntryVersion);
-                db.SaveChanges();
-                entry.CurrentID = entryVersion.ID;
-                db.SaveChanges();
+                entryVersion.EntryId = entry.Id;
+                db.EntryVersion.InsertOnSubmit(entryVersion as EntryVersion);
+                db.SubmitChanges();
+                entry.CurrentId = entryVersion.Id;
+                db.SubmitChanges();
             }
             return true;
         }
@@ -167,14 +167,14 @@ namespace CHSNS.SQLServerImplement {
             using (var db = DBExtInstance)
             {
                return 
-                    db.EntryVersion.FirstOrDefault(c => c.ID == versionId);
+                    db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
             }
         }
 
         public IEntry Get(long entryId)
         {
             using (var db = DBExtInstance) {
-                return db.Entry.FirstOrDefault(c => c.ID == entryId);
+                return db.Entry.FirstOrDefault(c => c.Id == entryId);
             }
         }
 

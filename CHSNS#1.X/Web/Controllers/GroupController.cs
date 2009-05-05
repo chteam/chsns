@@ -53,8 +53,8 @@ namespace CHSNS.Controllers {
 
             #region Í³¼Æ
 
-            ViewData["MemberList"] = DbExt.View.ViewList(6, 2, g.ID, 6);
-            ViewData["ViewList"] = DbExt.View.ViewList(1, 6, g.ID, 6);
+            ViewData["MemberList"] = DbExt.View.ViewList(6, 2, g.Id, 6);
+            ViewData["ViewList"] = DbExt.View.ViewList(1, 6, g.Id, 6);
 
             ViewData["Applycount"] = DbExt.Group.WaitJoinCount(id);
 
@@ -152,9 +152,9 @@ namespace CHSNS.Controllers {
 					return this.RedirectToReferrer();
 				}
 				post.Type = (int)NoteType.GroupPost;
-                post.UserID = CHContext.User.UserID;
+                post.UserId = CHContext.User.UserID;
 				if (id.HasValue) {
-					post.ID = id.Value;
+					post.Id = id.Value;
 					DbExt.Note.Edit(post);
 				} else {
 					DbExt.Note.Add(post,CHUser);

@@ -30,7 +30,7 @@ namespace CHSNS.Service {
             return User.GetBaseInfo(userId);
         }
         public void SaveBaseInfo(IBasicInformation b, IContext context) {
-            if (b.UserID == 0) b.UserID = context.User.UserID;
+            if (b.UserId == 0) b.UserId = context.User.UserID;
             User.SaveBaseInfo(b);
         }
 

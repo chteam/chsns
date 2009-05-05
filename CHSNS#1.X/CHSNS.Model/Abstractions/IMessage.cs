@@ -1,11 +1,11 @@
 namespace CHSNS.Abstractions {
     public interface IMessage {
 
-        long ID { get; set; }
+        long Id { get; set; }
 
-        long FromID { get; set; }
+        long FromId { get; set; }
 
-        long ToID { get; set; }
+        long ToId { get; set; }
 
         string Title { get; set; }
 

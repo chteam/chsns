@@ -1,6 +1,6 @@
 ﻿namespace CHSNS.Model {
-	public class NameIDPas {
-		public long ID { get; set; }
+	public class NameIdPas {
+		public long Id { get; set; }
 		public string Name { get; set; }
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System;
 using CHSNS.Model;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator
 {
@@ -17,22 +18,22 @@ namespace CHSNS.Operator
                         //最近登录的好友
                         lu =
                             (from f in db.Friend
-                             join p in db.Profile on f.ToID equals p.UserID
-                             where f.FromID == ownerid && f.IsTrue
+                             join p in db.Profile on f.ToId equals p.UserId
+                             where f.FromId == ownerid && f.IsTrue
                              orderby p.LoginTime descending
                              select new UserItemPas
                                         {
-                                            ID = p.UserID,
+                                            Id = p.UserId,
                                             Name = p.Name
                                         }
                             ).Union(
                                 from f in db.Friend
-                                join p in db.Profile on f.FromID equals p.UserID
-                                where f.ToID == ownerid && f.IsTrue
+                                join p in db.Profile on f.FromId equals p.UserId
+                                where f.ToId == ownerid && f.IsTrue
                                 orderby p.LoginTime descending
                                 select new UserItemPas
                                            {
-                                               ID = p.UserID,
+                                               Id = p.UserId,
                                                Name = p.Name
                                            }
                                 )
@@ -45,13 +46,13 @@ namespace CHSNS.Operator
                         //		为5时为日志浏览ownerid 为logid
 
                         lu = (from v in db.ViewData
-                              join p in db.Profile on v.ViewerID equals p.UserID
-                              where v.OwnerID == ownerid && v.ViewClass == type
+                              join p in db.Profile on v.ViewerId equals p.UserId
+                              where v.OwnerId == ownerid && v.ViewClass == type
                               orderby v.ViewTime descending
                               select new UserItemPas
                                          {
                                              Name = p.Name,
-                                             ID = p.UserID
+                                             Id = p.UserId
                                          }
                              );
                         break;
@@ -60,13 +61,13 @@ namespace CHSNS.Operator
                         lu = (from p in
                                   (from p in db.Profile
                                    where !p.Status.Equals(RoleType.Locked)
-                                   orderby p.UserID descending
+                                   orderby p.UserId descending
                                    select p
                                   ).Take(10)
                               select new UserItemPas
                                          {
                                              Name = p.Name,
-                                             ID = p.UserID
+                                             Id = p.UserId
                                          })
                             ;
                         break;
@@ -82,18 +83,18 @@ namespace CHSNS.Operator
                               select new UserItemPas
                                          {
                                              Name = p.Name,
-                                             ID = p.UserID
+                                             Id = p.UserId
                                          });
                         break;
                     default: //if (type==6)//--群用户随机
                         lu = (from u in db.GroupUser
-                              join p in db.Profile on u.UserID equals p.UserID
-                              where u.GroupID == ownerid && u.Status != (int)GroupUserStatus.Wait
+                              join p in db.Profile on u.UserId equals p.UserId
+                              where u.GroupId == ownerid && u.Status != (int)GroupUserStatus.Wait
                               orderby p.LoginTime descending
                               select new UserItemPas
                                          {
                                              Name = p.Name,
-                                             ID = p.UserID
+                                             Id = p.UserId
                                          }
                              );
                         break;
@@ -112,8 +113,8 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var vd = db.ViewData.FirstOrDefault(c =>
-                                                    c.ViewClass == type && c.ViewerID == myId &&
-                                                    c.OwnerID == ownerid);
+                                                    c.ViewClass == type && c.ViewerId == myId &&
+                                                    c.OwnerId == ownerid);
                 if (null != vd) return;
 
                 #region sql
@@ -130,7 +131,7 @@ namespace CHSNS.Operator
                 switch (type)
                 {
                     case 0:
-                        var p = db.Profile.FirstOrDefault(c => c.UserID == ownerid);
+                        var p = db.Profile.FirstOrDefault(c => c.UserId == ownerid);
                         if (p != null) p.ViewCount++;
                         #region sql
 //                                                DataBaseExecutor.Execute(
@@ -141,7 +142,7 @@ namespace CHSNS.Operator
                         #endregion
                         break;
                     case 1:
-                        var g = db.Group.FirstOrDefault(c => c.ID == ownerid);
+                        var g = db.Group.FirstOrDefault(c => c.Id == ownerid);
                         if (g != null) g.ViewCount++;
                         #region sql 
 //                        DataBaseExecutor.Execute(
@@ -153,7 +154,7 @@ namespace CHSNS.Operator
                         #endregion
                         break;
                     case 5:
-                        var n = db.Note.FirstOrDefault(c => c.ID == ownerid);
+                        var n = db.Note.FirstOrDefault(c => c.Id == ownerid);
                         if (n != null) n.ViewCount++;
                         #region sql
 //                        DataBaseExecutor.Execute(
@@ -168,12 +169,12 @@ namespace CHSNS.Operator
                         break;
                 }
                 //更新相关数据完毕
-                var vds = db.ViewData.Where(c => c.OwnerID == ownerid &&
+                var vds = db.ViewData.Where(c => c.OwnerId == ownerid &&
                                                  c.ViewClass == type).OrderByDescending(c => c.ViewTime).Take(50);
                 var v = vds.LastOrDefault();
                 if(null!=v)
                 {
-                    v.ViewerID = myId;
+                    v.ViewerId = myId;
                     v.ViewTime = DateTime.Now;
                 }
                 #region sql
@@ -199,8 +200,8 @@ namespace CHSNS.Operator
                 {
                     db.ViewData.InsertOnSubmit(new ViewData
                                                    {
-                                                       ViewerID = myId,
-                                                       OwnerID = ownerid,
+                                                       ViewerId = myId,
+                                                       OwnerId = ownerid,
                                                        ViewClass = type,
                                                        ViewTime = DateTime.Now
                                                    });

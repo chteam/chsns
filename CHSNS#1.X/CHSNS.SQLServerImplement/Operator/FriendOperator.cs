@@ -1,4 +1,5 @@
 using CHSNS.Abstractions;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator
 {
@@ -10,21 +11,21 @@ namespace CHSNS.Operator
     {
 
         #region ªÒ»°
-        public IProfile UserFriendInfo(long userid)
+        public IProfile UserFriendInfo(long userId)
         {
             using (var db = DBExtInstance)
             {
                 var ret = (from p in db.Profile
-                           where p.UserID == userid
+                           where p.UserId == userId
                            select new
                            {
-                               UserID = userid,
+                               UserID = userId,
                                //   p.FriendCount,
                                p.Name
                            }).FirstOrDefault();
                 return new Profile
                 {
-                    UserID = ret.UserID,
+                    UserId = ret.UserID,
                     //	FriendCount = ret.FriendCount,
                     Name = ret.Name
                 };
@@ -35,11 +36,11 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 return (from f1 in db.Friend
-                        where f1.FromID == userid && f1.IsTrue
-                        select f1.ToID)
+                        where f1.FromId == userid && f1.IsTrue
+                        select f1.ToId)
                                    .Union(from f1 in db.Friend
-                                          where f1.ToID == userid && f1.IsTrue
-                                          select f1.FromID).ToList();
+                                          where f1.ToId == userid && f1.IsTrue
+                                          select f1.FromId).ToList();
             }
         }
         public PagedList<UserItemPas> GetFriends(long uid, int page,int pageSize)
@@ -48,11 +49,11 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var ret = (from c in db.Profile
-                           where ids.Contains(c.UserID)
-                           orderby c.UserID
+                           where ids.Contains(c.UserId)
+                           orderby c.UserId
                            select new UserItemPas
                            {
-                               ID = c.UserID,
+                               Id = c.UserId,
                                Name = c.Name,
                                //   ShowText = c.ShowText,
                                //   ShowTextTime = c.ShowTextTime
@@ -100,7 +101,7 @@ namespace CHSNS.Operator
                            orderby db.Newid()
                            select new UserItemPas
                            {
-                               ID = p.UserID,
+                               Id = p.UserId,
                                Name = p.Name,
                            }).Take(n);
                 return ret.ToList();
@@ -112,12 +113,12 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var ret = (from f1 in db.Friend
-                           join p1 in db.Profile on f1.FromID equals p1.UserID
-                           where f1.ToID == userid && !f1.IsTrue
-                           orderby p1.UserID descending
+                           join p1 in db.Profile on f1.FromId equals p1.UserId
+                           where f1.ToId == userid && !f1.IsTrue
+                           orderby p1.UserId descending
                            select new UserItemPas
                            {
-                               ID = p1.UserID,
+                               Id = p1.UserId,
                                Name = p1.Name,
                                ShowText = "",
                                ShowTextTime = DateTime.Now
@@ -138,24 +139,24 @@ namespace CHSNS.Operator
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
-                    (c.ToID == toId && c.FromID == fromId)
+                    (c.ToId == toId && c.FromId == fromId)
                     ||
-                    (c.ToID == fromId && c.FromID == toId)
+                    (c.ToId == fromId && c.FromId == toId)
                     );
                 if (f == null)
                 {
                     db.Friend.InsertOnSubmit(
                         new Friend
                             {
-                                FromID = fromId,
-                                ToID = toId,
+                                FromId = fromId,
+                                ToId = toId,
                                 IsTrue = false,
                                 IsCommon = true
                             });
                 }
                 else
                 {//update
-                    if (f.FromID == toId)
+                    if (f.FromId == toId)
                         f.IsTrue = true;
                 }
                 db.SubmitChanges();
@@ -175,9 +176,9 @@ namespace CHSNS.Operator
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
-                    (c.ToID == toId && c.FromID == fromId)
+                    (c.ToId == toId && c.FromId == fromId)
                     ||
-                    (c.ToID == fromId && c.FromID == toId)
+                    (c.ToId == fromId && c.FromId == toId)
                     &&
                     c.IsTrue
                     );
@@ -200,8 +201,8 @@ namespace CHSNS.Operator
             {
                 var f = db.Friend.FirstOrDefault(
                     c =>
-                    (c.ToID == toId && c.FromID == operaterId) ||
-                    (c.ToID == operaterId && c.FromID == toId) && !c.IsTrue
+                    (c.ToId == toId && c.FromId == operaterId) ||
+                    (c.ToId == operaterId && c.FromId == toId) && !c.IsTrue
                     );
                 if (f == null) return false;
                 f.IsTrue = true;
@@ -233,7 +234,7 @@ namespace CHSNS.Operator
         {
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.FirstOrDefault(c => c.ToID == operaterId && c.FromID == fromId && !c.IsTrue);
+                var f = db.Friend.FirstOrDefault(c => c.ToId == operaterId && c.FromId == fromId && !c.IsTrue);
                 if (f == null) return false;
                 db.Friend.DeleteOnSubmit(f);
                 db.SubmitChanges();
@@ -244,7 +245,7 @@ namespace CHSNS.Operator
         {
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.Where(c => c.ToID == userId && !c.IsTrue);
+                var f = db.Friend.Where(c => c.ToId == userId && !c.IsTrue);
                 db.Friend.DeleteAllOnSubmit(f);
                 db.SubmitChanges();
                 return true;

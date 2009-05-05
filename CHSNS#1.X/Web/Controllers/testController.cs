@@ -28,7 +28,7 @@ namespace CHSNS.Controllers
 			//    cs.Add(new City {
 			//        ID = dr.Field<int>("id"),
 			//        Name = dr.Field<string>("name"),
-			//        PID = dr.Field<int>("pid")
+			//        ParentId = dr.Field<int>("pid")
 			//    });
 			//ConfigSerializer.Serializer<List<City>>(cs, "City");
 			//string str = "";

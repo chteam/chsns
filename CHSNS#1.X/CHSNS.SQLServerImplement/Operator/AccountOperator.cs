@@ -2,7 +2,7 @@
 using System.Linq;
 using CHSNS.Abstractions;
 using CHSNS.Model;
-using CHSNS.SQLServerImplement.LinqToSQL;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator {
     public class AccountOperator : BaseOperator, IAccountOperator {
@@ -13,11 +13,11 @@ namespace CHSNS.Operator {
                 long userId;
                 long.TryParse(userName.Trim(), out userId);
                 var userid = (from a in db.Account
-                              where (a.Username == userName || a.UserID == userId)
+                              where (a.UserName == userName || a.UserId == userId)
                                     && a.Password == password
-                              select a.UserID).FirstOrDefault();
+                              select a.UserId).FirstOrDefault();
                 if (userid <= 1000) return null;
-                var profile = db.Profile.FirstOrDefault(p => p.UserID == userid);
+                var profile = db.Profile.FirstOrDefault(p => p.UserId == userid);
                 var retint = profile.Status;
                 if (retint <= 0) return null;
                 if (profile.LoginTime.Date != DateTime.Now.Date)
@@ -30,7 +30,7 @@ namespace CHSNS.Operator {
                 return new ProfileImplement
                            {
                                Name = profile.Name,
-                               UserID = profile.UserID,
+                               UserId = profile.UserId,
                                Status = retint,
                                Applications = profile.Applications
                            };
@@ -39,16 +39,16 @@ namespace CHSNS.Operator {
 
         public bool Create(AccountPas account, string name, int initScore) {
             var ac = new Account {
-                Username = account.UserName,
+                UserName = account.UserName,
                 Password = account.Password.ToMd5(),
                 Code = DateTime.Now.Ticks
             };
             using (var db = DBExtInstance) {
                 db.Account.InsertOnSubmit(ac);
                 db.SubmitChanges();
-                if (ac.UserID < 999) return false;
+                if (ac.UserId< 999) return false;
                 db.Profile.InsertOnSubmit(new Profile {
-                    UserID = ac.UserID,
+                    UserId = ac.UserId,
                     Name = name,
                     ShowScore = initScore,
                     Score = initScore,
@@ -61,7 +61,7 @@ namespace CHSNS.Operator {
                 db.BasicInformation
                     .InsertOnSubmit(
                     new BasicInformation {
-                        UserID = ac.UserID,
+                        UserId = ac.UserId,
                         Name = name
                     });
                 db.SubmitChanges();
@@ -70,7 +70,7 @@ namespace CHSNS.Operator {
         }
         public bool IsUsernameCanUse(string username) {
             using (var db = DBExtInstance) {
-                return db.Account.Where(c => c.Username == username.Trim()).Count() == 0;
+                return db.Account.Where(c => c.UserName == username.Trim()).Count() == 0;
             }
         }
 

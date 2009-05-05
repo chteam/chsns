@@ -1,7 +1,7 @@
 namespace CHSNS.Abstractions {
     public interface IEntryVersion {
 
-        long ID { get; set; }
+        long Id { get; set; }
 
         string Reason { get; set; }
 
@@ -11,11 +11,11 @@ namespace CHSNS.Abstractions {
 
         string Reference { get; set; }
 
-        long UserID { get; set; }
+        long UserId { get; set; }
 
         int Status { get; set; }
 
-        long? EntryID { get; set; }
+        long? EntryId { get; set; }
 
         string ParentText { get; set; }
 

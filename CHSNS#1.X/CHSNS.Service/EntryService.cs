@@ -45,11 +45,11 @@ namespace CHSNS.Service {
             if(!id.HasValue)
             {
                 entry.Status = (int)EntryType.Common;
-                entry.CreaterID = user.UserID;
+                entry.CreaterId = user.UserID;
                 entry.UpdateTime = dt;
                 entry.EditCount = 1;
             }
-            entryVersion.UserID = user.UserID;
+            entryVersion.UserId = user.UserID;
             entryVersion.Status = (int)(user.IsAdmin ? EntryType.Common : EntryType.Wait);
             entryVersion.AddTime = dt;
             entryVersion.Reference += "";

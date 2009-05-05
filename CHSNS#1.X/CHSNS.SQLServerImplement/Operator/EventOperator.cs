@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CHSNS.Abstractions;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator
 {
@@ -22,8 +23,8 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var ret = (from e in db.Event
-                           where ids.Contains(e.OwnerID)
-                           orderby e.ID descending
+                           where ids.Contains(e.OwnerId)
+                           orderby e.Id descending
                            select e).Cast<IEvent>();
                 return ret.Pager(page, pageSize);
             }
@@ -38,7 +39,7 @@ namespace CHSNS.Operator
         {
             using (var db = DBExtInstance)
             {
-                var e = db.Event.FirstOrDefault(c => c.ID == id && c.OwnerID == ownerid);
+                var e = db.Event.FirstOrDefault(c => c.Id == id && c.OwnerId == ownerid);
                 if (e == null) return;
                 db.Event.DeleteOnSubmit(e);
                 db.SubmitChanges();
@@ -75,8 +76,8 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var ret = (from e in db.Event
-                           where e.OwnerID == userid
-                           orderby e.ID descending
+                           where e.OwnerId == userid
+                           orderby e.Id descending
                            select e).Cast<IEvent>();
                 return ret.Pager(p, ep);
             }

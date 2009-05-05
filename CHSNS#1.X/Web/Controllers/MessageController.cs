@@ -68,7 +68,7 @@ namespace CHSNS.Controllers
             Title = "Ð´Õ¾ÄÚÐÅ";
             return View(new UserItemPas
             {
-                ID = toid,
+                Id = toid,
                 Name = Server.UrlDecode(toname)
             });
         }
@@ -78,7 +78,7 @@ namespace CHSNS.Controllers
 
             var m = new MessageImplement
             {
-                FromID = CHUser.UserID,
+                FromId = CHUser.UserID,
                 SendTime = DateTime.Now
             };
             UpdateModel(m, new[] { "Title", "Body", "ToID" });

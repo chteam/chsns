@@ -2,7 +2,7 @@ using System;
 
 namespace CHSNS.Abstractions {
     public interface IBasicInformation {
-        long UserID { get; set; }
+        long UserId { get; set; }
 
         string Name { get; set; }
 
@@ -14,9 +14,9 @@ namespace CHSNS.Abstractions {
 
         DateTime? Birthday { get; set; }
 
-        int ProvinceID { get; set; }
+        int ProvinceId { get; set; }
 
-        long CityID { get; set; }
+        long CityId { get; set; }
 
         byte ShowLevel { get; set; }
     }

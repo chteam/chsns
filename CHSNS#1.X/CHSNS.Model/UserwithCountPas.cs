@@ -1,5 +1,5 @@
 ﻿namespace CHSNS.Model {
-	public class UserCountPas : NameIDPas {
+	public class UserCountPas : NameIdPas {
 		public long Count { get; set; }
 	}
 }

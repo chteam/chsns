@@ -20,13 +20,13 @@ namespace CHSNS.Controllers {
             var user = DbExt.UserInfo.GetUser(
                 userid.Value,
                 c => new ProfileImplement{
-                                             UserID = c.UserID,
+                                             UserId = c.UserId,
                                              Name = c.Name,
                                              //Count = c.NoteCount
                                          });
             ViewData["NowPage"] = 1;
             ViewData["PageCount"] = 0;// user.Count;
-            ViewData["replylist"] = DbExt.Comment.GetReply(user.UserID, 1, 10);
+            ViewData["replylist"] = DbExt.Comment.GetReply(user.UserId, 1, 10);
             Title = user.Name + "µƒ¡Ù—‘±æ";
             return View(user);
         }
@@ -58,8 +58,8 @@ namespace CHSNS.Controllers {
                 r.UserID = OwnerID;
                 var model = new List<CommentPas>{
 					new CommentPas{
-					Sender = new NameIDPas{
-						ID = CHUser.UserID,
+					Sender = new NameIdPas{
+						Id = CHUser.UserID,
 						Name = CHUser.Username
 					},
 					Comment =new CommentItemPas{ 
@@ -117,8 +117,8 @@ namespace CHSNS.Controllers {
             };
             var model = new List<CommentPas>{
 					new CommentPas{
-					Sender = new NameIDPas{
-						ID = CHUser.UserID,
+					Sender = new NameIdPas{
+						Id = CHUser.UserID,
 						Name = CHUser.Username
 					},
 					Comment =new CommentItemPas{ 
