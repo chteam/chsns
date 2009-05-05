@@ -40,7 +40,7 @@ namespace CHSNS.Operator {
 //                "@body", n ote.Body,
 //                "@edittime", DateTime.Now,
 //                "@id", no te.ID,
-//                "@userid", no te.UserID);
+//                "@userid", no te.UserId);
 
             #endregion
         }

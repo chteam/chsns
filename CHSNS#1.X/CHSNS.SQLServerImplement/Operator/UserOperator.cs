@@ -1,4 +1,4 @@
-锘縰sing System.Linq;
+using System.Linq;
 using System;
 using CHSNS.Model;
 using CHSNS.Abstractions;
@@ -40,7 +40,7 @@ namespace CHSNS.Operator {
 		}
         public void SaveBaseInfo(IBasicInformation b)
         {
-          //  if (b.UserID == 0) b.UserID = user.UserID;
+          //  if (b.UserId == 0) b.UserId = user.UserId;
             using (var db = DBExtInstance)
             {
                 var bi = db.BasicInformation.FirstOrDefault(c => c.UserID == b.UserID);
@@ -58,20 +58,20 @@ namespace CHSNS.Operator {
 
             //            DataBaseExecutor.Execute(
             //                @"UPDATE [BasicInformation]
-            //   SET [Name] = @Name
+            //   SET [Title] = @Title
             //      ,[Sex] = @Sex
             //      ,[Birthday] = @Birthday
             //      ,[ProvinceID] = @ProvinceID
             //      ,[CityID] = @CityID
             //      ,[ShowLevel] = @ShowLevel
-            // WHERE UserID=@UserID"
-            //                , "@Name", b.Name
+            // WHERE UserId=@UserId"
+            //                , "@Title", b.Title
             //                , "@Sex", b.Sex
             //                , "@Birthday", b.Birthday
             //                , "@ProvinceID", b.ProvinceID
             //                , "@CityID", b.CityID
             //                , "@ShowLevel", b.ShowLevel
-            //                , "@UserID", b.UserID);
+            //                , "@UserId", b.UserId);
 
             #endregion
         }
@@ -98,9 +98,9 @@ namespace CHSNS.Operator {
             }
             #region sql
            //            DataBaseExecutor.Execute(@"Update [profile]
-//set Magicbox=@magicbox where UserID=@UserID"
+//set Magicbox=@magicbox where UserId=@UserId"
 //                                     , "@magicbox", magicbox
-//                                     , "@UserID", UserID);
+//                                     , "@UserId", UserId);
             #endregion
 		}
 		public void MagicBoxBackup() {
@@ -141,7 +141,7 @@ namespace CHSNS.Operator {
   //              p.show = magicbox;
                 db.SubmitChanges();
             }
-            // TODO:涓汉绛惧悕鐨勮〃
+            // TODO:个人签名的表
 //            DataBaseExecutor.Execute(@"update [profile]
 //set showtext=@text,showtexttime=@now where userid=@uid;"
 //                                     , "@text", text
@@ -150,7 +150,7 @@ namespace CHSNS.Operator {
 //                );
             //DBExt.Event.Add(new Event
             //                    {
-            //                        OwnerID = CHUser.UserID,
+            //                        OwnerID = CHUser.UserId,
             //                        TemplateName = "ProText",
             //                        AddTime = DateTime.Now,
             //                        ShowLevel = 0,

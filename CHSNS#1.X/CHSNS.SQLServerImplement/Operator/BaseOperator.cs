@@ -1,5 +1,6 @@
 ﻿
 using System.Configuration;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator {
      public class BaseOperator {//} : IOperator {

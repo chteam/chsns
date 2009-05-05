@@ -76,12 +76,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinqToSQL\Album.cs" />
     <Compile Include="LinqToSQL\CHSNSDB.designer.cs">
       <DependentUpon>CHSNSDB.dbml</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="LinqToSQL\CHSNSDBDataContext.cs" />
+    <Compile Include="LinqToSQL\Photo.cs" />
     <Compile Include="Operator\AccountOperator.cs" />
     <Compile Include="Operator\AlbumOperator.cs" />
     <Compile Include="Operator\ApplicationOperator.cs" />
