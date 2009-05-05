@@ -10,13 +10,13 @@ Inherits="System.Web.Mvc.ViewPage<PagedList<IGroup>>" %>
 		<div class="ch_content">
 			<ul class="userlist">
 				<%  foreach (IGroup p in ViewData.Model.ToNotNull()) { %>
-				<li id="Items<%=p.ID %>" class="useritem">
+				<li id="Items<%=p.Id %>" class="useritem">
 					<div class="face face-middle">
-						<a href="<%=Url.LinkGroupIndex(p.ID) %>"
+						<a href="<%=Url.LinkGroupIndex(p.Id) %>"
 						title="<%=p.Name %>" style="background-image: url();"></a>
 					</div>
 					<div class="info">
-						<strong><a href="<%=Url.LinkGroupIndex(p.ID) %>"><%=p.Name %></a></strong>
+						<strong><a href="<%=Url.LinkGroupIndex(p.Id) %>"><%=p.Name %></a></strong>
 						<ul>
 							<li>
 							</li>

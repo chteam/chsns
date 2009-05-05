@@ -3,6 +3,7 @@ using System.Linq;
 using CHSNS.Model;
 using System.Collections.Generic;
 using CHSNS.Abstractions;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator {
 	public class NoteOperator : BaseOperator, INoteOperator {
@@ -15,7 +16,7 @@ namespace CHSNS.Operator {
 		    {
 		        note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
 		        db.Note.InsertOnSubmit(CastTool.Cast<Note>(note));
-		        db.SaveChanges();
+		        db.SubmitChanges();
 		    }
 		    
 		}
@@ -24,7 +25,7 @@ namespace CHSNS.Operator {
         {
             using (var db = DBExtInstance)
             {
-                var n = db.Note.FirstOrDefault(c => c.UserID == note.UserID && c.ID == note.ID);
+                var n = db.Note.FirstOrDefault(c => c.UserId == note.UserId && c.Id == note.Id);
                 n.Title = note.Title;
                 n.Body = note.Body;
                 n.EditTime = DateTime.Now;
@@ -51,7 +52,7 @@ namespace CHSNS.Operator {
 		public void Delete(long id, long pid, NoteType nt) {
             using (var db = DBExtInstance)
             {
-                var n = db.Note.FirstOrDefault(c => c.ID == id && c.UserID == pid);
+                var n = db.Note.FirstOrDefault(c => c.Id == id && c.UserId == pid);
                 if(null!=n)
                 {
                     db.Note.DeleteOnSubmit(n);
@@ -74,14 +75,14 @@ namespace CHSNS.Operator {
             using (var db = DBExtInstance)
             {
                 var ret = (from n in db.Note
-                           join p in db.Profile on n.UserID equals p.UserID
-                           where n.ID == id && n.Type.Equals(nt ?? NoteType.Note)
+                           join p in db.Profile on n.UserId equals p.UserId
+                           where n.Id == id && n.Type.Equals(nt ?? NoteType.Note)
                            select new NoteDetailsPas
                                       {
                                           Note = n,
                                           User = new UserCountPas
                                                      {
-                                                         ID = p.UserID,
+                                                         Id = p.UserId,
                                                          Name = p.Name,
                                                          Count = n.CommentCount
                                                      }
@@ -95,16 +96,16 @@ namespace CHSNS.Operator {
             using (var db = DBExtInstance)
             {
                 return (from n in db.Note
-                        join p in db.Profile on n.UserID equals p.UserID
-                        orderby n.ID descending
+                        join p in db.Profile on n.UserId equals p.UserId
+                        orderby n.Id descending
                         select new NotePas
                                    {
                                        AddTime = n.AddTime,
                                        Body = n.Summary,
                                        CommentCount = n.CommentCount,
-                                       ID = n.ID,
+                                       Id = n.Id,
                                        Title = n.Title,
-                                       UserID = n.UserID,
+                                       UserId = n.UserId,
                                        ViewCount = n.ViewCount,
                                        WriteName = p.Name
                                    }).Take(ni ?? 10).ToList();
@@ -116,17 +117,17 @@ namespace CHSNS.Operator {
             using (var db = DBExtInstance)
             {
                 return (from n in db.Note
-                        join pr in db.Profile on n.UserID equals pr.UserID
-                        where n.PID == pid && n.Type.Equals(nt ?? NoteType.Note)
-                        orderby n.ID descending
+                        join pr in db.Profile on n.UserId equals pr.UserId
+                        where n.ParentId == pid && n.Type.Equals(nt ?? NoteType.Note)
+                        orderby n.Id descending
                         select new NotePas
                                    {
                                        AddTime = n.AddTime,
                                        Body = n.Summary,
                                        CommentCount = n.CommentCount,
-                                       ID = n.ID,
+                                       Id = n.Id,
                                        Title = n.Title,
-                                       UserID = n.UserID,
+                                       UserId = n.UserId,
                                        ViewCount = n.ViewCount,
                                        WriteName = pr.Name
                                    }).Pager(p, ep);

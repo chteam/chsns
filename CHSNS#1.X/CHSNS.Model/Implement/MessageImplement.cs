@@ -3,9 +3,9 @@ using CHSNS.Abstractions;
 
 namespace CHSNS.Model{
     public class MessageImplement : IMessage{
-        public long ID { get; set; }
-        public long FromID { get; set; }
-        public long ToID { get; set; }
+        public long Id { get; set; }
+        public long FromId { get; set; }
+        public long ToId { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime SendTime { get; set; }

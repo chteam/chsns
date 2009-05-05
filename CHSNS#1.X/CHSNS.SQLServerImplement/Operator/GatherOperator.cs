@@ -14,7 +14,7 @@ namespace CHSNS.Operator {
             using (var db = DBExtInstance)
             {
                 var r = (from p in db.Profile
-                         where p.UserID == userid
+                         where p.UserId == userid
                          select new
                          {
                              // p.FriendRequestCount,

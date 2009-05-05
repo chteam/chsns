@@ -37,12 +37,12 @@ namespace CHSNS.Service {
                 Type = (byte)GroupType.Common,
                 AddTime = DateTime.Now,
                 Summary = "",
-                CreaterID = uId
+                CreaterId = uId
             };
             return Group.Add(group, uId);
         }
         public bool Update(long groupId, IGroup group) {
-            group.ID = groupId;
+            group.Id = groupId;
             return Group.Update(group);
         }
         public List<UserCountPas> GetGroupUser(long groupId){

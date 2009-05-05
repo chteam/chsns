@@ -11,7 +11,7 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 	%>
 	<div class="ch_content">
 		<div class="title">
-			<%=Html.NoteDetails(n.Title,n.ID ,n.AddTime) %></div>
+			<%=Html.NoteDetails(n.Title,n.Id ,n.AddTime) %></div>
 		<div class="text">
 			<%=n.Body %>
 			<hr />
@@ -19,20 +19,20 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 				<span class="time">
 					<%=n.AddTime .ToString("yyyy-MM-dd hh:mm") %>
 				</span>
-				<%=Html.NoteList( u.ID,u.Name+"的日志") %>
-				<%=Html.UserPageLink(u.ID,u.Name) %>
+				<%=Html.NoteList( u.Id,u.Name+"的日志") %>
+				<%=Html.UserPageLink(u.Id,u.Name) %>
 				阅读(<%=n.ViewCount %>) 评论(<%=n.CommentCount %>)<%-- 推荐(<%=n.PushCount %>)--%>
 				<%
-					if (n.UserID == CH.Context.User.UserID) {
+					if (n.UserId == CH.Context.User.UserID) {
 				%>
-				<%=Html.NoteEdit(n.ID, "编辑")%>
+				<%=Html.NoteEdit(n.Id, "编辑")%>
 				<%
 					}
 				%></div>
 		</div>
 		<div>
 			<%Html.RenderPartial("CommentList"); %></div>
-			<%Html.RenderPartial("Comment/DirectTextBox", n.ID); %>
+			<%Html.RenderPartial("Comment/DirectTextBox", n.Id); %>
 	</div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
@@ -41,7 +41,7 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 		var Reply = function(showerid) {
 			if (v_empty("#comment_body", '不能为空'))
 				$.post('<%=this.Url.Action("Add","Comment") %>',
-				{ 'ShowerID': showerid, 'OwnerID': '<%=ViewData.Model.Note.UserID %>',
+				{ 'ShowerID': showerid, 'OwnerID': '<%=ViewData.Model.Note.UserId %>',
 					'Body': $v('#comment_body'), 'type': 0
 				}, function(r) {
 					$('#ReplyItems').append(r);

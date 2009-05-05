@@ -39,13 +39,13 @@
             <td class="ln25">&nbsp;</td>
             <td class="ln25 f14">
             <%=i.AddTime.ToString("yyyy-MM-dd hh:mm:ss") %>版本&nbsp;&nbsp;
-            <%=Html.ActionLink("查看", "History", new { id = i.ID }, new { title = "点此查看历史版本" })%>
+            <%=Html.ActionLink("查看", "History", new { id = i.Id }, new { title = "点此查看历史版本" })%>
             </td>
             <td class="ln25 f14" align="right">
                 &nbsp;
             </td>
             <td class="ln25 f14">
-            <%=Html.UserPageLink(i.User.ID,i.User.Name)%>
+            <%=Html.UserPageLink(i.User.Id,i.User.Name)%>
             </td>
             <td class="ln25 f14">
                <%=i.Reason %>

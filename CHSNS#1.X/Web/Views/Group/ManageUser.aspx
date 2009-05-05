@@ -16,9 +16,9 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		审核</h3>
 	<ol>
 		<%foreach (UserCountPas u in list.Where(c => c.Count == (int)GroupUserStatus.Lock)) { %>
-		<li id="user<%=u.ID %>">
+		<li id="user<%=u.Id %>">
 		<span class="edit">群主 </span>
-		<%=Html.UserPageLink(u.ID,u.Name) %>
+		<%=Html.UserPageLink(u.Id,u.Name) %>
 		</li>
 		<%} %>
 	</ol>
@@ -27,14 +27,14 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		管理员</h3>
 	<ol>
 		<%foreach (UserCountPas u in list.Where(c => c.Count == (int)GroupUserStatus.Ceater)) { %>
-<li id="user<%=u.ID %>">
+<li id="user<%=u.Id %>">
 		<span class="edit">群主 </span>
-		<%=Html.UserPageLink(u.ID,u.Name) %>
+		<%=Html.UserPageLink(u.Id,u.Name) %>
 		</li>
 		<%}foreach (UserCountPas u in list.Where(c => c.Count == (int)GroupUserStatus.Admin)) { %>
-<li id="user<%=u.ID %>">
+<li id="user<%=u.Id %>">
 		<span class="edit">管理员 设为普通用户</span>
-		<%=Html.UserPageLink(u.ID,u.Name) %>
+		<%=Html.UserPageLink(u.Id,u.Name) %>
 		</li>
 		<%} %>
 	</ol>
@@ -43,9 +43,9 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		群成员</h3>
 	<ol>
 		<%foreach (UserCountPas u in list.Where(c => c.Count == (int)GroupUserStatus.Common)) { %>
-		<li id="user<%=u.ID %>">
+		<li id="user<%=u.Id %>">
 		<span class="edit">删除 升为管理员 </span>
-		<%=Html.UserPageLink(u.ID,u.Name) %></li>
+		<%=Html.UserPageLink(u.Id,u.Name) %></li>
 		<%} %>
 	</ol>
 	</form>

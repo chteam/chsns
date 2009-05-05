@@ -9,7 +9,7 @@
 [EditTime] [smalldatetime] NOT NULL,
 [Type] [tinyint] NOT NULL,
 /*外键*/
-[PId] [bigint] NOT NULL,
+[ParentId] [bigint] NOT NULL,
 [UserId] [bigint] NOT NULL,
 
 /*权限*/

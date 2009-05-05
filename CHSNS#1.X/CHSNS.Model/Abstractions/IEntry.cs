@@ -1,14 +1,14 @@
 namespace CHSNS.Abstractions{
     public interface IEntry{
-         long ID{get;set;}
+         long Id{get;set;}
 
          string Title{get;set;}
 
-         long CreaterID{get;set;}
+         long CreaterId{get;set;}
 
          System.DateTime UpdateTime{get;set;}
 
-         long? CurrentID{get;set;}
+         long? CurrentId{get;set;}
 
          int EditCount{get;set;}
 

@@ -1,6 +1,6 @@
 namespace CHSNS.Abstractions {
     public interface IProfile {
-        long UserID { get; set; }
+        long UserId { get; set; }
 
         string Name { get; set; }
 
@@ -16,7 +16,7 @@ namespace CHSNS.Abstractions {
 
         string MagicBox { get; set; }
 
-        bool IsMagicBox { get; set; }
+        bool HasMagicBox { get; set; }
 
         System.DateTime RegTime { get; set; }
 
@@ -32,6 +32,6 @@ namespace CHSNS.Abstractions {
 
         string Applicationlist { get; set; }
 
-        string Ext { get; set; }
+     //   string Ext { get; set; }
     }
 }

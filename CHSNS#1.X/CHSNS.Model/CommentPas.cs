@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CHSNS.Model {
 	public class CommentPas {
-		public NameIDPas Sender { get; set; }
+		public NameIdPas Sender { get; set; }
 		public CommentItemPas Comment { get; set; }
 	}
 }

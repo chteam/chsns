@@ -59,7 +59,7 @@ Inherits="System.Web.Mvc.ViewPage<IGroup>" %>
 				<li>&nbsp;</li>
 				<li>群管理员：</li>
 				<%foreach (UserItemPas u in (ViewData["adminlist"] as IEnumerable<UserItemPas>).ToNotNull()) {%>
-				<%=Html.UserPageLink(u.ID,u.Name) %>
+				<%=Html.UserPageLink(u.Id,u.Name) %>
 				<%}%>
 				<li>&nbsp;</li>
 			</ul>
@@ -123,7 +123,7 @@ Inherits="System.Web.Mvc.ViewPage<IGroup>" %>
 			<h4>
 				<a href="#sendsubject">发表新主题</a></h4>
 			<form action="<%=Url.Action("Post","Group") %>" method="post" onsubmit="return sub();">
-			<%=Html.Hidden("post.PID",g.ID) %>
+			<%=Html.Hidden("post.ParentId",g.ID) %>
 			<ul>
 				<li>
 					<label for="subject">

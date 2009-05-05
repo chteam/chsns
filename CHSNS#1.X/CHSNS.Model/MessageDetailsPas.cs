@@ -5,8 +5,8 @@ using System.Text;
 
 namespace CHSNS.Model {
 	public class MessageDetailsPas {
-		public NameIDPas UserInbox { set; get; }
-		public NameIDPas UserOutbox { set; get; }
+		public NameIdPas UserInbox { set; get; }
+		public NameIdPas UserOutbox { set; get; }
 		public MessageItemPas Message { set; get; }
 	}
 }

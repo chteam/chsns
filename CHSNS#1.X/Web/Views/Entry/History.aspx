@@ -24,11 +24,11 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage" %>
 		<ul>
 		<li><%=Html.ActionLink("当前版本", "Index", new { title = entry.Title.Trim() })%></span></li>
 			<li>
-				<%=Html.ActionLink("历史版本","Historylist", new { id=entry.ID})%>
+				<%=Html.ActionLink("历史版本","Historylist", new { id=entry.Id})%>
 				<span>(<%=entry.EditCount %>)</span></li>
 			<%if (CH.Context.User.IsAdmin) { %>
 			<li>
-				<%=Html.ActionLink("编辑词条", "Edit", new { id = entry.ID })%>
+				<%=Html.ActionLink("编辑词条", "Edit", new { id = entry.Id })%>
 			</li>
 			<li><a href="#">新建词条</a></li>
 			<%} %>

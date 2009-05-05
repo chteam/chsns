@@ -23,7 +23,7 @@ namespace CHSNS.Operator
                                                   AddTime = r.AddTime,
                                                   IsDel = r.IsDel
                                               },
-                                              Sender = new NameIDPas { ID = p.UserId, Name = p.Name }
+                                              Sender = new NameIdPas { Id = p.UserId, Name = p.Name }
                                           }
                                                );
             return ret;
@@ -99,7 +99,7 @@ namespace CHSNS.Operator
                                                                             AddTime = c.AddTime,
                                                                             IsDel = c.IsDel
                                                                         },
-                                                            Sender = new NameIDPas { ID = p1.UserId, Name = p1.Name }
+                                                            Sender = new NameIdPas { Id = p1.UserId, Name = p1.Name }
                                                         }
                                              );
                 return ret.Pager(p, pageSize);//Site.EveryPage.NoteComment

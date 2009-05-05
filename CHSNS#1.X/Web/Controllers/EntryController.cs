@@ -19,8 +19,8 @@ namespace CHSNS.Controllers
             Title = "页面不存在";
             if (string.IsNullOrEmpty(title)) return Wait();
             model.Entry = DbExt.Entry.Get(title);
-            if (model.Entry == null || !model.Entry.CurrentID.HasValue) return Wait();
-            var version = DbExt.Entry.GetVersion(model.Entry.CurrentID.Value);
+            if (model.Entry == null || !model.Entry.CurrentId.HasValue) return Wait();
+            var version = DbExt.Entry.GetVersion(model.Entry.CurrentId.Value);
             if (version == null) return Wait();
             model.Version = version;
             model.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
@@ -51,7 +51,7 @@ namespace CHSNS.Controllers
             var version = DbExt.Entry.GetVersion(id);
             ViewData["version"] = version;
             if (version == null) return View("wait", "site");
-            var entry = DbExt.Entry.Get(version.EntryID.Value);
+            var entry = DbExt.Entry.Get(version.EntryId.Value);
             ViewData["entry"] = entry;
 
             if (ViewData["entry"] == null || ViewData["version"] == null)
@@ -117,9 +117,9 @@ namespace CHSNS.Controllers
                 if ((entry.Status == (int)EntryType.Common || HasManageRight())) {
                     ViewData["exists"] = true;
                     ViewData["entry.Title"] = entry.Title;
-                    ViewData["id"] = entry.ID;
+                    ViewData["id"] = entry.Id;
 
-                    var entryversion = DbExt.Entry.GetVersion(entry.CurrentID ?? 0);
+                    var entryversion = DbExt.Entry.GetVersion(entry.CurrentId ?? 0);
                     //db.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
                     if (entryversion == null) return View("Wait");
                     ViewData["entryversion.description"] = entryversion.Description;

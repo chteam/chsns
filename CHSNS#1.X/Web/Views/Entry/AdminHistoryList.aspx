@@ -35,18 +35,18 @@ Inherits="System.Web.Mvc.ViewPage" %>
             </td>
             <td class="ln25">
                             <%=e.Status%>
-                <%=(e.Status != (int)EntryVersionType.Common)?Html.ActionLink("通过审核","Pass",new{id=e.ID}) :""%>
-                <%=(e.Status != (int)EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.ID }) : ""%>
+                <%=(e.Status != (int)EntryVersionType.Common)?Html.ActionLink("通过审核","Pass",new{id=e.Id}) :""%>
+                <%=(e.Status != (int)EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }) : ""%>
             </td>
             <td class="ln25 f14">
             <%=e.AddTime.ToString("yyyy-MM-dd hh:mm:ss") %>版本&nbsp;&nbsp;
-            <%=Html.ActionLink("查看", "History", new { id = e.ID }, new { title = "点此查看历史版本" })%>
+            <%=Html.ActionLink("查看", "History", new { id = e.Id }, new { title = "点此查看历史版本" })%>
             </td>
             <td class="ln25 f14" align="right">
                 &nbsp;
             </td>
             <td class="ln25 f14">
-            <%=Html.UserPageLink(e.User.ID,e.User.Name)%>
+            <%=Html.UserPageLink(e.User.Id,e.User.Name)%>
             </td>
             <td class="ln25 f14">
                <%=e.Reason %>

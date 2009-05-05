@@ -1,6 +1,6 @@
 namespace CHSNS.Abstractions {
     public interface INote {
-        long ID { get; set; }
+        long Id { get; set; }
 
         string Title { get; set; }
 
@@ -14,9 +14,9 @@ namespace CHSNS.Abstractions {
 
         byte Type { get; set; }
 
-        long PID { get; set; }
+        long ParentId { get; set; }
 
-        long UserID { get; set; }
+        long UserId { get; set; }
 
         byte IsTellMe { get; set; }
 
@@ -32,7 +32,7 @@ namespace CHSNS.Abstractions {
 
         long CommentCount { get; set; }
 
-        long LastCommentUserID { get; set; }
+        long LastCommentUserId { get; set; }
 
         System.DateTime LastCommentTime { get; set; }
 

@@ -2,6 +2,7 @@
 using CHSNS.Model;
 using System.Linq;
 using CHSNS.Abstractions;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator
 {
@@ -11,19 +12,19 @@ namespace CHSNS.Operator
     /// </summary>
     public class MessageOperator : BaseOperator, IMessageOperator
     {
-        public PagedList<MessageItemPas> GetInbox(long uid, int page,int pageSize)
+        public PagedList<MessageItemPas> GetInbox(long uId, int page,int pageSize)
         {
             using (var db = DBExtInstance)
             {
                 var ret = (from m in db.Message
-                           join p1 in db.Profile on m.FromID equals p1.UserID
-                           where m.ToID == uid && !m.IsToDel
-                           orderby m.IsSee, m.ID descending
+                           join p1 in db.Profile on m.FromId equals p1.UserId
+                           where m.ToId == uId && !m.IsToDel
+                           orderby m.IsSee, m.Id descending
                            select new MessageItemPas
                            {
-                               ID = m.ID,
+                               ID = m.Id,
                                Username = p1.Name,
-                               UserID = p1.UserID,
+                               UserID = p1.UserId,
                                Title = m.Title,
                                SendTime = m.SendTime,
                                IsSee = m.IsSee
@@ -37,14 +38,14 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var ret = (from m in db.Message
-                           join p1 in db.Profile on m.ToID equals p1.UserID
-                           where m.FromID == uid && !m.IsFromDel
-                           orderby m.ID descending
+                           join p1 in db.Profile on m.ToId equals p1.UserId
+                           where m.FromId == uid && !m.IsFromDel
+                           orderby m.Id descending
                            select new MessageItemPas
                            {
-                               ID = m.ID,
+                               ID = m.Id,
                                Username = p1.Name,
-                               UserID = p1.UserID,
+                               UserID = p1.UserId,
                                Title = m.Title,
                                SendTime = m.SendTime,
                                IsSee = m.IsSee
@@ -70,7 +71,7 @@ namespace CHSNS.Operator
         {
             using (var db = DBExtInstance)
             {
-                var message = db.Message.FirstOrDefault(m => m.ID == id);
+                var message = db.Message.FirstOrDefault(m => m.Id == id);
                 if (null == message) return;
                 if (t == MessageBoxType.Inbox)
                     message.IsToDel = true;
@@ -108,26 +109,26 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var ret1 = (from m in db.Message
-                            where m.ID == id
-                            join pout in db.Profile on m.FromID equals pout.UserID
-                            join pin in db.Profile on m.ToID equals pin.UserID
+                            where m.Id == id
+                            join pout in db.Profile on m.FromId equals pout.UserId
+                            join pin in db.Profile on m.ToId equals pin.UserId
                             select new { m, pout, pin }
                        ).FirstOrDefault();
 
-                if (ret1.pin.UserID == uid && !ret1.m.IsSee)
+                if (ret1.pin.UserId == uid && !ret1.m.IsSee)
                 {
                     ret1.m.IsSee = true;
                     db.SubmitChanges();
                 }
                 ret = new MessageDetailsPas
                           {
-                              UserInbox = new UserItemPas { ID = ret1.pin.UserID, Name = ret1.pin.Name },
-                              UserOutbox = new UserItemPas { ID = ret1.pout.UserID, Name = ret1.pout.Name },
+                              UserInbox = new UserItemPas { Id = ret1.pin.UserId, Name = ret1.pin.Name },
+                              UserOutbox = new UserItemPas { Id = ret1.pout.UserId, Name = ret1.pout.Name },
                               Message =
                                   new MessageItemPas
                                       {
                                           Body = ret1.m.Body,
-                                          ID = ret1.m.ID,
+                                          ID = ret1.m.Id,
                                           IsSee = ret1.m.IsSee,
                                           SendTime = ret1.m.SendTime,
                                           Title = ret1.m.Title,

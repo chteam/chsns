@@ -3,12 +3,12 @@ using CHSNS.Abstractions;
 
 namespace CHSNS.Model {
     public class GroupImplement:IGroup {
-        public long ID { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string LogoUrl { get; set; }
         public DateTime AddTime { get; set; }
         public string Summary { get; set; }
-        public long CreaterID { get; set; }
+        public long CreaterId { get; set; }
         public long UserCount { get; set; }
         public byte AdminCount { get; set; }
         public long PostCount { get; set; }

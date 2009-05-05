@@ -16,11 +16,11 @@
 		%>
 		<li class="viewitem" style="text-align: center;">
 			<div class="face-small face">
-			<a href="<%=Url.UserPage(dr.ID) %>"
-			style="background-image: url(<%=Path.GetFace(dr.ID,ThumbType.Small) %>);"/>
+			<a href="<%=Url.UserPage(dr.Id) %>"
+			style="background-image: url(<%=Path.GetFace(dr.Id,ThumbType.Small) %>);"/>
 			</div>
 			<span class="name">
-				<%=Html.UserPageLink(dr.ID,dr.Name) %></span> </li>
+				<%=Html.UserPageLink(dr.Id,dr.Name) %></span> </li>
 		<%} %>
 	</ul>
 </div>

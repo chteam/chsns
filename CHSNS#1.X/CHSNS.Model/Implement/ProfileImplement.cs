@@ -4,7 +4,7 @@ using CHSNS.Abstractions;
 namespace CHSNS.Model{
     public class ProfileImplement : IProfile
     {
-        public long UserID { get; set; }
+        public long UserId { get; set; }
         public string Name { get; set; }
         public int Status { get; set; }
         public long Score { get; set; }
@@ -12,7 +12,7 @@ namespace CHSNS.Model{
         public long DelScore { get; set; }
         public byte ShowLevel { get; set; }
         public string MagicBox { get; set; }
-        public bool IsMagicBox { get; set; }
+        public bool HasMagicBox { get; set; }
         public DateTime RegTime { get; set; }
         public DateTime LoginTime { get; set; }
         public long ViewCount { get; set; }

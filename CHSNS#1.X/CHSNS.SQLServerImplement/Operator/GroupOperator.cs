@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CHSNS.Model;
 using CHSNS.Abstractions;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator {
 	public class GroupOperator :BaseOperator, IGroupOperator {
@@ -10,7 +11,7 @@ namespace CHSNS.Operator {
         {
             using (var db = DBExtInstance)
             {
-                return db.Group.FirstOrDefault(c => c.ID == groupId);
+                return db.Group.FirstOrDefault(c => c.Id == groupId);
             }
         }
 
@@ -20,9 +21,9 @@ namespace CHSNS.Operator {
                 db.Group.InsertOnSubmit(CastTool.Cast<Group>( group));
                 db.SubmitChanges();
                 var gu = new GroupUser {
-                    GroupID = group.ID,
+                    GroupId = group.Id,
                     Status = (byte)GroupUserStatus.Ceater,
-                    UserID = uId,
+                    UserId = uId,
                     AddTime = DateTime.Now
                 };
                 db.GroupUser.InsertOnSubmit(gu);
@@ -36,7 +37,7 @@ namespace CHSNS.Operator {
         public bool Update(IGroup group)
 	    {
             using (var db = DBExtInstance){
-                var g = db.Group.Where(c => c.ID == group.ID).FirstOrDefault();
+                var g = db.Group.Where(c => c.Id == group.Id).FirstOrDefault();
                 if (g == null) return false;
                 g.Name = group.Name;
                 g.JoinLevel = group.JoinLevel;
@@ -52,7 +53,7 @@ namespace CHSNS.Operator {
         {
             using (var db = DBExtInstance)
             {
-                return db.GroupUser.FirstOrDefault(gu => gu.UserID == uId && gu.GroupID == gId);
+                return db.GroupUser.FirstOrDefault(gu => gu.UserId == uId && gu.GroupId == gId);
             }
         }
 
@@ -61,7 +62,7 @@ namespace CHSNS.Operator {
             using (var db = DBExtInstance)
             {
                 return db.GroupUser.Where(
-                    c => c.GroupID == groupId
+                    c => c.GroupId == groupId
                          && c.Status.Equals(GroupUserStatus.Wait)
                     ).Count();
             }
@@ -72,15 +73,15 @@ namespace CHSNS.Operator {
             using (var db = DBExtInstance)
             {
                 return (from gu in db.GroupUser
-                        join a in db.Profile on gu.UserID equals a.UserID
-                        where gu.GroupID == groupId
+                        join a in db.Profile on gu.UserId equals a.UserId
+                        where gu.GroupId == groupId
                               && (gu.Status.Equals(GroupUserStatus.Ceater) ||
                                   gu.Status.Equals(GroupUserStatus.Admin))
                         orderby gu.Status descending
                         select new UserItemPas
                                    {
                                        Name = a.Name,
-                                       ID = a.UserID
+                                       Id = a.UserId
                                    }).ToList();
             }
         }
@@ -90,11 +91,11 @@ namespace CHSNS.Operator {
             using (var db = DBExtInstance)
             {
                 var ret = (from gu in db.GroupUser
-                                         join g in db.Group on gu.GroupID equals g.ID
-                                         where gu.UserID == uId
+                                         join g in db.Group on gu.GroupId equals g.Id
+                                         where gu.UserId == uId
                                          select g
                                         ).Cast<IGroup>();
-                ret = ret.OrderBy(c => c.ID);
+                ret = ret.OrderBy(c => c.Id);
                 return ret.Pager(page, pageSize);
             }
         }
@@ -102,10 +103,10 @@ namespace CHSNS.Operator {
         public List<UserCountPas> GetGroupUser(long groupId){
             using (var db = DBExtInstance){
                 var list = (from g in db.GroupUser
-                            join u in db.Profile on g.UserID equals u.UserID
-                            where g.GroupID == groupId
+                            join u in db.Profile on g.UserId equals u.UserId
+                            where g.GroupId == groupId
                             select new UserCountPas{
-                                                       ID = u.UserID,
+                                                       Id = u.UserId,
                                                        Name = u.Name,
                                                        Count = g.Status
                                                    });
