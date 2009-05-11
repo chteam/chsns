@@ -60,46 +60,6 @@ namespace CHSNS.Core.Tests
         #endregion
 
 
-        /// <summary>
-        ///FormatTime 的测试
-        ///</summary>
-        [TestMethod()]
-        public void FormatTimeTest2() {
-            DateTime d = new DateTime(); // TODO: 初始化为适当的值
-            string expected = string.Empty; // TODO: 初始化为适当的值
-            string actual;
-            actual = Date.FormatTime(d);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("验证此测试方法的正确性。");
-        }
-
-        /// <summary>
-        ///FormatTime 的测试
-        ///</summary>
-        [TestMethod()]
-        public void FormatTimeTest1() {
-            DateTime d = new DateTime(); // TODO: 初始化为适当的值
-            string s = string.Empty; // TODO: 初始化为适当的值
-            string expected = string.Empty; // TODO: 初始化为适当的值
-            string actual;
-            actual = Date.FormatTime(d, s);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("验证此测试方法的正确性。");
-        }
-
-        /// <summary>
-        ///FormatTime 的测试
-        ///</summary>
-        [TestMethod()]
-        public void FormatTimeTest() {
-            object d = null; // TODO: 初始化为适当的值
-            string s = string.Empty; // TODO: 初始化为适当的值
-            string expected = string.Empty; // TODO: 初始化为适当的值
-            string actual;
-            actual = Date.FormatTime(d, s);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("验证此测试方法的正确性。");
-        }
 
         /// <summary>
         ///DivMinutes 的测试
@@ -128,7 +88,7 @@ namespace CHSNS.Core.Tests
         [TestMethod()]
         public void DateConstructorTest() {
             Date target = new Date();
-            Assert.Inconclusive("TODO: 实现用来验证目标的代码");
+            Assert.IsNotNull(target);
         }
     }
 }

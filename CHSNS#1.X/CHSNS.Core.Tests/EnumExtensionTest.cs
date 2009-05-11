@@ -33,21 +33,18 @@ namespace CHSNS.Core.Tests
 
 
    
-        /// <summary>
-        ///ToDictionary 的测试
-        ///</summary>
-        public void ToDictionaryTestHelper<T>() {
-            Enum e = null; // TODO: 初始化为适当的值
-            Dictionary expected = null; // TODO: 初始化为适当的值
-            Dictionary actual;
-            actual = EnumExtension.ToDictionary<T>(e);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("验证此测试方法的正确性。");
-        }
+       
 
         [TestMethod()]
         public void ToDictionaryTest() {
-            ToDictionaryTestHelper<GenericParameterHelper>();
+            EnumExtensionType x = (EnumExtensionType) 0;
+            var dict = EnumExtension.ToDictionary<EnumExtensionType>(x);
+            Assert.AreEqual(dict["A"], 3);
+            Assert.AreEqual(dict["B"], 8);
         }
+    }
+    enum EnumExtensionType
+    {
+        A=3,B=8
     }
 }
