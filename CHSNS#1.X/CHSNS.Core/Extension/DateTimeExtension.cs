@@ -19,10 +19,6 @@ namespace CHSNS
 				else {
 
 					if (diff.Hours > 0) {
-						if (result.Length > 0) {
-							result.Append(", ");
-						}
-
 						result.AppendFormat("{0} 小时", diff.Hours);
 					}
 
