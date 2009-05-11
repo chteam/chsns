@@ -69,6 +69,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.SQLServerImplement", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Abstractions", "CHSNS.Abstractions\CHSNS.Abstractions.csproj", "{3836155E-981B-4C16-8F45-96D19ECC6F7E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{767D90FA-E4DB-49A5-9FE5-B1F42F64DED6}"
+	ProjectSection(SolutionItems) = preProject
+		CHSNS1.x2.vsmdi = CHSNS1.x2.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 13
@@ -125,7 +131,7 @@ Global
 		SccLocalPath12 = CHSNS.Abstractions
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = CHSNS1.x.vsmdi
+		CategoryFile = CHSNS1.x2.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
