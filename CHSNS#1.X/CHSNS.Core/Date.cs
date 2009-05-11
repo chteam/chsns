@@ -28,25 +28,6 @@ namespace CHSNS
 
         //#endregion
 
-		public static string FormatTime(object d, string s)
-		{
-			return Convert.ToDateTime(d).ToString(s);
-		}
-
-		public static string FormatTime(DateTime d, string s)
-		{
-			return d.ToString(s);
-		}
-
-		public static string FormatTime(DateTime d)
-		{
-			TimeSpan st = (DateTime.Now - d);
-			if (st.TotalDays > 0)
-			{
-				return FormatTime(d, "MM-dd");
-			}
-			return FormatTime(d, "HH:mm");
-		}
 
 		/// <summary>
 		/// 求时间与现在的分数间隔

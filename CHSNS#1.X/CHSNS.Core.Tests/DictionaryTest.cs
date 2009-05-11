@@ -64,8 +64,9 @@ namespace CHSNS.Test {
         ///</summary>
         [TestMethod()]
         public void DictionaryConstructorTest() {
-            Dictionary target = new Dictionary();
-            Assert.Inconclusive("TODO: 实现用来验证目标的代码");
+            Dictionary dict = new Dictionary();
+
+            Assert.IsNotNull(dict);
         }
         #endregion
 

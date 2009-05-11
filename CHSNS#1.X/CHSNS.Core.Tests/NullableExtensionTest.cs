@@ -60,22 +60,10 @@ namespace CHSNS.Core.Tests
         #endregion
 
 
-        /// <summary>
-        ///Get 的测试
-        ///</summary>
-        public void GetTestHelper<T>()
-            where T : struct {
-            Nullable<T> n = new Nullable<T>(); // TODO: 初始化为适当的值
-            object expected = null; // TODO: 初始化为适当的值
-            object actual;
-            actual = NullableExtension.Get<T>(n);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("验证此测试方法的正确性。");
-        }
-
         [TestMethod()]
         public void GetTest() {
-            Assert.Inconclusive("没有找到能够满足 T 的类型约束的相应类型参数。请以适当的类型参数来调用 GetTestHelper<T>()。");
+            int? x = 1;
+            Assert.AreEqual(x.Get(), 1);
         }
     }
 }

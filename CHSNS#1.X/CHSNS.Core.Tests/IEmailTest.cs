@@ -64,21 +64,5 @@ namespace CHSNS.Test
 			return target;
 		}
 
-		/// <summary>
-		///Send 的测试
-		///</summary>
-		[TestMethod()]
-		public void SendTest() {
-			IEmail target = CreateIEmail(); // TODO: 初始化为适当的值
-			string to = "chsword.z@gmail.com"; // TODO: 初始化为适当的值
-			string from = "chsword@126.com"; // TODO: 初始化为适当的值
-			string subject = "what is the 4400?"; // TODO: 初始化为适当的值
-			string body = "It's a TV Set"; // TODO: 初始化为适当的值
-			string username = "chsword"; // TODO: 初始化为适当的值
-			string password = "789123"; // TODO: 初始化为适当的值
-			string smtpHost = "smtp.126.com"; // TODO: 初始化为适当的值
-			target.Send(to, from, subject, body, username, password, smtpHost);
-			Assert.Inconclusive("无法验证不返回值的方法。");
-		}
 	}
 }
