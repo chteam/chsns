@@ -53,18 +53,18 @@ namespace CHSNS
 		/// </summary>
 		/// <param name="oldtime"></param>
 		/// <returns></returns>
-		public static double DivMinutes(DateTime oldtime)
+        public static int DivMinutes(DateTime oldtime)
 		{
 			TimeSpan st = DateTime.Now - oldtime;
-			return st.TotalMinutes;
+            return (int)st.TotalMinutes;
 			//.Minutes;
 		}
 
-		public static double DivMinutes(object oldtime)
+		public static int DivMinutes(object oldtime)
 		{
 			DateTime dt;
 			if (DateTime.TryParse(oldtime.ToString(), out dt))
-				return DivMinutes(dt);
+                return DivMinutes(dt);
 			return 1000;
 			//.Minutes;
 		}
