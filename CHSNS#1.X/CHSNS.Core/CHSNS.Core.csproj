@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Adapter\JsonAdapter.cs" />
     <Compile Include="Attribute\AssemblyInfo.cs" />
+    <Compile Include="Encode\HtmlEncodeExtension.cs" />
     <Compile Include="Encrypt\BytesExtension.cs" />
     <Compile Include="Encrypt\DESEntension.cs" />
     <Compile Include="Encrypt\Md5Extension.cs" />

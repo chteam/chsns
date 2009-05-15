@@ -32,8 +32,7 @@ namespace CHSNS
 	/// </example>
 	public class Hash<TValue> : Dictionary<string, TValue>
 	{
-		public Hash(params Func<object, TValue>[] hash)
-			: base(hash == null ? 0 : hash.Length, StringComparer.OrdinalIgnoreCase)
+		public Hash(params Func<object, TValue>[] hash) : base(hash == null ? 0 : hash.Length, StringComparer.OrdinalIgnoreCase)
 		{
 			if (hash != null)
 			{
@@ -51,63 +50,4 @@ namespace CHSNS
 		}
 	}
 
-	public static class DictionaryExtensions
-	{
-		/// <summary>Extension Method to initialize an <see cref="Dictionary{TKey,TValue}"/></summary>
-		/// <param name="dict"></param>
-		/// <param name="hash">The key / value pairs to add to the dictionary.</param>
-		/// <returns>The the dictionary.</returns>
-		public static IDictionary<string, T> Add<T>(this IDictionary<string, T> dict, params Func<object, T>[] hash)
-		{
-			if (dict == null || hash == null)
-			{
-				return dict;
-			}
-
-			foreach (var func in hash)
-			{
-				dict.Add(func.Method.GetParameters()[0].Name, func(null));
-			}
-			return dict;
-		}
-
-		/// <summary>Extension Method to initialize an <see cref="IDictionary"/></summary>
-		/// <param name="dict"></param>
-		/// <param name="hash">The key / value pairs to add to the dictionary.</param>
-		/// <returns>The the dictionary.</returns>
-		public static IDictionary Add(this IDictionary dict, params Func<object, object>[] hash)
-		{
-			if (dict == null || hash == null)
-			{
-				return dict;
-			}
-
-			foreach (var func in hash)
-			{
-				dict.Add(func.Method.GetParameters()[0].Name, func(null));
-			}
-
-			return dict;
-		}
-
-		/// <summary>
-		/// Takes an anonymous object and converts it to a <see cref="Dictionary{String,Object}"/>
-		/// </summary>
-		/// <param name="objectToConvert">The object to convert</param>
-		/// <returns>A generic dictionary</returns>
-		public static Dictionary<string, object> AnonymousObjectToCaseSensitiveDictionary(object objectToConvert) 
-		{
-			var dictionary = new Dictionary<string, object>(StringComparer.Ordinal);
-
-			if (objectToConvert != null) 
-			{
-				foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(objectToConvert)) 
-				{
-					dictionary[property.Name] = property.GetValue(objectToConvert);
-				}
-			}
-
-			return dictionary;
-		}
-	}
 }
