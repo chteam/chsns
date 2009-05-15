@@ -27,7 +27,6 @@ namespace CHSNS
         }
 
         #region private Method
-        Encrypt en = new Encrypt();
         string GetCookieItem(string field)
         {
 
@@ -103,6 +102,7 @@ namespace CHSNS
                 return new long[0];
             }
         }
+        const string COOKIEDESKEY="45;6kjZF";
         ///<summary>获取或设置应用程序顺序
         ///</summary>
         public string Apps
@@ -110,12 +110,12 @@ namespace CHSNS
             get
             {
                 if (GetCookieItem("apps").Contains("%"))
-                    return en.DESDecrypt(HttpUtility.UrlDecode(GetCookieItem("userm")), "77298666");
-                return en.DESDecrypt(GetCookieItem("apps"), "77298666");
+                    return HttpUtility.UrlDecode(GetCookieItem("userm")).DESDecrypt(COOKIEDESKEY);
+                return GetCookieItem("apps").DESDecrypt(COOKIEDESKEY);
             }
             set
             {
-                SetCookieItem("apps", en.DESEncrypt(value, "77298666"));
+                SetCookieItem("apps", value.DESEncrypt(COOKIEDESKEY));
             }
         }
         /// <summary>
@@ -125,13 +125,11 @@ namespace CHSNS
         {
             get
             {
-                if (GetCookieItem("userm").Contains("%"))
-                    return en.DESDecrypt(HttpUtility.UrlDecode(GetCookieItem("userm")), "77298666");
-                return en.DESDecrypt(GetCookieItem("userm"), "77298666");
+                return GetCookieItem("userm").Contains("%") ? HttpUtility.UrlDecode(GetCookieItem("userm")).DESDecrypt(COOKIEDESKEY) : GetCookieItem("userm").DESDecrypt(COOKIEDESKEY);
             }
             set
             {
-                SetCookieItem("userm", en.DESEncrypt(value, "77298666"));
+                SetCookieItem("userm", value.DESEncrypt(COOKIEDESKEY));
             }
         }
         /// <summary>
@@ -139,9 +137,8 @@ namespace CHSNS
         /// </summary>
         public DateTime Expires
         {
-            set
-            {
-                HttpContext.Current.Response.Cookies[Context.Site.BaseConfig.CookieName].Expires = value;
+            set {
+                 HttpContext.Current.Response.Cookies[Context.Site.BaseConfig.CookieName].Expires = value;
             }
         }
         #endregion

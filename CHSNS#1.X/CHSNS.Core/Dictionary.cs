@@ -13,7 +13,7 @@ namespace CHSNS {
         ///<exception cref="Exception"></exception>
         public static Dictionary CreateFromArgs(params object[] args) {
             if (args.Length % 2 != 0)
-                throw new Exception("不可以有奇数个传入数据");
+                throw new ArgumentException("参数必须为偶数个。","args");
             var dict = new Dictionary();
             for (var i = 0; i < args.Length; i += 2) {
                 dict.Add(args[i].ToString(), args[i + 1]);

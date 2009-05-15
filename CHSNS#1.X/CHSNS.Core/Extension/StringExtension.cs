@@ -30,24 +30,7 @@ namespace CHSNS
 			return str;
 		}
 
-		/// <summary>
-		/// 对字符串进行MD5加密
-		/// </summary>
-		/// <param name="str"></param>
-		/// <returns></returns>
-		public static string ToMd5(this string str) {
-            var data=MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(str.Trim()));
-            return BytesToHexString(data);
-			//FormsAuthentication.HashPasswordForStoringInConfigFile(str, "MD5");
-		}
-        private static string BytesToHexString(byte[] data) //加密转码
-              {
-            var codes = new StringBuilder();
-            for (var i = 0; i < data.Length; ++i) {
-                codes.Append(data[i].ToString("x2"));
-            }
-            return codes.ToString().ToUpper();
-        }
+
 
 
 		/// <summary>
