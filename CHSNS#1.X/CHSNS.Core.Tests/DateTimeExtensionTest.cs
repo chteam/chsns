@@ -1,5 +1,4 @@
-﻿using CHSNS;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace CHSNS.Test
@@ -10,30 +9,19 @@ namespace CHSNS.Test
     ///这是 DateTimeExtensionTest 的测试类，旨在
     ///包含所有 DateTimeExtensionTest 单元测试
     ///</summary>
-	[TestClass()]
+	[TestClass]
 	public class DateTimeExtensionTest
 	{
+        /// <summary>
+        ///获取或设置测试上下文，上下文提供
+        ///有关当前测试运行及其功能的信息。
+        ///</summary>
+        public TestContext TestContext { get; set; }
 
-
-		private TestContext testContextInstance;
-
-		/// <summary>
-		///获取或设置测试上下文，上下文提供
-		///有关当前测试运行及其功能的信息。
-		///</summary>
-		public TestContext TestContext {
-			get {
-				return testContextInstance;
-			}
-			set {
-				testContextInstance = value;
-			}
-		}
-
-		/// <summary>
+        /// <summary>
 		///Ago 的测试
 		///</summary>
-		[TestMethod()]
+		[TestMethod]
 		public void AgoTest()
 		{
 			Assert.AreEqual(DateTime.Now.Ago(), "刚刚");

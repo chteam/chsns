@@ -66,6 +66,8 @@
     <Compile Include="DESEntensionTest.cs" />
     <Compile Include="DictionaryTest.cs" />
     <Compile Include="EnumExtensionTest.cs" />
+    <Compile Include="HashTest.cs" />
+    <Compile Include="HtmlEncodeExtensionTest.cs" />
     <Compile Include="IEmailTest.cs" />
     <Compile Include="IEnumerableExtensionsTest.cs" />
     <Compile Include="JsonAdapterTest.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Md5ExtensionTest.cs" />
     <Compile Include="NullableExtensionTest.cs" />
     <Compile Include="ObjectExtensionTest.cs" />
+    <Compile Include="PaginationTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SHACryptExtensionTest.cs" />
     <Compile Include="StringExtensionTest.cs" />

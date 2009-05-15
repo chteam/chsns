@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using CHSNS.Model;
 
@@ -32,7 +33,7 @@ namespace CHSNS.Controllers
         }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult SaveReg(string userName, string password, string name) {
-            if (!(userName.Length > 3 && StringTool.Macth(password, @"[^']{4,}")))
+            if (!(userName.Length > 3 && Regex.IsMatch(password, @"[^']{4,}")))
                 return this.RedirectToReferrer();
             
             if (string.IsNullOrEmpty(name))
@@ -72,7 +73,7 @@ namespace CHSNS.Controllers
         /// <returns>是否登录成功</returns>
         public ActionResult Login(string u, string p, bool a)
         {
-            if (u.Length > 3 && StringTool.Macth(p, @"[^']{4,}"))
+            if (u.Length > 3 && Regex.IsMatch(p, @"[^']{4,}"))
             {
                 //匹配成功则赋值
                 var loginResult = DbExt.Account.Login(u, p, a, true, CHContext);
