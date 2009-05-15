@@ -83,6 +83,11 @@
   <ItemGroup>
     <Compile Include="Adapter\JsonAdapter.cs" />
     <Compile Include="Attribute\AssemblyInfo.cs" />
+    <Compile Include="Encrypt\BytesExtension.cs" />
+    <Compile Include="Encrypt\DESEntension.cs" />
+    <Compile Include="Encrypt\Md5Extension.cs" />
+    <Compile Include="Encrypt\SHA1Extension.cs" />
+    <Compile Include="Encrypt\StringToBytesExtension.cs" />
     <Compile Include="Extension\Pager\IPagedList.cs" />
     <Compile Include="Extension\Pager\PagedList.cs" />
     <Compile Include="Extension\Pager\PagerExt.cs" />
@@ -99,11 +104,11 @@
     <Compile Include="Extension\NullableExtension.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Dictionary.cs" />
-    <Compile Include="Encrypt.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Store\IFolder.cs" />
     <Compile Include="Store\IStoreFile.cs" />
     <Compile Include="StringTool.cs" />
+    <Compile Include="TestFriends.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

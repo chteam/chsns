@@ -1,37 +1,26 @@
-﻿using CHSNS;
+﻿using System.Web.TestUtil;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+
 namespace CHSNS.Test {
     /// <summary>
     ///这是 DictionaryTest 的测试类，旨在
     ///包含所有 DictionaryTest 单元测试
     ///</summary>
-    [TestClass()]
+    [TestClass]
     public class DictionaryTest {
-        private TestContext testContextInstance;
-
         /// <summary>
         ///获取或设置测试上下文，上下文提供
         ///有关当前测试运行及其功能的信息。
         ///</summary>
-        public TestContext TestContext {
-            get {
-                return testContextInstance;
-            }
-            set {
-                testContextInstance = value;
-            }
-        }
-
+        public TestContext TestContext { get; set; }
 
         #region ToJsonString
         /// <summary>
         ///ToJsonString 的测试
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void ToJsonStringTest() {
-            Dictionary a = new Dictionary();
-            a.Add("title", "gogo");
+            var a = new Dictionary {{"title", "gogo"}};
             Assert.AreEqual(a.ToJsonString(), "{title:'gogo'}");
 
         }
@@ -40,14 +29,10 @@ namespace CHSNS.Test {
         /// <summary>
         ///CreateFromArgs 的测试
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void CreateFromArgsTest() {
-       //     object[] args = null; // TODO: 初始化为适当的值
-            Dictionary expected = new Dictionary(); // TODO: 初始化为适当的值
-            expected.Add("id", 1);
-            expected.Add("name", "xx");
-            Dictionary actual;
-            actual = Dictionary.CreateFromArgs("id", 1, "name", "xx");
+            var expected = new Dictionary {{"id", 1}, {"name", "xx"}}; 
+            var actual = Dictionary.CreateFromArgs("id", 1, "name", "xx");
             Assert.IsNotNull(expected);
             Assert.IsNotNull(actual);
             Assert.AreEqual(expected.Count, actual.Count);
@@ -55,6 +40,9 @@ namespace CHSNS.Test {
             Assert.IsTrue(expected.ContainsKey("name"));
             Assert.AreEqual(expected["id"], actual["id"]);
             Assert.AreEqual(expected["name"], actual["name"]);
+            ExceptionHelper.ExpectArgumentException(
+                () => Dictionary.CreateFromArgs("id", 1, "name", "xx", "untitl"),
+                "参数必须为偶数个。");
         }
         #endregion
 
@@ -62,9 +50,9 @@ namespace CHSNS.Test {
         /// <summary>
         ///Dictionary 构造函数 的测试
         ///</summary>
-        [TestMethod()]
+        [TestMethod]
         public void DictionaryConstructorTest() {
-            Dictionary dict = new Dictionary();
+            var dict = new Dictionary();
 
             Assert.IsNotNull(dict);
         }

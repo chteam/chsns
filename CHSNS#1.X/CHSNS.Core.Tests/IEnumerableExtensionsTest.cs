@@ -1,5 +1,4 @@
-﻿using CHSNS;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
 namespace CHSNS.Core.Tests
@@ -7,69 +6,30 @@ namespace CHSNS.Core.Tests
     
     
     /// <summary>
-    ///这是 IEnumerableExtensionsTest 的测试类，旨在
-    ///包含所有 IEnumerableExtensionsTest 单元测试
+    ///这是 EnumerableExtensionsTest 的测试类，旨在
+    ///包含所有 EnumerableExtensionsTest 单元测试
     ///</summary>
-    [TestClass()]
-    public class IEnumerableExtensionsTest {
-
-
-        private TestContext testContextInstance;
-
+    [TestClass]
+    public class EnumerableExtensionsTest {
         /// <summary>
         ///获取或设置测试上下文，上下文提供
         ///有关当前测试运行及其功能的信息。
         ///</summary>
-        public TestContext TestContext {
-            get {
-                return testContextInstance;
-            }
-            set {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
-        #region 附加测试属性
-        // 
-        //编写测试时，还可使用以下属性:
-        //
-        //使用 ClassInitialize 在运行类中的第一个测试前先运行代码
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //使用 ClassCleanup 在运行完类中的所有测试后再运行代码
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //使用 TestInitialize 在运行每个测试前先运行代码
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //使用 TestCleanup 在运行完每个测试后运行代码
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
 
 
         /// <summary>
         ///ToNotNull 的测试
         ///</summary>
-        public void ToNotNullTestHelper<T>() {
-            IEnumerable<T> ie = null; // TODO: 初始化为适当的值
-            Assert.IsNotNull(IEnumerableExtensions.ToNotNull<T>(ie));
+        public void ToNotNullTestHelper<T>()
+        {
+            const IEnumerable<T> ie = null;
+            Assert.IsNotNull(ie.ToNotNull());
         }
 
-        [TestMethod()]
-        public void ToNotNullTest() {
+        [TestMethod]
+        public void EnumerableToNotNullTest() {
             ToNotNullTestHelper<GenericParameterHelper>();
             ToNotNullTestHelper<int>();
         }

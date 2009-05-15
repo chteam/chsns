@@ -60,15 +60,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BytesExtensionTest.cs" />
     <Compile Include="DateTest.cs" />
     <Compile Include="DateTimeExtensionTest.cs" />
+    <Compile Include="DESEntensionTest.cs" />
     <Compile Include="DictionaryTest.cs" />
     <Compile Include="EnumExtensionTest.cs" />
     <Compile Include="IEmailTest.cs" />
     <Compile Include="IEnumerableExtensionsTest.cs" />
+    <Compile Include="JsonAdapterTest.cs" />
     <Compile Include="JsonExtensionTest.cs" />
+    <Compile Include="Md5ExtensionTest.cs" />
     <Compile Include="NullableExtensionTest.cs" />
+    <Compile Include="ObjectExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SHACryptExtensionTest.cs" />
     <Compile Include="StringExtensionTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +85,10 @@
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UnitTestUtil\UnitTestUtil.csproj">
+      <Project>{57FFC134-7F9D-4B97-8692-8D2C16714663}</Project>
+      <Name>UnitTestUtil</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

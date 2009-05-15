@@ -1,8 +1,5 @@
-﻿using CHSNS;
+﻿using System.Web.TestUtil;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Web.UI.WebControls;
-using System.Collections.Generic;
 
 namespace CHSNS.Core.Tests
 {
@@ -12,39 +9,34 @@ namespace CHSNS.Core.Tests
     ///这是 EnumExtensionTest 的测试类，旨在
     ///包含所有 EnumExtensionTest 单元测试
     ///</summary>
-    [TestClass()]
+    [TestClass]
     public class EnumExtensionTest {
-
-
-        private TestContext testContextInstance;
-
         /// <summary>
         ///获取或设置测试上下文，上下文提供
         ///有关当前测试运行及其功能的信息。
         ///</summary>
-        public TestContext TestContext {
-            get {
-                return testContextInstance;
-            }
-            set {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
 
-   
-       
-
-        [TestMethod()]
+        [TestMethod]
         public void ToDictionaryTest() {
-            EnumExtensionType x = (EnumExtensionType) 0;
-            var dict = EnumExtension.ToDictionary<EnumExtensionType>(x);
+            const EnumExtensionType x = (EnumExtensionType) 0;
+            var dict = x.ToDictionary<EnumExtensionType>();
             Assert.AreEqual(dict["A"], 3);
             Assert.AreEqual(dict["B"], 8);
+            ExceptionHelper.ExpectArgumentException(
+                () => x.ToDictionary<int>(), "System.ArgumentException: 提供的类型必须是 Enum。"
+                );
+            ExceptionHelper.ExpectException<System.InvalidCastException>(
+             () => EnumExtension.ToDictionary<EnumExtensionType2>(x), "System.InvalidCastException: 指定的转换无效。"
+             );
         }
     }
     enum EnumExtensionType
     {
         A=3,B=8
+    }
+    enum EnumExtensionType2:long {
+        A = long.MaxValue, B = long.MaxValue
     }
 }
