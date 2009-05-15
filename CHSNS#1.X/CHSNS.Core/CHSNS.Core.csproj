@@ -88,9 +88,9 @@
     <Compile Include="Encrypt\Md5Extension.cs" />
     <Compile Include="Encrypt\SHA1Extension.cs" />
     <Compile Include="Encrypt\StringToBytesExtension.cs" />
-    <Compile Include="Extension\Pager\IPagedList.cs" />
-    <Compile Include="Extension\Pager\PagedList.cs" />
-    <Compile Include="Extension\Pager\PagerExt.cs" />
+    <Compile Include="Pager\IPagedList.cs" />
+    <Compile Include="Pager\PagedList.cs" />
+    <Compile Include="Pager\PagerExt.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="IEmail.cs" />
     <Compile Include="Extension\EnumExtension.cs" />
