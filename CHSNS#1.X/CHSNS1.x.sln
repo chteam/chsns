@@ -13,6 +13,12 @@ Project("{A9ACE9BB-CECE-4E62-9AA4-C7E7C5BD2124}") = "CHSNS.Database", "CHSNS.Dat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{60FCF7CB-D806-47B0-8EB3-8291C3552B6D}"
 	ProjectSection(SolutionItems) = preProject
+		DLL\Castle.DynamicProxy.dll = DLL\Castle.DynamicProxy.dll
+		DLL\IBatisNet.Common.dll = DLL\IBatisNet.Common.dll
+		DLL\IBatisNet.Common.Logging.Log4Net.dll = DLL\IBatisNet.Common.Logging.Log4Net.dll
+		DLL\IBatisNet.DataAccess.dll = DLL\IBatisNet.DataAccess.dll
+		DLL\IBatisNet.DataMapper.dll = DLL\IBatisNet.DataMapper.dll
+		DLL\log4net.dll = DLL\log4net.dll
 		DLL\Microsoft.Practices.ObjectBuilder2.dll = DLL\Microsoft.Practices.ObjectBuilder2.dll
 		DLL\Microsoft.Practices.ObjectBuilder2.pdb = DLL\Microsoft.Practices.ObjectBuilder2.pdb
 		DLL\Microsoft.Practices.Unity.Configuration.dll = DLL\Microsoft.Practices.Unity.Configuration.dll

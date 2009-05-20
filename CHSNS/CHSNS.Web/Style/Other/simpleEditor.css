@@ -1,6 +1,0 @@
-﻿#face{width:20px;height:20px;background:#ccc;border:1px solid red}
-#bxFace{width:194px;height:194px;position:absolute;display:none;overflow:hidden}
-#faceImg{width:194px;height:194px;background:url(bao.gif) no-repeat;position:absolute;z-index:2;}
-#shadow{width:24px;height:24px;position:absolute;visibility:hidden;border:1px solid #5EB8EE;background:#C8E7F9;z-index:1}
-#smallFace{width:60px;height:60px;position:absolute;visibility:hidden;border:1px solid #666;z-index:3;top:2px;left:2px;}
-#simpleEditorPan {position:relative}
