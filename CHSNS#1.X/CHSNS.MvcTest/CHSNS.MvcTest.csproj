@@ -74,6 +74,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\AccountControllerTest.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="HomeControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
