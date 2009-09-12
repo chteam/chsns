@@ -90,7 +90,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.\sql\</OutputPath>
     <AutoGenerateBuildScriptName>True</AutoGenerateBuildScriptName>
-    <BuildScriptName>CHSNS.Database.(local)_SQLEXPRESS.CHSNS_Database.sql</BuildScriptName>
+    <BuildScriptName>CHSNS.Database.(local)_SQLEXpress.CHSNS_Database.sql</BuildScriptName>
     <TargetConnectionString>
     </TargetConnectionString>
     <TargetDatabase>
