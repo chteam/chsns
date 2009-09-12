@@ -1,4 +1,5 @@
 ﻿using CHSNS.Abstractions;
+using CHSNS.Model;
 
 namespace CHSNS.ViewModel {
     public class UserIndexViewModel : BaseViewModel{

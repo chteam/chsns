@@ -34,6 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC Beta\Assemblies\Microsoft.Web.Mvc.dll</HintPath>
@@ -100,6 +108,8 @@
     <Content Include="Config\Province.xml" />
     <Content Include="Config\Sex.xml" />
     <Content Include="Config\ShowLevel.xml" />
+    <Content Include="providers.config" />
+    <Content Include="SQLMap.config" />
     <None Include="Style\Facebook\i\Thumbs.db" />
     <None Include="Style\Facebook_backup\i\Thumbs.db" />
     <None Include="Views\Admin\Admin\ApplyClass.vm" />
@@ -598,6 +608,7 @@
     <Content Include="Config\Config.xml" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="JavaScript\jquery.js" />
+    <Content Include="Maps\Accounts.xml" />
     <Content Include="UnitView\ViewHostHandler.ashx" />
     <Content Include="UnitView\Web.config" />
     <Content Include="Views\Account\ChangePassword.aspx" />

@@ -52,6 +52,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\Newtonsoft.Json.dll</HintPath>
@@ -76,6 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseSqlMapDao.cs" />
+    <Compile Include="LinqToSQL\Account.cs" />
     <Compile Include="LinqToSQL\Album.cs" />
     <Compile Include="LinqToSQL\BasicInformation.cs" />
     <Compile Include="LinqToSQL\CHSNSDB.designer.cs">
@@ -94,7 +104,7 @@
     <Compile Include="Operator\AccountOperator.cs" />
     <Compile Include="Operator\AlbumOperator.cs" />
     <Compile Include="Operator\ApplicationOperator.cs" />
-    <Compile Include="Operator\BaseOperator.cs" />
+    <Compile Include="BaseOperator.cs" />
     <Compile Include="Operator\CommenOperator.cs" />
     <Compile Include="Operator\EntryOperator.cs" />
     <Compile Include="Operator\EventOperator.cs" />

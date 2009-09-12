@@ -3,14 +3,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using CHSNS.Abstractions;
+using CHSNS.Operator;
 
-namespace CHSNS.Operator
+namespace CHSNS.SQLServerImplement.Operator
 {
-	public class ApplicationOperator : BaseOperator, IApplicationOperator
-	{
-	    /// <summary>
-		/// 应用列表
-		/// </summary>
+    public class ApplicationOperator : BaseOperator, IApplicationOperator
+    {
+        /// <summary>
+        /// 应用列表
+        /// </summary>
         public List<IApplication> Applications {
             get {
                 using (var db = DBExtInstance) {
@@ -19,9 +20,9 @@ namespace CHSNS.Operator
             }
         }
 
-		public List<IApplication> GetApps(long[] ids)
-		{
-		    return ids.Length == 0 ? Applications.Where(c => c.IsSystem).ToList() : Applications.Where(c => ids.Contains(c.ID)).ToList();
-		}
-	}
+        public List<IApplication> GetApps(long[] ids)
+        {
+            return ids.Length == 0 ? Applications.Where(c => c.IsSystem).ToList() : Applications.Where(c => ids.Contains(c.ID)).ToList();
+        }
+    }
 }

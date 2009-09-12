@@ -1,4 +1,3 @@
-using CHSNS.Abstractions;
 using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator

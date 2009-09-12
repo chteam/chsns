@@ -1,5 +1,4 @@
 using System;
-using CHSNS.Abstractions;
 
 namespace CHSNS.Model{
     public class ProfileImplement : IProfile

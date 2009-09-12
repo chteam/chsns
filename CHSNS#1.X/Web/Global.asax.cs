@@ -39,7 +39,7 @@ namespace CHSNS.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
 
-            const string ext = ".asbx";
+            const string ext = "";
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute("indexf", "", new { controller = "Entry", action = "Index", Title = "Index" });
             routes.MapRoute("index", "{Title}" + ext, new { controller = "Entry", action = "Index", Title = "Index" }, new[] { "CHSNS.Controllers" });

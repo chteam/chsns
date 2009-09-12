@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using CHSNS.Model;
+using CHSNS.SQLServerImplement;
+
 namespace CHSNS.Operator {
 	/// <summary>
 	/// 统计的类
