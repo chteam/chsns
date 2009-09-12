@@ -4,19 +4,10 @@ namespace CHSNS.Service {
 
 
         public string ConnectionString { get; set; }
-      //  public IContext Context { get; set; }
-        public DBManager(/*IContext context*/) {
+        public DBManager() {
             ConnectionString = ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString;
-          //  Context = context;
             Init();
         }
-
-        //public CHSNSDBDataContext Instance {
-        //    get {
-        //        var db = new CHSNSDBDataContext(ConnectionString){DeferredLoadingEnabled = false};
-        //        return db;
-        //    }
-        //}
         #region ²Ù×÷µ¥Àý
 
         public AccountService Account {
@@ -42,25 +33,7 @@ namespace CHSNS.Service {
 
         public void Init() {
         }
-
-
-
-
-        //private DataBaseExecutor _dbex;
-        //public DataBaseExecutor DataBaseExecutor {
-        //    get {
-        //        //	return new DataBaseExecutor(new EntityOpener(ConnectionString));
-        //        if (_dbex == null)
-        //            _dbex = new DataBaseExecutor(new SqlDataOpener(ConnectionString));
-        //        return _dbex;
-        //    }
-        //}
-
-
-
         public void Dispose() {
-            //if (_dbex != null)
-            //    DataBaseExecutor.Dispose();
         }
 
 

@@ -1,4 +1,5 @@
-namespace CHSNS.Abstractions {
+namespace CHSNS.Model
+{
     public interface IProfile {
         long UserId { get; set; }
 
@@ -34,6 +35,6 @@ namespace CHSNS.Abstractions {
 
         string Applicationlist { get; set; }
 
-     //   string Ext { get; set; }
+        //   string Ext { get; set; }
     }
 }

@@ -1,9 +1,15 @@
-﻿using CHSNS.Abstractions;
-using CHSNS.Model;
+﻿using CHSNS.Model;
 namespace CHSNS.Operator {
 	public interface IAccountOperator {
         bool Create(AccountPas account, string name, int initScore);
 		bool IsUsernameCanUse(string username);
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="userName">用户名或Id</param>
+        /// <param name="password">密钥</param>
+        /// <param name="logOnScore">登录后得到的积分</param>
+        /// <returns></returns>
 		IProfile Login(string userName, string password,int logOnScore);
 		
         /// <summary>

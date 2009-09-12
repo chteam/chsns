@@ -95,7 +95,7 @@
     </TargetConnectionString>
     <TargetDatabase>
     </TargetDatabase>
-    <DeploymentCollationPreference>ChangeTargetDBCollation</DeploymentCollationPreference>
+    <DeploymentCollationPreference>ChangeSourceDBCollation</DeploymentCollationPreference>
     <AlwaysCreateNewDatabase>false</AlwaysCreateNewDatabase>
     <GenerateDropsIfNotInProject>False</GenerateDropsIfNotInProject>
     <BlockIncrementalDeploymentIfDataLoss>True</BlockIncrementalDeploymentIfDataLoss>

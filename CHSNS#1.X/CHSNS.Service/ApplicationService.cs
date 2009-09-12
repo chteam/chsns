@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using CHSNS.Abstractions;
 using CHSNS.Operator;
+using CHSNS.SQLServerImplement.Operator;
 
 namespace CHSNS.Service {
     public class ApplicationService {

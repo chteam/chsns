@@ -1,4 +1,5 @@
 ﻿using CHSNS.Model;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator {
     using System.Collections.Generic;

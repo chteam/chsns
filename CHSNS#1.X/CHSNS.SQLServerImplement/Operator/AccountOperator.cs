@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Linq;
-using CHSNS.Abstractions;
 using CHSNS.Model;
-using CHSNS.SQLServerImplement;
+using CHSNS.Operator;
 
-namespace CHSNS.Operator {
+namespace CHSNS.SQLServerImplement.Operator
+{
     public class AccountOperator : BaseOperator, IAccountOperator {
         public IProfile Login(String userName, String password, int logOnScore)
         {
+
+            long userId;
+            long.TryParse(userName.Trim(), out userId);
+
+            var profile = Query<Profile>("LoginCheckProfile",
+                                         new Account {UserId = userId, UserName = userName, Password = password});
+            if (profile == null) return null;
+
             using (var db = DBExtInstance)
             {
-                long userId;
-                long.TryParse(userName.Trim(), out userId);
-                var userid = (from a in db.Account
-                              where (a.UserName == userName || a.UserId == userId)
-                                    && a.Password == password
-                              select a.UserId).FirstOrDefault();
-                if (userid <= 1000) return null;
-                var profile = db.Profile.FirstOrDefault(p => p.UserId == userid);
                 var retint = profile.Status;
                 if (retint <= 0) return null;
                 if (profile.LoginTime.Date != DateTime.Now.Date)
@@ -39,31 +39,31 @@ namespace CHSNS.Operator {
 
         public bool Create(AccountPas account, string name, int initScore) {
             var ac = new Account {
-                UserName = account.UserName,
-                Password = account.Password.ToMd5(),
-                Code = DateTime.Now.Ticks
-            };
+                                     UserName = account.UserName,
+                                     Password = account.Password.ToMd5(),
+                                     Code = DateTime.Now.Ticks
+                                 };
             using (var db = DBExtInstance) {
                 db.Account.InsertOnSubmit(ac);
                 db.SubmitChanges();
                 if (ac.UserId< 999) return false;
                 db.Profile.InsertOnSubmit(new Profile {
-                    UserId = ac.UserId,
-                    Name = name,
-                    ShowScore = initScore,
-                    Score = initScore,
-                    DelScore = 0,
-                    Status = (int)RoleType.General,
-                    RegTime = DateTime.Now,
-                    LoginTime = DateTime.Now,
-                    MagicBox = ""
-                });
+                                                          UserId = ac.UserId,
+                                                          Name = name,
+                                                          ShowScore = initScore,
+                                                          Score = initScore,
+                                                          DelScore = 0,
+                                                          Status = (int)RoleType.General,
+                                                          RegTime = DateTime.Now,
+                                                          LoginTime = DateTime.Now,
+                                                          MagicBox = ""
+                                                      });
                 db.BasicInformation
                     .InsertOnSubmit(
                     new BasicInformation {
-                        UserId = ac.UserId,
-                        Name = name
-                    });
+                                             UserId = ac.UserId,
+                                             Name = name
+                                         });
                 db.SubmitChanges();
                 return true;
             }
