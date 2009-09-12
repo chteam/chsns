@@ -6,14 +6,11 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Web;
-using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Routing;
-using CHSNS.Abstractions;
-using CHSNS.Mvc;
 using CHSNS.Service;
 
-namespace CHSNS
+namespace CHSNS.Web
 {
     [CompilerGlobalScope]
     public class Global : HttpApplication
@@ -22,33 +19,11 @@ namespace CHSNS
         public void Application_Start(object sender, EventArgs e)
         {
             // 在应用程序启动时运行的代码
-            //Application.Add("Application.IsMustJoinClass", true);
-            //网站设置，是否必须加入班级
-            //SystemConfig system = SystemConfig.Currect;
-
-            //var path = new ConfigPath();
             RegisterRoutes(RouteTable.Routes);
-            DynamicDataInit();
-            //ControllerBuilder.Current.SetControllerFactory(typeof(NVelocityEngine.NVelocityControllerFactory));
-        }
-        public static void DynamicDataInit()
-        {
-           // var model = new MetaModel();
-           // //model.RegisterContext(typeof(Models.CHSNSDBDataContext),
-           ////     new ContextConfiguration { ScaffoldAllTables = true });
-           // model.RegisterContext(typeof(INote),
-           //      new ContextConfiguration { ScaffoldAllTables = true });
-           // ModelBinders.Binders.DefaultBinder = new DynamicDataModelBinder(ModelBinders.Binders.DefaultBinder);
-        }
-        public void Application_End(object sender, EventArgs e)
-        {
         }
 
-        public void Application_Error(object sender, EventArgs e)
+        public void SessionOnStart(object sender, EventArgs e)
         {
-        }
-
-        public void Session_OnStart(object sender, EventArgs e){
 
             IContext context1 = new CHContext(new HttpContextWrapper(Context));
             if (context1.User.IsLogin) return; //当前不处于登录状态
@@ -61,48 +36,18 @@ namespace CHSNS
                               false, context1
                 );
         }
-
-        public void Session_OnEnd(object sender, EventArgs e) { }
-
-
         public static void RegisterRoutes(RouteCollection routes)
         {
 
-            var ext = "asbx";
+            const string ext = ".asbx";
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(
-       "indexf", // Route name
-       "", // URL with parameters
-       new { controller = "Entry", action = "Index", Title = "Index" }// Parameter defaults
-       );
-            routes.MapRoute(
-                "index", // Route name
-                "{Title}." + ext, // URL with parameters
-                new { controller = "Entry", action = "Index", Title = "Index" }, // Parameter defaults
-                new[] { "CHSNS.Controllers" }
-                );
-            routes.MapRoute(
-                "entry", // Route name
-                "w/{title}." + ext, // URL with parameters
-                new { controller = "Entry", action = "Index", Title = "Index" }, // Parameter defaults
-                new[] { "CHSNS.Controllers" }
-                );
-            routes.MapRoute(
-                "post", // Route name
-                "Post/{y}/{m}/{d}/{id}." + ext, // URL with parameters
-                new { controller = "Group", action = "Details" } // Parameter defaults
-                );
-            routes.MapRoute(
-                "note", // Route name
-                "Note/{y}/{m}/{d}/{id}." + ext, // URL with parameters
-                new { controller = "Note", action = "Details" } // Parameter defaults
-                );
-            routes.MapRoute(
-                "url", // Route name
-                "{controller}/{action}." + ext, // URL with parameters
-                new { controller = "Home", action = "Index" }, // Parameter defaults
-                new[] { "CHSNS.Controllers" }
-                );
+            routes.MapRoute("indexf", "", new { controller = "Entry", action = "Index", Title = "Index" });
+            routes.MapRoute("index", "{Title}" + ext, new { controller = "Entry", action = "Index", Title = "Index" }, new[] { "CHSNS.Controllers" });
+            routes.MapRoute("entry", "w/{title}" + ext, new { controller = "Entry", action = "Index", Title = "Index" }, new[] { "CHSNS.Controllers" });
+            routes.MapRoute("post", "Post/{y}/{m}/{d}/{id}" + ext, new { controller = "Group", action = "Details" });
+            routes.MapRoute("note", "Note/{y}/{m}/{d}/{id}" + ext, new { controller = "Note", action = "Details" });
+            routes.MapRoute("url", "{controller}/{action}" + ext,
+                new { controller = "Home", action = "Index" }, new[] { "CHSNS.Controllers" });
 
         }
     }
