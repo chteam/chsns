@@ -609,6 +609,7 @@
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="JavaScript\jquery.js" />
     <Content Include="Maps\Accounts.xml" />
+    <Content Include="Maps\Friends.xml" />
     <Content Include="UnitView\ViewHostHandler.ashx" />
     <Content Include="UnitView\Web.config" />
     <Content Include="Views\Account\ChangePassword.aspx" />

@@ -11,30 +11,21 @@ namespace CHSNS.SQLServerImplement.Operator
 
             long userId;
             long.TryParse(userName.Trim(), out userId);
-
-            var profile = Query<Profile>("LoginCheckProfile",
-                                         new Account {UserId = userId, UserName = userName, Password = password});
+            var profile = Query<IProfile>("LoginCheckProfile",
+                                          new Account {UserId = userId, UserName = userName, Password = password});
             if (profile == null) return null;
+            var retint = profile.Status;
+            if (retint <= 0) return null;
 
-            using (var db = DBExtInstance)
-            {
-                var retint = profile.Status;
-                if (retint <= 0) return null;
-                if (profile.LoginTime.Date != DateTime.Now.Date)
-                {
-                    profile.Score += logOnScore;
-                    profile.ShowScore += logOnScore;
-                    profile.LoginTime = DateTime.Now;
-                    db.SubmitChanges();
-                }
-                return new ProfileImplement
-                           {
-                               Name = profile.Name,
-                               UserId = profile.UserId,
-                               Status = retint,
-                               Applications = profile.Applications
-                           };
-            }
+            Update("LoginUpdate", new ProfileImplement {UserId = profile.UserId, Score = logOnScore});
+            return new ProfileImplement
+                       {
+                           Name = profile.Name,
+                           UserId = profile.UserId,
+                           Status = retint,
+                           Applications = profile.Applications
+                       };
+
         }
 
         public bool Create(AccountPas account, string name, int initScore) {

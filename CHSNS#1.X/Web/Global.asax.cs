@@ -47,7 +47,7 @@ namespace CHSNS.Web
             routes.MapRoute("post", "Post/{y}/{m}/{d}/{id}" + ext, new { controller = "Group", action = "Details" });
             routes.MapRoute("note", "Note/{y}/{m}/{d}/{id}" + ext, new { controller = "Note", action = "Details" });
             routes.MapRoute("url", "{controller}/{action}" + ext,
-                new { controller = "Home", action = "Index" }, new[] { "CHSNS.Controllers" });
+                new { controller = "Home" }, new[] { "CHSNS.Controllers" });
 
         }
     }
