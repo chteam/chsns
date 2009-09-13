@@ -16,6 +16,9 @@
       ([UserName] = #UserName# OR [UserId] = #UserId#) AND [Password] = #Password#
       )
     </select>
-
+    <update id="LoginUpdate" parameterClass="Profile">
+      UPDATE [Profile] set Score=Score+#Score#,ShowScore=ShowScore+#ShowScore#,LoginTime=getdate()
+      Where UserId=#UserId# And convert(varchar(10),LoginTime,120)!=convert(varchar(10),getdate(),120)
+    </update>
   </statements>
 </sqlMap>

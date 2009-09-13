@@ -9,6 +9,11 @@ namespace CHSNS
 	[AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
 	[AspNetHostingPermission(SecurityAction.InheritanceDemand, Level = AspNetHostingPermissionLevel.Minimal)]
 	public class PagedList<T> : List<T>, IPagedList {
+        public PagedList(IEnumerable<T> content, int currentPage, int pageSize,int totalCount)
+            : this(totalCount, currentPage, pageSize)
+        {
+            AddRange(content);
+        }
 		public PagedList(IQueryable<T> source, int currentPage, int pageSize)
 			: this(source.Count(), currentPage, pageSize) {
 			AddRange(source.Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList());

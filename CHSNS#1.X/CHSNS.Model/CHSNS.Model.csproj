@@ -75,6 +75,7 @@
     <Compile Include="Abstractions\IEvent.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Abstractions\IFriend.cs" />
     <Compile Include="Abstractions\IGroup.cs" />
     <Compile Include="Abstractions\IGroupUser.cs" />
     <Compile Include="Abstractions\IMessage.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Implement\EntryImplement.cs" />
     <Compile Include="Implement\EntryVersionImplement.cs" />
     <Compile Include="Implement\EventImplement.cs" />
+    <Compile Include="Implement\FriendImplement.cs" />
     <Compile Include="Implement\GroupImplement.cs" />
     <Compile Include="Implement\MessageImplement.cs" />
     <Compile Include="Implement\NoteImplement.cs" />

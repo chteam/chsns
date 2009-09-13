@@ -1,3 +1,4 @@
+using System.Collections;
 using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator
@@ -32,63 +33,28 @@ namespace CHSNS.Operator
         }
         public List<long> GetFriendsId(long userid)
         {
-            using (var db = DBExtInstance)
-            {
-                return (from f1 in db.Friend
-                        where f1.FromId == userid && f1.IsTrue
-                        select f1.ToId)
-                                   .Union(from f1 in db.Friend
-                                          where f1.ToId == userid && f1.IsTrue
-                                          select f1.FromId).ToList();
-            }
+            return QueryToList<long>("FriendsId", userid).ToList();
         }
-        public PagedList<UserItemPas> GetFriends(long uid, int page,int pageSize)
+        public PagedList<UserItemPas> GetFriends(long uid, int page, int pageSize)
         {
-            var ids = GetFriendsId(uid);
-            using (var db = DBExtInstance)
-            {
-                var ret = (from c in db.Profile
-                           where ids.Contains(c.UserId)
-                           orderby c.UserId
-                           select new UserItemPas
-                           {
-                               Id = c.UserId,
-                               Name = c.Name,
-                               //   ShowText = c.ShowText,
-                               //   ShowTextTime = c.ShowTextTime
-                           });
-                #region    ע
 
-                //var ret = (from c in
-                //               (from f1 in DBExt.DB.Friend
-                //                join p1 in DBExt.DB.Profile on f1.ToID equals p1.UserId
-                //                where f1.FromID == userid && f1.IsTrue
-                //                select new {
-                //                    p1.UserId,
-                //                    p1.Title,
-                //                    p1.ShowText,
-                //                    p1.ShowTextTime
-                //                })
-                //               .Union(from f1 in DBExt.DB.Friend
-                //                      join p1 in DBExt.DB.Profile on f1.FromID equals p1.UserId
-                //                      where f1.ToID == userid && f1.IsTrue
-                //                      select new {
-                //                          p1.UserId,
-                //                          p1.Title,
-                //                          p1.ShowText,
-                //                          p1.ShowTextTime
-                //                      })
-                //           orderby c.UserId descending
-                //           select new UserItemPas {
-                //               ID = c.UserId,
-                //               Title = c.Title,
-                //               ShowText = c.ShowText,
-                //               ShowTextTime = c.ShowTextTime
-                //           });
-                #endregion
-                return ret.Pager(page,pageSize);// Site.EveryPage.Friend);
-
-            }
+            var friends = QueryToList<IProfile>("GetFriendsPaged",
+                                                new Hashtable 
+                                                    {
+                                                        {"Begin", (page - 1)*pageSize + 1},
+                                                        {"End", page*pageSize},
+                                                        {"UserId", uid}
+                                                    });
+            var totalCount = Query<int>("GetFriendsCount", uid);
+            var ret = new PagedList<UserItemPas>(friends.Select(c => new UserItemPas
+                                                                         {
+                                                                             Id = c.UserId,
+                                                                             Name = c.Name
+                                                                         }),
+                                                 page,
+                                                 pageSize,
+                                                 totalCount);
+            return ret;
         }
 
         public List<UserItemPas> GetRandoms(int n)
