@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage" %>
+Inherits="System.Web.Mvc.ViewPage<PagedList<UserItemPas>>" %>
  
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.Script("PageSet") %>
@@ -12,7 +12,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 	</div>
 	<a href="/Invite.aspx">邀请朋友加入</a> 
 	
-	(共有<span id="FriendCount" class="count"><%=ViewData["PageCount"]%></span>个好友)
+	(共有<span id="FriendCount" class="count"><%=Model.TotalCount%></span>个好友)
 	<div class="ch_content">
 		<div id="PageUp" class="page">
 		</div>

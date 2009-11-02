@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace CHSNS.SQLServerImplement
 {
-    public class BaseOperator : BaseSqlMapDao
+    public class BaseOperator //: BaseSqlMapDao
     {//} : IOperator {
         internal CHSNSDBDataContext DBExtInstance {
             get {
