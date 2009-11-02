@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage<IProfile>" %>
+Inherits="ViewPage<FriendRequest>" %>
  
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.Script("PageSet") %>
@@ -9,21 +9,21 @@ Inherits="System.Web.Mvc.ViewPage<IProfile>" %>
 	<div id="UserListMsg">
 	</div>
 	<h2>
-		<%=ViewData["Name"]%>的好友</h2>
-	(有<span class="count" id="FriendCount"><%=ViewData["PageCount"]%></span>个人请求加你为好友)
+		<%=Model.Profile.Name%>的好友</h2>
+	(有<span class="count" id="FriendCount"><%=Model.Items.TotalCount%></span>个人请求加你为好友)
 	<a href="javascript:IgnoreAllFriend();">忽略所有请求，慎用</a>
 	<div class="ch_content">
 		<div id="PageUp" class="page">
 		</div>
 		<ol id="UserListItems" class="userlist">
-			<%Html.RenderPartial("RequestList", ViewData["source"]); %>
+			<%Html.RenderPartial("RequestList", Model.Items); %>
 		</ol>
 		<div id="PageDown" class="page">
 		</div>
 	</div>
-	<%=Html.Hidden("PageCount")%>
-	<%=Html.Hidden("NowPage") %>
-	<%=Html.Hidden("EveryPage","10") %>
+	<%=Html.Hidden("PageCount",Model.Items.TotalPages)%>
+	<%=Html.Hidden("NowPage",Model.Items.CurrentPage ) %>
+	<%=Html.Hidden("EveryPage",Model.Items.PageSize) %>
 
 	<script type="text/javascript">
 	function AgreeFriend(id){
@@ -55,14 +55,13 @@ Inherits="System.Web.Mvc.ViewPage<IProfile>" %>
 		});
 	}
 	var setpage = function(p) {
-		$.post('<%=Url.Action("RequestList") %>', {"p":p,"userid":<%=ViewData.Model.UserID %>}, function(r) {
+		$.post('<%=Url.Action("RequestList") %>', {"p":p,"userid":<%=Model.Profile.UserId %>}, function(r) {
 			$h("#UserListItems",r);
 			pagefun();
 		});
 	};
 	pagefun();
 	</script>
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 </asp:Content>

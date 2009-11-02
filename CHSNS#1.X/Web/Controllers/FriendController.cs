@@ -1,4 +1,5 @@
 using System.Transactions;
+using CHSNS.ViewModel;
 
 namespace CHSNS.Controllers {
 	using System;
@@ -11,44 +12,35 @@ namespace CHSNS.Controllers {
 			ViewData["source"] = DbExt.Friend.GetRandoms(10);
 			return View();
 		}
-		[LoginedFilter]
-		public ActionResult Index(int? p, long? userid){
-			using (new TransactionScope()){
-				if (!userid.HasValue || userid == 0) userid = CHUser.UserID;
-				if (!p.HasValue || p == 0) p = 1;
-				var b = DbExt.Friend.UserFriendInfo(userid.Value);
-				if (b == null) throw new Exception("用户不存在");
-				
-				ViewData["UserId"] = userid;
-				ViewData["Title"] = b.Name;
-				ViewData["NowPage"] = p;
-			//	ViewData["PageCount"] = b.FriendCount;
+        [LoginedFilter]
+        public ActionResult Index(int? p, long? userid)
+        {
+            if (!userid.HasValue || userid == 0) userid = CHUser.UserID;
+            InitPage(ref p);
+            var b = DbExt.Friend.UserFriendInfo(userid.Value);
+            if (b == null) throw new Exception("用户不存在");
+            ViewData["UserId"] = userid;
+            ViewData["Name"] = b.Name;
+            ViewData["NowPage"] = p;
+            //	ViewData["PageCount"] = b.FriendCount;
+            Title = b.Name + "的好友";
+            return FriendList(p.Value, userid.Value);
+        }
 
-				Title = b.Name + "的好友";
-				return FriendList(p.Value, userid.Value);
-			}
-		}
+        [LoginedFilter]
+        [ActionName("Request")]
+        public ActionResult RequestHack(int? p)
+        {
+            InitPage(ref p);
+            var profile = DbExt.Friend.UserFriendInfo(CHUser.UserID);
+            if (profile == null) throw new Exception("用户不存在");
+            var items = DbExt.Friend.GetRequests(CHUser.UserID, p.Value, CHContext.Site);
+            Title = profile.Name + "的好友请求";
+            return View(new FriendRequest { Items = items, Profile = profile });
 
-		[LoginedFilter]
-		[ActionName("Request")]
-		public ActionResult FriendRequest(){
-			using (new TransactionScope()){
-				var Ownerid = CHUser.UserID;
-				var b = DbExt.Friend.UserFriendInfo(Ownerid);
-				if (b == null) throw new Exception("用户不存在");
-				ViewData["Title"] = b.Name;
-				int nowpage = this.QueryNum("p") == 0 ? 1 : this.QueryNum("p");
-				ViewData["NowPage"] = nowpage;
-                var source = DbExt.Friend.GetRequests(Ownerid, nowpage, CHContext.Site);
+        }
 
-			    ViewData["PageCount"] = source.TotalPages;
-			    ViewData["source"] = source;
-
-				Title = b.Name + "的好友请求";
-				return View(b);
-			}
-		}
-		#endregion
+	    #endregion
 		#region pager ctrl
         [LoginedFilter]
         [AcceptVerbs("Post")]
