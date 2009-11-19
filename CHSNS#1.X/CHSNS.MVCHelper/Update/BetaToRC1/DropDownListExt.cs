@@ -12,11 +12,11 @@ namespace CHSNS {
     public static class DropDownListExt {
         [Obsolete("Beta中的使用方法")]
         static public string DropDownList(this HtmlHelper Html, string optional, string name, IEnumerable<SelectListItem> ie, object htmlAttr) {
-            return Html.DropDownList(name, ie, optional, htmlAttr);
+            return Html.DropDownList(name, ie, optional, htmlAttr).ToHtmlString();
         }
         [Obsolete("Beta中的使用方法")]
         static public string DropDownList(this HtmlHelper Html, string optional, string name, IEnumerable<SelectListItem> ie) {
-            return Html.DropDownList(name, ie, optional);
+            return Html.DropDownList(name, ie, optional).ToHtmlString();
         }
         [Obsolete("Beta中的使用方法")]
         static public string DropDownList(this HtmlHelper Html, string optional, string name, object htmlAttr) {
