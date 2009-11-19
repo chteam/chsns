@@ -3,6 +3,7 @@ namespace CHSNS.SQLServerImplement
 {
     public partial class Group:IGroup
     {
-        
+
+    
     }
 }

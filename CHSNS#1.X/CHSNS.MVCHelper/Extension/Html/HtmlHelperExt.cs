@@ -9,57 +9,57 @@ namespace CHSNS.Helper {
 
 		#region note
 		public static string NoteEdit(this HtmlHelper Html, long id, string text) {
-			return Html.ActionLink(text, "Edit", "Note", new { id }, null);
+			return Html.ActionLink(text, "Edit", "Note", new { id }, null).ToHtmlString();
 		}
 
 		public static string NoteList(this HtmlHelper Html, long userid, string text) {
-			return Html.ActionLink(text, "Index", "Note", new { userid }, null);
+			return Html.ActionLink(text, "Index", "Note", new { userid }, null).ToHtmlString();
 		}
 		public static string NoteDetails(this HtmlHelper Html, string title, long id, DateTime dt) {
-			return Html.ActionLink(title, "Details", "Note", new { id, y = dt.Year, m = dt.Month, d = dt.Day }, null);
+			return Html.ActionLink(title, "Details", "Note", new { id, y = dt.Year, m = dt.Month, d = dt.Day }, null).ToHtmlString();
 		}
 		#endregion
 		#region message
 		public static string WriteMessage(this HtmlHelper Html, string text, long toid, string toname) {
-			return Html.ActionLink(text, "Write", "Message", new { toid, toname = HttpUtility.UrlEncode(toname) }, null);
+			return Html.ActionLink(text, "Write", "Message", new { toid, toname = HttpUtility.UrlEncode(toname) }, null).ToHtmlString();
 		}
 		public static string WriteMessage(this HtmlHelper Html, long toid, string toname) {
 			return Html.WriteMessage("发站内信", toid, toname);
 		}
 
 		public static string MessageDetails(this HtmlHelper Html, string title, long id) {
-			return Html.ActionLink(title, "Details", "Message", new { id }, null);
+			return Html.ActionLink(title, "Details", "Message", new { id }, null).ToHtmlString();
 		}
 		#endregion
 		#region comment
 		public static string ReplyList(this HtmlHelper Html, long userid, string text) {
-			return Html.ActionLink(text, "Reply", "Comment", new { userid }, null);
+			return Html.ActionLink(text, "Reply", "Comment", new { userid }, null).ToHtmlString();
 		}
 		#endregion
 		public static string UserPageLink(this HtmlHelper Html, long userid, string text) {
-			return Html.ActionLink(text, "Index", "User", new { userid }, null);
+			return Html.ActionLink(text, "Index", "User", new { userid }, null).ToHtmlString();
 		}
 		public static string FriendLink(this HtmlHelper Html, long userid, string text) {
-			return Html.ActionLink(text, "Index", "Friend", new { userid }, null);
+			return Html.ActionLink(text, "Index", "Friend", new { userid }, null).ToHtmlString();
 		}
 		public static string FriendLink(this HtmlHelper Html, long userid) {
 			return Html.FriendLink(userid, "好友");
 		}
 		public static string BlogLink(this HtmlHelper Html, long userid, string text) {
-			return Html.ActionLink(text, "Index", "Blog", new { userid }, null);
+			return Html.ActionLink(text, "Index", "Blog", new { userid }, null).ToHtmlString();
 		}
 		public static string BlogLink(this HtmlHelper Html, long userid) {
 			return Html.BlogLink(userid, "博客");
 		}
 		public static string AlbumLink(this HtmlHelper Html, long userid, string text) {
-			return Html.ActionLink(text, "Index", "Album", new { userid }, null);
+			return Html.ActionLink(text, "Index", "Album", new { userid }, null).ToHtmlString();
 		}
 		public static string AlbumLink(this HtmlHelper Html, long userid) {
 			return Html.AlbumLink(userid, "相册");
 		}
 
 		public static string UserEditLink(this HtmlHelper Html, string mode, string text) {
-			return Html.ActionLink(text, "Edit", "User", new { mode }, null);
+			return Html.ActionLink(text, "Edit", "User", new { mode }, null).ToHtmlString();
 		}
 
 		public static string EncodeBR(this HtmlHelper Html, string text) {
