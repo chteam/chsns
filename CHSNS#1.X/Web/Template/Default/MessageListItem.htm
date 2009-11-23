@@ -1,0 +1,25 @@
+﻿<tr id="Message_tr$Messageid$">
+	<td class="stat">
+		<img src="/images/$Isread.gif$" alt="$Isread$" />
+	</td>
+	<td class="check">
+		<input id="MessageCheck$Messageid$" type="checkbox" />
+	</td>
+	<td>
+		<a href="/User.aspx?userid=$Userid$">$Username$</a>
+	</td>
+	<td class="title">
+		<a href="javascript:ShowMessage($Messageid$)">$Title$</a>
+	</td>
+	<td class="date">
+		<p>$Addtime$</p>
+	</td>
+	<td class="action">
+		<a href="javascript:ReplyMessage($Userid$,'$Username$')">回复</a>
+	</td>
+	<td class="action">
+		<a onclick="var bl=confirm('确定删除吗？'); if(bl){return true} else {return false;};"
+			href="javascript:DeleteMessage($Messageid$)">删除</a>
+	</td>
+</tr>
+$MessageListItem$

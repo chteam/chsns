@@ -1,0 +1,19 @@
+﻿#if($user.get_item("Relation") >= $user.get_item("SchoolInfoShowLevel") || $ChHelper.ChUser.isAdmin)
+<div class="accordionHeader" id="school-header">学校信息 Schools</div>
+<div id="school-content" class="accordionContent">
+#EditInfo( "School" )
+	<ul id="chSchoolInfo">
+<li><span>大　　学：</span><span><a href="/Search.aspx?action=show&amp;uid=$user.get_item("University_id")&amp;">
+$user.get_item("University")</a></span></li>
+<li><span>院　　系：</span><span><a href="/Search.aspx?action=show&amp;xid=$user.get_item("Xueyuan_id")&amp;">
+$ChHelper.DataCache.GetXueyuanName($user.get_item("University_id"),$user.get_item("Xueyuan_id"))</a></span></li>
+<li><span>入学时间：</span><span><a href="/Search.aspx?action=show&amp;grade=$user.get_item("Grade")&amp;uid=$user.get_item("University_id")&amp;">
+$user.get_item("Grade")</a></span></li>
+#if(!$user.IsNull("UniClass_id"))
+<li><span>所在班级：</span><span><a href="/Group.aspx?id=$user.get_item("UniClass_id")&amp;">
+$user.get_item("UniClass")</a></span></li>
+#end
+	</ul>
+</div>
+
+#end

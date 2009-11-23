@@ -1,0 +1,18 @@
+﻿#if(!${groupid})
+#set (${groupid} = 0)
+#end
+#foreach($item in $rows)
+<li><div class="article">
+<div class="info">
+<h4><a href="/Note.aspx?id=$item.get_item("id")" title="
+阅读 (${item.get_item("ViewCount")})
+评论 (${item.get_item("CommentCount")})
+推荐 (${item.get_item("PushCount")})">${item.get_item("Title")}</a></h4>
+<p class="subinfo">
+<cite><span class="time">${item.get_item("AddTime").ToString("MM月dd日 HH:mm")}</span> </cite>
+<span class="edit">
+#if ($item.get_item("Userid") == $ChHelper.ChUser.Userid || $ChHelper.ChUser.isAdmin || $item.get_item("level") > 199 )
+<a href="javascript:DeleteLogBook($item.get_item("id"),0);">删除</a>
+#end
+</span></p></div></div></li>
+#end

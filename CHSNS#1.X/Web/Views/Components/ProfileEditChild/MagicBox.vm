@@ -1,0 +1,10 @@
+﻿<div class="notes">
+	<a href="javascript:SubmitInfo('magicboxupback');" onclick="var bl=confirm('确定要把你的魔法盒内容发送到你的站内信件中吗？'); if(bl){return true} else {return false;}">
+		备份魔法盒</a> <a href="javascript:SubmitInfo('magicboxclear');" id="clear">清空魔法盒</a>
+</div>
+<div class="required">
+	<textarea id="Magicbox" class="textarea" cols="60" rows="20" tabindex="1">$Source.get_item("Magicbox")</textarea>
+</div>
+<div class="actions">
+	<input class="subbutton" type="button" value="保存修改" onclick="SubmitInfo('magicbox');" />
+</div>

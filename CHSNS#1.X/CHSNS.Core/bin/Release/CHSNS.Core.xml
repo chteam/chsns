@@ -1,0 +1,1544 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CHSNS.Core</name>
+    </assembly>
+    <members>
+        <member name="T:CHSNS.SqlDataOpener">
+            <summary>SqlServer的DataOpener
+            </summary>
+        </member>
+        <member name="T:CHSNS.IDataOpener">
+            <summary>数据库的OpenEr接口
+            </summary>
+        </member>
+        <member name="M:CHSNS.IDataOpener.Open(System.String)">
+            <summary>打开数据库连接
+            </summary>
+            <param name="SQLtext"></param>
+        </member>
+        <member name="M:CHSNS.IDataOpener.Close">
+            <summary>关闭Command
+            </summary>
+        </member>
+        <member name="M:CHSNS.IDataOpener.GetAdapter">
+            <summary>得到Adapter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.IDataOpener.AddWithValue(System.String,System.Object)">
+            <summary>添加参数
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:CHSNS.IDataOpener.Dispose">
+            <summary>销毁对象
+            </summary>
+        </member>
+        <member name="P:CHSNS.IDataOpener.Connection">
+            <summary>Connection对象
+            </summary>
+        </member>
+        <member name="P:CHSNS.IDataOpener.Command">
+            <summary>Command对象
+            </summary>
+        </member>
+        <member name="M:CHSNS.SqlDataOpener.#ctor(System.String)">
+            <summary>构造函数
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+        </member>
+        <member name="T:CHSNS.Regular">
+            <summary>
+            字符串格式化规则
+            AU:邹健
+            </summary>
+        </member>
+        <member name="M:CHSNS.Regular.FormatTitle(System.String)">
+            <summary>
+            格式化title
+            </summary>
+            <param name="str">要格式化的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Regular.FormatRichEdit(System.String)">
+            <summary>
+            富文本过滤
+            </summary>
+            <param name="str">源文本</param>
+            <returns>过滤后的文本</returns>
+        </member>
+        <member name="M:CHSNS.Regular.Macth(System.String,System.String)">
+            <summary>
+            字符串是否符合规则
+            </summary>
+            <param name="s">要查询的字符串</param>
+            <param name="right">正则表达式</param>
+            <returns>是否匹配</returns>
+        </member>
+        <member name="M:CHSNS.Regular.FormatJoin(System.String)">
+            <summary>
+            将分隔符规范化为','
+            </summary>
+            <param name="str">要规范的文本</param>
+            <returns>规范后的文本,以','结束</returns>
+        </member>
+        <member name="M:CHSNS.Regular.FormatLove(System.Object)">
+            <summary>
+            将分隔符规范化为',',以传递给数据库
+            </summary>
+            <param name="str">要规范的文本</param>
+            <returns>规范后的文本,以','结束,但如果字符串为空,则返回System.DBNull.Value</returns>
+        </member>
+        <member name="M:CHSNS.Regular.ClearRemarks(System.String)">
+            <summary>
+            去除HTML注释
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Regular.ClearWildcard(System.String)">
+            <summary>
+            去除文本中的通匹符
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Regular.HuaNumtoNumber(System.String)">
+            <summary>
+            中文数字转阿拉伯数字
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Regular.StringNull(System.String)">
+            <summary>
+            字符串为''或空时转为System.DBNull.Value
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Regular.UnicodeToChinese(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Regular.NoHtml(System.String)">
+            <summary>
+            NoHtml
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Regular.BytesToString(System.Int64)">
+            <summary>
+            字节与文件大小字符串比较
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Regular.DiskUsage(System.String)">
+            <summary>
+            文件夹字节大小
+            </summary>
+            <param name="dir"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CHSNS.Config.ThumbnailPair">
+            <summary>
+             生成缩略图的类型与大小的对
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.ThumbnailPair.Size">
+            <summary>大小
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.ThumbnailPair.ImageType">
+            <summary>类型
+            </summary>
+        </member>
+        <member name="T:CHSNS.CHUser">
+            <summary>
+             ChSession类
+            AU:邹健
+            LE:2007 10 10
+            </summary>
+        </member>
+        <member name="M:CHSNS.CHUser.InitStatus(System.Object)">
+            <summary>
+            初始化状态
+            </summary>
+            <param name="status"></param>
+        </member>
+        <member name="M:CHSNS.CHUser.Clear">
+            <summary>
+            等 同 RemoveAll
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHUser.Email">
+            <summary>
+            只有注册时才用的属性
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHUser.UserID">
+            <summary>
+            获取当前用户ID,如用户未登录则抛出异常.
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHUser.Username">
+            <summary>
+            获取当前用户姓名
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHUser.Status">
+            <summary>
+            获取当前用户状态
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHUser.IsAdmin">
+            <summary>
+            用户是否是管理员
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHUser.IsLogin">
+            <summary>
+            用户是否登录
+            </summary>
+        </member>
+        <member name="T:CHSNS.SqlStoredProcedureDataOpener">
+            <summary>
+             只使用存储过程
+            </summary>
+        </member>
+        <member name="M:CHSNS.SqlStoredProcedureDataOpener.#ctor(System.String)">
+            <summary>
+             构造函数
+            </summary>
+            <param name="ConnectionString"></param>
+        </member>
+        <member name="T:CHSNS.DataBaseExecutor">
+            <summary>
+            数据库执行者
+            the Executor of DataBase
+            </summary>
+        </member>
+        <member name="M:CHSNS.DataBaseExecutor.#ctor(CHSNS.IDataOpener)">
+            <summary>
+            init
+            </summary>
+            <param name="dataopen">IDataOpener</param>
+        </member>
+        <member name="M:CHSNS.DataBaseExecutor.Execute(System.String)">
+            <summary>
+             直接执行Sql语句
+            </summary>
+            <param name="sqltext"></param>
+        </member>
+        <member name="M:CHSNS.DataBaseExecutor.Execute(System.String,CHSNS.Dictionary)">
+            <summary>
+              直接执行Sql语句
+            </summary>
+            <param name="sqltext"></param>
+            <param name="dict">参数</param>
+        </member>
+        <member name="M:CHSNS.DataBaseExecutor.Execute(System.String,System.Object[])">
+            <summary>执行Sql语句并返回受影响的行数
+             多进行插入删除更新等工作
+            </summary>
+            <param name="sqltext">Sql语句</param>
+            <param name="args">参数</param>
+            <returns>返回受影响的行数</returns>
+        </member>
+        <member name="P:CHSNS.DataBaseExecutor.DataOpener">
+            <summary>打开者
+            </summary>
+        </member>
+        <member name="T:Chsword.NetworkCross">
+            <summary>
+            Description of NetworkCross.
+            </summary>
+        </member>
+        <member name="F:Chsword.NetworkCross.mc">
+            <summary>
+            读取设备
+            </summary>
+        </member>
+        <member name="M:Chsword.NetworkCross.GetNetCardMacAddress">
+            <summary>
+            取得设备网卡的MAC地址
+            </summary>
+        </member>
+        <member name="M:Chsword.NetworkCross.GetDiskVolumeSerialNumber">
+            <summary>
+            取得设备硬盘的卷标号
+            </summary>
+            <returns>硬盘的卷标号</returns>
+        </member>
+        <member name="M:Chsword.NetworkCross.GetCpuID">
+            <summary>
+            获取CPU编号
+            </summary>
+            <returns>CPU编号</returns>
+        </member>
+        <member name="T:CHSNS.Xml">
+            <summary>
+            对成幻Online Judge内置 的Xml操作。
+            </summary>
+        </member>
+        <member name="M:CHSNS.Xml.GetItemName(System.String,System.String)">
+            <summary>
+            通过一个item结点的name查找其value属性的内容。
+            </summary>
+            <param name="fn">查找的Xml文件。</param>
+            <param name="name">name属性的值。</param>
+            <returns>返回value属性的值。</returns>
+        </member>
+        <member name="M:CHSNS.Xml.GetItemText(System.String,System.String)">
+            <summary>
+            通过一个item结点的name查找其子元素的内容。
+            </summary>
+            <param name="fn">查找的Xml文件。</param>
+            <param name="name">name属性的值。</param>
+            <returns>查找其子元素的内容。</returns>
+        </member>
+        <member name="M:CHSNS.Xml.GetNode(System.String,System.String)">
+            <summary>
+            查找一个XML的子节点。
+            </summary>
+            <param name="fn">查找的Xml文件。</param>
+            <param name="Xpath">Xpath查询表达式。</param>
+            <returns>返回的符合Xpath的Node。</returns>
+        </member>
+        <member name="M:CHSNS.Xml.XmlCacheExists(System.String)">
+            <summary>
+            查看指定缓存是否存在。
+            </summary>
+            <param name="CacheName">要检测的缓存名称。</param>
+            <returns>返回一个Boolean，表示是否存在。</returns>
+        </member>
+        <member name="T:CHSNS.Interface.IEmail">
+            <summary>
+            This is a Inter face of Email sender.邮件发送善类的接口
+            </summary>
+        </member>
+        <member name="T:CHSNS.ImgSizeType">
+            <summary>
+            图片大小
+            </summary>
+        </member>
+        <member name="T:CHSNS.OleDbDataOpener">
+            <summary>OleDB的DataOpener
+            </summary>
+        </member>
+        <member name="M:CHSNS.OleDbDataOpener.#ctor(System.String)">
+            <summary>构造函数
+            </summary>
+            <param name="ConnectionString">连接字符串</param>
+        </member>
+        <member name="P:Chsword.SmtpEmailAttribute.PlugInName">
+            <summary>
+            插件名称
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpEmailAttribute.Version">
+            <summary>
+            版本
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpEmailAttribute.Author">
+            <summary>
+            作者
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpEmailAttribute.DllFileName">
+            <summary>
+            DLL 文件名称
+            </summary>
+        </member>
+        <member name="M:Chsword.SysMailMessage.Send">
+            <summary>
+            发送
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Chsword.SysMailMessage.Subject">
+            <summary>
+            邮件主题
+            </summary>
+        </member>
+        <member name="P:Chsword.SysMailMessage.Body">
+            <summary>
+            邮件正文
+            </summary>
+        </member>
+        <member name="P:Chsword.SysMailMessage.From">
+            <summary>
+            发件人地址
+            </summary>
+        </member>
+        <member name="P:Chsword.SysMailMessage.FromName">
+            <summary>
+            发件人姓名
+            </summary>
+        </member>
+        <member name="P:Chsword.SysMailMessage.RecipientName">
+            <summary>
+            收件人姓名
+            </summary>
+        </member>
+        <member name="P:Chsword.SysMailMessage.MailDomain">
+            <summary>
+            邮箱域
+            </summary>
+        </member>
+        <member name="P:Chsword.SysMailMessage.MailDomainPort">
+            <summary>
+            邮件服务器端口号
+            </summary>	
+        </member>
+        <member name="P:Chsword.SysMailMessage.MailServerUserName">
+            <summary>
+            SMTP认证时使用的用户名
+            </summary>
+        </member>
+        <member name="P:Chsword.SysMailMessage.MailServerPassWord">
+            <summary>
+            SMTP认证时使用的密码
+            </summary>
+        </member>
+        <member name="P:Chsword.SysMailMessage.isHtml">
+            <summary>
+             是否Html邮件
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail._charset">
+            <summary>
+            设定语言代码,默认设定为GB2312,如不需要可设置为""
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail._from">
+            <summary>
+            发件人地址
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail._fromName">
+            <summary>
+            发件人姓名
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail._recipientName">
+            <summary>
+            收件人姓名
+            </summary>	
+        </member>
+        <member name="F:Chsword.SmtpMail.Recipient">
+            <summary>
+            收件人列表
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.mailserver">
+            <summary>
+            邮件服务器域名
+            </summary>	
+        </member>
+        <member name="F:Chsword.SmtpMail.mailserverport">
+            <summary>
+            邮件服务器端口号
+            </summary>	
+        </member>
+        <member name="F:Chsword.SmtpMail.username">
+            <summary>
+            SMTP认证时使用的用户名
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.password">
+            <summary>
+            SMTP认证时使用的密码
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.ESmtp">
+            <summary>
+            是否需要SMTP验证
+            </summary>		
+        </member>
+        <member name="F:Chsword.SmtpMail._ishtml">
+            <summary>
+            是否Html邮件
+            </summary>		
+        </member>
+        <member name="F:Chsword.SmtpMail.Attachments">
+            <summary>
+            邮件附件列表
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.priority">
+            <summary>
+            邮件发送优先级,可设置为"High","Normal","Low"或"1","3","5"
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail._subject">
+            <summary>
+            邮件主题
+            </summary>		
+        </member>
+        <member name="F:Chsword.SmtpMail._body">
+            <summary>
+            邮件正文
+            </summary>		
+        </member>
+        <member name="F:Chsword.SmtpMail.RecipientNum">
+            <summary>
+            收件人数量
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.recipientmaxnum">
+            <summary>
+            最多收件人数量
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.errmsg">
+            <summary>
+            错误消息反馈
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.tc">
+            <summary>
+            TcpClient对象,用于连接服务器
+            </summary>	
+        </member>
+        <member name="F:Chsword.SmtpMail.ns">
+            <summary>
+            NetworkStream对象
+            </summary>	
+        </member>
+        <member name="F:Chsword.SmtpMail.logs">
+            <summary>
+            服务器交互记录
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.ErrCodeHT">
+            <summary>
+            SMTP错误代码哈希表
+            </summary>
+        </member>
+        <member name="F:Chsword.SmtpMail.RightCodeHT">
+            <summary>
+            SMTP正确代码哈希表
+            </summary>
+        </member>
+        <member name="M:Chsword.SmtpMail.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Chsword.SmtpMail.AddAttachment(System.String[])">
+            <summary>
+            添加邮件附件
+            </summary>
+            <param name="FilePath">附件绝对路径</param>
+        </member>
+        <member name="M:Chsword.SmtpMail.AddRecipient(System.String[])">
+            <summary>
+            添加一组收件人(不超过recipientmaxnum个),参数为字符串数组
+            </summary>
+            <param name="Recipients">保存有收件人地址的字符串数组(不超过recipientmaxnum个)</param>	
+        </member>
+        <member name="M:Chsword.SmtpMail.Send">
+            <summary>
+            发送邮件方法,所有参数均通过属性设置。
+            </summary>
+        </member>
+        <member name="M:Chsword.SmtpMail.Send(System.String)">
+            <summary>
+            发送邮件方法
+            </summary>
+            <param name="smtpserver">smtp服务器信息,如"username:password@www.smtpserver.com:25",也可去掉部分次要信息,如"www.smtpserver.com"</param>
+        </member>
+        <member name="M:Chsword.SmtpMail.Send(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            发送邮件方法
+            </summary>
+            <param name="smtpserver">smtp服务器信息,如"username:password@www.smtpserver.com:25",也可去掉部分次要信息,如"www.smtpserver.com"</param>
+            <param name="from">发件人mail地址</param>
+            <param name="fromname">发件人姓名</param>
+            <param name="to">收件人地址</param>
+            <param name="toname">收件人姓名</param>
+            <param name="html">是否HTML邮件</param>
+            <param name="subject">邮件主题</param>
+            <param name="body">邮件正文</param>
+        </member>
+        <member name="M:Chsword.SmtpMail.AddRecipient(System.String)">
+            <summary>
+            添加一个收件人
+            </summary>	
+            <param name="Recipients">收件人地址</param>
+        </member>
+        <member name="M:Chsword.SmtpMail.SMTPCodeAdd">
+            <summary>
+            SMTP回应代码哈希表
+            </summary>
+        </member>
+        <member name="M:Chsword.SmtpMail.Base64Encode(System.String)">
+            <summary>
+            将字符串编码为Base64字符串
+            </summary>
+            <param name="str">要编码的字符串</param>
+        </member>
+        <member name="M:Chsword.SmtpMail.Base64Decode(System.String)">
+            <summary>
+            将Base64字符串解码为普通字符串
+            </summary>
+            <param name="str">要解码的字符串</param>
+        </member>
+        <member name="M:Chsword.SmtpMail.GetStream(System.String)">
+            <summary>
+            得到上传附件的文件流
+            </summary>
+            <param name="FilePath">附件的绝对路径</param>
+        </member>
+        <member name="M:Chsword.SmtpMail.SendCommand(System.String)">
+            <summary>
+            发送SMTP命令
+            </summary>	
+        </member>
+        <member name="M:Chsword.SmtpMail.RecvResponse">
+            <summary>
+            接收SMTP服务器回应
+            </summary>
+        </member>
+        <member name="M:Chsword.SmtpMail.Dialog(System.String,System.String)">
+            <summary>
+            与服务器交互,发送一条命令并接收回应。
+            </summary>
+            <param name="str">一个要发送的命令</param>
+            <param name="errstr">如果错误,要反馈的信息</param>
+        </member>
+        <member name="M:Chsword.SmtpMail.Dialog(System.String[],System.String)">
+            <summary>
+            与服务器交互,发送一组命令并接收回应。
+            </summary>
+        </member>
+        <member name="M:Chsword.SmtpMail.SendEmail">
+            <summary>
+            SendEmail
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Chsword.SmtpMail.Subject">
+            <summary>
+            邮件主题
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.Body">
+            <summary>
+            邮件正文
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.From">
+            <summary>
+            发件人地址
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.Charset">
+            <summary>
+            设定语言代码,默认设定为GB2312,如不需要可设置为""
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.FromName">
+            <summary>
+            发件人姓名
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.RecipientName">
+            <summary>
+            收件人姓名
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.MailDomain">
+            <summary>
+            邮件服务器域名和验证信息
+            形如："user:pass@www.server.com:25",也可省略次要信息。如"user:pass@www.server.com"或"www.server.com"
+            </summary>	
+        </member>
+        <member name="P:Chsword.SmtpMail.MailDomainPort">
+            <summary>
+            邮件服务器端口号
+            </summary>	
+        </member>
+        <member name="P:Chsword.SmtpMail.MailServerUserName">
+            <summary>
+            SMTP认证时使用的用户名
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.MailServerPassWord">
+            <summary>
+            SMTP认证时使用的密码
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.Priority">
+            <summary>
+            邮件发送优先级,可设置为"High","Normal","Low"或"1","3","5"
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.isHtml">
+            <summary>
+             是否Html邮件
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.ErrorMessage">
+            <summary>
+            错误消息反馈
+            </summary>		
+        </member>
+        <member name="P:Chsword.SmtpMail.Logs">
+            <summary>
+            服务器交互记录,如发现本组件不能使用的SMTP服务器,请将出错时的Logs发给我(lion-a@sohu.com),我将尽快查明原因。
+            </summary>
+        </member>
+        <member name="P:Chsword.SmtpMail.RecipientMaxNum">
+            <summary>
+            最多收件人数量
+            </summary>
+        </member>
+        <member name="T:CHSNS.Dictionary">
+            <summary>自定义的字典
+            </summary>
+        </member>
+        <member name="M:CHSNS.Dictionary.CreateFromArgs(System.Object[])">
+            <summary>数组转为字典
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Chsword.Web.UI.MasterPage">
+            <summary>
+            重载的Master类。
+            </summary>
+        </member>
+        <member name="T:CHSNS.ICHSNSDB">
+            <summary>
+             ICHSNSDB接口
+            </summary>
+        </member>
+        <member name="P:CHSNS.ICHSNSDB.DataBaseExecutor">
+            <summary>要实现DataBaseExecutor方法
+            </summary>
+        </member>
+        <member name="M:CHSNS.Config.SiteConfig.Load">
+            <summary>
+            反序列化
+            </summary>
+        </member>
+        <member name="M:CHSNS.Config.SiteConfig.Save">
+            <summary>
+            序列化为xml
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.SiteConfig.SiteConnectionString">
+            <summary>
+            当前网站的连接字符串
+            </summary>
+        </member>
+        <member name="T:CHSNS.CHCookies">
+            <summary>
+            用户信息 Cookies 类
+            AU:邹健
+            EL: 2007 10 25
+            </summary>
+        </member>
+        <member name="M:CHSNS.CHCookies.Clear">
+            <summary>清理Cookie
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHCookies.IsExists">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHCookies.UserID">
+            <summary>
+            获取或设置用户标识
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHCookies.IsAutoLogin">
+            <summary>
+            获取或设置用户是否自动登录(是否保存Cookie)
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHCookies.AppsArray">
+            <summary>得到应用程序的顺序数组（Long型）
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHCookies.Apps">
+            <summary>获取或设置应用程序顺序
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHCookies.UserPassword">
+            <summary>
+            获取或设置密码(已加密)
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHCookies.Expires">
+            <summary>
+            用户Cookie信息过期限 DateTime.Now.AddDays(365);
+            </summary>
+        </member>
+        <member name="T:CHSNS.CHCache">
+            <summary>
+            缓存类 
+            AU:邹健
+            LE:2007 10 24
+            </summary>
+        </member>
+        <member name="M:CHSNS.CHCache.Get(System.String)">
+            <summary>
+            得到某一特定缓存
+            </summary>
+            <param name="key">键值</param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.CHCache.Get``1(System.String)">
+            <summary>
+            得到某一特定缓存，并转为特定类型
+            </summary>
+            <typeparam name="T">返回的类型</typeparam>
+            <param name="key">键值</param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.CHCache.Contains(System.String)">
+            <summary>
+            缓存中是否包含某一键值
+            </summary>
+            <param name="key">键值</param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.CHCache.Add(System.String,System.Object)">
+            <summary>
+            将对象添加到缓存中
+            </summary>
+            <param name="key">为对象对应的键值</param>
+            <param name="obj">对象</param>
+        </member>
+        <member name="M:CHSNS.CHCache.Add(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            将对象添加到缓存中
+            </summary>
+            <param name="key">为对象对应的键值</param>
+            <param name="obj">对象</param>
+            <param name="ts">过期时间</param>
+        </member>
+        <member name="M:CHSNS.CHCache.IsNullorEmpty(System.String)">
+            <summary>
+            检测缓存是否过期。
+            </summary>
+            <param name="CacheName">缓存名称</param>
+            <returns>布尔型,缓存存在则返回True。</returns>
+        </member>
+        <member name="M:CHSNS.CHCache.GetCache(System.String)">
+            <summary>
+            通过缓存名称得到缓存
+            </summary>
+            <param name="CacheName">缓存名称</param>
+            <returns>Object类型</returns>
+        </member>
+        <member name="M:CHSNS.CHCache.GetConfig(System.String,System.String)">
+            <summary>
+            获取Xml配置文件的节点内容
+            </summary>
+            <param name="filename">配置文件名称</param>
+            <param name="Name">节点名称</param>
+            <returns>String,节点内容的字符串</returns>
+        </member>
+        <member name="M:CHSNS.CHCache.GetConfig(System.String)">
+            <summary>
+            获取Config.Xml配置文件的节点内容
+            </summary>
+            <param name="Name">节点名称</param>
+            <returns>String,节点内容的字符串</returns>
+        </member>
+        <member name="M:CHSNS.CHCache.RemoveAll">
+            <summary>
+            清除所有缓存
+            </summary>
+        </member>
+        <member name="M:CHSNS.CHCache.Remove(System.String)">
+            <summary>
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:CHSNS.CHCache.SetCache(System.String)">
+            <summary>
+            将同名Xml文件设置为缓存。
+            </summary>
+            <param name="CacheName">缓存名称/Xml文件名称</param>
+            <returns>Bool,是否存储成功。</returns>
+        </member>
+        <member name="M:CHSNS.CHCache.SetCache(System.String,System.Object)">
+            <summary>
+            设置缓存，对已有缓存不做任何操作，对未添加的缓存进行添加。
+            </summary>
+            <param name="CacheName">缓存名称</param>
+            <param name="CacheValue">缓存的值</param>
+            <returns>Bool,是否存储成功。</returns>
+        </member>
+        <member name="M:CHSNS.CHCache.SetCache(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            设置缓存，并设置缓存有效期
+            </summary>
+            <param name="CacheName"></param>
+            <param name="CacheValue"></param>
+            <param name="ts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.CHCache.SetFileCache(System.String,System.String)">
+            <summary>
+            将文件缓存
+            </summary>
+            <param name="fn">文件路径</param>
+            <param name="CacheName">缓存名称</param>
+            <returns>Bool,是否存储成功。</returns>
+        </member>
+        <member name="M:CHSNS.CHCache.GetTemplate(System.String)">
+            <summary>
+            读取模板文件
+            </summary>
+            <param name="master_name">模板文件名.</param>
+            <returns>String,模板文件内容.</returns>
+        </member>
+        <member name="M:CHSNS.CHCache.GetTemplateCache(System.String)">
+            <summary>
+            读取模板文件,并将之缓存
+            </summary>
+            <param name="master_name">模板文件名.</param>
+            <returns>String,模板文件内容.</returns>
+        </member>
+        <member name="P:CHSNS.CHCache.Cache">
+            <summary>
+             属性
+            </summary>
+        </member>
+        <member name="P:CHSNS.CHCache.Item(System.String)">
+            <summary>
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="P:CHSNS.CHCache.Timespan">
+            <summary>
+            获取或设置缓存的存储时间,默认值为1天
+            </summary>
+        </member>
+        <member name="T:CHSNS.Thumbnail">
+            <summary>
+             生成缩略图的类
+            </summary>
+        </member>
+        <member name="M:CHSNS.Thumbnail.CreateThumbnail(System.Drawing.Image,System.String,System.Int32,System.Int32)">
+            <summary>
+             生成缩略图，并自动按比例缩放
+            </summary>
+            <param name="img">图片</param>
+            <param name="newFile">要存的地址</param>
+            <param name="maxWidth">最大宽</param>
+            <param name="maxHeight">最大高</param>
+        </member>
+        <member name="M:CHSNS.Thumbnail.ImageWHB(System.Drawing.Image)">
+            <summary>
+            图片横纵比处理
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Config.SystemConfig.Load">
+            <summary>
+            反序列化
+            </summary>
+        </member>
+        <member name="M:CHSNS.Config.SystemConfig.Save">
+            <summary>
+            序列化为xml
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.SystemConfig.ConnectionString">
+            <summary>
+            连接字符串 
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.SystemConfig.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="T:CHSNS.ConfigSerializer">
+            <summary>
+            配置文件序列化及反序列化
+            </summary>
+        </member>
+        <member name="M:CHSNS.ConfigSerializer.Serializer``1(``0,System.String)">
+            <summary>
+            序列化到配置文件　
+            </summary>
+            <typeparam name="T">序列化此类型</typeparam>
+            <param name="obj">要序列化的对象</param>
+            <param name="key">键值</param>
+        </member>
+        <member name="M:CHSNS.ConfigSerializer._Serializer``1(``0,System.String)">
+            <summary>
+            序列化到配置文件　
+            </summary>
+            <typeparam name="T">序列化此类型</typeparam>
+            <param name="obj">要序列化的对象</param>
+            <param name="key">键值</param>
+        </member>
+        <member name="M:CHSNS.ConfigSerializer.Load``1(System.String,System.Boolean)">
+            <summary>
+            从配置文件反序列化
+            </summary>
+            <typeparam name="T">反序列化的目标类型</typeparam>
+            <param name="key">键</param>
+            <param name="useCache">是否使用缓存的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.ConfigSerializer.Load``1(System.String)">
+            <summary>
+            从配置文件反序列化
+            </summary>
+            <typeparam name="T">反序列化的目标类型</typeparam>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.ConfigSerializer._Load``1(System.String)">
+            <summary>
+            从配置文件反序列化
+            </summary>
+            <typeparam name="T">反序列化的目标类型</typeparam>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="T:CHSNS.Date">
+            <summary>
+            计算特殊时间的类
+            AU:邹健
+            LE:2006年8月
+            </summary>
+        </member>
+        <member name="M:CHSNS.Date.DivMinutes(System.DateTime)">
+            <summary>
+            求时间与现在的分数间隔
+            </summary>
+            <param name="oldtime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Date.GetTimeDiv(System.DateTime)">
+            <summary>
+            时间与现在的时间间隔
+            </summary>
+            <param name="dt">时间</param>
+            <returns>间隔的中文</returns>
+        </member>
+        <member name="M:CHSNS.Date.GetTimeDiv(System.String)">
+            <summary>
+            时间与现在的时间间隔
+            </summary>
+            <param name="dt">时间</param>
+            <returns>间隔的中文</returns>
+        </member>
+        <member name="M:CHSNS.Date.GetTimeDiv(System.Object)">
+            <summary>
+            时间与现在的时间间隔
+            </summary>
+            <param name="dt">时间</param>
+            <returns>间隔的中文</returns>
+        </member>
+        <member name="M:CHSNS.Date.SkyTree(System.DateTime,CHSNS.Date.SkyTreeText)">
+            <summary>
+            获取天干或地枝的编号
+            </summary>
+            <param name="dat">要计算日期</param>
+            <param name="i">天干/地枝</param>
+            <returns>天干返回 10之内的数字,地枝返回11之内的数字</returns>
+        </member>
+        <member name="M:CHSNS.Date.SkyTree(System.String,CHSNS.Date.SkyTreeText)">
+            <summary>
+            获取天干或地枝的编号
+            </summary>
+            <param name="dats">以字符串表示,要计算日期</param>
+            <param name="i">天干/地枝</param>
+            <returns>天干返回 10之内的数字,地枝返回11之内的数字</returns>
+        </member>
+        <member name="M:CHSNS.Date.AnimalSignName(System.Int32)">
+            <summary>
+            获取生肖名
+            </summary>
+            <param name="num">生肖编号</param>
+            <returns>生肖名 例:鼠</returns>
+        </member>
+        <member name="M:CHSNS.Date.AnimalSignName(System.DateTime)">
+            <summary>
+            获取生肖名
+            </summary>
+            <param name="dat">要计算的日期</param>
+            <returns>生肖名 例:鼠</returns>
+        </member>
+        <member name="M:CHSNS.Date.AnimalSignName(System.String)">
+            <summary>
+            获取生肖名
+            </summary>
+            <param name="dats">要计算的日期的字符串</param>
+            <returns>生肖名 例:鼠</returns>
+        </member>
+        <member name="M:CHSNS.Date.TreeName(System.DateTime)">
+            <summary>
+            获取地枝名
+            </summary>
+            <param name="dat">要计算的时间</param>
+            <returns>地枝名</returns>
+        </member>
+        <member name="M:CHSNS.Date.TreeName(System.String)">
+            <summary>
+            获取地枝名
+            </summary>
+            <param name="dats">要计算的时间的字符串</param>
+            <returns>地枝名</returns>
+        </member>
+        <member name="M:CHSNS.Date.SkyName(System.DateTime)">
+            <summary>
+            获取天干名
+            </summary>
+            <param name="dat">要计算的时间</param>
+            <returns>天干名</returns>
+        </member>
+        <member name="M:CHSNS.Date.SkyName(System.String)">
+            <summary>
+            获取天干名
+            </summary>
+            <param name="dats">要计算的时间的字符串</param>
+            <returns>天干名</returns>
+        </member>
+        <member name="M:CHSNS.Date.SkyTreeName(System.DateTime)">
+            <summary>
+            获取天干地枝的组合
+            </summary>
+            <param name="dat">要计算的时间</param>
+            <returns>天干地枝 例:甲子</returns>
+        </member>
+        <member name="M:CHSNS.Date.SkyTreeName(System.String)">
+            <summary>
+            获取天干地枝的组合
+            </summary>
+            <param name="dats">要计算的时间的字符串</param>
+            <returns>天干地枝 例:甲子</returns>
+        </member>
+        <member name="M:CHSNS.Date.StarSignName(System.String)">
+            <summary>
+            获取星座名
+            </summary>
+            <param name="dats">要计算的时间的字符串</param>
+            <returns>星座名:如水瓶</returns>
+        </member>
+        <member name="M:CHSNS.Date.StarSignName(System.DateTime)">
+            <summary>
+            获取星座名
+            </summary>
+            <param name="dat">要计算的时间</param>
+            <returns>星座名:如水瓶</returns>
+        </member>
+        <member name="M:CHSNS.Date.StarSignName(System.Byte)">
+            <summary>
+            获取星座名
+            </summary>
+            <param name="Num">星座编号</param>
+            <returns>星座名:如水瓶</returns>
+        </member>
+        <member name="M:CHSNS.Date.StarSign(System.String)">
+            <summary>
+            获取星座编号
+            </summary>
+            <param name="dats">要计算的时间的字符串</param>
+            <returns>星座编号</returns>
+        </member>
+        <member name="M:CHSNS.Date.StarSign(System.DateTime)">
+            <summary>
+            获取星座编号
+            </summary>
+            <param name="dat">要计算的时间</param>
+            <returns>星座编号</returns>
+        </member>
+        <member name="T:CHSNS.Date.SkyTreeText">
+            <summary>
+            天干地支
+            </summary>
+        </member>
+        <member name="F:CHSNS.Date.SkyTreeText.天干">
+            <summary>
+            天干 值为0
+            </summary>
+        </member>
+        <member name="F:CHSNS.Date.SkyTreeText.地支">
+            <summary>
+            地枝 值为1
+            </summary>
+        </member>
+        <member name="T:Chsword.DoDataBase">
+            <summary>
+            成幻互联ADO.net数据操作类。
+            2006年2月
+            AU:邹健
+            </summary>
+        </member>
+        <member name="M:Chsword.DoDataBase.#ctor">
+            <summary>
+            构造函数，对DoDataBase对象进行初始化。
+            </summary>
+        </member>
+        <member name="M:Chsword.DoDataBase.DoParameterSql(System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            进行查询或数据操作。
+            </summary>
+            <param name="StoredProcedureName">设置要对数据源执行的存储过程。</param>
+            <param name="SqlParameter">存储过程参数。</param>
+            <returns>包含查询结果的</returns>
+        </member>
+        <member name="M:Chsword.DoDataBase.DoParameterSql(System.String,System.Data.SqlClient.SqlParameter[],System.Data.SqlClient.SqlParameter)">
+            <summary>
+            进行查询或数据操作。
+            </summary>
+            <param name="StoredProcedureName">设置要对数据源执行的存储过程。</param>
+            <param name="SqlParameter">存储过程参数。</param>
+            <param name="ReturnValue">可以进行输出的参数。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Chsword.DoDataBase.ExecuteSql(System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行无返回操作
+            </summary>
+            <param name="StoredProcedureName">存储过程名</param>
+            <param name="SqlParameter">参数</param>
+        </member>
+        <member name="M:Chsword.DoDataBase.DoDataSet(System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            进行查询或数据操作。
+            </summary>
+            <param name="StoredProcedureName">设置要对数据源执行的存储过程。</param>
+            <param name="SqlParameter">存储过程参数。</param>
+            <returns>返回查询得到的数据集。</returns>
+        </member>
+        <member name="F:CHSNS.CHSNSUser._email">
+            <summary>
+            只有注册时才用的属性
+            </summary>
+        </member>
+        <member name="F:CHSNS.CHSNSUser._userid">
+            <summary>
+            获取当前用户ID,如用户未登录则抛出异常.
+            </summary>
+        </member>
+        <member name="F:CHSNS.CHSNSUser._username">
+            <summary>
+            获取当前用户姓名
+            </summary>
+        </member>
+        <member name="F:CHSNS.CHSNSUser._status">
+            <summary>
+            获取当前用户状态
+            </summary>
+        </member>
+        <member name="T:Chsword.File">
+            <summary>
+            文件操作
+            </summary>
+        </member>
+        <member name="M:Chsword.File.ReadAllText(System.String)">
+            <summary>
+            以UTF-8编码读取文本文件所有内容
+            </summary>
+            <param name="fileName">文件名</param>
+            <returns>文件内容</returns>
+        </member>
+        <member name="P:CHSNS.Config.RegVisitConfig.IsEmailValidate">
+            <summary>
+            必须实名
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.RegVisitConfig.IsAllowReg">
+            <summary>
+            允许注册
+            </summary>
+        </member>
+        <member name="T:CHSNS.CHServer">
+            <summary>
+            封装系统的HttpServerUtility类
+            </summary>
+        </member>
+        <member name="M:CHSNS.CHServer.UrlEncode(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.CHServer.UrlEncode(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.CHServer.UrlDecode(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Chsword.Web.UI.HtmlScript">
+            <summary>
+            可以生成script标签
+            </summary>
+        </member>
+        <member name="P:Chsword.Web.UI.HtmlScript.Src">
+            <summary>
+            脚本的URL
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.BaseConfig.IsSoureFace">
+            <summary>
+            是否允许查看原始大小的头像
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.BaseConfig.SmtpUser">
+            <summary>
+            SMTP用户名
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.BaseConfig.SmtpServer">
+            <summary>
+            SMTP服务器
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.BaseConfig.SenderName">
+            <summary>
+            发件人名称
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.BaseConfig.SenderEmail">
+            <summary>
+            发件人信箱
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.BaseConfig.MasterEmail">
+            <summary>
+            站长信箱
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.BaseConfig.Number">
+            <summary>
+            备案
+            </summary>
+        </member>
+        <member name="T:CHSNS.Encrypt">
+            <summary>
+            加密类,进行Has加密
+            IsReturnNum:是否返回为加密后字符的Byte代码
+            IsCaseSensitive：是否区分大小写。
+            方法：此类提供MD5，SHA1，SHA256，SHA512等四种算法，加密字串的长度依次增大。
+            </summary>
+        </member>
+        <member name="M:CHSNS.Encrypt.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="IsCaseSensitive">是否区分大小写</param>
+            <param name="IsReturnNum">是否返回为加密后字符的Byte代码</param>
+        </member>
+        <member name="M:CHSNS.Encrypt.#ctor">
+            <summary>
+            构造函数，区分大小写，且返回正常码
+            </summary>
+        </member>
+        <member name="M:CHSNS.Encrypt.MD5Encrypt(System.String,System.Int32)">
+            <summary>
+            Md5加密
+            </summary>
+            <param name="str">要加密的字符串</param>
+            <param name="code">生成MD5码的位数16/32</param>
+            <returns>返回MD5码</returns>
+        </member>
+        <member name="M:CHSNS.Encrypt.SHA1Encrypt(System.String)">
+            <summary>
+            进行SHA1(白宫密码)加密
+            </summary>
+            <param name="strIN">要加密的字符串</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:CHSNS.Encrypt.SHA256Encrypt(System.String)">
+            <summary>
+            进行SHA256加密
+            </summary>
+            <param name="strIN">要加密的字符串</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:CHSNS.Encrypt.SHA512Encrypt(System.String)">
+            <summary>
+            进行SHA512加密
+            </summary>
+            <param name="strIN">要加密的字符串</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:CHSNS.Encrypt.DESEncrypt(System.String,System.String,System.String)">
+            <summary>
+            使用DES加密（Added by niehl 2005-4-6）
+            </summary>
+            <param name="originalValue">待加密的字符串</param>
+            <param name="key">密钥(最大长度8)</param>
+            <param name="IV">初始化向量(最大长度8)</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:CHSNS.Encrypt.DESEncrypt(System.String,System.String)">
+            <summary>
+            使用DES加密（Added by niehl 2005-4-6）
+            </summary>
+            <param name="originalValue">待加密的字符串</param>
+            <param name="key">密钥(最大长度8)</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:CHSNS.Encrypt.DESDecrypt(System.String,System.String,System.String)">
+            <summary>
+            使用DES解密（Added by niehl 2005-4-6）
+            </summary>
+            <param name="encryptedValue">待解密的字符串</param>
+            <param name="key">密钥(最大长度8)</param>
+            <param name="IV">m初始化向量(最大长度8)</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="M:CHSNS.Encrypt.DESDecrypt(System.String,System.String)">
+            <summary>
+            使用DES解密（Added by niehl 2005-4-6）
+            </summary>
+            <param name="encryptedValue">待解密的字符串</param>
+            <param name="key">密钥(最大长度8)</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="T:CHSNS.Path">
+            <summary>
+            获取各种路径的类
+            LE:2007 10 20
+            </summary>
+        </member>
+        <member name="M:CHSNS.Path.UserWebPath(System.String)">
+            <summary>
+            得到用户文件夹
+            </summary>
+            <param name="userid">用户ID</param>
+            <returns>用户文件夹</returns>
+        </member>
+        <member name="M:CHSNS.Path.UserServerPath(System.Object)">
+            <summary>
+            用户文件夹(ASp.net用)
+            </summary>
+            <param name="userid">用户ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Path.GetFace(System.Object,CHSNS.ImgSizeType)">
+            <summary>
+            用户头像
+            </summary>
+            <param name="userid"></param>
+            <param name="sizeType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Path.ClientGroupFolder(System.String)">
+            <summary>
+            群组文件夹路径
+            </summary>
+            <param name="Groupid">群ID</param>
+            <returns>文件夹路径</returns>
+        </member>
+        <member name="M:CHSNS.Path.ClientUserPhotosFolder">
+            <summary>
+            用户相册路径
+            </summary>
+            <returns>返回形如/userFiles/{0}/{1}/{2}/{3}/photos/的结果</returns>
+        </member>
+        <member name="M:CHSNS.Path.ClientUserThumbFolder">
+            <summary>
+            用户缩略图文件夹路径
+            </summary>
+            <returns>缩略图文件夹路径</returns>
+        </member>
+        <member name="M:CHSNS.Path.GetGroupImg(System.String,CHSNS.ImgSizeType)">
+            <summary>
+            获取群图片
+            </summary>
+            <param name="Groupid">群ID</param>
+            <param name="sizeType">图片大小</param>
+            <returns>群图片路径</returns>
+        </member>
+        <member name="M:CHSNS.Path.GetGroupImg(System.String)">
+            <summary>
+            获取群图片(中号)
+            </summary>
+            <param name="Groupid">群ID</param>
+            <returns>群图片路径</returns>
+        </member>
+        <member name="M:CHSNS.Path.GroupFolder(System.String)">
+            <summary>
+            群文件夹(ASP.net 用)
+            </summary>
+            <param name="groupid">群ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:CHSNS.Path.DirectorySize(System.IO.DirectoryInfo)">
+            <summary>
+            递归算文件夹大小
+            </summary>
+            <param name="d"></param>
+            <returns>文件夹的大小(字节)</returns>
+        </member>
+        <member name="M:CHSNS.Path.FileSize(System.String)">
+            <summary>
+            获取文件大小
+            </summary>
+            <param name="path">文件路径</param>
+            <returns>文件的大小(字节)</returns>
+        </member>
+        <member name="P:CHSNS.Path.urlFilename">
+            <summary>
+            获取当前页面的名称,如http://aaa.com/x123.html 则返回x123
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.ConfigPath.SiteConfig">
+            <summary>
+            SiteConfig.config
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.ConfigPath.Routing">
+            <summary>
+            Routing.config
+            </summary>
+        </member>
+        <member name="P:CHSNS.Config.ConfigPath.SmtpConfig">
+            <summary>
+            SmtpConfig,config
+            </summary>
+        </member>
+        <member name="T:CHSNS.Debug">
+            <summary>
+            一组帮助您跟踪代码执行情况的方法
+            </summary>
+        </member>
+        <member name="M:CHSNS.Debug.Trace(System.String)">
+            <summary>
+            记录设计时环境内的调试消息,存于/Debug/[当前日期].txt的文件内
+            </summary>
+            <param name="info">要记录下来的信息</param>
+        </member>
+        <member name="M:CHSNS.Debug.TraceBack(System.String)">
+            <summary>
+            记录设计时环境内的调试消息,存于/Debug/[当前日期].txt的文件内,并可返回信息
+            </summary>
+            <param name="info">要记录下来的信息</param>
+            <returns>要记录的信息不动返回</returns>
+        </member>
+    </members>
+</doc>

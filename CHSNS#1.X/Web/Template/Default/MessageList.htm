@@ -1,0 +1,25 @@
+﻿<table class="inbox messagelist" style="width: 100%;border-collapse: collapse;" border="0" cellspacing="0">
+	<thead>
+		<tr>
+			<th class="stat" scope="col"><img src="/images/readed.gif"/></th>
+			<th class="check" scope="col">
+				<input onclick="checkFormAll(this.checked)" type="checkbox" /></th>
+			<th class="author" scope="col">
+				$cnMan$</th>
+			<th class="title" scope="col">
+				标题</th>
+			<th class="time" scope="col">
+				时间</th>
+			<th class="action" scope="col">
+				&nbsp;</th>
+			<th class="action" scope="col">
+				&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody id="Message_tbody$isSend$">
+		$MessageListItem$<!--MessageListItem-->
+	</tbody>
+</table>
+<div class="inputbox">
+<input type="button" class="subbutton" onclick="Message_DeleteAll('$isSend$');" value="删除选中项" />
+</div>

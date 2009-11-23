@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Wow" Class="WOWDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=Wow;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="WowConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Question" Member="Question">
+    <Type Name="Question">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BeginTime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AddTime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ForType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TaskName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Example" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="Question_Answer" Member="Answer" ThisKey="ID" OtherKey="QuestionID" Type="Answer" />
+      <Association Name="CurrentUser_Question" Member="CurrentUser" ThisKey="UID" OtherKey="UID" Type="CurrentUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Character" Member="Character">
+    <Type Name="Character">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Race" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RealM" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BattleGroup" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Class" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Faction" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="lastLoginDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Gend" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Character_CurrentUser" Member="CurrentUser1" ThisKey="ID" OtherKey="CurrentCID" Type="CurrentUser" />
+      <Association Name="CurrentUser_Character" Member="CurrentUser" ThisKey="UID" OtherKey="UID" Type="CurrentUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CurrentUser" Member="CurrentUser">
+    <Type Name="CurrentUser">
+      <Column Name="UID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CurrentCID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Evaluation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConsumerGB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkerGB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CurrentUser_Question" Member="Question" ThisKey="UID" OtherKey="UID" Type="Question" />
+      <Association Name="CurrentUser_Character" Member="Character" ThisKey="UID" OtherKey="UID" Type="Character" />
+      <Association Name="CurrentUser_Answer" Member="Answer" ThisKey="UID" OtherKey="UID" Type="Answer" />
+      <Association Name="Character_CurrentUser" Member="Character1" ThisKey="CurrentCID" OtherKey="ID" Type="Character" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Answer" Member="Answer">
+    <Type Name="Answer">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QuestionID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="EvalText" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="AddTime" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Role" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Association Name="CurrentUser_Answer" Member="CurrentUser" ThisKey="UID" OtherKey="UID" Type="CurrentUser" IsForeignKey="true" />
+      <Association Name="Question_Answer" Member="Question" ThisKey="QuestionID" OtherKey="ID" Type="Question" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

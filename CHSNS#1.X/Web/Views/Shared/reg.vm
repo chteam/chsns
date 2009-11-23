@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>注册 - $ChHelper.ChSite.BaseConfig.Title</title>
+<script type="text/javascript"></script>
+<link href="${ChHelper.ChSite.StylePath}/master.css" rel="stylesheet" type="text/css" />
+<link href="${ChHelper.ChSite.StylePath}/register.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/JavaScript/Framework.js"></script>
+<script type="text/javascript" src="/WebServices/PageMethods.asmx/js"></script>
+
+<script src="/WebServices/Identity.asmx/js" type="text/javascript"></script>
+<script src="/WebServices/Identity.asmx/js" type="text/javascript"></script>
+<script src="/WebServices/AutoSelect.asmx/js" type="text/javascript"></script>
+##<script src="/JavaScript/Registrator.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div id="header"></div>
+<div id="container">
+<div id="intro">
+	<div id="pageHeader">
+		<div id="publicmenu" class="mainlink mymenu">#parse("$siteroot/Layouts/master-publicmenu.vm")</div>
+		<div class="secondlink">#parse("$siteroot/Layouts/master-utility.vm")</div>
+	</div>
+</div>
+<div id="content">
+	<div id="pcontent" style="height: 100%">
+		$childContent
+	</div>
+</div>
+#parse("$siteroot/Layouts/master-footer.vm")##Footer部分
+<div id="linkList">
+	<div id="linkList2">
+
+	</div>
+	<div id="ad" style="padding-top:20px"></div></div>
+</div>
+<div id="extendDiv1"><span></span></div><div id="extendDiv2"><span></span></div><div id="extendDiv3">
+	<span></span></div><div id="extendDiv4"><span></span></div><div id="extendDiv5"><span></span>
+</div><div id="extendDiv6"><span></span></div>
+<script type="text/javascript">
+</script>
+</body>
+</html>

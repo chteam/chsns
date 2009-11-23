@@ -1,0 +1,54 @@
+﻿#*capturefor(css)
+<link href="${ChHelper.ChSite.StylePath}/main.css" rel="stylesheet" type="text/css" />
+*#end
+
+$page.Add("title","首页")
+<div class="column main_column">
+	<div class="floatl">
+		<span class="logo"></span>
+		<div class="logtext">
+		#*	<p>
+				${ChHelper.ChSite.BaseConfig.Title}[<a href="${ChHelper.ChSite.BaseConfig.Url}">${ChHelper.ChSite.BaseConfig.Url}</a>]使您可以:</p>
+			<ul>
+				<li><span>结识更多的您周围的同学.</span></li>
+				<li><span>联系过去的老朋友,让友谊与我们一同成长</span></li>
+				<li><span>共同体验新酷应用,与时代同步</span></li>
+			</ul>
+		*#
+		<strong>Tags:</strong>
+		$html.RenderAction("about")
+		-----
+		$html.ActionLink("index","index")
+		#set( $tags = $ChHelper.DB.NoteTags_Top(30))
+		##$html.RenderUserControl('~/Views/tags/Tags.vm')
+		$html.TextArea("","")
+		-----
+		#parse( "tags/Tags.vm" )
+		</div>
+		<div class="search">
+			查找同学:<input type="text" id="search_username" onkeydown="SearchEnter(event,'search_username')" />
+			<input type="button" value="查找" class="subbutton" onclick="HomeSearch('search_username')" /></div>
+	</div>
+	<div class="text">
+		<div class="margintb">
+<br />
+<p>CHSNS#是免费的，开源的SNS社区网站程序</p>
+			
+	<p>
+使用网站前请详见：<a href="http://www.eice.com.cn/%e4%bd%bf%e7%94%a8%e5%8d%8f%e8%ae%ae.ashx" title="CHSNS#使用协议">CHSNS#使用协议</a>
+			</p>
+<p>
+			CHSNS# Asp.net MVC版本制作中　请见<a href="http://www.codeplex.com/sns">Codeplex源码</a></p>
+				<p>最新版本请见<a href="http://www.eice.com.cn">CHSNS#官方网站</a></p>
+		</div>
+		<div class="box">
+			<h3>
+				${ChHelper.ChSite.BaseConfig.Title} 人气之星</h3>
+			<div class="boxcont">
+			#component(ViewList with "type=3" "everyrow=6" "ownerid=0")
+				</div>
+			<p class="more">
+			</p>
+		</div>
+	</div>
+</div>

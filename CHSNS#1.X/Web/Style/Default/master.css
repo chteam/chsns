@@ -1,0 +1,346 @@
+body{color:#000;font:12px/1.5 "Lucida Grande",SimSun,Arial,Tahoma,Helvetica,sans-serif;}
+*{margin:0; padding:0;}
+p{text-align: justify;}
+img{border:0;}
+
+/*some color*/
+.error{color:red}
+.center{text-align:center;}
+/* specific divs */
+#container{}
+#header{width:200px;height:60px;background:red}
+#intro{width:628px;}
+#pageHeader{background-color:#3b5999;padding:0px;float:left; width:628px;}
+
+#publicmenu{margin-top:10px;margin-left:20px;height:22px; float:left;}
+#publicmenu a{text-decoration:none;}
+
+.menu_title,.menu_mypage{display:block;cursor:pointer;color:#fff;padding:2px 15px 0 5px;}
+.menu_title:hover,.menu_mypage:hover{color:#fff;background:url('') #6d84b4;}
+.menu_title{background-position:right;background:transparent url(images/bg_icon.png) no-repeat 30px -2195px;}
+
+
+
+.menu_network li a{margin-left:0px}
+
+.mymenu ul{list-style:none;}
+.mymenu li.sfhover ul {position: absolute; margin-left:0px;} 
+.mymenu li.sfhover ul li{margin-bottom:0px;} 
+.mymenu li ul {list-style-type:none;display:block;position:absolute; margin-left:-100em;}
+.mymenu li ul li{margin-left:0;border-bottom:1px solid #fff;}
+
+.mymenu .menuli{float:left;padding:2px 5px 5px 5px;}
+.menu_network a{color: #3b5999;display:block;text-decoration: none;cursor: pointer;padding:1px 0px 1px 16px;margin: 1px 0 1px 0;}
+.menu_network a:hover{background-color: #5c75aa;color: #fff;padding:1px 0px 1px 16px;}
+.menu_network{margin-left:0;border: 1px solid #3b5999;z-index: 1000;background: #fff;cursor: default;text-align:left;color: #6d84b4;padding:1px;width:90px;}
+#Menu_Search{color:#333; font-weight:bold; padding:2px 18px 2px 3px;background:transparent url(images/bg_icon.png) no-repeat 30px -2198px;}
+#Menu_Search:hover{color:White;}
+
+#pageHeader .secondlink{color:White;margin-top:12px;margin-bottom:3px;float:right;text-align:right;padding-right:10px; }
+#pageHeader .secondlink a{color:#ccc;}
+#quicklink{
+width:642px;background:transparent url(images/headlinkbg.jpg) repeat-x top right;float:left;}
+#quicklink ul{list-style-type:none;width:100%;margin:auto;padding:0px;}
+#quicklink li{float:left;}
+#quicklink li a{background:transparent url(images/headlinkbg.jpg) repeat-x top right;background:transparent url(images/headlinkborder.jpg) no-repeat top left;font-size:12px;color:#333333;display:block;text-decoration:none;padding:2px 10px 1px 10px;width:60px;}
+#quicklink li a:hover{color:#fff;background:transparent url(images/headlinkbghover.jpg) repeat-x top left;}
+#content{clear:both;width:640px;/*margin-bottom: 10px;*/
+border:solid 1px #cccccc;border-bottom:solid 1px #3b5999;overflow:hidden;}
+
+
+#footer{width:642px;text-align:center;font-size:12px;padding:2px;padding-top:5px;}
+#footer p{text-align:center;
+ }
+#footer a:link,#footer a:visited{margin-right: 10px;color:#3b5999;float:right;}
+#copyright{float:left;width:150px;color:#999999;text-decoration:none;}
+
+#copyright .c{background:url(images/c.jpg) repeat-x top left;}
+
+
+
+
+#extendDiv1{}
+
+#linkList{float:right;margin:0;}
+
+
+#MyApplication ul{list-style-type:none;}
+#MyApplication li{margin-top:2px;}
+#MyApplication li div{
+background:no-repeat left bottom;padding-left:10px;height:21px;}
+#MyApplication a{width:110px;margin-left:13px;font-size:12px;line-height:18px;}
+html>body #myhome,html>body #myblog,html>body #myphoto{border-bottom:0;}
+
+#myfriend,#myphoto,#myshare{clear:left;}
+#myshare a{background:url(images/icon_new.gif) 94% 50% no-repeat;}
+#myshare a:hover{background:#3B5999 url(images/icon_new.gif) 94% 50% no-repeat;}
+#lselect a .new{float:right;font-size:12px;}
+/*login part*/
+
+#loginpanel #loginForm p{margin:10px 0; line-height:20px;}
+#loginpanel #loginForm .label{color:#666666; font-weight:bold; line-height:20px; float:left;}
+#loginpanel #loginForm .inputbutton{width:50px;}
+#loginpanel .inputtext{width:114px;}
+#loginpanel #login{width:40px;}
+#loginpanel .portal{display:block; padding:5px 0 5px 18px; margin:10px 0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#f7f7f7 url(images/style_triangle.gif) 8px 10px no-repeat; color:#333; font-weight:bold;}
+#loginpanel .portal:hover{text-decoration:none; border-color:#3B5999; background:#d8dfea url(images/style_triangle.gif) 8px 10px no-repeat; color:#000;}
+#loginpanel .portal span{display:block; color:#666; font-weight:normal;}
+#loginpanel .portal:hover span{color:#333;}
+
+/*搜索部分 search part*/
+
+#chcontent_body fieldset{margin:20px 0; padding:10px 0; color:#3b5999; border:1px solid #cccccc; width:500px;}
+#chSearchUser fieldset ul{margin-right:260px; list-style:none;}
+#chSearchGroup fieldset ul{margin-right:260px; list-style:none;}
+#chSearchClass fieldset ul{margin-right:260px; list-style:none;}
+#chSearchUser fieldset li{text-align:right; margin:10px 0;}
+#chSearchGroup fieldset li{text-align:right; margin:10px 0;}
+#chSearchClass fieldset li{text-align:right; margin:10px 0;}
+#chSearchUser fieldset label{color:#555; font-weight:bold;}
+#chSearchGroup fieldset label{color:#555; font-weight:bold;}
+#chSearchClass fieldset label{color:#555; font-weight:bold;}
+#chSearchUser .subbutton{width:100px; margin:10px 0; margin-left:10px;}
+#chSearchUser{padding:0 70px;}
+#chSearchGroup{padding:0 70px;}
+#chSearchGroup .subbutton{width:100px; margin:10px 0; margin-left:10px;}
+#chSearchGroup select{width:132px;}
+#chSearchGroup select option{padding-left:10px;}
+#chSearchClass fieldset{margin:20px 70px; padding:10px 0; color:#3b5999; border:1px solid #cccccc; width:500px;}
+#chSearchClass select{width:150px;}
+#chSearchClass .subbutton{width:100px; margin:10px 0; margin-left:80px;}
+#Search_Class_Item{margin:0 70px; padding:10px 0; color:#3b5999;width:500px; margin-bottom:30px;}
+#Search_Class_Item li{float:left; margin-left:30px;}
+
+.mypadding{padding:5px;}
+.personName{line-height:15px; overflow:hidden; width:50px; text-align:center;}
+.personName a{display:block; white-space:nowrap;}
+
+
+.fontlink a:link{color:#3B5999;text-decoration:none;}
+
+.fontlink a:visited{text-decoration:none;color:#3B5999;}
+.fontlink a:hover{text-decoration:underline;color:#3B5999;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*applications*/
+#MyApplication li{padding-left:10px;}
+#AppList li{padding-left:20px;}
+#App_mynote,#Applist_App_mynote,.icon_note{
+   background:url(images/bg_icon.png) no-repeat 0 -2280px;
+}
+
+#App_photos,#Applist_App_photos,.icon_album{
+   background:url(images/bg_icon.png) no-repeat 0 -1680px;  
+}
+#App_myfriend,#Applist_App_myfriend{
+   background:url(images/bg_icon.png) no-repeat 0 -1360px; }
+
+#App_myuniversityclass,#Applist_App_myuniversityclass{
+   background:url(images/bg_icon.png) no-repeat -4px -920px;}
+
+#App_mygroup,#Applist_App_mygroup,.icon_group,.icon_groupuser{
+   background:url(images/bg_icon.png) no-repeat -3px 0;
+}
+#App_supernote,#Applist_App_supernote,.icon_supernote{
+   background:url(images/bg_icon.png) no-repeat 1px -2240px;
+}
+#App_train,#Applist_App_train{
+   background:url(images/bg_icon.png) no-repeat 1px -280px;
+}
+.icon_showtext{
+background:url(images/bg_icon.png) no-repeat 0 -1400px;
+}
+.padding20{padding-left:20px;}
+#Profile_Event li{
+ padding-left:20px;
+}
+.icon_close,.icon_close:hover{
+	font-size:10px;
+	text-decoration:none;
+	background:url(images/bg_icon.png) no-repeat -40px -640px;
+	width:20px;
+	height:20px;
+}
+
+
+/*getpassword 密码找回*/
+.pwresetmain{ text-align:center; margin:30px 0;}
+.pwresetmain div{ margin:10px 0;}
+
+.pwresetmain .pwtext p{ text-align:right; margin-right:230px; margin-top:10px;}
+
+/*tags*/
+.tags{list-style-type:none;margin:0;font-family:Verdana,宋体, Arial, Helvetica, sans-serif;}
+.tags li{float:left;margin-right:15px;}
+.tags .tag_4 a{color: #FF3300;font-size: 1.6em}
+.tags .tag_3 a{color: #FF6600;font-size: 1.4em;}
+.tags .tag_2 a{color: #6666FF; font-size: 1.2em; font-weight: 700;}
+.tags .tag_1 a{color: #6699FF;}
+
+.userviewlist{}
+.userviewlist ul{list-style-type:none;}
+.userviewlist ul li{float:left;margin:0;height:91px;display:block}
+
+.userviewinfo { overflow:hidden; width:52px;padding:5px;}
+.userviewicon {position:relative;height:75px}
+.userviewicon div{position:absolute;bottom:0}
+
+.userviewicon li { width:52px;}
+.userviewicon a img { border:1px solid #d8dfea;max-height:74px;}
+.userviewicon a:hover img { border:1px solid #3B5999;}
+
+.userviewname { padding:5px 0 2px; line-height:15px; overflow:hidden;}
+.userviewname a { display:block; white-space:nowrap;}
+
+
+
+.ui-resizable { position: relative; }
+
+/* Global handle styles */
+.ui-resizable-handle { position: absolute; display: none; font-size: 0.1px; }
+.ui-resizable .ui-resizable-handle { display: block; }
+body .ui-resizable-disabled .ui-resizable-handle { display: none; } /* use 'body' to make it more specific (css order) */
+body .ui-resizable-autohide .ui-resizable-handle { display: none; } /* use 'body' to make it more specific (css order) */
+
+.ui-resizable-n { cursor: n-resize;height: 6px; width: 100%; top: 0px; left: 0px;margin:0 6px}
+.ui-resizable-s { cursor: s-resize; height: 6px; width: 100%; bottom: 0px; left: 0px;margin:0 6px}
+
+.ui-resizable-e { cursor: e-resize; width: 6px; right: 0px; top: 0px; height: 100%;margin:6px 0}
+.ui-resizable-w { cursor: w-resize; width: 6px; left: 0px; top: 0px; height: 100%;}
+.ui-resizable-n,.ui-resizable-s ,.ui-resizable-e ,.ui-resizable-w ,.ui-resizable-se,.ui-resizable-sw,.ui-resizable-nw,.ui-resizable-ne{
+background:#000;
+filter:alpha(opacity=77);
+-moz-opacity:0.77; 
+opacity:0.77;}
+/* This file skins dialog */
+
+.ui-dialog {
+	background-color: #efefef;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	border-bottom: 1px solid #efefef;
+	background: #ff9900 url(i/dialog-title.gif) repeat-x;
+	padding: 0px;
+	height: 28px;
+	_height: 29px;
+	margin:0 6px
+}
+
+.ui-draggable .ui-dialog-titlebar {
+	cursor: move;
+}
+
+.ui-draggable-disabled .ui-dialog-titlebar {
+	cursor: default;
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	width: 16px;
+	height: 16px;
+	background: url(i/dialog-titlebar-close.png) no-repeat;
+	position:absolute;
+	top: 6px;
+	right: 7px;
+	cursor: default;
+}
+.ui-dialog .ui-dialog-titlebar-close img{border:0;}
+
+.ui-dialog .ui-dialog-titlebar-close span {
+	display: none;
+}
+
+.ui-dialog .ui-dialog-titlebar-close-hover {
+	background: url(i/dialog-titlebar-close-hover.png) no-repeat;
+}
+
+.ui-dialog .ui-dialog-title {
+	margin-left: 5px;
+	color: white;
+	font-weight: bold;
+	position: relative;
+	top: 7px;
+	left: 4px;
+}
+
+.ui-dialog .ui-dialog-content {
+	margin: 1.2em;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+	position: absolute;
+	bottom: 8px;
+	right: 12px;
+	width: 100%;
+	text-align: right;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+	margin: 6px;
+}
+
+
+
+
+/*事件页*/
+
+#pcontent{ background-color:#f7f7f7; padding-bottom:10px;}
+
+.imgnew{ background-color:#fff; width:460px; border:1px solid #e9e9e9; margin:0 10px; padding:10px;margin-top:10px;}
+
+.imgnew .userviewlist{width:100%;height:100px}
+.imgnew .userviewlist ul li{margin-left:12px;}
+
+
+.sysnote{background-color:#fff; width:460px; border:1px solid #e9e9e9; margin:0 10px; padding:10px;margin-top:10px; color:#3b5999;}
+.sysnote p{ margin-top:10px;}
+
+#NewReply{ background-color:#fff; width:460px; border:1px solid #e9e9e9; margin:5px 10px; padding:10px;}
+#Event_Event{background-color:#fff; width:460px; border:1px solid #e9e9e9; margin:5px 10px; padding:10px;}
+.homemain{float:left}
+.homemain h4{ color:#333333;}
+.sysnote h4{ color:#ff9900;}
+.homemain li{ list-style:none; margin-top:5px;}
+.homeright{ float:right; clear:both; width:133px; margin-right:5px; padding:10px 0;}
+.homeright h4{ background-color:#e9e9e9; padding:0 5px; color:#333333;}
+.homeright ul{ margin-left:15px; margin-top:10px;}
+.homeright ul li{ margin-top:5px; color:#3b5999;}
+
+#chRequest{ margin-bottom:10px;}
+
+/*readlist*/
+#readlist { overflow:hidden;}
+#readlist table { table-layout:fixed; border-bottom:1px solid #d8dfea;}
+#readlist table thead th { background:#F6F6F6; border-top:1px solid #d8dfea; line-height:20px; font-weight:normal;}
+#readlist table td { padding:3px 0; border-top:1px solid #d8dfea;}
+#readlist table tr.odd{ background-color:#FCFCFC;}
+#readlist table .title { padding-left:10px;overflow:hidden;white-space:nowrap;vertical-align:middle;}
+#readlist table .time { width:90px; text-align:center;vertical-align:middle;}
+#readlist table .author { width:90px; text-align:center;}
+#readlist table .group {padding-right:10px; text-align:center; width:150px;overflow:hidden;white-space:nowrap;vertical-align:middle;}
+

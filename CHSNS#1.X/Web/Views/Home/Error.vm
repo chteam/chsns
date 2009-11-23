@@ -1,0 +1,6 @@
+﻿#capturefor(title) 错误 #end
+<div class="notes">
+#if($msg)
+$msg
+#end
+</div>

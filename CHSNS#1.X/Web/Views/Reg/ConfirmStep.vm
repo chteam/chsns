@@ -1,0 +1,23 @@
+﻿#capturefor(title) 注册-邮件验证 #end
+<div id="toc">
+	<ul id="tabs">
+		<li class="status">第四步 - 邮件验证</li>
+	</ul>
+</div>
+<form id="registerForm" action="$url.for("%{action='confirmstep-save'}")" method="post" onsubmit="return IsRegValition();" >
+
+#if($Flash.errors)
+<div class="notes">$errors</div>
+#end
+<div class="notes">我们已经发送邮件到您的页面，请查看并提交邮件内部的验证码</div>
+<label>
+#if($session.get_item("reginfo").get_item(1))
+$session.get_item("reginfo").get_item(1)
+#end
+ 请输入您收到的验证码</label>
+<input name="code" type="text" />
+<input type="submit" value="认证" class="subbutton"	tabindex="20" />
+</form>
+#*
+邮件确认
+*#
