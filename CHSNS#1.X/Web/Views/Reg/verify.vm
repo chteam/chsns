@@ -1,0 +1,7 @@
+﻿#capturefor(title) 验证 #end
+#if($Flash.errors)
+<div class="notes">$errors</div>
+#end
+#*
+更改Field
+*#

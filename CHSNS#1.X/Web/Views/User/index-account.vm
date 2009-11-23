@@ -1,0 +1,19 @@
+﻿<div class="accordionHeader accordionHeaderSelected" id="accont-header">账号 Account</div>
+<div id="accont-content" class="accordionContent">
+	<ul>
+		<li><span>注册ＩＤ：</span>$Ownerid</li>
+		<li><span>注册时间：</span>$user.get_item("RegTime").ToString("yy-MM-dd")</li>
+		<li><span>上线时间：</span>$user.get_item("LoginTime").ToString("yy-MM-dd HH:mm")</li>
+		<li><span>可用积分：</span>$user.get_item("Score")</li>
+	</ul>
+#EditInfo( "Basic" )
+	#if($user.get_item("Relation") >= $user.get_item("BasicInfoShowLevel") || $ChHelper.ChUser.isAdmin)
+	<ul id="chBasic">
+<li><span>性　　别：</span><span>#if($user.get_item("sex"))男生 #else女生 #end</span></li>
+#if(!$user.isnull("BirthDay"))
+<li><span>出生日期：</span><span>$user.get_item("BirthDay").ToString("yyyy-M-dd")</span></li>
+<li><span>家　　乡：</span><span>$user.get_item("Provincename")-$user.get_item("cityname")</span></li>
+#end
+	</ul>
+	#end
+</div>

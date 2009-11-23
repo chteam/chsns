@@ -1,0 +1,12 @@
+﻿#capturefor(css)
+<link href="${ChHelper.ChSite.StylePath}/video.css" rel="stylesheet" type="text/css" /></head>
+#end
+#capturefor(javascript)
+<script src="/WebServices/NoteBook.asmx/js" type="text/javascript"></script>
+<script src="/JavaScript/PageSet.js" type="text/javascript"></script>
+#end
+#capturefor(title) 视频 #end
+
+<form>
+$page
+</form>

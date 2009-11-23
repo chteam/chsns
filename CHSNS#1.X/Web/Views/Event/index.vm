@@ -1,0 +1,108 @@
+﻿#capturefor(title) 事件 #end
+#capturefor(css)##那个CSS
+<link href="${ChHelper.ChSite.StylePath}/system.css" rel="stylesheet" type="text/css" />
+#end
+
+#set($userid=$session.get_item("userid"))
+##右边一条
+<div class="homeright">
+	#if($FriendRequestCount>0)
+	<div id="Request">
+		<h4>请求</h4>
+		<ul id="chRequest">
+		<li>
+		<a href="/FriendRequest.aspx">
+		<span class="count">$FriendRequestCount</span>个人想加你为好友
+		</a>
+		</li>
+		</ul>
+	</div>
+	#end
+	<div id="Count">
+		<h4>统计</h4>
+		<ul>
+		<li>共${ViewCount}人访问</li>
+		<li><a href="/ReplyList.aspx?userid=$userid&amp;">共有${CommentCount}条留言</a></li>
+		</ul>
+	</div>
+	<div class="notes">
+		<a href="/$ChHelper.ChUser.Userid/Blog/index.ashx">进入我的博客</a>
+	</div>
+	#if($session.get_item("status")>199)##管理员功能
+	<div id="Event_Admin">
+		<h4>管理员</h4>
+		<ul>
+			<li><a href="/admin/admin/index.ashx">管理后台</a></li>
+		</ul>
+	</div>
+	#end
+	
+</div>
+##左边正文
+<div class="homemain">
+	<div class="imgnew">
+	<h4>谁最近看过我的页面</h4>
+	##最近看过我页面的列表,一行六列,共六人
+		<div class="boxcont">
+		#component(ViewList with "type=0" "everyrow=6" "ownerid=$userid")
+		</div>
+	</div>
+	##新回复
+	#foreach($item in $NewReply)
+	#beforeall
+	<div id="NewReply"><h4>最新回复</h4><ul id="chNewReply">
+	#each
+			#if($item.IsNull("groupid"))
+				#set($groupid = "")
+			#else
+				#set($groupid = $item.get_item("groupid"))
+			#end
+			#if($item.get_item("isreply")==true)
+				#set($replytext = "回复了您的留言")
+			#else
+				#set($replytext = "给你留言了")
+			#end
+	<li><p>
+		<a class="cfrom" href="/User.aspx?userid=$item.get_item("userid")&amp;">$item.get_item("name")</a>
+		在
+		#if($item.get_item("type")==0)
+			<a href="/User.aspx?userid=$userid&amp;">我的页面</a>
+		#else
+			<a href="/Note.aspx?id=$item.get_item("logid")&amp;groupid=$groupid&amp;">$item.get_item("title")</a>
+		#end
+		<span class="prefix">
+			#if($item.get_item("type")==0)
+				<a href="/ReplyList.aspx?userid=$userid&amp;#$item.get_item("id")">$replytext</a>
+			#else
+				<a href="/Note.aspx?id=$item.get_item("logid")&amp;groupid=$groupid&amp;">$replytext</a>
+			#end
+		</span>
+		<span class="sufix">$item.get_item("addtime").ToString("MM-dd HH:mm")</span>
+	</p></li>
+	#afterall
+	</ul></div>
+	#end
+	##新回复完毕 新帖子开始
+	#if($RssSource.Count!=0)
+<div id="NewRss" class="imgnew">
+	<h4>群订阅[<a href="/GroupList.aspx?tabs=0&amp;">more</a>]</h4>
+
+	</div>
+#end
+<div id="Event_Event">
+<h4>我朋友的动向</h4>
+<ul id="Profile_Event">#component(Event with "type=1" "userid=$userid") ##type friend 1
+</ul></div>
+	<div class="imgnew">
+		<h4>新人秀</h4>
+		##新注册的随机列表,一行六列,共六人
+		<div class="boxcont">
+		#component(ViewList with "type=4" "everyrow=6" "ownerid=$userid")
+		</div>
+	</div>
+
+</div>
+
+#*我的事件页
+邹健: 2007年12月26
+*#

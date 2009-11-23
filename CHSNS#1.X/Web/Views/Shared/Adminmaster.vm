@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript"></script>
+<link href="${ChHelper.ChSite.StylePath}/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/JavaScript/Framework.js"></script>
+
+<!--script type="text/javascript" src="/WebServices/PageMethods.asmx/js"></script>
+<script type="text/javascript" src="/JavaScript/Chinese.js"></script>
+
+<script src="/WebServices/Identity.asmx/js" type="text/javascript"></script>
+<script src="/JavaScript/Globalization/zh-CN.js" type="text/javascript"></script>
+<script src="/JavaScript/Client/Common.js" type="text/javascript"></script>
+<script src="/JavaScript/Globalization/Local.js" type="text/javascript"></script>
+<script src="/JavaScript/Client/Common2.js" type="text/javascript"></script>
+<script src="/JavaScript/Adminuser.js" type="text/javascript"></script-->
+$!css
+$!javascript
+<style>
+.messagetext {overflow:hidden; zoom:1; border-left:1px solid #000; border-right:1px solid #000; padding:0 10px;  text-align:left; background:#ffffe1; word-break : break-all; letter-break:break-all; }
+.messagetext img {float:left;margin:0 3px 3px 3px;}
+</style>
+</head>
+<body>
+#if($msg)
+<div class="notes">	$msg</div>
+#end
+$childContent
+#*<!--提示层部分开始--><span id="hintdivup" style="display:none; position:absolute;z-index:500;">
+<div style="position:absolute; visibility: visible; width: 271px;z-index:501;">
+<p><img src="${ChHelper.ChSite.BaseConfig.Path}/images/commandbg.gif" /></p>
+<div class="messagetext"><img src="${ChHelper.ChSite.BaseConfig.Path}/images/dot.gif" /><span id="hintinfoup" ></span></div>
+<p><img src="${ChHelper.ChSite.BaseConfig.Path}/images/commandbg2.gif" /></p>
+</div>
+
+<iframe id="hintiframeup" style="position:absolute;z-index:100;width:266px;scrolling:no;" frameborder="0"></iframe>
+</span>
+<span id="hintdivdown" style="display:none; position:absolute;z-index:500;">
+<div style="position:absolute; visibility: visible; width: 271px;z-index:501;">
+<p><img src="${ChHelper.ChSite.BaseConfig.Path}/images/commandbg3.gif" /></p>
+<div class="messagetext"><img src="${ChHelper.ChSite.BaseConfig.Path}/images/dot.gif" /><span id="hintinfodown" ></span></div>
+<p><img src="${ChHelper.ChSite.BaseConfig.Path}/images/commandbg4.gif" /></p>
+</div>
+<iframe id="hintiframedown" style="position:absolute;z-index:100;width:266px;scrolling:no;" frameborder="0"></iframe>
+</span>
+<!--提示层部分结束-->*#</body>
+</html>

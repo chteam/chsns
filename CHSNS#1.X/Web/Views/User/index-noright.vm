@@ -1,0 +1,41 @@
+﻿<div id="UserListMsg"></div>
+<div style="height: 100%">
+<div id="toc">
+<ul id="tabs">
+<li class="status">
+<a href="/search.aspx">查找</a>
+</li>
+<li class="toptitle">由于对方的隐私设置，你没有权限执行该操作。</li>
+</ul>
+</div>
+<div class="ch_content">
+<div class="notes">提示：想了解对方信息吗？那就加对方好友吧...</div>
+<ol id="UserListItems" class="peoplelist infolist">
+<li id="Items$Ownerid">
+	<div class="people">
+		<p class="image">
+			<a href="/User.aspx?userid=$Ownerid" target="_blank">
+<img src="$ChHelper.Path.GetFace_Middle($Ownerid)" alt="$user.get_item("name")" /></a>
+		</p>
+		<div class="info">
+			<strong><a href="/User.aspx?userid=$Ownerid" target="_blank">$user.get_item("name")</a> </strong>
+			<ul>
+				<li>大学：<a href="/Search.aspx?action=show&amp;uid=$user.get_item("University_id")&amp;">
+$user.get_item("University")</a> <span class="pipe">
+					-</span> <a href="/Search.aspx?action=show&amp;xid=$user.get_item("Xueyuan_id")&amp;">
+$ChHelper.DataCache.GetXueyuanName($user.get_item("University_id"),$user.get_item("Xueyuan_id"))</a></li>
+
+				<li>入学：<a href="/Search.aspx?action=show&amp;grade=$user.get_item("Grade")&amp;uid=$user.get_item("University_id")&amp;">
+$user.get_item("Grade")</a></li>
+			</ul>
+		</div>
+		<ul class="actions">
+			<li><a href="javascript:AddFriend($Ownerid)">加为好友</a></li>
+			<li><a href="/Message.aspx?mode=compose&Toname=$url.UrlEncode($user.get_item("name"))&ToId=$Ownerid" target="_blank">发小条</a></li>
+		</ul>
+	</div>
+</li>
+
+</ol>
+</div>
+</div>

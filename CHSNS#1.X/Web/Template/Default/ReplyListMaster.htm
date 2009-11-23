@@ -1,0 +1,15 @@
+﻿<div class="page" id="PageUp"></div>
+<div id="Comment">
+<ol id="talk">$Items$</ol></div>
+<div class="page" id="PageDown"></div>
+<input id="HdPage" type="hidden" value="$NowPage$" />
+<input id="HdCount" type="hidden" value="$Count$" />
+<input id="HdEveryPage" type="hidden" value="$EveryPage$" />
+<input id="Hdisreply" type="hidden" value="false" />
+<input id="Hdreplyid" type="hidden" value="0" />
+<script type="text/javascript">
+//显示相应的层
+if ($get("$CountId$")!=null)
+	$get("$CountId$").innerHTML=$Count$;
+$ZhuShi$	PageSet_chSetPage("PageUp","PageDown","HdPage","HdCount","HdEveryPage");
+</script>

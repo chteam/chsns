@@ -1,0 +1,40 @@
+﻿/* message list */
+.messagelist { table-layout:fixed;}
+.messagelist tr th, .messagelist tfoot td ,._pager{ background:#d8dfea; font-weight:normal;}
+._pager td{width:24px}
+.messagelist tr th, .messagelist tbody td { padding-top:3px; padding-bottom:3px; border-bottom:1px solid #d8dfea; overflow:hidden;}
+.messagelist tbody td p { white-space:nowrap;}
+.messagelist tfoot td { padding:3px 10px 4px;}
+
+.messagelist .check { padding:3px;}
+.messagelist .author { width:6em; padding:3px 10px 3px 3px;}
+.messagelist .title { padding:3px 10px 3px 0;}
+.messagelist .time { width:8em; padding:3px 5px;}
+.messagelist .action { width:2em; padding:3px 10px 3px 0;}
+
+.inbox .read0 td { background:#feb;}
+.inbox .stat { width:20px; padding:3px; text-align:right;}
+.inbox .check { width:20px;}
+.outbox .check { width:30px; text-align:right;}
+
+/* message */
+.message { padding:20px; background:#fff;}
+.message h3 { color:#3b5998;}
+.message h4 { clear:both; font-weight:normal;}
+.message p { clear:both; margin:5px 0;}
+.message .text { margin:5px 0; padding:5px 0; border-top:1px solid #d8dfea; border-bottom:1px solid #d8dfea;}
+.message .time { margin-left:10px;}
+
+.message label { float:left; width:50px; line-height:24px;}
+html>body .message #title { width:448px;}
+.message #title { width:445px;}
+.message #text { width:498px;}
+
+.text { overflow:hidden;}
+#chCompose textarea,h4{ margin:10px 0;}
+#chRead,#chCompose{ padding:20px; background-color:#f7f7f7;}
+#chRead .operation a{ padding:3px;}
+#chRead .operation a:hover{ text-decoration:none;}
+#chRead h3,h4{ color:#3b5999;}
+.msgbody{ border:1px solid #95a5c6; padding:20px; background-color:White;}
+#chRead .text{ border-bottom:solid 1px #95a5c6;border-top:solid 1px #95a5c6; margin:10px 0;}

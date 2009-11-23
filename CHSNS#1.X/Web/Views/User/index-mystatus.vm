@@ -1,0 +1,29 @@
+﻿<div>
+#if($ChHelper.ChUser.Userid==$Ownerid)
+	#set( $isme = true )
+#end
+#if($user.IsNull("ShowTextTime") || $user.IsNull("ShowText"))
+	#set( $isshowtextnull = true )
+#end
+#if($isonline)
+<a href="#" title="用户在线">在线</a>
+#else
+
+#end
+<span id="Profile_ShowTextTime">
+#if (!$isshowtextnull)
+   $String.DateDiv($user.get_item("ShowTextTime"))
+#end
+</span>
+在
+<span id="Profile_ShowText">
+#if($isshowtextnull)
+什么也没有做
+#else
+$user.get_item("ShowText")
+#end
+</span>
+	#if($isme)
+<input type="text" id="Profile_ShowText_Edit" maxlength="12" style="display:none"/>
+	#end
+</div>

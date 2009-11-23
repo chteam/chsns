@@ -1,0 +1,60 @@
+﻿<div class="picon">
+	<div class="pimage"><a href="/User.aspx?userid=$userid$&"><img src="$userface$" alt="$username$"></a></div>
+	<div class="pname">
+	    <h4>$username$</h4>
+	    <div class="pother"><a href="/User.aspx?userid=$userid$&">查看页面</a> | <a href="javascript:SendMessage($userid$,'$username$')">传小条</a></div>
+	</div>
+
+
+</div>
+
+<div class="blogcontainer">
+	<div id="logbook" class="blogmain">
+		$Logbookpage$
+<!--
+页面:LogbookPage
+作用:显示日志
+-->
+<input type="hidden" id="Hdisrich" value="$isrich$" />
+<script type="text/javascript">
+function setpage(nowpage){
+	$get("HdPage").value=nowpage;
+	PageMethods.GetReplyList(nowpage,$get("HdEveryPage").value,$Logid$,1,function(result){
+	if(result!=null&&result!=""){
+		$get("talk").innerHTML=result;
+		PageSet_chSetPage("PageUp","PageDown","HdPage","HdCount","HdEveryPage");
+	}
+});
+}
+
+</script>$Replylist$<!--
+作用:回复列表
+-->
+		<div id="mycomment">
+			<div id="editorForm" style="margin-left: 3px;">
+				<h5>
+					发表评论：</h5>
+				<div id="simpleEditPan">
+					<textarea id="TBody" onkeydown="CtrlEnterReply($Logid$,event);" rows="7" tabindex="1"
+						class="cmtbody"></textarea>
+				</div>
+				<input id="Bup" type="button" value="留言" onclick="ReplyLogBook($Logid$);" class="subbutton"
+					tabindex="2" title="[完成后可按 Ctrl + 回车 提交]" />
+				<input type="button" onclick="document.location=$get('xml_back').href;" class="subbutton" value="返回" />
+			</div>
+		</div>
+	</div>
+	<div class="gadget">
+		<div>
+			<h4>最近看过该日志的人</h4>$Viewlist$<!--
+作用:看过此日志的成员的列表
+参数:Ownerclass=5
+-->
+		</div>
+	</div>
+</div>
+<!--
+创建:2007 9 30 邹健
+修改:2007 9 30 邹健
+作用:显示日志页Note.aspx
+-->

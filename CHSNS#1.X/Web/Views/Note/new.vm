@@ -1,0 +1,52 @@
+﻿#capturefor(title) 记事本 #end
+#capturefor(css)
+<link href="${ChHelper.ChSite.StylePath}/friend.css" rel="stylesheet" type="text/css" />
+<link href="${ChHelper.ChSite.StylePath}/blog.css" rel="stylesheet" type="text/css" />
+#end
+#capturefor(javascript)
+<script src="/JavaScript/PageSet.js" type="text/javascript"></script>
+<script src="/JavaScript/LogBook.js" type="text/javascript"></script>
+<script src="/WebServices/NoteBook.asmx/js" type="text/javascript"></script>
+#end
+#*
+*最新日志与,推荐日志
+*#
+<form action="">
+<div id="toc">
+ <ul id="tabs">
+	<li class="status"><a href="/Notebook.aspx?mode=write">[写新日志]</a></li>
+	<li class="inactivetab" id="show1"><a href="javascript:sets(1);">推荐日志</a></li>
+	<li class="inactivetab" id="show0"><a href="javascript:sets(0);">最新日志</a></li>
+ </ul>
+</div>
+<div>
+	<ul id="LogBookItems">
+##子项开始
+##component(NoteList)
+##子项结束
+	</ul>
+</div>
+</form>
+<input id="HdIsPush" type="hidden" value="false" />
+<script type="text/javascript">
+var f_toc=false;
+var cache_toc;
+function sets(id){//设置标签的转换
+	if(!f_toc){
+		f_toc=true;
+		cache_toc=$("tabs").innerHTML;
+	}else{
+		$("tabs").innerHTML=cache_toc;
+	}
+	SetActiveText($("show"+id));
+	$("HdIsPush").value=(id==1)?"true":"false";
+	$("LogBookItems").innerHTML="<li>正在载入...</li>";
+	PageMethods.GetNewLogBookItem(id,function(result){
+		$("LogBookItems").innerHTML=result;
+	},onfail);
+}
+sets(${type});
+</script>
+#*
+
+*#

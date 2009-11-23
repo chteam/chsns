@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<sqlMap xmlns="http://ibatis.apache.org/mapping"
+		namespace="Accounts"
+			    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="Account" type="CHSNS.Model.Account,CHSNS.Model" />
+    <typeAlias alias="Profile" type="CHSNS.Model.ProfileImplement,CHSNS.Model" />
+  </alias>
+  <resultMaps>
+  </resultMaps>
+  <statements>
+    <select id="LoginCheckProfile" parameterClass="Account" resultClass="Profile" >
+      SELECT [UserId],[Name],[Status],[Applications] FROM [Profile]
+      WHERE UserId in (
+      select UserId From [Account] where
+      ([UserName] = #UserName# OR [UserId] = #UserId#) AND [Password] = #Password#
+      )
+    </select>
+    <update id="LoginUpdate" parameterClass="Profile">
+      UPDATE [Profile] set Score=Score+#Score#,ShowScore=ShowScore+#ShowScore#,LoginTime=getdate()
+      Where UserId=#UserId# And convert(varchar(10),LoginTime,120)!=convert(varchar(10),getdate(),120)
+    </update>
+  </statements>
+</sqlMap>
