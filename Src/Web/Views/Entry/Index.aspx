@@ -26,7 +26,7 @@ Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
 			<li>
 				<%=Html.ActionLink("编辑词条", "Edit", new { id = entry.Id })%>
 			</li>
-			<li><a href="#">新建词条</a></li>
+			<li><%=Html.ActionLink("新建词条", "Edit", "Entry")%> </li>
 			<%} %>
 		</ul>
 		<ul>
