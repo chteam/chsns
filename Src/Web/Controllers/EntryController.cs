@@ -98,6 +98,7 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AcceptVerbs(HttpVerbs.Get)]
 		[AdminFilter]
+        
         public ActionResult Edit(string title, long? id)
         {
             if (!string.IsNullOrEmpty(title))
@@ -154,6 +155,7 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AcceptVerbs(HttpVerbs.Post)]
 		[AdminFilter]
+        [ValidateInput(false)]
         public ActionResult Edit(long? id, EntryImplement entry, EntryVersionImplement entryversion, string tags)
         {
             var b = DbExt.Entry.AddVersion(id, entry, entryversion, tags, CHUser);

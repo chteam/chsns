@@ -1,15 +1,16 @@
 ﻿
 using System.Configuration;
+//using CHSNS.SQLServerImplement.Aef;
 
 namespace CHSNS.SQLServerImplement
 {
     public class BaseOperator //: BaseSqlMapDao
     {//} : IOperator {
-        internal CHSNSDBDataContext DBExtInstance {
+        internal DbEntities DBExtInstance {
             get {
-                var db = new CHSNSDBDataContext(
+                var db = new DbEntities(
                     ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString
-                    ) { DeferredLoadingEnabled = false };
+                    ) ;
                 return db;
             }
         }

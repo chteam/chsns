@@ -62,7 +62,7 @@ namespace CHSNS.Operator
                 m.Title = server.HtmlEncode(m.Title ?? "");
                 m.Body = m.IsHtml ? m.Body : server.HtmlEncode(m.Body);
                 m.SendTime = DateTime.Now;
-                db.Message.InsertOnSubmit(CastTool.Cast< Message>(m) );
+                db.AddToMessage(CastTool.Cast< Message>(m) );
                 db.SubmitChanges();
             }
         }

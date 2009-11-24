@@ -74,12 +74,20 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Abstractions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aef\CHSNS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHSNS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DbExtension.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\BasicInformation.cs" />
@@ -147,6 +155,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Aef\CHSNS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CHSNS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -178,9 +190,7 @@
       <Name>CHSNS.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LinqToSQL\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

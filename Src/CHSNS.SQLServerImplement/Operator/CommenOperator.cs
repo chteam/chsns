@@ -2,13 +2,14 @@
 using CHSNS.Model;
 using CHSNS.Abstractions;
 using CHSNS.SQLServerImplement;
+//using CHSNS.SQLServerImplement.Aef;
 
 namespace CHSNS.Operator
 {
 	public class CommentOperator : BaseOperator, ICommentOperator
 	{
 		#region reply
-   private static IQueryable<CommentPas> GetReplyPrivate(CHSNSDBDataContext db, long uid) {
+   private static IQueryable<CommentPas> GetReplyPrivate(DbEntities db, long uid) {
             IQueryable<CommentPas> ret = (from r in db.Reply
                                           join p in db.Profile on r.SenderId equals p.UserId
                                           where r.UserId == uid
@@ -39,7 +40,7 @@ namespace CHSNS.Operator
 		{
             using (var db = DBExtInstance)
             {
-                db.Reply.InsertOnSubmit(CastTool.Cast<Reply>(r));
+                db.AddToReply(CastTool.Cast<Reply>(r));
                 db.SubmitChanges();
             }
             #region sql
@@ -59,7 +60,8 @@ namespace CHSNS.Operator
 		{
             using (var db = DBExtInstance)
             {
-                db.Reply.DeleteOnSubmit(db.Reply.FirstOrDefault(c => c.Id == id && c.UserId == userid));
+                var obj = db.Reply.FirstOrDefault(c => c.Id == id && c.UserId == userid);
+                db.DeleteObject(obj);
                 db.SubmitChanges();
             }
             //DataBaseExecutor.Execute(@"delete [reply] where id=@id and userid=@userid",
@@ -150,7 +152,7 @@ namespace CHSNS.Operator
 		{
             using (var db = DBExtInstance)
             {
-                db.Comment.InsertOnSubmit(CastTool.Cast<Comment>(cmt));
+                db.AddToComment(CastTool.Cast<Comment>(cmt));
                 switch (type)
                 {
                     case CommentType.Note:

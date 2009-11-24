@@ -8,7 +8,8 @@ namespace CHSNS.SQLServerImplement {
 
         public void Add(IPhoto photo) {
             using (var db = DBExtInstance) {
-                db.Photo.InsertOnSubmit(CastTool.Cast<Photo>(photo));
+                db.AddToPhoto(CastTool.Cast<Photo>(photo));
+              // db.Photo.InsertOnSubmit(CastTool.Cast<Photo>(photo));
                 db.SubmitChanges();
             }
         }
@@ -23,7 +24,7 @@ namespace CHSNS.SQLServerImplement {
         public void Delete(long id) {
             using (var db = DBExtInstance) {
                 var p = db.Photo.Where(c => c.Id == id).FirstOrDefault();
-                db.Photo.DeleteOnSubmit(p);
+                db.DeleteObject(p);
                 db.SubmitChanges();
             }
 

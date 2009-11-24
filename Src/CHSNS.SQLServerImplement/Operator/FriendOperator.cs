@@ -98,7 +98,7 @@ namespace CHSNS.Operator
             {
                 var ret = (from p in db.Profile
                            where p.Status.Equals(RoleType.General)
-                           orderby db.Newid()
+                         //  orderby db.Newid()
                            select new UserItemPas
                            {
                                Id = p.UserId,
@@ -145,7 +145,7 @@ namespace CHSNS.Operator
                     );
                 if (f == null)
                 {
-                    db.Friend.InsertOnSubmit(
+                    db.AddToFriend(
                         new Friend
                         {
                             FromId = fromId,
@@ -182,7 +182,7 @@ namespace CHSNS.Operator
                     &&
                     c.IsTrue
                     );
-                db.Friend.DeleteOnSubmit(f);
+                db.DeleteObject(f);
                 db.SubmitChanges();
             }
             return true;
@@ -236,7 +236,7 @@ namespace CHSNS.Operator
             {
                 var f = db.Friend.FirstOrDefault(c => c.ToId == operaterId && c.FromId == fromId && !c.IsTrue);
                 if (f == null) return false;
-                db.Friend.DeleteOnSubmit(f);
+                db.DeleteObject(f);
                 db.SubmitChanges();
                 return true;
             }
@@ -246,7 +246,7 @@ namespace CHSNS.Operator
             using (var db = DBExtInstance)
             {
                 var f = db.Friend.Where(c => c.ToId == userId && !c.IsTrue);
-                db.Friend.DeleteAllOnSubmit(f);
+                db.DeleteObject(f);
                 db.SubmitChanges();
                 return true;
             }

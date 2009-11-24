@@ -41,7 +41,7 @@ namespace CHSNS.Operator
             {
                 var e = db.Event.FirstOrDefault(c => c.Id == id && c.OwnerId == ownerid);
                 if (e == null) return;
-                db.Event.DeleteOnSubmit(e);
+                db.DeleteObject(e);
                 db.SubmitChanges();
             }
         }
@@ -50,7 +50,7 @@ namespace CHSNS.Operator
             var et = CastTool.Cast<Event>(e);
             using (var db = DBExtInstance)
             {
-                db.Event.InsertOnSubmit(et);
+                db.AddToEvent(et);
                 db.SubmitChanges();
             }
             #region sql

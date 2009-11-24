@@ -198,7 +198,7 @@ namespace CHSNS.Operator
                 #endregion
                 if (vds.Count() <50)
                 {
-                    db.ViewData.InsertOnSubmit(new ViewData
+                    db.AddToViewData(new ViewData
                                                    {
                                                        ViewerId = myId,
                                                        OwnerId = ownerid,

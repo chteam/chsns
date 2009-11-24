@@ -23,7 +23,7 @@ namespace CHSNS.SQLServerImplement {
 
         public void Add(IAlbum album, long uId) {
             using (var db = DBExtInstance){
-                db.Album.InsertOnSubmit(CastTool.Cast<Album>(album));
+                db.AddToAlbum(CastTool.Cast<Album>(album));
                 db.SubmitChanges();
             }
         }
