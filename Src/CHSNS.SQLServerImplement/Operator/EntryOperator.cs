@@ -140,24 +140,21 @@ namespace CHSNS.SQLServerImplement {
         
         public bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags)
         {
-           
-            using (var db = DBExtInstance) { 
-                if (id.HasValue) {
-                    entry = db.Entry.Where(c => c.Id == id.Value).FirstOrDefault();
-                    entry.UpdateTime = DateTime.Now;
-                    entry.EditCount += 1;
-                }
-                else {
-                    var old = db.Entry.Where(c => c.Title == entry.Title.Trim()).Count();
-                    if (old > 0) return false;
-                    db.AddToEntry(CastTool.Cast<Entry>(entry));
-                    db.SubmitChanges();
-                }
-                entryVersion.EntryId = entry.Id;
-                db.AddToEntryVersion(CastTool.Cast<EntryVersion>(entryVersion));
-                db.SubmitChanges();
-                entry.CurrentId = entryVersion.Id;
-                db.SubmitChanges();
+            using (var db = DBExtInstance) {
+                var x = db.ExecuteFunctionScalar("EntryAddVersion",
+                        "id", entry.Id,
+     "@title", entry.Title,
+     "@createrId", entry.CreaterId,
+     "@status", entry.Status,
+     "@ext", entry.Ext,
+     "@reason", entryVersion.Reason,
+     "@description", entryVersion.Description,
+     "@reference", entryVersion.Reference,
+     "@userId", entryVersion.UserId,
+     "@parentText", entryVersion.ParentText,
+     "@vExt", entryVersion.Ext, "@vStatus",entryVersion.Status
+                    );
+                if (x != null && x.Equals(0)) return false;
             }
             return true;
         }
