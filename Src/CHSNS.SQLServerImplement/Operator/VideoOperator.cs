@@ -13,7 +13,7 @@ namespace CHSNS.Operator {
             {
                 var inval = CastTool.Cast<SuperNote>(content);
                 if (inval == null) return;
-                db.SuperNote.InsertOnSubmit(inval);
+                db.AddToSuperNote(inval);
                 db.SubmitChanges();
             }
         }
@@ -30,7 +30,7 @@ namespace CHSNS.Operator {
                            c.Type == (byte) SuperNoteType.Video
                                && c.UserId == uid
                            && uids.Contains(c.Id));
-                db.SuperNote.DeleteAllOnSubmit(es);
+                db.DeleteObject(es);
                 db.SubmitChanges();
             }
         }

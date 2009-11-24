@@ -46,10 +46,10 @@ namespace CHSNS.SQLServerImplement.Operator
                                      Code = DateTime.Now.Ticks
                                  };
             using (var db = DBExtInstance) {
-                db.Account.InsertOnSubmit(ac);
+                db.AddToAccount(ac);
                 db.SubmitChanges();
                 if (ac.UserId< 999) return false;
-                db.Profile.InsertOnSubmit(new Profile {
+                db.AddToProfile(new Profile {
                                                           UserId = ac.UserId,
                                                           Name = name,
                                                           ShowScore = initScore,
@@ -60,8 +60,7 @@ namespace CHSNS.SQLServerImplement.Operator
                                                           LoginTime = DateTime.Now,
                                                           MagicBox = ""
                                                       });
-                db.BasicInformation
-                    .InsertOnSubmit(
+                db.AddToBasicInformation(
                     new BasicInformation {
                                              UserId = ac.UserId,
                                              Name = name

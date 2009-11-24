@@ -23,8 +23,8 @@ namespace CHSNS.SQLServerImplement {
                 var vs = db.EntryVersion.Where(c => c.EntryId == e.Id);
                 if (e.CreaterId != uId) return;
 
-                db.EntryVersion.DeleteAllOnSubmit(vs);
-                db.Entry.DeleteOnSubmit(e);
+                db.DeleteObject(vs);
+                db.DeleteObject(e);
                 db.SubmitChanges();
             }
         }
@@ -150,11 +150,11 @@ namespace CHSNS.SQLServerImplement {
                 else {
                     var old = db.Entry.Where(c => c.Title == entry.Title.Trim()).Count();
                     if (old > 0) return false;
-                    db.Entry.InsertOnSubmit(entry as Entry);
+                    db.AddToEntry(CastTool.Cast<Entry>(entry));
                     db.SubmitChanges();
                 }
                 entryVersion.EntryId = entry.Id;
-                db.EntryVersion.InsertOnSubmit(entryVersion as EntryVersion);
+                db.AddToEntryVersion(CastTool.Cast<EntryVersion>(entryVersion));
                 db.SubmitChanges();
                 entry.CurrentId = entryVersion.Id;
                 db.SubmitChanges();

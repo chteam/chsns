@@ -82,9 +82,7 @@
     <Reference Include="System.Web.Extensions.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC RC\Assemblies\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Routing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -302,8 +300,6 @@
     <Content Include="Style\Facebook_backup\skin.gif" />
     <Content Include="Style\Facebook_backup\video.css" />
     <Content Include="Style\Facebook_backup\wysiwyg.css" />
-    <Content Include="UnitView\Default.aspx" />
-    <Content Include="UnitView\DriverPage.aspx" />
     <Content Include="Views\Admin\About.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Album\Details.aspx" />
@@ -599,6 +595,9 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs" />
     <Compile Include="Service\Users.asmx.cs">
       <DependentUpon>Users.asmx</DependentUpon>
@@ -613,8 +612,6 @@
     <Content Include="Config\Config.xml" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="JavaScript\jquery.js" />
-    <Content Include="UnitView\ViewHostHandler.ashx" />
-    <Content Include="UnitView\Web.config" />
     <Content Include="Views\Account\ChangePassword.aspx" />
   </ItemGroup>
   <ItemGroup>

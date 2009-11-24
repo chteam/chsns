@@ -23,7 +23,7 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<PagedList<EntryPas>>" %
             <td>
                 <input type="checkbox" />
             </td>
-            <td><%=e.ID %></td>
+            <td><%=e.Id %></td>
             <td>
             <%=Html.ActionLink(e.Title, "Index","Entry", new{title=e.Title.Trim()},null)%>
             [<%=Html.ActionLink("管理历史", "AdminHistoryList", new { title = e.Title.Trim() }, null)%>]
@@ -38,10 +38,10 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage<PagedList<EntryPas>>" %
             <td>
                  <%=e.Status%>
                 <%if (CH.Context.User.Status.Contains(RoleType.Creater, RoleType.Editor			  )){%>
-                <%=(e.Status != (int)EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.ID }) : ""%>
-                <%=(e.Status !=(int) EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.ID }) : ""%>
+                <%=(e.Status != (int)EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.Id }).ToHtmlString() : ""%>
+                <%=(e.Status !=(int) EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }).ToHtmlString() : ""%>
                 <%} %>
-                <%=Html.ActionLink("删除词条及全版本", "Delete",new { id=e.ID})%>
+                <%=Html.ActionLink("删除词条及全版本", "Delete",new { id=e.Id})%>
             </td>
         </tr>
         <%} %>

@@ -15,7 +15,7 @@ namespace CHSNS.Operator {
 		    using (var db = DBExtInstance)
 		    {
 		        note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
-		        db.Note.InsertOnSubmit(CastTool.Cast<Note>(note));
+                db.AddToNote(CastTool.Cast<Note>(note));
 		        db.SubmitChanges();
 		    }
 		    
@@ -55,7 +55,7 @@ namespace CHSNS.Operator {
                 var n = db.Note.FirstOrDefault(c => c.Id == id && c.UserId == pid);
                 if(null!=n)
                 {
-                    db.Note.DeleteOnSubmit(n);
+                    db.DeleteObject(n);
                     db.SubmitChanges();
                 }
 
