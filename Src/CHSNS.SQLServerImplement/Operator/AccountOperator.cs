@@ -8,7 +8,6 @@ namespace CHSNS.SQLServerImplement.Operator
     public class AccountOperator : BaseOperator, IAccountOperator {
         public IProfile Login(String userName, String password, int logOnScore)
         {
-
             using (var db = DBExtInstance)
             {
                 long userId;

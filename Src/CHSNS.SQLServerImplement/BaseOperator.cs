@@ -4,13 +4,15 @@ using System.Configuration;
 
 namespace CHSNS.SQLServerImplement
 {
-    public class BaseOperator //: BaseSqlMapDao
-    {//} : IOperator {
-        internal DbEntities DBExtInstance {
-            get {
+    public class BaseOperator
+    {
+        internal DbEntities DBExtInstance
+        {
+            get
+            {
                 var db = new DbEntities(
                     ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString
-                    ) ;
+                    );
                 return db;
             }
         }
