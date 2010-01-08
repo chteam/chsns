@@ -143,7 +143,6 @@
     <Compile Include="Extension\Url\UrlHelperExt.cs" />
     <Compile Include="Extension\Url\UrlStyleExtension.cs" />
     <Compile Include="IDataBinder.cs" />
-    <Compile Include="Mvc\DynamicDataModelBinder.cs" />
     <Compile Include="Mvc\HtmlSerializer.cs" />
     <Compile Include="Mvc\MetaColumnExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
