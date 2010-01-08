@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[EntryAddVersion]
 	@id bigint =0, 
-	@title nvarchar,
+	@title nvarchar(50),
 	@createrId bigint,
 	@status int,
 	@ext ntext,
