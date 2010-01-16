@@ -2,7 +2,7 @@ namespace CHSNS.Abstractions{
     public interface IEntry{
          long Id{get;set;}
 
-         string Title{get;set;}
+         string Url{get;set;}
 
          long CreaterId{get;set;}
 

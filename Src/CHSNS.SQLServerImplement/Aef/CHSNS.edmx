@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CHSNS.SQLServerImplement.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="CHSNS.SQLServerImplement.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="CHSNSSQLServerImplementStoreContainer">
           <EntitySet Name="Account" EntityType="CHSNS.SQLServerImplement.Store.Account" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Album" EntityType="CHSNS.SQLServerImplement.Store.Album" store:Type="Tables" Schema="dbo" />
@@ -161,7 +161,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="CreaterId" Type="bigint" Nullable="false" />
           <Property Name="UpdateTime" Type="smalldatetime" Nullable="false" />
           <Property Name="CurrentId" Type="bigint" />
@@ -175,6 +175,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
           <Property Name="Reason" Type="ntext" Nullable="false" />
           <Property Name="AddTime" Type="smalldatetime" Nullable="false" />
           <Property Name="Description" Type="ntext" Nullable="false" />
@@ -424,8 +425,7 @@
           <Property Name="ViewTime" Type="datetime" Nullable="false" />
           <Property Name="ViewClass" Type="tinyint" Nullable="false" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CHSNS.SQLServerImplement" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -456,713 +456,686 @@
           <EntitySet Name="Services" EntityType="CHSNS.SQLServerImplement.Services" />
           <EntitySet Name="SuperNote" EntityType="CHSNS.SQLServerImplement.SuperNote" />
           <EntitySet Name="Tags" EntityType="CHSNS.SQLServerImplement.Tags" />
-          <EntitySet Name="ViewData" EntityType="CHSNS.SQLServerImplement.ViewData" />
-        </EntityContainer>
+          <EntitySet Name="ViewData" EntityType="CHSNS.SQLServerImplement.ViewData" /></EntityContainer>
         <EntityType Name="Account">
           <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="true" />
-          <Property Name="Code" Type="Int64" />
-        </EntityType>
+            <PropertyRef Name="UserId" /></Key>
+          <Property Type="Int64" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Type="Int64" Name="Code" /></EntityType>
         <EntityType Name="Album">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Location" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="FaceUrl" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="Count" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="Order" Type="Int32" Nullable="false" />
-          <Property Name="ShowLevel" Type="Byte" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Location" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="String" Name="FaceUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Count" Nullable="false" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="Order" Nullable="false" />
+          <Property Type="Byte" Name="ShowLevel" Nullable="false" /></EntityType>
         <EntityType Name="Application">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Controller" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Action" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="ParamStr" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="FullName" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
-          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Vision" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Icon" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="Authorid" Type="Int64" />
-          <Property Name="Addtime" Type="DateTime" Nullable="false" />
-          <Property Name="Edittime" Type="DateTime" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="IsSystem" Type="Boolean" Nullable="false" />
-          <Property Name="IsTrue" Type="Boolean" Nullable="false" />
-          <Property Name="DescriptionUrl" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="UserCount" Type="Int64" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Controller" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Action" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ParamStr" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ClassName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Vision" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Icon" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="Authorid" />
+          <Property Type="DateTime" Name="Addtime" Nullable="false" />
+          <Property Type="DateTime" Name="Edittime" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsSystem" Nullable="false" />
+          <Property Type="Boolean" Name="IsTrue" Nullable="false" />
+          <Property Type="String" Name="DescriptionUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="UserCount" Nullable="false" /></EntityType>
         <EntityType Name="BasicInformation">
           <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="IsEmailTrue" Type="Boolean" Nullable="false" />
-          <Property Name="Sex" Type="Boolean" />
-          <Property Name="Birthday" Type="DateTime" />
-          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
-          <Property Name="CityId" Type="Int64" Nullable="false" />
-          <Property Name="ShowLevel" Type="Byte" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="UserId" /></Key>
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsEmailTrue" Nullable="false" />
+          <Property Type="Boolean" Name="Sex" />
+          <Property Type="DateTime" Name="Birthday" />
+          <Property Type="Int32" Name="ProvinceId" Nullable="false" />
+          <Property Type="Int64" Name="CityId" Nullable="false" />
+          <Property Type="Byte" Name="ShowLevel" Nullable="false" /></EntityType>
         <EntityType Name="Blogs">
           <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="SubTitle" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="Publish" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="WriteName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="CommentEmail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Skin" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Css" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="MetaKey" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
-          <Property Name="IsWebServices" Type="Boolean" Nullable="false" />
-          <Property Name="PostCount" Type="Int64" Nullable="false" />
-          <Property Name="CommentCount" Type="Int64" Nullable="false" />
-          <Property Name="TrackBackCount" Type="Int64" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="UserId" /></Key>
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubTitle" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Publish" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WriteName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CommentEmail" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Skin" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Css" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MetaKey" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsWebServices" Nullable="false" />
+          <Property Type="Int64" Name="PostCount" Nullable="false" />
+          <Property Type="Int64" Name="CommentCount" Nullable="false" />
+          <Property Type="Int64" Name="TrackBackCount" Nullable="false" /></EntityType>
         <EntityType Name="Category">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Type" Type="Byte" Nullable="false" />
-          <Property Name="Count" Type="Int64" Nullable="false" />
-          <Property Name="UserId" Type="Int64" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Type" Nullable="false" />
+          <Property Type="Int64" Name="Count" Nullable="false" />
+          <Property Type="Int64" Name="UserId" /></EntityType>
         <EntityType Name="Comment">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ShowerId" Type="Int64" />
-          <Property Name="OwnerId" Type="Int64" Nullable="false" />
-          <Property Name="SenderId" Type="Int64" Nullable="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="IsReply" Type="Boolean" Nullable="false" />
-          <Property Name="IsSee" Type="Boolean" Nullable="false" />
-          <Property Name="IsDel" Type="Boolean" Nullable="false" />
-          <Property Name="Type" Type="Byte" Nullable="false" />
-          <Property Name="IsTellMe" Type="Byte" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="ShowerId" />
+          <Property Type="Int64" Name="OwnerId" Nullable="false" />
+          <Property Type="Int64" Name="SenderId" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsReply" Nullable="false" />
+          <Property Type="Boolean" Name="IsSee" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="Byte" Name="Type" Nullable="false" />
+          <Property Type="Byte" Name="IsTellMe" Nullable="false" /></EntityType>
         <EntityType Name="ContactInformation">
           <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="QQ" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Msn" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="WangWang" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="NeteasePop" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="UC" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Telphone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Mobiephone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="WebSite" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="TellMethod" Type="Byte" Nullable="false" />
-          <Property Name="ShowLevel" Type="Byte" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="UserId" /></Key>
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Address" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="QQ" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Msn" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WangWang" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NeteasePop" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UC" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Telphone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobiephone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WebSite" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="TellMethod" Nullable="false" />
+          <Property Type="Byte" Name="ShowLevel" Nullable="false" /></EntityType>
         <EntityType Name="Entry">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="CreaterId" Type="Int64" Nullable="false" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" />
-          <Property Name="CurrentId" Type="Int64" />
-          <Property Name="EditCount" Type="Int32" Nullable="false" />
-          <Property Name="ViewCount" Type="Int64" Nullable="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="Ext" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="CreaterId" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateTime" Nullable="false" />
+          <Property Type="Int64" Name="CurrentId" />
+          <Property Type="Int32" Name="EditCount" Nullable="false" />
+          <Property Type="Int64" Name="ViewCount" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Ext" MaxLength="Max" FixedLength="false" Unicode="true" /></EntityType>
         <EntityType Name="EntryVersion">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Reason" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Reference" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="EntryId" Type="Int64" />
-          <Property Name="ParentText" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Ext" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Reference" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int64" Name="EntryId" />
+          <Property Type="String" Name="ParentText" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Ext" MaxLength="Max" FixedLength="false" Unicode="true" /></EntityType>
         <EntityType Name="Event">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TemplateName" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="OwnerId" Type="Int64" Nullable="false" />
-          <Property Name="ViewerId" Type="Int64" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="ShowLevel" Type="Int32" Nullable="false" />
-          <Property Name="Json" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="OwnerId" Nullable="false" />
+          <Property Type="Int64" Name="ViewerId" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="Int32" Name="ShowLevel" Nullable="false" />
+          <Property Type="String" Name="Json" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" /></EntityType>
         <EntityType Name="FieldInformation">
           <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="Field" Type="Int64" Nullable="false" />
-          <Property Name="Year" Type="Int16" />
-          <Property Name="MiniField" Type="Int64" />
-          <Property Name="QinShi" Type="Int64" />
-          <Property Name="Field1" Type="Int64" />
-          <Property Name="Field2" Type="Int64" />
-        </EntityType>
+            <PropertyRef Name="UserId" /></Key>
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="Int64" Name="Field" Nullable="false" />
+          <Property Type="Int16" Name="Year" />
+          <Property Type="Int64" Name="MiniField" />
+          <Property Type="Int64" Name="QinShi" />
+          <Property Type="Int64" Name="Field1" />
+          <Property Type="Int64" Name="Field2" /></EntityType>
         <EntityType Name="Friend">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FromId" Type="Int64" Nullable="false" />
-          <Property Name="ToId" Type="Int64" Nullable="false" />
-          <Property Name="IsTrue" Type="Boolean" Nullable="false" />
-          <Property Name="IsCommon" Type="Boolean" Nullable="false" />
-          <Property Name="FriendType" Type="Int32" />
-          <Property Name="FriendSummary" Type="Int32" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="FromId" Nullable="false" />
+          <Property Type="Int64" Name="ToId" Nullable="false" />
+          <Property Type="Boolean" Name="IsTrue" Nullable="false" />
+          <Property Type="Boolean" Name="IsCommon" Nullable="false" />
+          <Property Type="Int32" Name="FriendType" />
+          <Property Type="Int32" Name="FriendSummary" /></EntityType>
         <EntityType Name="Group">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="LogoUrl" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="Summary" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="CreaterId" Type="Int64" Nullable="false" />
-          <Property Name="UserCount" Type="Int64" Nullable="false" />
-          <Property Name="AdminCount" Type="Byte" Nullable="false" />
-          <Property Name="PostCount" Type="Int64" Nullable="false" />
-          <Property Name="ViewCount" Type="Int64" Nullable="false" />
-          <Property Name="JoinLevel" Type="Byte" Nullable="false" />
-          <Property Name="ShowLevel" Type="Byte" Nullable="false" />
-          <Property Name="Status" Type="Byte" Nullable="false" />
-          <Property Name="Type" Type="Byte" Nullable="false" />
-          <Property Name="Ext" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LogoUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="String" Name="Summary" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="CreaterId" Nullable="false" />
+          <Property Type="Int64" Name="UserCount" Nullable="false" />
+          <Property Type="Byte" Name="AdminCount" Nullable="false" />
+          <Property Type="Int64" Name="PostCount" Nullable="false" />
+          <Property Type="Int64" Name="ViewCount" Nullable="false" />
+          <Property Type="Byte" Name="JoinLevel" Nullable="false" />
+          <Property Type="Byte" Name="ShowLevel" Nullable="false" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+          <Property Type="Byte" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Ext" MaxLength="Max" FixedLength="false" Unicode="true" /></EntityType>
         <EntityType Name="GroupUser">
           <Key>
             <PropertyRef Name="UserId" />
-            <PropertyRef Name="GroupId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="GroupId" Type="Int64" Nullable="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="PostCount" Type="Int64" Nullable="false" />
-          <Property Name="Status" Type="Byte" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="GroupId" /></Key>
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="Int64" Name="GroupId" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="Int64" Name="PostCount" Nullable="false" />
+          <Property Type="Byte" Name="Status" Nullable="false" /></EntityType>
         <EntityType Name="LogTag">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TagId" Type="Int64" Nullable="false" />
-          <Property Name="LogId" Type="Int64" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="TagId" Nullable="false" />
+          <Property Type="Int64" Name="LogId" Nullable="false" /></EntityType>
         <EntityType Name="Message">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FromId" Type="Int64" Nullable="false" />
-          <Property Name="ToId" Type="Int64" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="Body" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="SendTime" Type="DateTime" Nullable="false" />
-          <Property Name="IsSee" Type="Boolean" Nullable="false" />
-          <Property Name="IsFromDel" Type="Boolean" Nullable="false" />
-          <Property Name="IsToDel" Type="Boolean" Nullable="false" />
-          <Property Name="IsHtml" Type="Boolean" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="FromId" Nullable="false" />
+          <Property Type="Int64" Name="ToId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="SendTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsSee" Nullable="false" />
+          <Property Type="Boolean" Name="IsFromDel" Nullable="false" />
+          <Property Type="Boolean" Name="IsToDel" Nullable="false" />
+          <Property Type="Boolean" Name="IsHtml" Nullable="false" /></EntityType>
         <EntityType Name="Note">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Summary" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="EditTime" Type="DateTime" Nullable="false" />
-          <Property Name="Type" Type="Byte" Nullable="false" />
-          <Property Name="ParentId" Type="Int64" Nullable="false" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="IsTellMe" Type="Byte" Nullable="false" />
-          <Property Name="IsAnonymous" Type="Boolean" />
-          <Property Name="ShowLevel" Type="Byte" Nullable="false" />
-          <Property Name="ViewCount" Type="Int64" Nullable="false" />
-          <Property Name="PushCount" Type="Int64" Nullable="false" />
-          <Property Name="TrackBackCount" Type="Int64" Nullable="false" />
-          <Property Name="CommentCount" Type="Int64" Nullable="false" />
-          <Property Name="LastCommentUserId" Type="Int64" Nullable="false" />
-          <Property Name="LastCommentTime" Type="DateTime" Nullable="false" />
-          <Property Name="Ext" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Summary" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="DateTime" Name="EditTime" Nullable="false" />
+          <Property Type="Byte" Name="Type" Nullable="false" />
+          <Property Type="Int64" Name="ParentId" Nullable="false" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="Byte" Name="IsTellMe" Nullable="false" />
+          <Property Type="Boolean" Name="IsAnonymous" />
+          <Property Type="Byte" Name="ShowLevel" Nullable="false" />
+          <Property Type="Int64" Name="ViewCount" Nullable="false" />
+          <Property Type="Int64" Name="PushCount" Nullable="false" />
+          <Property Type="Int64" Name="TrackBackCount" Nullable="false" />
+          <Property Type="Int64" Name="CommentCount" Nullable="false" />
+          <Property Type="Int64" Name="LastCommentUserId" Nullable="false" />
+          <Property Type="DateTime" Name="LastCommentTime" Nullable="false" />
+          <Property Type="String" Name="Ext" MaxLength="Max" FixedLength="false" Unicode="true" /></EntityType>
         <EntityType Name="PersonalInformation">
           <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="LoveLike" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="LoveBook" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="LoveMusic" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="LoveMovie" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="LoveSports" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="LoveGame" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="LoveComic" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="JoinSociety" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-        </EntityType>
+            <PropertyRef Name="UserId" /></Key>
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="LoveLike" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoveBook" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoveMusic" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoveMovie" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoveSports" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoveGame" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoveComic" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="JoinSociety" MaxLength="255" FixedLength="false" Unicode="true" /></EntityType>
         <EntityType Name="Photo">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Summary" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="AlbumId" Type="Int64" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="Domain" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Url" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Order" Type="Int64" Nullable="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Summary" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="AlbumId" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="String" Name="Domain" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="Order" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" /></EntityType>
         <EntityType Name="Profile">
           <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Face" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="Score" Type="Int64" Nullable="false" />
-          <Property Name="ShowScore" Type="Int64" Nullable="false" />
-          <Property Name="DelScore" Type="Int64" Nullable="false" />
-          <Property Name="ShowLevel" Type="Byte" Nullable="false" />
-          <Property Name="MagicBox" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="HasMagicBox" Type="Boolean" Nullable="false" />
-          <Property Name="RegTime" Type="DateTime" Nullable="false" />
-          <Property Name="LoginTime" Type="DateTime" Nullable="false" />
-          <Property Name="ViewCount" Type="Int64" Nullable="false" />
-          <Property Name="FileSizeAll" Type="Int64" Nullable="false" />
-          <Property Name="FileSizeCount" Type="Int64" Nullable="false" />
-          <Property Name="Applications" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Applicationlist" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
+            <PropertyRef Name="UserId" /></Key>
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Face" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int64" Name="Score" Nullable="false" />
+          <Property Type="Int64" Name="ShowScore" Nullable="false" />
+          <Property Type="Int64" Name="DelScore" Nullable="false" />
+          <Property Type="Byte" Name="ShowLevel" Nullable="false" />
+          <Property Type="String" Name="MagicBox" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="HasMagicBox" Nullable="false" />
+          <Property Type="DateTime" Name="RegTime" Nullable="false" />
+          <Property Type="DateTime" Name="LoginTime" Nullable="false" />
+          <Property Type="Int64" Name="ViewCount" Nullable="false" />
+          <Property Type="Int64" Name="FileSizeAll" Nullable="false" />
+          <Property Type="Int64" Name="FileSizeCount" Nullable="false" />
+          <Property Type="String" Name="Applications" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Applicationlist" MaxLength="Max" FixedLength="false" Unicode="true" /></EntityType>
         <EntityType Name="Push">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LogId" Type="Int64" Nullable="false" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="LogId" Nullable="false" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" /></EntityType>
         <EntityType Name="Reply">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="SenderId" Type="Int64" Nullable="false" />
-          <Property Name="Body" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="IsSee" Type="Boolean" Nullable="false" />
-          <Property Name="IsDel" Type="Boolean" Nullable="false" />
-          <Property Name="IsTellMe" Type="Byte" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="Int64" Name="SenderId" Nullable="false" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsSee" Nullable="false" />
+          <Property Type="Boolean" Name="IsDel" Nullable="false" />
+          <Property Type="Byte" Name="IsTellMe" Nullable="false" /></EntityType>
         <EntityType Name="Services">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Body" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="Answer" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="Byte" Nullable="false" />
-          <Property Name="SendTime" Type="DateTime" Nullable="false" />
-          <Property Name="AnswerTime" Type="DateTime" Nullable="false" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Answer" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="SendTime" Nullable="false" />
+          <Property Type="DateTime" Name="AnswerTime" Nullable="false" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" /></EntityType>
         <EntityType Name="SuperNote">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="FaceURL" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="Url" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="UserId" Type="Int64" Nullable="false" />
-          <Property Name="ViewCount" Type="Int64" Nullable="false" />
-          <Property Name="AddTime" Type="DateTime" Nullable="false" />
-          <Property Name="ShowLevel" Type="Byte" Nullable="false" />
-          <Property Name="SystemCategory" Type="Int64" />
-          <Property Name="Category" Type="Int64" />
-          <Property Name="Type" Type="Byte" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FaceURL" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="Int64" Name="ViewCount" Nullable="false" />
+          <Property Type="DateTime" Name="AddTime" Nullable="false" />
+          <Property Type="Byte" Name="ShowLevel" Nullable="false" />
+          <Property Type="Int64" Name="SystemCategory" />
+          <Property Type="Int64" Name="Category" />
+          <Property Type="Byte" Name="Type" Nullable="false" /></EntityType>
         <EntityType Name="Tags">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Count" Type="Int64" Nullable="false" />
-          <Property Name="Type" Type="Byte" Nullable="false" />
-        </EntityType>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="Count" Nullable="false" />
+          <Property Type="Byte" Name="Type" Nullable="false" /></EntityType>
         <EntityType Name="ViewData">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OwnerId" Type="Int64" Nullable="false" />
-          <Property Name="ViewerId" Type="Int64" Nullable="false" />
-          <Property Name="IPandComputer" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="ViewPageUrl" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="LastUrl" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="ViewTime" Type="DateTime" Nullable="false" />
-          <Property Name="ViewClass" Type="Byte" Nullable="false" />
-        </EntityType>
-      </Schema>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="OwnerId" Nullable="false" />
+          <Property Type="Int64" Name="ViewerId" Nullable="false" />
+          <Property Type="String" Name="IPandComputer" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ViewPageUrl" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastUrl" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ViewTime" Nullable="false" />
+          <Property Type="Byte" Name="ViewClass" Nullable="false" /></EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="CHSNSSQLServerImplementStoreContainer" CdmEntityContainer="DbEntities">
-          <EntitySetMapping Name="Account"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Account"><MappingFragment StoreEntitySet="Account">
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="UserName" ColumnName="UserName" />
-            <ScalarProperty Name="Password" ColumnName="Password" />
-            <ScalarProperty Name="Code" ColumnName="Code" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Album"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Album"><MappingFragment StoreEntitySet="Album">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-            <ScalarProperty Name="Location" ColumnName="Location" />
-            <ScalarProperty Name="Description" ColumnName="Description" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="FaceUrl" ColumnName="FaceUrl" />
-            <ScalarProperty Name="Count" ColumnName="Count" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="Order" ColumnName="Order" />
-            <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Application"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Application"><MappingFragment StoreEntitySet="Application">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Controller" ColumnName="Controller" />
-            <ScalarProperty Name="Action" ColumnName="Action" />
-            <ScalarProperty Name="ParamStr" ColumnName="ParamStr" />
-            <ScalarProperty Name="ClassName" ColumnName="ClassName" />
-            <ScalarProperty Name="FullName" ColumnName="FullName" />
-            <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-            <ScalarProperty Name="Vision" ColumnName="Vision" />
-            <ScalarProperty Name="Icon" ColumnName="Icon" />
-            <ScalarProperty Name="Authorid" ColumnName="Authorid" />
-            <ScalarProperty Name="Addtime" ColumnName="Addtime" />
-            <ScalarProperty Name="Edittime" ColumnName="Edittime" />
-            <ScalarProperty Name="Description" ColumnName="Description" />
-            <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
-            <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
-            <ScalarProperty Name="DescriptionUrl" ColumnName="DescriptionUrl" />
-            <ScalarProperty Name="UserCount" ColumnName="UserCount" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="BasicInformation"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.BasicInformation"><MappingFragment StoreEntitySet="BasicInformation">
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-            <ScalarProperty Name="Email" ColumnName="Email" />
-            <ScalarProperty Name="IsEmailTrue" ColumnName="IsEmailTrue" />
-            <ScalarProperty Name="Sex" ColumnName="Sex" />
-            <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-            <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
-            <ScalarProperty Name="CityId" ColumnName="CityId" />
-            <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Blogs"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Blogs"><MappingFragment StoreEntitySet="Blogs">
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
-            <ScalarProperty Name="Publish" ColumnName="Publish" />
-            <ScalarProperty Name="WriteName" ColumnName="WriteName" />
-            <ScalarProperty Name="CommentEmail" ColumnName="CommentEmail" />
-            <ScalarProperty Name="Skin" ColumnName="Skin" />
-            <ScalarProperty Name="Css" ColumnName="Css" />
-            <ScalarProperty Name="MetaKey" ColumnName="MetaKey" />
-            <ScalarProperty Name="IsWebServices" ColumnName="IsWebServices" />
-            <ScalarProperty Name="PostCount" ColumnName="PostCount" />
-            <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
-            <ScalarProperty Name="TrackBackCount" ColumnName="TrackBackCount" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Category"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Category"><MappingFragment StoreEntitySet="Category">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-            <ScalarProperty Name="Type" ColumnName="Type" />
-            <ScalarProperty Name="Count" ColumnName="Count" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Comment"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Comment"><MappingFragment StoreEntitySet="Comment">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="ShowerId" ColumnName="ShowerId" />
-            <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-            <ScalarProperty Name="SenderId" ColumnName="SenderId" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="Body" ColumnName="Body" />
-            <ScalarProperty Name="IsReply" ColumnName="IsReply" />
-            <ScalarProperty Name="IsSee" ColumnName="IsSee" />
-            <ScalarProperty Name="IsDel" ColumnName="IsDel" />
-            <ScalarProperty Name="Type" ColumnName="Type" />
-            <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="ContactInformation"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.ContactInformation"><MappingFragment StoreEntitySet="ContactInformation">
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="Address" ColumnName="Address" />
-            <ScalarProperty Name="QQ" ColumnName="QQ" />
-            <ScalarProperty Name="Msn" ColumnName="Msn" />
-            <ScalarProperty Name="WangWang" ColumnName="WangWang" />
-            <ScalarProperty Name="NeteasePop" ColumnName="NeteasePop" />
-            <ScalarProperty Name="UC" ColumnName="UC" />
-            <ScalarProperty Name="Telphone" ColumnName="Telphone" />
-            <ScalarProperty Name="Mobiephone" ColumnName="Mobiephone" />
-            <ScalarProperty Name="WebSite" ColumnName="WebSite" />
-            <ScalarProperty Name="TellMethod" ColumnName="TellMethod" />
-            <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Entry"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Entry"><MappingFragment StoreEntitySet="Entry">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="CreaterId" ColumnName="CreaterId" />
-            <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-            <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
-            <ScalarProperty Name="EditCount" ColumnName="EditCount" />
-            <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-            <ScalarProperty Name="Ext" ColumnName="Ext" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="EntryVersion"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.EntryVersion"><MappingFragment StoreEntitySet="EntryVersion">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Reason" ColumnName="Reason" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="Description" ColumnName="Description" />
-            <ScalarProperty Name="Reference" ColumnName="Reference" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-            <ScalarProperty Name="EntryId" ColumnName="EntryId" />
-            <ScalarProperty Name="ParentText" ColumnName="ParentText" />
-            <ScalarProperty Name="Ext" ColumnName="Ext" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Event"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Event"><MappingFragment StoreEntitySet="Event">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
-            <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-            <ScalarProperty Name="ViewerId" ColumnName="ViewerId" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
-            <ScalarProperty Name="Json" ColumnName="Json" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="FieldInformation"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.FieldInformation"><MappingFragment StoreEntitySet="FieldInformation">
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="Field" ColumnName="Field" />
-            <ScalarProperty Name="Year" ColumnName="Year" />
-            <ScalarProperty Name="MiniField" ColumnName="MiniField" />
-            <ScalarProperty Name="QinShi" ColumnName="QinShi" />
-            <ScalarProperty Name="Field1" ColumnName="Field1" />
-            <ScalarProperty Name="Field2" ColumnName="Field2" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Friend"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Friend"><MappingFragment StoreEntitySet="Friend">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="FromId" ColumnName="FromId" />
-            <ScalarProperty Name="ToId" ColumnName="ToId" />
-            <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
-            <ScalarProperty Name="IsCommon" ColumnName="IsCommon" />
-            <ScalarProperty Name="FriendType" ColumnName="FriendType" />
-            <ScalarProperty Name="FriendSummary" ColumnName="FriendSummary" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Group"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Group"><MappingFragment StoreEntitySet="Group">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-            <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="Summary" ColumnName="Summary" />
-            <ScalarProperty Name="CreaterId" ColumnName="CreaterId" />
-            <ScalarProperty Name="UserCount" ColumnName="UserCount" />
-            <ScalarProperty Name="AdminCount" ColumnName="AdminCount" />
-            <ScalarProperty Name="PostCount" ColumnName="PostCount" />
-            <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
-            <ScalarProperty Name="JoinLevel" ColumnName="JoinLevel" />
-            <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-            <ScalarProperty Name="Type" ColumnName="Type" />
-            <ScalarProperty Name="Ext" ColumnName="Ext" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="GroupUser"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.GroupUser"><MappingFragment StoreEntitySet="GroupUser">
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="PostCount" ColumnName="PostCount" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="LogTag"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.LogTag"><MappingFragment StoreEntitySet="LogTag">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="TagId" ColumnName="TagId" />
-            <ScalarProperty Name="LogId" ColumnName="LogId" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Message"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Message"><MappingFragment StoreEntitySet="Message">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="FromId" ColumnName="FromId" />
-            <ScalarProperty Name="ToId" ColumnName="ToId" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="Body" ColumnName="Body" />
-            <ScalarProperty Name="SendTime" ColumnName="SendTime" />
-            <ScalarProperty Name="IsSee" ColumnName="IsSee" />
-            <ScalarProperty Name="IsFromDel" ColumnName="IsFromDel" />
-            <ScalarProperty Name="IsToDel" ColumnName="IsToDel" />
-            <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Note"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Note"><MappingFragment StoreEntitySet="Note">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="Summary" ColumnName="Summary" />
-            <ScalarProperty Name="Body" ColumnName="Body" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="EditTime" ColumnName="EditTime" />
-            <ScalarProperty Name="Type" ColumnName="Type" />
-            <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
-            <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
-            <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
-            <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
-            <ScalarProperty Name="PushCount" ColumnName="PushCount" />
-            <ScalarProperty Name="TrackBackCount" ColumnName="TrackBackCount" />
-            <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
-            <ScalarProperty Name="LastCommentUserId" ColumnName="LastCommentUserId" />
-            <ScalarProperty Name="LastCommentTime" ColumnName="LastCommentTime" />
-            <ScalarProperty Name="Ext" ColumnName="Ext" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="PersonalInformation"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.PersonalInformation"><MappingFragment StoreEntitySet="PersonalInformation">
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="LoveLike" ColumnName="LoveLike" />
-            <ScalarProperty Name="LoveBook" ColumnName="LoveBook" />
-            <ScalarProperty Name="LoveMusic" ColumnName="LoveMusic" />
-            <ScalarProperty Name="LoveMovie" ColumnName="LoveMovie" />
-            <ScalarProperty Name="LoveSports" ColumnName="LoveSports" />
-            <ScalarProperty Name="LoveGame" ColumnName="LoveGame" />
-            <ScalarProperty Name="LoveComic" ColumnName="LoveComic" />
-            <ScalarProperty Name="JoinSociety" ColumnName="JoinSociety" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Photo"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Photo"><MappingFragment StoreEntitySet="Photo">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="Summary" ColumnName="Summary" />
-            <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="Domain" ColumnName="Domain" />
-            <ScalarProperty Name="Url" ColumnName="Url" />
-            <ScalarProperty Name="Order" ColumnName="Order" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Profile"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Profile"><MappingFragment StoreEntitySet="Profile">
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-            <ScalarProperty Name="Face" ColumnName="Face" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-            <ScalarProperty Name="Score" ColumnName="Score" />
-            <ScalarProperty Name="ShowScore" ColumnName="ShowScore" />
-            <ScalarProperty Name="DelScore" ColumnName="DelScore" />
-            <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
-            <ScalarProperty Name="MagicBox" ColumnName="MagicBox" />
-            <ScalarProperty Name="HasMagicBox" ColumnName="HasMagicBox" />
-            <ScalarProperty Name="RegTime" ColumnName="RegTime" />
-            <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
-            <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
-            <ScalarProperty Name="FileSizeAll" ColumnName="FileSizeAll" />
-            <ScalarProperty Name="FileSizeCount" ColumnName="FileSizeCount" />
-            <ScalarProperty Name="Applications" ColumnName="Applications" />
-            <ScalarProperty Name="Applicationlist" ColumnName="Applicationlist" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Push"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Push"><MappingFragment StoreEntitySet="Push">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="LogId" ColumnName="LogId" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Reply"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Reply"><MappingFragment StoreEntitySet="Reply">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="SenderId" ColumnName="SenderId" />
-            <ScalarProperty Name="Body" ColumnName="Body" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="IsSee" ColumnName="IsSee" />
-            <ScalarProperty Name="IsDel" ColumnName="IsDel" />
-            <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Services"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Services"><MappingFragment StoreEntitySet="Services">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Body" ColumnName="Body" />
-            <ScalarProperty Name="Answer" ColumnName="Answer" />
-            <ScalarProperty Name="Status" ColumnName="Status" />
-            <ScalarProperty Name="SendTime" ColumnName="SendTime" />
-            <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="Email" ColumnName="Email" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="SuperNote"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.SuperNote"><MappingFragment StoreEntitySet="SuperNote">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="FaceURL" ColumnName="FaceURL" />
-            <ScalarProperty Name="Url" ColumnName="Url" />
-            <ScalarProperty Name="Description" ColumnName="Description" />
-            <ScalarProperty Name="UserId" ColumnName="UserId" />
-            <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
-            <ScalarProperty Name="AddTime" ColumnName="AddTime" />
-            <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
-            <ScalarProperty Name="SystemCategory" ColumnName="SystemCategory" />
-            <ScalarProperty Name="Category" ColumnName="Category" />
-            <ScalarProperty Name="Type" ColumnName="Type" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Tags"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Tags"><MappingFragment StoreEntitySet="Tags">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="Count" ColumnName="Count" />
-            <ScalarProperty Name="Type" ColumnName="Type" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="ViewData"><EntityTypeMapping TypeName="CHSNS.SQLServerImplement.ViewData"><MappingFragment StoreEntitySet="ViewData">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-            <ScalarProperty Name="ViewerId" ColumnName="ViewerId" />
-            <ScalarProperty Name="IPandComputer" ColumnName="IPandComputer" />
-            <ScalarProperty Name="ViewPageUrl" ColumnName="ViewPageUrl" />
-            <ScalarProperty Name="LastUrl" ColumnName="LastUrl" />
-            <ScalarProperty Name="ViewTime" ColumnName="ViewTime" />
-            <ScalarProperty Name="ViewClass" ColumnName="ViewClass" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Album">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="FaceUrl" ColumnName="FaceUrl" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="DescriptionUrl" ColumnName="DescriptionUrl" />
+                <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+                <ScalarProperty Name="IsSystem" ColumnName="IsSystem" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Edittime" ColumnName="Edittime" />
+                <ScalarProperty Name="Addtime" ColumnName="Addtime" />
+                <ScalarProperty Name="Authorid" ColumnName="Authorid" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Vision" ColumnName="Vision" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ParamStr" ColumnName="ParamStr" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="BasicInformation">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.BasicInformation">
+              <MappingFragment StoreEntitySet="BasicInformation">
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="IsEmailTrue" ColumnName="IsEmailTrue" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Blogs">
+              <MappingFragment StoreEntitySet="Blogs">
+                <ScalarProperty Name="TrackBackCount" ColumnName="TrackBackCount" />
+                <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+                <ScalarProperty Name="PostCount" ColumnName="PostCount" />
+                <ScalarProperty Name="IsWebServices" ColumnName="IsWebServices" />
+                <ScalarProperty Name="MetaKey" ColumnName="MetaKey" />
+                <ScalarProperty Name="Css" ColumnName="Css" />
+                <ScalarProperty Name="Skin" ColumnName="Skin" />
+                <ScalarProperty Name="CommentEmail" ColumnName="CommentEmail" />
+                <ScalarProperty Name="WriteName" ColumnName="WriteName" />
+                <ScalarProperty Name="Publish" ColumnName="Publish" />
+                <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="IsSee" ColumnName="IsSee" />
+                <ScalarProperty Name="IsReply" ColumnName="IsReply" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="ShowerId" ColumnName="ShowerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ContactInformation">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.ContactInformation">
+              <MappingFragment StoreEntitySet="ContactInformation">
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="TellMethod" ColumnName="TellMethod" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Mobiephone" ColumnName="Mobiephone" />
+                <ScalarProperty Name="Telphone" ColumnName="Telphone" />
+                <ScalarProperty Name="UC" ColumnName="UC" />
+                <ScalarProperty Name="NeteasePop" ColumnName="NeteasePop" />
+                <ScalarProperty Name="WangWang" ColumnName="WangWang" />
+                <ScalarProperty Name="Msn" ColumnName="Msn" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Entry">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Entry">
+              <MappingFragment StoreEntitySet="Entry">
+                <ScalarProperty Name="Ext" ColumnName="Ext" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="EditCount" ColumnName="EditCount" />
+                <ScalarProperty Name="CurrentId" ColumnName="CurrentId" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreaterId" ColumnName="CreaterId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EntryVersion">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.EntryVersion">
+              <MappingFragment StoreEntitySet="EntryVersion">
+                <ScalarProperty Name="Ext" ColumnName="Ext" />
+                <ScalarProperty Name="ParentText" ColumnName="ParentText" />
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="Json" ColumnName="Json" />
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ViewerId" ColumnName="ViewerId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FieldInformation">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.FieldInformation">
+              <MappingFragment StoreEntitySet="FieldInformation">
+                <ScalarProperty Name="Field2" ColumnName="Field2" />
+                <ScalarProperty Name="Field1" ColumnName="Field1" />
+                <ScalarProperty Name="QinShi" ColumnName="QinShi" />
+                <ScalarProperty Name="MiniField" ColumnName="MiniField" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Field" ColumnName="Field" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Friend">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Friend">
+              <MappingFragment StoreEntitySet="Friend">
+                <ScalarProperty Name="FriendSummary" ColumnName="FriendSummary" />
+                <ScalarProperty Name="FriendType" ColumnName="FriendType" />
+                <ScalarProperty Name="IsCommon" ColumnName="IsCommon" />
+                <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+                <ScalarProperty Name="ToId" ColumnName="ToId" />
+                <ScalarProperty Name="FromId" ColumnName="FromId" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="Ext" ColumnName="Ext" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="JoinLevel" ColumnName="JoinLevel" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="PostCount" ColumnName="PostCount" />
+                <ScalarProperty Name="AdminCount" ColumnName="AdminCount" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="CreaterId" ColumnName="CreaterId" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GroupUser">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.GroupUser">
+              <MappingFragment StoreEntitySet="GroupUser">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PostCount" ColumnName="PostCount" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LogTag">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.LogTag">
+              <MappingFragment StoreEntitySet="LogTag">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="IsHtml" ColumnName="IsHtml" />
+                <ScalarProperty Name="IsToDel" ColumnName="IsToDel" />
+                <ScalarProperty Name="IsFromDel" ColumnName="IsFromDel" />
+                <ScalarProperty Name="IsSee" ColumnName="IsSee" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ToId" ColumnName="ToId" />
+                <ScalarProperty Name="FromId" ColumnName="FromId" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Note">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Note">
+              <MappingFragment StoreEntitySet="Note">
+                <ScalarProperty Name="Ext" ColumnName="Ext" />
+                <ScalarProperty Name="LastCommentTime" ColumnName="LastCommentTime" />
+                <ScalarProperty Name="LastCommentUserId" ColumnName="LastCommentUserId" />
+                <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+                <ScalarProperty Name="TrackBackCount" ColumnName="TrackBackCount" />
+                <ScalarProperty Name="PushCount" ColumnName="PushCount" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="EditTime" ColumnName="EditTime" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PersonalInformation">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.PersonalInformation">
+              <MappingFragment StoreEntitySet="PersonalInformation">
+                <ScalarProperty Name="JoinSociety" ColumnName="JoinSociety" />
+                <ScalarProperty Name="LoveComic" ColumnName="LoveComic" />
+                <ScalarProperty Name="LoveGame" ColumnName="LoveGame" />
+                <ScalarProperty Name="LoveSports" ColumnName="LoveSports" />
+                <ScalarProperty Name="LoveMovie" ColumnName="LoveMovie" />
+                <ScalarProperty Name="LoveMusic" ColumnName="LoveMusic" />
+                <ScalarProperty Name="LoveBook" ColumnName="LoveBook" />
+                <ScalarProperty Name="LoveLike" ColumnName="LoveLike" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Photo">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Photo">
+              <MappingFragment StoreEntitySet="Photo">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Profile">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="Applicationlist" ColumnName="Applicationlist" />
+                <ScalarProperty Name="Applications" ColumnName="Applications" />
+                <ScalarProperty Name="FileSizeCount" ColumnName="FileSizeCount" />
+                <ScalarProperty Name="FileSizeAll" ColumnName="FileSizeAll" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="HasMagicBox" ColumnName="HasMagicBox" />
+                <ScalarProperty Name="MagicBox" ColumnName="MagicBox" />
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="DelScore" ColumnName="DelScore" />
+                <ScalarProperty Name="ShowScore" ColumnName="ShowScore" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Face" ColumnName="Face" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Push">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Push">
+              <MappingFragment StoreEntitySet="Push">
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Reply">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Reply">
+              <MappingFragment StoreEntitySet="Reply">
+                <ScalarProperty Name="IsTellMe" ColumnName="IsTellMe" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="IsSee" ColumnName="IsSee" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AnswerTime" ColumnName="AnswerTime" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SuperNote">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.SuperNote">
+              <MappingFragment StoreEntitySet="SuperNote">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SystemCategory" ColumnName="SystemCategory" />
+                <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="FaceURL" ColumnName="FaceURL" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.Tags">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ViewData">
+            <EntityTypeMapping TypeName="CHSNS.SQLServerImplement.ViewData">
+              <MappingFragment StoreEntitySet="ViewData">
+                <ScalarProperty Name="ViewClass" ColumnName="ViewClass" />
+                <ScalarProperty Name="ViewTime" ColumnName="ViewTime" />
+                <ScalarProperty Name="LastUrl" ColumnName="LastUrl" />
+                <ScalarProperty Name="ViewPageUrl" ColumnName="ViewPageUrl" />
+                <ScalarProperty Name="IPandComputer" ColumnName="IPandComputer" />
+                <ScalarProperty Name="ViewerId" ColumnName="ViewerId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -1183,32 +1156,32 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="CHSNS">
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Account" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Album" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9417936197916665" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Application" Width="1.5" PointX="4.75" PointY="0.75" Height="4.2879036458333326" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.BasicInformation" Width="1.5" PointX="0.75" PointY="4.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Blogs" Width="1.5" PointX="6.75" PointY="0.75" Height="3.7109993489583326" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Category" Width="1.5" PointX="2.75" PointY="6.75" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Comment" Width="1.5" PointX="4.75" PointY="6.75" Height="3.1340950520833326" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.ContactInformation" Width="1.5" PointX="6.75" PointY="5.75" Height="3.3263964843749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Entry" Width="1.5" PointX="8.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.EntryVersion" Width="1.5" PointX="8.75" PointY="4.75" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Event" Width="1.5" PointX="8.75" PointY="8.75" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.FieldInformation" Width="1.5" PointX="0.75" PointY="9.75" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Friend" Width="1.5" PointX="10.75" PointY="0.75" Height="2.3648893229166665" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Group" Width="1.5" PointX="2.75" PointY="10.75" Height="3.9033007812499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.GroupUser" Width="1.5" PointX="10.75" PointY="4.75" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.LogTag" Width="1.5" PointX="4.75" PointY="10.75" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Message" Width="1.5" PointX="10.75" PointY="7.75" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Note" Width="1.5" PointX="10.75" PointY="11.75" Height="4.6725065104166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.PersonalInformation" Width="1.5" PointX="12.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Photo" Width="1.5" PointX="12.75" PointY="4.75" Height="2.9417936197916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Profile" Width="1.5" PointX="6.75" PointY="12.75" Height="4.2879036458333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Push" Width="1.5" PointX="12.75" PointY="8.75" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Reply" Width="1.5" PointX="12.75" PointY="11.75" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Services" Width="1.5" PointX="14.75" PointY="0.75" Height="2.5571907552083335" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.SuperNote" Width="1.5" PointX="14.75" PointY="4.75" Height="3.3263964843749996" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Tags" Width="1.5" PointX="14.75" PointY="9.75" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.ViewData" Width="1.5" PointX="14.75" PointY="12.75" Height="2.5571907552083317" IsExpanded="true" /></Diagram></Diagrams>
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Account" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Album" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9417936197916665" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Application" Width="1.5" PointX="4.75" PointY="0.75" Height="4.2879036458333326" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.BasicInformation" Width="1.5" PointX="0.75" PointY="4.75" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Blogs" Width="1.5" PointX="6.75" PointY="0.75" Height="3.7109993489583326" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Category" Width="1.5" PointX="2.75" PointY="6.75" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Comment" Width="1.5" PointX="4.75" PointY="6.75" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.ContactInformation" Width="1.5" PointX="6.75" PointY="5.75" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Entry" Width="1.5" PointX="8.75" PointY="0.75" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.EntryVersion" Width="1.5" PointX="8.75" PointY="4.75" Height="3.1340950520833335" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Event" Width="1.5" PointX="8.75" PointY="8.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.FieldInformation" Width="1.5" PointX="0.75" PointY="9.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Friend" Width="1.5" PointX="10.75" PointY="0.75" Height="2.3648893229166665" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Group" Width="1.5" PointX="2.75" PointY="10.75" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.GroupUser" Width="1.5" PointX="10.75" PointY="4.75" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.LogTag" Width="1.5" PointX="4.75" PointY="10.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Message" Width="1.5" PointX="10.75" PointY="7.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Note" Width="1.5" PointX="10.75" PointY="11.75" Height="4.6725065104166674" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.PersonalInformation" Width="1.5" PointX="12.75" PointY="0.75" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Photo" Width="1.5" PointX="12.75" PointY="4.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Profile" Width="1.5" PointX="6.75" PointY="12.75" Height="4.2879036458333317" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Push" Width="1.5" PointX="12.75" PointY="8.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Reply" Width="1.5" PointX="12.75" PointY="11.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Services" Width="1.5" PointX="14.75" PointY="0.75" Height="2.5571907552083335" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.SuperNote" Width="1.5" PointX="14.75" PointY="4.75" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.Tags" Width="1.5" PointX="14.75" PointY="9.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="CHSNS.SQLServerImplement.ViewData" Width="1.5" PointX="14.75" PointY="12.75" Height="2.5571907552083317" /></Diagram></Diagrams>
   </Designer>
 </edmx:Edmx>

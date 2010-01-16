@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 2009/11/23 23:30:19
+// Generation date: 2010/1/10 1:57:50
 namespace CHSNS.SQLServerImplement
 {
     
@@ -720,8 +720,6 @@ namespace CHSNS.SQLServerImplement
         {
             base.AddObject("ViewData", viewData);
         }
-
-
     }
     /// <summary>
     /// There are no comments for CHSNS.SQLServerImplement.Account in the schema.
@@ -3230,18 +3228,18 @@ namespace CHSNS.SQLServerImplement
         /// Create a new Entry object.
         /// </summary>
         /// <param name="id">Initial value of Id.</param>
-        /// <param name="title">Initial value of Title.</param>
+        /// <param name="url">Initial value of Url.</param>
         /// <param name="createrId">Initial value of CreaterId.</param>
         /// <param name="updateTime">Initial value of UpdateTime.</param>
         /// <param name="editCount">Initial value of EditCount.</param>
         /// <param name="viewCount">Initial value of ViewCount.</param>
         /// <param name="status">Initial value of Status.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Entry CreateEntry(long id, string title, long createrId, global::System.DateTime updateTime, int editCount, long viewCount, int status)
+        public static Entry CreateEntry(long id, string url, long createrId, global::System.DateTime updateTime, int editCount, long viewCount, int status)
         {
             Entry entry = new Entry();
             entry.Id = id;
-            entry.Title = title;
+            entry.Url = url;
             entry.CreaterId = createrId;
             entry.UpdateTime = updateTime;
             entry.EditCount = editCount;
@@ -3277,32 +3275,32 @@ namespace CHSNS.SQLServerImplement
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for property Title in the schema.
+        /// There are no comments for property Url in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string Title
+        public string Url
         {
             get
             {
-                return this._Title;
+                return this._Url;
             }
             set
             {
-                this.OnTitleChanging(value);
-                this.ReportPropertyChanging("Title");
-                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("Title");
-                this.OnTitleChanged();
+                this.OnUrlChanging(value);
+                this.ReportPropertyChanging("Url");
+                this._Url = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Url");
+                this.OnUrlChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _Title;
+        private string _Url;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTitleChanging(string value);
+        partial void OnUrlChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnTitleChanged();
+        partial void OnUrlChanged();
         /// <summary>
         /// There are no comments for property CreaterId in the schema.
         /// </summary>
@@ -3554,6 +3552,33 @@ namespace CHSNS.SQLServerImplement
         partial void OnIdChanging(long value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for property Title in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Title
+        {
+            get
+            {
+                return this._Title;
+            }
+            set
+            {
+                this.OnTitleChanging(value);
+                this.ReportPropertyChanging("Title");
+                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Title");
+                this.OnTitleChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Title;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTitleChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTitleChanged();
         /// <summary>
         /// There are no comments for property Reason in the schema.
         /// </summary>

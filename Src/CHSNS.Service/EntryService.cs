@@ -9,7 +9,7 @@ using CHSNS.SQLServerImplement;
 namespace CHSNS.Service {
     public class EntryService {
         static readonly EntryService Instance = new EntryService();
-        private readonly IEntryOperator Entry;
+        private readonly EntryOperator Entry;
         public EntryService() {
             Entry = new EntryOperator();
         }
@@ -62,7 +62,7 @@ namespace CHSNS.Service {
             return Entry.GetVersion(versionId);
         }
         public IEntry Get(long entryId) {
-           return  Entry.Get(entryId);
+           return  Entry.Get(entryId).Key;
         }
 
         public IEntry Get(string title) {

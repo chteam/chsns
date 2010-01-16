@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
@@ -12,8 +12,14 @@
     <fieldset class="formset">
         <legend>词条编辑</legend>
         <p>
+        <label>词条地址</label>
+        <%=Html.TextBox("entry.Url", null, new { style = "width: 50%", onblur = "Has(this);" })%>
+        <span class="explanation">最好用英文</span>
+        </p>
+        <p>
             <label>
-                词条名称：</label><%=Html.TextBox("entry.Title", null, new { style = "width: 50%",onblur="Has(this);" })%>
+                词条名称：</label>
+                <%=Html.TextBox("entryversion.Title", null, new { style = "width: 50%", onblur = "Has(this);" })%>
         </p>
         <p>
             <label>
@@ -39,7 +45,7 @@
                <%-- <%=ViewData.ContainsKey("exists")?"":" style='display:none'"%>--%>
                 修改原因：
             </label>
-            <%=Html.TextArea("entryversion.reason", new { style = "width: 100%; height: 100px;", cols = "20", rows = "2" })%>
+            <%=Html.TextArea("entryversion.reason","", new { style = "width: 100%; height: 100px;", cols = "20", rows = "2" })%>
         </p>
         <p class="submit">
             <input type="button" value="保存" class="button_2" onclick="sub();" />
@@ -58,18 +64,18 @@
                     BindSelect(cid,r,"Text","Value");
             });
     };
-    var OldTitle=$("#entry_Title").val();
+    var OldTitle=$("#entryversion_Title").val();
     var Has=function(e){
         if($(e).val()!=OldTitle&&$('#id').val()==''){
             OldTitle=$(e).val();
             $.get('<%=Url.Action("Has","Entry")%>',{'title':$(e).val()},function(r){
                 r=eval(r);
-               FormMsg("#entry_Title", r ? '词条已存在' : '',null,false);
+               FormMsg("#entryversion_Title", r ? '词条已存在' : '',null,false);
             });
         }
     };
     var sub=function(){
-        var r= (v_empty("#entry_Title", '必填')
+        var r= (v_empty("#entryversion_Title", '必填')
             &&v_notin("#entryversion_areaid",["",0], '必填')
             &&v_empty("#entryversion_description", '必填')
            //  &&v_empty("#tags", '必填')

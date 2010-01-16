@@ -1,31 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{95B541E6-765B-4E90-B6B2-6810AE9AD0AB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{60FCF7CB-D806-47B0-8EB3-8291C3552B6D}"
 	ProjectSection(SolutionItems) = preProject
-		DLL\Castle.DynamicProxy.dll = DLL\Castle.DynamicProxy.dll
 		..\..\Cityer\Cityer\DLL\EFExtensions.dll = ..\..\Cityer\Cityer\DLL\EFExtensions.dll
 		..\..\Cityer\Cityer\DLL\EFExtensions.pdb = ..\..\Cityer\Cityer\DLL\EFExtensions.pdb
 		..\..\Cityer\Cityer\DLL\EFExtensions.xml = ..\..\Cityer\Cityer\DLL\EFExtensions.xml
-		DLL\IBatisNet.Common.dll = DLL\IBatisNet.Common.dll
-		DLL\IBatisNet.Common.Logging.Log4Net.dll = DLL\IBatisNet.Common.Logging.Log4Net.dll
-		DLL\IBatisNet.DataAccess.dll = DLL\IBatisNet.DataAccess.dll
-		DLL\IBatisNet.DataMapper.dll = DLL\IBatisNet.DataMapper.dll
-		DLL\log4net.dll = DLL\log4net.dll
-		DLL\Microsoft.Practices.ObjectBuilder2.dll = DLL\Microsoft.Practices.ObjectBuilder2.dll
-		DLL\Microsoft.Practices.ObjectBuilder2.pdb = DLL\Microsoft.Practices.ObjectBuilder2.pdb
-		DLL\Microsoft.Practices.Unity.Configuration.dll = DLL\Microsoft.Practices.Unity.Configuration.dll
-		DLL\Microsoft.Practices.Unity.Configuration.pdb = DLL\Microsoft.Practices.Unity.Configuration.pdb
-		DLL\Microsoft.Practices.Unity.dll = DLL\Microsoft.Practices.Unity.dll
-		DLL\Microsoft.Practices.Unity.Interception.Configuration.dll = DLL\Microsoft.Practices.Unity.Interception.Configuration.dll
-		DLL\Microsoft.Practices.Unity.Interception.Configuration.pdb = DLL\Microsoft.Practices.Unity.Interception.Configuration.pdb
-		DLL\Microsoft.Practices.Unity.Interception.dll = DLL\Microsoft.Practices.Unity.Interception.dll
-		DLL\Microsoft.Practices.Unity.Interception.pdb = DLL\Microsoft.Practices.Unity.Interception.pdb
-		DLL\Microsoft.Practices.Unity.pdb = DLL\Microsoft.Practices.Unity.pdb
-		DLL\Microsoft.Practices.Unity.StaticFactory.dll = DLL\Microsoft.Practices.Unity.StaticFactory.dll
-		DLL\Microsoft.Practices.Unity.StaticFactory.pdb = DLL\Microsoft.Practices.Unity.StaticFactory.pdb
 		DLL\Microsoft.Web.Mvc.dll = DLL\Microsoft.Web.Mvc.dll
 		DLL\Microsoft.Web.Testing.Light.dll = DLL\Microsoft.Web.Testing.Light.dll
 		DLL\Microsoft.Web.Testing.Light.pdb = DLL\Microsoft.Web.Testing.Light.pdb
@@ -66,8 +46,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core", "CHSNS.Core\CH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core.Tests", "CHSNS.Core.Tests\CHSNS.Core.Tests.csproj", "{54126DEC-D878-40B2-9E49-57E8C04F0D21}"
 EndProject
-Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "CHSNS.Database", "CHSNS.Database\CHSNS.Database.dbproj", "{02841DB3-429F-4032-AE95-66DF05B701DF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Common", "CHSNS.Common\CHSNS.Common.csproj", "{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Service", "CHSNS.Service\CHSNS.Service.csproj", "{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}"
@@ -86,7 +64,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestUtil", "UnitTestUti
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 13
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -102,42 +80,38 @@ Global
 		SccProjectTopLevelParentUniqueName3 = CHSNS1.x.sln
 		SccProjectName3 = CHSNS.Core.Tests
 		SccLocalPath3 = CHSNS.Core.Tests
-		SccProjectUniqueName4 = CHSNS.Database\\CHSNS.Database.dbproj
+		SccProjectUniqueName4 = CHSNS.Common\\CHSNS.Common.csproj
 		SccProjectTopLevelParentUniqueName4 = CHSNS1.x.sln
-		SccProjectName4 = CHSNS.Database
-		SccLocalPath4 = CHSNS.Database
-		SccProjectUniqueName5 = CHSNS.Common\\CHSNS.Common.csproj
+		SccProjectName4 = CHSNS.Common
+		SccLocalPath4 = CHSNS.Common
+		SccProjectUniqueName5 = CHSNS.Service\\CHSNS.Service.csproj
 		SccProjectTopLevelParentUniqueName5 = CHSNS1.x.sln
-		SccProjectName5 = CHSNS.Common
-		SccLocalPath5 = CHSNS.Common
-		SccProjectUniqueName6 = CHSNS.Service\\CHSNS.Service.csproj
+		SccProjectName5 = CHSNS.Service
+		SccLocalPath5 = CHSNS.Service
+		SccProjectUniqueName6 = CHSNS.MVCHelper\\CHSNS.MVCHelper.csproj
 		SccProjectTopLevelParentUniqueName6 = CHSNS1.x.sln
-		SccProjectName6 = CHSNS.Service
-		SccLocalPath6 = CHSNS.Service
-		SccProjectUniqueName7 = CHSNS.MVCHelper\\CHSNS.MVCHelper.csproj
+		SccProjectName6 = CHSNS.MVCHelper
+		SccLocalPath6 = CHSNS.MVCHelper
+		SccProjectUniqueName7 = CHSNS.Model\\CHSNS.Model.csproj
 		SccProjectTopLevelParentUniqueName7 = CHSNS1.x.sln
-		SccProjectName7 = CHSNS.MVCHelper
-		SccLocalPath7 = CHSNS.MVCHelper
-		SccProjectUniqueName8 = CHSNS.Model\\CHSNS.Model.csproj
+		SccProjectName7 = CHSNS.Model
+		SccLocalPath7 = CHSNS.Model
+		SccProjectUniqueName8 = CHSNS.ViewModel\\CHSNS.ViewModel.csproj
 		SccProjectTopLevelParentUniqueName8 = CHSNS1.x.sln
-		SccProjectName8 = CHSNS.Model
-		SccLocalPath8 = CHSNS.Model
-		SccProjectUniqueName9 = CHSNS.ViewModel\\CHSNS.ViewModel.csproj
+		SccProjectName8 = CHSNS.ViewModel
+		SccLocalPath8 = CHSNS.ViewModel
+		SccProjectUniqueName9 = CHSNS.SQLServerImplement\\CHSNS.SQLServerImplement.csproj
 		SccProjectTopLevelParentUniqueName9 = CHSNS1.x.sln
-		SccProjectName9 = CHSNS.ViewModel
-		SccLocalPath9 = CHSNS.ViewModel
-		SccProjectUniqueName10 = CHSNS.SQLServerImplement\\CHSNS.SQLServerImplement.csproj
+		SccProjectName9 = CHSNS.SQLServerImplement
+		SccLocalPath9 = CHSNS.SQLServerImplement
+		SccProjectUniqueName10 = CHSNS.Abstractions\\CHSNS.Abstractions.csproj
 		SccProjectTopLevelParentUniqueName10 = CHSNS1.x.sln
-		SccProjectName10 = CHSNS.SQLServerImplement
-		SccLocalPath10 = CHSNS.SQLServerImplement
-		SccProjectUniqueName11 = CHSNS.Abstractions\\CHSNS.Abstractions.csproj
+		SccProjectName10 = CHSNS.Abstractions
+		SccLocalPath10 = CHSNS.Abstractions
+		SccProjectUniqueName11 = UnitTestUtil\\UnitTestUtil.csproj
 		SccProjectTopLevelParentUniqueName11 = CHSNS1.x.sln
-		SccProjectName11 = CHSNS.Abstractions
-		SccLocalPath11 = CHSNS.Abstractions
-		SccProjectUniqueName12 = UnitTestUtil\\UnitTestUtil.csproj
-		SccProjectTopLevelParentUniqueName12 = CHSNS1.x.sln
-		SccProjectName12 = UnitTestUtil
-		SccLocalPath12 = UnitTestUtil
+		SccProjectName11 = UnitTestUtil
+		SccLocalPath11 = UnitTestUtil
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x2.vsmdi
@@ -199,27 +173,6 @@ Global
 		{54126DEC-D878-40B2-9E49-57E8C04F0D21}.Release|Any CPU.Build.0 = Release|Any CPU
 		{54126DEC-D878-40B2-9E49-57E8C04F0D21}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{54126DEC-D878-40B2-9E49-57E8C04F0D21}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Debug|.NET.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Debug|Any CPU.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Debug|Any CPU.Build.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Debug|Any CPU.Deploy.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Debug|Mixed Platforms.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Debug|Mixed Platforms.Build.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Debug|Mixed Platforms.Deploy.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Default|.NET.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Default|Any CPU.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Default|Any CPU.Build.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Default|Any CPU.Deploy.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Default|Mixed Platforms.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Default|Mixed Platforms.Build.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Default|Mixed Platforms.Deploy.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Release|.NET.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Release|Any CPU.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Release|Any CPU.Build.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Release|Any CPU.Deploy.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Release|Mixed Platforms.ActiveCfg = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Release|Mixed Platforms.Build.0 = Default|Any CPU
-		{02841DB3-429F-4032-AE95-66DF05B701DF}.Release|Mixed Platforms.Deploy.0 = Default|Any CPU
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -345,7 +298,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{02841DB3-429F-4032-AE95-66DF05B701DF} = {95B541E6-765B-4E90-B6B2-6810AE9AD0AB}
 		{A13FEE3F-28F9-4A9C-B774-7C958124D949} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
 		{27E2B6B3-7382-4D72-A889-7FDD618126F3} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
 		{F7CF4538-9101-4328-81D0-AF1B2A8B314A} = {5EF50786-2492-4737-946C-906F0E62EF91}
