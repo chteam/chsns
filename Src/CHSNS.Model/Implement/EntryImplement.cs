@@ -6,7 +6,7 @@ namespace CHSNS.Model
     public class EntryImplement:IEntry
     {
         public long Id { get; set; }
-        public string Title { get; set; }
+        public string Url { get; set; }
         public long CreaterId { get; set; }
         public DateTime UpdateTime { get; set; }
         public long? CurrentId { get; set; }

@@ -14,7 +14,7 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage" %>
 
 <div class="left">
 		<span class="title">
-<%=entry.Title%>(历史版本: <%=version.AddTime.ToString("yyyy-MM-dd hh:mm:ss")%>)</span>
+<%=version.Title%>(历史版本: <%=version.AddTime.ToString("yyyy-MM-dd hh:mm:ss")%>)</span>
 		<div class="body">
 			<p>
 				<%=version.Description %></p>
@@ -22,7 +22,7 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage" %>
 	</div>
 	<div class="right">
 		<ul>
-		<li><%=Html.ActionLink("当前版本", "Index", new { title = entry.Title.Trim() })%></span></li>
+		<li><%=Html.ActionLink("当前版本", "Index", new { url = entry.Url.Trim() })%></li>
 			<li>
 				<%=Html.ActionLink("历史版本","Historylist", new { id=entry.Id})%>
 				<span>(<%=entry.EditCount %>)</span></li>

@@ -4,11 +4,14 @@ using System.Web.Mvc;
 using CHSNS.Model;
 using CHSNS.Abstractions;
 using CHSNS.ViewModel;
+using CHSNS.Operator;
+using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Controllers
 {
     public class EntryController : BaseController
     {
+        private readonly EntryOperator EntryDb = new EntryOperator();
         #region 前台部分
         /// <summary>
         /// 显示当前词条
@@ -24,14 +27,15 @@ namespace CHSNS.Controllers
             if (version == null) return Wait();
             model.Version = version;
             model.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
-            Title = model.Entry.Title;
+            Title = model.Entry.Url;
             return View(model);
            
         }
 
         [NonAction]
         public ActionResult Wait() {
-            return View("wait", "site"); }
+            return View("wait", "site"); 
+        }
 
         /// <summary>
         /// 历史词条
@@ -40,7 +44,7 @@ namespace CHSNS.Controllers
 		public ActionResult HistoryList(long id)
         {
         	// var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
-            ViewData["Source"] = DbExt.Entry.Historys(id);
+            ViewData["Source"] = EntryDb.Historys(id);
         	Title = "版本比较";
         	return View();
         }
@@ -57,7 +61,7 @@ namespace CHSNS.Controllers
             if (ViewData["entry"] == null || ViewData["version"] == null)
                 return View("wait", "site");
             ViewData["ext"] = JsonAdapter.Deserialize<EntryExt>(version.Ext);
-            Title = entry.Title;
+            Title = entry.Url;
             return View();
 
         }
@@ -101,44 +105,31 @@ namespace CHSNS.Controllers
         
         public ActionResult Edit(string title, long? id)
         {
-            if (!string.IsNullOrEmpty(title))
-                if (title.Contains("%"))
+            if (!string.IsNullOrEmpty(title)&&title.Contains("%"))
                     title = Server.UrlDecode(title);
-     
-            IEntry data = null;
-            if (!string.IsNullOrEmpty(title))
-                data = DbExt.Entry.Get(title);
-            else if (id.HasValue)
-                data = DbExt.Entry.Get(id.Value);
-
-
-            if (data != null) {
+    
+            if (id != null) {
                 //修改
-                var entry = data;
+                var d = EntryDb.Get(id.Value);
+                var entry = d.Key;
                 if ((entry.Status == (int)EntryType.Common || HasManageRight())) {
                     ViewData["exists"] = true;
-                    ViewData["entry.Title"] = entry.Title;
+                    ViewData["entry"] = entry;
                     ViewData["id"] = entry.Id;
-
-                    var entryversion = DbExt.Entry.GetVersion(entry.CurrentId ?? 0);
-                    //db.EntryVersion.Where(c => c.ID == entry.CurrentID).FirstOrDefault();
+                    var entryversion = d.Value;
                     if (entryversion == null) return View("Wait");
-                    ViewData["entryversion.description"] = entryversion.Description;
+                    ViewData["entryversion"] = entryversion;//.Url;
                     var ee = JsonAdapter.Deserialize<EntryExt>(entryversion.Ext);
                     ViewData["tags"] = string.Join(",", ee.Tags.ToArray());
-                    ViewData["entryversion.reference"] = entryversion.Reference;
-
-                    Title = "编辑词条:" + entry.Title;
+                    Title = "编辑词条:" + entry.Url;
                 }
-                else {
+                else 
                     return View("Wait");
-                }
             }
             else
             {
-//新建
                 if (!string.IsNullOrEmpty(title))
-                    ViewData["entry.title"] = title;
+                    ViewData["entryversion.title"] = title;
                 ViewData["entryversion.reason"] = "创建词条";
                 Title = "创建词条";
             }

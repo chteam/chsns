@@ -64,5 +64,19 @@ namespace CHSNS.SQLServerImplement
             using (cmd.Connection.CreateConnectionScope())
                 return cmd.ExecuteScalar();
         }
+
+        public static System.Data.Common.DbCommand CreateStoredProcedure(this ObjectContext context, string procedureName, params object[] parameters)
+        {
+            var p = new List<SqlParameter>();
+            if (parameters.Count() % 2 == 0)
+                for (int i = 0; i < parameters.Count(); i += 2)
+                {
+                    p.Add(new SqlParameter(parameters[i].ToString(), parameters[i + 1] == null ? DBNull.Value : parameters[i + 1]));
+                }
+            return context.CreateStoreCommand(procedureName, CommandType.StoredProcedure, p.ToArray());
+        }
+        public static IDisposable CreateConnectionScope(this ObjectContext db) {
+            return db.Connection.CreateConnectionScope();
+        }
     }
 }

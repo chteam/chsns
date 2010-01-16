@@ -3,7 +3,7 @@ using CHSNS.Abstractions;
 
 namespace CHSNS.Model
 {
-    public class EntryVersionImplement:IEntryVersion
+    public class EntryVersionImplement : IEntryVersion
     {
         public long Id { get; set; }
         public string Reason { get; set; }
@@ -15,5 +15,7 @@ namespace CHSNS.Model
         public long? EntryId { get; set; }
         public string ParentText { get; set; }
         public string Ext { get; set; }
+
+        public string Title { get; set; }
     }
 }

@@ -2,7 +2,7 @@ namespace CHSNS.Abstractions {
     public interface IEntryVersion {
 
         long Id { get; set; }
-
+        string Title { get; set; }
         string Reason { get; set; }
 
         System.DateTime AddTime { get; set; }

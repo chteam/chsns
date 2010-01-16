@@ -91,6 +91,7 @@
       <DependentUpon>CHSNS.edmx</DependentUpon>
     </Compile>
     <Compile Include="DbExtension.cs" />
+    <Compile Include="ModelCovert.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\BasicInformation.cs" />
