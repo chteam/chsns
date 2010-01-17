@@ -38,32 +38,37 @@ namespace CHSNS.SQLServerImplement.Operator
 
         }
 
-        public bool Create(AccountPas account, string name, int initScore) {
-            var ac = new Account {
-                                     UserName = account.UserName,
-                                     Password = account.Password.ToMd5(),
-                                     Code = DateTime.Now.Ticks
-                                 };
-            using (var db = DBExtInstance) {
+        public bool Create(AccountPas account, string name, int initScore)
+        {
+            var ac = new Account
+            {
+                UserName = account.UserName,
+                Password = account.Password.ToMd5(),
+                Code = DateTime.Now.Ticks
+            };
+            using (var db = DBExtInstance)
+            {
                 db.AddToAccount(ac);
                 db.SubmitChanges();
-                if (ac.UserId< 999) return false;
-                db.AddToProfile(new Profile {
-                                                          UserId = ac.UserId,
-                                                          Name = name,
-                                                          ShowScore = initScore,
-                                                          Score = initScore,
-                                                          DelScore = 0,
-                                                          Status = (int)RoleType.General,
-                                                          RegTime = DateTime.Now,
-                                                          LoginTime = DateTime.Now,
-                                                          MagicBox = ""
-                                                      });
+                if (ac.UserId < 999) return false;
+                db.AddToProfile(new Profile
+                {
+                    UserId = ac.UserId,
+                    Name = name,
+                    ShowScore = initScore,
+                    Score = initScore,
+                    DelScore = 0,
+                    Status = (int)RoleType.General,
+                    RegTime = DateTime.Now,
+                    LoginTime = DateTime.Now,
+                    MagicBox = ""
+                });
                 db.AddToBasicInformation(
-                    new BasicInformation {
-                                             UserId = ac.UserId,
-                                             Name = name
-                                         });
+                    new BasicInformation
+                    {
+                        UserId = ac.UserId,
+                        Name = name
+                    });
                 db.SubmitChanges();
                 return true;
             }
