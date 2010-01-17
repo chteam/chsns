@@ -6,7 +6,7 @@ namespace CHSNS
 {
 	public class AdminFilter : ActionFilterAttribute {
 		public override void OnActionExecuting(ActionExecutingContext filterContext) {
-            var CHUser = (filterContext.Controller as Controllers.BaseController).CHContext.User;
+            var CHUser = (filterContext.Controller as NewBaseController).CHContext.User;
 			if (!CHUser.IsAdmin) {
                 filterContext.Controller.ControllerContext.HttpContext.Response.Redirect("/");
 				throw new Exception("È¨ÏÞ²»×ã");
