@@ -22,7 +22,7 @@ namespace CHSNS.Web
             RegisterRoutes(RouteTable.Routes);
         }
 
-        public void SessionOnStart(object sender, EventArgs e)
+        public void Session_Start(object sender, EventArgs e)
         {
 
             IContext context1 = new CHContext(new HttpContextWrapper(Context));
@@ -41,9 +41,9 @@ namespace CHSNS.Web
 
             const string ext = "";
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute("indexf", "", new { controller = "Entry", action = "Index", Title = "Index" });
-            routes.MapRoute("index", "{Title}" + ext, new { controller = "Entry", action = "Index", Title = "Index" }, new[] { "CHSNS.Controllers" });
-            routes.MapRoute("entry", "w/{title}" + ext, new { controller = "Entry", action = "Index", Title = "Index" }, new[] { "CHSNS.Controllers" });
+            routes.MapRoute("indexf", "", new { controller = "Entry", action = "Index", Url = "Index" });
+            routes.MapRoute("index", "{Url}" + ext, new { controller = "Entry", action = "Index", Url = "Index" }, new[] { "CHSNS.Controllers" });
+            routes.MapRoute("entry", "w/{Url}" + ext, new { controller = "Entry", action = "Index", Url = "Index" }, new[] { "CHSNS.Controllers" });
             routes.MapRoute("post", "Post/{y}/{m}/{d}/{id}" + ext, new { controller = "Group", action = "Details" });
             routes.MapRoute("note", "Note/{y}/{m}/{d}/{id}" + ext, new { controller = "Note", action = "Details" });
             routes.MapRoute("url", "{controller}/{action}" + ext,

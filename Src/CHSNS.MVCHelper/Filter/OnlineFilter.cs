@@ -27,7 +27,7 @@ namespace CHSNS
             //        "<a href='http://www.eice.com.cn'>www.eice.com.cn</a>");
             //    return false;
             //}
-            var Online = (filterContext.Controller as Controllers.BaseController).CHContext.Online;
+            var Online = (filterContext.Controller as NewBaseController).CHContext.Online;
             Online.Update();
         }
     }

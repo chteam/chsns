@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using CHSNS.ViewModel;
 using System.Web;
 
-namespace CHSNS.Base
+namespace CHSNS
 {
 
     //	[Helper(typeof(StringHelper),"String")]
@@ -77,5 +77,9 @@ namespace CHSNS.Base
                 throw new HttpException(404, "Not Found");
         }
         public IUser CHUser { get { return CHContext.User; } }
+        protected bool HasManageRight()
+        {
+            return CHUser.Status.Contains(RoleType.Editor, RoleType.Creater);
+        }
     }
 }
