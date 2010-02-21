@@ -1,6 +1,7 @@
 ﻿using System;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.Service {
     public class VideoService {
@@ -15,17 +16,17 @@ namespace CHSNS.Service {
         }
         #region ICURDService<SuperNote> 成员
 
-        public void Create(IUser user, ISuperNote content) {
-            content.UserID = user.UserID;
+        public void Create(IUser user, SuperNote content) {
+            content.UserId = user.UserID;
             content.AddTime = DateTime.Now;
             var m = new Media(content.Url);
             content.Title = content.Title ?? m.Title;
-            content.Faceurl = m.Pic;
+            content.FaceURL = m.Pic;
             content.Type = (byte)SuperNoteType.Video;
             Video.Create(content);
         }
 
-        public void Update(ISuperNote content) {
+        public void Update(SuperNote content) {
             throw new NotImplementedException();
         }
 
@@ -33,7 +34,7 @@ namespace CHSNS.Service {
             Video.Remove(user.UserID, uid);
         }
 
-        public PagedList<ISuperNote> List(long? uid,int p,int ep,IUser user) {
+        public PagedList<SuperNote> List(long? uid,int p,int ep,IUser user) {
             //类型,时间排序,用户
             return Video.List(uid ?? user.UserID, p, ep);
         }

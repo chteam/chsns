@@ -1,4 +1,4 @@
-using CHSNS.Abstractions;
+
 using CHSNS.SQLServerImplement;
 
 namespace CHSNS.Operator
@@ -7,11 +7,12 @@ namespace CHSNS.Operator
     using System;
     using Model;
     using System.Collections.Generic;
+	using CHSNS.Models;
     public class FriendOperator : BaseOperator, IFriendOperator
     {
 
         #region ªÒ»°
-        public IProfile UserFriendInfo(long userId)
+        public Profile UserFriendInfo(long userId)
         {
             using (var db = DBExtInstance)
             {
@@ -145,7 +146,7 @@ namespace CHSNS.Operator
                     );
                 if (f == null)
                 {
-                    db.AddToFriend(
+                    db.Friend.AddObject(
                         new Friend
                         {
                             FromId = fromId,

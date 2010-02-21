@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Transactions;
 using System.Web.Mvc;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+using CHSNS.Models;
+
 
 namespace CHSNS.Controllers {
 
@@ -19,7 +20,7 @@ namespace CHSNS.Controllers {
             if (!userid.HasValue) userid = CHUser.UserID;
             var user = DbExt.UserInfo.GetUser(
                 userid.Value,
-                c => new ProfileImplement{
+                c => new Profile{
                                              UserId = c.UserId,
                                              Name = c.Name,
                                              //Count = c.NoteCount
@@ -44,18 +45,18 @@ namespace CHSNS.Controllers {
         [LoginedFilter]
         public ActionResult AddReply(long ReplyerID, string Body, long UserID) {
             using (var ts = new TransactionScope()) {
-                IReply r = new ReplyImplement { Body = Body, UserID = UserID };
+                Reply r = new Reply { Body = Body, UserId = UserID };
 
                 //UpdateModel(r, new[] { "Body", "UserId" });
-                var OwnerID = r.UserID;
-                r.SenderID = CHUser.UserID;
+                var ownerId = r.UserId;
+                r.SenderId = CHUser.UserID;
                 r.AddTime = DateTime.Now;
                 r = DbExt.Comment.AddReply(r);
-                if (ReplyerID != OwnerID) {
-                    r.UserID = ReplyerID;
+                if (ReplyerID != ownerId) {
+                    r.UserId = ReplyerID;
                     DbExt.Comment.AddReply(r);
                 }
-                r.UserID = OwnerID;
+                r.UserId = ownerId;
                 var model = new List<CommentPas>{
 					new CommentPas{
 					Sender = new NameIdPas{
@@ -63,8 +64,8 @@ namespace CHSNS.Controllers {
 						Name = CHUser.Username
 					},
 					Comment =new CommentItemPas{ 
-						 ID = r.ID,
-						 OwnerID=r.UserID,
+						 ID = r.Id,
+						 OwnerID=r.UserId,
 							   Body = r.Body,
 							   AddTime = r.AddTime,
 							   IsDel = r.IsDel	}
@@ -106,10 +107,10 @@ namespace CHSNS.Controllers {
         }
         [LoginedFilter]
         public ActionResult Add(long ShowerID, long OwnerID, string Body, CommentType type) {
-            var cmt = new CommentImplement {
-                ShowerID = ShowerID,
-                OwnerID = OwnerID,
-                SenderID = CHUser.UserID,
+            var cmt = new Comment {
+                ShowerId = ShowerID,
+                OwnerId = OwnerID,
+                SenderId = CHUser.UserID,
                 Body = Body,
                 Type = (byte)type,
                 AddTime = DateTime.Now,
@@ -122,8 +123,8 @@ namespace CHSNS.Controllers {
 						Name = CHUser.Username
 					},
 					Comment =new CommentItemPas{ 
-						 ID = cmt.ID,
-						 OwnerID=cmt.OwnerID,
+						 ID = cmt.Id,
+						 OwnerID=cmt.OwnerId,
 							   Body = cmt.Body,
 							   AddTime =cmt.AddTime,
 							   IsDel =cmt.IsDel

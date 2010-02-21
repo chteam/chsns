@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using CHSNS.Config;
 using CHSNS.Model;
 using System.Web;
+using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
@@ -40,7 +41,7 @@ namespace CHSNS.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(long? id, AlbumImplement a) {
+        public ActionResult Edit(long? id, Album a) {
             if (id.HasValue){
                 a.Id = id.Value;
                 DbExt.Album.Update(a);
@@ -75,7 +76,7 @@ namespace CHSNS.Controllers
         public ActionResult UploadPhoto(string name,  long id, HttpPostedFileBase file){
             var al = DbExt.Album.GetCountChange(id,1);
             Validate404(al);
-            var p = new PhotoImplement { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = CHUser.UserID };
+            var p = new Photo { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = CHUser.UserID };
             var f = new ImageUpload(file,
                                     CHContext,
                                     ConfigSerializer.Load<List<string>>("AllowImageExt")

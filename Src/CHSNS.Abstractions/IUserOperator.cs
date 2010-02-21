@@ -1,17 +1,18 @@
 ﻿using System;
-using CHSNS.Abstractions;
+//
 using CHSNS.Model;
+using CHSNS.Models;
 
 namespace CHSNS.Operator {
     public interface IUserOperator {
         void DeleteFace(long userid);
-        IBasicInformation GetBaseInfo(long userId);
+        BasicInformation GetBaseInfo(long userId);
         string GetMagicBox(long userId);
-        IProfile GetUser(long userid);
-        IProfile GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<IProfile, T>> x);
+        Profile GetUser(long userid);
+        Profile GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<Profile, T>> x);
         void MagicBoxBackup();
         int Relation(long ownerId, long viewerId);
-        void SaveBaseInfo(IBasicInformation bi);
+        void SaveBaseInfo(BasicInformation bi);
         void SaveMagicBox(string magicbox, long uid);
         void SaveText(long userid, string text);
         Model.UserPas UserInformation(long userid);

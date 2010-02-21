@@ -1,6 +1,7 @@
 using System.Web.Mvc;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+using CHSNS.Models;
+
 
 namespace CHSNS.Controllers {
 
@@ -13,7 +14,7 @@ namespace CHSNS.Controllers {
         }
         [LoginedFilter]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(SuperNoteImplement v) {
+        public ActionResult Edit(SuperNote v) {
             DbExt.Video.Create(CHUser,v);
             Message = "提交成功";
             return RedirectToAction("List");

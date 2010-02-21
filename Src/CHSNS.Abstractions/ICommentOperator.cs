@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+using CHSNS.Models;
+//
 
 namespace CHSNS.Operator
 {
 	public interface ICommentOperator
 	{
-		void Add(IComment cmt, CommentType type);
-		IReply AddReply(IReply r);
+		void Add(Comment cmt, CommentType type);
+		Reply AddReply(Reply r);
         PagedList<CommentPas> CommentList(long ShowerID, CommentType type, int p,int pageSize);
 		bool Delete(long id, CommentType type);
 		void DeleteReply(long id, long userid);

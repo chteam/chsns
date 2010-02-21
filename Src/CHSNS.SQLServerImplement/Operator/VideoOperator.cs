@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Linq;
-using CHSNS.Abstractions;
+
 using CHSNS.SQLServerImplement;
+using CHSNS.Models;
 
 namespace CHSNS.Operator {
     public class VideoOperator : BaseOperator, ISuperNoteOperator {
       
         #region ICURDOperator<SuperNote> 成员
 
-        public void Create(ISuperNote content) {
+        public void Create(SuperNote content) {
             using (var db = DBExtInstance)
             {
-                var inval = CastTool.Cast<SuperNote>(content);
-                if (inval == null) return;
-                db.AddToSuperNote(inval);
+				db.SuperNote.AddObject(content);
                 db.SubmitChanges();
             }
         }
 
-        public void Update(ISuperNote content) {
+        public void Update(SuperNote content) {
             throw new NotImplementedException();
         }
 
@@ -35,12 +34,12 @@ namespace CHSNS.Operator {
             }
         }
 
-        public PagedList<ISuperNote> List(long uid, int p, int ep){
+        public PagedList<SuperNote> List(long uid, int p, int ep){
             //类型,时间排序,用户
             using (var db = DBExtInstance){
                 return db.SuperNote.Where(c => c.Type == (byte) SuperNoteType.Video
                                                && c.UserId == uid).OrderByDescending(
-                    c => c.AddTime).Cast<ISuperNote>().Pager(p, ep);
+                    c => c.AddTime).Pager(p, ep);
             }
         }
 

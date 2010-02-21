@@ -6,6 +6,7 @@ using CHSNS.Config;
 using System.Collections.Generic;
 using CHSNS.Model;
 using Image=System.Drawing.Image;
+using CHSNS.Models;
 
 namespace CHSNS.Controllers {
     //[Helper(typeof(ChHelper))]
@@ -63,7 +64,7 @@ namespace CHSNS.Controllers {
                         );
             }
             //SetStarLevel(CHUser.UserId); //¸üÐÂ
-            DbExt.Photo.Add(new PhotoImplement
+            DbExt.Photo.Add(new Photo
                                 {
                                     Title = "Í·Ïñ" + DateTime.Now.ToString("yyyyMMddhhmm"),
                                     UserId = CHUser.UserID,

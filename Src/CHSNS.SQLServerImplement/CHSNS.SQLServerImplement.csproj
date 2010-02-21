@@ -15,7 +15,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -35,6 +35,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,29 +80,15 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aef\CHSNS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CHSNS.edmx</DependentUpon>
-    </Compile>
     <Compile Include="DbExtension.cs" />
     <Compile Include="ModelCovert.cs" />
-    <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\Album.cs" />
-    <Compile Include="Models\BasicInformation.cs" />
-    <Compile Include="Models\EntryVersion.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\GroupUser.cs" />
-    <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\Note.cs" />
-    <Compile Include="Models\Photo.cs" />
-    <Compile Include="Models\Profile.cs" />
     <Compile Include="Operator\AccountOperator.cs" />
     <Compile Include="Operator\AlbumOperator.cs" />
     <Compile Include="Operator\ApplicationOperator.cs" />
@@ -159,10 +146,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Aef\CHSNS.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CHSNS.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -171,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Abstractions\CHSNS.Abstractions.csproj">
@@ -194,7 +178,9 @@
       <Name>CHSNS.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Test\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

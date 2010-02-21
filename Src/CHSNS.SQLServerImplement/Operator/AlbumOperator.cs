@@ -1,34 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement {
     public class AlbumOperator:BaseOperator,IAlbumOperator {
         #region IAlbumOperator 成员
 
-        public List<IAlbum> Items(long uId) {
+        public List<Album> Items(long uId) {
             using (var db = DBExtInstance) {
                 return (from a in db.Album
                         where a.UserId.Equals(uId)
-                        select a).Cast<IAlbum>().ToList();
+                        select a).ToList();
             }
         }
 
-        public IAlbum Get(long id) {
+        public Album Get(long id) {
             using (var db = DBExtInstance){
                 return db.Album.FirstOrDefault(c => c.Id.Equals(id));
             }
         }
 
-        public void Add(IAlbum album, long uId) {
+        public void Add(Album album, long uId) {
             using (var db = DBExtInstance){
-                db.AddToAlbum(CastTool.Cast<Album>(album));
+                db.Album.AddObject(album);
                 db.SubmitChanges();
             }
         }
 
-        public void Update(IAlbum album) {
+        public void Update(Album album) {
             using (var db = DBExtInstance){
                 var al = db.Album.FirstOrDefault(c => c.Id == album.Id);
                 al.Location = album.Location;
@@ -39,15 +40,15 @@ namespace CHSNS.SQLServerImplement {
             }
         }
 
-        public List<IPhoto> GetPhotos(long id, long uId,int page, int pageSize) {
+        public List<Photo> GetPhotos(long id, long uId,int page, int pageSize) {
             using (var db = DBExtInstance){
                 return  (from ph in db.Photo
                           where ph.AlbumId == id && ph.UserId ==uId
-                         select ph).Cast<IPhoto>().Pager(page, pageSize);
+                         select ph).Pager(page, pageSize);
             }
         }
 
-        public IAlbum GetCountChange(long id, int num){
+        public Album GetCountChange(long id, int num){
             using (var db = DBExtInstance){
                 var a = db.Album.FirstOrDefault(c => c.Id.Equals(id));
                 if (num != 0){

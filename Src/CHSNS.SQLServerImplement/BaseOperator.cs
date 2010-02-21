@@ -1,5 +1,6 @@
 ﻿
 using System.Configuration;
+using CHSNS.Models;
 //using CHSNS.SQLServerImplement.Aef;
 
 namespace CHSNS.SQLServerImplement

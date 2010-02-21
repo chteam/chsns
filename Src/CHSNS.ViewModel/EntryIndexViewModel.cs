@@ -1,10 +1,11 @@
-using CHSNS.Abstractions;
+
 using CHSNS.Model;
+using CHSNS.Models;
 
 namespace CHSNS.ViewModel {
     public class EntryIndexViewModel : BaseViewModel {
-        public IEntry Entry { set; get; }
-        public IEntryVersion Version { get; set; }
+        public Entry Entry { set; get; }
+        public EntryVersion Version { get; set; }
         public EntryExt Ext { get; set; }
     }
 }

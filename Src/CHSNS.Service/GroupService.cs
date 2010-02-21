@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.Service {
     public class GroupService {
@@ -16,10 +17,10 @@ namespace CHSNS.Service {
             return Instance;
         }
 
-        public IGroupUser GetGroupUser(long gId, long uId) {
+        public GroupUser GetGroupUser(long gId, long uId) {
             return Group.GetGroupUser(gId, uId);
         }
-        public IGroup Get(long groupId) {
+        public Group Get(long groupId) {
             return Group.Get(groupId);
         }
         public int WaitJoinCount(long groupId) {
@@ -28,11 +29,11 @@ namespace CHSNS.Service {
         public List<UserItemPas> GetAdmins(long groupId) {
             return Group.GetAdmins(groupId);
         }
-        public PagedList<IGroup> GetList(long uId, int page, int pageSize) {
+        public PagedList<Group> GetList(long uId, int page, int pageSize) {
             return Group.GetList(uId, page, pageSize);
         }
         public bool Add(string name, long uId) {
-            var group = new GroupImplement {
+            var group = new Group{
                 Name = name,
                 Type = (byte)GroupType.Common,
                 AddTime = DateTime.Now,
@@ -41,7 +42,7 @@ namespace CHSNS.Service {
             };
             return Group.Add(group, uId);
         }
-        public bool Update(long groupId, IGroup group) {
+        public bool Update(long groupId, Group group) {
             group.Id = groupId;
             return Group.Update(group);
         }

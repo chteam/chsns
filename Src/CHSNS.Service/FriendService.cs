@@ -5,6 +5,7 @@ namespace CHSNS.Service {
     using System;
     using Model;
     using System.Collections.Generic;
+	using CHSNS.Models;
     public class FriendService {
         static readonly FriendService Instance = new FriendService();
         private readonly IFriendOperator Friend;
@@ -20,7 +21,7 @@ namespace CHSNS.Service {
             return Instance;
         }
         #region 获取
-        public IProfile UserFriendInfo(long userid) {
+        public Profile UserFriendInfo(long userid) {
             return Friend.UserFriendInfo(userid);
         }
         public List<long> GetFriendsId(long userid) {
@@ -70,9 +71,9 @@ namespace CHSNS.Service {
             var b = Friend.Agree(operaterId, toId);
             string name = User.GetUserName(toId);
 
-            Event.Add(new EventImplement {
-                OwnerID = toId,
-                ViewerID = operaterId,
+            Event.Add(new Event{
+                OwnerId = toId,
+                ViewerId = operaterId,
                 TemplateName = "MakeFriend",
                 AddTime = DateTime.Now,
                 ShowLevel = 0,

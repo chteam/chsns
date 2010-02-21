@@ -1,9 +1,10 @@
 ﻿
 
 using System.Collections.Generic;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.Service {
     public class ApplicationService {
@@ -21,13 +22,13 @@ namespace CHSNS.Service {
         /// <summary>
         /// 缓存的应用列表
         /// </summary>
-        public List<IApplication> Applications {
+        public List<Application> Applications {
             get {
                 return Application.Applications;
             }
         }
 
-        public List<IApplication> GetApps(long[] ids) {
+        public List<Application> GetApps(long[] ids) {
             return Application.GetApps(ids);
         }
     }

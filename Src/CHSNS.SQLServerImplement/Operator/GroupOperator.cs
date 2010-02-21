@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+
 using CHSNS.SQLServerImplement;
+using CHSNS.Models;
 
 namespace CHSNS.Operator {
 	public class GroupOperator :BaseOperator, IGroupOperator {
-        public IGroup Get(long groupId)
+        public Group Get(long groupId)
         {
             using (var db = DBExtInstance)
             {
@@ -15,10 +16,10 @@ namespace CHSNS.Operator {
             }
         }
 
-        public bool Add(IGroup group, long uId)
+        public bool Add(Group group, long uId)
 	    {
             using (var db = DBExtInstance) {
-                db.AddToGroup(CastTool.Cast<Group>( group));
+                db.Group.AddObject(group);
                 db.SubmitChanges();
                 var gu = new GroupUser {
                     GroupId = group.Id,
@@ -26,7 +27,7 @@ namespace CHSNS.Operator {
                     UserId = uId,
                     AddTime = DateTime.Now
                 };
-                db.AddToGroupUser(gu);
+                db.GroupUser.AddObject(gu);
                 db.SubmitChanges();
             }
 	        return true;
@@ -34,7 +35,7 @@ namespace CHSNS.Operator {
 
 
 
-        public bool Update(IGroup group)
+        public bool Update(Group group)
 	    {
             using (var db = DBExtInstance){
                 var g = db.Group.Where(c => c.Id == group.Id).FirstOrDefault();
@@ -49,7 +50,7 @@ namespace CHSNS.Operator {
 	    }
 
 
-        public IGroupUser GetGroupUser(long gId, long uId)
+        public GroupUser GetGroupUser(long gId, long uId)
         {
             using (var db = DBExtInstance)
             {
@@ -86,7 +87,7 @@ namespace CHSNS.Operator {
             }
         }
 
-        public PagedList<IGroup> GetList(long uId, int page, int pageSize)
+        public PagedList<Group> GetList(long uId, int page, int pageSize)
         {
             using (var db = DBExtInstance)
             {
@@ -94,7 +95,7 @@ namespace CHSNS.Operator {
                                          join g in db.Group on gu.GroupId equals g.Id
                                          where gu.UserId == uId
                                          select g
-                                        ).Cast<IGroup>();
+                                        ).Cast<Group>();
                 ret = ret.OrderBy(c => c.Id);
                 return ret.Pager(page, pageSize);
             }

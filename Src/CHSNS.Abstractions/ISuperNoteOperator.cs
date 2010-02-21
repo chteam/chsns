@@ -1,6 +1,5 @@
-﻿using CHSNS.Abstractions;
-
+﻿using CHSNS.Models;
 namespace CHSNS.Operator {
-    public interface ISuperNoteOperator : ICURDOperator<ISuperNote> {
+    public interface ISuperNoteOperator : ICURDOperator<SuperNote> {
     }
 }

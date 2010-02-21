@@ -7,6 +7,7 @@ using System.Data.Objects;
 using System.Data;
 using Microsoft.Data.Extensions;
 using System.Data.SqlClient;
+using CHSNS.Models;
 namespace CHSNS.SQLServerImplement
 {
     [EditorBrowsable(EditorBrowsableState.Never)]

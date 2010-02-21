@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CHSNS.Model;
+using CHSNS.Models;
 
 namespace CHSNS.Operator
 {
@@ -16,7 +17,7 @@ namespace CHSNS.Operator
         List<UserItemPas> GetRandoms(int n);
         PagedList<UserItemPas> GetRequests(long userId, int page, int pageSize);
 
-        IProfile UserFriendInfo(long userId);
+        Profile UserFriendInfo(long userId);
 
 	}
 }

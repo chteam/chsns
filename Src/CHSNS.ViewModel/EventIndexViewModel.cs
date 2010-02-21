@@ -1,5 +1,6 @@
 ﻿using CHSNS.Model;
-using CHSNS.Abstractions;
+using CHSNS.Models;
+
 
 namespace CHSNS.ViewModel
 {
@@ -7,7 +8,7 @@ namespace CHSNS.ViewModel
     {
         public ViewListPas NewViews { get; set; }
         public ViewListPas LastViews { get; set; }
-        public PagedList<IEvent> Events { get; set; }
+        public PagedList<Event> Events { get; set; }
         public EventPagePas Page { get; set; }
     }
 }

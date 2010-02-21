@@ -2,26 +2,27 @@
 using System.Linq;
 using CHSNS.Model;
 using System.Collections.Generic;
-using CHSNS.Abstractions;
+
 using CHSNS.SQLServerImplement;
+using CHSNS.Models;
 
 namespace CHSNS.Operator {
 	public class NoteOperator : BaseOperator, INoteOperator {
 		/// <summary>
 		/// userid
 		/// </summary>
-        public void Add(INote note)
+        public void Add(Note note)
 		{
 		    using (var db = DBExtInstance)
 		    {
 		        note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
-                db.AddToNote(CastTool.Cast<Note>(note));
+                db.Note.AddObject(note);
 		        db.SubmitChanges();
 		    }
 		    
 		}
 
-        public void Edit(INote note)
+        public void Edit(Note note)
         {
             using (var db = DBExtInstance)
             {

@@ -1,4 +1,4 @@
-﻿using CHSNS.Abstractions;
+﻿using CHSNS.Models;
 
 namespace CHSNS.Model {
     public class UserPas {
@@ -20,8 +20,8 @@ namespace CHSNS.Model {
                 return _exists.Value;
             }
         }
-        public IProfile Profile { get; set; }
-        public IBasicInformation Basic { get; set; }
+        public Profile Profile { get; set; }
+        public BasicInformation Basic { get; set; }
         public int Relation { get; set; }
         public bool IsMe { get { return OwnerId == ViewerId; } }
         public bool IsOnline { get; set; }

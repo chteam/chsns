@@ -2,8 +2,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement.Operator
 {
@@ -12,17 +13,17 @@ namespace CHSNS.SQLServerImplement.Operator
         /// <summary>
         /// 应用列表
         /// </summary>
-        public List<IApplication> Applications {
+        public List<Application> Applications {
             get {
                 using (var db = DBExtInstance) {
-                    return db.Application.Cast<IApplication>().ToList();
+                    return db.Application.Cast<Application>().ToList();
                 }
             }
         }
 
-        public List<IApplication> GetApps(long[] ids)
+        public List<Application> GetApps(long[] ids)
         {
-            return ids.Length == 0 ? Applications.Where(c => c.IsSystem).ToList() : Applications.Where(c => ids.Contains(c.ID)).ToList();
+            return ids.Length == 0 ? Applications.Where(c => c.IsSystem).ToList() : Applications.Where(c => ids.Contains(c.Id)).ToList();
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement;
+using CHSNS.Models;
 
 namespace CHSNS.Service {
     public class PhotoService {
@@ -14,12 +15,12 @@ namespace CHSNS.Service {
         public static PhotoService GetInstance(){
             return _instance;
         }
-        public void Add(IPhoto photo) {
+        public void Add(Photo photo) {
             photo.AddTime = DateTime.Now;
             Photo.Add(photo);
         }
 
-        public IPhoto Get(long id) {
+        public Photo Get(long id) {
             return Photo.Get(id);
         }
 

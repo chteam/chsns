@@ -1,11 +1,12 @@
 ﻿using CHSNS.Model;
-using CHSNS.Abstractions;
+using CHSNS.Models;
+//
 
 namespace CHSNS.Operator
 {
     public interface IMessageOperator
     {
-        void Add(IMessage m, System.Web.HttpServerUtilityBase server);
+        void Add(Message m, System.Web.HttpServerUtilityBase server);
         void Delete(long id, MessageBoxType t, long uid);
         MessageDetailsPas Details(long id, long uid);
         PagedList<MessageItemPas> GetInbox(long uid, int page,int pageSize);

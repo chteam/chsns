@@ -2,6 +2,7 @@
 using System;
 using CHSNS.Model;
 using CHSNS.SQLServerImplement;
+using CHSNS.Models;
 
 namespace CHSNS.Operator
 {
@@ -198,7 +199,7 @@ namespace CHSNS.Operator
                 #endregion
                 if (vds.Count() <50)
                 {
-                    db.AddToViewData(new ViewData
+                    db.ViewData.AddObject(new ViewData
                                                    {
                                                        ViewerId = myId,
                                                        OwnerId = ownerid,
