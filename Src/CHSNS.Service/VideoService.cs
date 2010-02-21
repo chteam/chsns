@@ -17,7 +17,7 @@ namespace CHSNS.Service {
         #region ICURDService<SuperNote> 成员
 
         public void Create(IUser user, SuperNote content) {
-            content.UserId = user.UserID;
+            content.UserId = user.UserId;
             content.AddTime = DateTime.Now;
             var m = new Media(content.Url);
             content.Title = content.Title ?? m.Title;
@@ -31,12 +31,12 @@ namespace CHSNS.Service {
         }
 
         public void Remove(IUser user,params long[] uid) {
-            Video.Remove(user.UserID, uid);
+            Video.Remove(user.UserId, uid);
         }
 
         public PagedList<SuperNote> List(long? uid,int p,int ep,IUser user) {
             //类型,时间排序,用户
-            return Video.List(uid ?? user.UserID, p, ep);
+            return Video.List(uid ?? user.UserId, p, ep);
         }
 
         #endregion

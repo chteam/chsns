@@ -9,19 +9,37 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using CHSNS.Service;
-
+using System.Web.Security;
 namespace CHSNS.Web
 {
     [CompilerGlobalScope]
     public class Global : HttpApplication
     {
-
         public void Application_Start(object sender, EventArgs e)
         {
             // 在应用程序启动时运行的代码
             RegisterRoutes(RouteTable.Routes);
         }
-
+		void Application_AuthenticateRequest(object sender, EventArgs e)
+		{
+			//HttpCookie authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];
+			//if (null == authCookie) return;
+			//FormsAuthenticationTicket authTicket;
+			//try
+			//{
+			//    authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+			//}
+			//catch (Exception)
+			//{
+			//    return;
+			//}
+			//if (null == authTicket) return;
+			//string[] userData = authTicket.UserData.Split(new[] { '|' });
+			//Context.User = Acl.User.BuildPrincipal(Convert.ToInt32(userData[0]), userData[1], userData[2],
+			//                                       userData[3], DateTime.FromBinary(Convert.ToInt64(userData[4])),
+			//                                       Acl.GanjiApplications.CRM);
+			
+		}
         public void Session_Start(object sender, EventArgs e)
         {
 

@@ -10,7 +10,7 @@ namespace CHSNS.Controllers {
         public ActionResult Index(long? userid, int? p)
         {
 
-            if (!userid.HasValue) userid = CHUser.UserID;
+            if (!userid.HasValue) userid = CHUser.UserId;
             if (!p.HasValue || p == 0) p = 1;
             var user = DbExt.UserInfo.GetUser(
                 userid.Value,
@@ -79,8 +79,8 @@ namespace CHSNS.Controllers {
 					return View(n);
 				}
 				n.Type = (int)NoteType.Note;
-				n.UserId = CHUser.UserID;
-				n.ParentId = CHUser.UserID;
+				n.UserId = CHUser.UserId;
+				n.ParentId = CHUser.UserId;
 				if (id.HasValue) {
 					n.Id = id.Value;
 					DbExt.Note.Edit(n);
@@ -102,7 +102,7 @@ namespace CHSNS.Controllers {
 		[LoginedFilter]
 		public ActionResult Delete(long id) {
 			using (var ts = new TransactionScope()) {
-				DbExt.Note.Delete(id, CHUser.UserID, NoteType.Note);
+				DbExt.Note.Delete(id, CHUser.UserId, NoteType.Note);
 				ts.Complete();
 				return Content("");
 			}

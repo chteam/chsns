@@ -22,9 +22,9 @@ namespace CHSNS.Controllers {
             Title = "事件";
             var m = new EventIndexViewModel{
                                                  //     Events = DBExt.Event.GetFriendEvent(CHUser.UserId, 1, 20),
-                                                 LastViews = DbExt.View.ViewList(0, 3, CHUser.UserID, 6),
-                                                 NewViews = DbExt.View.ViewList(2, 3, CHUser.UserID, 6),
-                                                 Page = DbExt.Gather.EventGather(CHUser.UserID)
+                                                 LastViews = DbExt.View.ViewList(0, 3, CHUser.UserId, 6),
+                                                 NewViews = DbExt.View.ViewList(2, 3, CHUser.UserId, 6),
+                                                 Page = DbExt.Gather.EventGather(CHUser.UserId)
                                              };
             return View(m);
         }

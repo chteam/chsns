@@ -2,7 +2,7 @@
 <SiteConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <BaseConfig>
     <IsSoureFace>false</IsSoureFace>
-    <StyleList>default|foxblue|CHSNS|</StyleList>
+    <StyleList>default|foxblue|CHSNS|FaceBook</StyleList>
     <Style>CHSNS</Style>
     <Path>/</Path>
     <CookieName>userInfo</CookieName>

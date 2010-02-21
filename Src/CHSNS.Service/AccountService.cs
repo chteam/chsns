@@ -29,12 +29,12 @@ namespace CHSNS.Service {
             var profile = Account.Login(userName, password, context.Site.Score.LogOn);
             if (profile == null) return -1;//无账号
             Logout(context);
-            context.User.UserID = profile.UserId;
-            context.User.Username = profile.Name;
+            context.User.UserId = profile.UserId;
+            context.User.NickName = profile.Name;
             context.User.InitStatus(profile.Status);
             context.Cookies.Apps = profile.Applications ?? "";
             if (!isAutoLogin) return profile.Status;
-            context.Cookies.UserID = context.User.UserID;
+            context.Cookies.UserID = context.User.UserId;
             context.Cookies.UserPassword = password;
             context.Cookies.IsAutoLogin = true;
             context.Cookies.Expires = DateTime.Now.AddDays(365);

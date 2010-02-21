@@ -26,7 +26,7 @@ namespace CHSNS {
 		                                   FileExtList = ext,
 		                                   //HttpContext = context,
 		                                   PathBuilder = new ServerPathBuilder(Context.HttpContext.Server,
-		                                                                       Path.Photo(Context.User.UserID, Time, Ext,
+		                                                                       Path.Photo(Context.User.UserId, Time, Ext,
 		                                                                                  "source")
 		                                       ),
 		                                   Size = 2,
@@ -44,7 +44,7 @@ namespace CHSNS {
 			        Thumbnail.CreateThumbnail(
 			            imgSrc,
 			            Context.HttpContext.Server.MapPath(
-			                Path.Photo(Context.User.UserID, Time, Ext, p.ImageType.ToString())),
+			                Path.Photo(Context.User.UserId, Time, Ext, p.ImageType.ToString())),
 			            p.Size, Context.IOFactory
 			            );
 			    }

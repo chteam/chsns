@@ -78,7 +78,7 @@ namespace CHSNS.Service {
                 AddTime = DateTime.Now,
                 ShowLevel = 0,
                 Json =
-                    Dictionary.CreateFromArgs("ownername", name, "sendername", user.Username).
+                    Dictionary.CreateFromArgs("ownername", name, "sendername", user.NickName).
                     ToJsonString()
             }
                 );

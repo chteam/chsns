@@ -190,7 +190,7 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AdminFilter]
         public ActionResult Delete(long id) {
-            EntryDb.DeleteByVersionId(id, CHUser.UserID);
+            EntryDb.DeleteByVersionId(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
 

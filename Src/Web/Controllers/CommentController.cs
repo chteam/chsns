@@ -17,7 +17,7 @@ namespace CHSNS.Controllers {
         /// <param name="userid">The userid.</param>
         /// <returns></returns>
         public ActionResult Reply(long? userid) {
-            if (!userid.HasValue) userid = CHUser.UserID;
+            if (!userid.HasValue) userid = CHUser.UserId;
             var user = DbExt.UserInfo.GetUser(
                 userid.Value,
                 c => new Profile{
@@ -49,7 +49,7 @@ namespace CHSNS.Controllers {
 
                 //UpdateModel(r, new[] { "Body", "UserId" });
                 var ownerId = r.UserId;
-                r.SenderId = CHUser.UserID;
+                r.SenderId = CHUser.UserId;
                 r.AddTime = DateTime.Now;
                 r = DbExt.Comment.AddReply(r);
                 if (ReplyerID != ownerId) {
@@ -60,8 +60,8 @@ namespace CHSNS.Controllers {
                 var model = new List<CommentPas>{
 					new CommentPas{
 					Sender = new NameIdPas{
-						Id = CHUser.UserID,
-						Name = CHUser.Username
+						Id = CHUser.UserId,
+						Name = CHUser.NickName
 					},
 					Comment =new CommentItemPas{ 
 						 ID = r.Id,
@@ -84,7 +84,7 @@ namespace CHSNS.Controllers {
         [LoginedFilter]
         public ActionResult DeleteReply(long id) {
 
-            DbExt.Comment.DeleteReply(id, CHUser.UserID);
+            DbExt.Comment.DeleteReply(id, CHUser.UserId);
 
             return new EmptyResult();
 
@@ -110,7 +110,7 @@ namespace CHSNS.Controllers {
             var cmt = new Comment {
                 ShowerId = ShowerID,
                 OwnerId = OwnerID,
-                SenderId = CHUser.UserID,
+                SenderId = CHUser.UserId,
                 Body = Body,
                 Type = (byte)type,
                 AddTime = DateTime.Now,
@@ -119,8 +119,8 @@ namespace CHSNS.Controllers {
             var model = new List<CommentPas>{
 					new CommentPas{
 					Sender = new NameIdPas{
-						Id = CHUser.UserID,
-						Name = CHUser.Username
+						Id = CHUser.UserId,
+						Name = CHUser.NickName
 					},
 					Comment =new CommentItemPas{ 
 						 ID = cmt.Id,

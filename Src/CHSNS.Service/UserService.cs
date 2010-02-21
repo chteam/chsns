@@ -31,7 +31,7 @@ namespace CHSNS.Service {
             return User.GetBaseInfo(userId);
         }
         public void SaveBaseInfo(BasicInformation b, IContext context) {
-            if (b.UserId == 0) b.UserId = context.User.UserID;
+            if (b.UserId == 0) b.UserId = context.User.UserId;
             User.SaveBaseInfo(b);
         }
 
@@ -70,11 +70,11 @@ namespace CHSNS.Service {
         public void SaveText(long uid, string text, IContext context) {
             User.SaveText(uid, text);
             Event.Add(new Event{
-                OwnerId = context.User.UserID,
+                OwnerId = context.User.UserId,
                 TemplateName = "ProText",
                 AddTime = DateTime.Now,
                 ShowLevel = 0,
-                Json = Dictionary.CreateFromArgs("name", context.User.Username,
+                Json = Dictionary.CreateFromArgs("name", context.User.NickName,
                                                  "text", text).ToJsonString()
             });
         }

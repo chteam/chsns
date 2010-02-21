@@ -125,10 +125,6 @@
       <Project>{57FFC134-7F9D-4B97-8692-8D2C16714663}</Project>
       <Name>UnitTestUtil</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Web\Web.csproj">
-      <Project>{565374D0-3D96-4D3B-9E95-108574BA9755}</Project>
-      <Name>Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

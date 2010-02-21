@@ -20,7 +20,7 @@ namespace CHSNS.Service
 
         public void Update(byte type, long ownerid,IUser user)
         {
-            View.Update(type, ownerid, user.UserID);
+            View.Update(type, ownerid, user.UserId);
         }
     }
 }
