@@ -22,22 +22,22 @@ namespace CHSNS.Web
         }
 		void Application_AuthenticateRequest(object sender, EventArgs e)
 		{
-			//HttpCookie authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];
-			//if (null == authCookie) return;
-			//FormsAuthenticationTicket authTicket;
-			//try
-			//{
-			//    authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-			//}
-			//catch (Exception)
-			//{
-			//    return;
-			//}
-			//if (null == authTicket) return;
-			//string[] userData = authTicket.UserData.Split(new[] { '|' });
-			//Context.User = Acl.User.BuildPrincipal(Convert.ToInt32(userData[0]), userData[1], userData[2],
-			//                                       userData[3], DateTime.FromBinary(Convert.ToInt64(userData[4])),
-			//                                       Acl.GanjiApplications.CRM);
+			HttpCookie authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];
+			if (null == authCookie) return;
+			FormsAuthenticationTicket authTicket;
+			try
+			{
+				authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+			}
+			catch (Exception)
+			{
+				return;
+			}
+			if (null == authTicket) return;
+			string[] userData = authTicket.UserData.Split(new[] { '|' });
+			Context.User = Acl.User.BuildPrincipal(Convert.ToInt32(userData[0]), userData[1], userData[2],
+												   userData[3], DateTime.FromBinary(Convert.ToInt64(userData[4])),
+												   Acl.GanjiApplications.CRM);
 			
 		}
         public void Session_Start(object sender, EventArgs e)
@@ -56,7 +56,6 @@ namespace CHSNS.Web
         }
         public static void RegisterRoutes(RouteCollection routes)
         {
-
             const string ext = "";
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute("indexf", "", new { controller = "Entry", action = "Index", Url = "Index" });
