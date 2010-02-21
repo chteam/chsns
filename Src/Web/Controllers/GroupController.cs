@@ -18,7 +18,7 @@ namespace CHSNS.Controllers {
 
             var g = DbExt.Group.Get(id);
             Validate404(g);
-            var u = DbExt.Group.GetGroupUser(id, CHUser.UserID);
+            var u = DbExt.Group.GetGroupUser(id, CHUser.UserId);
             Validate404(u);
             ViewData["guser"] = u;
             Title = g.Name;
@@ -74,7 +74,7 @@ namespace CHSNS.Controllers {
         public ActionResult List(long? uid, int? p)
         {
             InitPage(ref p);
-            uid = uid ?? CHUser.UserID;
+            uid = uid ?? CHUser.UserId;
             Title = "群列表";
             return View(DbExt.Group.GetList(uid.Value, p.Value, 10));
         }
@@ -89,7 +89,7 @@ namespace CHSNS.Controllers {
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(string name) {
             Message = "创建成功";
-            DbExt.Group.Add(name, CHUser.UserID);
+            DbExt.Group.Add(name, CHUser.UserId);
             return this.RedirectToReferrer();
         }
 		#endregion
@@ -153,7 +153,7 @@ namespace CHSNS.Controllers {
 					return this.RedirectToReferrer();
 				}
 				post.Type = (int)NoteType.GroupPost;
-                post.UserId = CHContext.User.UserID;
+                post.UserId = CHContext.User.UserId;
 				if (id.HasValue) {
 					post.Id = id.Value;
 					DbExt.Note.Edit(post);

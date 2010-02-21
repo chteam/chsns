@@ -94,6 +94,8 @@
     <Compile Include="UserService.cs" />
     <Compile Include="VideoService.cs" />
     <Compile Include="ViewService.cs" />
+    <Compile Include="WebProvider\CHIdentity.cs" />
+    <Compile Include="WebProvider\CHPrincipal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Abstractions\CHSNS.Abstractions.csproj">

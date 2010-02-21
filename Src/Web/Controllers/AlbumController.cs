@@ -19,7 +19,7 @@ namespace CHSNS.Controllers
         /// </summary>
         public ActionResult Index(int? p, long? uid)
         {
-            uid = uid ?? CHUser.UserID;
+            uid = uid ?? CHUser.UserId;
             var list = DbExt.Album.Items(uid.Value);
             Title = string.Format("{0}µÄÏà²á",
                                   DbExt.UserInfo.GetUserName(uid.Value));
@@ -47,7 +47,7 @@ namespace CHSNS.Controllers
                 DbExt.Album.Update(a);
                 return RedirectToAction("Index");
             }
-            DbExt.Album.Add(a, CHUser.UserID);
+            DbExt.Album.Add(a, CHUser.UserId);
             return RedirectToAction("Index");
         }
 
@@ -56,7 +56,7 @@ namespace CHSNS.Controllers
         public ActionResult Details(long id, int? p){
             InitPage(ref p);
             var album = DbExt.Album.Get(id);
-            var photos = DbExt.Album.GetPhotos(album.Id, CHUser.UserID, p.Value, 12);
+            var photos = DbExt.Album.GetPhotos(album.Id, CHUser.UserId, p.Value, 12);
             ViewData["album"] = album;
             ViewData["photos"] = photos;
             Title = album.Name;
@@ -76,7 +76,7 @@ namespace CHSNS.Controllers
         public ActionResult UploadPhoto(string name,  long id, HttpPostedFileBase file){
             var al = DbExt.Album.GetCountChange(id,1);
             Validate404(al);
-            var p = new Photo { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = CHUser.UserID };
+            var p = new Photo { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = CHUser.UserId };
             var f = new ImageUpload(file,
                                     CHContext,
                                     ConfigSerializer.Load<List<string>>("AllowImageExt")
@@ -93,7 +93,7 @@ namespace CHSNS.Controllers
         #region Í¼Æ¬É¾³ý
         public ActionResult PhotoDel(long id){
             var p = DbExt.Photo.Get(id);
-            var path = Path.Photo(CHUser.UserID, p.AddTime, p.Summary, ThumbType.Middle);
+            var path = Path.Photo(CHUser.UserId, p.AddTime, p.Summary, ThumbType.Middle);
 
             IOFactory.StoreFile.Delete(path);
             DbExt.Album.GetCountChange(p.AlbumId.Value, -1);
@@ -107,7 +107,7 @@ namespace CHSNS.Controllers
 
 
             var p = DbExt.Photo.Get(id);
-            var path = Path.Photo(CHUser.UserID, p.AddTime, p.Summary, ThumbType.Middle);
+            var path = Path.Photo(CHUser.UserId, p.AddTime, p.Summary, ThumbType.Middle);
 
             var album = DbExt.Album.Get(p.AlbumId.Value);
             // db.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();

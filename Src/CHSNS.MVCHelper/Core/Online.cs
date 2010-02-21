@@ -39,10 +39,10 @@ namespace CHSNS {
              {
 				if (Date.DivMinutes(RemoveTime) > 1) {//过了1分钟才清理
 					Application.Lock();
-                    if (!IsOnline(Context.User.UserID))
-                        Items.Add(Context.User.UserID, DateTime.Now);
+                    if (!IsOnline(Context.User.UserId))
+                        Items.Add(Context.User.UserId, DateTime.Now);
 					else
-                        Items[Context.User.UserID] = DateTime.Now;
+                        Items[Context.User.UserId] = DateTime.Now;
 					RemoveTime = DateTime.Now;
 					Application.UnLock();
 				}

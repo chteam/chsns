@@ -152,11 +152,11 @@ namespace CHSNS.SQLServerImplement
             if (!id.HasValue)
             {
                 entry.Status = (int)EntryType.Common;
-                entry.CreaterId = user.UserID;
+                entry.CreaterId = user.UserId;
                 entry.UpdateTime = dt;
                 entry.EditCount = 1;
             }
-            entryVersion.UserId = user.UserID;
+            entryVersion.UserId = user.UserId;
             entryVersion.Status = (int)(user.IsAdmin ? EntryType.Common : EntryType.Wait);
             entryVersion.AddTime = dt;
             entryVersion.Reference += "";

@@ -37,7 +37,7 @@ namespace CHSNS
         /// <summary>
         /// 获取当前用户ID,如用户未登录则抛出异常.
         /// </summary>
-        public long UserID
+        public long UserId
         {
             get
             {
@@ -52,7 +52,7 @@ namespace CHSNS
         /// <summary>
         /// 获取当前用户姓名
         /// </summary>
-        public string Username
+        public string NickName
         {
             get
             {

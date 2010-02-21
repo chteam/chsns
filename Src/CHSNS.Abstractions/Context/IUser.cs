@@ -9,7 +9,7 @@ namespace CHSNS
         bool IsAdmin { get; }
         bool IsLogin { get; }
         Role Status { get; }
-        long UserID { get; set; }
-        string Username { get; set; }
+        long UserId { get; set; }
+        string NickName { get; set; }
     }
 }

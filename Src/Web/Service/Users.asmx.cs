@@ -19,7 +19,7 @@ namespace CHSNS.Web.Service
         [WebMethod(EnableSession=true)]   
         public long UserID()
         {
-            return CH.Context.User.UserID;
+            return CH.Context.User.UserId;
         }
     }
 }

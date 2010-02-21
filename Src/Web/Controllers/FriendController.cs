@@ -15,7 +15,7 @@ namespace CHSNS.Controllers {
         [LoginedFilter]
         public ActionResult Index(int? p, long? userid)
         {
-            if (!userid.HasValue || userid == 0) userid = CHUser.UserID;
+            if (!userid.HasValue || userid == 0) userid = CHUser.UserId;
             InitPage(ref p);
             var b = DbExt.Friend.UserFriendInfo(userid.Value);
             if (b == null) throw new Exception("用户不存在");
@@ -32,9 +32,9 @@ namespace CHSNS.Controllers {
         public ActionResult RequestHack(int? p)
         {
             InitPage(ref p);
-            var profile = DbExt.Friend.UserFriendInfo(CHUser.UserID);
+            var profile = DbExt.Friend.UserFriendInfo(CHUser.UserId);
             if (profile == null) throw new Exception("用户不存在");
-            var items = DbExt.Friend.GetRequests(CHUser.UserID, p.Value, CHContext.Site);
+            var items = DbExt.Friend.GetRequests(CHUser.UserId, p.Value, CHContext.Site);
             Title = profile.Name + "的好友请求";
             return View(new FriendRequest { Items = items, Profile = profile });
 
@@ -69,7 +69,7 @@ namespace CHSNS.Controllers {
 		{//添加好友
 			using (var ts = new TransactionScope())
 			{
-				var x = DbExt.Friend.Add(CHUser.UserID, toid);
+				var x = DbExt.Friend.Add(CHUser.UserId, toid);
 				ts.Complete();
 				if (x) return Content("已经向对方发出请求");
 				return Content("对方已经是你的好友");
@@ -85,7 +85,7 @@ namespace CHSNS.Controllers {
 		public ActionResult Delete(long toid) {
 			using (var ts = new TransactionScope())
 			{
-				DbExt.Friend.Delete(CHUser.UserID, toid);
+				DbExt.Friend.Delete(CHUser.UserId, toid);
 				ts.Complete();
 				return Content("解除关系成功");
 			}
@@ -96,7 +96,7 @@ namespace CHSNS.Controllers {
 		{//添加好友
 			using (var ts = new TransactionScope())
 			{
-				var r = DbExt.Friend.Agree(CHUser.UserID, uid,CHUser);
+				var r = DbExt.Friend.Agree(CHUser.UserId, uid,CHUser);
 				ts.Complete();
 				if (r) return Content("已经加对方为好友");
 				return Content("请求已经处理过了");
@@ -107,7 +107,7 @@ namespace CHSNS.Controllers {
 		public ActionResult Ignore(long uid) {//添加好友
 			using (var ts = new TransactionScope())
 			{
-				var r=DbExt.Friend.Ignore(uid, CHUser.UserID);
+				var r=DbExt.Friend.Ignore(uid, CHUser.UserId);
 				ts.Complete();
 				if (r)	return Content("已经忽略了请求");
 				return Content("请求已经处理过了");
@@ -118,7 +118,7 @@ namespace CHSNS.Controllers {
 		public ActionResult IgnoreAll() {//添加好友
 			using (var ts = new TransactionScope())
 			{
-				DbExt.Friend.IgnoreAll(CHUser.UserID);
+				DbExt.Friend.IgnoreAll(CHUser.UserId);
 				ts.Complete();
 				return Content("已经忽略所有请求");
 			}
