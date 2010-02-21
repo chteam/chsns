@@ -1,8 +1,9 @@
 ﻿using System;
 using CHSNS.Config;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.Service {
     public class CommentService {
@@ -21,7 +22,7 @@ namespace CHSNS.Service {
         public PagedList<CommentPas> GetReply(long uid, int p, int ep) {
             return Comment.GetReply(uid, p, ep);
         }
-        public IReply AddReply(IReply r) {
+        public Reply AddReply(Reply r) {
             r.AddTime = DateTime.Now;
             return Comment.AddReply(r);
         }
@@ -60,7 +61,7 @@ namespace CHSNS.Service {
         }
 
 
-        public void Add(IComment cmt, CommentType type) {
+        public void Add(Comment cmt, CommentType type) {
             cmt.AddTime = DateTime.Now;
             Comment.Add(cmt, type);
         }

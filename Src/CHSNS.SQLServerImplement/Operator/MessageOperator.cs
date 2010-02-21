@@ -1,8 +1,10 @@
 ﻿using System;
 using CHSNS.Model;
 using System.Linq;
-using CHSNS.Abstractions;
+
 using CHSNS.SQLServerImplement;
+using System.Web;
+using CHSNS.Models;
 
 namespace CHSNS.Operator
 {
@@ -54,7 +56,7 @@ namespace CHSNS.Operator
                 return ret.Pager(page, pageSize);
             }
         }
-        public void Add(IMessage m,System.Web.HttpServerUtilityBase server)
+        public void Add(Message m, HttpServerUtilityBase server)
         {
             using (var db = DBExtInstance)
             {
@@ -62,7 +64,7 @@ namespace CHSNS.Operator
                 m.Title = server.HtmlEncode(m.Title ?? "");
                 m.Body = m.IsHtml ? m.Body : server.HtmlEncode(m.Body);
                 m.SendTime = DateTime.Now;
-                db.AddToMessage(CastTool.Cast< Message>(m) );
+                db.Message.AddObject(m) ;
                 db.SubmitChanges();
             }
         }

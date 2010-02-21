@@ -1,8 +1,7 @@
-﻿using CHSNS.Abstractions;
-
+﻿using CHSNS.Models;
 namespace CHSNS.Model {
 	public class NoteDetailsPas {
 		public UserCountPas User { get; set; }
-		public INote Note { get; set; }
+		public Note Note { get; set; }
 	}
 }

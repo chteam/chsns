@@ -1,0 +1,16 @@
+.toplink h3{ color:#333; margin:5px 10px;}
+.blogeditbody{ background:#f7f7f7;border-top:solid 1px #d8dfea;}
+.setform fieldset{padding:10px; margin:10px;border:1px solid #CCCCCC; color:#3b5999;}
+.setform fieldset label{ float:left; text-align:right; width:120px; margin-right:10px; color:#808080; font-weight:bold;}
+.setform fieldset li{ list-style:none; margin:10px 0;}
+.setform fieldset .inputtext{border:1px solid #BDC7D8;height:14px;line-height:14px;padding:2px;width:180px;}
+.setform fieldset textarea{ width:400px; height:100px;}
+.setform .subbutton{margin:0 0 10px 10px;}
+
+
+
+.blogsidebar{ float:right; width:130px; margin:10px;}
+.blogmain{ float:left; margin:10px 0 0 10px; width:465px;border-right:solid 1px #d8dfea; padding-right:10px;}
+.blogmain h3{background:#D8DFEA url(../images/ApiIcon/note.gif) no-repeat scroll left top;line-height:20px;padding-left:20px;}
+.blogmain .text{padding:10px;}
+.blogmain .subinfo{color:#3B5999;padding-right:8px;text-align:right;}

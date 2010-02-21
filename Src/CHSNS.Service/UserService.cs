@@ -1,7 +1,8 @@
 ﻿using System;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.Service {
     public class UserService {
@@ -26,10 +27,10 @@ namespace CHSNS.Service {
         }
 
         #region BasicInfo
-        public IBasicInformation GetBaseInfo(long userId) {
+        public BasicInformation GetBaseInfo(long userId) {
             return User.GetBaseInfo(userId);
         }
-        public void SaveBaseInfo(IBasicInformation b, IContext context) {
+        public void SaveBaseInfo(BasicInformation b, IContext context) {
             if (b.UserId == 0) b.UserId = context.User.UserID;
             User.SaveBaseInfo(b);
         }
@@ -56,20 +57,20 @@ namespace CHSNS.Service {
         }
         #endregion
 
-        public IProfile GetUser(long userid) {
-            return GetUser(userid, c => new ProfileImplement {
+        public Profile GetUser(long userid) {
+            return GetUser(userid, c => new Profile{
                 Name = c.Name
             });
         }
 
-        public IProfile GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<IProfile, T>> x) {
+        public Profile GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<Profile, T>> x) {
             return User.GetUser(userid, x);
         }
         #region profile
         public void SaveText(long uid, string text, IContext context) {
             User.SaveText(uid, text);
-            Event.Add(new EventImplement {
-                OwnerID = context.User.UserID,
+            Event.Add(new Event{
+                OwnerId = context.User.UserID,
                 TemplateName = "ProText",
                 AddTime = DateTime.Now,
                 ShowLevel = 0,

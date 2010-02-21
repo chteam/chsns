@@ -2,11 +2,12 @@
 using System.Linq;
 using CHSNS.Model;
 using CHSNS.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement.Operator
 {
     public class AccountOperator : BaseOperator, IAccountOperator {
-        public IProfile Login(String userName, String password, int logOnScore)
+        public Profile Login(String userName, String password, int logOnScore)
         {
             using (var db = DBExtInstance)
             {
@@ -27,7 +28,7 @@ namespace CHSNS.SQLServerImplement.Operator
                     profile.LoginTime = DateTime.Now;
                     db.SubmitChanges();
                 }
-                return new ProfileImplement
+                return new Profile
                 {
                     Name = profile.Name,
                     UserId = profile.UserId,
@@ -48,10 +49,10 @@ namespace CHSNS.SQLServerImplement.Operator
             };
             using (var db = DBExtInstance)
             {
-                db.AddToAccount(ac);
+                db.Account.AddObject(ac);
                 db.SubmitChanges();
                 if (ac.UserId < 999) return false;
-                db.AddToProfile(new Profile
+                db.Profile.AddObject(new Profile
                 {
                     UserId = ac.UserId,
                     Name = name,
@@ -63,7 +64,7 @@ namespace CHSNS.SQLServerImplement.Operator
                     LoginTime = DateTime.Now,
                     MagicBox = ""
                 });
-                db.AddToBasicInformation(
+                db.BasicInformation.AddObject(
                     new BasicInformation
                     {
                         UserId = ac.UserId,

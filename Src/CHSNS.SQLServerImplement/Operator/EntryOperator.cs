@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+
 using CHSNS.Operator;
 using Microsoft.Data.Extensions
 ;
+using CHSNS.Models;
 namespace CHSNS.SQLServerImplement
 {
     public class EntryOperator : BaseOperator
@@ -145,7 +146,7 @@ namespace CHSNS.SQLServerImplement
             }
         }
 
-        public bool AddVersion(long? id, IEntry entry, IEntryVersion entryVersion, string tags, IUser user)
+        public bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags, IUser user)
         {
             var dt = DateTime.Now;
             if (!id.HasValue)
@@ -181,7 +182,7 @@ namespace CHSNS.SQLServerImplement
             return true;
         }
 
-        public IEntryVersion GetVersion(long versionId)
+        public EntryVersion GetVersion(long versionId)
         {
             using (var db = DBExtInstance)
             {
@@ -204,7 +205,7 @@ namespace CHSNS.SQLServerImplement
                                Description = r.Field<string>("Description"),
                                Ext = r.Field<string>("Ext"),
                            });
-        public KeyValuePair<IEntry, IEntryVersion> Get(long entryId)
+        public KeyValuePair<Entry, EntryVersion> Get(long entryId)
         {
             using (var db = DBExtInstance)
             using (var cmd = db.CreateStoredProcedure("GetEntryVersion_Id", "Id", entryId))
@@ -212,14 +213,14 @@ namespace CHSNS.SQLServerImplement
             using (var reader = cmd.ExecuteReader())
             {
                 var e = Entry.Materialize(reader).FirstOrDefault();
-                IEntryVersion v = null;
+                EntryVersion v = null;
                 if (reader.NextResult())
                     v = EntryVersion.Materialize(reader).FirstOrDefault();
-                return new KeyValuePair<IEntry, IEntryVersion>(e, v);
+                return new KeyValuePair<Entry, EntryVersion>(e, v);
             }
         }
 
-        public KeyValuePair<IEntry, IEntryVersion> Get(string url)
+        public KeyValuePair<Entry, EntryVersion> Get(string url)
         {
             using (var db = DBExtInstance)
             using (var cmd = db.CreateStoredProcedure("GetEntryVersion_Url", "url", url))
@@ -227,13 +228,13 @@ namespace CHSNS.SQLServerImplement
             using (var reader = cmd.ExecuteReader())
             {
                 var e = Entry.Materialize(reader).FirstOrDefault();
-                IEntryVersion v = null;
+                EntryVersion v = null;
                 if (reader.NextResult())
                     v = EntryVersion.Materialize(reader).FirstOrDefault();
-                return new KeyValuePair<IEntry, IEntryVersion>(e, v);
+                return new KeyValuePair<Entry, EntryVersion>(e, v);
             }
         }
-        public KeyValuePair<IEntry, IEntryVersion> GetFromVersion(long versionId)
+        public KeyValuePair<Entry, EntryVersion> GetFromVersion(long versionId)
         {
             using (var db = DBExtInstance)
             using (var cmd = db.CreateStoredProcedure("GetEntryVersion_VersionId", "VersionId", versionId))
@@ -241,10 +242,10 @@ namespace CHSNS.SQLServerImplement
             using (var reader = cmd.ExecuteReader())
             {
                 var e = Entry.Materialize(reader).FirstOrDefault();
-                IEntryVersion v = null;
+                EntryVersion v = null;
                 if (reader.NextResult())
                     v = EntryVersion.Materialize(reader).FirstOrDefault();
-                return new KeyValuePair<IEntry, IEntryVersion>(e, v);
+                return new KeyValuePair<Entry, EntryVersion>(e, v);
             }
         }
     }

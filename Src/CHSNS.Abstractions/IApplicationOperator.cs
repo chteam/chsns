@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using CHSNS.Abstractions;
+using CHSNS.Models;
+//
 
 namespace CHSNS.Operator
 {
     public interface IApplicationOperator
     {
-        List<IApplication> Applications { get; }
-        List<IApplication> GetApps(long[] ids);
+        List<Application> Applications { get; }
+        List<Application> GetApps(long[] ids);
     }
 }

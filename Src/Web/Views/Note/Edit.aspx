@@ -4,7 +4,7 @@
 	<h2>
 		编辑</h2>
 	<%
-		INote n = ViewData.Model ?? new NoteImplement(); %>
+		Note n = ViewData.Model ?? new NoteImplement(); %>
 	<fieldset>
 		<legend>发布新日志</legend>
 		<form action="" method="post" onsubmit="sub(this);return false;" class="formset">

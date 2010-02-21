@@ -2,10 +2,11 @@
 using System.Web.Mvc;
 
 using CHSNS.Model;
-using CHSNS.Abstractions;
+
 using CHSNS.ViewModel;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement;
+using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
@@ -119,7 +120,7 @@ namespace CHSNS.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
 		[AdminFilter]
         [ValidateInput(false)]
-        public ActionResult Edit(long? id, EntryImplement entry, EntryVersionImplement entryversion, string tags)
+        public ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags)
         {
             var b = EntryDb.AddVersion(id, entry, entryversion, tags, CHUser);
             if (!b) throw new Exception("标题已存在");

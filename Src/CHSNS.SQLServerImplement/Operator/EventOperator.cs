@@ -1,6 +1,7 @@
 ﻿using System.Linq;
-using CHSNS.Abstractions;
+
 using CHSNS.SQLServerImplement;
+using CHSNS.Models;
 
 namespace CHSNS.Operator
 {
@@ -16,7 +17,7 @@ namespace CHSNS.Operator
 /// <param name="page"></param>
 /// <param name="pageSize"></param>
 /// <returns></returns>
-        public PagedList<IEvent> GetUsersEvent(long[] ids, int page, int pageSize)
+        public PagedList<Event> GetUsersEvent(long[] ids, int page, int pageSize)
         {
            // var ids = DBExt.Friend.GetFriendsId(userid);
           //  throw new System.Exception(ids.Count.ToString());
@@ -25,7 +26,7 @@ namespace CHSNS.Operator
                 var ret = (from e in db.Event
                            where ids.Contains(e.OwnerId)
                            orderby e.Id descending
-                           select e).Cast<IEvent>();
+                           select e);
                 return ret.Pager(page, pageSize);
             }
         }
@@ -45,12 +46,12 @@ namespace CHSNS.Operator
                 db.SubmitChanges();
             }
         }
-        public void Add(IEvent e)
+        public void Add(Event e)
         {
             var et = CastTool.Cast<Event>(e);
             using (var db = DBExtInstance)
             {
-                db.AddToEvent(et);
+                db.Event.AddObject(et);
                 db.SubmitChanges();
             }
             #region sql
@@ -71,14 +72,14 @@ namespace CHSNS.Operator
         #region IEventOperator 成员
 
 
-        public PagedList<IEvent> GetEvent(long userid, int p, int ep)
+        public PagedList<Event> GetEvent(long userid, int p, int ep)
         {
             using (var db = DBExtInstance)
             {
                 var ret = (from e in db.Event
                            where e.OwnerId == userid
                            orderby e.Id descending
-                           select e).Cast<IEvent>();
+                           select e);
                 return ret.Pager(p, ep);
             }
         }

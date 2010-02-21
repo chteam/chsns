@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using CHSNS.Model;
-using CHSNS.Abstractions;
+
 using CHSNS.SQLServerImplement;
+using CHSNS.Models;
 //using CHSNS.SQLServerImplement.Aef;
 
 namespace CHSNS.Operator
@@ -36,11 +37,11 @@ namespace CHSNS.Operator
                 return GetReplyPrivate(db, uid).Pager(p, ep);
             }
         }
-		public IReply AddReply(IReply r)
+		public Reply AddReply(Reply r)
 		{
             using (var db = DBExtInstance)
             {
-                db.AddToReply(CastTool.Cast<Reply>(r));
+                db.Reply.AddObject(r);
                 db.SubmitChanges();
             }
             #region sql
@@ -148,15 +149,15 @@ namespace CHSNS.Operator
 		    #endregion
 		}
 
-        public void Add(IComment cmt, CommentType type)
+        public void Add(Comment cmt, CommentType type)
 		{
             using (var db = DBExtInstance)
             {
-                db.AddToComment(CastTool.Cast<Comment>(cmt));
+                db.Comment.AddObject(cmt);
                 switch (type)
                 {
                     case CommentType.Note:
-                        var n = db.Note.FirstOrDefault(c => c.Id == cmt.ShowerID);
+                        var n = db.Note.FirstOrDefault(c => c.Id == cmt.ShowerId);
                         n.CommentCount++;
                         break;
                     default:

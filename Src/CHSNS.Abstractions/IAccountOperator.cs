@@ -1,4 +1,5 @@
 ﻿using CHSNS.Model;
+using CHSNS.Models;
 namespace CHSNS.Operator {
 	public interface IAccountOperator {
         bool Create(AccountPas account, string name, int initScore);
@@ -10,7 +11,7 @@ namespace CHSNS.Operator {
         /// <param name="password">密钥</param>
         /// <param name="logOnScore">登录后得到的积分</param>
         /// <returns></returns>
-		IProfile Login(string userName, string password,int logOnScore);
+		Profile Login(string userName, string password,int logOnScore);
 		
         /// <summary>
         /// 初始化创建者

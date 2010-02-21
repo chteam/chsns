@@ -6,7 +6,7 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<%
-		INote n = ViewData.Model.Note; 
+		Note n = ViewData.Model.Note; 
 		UserCountPas u = ViewData.Model.User;
 	%>
 	<div class="ch_content">
