@@ -35,9 +35,9 @@ namespace CHSNS.Web
 			}
 			if (null == authTicket) return;
 			string[] userData = authTicket.UserData.Split(new[] { '|' });
-			Context.User = Acl.User.BuildPrincipal(Convert.ToInt32(userData[0]), userData[1], userData[2],
-												   userData[3], DateTime.FromBinary(Convert.ToInt64(userData[4])),
-												   Acl.GanjiApplications.CRM);
+			//Context.User = Acl.User.BuildPrincipal(Convert.ToInt32(userData[0]), userData[1], userData[2],
+			//                                       userData[3], DateTime.FromBinary(Convert.ToInt64(userData[4])),
+			//                                       Acl.GanjiApplications.CRM);
 			
 		}
         public void Session_Start(object sender, EventArgs e)
