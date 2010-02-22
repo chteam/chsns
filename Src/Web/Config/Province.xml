@@ -1,143 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfProvince xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Province>
-    <ID>18</ID>
+    <Id>18</Id>
     <Name>安徽</Name>
   </Province>
   <Province>
-    <ID>32</ID>
+    <Id>32</Id>
     <Name>澳门</Name>
   </Province>
   <Province>
-    <ID>1</ID>
+    <Id>1</Id>
     <Name>北京</Name>
   </Province>
   <Province>
-    <ID>20</ID>
+    <Id>20</Id>
     <Name>福建</Name>
   </Province>
   <Province>
-    <ID>29</ID>
+    <Id>29</Id>
     <Name>甘肃</Name>
   </Province>
   <Province>
-    <ID>3</ID>
+    <Id>3</Id>
     <Name>广东</Name>
   </Province>
   <Province>
-    <ID>24</ID>
+    <Id>24</Id>
     <Name>广西</Name>
   </Province>
   <Province>
-    <ID>26</ID>
+    <Id>26</Id>
     <Name>贵州</Name>
   </Province>
   <Province>
-    <ID>27</ID>
+    <Id>27</Id>
     <Name>海南</Name>
   </Province>
   <Province>
-    <ID>11</ID>
+    <Id>11</Id>
     <Name>河北</Name>
   </Province>
   <Province>
-    <ID>13</ID>
+    <Id>13</Id>
     <Name>河南</Name>
   </Province>
   <Province>
-    <ID>15</ID>
+    <Id>15</Id>
     <Name>黑龙江</Name>
   </Province>
   <Province>
-    <ID>2</ID>
+    <Id>2</Id>
     <Name>湖北</Name>
   </Province>
   <Province>
-    <ID>23</ID>
+    <Id>23</Id>
     <Name>湖南</Name>
   </Province>
   <Province>
-    <ID>14</ID>
+    <Id>14</Id>
     <Name>吉林</Name>
   </Province>
   <Province>
-    <ID>8</ID>
+    <Id>8</Id>
     <Name>江苏</Name>
   </Province>
   <Province>
-    <ID>22</ID>
+    <Id>22</Id>
     <Name>江西</Name>
   </Province>
   <Province>
-    <ID>7</ID>
+    <Id>7</Id>
     <Name>辽宁</Name>
   </Province>
   <Province>
-    <ID>16</ID>
+    <Id>16</Id>
     <Name>内蒙古</Name>
   </Province>
   <Province>
-    <ID>30</ID>
+    <Id>30</Id>
     <Name>宁夏</Name>
   </Province>
   <Province>
-    <ID>31</ID>
+    <Id>31</Id>
     <Name>青海</Name>
   </Province>
   <Province>
-    <ID>0</ID>
+    <Id>0</Id>
     <Name>请选择</Name>
   </Province>
   <Province>
-    <ID>17</ID>
+    <Id>17</Id>
     <Name>山东</Name>
   </Province>
   <Province>
-    <ID>12</ID>
+    <Id>12</Id>
     <Name>山西</Name>
   </Province>
   <Province>
-    <ID>10</ID>
+    <Id>10</Id>
     <Name>陕西</Name>
   </Province>
   <Province>
-    <ID>4</ID>
+    <Id>4</Id>
     <Name>上海</Name>
   </Province>
   <Province>
-    <ID>9</ID>
+    <Id>9</Id>
     <Name>四川</Name>
   </Province>
   <Province>
-    <ID>34</ID>
+    <Id>34</Id>
     <Name>台湾</Name>
   </Province>
   <Province>
-    <ID>5</ID>
+    <Id>5</Id>
     <Name>天津</Name>
   </Province>
   <Province>
-    <ID>25</ID>
+    <Id>25</Id>
     <Name>西藏</Name>
   </Province>
   <Province>
-    <ID>33</ID>
+    <Id>33</Id>
     <Name>香港</Name>
   </Province>
   <Province>
-    <ID>28</ID>
+    <Id>28</Id>
     <Name>新疆</Name>
   </Province>
   <Province>
-    <ID>21</ID>
+    <Id>21</Id>
     <Name>云南</Name>
   </Province>
   <Province>
-    <ID>19</ID>
+    <Id>19</Id>
     <Name>浙江</Name>
   </Province>
   <Province>
-    <ID>6</ID>
+    <Id>6</Id>
     <Name>重庆</Name>
   </Province>
 </ArrayOfProvince>

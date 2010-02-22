@@ -14,11 +14,11 @@ namespace CHSNS.Operator
         PagedList<EntryPas> List(int page, int pageSize);
         List<EntryPas> Historys(string title);
         List<EntryPas> Historys(long entryId);
-        bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags);
+		bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags, IUser user);
 
    
         EntryVersion GetVersion(long versionId);
-        Entry Get(long entryId);
-        Entry Get(string title);
+		KeyValuePair<Entry, EntryVersion> Get(long entryId);
+		KeyValuePair<Entry, EntryVersion> Get(string url);
     }
 }

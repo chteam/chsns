@@ -34,7 +34,7 @@
 	@class = "select", onchange = "javascript:ChangeProvince()", id = "ProvinceID"
 })%>
 	<span id="CityPanel">
-	<%=Html.DropDownList("请选择", "b.CityID", new { @class = "select", id = "CityID" })%>
+	<%=Html.DropDownList("==请选择==", "b.CityID", new { @class = "select", id = "CityID" })%>
 	</span><span id="CityStatus"></span>
 </div>
 
