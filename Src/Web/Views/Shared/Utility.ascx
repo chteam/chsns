@@ -1,8 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <div class="untityright link">
-	<%if (CH.Context.User.IsLogin) {%>
+	<%if (CH.Context.User.IsLogin)
+   {%>
 	<div class="menu">
-	<a href="javascript:void(0);" class="menu_title">应用</a>
+		<a href="javascript:void(0);" class="menu_title">应用</a>
 		<ul class="menu_network">
 			<li><a href="/SuperNoteRandom.aspx">视频</a></li>
 			<li>
@@ -15,7 +16,8 @@
 	<%=0 == 0?
 		Html.ActionLink("好友", "Index", "Friend"):
 		Html.ActionLink("好友", "Request", "Friend")%>
-	<div class="menu"><a href="javascript:void(0);" class="menu_title">您好！<%=CH.Context.User.Username %></a>
+	<div class="menu">
+		<a href="javascript:void(0);" class="menu_title">您好！<%=CH.Context.User.NickName %></a>
 		<ul class="menu_network">
 			<li>
 				<%=Html.ActionLink("我的页面", "Index", "User")%></li>
@@ -39,8 +41,9 @@
 	<a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
 	<%=Html.ActionLink("注销","Logout","Account") %>
 	<%}
-   else { %>
-<%=Html.RouteLink("首页", "index",null)%>
+   else
+   { %>
+	<%=Html.RouteLink("首页", "index",null)%>
 	<a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
 	<%} %>
 </div>

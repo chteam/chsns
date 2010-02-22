@@ -38,10 +38,11 @@ Inherits="System.Web.Mvc.ViewPage" %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 	<script type="text/javascript">
-	    var ChangeProvince = function() {
+		var ChangeProvince = function () {
 			showMessage('#CityStatus', 'Loading...');
-			$.postJSON('<%=Url.Action("CityList","Ajax") %>', { "ProvinceID": $("#ProvinceID").val() }, function(r) {
+			$.postJSON('<%=Url.Action("CityList","Ajax") %>', { "ProvinceID": $("#ProvinceID").val() }, function (r) {
 				BindSelect('#CityID', r, 'Name', 'ID');
+				$('#CityStatus').html('');
 			});
 		};
 		var SBaseInfo = function() {

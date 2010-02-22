@@ -23,7 +23,7 @@ namespace CHSNS.Operator {
         public List<City> GetCitys(IContext context, int ProvinceID) {
             var c = new ConfigSerializer(context);
             var Citys = c.Load<List<City>>("City");
-            return Citys.Where(x => x.PID == ProvinceID).ToList();
+            return Citys.Where(x => x.PId == ProvinceID).ToList();
         }
     }
 }

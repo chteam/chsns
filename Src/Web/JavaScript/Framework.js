@@ -38,14 +38,14 @@ $.fn.serialize = function() {
 };
 $.postJSON = function(u, d, callback, iscache) {$.ajax({url: u,cache: iscache == null || !iscache ? true : iscache,type: "post",dataType:"json",data: d,success: callback});};
 //bind
-var BindSelect = function(id, o, t, v) {
-    if (!t) t = "Text";
-    if (!v) v = "Value";
-    var s = $(id).get(0);
-    s.options.length = 1;
-    if (null == o) return;
-    for (var i = 0; i < o.length; ++i)
-        s.options.add(new Option(o[i][t], o[i][v]));
+var BindSelect = function (id, o, t, v) {
+	if (!t) t = "Text";
+	if (!v) v = "Value";
+	var s = $(id).get(0);
+	s.options.length = 1;
+	if (null == o) return;
+	for (var i = 0; i < o.length; ++i)
+		s.options.add(new Option(o[i][t], o[i][v]));
 };
 //kit
 var alertEx = function(s) {
