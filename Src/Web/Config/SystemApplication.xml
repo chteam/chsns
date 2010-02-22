@@ -70,7 +70,7 @@
       <Summary>可以以我感兴趣的话题,加入或创建群组</Summary>
       <Url />
       <IsSystem>false</IsSystem>
-      <IsTrue>true</IsTrue>
+      <IsTrue>false</IsTrue>
       <UserCount>0</UserCount>
     </ApplicationItem>
 	  <ApplicationItem>
