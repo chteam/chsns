@@ -88,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbExtension.cs" />
-    <Compile Include="ModelCovert.cs" />
     <Compile Include="Operator\AccountOperator.cs" />
     <Compile Include="Operator\AlbumOperator.cs" />
     <Compile Include="Operator\ApplicationOperator.cs" />
@@ -146,7 +145,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -179,9 +177,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="Test中\TextFile1.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
