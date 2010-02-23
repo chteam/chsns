@@ -89,7 +89,6 @@
     <Compile Include="Account.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="AccountPas.cs" />
     <Compile Include="Album.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
