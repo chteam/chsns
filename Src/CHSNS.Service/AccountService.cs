@@ -3,6 +3,7 @@ using CHSNS.Config;
 using CHSNS.Model;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement.Operator;
+using CHSNS.Models;
 
 namespace CHSNS.Service {
     public class AccountService {
@@ -41,7 +42,7 @@ namespace CHSNS.Service {
             return profile.Status;
         }
 
-        public bool Create(AccountPas account, string name,SiteConfig site) {
+        public bool Create(Account account, string name,SiteConfig site) {
             var canuse = IsUsernameCanUse(account.UserName);
             return canuse && Account.Create(account, name, site.Score.Init);
         }

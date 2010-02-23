@@ -10,7 +10,6 @@
                     ("SystemApplication").Items)
                 {
 			%>
-			
 			<li id="<%=app.CssName%>"  class="<%=app.CssName %> s_icon">
 				<%=Html.ActionLink(app.ShortName, app.Action, app.Controller)%>
 			</li>

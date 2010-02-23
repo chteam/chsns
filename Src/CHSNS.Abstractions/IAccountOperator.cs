@@ -2,7 +2,7 @@
 using CHSNS.Models;
 namespace CHSNS.Operator {
 	public interface IAccountOperator {
-        bool Create(AccountPas account, string name, int initScore);
+        bool Create(Account account, string name, int initScore);
 		bool IsUsernameCanUse(string username);
         /// <summary>
         /// 登录

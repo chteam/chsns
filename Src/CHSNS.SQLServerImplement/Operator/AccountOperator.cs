@@ -39,22 +39,18 @@ namespace CHSNS.SQLServerImplement.Operator
 
         }
 
-        public bool Create(AccountPas account, string name, int initScore)
+        public bool Create(Account account, string name, int initScore)
         {
-            var ac = new Account
-            {
-                UserName = account.UserName,
-                Password = account.Password.ToMd5(),
-                Code = DateTime.Now.Ticks
-            };
+			account.Password = account.Password.ToMd5();
+            account. Code = DateTime.Now.Ticks;
             using (var db = DBExtInstance)
             {
-                db.Account.AddObject(ac);
+                db.Account.AddObject(account);
                 db.SubmitChanges();
-                if (ac.UserId < 999) return false;
+                if (account.UserId < 999) return false;
                 db.Profile.AddObject(new Profile
                 {
-                    UserId = ac.UserId,
+                    UserId = account.UserId,
                     Name = name,
                     ShowScore = initScore,
                     Score = initScore,
@@ -67,7 +63,7 @@ namespace CHSNS.SQLServerImplement.Operator
                 db.BasicInformation.AddObject(
                     new BasicInformation
                     {
-                        UserId = ac.UserId,
+                        UserId = account.UserId,
                         Name = name
                     });
                 db.SubmitChanges();
