@@ -10,5 +10,6 @@ namespace CHSNS.Model {
 		public string WriteName { get; set; }
 		public long UserId { get; set; }
 		public string Body { get; set; }
+		
 	}
 }
