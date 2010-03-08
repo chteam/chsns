@@ -9,11 +9,11 @@ namespace CHSNS
 {
 	public class CHIdentity : IIdentity, IUser
 	{
-		public HttpContextBase Context { get; set; }
-		public CHIdentity(HttpContextBase context)
+		public CHIdentity(IUser user)
 		{
-			Context = context;
+				
 		}
+ 
 		#region IIdentity Members
 
 		public string AuthenticationType
@@ -40,14 +40,14 @@ namespace CHSNS
 
 		public void Clear()
 		{
-			Context.Session.Clear();
+			//Context.Session.Clear();
 		}
 
 		public string Email { get; set; }
 
 		public void InitStatus(object status)
 		{
-			Context.Session.Add("status", status);
+			//Context.Session.Add("status", status);
 		}
 
 		/// <summary>
@@ -55,14 +55,8 @@ namespace CHSNS
 		/// </summary>
 		public Role Status
 		{
-			get
-			{
-				int status = 0;
-				if (Context.Session["status"] != null)
-					int.TryParse(Context.Session["status"].ToString(), out status);
-				return new Role(status);
-			}
-
+			get;
+			set;
 		}
 
 		public bool IsAdmin
