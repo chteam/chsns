@@ -92,7 +92,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Script\jquery-vsdoc.js" />
-    <Content Include="JavaScript\jquery.min.js" />
+    <Content Include="JavaScript\jquery.js" />
     <Content Include="Style\Facebook\admin.css" />
     <Content Include="Style\Facebook\appli.css" />
     <Content Include="Style\Facebook\blog.css" />
