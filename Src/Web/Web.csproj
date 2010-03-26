@@ -278,7 +278,6 @@
     <Content Include="JavaScript\effects\effects.bounce.packed.js" />
     <Content Include="JavaScript\effects\effects.core.packed.js" />
     <Content Include="JavaScript\effects\effects.scale.packed.js" />
-    <Content Include="JavaScript\jquery-vsdoc.js" />
     <Content Include="JavaScript\Upload\swfupload.js" />
     <Content Include="JavaScript\Upload\fileprogress.js" />
     <Content Include="JavaScript\Upload\handlers.js" />
