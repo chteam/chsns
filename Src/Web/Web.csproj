@@ -474,7 +474,7 @@
     <Content Include="Views\Video\List.aspx" />
     <Content Include="Views\Video\Random.aspx" />
     <Content Include="Views\Web.config" />
-    <Content Include="JavaScript\Framework.js" />
+    <Content Include="Script\Framework.js" />
     <Content Include="JavaScript\PageSet.js" />
     <Content Include="Style\foxblue\admin.css" />
     <Content Include="Style\foxblue\appli.css" />
