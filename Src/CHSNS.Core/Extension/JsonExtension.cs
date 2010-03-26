@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Collections;
 
 namespace CHSNS
 {
 	public static class JsonExtension
 	{
-		public static JObject ToJObject(this string str)
+		public static Hashtable ToJObject(this string str)
 		{
-			var o = JObject.Parse(str);
+			var o = JsonAdapter.Deserialize<Hashtable>(str);
 			return o ;
 		}
 	}
