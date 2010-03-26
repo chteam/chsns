@@ -1,21 +1,28 @@
-﻿namespace CHSNS{
-    public static class JsonAdapter {
+﻿using System.Web.Script.Serialization;
+using System.Text;
+namespace CHSNS
+{
+    public static class JsonAdapter
+    {
         static public string Serialize(object o)
         {
+            JavaScriptSerializer serialize = new JavaScriptSerializer();
+            var outputStringBuilder = new StringBuilder();
+            serialize.Serialize(o, outputStringBuilder);
+            return outputStringBuilder.ToString();
 
-            return Newtonsoft.Json.JsonConvert.SerializeObject(o);
-            // try {  }
-            //catch
-            //{
-            //    return string.Empty;
-            //}
         }
 
-        static public T Deserialize<T>(string o) {
-            try {
-                return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(o);
+        static public T Deserialize<T>(string o)
+        {
+            try
+            {
+                JavaScriptSerializer serialize = new JavaScriptSerializer();
+                var outputStringBuilder = new StringBuilder();
+                return serialize.Deserialize<T>(o);
             }
-            catch {
+            catch
+            {
                 return default(T);
             }
         }
