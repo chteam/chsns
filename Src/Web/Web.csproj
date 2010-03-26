@@ -92,7 +92,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Script\jquery-vsdoc.js" />
-    <Content Include="Script\jquery.min.js" />
+    <Content Include="JavaScript\jquery.min.js" />
     <Content Include="Style\Facebook\admin.css" />
     <Content Include="Style\Facebook\appli.css" />
     <Content Include="Style\Facebook\blog.css" />
@@ -474,7 +474,6 @@
     <Content Include="Views\Video\List.aspx" />
     <Content Include="Views\Video\Random.aspx" />
     <Content Include="Views\Web.config" />
-    <Content Include="Script\Framework.js" />
     <Content Include="JavaScript\PageSet.js" />
     <Content Include="Style\foxblue\admin.css" />
     <Content Include="Style\foxblue\appli.css" />
@@ -604,7 +603,6 @@
   <ItemGroup>
     <Content Include="Config\Config.xml" />
     <Content Include="Images\ajax-loader.gif" />
-    <Content Include="JavaScript\jquery.js" />
     <Content Include="Views\Account\ChangePassword.aspx" />
   </ItemGroup>
   <ItemGroup>
