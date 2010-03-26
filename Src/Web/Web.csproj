@@ -91,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Script\jquery-vsdoc.js" />
+    <Content Include="JavaScript\jquery-vsdoc.js" />
     <Content Include="JavaScript\jquery.js" />
     <Content Include="Style\Facebook\admin.css" />
     <Content Include="Style\Facebook\appli.css" />
@@ -638,7 +638,9 @@
       <Name>CHSNS.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Script\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
