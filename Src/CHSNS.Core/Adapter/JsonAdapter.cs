@@ -2,30 +2,42 @@
 using System.Text;
 namespace CHSNS
 {
-    public static class JsonAdapter
-    {
-        static public string Serialize(object o)
-        {
-            JavaScriptSerializer serialize = new JavaScriptSerializer();
-            var outputStringBuilder = new StringBuilder();
-            serialize.Serialize(o, outputStringBuilder);
-            return outputStringBuilder.ToString();
-
-        }
-
-        static public T Deserialize<T>(string o)
-        {
-            try
-            {
-                JavaScriptSerializer serialize = new JavaScriptSerializer();
-                var outputStringBuilder = new StringBuilder();
-                return serialize.Deserialize<T>(o);
-            }
-            catch
-            {
-                return default(T);
-            }
-        }
-
-    }
+	/// <summary>
+	/// 序列化与反序列化WEB传递的 JSON数据
+	/// 重典 http://chsword.cnblogs.com
+	/// http://bbs.eice.com.cn
+	/// </summary>
+	public static class JsonAdapter
+	{
+		/// <summary>
+		/// 序列化
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		static public string Serialize(object obj)
+		{
+			JavaScriptSerializer serialize = new JavaScriptSerializer();
+			var outputStringBuilder = new StringBuilder();
+			serialize.Serialize(obj, outputStringBuilder);
+			return outputStringBuilder.ToString();
+		}
+		/// <summary>
+		/// 反序列化
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="o"></param>
+		/// <returns></returns>
+		static public T Deserialize<T>(string o)
+		{
+			try
+			{
+				JavaScriptSerializer serialize = new JavaScriptSerializer();
+				return serialize.Deserialize<T>(o);
+			}
+			catch
+			{
+				return default(T);
+			}
+		}
+	}
 }
