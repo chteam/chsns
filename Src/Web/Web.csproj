@@ -43,10 +43,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Program Files\Microsoft ASP.NET\ASP.NET MVC Beta\Assemblies\Microsoft.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\Newtonsoft.Json.dll</HintPath>
