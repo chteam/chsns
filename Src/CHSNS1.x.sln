@@ -3,9 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{60FCF7CB-D806-47B0-8EB3-8291C3552B6D}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\Cityer\Cityer\DLL\EFExtensions.dll = ..\..\Cityer\Cityer\DLL\EFExtensions.dll
-		..\..\Cityer\Cityer\DLL\EFExtensions.pdb = ..\..\Cityer\Cityer\DLL\EFExtensions.pdb
-		..\..\Cityer\Cityer\DLL\EFExtensions.xml = ..\..\Cityer\Cityer\DLL\EFExtensions.xml
 		DLL\Microsoft.Web.Mvc.dll = DLL\Microsoft.Web.Mvc.dll
 		DLL\Microsoft.Web.Testing.Light.dll = DLL\Microsoft.Web.Testing.Light.dll
 		DLL\Microsoft.Web.Testing.Light.pdb = DLL\Microsoft.Web.Testing.Light.pdb
