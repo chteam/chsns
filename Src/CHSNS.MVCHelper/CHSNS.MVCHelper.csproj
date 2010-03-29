@@ -154,8 +154,6 @@
     <Compile Include="Result\XmlActionResult.cs" />
     <Compile Include="Result\XmlViewResult.cs" />
     <Compile Include="Server\Environment.cs" />
-    <Compile Include="Services\EmailTemplateService.cs" />
-    <Compile Include="Services\IEmailTemplateService.cs" />
     <Compile Include="Extension\Mvc\EmptyActionResultExt.cs" />
     <Compile Include="Update\BetaToRC1\DropDownListExt.cs" />
     <Compile Include="Update\BetaToRC1\ListItem.cs" />
