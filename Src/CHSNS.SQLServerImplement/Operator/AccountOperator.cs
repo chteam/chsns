@@ -11,7 +11,6 @@ namespace CHSNS.SQLServerImplement.Operator
         {
             using (var db = DBExtInstance)
             {
-                //db.Connection.BeginTransaction()
                 long userId;
                 long.TryParse(userName.Trim(), out userId);
                 var userid = (from a in db.Account
