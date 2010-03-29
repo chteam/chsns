@@ -230,7 +230,7 @@ namespace CHSNS {
            // if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
 				return text;
 			//}
-			return "/images/logoMain.jpg";
+			//return "/images/logoMain.jpg";
 		}
 		/// <summary>
 		/// 获取群图片(中号)
