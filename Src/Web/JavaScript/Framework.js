@@ -1,10 +1,13 @@
-﻿/*===================================================
+﻿/// <reference path="jquery-vsdoc.js" />
+
+/*===================================================
 CHSNS# JavaScript Basic Library
 2007 12 16 zoujian
 2007 12 28 zoujian
 2008 09 27 zoujian
 2009 05 05 zoujian
 ===================================================*/
+
 
 var isnull = function (v) { return !(typeof v !== "undefined" && v != null); }
 var $v = function (i, v) { if (isnull(v)) return $(i).val(); else $(i).val(v); };
@@ -62,14 +65,12 @@ var CtrlEnter = function (event, fun) {
     if ((event.ctrlKey && event.keyCode == 13) || (event.altKey && event.keyCode == 83))
         fun();
 };
-
-
 //valitate
 function FormMsg(i, m, p, f) {//i:id without msg,m:message,p:id withmsg or define self
     if (p == null) p = i + "msg";
     var l = $(p);
     if (!l.length) {
-        l = jQuery("<span></span>").attr("id", p.substr(1, p.length - 1).replace("\\", "")).addClass("error");
+    	l = $("<span></span>").attr("id", p.substr(1, p.length - 1).replace("\\", "")).addClass("error");
         $(i).after(l);
     }
     l.html(m).fadeIn();
@@ -577,30 +578,49 @@ var dc_edit = function (text, edit, time, onblur) {
 };
 
 $.extend({
-    _fileloaded: ',',
-    rootPath: '',
-    include: function (file, rp) {
-        if (rp) this.rootPath = rp;
-        var files = typeof file == "string" ? [file] : file;
-        for (var i = 0; i < files.length; i++) {
-            var fn = files[i].toLowerCase();
-            var array = fn.split('.');
-            if (array.length == 0) continue;
-            var ext = array[array.length - 1];
-            var path = ($.rootPath + fn).toLowerCase();
-            if (this._fileloaded.indexOf(path) == -1) {
-                if (ext == "css") {
-                    $(document.createElement("link"))
+	_fileloaded: ',',
+	rootPath: '',
+	include: function (file, rp) {
+		if (rp) this.rootPath = rp;
+		var files = typeof file == "string" ? [file] : file;
+		for (var i = 0; i < files.length; i++) {
+			var fn = files[i].toLowerCase();
+			var array = fn.split('.');
+			if (array.length == 0) continue;
+			var ext = array[array.length - 1];
+			var path = ($.rootPath + fn).toLowerCase();
+			if (this._fileloaded.indexOf(path) == -1) {
+				if (ext == "css") {
+					$(document.createElement("link"))
                     .attr({ "rel": "stylesheet", "type": "text/css", "href": path })
                     .appendTo("head");
-                }
-                else {
-                    $(document.createElement("script"))
+				}
+				else {
+					$(document.createElement("script"))
                     .attr({ "type": "text/javascript", "src": path })
                     .appendTo("head");
-                }
-            }
-            this._fileloaded += path + ",";
-        }
-    }
+				}
+			}
+			this._fileloaded += path + ",";
+		}
+	}
+});
+
+$.fn.extend({
+	valiMsg:function(msg,valiId,isfocus){
+			var i=this;
+			var m=msg;
+			var p=valiId;
+			var f=isfocus;
+			if(p == null) p=i.attr("id") + "msg";
+		    var l = $(p);
+		    if (!l.length) {
+				l = jQuery("<span></span>").attr("id", p).addClass("error");
+		        i.after(l);
+		    }
+		    l.html(m).fadeIn();
+		    if (f == null) f = true;
+		    if (f) i.focus();
+		return i;
+	}
 });

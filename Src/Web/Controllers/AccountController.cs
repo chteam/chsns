@@ -30,7 +30,7 @@ namespace CHSNS.Controllers
 		/// </summary>
 		public ActionResult UsernameCanUse(string username)
 		{
-			return Json(DbExt.Account.IsUsernameCanUse(username));
+			return Json(DbExt.Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
 		}
 		[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult SaveReg(string userName, string password, string name)
