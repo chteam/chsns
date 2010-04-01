@@ -3,17 +3,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%if (false) { %>
-
 	<script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
-
 	<%} %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<form id="registerForm" action="<%=Url.Action("SaveReg") %>" method='post'
 	onsubmit="IsRegValition(this);return false;">
 	<%if (TempData.ContainsKey("errors")) { %>
-	<div class="notes">
-		<%=TempData["errors"] %></div>
+	<div class="notes"><%=TempData["errors"] %></div>
 	<%} %>
 	<fieldset>
 		<legend>用户注册</legend>
@@ -21,7 +18,7 @@
 			<li>
 				<label>
 					用户名：</label>
-				<input class="inputtext" id="Username" maxlength="80" onblur="UnCanUse();" name="Username" type="text" />
+				<input class="inputtext" id="username" maxlength="80" name="username" type="text" />
 				- 例如：chsword</li>
 			<li>
 				<label>
@@ -54,7 +51,7 @@
 	</fieldset>
 	<ul>
 		<li><span class="submit">
-			<input type="button" value="上一步" class="subbutton" tabindex="20" onclick="location=<%=Url.Action("Agreement") %>" />
+			<input type="button" value="上一步" class="subbutton" tabindex="20" onclick="location='<%=Url.Action("Agreement") %>';" />
 			<input type="submit" value="下一步" class="subbutton" tabindex="21" />
 		</span></li>
 	</ul>
@@ -63,16 +60,23 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
 	<script type="text/javascript">
-		$("#Username").focus();
-		var CurrentUsername = '';
-		var UnCanUse = function() {
-			if (CurrentUsername != $v('#Username')) {
-				CurrentUsername = $v('#Username');
-				$.post('<%=Url.Action("UsernameCanUse") %>', { 'username': $v('#Username') }, function(r) {
-				FormMsg('#Username', r != 'true' ? '用户名已经有人使用' : '可以使用');
-				});
-			}
-		};
+		(function () {
+			var _dict = new Array();
+			var un = $("#username");
+			var _msg = function (r) { un.valiMsg(r ? '可以使用' : '用户名已经有人使用', null, !r); };
+			un.blur(function () {
+				var _v = _dict[un.val()];
+				if (_v) {
+					_msg(_v);
+				} else {
+					$.post('<%=Url.Action("UsernameCanUse") %>', { 'username': un.val() }, function (r) {
+						_dict[un.val()] = r;
+						_msg(r);
+					});
+				}
+			}).focus();
+		})();
+		
 		var IsRegValition = function(t) {
 			if (v_regex("#Username", /[\w\W]{4,32}/, false, '请填写正确用户名')
 	&& v_regex("#Password", /[\w\W]{4,32}/, false, '密码必须由6-20个字符组成')
