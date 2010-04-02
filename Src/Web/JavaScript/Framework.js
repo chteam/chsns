@@ -607,20 +607,15 @@ $.extend({
 });
 
 $.fn.extend({
-	valiMsg:function(msg,valiId,isfocus){
-			var i=this;
-			var m=msg;
-			var p=valiId;
-			var f=isfocus;
-			if(p == null) p=i.attr("id") + "msg";
-		    var l = $(p);
-		    if (!l.length) {
-				l = jQuery("<span></span>").attr("id", p).addClass("error");
-		        i.after(l);
-		    }
-		    l.html(m).fadeIn();
-		    if (f == null) f = true;
-		    if (f) i.focus();
-		return i;
+	valiMsg: function (msg, valiId, isfocus) {
+		var id = this.attr("id") + "msg";
+		var p = valiId == null ? "#" + id : valiId;
+		var l = $(p);
+		if (l.length <= 0) {
+			this.after($("<span></span>").attr("id", id).addClass("error"));
+		}
+		l.html(msg).fadeIn();
+		if (isfocus) this.focus();
+		return this;
 	}
 });
