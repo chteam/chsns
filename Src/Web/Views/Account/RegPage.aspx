@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%if (false) { %>
-	<script src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
+	<script src="../../JavaScript/jquery-vsdoc.js" type="text/javascript"></script>
 	<%} %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -35,18 +35,7 @@
 					姓名：</label>
 				<input class="inputtext" id="Name" maxlength="12" name="Name" type="text" />
 				- 请填写您的真实姓名以便审核通过</li>
-			<%--	<input name="profile.field" value="255" type="hidden">		#*<li>
-				<label>
-					我是：</label>
-				<select size="1" name="profile.field">
-					<option value="1" selected="selected">在校大学生</option>
-					<option value="4">已工作</option>
-					<option value="2">高中</option>
-					<option value="255">其它</option>
-					-->
-				</select>
-			</li>
-			*#--%>
+			
 		</ul>
 	</fieldset>
 	<ul>
@@ -87,3 +76,15 @@
 		};
 	</script>
 </asp:Content>
+<%--	<input name="profile.field" value="255" type="hidden">		#*<li>
+				<label>
+					我是：</label>
+				<select size="1" name="profile.field">
+					<option value="1" selected="selected">在校大学生</option>
+					<option value="4">已工作</option>
+					<option value="2">高中</option>
+					<option value="255">其它</option>
+					-->
+				</select>
+			</li>
+			*#--%>
