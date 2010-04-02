@@ -605,7 +605,7 @@ $.extend({
 		}
 	}
 });
-
+///Dynamic load error info, http://bbs.eice.com.cn
 $.fn.extend({
 	valiMsg: function (msg, valiId, isfocus) {
 		var id = this.attr("id") + "msg";
