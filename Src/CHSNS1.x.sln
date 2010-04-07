@@ -54,11 +54,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestUtil", "UnitTestUti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{565374D0-3D96-4D3B-9E95-108574BA9755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.WebAppKiller", "CHSNS.WebAppKiller\CHSNS.WebAppKiller.csproj", "{8564008C-FB84-43D9-A1B0-52210DF53DEB}"
-EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 13
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -106,10 +104,6 @@ Global
 		SccProjectTopLevelParentUniqueName11 = CHSNS1.x.sln
 		SccProjectName11 = Web
 		SccLocalPath11 = Web
-		SccProjectUniqueName12 = CHSNS.WebAppKiller\\CHSNS.WebAppKiller.csproj
-		SccProjectTopLevelParentUniqueName12 = CHSNS1.x.sln
-		SccProjectName12 = CHSNS.WebAppKiller
-		SccLocalPath12 = CHSNS.WebAppKiller
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x2.vsmdi
@@ -291,21 +285,6 @@ Global
 		{565374D0-3D96-4D3B-9E95-108574BA9755}.Release|Any CPU.Build.0 = Release|Any CPU
 		{565374D0-3D96-4D3B-9E95-108574BA9755}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{565374D0-3D96-4D3B-9E95-108574BA9755}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Default|.NET.ActiveCfg = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Default|Any CPU.Build.0 = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Release|.NET.ActiveCfg = Release|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -319,7 +298,6 @@ Global
 		{57FFC134-7F9D-4B97-8692-8D2C16714663} = {5EF50786-2492-4737-946C-906F0E62EF91}
 		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036} = {20A815C8-5BE0-4F75-850A-3F4AA4684DEE}
 		{565374D0-3D96-4D3B-9E95-108574BA9755} = {D3F92409-02E1-4837-9974-3A7816F96EC1}
-		{8564008C-FB84-43D9-A1B0-52210DF53DEB} = {D3F92409-02E1-4837-9974-3A7816F96EC1}
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}
 		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66} = {4D062B38-5AF9-4E5E-8D92-5310078CFBDD}
