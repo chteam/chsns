@@ -144,7 +144,6 @@
     <Compile Include="Mvc\HtmlSerializer.cs" />
     <Compile Include="Mvc\MetaColumnExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extension\Mvc\ControllerExt.cs" />
     <Compile Include="Extension\Mvc\RedirectExt.cs" />
     <Compile Include="Result\NotFoundResult.cs" />
     <Compile Include="Result\XmlActionResult.cs" />
