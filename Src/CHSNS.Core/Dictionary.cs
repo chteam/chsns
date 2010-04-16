@@ -21,13 +21,7 @@ namespace CHSNS {
             return dict;
         }
         public string ToJsonString() {
-            var sb = new StringBuilder("{");
-            foreach (var p in this) {
-                sb.AppendFormat("{0}:'{1}',", p.Key, p.Value);
-            }
-            sb.Length--;
-            sb.Append("}");
-            return sb.ToString();
+			return JsonAdapter.Serialize(this);
         }
     }
 }

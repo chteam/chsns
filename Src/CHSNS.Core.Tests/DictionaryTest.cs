@@ -22,7 +22,7 @@ namespace CHSNS.Test {
         [TestMethod]
         public void ToJsonStringTest() {
             var a = new Dictionary {{"title", "gogo"}};
-            Assert.AreEqual(a.ToJsonString(), "{title:'gogo'}");
+            Assert.AreEqual(a.ToJsonString(), "{\"title\":\"gogo\"}");
 
         }
         #endregion
