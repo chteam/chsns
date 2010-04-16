@@ -16,7 +16,7 @@ namespace CHSNS
 		/// <returns></returns>
 		static public string Serialize(object obj)
 		{
-			JavaScriptSerializer serialize = new JavaScriptSerializer();
+			var serialize = new JavaScriptSerializer();
 			var outputStringBuilder = new StringBuilder();
 			serialize.Serialize(obj, outputStringBuilder);
 			return outputStringBuilder.ToString();
@@ -31,7 +31,7 @@ namespace CHSNS
 		{
 			try
 			{
-				JavaScriptSerializer serialize = new JavaScriptSerializer();
+				var serialize = new JavaScriptSerializer();
 				return serialize.Deserialize<T>(o);
 			}
 			catch
