@@ -95,7 +95,6 @@
     <Compile Include="DictionaryTest.cs" />
     <Compile Include="EnumExtensionTest.cs" />
     <Compile Include="HashTest.cs" />
-    <Compile Include="HtmlEncodeExtensionTest.cs" />
     <Compile Include="IEmailTest.cs" />
     <Compile Include="IEnumerableExtensionsTest.cs" />
     <Compile Include="JsonAdapterTest.cs" />
