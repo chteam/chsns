@@ -22,7 +22,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
             <th class="ln25 f14B" nowrap>
                 &nbsp;
             </th>
-            <th width="200" class="ln25 f14B" nowrap>贡献者</td>
+            <th width="200" class="ln25 f14B" nowrap>贡献者</th>
             <th class="ln25 f14B">
                 编辑原因
             </th>
@@ -35,8 +35,8 @@ Inherits="System.Web.Mvc.ViewPage" %>
             </td>
             <td class="ln25">
                             <%=e.Status%>
-                <%=(e.Status != (int)EntryVersionType.Common)?Html.ActionLink("通过审核","Pass",new{id=e.Id}) :""%>
-                <%=(e.Status != (int)EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }) : ""%>
+                <%=(e.Status != (int)EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.Id }) : MvcHtmlString.Empty%>
+                <%=(e.Status != (int)EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }) : MvcHtmlString.Empty%>
             </td>
             <td class="ln25 f14">
             <%=e.AddTime.ToString("yyyy-MM-dd hh:mm:ss") %>版本&nbsp;&nbsp;
