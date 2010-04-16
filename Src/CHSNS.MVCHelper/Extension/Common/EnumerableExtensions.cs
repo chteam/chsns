@@ -11,15 +11,11 @@ namespace CHSNS
 	/// </summary>
 	public static class EnumerableExtensions {
         static public List<ListItem> ToListItem<T>() {
-            var li = new List<ListItem>();
-            foreach (int s in Enum.GetValues(typeof(T))) {
-                li.Add(new ListItem {
-                    Value = s.ToString(),
-                    Text = Enum.GetName(typeof(T), s)
-                }
-                );
-            }
-            return li;
+            return (from int s in Enum.GetValues(typeof (T))
+                    select new ListItem
+                               {
+                                   Value = s.ToString(), Text = Enum.GetName(typeof (T), s)
+                               }).ToList();
         }
 		/// <summary>
 		/// Converts an enumerable into a SelectList.
