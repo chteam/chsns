@@ -22,7 +22,7 @@ namespace CHSNS.Controllers {
             return View(vd);
         }
         [LoginedFilter]
-        [AcceptVerbs("Post")]
+        [HttpPost]
         public ActionResult Face(string mode, HttpPostedFileBase file1) {
             var li = new ListItem {
                 Text = mode,
