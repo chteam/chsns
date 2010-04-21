@@ -38,7 +38,7 @@ namespace CHSNS.Controllers {
 		/// <param name="ep">The ep.</param>
 		/// <param name="userid">The userid.</param>
 		/// <returns></returns>
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		public ActionResult NoteList(int p, int ep, long userid) {
             var d =
                 DbExt.Note.GetNotes(userid, NoteType.Note, p, ep)
@@ -98,7 +98,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
-		[AcceptVerbs("post")]
+		[HttpPost]
 		[LoginedFilter]
 		public ActionResult Delete(long id) {
 			using (var ts = new TransactionScope()) {

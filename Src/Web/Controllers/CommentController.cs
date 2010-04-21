@@ -80,7 +80,7 @@ namespace CHSNS.Controllers {
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns></returns>
-        [AcceptVerbs("Post")]
+        [HttpPost]
         [LoginedFilter]
         public ActionResult DeleteReply(long id) {
 

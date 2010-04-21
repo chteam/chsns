@@ -4,11 +4,11 @@ namespace CHSNS.Controllers
 {
 	public class AjaxController : BaseController
 	{
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		[OutputCache(VaryByParam = "ProvinceID", Duration = int.MaxValue)]
-		public ActionResult CityList(int ProvinceID)
+		public ActionResult CityList(int provinceID)
 		{
-			return Json(DbExt.Golbal.GetCitys(CHContext,ProvinceID));
+			return Json(DbExt.Golbal.GetCitys(CHContext,provinceID));
 		}
 	}
 }

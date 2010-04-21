@@ -23,7 +23,7 @@ namespace CHSNS.Controllers
             Title = " ’º˛œ‰";
             return InBoxList(p);
         }
-        [AcceptVerbs("Post")]
+        [HttpPost]
         public ActionResult InBoxList(int? p)
         {
             InitPage(ref p);
@@ -39,7 +39,7 @@ namespace CHSNS.Controllers
             return OutBoxList(p);
         }
 
-        [AcceptVerbs("Post")]
+        [HttpPost]
         public ActionResult OutBoxList(int? p)
         {
             InitPage(ref p);
@@ -50,7 +50,7 @@ namespace CHSNS.Controllers
             return View(m);
         }
 
-        [AcceptVerbs("Post")]
+        [HttpPost]
         public ActionResult Delete(long id, int t)
         {
             DbExt.Message.Delete(id, (MessageBoxType)t, CHUser.UserId);
@@ -86,14 +86,14 @@ namespace CHSNS.Controllers
             DbExt.Message.Add(m,CHContext);
 
         }
-        [AcceptVerbs("Post")]
+        [HttpPost]
         public ActionResult Save()
         {
             SavaProc();
             return RedirectToAction("OutBox");
         }
 
-        [AcceptVerbs("Post")]
+        [HttpPost]
         public ActionResult SaveAjax()
         {
             SavaProc();

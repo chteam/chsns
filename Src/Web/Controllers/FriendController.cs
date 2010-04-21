@@ -43,7 +43,7 @@ namespace CHSNS.Controllers {
 	    #endregion
 		#region pager ctrl
         [LoginedFilter]
-        [AcceptVerbs("Post")]
+        [HttpPost]
         public ActionResult FriendList(int p, long userid)
         {
             var list = DbExt.Friend.GetFriends(userid, p, CHContext.Site);
@@ -51,12 +51,12 @@ namespace CHSNS.Controllers {
             return View(list);
         }
 		[LoginedFilter]
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		public ActionResult RequestList(int p, long userid) {
             return View(DbExt.Friend.GetRequests(userid, p, CHContext.Site));
 		}
 		[LoginedFilter]
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		public ActionResult RandomList() {
 			return View(DbExt.Friend.GetRandoms(10));
 		}
@@ -64,7 +64,7 @@ namespace CHSNS.Controllers {
 
 		#region ajax execute
 		[LoginedFilter]
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		public ActionResult Add(long toid)
 		{//添加好友
 			using (var ts = new TransactionScope())
@@ -81,7 +81,7 @@ namespace CHSNS.Controllers {
 		/// <param name="toid"></param>
 		/// <returns></returns>
 		[LoginedFilter]
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		public ActionResult Delete(long toid) {
 			using (var ts = new TransactionScope())
 			{
@@ -91,7 +91,7 @@ namespace CHSNS.Controllers {
 			}
 		}
 		[LoginedFilter]
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		public ActionResult Agree(long uid)
 		{//添加好友
 			using (var ts = new TransactionScope())
@@ -103,7 +103,7 @@ namespace CHSNS.Controllers {
 			}
 		}
 		[LoginedFilter]
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		public ActionResult Ignore(long uid) {//添加好友
 			using (var ts = new TransactionScope())
 			{
@@ -114,7 +114,7 @@ namespace CHSNS.Controllers {
 			}
 		}
 		[LoginedFilter]
-		[AcceptVerbs("Post")]
+		[HttpPost]
 		public ActionResult IgnoreAll() {//添加好友
 			using (var ts = new TransactionScope())
 			{
