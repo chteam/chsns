@@ -2,7 +2,7 @@
 
 namespace CHSNS
 {
-	public class Environment
+	public class HostEnvironment
 	{
 		/// <summary>
 		/// 服务器启动时间

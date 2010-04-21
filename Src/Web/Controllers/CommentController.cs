@@ -94,6 +94,7 @@ namespace CHSNS.Controllers {
         #region comment
         public ActionResult List(long id, int p, CommentType type){
             var cl = DbExt.Comment.CommentList(id, CommentType.Note, p, CHContext.Site);
+            
             return View("Comment/Item", cl);
         }
 
