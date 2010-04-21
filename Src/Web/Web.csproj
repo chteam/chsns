@@ -92,6 +92,9 @@
     <Content Include="JavaScript\jquery.validate-vsdoc.js" />
     <Content Include="JavaScript\jquery.validate.js" />
     <Content Include="JavaScript\jquery.validate.min.js" />
+    <Content Include="JavaScript\MicrosoftMvcJQueryValidation.js" />
+    <Content Include="JavaScript\MicrosoftMvcRemoteValidation.js" />
+    <Content Include="MvcDiagnostics.aspx" />
     <Content Include="Style\Facebook\admin.css" />
     <Content Include="Style\Facebook\appli.css" />
     <Content Include="Style\Facebook\blog.css" />
@@ -187,6 +190,23 @@
     <Content Include="Style\Facebook\skin.gif" />
     <Content Include="Style\Facebook\video.css" />
     <Content Include="Style\Facebook\wysiwyg.css" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Boolean.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Collection.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Decimal.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\EmailAddress.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\HiddenInput.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Html.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Object.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\String.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Url.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Boolean.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Collection.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Decimal.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\HiddenInput.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\MultilineText.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Object.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Password.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\String.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
