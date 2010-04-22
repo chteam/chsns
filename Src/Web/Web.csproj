@@ -89,6 +89,9 @@
     <Content Include="JavaScript\Framework.js" />
     <Content Include="JavaScript\jquery-vsdoc.js" />
     <Content Include="JavaScript\jquery.js" />
+    <Content Include="JavaScript\jquery.validate-vsdoc.js" />
+    <Content Include="JavaScript\jquery.validate.js" />
+    <Content Include="JavaScript\jquery.validate.min.js" />
     <Content Include="JavaScript\MicrosoftMvcJQueryValidation.js" />
     <Content Include="JavaScript\MicrosoftMvcRemoteValidation.js" />
     <Content Include="MvcDiagnostics.aspx" />
