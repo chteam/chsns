@@ -243,7 +243,7 @@
     <None Include="Views\Admin\UserManage\userlist.vm" />
     <None Include="Views\Admin\UserManage\userset.vm" />
     <None Include="Views\Album\random.vm" />
-    <None Include="Views\Application\myapp.vm" />
+    <None Include="Areas\Admin\Views\Application\myapp.vm" />
     <None Include="Views\Blog\edit.vm" />
     <None Include="Views\Blog\index.vm" />
     <None Include="Views\Blog\Item-Notes.vm" />
@@ -315,8 +315,8 @@
     <Content Include="Views\Album\Index.aspx" />
     <Content Include="Views\Album\List.aspx" />
     <Content Include="Views\Album\Upload.aspx" />
-    <Content Include="Views\Application\Edit.aspx" />
-    <Content Include="Views\Application\Manage.aspx" />
+    <Content Include="Areas\Admin\Views\Application\Edit.aspx" />
+    <Content Include="Areas\Admin\Views\Application\Manage.aspx" />
     <Content Include="Views\Entry\AdminHistoryList.aspx" />
     <Content Include="Views\Entry\Edit.aspx" />
     <Content Include="Views\Entry\History.aspx" />
@@ -580,10 +580,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\Admin\ApplicationController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -657,7 +656,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
