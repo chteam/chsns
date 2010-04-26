@@ -15,6 +15,18 @@ namespace CHSNS.Web
     [CompilerGlobalScope]
     public class Global : HttpApplication
     {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            const string ext = "";
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute("indexf", "", new { controller = "Entry", action = "Index", Url = "Index" });
+            routes.MapRoute("index", "{Url}" + ext, new { controller = "Entry", action = "Index", Url = "Index" });
+            routes.MapRoute("entry", "w/{Url}" + ext, new { controller = "Entry", action = "Index", Url = "Index" });
+            routes.MapRoute("post", "Post/{y}/{m}/{d}/{id}" + ext, new { controller = "Group", action = "Details" });
+            routes.MapRoute("note", "Note/{y}/{m}/{d}/{id}" + ext, new { controller = "Note", action = "Details" });
+            routes.MapRoute("url", "{controller}/{action}" + ext,
+                new { controller = "Home" });
+        }
         public void Application_Start(object sender, EventArgs e)
         {
             // 在应用程序启动时运行的代码
@@ -54,18 +66,6 @@ namespace CHSNS.Web
                               false, context1
                 );
         }
-        public static void RegisterRoutes(RouteCollection routes)
-        {
-            const string ext = "";
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute("indexf", "", new { controller = "Entry", action = "Index", Url = "Index" });
-            routes.MapRoute("index", "{Url}" + ext, new { controller = "Entry", action = "Index", Url = "Index" }, new[] { "CHSNS.Controllers" });
-            routes.MapRoute("entry", "w/{Url}" + ext, new { controller = "Entry", action = "Index", Url = "Index" }, new[] { "CHSNS.Controllers" });
-            routes.MapRoute("post", "Post/{y}/{m}/{d}/{id}" + ext, new { controller = "Group", action = "Details" });
-            routes.MapRoute("note", "Note/{y}/{m}/{d}/{id}" + ext, new { controller = "Note", action = "Details" });
-            routes.MapRoute("url", "{controller}/{action}" + ext,
-                new { controller = "Home" }, new[] { "CHSNS.Controllers" });
 
-        }
     }
 }
