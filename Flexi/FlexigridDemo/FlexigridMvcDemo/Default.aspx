@@ -109,7 +109,7 @@
 					d.sender.flexGetPage(4, { a: 1, b: 2 });
 				}
 			};
-			$(".table1").gridext('Ajax/Index', colModel, '#tablemenu', process,
+			$(".table1").gridext('Ajax/GetEntity', colModel, '#tablemenu', process,
 			 { usedefalutpager: false, rp: 10,autoload:true,colResize:true,colMove:true });
 		})();
 		

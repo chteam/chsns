@@ -32,6 +32,17 @@ namespace FlexigridMvcDemo.Controllers
             var json  = pager.ToFlexigridObject(page ?? 1, pager.TotalCount, "id");
             return Json(json);
         }
+        public ActionResult GetEntity(int? page, int? rp, string sortname, string sortorder)
+        {
+            object json;
+            using (var t1 = new Models.TEST1Entities())
+            {
+                var list = t1.UserInfo.OrderBy(c => c.Id).Pager(page??1, 10);
+                var t = new PagedList<object[]>(list.Select(c => new object[] { c.Id, c.Name, c.Email, c.Age }), page??1, 10, list.TotalCount);
+                json = t.ToFlexigridObject();
+            }
+            return Json(json);
+        }
         public ActionResult Remove(int id)
         {
             using (var conn = new SqlConnection(DataConfig.ConnectionString))
