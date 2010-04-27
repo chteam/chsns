@@ -22,8 +22,7 @@ namespace FlexigridMvcDemo
             
             using (var t1 = new Models.TEST1Entities()) {
                 var list = t1.UserInfo.OrderBy(c => c.Id).Pager(page, 10);
-                var t = new PagedList<object[]>(list.Select(c => new object[] { c.Id, c.Name, c.Email, c.Age }), page, 10, list.TotalCount);
-                context.Response.Write(JsonAdapter.Serialize(t.ToFlexigridObject()));
+                context.Response.Write(JsonAdapter.Serialize(list.ToFlexigridObject(c => new object[] { c.Id, c.Name, c.Email, c.Age })));
             }
 
            context.Response.End();

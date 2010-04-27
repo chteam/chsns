@@ -43,21 +43,6 @@ namespace MvcHelper
             return hashTable;
         }
 
-        public static Hashtable ToFlexigridObject(this IEnumerable<DataRow> rows, int page, int total, string primayKey)
-        {
-            var rowList = new List<Hashtable>();
-            var json = new Hashtable
-                                 {
-                                     {"page", page},
-                                     {"total", total},
-                                     {"rows", rowList}
-                                 };
-            rows.ToList().ForEach(c => rowList.Add(new Hashtable
-                                                       {
-                                                           {"id", c[primayKey].ToString()},
-                                                           {"cell", c.ItemArray}
-                                                       }));
-            return json;
-        }
+      
     }
 }
