@@ -543,7 +543,7 @@
 
                 } else {
                     p.pages = Math.ceil(p.total / p.rp);
-                    var page = $(".page");
+                    var page = $(p.pager);
                     if (page.length == 0) return;
                     page.html(p.page + "/" + p.pages);
                     var breakspan = '<span class="break">...</span>';
@@ -1481,6 +1481,7 @@
             height: params.height,
             colMove: params.colMove,
             colresize: params.colResize,
+            pager: params.pager == null ? ".page" : params.pager,
             onSuccess: function () {
                 if (!$.fn.chmenu || !menuProcess) return;
                 var showtr;
