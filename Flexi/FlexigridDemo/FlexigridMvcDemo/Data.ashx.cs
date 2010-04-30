@@ -6,7 +6,7 @@ using MvcHelper;
 using FlexigridMvcDemo.Models;
 
 namespace FlexigridMvcDemo
-{
+
     /// <summary>
     /// Summary description for Data
     /// </summary>
