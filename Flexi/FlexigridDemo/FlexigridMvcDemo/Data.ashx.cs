@@ -16,16 +16,17 @@ namespace FlexigridMvcDemo
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "application/json";
-            int page ;
+            int page;
             int.TryParse(context.Request.Params["page"], out page);
             if (page == 0) page = 1;
-            
-            using (var t1 = new Models.TEST1Entities()) {
+
+            using (var t1 = new Models.TEST1Entities())
+            {
                 var list = t1.UserInfo.OrderBy(c => c.Id).Pager(page, 10);
                 context.Response.Write(JsonAdapter.Serialize(list.ToFlexigridObject(c => new object[] { c.Id, c.Name, c.Email, c.Age })));
             }
 
-           context.Response.End();
+            context.Response.End();
         }
 
         public bool IsReusable
