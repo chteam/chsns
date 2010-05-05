@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Security.AccessControl;
+using CHSNS.Config;
+using CHSNS.Controllers;
 
 namespace CHSNS.Web.Areas.Admin.Controllers
 {
-    public class ApplicationController : Controller
+    public class ApplicationController : BaseController
     {
         public ActionResult Manage(int? p)
         {
