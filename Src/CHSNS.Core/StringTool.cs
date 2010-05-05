@@ -1,9 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-
+﻿
 namespace CHSNS {
 	/// <summary>
 	/// 字符串格式化规则
