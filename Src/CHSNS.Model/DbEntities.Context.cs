@@ -7,9 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Data.Objects;
 using System.Data.EntityClient;
+using System.Data.Objects;
 
 namespace CHSNS.Models
 {
