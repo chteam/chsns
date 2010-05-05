@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using CHSNS.Model;
+﻿using CHSNS.Model;
 using CHSNS.Models;
 //
 

@@ -1,5 +1,4 @@
-﻿using System;
-namespace CHSNS
+﻿namespace CHSNS
 {
     public interface IUser
     {

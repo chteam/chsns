@@ -1,5 +1,4 @@
-﻿using CHSNS.Model;
-using CHSNS.Models;
+﻿using CHSNS.Models;
 namespace CHSNS.Operator {
 	public interface IAccountOperator {
         bool Create(Account account, string name, int initScore);

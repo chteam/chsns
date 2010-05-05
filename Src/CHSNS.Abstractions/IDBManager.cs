@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace CHSNS.Operator {
     //public interface IDBManager : IDisposable {
     //    string ConnectionString { get; }
