@@ -4,20 +4,41 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title></title>  	<script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+	<%if (false)
+	  {
+	%>
+
+	<script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
+
+	<%
+		} %>
+	<script src="Scripts/menu/contextmenu.pack.js" type="text/javascript"></script>
+	<script src="Scripts/flexigrid/flexigrid.pack.js" type="text/javascript"></script>
+	<link href="Content/flexigrid/flexigrid.css" rel="stylesheet" type="text/css" />
+	<link href="Content/menu/cm_default/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    <% this.Grid.SetColumns(
-           new FlexiColumn("编号","id"),
-           new FlexiColumn()
-           ); %>
+  <%= new FlexiGridSettings<FlexigridMvcDemo.Models.UserInfo>()
+           .Name("flex1")
+           .UpdateAction("/Ajax/GetEntity")
+           .Columns(col => 
+               {
+                   col.Bind(e => e.Id).Title("Id");
+                   col.Bind(e => e.Name).Width(180).Title("Name").Sortable().Align(FlexiGridAlign.Left);
+                   col.Bind(e => e.Email).Title("email");
+                   col.Bind(e => e.Age).Width(180).Title("Age").Sortable().Align(FlexiGridAlign.Right); ;
+               })
+            .DefaultSortOption("Id", FlexiGridSortOrder.Ascending)
+            .UsePager()
+            .Title("Employees")
+            .RecordsPerPageOption(true, 15)
+            .ShowTableToggleButton(false)
+            .Width(800)
+            .Height(200) %>
 
-              <% this.Grid.SetColumns(
-           new { Display="编号", Name="id" },
-     new { Display="姓名",Name="name" }
-           ); %>
     </div>
     </form>
 </body>
