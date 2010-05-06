@@ -95,6 +95,8 @@
     <Compile Include="Extensions\JsonAdapter.cs" />
     <Compile Include="Extensions\PagedList.cs" />
     <Compile Include="Extensions\PagerExt.cs" />
+    <Compile Include="FlexiColumn.cs" />
+    <Compile Include="FlexiGrid.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -105,6 +107,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="S.aspx.cs">
+      <DependentUpon>S.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="S.aspx.designer.cs">
+      <DependentUpon>S.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\flexigrid\flexigrid.css" />
@@ -129,6 +138,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="S.aspx" />
     <Content Include="Scripts\flexigrid\flexigrid.js" />
     <Content Include="Scripts\flexigrid\flexigrid.pack.js" />
     <Content Include="Scripts\flexigrid\flexigrids.js" />

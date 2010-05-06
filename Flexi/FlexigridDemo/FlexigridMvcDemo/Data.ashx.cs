@@ -5,7 +5,7 @@ using System.Web;
 using MvcHelper;
 using FlexigridMvcDemo.Models;
 
-namespace FlexigridMvcDemo
+namespace FlexigridMvcDemo{
 
     /// <summary>
     /// Summary description for Data
