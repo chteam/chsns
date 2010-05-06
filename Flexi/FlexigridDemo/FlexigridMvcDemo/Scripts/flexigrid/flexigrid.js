@@ -1,14 +1,14 @@
 /// <reference path="../jquery-1.4.1-vsdoc.js" />
 /*
- * Flexigrid for jQuery - New Wave Grid
- *
- * Copyright (c) 2008 Paulo P. Marinas (webplicity.net/flexigrid)
- * Dual licensed under the MIT (MIT-LICENSE.txt)
- * and GPL (GPL-LICENSE.txt) licenses.
- *
- * $Date: 2008-07-14 00:09:43 +0800 (Tue, 14 Jul 2008) $
- */
- 
+* Flexigrid for jQuery - New Wave Grid
+*
+* Copyright (c) 2008 Paulo P. Marinas (webplicity.net/flexigrid)
+* Dual licensed under the MIT (MIT-LICENSE.txt)
+* and GPL (GPL-LICENSE.txt) licenses.
+*
+* $Date: 2008-07-14 00:09:43 +0800 (Tue, 14 Jul 2008) $
+*/
+
 (function ($) {
 
     $.addFlex = function (t, p) {
@@ -1026,11 +1026,12 @@
         //set bDiv
         g.bDiv.className = 'bDiv';
         $(t).before(g.bDiv);
-        $(g.bDiv)
-        .css({ height: (p.height == 'auto') ? 'auto' : p.height + "px" })
-        .scroll(function (e) { g.scroll() })
-        .append(t)
-        ;
+        $(g.bDiv).scroll(function (e) { g.scroll() })
+        .css({ height: (p.height == 'auto') ?
+        ($.browser.msie && $.browser.version <= 7.0 ? ((p.rows != null ? p.rows.length : 0) + 1) * 24 + 'px' : 'auto')
+         : p.height + "px"
+        })
+        .append(t);
 
         if (p.height == 'auto') {
             $('table', g.bDiv).addClass('autoht');
@@ -1481,6 +1482,7 @@
             height: params.height,
             colMove: params.colMove,
             colresize: params.colResize,
+            minheight: params.minheight == null ? 80 : params.minheight,
             pager: params.pager == null ? ".page" : params.pager,
             onSuccess: function () {
                 if (!$.fn.chmenu || !menuProcess) return;
