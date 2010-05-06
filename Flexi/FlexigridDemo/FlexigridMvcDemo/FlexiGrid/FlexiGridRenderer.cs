@@ -109,6 +109,14 @@ namespace MvcHelper
                 }
             }
             sb.AppendLine("];");
+            sb.AppendFormat(@"$('#{0}').gridext('{1}',cols,null,null,",
+                this._gridId, data.ActionUrl)
+                .Append("{")
+                
+                .Append("}");
+             // $(".table1").gridext('Ajax/GetEntity', colModel, '#tablemenu', process,
+             //{ usedefalutpager: false, rp: 10, autoload: true, colResize: true, colMove: true, pager: "#pager" }); ;
+		sb.Append("})();");
             //sb.AppendLine("searchitems:[");
 
             //count = 0;
