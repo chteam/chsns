@@ -95,8 +95,21 @@
     <Compile Include="Extensions\JsonAdapter.cs" />
     <Compile Include="Extensions\PagedList.cs" />
     <Compile Include="Extensions\PagerExt.cs" />
-    <Compile Include="FlexiColumn.cs" />
-    <Compile Include="FlexiGrid.cs" />
+    <Compile Include="FlexiGrid\DescriptionAttribute.cs" />
+    <Compile Include="FlexiGrid\Extensions.cs" />
+    <Compile Include="FlexiGrid\FlexGridData.cs" />
+    <Compile Include="FlexiGrid\FlexGridFetchOptions.cs" />
+    <Compile Include="FlexiGrid\FlexGridRowData.cs" />
+    <Compile Include="FlexiGrid\FlexiGridColumn.cs" />
+    <Compile Include="FlexiGrid\FlexiGridColumnCollection.cs" />
+    <Compile Include="FlexiGrid\FlexiGridColumnSettings.cs" />
+    <Compile Include="FlexiGrid\FlexiGridEnums.cs" />
+    <Compile Include="FlexiGrid\FlexiGridModelProperties.cs" />
+    <Compile Include="FlexiGrid\FlexiGridRenderer.cs" />
+    <Compile Include="FlexiGrid\FlexiGridSettings.cs" />
+    <Compile Include="FlexiGrid\FlexiGridSettingsGeneric.cs" />
+    <Compile Include="FlexiGrid\HtmlExtensions.cs" />
+    <Compile Include="FlexiGrid\IGridRenderer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

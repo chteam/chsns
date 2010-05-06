@@ -14,12 +14,5 @@ namespace FlexigridMvcDemo
         {
 
         }
-        public FlexiGrid Grid
-        {
-            get
-            {
-                return new FlexiGrid();
-            }
-        }
     }
 }
