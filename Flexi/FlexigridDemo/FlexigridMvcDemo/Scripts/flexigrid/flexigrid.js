@@ -1027,14 +1027,15 @@
         g.bDiv.className = 'bDiv';
         $(t).before(g.bDiv);
         $(g.bDiv).scroll(function (e) { g.scroll() })
-        .css({ height: (p.height == 'auto') ?
-        ($.browser.msie && $.browser.version <= 7.0 ? ((p.rows != null ? p.rows.length : 0) + 1) * 24 + 'px' : 'auto')
-         : p.height + "px"
+        .css({ height: (p.height == 'auto') ? 'auto' : p.height + "px"
         })
         .append(t);
 
         if (p.height == 'auto') {
             $('table', g.bDiv).addClass('autoht');
+            if ($.browser.msie && $.browser.version == 7.0) {
+                $('table', g.bDiv).addClass('auto7');
+            }
         }
 
 

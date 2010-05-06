@@ -55,8 +55,12 @@
 		{
 		border-bottom: 0px;
 		margin-bottom: 0px;
+		height:auto;
 		}
-	
+		.flexigrid div.bDiv table.auto7
+		{
+		margin-bottom: 24px;
+		}
 .flexigrid div.nDiv td
 	{
 	padding: 2px 3px;
