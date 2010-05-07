@@ -12,5 +12,5 @@ namespace MvcHelper
         int CurrentPage { get; set; }
         int PageSize { get; set; }
         int TotalCount { get; set; }
-    }
+    } 
 }
