@@ -24,7 +24,7 @@ namespace FlexigridMvcDemo
             //var array = list.Select(func);
             list.Select(func).ToList().ForEach(c => rowList.Add(new Hashtable
                                                        {
-                                                           {"id", c[0]},
+                                                            {"id", c[0]},
                                                            {"cell", c}
                                                        }));
             return json;
