@@ -37,7 +37,7 @@ namespace FlexigridMvcDemo.Controllers
             object json;
             using (var t1 = new Models.TEST1Entities())
             {
-                var list = t1.UserInfo.OrderBy(c => c.Id).Pager(page??1, 10);
+                var list = t1.UserInfo.OrderBy(c => c.Id).Pager(page??1, rp??10);
             //    var t = new PagedList<object[]>(list.Select(), page??1, 10, list.TotalCount);
                 json = list
                     .ToFlexigridObject(c => new object[] { c.Id, c.Name, c.Email, c.Age });

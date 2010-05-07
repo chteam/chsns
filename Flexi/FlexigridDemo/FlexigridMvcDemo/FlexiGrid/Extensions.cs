@@ -3,16 +3,8 @@ using System.Reflection;
 
 namespace MvcHelper
 {
-    /// <summary>
-    /// General extension methods
-    /// </summary>
     public static class Extensions
     {
-        /// <summary>
-        /// Gets the description.
-        /// </summary>
-        /// <param name="enumeration">The enumeration.</param>
-        /// <returns>Textual description of the Enum.</returns>
         public static string GetDescription(this Enum enumeration)
         {
             Type type = enumeration.GetType();
@@ -25,7 +17,7 @@ namespace MvcHelper
 
                 if (attrs != null && attrs.Length > 0)
                 {
-                    return ((DescriptionAttribute) attrs[0]).Text;
+                    return ((DescriptionAttribute)attrs[0]).Text;
                 }
             }
 

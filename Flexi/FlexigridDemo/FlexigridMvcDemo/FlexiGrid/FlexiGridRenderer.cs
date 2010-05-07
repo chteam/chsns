@@ -6,33 +6,18 @@ using System.Web.UI;
 
 namespace MvcHelper
 {
-    /// <summary>
-    /// Concreate implementation of FlexiGrid renderer.
-    /// </summary>
-    /// <typeparam name="T">Type of Model.</typeparam>
     public class FlexiGridRenderer<T> : IGridRenderer<FlexiGridSettings<T>> where T : class
     {
         #region Private fields
 
-        /// <summary>
-        /// This value is used to append when there is no specific grid id is given by the user.
-        /// </summary>
         private static int _gridIndex = 0;
 
-        /// <summary>
-        /// Id of the grid, this will be used if user hasn't specified an id.
-        /// </summary>
         private string _gridId = string.Empty;
 
         #endregion
 
         #region Implementation of IGridRenderer<FlexiGridSettings<T>>
 
-        /// <summary>
-        /// Renders the specified data.
-        /// </summary>
-        /// <param name="data">The data that needs to be rendered..</param>
-        /// <returns>Rendered output as string.</returns>
         public string Render(FlexiGridSettings<T> data)
         {
             this.InitializeToDefaults(data);
@@ -46,7 +31,15 @@ namespace MvcHelper
                     htmlWriter.AddAttribute(HtmlTextWriterAttribute.Id, this._gridId);
                     htmlWriter.RenderBeginTag(HtmlTextWriterTag.Table);
                     htmlWriter.RenderEndTag();
-
+                    if (!data.EnableDefaultPager && !string.IsNullOrEmpty(data.PageFilter)) { 
+                    //show the pager
+                        if (data.PageFilter.StartsWith("#")) 
+                            htmlWriter.AddAttribute(HtmlTextWriterAttribute.Id, data.PageFilter.Substring(1));
+                        if (data.PageFilter.StartsWith("."))
+                            htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, data.PageFilter.Substring(1));
+                        htmlWriter.RenderBeginTag(HtmlTextWriterTag.Div);
+                        htmlWriter.RenderEndTag();
+                    }
                     // Create the javascript tag.
                     htmlWriter.AddAttribute(HtmlTextWriterAttribute.Type, @"text/javascript");
                     htmlWriter.RenderBeginTag(HtmlTextWriterTag.Script);
@@ -62,10 +55,6 @@ namespace MvcHelper
 
         #region Private methods
 
-        /// <summary>
-        /// Initializes to the default values.
-        /// </summary>
-        /// <param name="data">The data that needs to be rendered..</param>
         private void InitializeToDefaults(FlexiGridSettings<T> data)
         {
             // If GridId is not specified, set a default value
@@ -74,7 +63,7 @@ namespace MvcHelper
                                : data.GridId;
         }
 
-     
+
         private string GenerateJavascript(FlexiGridSettings<T> data)
         {
             var sb = new StringBuilder();
@@ -95,28 +84,45 @@ namespace MvcHelper
             foreach (FlexiGridColumn<T> column in data.GridColumns)
             {
                 count++;
-
-                sb.AppendFormat("{{ display: '{0}', name: '{1}', width: {2}, sortable: {3}, align: '{4}' }}"
-                                , column.ColumnSettings.ColumnTitle
-                                , column.FieldName
-                                , column.ColumnSettings.ColumnWidth
-                                , column.ColumnSettings.ColumnSortable.ToString().ToLower()
-                                , column.ColumnSettings.ColumnAlignment.GetDescription());
-
+                sb.Append("{");
+                if (!string.IsNullOrEmpty(column.FieldName))
+                    sb.AppendFormat("name:'{0}',", column.FieldName);
+                if (column.ColumnSettings.ColumnWidth>0)
+                    sb.AppendFormat("width:{0},", column.ColumnSettings.ColumnWidth);
+                if (column.ColumnSettings.ColumnSortable)
+                    sb.Append("sortable:true,");
+                if (column.ColumnSettings.ColumnAlignment!=0)
+                    sb.AppendFormat("align:'{0}',", column.ColumnSettings.ColumnAlignment.GetDescription());
+                if (column.ColumnSettings.ColumnHidden)
+                    sb.Append("hide:true,");
+                sb.AppendFormat("display:'{0}'", column.ColumnSettings.ColumnTitle).Append("}");
                 if (count < totalCount)
                 {
                     sb.AppendLine(",");
                 }
             }
             sb.AppendLine("];");
-            sb.AppendFormat(@"$('#{0}').gridext('{1}',cols,null,null,",
-                this._gridId, data.ActionUrl)
-                .Append("{")
-                
-                .Append("}");
-             // $(".table1").gridext('Ajax/GetEntity', colModel, '#tablemenu', process,
-             //{ usedefalutpager: false, rp: 10, autoload: true, colResize: true, colMove: true, pager: "#pager" }); ;
-		sb.Append("})();");
+            sb.AppendFormat(@"$('#{0}').gridext('{1}',cols,'{2}',{3},",
+                this._gridId, data.ActionUrl,data.MenuId,data.MenuProcess??"null")
+                .Append("{");
+            if (data.EnableDefaultPager)
+                sb.Append("usedefalutpager:true,");
+            if (!string.IsNullOrEmpty(data.PageFilter))
+                sb.AppendFormat("pager:'{0}',", data.PageFilter);
+            if (data.EnableAutoLoad)
+                sb.Append("autoload:true,");
+            if (data.GridWidth > 0)
+                sb.AppendFormat("height:{0},", data.GridHeight);
+            if (!string.IsNullOrEmpty(data.GridTitle))
+                sb.AppendFormat("title:'{0}',", data.GridTitle);
+            if(data.ColMove)
+                sb.AppendFormat("colMove:true,", data.ColMove);
+            if (data.ColResize) 
+                sb.AppendFormat("colResize:true,", data.ColResize);
+            sb.AppendFormat("rp:{0}", data.PageSize).Append("});");
+            // $(".table1").gridext('Ajax/GetEntity', colModel, '#tablemenu', process,
+            //{ colResize: true, colMove: true}); ;
+            sb.Append("})();");
             //sb.AppendLine("searchitems:[");
 
             //count = 0;
@@ -141,26 +147,6 @@ namespace MvcHelper
             //    sb.AppendFormat(@"sortorder:""{0}""", data.DefaultSortOrder.GetDescription()).AppendLine();
             //}
 
-            //if (data.EnablePager)
-            //{
-            //    sb.AppendFormat(",{0}", Environment.NewLine);
-            //    sb.AppendFormat(@"usepager:{0}", data.EnablePager.ToString().ToLower());
-            //}
-
-            //if (!string.IsNullOrEmpty(data.GridTitle))
-            //{
-            //    sb.AppendFormat(",{0}", Environment.NewLine);
-            //    sb.AppendFormat(@"title:'{0}'", data.GridTitle);
-            //}
-
-            //if (data.EnableRecordsPerPage)
-            //{
-            //    sb.AppendFormat(",{0}", Environment.NewLine);
-            //    sb.AppendFormat(@"useRp:{0}", data.EnableRecordsPerPage.ToString().ToLower());
-            //    sb.AppendFormat(",{0}", Environment.NewLine);
-            //    sb.AppendFormat(@"rp:{0}", data.RecordsPerPage);
-            //}
-
             //if (data.EnableTableToggleButton)
             //{
             //    sb.AppendFormat(",{0}", Environment.NewLine);
@@ -179,8 +165,6 @@ namespace MvcHelper
             //    sb.AppendFormat(@"height:{0}", data.GridHeight);
             //    sb.AppendLine();
             //}
-
-            //sb.AppendLine("}").AppendLine(");").AppendLine();
             return sb.ToString();
         }
 
