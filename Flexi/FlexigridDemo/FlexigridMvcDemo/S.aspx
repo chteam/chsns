@@ -12,34 +12,74 @@
 	<script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
 
 	<%
-		} %>
+		} %><link href="Content/Site.css" rel="stylesheet" type="text/css" />
 	<script src="Scripts/menu/contextmenu.pack.js" type="text/javascript"></script>
-	<script src="Scripts/flexigrid/flexigrid.pack.js" type="text/javascript"></script>
+	<script src="Scripts/flexigrid/flexigrid.js" type="text/javascript"></script>
 	<link href="Content/flexigrid/flexigrid.css" rel="stylesheet" type="text/css" />
 	<link href="Content/menu/cm_default/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        var process = {
+            add: function (d) {
+                alert(d.row.id);
+            }
+        };
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
   <%= new FlexiGridSettings<FlexigridMvcDemo.Models.UserInfo>()
-           .Name("flex1")
-           .UpdateAction("/Ajax/GetEntity")
+      .TableId("flex1")
+                 .Action("/Ajax/GetEntity")
            .Columns(col => 
                {
-                   col.Bind(e => e.Id).Title("Id");
-                   col.Bind(e => e.Name).Width(180).Title("Name").Sortable().Align(FlexiGridAlign.Left);
-                   col.Bind(e => e.Email).Title("email");
-                   col.Bind(e => e.Age).Width(180).Title("Age").Sortable().Align(FlexiGridAlign.Right); ;
+                   col.Bind(e => e.Id, "Id").Hide();
+                   col.Bind(e => e.Name, "Name",180,true).Align(FlexiGridAlign.Left);
+                   col.Bind(e => e.Email).Width(20).Title("email");
+                   col.Bind(e => e.Age).Width(180).Title("Age").Sortable().Align(FlexiGridAlign.Right);
                })
-            .DefaultSortOption("Id", FlexiGridSortOrder.Ascending)
-            .UsePager()
+            //.DefaultSortOption("Id", FlexiGridSortOrder.Ascending)
             .Title("Employees")
-            .RecordsPerPageOption(true, 15)
-            .ShowTableToggleButton(false)
-            .Width(800)
-            .Height(200) %>
-
+            .SetPageSize(10)
+            .ColumnsMove()
+            .ColumnsResize()
+                        //  .ContextMenu("#tablemenu","process")
+           // .ShowTableToggleButton(false)
+           // .Width(800)
+            //.Height(200)
+            .AutoLoad().SetPager() 
+%>
+	<ul id="tablemenu" class="jeegoocontext cm_default">
+		<li id="add">随机添加一条数据</li>
+		<li id="remove">删除此条</li>
+		<li id="reload">刷新</li>
+		<li id="fourp">4页</li>
+		<li id="al5">all
+			<ul>
+				<li>1111</li>
+				<li>222</li>
+				<li>333</li>
+			</ul>
+		</li>
+	</ul>
     </div>
+
+      <%= new FlexiGridSettings<System.Data.DataRow>()
+          .TableId("flex2")
+          .Action("/Ajax/GetEntity")
+          .Columns(col => 
+               {
+                   col.Bind("Id", "编号").Hide();
+                   col.Bind("Name", "名称",180,true).Align(FlexiGridAlign.Left);
+                   col.Bind("Email").Width(20).Title("邮箱");
+                   col.Bind("Age").Width(180).Title("年龄").Sortable().Align(FlexiGridAlign.Right);
+               })
+              //  .SetPager(".page") 
+          .SetPageSize(2)
+          .AutoLoad()
+        
+%>
+
     </form>
 </body>
 </html>

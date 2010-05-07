@@ -26,23 +26,22 @@
             url: false, //ajax url
             method: 'POST', // data sending method
             dataType: 'json', // type of data loaded 
-            errormsg: 'Connection Error',
+            errormsg: '\u8fde\u63a5\u9519\u8bef',
             usepager: false, //
             nowrap: true, //
             page: 1, //current page
             total: 1, //total pages
             useRp: false, //use the results per page select box
             rp: 20, // results per page
-            rpOptions: [10], //, 15, 20, 25, 40],
-            title: false,
-            pagestat: 'Displaying {from} to {to} of {total} items',
+           // rpOptions: [10], //, 15, 20, 25, 40],
+            pagestat: '\u5f53\u524d\u4e3a {from} - {to} \u6761 \u5171 {total} \u6761',
             // pagetext: 'Page',
             // outof: 'of',
             // findtext: 'Find',
-            procmsg: 'Processing, please wait ...',
+            procmsg: '\u8f7d\u5165\u4e2d\uff0c\u8bf7\u7a0d\u5019...',
             //query: '',
             // qtype: '',
-            nomsg: 'No items',
+            nomsg: '\u5f53\u524d\u65e0\u8bb0\u5f55',
             minColToggle: 1, //minimum allowed column to be hidden
             showToggleBtn: false, //show or hide column toggle popup
             hideOnSubmit: true,
@@ -557,7 +556,7 @@
                         if (p.page - 2 > 1) {
                             page.append(getPage(1, '< <')).append(breakspan);
                         }
-                        page.append(getPage(p.page - 1, "< Preview"));
+                        page.append(getPage(p.page - 1, "< \u4e0a\u4e00\u9875"));
                     }
                     for (var i = 2; i <= 6; i++) {
                         if ((p.page + i - 4) >= 1 && (p.page + i - 4) <= p.pages) {
@@ -569,7 +568,7 @@
                         }
                     }
                     if (p.page < p.pages) {
-                        page.append(getPage(1 + p.page, "Next >"));
+                        page.append(getPage(1 + p.page, "\u4e0b\u4e00\u9875 >"));
                         if (p.page + 2 < p.pages) {
                             page.append(breakspan).append(getPage(p.pages, "> >"));
                         }
@@ -1137,7 +1136,7 @@
             g.pDiv.className = 'pDiv';
             g.pDiv.innerHTML = '<div class="pDiv2"></div>';
             $(g.bDiv).after(g.pDiv);
-            var html = ' <div class="pGroup"><div class="pFirst pButton"><span></span></div><div class="pPrev pButton"><span></span></div> </div> <div class="btnseparator"></div> <div class="pGroup"><span class="pcontrol">Page <input type="text" size="4" value="1" /> of <span> 1 </span></span></div> <div class="btnseparator"></div> <div class="pGroup"> <div class="pNext pButton"><span></span></div><div class="pLast pButton"><span></span></div> </div> <div class="btnseparator"></div> <div class="pGroup"> <div class="pReload pButton"><span></span></div> </div> <div class="btnseparator"></div> <div class="pGroup"><span class="pPageStat"></span></div>';
+            var html = ' <div class="pGroup"><div class="pFirst pButton"><span></span></div><div class="pPrev pButton"><span></span></div> </div> <div class="btnseparator"></div> <div class="pGroup"><span class="pcontrol">\u5f53\u524d\u7b2c <input type="text" size="4" value="1" />  \u9875\u5171 <span> 1 </span>\u9875</span></div> <div class="btnseparator"></div> <div class="pGroup"> <div class="pNext pButton"><span></span></div><div class="pLast pButton"><span></span></div> </div> <div class="btnseparator"></div> <div class="pGroup"> <div class="pReload pButton"><span></span></div> </div> <div class="btnseparator"></div> <div class="pGroup"><span class="pPageStat"></span></div>';
             $('div', g.pDiv).html(html);
 
             $('.pReload', g.pDiv).click(function () { g.populate() });
@@ -1472,19 +1471,20 @@
     }; //end noSelect
 
 
-    $.fn.gridext = function (loadUrl, colModel, menuId, menuProcess, params) {
+    $.fn.gridext = function (loadUrl, colModel, menuId, menuProcess, ps) {
         var obj = $(this);
         obj.flexigrid({
-            usepager: params.usedefalutpager,
+            title: ps.title,
+            usepager: ps.usedefalutpager,
             url: loadUrl,
             colModel: colModel,
-            rp: params.rp,
-            autoload: params.autoload,
-            height: params.height,
-            colMove: params.colMove,
-            colresize: params.colResize,
-            minheight: params.minheight == null ? 80 : params.minheight,
-            pager: params.pager == null ? ".page" : params.pager,
+            rp: ps.rp,
+            autoload: ps.autoload,
+            height: ps.height,
+            colMove: ps.colMove,
+            colresize: ps.colResize,
+            minheight: ps.minheight == null ? 80 : ps.minheight,
+            pager: ps.pager == null ? ".page" : ps.pager,
             onSuccess: function () {
                 if (!$.fn.chmenu || !menuProcess) return;
                 var showtr;
