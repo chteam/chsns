@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
+using RenRen;
 
 namespace MythBusters
 {
@@ -21,14 +23,23 @@ namespace MythBusters
 				"{controller}/{action}/{id}", // URL with parameters
 				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 			);
-
 		}
 
 		protected void Application_Start()
 		{
 			AreaRegistration.RegisterAllAreas();
-
 			RegisterRoutes(RouteTable.Routes);
 		}
+        protected void Application_AuthorizeRequest(object sender, System.EventArgs e)
+        {
+            string cookieName = FormsAuthentication.FormsCookieName;
+            var authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (null == authCookie) return;
+            var authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+            if (null == authTicket) return;
+            string[] fields = authTicket.Name.Split(new char[] { ',' });
+            var pri = new RenRenPrincipal(Convert.ToInt64(fields[0]), fields[1], fields[2]);
+            Context.User = pri; 
+        }
 	}
 }
