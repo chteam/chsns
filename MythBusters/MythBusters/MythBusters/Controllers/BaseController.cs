@@ -19,6 +19,6 @@ namespace MythBusters.Controllers
                 "26e76666962147549ee365330b692b96",
 						 Request.QueryString["xn_sig_session_key"], this);
 		}
-
+        protected  override 
     }
 }
