@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace MythBusters.Controllers
 {
 	[HandleError]
-	public class HomeController : Controller
+	public class HomeController : BaseController
 	{
 		public ActionResult Index()
 		{
