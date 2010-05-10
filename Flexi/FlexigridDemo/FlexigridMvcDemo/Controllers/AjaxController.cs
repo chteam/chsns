@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using System.Web.UI.MobileControls;
 using FlexigridMvcDemo.Models;
 using MvcHelper;
+using System.Data.Objects;
 
 namespace FlexigridMvcDemo.Controllers
 {
@@ -34,14 +35,24 @@ namespace FlexigridMvcDemo.Controllers
         }
         public ActionResult GetEntity(int? page, int? rp, string sortname, string sortorder)
         {
-            object json;
+            PagedList<UserInfo> json;
             using (var t1 = new Models.TEST1Entities())
             {
-                var list = t1.UserInfo.OrderBy(c => c.Id).Pager(page??1, rp??10);
+                var list1 = t1.UserInfo.OrderBy(c=>c.Id);
+                //var t = (list1 as ObjectQuery).ToTraceString();
+                var list=list1.Pager(page??1, rp??10);
             //    var t = new PagedList<object[]>(list.Select(), page??1, 10, list.TotalCount);
-                json = list
-                    .ToFlexigridObject(c => new object[] { c.Id, c.Name.Substring(1), c.Email, c.Age });
+                json = list;
+                    //.ToFlexigridObject(c => new object[] { c.Id, c.Name.Substring(1), c.Email, c.Age });
             }
+            var data = new FlexGridData<UserInfo>(
+                json, page ?? 1, 
+                json.TotalCount,
+                c => c.Id, 
+                x => { 
+                    x.Add(c=>c.
+            
+            });
             return Json(json);
         }
         public ActionResult Remove(int id)

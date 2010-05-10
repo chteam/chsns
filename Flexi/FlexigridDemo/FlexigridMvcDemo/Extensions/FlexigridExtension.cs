@@ -12,8 +12,10 @@ namespace FlexigridMvcDemo
 {
     public static class FlexigridExtension
     {
-        public static Hashtable ToFlexigridObject<T>(this PagedList<T> list, Func<T, object[]> func)
+        public static Hashtable ToFlexigridObject<T>(this PagedList<T> list, Func<T, object[]> func) where  T:class
         {
+            var dataCollection = new FlexiGridModelProperties<T>();
+            var x = dataCollection.ProperyItem;
             //var text = t.Select(c => c.Name);
             var rowList = new List<Hashtable>();
             var json = new Hashtable{ 
@@ -48,6 +50,7 @@ namespace FlexigridMvcDemo
                                      {"total", total},
                                      {"rows", rowList}
                                  };
+            
             rows.ToList().ForEach(c => rowList.Add(new Hashtable
                                                        {
                                                            {"id", c[primayKey].ToString()},
