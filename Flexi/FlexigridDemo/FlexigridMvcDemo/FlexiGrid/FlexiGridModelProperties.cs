@@ -26,9 +26,10 @@ namespace MvcHelper
 
         #region Public Methods
 
-        public void Add(Expression<Func<T, object>> item)
+        public FlexiGridModelProperties<T> Add(Expression<Func<T, object>> item)
         {
             this.ProperyItem.Add(item.Compile());
+            return this;
         }
 
         #endregion
