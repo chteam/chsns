@@ -113,7 +113,7 @@ namespace FlexigridDemoTest
             Assert.AreEqual(1, data.page);
             Assert.AreEqual(10, data.rows.Count);
             //Assert.AreEqual("Id",data.rows[0].id);
-            Assert.Inconclusive(string.Join(",",data.rows[0].cell));
+         //   Assert.Inconclusive(string.Join(",",data.rows[0].cell));
             Assert.AreEqual(6, data.rows[0].cell.Count);
         }
         /// <summary>
