@@ -24,7 +24,7 @@
 <body>
 	<form id="form1" runat="server">
 	<div>
-		<table  class="table22">
+		<%--<table  class="table22">
 			<thead>
 				<tr>
 					<th width="50">
@@ -58,7 +58,7 @@
 				<%
 					} %>
 			</tbody>
-		</table>
+		</table>--%>
 		<br />
 		<input name="name" type="text" class="filter" />
 		<input name="email" type="text" class="filter" />
@@ -73,7 +73,7 @@
 	</form>
 
 	<script type="text/javascript">
-		$(".table22").flexigrid();
+	//	$(".table22").flexigrid();
 		function search() {
 			$('.table1').flexGetPage(1, $(".filter").serializeArray());
 		}

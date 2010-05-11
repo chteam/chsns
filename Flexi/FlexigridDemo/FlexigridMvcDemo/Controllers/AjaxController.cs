@@ -29,8 +29,13 @@ namespace FlexigridMvcDemo.Controllers
             var ds = new DataSet();
             ad.Fill(ds, "UserInfo");
             var pager = ds.Tables[0].AsEnumerable().Pager(page ?? 1, rp ?? 20);
-            
-            var json  = pager.ToFlexigridObject(page ?? 1, pager.TotalCount, "id");
+
+            var json = pager.ToList().ToFlexigridObject(page ?? 1, pager.TotalCount, c => c["id"], x => {
+                x.Add(t => t["id"])
+                    .Add(c => c["email"])
+                    .Add(c => c["name"])
+                        .Add(c => c["age"]);
+            });
             return Json(json);
         }
         public ActionResult GetEntity(int? page, int? rp, string sortname, string sortorder)
@@ -45,15 +50,15 @@ namespace FlexigridMvcDemo.Controllers
                 json = list;
                     //.ToFlexigridObject(c => new object[] { c.Id, c.Name.Substring(1), c.Email, c.Age });
             }
-            var data = new FlexGridData<UserInfo>(
-                json, page ?? 1, 
-                json.TotalCount,
-                c => c.Id, 
-                x => { 
-                    x.Add(c=>c.
-            
+            var data = json.ToFlexigridObject(c => c.Id, 
+                x => {
+                    x.Add(c => c.Id)
+                    .Add(c => c.Email)
+                    .Add(c => c.Name)
+                    .Add(c => c.Age)
+                    .Add(c => 1);
             });
-            return Json(json);
+            return Json(data);
         }
         public ActionResult Remove(int id)
         {
