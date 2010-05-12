@@ -16,6 +16,7 @@
 
 	<%
 		} %>
+        <script src="Scripts/tmpl/jquery.tmpl.js" type="text/javascript"></script>
 	<script src="Scripts/menu/contextmenu.pack.js" type="text/javascript"></script>
 	<script src="Scripts/flexigrid/flexigrid.js" type="text/javascript"></script>
 	<link href="Content/flexigrid/flexigrid.css" rel="stylesheet" type="text/css" />
@@ -80,35 +81,31 @@
 	</script>
 
 	<script type="text/javascript">
+	    var process = {
+	        add: function (d) {
+	            $.post('Ajax/Add', {}, function (r) { if (r == "") d.sender.flexReload(); });
+	        },
+	        remove: function (d) {
+	            $.post('Ajax/Remove', { 'id': d.row.id }, function (r) { if (r == "") d.sender.flexReload(); });
+	        },
+	        reload: function (d) {
+	            d.sender.flexReload();
+	        },
+	        fourp: function (d) {
+	            d.sender.flexGetPage(4, { a: 1, b: 2 });
+	        }
+	    };
 		(function () {
 		    var colModel = [
 				{ display: '编号', name: 'id', width: 40, sortable: true, align: 'center' },
 				{ display: '姓名', name: 'name', width: 180, sortable: false, align: 'left' },
 				{ display: '邮件', name: 'email', width: 120, sortable: false, align: 'left' },
 				{ display: '年龄', name: 'age', width: 130, sortable: false, align: 'left'
-				}, { display: '操作', name: 'numcode', width: 80, align: 'right', process: function (e, c) {
-				    $(e).html(
-					$("<input value='2212' type='button' height=14/>").click(function () {
-					    $.post('Ajax/Remove', { 'id': $(".table1").flexGetData(c).id }, function (r) { if (r == "") $(".table1").flexReload(); });
-					}));
-				    // $(".table1").flexGetData(c).id);
-				}
-				}
+				}, { display: '操作', name: 'numcode', width: 80, align: 'right',
+process:function(e,c){$(e).html("").append('<span style="color:red"> ${name} - ${age} </span>', c);}
+                	}
 				];
-		    var process = {
-		        add: function (d) {
-		            $.post('Ajax/Add', {}, function (r) { if (r == "") d.sender.flexReload(); });
-		        },
-		        remove: function (d) {
-		            $.post('Ajax/Remove', { 'id': d.row.id }, function (r) { if (r == "") d.sender.flexReload(); });
-		        },
-		        reload: function (d) {
-		            d.sender.flexReload();
-		        },
-		        fourp: function (d) {
-		            d.sender.flexGetPage(4, { a: 1, b: 2 });
-		        }
-		    };
+		    
 		    $(".table1").gridext('Ajax/GetEntity', colModel, '#tablemenu', process,
 			 { usedefalutpager: false, rp: 10, autoload: true, colResize: true, colMove: true, pager: "#pager" }); ;
 		})();
@@ -130,5 +127,26 @@
 			</ul>
 		</li>
 	</ul>
+
+     <table id="flex1" style="display:none;">
+ 
+</table><script type="text/javascript">
+            (function () {
+                var cols = [
+              { display: '编号', name: 'id', width: 40, sortable: true, align: 'center' },
+				{ display: '姓名', name: 'name', width: 180, sortable: false, align: 'left' },
+				{ display: '邮件', name: 'email', width: 120, sortable: false, align: 'left' },
+				{ display: '年龄', name: 'age', width: 130, sortable: false, align: 'left'
+				}, 
+{ name: 'numcode',
+    process: function (e, c) {
+        $(e).html("").append('<span style=\'color:red\'> ${name} </span>', c);
+    }
+ , display: 'Age'}];
+$("#flex1").gridext('Ajax/GetEntity', cols, '#tablemenu', process,
+			 { usedefalutpager: false, rp: 10, autoload: true, colResize: true, colMove: true, pager: "#pager" }); ;
+})();
+</script>
+
 </body>
 </html>

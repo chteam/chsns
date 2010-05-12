@@ -11,7 +11,7 @@
         internal int ColumnWidth { get; private set; }
 
         internal bool ColumnHidden { get; private set; }
-
+        internal string ColumnTemplate { get; private set; }
         /// <summary>
         /// 设置当前列的宽度 未指定的情况下将置为100
         /// </summary>
@@ -74,9 +74,10 @@
         /// 为当前列设置显示模板
         /// </summary>
         /// <returns></returns>
-        public FlexigridColumnSettings Process()
+        public FlexigridColumnSettings Process(string template)
         {
             //todo : 设置模板
+            ColumnTemplate = template;
             return this;
         }
     }
