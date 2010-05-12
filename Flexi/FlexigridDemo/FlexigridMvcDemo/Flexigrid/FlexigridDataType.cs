@@ -3,8 +3,8 @@
     public enum FlexigridDataType
     {
         [Description("json")]
-        JSON = 0,
+        Json = 0,
         [Description("xml")]
-        XML
+        Xml
     }
 }

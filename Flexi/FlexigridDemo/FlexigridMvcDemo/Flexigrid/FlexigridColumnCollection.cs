@@ -14,55 +14,64 @@ namespace MvcHelper
         #endregion
 
         #region Bind
+
         public FlexigridColumnSettings Bind(Expression<Func<T, object>> action, string title, int width, bool sortable)
         {
             return Bind(action).Title(title).Width(width).Sortable();
         }
+
         public FlexigridColumnSettings Bind(Expression<Func<T, object>> action, string title)
         {
             return Bind(action).Title(title);
         }
-        public FlexigridColumnSettings Bind(Expression<Func<T, object>> action,string title,int width)
+
+        public FlexigridColumnSettings Bind(Expression<Func<T, object>> action, string title, int width)
         {
             return Bind(action).Title(title).Width(width);
         }
+
         public FlexigridColumnSettings Bind(Expression<Func<T, object>> action)
         {
             var expression = RemoveUnary(action.Body) as MemberExpression;
-            if (expression == null)     throw new ArgumentException("Invalid column binding");
+            if (expression == null) throw new ArgumentException("非法的使用Bind方法，当前表达式不可解析");
             return Bind(expression.Member.Name);
         }
+
         //--
         public FlexigridColumnSettings Bind(string bindField, string title, int width, bool sortable)
         {
             return Bind(bindField).Title(title).Width(width).Sortable();
         }
+
         public FlexigridColumnSettings Bind(string bindField, string title)
         {
             return Bind(bindField).Title(title);
         }
+
         public FlexigridColumnSettings Bind(string bindField, string title, int width)
         {
             return Bind(bindField).Title(title).Width(width);
         }
+
         public FlexigridColumnSettings Bind(string bindField)
         {
             var column = new FlexigridColumn<T>(bindField);
-            this._columns.Add(column);
+            _columns.Add(column);
             return column.ColumnSettings;
         }
+
         #endregion
 
         #region Implementation of IEnumerable
 
         public IEnumerator<FlexigridColumn<T>> GetEnumerator()
         {
-            return this._columns.GetEnumerator();
+            return _columns.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
 
         #endregion
@@ -71,32 +80,32 @@ namespace MvcHelper
 
         public void Add(FlexigridColumn<T> item)
         {
-            this._columns.Add(item);
+            _columns.Add(item);
         }
 
         public void Clear()
         {
-            this._columns.Clear();
+            _columns.Clear();
         }
 
         public bool Contains(FlexigridColumn<T> item)
         {
-            return this._columns.Contains(item);
+            return _columns.Contains(item);
         }
 
         public void CopyTo(FlexigridColumn<T>[] array, int arrayIndex)
         {
-            this._columns.CopyTo(array, arrayIndex);
+            _columns.CopyTo(array, arrayIndex);
         }
 
         public bool Remove(FlexigridColumn<T> item)
         {
-            return this._columns.Remove(item);
+            return _columns.Remove(item);
         }
 
         public int Count
         {
-            get { return this._columns.Count; }
+            get { return _columns.Count; }
         }
 
         public bool IsReadOnly
@@ -111,12 +120,7 @@ namespace MvcHelper
         private static Expression RemoveUnary(Expression body)
         {
             var uniary = body as UnaryExpression;
-            if (uniary != null)
-            {
-                return uniary.Operand;
-            }
-
-            return body;
+            return uniary != null ? uniary.Operand : body;
         }
 
         #endregion
