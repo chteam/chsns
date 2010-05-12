@@ -7,6 +7,7 @@
 * and GPL (GPL-LICENSE.txt) licenses.
 *
 * $Date: 2008-07-14 00:09:43 +0800 (Tue, 14 Jul 2008) $
+* http://bbs.eice.com.cn/ue/list.aspx 2010-5-12
 */
 
 (function ($) {
@@ -33,7 +34,7 @@
             total: 1, //total pages
             useRp: false, //use the results per page select box
             rp: 20, // results per page
-           // rpOptions: [10], //, 15, 20, 25, 40],
+            // rpOptions: [10], //, 15, 20, 25, 40],
             pagestat: '\u5f53\u524d\u4e3a {from} - {to} \u6761 \u5171 {total} \u6761',
             // pagetext: 'Page',
             // outof: 'of',
@@ -83,11 +84,8 @@
                                 var ppos = cdpos;
                                 if (cdleft == 0)
                                     cdleft -= Math.floor(p.cgwidth / 2);
-
                                 cdpos = cdpos + cdleft + cdpad;
-
                                 $('div:eq(' + n + ')', g.cDrag).css({ 'left': cdpos + 'px' }).show();
-
                                 cdleft = cdpos;
                             }
                             );
@@ -788,7 +786,7 @@
 
                 th.innerHTML = cm.display;
 
-                if (cm.name && cm.sortable)
+                if (cm.  && cm.sortable)
                     $(th).attr('abbr', cm.name);
 
                 //th.idx = i;
@@ -798,8 +796,7 @@
                 if (cm.align)
                     th.align = cm.align;
 
-                if (cm.width)
-                    $(th).attr('width', cm.width);
+                $(th).attr('width', cm.width ? cm.width : 100);
 
                 if (cm.hide) {
                     th.hide = true;
