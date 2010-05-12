@@ -7,7 +7,6 @@
 * and GPL (GPL-LICENSE.txt) licenses.
 *
 * $Date: 2008-07-14 00:09:43 +0800 (Tue, 14 Jul 2008) $
-* http://bbs.eice.com.cn/ue/list.aspx 2010-5-12
 */
 
 (function ($) {
@@ -796,7 +795,7 @@
                 if (cm.align)
                     th.align = cm.align;
 
-                $(th).attr('width', cm.width ? cm.width : 100);
+                $(th).attr('width', cm.width ? cm.width : '100px');
 
                 if (cm.hide) {
                     th.hide = true;
@@ -1468,6 +1467,10 @@
     }; //end noSelect
 
 
+
+})(jQuery);
+
+(function ($) {
     $.fn.gridext = function (loadUrl, colModel, menuId, menuProcess, ps) {
         var obj = $(this);
         obj.flexigrid({
