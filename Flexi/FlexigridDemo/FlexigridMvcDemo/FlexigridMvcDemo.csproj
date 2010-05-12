@@ -94,10 +94,10 @@
     <Compile Include="Extensions\JsonAdapter.cs" />
     <Compile Include="Extensions\PagedList.cs" />
     <Compile Include="Extensions\PagerExt.cs" />
-    <Compile Include="Flexigrid\DescriptionAttribute.cs" />
-    <Compile Include="Flexigrid\Extensions.cs" />
+    <Compile Include="Flexigrid\Attribute\DescriptionAttribute.cs" />
+    <Compile Include="Flexigrid\Attribute\Extensions.cs" />
+    <Compile Include="Flexigrid\Models\FlexgridBindModel.cs" />
     <Compile Include="Flexigrid\Models\FlexgridData.cs" />
-    <Compile Include="Flexigrid\FlexGridFetchOptions1.cs" />
     <Compile Include="Flexigrid\Models\FlexgridRowData.cs" />
     <Compile Include="Flexigrid\FlexigridAlign.cs" />
     <Compile Include="Flexigrid\FlexigridColumn.cs" />

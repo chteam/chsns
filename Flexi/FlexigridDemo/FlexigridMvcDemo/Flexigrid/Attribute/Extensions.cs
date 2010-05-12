@@ -2,7 +2,7 @@
 
 namespace MvcHelper
 {
-    public static class Extensions
+    public static class DescriptionAttributeExtensions
     {
         public static string GetDescription(this Enum enumeration)
         {
