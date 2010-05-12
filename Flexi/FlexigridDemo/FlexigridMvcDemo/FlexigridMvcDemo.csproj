@@ -96,9 +96,9 @@
     <Compile Include="Extensions\PagerExt.cs" />
     <Compile Include="Flexigrid\DescriptionAttribute.cs" />
     <Compile Include="Flexigrid\Extensions.cs" />
-    <Compile Include="Flexigrid\FlexgridData.cs" />
-    <Compile Include="Flexigrid\FlexGridFetchOptions.cs" />
-    <Compile Include="Flexigrid\FlexgridRowData.cs" />
+    <Compile Include="Flexigrid\Models\FlexgridData.cs" />
+    <Compile Include="Flexigrid\FlexGridFetchOptions1.cs" />
+    <Compile Include="Flexigrid\Models\FlexgridRowData.cs" />
     <Compile Include="Flexigrid\FlexigridAlign.cs" />
     <Compile Include="Flexigrid\FlexigridColumn.cs" />
     <Compile Include="Flexigrid\FlexigridColumnCollection.cs" />
