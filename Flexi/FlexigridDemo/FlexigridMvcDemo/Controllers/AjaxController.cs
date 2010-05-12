@@ -1,16 +1,9 @@
-﻿
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.MobileControls;
 using FlexigridMvcDemo.Models;
 using MvcHelper;
-using System.Data.Objects;
 
 namespace FlexigridMvcDemo.Controllers
 {
@@ -30,12 +23,12 @@ namespace FlexigridMvcDemo.Controllers
             ad.Fill(ds, "UserInfo");
             var pager = ds.Tables[0].AsEnumerable().Pager(page ?? 1, rp ?? 20);
 
-            var json = pager.ToList().ToFlexigridObject(page ?? 1, pager.TotalCount, c => c["id"], x => {
-                x.Add(t => t["id"])
-                    .Add(c => c["email"])
-                    .Add(c => c["name"])
-                        .Add(c => c["age"]);
-            });
+            var json = pager.ToList().ToFlexigridObject(page ?? 1, pager.TotalCount,
+                
+                c => c["id"], x => x.Add(t => t["id"])
+                                                                                                            .Add(c => c["email"])
+                                                                                                            .Add(c => c["name"])
+                                                                                                            .Add(c => c["age"]));
             return Json(json);
         }
         public ActionResult GetEntity(int? page, int? rp, string sortname, string sortorder)
@@ -43,21 +36,19 @@ namespace FlexigridMvcDemo.Controllers
             PagedList<UserInfo> json;
             using (var t1 = new Models.TEST1Entities())
             {
-                var list1 = t1.UserInfo.OrderBy(c=>c.Id);
+                var list1 = t1.UserInfo.OrderBy(c => c.Id);
                 //var t = (list1 as ObjectQuery).ToTraceString();
-                var list=list1.Pager(page??1, rp??10);
-            //    var t = new PagedList<object[]>(list.Select(), page??1, 10, list.TotalCount);
+                var list = list1.Pager(page ?? 1, rp ?? 10);
+                //    var t = new PagedList<object[]>(list.Select(), page??1, 10, list.TotalCount);
                 json = list;
-                    //.ToFlexigridObject(c => new object[] { c.Id, c.Name.Substring(1), c.Email, c.Age });
+                //.ToFlexigridObject(c => new object[] { c.Id, c.Name.Substring(1), c.Email, c.Age });
             }
             var data = json.ToFlexigridObject(c => c.Id, 
-                x => {
-                    x.Add(c => c.Id)
-                    .Add(c => c.Email)
-                    .Add(c => c.Name)
-                    .Add(c => c.Age)
-                    .Add(c => 1);
-            });
+                x => x.Add(c => c.Id)
+                         .Add(c => c.Email)
+                         .Add(c => c.Name)
+                         .Add(c => c.Age)
+                         .Add(c => 1));
             return Json(data);
         }
         public ActionResult Remove(int id)
