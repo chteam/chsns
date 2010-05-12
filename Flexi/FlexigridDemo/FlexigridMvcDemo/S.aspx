@@ -10,7 +10,6 @@
 	%>
 
 	<script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
-
 	<%
 		} %><link href="Content/Site.css" rel="stylesheet" type="text/css" />
 	<script src="Scripts/menu/contextmenu.pack.js" type="text/javascript"></script>
@@ -28,26 +27,27 @@
 <body>
     <form id="form1" runat="server">
     <div>
-  <%= new FlexiGridSettings<FlexigridMvcDemo.Models.UserInfo>()
+  <%= new FlexigridTableSettings<FlexigridMvcDemo.Models.UserInfo>()
       .TableId("flex1")
                  .Action("/Ajax/GetEntity")
            .Columns(col => 
                {
                    col.Bind(e => e.Id, "Id").Hide();
-                   col.Bind(e => e.Name, "Name",180,true).Align(FlexiGridAlign.Left);
+                   col.Bind(e => e.Name, "Name",180,true).Align(FlexigridAlign.Left);
                    col.Bind(e => e.Email).Width(20).Title("email");
-                   col.Bind(e => e.Age).Width(180).Title("Age").Sortable().Align(FlexiGridAlign.Right);
+                   col.Bind(e => e.Age).Width(180).Title("Age").Sortable().Align(FlexigridAlign.Right);
                })
             //.DefaultSortOption("Id", FlexiGridSortOrder.Ascending)
             .Title("Employees")
             .SetPageSize(10)
             .ColumnsMove()
             .ColumnsResize()
-                        //  .ContextMenu("#tablemenu","process")
+            //  .ContextMenu("#tablemenu","process")
            // .ShowTableToggleButton(false)
            // .Width(800)
             //.Height(200)
-            .AutoLoad().SetPager() 
+            .AutoLoad()
+              .SetPager() 
 %>
 	<ul id="tablemenu" class="jeegoocontext cm_default">
 		<li id="add">随机添加一条数据</li>
