@@ -64,15 +64,15 @@
 	</ul>
     </div>
 
-      <%= new FlexiGridSettings<System.Data.DataRow>()
+      <%= new FlexigridTableSettings<System.Data.DataRow>()
           .TableId("flex2")
           .Action("/Ajax/GetEntity")
           .Columns(col => 
                {
                    col.Bind("Id", "编号").Hide();
-                   col.Bind("Name", "名称",180,true).Align(FlexiGridAlign.Left);
+                   col.Bind("Name", "名称",180,true).Align(FlexigridAlign.Left);
                    col.Bind("Email").Width(20).Title("邮箱");
-                   col.Bind("Age").Width(180).Title("年龄").Sortable().Align(FlexiGridAlign.Right);
+                   col.Bind("Age").Width(180).Title("年龄").Sortable().Align(FlexigridAlign.Right);
                })
               //  .SetPager(".page") 
           .SetPageSize(2)
