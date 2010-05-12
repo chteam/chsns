@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace MvcHelper
 {
@@ -7,9 +8,7 @@ namespace MvcHelper
         public static string GetDescription(this Enum enumeration)
         {
             Type type = enumeration.GetType();
-
-            var memInfo = type.GetMember(enumeration.ToString());
-
+            MemberInfo[] memInfo = type.GetMember(enumeration.ToString());
             if (memInfo != null && memInfo.Length > 0)
             {
                 var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
@@ -19,7 +18,6 @@ namespace MvcHelper
                     return ((DescriptionAttribute)attrs[0]).Text;
                 }
             }
-
             return enumeration.ToString();
         }
     }
