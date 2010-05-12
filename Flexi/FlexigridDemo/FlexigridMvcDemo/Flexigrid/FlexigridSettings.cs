@@ -5,9 +5,9 @@
     {
         public override string ToString()
         {
-            return this.Render();
+            return Render();
         }
-        private string Render()
+        private static string Render()
         {
             return string.Empty;
         }

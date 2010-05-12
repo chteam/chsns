@@ -1,83 +1,83 @@
-﻿using System;
-
-namespace MvcHelper
+﻿namespace MvcHelper
 {
     public class FlexigridColumnSettings
     {
-        #region Private fields
+        internal FlexigridAlign ColumnAlignment { get; private set; }
 
-        private int _width;
+        internal bool ColumnSortable { get; private set; }
 
-        private string _title;
+        internal string ColumnTitle { get; private set; }
 
-        private bool _sortable;
+        internal int ColumnWidth { get; private set; }
 
-        private FlexigridAlign _align;
-        bool _hide;
-        #endregion
+        internal bool ColumnHidden { get; private set; }
 
-        #region Public Properties
-
-        internal FlexigridAlign ColumnAlignment
-        {
-            get { return this._align; }
-        }
-
-        internal bool ColumnSortable
-        {
-            get { return this._sortable; }
-        }
-
-        internal string ColumnTitle
-        {
-            get { return this._title; }
-        }
-
-        internal int ColumnWidth
-        {
-            get { return this._width; }
-        }
-        internal bool ColumnHidden { get { return _hide; } }
-        #endregion
-
-        #region Public Methods
-
+        /// <summary>
+        /// 设置当前列的宽度 未指定的情况下将置为100
+        /// </summary>
+        /// <param name="width"></param>
+        /// <returns></returns>
         public FlexigridColumnSettings Width(int width)
         {
-            this._width = width;
+            ColumnWidth = width;
             return this;
         }
-
+        /// <summary>
+        /// 设置当前列的标题
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
         public FlexigridColumnSettings Title(string title)
         {
-            this._title = title;
+            ColumnTitle = title;
             return this;
         }
-
+        /// <summary>
+        /// 设置为可排序
+        /// </summary>
+        /// <returns></returns>
         public FlexigridColumnSettings Sortable()
         {
-            this.Sortable(true);
+            Sortable(true);
             return this;
         }
-
+        /// <summary>
+        /// 设置当前列是否可排序
+        /// </summary>
+        /// <param name="sortable"></param>
+        /// <returns></returns>
         public FlexigridColumnSettings Sortable(bool sortable)
         {
-            this._sortable = sortable;
+            ColumnSortable = sortable;
             return this;
         }
-
+        /// <summary>
+        /// 设置当前列对齐方式
+        /// </summary>
+        /// <param name="align"></param>
+        /// <returns></returns>
         public FlexigridColumnSettings Align(FlexigridAlign align)
         {
-            this._align = align;
+            ColumnAlignment = align;
             return this;
         }
+        /// <summary>
+        /// 设置当前列为隐藏列
+        /// </summary>
+        /// <returns></returns>
         public FlexigridColumnSettings Hide()
         {
-            this._hide = true;
+            ColumnHidden = true;
             return this;
         }
-        #endregion
-
-  
+        /// <summary>
+        /// 为当前列设置显示模板
+        /// </summary>
+        /// <returns></returns>
+        public FlexigridColumnSettings Process()
+        {
+            //todo : 设置模板
+            return this;
+        }
     }
 }

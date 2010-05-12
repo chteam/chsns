@@ -6,35 +6,7 @@ namespace MvcHelper
     {
         #region Private Fields
 
-        private readonly FlexigridColumnCollection<T> _columns;
-
-        private string _gridId;
-
-        private string _actionUrl;
-
-        private FlexigridDataType _dataType;
-
-        private string _title;
-
-        bool _autoLoad;
-
-        private int _pageSize;
-
-        private bool _enableTableToggleButton = false;
-
-        private bool _enableDefaultPager;
-
-        string _pagerFilter;
-
-        private string _defaultSortField;
-
-        private FlexigridSortOrder _defaultSortOrder;
-
-        private int _width;
-
-        private int _height;
-
-        private IGridRenderer<FlexigridTableSettings<T>> _renderer;
+        private readonly IGridRenderer<FlexigridTableSettings<T>> _renderer;
 
         #endregion
 
@@ -42,87 +14,62 @@ namespace MvcHelper
 
         public FlexigridTableSettings()
         {
-            this._columns = new FlexigridColumnCollection<T>();
-            this._renderer = new FlexigridRenderer<T>();
+            MenuProcess = null;
+            MenuId = null;
+            EnableTableToggleButton = false;
+            GridColumns = new FlexigridColumnCollection<T>();
+            _renderer = new FlexigridRenderer<T>();
         }
 
         #endregion
 
         #region Public Properties
 
-        public int GridHeight
-        {
-            get { return this._height; }
-        }
+        public int GridHeight { get; private set; }
 
-        public int GridWidth
-        {
-            get { return this._width; }
-        }
+        public int GridWidth { get; private set; }
 
-        public FlexigridSortOrder DefaultSortOrder
-        {
-            get { return this._defaultSortOrder; }
-        }
+        public FlexigridSortOrder DefaultSortOrder { get; private set; }
 
-        public string DefaultSortField
-        {
-            get { return this._defaultSortField; }
-        }
+        public string DefaultSortField { get; private set; }
 
-        public string PageFilter { get { return _pagerFilter; } }
-        public bool EnableDefaultPager
-        {
-            get { return this._enableDefaultPager; }
-        }
+        public string PageFilter { get; private set; }
+
+        public bool EnableDefaultPager { get; private set; }
 
 
-        public bool EnableTableToggleButton
-        {
-            get { return this._enableTableToggleButton; }
-        }
+        public bool EnableTableToggleButton { get; private set; }
 
-        public int PageSize
-        {
-            get { return this._pageSize; }
-        }
+        public int PageSize { get; private set; }
 
 
+        public string GridTitle { get; private set; }
 
-        public string GridTitle
-        {
-            get { return this._title; }
-        }
+        public FlexigridDataType GridDataType { get; private set; }
 
-        public FlexigridDataType GridDataType
-        {
-            get { return this._dataType; }
-        }
+        public string ActionUrl { get; private set; }
 
-        public string ActionUrl
-        {
-            get { return this._actionUrl; }
-        }
+        public string GridId { get; private set; }
 
-        public string GridId
-        {
-            get { return this._gridId; }
-        }
-        public bool EnableAutoLoad { get { return _autoLoad; } }
-        public FlexigridColumnCollection<T> GridColumns
-        {
-            get { return this._columns; }
-        }
+        public bool EnableAutoLoad { get; private set; }
+
+        public FlexigridColumnCollection<T> GridColumns { get; private set; }
 
         #endregion
 
         #region Public Methods
 
+        /// <summary>
+        /// 设置要生成Table的Id
+        /// </summary>
+        /// <param name="elementId"></param>
+        /// <returns></returns>
         public FlexigridTableSettings<T> TableId(string elementId)
         {
-            this._gridId = elementId;
+            GridId = elementId;
             return this;
         }
+
         /// <summary>
         /// Flexigrid调用的数据源页面
         /// </summary>
@@ -130,15 +77,21 @@ namespace MvcHelper
         /// <returns></returns>
         public FlexigridTableSettings<T> Action(string actionUrl)
         {
-            this._actionUrl = actionUrl;
+            ActionUrl = actionUrl;
             return this;
         }
 
+        /// <summary>
+        /// 传递数据的类型 Xml 或 Json，默认为Json
+        /// </summary>
+        /// <param name="dataType"></param>
+        /// <returns></returns>
         public FlexigridTableSettings<T> DataType(FlexigridDataType dataType)
         {
-            this._dataType = dataType;
+            GridDataType = dataType;
             return this;
         }
+
         /// <summary>
         /// 设置FlexiGrid标题
         /// </summary>
@@ -146,18 +99,20 @@ namespace MvcHelper
         /// <returns></returns>
         public FlexigridTableSettings<T> Title(string title)
         {
-            this._title = title;
+            GridTitle = title;
             return this;
         }
+
         /// <summary>
         /// 允许自动加载
         /// </summary>
         /// <returns></returns>
         public FlexigridTableSettings<T> AutoLoad()
         {
-            this._autoLoad = true;
+            EnableAutoLoad = true;
             return this;
         }
+
         /// <summary>
         /// 设置每页容纳条数
         /// </summary>
@@ -165,7 +120,7 @@ namespace MvcHelper
         /// <returns></returns>
         public FlexigridTableSettings<T> SetPageSize(int pageSize)
         {
-            this._pageSize = pageSize;
+            PageSize = pageSize;
             return this;
         }
 
@@ -181,9 +136,10 @@ namespace MvcHelper
         /// <returns></returns>
         public FlexigridTableSettings<T> SetPager()
         {
-            this._enableDefaultPager = true;
+            EnableDefaultPager = true;
             return this;
         }
+
         /// <summary>
         /// 设置可分页并设定指定的分页元素
         /// </summary>
@@ -191,86 +147,109 @@ namespace MvcHelper
         /// <returns></returns>
         public FlexigridTableSettings<T> SetPager(string pagerFilter)
         {
-            this._enableDefaultPager = false;
-            this._pagerFilter = pagerFilter;
+            EnableDefaultPager = false;
+            PageFilter = pagerFilter;
             return this;
         }
+
+        /// <summary>
+        /// 默认排序的字段名，及排序方式
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public FlexigridTableSettings<T> DefaultSortOption(string fieldName, FlexigridSortOrder order)
         {
-            this._defaultSortField = fieldName;
-            this._defaultSortOrder = order;
+            DefaultSortField = fieldName;
+            DefaultSortOrder = order;
             return this;
         }
 
 
         /// <summary>
-        /// 设置列表的列项
+        /// 设置表格的列
         /// </summary>
         /// <param name="action"></param>
         /// <returns></returns>
         public FlexigridTableSettings<T> Columns(Action<FlexigridColumnCollection<T>> action)
         {
-            action(this._columns);
+            action(GridColumns);
             return this;
         }
 
+        /// <summary>
+        /// 设置表格宽度
+        /// </summary>
+        /// <param name="width"></param>
+        /// <returns></returns>
         public FlexigridTableSettings<T> Width(int width)
         {
-            this._width = width;
+            GridWidth = width;
             return this;
         }
 
+        /// <summary>
+        /// 设置表格高度
+        /// </summary>
+        /// <param name="height"></param>
+        /// <returns></returns>
         public FlexigridTableSettings<T> Height(int height)
         {
-            this._height = height;
+            GridHeight = height;
             return this;
         }
 
         public override string ToString()
         {
-            return this._renderer.Render(this);
+            return _renderer.Render(this);
         }
 
         #endregion
-        bool _colMove;
+
         /// <summary>
         /// 设置可移动列
         /// </summary>
-        public bool ColMove { get { return _colMove; } }
+        public bool ColMove { get; private set; }
+
         /// <summary>
         /// 设置可移动列
         /// </summary>
-        public FlexigridTableSettings<T>  ColumnsMove()
+        public FlexigridTableSettings<T> ColumnsMove()
         {
-            _colMove=true;
+            ColMove = true;
             return this;
         }
+
         /// <summary>
         /// 设置列可自定义大小 
         /// </summary>
-        public bool ColResize { get { return _colResize; } }
+        public bool ColResize { get; private set; }
 
-        bool _colResize { get; set; }
+
         /// <summary>
         /// 设置列可自定义大小 
         /// </summary>
         /// <returns></returns>
         public FlexigridTableSettings<T> ColumnsResize()
         {
-            _colResize = true;
+            ColResize = true;
             return this;
         }
 
-        string _menuId = null;
-        public string MenuId { get { return _menuId; } }
-        string _menuProcess = null;
-        public string MenuProcess { get { return _menuProcess; } }
+        public string MenuId { get; private set; }
+        public string MenuProcess { get; private set; }
+
+        /// <summary>
+        /// 设置右键菜单 
+        /// </summary>
+        /// <param name="menuId">菜单</param>
+        /// <param name="process">菜单 处理的JS</param>
+        /// <returns></returns>
         public FlexigridTableSettings<T> ContextMenu(string menuId, string process)
         {
-            _menuId = menuId;
-            _menuProcess = process;
+            MenuId = menuId;
+            MenuProcess = process;
             return this;
         }
-
     }
 }
