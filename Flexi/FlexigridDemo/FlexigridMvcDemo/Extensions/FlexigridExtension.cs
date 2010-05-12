@@ -12,17 +12,31 @@ namespace FlexigridMvcDemo
 {
     public static class FlexigridExtension
     {
-        public static FlexGridData<T> ToFlexigridObject<T>(this PagedList<T> list, Expression<Func<T, object>> key, Action<FlexiGridModelProperties<T>> properties) where T : class
+        /// <summary>
+        /// 生成Flexigrid所需的对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="key"></param>
+        /// <param name="properties"></param>
+        /// <returns></returns>
+        public static FlexgridData<T> ToFlexigridObject<T>(this PagedList<T> list, Expression<Func<T, object>> key, Action<FlexiGridModelProperties<T>> properties) where T : class
         {
-            var json = new FlexGridData<T>(
+            var json = new FlexgridData<T>(
                list, list.CurrentPage,
                list.TotalCount,
                key, properties);
             return json;
         }
-        public static FlexGridData<T> ToFlexigridObject<T>(this PagedList<T> list) where T : class
+        /// <summary>
+        /// 生成Flexigrid所需的对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static FlexgridData<T> ToFlexigridObject<T>(this PagedList<T> list) where T : class
         {
-            var json = new FlexGridData<T>(
+            var json = new FlexgridData<T>(
                list, list.CurrentPage,
                list.TotalCount);
             return json;
@@ -37,11 +51,21 @@ namespace FlexigridMvcDemo
 
         //    return body;
         //}
-        public static FlexGridData<DataRow> ToFlexigridObject(this IEnumerable<DataRow> rows, int page, int total, Expression<Func<DataRow, object>> key, Action<FlexiGridModelProperties<DataRow>> properties)
+
+        /// <summary>
+        /// 生成Flexigrid对象
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <param name="page"></param>
+        /// <param name="total"></param>
+        /// <param name="key"></param>
+        /// <param name="properties"></param>
+        /// <returns></returns>
+        public static FlexgridData<DataRow> ToFlexigridObject(this IEnumerable<DataRow> rows, int page, int total, Expression<Func<DataRow, object>> key, Action<FlexiGridModelProperties<DataRow>> properties)
         {
-            var json = new FlexGridData<DataRow>(
+            var json = new FlexgridData<DataRow>(
                 rows, page,
-               total,
+                total,
                 key, properties);
             return json;
         }
