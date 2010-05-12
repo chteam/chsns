@@ -785,7 +785,7 @@
 
                 th.innerHTML = cm.display;
 
-                if (cm.  && cm.sortable)
+                if (cm.name  && cm.sortable)
                     $(th).attr('abbr', cm.name);
 
                 //th.idx = i;
