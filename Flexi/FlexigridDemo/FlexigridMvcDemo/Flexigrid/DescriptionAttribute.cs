@@ -6,7 +6,7 @@ namespace MvcHelper
     {
         public DescriptionAttribute(string text)
         {
-            this.Text = text;
+            Text = text;
         }
 
         public string Text { get; set; }

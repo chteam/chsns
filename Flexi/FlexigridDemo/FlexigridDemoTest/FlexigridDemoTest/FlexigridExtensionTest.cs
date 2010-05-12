@@ -125,8 +125,8 @@ namespace FlexigridDemoTest
             PagedList<T> list = null; // TODO: Initialize to an appropriate value
             Expression<Func<T, object>> key = null; // TODO: Initialize to an appropriate value
             Action<FlexiGridModelProperties<T>> properties = null; // TODO: Initialize to an appropriate value
-            FlexGridData<T> expected = null; // TODO: Initialize to an appropriate value
-            FlexGridData<T> actual;
+            FlexgridData<T> expected = null; // TODO: Initialize to an appropriate value
+            FlexgridData<T> actual;
             actual = FlexigridExtension.ToFlexigridObject<T>(list, key, properties);
             Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
