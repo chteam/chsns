@@ -1,5 +1,4 @@
 ﻿using System;
-//using MVCControl.JQuery.Plugins.Core;
 
 namespace MvcHelper
 {
@@ -140,11 +139,11 @@ namespace MvcHelper
             this._dataType = dataType;
             return this;
         }
-         /// <summary>
-         /// 设置FlexiGrid标题
-         /// </summary>
-         /// <param name="title"></param>
-         /// <returns></returns>
+        /// <summary>
+        /// 设置FlexiGrid标题
+        /// </summary>
+        /// <param name="title"></param>
+        /// <returns></returns>
         public FlexigridTableSettings<T> Title(string title)
         {
             this._title = title;
@@ -251,7 +250,7 @@ namespace MvcHelper
         /// </summary>
         public bool ColResize { get { return _colResize; } }
 
-         bool _colResize { get; set; }
+        bool _colResize { get; set; }
         /// <summary>
         /// 设置列可自定义大小 
         /// </summary>
