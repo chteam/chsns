@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Web.UI;
 
@@ -9,7 +8,7 @@ namespace MvcHelper
     public class FlexigridRenderer<T> : IGridRenderer<FlexigridTableSettings<T>> where T : class
     {
 
-        private static int _gridIndex = 0;
+        private static int _gridIndex;
 
         private string _gridId = string.Empty;
 
@@ -17,7 +16,7 @@ namespace MvcHelper
 
         public string Render(FlexigridTableSettings<T> data)
         {
-            this.InitializeToDefaults(data);
+            InitializeToDefaults(data);
 
             using (var sw = new StringWriter())
             {
@@ -25,7 +24,7 @@ namespace MvcHelper
                 {
                     // Create a hidden table element
                     htmlWriter.AddStyleAttribute(HtmlTextWriterStyle.Display, "none");
-                    htmlWriter.AddAttribute(HtmlTextWriterAttribute.Id, this._gridId);
+                    htmlWriter.AddAttribute(HtmlTextWriterAttribute.Id, _gridId);
                     htmlWriter.RenderBeginTag(HtmlTextWriterTag.Table);
                     htmlWriter.RenderEndTag();
                     if (!data.EnableDefaultPager && !string.IsNullOrEmpty(data.PageFilter))
@@ -41,7 +40,7 @@ namespace MvcHelper
                     // Create the javascript tag.
                     htmlWriter.AddAttribute(HtmlTextWriterAttribute.Type, @"text/javascript");
                     htmlWriter.RenderBeginTag(HtmlTextWriterTag.Script);
-                    htmlWriter.Write(this.GenerateJavascript(data));
+                    htmlWriter.Write(GenerateJavascript(data));
                     htmlWriter.RenderEndTag();
                 }
 
@@ -52,7 +51,7 @@ namespace MvcHelper
         private void InitializeToDefaults(FlexigridTableSettings<T> data)
         {
             // If GridId is not specified, set a default value
-            this._gridId = string.IsNullOrEmpty(data.GridId)
+            _gridId = string.IsNullOrEmpty(data.GridId)
                                ? string.Format("FlexiGrid_{0}", _gridIndex++)
                                : data.GridId;
         }
@@ -60,21 +59,12 @@ namespace MvcHelper
 
         private string GenerateJavascript(FlexigridTableSettings<T> data)
         {
+            //todo : data type
             var sb = new StringBuilder();
-            sb.Append("(function(){");
-            //sb.AppendFormat(@"$(""#{0}"").flexigrid({{", this._gridId).AppendLine();
-
-            //if (!string.IsNullOrEmpty(data.ActionUrl))
-            //{
-            //    sb.AppendFormat("url:'{0}',", data.ActionUrl).AppendLine();
-            //}
-
-            //sb.AppendFormat("dataType:'{0}',", data.GridDataType.GetDescription()).AppendLine();
-
-            sb.Append("var cols=[");
-
+            sb.Append("(function(){").Append("var cols=[");
             int count = 0;
             int totalCount = data.GridColumns.Count;
+            //列
             foreach (FlexigridColumn<T> column in data.GridColumns)
             {
                 count++;
@@ -89,6 +79,13 @@ namespace MvcHelper
                     sb.AppendFormat("align:'{0}',", column.ColumnSettings.ColumnAlignment.GetDescription());
                 if (column.ColumnSettings.ColumnHidden)
                     sb.Append("hide:true,");
+                if (!string.IsNullOrEmpty(column.ColumnSettings.ColumnTemplate))
+                {
+                    sb.Append("process:function(e,c){")
+                        .AppendFormat("$(e).html(\"\").append('{0}',c);",
+                                      column.ColumnSettings.ColumnTemplate.Trim().Replace("'","\\'"))
+                        .Append("},");
+                }
                 sb.AppendFormat("display:'{0}'", column.ColumnSettings.ColumnTitle).Append("}");
                 if (count < totalCount)
                 {
@@ -97,7 +94,7 @@ namespace MvcHelper
             }
             sb.AppendLine("];");
             sb.AppendFormat(@"$('#{0}').gridext('{1}',cols,'{2}',{3},",
-                this._gridId, data.ActionUrl, data.MenuId, data.MenuProcess ?? "null")
+                _gridId, data.ActionUrl, data.MenuId, data.MenuProcess ?? "null")
                 .Append("{");
             if (data.EnableDefaultPager)
                 sb.Append("usedefalutpager:true,");
@@ -110,9 +107,9 @@ namespace MvcHelper
             if (!string.IsNullOrEmpty(data.GridTitle))
                 sb.AppendFormat("title:'{0}',", data.GridTitle);
             if (data.ColMove)
-                sb.AppendFormat("colMove:true,", data.ColMove);
+                sb.Append("colMove:true,");
             if (data.ColResize)
-                sb.AppendFormat("colResize:true,", data.ColResize);
+                sb.Append("colResize:true,");
             sb.AppendFormat("rp:{0}", data.PageSize).Append("});");
             // $(".table1").gridext('Ajax/GetEntity', colModel, '#tablemenu', process,
             //{ colResize: true, colMove: true}); ;
@@ -153,12 +150,6 @@ namespace MvcHelper
             //    sb.AppendFormat(@"width:{0}", data.GridWidth);
             //}
 
-            //if (data.GridWidth > 0)
-            //{
-            //    sb.AppendFormat(",{0}", Environment.NewLine);
-            //    sb.AppendFormat(@"height:{0}", data.GridHeight);
-            //    sb.AppendLine();
-            //}
             return sb.ToString();
         }
 

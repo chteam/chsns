@@ -13,6 +13,7 @@
 	<%
 		} %><link href="Content/Site.css" rel="stylesheet" type="text/css" />
 	<script src="Scripts/menu/contextmenu.pack.js" type="text/javascript"></script>
+    <script src="Scripts/tmpl/jquery.tmpl.js" type="text/javascript"></script>
 	<script src="Scripts/flexigrid/flexigrid.js" type="text/javascript"></script>
 	<link href="Content/flexigrid/flexigrid.css" rel="stylesheet" type="text/css" />
 	<link href="Content/menu/cm_default/style.css" rel="stylesheet" type="text/css" />
@@ -35,7 +36,9 @@
                    col.Bind(e => e.Id, "Id").Hide();
                    col.Bind(e => e.Name, "Name",180,true).Align(FlexigridAlign.Left);
                    col.Bind(e => e.Email).Width(20).Title("email");
-                   col.Bind(e => e.Age).Width(180).Title("Age").Sortable().Align(FlexigridAlign.Right);
+                   col.Bind(e => e.Age).Title("Age")
+                       .Process("<span style='color:red'> ${Name} - ${Id} </span>");
+                   
                })
             //.DefaultSortOption("Id", FlexiGridSortOrder.Ascending)
             .Title("Employees")
@@ -64,7 +67,7 @@
 	</ul>
     </div>
 
-      <%= new FlexigridTableSettings<System.Data.DataRow>()
+    <%--  <%= new FlexigridTableSettings<System.Data.DataRow>()
           .TableId("flex2")
           .Action("/Ajax/GetEntity")
           .Columns(col => 
@@ -79,7 +82,7 @@
           .AutoLoad()
         
 %>
-
+--%>
     </form>
 </body>
 </html>

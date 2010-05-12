@@ -7,6 +7,7 @@
 * and GPL (GPL-LICENSE.txt) licenses.
 *
 * $Date: 2008-07-14 00:09:43 +0800 (Tue, 14 Jul 2008) $
+* edit by zoujian http://chsword.cnblogs.com http://bbs.eice.com.cn/ue/list.aspx
 */
 
 (function ($) {
@@ -662,6 +663,23 @@
                     this.populate();
 
             },
+            getRow: function (key) {
+                if (key.indexOf('row') == -1 && !isNaN(key))
+                    key = 'row' + key;
+                var ret; var ret2 = {};
+                if (g) {
+                    ret = p.rows[key];
+                    ret2 = {};
+                    if (ret) {
+                        for (var i = 0; i < p.colModel.length; i++) {
+                            var n = p.colModel[i];
+                            if (i < ret.length)
+                                ret2[n.name] = ret[i];
+                        }
+                    }
+                }
+                return ret2;
+            },
             addCellProp: function () {
 
                 $('tbody tr td', g.bDiv).each
@@ -694,13 +712,11 @@
 
                             if (pth != null) {
                                 if (pth.process)
-                                    pth.process(tdDiv, pid);
+                                //pth.process(tdDiv, pid);
+                                    pth.process(tdDiv, g.getRow(prnt.id));
                             }
-
                             $(this).empty().append(tdDiv).removeAttr('width'); //wrap content
-
-                            //add editable event here 'dblclick'
-
+                             //add editable event here 'dblclick'
                         }
                     );
 
@@ -717,6 +733,7 @@
                 var pdt = parseInt($(obj).css('paddingTop'));
                 return { ht: ht, wt: wt, top: top, left: left, pdl: pdl, pdt: pdt, pht: pht, pwt: pwt };
             },
+
             addRowProp: function () {
                 $('tbody tr', g.bDiv).each
                     (
@@ -785,7 +802,7 @@
 
                 th.innerHTML = cm.display;
 
-                if (cm.name  && cm.sortable)
+                if (cm.name && cm.sortable)
                     $(th).attr('abbr', cm.name);
 
                 //th.idx = i;
@@ -1357,7 +1374,6 @@
         if (p.url && p.autoload) {
             g.populate();
         }
-
         return t;
 
     };
@@ -1402,26 +1418,13 @@
     $.fn.flexGetPage = function (page, data) {
         return this.flexOptions({ newp: page, params: data }).flexReload();
     };
+
     $.fn.flexGetData = function (key) {
-        if (key.indexOf('row') == -1 && !isNaN(key))
-            key = 'row' + key;
-
-        var ret; var ret2 = {};
         this.each(function () {
-            if (this.grid) {
-                ret = this.p.rows[key];
-                ret2 = {};
-                if (ret) {
-                    for (var i = 0; i < this.p.colModel.length; i++) {
-                        var n = this.p.colModel[i];
-                        if (i < ret.length)
-                            ret2[n.name] = ret[i];
-                    }
-                }
-            }
+            if (this.grid)
+                return this.grid.getRow(key);
         });
-
-        return ret2;
+        return {};
     };
     $.fn.flexToggleCol = function (cid, visible) { // function to reload grid
 
@@ -1438,7 +1441,6 @@
     };
 
     $.fn.noSelect = function (p) { //no select plugin by me :-)
-
         if (p == null)
             prevent = true;
         else
