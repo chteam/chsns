@@ -55,6 +55,7 @@ namespace MvcHelper
         private string GenerateJavascript(FlexigridTableSettings<T> data)
         {
             //todo : data type
+
             var sb = new StringBuilder();
             sb.Append("(function(){").Append("var cols=[");
             int count = 0;
@@ -107,6 +108,8 @@ namespace MvcHelper
                 sb.Append("colMove:true,");
             if (data.ColResize)
                 sb.Append("colResize:true,");
+            if (data.GridDataType != FlexigridDataType.Json)
+                sb.Append("dataType:'xml',");
             sb.AppendFormat("rp:{0}", data.PageSize).Append("});");
             // $(".table1").gridext('Ajax/GetEntity', colModel, '#tablemenu', process,
             //{ colResize: true, colMove: true}); ;
