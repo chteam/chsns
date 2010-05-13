@@ -8,11 +8,7 @@ namespace MvcHelper
     {
 
         private static int _gridIndex;
-
         private string _gridId = string.Empty;
-
-
-
         public string Render(FlexigridTableSettings<T> data)
         {
             Init(data);
