@@ -16,8 +16,8 @@
         if (t.grid) return false; //return if already exist	
         // apply default properties
         p = $.extend({
-            height: 'auto', //default height
-            width: 'auto', //auto width
+          //  height: 'auto', //default height
+          //  width: 'auto', //auto width
             striped: true, //apply odd even stripes
             //colMove:false,
             novstripe: false,
@@ -1483,6 +1483,7 @@
             rp: ps.rp,
             autoload: ps.autoload,
             height: ps.height,
+            width:ps.width,
             colMove: ps.colMove,
             colresize: ps.colResize,
             minheight: ps.minheight == null ? 80 : ps.minheight,

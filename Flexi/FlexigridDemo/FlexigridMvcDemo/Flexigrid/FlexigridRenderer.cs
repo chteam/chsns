@@ -115,23 +115,6 @@ namespace MvcHelper
             // $(".table1").gridext('Ajax/GetEntity', colModel, '#tablemenu', process,
             //{ colResize: true, colMove: true}); ;
             sb.Append("})();");
-            //sb.AppendLine("searchitems:[");
-
-            //count = 0;
-            //totalCount = data.GridColumns.Count;
-            //foreach (FlexiGridColumn<T> column in data.GridColumns)
-            //{
-            //    count++;
-            //    sb.AppendFormat("{{ display: '{0}', name: '{1}' }}", column.ColumnSettings.ColumnTitle, column.FieldName);
-
-            //    if (count < totalCount)
-            //    {
-            //        sb.AppendLine(",");
-            //    }
-            //}
-
-            //sb.AppendLine();
-            //sb.AppendLine("],");
 
             //if (!string.IsNullOrEmpty(data.DefaultSortField))
             //{
