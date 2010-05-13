@@ -28,16 +28,16 @@
 <body>
     <form id="form1" runat="server">
     <div>
-  <%= new FlexigridTableSettings<FlexigridMvcDemo.Models.UserInfo>()
-      .TableId("flex1")
-                 .Action("/Ajax/GetEntity")
-           .Columns(col => 
+        <%= new FlexigridTableSettings<FlexigridMvcDemo.Models.UserInfo>()
+             .TableId("flex1")
+             .Action("/Ajax/GetEntity")
+             .Columns(col => 
                {
                    col.Bind(e => e.Id, "Id").Hide();
                    col.Bind(e => e.Name, "Name",180,true).Align(FlexigridAlign.Left);
                    col.Bind(e => e.Email).Width(20).Title("email");
-                   col.Bind(e => e.Age).Title("Age")
-                       .Process("<span style='color:red'> ${Name} - ${Id} </span>");
+                   col.Bind(e => e.Age).Title("Age").Width(300)
+                       .Process("<span style='color:red'> ${Name} - ${Id} {{}} </span>");
                    
                })
             //.DefaultSortOption("Id", FlexiGridSortOrder.Ascending)
@@ -50,8 +50,8 @@
            // .Width(800)
             //.Height(200)
             .AutoLoad()
-              .SetPager() 
-%>
+            .SetPager() 
+        %>
 	<ul id="tablemenu" class="jeegoocontext cm_default">
 		<li id="add">随机添加一条数据</li>
 		<li id="remove">删除此条</li>
