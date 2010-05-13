@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace MvcHelper
 {
-    public class FlexiGridModelProperties<T> where T : class
+    public class FlexigridModelProperties<T> where T : class
     {
         private readonly IList<Func<T, object>> _propertyCollection = new List<Func<T, object>>();
 
@@ -12,13 +12,13 @@ namespace MvcHelper
         {
             get
             {
-                return this._propertyCollection;
+                return _propertyCollection;
             }
         }
 
-        public FlexiGridModelProperties<T> Add(Expression<Func<T, object>> item)
+        public FlexigridModelProperties<T> Add(Expression<Func<T, object>> item)
         {
-            this.ProperyItem.Add(item.Compile());
+            ProperyItem.Add(item.Compile());
             return this;
         }
     }

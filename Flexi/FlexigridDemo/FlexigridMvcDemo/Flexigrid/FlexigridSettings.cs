@@ -1,6 +1,5 @@
 ﻿namespace MvcHelper
 {
-
     public class FlexigridSettings
     {
         public override string ToString()

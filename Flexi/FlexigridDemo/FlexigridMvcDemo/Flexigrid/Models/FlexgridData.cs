@@ -29,14 +29,14 @@ namespace MvcHelper
         /// <param name="total">总条数</param>
         /// <param name="identifier">主键</param>
         /// <param name="properties">要添加的属性</param>
-        public FlexgridData(IEnumerable<T> data, int page, int total, Expression<Func<T, object>> identifier, Action<FlexiGridModelProperties<T>> properties)
+        public FlexgridData(IEnumerable<T> data, int page, int total, Expression<Func<T, object>> identifier, Action<FlexigridModelProperties<T>> properties)
             : this(data, page, total, false)
         {
             _rows = new List<FlexgridRowData>();
             // 运行主键委托
             var identityDelegate = identifier.Compile();
             // 获取属性集
-            var dataCollection = new FlexiGridModelProperties<T>();
+            var dataCollection = new FlexigridModelProperties<T>();
             properties.Invoke(dataCollection);
             foreach (var item in data)
             {

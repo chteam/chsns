@@ -20,7 +20,7 @@ namespace FlexigridMvcDemo
         /// <param name="key"></param>
         /// <param name="properties"></param>
         /// <returns></returns>
-        public static FlexgridData<T> ToFlexigridObject<T>(this PagedList<T> list, Expression<Func<T, object>> key, Action<FlexiGridModelProperties<T>> properties) where T : class
+        public static FlexgridData<T> ToFlexigridObject<T>(this PagedList<T> list, Expression<Func<T, object>> key, Action<FlexigridModelProperties<T>> properties) where T : class
         {
             var json = new FlexgridData<T>(
                list, list.CurrentPage,
@@ -61,7 +61,7 @@ namespace FlexigridMvcDemo
         /// <param name="key"></param>
         /// <param name="properties"></param>
         /// <returns></returns>
-        public static FlexgridData<DataRow> ToFlexigridObject(this IEnumerable<DataRow> rows, int page, int total, Expression<Func<DataRow, object>> key, Action<FlexiGridModelProperties<DataRow>> properties)
+        public static FlexgridData<DataRow> ToFlexigridObject(this IEnumerable<DataRow> rows, int page, int total, Expression<Func<DataRow, object>> key, Action<FlexigridModelProperties<DataRow>> properties)
         {
             var json = new FlexgridData<DataRow>(
                 rows, page,
