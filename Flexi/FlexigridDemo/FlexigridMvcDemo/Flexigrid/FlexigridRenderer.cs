@@ -2,7 +2,6 @@
 using System.Text;
 using System.Web.UI;
 
-
 namespace MvcHelper
 {
     public class FlexigridRenderer<T> : IGridRenderer<FlexigridTableSettings<T>> where T : class
@@ -52,8 +51,8 @@ namespace MvcHelper
         {
             // 初始化基本信息
             _gridId = string.IsNullOrEmpty(data.GridId)
-                               ? string.Format("FlexiGrid_{0}", _gridIndex++)
-                               : data.GridId;
+                          ? string.Format("FlexiGrid_{0}", _gridIndex++)
+                          : data.GridId;
         }
 
         //生成Javascript，此Javascript加以作用域控制
@@ -84,8 +83,8 @@ namespace MvcHelper
                     sb.Append("process:function(e,c){")
                         .AppendFormat("$(e).html(\"\").append('{0}',c);",
                                       column.ColumnSettings.ColumnTemplate.Trim()
-                                      .Replace("\\'", "'")
-                                      .Replace("'","\\\\\\'"))
+                                          .Replace("\\'", "'")
+                                          .Replace("'","\\\\\\'"))
                         .Append("},");
                 }
                 sb.AppendFormat("display:'{0}'", column.ColumnSettings.ColumnTitle).Append("}");
@@ -96,7 +95,7 @@ namespace MvcHelper
             }
             sb.AppendLine("];");
             sb.AppendFormat(@"$('#{0}').gridext('{1}',cols,'{2}',{3},",
-                _gridId, data.ActionUrl, data.MenuId, data.MenuProcess ?? "null")
+                            _gridId, data.ActionUrl, data.MenuId, data.MenuProcess ?? "null")
                 .Append("{");
             if (data.EnableDefaultPager)
                 sb.Append("usedefalutpager:true,");
