@@ -140,7 +140,7 @@ process:function(e,c){$(e).html("").append('<span style="color:red"> ${name} - $
 				}, 
 { name: 'numcode',
     process: function (e, c) {
-        $(e).html("").append('<span style=\'color:red\'> ${name} </span>', c);
+        $(e).html("").append('<span style=\\\'color:red\\\'> ${name} - ${age} {{if age==1}} [] {{/if}}</span>', c);
     }
  , display: 'Age'}];
 $("#flex1").gridext('Ajax/GetEntity', cols, '#tablemenu', process,

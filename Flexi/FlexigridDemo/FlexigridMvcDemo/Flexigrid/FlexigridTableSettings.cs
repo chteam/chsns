@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace MvcHelper
 {
@@ -24,35 +25,35 @@ namespace MvcHelper
         #endregion
 
         #region Public Properties
-
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int GridHeight { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public int GridWidth { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public FlexigridSortOrder DefaultSortOrder { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public string DefaultSortField { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public string PageFilter { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public bool EnableDefaultPager { get; private set; }
 
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public bool EnableTableToggleButton { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public int PageSize { get; private set; }
 
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public string GridTitle { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public FlexigridDataType GridDataType { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public string ActionUrl { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public string GridId { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public bool EnableAutoLoad { get; private set; }
-
+                [EditorBrowsable(EditorBrowsableState.Never)]
         public FlexigridColumnCollection<T> GridColumns { get; private set; }
 
         #endregion
