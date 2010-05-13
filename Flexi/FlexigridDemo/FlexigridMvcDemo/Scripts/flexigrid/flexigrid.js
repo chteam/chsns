@@ -1485,7 +1485,7 @@
             height: ps.height,
             width:ps.width,
             colMove: ps.colMove,
-            colresize: ps.colResize,
+            colresize: ps.colResize,dataType:ps.dataType,
             minheight: ps.minheight == null ? 80 : ps.minheight,
             pager: ps.pager == null ? ".page" : ps.pager,
             onSuccess: function () {
