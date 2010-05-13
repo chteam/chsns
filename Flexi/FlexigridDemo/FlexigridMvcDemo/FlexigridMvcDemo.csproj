@@ -104,7 +104,7 @@
     <Compile Include="Flexigrid\FlexigridColumnCollection.cs" />
     <Compile Include="Flexigrid\FlexigridColumnSettings.cs" />
     <Compile Include="Flexigrid\Enum\FlexigridDataType.cs" />
-    <Compile Include="Flexigrid\FlexiGridModelProperties.cs" />
+    <Compile Include="Flexigrid\Models\FlexiGridModelProperties.cs" />
     <Compile Include="Flexigrid\FlexiGridRenderer.cs" />
     <Compile Include="Flexigrid\FlexiGridSettings.cs" />
     <Compile Include="Flexigrid\Enum\FlexigridSortOrder.cs" />
