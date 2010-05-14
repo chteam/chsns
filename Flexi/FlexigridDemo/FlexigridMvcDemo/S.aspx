@@ -37,8 +37,7 @@
                    col.Bind(e => e.Name, "Name",180,true).Align(FlexigridAlign.Left);
                    col.Bind(e => e.Email).Width(20).Title("email");
                    col.Bind(e => e.Age).Title("Age").Width(300)
-                       .Process("<span style='color:red'> ${Name} - ${Id} {{}} </span>");
-                   
+                       .Template("<span style='color:red'> ${Name} - ${Id} {{}} </span>");
                })
             //.DefaultSortOption("Id", FlexiGridSortOrder.Ascending)
             .Title("Employees")

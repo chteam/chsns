@@ -74,7 +74,7 @@
         /// 为当前列设置显示模板
         /// </summary>
         /// <returns></returns>
-        public FlexigridColumnSettings Process(string template)
+        public FlexigridColumnSettings Template(string template)
         {
             //todo : 设置模板
             ColumnTemplate = template;

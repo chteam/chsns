@@ -16,8 +16,8 @@
         if (t.grid) return false; //return if already exist	
         // apply default properties
         p = $.extend({
-          //  height: 'auto', //default height
-          //  width: 'auto', //auto width
+            //  height: 'auto', //default height
+            //  width: 'auto', //auto width
             striped: true, //apply odd even stripes
             //colMove:false,
             novstripe: false,
@@ -716,7 +716,7 @@
                                     pth.process(tdDiv, g.getRow(prnt.id));
                             }
                             $(this).empty().append(tdDiv).removeAttr('width'); //wrap content
-                             //add editable event here 'dblclick'
+                            //add editable event here 'dblclick'
                         }
                     );
 
@@ -848,7 +848,7 @@
 
         //set gDiv
         g.gDiv.className = 'flexigrid';
-        if (p.width != 'auto') g.gDiv.style.width = p.width + 'px';
+        if (p.width && p.width != 'auto') g.gDiv.style.width = p.width + 'px';
 
         //add conditional classes
         if ($.browser.msie)
@@ -1039,7 +1039,7 @@
         g.bDiv.className = 'bDiv';
         $(t).before(g.bDiv);
         $(g.bDiv).scroll(function (e) { g.scroll() })
-        .css({ height: (p.height == 'auto') ? 'auto' : p.height + "px"
+        .css({ height: (!p.height || p.height == 'auto') ? 'auto' : p.height + "px"
         })
         .append(t);
 
@@ -1483,9 +1483,9 @@
             rp: ps.rp,
             autoload: ps.autoload,
             height: ps.height,
-            width:ps.width,
+            width: ps.width,
             colMove: ps.colMove,
-            colresize: ps.colResize,dataType:ps.dataType,
+            colresize: ps.colResize, dataType: ps.dataType,
             minheight: ps.minheight == null ? 80 : ps.minheight,
             pager: ps.pager == null ? ".page" : ps.pager,
             onSuccess: function () {
