@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 2010-4-26 16:19:14
+// Generation date: 2010-5-14 10:26:30
 namespace FlexigridMvcDemo.Models
 {
     
