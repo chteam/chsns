@@ -171,6 +171,7 @@
     <Content Include="Content\menu\cm_default\images\submenu.gif" />
     <Content Include="Content\menu\cm_default\images\submenu_dis.gif" />
     <Content Include="Content\menu\cm_default\style.css" />
+    <Content Include="Scripts\tmpl\jquery.datalink.js" />
     <Content Include="Scripts\tmpl\jquery.tmpl.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
