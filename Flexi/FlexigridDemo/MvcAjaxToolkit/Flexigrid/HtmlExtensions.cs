@@ -4,9 +4,9 @@ namespace MvcHelper
 {
     public static class HtmlExtensions
     {
-        public static FlexigridTableSettings<T> Flexigrid<T>(this HtmlHelper helper) where T : class
+        public static TableSettings<T> Flexigrid<T>(this HtmlHelper helper) where T : class
         {
-            return new FlexigridTableSettings<T>();
+            return new TableSettings<T>();
         }
 
         public static FlexigridSettings Flexigrid(this HtmlHelper helper)

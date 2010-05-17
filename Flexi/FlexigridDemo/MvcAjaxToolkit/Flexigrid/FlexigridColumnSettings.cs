@@ -1,24 +1,21 @@
 ﻿namespace MvcHelper
 {
-    public class FlexigridColumnSettings
+    public class ColumnSettings
     {
         internal FlexigridAlign ColumnAlignment { get; private set; }
-
         internal bool ColumnSortable { get; private set; }
-
         internal string ColumnTitle { get; private set; }
-
         internal int ColumnWidth { get; private set; }
-
         internal bool ColumnHidden { get; private set; }
         internal string ColumnTemplate { get; private set; }
         internal string ColumnJavascript { get; private set; }
+
         /// <summary>
         /// 设置当前列的宽度 未指定的情况下将置为100
         /// </summary>
         /// <param name="width"></param>
         /// <returns></returns>
-        public FlexigridColumnSettings Width(int width)
+        public ColumnSettings Width(int width)
         {
             ColumnWidth = width;
             return this;
@@ -28,7 +25,7 @@
         /// </summary>
         /// <param name="title"></param>
         /// <returns></returns>
-        public FlexigridColumnSettings Title(string title)
+        public ColumnSettings Title(string title)
         {
             ColumnTitle = title;
             return this;
@@ -37,7 +34,7 @@
         /// 设置为可排序
         /// </summary>
         /// <returns></returns>
-        public FlexigridColumnSettings Sortable()
+        public ColumnSettings Sortable()
         {
             Sortable(true);
             return this;
@@ -47,7 +44,7 @@
         /// </summary>
         /// <param name="sortable"></param>
         /// <returns></returns>
-        public FlexigridColumnSettings Sortable(bool sortable)
+        public ColumnSettings Sortable(bool sortable)
         {
             ColumnSortable = sortable;
             return this;
@@ -57,7 +54,7 @@
         /// </summary>
         /// <param name="align"></param>
         /// <returns></returns>
-        public FlexigridColumnSettings Align(FlexigridAlign align)
+        public ColumnSettings Align(FlexigridAlign align)
         {
             ColumnAlignment = align;
             return this;
@@ -66,7 +63,7 @@
         /// 设置当前列为隐藏列
         /// </summary>
         /// <returns></returns>
-        public FlexigridColumnSettings Hide()
+        public ColumnSettings Hide()
         {
             ColumnHidden = true;
             return this;
@@ -75,7 +72,7 @@
         /// 为当前列设置显示模板
         /// </summary>
         /// <returns></returns>
-        public FlexigridColumnSettings Template(string template)
+        public ColumnSettings Template(string template)
         {
             ColumnTemplate = template;
             return this;
@@ -86,7 +83,7 @@
         /// c为当前行绑定的实体，c.[属性名]即可取到其属性
         /// </summary>
         /// <returns></returns>
-        public FlexigridColumnSettings Javascript(string content)
+        public ColumnSettings Javascript(string content)
         {
             ColumnJavascript = content;
             return this;

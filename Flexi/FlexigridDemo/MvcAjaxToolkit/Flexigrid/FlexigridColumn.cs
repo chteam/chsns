@@ -4,12 +4,12 @@
     {
         public FlexigridColumn(string fieldName)
         {
-            this.ColumnSettings = new FlexigridColumnSettings();
+            this.ColumnSettings = new ColumnSettings();
             this.FieldName = fieldName;
         }
 
         public string FieldName { get; private set; }
 
-        public FlexigridColumnSettings ColumnSettings { get; private set; }
+        public ColumnSettings ColumnSettings { get; private set; }
     }
 }
