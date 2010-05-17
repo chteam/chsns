@@ -54,8 +54,6 @@ namespace MvcHelper
         //生成Javascript，此Javascript加以作用域控制
         private string GenerateJavascript(FlexigridTableSettings<T> data)
         {
-            //todo : data type
-
             var sb = new StringBuilder();
             sb.Append("(function(){").Append("var cols=[");
             int count = 0;
@@ -75,14 +73,17 @@ namespace MvcHelper
                     sb.AppendFormat("align:'{0}',", column.ColumnSettings.ColumnAlignment.GetDescription());
                 if (column.ColumnSettings.ColumnHidden)
                     sb.Append("hide:true,");
-                if (!string.IsNullOrEmpty(column.ColumnSettings.ColumnTemplate))
+                if (!string.IsNullOrEmpty(column.ColumnSettings.ColumnTemplate) 
+                    || !string.IsNullOrEmpty(column.ColumnSettings.ColumnJavascript))
                 {
-                    sb.Append("process:function(e,c){")
-                        .AppendFormat("$(e).html(\"\").append('{0}',c);",
-                                      column.ColumnSettings.ColumnTemplate.Trim()
-                                          .Replace("\\'", "'")
-                                          .Replace("'","\\\\\\'"))
-                        .Append("},");
+                    sb.Append("process:function(e,c){");
+                    if (!string.IsNullOrEmpty(column.ColumnSettings.ColumnTemplate))
+                        sb.AppendFormat("$(e).html(\"\").append('{0}',c);",
+                                        column.ColumnSettings.ColumnTemplate.Trim()
+                                            .Replace("\\'", "'")
+                                            .Replace("'", "\\\\\\'"));
+                    sb.Append(column.ColumnSettings.ColumnJavascript);
+                    sb.Append("},");
                 }
                 sb.AppendFormat("display:'{0}'", column.ColumnSettings.ColumnTitle).Append("}");
                 if (count < totalCount)

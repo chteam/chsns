@@ -11,6 +11,7 @@ namespace FlexigridMvcDemo.Controllers
     {
         //
         // GET: /Ajax/
+    
 
         public ActionResult Index(int? page, int? rp, string sortname, string sortorder)
         {
