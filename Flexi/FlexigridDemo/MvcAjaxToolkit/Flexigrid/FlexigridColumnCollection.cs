@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace MvcHelper
 {
-    public class FlexigridColumnCollection<T> : ICollection<FlexigridColumn<T>> where T : class
+    public class ColumnCollection<T> : ICollection<FlexigridColumn<T>> where T : class
     {
         #region Private fields
 
@@ -15,22 +15,22 @@ namespace MvcHelper
 
         #region Bind
 
-        public FlexigridColumnSettings Bind(Expression<Func<T, object>> action, string title, int width, bool sortable)
+        public ColumnSettings Bind(Expression<Func<T, object>> action, string title, int width, bool sortable)
         {
             return Bind(action).Title(title).Width(width).Sortable();
         }
 
-        public FlexigridColumnSettings Bind(Expression<Func<T, object>> action, string title)
+        public ColumnSettings Bind(Expression<Func<T, object>> action, string title)
         {
             return Bind(action).Title(title);
         }
 
-        public FlexigridColumnSettings Bind(Expression<Func<T, object>> action, string title, int width)
+        public ColumnSettings Bind(Expression<Func<T, object>> action, string title, int width)
         {
             return Bind(action).Title(title).Width(width);
         }
 
-        public FlexigridColumnSettings Bind(Expression<Func<T, object>> action)
+        public ColumnSettings Bind(Expression<Func<T, object>> action)
         {
             var expression = RemoveUnary(action.Body) as MemberExpression;
             if (expression == null) throw new ArgumentException("非法的使用Bind方法，当前表达式不可解析");
@@ -38,22 +38,22 @@ namespace MvcHelper
         }
 
         //--
-        public FlexigridColumnSettings Bind(string bindField, string title, int width, bool sortable)
+        public ColumnSettings Bind(string bindField, string title, int width, bool sortable)
         {
             return Bind(bindField).Title(title).Width(width).Sortable();
         }
 
-        public FlexigridColumnSettings Bind(string bindField, string title)
+        public ColumnSettings Bind(string bindField, string title)
         {
             return Bind(bindField).Title(title);
         }
 
-        public FlexigridColumnSettings Bind(string bindField, string title, int width)
+        public ColumnSettings Bind(string bindField, string title, int width)
         {
             return Bind(bindField).Title(title).Width(width);
         }
 
-        public FlexigridColumnSettings Bind(string bindField)
+        public ColumnSettings Bind(string bindField)
         {
             var column = new FlexigridColumn<T>(bindField);
             _columns.Add(column);

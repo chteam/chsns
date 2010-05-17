@@ -94,23 +94,6 @@
     <Compile Include="Extensions\JsonAdapter.cs" />
     <Compile Include="Extensions\PagedList.cs" />
     <Compile Include="Extensions\PagerExt.cs" />
-    <Compile Include="Flexigrid\Attribute\DescriptionAttribute.cs" />
-    <Compile Include="Flexigrid\Attribute\DescriptionAttributeExtensions.cs" />
-    <Compile Include="Flexigrid\FlexigridRenderer.cs" />
-    <Compile Include="Flexigrid\FlexigridSettings.cs" />
-    <Compile Include="Flexigrid\Models\FlexgridBindModel.cs" />
-    <Compile Include="Flexigrid\Models\FlexgridData.cs" />
-    <Compile Include="Flexigrid\Models\FlexgridRowData.cs" />
-    <Compile Include="Flexigrid\Enum\FlexigridAlign.cs" />
-    <Compile Include="Flexigrid\FlexigridColumn.cs" />
-    <Compile Include="Flexigrid\FlexigridColumnCollection.cs" />
-    <Compile Include="Flexigrid\FlexigridColumnSettings.cs" />
-    <Compile Include="Flexigrid\Enum\FlexigridDataType.cs" />
-    <Compile Include="Flexigrid\Models\FlexigridModelProperties.cs" />
-    <Compile Include="Flexigrid\Enum\FlexigridSortOrder.cs" />
-    <Compile Include="Flexigrid\FlexigridTableSettings.cs" />
-    <Compile Include="Flexigrid\HtmlExtensions.cs" />
-    <Compile Include="Flexigrid\IGridRenderer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

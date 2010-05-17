@@ -3,22 +3,22 @@ using System.ComponentModel;
 
 namespace MvcHelper
 {
-    public class FlexigridTableSettings<T> where T : class
+    public class TableSettings<T> where T : class
     {
         #region Private Fields
 
-        private readonly IGridRenderer<FlexigridTableSettings<T>> _renderer;
+        private readonly IGridRenderer<TableSettings<T>> _renderer;
 
         #endregion
 
         #region Constructor
 
-        public FlexigridTableSettings()
+        public TableSettings()
         {
             MenuProcess = null;
             MenuId = null;
             EnableTableToggleButton = false;
-            GridColumns = new FlexigridColumnCollection<T>();
+            GridColumns = new ColumnCollection<T>();
             _renderer = new FlexigridRenderer<T>();
         }
 
@@ -54,7 +54,7 @@ namespace MvcHelper
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool EnableAutoLoad { get; private set; }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public FlexigridColumnCollection<T> GridColumns { get; private set; }
+        public ColumnCollection<T> GridColumns { get; private set; }
 
         #endregion
 
@@ -65,7 +65,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="elementId"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> TableId(string elementId)
+        public TableSettings<T> TableId(string elementId)
         {
             GridId = elementId;
             return this;
@@ -76,7 +76,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="actionUrl"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> Action(string actionUrl)
+        public TableSettings<T> Action(string actionUrl)
         {
             ActionUrl = actionUrl;
             return this;
@@ -87,7 +87,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="dataType"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> DataType(FlexigridDataType dataType)
+        public TableSettings<T> DataType(FlexigridDataType dataType)
         {
             GridDataType = dataType;
             return this;
@@ -98,7 +98,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="title"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> Title(string title)
+        public TableSettings<T> Title(string title)
         {
             GridTitle = title;
             return this;
@@ -108,7 +108,7 @@ namespace MvcHelper
         /// 允许自动加载
         /// </summary>
         /// <returns></returns>
-        public FlexigridTableSettings<T> AutoLoad()
+        public TableSettings<T> AutoLoad()
         {
             EnableAutoLoad = true;
             return this;
@@ -119,7 +119,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> SetPageSize(int pageSize)
+        public TableSettings<T> SetPageSize(int pageSize)
         {
             PageSize = pageSize;
             return this;
@@ -135,7 +135,7 @@ namespace MvcHelper
         /// 设置为默认分页
         /// </summary>
         /// <returns></returns>
-        public FlexigridTableSettings<T> SetPager()
+        public TableSettings<T> SetPager()
         {
             EnableDefaultPager = true;
             return this;
@@ -146,7 +146,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="pagerFilter">分页Div的Class或Id，支持.class或#Id</param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> SetPager(string pagerFilter)
+        public TableSettings<T> SetPager(string pagerFilter)
         {
             EnableDefaultPager = false;
             PageFilter = pagerFilter;
@@ -159,7 +159,7 @@ namespace MvcHelper
         /// <param name="fieldName"></param>
         /// <param name="order"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> DefaultSortOption(string fieldName, FlexigridSortOrder order)
+        public TableSettings<T> DefaultSortOption(string fieldName, FlexigridSortOrder order)
         {
             DefaultSortField = fieldName;
             DefaultSortOrder = order;
@@ -172,7 +172,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="action"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> Columns(Action<FlexigridColumnCollection<T>> action)
+        public TableSettings<T> Columns(Action<ColumnCollection<T>> action)
         {
             action(GridColumns);
             return this;
@@ -183,7 +183,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="width"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> Width(int width)
+        public TableSettings<T> Width(int width)
         {
             GridWidth = width;
             return this;
@@ -194,7 +194,7 @@ namespace MvcHelper
         /// </summary>
         /// <param name="height"></param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> Height(int height)
+        public TableSettings<T> Height(int height)
         {
             GridHeight = height;
             return this;
@@ -215,7 +215,7 @@ namespace MvcHelper
         /// <summary>
         /// 设置可移动列
         /// </summary>
-        public FlexigridTableSettings<T> ColumnsMove()
+        public TableSettings<T> ColumnsMove()
         {
             ColMove = true;
             return this;
@@ -231,7 +231,7 @@ namespace MvcHelper
         /// 设置列可自定义大小 
         /// </summary>
         /// <returns></returns>
-        public FlexigridTableSettings<T> ColumnsResize()
+        public TableSettings<T> ColumnsResize()
         {
             ColResize = true;
             return this;
@@ -246,7 +246,7 @@ namespace MvcHelper
         /// <param name="menuId">菜单</param>
         /// <param name="process">菜单 处理的JS</param>
         /// <returns></returns>
-        public FlexigridTableSettings<T> ContextMenu(string menuId, string process)
+        public TableSettings<T> ContextMenu(string menuId, string process)
         {
             MenuId = menuId;
             MenuProcess = process;
