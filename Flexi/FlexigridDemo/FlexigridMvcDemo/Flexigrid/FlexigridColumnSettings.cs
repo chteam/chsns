@@ -12,6 +12,7 @@
 
         internal bool ColumnHidden { get; private set; }
         internal string ColumnTemplate { get; private set; }
+        internal string ColumnJavascript { get; private set; }
         /// <summary>
         /// 设置当前列的宽度 未指定的情况下将置为100
         /// </summary>
@@ -76,8 +77,18 @@
         /// <returns></returns>
         public FlexigridColumnSettings Template(string template)
         {
-            //todo : 设置模板
             ColumnTemplate = template;
+            return this;
+        }
+        /// <summary>
+        /// 为当前列设置Javascript脚本会在模板进行后执行
+        /// 编写此Javascript可用$(e)为当前td内部的Div，可做输出
+        /// c为当前行绑定的实体，c.[属性名]即可取到其属性
+        /// </summary>
+        /// <returns></returns>
+        public FlexigridColumnSettings Javascript(string content)
+        {
+            ColumnJavascript = content;
             return this;
         }
     }
