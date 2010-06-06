@@ -3,7 +3,7 @@
   <BaseConfig>
     <IsSoureFace>false</IsSoureFace>
     <StyleList>default|foxblue|CHSNS|FaceBook</StyleList>
-    <Style>default</Style>
+    <Style>CHSNS</Style>
     <Path>/</Path>
     <CookieName>userInfo</CookieName>
     <IsMustField>true</IsMustField>
