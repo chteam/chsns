@@ -8,7 +8,7 @@
 
 	<script type="text/javascript"></script>
 
-	<%if (false) { %><script src="../../JavaScript/jquery-vsdoc.js"></script><%} %>
+	<%if (false) { %><script src="../../Scripts/jquery-vsdoc.js"></script><%} %>
 	<%=Html.CSSLink("master")%> 
 	<%=Html.CSSLink("register")%> 
 	<%=Html.Script("jquery")%>

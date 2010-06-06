@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%if (false) { %>
-	<script src="../../JavaScript/jquery-vsdoc.js" type="text/javascript"></script>
+	<script src="../../Scripts/jquery-vsdoc.js" type="text/javascript"></script>
 	<%} %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

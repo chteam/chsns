@@ -2,12 +2,12 @@
 <link href="${ChHelper.ChSite.StylePath}/group.css" rel="stylesheet" type="text/css" />
 #end
 #capturefor(javascript)
-<script src="/JavaScript/Client/Common.js" type="text/javascript"></script>
-<script src="/JavaScript/PageSet.js" type="text/javascript"></script>
+<script src="/Scripts/Client/Common.js" type="text/javascript"></script>
+<script src="/Scripts/PageSet.js" type="text/javascript"></script>
 <script src="/WebServices/Group.asmx/js" type="text/javascript"></script>
-<script src="/JavaScript/Client/Tabs.js" type="text/javascript"></script>
-<script src="/JavaScript/GroupList.js" type="text/javascript"></script>
-<script src="/JavaScript/GroupUser.js" type="text/javascript"></script>
+<script src="/Scripts/Client/Tabs.js" type="text/javascript"></script>
+<script src="/Scripts/GroupList.js" type="text/javascript"></script>
+<script src="/Scripts/GroupUser.js" type="text/javascript"></script>
 #end
 #capturefor(title) 我的班级 #end
 <div id="toc">

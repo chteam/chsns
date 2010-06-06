@@ -1,7 +1,7 @@
 ﻿#capturefor(javascript) 
-<script src="/JavaScript/Client/Common.js" type="text/javascript"></script>
-    <script src="/JavaScript/Client/Tabs.js" type="text/javascript"></script>
-    <script src="/JavaScript/Setting.js"  type="text/javascript"></script>
+<script src="/Scripts/Client/Common.js" type="text/javascript"></script>
+    <script src="/Scripts/Client/Tabs.js" type="text/javascript"></script>
+    <script src="/Scripts/Setting.js"  type="text/javascript"></script>
 #end
 #capturefor(title) 用户隐私设置 #end
 <form>
