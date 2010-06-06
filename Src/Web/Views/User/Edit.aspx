@@ -6,8 +6,8 @@ Inherits="System.Web.Mvc.ViewPage" %>
 	<%=Html.CSSLink("calendar")%>
 		<%=Html.Script("ui")%>
 	<%if (false)        { %>
-	<script type="text/javascript" src="../../JavaScript/jquery-1.2.6-vsdoc.js"></script>
-   <%-- <script type="text/javascript" src="../../JavaScript/ui.js"></script>--%>
+	<script type="text/javascript" src="../../Scripts/jquery-1.2.6-vsdoc.js"></script>
+   <%-- <script type="text/javascript" src="../../Scripts/ui.js"></script>--%>
     <%} %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

@@ -1,8 +1,8 @@
 ﻿#capturefor(title) 在线客服 #end
 #capturefor(javascript)
-<script type="text/javascript" src="/JavaScript/PageSet.js"></script>
+<script type="text/javascript" src="/Scripts/PageSet.js"></script>
 <script type="text/javascript" src="/WebServices/Services.asmx/js"></script>
-<script type="text/javascript" src="/JavaScript/Services.js"></script>
+<script type="text/javascript" src="/Scripts/Services.js"></script>
 #end
 
 <div class="sbox">

@@ -2,7 +2,7 @@
 <link href="${ChHelper.ChSite.StylePath}/group.css" rel="stylesheet" type="text/css" />
 #end
 #capturefor(javascript)
-<script src="/JavaScript/Client/TextboxWatermark.js" type="text/javascript"></script>
+<script src="/Scripts/Client/TextboxWatermark.js" type="text/javascript"></script>
 #end
 #capturefor(title) 创建班级 #end
 

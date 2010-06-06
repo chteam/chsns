@@ -39,7 +39,7 @@ function ShowNote(id,url){
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 <%=Html.CSSLink("video") %>
-<%if (false) { %><script src="../../JavaScript/vsdoc.js" type="text/javascript"></script><%} %>
+<%if (false) { %><script src="../../Scripts/vsdoc.js" type="text/javascript"></script><%} %>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">

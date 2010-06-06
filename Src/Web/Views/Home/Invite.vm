@@ -3,7 +3,7 @@
 #end
 #capturefor(javascript) 
     <script src="/WebServices/Invite.asmx/js" type="text/javascript"></script>
-    <script src="/JavaScript/Invite.js"  type="text/javascript"></script>
+    <script src="/Scripts/Invite.js"  type="text/javascript"></script>
 #end
 #capturefor(title) 邀请 #end
 

@@ -5,12 +5,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript"></script>
 <link href="${ChHelper.ChSite.StylePath}/admin.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/JavaScript/Framework.js"></script>
-<script src="/JavaScript/Client/Common.js" type="text/javascript"></script>
+<script type="text/javascript" src="/Scripts/Framework.js"></script>
+<script src="/Scripts/Client/Common.js" type="text/javascript"></script>
 <script type="text/javascript" src="/WebServices/PageMethods.asmx/js"></script>
 <script src="/WebServices/Identity.asmx/js" type="text/javascript"></script>
-<script src="/JavaScript/Client/AccordionBehavior.js" type="text/javascript"></script>
-<script src="/JavaScript/Adminuser.js" type="text/javascript"></script>
+<script src="/Scripts/Client/AccordionBehavior.js" type="text/javascript"></script>
+<script src="/Scripts/Adminuser.js" type="text/javascript"></script>
 </head>
 <body>
 

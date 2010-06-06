@@ -2,11 +2,11 @@
 <link href="${ChHelper.ChSite.StylePath}/group.css" rel="stylesheet" type="text/css" />
 #end
 #capturefor(javascript)
-<script src="/JavaScript/PageSet.js" type="text/javascript"></script>
+<script src="/Scripts/PageSet.js" type="text/javascript"></script>
 <script src="/WebServices/NoteBook.asmx/js" type="text/javascript"></script>
-<script src="/JavaScript/Editor.js" type="text/javascript"></script>
-<script src="/JavaScript/GroupUser.js" type="text/javascript"></script>
-<script src="/JavaScript/LogBook.js" type="text/javascript"></script>
+<script src="/Scripts/Editor.js" type="text/javascript"></script>
+<script src="/Scripts/GroupUser.js" type="text/javascript"></script>
+<script src="/Scripts/LogBook.js" type="text/javascript"></script>
 <script src="/Editor/fckeditor.js" type="text/javascript"></script>
 #end
 #capturefor(title) $group.Groupname[群] #end

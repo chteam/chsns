@@ -1,7 +1,7 @@
 ﻿#capturefor(title) 群管理 #end
 #capturefor(javascript)
 <script src="/WebServices/Group.asmx/js" type="text/javascript"></script>
-<script src="/JavaScript/Adminuser.js" type="text/javascript"></script>
+<script src="/Scripts/Adminuser.js" type="text/javascript"></script>
 #end
 #capturefor(css)
 <link href="${ChHelper.ChSite.StylePath}/main.css" rel="stylesheet" type="text/css" />
