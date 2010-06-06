@@ -4,10 +4,9 @@
 <head runat="server">
     <title>
         <%=ViewData["Page_Title"]%></title>
-
     <script type="text/javascript"></script>
-    <%=Html.Script("jquery")%>
-    <%=Html.Script("Framework") %>
+    <%=Html.Script("~/scripts/jquery.js") %>
+    <%=Html.Script("~/scripts/framework.js") %>
     <%=Html.CSSLink("Master") %>
     <asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server">
         <%if (false)

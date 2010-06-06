@@ -18,6 +18,7 @@ namespace CHSNS.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             const string ext = "";
+            routes.IgnoreRoute("{resource}.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute("indexf", "", new { controller = "Entry", action = "Index", Url = "Index" });
             routes.MapRoute("index", "{Url}" + ext, new { controller = "Entry", action = "Index", Url = "Index" });
