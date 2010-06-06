@@ -441,20 +441,18 @@ background-position:0 -1400px;
 	
 #AccountInfo,#BasicInfo,#ContactInfo,#MagicBox{ color:#3b5999;}
 
-
-
-
 /*toc tabs*/
-#toc,.toc{padding:0 10px; margin:10px 0;/*border-bottom:1px solid #3B5999;*/}
+#toc,.toc{padding:0 10px; margin:10px 0;border-bottom:1px solid #3B5999;height:20px}
 .ui-tabs-nav .status{float:right; color:#808080;}
-.active a{border-color:#6D84B4;border-style:solid;background:#6D84B4;
-         border-width:1px 1px 0;float:left;color:#fff;}
-.active a:hover{color:#3B5999;}
 .toc ul{list-style-type:none;padding-left:10px;}
 .toc ul li{float:left;}
+.toc ul li.selected a{border-color:#6D84B4;border-style:solid;background:#6D84B4;
+         border-width:1px 1px 0;float:left;color:#fff;}
+.toc ul li.selected a:hover{color:#3B5999;}
 .toc ul li a{display:block;line-height:15px;margin-right:0;
-padding:2px 5px;
-/*color:#3B5999;*/}
+    padding:2px 5px;
+/*color:#3B5999;*/
+}
 .toc ul li a:hover{background:#D8DFEA;text-decoration:none;}
 
 

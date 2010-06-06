@@ -207,6 +207,7 @@
     <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Object.ascx" />
     <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Password.ascx" />
     <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\String.ascx" />
+    <Content Include="Views\Shared\DropDownList.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -340,7 +341,7 @@
     <Content Include="Views\Note\News.aspx" />
     <Content Include="Views\Shared\Admin.Master" />
     <Content Include="Config\ThumbnailSize.xml" />
-    <Content Include="Config\UserEditMenu.xml" />
+    <Content Include="Config\_UserEditMenu.xml" />
     <Content Include="Default.aspx" />
     <Content Include="Scripts\Source\wysiwyg\jquery.wysiwyg.jpg" />
     <Content Include="Scripts\Source\wysiwyg\jquery.wysiwyg.js" />
@@ -560,9 +561,9 @@
     <Content Include="Views\Shared\ViewList.ascx" />
     <Content Include="Views\Upload\File.aspx" />
     <Content Include="Views\User\Admin\ManageUser.ascx" />
-    <Content Include="Views\User\BaseInfo.ascx" />
+    <Content Include="Views\User\BaseInfo.aspx" />
     <Content Include="Views\User\Contact.ascx" />
-    <Content Include="Views\User\Edit.aspx" />
+    <None Include="Views\User\Edit.Master" />
     <Content Include="Views\User\EmptyMagicBox.ascx" />
     <Content Include="Views\User\Index.aspx" />
     <Content Include="Views\User\Index\Account.ascx" />
@@ -573,10 +574,10 @@
     <Content Include="Views\User\Index\NoRight.ascx" />
     <Content Include="Views\User\Index\Personal.ascx" />
     <Content Include="Views\User\Index\School.ascx" />
-    <Content Include="Views\User\MagicBox.ascx" />
+    <Content Include="Views\User\MagicBox.aspx" />
     <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\School.ascx" />
-    <Content Include="Views\User\Upload.ascx" />
+    <Content Include="Views\User\Upload.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
