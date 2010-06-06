@@ -15,9 +15,10 @@ namespace MythBusters.Controllers
 
         public RenRenApi GetApi()
         {
+            string sessionKey = Request.QueryString["xn_sig_session_key"];
             return Api = new RenRenApi("c7f9c729cd74485897f033609083ba75",
                 "26e76666962147549ee365330b692b96",
-                         Request.QueryString["xn_sig_session_key"], this);
+                         sessionKey, this);
             //http://app.renren.com/apps/tos.do?v=1.0&api_key=c7f9c729cd74485897f033609083ba75
         }
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
