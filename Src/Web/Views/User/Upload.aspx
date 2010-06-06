@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" MasterPageFile="Edit.master"  %>
+<asp:Content ID="Content2" ContentPlaceHolderID="TabContent" runat="server">
 <div id="picturenow" class="required" style="width: 240px; float: right">
 	<h3>
 		当前头像</h3>
@@ -33,3 +34,4 @@
 		<a href="/setting.aspx">设置查看头像权限</a>
 	</div>--%>
 </div>
+</asp:Content>
