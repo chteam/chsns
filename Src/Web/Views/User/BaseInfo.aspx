@@ -6,37 +6,37 @@
     </div>
     <h4>
         基本信息</h4>
-    <div>
+    <p>
     <%=Html.LabelFor(c=>c.ShowLevel)%>
 
 <%=Html.DropDownListFor(c => c.ShowLevel, Html.GetSelectList("ShowLevel"))%>
 
-    </div>
-    <div class="required">
+    </p>
+    <p>
         <label for="name">
             <em>*</em>姓名：</label>
         <%=Html.TextBoxFor(c=>c.Name) %>
-    </div>
-    <%--<div class="required">
+    </p>
+   <p>
         <label for="gender">
             <em>*</em>性别：</label>
-        <%=Html.DropDownList("请选择","Sex", new { @class = "select" })%>
-    </div>
-    <div class="required">
+        <%=Html.DropDownListFor(c=>c.Sex,Html.GetSelectList("Sex"))%>
+    </p>
+    <p>
         <label for="birthyear">
             *生日：</label>
         <%=Html.TextBoxFor(c=>c.Birthday)%>
-    </div>
-    <div class="required">
+    </p>
+   <p>
         <label for="homeProvince">
             <em>*</em>家乡：</label>
-        <%=Html.DropDownList("请选择","ProvinceID", new {
+        <%=Html.DropDownListFor(c=>c.ProvinceId,null,"请选择", new {
 	@class = "select", onchange = "javascript:ChangeProvince()", id = "ProvinceID"
 })%>
         <span id="CityPanel">
             <%=Html.DropDownList("==请选择==", "CityID", new { @class = "select", id = "CityID" })%>
         </span><span id="CityStatus"></span>
-    </div>--%>
+    </p>
     <style type="text/css">
         .embed + img
         {
