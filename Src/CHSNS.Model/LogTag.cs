@@ -7,31 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class LogTag
-    {
-        #region Primitive Properties
+    public partial class LogTag{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual long TagId
-        {
-            get;
-            set;
-        }
+        public virtual long TagId{get;set;}
     
-        public virtual long LogId
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual long LogId{get;set;}
     }
 }

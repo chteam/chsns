@@ -7,73 +7,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Message
-    {
-        #region Primitive Properties
+    public partial class Message{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual long FromId
-        {
-            get;
-            set;
-        }
+        public virtual long FromId{get;set;}
     
-        public virtual long ToId
-        {
-            get;
-            set;
-        }
+        public virtual long ToId{get;set;}
     
-        public virtual string Title
-        {
-            get;
-            set;
-        }
+        public virtual string Title{get;set;}
     
-        public virtual string Body
-        {
-            get;
-            set;
-        }
+        public virtual string Body{get;set;}
     
-        public virtual System.DateTime SendTime
-        {
-            get;
-            set;
-        }
+        public virtual System.DateTime SendTime{get;set;}
     
-        public virtual bool IsSee
-        {
-            get;
-            set;
-        }
+        public virtual bool IsSee{get;set;}
     
-        public virtual bool IsFromDel
-        {
-            get;
-            set;
-        }
+        public virtual bool IsFromDel{get;set;}
     
-        public virtual bool IsToDel
-        {
-            get;
-            set;
-        }
+        public virtual bool IsToDel{get;set;}
     
-        public virtual bool IsHtml
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual bool IsHtml{get;set;}
     }
 }

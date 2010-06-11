@@ -7,37 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Push
-    {
-        #region Primitive Properties
+    public partial class Push{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual long LogId
-        {
-            get;
-            set;
-        }
+        public virtual long LogId{get;set;}
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual System.DateTime AddTime
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual System.DateTime AddTime{get;set;}
     }
 }

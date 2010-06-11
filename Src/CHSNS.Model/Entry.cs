@@ -8,67 +8,31 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Entry
-    {
-        #region Primitive Properties
+    public partial class Entry{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual string Url
-        {
-            get;
-            set;
-        }
+        public virtual string Url{get;set;}
     
-        public virtual long CreaterId
-        {
-            get;
-            set;
-        }
+        public virtual long CreaterId{get;set;}
     
-        public virtual System.DateTime UpdateTime
-        {
-            get;
-            set;
-        }
+        public virtual System.DateTime UpdateTime{get;set;}
     
-        public virtual Nullable<long> CurrentId
-        {
-            get;
-            set;
-        }
+        public virtual Nullable<long> CurrentId{get;set;}
     
-        public virtual int EditCount
-        {
-            get;
-            set;
-        }
+        public virtual int EditCount{get;set;}
     
-        public virtual long ViewCount
-        {
-            get;
-            set;
-        }
+        public virtual long ViewCount{get;set;}
     
-        public virtual int Status
-        {
-            get;
-            set;
-        }
+        public virtual int Status{get;set;}
     
-        public virtual string Ext
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual string Ext{get;set;}
     }
 }

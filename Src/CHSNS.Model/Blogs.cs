@@ -7,97 +7,42 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Blogs
-    {
-        #region Primitive Properties
+    public partial class Blogs{
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual System.DateTime CreateTime
-        {
-            get;
-            set;
-        }
+        public virtual System.DateTime CreateTime{get;set;}
     
-        public virtual string Title
-        {
-            get;
-            set;
-        }
+        public virtual string Title{get;set;}
     
-        public virtual string SubTitle
-        {
-            get;
-            set;
-        }
+        public virtual string SubTitle{get;set;}
     
-        public virtual string Publish
-        {
-            get;
-            set;
-        }
+        public virtual string Publish{get;set;}
     
-        public virtual string WriteName
-        {
-            get;
-            set;
-        }
+        public virtual string WriteName{get;set;}
     
-        public virtual string CommentEmail
-        {
-            get;
-            set;
-        }
+        public virtual string CommentEmail{get;set;}
     
-        public virtual string Skin
-        {
-            get;
-            set;
-        }
+        public virtual string Skin{get;set;}
     
-        public virtual string Css
-        {
-            get;
-            set;
-        }
+        public virtual string Css{get;set;}
     
-        public virtual string MetaKey
-        {
-            get;
-            set;
-        }
+        public virtual string MetaKey{get;set;}
     
-        public virtual bool IsWebServices
-        {
-            get;
-            set;
-        }
+        public virtual bool IsWebServices{get;set;}
     
-        public virtual long PostCount
-        {
-            get;
-            set;
-        }
+        public virtual long PostCount{get;set;}
     
-        public virtual long CommentCount
-        {
-            get;
-            set;
-        }
+        public virtual long CommentCount{get;set;}
     
-        public virtual long TrackBackCount
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual long TrackBackCount{get;set;}
     }
 }

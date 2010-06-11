@@ -8,55 +8,27 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Event
-    {
-        #region Primitive Properties
+    public partial class Event{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual string TemplateName
-        {
-            get;
-            set;
-        }
+        public virtual string TemplateName{get;set;}
     
-        public virtual long OwnerId
-        {
-            get;
-            set;
-        }
+        public virtual long OwnerId{get;set;}
     
-        public virtual Nullable<long> ViewerId
-        {
-            get;
-            set;
-        }
+        public virtual Nullable<long> ViewerId{get;set;}
     
-        public virtual System.DateTime AddTime
-        {
-            get;
-            set;
-        }
+        public virtual System.DateTime AddTime{get;set;}
     
-        public virtual int ShowLevel
-        {
-            get;
-            set;
-        }
+        public virtual int ShowLevel{get;set;}
     
-        public virtual string Json
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual string Json{get;set;}
     }
 }

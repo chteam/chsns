@@ -8,73 +8,33 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Photo
-    {
-        #region Primitive Properties
+    public partial class Photo{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual string Title
-        {
-            get;
-            set;
-        }
+        public virtual string Title{get;set;}
     
-        public virtual string Summary
-        {
-            get;
-            set;
-        }
+        public virtual string Summary{get;set;}
     
-        public virtual Nullable<long> AlbumId
-        {
-            get;
-            set;
-        }
+        public virtual Nullable<long> AlbumId{get;set;}
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual System.DateTime AddTime
-        {
-            get;
-            set;
-        }
+        public virtual System.DateTime AddTime{get;set;}
     
-        public virtual string Domain
-        {
-            get;
-            set;
-        }
+        public virtual string Domain{get;set;}
     
-        public virtual string Url
-        {
-            get;
-            set;
-        }
+        public virtual string Url{get;set;}
     
-        public virtual long Order
-        {
-            get;
-            set;
-        }
+        public virtual long Order{get;set;}
     
-        public virtual int Status
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual int Status{get;set;}
     }
 }
