@@ -1,6 +1,5 @@
 ﻿using System;
 using CHSNS.Config;
-using CHSNS.Model;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement.Operator;
 using CHSNS.Models;
@@ -8,9 +7,9 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class AccountService {
         static readonly AccountService Instance = new AccountService();
-        private readonly IAccountOperator Account;
+        private readonly IAccountOperator _account;
         public AccountService() {
-            Account = new AccountOperator();
+            _account = new AccountOperator();
         }
 
         public static AccountService GetInstance() {
@@ -27,7 +26,7 @@ namespace CHSNS.Service {
         public int Login(String userName, String password, Boolean isAutoLogin, Boolean isPasswordMd5, IContext context) {
             if (string.IsNullOrEmpty(userName.Trim())) throw new Exception("用户名不能为空");
             password = isPasswordMd5 ? password.Trim().ToMd5() : password.Trim();
-            var profile = Account.Login(userName, password, context.Site.Score.LogOn);
+            var profile = _account.Login(userName, password, context.Site.Score.LogOn);
             if (profile == null) return -1;//无账号
             Logout(context);
             context.User.UserId = profile.UserId;
@@ -44,15 +43,15 @@ namespace CHSNS.Service {
 
         public bool Create(Account account, string name,SiteConfig site) {
             var canuse = IsUsernameCanUse(account.UserName);
-            return canuse && Account.Create(account, name, site.Score.Init);
+            return canuse && _account.Create(account, name, site.Score.Init);
         }
         public bool IsUsernameCanUse(string username)
         {
-            return username.Trim().Length > 0 && Account.IsUsernameCanUse(username);
+            return username.Trim().Length > 0 && _account.IsUsernameCanUse(username);
         }
 
         public void InitCreater() {
-            Account.InitCreater();
+            _account.InitCreater();
         }
     }
 }

@@ -1,9 +1,5 @@
-
-using System.Web;
 using System.Web.Mvc;
-using System;
 using CHSNS.Service;
-using CHSNS.ViewModel;
 
 namespace CHSNS.Controllers {
 
@@ -12,18 +8,14 @@ namespace CHSNS.Controllers {
     [HandleError]
     abstract public class BaseController : NewBaseController {
         #region Êý¾Ý²Ù×÷
-        private DBManager _dbExt;
-        protected DBManager DbExt {
-            get {
-                if (_dbExt == null)
-                    _dbExt = new DBManager();
-                return _dbExt;
-            }
+        private DataManager _dataExt;
+        protected DataManager DataExt {
+            get { return _dataExt ?? (_dataExt = new DataManager()); }
         }
 
         protected override void OnResultExecuted(ResultExecutedContext filterContext) {
-            if (_dbExt != null)
-                DbExt.Dispose();
+            if (_dataExt != null)
+                DataExt.Dispose();
         }
         #endregion
     }

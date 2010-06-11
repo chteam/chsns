@@ -30,7 +30,7 @@ namespace CHSNS.Controllers
 		/// </summary>
 		public ActionResult UsernameCanUse(string username)
 		{
-			return Json(DbExt.Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
+			return Json(DataExt.Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
 		}
 		[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult SaveReg(string userName, string password, string name)
@@ -46,7 +46,7 @@ namespace CHSNS.Controllers
 							Password = password,
 						};
 
-			var b = DbExt.Account.Create(a, name, CHContext.Site);
+			var b = DataExt.Account.Create(a, name, CHContext.Site);
 
 			Title = "注册成功";
 			if (b)
@@ -62,7 +62,7 @@ namespace CHSNS.Controllers
 		/// </summary>
 		public ActionResult Logout()
 		{
-			DbExt.Account.Logout(CHContext);
+			DataExt.Account.Logout(CHContext);
 
 			return RedirectToAction("index", "Entry", new { title = "index" });
 		}
@@ -78,7 +78,7 @@ namespace CHSNS.Controllers
 			if (u.Length > 3 && Regex.IsMatch(p, @"[^']{4,}"))
 			{
 				//匹配成功则赋值
-				var loginResult = DbExt.Account.Login(u, p, a, true, CHContext);
+				var loginResult = DataExt.Account.Login(u, p, a, true, CHContext);
 				return loginResult <= 0 ? Content("false") : Content("true");
 			}
 			return Content("false");
@@ -88,7 +88,7 @@ namespace CHSNS.Controllers
 		#region 设置管理员
 		public ActionResult InitCreater()
 		{
-			DbExt.Account.InitCreater();
+			DataExt.Account.InitCreater();
 			return View();
 		}
 		#endregion

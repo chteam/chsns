@@ -6,21 +6,21 @@ namespace CHSNS.Service {
 	/// 统计的类
 	/// </summary>
 	public class GatherService{
-        static readonly GatherService _instance = new GatherService();
-        private readonly IGatherOperator Gather;
+        static readonly GatherService Instance = new GatherService();
+        private readonly IGatherOperator _gather;
         public GatherService() {
-            Gather = new GatherOperator();
+            _gather = new GatherOperator();
         }
 
         public static GatherService GetInstance() {
-            return _instance;
+            return Instance;
         }
 		/// <summary>
 		/// 我的统计
 		/// </summary>
 		/// <returns></returns>
         public EventPagePas EventGather(long uId) {
-		    return Gather.EventGather(uId);
+		    return _gather.EventGather(uId);
 		}
 	}
 }

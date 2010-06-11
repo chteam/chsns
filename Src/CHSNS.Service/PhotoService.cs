@@ -6,26 +6,26 @@ using CHSNS.Models;
 
 namespace CHSNS.Service {
     public class PhotoService {
-                static readonly PhotoService _instance = new PhotoService();
-                private readonly IPhotoOperator Photo;
+                static readonly PhotoService Instance = new PhotoService();
+                private readonly IPhotoOperator _photo;
         public PhotoService() {
-                    Photo = new PhotoOperator();
+                    _photo = new PhotoOperator();
         }
 
         public static PhotoService GetInstance(){
-            return _instance;
+            return Instance;
         }
         public void Add(Photo photo) {
             photo.AddTime = DateTime.Now;
-            Photo.Add(photo);
+            _photo.Add(photo);
         }
 
         public Photo Get(long id) {
-            return Photo.Get(id);
+            return _photo.Get(id);
         }
 
         public void Delete(long id) {
-            Photo.Delete(id);
+            _photo.Delete(id);
         }
     }
 }

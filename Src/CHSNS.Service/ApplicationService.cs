@@ -10,9 +10,9 @@ namespace CHSNS.Service {
     public class ApplicationService {
 
         static readonly ApplicationService Instance = new ApplicationService();
-        private readonly IApplicationOperator Application;
+        private readonly IApplicationOperator _application;
         public ApplicationService() {
-            Application = new ApplicationOperator();
+            _application = new ApplicationOperator();
         }
 
         public static ApplicationService GetInstance() {
@@ -24,12 +24,12 @@ namespace CHSNS.Service {
         /// </summary>
         public List<Application> Applications {
             get {
-                return Application.Applications;
+                return _application.Applications;
             }
         }
 
         public List<Application> GetApps(long[] ids) {
-            return Application.GetApps(ids);
+            return _application.GetApps(ids);
         }
     }
 }

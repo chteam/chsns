@@ -16,9 +16,9 @@ namespace CHSNS.Controllers {
 
             #region 群信息和用户
 
-            var g = DbExt.Group.Get(id);
+            var g = DataExt.Group.Get(id);
             Validate404(g);
-            var u = DbExt.Group.GetGroupUser(id, CHUser.UserId);
+            var u = DataExt.Group.GetGroupUser(id, CHUser.UserId);
             Validate404(u);
             ViewData["guser"] = u;
             Title = g.Name;
@@ -54,17 +54,17 @@ namespace CHSNS.Controllers {
 
             #region 统计
 
-            ViewData["MemberList"] = DbExt.View.ViewList(6, 2, g.Id, 6);
-            ViewData["ViewList"] = DbExt.View.ViewList(1, 6, g.Id, 6);
+            ViewData["MemberList"] = DataExt.View.ViewList(6, 2, g.Id, 6);
+            ViewData["ViewList"] = DataExt.View.ViewList(1, 6, g.Id, 6);
 
-            ViewData["Applycount"] = DbExt.Group.WaitJoinCount(id);
+            ViewData["Applycount"] = DataExt.Group.WaitJoinCount(id);
 
-            var adminList = DbExt.Group.GetAdmins(id);
+            var adminList = DataExt.Group.GetAdmins(id);
             ViewData["adminlist"] = adminList;
 
             #endregion
 
-            var posts = DbExt.Note.GetNotes(id, NoteType.GroupPost, p.Value, 20);
+            var posts = DataExt.Note.GetNotes(id, NoteType.GroupPost, p.Value, 20);
             ViewData["posts"] = posts;
             return View(g);
         }
@@ -76,7 +76,7 @@ namespace CHSNS.Controllers {
             InitPage(ref p);
             uid = uid ?? CHUser.UserId;
             Title = "群列表";
-            return View(DbExt.Group.GetList(uid.Value, p.Value, 10));
+            return View(DataExt.Group.GetList(uid.Value, p.Value, 10));
         }
 
 	    #region Create
@@ -89,7 +89,7 @@ namespace CHSNS.Controllers {
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(string name) {
             Message = "创建成功";
-            DbExt.Group.Add(name, CHUser.UserId);
+            DataExt.Group.Add(name, CHUser.UserId);
             return this.RedirectToReferrer();
         }
 		#endregion
@@ -99,7 +99,7 @@ namespace CHSNS.Controllers {
         public ActionResult Manage(long id)
         {
             //TODO:限制访问人员
-            return ManageResult(DbExt.Group.Get(id));
+            return ManageResult(DataExt.Group.Get(id));
         }
 
 	    [NonAction]
@@ -119,7 +119,7 @@ namespace CHSNS.Controllers {
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Manage(long id, Group group) {
             //TODO:限制访问人员
-            DbExt.Group.Update(id, group);
+            DataExt.Group.Update(id, group);
             return RedirectToAction("Manage", new{id});
         }
 
@@ -128,7 +128,7 @@ namespace CHSNS.Controllers {
 		#region 用户管理
 		public ActionResult ManageUser(long id) {
 			Title = "用户管理";
-		    ViewData["list"] = DbExt.Group.GetGroupUser(id);
+		    ViewData["list"] = DataExt.Group.GetGroupUser(id);
             
 			return View();
 		}
@@ -136,8 +136,8 @@ namespace CHSNS.Controllers {
 
 		#region 帖子
         public ActionResult Details(long id){
-            var note = DbExt.Note.Details(id, NoteType.GroupPost);
-            var cl = DbExt.Comment.CommentList(id, CommentType.Note, 1,CHContext.Site);
+            var note = DataExt.Note.Details(id, NoteType.GroupPost);
+            var cl = DataExt.Comment.CommentList(id, CommentType.Note, 1,CHContext.Site);
             ViewData["commentlist"] = cl;
             Title = note.Note.Title;
             //	ViewData["NowPage"] = 1;
@@ -156,9 +156,9 @@ namespace CHSNS.Controllers {
                 post.UserId = CHContext.User.UserId;
 				if (id.HasValue) {
 					post.Id = id.Value;
-					DbExt.Note.Edit(post);
+					DataExt.Note.Edit(post);
 				} else {
-					DbExt.Note.Add(post,CHUser);
+					DataExt.Note.Add(post,CHUser);
 				}
 				ts.Complete();
 				return this.RedirectToReferrer();

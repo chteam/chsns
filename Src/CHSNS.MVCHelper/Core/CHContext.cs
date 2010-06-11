@@ -103,9 +103,9 @@ namespace CHSNS {
             }
         }
         #endregion
-        #region DBManager
+        #region DataManager
         //IDBManager _dbmanager;
-        //public IDBManager DBManager {
+        //public IDBManager DataManager {
         //    get {
         //        return _dbmanager ?? (_dbmanager = new SQLServerDBManager(this));
         //    }

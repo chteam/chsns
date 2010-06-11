@@ -60,7 +60,7 @@ namespace CHSNS.Web
             if (context1.User.IsLogin) return; //当前不处于登录状态
             if (!context1.Cookies.IsAutoLogin) return;
             var pwd = context1.Cookies.UserPassword;
-            var idb = new DBManager();
+            var idb = new DataManager();
             idb.Account.Login(context1.Cookies.UserID.ToString(),
                               pwd,
                               true,

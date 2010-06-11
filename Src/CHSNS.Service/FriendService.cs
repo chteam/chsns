@@ -1,20 +1,21 @@
 ﻿using CHSNS.Config;
+using CHSNS.Model;
 using CHSNS.Operator;
-
+using System;
+ 
+using System.Collections.Generic;
+using CHSNS.Models;
 namespace CHSNS.Service {
-    using System;
-    using Model;
-    using System.Collections.Generic;
-	using CHSNS.Models;
+
     public class FriendService {
         static readonly FriendService Instance = new FriendService();
-        private readonly IFriendOperator Friend;
-        private readonly IUserOperator User;
-        private readonly IEventOperator Event;
+        private readonly IFriendOperator _friend;
+        private readonly IUserOperator _user;
+        private readonly IEventOperator _event;
         public FriendService() {
-            Friend = new FriendOperator();
-            User = new UserOperator();
-            Event = new EventOperator();
+            _friend = new FriendOperator();
+            _user = new UserOperator();
+            _event = new EventOperator();
         }
 
         public static FriendService GetInstance() {
@@ -22,21 +23,21 @@ namespace CHSNS.Service {
         }
         #region 获取
         public Profile UserFriendInfo(long userid) {
-            return Friend.UserFriendInfo(userid);
+            return _friend.UserFriendInfo(userid);
         }
         public List<long> GetFriendsId(long userid) {
-            return Friend.GetFriendsId(userid);
+            return _friend.GetFriendsId(userid);
         }
         public PagedList<UserItemPas> GetFriends(long uid, int p, SiteConfig site) {
-            return Friend.GetFriends(uid, p, site.EveryPage.Friend);
+            return _friend.GetFriends(uid, p, site.EveryPage.Friend);
         }
 
         public List<UserItemPas> GetRandoms(int n) {
-            return Friend.GetRandoms(n);
+            return _friend.GetRandoms(n);
         }
 
         public PagedList<UserItemPas> GetRequests(long userid, int p, SiteConfig site) {
-            return Friend.GetRequests(userid, p, site.EveryPage.FriendRequest);
+            return _friend.GetRequests(userid, p, site.EveryPage.FriendRequest);
         }
 
         #endregion
@@ -47,7 +48,7 @@ namespace CHSNS.Service {
         /// <param name="toId"></param>
         /// <returns>已经是好友则返回False，如果还不是，则返回True，并发送一个好友请求</returns>
         public bool Add(long fromId, long toId) {
-            return Friend.Add(fromId, toId);
+            return _friend.Add(fromId, toId);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace CHSNS.Service {
         /// <param name="toId">To ID.</param>
         /// <returns></returns>
         public bool Delete(long fromId, long toId) {
-            return Friend.Delete(fromId, toId);
+            return _friend.Delete(fromId, toId);
         }
 
         /// <summary>
@@ -68,10 +69,10 @@ namespace CHSNS.Service {
         /// <param name="user"></param>
         /// <returns></returns>
         public bool Agree(long operaterId, long toId, IUser user) {
-            var b = Friend.Agree(operaterId, toId);
-            string name = User.GetUserName(toId);
+            var b = _friend.Agree(operaterId, toId);
+            string name = _user.GetUserName(toId);
 
-            Event.Add(new Event{
+            _event.Add(new Event{
                 OwnerId = toId,
                 ViewerId = operaterId,
                 TemplateName = "MakeFriend",
@@ -92,10 +93,10 @@ namespace CHSNS.Service {
         /// <param name="operaterId">The operater ID.</param>
         /// <returns></returns>
         public bool Ignore(long fromId, long operaterId) {
-            return Friend.Ignore(fromId, operaterId);
+            return _friend.Ignore(fromId, operaterId);
         }
         public bool IgnoreAll(long uId) {
-            return Friend.IgnoreAll(uId);
+            return _friend.IgnoreAll(uId);
         }
     }
 }

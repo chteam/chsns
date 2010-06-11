@@ -15,7 +15,7 @@ namespace CHSNS.Controllers {
         [LoginedFilter]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(SuperNote v) {
-            DbExt.Video.Create(CHUser,v);
+            DataExt.Video.Create(CHUser,v);
             Message = "提交成功";
             return RedirectToAction("List");
         }
@@ -25,12 +25,12 @@ namespace CHSNS.Controllers {
         /// <returns></returns>
         public ActionResult List(long? uid, int? p) {
             InitPage(ref p);
-            ViewData["list"] = DbExt.Video.List(uid,p.Value, 10,CHUser);
+            ViewData["list"] = DataExt.Video.List(uid,p.Value, 10,CHUser);
             Title = "视频列表";
             return View();
         }
         public ActionResult Del(long[] uid) {
-            DbExt.Video.Remove(CHUser,uid);
+            DataExt.Video.Remove(CHUser,uid);
             return View();
         }
     }

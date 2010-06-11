@@ -8,7 +8,7 @@ namespace CHSNS.Controllers
 		[OutputCache(VaryByParam = "ProvinceID", Duration = int.MaxValue)]
 		public ActionResult CityList(int provinceID)
 		{
-			return Json(DbExt.Golbal.GetCitys(CHContext,provinceID));
+			return Json(DataExt.Golbal.GetCitys(CHContext,provinceID));
 		}
 	}
 }
