@@ -12,7 +12,7 @@ namespace CHSNS.Controllers {
 
             if (!userid.HasValue) userid = CHUser.UserId;
             if (!p.HasValue || p == 0) p = 1;
-            var user = DbExt.UserInfo.GetUser(
+            var user = DataExt.UserInfo.GetUser(
                 userid.Value,
                 c => new Profile
                          {
@@ -41,13 +41,13 @@ namespace CHSNS.Controllers {
 		[HttpPost]
 		public ActionResult NoteList(int p, int ep, long userid) {
             var d =
-                DbExt.Note.GetNotes(userid, NoteType.Note, p, ep)
+                DataExt.Note.GetNotes(userid, NoteType.Note, p, ep)
                 ;
 			return View(d);
 		}
 		public ActionResult Details(long id) {
-			var note = DbExt.Note.Details(id, NoteType.Note);
-            var cl = DbExt.Comment.CommentList(id, CommentType.Note, 1, CHContext.Site);
+			var note = DataExt.Note.Details(id, NoteType.Note);
+            var cl = DataExt.Comment.CommentList(id, CommentType.Note, 1, CHContext.Site);
 			ViewData["commentlist"] = cl;
 			Title = note.Note.Title;
 			ViewData["NowPage"] = 1;
@@ -60,7 +60,7 @@ namespace CHSNS.Controllers {
 			using (var ts = new TransactionScope()) {
 				Note n = null;
 				if (id.HasValue) {//编辑
-					n = DbExt.Note.Details(id.Value, NoteType.Note).Note;
+					n = DataExt.Note.Details(id.Value, NoteType.Note).Note;
 					Title = "修改日志";
 				} else {
 					Title = "发新日志";
@@ -83,10 +83,10 @@ namespace CHSNS.Controllers {
 				n.ParentId = CHUser.UserId;
 				if (id.HasValue) {
 					n.Id = id.Value;
-					DbExt.Note.Edit(n);
+					DataExt.Note.Edit(n);
 				}
 				else {
-					DbExt.Note.Add(n,CHUser);
+					DataExt.Note.Add(n,CHUser);
 				}
 				ts.Complete();
 				return RedirectToAction("Index");
@@ -102,7 +102,7 @@ namespace CHSNS.Controllers {
 		[LoginedFilter]
 		public ActionResult Delete(long id) {
 			using (var ts = new TransactionScope()) {
-				DbExt.Note.Delete(id, CHUser.UserId, NoteType.Note);
+				DataExt.Note.Delete(id, CHUser.UserId, NoteType.Note);
 				ts.Complete();
 				return Content("");
 			}
@@ -114,7 +114,7 @@ namespace CHSNS.Controllers {
 		/// <returns></returns>
 		public ActionResult News() {
 			Title = "日志首页";
-			return View(DbExt.Note.GetLastNotes(null));
+			return View(DataExt.Note.GetLastNotes(null));
 		}
 	}
 }

@@ -7,11 +7,11 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class UserService {
         static readonly UserService Instance = new UserService();
-        private readonly IUserOperator User;
-        private readonly IEventOperator Event;
+        private readonly IUserOperator _user;
+        private readonly IEventOperator _event;
         public UserService() {
-            User = new UserOperator();
-            Event = new EventOperator();
+            _user = new UserOperator();
+            _event = new EventOperator();
         }
 
         public static UserService GetInstance() {
@@ -19,33 +19,33 @@ namespace CHSNS.Service {
         }
 
         public UserPas UserInformation(long userid) {
-            return User.UserInformation(userid);
+            return _user.UserInformation(userid);
         }
 
         public int Relation(long ownerId, long viewerId) {
-            return User.Relation(ownerId, viewerId);
+            return _user.Relation(ownerId, viewerId);
         }
 
         #region BasicInfo
         public BasicInformation GetBaseInfo(long userId) {
-            return User.GetBaseInfo(userId);
+            return _user.GetBaseInfo(userId);
         }
         public void SaveBaseInfo(BasicInformation b, IContext context) {
             if (b.UserId == 0) b.UserId = context.User.UserId;
-            User.SaveBaseInfo(b);
+            _user.SaveBaseInfo(b);
         }
 
         #endregion
 
         #region Magicbox
         public string GetMagicBox(long userId) {
-            return User.GetMagicBox(userId);
+            return _user.GetMagicBox(userId);
         }
         public void SaveMagicBox(string magicbox, long uid) {
-            User.SaveMagicBox(magicbox, uid);
+            _user.SaveMagicBox(magicbox, uid);
         }
         public void MagicBoxBackup() {
-            User.MagicBoxBackup();
+            _user.MagicBoxBackup();
         }
 
 
@@ -64,12 +64,12 @@ namespace CHSNS.Service {
         }
 
         public Profile GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<Profile, T>> x) {
-            return User.GetUser(userid, x);
+            return _user.GetUser(userid, x);
         }
         #region profile
         public void SaveText(long uid, string text, IContext context) {
-            User.SaveText(uid, text);
-            Event.Add(new Event{
+            _user.SaveText(uid, text);
+            _event.Add(new Event{
                 OwnerId = context.User.UserId,
                 TemplateName = "ProText",
                 AddTime = DateTime.Now,
@@ -83,7 +83,7 @@ namespace CHSNS.Service {
 
 
         public string GetUserName(long uid) {
-            return User.GetUserName(uid);
+            return _user.GetUserName(uid);
         }
         /// <summary>
         /// 修改头像
@@ -91,7 +91,7 @@ namespace CHSNS.Service {
         /// <param name="userId">用户Id</param>
         /// <param name="url">头像地址，（全）</param>
         public void ChangeFace(long userId, string url) {
-            User.ChangeFace(userId, url);
+            _user.ChangeFace(userId, url);
         }
     }
 }

@@ -8,9 +8,9 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class CommentService {
         static readonly CommentService Instance = new CommentService();
-        private readonly ICommentOperator Comment;
+        private readonly ICommentOperator _comment;
         public CommentService() {
-            Comment = new CommentOperator();
+            _comment = new CommentOperator();
         }
 
         public static CommentService GetInstance() {
@@ -20,15 +20,15 @@ namespace CHSNS.Service {
         #region reply
 
         public PagedList<CommentPas> GetReply(long uid, int p, int ep) {
-            return Comment.GetReply(uid, p, ep);
+            return _comment.GetReply(uid, p, ep);
         }
         public Reply AddReply(Reply r) {
             r.AddTime = DateTime.Now;
-            return Comment.AddReply(r);
+            return _comment.AddReply(r);
         }
 
         public void DeleteReply(long id, long userid) {
-            Comment.DeleteReply(id, userid);
+            _comment.DeleteReply(id, userid);
         }
 
         #endregion
@@ -45,7 +45,7 @@ namespace CHSNS.Service {
         /// <returns></returns>
         public PagedList<CommentPas> CommentList(long ShowerID, CommentType type, int p
             , SiteConfig site) {
-            return Comment.CommentList(ShowerID, type, p, site.EveryPage.NoteComment);
+            return _comment.CommentList(ShowerID, type, p, site.EveryPage.NoteComment);
 
 
         }
@@ -57,13 +57,13 @@ namespace CHSNS.Service {
         /// <param name="type"></param>
         /// <returns></returns>
         public bool Delete(long id, CommentType type) {
-            return Comment.Delete(id, type);
+            return _comment.Delete(id, type);
         }
 
 
         public void Add(Comment cmt, CommentType type) {
             cmt.AddTime = DateTime.Now;
-            Comment.Add(cmt, type);
+            _comment.Add(cmt, type);
         }
 
         #endregion

@@ -8,7 +8,7 @@ namespace CHSNS.Controllers {
             ViewData.Add("tabs", tabs??0);
         }
         public ActionResult SaveText(string text) {
-            DbExt.UserInfo.SaveText(CHUser.UserId, text, CHContext);
+            DataExt.UserInfo.SaveText(CHUser.UserId, text, CHContext);
             return Content("");
         }
     }

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-using CHSNS.Operator;
+﻿using CHSNS.Operator;
 using CHSNS.Models;
 
 namespace CHSNS.Service
@@ -10,16 +8,16 @@ namespace CHSNS.Service
     /// </summary>
     public class EventService 
     {
-        static readonly EventService _instance = new EventService();
-        private readonly IEventOperator Event;
-        private readonly IFriendOperator Friend;
+        static readonly EventService Instance = new EventService();
+        private readonly IEventOperator _event;
+        private readonly IFriendOperator _friend;
         public EventService() {
-            Event = new EventOperator();
-            Friend = new FriendOperator();
+            _event = new EventOperator();
+            _friend = new FriendOperator();
         }
 
         public static EventService GetInstance() {
-            return _instance;
+            return Instance;
         }
 
         /// <summary>
@@ -31,8 +29,8 @@ namespace CHSNS.Service
         /// <returns></returns>
         public PagedList<Event> GetFriendEvent(long userid, int p, int ep)
         {
-            var ids = Friend.GetFriendsId(userid);
-            return Event.GetUsersEvent(ids.ToArray(), p, ep);
+            var ids = _friend.GetFriendsId(userid);
+            return _event.GetUsersEvent(ids.ToArray(), p, ep);
         }
 
         /// <summary>
@@ -42,11 +40,11 @@ namespace CHSNS.Service
         /// <param name="ownerId"></param>
         public void Delete(long id, long ownerId)
         {
-            Event.Delete(id, ownerId);
+            _event.Delete(id, ownerId);
         }
         public void Add(Event e)
         {
-            Event.Add(e);
+            _event.Add(e);
         }
 
         #region IEventService 成员
@@ -54,7 +52,7 @@ namespace CHSNS.Service
 
         public PagedList<Event> GetEvent(long userid, int p, int ep)
         {
-            return Event.GetEvent(userid, p, ep);
+            return _event.GetEvent(userid, p, ep);
         }
 
         #endregion

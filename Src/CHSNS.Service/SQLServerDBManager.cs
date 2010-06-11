@@ -1,10 +1,10 @@
 namespace CHSNS.Service {
     using System.Configuration;
-    public class DBManager {
+    public class DataManager {
 
 
         public string ConnectionString { get; set; }
-        public DBManager() {
+        public DataManager() {
             ConnectionString = ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString;
             Init();
         }

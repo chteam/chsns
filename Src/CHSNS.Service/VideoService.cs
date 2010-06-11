@@ -6,9 +6,9 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class VideoService {
         static readonly VideoService Instance = new VideoService();
-        private readonly ISuperNoteOperator Video;
+        private readonly ISuperNoteOperator _video;
         public VideoService() {
-            Video = new VideoOperator();
+            _video = new VideoOperator();
         }
 
         public static VideoService GetInstance() {
@@ -23,7 +23,7 @@ namespace CHSNS.Service {
             content.Title = content.Title ?? m.Title;
             content.FaceURL = m.Pic;
             content.Type = (byte)SuperNoteType.Video;
-            Video.Create(content);
+            _video.Create(content);
         }
 
         public void Update(SuperNote content) {
@@ -31,12 +31,12 @@ namespace CHSNS.Service {
         }
 
         public void Remove(IUser user,params long[] uid) {
-            Video.Remove(user.UserId, uid);
+            _video.Remove(user.UserId, uid);
         }
 
         public PagedList<SuperNote> List(long? uid,int p,int ep,IUser user) {
             //类型,时间排序,用户
-            return Video.List(uid ?? user.UserId, p, ep);
+            return _video.List(uid ?? user.UserId, p, ep);
         }
 
         #endregion

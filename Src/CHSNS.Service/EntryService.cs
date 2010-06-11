@@ -9,9 +9,9 @@ using CHSNS.SQLServerImplement;
 namespace CHSNS.Service {
     public class EntryService {
         static readonly EntryService Instance = new EntryService();
-        private readonly EntryOperator Entry;
+        private readonly EntryOperator _entry;
         public EntryService() {
-            Entry = new EntryOperator();
+            _entry = new EntryOperator();
         }
 
         public static EntryService GetInstance() {

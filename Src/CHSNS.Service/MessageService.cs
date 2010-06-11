@@ -12,40 +12,40 @@ namespace CHSNS.Service
     /// </summary>
     public class MessageService
     {
-                static readonly MessageService _instance = new MessageService();
-                private readonly IMessageOperator Message;
+                static readonly MessageService Instance = new MessageService();
+                private readonly IMessageOperator _message;
         public MessageService() {
-                    Message = new MessageOperator();
+                    _message = new MessageOperator();
         }
 
         public static MessageService GetInstance(){
-            return _instance;
+            return Instance;
         }
 
         //  public MessageService(IDBManager id) : base(id) { }
         public PagedList<MessageItemPas> GetInbox(long uid, int p, SiteConfig site){
-            return Message.GetInbox(uid, p, site.EveryPage.MessageBox);
+            return _message.GetInbox(uid, p, site.EveryPage.MessageBox);
         }
 
         public PagedList<MessageItemPas> GetOutbox(long uid, int p, SiteConfig site)
         {
 
-            return Message.GetOutbox(uid, p, site.EveryPage.MessageBox);
+            return _message.GetOutbox(uid, p, site.EveryPage.MessageBox);
             
         }
         public void Add(Message m,IContext context)
         {
-            Message.Add(m, context.HttpContext.Server);
+            _message.Add(m, context.HttpContext.Server);
         }
 
         public void Delete(long id, MessageBoxType t, long uid)
         {
-            Message.Delete(id, t, uid);
+            _message.Delete(id, t, uid);
         }
 
         public MessageDetailsPas Details(long id, long uId)
         {
-            return Message.Details(id, uId);
+            return _message.Details(id, uId);
         }
     }
 }

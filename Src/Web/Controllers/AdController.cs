@@ -1,8 +1,10 @@
 using System.Web.Mvc;
-namespace CHSNS.Controllers {
+using CHSNS.Controllers;
+
+namespace CHSNS.Web.Controllers {
 	public class AdController : BaseController {
-		public void index() { }
-		public ActionResult ad() {
+		public void Index() { }
+		public ActionResult Ad() {
 			//public override void Render() {
 			//将值传输给View
 			//ApplicationMenuViewBuilder amvb = new ApplicationMenuViewBuilder();

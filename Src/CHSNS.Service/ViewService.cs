@@ -4,23 +4,23 @@ using CHSNS.Operator;
 namespace CHSNS.Service
 {
     public class ViewService {
-                static readonly ViewService _instance = new ViewService();
-                private readonly IViewOperator View;
+                static readonly ViewService Instance = new ViewService();
+                private readonly IViewOperator _view;
         public ViewService() {
-                    View = new ViewOperator();
+                    _view = new ViewOperator();
         }
 
         public static ViewService GetInstance() {
-            return _instance;
+            return Instance;
         }
         public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count)
         {
-            return View.ViewList(type, everyrow, ownerid, count);
+            return _view.ViewList(type, everyrow, ownerid, count);
         }
 
         public void Update(byte type, long ownerid,IUser user)
         {
-            View.Update(type, ownerid, user.UserId);
+            _view.Update(type, ownerid, user.UserId);
         }
     }
 }

@@ -8,9 +8,9 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class GroupService {
         static readonly GroupService Instance = new GroupService();
-        private readonly IGroupOperator Group;
+        private readonly IGroupOperator _group;
         public GroupService() {
-            Group = new GroupOperator();
+            _group = new GroupOperator();
         }
 
         public static GroupService GetInstance() {
@@ -18,19 +18,19 @@ namespace CHSNS.Service {
         }
 
         public GroupUser GetGroupUser(long gId, long uId) {
-            return Group.GetGroupUser(gId, uId);
+            return _group.GetGroupUser(gId, uId);
         }
         public Group Get(long groupId) {
-            return Group.Get(groupId);
+            return _group.Get(groupId);
         }
         public int WaitJoinCount(long groupId) {
-            return Group.WaitJoinCount(groupId);
+            return _group.WaitJoinCount(groupId);
         }
         public List<UserItemPas> GetAdmins(long groupId) {
-            return Group.GetAdmins(groupId);
+            return _group.GetAdmins(groupId);
         }
         public PagedList<Group> GetList(long uId, int page, int pageSize) {
-            return Group.GetList(uId, page, pageSize);
+            return _group.GetList(uId, page, pageSize);
         }
         public bool Add(string name, long uId) {
             var group = new Group{
@@ -40,14 +40,14 @@ namespace CHSNS.Service {
                 Summary = "",
                 CreaterId = uId
             };
-            return Group.Add(group, uId);
+            return _group.Add(group, uId);
         }
         public bool Update(long groupId, Group group) {
             group.Id = groupId;
-            return Group.Update(group);
+            return _group.Update(group);
         }
         public List<UserCountPas> GetGroupUser(long groupId){
-            return Group.GetGroupUser(groupId);
+            return _group.GetGroupUser(groupId);
         }
     }
 }
