@@ -7,67 +7,32 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class PersonalInformation
-    {
-        #region Primitive Properties
+    public partial class PersonalInformation{
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual string LoveLike
-        {
-            get;
-            set;
-        }
+        public virtual string LoveLike{get;set;}
     
-        public virtual string LoveBook
-        {
-            get;
-            set;
-        }
+        public virtual string LoveBook{get;set;}
     
-        public virtual string LoveMusic
-        {
-            get;
-            set;
-        }
+        public virtual string LoveMusic{get;set;}
     
-        public virtual string LoveMovie
-        {
-            get;
-            set;
-        }
+        public virtual string LoveMovie{get;set;}
     
-        public virtual string LoveSports
-        {
-            get;
-            set;
-        }
+        public virtual string LoveSports{get;set;}
     
-        public virtual string LoveGame
-        {
-            get;
-            set;
-        }
+        public virtual string LoveGame{get;set;}
     
-        public virtual string LoveComic
-        {
-            get;
-            set;
-        }
+        public virtual string LoveComic{get;set;}
     
-        public virtual string JoinSociety
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual string JoinSociety{get;set;}
     }
 }

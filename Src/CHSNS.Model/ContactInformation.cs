@@ -7,85 +7,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class ContactInformation
-    {
-        #region Primitive Properties
+    public partial class ContactInformation{
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual string Address
-        {
-            get;
-            set;
-        }
+        public virtual string Address{get;set;}
     
-        public virtual string QQ
-        {
-            get;
-            set;
-        }
+        public virtual string QQ{get;set;}
     
-        public virtual string Msn
-        {
-            get;
-            set;
-        }
+        public virtual string Msn{get;set;}
     
-        public virtual string WangWang
-        {
-            get;
-            set;
-        }
+        public virtual string WangWang{get;set;}
     
-        public virtual string NeteasePop
-        {
-            get;
-            set;
-        }
+        public virtual string NeteasePop{get;set;}
     
-        public virtual string UC
-        {
-            get;
-            set;
-        }
+        public virtual string UC{get;set;}
     
-        public virtual string Telphone
-        {
-            get;
-            set;
-        }
+        public virtual string Telphone{get;set;}
     
-        public virtual string Mobiephone
-        {
-            get;
-            set;
-        }
+        public virtual string Mobiephone{get;set;}
     
-        public virtual string WebSite
-        {
-            get;
-            set;
-        }
+        public virtual string WebSite{get;set;}
     
-        public virtual byte TellMethod
-        {
-            get;
-            set;
-        }
+        public virtual byte TellMethod{get;set;}
     
-        public virtual byte ShowLevel
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual byte ShowLevel{get;set;}
     }
 }

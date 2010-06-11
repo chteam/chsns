@@ -8,79 +8,35 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class EntryVersion
-    {
-        #region Primitive Properties
+    public partial class EntryVersion{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual string Title
-        {
-            get;
-            set;
-        }
+        public virtual string Title{get;set;}
     
-        public virtual string Reason
-        {
-            get;
-            set;
-        }
+        public virtual string Reason{get;set;}
     
-        public virtual System.DateTime AddTime
-        {
-            get;
-            set;
-        }
+        public virtual System.DateTime AddTime{get;set;}
     
-        public virtual string Description
-        {
-            get;
-            set;
-        }
+        public virtual string Description{get;set;}
     
-        public virtual string Reference
-        {
-            get;
-            set;
-        }
+        public virtual string Reference{get;set;}
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual int Status
-        {
-            get;
-            set;
-        }
+        public virtual int Status{get;set;}
     
-        public virtual Nullable<long> EntryId
-        {
-            get;
-            set;
-        }
+        public virtual Nullable<long> EntryId{get;set;}
     
-        public virtual string ParentText
-        {
-            get;
-            set;
-        }
+        public virtual string ParentText{get;set;}
     
-        public virtual string Ext
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual string Ext{get;set;}
     }
 }

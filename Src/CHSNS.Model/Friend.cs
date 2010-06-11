@@ -8,55 +8,27 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Friend
-    {
-        #region Primitive Properties
+    public partial class Friend{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual long FromId
-        {
-            get;
-            set;
-        }
+        public virtual long FromId{get;set;}
     
-        public virtual long ToId
-        {
-            get;
-            set;
-        }
+        public virtual long ToId{get;set;}
     
-        public virtual bool IsTrue
-        {
-            get;
-            set;
-        }
+        public virtual bool IsTrue{get;set;}
     
-        public virtual bool IsCommon
-        {
-            get;
-            set;
-        }
+        public virtual bool IsCommon{get;set;}
     
-        public virtual Nullable<int> FriendType
-        {
-            get;
-            set;
-        }
+        public virtual Nullable<int> FriendType{get;set;}
     
-        public virtual Nullable<int> FriendSummary
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual Nullable<int> FriendSummary{get;set;}
     }
 }

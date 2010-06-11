@@ -7,43 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class GroupUser
-    {
-        #region Primitive Properties
+    public partial class GroupUser{
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual long GroupId
-        {
-            get;
-            set;
-        }
+        public virtual long GroupId{get;set;}
     
-        public virtual System.DateTime AddTime
-        {
-            get;
-            set;
-        }
+        public virtual System.DateTime AddTime{get;set;}
     
-        public virtual long PostCount
-        {
-            get;
-            set;
-        }
+        public virtual long PostCount{get;set;}
     
-        public virtual byte Status
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual byte Status{get;set;}
     }
 }

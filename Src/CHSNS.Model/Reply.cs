@@ -7,61 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Reply
-    {
-        #region Primitive Properties
+    public partial class Reply{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual long SenderId
-        {
-            get;
-            set;
-        }
+        public virtual long SenderId{get;set;}
     
-        public virtual string Body
-        {
-            get;
-            set;
-        }
+        public virtual string Body{get;set;}
     
-        public virtual System.DateTime AddTime
-        {
-            get;
-            set;
-        }
+        public virtual System.DateTime AddTime{get;set;}
     
-        public virtual bool IsSee
-        {
-            get;
-            set;
-        }
+        public virtual bool IsSee{get;set;}
     
-        public virtual bool IsDel
-        {
-            get;
-            set;
-        }
+        public virtual bool IsDel{get;set;}
     
-        public virtual byte IsTellMe
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual byte IsTellMe{get;set;}
     }
 }

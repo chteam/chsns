@@ -7,37 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Tags
-    {
-        #region Primitive Properties
+    public partial class Tags{
     
-        public virtual long Id
-        {
-            get;
-            set;
-        }
+        public virtual long Id{get;set;}
     
-        public virtual string Title
-        {
-            get;
-            set;
-        }
+        public virtual string Title{get;set;}
     
-        public virtual long Count
-        {
-            get;
-            set;
-        }
+        public virtual long Count{get;set;}
     
-        public virtual byte Type
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual byte Type{get;set;}
     }
 }

@@ -8,37 +8,21 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class Account
-    {
-        #region Primitive Properties
+    public partial class Account{
     
-        public virtual long UserId
-        {
-            get;
-            set;
-        }
+        public virtual long UserId{get;set;}
     
-        public virtual string UserName
-        {
-            get;
-            set;
-        }
+        public virtual string UserName{get;set;}
     
-        public virtual string Password
-        {
-            get;
-            set;
-        }
+        public virtual string Password{get;set;}
     
-        public virtual Nullable<long> Code
-        {
-            get;
-            set;
-        }
-
-        #endregion
+        public virtual Nullable<long> Code{get;set;}
     }
 }
