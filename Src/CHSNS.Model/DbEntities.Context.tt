@@ -1,4 +1,4 @@
-<#
+﻿<#
 //*********************************************************
 //
 //    Copyright (c) Microsoft. All rights reserved.
@@ -59,13 +59,9 @@ namespace <#=code.EscapeNamespace(namespaceName)#>
 
     #region Constructors
 
-    public <#=code.Escape(container)#>()
-        : base(ConnectionString, ContainerName)
-    {
-<#
+    public <#=code.Escape(container)#>() : base(ConnectionString, ContainerName){<#
         WriteLazyLoadingEnabled(container);
-#>
-    }
+#> }
 
     public <#=code.Escape(container)#>(string connectionString)
         : base(connectionString, ContainerName)
