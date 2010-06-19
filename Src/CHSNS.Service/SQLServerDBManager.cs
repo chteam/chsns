@@ -18,7 +18,7 @@ namespace CHSNS.Service {
         public GatherService Gather { get { return GatherService.GetInstance(); } }
         public GroupService Group { get { return GroupService.GetInstance(); } }
         public UserService UserInfo { get { return UserService.GetInstance(); } }
-        public GolbalService Golbal { get { return GolbalService.GetInstance(); } }
+        //public GolbalService Golbal { get { return GolbalService.GetInstance(); } }
         public FriendService Friend { get { return FriendService.GetInstance(); } }
         public ApplicationService Application { get { return ApplicationService.GetInstance(); } }
         public MessageService Message { get { return MessageService.GetInstance(); } }

@@ -4,9 +4,14 @@ h4{margin:0}
 a{text-decoration:none;color:#555555}
 a:hover{color:#3B5999; text-decoration:underline;}
 img{border:0;}
-
-fieldset {padding:10px;	margin:10px;border:#3B5999 dashed 2px;} 
+/*forms*/
+fieldset {padding:10px;	margin:10px;} 
 legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:3px 5px} 
+.fieldset p{padding-left:200px;}
+.fieldset p label{margin-left:-200px;float:left;width:190px;text-align:right;font-size:14px;padding-top:0px;
+ font-family:Microsoft YaHei,NewRoman,Verdana;
+ font-weight:bold;
+}
 /*some color*/
 .error{color:red} 
 .center{text-align:center;}
@@ -89,30 +94,7 @@ html>body #myhome,html>body #myblog,html>body #myphoto{border-bottom:0;}
 #loginpanel #login{width:40px;}
 
 
-/*ËÑË÷²¿·Ö search part
 
-#chcontent_body fieldset{margin:20px 0; padding:10px 0; color:#3b5999; border:1px solid #cccccc; width:500px;}
-#chSearchUser fieldset ul{margin-right:260px; list-style:none;}
-#chSearchGroup fieldset ul{margin-right:260px; list-style:none;}
-#chSearchClass fieldset ul{margin-right:260px; list-style:none;}
-#chSearchUser fieldset li{text-align:right; margin:10px 0;}
-#chSearchGroup fieldset li{text-align:right; margin:10px 0;}
-#chSearchClass fieldset li{text-align:right; margin:10px 0;}
-#chSearchUser fieldset label{color:#555; font-weight:bold;}
-#chSearchGroup fieldset label{color:#555; font-weight:bold;}
-#chSearchClass fieldset label{color:#555; font-weight:bold;}
-#chSearchUser .subbutton{width:100px; margin:10px 0; margin-left:10px;}
-#chSearchUser{padding:0 70px;}
-#chSearchGroup{padding:0 70px;}
-#chSearchGroup .subbutton{width:100px; margin:10px 0; margin-left:10px;}
-#chSearchGroup select{width:132px;}
-#chSearchGroup select option{padding-left:10px;}
-#chSearchClass fieldset{margin:20px 70px; padding:10px 0; color:#3b5999; border:1px solid #cccccc; width:500px;}
-#chSearchClass select{width:150px;}
-#chSearchClass .subbutton{width:100px; margin:10px 0; margin-left:80px;}
-#Search_Class_Item{margin:0 70px; padding:10px 0; color:#3b5999;width:500px; margin-bottom:30px;}
-#Search_Class_Item li{float:left; margin-left:30px;}
-*/
 .mypadding{padding:5px;}
 .personName{line-height:15px; overflow:hidden; width:50px; text-align:center;}
 .personName a{display:block; white-space:nowrap;}

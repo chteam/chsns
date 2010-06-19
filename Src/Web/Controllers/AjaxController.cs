@@ -5,10 +5,10 @@ namespace CHSNS.Controllers
 	public class AjaxController : BaseController
 	{
 		[HttpPost]
-		[OutputCache(VaryByParam = "ProvinceID", Duration = int.MaxValue)]
-		public ActionResult CityList(int provinceID)
+        [OutputCache(VaryByParam = "provinceId", Duration = int.MaxValue)]
+		public ActionResult CityList(int provinceId)
 		{
-			return Json(DataExt.Golbal.GetCitys(CHContext,provinceID));
+			return Json(Global.GetCitys(provinceId));
 		}
 	}
 }

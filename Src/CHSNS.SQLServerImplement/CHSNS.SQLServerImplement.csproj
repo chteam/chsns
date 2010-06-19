@@ -90,7 +90,6 @@
     <Compile Include="Operator\EventOperator.cs" />
     <Compile Include="Operator\FriendOperator.cs" />
     <Compile Include="Operator\GatherOperator.cs" />
-    <Compile Include="Operator\GolbalOperator.cs" />
     <Compile Include="Operator\MessageOperator.cs" />
     <Compile Include="Operator\NoteOperator.cs" />
     <Compile Include="Operator\PhotoOperator.cs" />
