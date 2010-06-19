@@ -18,5 +18,11 @@ namespace CHSNS.Controllers {
                 DataExt.Dispose();
         }
         #endregion
+
+        private GolbalService _global;
+        public GolbalService Global
+        {
+            get { return _global ?? (_global = new GolbalService(CHContext)); }
+        }
     }
 }
