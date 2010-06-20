@@ -126,10 +126,8 @@
     <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
     <Compile Include="Extension\Html\ApplicationContext.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
-    <Compile Include="Filter\CompressFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />
-    <Compile Include="Filter\RoleAttribute.cs" />
     <Compile Include="Extension\Html\HtmlHelperExt.cs" />
     <Compile Include="Extension\Html\HtmlRenderExt.cs" />
     <Compile Include="Extension\Html\Include.cs">
@@ -141,8 +139,6 @@
     <Compile Include="Extension\Url\UrlHelperExt.cs" />
     <Compile Include="Extension\Url\UrlStyleExtension.cs" />
     <Compile Include="IDataBinder.cs" />
-    <Compile Include="Mvc\HtmlSerializer.cs" />
-    <Compile Include="Mvc\MetaColumnExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extension\Mvc\RedirectExt.cs" />
     <Compile Include="Result\NotFoundResult.cs" />
