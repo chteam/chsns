@@ -19,8 +19,8 @@ namespace CHSNS.Models
         public const string ContainerName = "DbEntities";
     
         #region Constructors
-
-        public DbEntities() : base(ConnectionString, ContainerName) { }
+    
+        public DbEntities() : base(ConnectionString, ContainerName){ }
     
         public DbEntities(string connectionString)
             : base(connectionString, ContainerName)

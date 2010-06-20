@@ -6,7 +6,7 @@ using CHSNS.Operator;
 using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement {
-    public class EntryOperator : BaseOperator, IEntryOperator {
+    public class EntryOperator : BaseOperator {
 		public bool HasTitle(string url)
 		{
 			using (var db = DBExtInstance)
@@ -15,18 +15,31 @@ namespace CHSNS.SQLServerImplement {
 				return exists;
 			}
 		}
+        public void DeleteVersion(long versionId,long uId)
+        {
+            using (var db = DBExtInstance)
+            {
+                var version = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
+                if (version == null) return;
+                var entry = db.Entry.FirstOrDefault(c => c.Id == version.EntryId);
+                if (entry == null) return;
+                entry.EditCount--;
+                db.DeleteObject(version);
+                db.SaveChanges();
+            }
+        }
 
         public void DeleteByVersionId(long versionId, long uId) {
             using (var db = DBExtInstance) {
-                var v = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
-                if (v == null) return;
-                var e = db.Entry.FirstOrDefault(c => c.Id == v.EntryId);
-                if (e == null) return;
-                var vs = db.EntryVersion.Where(c => c.EntryId == e.Id);
-                if (e.CreaterId != uId) return;
+                var version = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
+                if (version == null) return;
+                var entry = db.Entry.FirstOrDefault(c => c.Id == version.EntryId);
+                if (entry == null) return;
+                var vs = db.EntryVersion.Where(c => c.EntryId == entry.Id);
+                if (entry.CreaterId != uId) return;
 
                 db.DeleteObject(vs);
-                db.DeleteObject(e);
+                db.DeleteObject(entry);
                 db.SubmitChanges();
             }
         }
@@ -145,12 +158,14 @@ namespace CHSNS.SQLServerImplement {
         
         public bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags,IUser user)
         {
-           
+            var isDisplayTitle = entry.IsDisplayTitle;
             using (var db = DBExtInstance) { 
                 if (id.HasValue) {
                     entry = db.Entry.Where(c => c.Id == id.Value).FirstOrDefault();
                     entry.UpdateTime = DateTime.Now;
                     entry.EditCount += 1;
+                    if (!Equals(entry.IsDisplayTitle, isDisplayTitle))
+                        entry.IsDisplayTitle = isDisplayTitle;
                 }
                 else {
                     var old = db.Entry.Where(c => c.Url == entry.Url.Trim()).Count();
@@ -159,10 +174,12 @@ namespace CHSNS.SQLServerImplement {
                     db.SubmitChanges();
                 }
                 entryVersion.EntryId = entry.Id;
+                entryVersion.AddTime = DateTime.Now;
+                entryVersion.Reference = entryVersion.Reference ?? "";
                 db.EntryVersion.AddObject(entryVersion);
-                db.SubmitChanges();
+                db.SaveChanges();
                 entry.CurrentId = entryVersion.Id;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
             return true;
         }

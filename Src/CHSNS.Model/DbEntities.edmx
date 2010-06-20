@@ -4,35 +4,35 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CHSNS.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="CHSNS.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="CHSNSModelsStoreContainer">
-          <EntitySet Name="Account" EntityType="CHSNS.Models.Store.Account" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Album" EntityType="CHSNS.Models.Store.Album" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Application" EntityType="CHSNS.Models.Store.Application" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="BasicInformation" EntityType="CHSNS.Models.Store.BasicInformation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Blogs" EntityType="CHSNS.Models.Store.Blogs" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Category" EntityType="CHSNS.Models.Store.Category" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Comment" EntityType="CHSNS.Models.Store.Comment" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="ContactInformation" EntityType="CHSNS.Models.Store.ContactInformation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Entry" EntityType="CHSNS.Models.Store.Entry" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="EntryVersion" EntityType="CHSNS.Models.Store.EntryVersion" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Event" EntityType="CHSNS.Models.Store.Event" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="FieldInformation" EntityType="CHSNS.Models.Store.FieldInformation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Friend" EntityType="CHSNS.Models.Store.Friend" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Group" EntityType="CHSNS.Models.Store.Group" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="GroupUser" EntityType="CHSNS.Models.Store.GroupUser" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="LogTag" EntityType="CHSNS.Models.Store.LogTag" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Message" EntityType="CHSNS.Models.Store.Message" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Note" EntityType="CHSNS.Models.Store.Note" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="PersonalInformation" EntityType="CHSNS.Models.Store.PersonalInformation" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Photo" EntityType="CHSNS.Models.Store.Photo" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Profile" EntityType="CHSNS.Models.Store.Profile" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Push" EntityType="CHSNS.Models.Store.Push" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Reply" EntityType="CHSNS.Models.Store.Reply" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Services" EntityType="CHSNS.Models.Store.Services" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="SuperNote" EntityType="CHSNS.Models.Store.SuperNote" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="Tags" EntityType="CHSNS.Models.Store.Tags" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="ViewData" EntityType="CHSNS.Models.Store.ViewData" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Account" EntityType="CHSNS.Models.Store.Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Album" EntityType="CHSNS.Models.Store.Album" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Application" EntityType="CHSNS.Models.Store.Application" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BasicInformation" EntityType="CHSNS.Models.Store.BasicInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Blogs" EntityType="CHSNS.Models.Store.Blogs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="CHSNS.Models.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="CHSNS.Models.Store.Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ContactInformation" EntityType="CHSNS.Models.Store.ContactInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Entry" EntityType="CHSNS.Models.Store.Entry" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EntryVersion" EntityType="CHSNS.Models.Store.EntryVersion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Event" EntityType="CHSNS.Models.Store.Event" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FieldInformation" EntityType="CHSNS.Models.Store.FieldInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Friend" EntityType="CHSNS.Models.Store.Friend" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Group" EntityType="CHSNS.Models.Store.Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GroupUser" EntityType="CHSNS.Models.Store.GroupUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LogTag" EntityType="CHSNS.Models.Store.LogTag" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Message" EntityType="CHSNS.Models.Store.Message" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Note" EntityType="CHSNS.Models.Store.Note" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PersonalInformation" EntityType="CHSNS.Models.Store.PersonalInformation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Photo" EntityType="CHSNS.Models.Store.Photo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Profile" EntityType="CHSNS.Models.Store.Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Push" EntityType="CHSNS.Models.Store.Push" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reply" EntityType="CHSNS.Models.Store.Reply" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Services" EntityType="CHSNS.Models.Store.Services" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SuperNote" EntityType="CHSNS.Models.Store.SuperNote" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tags" EntityType="CHSNS.Models.Store.Tags" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ViewData" EntityType="CHSNS.Models.Store.ViewData" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
         <EntityType Name="Account">
           <Key>
@@ -169,6 +169,7 @@
           <Property Name="ViewCount" Type="bigint" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="Ext" Type="ntext" />
+          <Property Name="IsDisplayTitle" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="EntryVersion">
           <Key>
@@ -453,8 +454,7 @@
           <Parameter Name="VersionId" Type="bigint" Mode="In" />
           <Parameter Name="CreaterId" Type="bigint" Mode="In" />
         </Function>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CHSNS.Models" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -622,6 +622,7 @@
           <Property Name="ViewCount" Type="Int64" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="Ext" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="IsDisplayTitle" Nullable="false" />
         </EntityType>
         <EntityType Name="EntryVersion">
           <Key>
@@ -983,7 +984,8 @@
             <ScalarProperty Name="ShowLevel" ColumnName="ShowLevel" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Entry"><EntityTypeMapping TypeName="CHSNS.Models.Entry"><MappingFragment StoreEntitySet="Entry">
-            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="IsDisplayTitle" ColumnName="IsDisplayTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Url" ColumnName="Url" />
             <ScalarProperty Name="CreaterId" ColumnName="CreaterId" />
             <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />

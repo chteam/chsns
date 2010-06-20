@@ -8,10 +8,14 @@ Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
 	<%
 			var entry = Model.Entry;
 			var version = Model.Version;
-			var ext = Model.Ext;
+			var ext = Model.Ext??new EntryExt();
 	%>
 	<div id="entryContent">
-		<h4><%=version.Title%></h4>
+    <%if (entry.IsDisplayTitle)
+      {%>
+		<h2><%=version.Title%></h2>
+        <%
+      }%>
 		<div class="body">
 			<p><%=version.Description%></p>
 		</div>
@@ -29,7 +33,7 @@ Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
 			<%} %>
 		</p>
 		<ul>
-			<li><span>标签：</span><%=string.Join(",", ext.Tags.ToArray())%>
+			<li><span>标签：</span><%=string.Join(",", (ext.Tags.ToNotNull()).ToArray())%>
 			</li>
 		</ul>
 	</div>

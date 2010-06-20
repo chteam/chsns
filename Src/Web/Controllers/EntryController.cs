@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 
 using CHSNS.Model;
@@ -75,7 +76,6 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AcceptVerbs(HttpVerbs.Get)]
 		[AdminFilter]
-        
         public ActionResult Edit(string title, long? id)
         {
             if (!string.IsNullOrEmpty(title)&&title.Contains("%"))
@@ -92,8 +92,8 @@ namespace CHSNS.Controllers
                     var entryversion = d.Value;
                     if (entryversion == null) return View("Wait");
                     ViewData["entryversion"] = entryversion;//.Url;
-                    var ee = JsonAdapter.Deserialize<EntryExt>(entryversion.Ext);
-                    ViewData["tags"] = string.Join(",", ee.Tags.ToArray());
+                    var ee = JsonAdapter.Deserialize<EntryExt>(entryversion.Ext)??new EntryExt();
+                    ViewData["tags"] = string.Join(",", ee.Tags.ToNotNull().ToArray());
                     Title = "编辑词条:" + entry.Url;
                 }
                 else 
@@ -193,7 +193,12 @@ namespace CHSNS.Controllers
             EntryDb.DeleteByVersionId(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
-
+        [AdminFilter]
+        public ActionResult DeleteVersion(long id)
+        {
+            EntryDb.DeleteVersion(id, CHUser.UserId);
+            return this.RedirectToReferrer();
+        }
         #endregion
          
         #region Ajax
