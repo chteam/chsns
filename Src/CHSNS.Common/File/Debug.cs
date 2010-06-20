@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Web;
 
 namespace CHSNS
@@ -11,7 +12,22 @@ namespace CHSNS
 		{
 		   // IOFactory.StoreFile.WriteLine(path, text);
 		}
-
+        public static void Info(string text)
+        {
+            EventLog.WriteEntry("CHSNS", text, EventLogEntryType.Information);
+        }
+        public static void Warning(string text)
+        {
+            EventLog.WriteEntry("CHSNS", text, EventLogEntryType.Warning);
+        }
+        public static void Error(string text)
+        {
+            EventLog.WriteEntry("CHSNS", text, EventLogEntryType.Error);
+        }
+        public static void FailureAudit(string text)
+        {
+            EventLog.WriteEntry("CHSNS", text, EventLogEntryType.FailureAudit);
+        }
 		/// <summary>
 		/// 记录设计时环境内的调试消息,存于/Debug/[当前日期].txt的文件内
 		/// </summary>

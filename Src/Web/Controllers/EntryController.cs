@@ -13,7 +13,7 @@ namespace CHSNS.Controllers
 {
     public class EntryController : NewBaseController
     {
-        private readonly EntryOperator EntryDb = new EntryOperator();
+        private readonly EntryOperator _entryDb = new EntryOperator();
         #region 前台部分
         /// <summary>
         /// 显示当前词条
@@ -24,7 +24,7 @@ namespace CHSNS.Controllers
             var model = new EntryIndexViewModel();
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
-            var t = EntryDb.Get(url);
+            var t = _entryDb.Get(url);
             model.Entry = t.Key;
             if (model.Entry == null) return Wait();
             var version = t.Value;
@@ -47,14 +47,14 @@ namespace CHSNS.Controllers
 		public ActionResult HistoryList(long id)
         {
         	// var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
-            ViewData["Source"] = EntryDb.Historys(id);
+            ViewData["Source"] = _entryDb.Historys(id);
         	Title = "版本比较";
         	return View();
         }
 
         public ActionResult History(long versionId)
         {
-            var t = EntryDb.GetFromVersion(versionId);
+            var t = _entryDb.GetFromVersion(versionId);
             if (t.Key == null || t.Value == null) return View("wait", "site");
             var entry = t.Key;
             var version = t.Value;
@@ -83,7 +83,7 @@ namespace CHSNS.Controllers
     
             if (id != null) {
                 //修改
-                var d = EntryDb.Get(id.Value);
+                var d = _entryDb.Get(id.Value);
                 var entry = d.Key;
                 if ((entry.Status == (int)EntryType.Common || HasManageRight())) {
                     ViewData["exists"] = true;
@@ -122,14 +122,14 @@ namespace CHSNS.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags)
         {
-            var b = EntryDb.AddVersion(id, entry, entryversion, tags, CHUser);
+            var b = _entryDb.AddVersion(id, entry, entryversion, tags, CHUser);
             if (!b) throw new Exception("标题已存在");
             return RedirectToAction("NewList");
         }
 		[AdminFilter]
         public ActionResult AdminHistoryList(string url) {
             url = url.Trim();
-		    ViewData["Source"] = EntryDb.Historys(url);
+		    ViewData["Source"] = _entryDb.Historys(url);
 		    Title = "历史版本";
             return View();
         }
@@ -141,7 +141,7 @@ namespace CHSNS.Controllers
         [AdminFilter]
         public ActionResult NewList()
         {
-            var li = EntryDb.List(1, 10);
+            var li = _entryDb.List(1, 10);
             Title = "词条列表";
             return View(li);
         }
@@ -166,7 +166,7 @@ namespace CHSNS.Controllers
              * 1.设置当前版本为最新版本词条
              * 2.将当前版本状态改为常规状态
              */
-            EntryDb.PassWaitVersion(id);
+            _entryDb.PassWaitVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -180,7 +180,7 @@ namespace CHSNS.Controllers
             /*
              * 锁定当前版本
              */
-            EntryDb.LockCommonVersion(id);
+            _entryDb.LockCommonVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -190,20 +190,20 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         [AdminFilter]
         public ActionResult Delete(long id) {
-            EntryDb.DeleteByVersionId(id, CHUser.UserId);
+            _entryDb.DeleteByVersionId(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         [AdminFilter]
         public ActionResult DeleteVersion(long id)
         {
-            EntryDb.DeleteVersion(id, CHUser.UserId);
+            _entryDb.DeleteVersion(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion
          
         #region Ajax
         public ActionResult Has(string title) {
-            var exists = EntryDb.HasTitle(title);
+            var exists = _entryDb.HasTitle(title);
             return Json(exists); 
         }
 
