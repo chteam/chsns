@@ -19,8 +19,8 @@
             <label>
                 词条名称：</label>
                 <%=Html.TextBox("entryversion.Title", null, new { style = "width: 50%", onblur = "Has(this);" })%>
-                <%=Html.RadioButton("entry.IsDisplayTitle","true") %>
-                <%=Html.RadioButton("entry.IsDisplayTitle","false") %>
+                是否显示标题 是<%=Html.RadioButton("entry.IsDisplayTitle","true") %>
+                否<%=Html.RadioButton("entry.IsDisplayTitle","false") %>
         </p>
         <p>
             <label>
