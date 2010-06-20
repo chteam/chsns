@@ -17,7 +17,9 @@ namespace CHSNS.Models
             [DisplayName("性别")]
             public bool? Sex { get; set; }
             [DisplayName("出生时间")]
-            public DateTime? Birthday { get; set; }
+            [DataType(DataType.DateTime)]
+            //[DisplayFormat(DataFormatString = "{0:d}")]
+            public DateTime Birthday { get; set; }
             [DisplayName("省")]
             public int ProvinceId { get; set; }
             [DisplayName("市")]

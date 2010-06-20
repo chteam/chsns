@@ -34,5 +34,7 @@ namespace CHSNS.Models
         public virtual int Status{get;set;}
     
         public virtual string Ext{get;set;}
+    
+        public virtual bool IsDisplayTitle{get;set;}
     }
 }

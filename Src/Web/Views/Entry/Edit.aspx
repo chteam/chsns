@@ -3,7 +3,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
     <%=Html.Script("wysiwyg") %>
-    <%=Html.CSSLink("wysiwyg/wysiwyg")%>
 </asp:Content> 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%Html.RenderPartial("ManageToc"); %>
@@ -20,6 +19,8 @@
             <label>
                 词条名称：</label>
                 <%=Html.TextBox("entryversion.Title", null, new { style = "width: 50%", onblur = "Has(this);" })%>
+                <%=Html.RadioButton("entry.IsDisplayTitle","true") %>
+                <%=Html.RadioButton("entry.IsDisplayTitle","false") %>
         </p>
         <p>
             <label>
@@ -56,14 +57,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
     <script type="text/javascript">
-    var getseldata=function(e,cid,at){//获取城市信息
-            if($(e).val()!='')
-            $.get('<%=Url.Action("Citys","Ajax")%>',{'id':$(e).val(),'at':at},function(r){
-                r=eval(r);
-                if(r.length>0)
-                    BindSelect(cid,r,"Text","Value");
-            });
-    };
     var OldTitle=$("#entryversion_Title").val();
     var Has=function(e){
         if($(e).val()!=OldTitle&&$('#id').val()==''){
@@ -84,8 +77,6 @@
         if(r) $('#entryform').submit();
         return r;
     };
-     $('#entryversion_description').wysiwyg();
-
     </script>
 
 </asp:Content>
