@@ -12,7 +12,7 @@ namespace CHSNS.Operator
     /// Site Message Operator,
     /// Jian Zou 2009 03 27
     /// </summary>
-    public class MessageOperator : BaseOperator, IMessageOperator
+    public class MessageOperator : BaseOperator
     {
         public PagedList<MessageItemPas> GetInbox(long uId, int page,int pageSize)
         {

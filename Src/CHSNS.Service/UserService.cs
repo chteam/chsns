@@ -7,8 +7,8 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class UserService {
         static readonly UserService Instance = new UserService();
-        private readonly IUserOperator _user;
-        private readonly IEventOperator _event;
+        private readonly UserOperator _user;
+        private readonly EventOperator _event;
         public UserService() {
             _user = new UserOperator();
             _event = new EventOperator();

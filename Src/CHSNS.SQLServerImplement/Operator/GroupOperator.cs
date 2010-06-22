@@ -7,7 +7,7 @@ using CHSNS.SQLServerImplement;
 using CHSNS.Models;
 
 namespace CHSNS.Operator {
-	public class GroupOperator :BaseOperator, IGroupOperator {
+	public class GroupOperator :BaseOperator {
         public Group Get(long groupId)
         {
             using (var db = DBExtInstance)

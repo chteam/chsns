@@ -6,7 +6,7 @@ using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement.Operator
 {
-    public class AccountOperator : BaseOperator, IAccountOperator {
+    public class AccountOperator : BaseOperator {
         public Profile Login(String userName, String password, int logOnScore)
         {
             using (var db = DBExtInstance)

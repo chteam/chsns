@@ -75,6 +75,7 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -128,6 +129,13 @@
     <Compile Include="ContactInformation.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\ICache.cs" />
+    <Compile Include="Context\IContext.cs" />
+    <Compile Include="Context\ICookies.cs" />
+    <Compile Include="Context\IIOFactory.cs" />
+    <Compile Include="Context\IOnline.cs" />
+    <Compile Include="Context\IPathGenerate.cs" />
+    <Compile Include="Context\IUser.cs" />
     <Compile Include="DbEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

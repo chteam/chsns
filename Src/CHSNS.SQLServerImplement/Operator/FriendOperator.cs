@@ -8,7 +8,7 @@ namespace CHSNS.Operator
     using Model;
     using System.Collections.Generic;
 	using CHSNS.Models;
-    public class FriendOperator : BaseOperator, IFriendOperator
+    public class FriendOperator : BaseOperator
     {
 
         #region ªÒ»°

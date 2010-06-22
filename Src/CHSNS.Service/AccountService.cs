@@ -7,7 +7,7 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class AccountService {
         static readonly AccountService Instance = new AccountService();
-        private readonly IAccountOperator _account;
+        private readonly AccountOperator _account;
         public AccountService() {
             _account = new AccountOperator();
         }

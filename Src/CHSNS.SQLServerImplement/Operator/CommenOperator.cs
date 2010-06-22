@@ -7,7 +7,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Operator
 {
-	public class CommentOperator : BaseOperator, ICommentOperator
+	public class CommentOperator : BaseOperator
 	{
 		#region reply
    private static IQueryable<CommentPas> GetReplyPrivate(DbEntities db, long uid) {

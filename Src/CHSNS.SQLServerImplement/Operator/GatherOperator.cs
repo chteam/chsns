@@ -6,7 +6,7 @@ namespace CHSNS.Operator {
 	/// <summary>
 	/// 统计的类
 	/// </summary>
-	public class GatherOperator : BaseOperator, IGatherOperator {
+	public class GatherOperator : BaseOperator {
 		/// <summary>
 		/// 我的统计
 		/// </summary>

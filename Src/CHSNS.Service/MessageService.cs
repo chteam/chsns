@@ -13,7 +13,7 @@ namespace CHSNS.Service
     public class MessageService
     {
                 static readonly MessageService Instance = new MessageService();
-                private readonly IMessageOperator _message;
+                private readonly MessageOperator _message;
         public MessageService() {
                     _message = new MessageOperator();
         }

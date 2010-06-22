@@ -7,7 +7,7 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class AlbumService {
         static readonly AlbumService Instance = new AlbumService();
-        private readonly IAlbumOperator _album;
+        private readonly AlbumOperator _album;
         public AlbumService() {
             _album = new AlbumOperator();
         }

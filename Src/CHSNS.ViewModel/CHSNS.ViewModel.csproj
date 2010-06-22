@@ -83,10 +83,6 @@
     <Compile Include="UserIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CHSNS.Abstractions\CHSNS.Abstractions.csproj">
-      <Project>{3836155E-981B-4C16-8F45-96D19ECC6F7E}</Project>
-      <Name>CHSNS.Abstractions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
