@@ -6,7 +6,7 @@ using CHSNS.SQLServerImplement;
 using CHSNS.Models;
 
 namespace CHSNS.Operator {
-    public class UserOperator : BaseOperator, IUserOperator {
+    public class UserOperator : BaseOperator {
 
         public UserPas UserInformation(long userid) {
             using (var db = DBExtInstance) {

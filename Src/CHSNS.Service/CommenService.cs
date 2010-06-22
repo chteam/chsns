@@ -8,7 +8,7 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class CommentService {
         static readonly CommentService Instance = new CommentService();
-        private readonly ICommentOperator _comment;
+        private readonly CommentOperator _comment;
         public CommentService() {
             _comment = new CommentOperator();
         }

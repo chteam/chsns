@@ -7,7 +7,7 @@ namespace CHSNS.Service {
 	/// </summary>
 	public class GatherService{
         static readonly GatherService Instance = new GatherService();
-        private readonly IGatherOperator _gather;
+        private readonly GatherOperator _gather;
         public GatherService() {
             _gather = new GatherOperator();
         }

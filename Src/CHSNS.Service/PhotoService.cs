@@ -7,7 +7,7 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class PhotoService {
                 static readonly PhotoService Instance = new PhotoService();
-                private readonly IPhotoOperator _photo;
+                private readonly PhotoOperator _photo;
         public PhotoService() {
                     _photo = new PhotoOperator();
         }

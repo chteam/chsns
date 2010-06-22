@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using System.Data.Objects;
-using System.Data;
-//using Microsoft.Data.Extensions;
-using System.Data.SqlClient;
+﻿using System.ComponentModel;
 using CHSNS.Models;
 namespace CHSNS.SQLServerImplement
 {

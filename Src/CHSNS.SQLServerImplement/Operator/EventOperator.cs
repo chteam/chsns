@@ -8,7 +8,7 @@ namespace CHSNS.Operator
     /// <summary>
     /// Calling the event
     /// </summary>
-    public class EventOperator : BaseOperator, IEventOperator
+    public class EventOperator : BaseOperator
     {
 /// <summary>
 /// 

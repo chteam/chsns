@@ -10,7 +10,7 @@ namespace CHSNS.Service {
     public class ApplicationService {
 
         static readonly ApplicationService Instance = new ApplicationService();
-        private readonly IApplicationOperator _application;
+        private readonly ApplicationOperator _application;
         public ApplicationService() {
             _application = new ApplicationOperator();
         }

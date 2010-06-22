@@ -9,9 +9,9 @@ namespace CHSNS.Service {
 
     public class FriendService {
         static readonly FriendService Instance = new FriendService();
-        private readonly IFriendOperator _friend;
-        private readonly IUserOperator _user;
-        private readonly IEventOperator _event;
+        private readonly FriendOperator _friend;
+        private readonly UserOperator _user;
+        private readonly EventOperator _event;
         public FriendService() {
             _friend = new FriendOperator();
             _user = new UserOperator();

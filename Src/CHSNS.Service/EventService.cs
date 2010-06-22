@@ -9,8 +9,8 @@ namespace CHSNS.Service
     public class EventService 
     {
         static readonly EventService Instance = new EventService();
-        private readonly IEventOperator _event;
-        private readonly IFriendOperator _friend;
+        private readonly EventOperator _event;
+        private readonly FriendOperator _friend;
         public EventService() {
             _event = new EventOperator();
             _friend = new FriendOperator();

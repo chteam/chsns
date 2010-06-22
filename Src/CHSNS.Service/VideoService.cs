@@ -6,7 +6,7 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class VideoService {
         static readonly VideoService Instance = new VideoService();
-        private readonly ISuperNoteOperator _video;
+        private readonly VideoOperator _video;
         public VideoService() {
             _video = new VideoOperator();
         }

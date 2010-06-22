@@ -4,7 +4,7 @@ using CHSNS.Operator;
 using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement {
-    public class PhotoOperator : BaseOperator, IPhotoOperator {
+    public class PhotoOperator : BaseOperator {
         #region IPhotoOperator 成员
 
         public void Add(Photo photo) {

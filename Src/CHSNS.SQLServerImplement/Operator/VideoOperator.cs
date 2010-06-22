@@ -5,7 +5,7 @@ using CHSNS.SQLServerImplement;
 using CHSNS.Models;
 
 namespace CHSNS.Operator {
-    public class VideoOperator : BaseOperator, ISuperNoteOperator {
+    public class VideoOperator : BaseOperator{
       
         #region ICURDOperator<SuperNote> 成员
 

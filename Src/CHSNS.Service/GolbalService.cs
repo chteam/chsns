@@ -7,7 +7,7 @@ namespace CHSNS.Service {
 
 	public class GolbalService {
         //static readonly GolbalService Instance = new GolbalService();
-        private readonly IGolbalOperator _golbal;
+      //  private readonly IGolbalOperator _golbal;
          public ISerializer Serializer { get;  set; }
          public GolbalService(IContext context)
          {

@@ -79,42 +79,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\ICache.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Context\IContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Context\ICookies.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Context\IIOFactory.cs" />
-    <Compile Include="Context\IOnline.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Context\IPathGenerate.cs" />
-    <Compile Include="Context\IUser.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="IAccountOperator.cs" />
-    <Compile Include="IAlbumOperator.cs" />
-    <Compile Include="IApplicationOperator.cs" />
-    <Compile Include="ICommentOperator.cs" />
-    <Compile Include="ICURDOperator.cs" />
-    <Compile Include="IDBManager.cs" />
-    <Compile Include="IEntryOperator.cs" />
-    <Compile Include="IEventOperator.cs" />
-    <Compile Include="IFriendOperator.cs" />
-    <Compile Include="IGatherOperator.cs" />
-    <Compile Include="IGolbalOperator.cs" />
-    <Compile Include="IGroupOperator.cs" />
-    <Compile Include="IService.cs" />
-    <Compile Include="IMessageOperator.cs" />
-    <Compile Include="INoteOperator.cs" />
-    <Compile Include="IPhotoOperator.cs" />
-    <Compile Include="ISuperNoteOperator.cs" />
-    <Compile Include="IUserOperator.cs" />
-    <Compile Include="IViewOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

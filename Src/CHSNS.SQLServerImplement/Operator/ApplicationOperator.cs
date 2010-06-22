@@ -8,7 +8,7 @@ using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement.Operator
 {
-    public class ApplicationOperator : BaseOperator, IApplicationOperator
+    public class ApplicationOperator : BaseOperator
     {
         /// <summary>
         /// 应用列表

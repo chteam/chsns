@@ -5,7 +5,7 @@ using CHSNS.Operator;
 using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement {
-    public class AlbumOperator:BaseOperator,IAlbumOperator {
+    public class AlbumOperator:BaseOperator {
         #region IAlbumOperator 成员
 
         public List<Album> Items(long uId) {

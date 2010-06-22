@@ -8,7 +8,7 @@ using CHSNS.Models;
 namespace CHSNS.Service {
     public class GroupService {
         static readonly GroupService Instance = new GroupService();
-        private readonly IGroupOperator _group;
+        private readonly GroupOperator _group;
         public GroupService() {
             _group = new GroupOperator();
         }

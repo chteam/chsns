@@ -7,7 +7,7 @@ using CHSNS.SQLServerImplement;
 using CHSNS.Models;
 
 namespace CHSNS.Operator {
-	public class NoteOperator : BaseOperator, INoteOperator {
+	public class NoteOperator : BaseOperator{
 		/// <summary>
 		/// userid
 		/// </summary>

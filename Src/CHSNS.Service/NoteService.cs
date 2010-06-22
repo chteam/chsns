@@ -9,8 +9,8 @@ namespace CHSNS.Service
     public class NoteService
     {
         private static readonly NoteService Instance = new NoteService();
-        private readonly IEventOperator _event;
-        private readonly INoteOperator _note;
+        private readonly EventOperator _event;
+        private readonly NoteOperator _note;
 
         public NoteService()
         {

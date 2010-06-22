@@ -5,7 +5,7 @@ namespace CHSNS.Service
 {
     public class ViewService {
                 static readonly ViewService Instance = new ViewService();
-                private readonly IViewOperator _view;
+                private readonly ViewOperator _view;
         public ViewService() {
                     _view = new ViewOperator();
         }

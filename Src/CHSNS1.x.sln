@@ -52,15 +52,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.ViewModel", "CHSNS.Vi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.SQLServerImplement", "CHSNS.SQLServerImplement\CHSNS.SQLServerImplement.csproj", "{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Abstractions", "CHSNS.Abstractions\CHSNS.Abstractions.csproj", "{3836155E-981B-4C16-8F45-96D19ECC6F7E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestUtil", "UnitTestUtil\UnitTestUtil.csproj", "{57FFC134-7F9D-4B97-8692-8D2C16714663}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{565374D0-3D96-4D3B-9E95-108574BA9755}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -96,17 +94,13 @@ Global
 		SccProjectTopLevelParentUniqueName8 = CHSNS1.x.sln
 		SccProjectName8 = CHSNS.SQLServerImplement
 		SccLocalPath8 = CHSNS.SQLServerImplement
-		SccProjectUniqueName9 = CHSNS.Abstractions\\CHSNS.Abstractions.csproj
+		SccProjectUniqueName9 = UnitTestUtil\\UnitTestUtil.csproj
 		SccProjectTopLevelParentUniqueName9 = CHSNS1.x.sln
-		SccProjectName9 = CHSNS.Abstractions
-		SccLocalPath9 = CHSNS.Abstractions
-		SccProjectUniqueName10 = UnitTestUtil\\UnitTestUtil.csproj
-		SccProjectTopLevelParentUniqueName10 = CHSNS1.x.sln
-		SccProjectName10 = UnitTestUtil
-		SccLocalPath10 = UnitTestUtil
-		SccProjectUniqueName11 = Web\\Web.csproj
-		SccProjectName11 = Web
-		SccLocalPath11 = Web
+		SccProjectName9 = UnitTestUtil
+		SccLocalPath9 = UnitTestUtil
+		SccProjectUniqueName10 = Web\\Web.csproj
+		SccProjectName10 = Web
+		SccLocalPath10 = Web
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x2.vsmdi
@@ -243,21 +237,6 @@ Global
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Default|.NET.ActiveCfg = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Default|Any CPU.Build.0 = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Release|.NET.ActiveCfg = Release|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{57FFC134-7F9D-4B97-8692-8D2C16714663}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{57FFC134-7F9D-4B97-8692-8D2C16714663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57FFC134-7F9D-4B97-8692-8D2C16714663}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -297,7 +276,6 @@ Global
 		{27E2B6B3-7382-4D72-A889-7FDD618126F3} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
 		{F7CF4538-9101-4328-81D0-AF1B2A8B314A} = {5EF50786-2492-4737-946C-906F0E62EF91}
 		{54126DEC-D878-40B2-9E49-57E8C04F0D21} = {5EF50786-2492-4737-946C-906F0E62EF91}
-		{3836155E-981B-4C16-8F45-96D19ECC6F7E} = {5EF50786-2492-4737-946C-906F0E62EF91}
 		{57FFC134-7F9D-4B97-8692-8D2C16714663} = {5EF50786-2492-4737-946C-906F0E62EF91}
 		{3DCF59D6-C7CC-4CC7-8ED9-4A953B26E036} = {20A815C8-5BE0-4F75-850A-3F4AA4684DEE}
 		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}

@@ -6,7 +6,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Operator
 {
-    public class ViewOperator : BaseOperator, IViewOperator
+    public class ViewOperator : BaseOperator
     {
         public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count)
         {
