@@ -8,9 +8,10 @@ using CHSNS.Models;
 namespace CHSNS.Controllers {
 
 	[LoginedFilter]
-	public class GroupController : BaseController {
+    public partial class GroupController : BaseController
+    {
 		#region 主页
-        public ActionResult Index(long id, int? p)
+        public virtual ActionResult Index(long id, int? p)
         {
             InitPage(ref p);
 
@@ -71,7 +72,7 @@ namespace CHSNS.Controllers {
 
 	    #endregion
 
-        public ActionResult List(long? uid, int? p)
+        public virtual ActionResult List(long? uid, int? p)
         {
             InitPage(ref p);
             uid = uid ?? CHUser.UserId;
@@ -81,13 +82,15 @@ namespace CHSNS.Controllers {
 
 	    #region Create
 		[AcceptVerbs(HttpVerbs.Get)]
-		public ActionResult Create() {
+        public virtual ActionResult Create()
+        {
 			Title = "新建群";
 			ViewData["category"] = ConfigSerializer.GetConfig("Category").ToSelectList(c => c.Value, c => c.Text);
 			return View();
 		}
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(string name) {
+        public virtual ActionResult Create(string name)
+        {
             Message = "创建成功";
             DataExt.Group.Add(name, CHUser.UserId);
             return this.RedirectToReferrer();
@@ -96,7 +99,7 @@ namespace CHSNS.Controllers {
 
 		#region 管理
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Manage(long id)
+        public virtual ActionResult Manage(long id)
         {
             //TODO:限制访问人员
             return ManageResult(DataExt.Group.Get(id));
@@ -117,7 +120,8 @@ namespace CHSNS.Controllers {
 		}
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Manage(long id, Group group) {
+        public virtual ActionResult Manage(long id, Group group)
+        {
             //TODO:限制访问人员
             DataExt.Group.Update(id, group);
             return RedirectToAction("Manage", new{id});
@@ -126,7 +130,8 @@ namespace CHSNS.Controllers {
 	    #endregion
 
 		#region 用户管理
-		public ActionResult ManageUser(long id) {
+        public virtual ActionResult ManageUser(long id)
+        {
 			Title = "用户管理";
 		    ViewData["list"] = DataExt.Group.GetGroupUser(id);
             
@@ -135,7 +140,8 @@ namespace CHSNS.Controllers {
 		#endregion
 
 		#region 帖子
-        public ActionResult Details(long id){
+        public virtual ActionResult Details(long id)
+        {
             var note = DataExt.Note.Details(id, NoteType.GroupPost);
             var cl = DataExt.Comment.CommentList(id, CommentType.Note, 1,CHContext.Site);
             ViewData["commentlist"] = cl;
@@ -146,7 +152,8 @@ namespace CHSNS.Controllers {
         }
 
 	    [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Post(long? id, Note post) {
+        public virtual ActionResult Post(long? id, Note post)
+        {
 			using (var ts = new TransactionScope()) {
 				if (post.Title.Length < 1 || post.Body.Length < 1) {
 					Message = "请输入正确的日志内容";

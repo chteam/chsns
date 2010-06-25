@@ -11,9 +11,11 @@ using CHSNS.Models;
 namespace CHSNS.Controllers {
     //[Helper(typeof(ChHelper))]
     [LoginedFilter]
-    public class UploadController : BaseController {
+    public partial class UploadController : BaseController
+    {
 
-        public ActionResult File(string mode) {
+        public virtual ActionResult File(string mode)
+        {
             if (string.IsNullOrEmpty(mode))
                 throw new Exception("²»ÐíÎª¿Õ");
             var vd = new ListItem {
@@ -23,7 +25,8 @@ namespace CHSNS.Controllers {
         }
         [LoginedFilter]
         [HttpPost]
-        public ActionResult Face(string mode, HttpPostedFileBase file1) {
+        public virtual ActionResult Face(string mode, HttpPostedFileBase file1)
+        {
             var li = new ListItem {
                 Text = mode,
                 Value = UploadImage(file1, true)

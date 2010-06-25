@@ -127,62 +127,7 @@
     <Content Include="Config\ShowLevel.xml" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <None Include="Style\CHSNS\i\Thumbs.db" />
-    <None Include="Views\Admin\Admin\ApplyClass.vm" />
-    <None Include="Views\Admin\Admin\Basic.vm" />
-    <None Include="Views\Admin\Admin\File.vm" />
-    <None Include="Views\Admin\Admin\Group.vm" />
-    <None Include="Views\Admin\Admin\Index.vm" />
-    <None Include="Views\Admin\Admin\Isstar.vm" />
-    <None Include="Views\Admin\Admin\Note.vm" />
-    <None Include="Views\Admin\Admin\Note_today.vm" />
-    <None Include="Views\Admin\Admin\Space.vm" />
-    <None Include="Views\Admin\Admin\User.vm" />
-    <None Include="Views\Admin\Common\AddStyle.vm" />
-    <None Include="Views\Admin\Common\Config.vm" />
-    <None Include="Views\Admin\Common\Publish.vm" />
-    <None Include="Views\Admin\Common\RegandVisit.vm" />
-    <None Include="Views\Admin\Field\field_addmini.vm" />
-    <None Include="Views\Admin\Field\Field_AddQinShi.vm" />
-    <None Include="Views\Admin\Field\Field_Index.vm" />
-    <None Include="Views\Admin\menu.vm" />
-    <None Include="Views\Admin\Sql\Execute.vm" />
-    <None Include="Views\Admin\UserManage\userlist.vm" />
-    <None Include="Views\Admin\UserManage\userset.vm" />
-    <None Include="Views\Album\random.vm" />
     <None Include="Areas\Admin\Views\Application\myapp.vm" />
-    <None Include="Views\Blog\edit.vm" />
-    <None Include="Views\Blog\index.vm" />
-    <None Include="Views\Blog\Item-Notes.vm" />
-    <None Include="Views\Comment\List.vm" />
-    <None Include="Views\Components\AlbumItem.vm" />
-    <None Include="Views\Components\Event.vm" />
-    <None Include="Views\Components\GroupList\ProfileLink.vm" />
-    <None Include="Views\Components\Html\SearchClass.vm" />
-    <None Include="Views\Components\PhotoList\PhotoItem.vm" />
-    <None Include="Views\Components\ProfileEditChild\Contact.vm" />
-    <None Include="Views\Components\ProfileEditChild\PersonalInfo.vm" />
-    <None Include="Views\Components\ProfileEditChild\School.vm" />
-    <None Include="Views\Components\System\Option.vm" />
-    <None Include="Views\Group\ClassList.vm" />
-    <None Include="Views\Group\CreateClass.vm" />
-    <None Include="Views\Group\index.vm" />
-    <None Include="Views\Group\MyClass.vm" />
-    <None Include="Views\Home\GetCode.vm" />
-    <None Include="Views\Home\Invite.vm" />
-    <None Include="Views\Home\PrivateClaim.vm" />
-    <None Include="Views\Html\ChangePassword.vm" />
-    <None Include="Views\Html\ChangeShowLevel.vm" />
-    <None Include="Views\Html\Comment_Item.vm" />
-    <None Include="Views\Html\g.vm" />
-    <None Include="Views\Html\GroupMember.vm" />
-    <None Include="Views\Html\GroupPhoto.vm" />
-    <None Include="Views\Html\GroupSetting.vm" />
-    <None Include="Views\Html\MyEvent.vm" />
-    <None Include="Views\Html\Pager.vm" />
-    <None Include="Views\Html\PhotoList.vm" />
-    <None Include="Views\Html\PostList.vm" />
-    <None Include="Views\Html\ProfileEdit.vm" />
-    <None Include="Views\Html\Rss-List.vm" />
     <Content Include="Config\SystemApplication.xml" />
     <Content Include="Config\SystemTemplate.xml" />
     <Content Include="Config\Category.xml" />
@@ -214,8 +159,6 @@
     <Content Include="Images\menu.gif" />
     <Content Include="Style\CHSNS\Images\Upload\XPButtonUploadText_61x22.png" />
     <Content Include="Style\CHSNS\wysiwyg\jquery.wysiwyg.gif" />
-    <Content Include="Views\Admin\About.ascx" />
-    <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Album\Details.aspx" />
     <Content Include="Views\Album\Edit.aspx" />
     <Content Include="Views\Album\Index.aspx" />
@@ -384,15 +327,6 @@
     <Content Include="Views\Shared\ShowLevel.ascx" />
     <Content Include="Views\Shared\Single.Master" />
     <Content Include="Views\Shared\Site.Master" />
-    <None Include="Views\Mail\replyback.vm" />
-    <None Include="Views\Mail\Test.vm" />
-    <None Include="Views\Home\Setting.vm" />
-    <None Include="Views\Home\search.vm" />
-    <None Include="Views\Services\admin.vm" />
-    <None Include="Views\Services\index.vm" />
-    <None Include="Views\Tags\Logtag.vm" />
-    <None Include="Views\Tags\Tags.vm" />
-    <None Include="Views\Upload\Photo.vm" />
     <Content Include="Views\Video\Edit.aspx" />
     <Content Include="Views\Video\Items.ascx" />
     <Content Include="Views\Video\List.aspx" />
@@ -413,25 +347,55 @@
     <Content Include="Views\User\Admin\ManageUser.ascx" />
     <Content Include="Views\User\BaseInfo.aspx" />
     <Content Include="Views\User\Contact.ascx" />
+    <None Include="T4MVC.settings.t4" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
     <None Include="Views\User\Edit.Master" />
     <Content Include="Views\User\EmptyMagicBox.ascx" />
     <Content Include="Views\User\Index.aspx" />
-    <Content Include="Views\User\Index\Account.ascx" />
-    <Content Include="Views\User\Index\Contact.ascx" />
-    <Content Include="Views\User\Index\Event.ascx" />
-    <Content Include="Views\User\Index\MyActions.ascx" />
-    <Content Include="Views\User\Index\MyStatus.ascx" />
-    <Content Include="Views\User\Index\NoRight.ascx" />
-    <Content Include="Views\User\Index\Personal.ascx" />
-    <Content Include="Views\User\Index\School.ascx" />
+    <Content Include="Views\User\IndexChild\Account.ascx" />
+    <Content Include="Views\User\IndexChild\Contact.ascx" />
+    <Content Include="Views\User\IndexChild\Event.ascx" />
+    <Content Include="Views\User\IndexChild\MyActions.ascx" />
+    <Content Include="Views\User\IndexChild\MyStatus.ascx" />
+    <Content Include="Views\User\IndexChild\NoRight.ascx" />
+    <Content Include="Views\User\IndexChild\Personal.ascx" />
+    <Content Include="Views\User\IndexChild\School.ascx" />
     <Content Include="Views\User\MagicBox.aspx" />
     <Content Include="Views\User\Personal.ascx" />
     <Content Include="Views\User\School.ascx" />
     <Content Include="Views\User\Upload.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.ApplicationController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AlbumController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ApplicationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="CommentController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AjaxController.cs" />
@@ -456,13 +420,57 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EntryController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FriendController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GroupController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NoteController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Users.asmx.cs">
       <DependentUpon>Users.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TestController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UploadController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VideoController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

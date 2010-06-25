@@ -1,2 +1,0 @@
-﻿<HTML><HEAD><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=GB2312"></HEAD><BODY style="border-width:0px" >#re: $item.title<br><br>$item.body<hr>作者: $item.name&nbsp;&nbsp;<br>页面: <a href='http://www.5field.com/user.aspx?userid=$item.userid'>http://www.5field.com/user.aspx?userid=$item.userid</a><br>URL: <a href='http://www.5field.com/Note.aspx?id=$item.logid&Groupid=$item.groupid&'>http://www.5field.com/Note.aspx?id=$item.logid&Groupid=$item.groupid</a>
-</BODY></HTML>

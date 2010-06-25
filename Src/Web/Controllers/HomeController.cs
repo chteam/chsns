@@ -5,10 +5,11 @@ namespace CHSNS.Controllers
 	
 //	[Filter(ExecuteEnum.BeforeAction, typeof(PublicFilter))]
 //	[DefaultAction("Index")]
-	public class HomeController : BaseController
+    public partial class HomeController : BaseController
 	{
 		//[Cache(HttpCacheability.Public, Duration = 360, VaryByParams = "id,name")]
-        public ActionResult Index() {
+        public virtual ActionResult Index()
+        {
             //ViewData["viewlist"] = DBExt.View.ViewList(3, 3, 0, 6);
             Title = "首页";
             return RedirectToAction("index", "Entry", new { title = "index" });

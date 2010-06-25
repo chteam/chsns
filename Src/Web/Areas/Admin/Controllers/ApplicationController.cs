@@ -9,9 +9,9 @@ using CHSNS.Controllers;
 
 namespace CHSNS.Web.Areas.Admin.Controllers
 {
-    public class ApplicationController : BaseController
+    public partial class ApplicationController : BaseController
     {
-        public ActionResult Manage(int? p)
+        public virtual ActionResult Manage(int? p)
         {
             InitPage(ref p);
             Title = "应用程序管理";
@@ -21,12 +21,12 @@ namespace CHSNS.Web.Areas.Admin.Controllers
             return View(li);
         }
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Edit()
+        public virtual ActionResult Edit()
         {
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(ApplicationItem app)
+        public virtual ActionResult Edit(ApplicationItem app)
         {
             Title = app.FullName;
             app.AddTime = DateTime.Now;
@@ -38,7 +38,7 @@ namespace CHSNS.Web.Areas.Admin.Controllers
             ConfigSerializer.Save(ais, "SystemApplication");
             return RedirectToAction("Manage");
         }
-        public ActionResult Delete(string id)
+        public virtual ActionResult Delete(string id)
         {
             HttpContext.Application.Lock();
             var ais = ConfigSerializer.Load<SystemApplicationConfig>("SystemApplication", false);

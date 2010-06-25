@@ -14,10 +14,11 @@ namespace CHSNS.Controllers {
 	/// the Controller of Event.
 	/// </summary>
 	[LoginedFilter]
-	public class EventController : BaseController {
+    public partial class EventController : BaseController
+    {
 		#region Action
 
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             Title = "事件";
             var m = new EventIndexViewModel{
@@ -34,19 +35,20 @@ namespace CHSNS.Controllers {
 
 		#region Management
 		[AdminFilter]
-		public ActionResult SystemTemplate() {
+        public virtual ActionResult SystemTemplate()
+        {
 			var x = ConfigSerializer.Load<List<ListItem>>("SystemTemplate");
 			ViewData["source"] = x;
 			return View("Admin/SystemTemplate");
 		}
 		[AdminFilter]
-		public ActionResult GetSystemTemplate(string name)
+        public virtual ActionResult GetSystemTemplate(string name)
 		{
             var ret = "";// CHSNS.File.ReadAllText(Path.EventSystemTemplatePath(name));
 			return Content(Server.HtmlEncode(ret));
 		}
 		[AdminFilter]
-		public ActionResult AddSystemTemplate(string c, string v, string t)
+        public virtual ActionResult AddSystemTemplate(string c, string v, string t)
 		{
 			if (string.IsNullOrEmpty(c) || string.IsNullOrEmpty(v))
 				return Content("Error");

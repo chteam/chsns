@@ -1,1 +1,0 @@
-﻿#component(PostList with "Groupid=$Groupid" "EveryPage=$EveryPage" "nowpage=$nowpage")

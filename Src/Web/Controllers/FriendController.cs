@@ -6,14 +6,16 @@ namespace CHSNS.Controllers {
 	using System.Linq;
 	using System.Web.Mvc;
 
-	public class FriendController : BaseController {
+    public partial class FriendController : BaseController
+    {
 		#region Action
-		public ActionResult Random() {
+        public virtual ActionResult Random()
+        {
 			ViewData["source"] = DataExt.Friend.GetRandoms(10);
 			return View();
 		}
         [LoginedFilter]
-        public ActionResult Index(int? p, long? userid)
+        public virtual ActionResult Index(int? p, long? userid)
         {
             if (!userid.HasValue || userid == 0) userid = CHUser.UserId;
             InitPage(ref p);
@@ -29,7 +31,7 @@ namespace CHSNS.Controllers {
 
         [LoginedFilter]
         [ActionName("Request")]
-        public ActionResult RequestHack(int? p)
+        public virtual ActionResult RequestHack(int? p)
         {
             InitPage(ref p);
             var profile = DataExt.Friend.UserFriendInfo(CHUser.UserId);
@@ -44,7 +46,7 @@ namespace CHSNS.Controllers {
 		#region pager ctrl
         [LoginedFilter]
         [HttpPost]
-        public ActionResult FriendList(int p, long userid)
+        public virtual ActionResult FriendList(int p, long userid)
         {
             var list = DataExt.Friend.GetFriends(userid, p, CHContext.Site);
             ViewData["PageCount"] = list.TotalPages;
@@ -52,12 +54,14 @@ namespace CHSNS.Controllers {
         }
 		[LoginedFilter]
 		[HttpPost]
-		public ActionResult RequestList(int p, long userid) {
+        public virtual ActionResult RequestList(int p, long userid)
+        {
             return View(DataExt.Friend.GetRequests(userid, p, CHContext.Site));
 		}
 		[LoginedFilter]
 		[HttpPost]
-		public ActionResult RandomList() {
+        public virtual ActionResult RandomList()
+        {
 			return View(DataExt.Friend.GetRandoms(10));
 		}
 		#endregion
@@ -65,7 +69,7 @@ namespace CHSNS.Controllers {
 		#region ajax execute
 		[LoginedFilter]
 		[HttpPost]
-		public ActionResult Add(long toid)
+        public virtual ActionResult Add(long toid)
 		{//添加好友
 			using (var ts = new TransactionScope())
 			{
@@ -82,7 +86,8 @@ namespace CHSNS.Controllers {
 		/// <returns></returns>
 		[LoginedFilter]
 		[HttpPost]
-		public ActionResult Delete(long toid) {
+        public virtual ActionResult Delete(long toid)
+        {
 			using (var ts = new TransactionScope())
 			{
 				DataExt.Friend.Delete(CHUser.UserId, toid);
@@ -92,7 +97,7 @@ namespace CHSNS.Controllers {
 		}
 		[LoginedFilter]
 		[HttpPost]
-		public ActionResult Agree(long uid)
+        public virtual ActionResult Agree(long uid)
 		{//添加好友
 			using (var ts = new TransactionScope())
 			{
@@ -104,7 +109,8 @@ namespace CHSNS.Controllers {
 		}
 		[LoginedFilter]
 		[HttpPost]
-		public ActionResult Ignore(long uid) {//添加好友
+        public virtual ActionResult Ignore(long uid)
+        {//添加好友
 			using (var ts = new TransactionScope())
 			{
 				var r=DataExt.Friend.Ignore(uid, CHUser.UserId);
@@ -115,7 +121,8 @@ namespace CHSNS.Controllers {
 		}
 		[LoginedFilter]
 		[HttpPost]
-		public ActionResult IgnoreAll() {//添加好友
+        public virtual ActionResult IgnoreAll()
+        {//添加好友
 			using (var ts = new TransactionScope())
 			{
 				DataExt.Friend.IgnoreAll(CHUser.UserId);
