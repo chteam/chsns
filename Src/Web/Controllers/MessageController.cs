@@ -16,15 +16,15 @@ namespace CHSNS.Controllers
     /// 站内信
     /// </summary>
     [LoginedFilter]
-    public class MessageController : BaseController
+    public partial class MessageController : BaseController
     {
-        public ActionResult InBox(int? p)
+        public virtual ActionResult InBox(int? p)
         {
             Title = "收件箱";
             return InBoxList(p);
         }
         [HttpPost]
-        public ActionResult InBoxList(int? p)
+        public virtual ActionResult InBoxList(int? p)
         {
             InitPage(ref p);
           //  InitPage(ref ep, 10);
@@ -33,14 +33,14 @@ namespace CHSNS.Controllers
             ViewData["PageCount"] = m.TotalPages;
             return View(m);
         }
-        public ActionResult OutBox(int? p, int? ep)
+        public virtual ActionResult OutBox(int? p, int? ep)
         {
             Title = "发件箱";
             return OutBoxList(p);
         }
 
         [HttpPost]
-        public ActionResult OutBoxList(int? p)
+        public virtual ActionResult OutBoxList(int? p)
         {
             InitPage(ref p);
            // InitPage(ref ep, 10);
@@ -51,20 +51,20 @@ namespace CHSNS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(long id, int t)
+        public virtual ActionResult Delete(long id, int t)
         {
             DataExt.Message.Delete(id, (MessageBoxType)t, CHUser.UserId);
             //CHStatic.Clear();
             return Content("");
         }
-        public ActionResult Details(long id)
+        public virtual ActionResult Details(long id)
         {
             var m = DataExt.Message.Details(id, CHUser.UserId);
             Title = m.Message.Title;
             //	CHStatic.Clear();
             return View(m);
         }
-        public ActionResult Write(long toid, string toname)
+        public virtual ActionResult Write(long toid, string toname)
         {
             Title = "写站内信";
             return View(new UserItemPas
@@ -87,14 +87,14 @@ namespace CHSNS.Controllers
 
         }
         [HttpPost]
-        public ActionResult Save()
+        public virtual ActionResult Save()
         {
             SavaProc();
             return RedirectToAction("OutBox");
         }
 
         [HttpPost]
-        public ActionResult SaveAjax()
+        public virtual ActionResult SaveAjax()
         {
             SavaProc();
             return new EmptyResult();

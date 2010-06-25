@@ -6,8 +6,9 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers {
 
-	public class NoteController : BaseController {
-        public ActionResult Index(long? userid, int? p)
+    public partial class NoteController : BaseController
+    {
+        public virtual ActionResult Index(long? userid, int? p)
         {
 
             if (!userid.HasValue) userid = CHUser.UserId;
@@ -39,13 +40,15 @@ namespace CHSNS.Controllers {
 		/// <param name="userid">The userid.</param>
 		/// <returns></returns>
 		[HttpPost]
-		public ActionResult NoteList(int p, int ep, long userid) {
+        public virtual ActionResult NoteList(int p, int ep, long userid)
+        {
             var d =
                 DataExt.Note.GetNotes(userid, NoteType.Note, p, ep)
                 ;
 			return View(d);
 		}
-		public ActionResult Details(long id) {
+        public virtual ActionResult Details(long id)
+        {
 			var note = DataExt.Note.Details(id, NoteType.Note);
             var cl = DataExt.Comment.CommentList(id, CommentType.Note, 1, CHContext.Site);
 			ViewData["commentlist"] = cl;
@@ -56,7 +59,8 @@ namespace CHSNS.Controllers {
 		}
 		[AcceptVerbs(HttpVerbs.Get)]
 		[LoginedFilter]
-		public ActionResult Edit(long? id) {
+        public virtual ActionResult Edit(long? id)
+        {
 			using (var ts = new TransactionScope()) {
 				Note n = null;
 				if (id.HasValue) {//编辑
@@ -72,7 +76,8 @@ namespace CHSNS.Controllers {
 		[ValidateInput(false)]
 		[AcceptVerbs(HttpVerbs.Post)]
 		[LoginedFilter]
-		public ActionResult Edit(long? id, [Bind(Prefix="n")]Note n) {
+        public virtual ActionResult Edit(long? id, [Bind(Prefix = "n")]Note n)
+        {
 			using (var ts = new TransactionScope()) {
 				if (n.Title.Length < 1 || n.Body.Length < 10) {
 					Message = ("请输入正确的日志内容");
@@ -100,7 +105,8 @@ namespace CHSNS.Controllers {
 		/// <returns></returns>
 		[HttpPost]
 		[LoginedFilter]
-		public ActionResult Delete(long id) {
+        public virtual ActionResult Delete(long id)
+        {
 			using (var ts = new TransactionScope()) {
 				DataExt.Note.Delete(id, CHUser.UserId, NoteType.Note);
 				ts.Complete();
@@ -112,7 +118,8 @@ namespace CHSNS.Controllers {
 		/// 全局最新的note
 		/// </summary>
 		/// <returns></returns>
-		public ActionResult News() {
+        public virtual ActionResult News()
+        {
 			Title = "日志首页";
 			return View(DataExt.Note.GetLastNotes(null));
 		}

@@ -2,9 +2,11 @@ using System.Web.Mvc;
 using CHSNS.Controllers;
 
 namespace CHSNS.Web.Controllers {
-	public class AdController : BaseController {
+    public partial class AdController : BaseController
+    {
 		public void Index() { }
-		public ActionResult Ad() {
+        public virtual ActionResult Ad()
+        {
 			//public override void Render() {
 			//将值传输给View
 			//ApplicationMenuViewBuilder amvb = new ApplicationMenuViewBuilder();

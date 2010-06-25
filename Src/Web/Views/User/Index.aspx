@@ -9,7 +9,7 @@ Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
 	<% 
 		UserIndexViewModel up = ViewData.Model;
 		if (!up.Exists) {
-			Html.RenderPartial("index/noRight", ViewData.Model);
+            Html.RenderPartial("IndexChild/noRight", ViewData.Model);
 		}
 		else {
 			if (up.Exists && up.Profile.HasMagicBox) {%>
@@ -23,7 +23,7 @@ Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
 			<h2>
 				<%=up.Profile.Name%></h2>
 			<div class="mypage_sta">
-				<% Html.RenderPartial("index/mystatus", ViewData.Model);/*状态*/%>
+				<% Html.RenderPartial("IndexChild/mystatus", ViewData.Model);/*状态*/%>
 			</div>
 		</div>
 		<div id="userAccount">
@@ -31,13 +31,13 @@ Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
 				<ul id="Profile_Accordion">
 					<li>
 						<%
-							Html.RenderPartial("index/account", ViewData.Model);%></li>
+                            Html.RenderPartial("IndexChild/account", ViewData.Model);%></li>
 					<%--					<li><%
-   	Html.RenderPartial("index/school", ViewData.Model);%></li>
+   	Html.RenderPartial("IndexChild/school", ViewData.Model);%></li>
 					<li><%
-   	Html.RenderPartial("index/contact", ViewData.Model);%></li>
+   	Html.RenderPartial("IndexChild/contact", ViewData.Model);%></li>
 					<li><%
-   	Html.RenderPartial("index/personal", ViewData.Model);%></li>--%>
+   	Html.RenderPartial("IndexChild/personal", ViewData.Model);%></li>--%>
 				</ul>
  
 				<script type="text/javascript">
@@ -50,7 +50,7 @@ Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
 						<%=up.Profile.Name%>的动向</h3>
 					<ul id="evt_list">
 						<% 
-							Html.RenderPartial("Index/Event", ViewData["event"]); %>
+                            Html.RenderPartial("IndexChild/Event", ViewData["event"]); %>
 					</ul>
 				</div>
 			</div>
@@ -104,7 +104,7 @@ Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
 				</div>
 			</div>
 			<%
-				Html.RenderPartial("index/Myactions", ViewData.Model);%>
+                Html.RenderPartial("IndexChild/Myactions", ViewData.Model);%>
 		</div>
 		<div class="box">
 			<h3>

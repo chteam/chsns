@@ -6,11 +6,12 @@ namespace CHSNS.Controllers
     //using ChAlumna.TemplateEngine;
 	//using ChAlumna.components;
 //	[Rescue("index")]
-	public class TestController : BaseController 
+    public partial class TestController : BaseController 
 	{
 		//private DefaultControllerFactory factory;
-		
-		public ActionResult index() {
+
+        public virtual ActionResult index()
+        {
 			//var db = new DataBaseExecutor(new SqlDataOpener(
 			//    @"Data Source=.\SQLEXPRESS;Initial Catalog=sq_menglei;Integrated Security=True"
 			//    ));
