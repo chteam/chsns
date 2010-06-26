@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage<PagedList<Group>>" %>
+Inherits="System.Web.Mvc.ViewPage<PagedList<CHSNS.Models.Group>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content> 
@@ -9,7 +9,7 @@ Inherits="System.Web.Mvc.ViewPage<PagedList<Group>>" %>
 		<%=Html.ActionLink("新建", "Create")%>
 		<div class="ch_content">
 			<ul class="userlist">
-				<%  foreach (Group p in ViewData.Model.ToNotNull()) { %>
+				<%  foreach (var p in ViewData.Model.ToNotNull()) { %>
 				<li id="Items<%=p.Id %>" class="useritem">
 					<div class="face face-middle">
 						<a href="<%=Url.LinkGroupIndex(p.Id) %>"
