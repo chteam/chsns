@@ -75,9 +75,10 @@ namespace CHSNS.Operator {
 		public NoteDetailsPas Details(long id, NoteType? nt) {
             using (var db = DBExtInstance)
             {
+                var type = (byte)(nt ?? NoteType.Note);
                 var ret = (from n in db.Note
                            join p in db.Profile on n.UserId equals p.UserId
-                           where n.Id == id && n.Type.Equals(nt ?? NoteType.Note)
+                           where n.Id == id && n.Type.Equals(type)
                            select new NoteDetailsPas
                                       {
                                           Note = n,
@@ -117,9 +118,10 @@ namespace CHSNS.Operator {
         {
             using (var db = DBExtInstance)
             {
-                return (from n in db.Note
+                var type = (byte)(nt ?? NoteType.Note);
+                var notes= (from n in db.Note
                         join pr in db.Profile on n.UserId equals pr.UserId
-                        where n.ParentId == pid && n.Type.Equals(nt ?? NoteType.Note)
+                        where n.ParentId == pid && n.Type.Equals(type)
                         orderby n.Id descending
                         select new NotePas
                                    {
@@ -131,7 +133,8 @@ namespace CHSNS.Operator {
                                        UserId = n.UserId,
                                        ViewCount = n.ViewCount,
                                        WriteName = pr.Name
-                                   }).Pager(p, ep);
+                                   });
+                return notes.Pager(p, ep);
             }
         }
 

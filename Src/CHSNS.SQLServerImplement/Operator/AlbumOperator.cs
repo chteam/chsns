@@ -22,7 +22,7 @@ namespace CHSNS.SQLServerImplement {
             }
         }
 
-        public void Add(Album album, long uId) {
+        public void Add(Album album) {
             using (var db = DBExtInstance){
                 db.Album.AddObject(album);
                 db.SubmitChanges();
@@ -44,6 +44,7 @@ namespace CHSNS.SQLServerImplement {
             using (var db = DBExtInstance){
                 return  (from ph in db.Photo
                           where ph.AlbumId == id && ph.UserId ==uId
+                          orderby ph.AddTime descending 
                          select ph).Pager(page, pageSize);
             }
         }

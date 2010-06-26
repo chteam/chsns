@@ -14,7 +14,7 @@ namespace CHSNS.Controllers {
 			ViewData["source"] = DataExt.Friend.GetRandoms(10);
 			return View();
 		}
-        [LoginedFilter]
+        [Authorize]
         public virtual ActionResult Index(int? p, long? userid)
         {
             if (!userid.HasValue || userid == 0) userid = CHUser.UserId;
@@ -29,7 +29,7 @@ namespace CHSNS.Controllers {
             return FriendList(p.Value, userid.Value);
         }
 
-        [LoginedFilter]
+        [Authorize]
         [ActionName("Request")]
         public virtual ActionResult RequestHack(int? p)
         {
@@ -44,7 +44,7 @@ namespace CHSNS.Controllers {
 
 	    #endregion
 		#region pager ctrl
-        [LoginedFilter]
+        [Authorize]
         [HttpPost]
         public virtual ActionResult FriendList(int p, long userid)
         {
@@ -52,13 +52,13 @@ namespace CHSNS.Controllers {
             ViewData["PageCount"] = list.TotalPages;
             return View(list);
         }
-		[LoginedFilter]
+		[Authorize]
 		[HttpPost]
         public virtual ActionResult RequestList(int p, long userid)
         {
             return View(DataExt.Friend.GetRequests(userid, p, CHContext.Site));
 		}
-		[LoginedFilter]
+		[Authorize]
 		[HttpPost]
         public virtual ActionResult RandomList()
         {
@@ -67,7 +67,7 @@ namespace CHSNS.Controllers {
 		#endregion
 
 		#region ajax execute
-		[LoginedFilter]
+		[Authorize]
 		[HttpPost]
         public virtual ActionResult Add(long toid)
 		{//添加好友
@@ -84,7 +84,7 @@ namespace CHSNS.Controllers {
 		/// </summary>
 		/// <param name="toid"></param>
 		/// <returns></returns>
-		[LoginedFilter]
+		[Authorize]
 		[HttpPost]
         public virtual ActionResult Delete(long toid)
         {
@@ -95,7 +95,7 @@ namespace CHSNS.Controllers {
 				return Content("解除关系成功");
 			}
 		}
-		[LoginedFilter]
+		[Authorize]
 		[HttpPost]
         public virtual ActionResult Agree(long uid)
 		{//添加好友
@@ -107,7 +107,7 @@ namespace CHSNS.Controllers {
 				return Content("请求已经处理过了");
 			}
 		}
-		[LoginedFilter]
+		[Authorize]
 		[HttpPost]
         public virtual ActionResult Ignore(long uid)
         {//添加好友
@@ -119,7 +119,7 @@ namespace CHSNS.Controllers {
 				return Content("请求已经处理过了");
 			}
 		}
-		[LoginedFilter]
+		[Authorize]
 		[HttpPost]
         public virtual ActionResult IgnoreAll()
         {//添加好友

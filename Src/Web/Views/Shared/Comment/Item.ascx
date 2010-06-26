@@ -17,7 +17,7 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<CommentPas>>" %>
 				回复</a></span>
 			<%}
 	 if (!dr.Comment.IsDel) {
-		 if (dr.Comment.OwnerID == CH.Context.User.UserId || CH.Context.User.IsAdmin) {
+		 if (dr.Comment.OwnerID == CH.Context.User.UserId || Context.User.IsInRole("admin")) {
 			%>
 			<a href="<%=dr.Comment.ID%>" class="delete">删除</a>
 			<%}

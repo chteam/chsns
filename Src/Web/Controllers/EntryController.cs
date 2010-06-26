@@ -74,7 +74,7 @@ namespace CHSNS.Controllers
         /// <param name="title"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        [AcceptVerbs(HttpVerbs.Get)]
+        [HttpGet]
 		[AdminFilter]
         public virtual ActionResult Edit(string title, long? id)
         {
@@ -117,7 +117,7 @@ namespace CHSNS.Controllers
         /// <param name="entryversion"></param>
         /// <param name="tags"></param>
         /// <returns></returns>
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
 		[AdminFilter]
         [ValidateInput(false)]
         public virtual ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags)

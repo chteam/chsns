@@ -2,7 +2,7 @@ using System.Web.Mvc;
 
 
 namespace CHSNS.Controllers {
-    [LoginedFilter]
+    [Authorize]
     public partial class ProfileController : BaseController
     {
         public void Setting(int? tabs) {

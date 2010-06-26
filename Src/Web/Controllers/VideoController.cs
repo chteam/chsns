@@ -7,15 +7,15 @@ namespace CHSNS.Controllers {
 
     public partial class VideoController : BaseController
     {
-        [LoginedFilter]
-        [AcceptVerbs(HttpVerbs.Get)]
+        [Authorize]
+        [HttpGet]
         public virtual ActionResult Edit()
         {
             Title = "Ã·Ωª";
             return View();
         }
-        [LoginedFilter]
-        [AcceptVerbs(HttpVerbs.Post)]
+        [Authorize]
+        [HttpPost]
         public virtual ActionResult Edit(SuperNote v)
         {
             DataExt.Video.Create(CHUser,v);

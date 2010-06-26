@@ -32,7 +32,7 @@ namespace CHSNS.Controllers
 		{
 			return Json(DataExt.Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
 		}
-		[AcceptVerbs(HttpVerbs.Post)]
+		[HttpPost]
         public virtual ActionResult SaveReg(string userName, string password, string name)
 		{
 			if (!(userName.Length > 3 && Regex.IsMatch(password, @"[^']{4,}")))
@@ -40,19 +40,19 @@ namespace CHSNS.Controllers
 
 			if (string.IsNullOrEmpty(name))
 				throw new Exception("资料中有空项");
-			var a = new Account
+			var account = new Account
 						{
 							UserName = userName,
 							Password = password,
 						};
 
-			var b = DataExt.Account.Create(a, name, CHContext.Site);
+			var hasSuccess = DataExt.Account.Create(account, name, CHContext.Site);
 
 			Title = "注册成功";
-            if (b)
+            if (hasSuccess)
                 return View(Views.Reg_Success);
 			TempData["errors"] = "用户名已经存在";
-			return RedirectToAction("RegPage");
+			return RedirectToAction(Actions.RegPage());
 		}
 
 		#region 登录注销
@@ -91,13 +91,13 @@ namespace CHSNS.Controllers
 		}
 		#endregion
 		#region 修改密码
-		[AcceptVerbs(HttpVerbs.Get)]
+		[HttpGet]
         public virtual ActionResult ChangePassword()
 		{
 			Title = "修改密码";
 			return View();
 		}
-		[AcceptVerbs(HttpVerbs.Post)]
+		[HttpPost]
         public virtual ActionResult ChangePassword(string oldpassword, string password)
 		{
 			Message = "您已经成功修改密码";

@@ -8,7 +8,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 		<%=Html.ActionLink("[新建相册]","Edit","Album") %>
 		<div class="ch_content"> 
 			<ul class="userlist">
-				<%  foreach (IAlbum p in (ViewData.Model as IEnumerable<IAlbum>).ToNotNull()) { %>
+				<%  foreach (Album p in (ViewData.Model as IEnumerable<Album>).ToNotNull()) { %>
 				<li id="Items<%=p.Id %>" class="useritem">
 					<div class="face face-middle">
 						<a href="<%=Url.Action("Details", "Album", new { id=p.Id})%>"

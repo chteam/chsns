@@ -12,10 +12,6 @@ Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
             Html.RenderPartial("IndexChild/noRight", ViewData.Model);
 		}
 		else {
-			if (up.Exists && up.Profile.HasMagicBox) {%>
-	<%="<style type=\"text/css\">" + up.Profile.MagicBox + "</style>"%>
-	<%
-		}
 	%>
 	<div class="curtain">
 	<div id="userUpdates">

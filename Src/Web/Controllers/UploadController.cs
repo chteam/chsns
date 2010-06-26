@@ -10,7 +10,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers {
     //[Helper(typeof(ChHelper))]
-    [LoginedFilter]
+    [Authorize]
     public partial class UploadController : BaseController
     {
 
@@ -23,7 +23,7 @@ namespace CHSNS.Controllers {
             };
             return View(vd);
         }
-        [LoginedFilter]
+        [Authorize]
         [HttpPost]
         public virtual ActionResult Face(string mode, HttpPostedFileBase file1)
         {

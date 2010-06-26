@@ -1,12 +1,12 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
-<%foreach(var item in ViewData["list"] as PagedList<ISuperNote>){ %>
+<%foreach(var item in ViewData["list"] as PagedList<SuperNote>){       %>
 
-<li id="SuperNoteItem_<%=item.ID %>" class="vlist">
-	<div id="showNote_<%=item.ID %>" class="vmedia" style="display:none"></div>
+<li id="SuperNoteItem_<%=item.Id %>" class="vlist">
+	<div id="showNote_<%=item.Id %>" class="vmedia" style="display:none"></div>
 	<div class="vicon">&nbsp;</div>
 	<div class="video">
-<a href="javascript:void(0)" onclick="ShowNote(<%=item.ID %>,'<%=item.Url %>');">
-<img style="width:128px;height:96px;" src="<%=item.Faceurl %>" alt="<%=item.Title %>" id="SuperVideo_<%=item.ID %>"/>
+<a href="javascript:void(0)" onclick="ShowNote(<%=item.Id %>,'<%=item.Url %>');">
+<img style="width:128px;height:96px;" src="<%=item.FaceURL %>" alt="<%=item.Title %>" id="SuperVideo_<%=item.Id %>"/>
 </a>
 	</div>
 	<div class="vtext">

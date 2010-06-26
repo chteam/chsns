@@ -13,7 +13,7 @@ namespace CHSNS.Controllers {
 	/// 事件的控制器
 	/// the Controller of Event.
 	/// </summary>
-	[LoginedFilter]
+	[Authorize]
     public partial class EventController : BaseController
     {
 		#region Action
