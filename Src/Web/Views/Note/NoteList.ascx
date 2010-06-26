@@ -15,7 +15,7 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<NotePas>>" %>
 		|
 		评论(<%=n.CommentCount %>)
 		<%
-			if (n.UserId == CH.Context.User.UserID){
+			if (n.UserId == CH.Context.User.UserId){
 %>
 		|
 		<%=Html.NoteEdit(n.Id, "编辑")%>

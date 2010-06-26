@@ -15,7 +15,7 @@ namespace CHSNS.Controllers
     /// <summary>
     /// Õ¾ÄÚÐÅ
     /// </summary>
-    [LoginedFilter]
+    [Authorize]
     public partial class MessageController : BaseController
     {
         public virtual ActionResult InBox(int? p)

@@ -45,7 +45,7 @@ namespace CHSNS.Controllers {
         /// <param name="Body"></param>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        [LoginedFilter]
+        [Authorize]
         public virtual ActionResult AddReply(long ReplyerID, string Body, long UserID)
         {
             using (var ts = new TransactionScope()) {
@@ -85,7 +85,7 @@ namespace CHSNS.Controllers {
         /// <param name="id">The id.</param>
         /// <returns></returns>
         [HttpPost]
-        [LoginedFilter]
+        [Authorize]
         public virtual ActionResult DeleteReply(long id)
         {
 
@@ -104,7 +104,7 @@ namespace CHSNS.Controllers {
             return View("Comment/Item", cl);
         }
 
-        [LoginedFilter]
+        [Authorize]
         public virtual ActionResult Delete(long id)
         {
             // TODO:少删除的权限判断
@@ -113,7 +113,7 @@ namespace CHSNS.Controllers {
 
             return this.Empty();
         }
-        [LoginedFilter]
+        [Authorize]
         public virtual ActionResult Add(long ShowerID, long OwnerID, string Body, CommentType type)
         {
             var cmt = new Comment {

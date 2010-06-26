@@ -20,12 +20,12 @@ namespace CHSNS.Web.Areas.Admin.Controllers
             
             return View(li);
         }
-        [AcceptVerbs(HttpVerbs.Get)]
+        [HttpGet]
         public virtual ActionResult Edit()
         {
             return View();
         }
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
         public virtual ActionResult Edit(ApplicationItem app)
         {
             Title = app.FullName;

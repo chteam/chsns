@@ -23,7 +23,7 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 				<%=Html.UserPageLink(u.Id,u.Name) %>
 				阅读(<%=n.ViewCount %>) 评论(<%=n.CommentCount %>)<%-- 推荐(<%=n.PushCount %>)--%>
 				<%
-					if (n.UserId == CH.Context.User.UserID) {
+					if (n.UserId == CH.Context.User.UserId) {
 				%>
 				<%=Html.NoteEdit(n.Id, "编辑")%>
 				<%
@@ -64,7 +64,7 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 		};
 
 		var setpage = function(p) {
-			$.post('<%=Url.Action("List","Comment") %>', { "p": p, "id": '<%=ViewData.Model.Note.ID%>', "type": 0 }, function(r) {
+			$.post('<%=Url.Action("List","Comment") %>', { "p": p, "id": '<%=ViewData.Model.Note.Id%>', "type": 0 }, function(r) {
 				$h("#ReplyItems", r);
 				pagefun();
 				init_Replyconfirm();

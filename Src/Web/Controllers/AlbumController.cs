@@ -8,7 +8,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
-    [LoginedFilter]
+    [Authorize]
     public partial class AlbumController : BaseController
     {
         #region 应用、相册列表
@@ -28,7 +28,7 @@ namespace CHSNS.Controllers
         #endregion
 
         #region 新建，编辑
-        [AcceptVerbs(HttpVerbs.Get)]
+        [HttpGet]
         public virtual ActionResult Edit(long? id)
         {
             if (!id.HasValue){
@@ -41,7 +41,7 @@ namespace CHSNS.Controllers
             return View(model);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
         public virtual ActionResult Edit(long? id, Album a)
         {
             if (id.HasValue){
@@ -68,7 +68,7 @@ namespace CHSNS.Controllers
 
         #endregion
         #region 上传
-        [AcceptVerbs(HttpVerbs.Get)]
+        [HttpGet]
         public virtual ActionResult Upload(long? id)
         {
             var album = DataExt.Album.Get(id.Value);

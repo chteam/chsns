@@ -3,6 +3,7 @@
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement;
 using CHSNS.Models;
+using System;
 
 namespace CHSNS.Service {
     public class AlbumService {
@@ -25,7 +26,9 @@ namespace CHSNS.Service {
         }
 
         public void Add(Album album, long uId) {
-            _album.Add(album, uId);
+            album.UserId = uId;
+            album.AddTime = DateTime.Now;
+            _album.Add(album);
         }
 
         public void Update(Album album) {

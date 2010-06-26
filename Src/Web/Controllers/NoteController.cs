@@ -57,8 +57,8 @@ namespace CHSNS.Controllers {
 			ViewData["PageCount"] = note.User.Count;
 			return View(note);
 		}
-		[AcceptVerbs(HttpVerbs.Get)]
-		[LoginedFilter]
+		[HttpGet]
+		[Authorize]
         public virtual ActionResult Edit(long? id)
         {
 			using (var ts = new TransactionScope()) {
@@ -74,9 +74,9 @@ namespace CHSNS.Controllers {
 			}
 		}
 		[ValidateInput(false)]
-		[AcceptVerbs(HttpVerbs.Post)]
-		[LoginedFilter]
-        public virtual ActionResult Edit(long? id, [Bind(Prefix = "n")]Note n)
+		[HttpPost]
+		[Authorize]
+        public virtual ActionResult Edit(long? id,Note n)
         {
 			using (var ts = new TransactionScope()) {
 				if (n.Title.Length < 1 || n.Body.Length < 10) {
@@ -104,7 +104,7 @@ namespace CHSNS.Controllers {
 		/// <param name="id">The id.</param>
 		/// <returns></returns>
 		[HttpPost]
-		[LoginedFilter]
+		[Authorize]
         public virtual ActionResult Delete(long id)
         {
 			using (var ts = new TransactionScope()) {

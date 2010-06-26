@@ -7,7 +7,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers {
 
-	[LoginedFilter]
+	[Authorize]
     public partial class GroupController : BaseController
     {
 		#region 主页
@@ -81,14 +81,14 @@ namespace CHSNS.Controllers {
         }
 
 	    #region Create
-		[AcceptVerbs(HttpVerbs.Get)]
+		[HttpGet]
         public virtual ActionResult Create()
         {
 			Title = "新建群";
 			ViewData["category"] = ConfigSerializer.GetConfig("Category").ToSelectList(c => c.Value, c => c.Text);
 			return View();
 		}
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
         public virtual ActionResult Create(string name)
         {
             Message = "创建成功";
@@ -98,7 +98,7 @@ namespace CHSNS.Controllers {
 		#endregion
 
 		#region 管理
-        [AcceptVerbs(HttpVerbs.Get)]
+        [HttpGet]
         public virtual ActionResult Manage(long id)
         {
             //TODO:限制访问人员
@@ -119,7 +119,7 @@ namespace CHSNS.Controllers {
 			return View();
 		}
 
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
         public virtual ActionResult Manage(long id, Group group)
         {
             //TODO:限制访问人员
@@ -151,7 +151,7 @@ namespace CHSNS.Controllers {
             return View(note);
         }
 
-	    [AcceptVerbs(HttpVerbs.Post)]
+	    [HttpPost]
         public virtual ActionResult Post(long? id, Note post)
         {
 			using (var ts = new TransactionScope()) {
