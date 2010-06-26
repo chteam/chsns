@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage<Group>" %>
+Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("group") %>
@@ -9,13 +9,13 @@ Inherits="System.Web.Mvc.ViewPage<Group>" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<%
 		var g = ViewData.Model;
-		var guser = ViewData["guser"] as IGroupUser;
+		var guser = ViewData["guser"] as GroupUser;
 		if (g == null || guser == null) { %>
 	<div class="notes">
 		您所访问的群不存在</div>
 	<%} else {
 		bool IsAdmin = guser.Status==(byte)GroupUserStatus.Admin || guser.Status==(byte)GroupUserStatus.Ceater ||
-					   CH.Context.User.IsAdmin;
+					   User.IsInRole("admin");
 		int right = int.Parse(ViewData["right"].ToString());
         int showlevel = int.Parse(ViewData["showlevel"].ToString());
 		int applycount = int.Parse(ViewData["Applycount"].ToString());
@@ -28,7 +28,7 @@ Inherits="System.Web.Mvc.ViewPage<Group>" %>
 			<ul class="adminActions">
 			<li>我可以：</li>
 				<%if (IsAdmin) {%>
-				<li><a href="<%=Url.LinkGroupManage(g.ID)%>">管理员工具箱</a></li>
+				<li><a href="<%=Url.LinkGroupManage(g.Id)%>">管理员工具箱</a></li>
 				<%}
 	  if (guser.Status==(byte)GroupUserStatus.Common) {%>
 				<li><a href="javascript:ApplyAdmin($group.id)">申请做管理员</a></li>
@@ -81,7 +81,7 @@ Inherits="System.Web.Mvc.ViewPage<Group>" %>
 			<div class="notes">
 				<%if (IsAdmin && applycount > 0) {%>
 				有<%=applycount %>位成员等待加入
-				<%=Html.ActionLink("去处理", "ManageUser", "Group", new { id=g.ID},null)%>
+				<%=Html.ActionLink("去处理", "ManageUser", "Group", new { id=g.Id},null)%>
 				<br />
 				<%	}%>
 				<%=g.Summary %>
@@ -118,12 +118,12 @@ Inherits="System.Web.Mvc.ViewPage<Group>" %>
 			</div>
 		</div>
 		<div>
-			<%if (showlevel == 0 || CH.Context.User.IsAdmin)
+			<%if (showlevel == 0 || User.IsInRole("admin"))
      {%>
 			<h4>
 				<a href="#sendsubject">发表新主题</a></h4>
 			<form action="<%=Url.Action("Post","Group") %>" method="post" onsubmit="return sub();">
-			<%=Html.Hidden("post.ParentId",g.ID) %>
+			<%=Html.Hidden("post.ParentId",g.Id) %>
 			<ul>
 				<li>
 					<label for="subject">

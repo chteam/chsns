@@ -60,24 +60,27 @@ namespace CHSNS.Operator {
 
 	    public int WaitJoinCount(long groupId)
 	    {
+            var type = (byte)GroupUserStatus.Wait;
             using (var db = DBExtInstance)
             {
                 return db.GroupUser.Where(
                     c => c.GroupId == groupId
-                         && c.Status.Equals(GroupUserStatus.Wait)
+                         && c.Status.Equals(type)
                     ).Count();
             }
 	    }
 
         public List<UserItemPas> GetAdmins(long groupId)
         {
+            byte tc = (byte)GroupUserStatus.Ceater;
+            byte ta = (byte)GroupUserStatus.Admin;
             using (var db = DBExtInstance)
             {
                 return (from gu in db.GroupUser
                         join a in db.Profile on gu.UserId equals a.UserId
                         where gu.GroupId == groupId
-                              && (gu.Status.Equals(GroupUserStatus.Ceater) ||
-                                  gu.Status.Equals(GroupUserStatus.Admin))
+                              && (gu.Status.Equals(tc) ||
+                                  gu.Status.Equals(ta))
                         orderby gu.Status descending
                         select new UserItemPas
                                    {
