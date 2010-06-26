@@ -168,7 +168,9 @@
     <Compile Include="Enum\GroupUserStatus.cs" />
     <Compile Include="Enum\MessageBoxType.cs" />
     <Compile Include="Enum\NoteType.cs" />
-    <Compile Include="Enum\RoleType.cs" />
+    <Compile Include="Enum\RoleType.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Enum\SuperNoteType.cs" />
     <Compile Include="Enum\TagsType.cs" />
     <Compile Include="Enum\ThumbType.cs" />
@@ -219,7 +221,9 @@
     <Compile Include="Reply.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Role.cs" />
+    <Compile Include="Roles.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
@@ -232,11 +236,16 @@
     </Compile>
     <Compile Include="UserPas.cs" />
     <Compile Include="UserItemPas.cs" />
+    <Compile Include="UserRole.cs">
+      <DependentUpon>DbEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserwithCountPas.cs" />
     <Compile Include="ViewData.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewListPas.cs" />
+    <Compile Include="WebProvider\CHIdentity.cs" />
+    <Compile Include="WebProvider\CHPrincipal.cs" />
     <Compile Include="~Account.cs" />
     <Compile Include="~BasicInformation.cs" />
   </ItemGroup>

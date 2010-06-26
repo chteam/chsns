@@ -25,7 +25,6 @@ public static class MVC {
     static readonly AdminClass s_Admin = new AdminClass();
     public static AdminClass Admin { get { return s_Admin; } }
     public static CHSNS.Controllers.AccountController Account = new CHSNS.Controllers.T4MVC_AccountController();
-    public static CHSNS.Web.Controllers.AdController Ad = new CHSNS.Web.Controllers.T4MVC_AdController();
     public static CHSNS.Controllers.AjaxController Ajax = new CHSNS.Controllers.T4MVC_AjaxController();
     public static CHSNS.Controllers.AlbumController Album = new CHSNS.Controllers.T4MVC_AlbumController();
     public static CHSNS.Controllers.CommentController Comment = new CHSNS.Controllers.T4MVC_CommentController();

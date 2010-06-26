@@ -108,7 +108,6 @@
     <Compile Include="Core\CHCache.cs" />
     <Compile Include="Core\CHContext.cs" />
     <Compile Include="Core\CHCookies.cs" />
-    <Compile Include="Core\CHUser.cs" />
     <Compile Include="Core\Online.cs" />
     <Compile Include="DefaultDataBinder.cs" />
     <Compile Include="Extension\Common\EnumerableExtensions.cs" />

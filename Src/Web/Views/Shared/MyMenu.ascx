@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <% 
-	if (CH.Context.User.IsLogin) {%>
+    if (Page.User.Identity.IsAuthenticated)
+    {%>
 		<h3>
 			菜单</h3>
 		<ul id="MyApplication" class="app_list">

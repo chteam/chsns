@@ -42,6 +42,7 @@ namespace CHSNS.Web
             FormsAuthenticationTicket authTicket;
             try
             {
+                
                 authTicket = FormsAuthentication.Decrypt(authCookie.Value);
             }
             catch (Exception)
@@ -49,7 +50,12 @@ namespace CHSNS.Web
                 return;
             }
             if (null == authTicket) return;
-            string[] userData = authTicket.UserData.Split(new[] { '|' });
+            var profile = JsonAdapter.Deserialize<CHIdentity>(authTicket.UserData);
+            Context.User = new CHPrincipal()
+            {
+                Identity = profile
+            };
+            //string[] userData = authTicket.UserData.Split(new[] { '|' });
             //Context.User = Acl.User.BuildPrincipal(Convert.ToInt32(userData[0]), userData[1], userData[2],
             //                                       userData[3], DateTime.FromBinary(Convert.ToInt64(userData[4])),
             //                                       Acl.GanjiApplications.CRM);
@@ -59,7 +65,7 @@ namespace CHSNS.Web
         {
 
             IContext context1 = new CHContext(new HttpContextWrapper(Context));
-            if (context1.User.IsLogin) return; //当前不处于登录状态
+            if (!Context.User.Identity.IsAuthenticated) return; //当前不处于登录状态
             if (!context1.Cookies.IsAutoLogin) return;
             var pwd = context1.Cookies.UserPassword;
             var idb = new DataManager();

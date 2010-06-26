@@ -76,30 +76,30 @@ namespace CHSNS.Operator {
         #endregion
 
         #region Magicbox
-        public string GetMagicBox(long userId) {
-            using (var db = DBExtInstance) {
-                var magicbox = (from p in db.Profile
-                                where p.UserId == userId
-                                select p.MagicBox).FirstOrDefault();
-                return magicbox;
-            }
-        }
-        public void SaveMagicBox(string magicbox, long uid) {
-            using (var db = DBExtInstance) {
-                var p = db.Profile.FirstOrDefault(c => c.UserId == uid);
-                if (null == p) return;
-                p.MagicBox = magicbox;
-                db.SubmitChanges();
-            }
-            #region sql
-            //            DataBaseExecutor.Execute(@"Update [profile]
-            //set Magicbox=@magicbox where UserId=@UserId"
-            //                                     , "@magicbox", magicbox
-            //                                     , "@UserId", UserId);
-            #endregion
-        }
-        public void MagicBoxBackup() {
-        }
+        //public string GetMagicBox(long userId) {
+        //    using (var db = DBExtInstance) {
+        //        var magicbox = (from p in db.Profile
+        //                        where p.UserId == userId
+        //                        select p.MagicBox).FirstOrDefault();
+        //        return magicbox;
+        //    }
+        //}
+        //public void SaveMagicBox(string magicbox, long uid) {
+        //    using (var db = DBExtInstance) {
+        //        var p = db.Profile.FirstOrDefault(c => c.UserId == uid);
+        //        if (null == p) return;
+        //        p.MagicBox = magicbox;
+        //        db.SubmitChanges();
+        //    }
+        //    #region sql
+        //    //            DataBaseExecutor.Execute(@"Update [profile]
+        //    //set Magicbox=@magicbox where UserId=@UserId"
+        //    //                                     , "@magicbox", magicbox
+        //    //                                     , "@UserId", UserId);
+        //    #endregion
+        //}
+        //public void MagicBoxBackup() {
+        //}
 
 
 

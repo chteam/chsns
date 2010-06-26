@@ -7,7 +7,7 @@ using CHSNS.Models;
 namespace CHSNS.SQLServerImplement.Operator
 {
     public class AccountOperator : BaseOperator {
-        public Profile Login(String userName, String password, int logOnScore)
+        public CHIdentity Login(String userName, String password, int logOnScore)
         {
             using (var db = DBExtInstance)
             {
@@ -19,8 +19,12 @@ namespace CHSNS.SQLServerImplement.Operator
                               select a.UserId).FirstOrDefault();
                 if (userid <= 1000) return null;
                 var profile = db.Profile.FirstOrDefault(p => p.UserId == userid);
-                var retint = profile.Status;
-                if (retint <= 0) return null;
+                var roles = (from ur in db.UserRole
+                             join ro in db.Roles on ur.RoleId equals ro.Id
+                             where ur.UserId == profile.UserId
+                             select ro.RoleName).ToList();
+                //var retint = profile.Status;
+                // if (retint <= 0) return null;
                 if (profile.LoginTime.Date != DateTime.Now.Date)
                 {
                     profile.Score += logOnScore;
@@ -28,12 +32,17 @@ namespace CHSNS.SQLServerImplement.Operator
                     profile.LoginTime = DateTime.Now;
                     db.SubmitChanges();
                 }
-                return new Profile
+                return new CHIdentity
                 {
                     Name = profile.Name,
                     UserId = profile.UserId,
-                    Status = retint,
-                    Applications = profile.Applications
+                    // Email= profile.
+                    Roles = roles,
+                    Status = profile.Status
+                    //                    AuthenticationType = AccountType.Default.ToString()
+
+                    //Status = retint,
+                    //Applications = profile.Applications
                 };
             }
 
@@ -58,7 +67,7 @@ namespace CHSNS.SQLServerImplement.Operator
                     Status = (int)RoleType.General,
                     RegTime = DateTime.Now,
                     LoginTime = DateTime.Now,
-                    MagicBox = ""
+                   // MagicBox = ""
                 });
                 db.BasicInformation.AddObject(
                     new BasicInformation
@@ -81,7 +90,14 @@ namespace CHSNS.SQLServerImplement.Operator
             using (var db = DBExtInstance) {
                 var p = db.Profile.FirstOrDefault();
                 if (p == null) return;
-                p.Status = (int)RoleType.Creater;
+                //p.Status = (int)RoleType.Creater;
+                var userrole = new UserRole()
+                {
+                    RoleId = 1,
+                    UserId = p.UserId
+                };
+
+                db.UserRole.AddObject(userrole);
                 db.SubmitChanges();
             }
         }

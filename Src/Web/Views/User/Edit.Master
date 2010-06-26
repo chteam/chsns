@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("calendar")%>
-    <%=Html.Script("~/Scripts/jquery.validate.js") %>
-    <%=Html.Script("~/Scripts/MicrosoftMvcJQueryValidation.js")%>
+    <%=Html.Script(Links.Scripts.jquery_validate_min_js) %>
+    <%=Html.Script(Links.Scripts.MicrosoftMvcJQueryValidation_js)%>
 	<%if (false)
 	  { %>
 	<script type="text/javascript" src="../../Scripts/jquery-vsdoc.js"></script>
@@ -14,9 +14,7 @@
 		<ul>
 			<li class="baseinfo">
 				<%=Html.ActionLink("基本信息", "BaseInfo", "User")%></li>
-			<li class="magicbox">
-				<%=Html.ActionLink("魔法盒", "MagicBox", "User")%></li>
-            <li class="upload">
+		    <li class="upload">
 				<%=Html.ActionLink("头像设置", "Upload", "User")%></li>
 			<li class="status"></li>
 		</ul>
@@ -50,11 +48,7 @@
 					if ('' == r) alertEx('成功提交');
 				});
 		};
-		var SMagicBox = function (s) {
-			$.post('<%=Url.Action("SaveMagicBox","User") %>', { "magicbox": s }, function (r) {
-				if ('' == r) alertEx('成功提交');
-			});
-		};
+
 		var uploadsuccess = function (showul) {
 			alertEx("文件上传成功.");
 			$("#face_span").html(

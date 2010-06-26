@@ -3,6 +3,9 @@ using CHSNS.Config;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement.Operator;
 using CHSNS.Models;
+using System.Web.Security;
+using System.Reflection;
+using System.Web;
 
 namespace CHSNS.Service {
     public class AccountService {
@@ -19,25 +22,31 @@ namespace CHSNS.Service {
         /// <summary>
         /// 注销
         /// </summary>
-        public void Logout(IContext context) {
+        public void Logout(IContext context)
+        {
             context.Cookies.Clear();
-            context.User.Clear();
+            FormsAuthentication.SignOut();
         }
-        public int Login(String userName, String password, Boolean isAutoLogin, Boolean isPasswordMd5, IContext context) {
+        public int Login(String userName, String password, Boolean isAutoLogin, Boolean isPasswordMd5, IContext context)
+        {
             if (string.IsNullOrEmpty(userName.Trim())) throw new Exception("用户名不能为空");
             password = isPasswordMd5 ? password.Trim().ToMd5() : password.Trim();
             var profile = _account.Login(userName, password, context.Site.Score.LogOn);
             if (profile == null) return -1;//无账号
             Logout(context);
-            context.User.UserId = profile.UserId;
-            context.User.NickName = profile.Name;
-            context.User.InitStatus(profile.Status);
-            context.Cookies.Apps = profile.Applications ?? "";
+            //context.User = profile;
+            //context.Cookies.Apps = profile.Applications ?? "";
+            FormsAuthenticationTicket authTicket = new
+       FormsAuthenticationTicket(1, profile.Name, DateTime.Now,
+       DateTime.Now.AddMinutes(60), true, JsonAdapter.Serialize(profile));
+            string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+
+            HttpCookie authCookie =
+                         new HttpCookie(FormsAuthentication.FormsCookieName,
+                                        encryptedTicket);
+            context.HttpContext.Response.Cookies.Add(authCookie);
+
             if (!isAutoLogin) return profile.Status;
-            context.Cookies.UserID = context.User.UserId;
-            context.Cookies.UserPassword = password;
-            context.Cookies.IsAutoLogin = true;
-            context.Cookies.Expires = DateTime.Now.AddDays(365);
             return profile.Status;
         }
 

@@ -33,13 +33,13 @@ namespace CHSNS.Controllers {
             {
                 ret = 0;
             }
-            if (CHUser.IsAdmin)
+            if (User.IsInRole("admin"))
             {
                 ret = 0;
             }
 
             var userlevel = 0;
-            if (CHUser.IsAdmin)
+            if (User.IsInRole("admin"))
             {
                 ret = 0;
                 userlevel = 255;

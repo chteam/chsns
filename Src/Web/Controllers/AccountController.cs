@@ -62,7 +62,7 @@ namespace CHSNS.Controllers
         public virtual ActionResult Logout()
 		{
 			DataExt.Account.Logout(CHContext);
-			return RedirectToAction("index", "Entry", new { title = "index" });
+            return RedirectToAction(MVC.Entry.Index("index"));
 		}
 		/// <summary>
 		/// 登录

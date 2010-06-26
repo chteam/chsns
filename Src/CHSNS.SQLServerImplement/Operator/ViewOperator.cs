@@ -55,8 +55,10 @@ namespace CHSNS.Operator
                                              Name = p.Name,
                                              Id = p.UserId
                                          }
-                             );
+                             )                             ;
+                      
                         break;
+
                     case 3:
                         //--3全站人气之星
                         lu = (from p in

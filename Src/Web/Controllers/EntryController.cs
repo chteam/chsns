@@ -37,7 +37,7 @@ namespace CHSNS.Controllers
 
         [NonAction]
         public ActionResult Wait() {
-            return View("wait", "site"); 
+            return View(Views.Wait, "site");
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace CHSNS.Controllers
                     Title = "编辑词条:" + entry.Url;
                 }
                 else 
-                    return View("Wait");
+                    return View(Views.Wait);
             }
             else
             {

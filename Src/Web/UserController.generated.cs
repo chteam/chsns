@@ -43,11 +43,6 @@ namespace CHSNS.Controllers {
         public System.Web.Mvc.ActionResult EventDelete() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.EventDelete);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult SaveMagicBox() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.SaveMagicBox);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public UserController Actions { get { return MVC.User; } }
@@ -67,8 +62,6 @@ namespace CHSNS.Controllers {
             public readonly string School = ("School").ToLowerInvariant();
             public readonly string Contact = ("Contact").ToLowerInvariant();
             public readonly string Personal = ("Personal").ToLowerInvariant();
-            public readonly string MagicBox = ("MagicBox").ToLowerInvariant();
-            public readonly string SaveMagicBox = ("SaveMagicBox").ToLowerInvariant();
             public readonly string Upload = ("Upload").ToLowerInvariant();
             public readonly string DeleteFace = ("DeleteFace").ToLowerInvariant();
             public readonly string ManageUser = ("ManageUser").ToLowerInvariant();
@@ -147,17 +140,6 @@ namespace CHSNS.Controllers {
 
         public override System.Web.Mvc.ActionResult Personal() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Personal);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult MagicBox() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.MagicBox);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult SaveMagicBox(string magicbox) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SaveMagicBox);
-            callInfo.RouteValueDictionary.Add("magicbox", magicbox);
             return callInfo;
         }
 

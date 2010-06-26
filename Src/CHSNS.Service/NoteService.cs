@@ -40,7 +40,7 @@ namespace CHSNS.Service
                                        ShowLevel = 0,
                                        Json = Dictionary.CreateFromArgs("id", note.Id,
                                                                         "title", note.Title, "addtime",
-                                                                        note.AddTime, "name", user.NickName).
+                                                                        note.AddTime, "name", user.Name).
                                            ToJsonString()
                                    });
                     break;
