@@ -6,7 +6,7 @@ namespace CHSNS {
         IPathGenerate Path { get; set; }
         IIOFactory IOFactory { get; set; }
         ICache Cache { get; set; }
-        IUser User { get; set; }
+        IUser User { get; }
         ICookies Cookies { get; set; }
         IOnline Online { get; set; }
         SiteConfig Site { get; set; }

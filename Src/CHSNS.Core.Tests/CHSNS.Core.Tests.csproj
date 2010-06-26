@@ -116,10 +116,6 @@
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UnitTestUtil\UnitTestUtil.csproj">
-      <Project>{57FFC134-7F9D-4B97-8692-8D2C16714663}</Project>
-      <Name>UnitTestUtil</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

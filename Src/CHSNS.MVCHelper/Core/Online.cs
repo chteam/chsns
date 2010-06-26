@@ -35,7 +35,7 @@ namespace CHSNS {
 		/// 添加在线用户或更新
 		/// </summary>
 		 public void Update() {
-             if (Context.User.IsLogin)
+             if (Context.HttpContext.User.Identity.IsAuthenticated)
              {
 				if (Date.DivMinutes(RemoveTime) > 1) {//过了1分钟才清理
 					Application.Lock();

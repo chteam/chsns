@@ -65,7 +65,7 @@ namespace CHSNS.Controllers {
 					new CommentPas{
 					Sender = new NameIdPas{
 						Id = CHUser.UserId,
-						Name = CHUser.NickName
+						Name = CHUser.Name
 					},
 					Comment =new CommentItemPas{ 
 						 ID = r.Id,
@@ -129,7 +129,7 @@ namespace CHSNS.Controllers {
 					new CommentPas{
 					Sender = new NameIdPas{
 						Id = CHUser.UserId,
-						Name = CHUser.NickName
+						Name = CHUser.Name
 					},
 					Comment =new CommentItemPas{ 
 						 ID = cmt.Id,

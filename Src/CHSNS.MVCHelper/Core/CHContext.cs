@@ -48,13 +48,9 @@ namespace CHSNS {
         }
         #endregion
         #region User
-        IUser _user;
         public IUser User {
             get {
-                return _user ?? (_user = new CHUser());
-            }
-            set {
-                _user = value;
+                return HttpContext.User.Identity as CHIdentity;
             }
         }
         #endregion

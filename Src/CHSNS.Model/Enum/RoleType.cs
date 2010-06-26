@@ -3,8 +3,7 @@ namespace CHSNS {
 	/// <summary>
 	/// 用户角色类型
 	/// </summary>
-	[Flags]
-	public enum RoleType {
+	public enum RoleType : byte{
 		/// <summary>
 		/// 网站创建者
 		/// </summary>
@@ -24,6 +23,6 @@ namespace CHSNS {
 		/// <summary>
 		/// 锁定用户
 		/// </summary>
-		Locked = -1,
+		Locked = 2,
 	}
 }

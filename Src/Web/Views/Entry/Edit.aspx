@@ -3,24 +3,25 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
     <%=Html.Script("wysiwyg") %>
-</asp:Content> 
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<%Html.RenderPartial("ManageToc"); %>
+    <%Html.RenderPartial("ManageToc"); %>
     <form action="" method="post" id="entryform">
     <%=Html.Hidden("id")%>
     <fieldset class="formset">
         <legend>词条编辑</legend>
         <p>
-        <label>词条地址</label>
-        <%=Html.TextBox("entry.Url", null, new { style = "width: 50%", onblur = "Has(this);" })%>
-        <span class="explanation">最好用英文</span>
+            <label>
+                词条地址</label>
+            <%=Html.TextBox("entry.Url", null, new { style = "width: 50%", onblur = "Has(this);" })%>
+            <span class="explanation">最好用英文</span>
         </p>
         <p>
             <label>
                 词条名称：</label>
-                <%=Html.TextBox("entryversion.Title", null, new { style = "width: 50%", onblur = "Has(this);" })%>
-                是否显示标题 是<%=Html.RadioButton("entry.IsDisplayTitle","true") %>
-                否<%=Html.RadioButton("entry.IsDisplayTitle","false") %>
+            <%=Html.TextBox("entryversion.Title", null, new { style = "width: 50%", onblur = "Has(this);" })%>
+            是否显示标题 是<%=Html.RadioButton("entry.IsDisplayTitle","true") %>
+            否<%=Html.RadioButton("entry.IsDisplayTitle","false") %>
         </p>
         <p>
             <label>
@@ -43,10 +44,11 @@
         </p>
         <p>
             <label>
-               <%-- <%=ViewData.ContainsKey("exists")?"":" style='display:none'"%>--%>
+                <%-- <%=ViewData.ContainsKey("exists")?"":" style='display:none'"%>--%>
                 修改原因：
             </label>
-            <%=Html.TextArea("entryversion.reason","", new { style = "width: 100%; height: 100px;", cols = "20", rows = "2" })%>
+            <%=Html.TextArea("entryversion.reason","", 
+                new { style = "width: 100%; height: 100px;", cols = "20", rows = "2" })%>
         </p>
         <p class="submit">
             <input type="button" value="保存" class="button_2" onclick="sub();" />
@@ -55,7 +57,6 @@
     </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
-
     <script type="text/javascript">
     var OldTitle=$("#entryversion_Title").val();
     var Has=function(e){
@@ -78,5 +79,4 @@
         return r;
     };
     </script>
-
 </asp:Content>

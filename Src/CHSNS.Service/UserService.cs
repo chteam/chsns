@@ -38,15 +38,15 @@ namespace CHSNS.Service {
         #endregion
 
         #region Magicbox
-        public string GetMagicBox(long userId) {
-            return _user.GetMagicBox(userId);
-        }
-        public void SaveMagicBox(string magicbox, long uid) {
-            _user.SaveMagicBox(magicbox, uid);
-        }
-        public void MagicBoxBackup() {
-            _user.MagicBoxBackup();
-        }
+        //public string GetMagicBox(long userId) {
+        //    return _user.GetMagicBox(userId);
+        //}
+        //public void SaveMagicBox(string magicbox, long uid) {
+        //    _user.SaveMagicBox(magicbox, uid);
+        //}
+        //public void MagicBoxBackup() {
+        //    _user.MagicBoxBackup();
+        //}
 
 
 
@@ -74,7 +74,7 @@ namespace CHSNS.Service {
                 TemplateName = "ProText",
                 AddTime = DateTime.Now,
                 ShowLevel = 0,
-                Json = Dictionary.CreateFromArgs("name", context.User.NickName,
+                Json = Dictionary.CreateFromArgs("name", context.User.Name,
                                                  "text", text).ToJsonString()
             });
         }

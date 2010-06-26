@@ -25,7 +25,7 @@ Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
         
 				<%=Html.ActionLink("Version", "Historylist", new { id = entry.Id })%>
 				<span>(<%=entry.EditCount%>)</span>
-			<%if (Model.Context.User.IsAdmin)
+			<%if (User.IsInRole("admin"))
      { %>
 		    操作：
 			<%=Html.ActionLink("编辑", "Edit", new { id = entry.Id })%>

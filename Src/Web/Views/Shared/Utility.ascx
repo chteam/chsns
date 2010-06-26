@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
 <div class="untityright link">
-	<%if (CH.Context.User.IsLogin)
+	<%if (Page.User.Identity.IsAuthenticated)
    {%>
 	<div class="menu">
 		<a href="javascript:void(0);" class="menu_title">应用</a>
@@ -17,17 +17,14 @@
 		Html.ActionLink("好友", "Index", "Friend"):
 		Html.ActionLink("好友", "Request", "Friend")%>
 	<div class="menu">
-		<a href="javascript:void(0);" class="menu_title">您好！<%=CH.Context.User.NickName %></a>
+		<a href="javascript:void(0);" class="menu_title">您好！<%=Page.User.Identity.Name %></a>
 		<ul class="menu_network">
 			<li>
 				<%=Html.ActionLink("我的页面", "Index", "User")%></li>
 			<li>
 				<%=Html.UserEditLink("BaseInfo","基本信息")%></li>
 			<li>
-				<%=Html.UserEditLink( "upload","头像")%>
-			</li>
-			<li>
-				<%=Html.UserEditLink("magicbox","魔法盒")%>
+				<%=Html.UserEditLink("upload","头像")%>
 			</li>
 			<li>
 				<%=Html.ActionLink("隐私设置", "Setting", "User")%></li>

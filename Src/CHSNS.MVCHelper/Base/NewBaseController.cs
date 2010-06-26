@@ -14,6 +14,7 @@ namespace CHSNS
     [HandleError]
     abstract public class NewBaseController : Controller
     {
+ 
         public IContext CHContext { get { return new CHContext(HttpContext); } }
         protected IIOFactory IOFactory
         {
@@ -76,10 +77,10 @@ namespace CHSNS
             if (obj == null)
                 throw new HttpException(404, "Not Found");
         }
-        public IUser CHUser { get { return CHContext.User; } }
+        public CHIdentity CHUser { get { return User.Identity as CHIdentity; } }
         protected bool HasManageRight()
         {
-            return CHUser.Status.Contains(RoleType.Editor, RoleType.Creater);
+            return CHUser.Status.Equals(RoleType.Editor) || CHUser.Status .Equals(RoleType.Creater);
         }
     }
 }

@@ -156,12 +156,6 @@ namespace CHSNS.Models
         }
         private ObjectSet<Photo> _photo;
     
-        public ObjectSet<Profile> Profile
-        {
-            get { return _profile  ?? (_profile = CreateObjectSet<Profile>("Profile")); }
-        }
-        private ObjectSet<Profile> _profile;
-    
         public ObjectSet<Push> Push
         {
             get { return _push  ?? (_push = CreateObjectSet<Push>("Push")); }
@@ -197,6 +191,24 @@ namespace CHSNS.Models
             get { return _viewData  ?? (_viewData = CreateObjectSet<ViewData>("ViewData")); }
         }
         private ObjectSet<ViewData> _viewData;
+    
+        public ObjectSet<Roles> Roles
+        {
+            get { return _roles  ?? (_roles = CreateObjectSet<Roles>("Roles")); }
+        }
+        private ObjectSet<Roles> _roles;
+    
+        public ObjectSet<UserRole> UserRole
+        {
+            get { return _userRole  ?? (_userRole = CreateObjectSet<UserRole>("UserRole")); }
+        }
+        private ObjectSet<UserRole> _userRole;
+    
+        public ObjectSet<Profile> Profile
+        {
+            get { return _profile  ?? (_profile = CreateObjectSet<Profile>("Profile")); }
+        }
+        private ObjectSet<Profile> _profile;
 
         #endregion
     }

@@ -81,6 +81,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountType.cs" />
     <Compile Include="Adapter\JsonAdapter.cs" />
     <Compile Include="Attribute\AssemblyInfo.cs" />
     <Compile Include="Encrypt\BytesExtension.cs" />

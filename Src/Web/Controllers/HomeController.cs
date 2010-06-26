@@ -15,8 +15,7 @@ namespace CHSNS.Controllers
             return RedirectToAction("index", "Entry", new { title = "index" });
         }
 		public void Logout() {
-			CHContext.Cookies.Clear();
-			CHUser.Clear();
+            DataExt.Account.Logout(CHContext);
 			RedirectToAction("index");
 		}
 		protected override void HandleUnknownAction(string actionName) {

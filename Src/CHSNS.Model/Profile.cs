@@ -19,11 +19,11 @@ namespace CHSNS.Models
     
         public virtual long UserId{get;set;}
     
+        public virtual byte AccountType{get;set;}
+    
         public virtual string Name{get;set;}
     
         public virtual string Face{get;set;}
-    
-        public virtual int Status{get;set;}
     
         public virtual long Score{get;set;}
     
@@ -32,10 +32,6 @@ namespace CHSNS.Models
         public virtual long DelScore{get;set;}
     
         public virtual byte ShowLevel{get;set;}
-    
-        public virtual string MagicBox{get;set;}
-    
-        public virtual bool HasMagicBox{get;set;}
     
         public virtual System.DateTime RegTime{get;set;}
     
@@ -50,5 +46,7 @@ namespace CHSNS.Models
         public virtual string Applications{get;set;}
     
         public virtual string Applicationlist{get;set;}
+    
+        public virtual byte Status{get;set;}
     }
 }
