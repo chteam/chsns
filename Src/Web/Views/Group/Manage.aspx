@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewPage<Group>" %>
+Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
@@ -21,7 +21,7 @@ Inherits="System.Web.Mvc.ViewPage<Group>" %>
 			<span class="select"><%=Html.DropDownList("group.ShowLevel")%></span>
 		</p>
 		<p>
-			<label>成员加入：</label><%=Html.DropDownList("group.JoinLevel")%></span>
+			<label>成员加入：</label><%=Html.DropDownList("group.JoinLevel")%>
 		</p>
 		<p class="operation">
 			<input type="submit" value="保存设置" />

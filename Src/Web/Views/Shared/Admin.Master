@@ -24,7 +24,7 @@
                         <div class="navin">
                             <ul class="list_1">
                                 <li class="member1">
-                                    <%=CH.Context.User.Username%></li>
+                                    <%=CH.Context.User.Email%></li>
                                 <li class="member2">
                                     <%=Html.ActionLink("修改密码", "ChangePassword", "Account")%>
                                     |

@@ -68,9 +68,7 @@ namespace CHSNS
                     ViewData[item.Key] = item.Value;
             if (ViewData.ContainsKey("Page_Title"))
                 ViewData["Page_Title"] += "-" + CHContext.Site.BaseConfig.Title;
-            var m = ViewData.Model as BaseViewModel;
-            if (m != null)
-                m.Context = CHContext;
+           
         }
         protected static void Validate404(object obj)
         {

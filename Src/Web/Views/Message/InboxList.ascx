@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" 
 Inherits="System.Web.Mvc.ViewUserControl" %>
-<%foreach (MessageItemPas ip in ViewData.Model.ToNotNull<MessageItemPas>()) {%>
+<%foreach (MessageItemPas ip in (ViewData.Model as IEnumerable<MessageItemPas>).ToNotNull())
+  {%>
 <li id="Items<%=ip.ID%>" class="useritem">
 	<div class="face face-middle">
 		<a href="<%=Url.UserPage(ip.ID) %>" title="<%=ip.Username %>" style="background-image: url(<%=Path.GetFace(ip.ID,ThumbType.Middle) %>);"></a>

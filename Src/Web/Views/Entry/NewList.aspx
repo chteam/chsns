@@ -58,7 +58,7 @@
             </td>
             <td>
                 <%=e.Status%>
-                <%if (CH.Context.User.Status.Contains(RoleType.Creater, RoleType.Editor))
+                <%if (new[] { RoleType.Creater, RoleType.Editor }.Contains((RoleType)CH.Context.User.Status))
                   {%>
                 <%=(e.Status != (int)EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.Id }).ToHtmlString() : ""%>
                 <%=(e.Status != (int)EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }).ToHtmlString() : ""%>

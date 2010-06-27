@@ -32,7 +32,7 @@ Inherits="System.Web.Mvc.ViewPage<NoteDetailsPas>" %>
 		</div>
 		<div>
 			<%Html.RenderPartial("CommentList"); %></div>
-			<%Html.RenderPartial("Comment/DirectTextBox", n.Id); %>
+			<%Html.RenderPartial(MVC.Shared.Views.Comment.DirectTextBox, n.Id); %>
 	</div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">

@@ -9,7 +9,7 @@ Inherits="System.Web.Mvc.ViewPage<UserCountPas>" %>
 		<legend>
 			<%=ViewData.Model.Name %></legend>
 		<%
-			Html.RenderPartial("Comment/TextBox", ViewData.Model.ID);
+			Html.RenderPartial(MVC.Shared.Views.Comment.TextBox, ViewData.Model.Id);
 		%>
 		(共有<span id="FriendCount" class="count"><%=ViewData.Model.Count%></span>条回复)
 		<div class="ch_content">
@@ -17,7 +17,7 @@ Inherits="System.Web.Mvc.ViewPage<UserCountPas>" %>
 			</div>
 			<ul id="ReplyItems" class="userlist">
 				<%
-					Html.RenderPartial("Comment/Item", ViewData["replylist"]);
+					Html.RenderPartial(MVC.Shared.Views.Comment.Item, ViewData["replylist"]);
 				%>
 			</ul>
 			<div id="PageDown" class="page">
@@ -36,7 +36,7 @@ Inherits="System.Web.Mvc.ViewPage<UserCountPas>" %>
 		var Reply = function(ownerid) {
 			if (v_empty("#comment_body", '不能为空'))
 				$.post('<%=Url.Action("AddReply","Comment") %>',
-		{ 'UserID': '<%=ViewData.Model.ID %>',
+		{ 'UserID': '<%=ViewData.Model.Id %>',
 		'Body': $v('#comment_body'), 'ReplyerID': $v('#ReplyerID') },
 		function(r) {
 			$('#ReplyItems').prepend(r);
@@ -64,7 +64,7 @@ Inherits="System.Web.Mvc.ViewPage<UserCountPas>" %>
 		};
 		
 		var setpage = function(p) {
-			$.post('<%=Url.Action("ReplyList") %>', {"p":p,"userid":<%=ViewData.Model.ID %>}, function(r) {
+			$.post('<%=Url.Action("ReplyList") %>', {"p":p,"userid":<%=ViewData.Model.Id %>}, function(r) {
 				$h("#ReplyItems",r);
 				pagefun();
 				init_Replyconfirm();

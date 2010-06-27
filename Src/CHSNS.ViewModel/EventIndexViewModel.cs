@@ -4,7 +4,7 @@ using CHSNS.Models;
 
 namespace CHSNS.ViewModel
 {
-    public class EventIndexViewModel : BaseViewModel
+    public class EventIndexViewModel
     {
         public ViewListPas NewViews { get; set; }
         public ViewListPas LastViews { get; set; }

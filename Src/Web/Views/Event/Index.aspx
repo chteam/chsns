@@ -13,7 +13,7 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 				管理员</h4>
 			<ul>
 				<li>
-				<%=Html.ActionLink("管理后台","Index","Admin")%></li>
+				<%=Html.ActionLink("管理后台",MVC.Admin.Home.Index())%></li>
 			</ul>
 		</div>
 		<%} %>

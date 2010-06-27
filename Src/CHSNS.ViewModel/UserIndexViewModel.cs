@@ -3,7 +3,7 @@ using CHSNS.Model;
 using CHSNS.Models;
 
 namespace CHSNS.ViewModel {
-    public class UserIndexViewModel : BaseViewModel{
+    public class UserIndexViewModel {
         public UserIndexViewModel(bool? exists) {
             _exists = exists;
         }
