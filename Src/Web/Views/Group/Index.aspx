@@ -103,7 +103,7 @@ Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
 					<%
             if (showlevel == 8 || IsAdmin)
        {%>
-					<%Html.RenderPartial("Post/List", ViewData["posts"]); %>
+					<%Html.RenderPartial(MVC.Shared.Views.Post.List, ViewData["posts"]); %>
 					<%--#component(PostList with "Groupid=$group.id" "EveryPage=20" "nowpage=$nowpage")--%>
 					<%} else { %>
 					<div class="note">

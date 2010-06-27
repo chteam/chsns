@@ -25,7 +25,7 @@
             <th class="ln25 f14B" nowrap>
                 &nbsp;
             </th>
-            <th width="200" class="ln25 f14B" nowrap>贡献者</td>
+            <th width="200" class="ln25 f14B" nowrap>贡献者</th>
             <th class="ln25 f14B">
                 编辑原因
             </th>

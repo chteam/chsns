@@ -5,8 +5,8 @@ Inherits="System.Web.Mvc.ViewPage<MessageDetailsPas>" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <fieldset>
 <legend><%=ViewData.Model.Message.Title%></legend>
-发件人:<%=Html.UserPageLink(ViewData.Model.UserOutbox.ID, ViewData.Model.UserOutbox.Name)%><br />
-收件人:<%=Html.UserPageLink(ViewData.Model.UserInbox.ID, ViewData.Model.UserInbox.Name)%><br />
+发件人:<%=Html.UserPageLink(ViewData.Model.UserOutbox.Id, ViewData.Model.UserOutbox.Name)%><br />
+收件人:<%=Html.UserPageLink(ViewData.Model.UserInbox.Id, ViewData.Model.UserInbox.Name)%><br />
 发件时间:<%=ViewData.Model.Message.SendTime.ToString("yyyy-MM-dd hh:mm")%><br />
 <b>内容:</b><br />
 <div class="text">
@@ -15,9 +15,9 @@ Inherits="System.Web.Mvc.ViewPage<MessageDetailsPas>" %>
 	                  	: Html.Encode(ViewData.Model.Message.Body)%>
 </div>
 <%
-	if (ViewData.Model.UserInbox.ID == CH.Context.User.UserID){%>
+	if (ViewData.Model.UserInbox.Id == CH.Context.User.UserId){%>
 		<textarea cols="40" id="Body" name="Body" rows="6"></textarea>
-		<%=Html.Hidden("ToID", ViewData.Model.UserOutbox.ID.ToString())%><br />
+		<%=Html.Hidden("ToID", ViewData.Model.UserOutbox.Id.ToString())%><br />
 		<input class="subbutton" value="发送" type="button" onclick="sub();" />
 		<%
 	}

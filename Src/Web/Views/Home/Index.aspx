@@ -29,7 +29,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 			</div>
 			<div class="box">
 				<h3>
-				<%=CHSNS.Config.SiteConfig.Current.BaseConfig.Title %> 人气之星</h3>
+				<%=CH.Context.co..BaseConfig.Title %> 人气之星</h3>
 				<div class="boxcont"> 
 				<%
 					if (ViewData.ContainsKey("viewlist"))

@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <script runat="server">
-    private List<SelectListItem> TriStateValues {
+    private IEnumerable<SelectListItem> TriStateValues {
         get {
             return new List<SelectListItem> {
                 new SelectListItem { Text = "Not Set", Value = String.Empty, Selected = !Value.HasValue },

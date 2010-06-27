@@ -12,7 +12,7 @@
 <% } else if (ViewData.TemplateInfo.TemplateDepth > 1) { %>
     <%= ViewData.ModelMetadata.SimpleDisplayText %>
 <% } else { %>
-    <% foreach (var prop in ViewData.ModelMetadata.Properties.Where(pm => ShouldShow(pm))) { %>
+    <% foreach (var prop in ViewData.ModelMetadata.Properties.Where(ShouldShow)) { %>
         <% if (prop.HideSurroundingHtml) { %>
             <%= Html.Display(prop.PropertyName) %>
         <% } else { %>

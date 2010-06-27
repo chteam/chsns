@@ -78,11 +78,11 @@ Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
 			<h3>
 				<%=up.Profile.Name%>的留言板</h3>
 			<%
-				Html.RenderPartial("Comment/TextBox", up.OwnerId);
+				Html.RenderPartial(MVC.Shared.Views.Comment.TextBox, up.OwnerId);
 			%>
 			<ul id="ReplyItems" class="userlist">
 				<%
-					Html.RenderPartial("Comment/Item", ViewData["replylist"]);
+					Html.RenderPartial(MVC.Shared.Views.Comment.Item, ViewData["replylist"]);
 				%>
 			</ul>
 			<p class="more"><%=Html.ReplyList(up.OwnerId, "所有留言")%></p>
@@ -93,8 +93,9 @@ Inherits="System.Web.Mvc.ViewPage<UserIndexViewModel>" %>
 			<div id="userPicture">
 				<div id="userFace">
 					<ul>
+                    
 						<li><a href="#<%=up.OwnerId%>">
-						<img src="<%=Model.Context.Path.ThumbUrl(up.Profile.Face,ThumbType.Big,Model.Context) %>" alt="<%=up.Profile.Name %>" />
+						<img src="<%=CH.Context.Path.ThumbUrl(up.Profile.Face,ThumbType.Big,CH.Context) %>" alt="<%=up.Profile.Name %>" />
 						</a></li>
 					</ul>
 				</div>

@@ -5,11 +5,11 @@ Inherits="System.Web.Mvc.ViewPage<UserItemPas>" %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<fieldset>
-		<legend>发送邮件</legend>收件人:<%=Html.UserPageLink(ViewData.Model.ID, ViewData.Model.Name)%><br />
+		<legend>发送邮件</legend>收件人:<%=Html.UserPageLink(ViewData.Model.Id, ViewData.Model.Name)%><br />
 		<form action="<%=Url.Action("Save","Message") %>" method="post" onsubmit="sub(this);return false;">
 		标题:<input id="Title" name="Title" type="text" style="width:55%" /><br />
 		内容:<textarea cols="60" id="Body" name="Body" rows="12"></textarea>
-		<%=Html.Hidden("ToID", ViewData.Model.ID.ToString())%>
+		<%=Html.Hidden("ToID", ViewData.Model.Id.ToString())%>
 		<input class="subbutton" value="发送" type="submit" />
 		</form>
 	</fieldset>
