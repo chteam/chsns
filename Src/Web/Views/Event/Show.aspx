@@ -46,7 +46,7 @@
 						加入群 <a href="/Group.aspx?id=<%=dr["actionid"]%>&amp;">
 							<%=dr["application"]%></a>
 						<%}
-	if (CH.Context.User.UserID == UserID) {
+	if (CH.Context.User.UserId == UserID) {
 						%>
 						<a class="icon_close" href="javascript:Event_Remove(<%=dr["id"]%>);">&nbsp;&nbsp;</a>
 						<%
