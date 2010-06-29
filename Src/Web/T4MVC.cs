@@ -340,15 +340,14 @@ namespace Links {
             private const string URLPATH = "~/Scripts/Upload";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string fileprogress_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/fileprogress.min.js") ? Url("fileprogress.min.js") : Url("fileprogress.js");
-                          
             public static readonly string handlers_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/handlers.min.js") ? Url("handlers.min.js") : Url("handlers.js");
+                          
+            public static readonly string MyUploader_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MyUploader.min.js") ? Url("MyUploader.min.js") : Url("MyUploader.js");
                           
             public static readonly string swfupload_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/swfupload.min.js") ? Url("swfupload.min.js") : Url("swfupload.js");
                           
             public static readonly string swfupload_swf = Url("swfupload.swf");
-            public static readonly string swfupload_swfobject_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/swfupload.swfobject.min.js") ? Url("swfupload.swfobject.min.js") : Url("swfupload.swfobject.js");
-                          
+            public static readonly string swfuploadbutton_swf = Url("swfuploadbutton.swf");
         }
     
         public static readonly string wysiwyg_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/wysiwyg.min.js") ? Url("wysiwyg.min.js") : Url("wysiwyg.js");

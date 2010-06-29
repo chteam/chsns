@@ -1,8 +1,7 @@
-﻿using System;
+﻿        using System;
 using System.Linq;
-using System.Web.Mvc;
-
-using CHSNS.Model;
+    using System.Web.Mvc;
+    using CHSNS.Model;
 
 using CHSNS.ViewModel;
 using CHSNS.Operator;

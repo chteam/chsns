@@ -1,8 +1,9 @@
+using System.Web.Mvc;
+
 namespace CHSNS.Controllers
 {
 	//using Castle.Components.Common.EmailSender;
-	using System.Web.Mvc;
-
+    
     //using ChAlumna.TemplateEngine;
 	//using ChAlumna.components;
 //	[Rescue("index")]

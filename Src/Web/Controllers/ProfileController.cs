@@ -1,6 +1,5 @@
 using System.Web.Mvc;
 
-
 namespace CHSNS.Controllers {
     [Authorize]
     public partial class ProfileController : BaseController

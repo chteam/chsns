@@ -80,9 +80,8 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Face(string mode, System.Web.HttpPostedFileBase file1) {
+        public override System.Web.Mvc.ActionResult Face(System.Web.HttpPostedFileBase file1) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Face);
-            callInfo.RouteValueDictionary.Add("mode", mode);
             callInfo.RouteValueDictionary.Add("file1", file1);
             return callInfo;
         }

@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\XPButtonNoText_160x22.png" />
     <Content Include="Scripts\Framework.js" />
     <Content Include="Scripts\jquery-vsdoc.js" />
     <Content Include="Scripts\jquery.js" />
@@ -100,6 +101,11 @@
     <Content Include="Scripts\MicrosoftMvcJQueryValidation.js" />
     <Content Include="Scripts\MicrosoftMvcRemoteValidation.js" />
     <Content Include="MvcDiagnostics.aspx" />
+    <Content Include="Scripts\Upload\handlers.js" />
+    <Content Include="Scripts\Upload\MyUploader.js" />
+    <Content Include="Scripts\Upload\swfupload.js" />
+    <Content Include="Scripts\Upload\swfupload.swf" />
+    <Content Include="Scripts\Upload\swfuploadbutton.swf" />
     <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Boolean.ascx" />
     <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Collection.ascx" />
     <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Decimal.ascx" />
@@ -136,7 +142,6 @@
     <Content Include="Config\SystemTemplate.xml" />
     <Content Include="Config\Category.xml" />
     <Content Include="Config\WowTaskType.xml" />
-    <Content Include="Scripts\Upload\swfupload.swf" />
     <Content Include="Images\CHBox\b.png" />
     <Content Include="Images\CHBox\bl.png" />
     <Content Include="Images\CHBox\br.png" />
@@ -152,10 +157,6 @@
     <Content Include="Scripts\effects\effects.bounce.packed.js" />
     <Content Include="Scripts\effects\effects.core.packed.js" />
     <Content Include="Scripts\effects\effects.scale.packed.js" />
-    <Content Include="Scripts\Upload\swfupload.js" />
-    <Content Include="Scripts\Upload\fileprogress.js" />
-    <Content Include="Scripts\Upload\handlers.js" />
-    <Content Include="Scripts\Upload\swfupload.swfobject.js" />
     <Content Include="Service\Users.asmx" />
     <Content Include="Style\CHSNS\Images\check_right.gif" />
     <Content Include="Style\CHSNS\Images\curtain.png" />
