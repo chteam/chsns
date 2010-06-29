@@ -3,8 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("calendar")%>
-    <%=Html.Script(Scripts.jquery_validate_min_js) %>
-    <%=Html.Script(Scripts.MicrosoftMvcJQueryValidation_js)%>
+    <%=Html.Script(Links.Scripts.jquery_validate_min_js) %>
+    <%=Html.Script(Links.Scripts.MicrosoftMvcJQueryValidation_js)%>
 	<%if (false)
 	  { %>
 	<script type="text/javascript" src="../../Scripts/jquery-vsdoc.js"></script>
