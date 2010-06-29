@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
 Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Group>" %>
+<%@ Import Namespace="CHSNS.Web" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 	<%=Html.CSSLink("group") %>

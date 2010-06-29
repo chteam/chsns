@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master"
 Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
+<%@ Import Namespace="CHSNS.Web" %>
  
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
@@ -13,7 +14,7 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
 				管理员</h4>
 			<ul>
 				<li>
-				<%=Html.ActionLink("管理后台",MVC.Admin.Home.Index())%></li>
+				<%=System.Web.Mvc.Html.LinkExtensions.ActionLink(Html, "管理后台",MVC.Admin.Home.Index())%></li>
 			</ul>
 		</div>
 		<%} %>

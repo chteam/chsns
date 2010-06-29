@@ -1,10 +1,10 @@
 using System.Transactions;
+using System.Web.Mvc;
 using CHSNS.ViewModel;
 
 namespace CHSNS.Controllers {
 	using System;
 	using System.Linq;
-	using System.Web.Mvc;
 
     public partial class FriendController : BaseController
     {
