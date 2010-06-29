@@ -348,7 +348,6 @@
     <Content Include="Views\Shared\MyMenu.ascx" />
     <Content Include="Views\Shared\Utility.ascx" />
     <Content Include="Views\Shared\ViewList.ascx" />
-    <Content Include="Views\Upload\File.aspx" />
     <Content Include="Views\User\Admin\ManageUser.ascx" />
     <Content Include="Views\User\BaseInfo.aspx" />
     <Content Include="Views\User\Contact.ascx" />

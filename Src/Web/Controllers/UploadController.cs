@@ -22,9 +22,9 @@ namespace CHSNS.Controllers {
         }
         [Authorize]
         [HttpPost]
-        public virtual ActionResult Face(HttpPostedFileBase file1)
+        public virtual ActionResult Face(HttpPostedFileBase filedata)
         {
-            return UploadImage(file1, true);
+            return UploadImage(filedata, true);
             
         }
 

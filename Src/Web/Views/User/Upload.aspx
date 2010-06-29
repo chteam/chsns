@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" MasterPageFile="Edit.master"  %>
 <%@ Import Namespace="CHSNS.Web" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="TabContent" runat="server">
-    <%=Html.Script(Scripts.Upload.swfupload_js) %>
-    <%=Html.Script(Scripts.Upload.handlers_js) %>
-    <%=Html.Script(Scripts.Upload.MyUploader_js) %>
+    <%=Html.Script(Links.Scripts.Upload.swfupload_js)%>
+    <%=Html.Script(Links.Scripts.Upload.handlers_js)%>
+    <%=Html.Script(Links.Scripts.Upload.MyUploader_js) %>
     <div id="picturenow" class="required" style="width: 240px; float: right">
 	<h3>
 		当前头像</h3>
@@ -27,7 +27,6 @@
 		<a href="/setting.aspx">设置查看头像权限</a>
 	</div>--%>
 </div>
-
 <script type="text/javascript">
     CreateUploader("<%=Url.ActionAbsolute(MVC.Upload.Face()) %>", '<%=Session.SessionID %>', "上传头像");
 </script>
