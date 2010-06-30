@@ -122,7 +122,7 @@ namespace CHSNS.Controllers
         public virtual ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags)
         {
             var b = _entryDb.AddVersion(id, entry, entryversion, tags, CHUser);
-            if (!b) throw new Exception("标题已存在");
+            if (!b) throw new ApplicationException("标题已存在");
             return RedirectToAction("NewList");
         }
 		[AdminFilter]

@@ -38,7 +38,7 @@
 			msg('密码最短长度为4.');
 			return;
 		}
-		$.post('<%=Url.Action("Login","Account") %>', { "u": U, "p": P, "a": $("#login_a").attr("checked") }, function(r) {
+$.post('<%=Url.Action(MVC.Account.LogOn()) %>', { "u": U, "p": P, "a": $("#login_a").attr("checked") }, function (r) {
 			if (r != "false") {
 				location = '<%=Url.Action("Index","Event") %>';
 			}

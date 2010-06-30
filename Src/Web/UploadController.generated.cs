@@ -66,7 +66,6 @@ namespace CHSNS.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string File = "~/Views/Upload/File.aspx";
         }
     }
 
@@ -80,9 +79,9 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Face(System.Web.HttpPostedFileBase file1) {
+        public override System.Web.Mvc.ActionResult Face(System.Web.HttpPostedFileBase filedata) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Face);
-            callInfo.RouteValueDictionary.Add("file1", file1);
+            callInfo.RouteValueDictionary.Add("filedata", filedata);
             return callInfo;
         }
 

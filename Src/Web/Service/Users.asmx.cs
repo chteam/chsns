@@ -17,7 +17,7 @@ namespace CHSNS.Web.Service
     public class Users : System.Web.Services.WebService
     {
         [WebMethod(EnableSession=true)]   
-        public long UserID()
+        public long UserId()
         {
             return CH.Context.User.UserId;
         }

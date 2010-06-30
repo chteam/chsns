@@ -156,10 +156,10 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Post(long? id, CHSNS.Models.Note post) {
+        public override System.Web.Mvc.ActionResult Post(long? id, CHSNS.Models.Note note) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Post);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("post", post);
+            callInfo.RouteValueDictionary.Add("note", note);
             return callInfo;
         }
 

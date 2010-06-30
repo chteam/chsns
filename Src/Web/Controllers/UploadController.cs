@@ -17,7 +17,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult File(string mode)
         {
             if (string.IsNullOrEmpty(mode))
-                throw new Exception("不许为空");
+                throw new ArgumentNullException("mode","不许为空");
             return Content("");
         }
         [Authorize]

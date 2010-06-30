@@ -16,9 +16,9 @@ namespace CHSNS.Controllers {
         }
         [Authorize]
         [HttpPost]
-        public virtual ActionResult Edit(SuperNote v)
+        public virtual ActionResult Edit(SuperNote video)
         {
-            DataExt.Video.Create(CHUser,v);
+            DataExt.Video.Create(CHUser,video);
             Message = "提交成功";
             return RedirectToAction("List");
         }

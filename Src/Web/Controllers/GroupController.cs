@@ -152,20 +152,20 @@ namespace CHSNS.Controllers {
         }
 
 	    [HttpPost]
-        public virtual ActionResult Post(long? id, Note post)
+        public virtual ActionResult Post(long? id, Note note)
         {
 			using (var ts = new TransactionScope()) {
-				if (post.Title.Length < 1 || post.Body.Length < 1) {
+				if (note.Title.Length < 1 || note.Body.Length < 1) {
 					Message = "请输入正确的日志内容";
 					return this.RedirectToReferrer();
 				}
-				post.Type = (int)NoteType.GroupPost;
-                post.UserId = CHContext.User.UserId;
+				note.Type = (int)NoteType.GroupPost;
+                note.UserId = CHContext.User.UserId;
 				if (id.HasValue) {
-					post.Id = id.Value;
-					DataExt.Note.Edit(post);
+					note.Id = id.Value;
+					DataExt.Note.Edit(note);
 				} else {
-					DataExt.Note.Add(post,CHUser);
+					DataExt.Note.Add(note,CHUser);
 				}
 				ts.Complete();
 				return this.RedirectToReferrer();
