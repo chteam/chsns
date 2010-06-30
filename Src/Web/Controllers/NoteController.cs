@@ -76,22 +76,22 @@ namespace CHSNS.Controllers {
 		[ValidateInput(false)]
 		[HttpPost]
 		[Authorize]
-        public virtual ActionResult Edit(long? id,Note n)
+        public virtual ActionResult Edit(long? id,Note note)
         {
 			using (var ts = new TransactionScope()) {
-				if (n.Title.Length < 1 || n.Body.Length < 10) {
+				if (note.Title.Length < 1 || note.Body.Length < 10) {
 					Message = ("请输入正确的日志内容");
-					return View(n);
+					return View(note);
 				}
-				n.Type = (int)NoteType.Note;
-				n.UserId = CHUser.UserId;
-				n.ParentId = CHUser.UserId;
+				note.Type = (int)NoteType.Note;
+				note.UserId = CHUser.UserId;
+				note.ParentId = CHUser.UserId;
 				if (id.HasValue) {
-					n.Id = id.Value;
-					DataExt.Note.Edit(n);
+					note.Id = id.Value;
+					DataExt.Note.Edit(note);
 				}
 				else {
-					DataExt.Note.Add(n,CHUser);
+					DataExt.Note.Add(note,CHUser);
 				}
 				ts.Complete();
 				return RedirectToAction("Index");

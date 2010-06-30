@@ -20,7 +20,7 @@ namespace CHSNS.Controllers {
             if (!userid.HasValue || userid == 0) userid = CHUser.UserId;
             InitPage(ref p);
             var b = DataExt.Friend.UserFriendInfo(userid.Value);
-            if (b == null) throw new Exception("用户不存在");
+            if (b == null) throw new ApplicationException("用户不存在");
             ViewData["UserId"] = userid;
             ViewData["Name"] = b.Name;
             ViewData["NowPage"] = p;
@@ -35,7 +35,7 @@ namespace CHSNS.Controllers {
         {
             InitPage(ref p);
             var profile = DataExt.Friend.UserFriendInfo(CHUser.UserId);
-            if (profile == null) throw new Exception("用户不存在");
+            if (profile == null) throw new ApplicationException("用户不存在");
             var items = DataExt.Friend.GetRequests(CHUser.UserId, p.Value, CHContext.Site);
             Title = profile.Name + "的好友请求";
             return View(new FriendRequest { Items = items, Profile = profile });

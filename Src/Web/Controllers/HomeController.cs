@@ -14,7 +14,7 @@ namespace CHSNS.Controllers
             Title = "首页";
             return RedirectToAction("index", "Entry", new { title = "index" });
         }
-		public void Logout() {
+		public void LogOff() {
             DataExt.Account.Logout(CHContext);
 			RedirectToAction("index");
 		}

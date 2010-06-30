@@ -35,7 +35,7 @@ namespace CHSNS.Web
             // 在应用程序启动时运行的代码
             RegisterRoutes(RouteTable.Routes);
         }
-        void Application_AuthenticateRequest(object sender, EventArgs e)
+     protected   void Application_AuthenticateRequest(object sender, EventArgs e)
         {
             HttpCookie authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];
             if (null == authCookie) return;

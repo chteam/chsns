@@ -45,8 +45,8 @@ namespace CHSNS.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Login() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Login);
+        public System.Web.Mvc.ActionResult LogOn() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -65,8 +65,8 @@ namespace CHSNS.Controllers {
             public readonly string RegPage = ("RegPage").ToLowerInvariant();
             public readonly string UsernameCanUse = ("UsernameCanUse").ToLowerInvariant();
             public readonly string SaveReg = ("SaveReg").ToLowerInvariant();
-            public readonly string Logout = ("Logout").ToLowerInvariant();
-            public readonly string Login = ("Login").ToLowerInvariant();
+            public readonly string LogOff = ("LogOff").ToLowerInvariant();
+            public readonly string LogOn = ("LogOn").ToLowerInvariant();
             public readonly string InitCreater = ("InitCreater").ToLowerInvariant();
             public readonly string ChangePassword = ("ChangePassword").ToLowerInvariant();
         }
@@ -112,13 +112,13 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Logout() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Logout);
+        public override System.Web.Mvc.ActionResult LogOff() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOff);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Login(string u, string p, bool a) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Login);
+        public override System.Web.Mvc.ActionResult LogOn(string u, string p, bool a) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
             callInfo.RouteValueDictionary.Add("u", u);
             callInfo.RouteValueDictionary.Add("p", p);
             callInfo.RouteValueDictionary.Add("a", a);

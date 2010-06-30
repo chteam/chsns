@@ -11,7 +11,7 @@ namespace CHSNS.Controllers
 	{
 		//private DefaultControllerFactory factory;
 
-        public virtual ActionResult index()
+        public virtual ActionResult Index()
         {
 			//var db = new DataBaseExecutor(new SqlDataOpener(
 			//    @"Data Source=.\SQLEXPRESS;Initial Catalog=sq_menglei;Integrated Security=True"

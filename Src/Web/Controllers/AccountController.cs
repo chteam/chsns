@@ -40,7 +40,7 @@ namespace CHSNS.Controllers
 				return this.RedirectToReferrer();
 
 			if (string.IsNullOrEmpty(name))
-				throw new Exception("资料中有空项");
+                throw new ApplicationException("资料中有空项");
 			var account = new Account
 						{
 							UserName = userName,
@@ -60,7 +60,7 @@ namespace CHSNS.Controllers
 		/// <summary>
 		/// 注销功能
 		/// </summary>
-        public virtual ActionResult Logout()
+        public virtual ActionResult LogOff()
 		{
 			DataExt.Account.Logout(CHContext);
             return RedirectToAction(MVC.Entry.Index("index"));
@@ -72,7 +72,7 @@ namespace CHSNS.Controllers
 		/// <param name="p">密码</param>
 		/// <param name="a">是否保存密码</param>
 		/// <returns>是否登录成功</returns>
-        public virtual ActionResult Login(string u, string p, bool a)
+        public virtual ActionResult LogOn(string u, string p, bool a)
 		{
 			if (u.Length > 3 && Regex.IsMatch(p, @"[^']{4,}"))
 			{

@@ -41,23 +41,23 @@ namespace CHSNS.Controllers {
         /// <summary>
         /// ªÿ∏¥”√ªß
         /// </summary>
-        /// <param name="ReplyerID">The replyer ID.</param>
-        /// <param name="Body"></param>
-        /// <param name="UserID"></param>
+        /// <param name="replyerId">The replyer ID.</param>
+        /// <param name="body"></param>
+        /// <param name="userID"></param>
         /// <returns></returns>
         [Authorize]
-        public virtual ActionResult AddReply(long ReplyerID, string Body, long UserID)
+        public virtual ActionResult AddReply(long replyerId, string body, long userID)
         {
             using (var ts = new TransactionScope()) {
-                Reply r = new Reply { Body = Body, UserId = UserID };
+                Reply r = new Reply { Body = body, UserId = userID };
 
                 //UpdateModel(r, new[] { "Body", "UserId" });
                 var ownerId = r.UserId;
                 r.SenderId = CHUser.UserId;
                 r.AddTime = DateTime.Now;
                 r = DataExt.Comment.AddReply(r);
-                if (ReplyerID != ownerId) {
-                    r.UserId = ReplyerID;
+                if (replyerId != ownerId) {
+                    r.UserId = replyerId;
                     DataExt.Comment.AddReply(r);
                 }
                 r.UserId = ownerId;
@@ -114,13 +114,13 @@ namespace CHSNS.Controllers {
             return this.Empty();
         }
         [Authorize]
-        public virtual ActionResult Add(long ShowerID, long OwnerID, string Body, CommentType type)
+        public virtual ActionResult Add(long showerId, long ownerId, string body, CommentType type)
         {
             var cmt = new Comment {
-                ShowerId = ShowerID,
-                OwnerId = OwnerID,
+                ShowerId = showerId,
+                OwnerId = ownerId,
                 SenderId = CHUser.UserId,
-                Body = Body,
+                Body = body,
                 Type = (byte)type,
                 AddTime = DateTime.Now,
                 IsTellMe = 0

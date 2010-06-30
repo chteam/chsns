@@ -62,7 +62,7 @@ namespace CHSNS.Controllers {
     public class T4MVC_TestController: CHSNS.Controllers.TestController {
         public T4MVC_TestController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult index() {
+        public override System.Web.Mvc.ActionResult Index() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.index);
             return callInfo;
         }
