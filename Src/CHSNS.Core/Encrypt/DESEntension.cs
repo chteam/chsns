@@ -23,8 +23,9 @@ namespace CHSNS
             //将key和IV处理成8个字符
             key = (key + REPLACECRYPTORKEY).Substring(0, 8);
             iv = (iv + REPLACECRYPTORKEY).Substring(0, 8);
-            using (var sa = new DESCryptoServiceProvider { Key = key.ToUTF8Bytes(), IV = iv.ToUTF8Bytes() })
+            using (var sa = new DESCryptoServiceProvider ())
             {
+                sa.Key = key.ToUTF8Bytes(); sa.IV = iv.ToUTF8Bytes();
                 using (var ct = sa.CreateEncryptor())
                 {
                     byte[] byt = originalValue.ToUTF8Bytes();
@@ -61,17 +62,16 @@ namespace CHSNS
         {
 
             //将key和IV处理成8个字符
-            key = (key + REPLACECRYPTORKEY).Substring(0, 8);
-            iv = (iv + REPLACECRYPTORKEY).Substring(0, 8);
+            var keyBytes = Encoding.UTF8.GetBytes((key + REPLACECRYPTORKEY).Substring(0, 8));
+            var ivBytes = Encoding.UTF8.GetBytes((iv + REPLACECRYPTORKEY).Substring(0, 8));
             using (var sa =
-                new DESCryptoServiceProvider { Key = Encoding.UTF8.GetBytes(key), IV = Encoding.UTF8.GetBytes(iv) })
+                new DESCryptoServiceProvider ())
             {
+                sa.Key = keyBytes; sa.IV = ivBytes;
                 using (var ct = sa.CreateDecryptor())
                 {
-
                     byte[] byt = Convert.FromBase64String(encryptedValue);
-
-                    using (var ms = new MemoryStream())
+                                        using (var ms = new MemoryStream())
                     {
                         var cs = new CryptoStream(ms, ct, CryptoStreamMode.Write);
 
