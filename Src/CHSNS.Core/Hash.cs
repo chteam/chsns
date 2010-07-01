@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace CHSNS
 {
@@ -14,6 +15,11 @@ namespace CHSNS
      [Serializable]
     public class Hash : Hash<object>
 	{
+         protected Hash(SerializationInfo info, StreamingContext context)
+             : base(info, context)
+         {
+
+         }
 		public Hash(params Func<object, object>[] hash) : base(hash)
 		{
 		}
@@ -32,6 +38,11 @@ namespace CHSNS
     [Serializable]
     public class Hash<TValue> : Dictionary<string, TValue>
 	{
+        protected Hash(SerializationInfo info, StreamingContext context)
+            : base(info, context)
+        {
+
+        }
 		public Hash(params Func<object, TValue>[] hash) : base(hash == null ? 0 : hash.Length, StringComparer.OrdinalIgnoreCase)
 		{
 			if (hash != null)

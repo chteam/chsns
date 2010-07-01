@@ -1,11 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace CHSNS {
     ///<summary>自定义的字典
     ///</summary>
     [Serializable]
     public class Dictionary : Dictionary<string, object> {
+        public Dictionary()
+        {
+
+        }
+        protected Dictionary(SerializationInfo info, StreamingContext context)
+             : base(info, context)
+         {
+
+         }
         ///<summary>数组转为字典
         ///</summary>
         ///<param name="args"></param>
