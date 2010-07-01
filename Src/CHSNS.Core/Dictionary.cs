@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace CHSNS {
     ///<summary>自定义的字典
     ///</summary>
+    [Serializable]
     public class Dictionary : Dictionary<string, object> {
         ///<summary>数组转为字典
         ///</summary>

@@ -11,7 +11,8 @@ namespace CHSNS
 	///	IDictionary dict = new Hash(id => "foo", @class => "bar");
 	/// ]]>
 	/// </example>
-	public class Hash : Hash<object>
+     [Serializable]
+    public class Hash : Hash<object>
 	{
 		public Hash(params Func<object, object>[] hash) : base(hash)
 		{
@@ -28,7 +29,8 @@ namespace CHSNS
 	/// IDictionary<string, string> dict = new Hash<string>(id => "foo", @class => "bar");
 	/// ]]>
 	/// </example>
-	public class Hash<TValue> : Dictionary<string, TValue>
+    [Serializable]
+    public class Hash<TValue> : Dictionary<string, TValue>
 	{
 		public Hash(params Func<object, TValue>[] hash) : base(hash == null ? 0 : hash.Length, StringComparer.OrdinalIgnoreCase)
 		{
