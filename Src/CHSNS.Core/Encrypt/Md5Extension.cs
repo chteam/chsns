@@ -11,8 +11,11 @@ namespace CHSNS
         /// <param name="str"></param>
         /// <returns></returns>
         public static string ToMd5(this string str) {
-            var data = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(str.Trim()));
-            return data.ToHexUpperString();
+            using (var md5 = MD5.Create())
+            {
+                var data = md5.ComputeHash(Encoding.UTF8.GetBytes(str.Trim()));
+                return data.ToHexUpperString();
+            }
             //FormsAuthentication.HashPasswordForStoringInConfigFile(str, "MD5");
         }
     }

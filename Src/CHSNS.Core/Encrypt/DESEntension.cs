@@ -23,20 +23,17 @@ namespace CHSNS
             //将key和IV处理成8个字符
             key = (key + REPLACECRYPTORKEY).Substring(0, 8);
             iv = (iv + REPLACECRYPTORKEY).Substring(0, 8);
-            using (SymmetricAlgorithm sa
-                = new DESCryptoServiceProvider {Key = key.ToUTF8Bytes(), IV = iv.ToUTF8Bytes()})
+            using (var sa = new DESCryptoServiceProvider { Key = key.ToUTF8Bytes(), IV = iv.ToUTF8Bytes() })
             {
-                using (ICryptoTransform ct = sa.CreateEncryptor())
+                using (var ct = sa.CreateEncryptor())
                 {
                     byte[] byt = originalValue.ToUTF8Bytes();
                     using (var ms = new MemoryStream())
                     {
-                        using (var cs = new CryptoStream(ms, ct,
-                                                         CryptoStreamMode.Write))
-                        {
-                            cs.Write(byt, 0, byt.Length);
-                            cs.FlushFinalBlock();
-                        }
+                        var cs = new CryptoStream(ms, ct,
+                                                         CryptoStreamMode.Write);
+                        cs.Write(byt, 0, byt.Length);
+                        cs.FlushFinalBlock();
                         return Convert.ToBase64String(ms.ToArray());
                     }
                 }
@@ -66,22 +63,21 @@ namespace CHSNS
             //将key和IV处理成8个字符
             key = (key + REPLACECRYPTORKEY).Substring(0, 8);
             iv = (iv + REPLACECRYPTORKEY).Substring(0, 8);
-            using (SymmetricAlgorithm sa =
-                new DESCryptoServiceProvider
-                {Key = Encoding.UTF8.GetBytes(key), IV = Encoding.UTF8.GetBytes(iv)})
+            using (var sa =
+                new DESCryptoServiceProvider { Key = Encoding.UTF8.GetBytes(key), IV = Encoding.UTF8.GetBytes(iv) })
             {
-                using (ICryptoTransform ct = sa.CreateDecryptor())
+                using (var ct = sa.CreateDecryptor())
                 {
 
                     byte[] byt = Convert.FromBase64String(encryptedValue);
 
                     using (var ms = new MemoryStream())
                     {
-                        using (var cs = new CryptoStream(ms, ct, CryptoStreamMode.Write))
-                        {
-                            cs.Write(byt, 0, byt.Length);
-                            cs.FlushFinalBlock();
-                        }
+                        var cs = new CryptoStream(ms, ct, CryptoStreamMode.Write);
+
+                        cs.Write(byt, 0, byt.Length);
+                        cs.FlushFinalBlock();
+
                         return Encoding.UTF8.GetString(ms.ToArray());
                     }
                 }
