@@ -34,16 +34,19 @@ namespace CHSNS.Service {
             var profile = _account.Login(userName, password, context.Site.Score.LogOn);
             if (profile == null) return -1;//无账号
             Logout(context);
-            //context.User = profile;
-            //context.Cookies.Apps = profile.Applications ?? "";
+            var expires = isAutoLogin
+            ? DateTime.Now.AddMinutes(60)
+            : DateTime.Now.AddYears(1);
             FormsAuthenticationTicket authTicket = new
        FormsAuthenticationTicket(1, profile.Name, DateTime.Now,
-       DateTime.Now.AddMinutes(60), true, JsonAdapter.Serialize(profile));
+       expires
+       , true, JsonAdapter.Serialize(profile));
             string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
 
             HttpCookie authCookie =
                          new HttpCookie(FormsAuthentication.FormsCookieName,
                                         encryptedTicket);
+            authCookie.Expires = expires;
             context.HttpContext.Response.Cookies.Add(authCookie);
 
             if (!isAutoLogin) return profile.Status;
