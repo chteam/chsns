@@ -16,159 +16,6 @@ namespace CHSNS
     /// </summary>
     public class HttpProc
     {
-        /// <summary>
-        /// 创建请求
-        /// </summary>
-        /// <returns>请求对象</returns>
-        private HttpWebRequest CreateRequest()
-        {
-            var request = (HttpWebRequest) WebRequest.Create(StrUrl);
-            request.Accept = "*/*"; //接受任意文件
-            request.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.1.4322)"; // 模拟使用IE在浏览
-            //请求.AllowAutoRedirect = false;//这里不允许302
-            request.CookieContainer = new CookieContainer(); //cookie容器，
-            request.Referer = StrRefUrl; //当前页面的引用
-
-            request.Headers["Accept-Language"] = "	zh-cn,zh;q=0.5";
-            //使用代理
-            //WebProxy myProxy = new WebProxy();
-            //if (config.Proxy_DEF != "0") {
-            //    //使用浏览器的代理
-            //    myProxy = (WebProxy)请求.Proxy;
-            //    //Console.WriteLine("\nThe actual default Proxy settings are {0}",myProxy.Address);
-
-            //} else {
-            //    //使用自定的代码
-            //    myProxy.Address = new Uri(String.Format("http://{0}:{1}", config.Proxy_Server, config.Proxy_Port));
-
-            //    myProxy.Credentials = new NetworkCredential(username, password);
-            //    if (config.Proxy_Username.Length > 0 & config.Proxy_Pass.Length > 0) {
-            //        myProxy.Credentials = new NetworkCredential(config.Proxy_Username, config.Proxy_Pass);
-            //    }
-
-            //    请求.Proxy = myProxy;
-            //}
-
-            //Console.WriteLine("\nThe Address of the  new Proxy settings are {0}",myProxy.Address);
-
-
-            //如果附带cookie 就发送
-            if (CookiePost != null)
-            {
-                var u = new Uri(StrUrl);
-                //doenet处理cookie的bug：请求的服务器和cookie的Host必须一直，否则不发送或获取！
-
-                //这里修改成一致！
-                foreach (Cookie c in CookiePost)
-                {
-                    c.Domain = u.Host;
-                }
-
-                request.CookieContainer.Add(CookiePost);
-            }
-
-            //如果需要发送数据，就以Post方式发送
-            if (!string.IsNullOrEmpty(StrPostdata))
-            {
-                request.ContentType = "application/x-www-form-urlencoded"; //作为表单请求
-                request.Method = "POST"; //方式就是Post
-
-                //发送http数据：朝请求流中写post的数据
-                byte[] b = Encoding.GetBytes(StrPostdata);
-                request.ContentLength = b.Length;
-                Stream sw = null;
-                try
-                {
-                    sw = request.GetRequestStream();
-                    sw.Write(b, 0, b.Length);
-                }
-                catch (Exception ex)
-                {
-                    StrErr = ex.Message;
-                }
-                finally
-                {
-                    if (sw != null)
-                    {
-                        sw.Close();
-                    }
-                }
-            }
-            return request; //返回创建的请求对象
-        }
-
-        /// <summary>
-        /// 处理请求
-        /// </summary>
-        /// <returns>返回当前处理的文本</returns>
-        public string Proc()
-        {
-            var request = CreateRequest(); //请求
-            HttpWebResponse response;
-            StreamReader sr = null;
-            try
-            {
-                //这里得到响
-                response = (HttpWebResponse) request.GetResponse();
-                sr = new StreamReader(response.GetResponseStream(), Encoding);
-                ResHtml = sr.ReadToEnd(); // 这里假定响应的都是html文本
-            }
-            catch (Exception ex)
-            {
-                StrErr = ex.Message; //发生错误就返回空文本
-                return "";
-            }
-            finally
-            {
-                if (sr != null)
-                {
-                    sr.Close();
-                }
-            }
-            //状态码
-            StrCode = response.StatusCode.ToString();
-
-            if (StrCode == "302") //如果是302重定向的话就返回新的地址。
-            {
-                ResHtml = response.Headers["location"];
-            }
-
-            //得到cookie
-            if (response.Cookies.Count > 0)
-            {
-                CookieGet = (response.Cookies); //得到新的cookie：注意这里没考虑cookie合并的情况
-            }
-            return ResHtml;
-        }
-
-        /// <summary>
-        /// 加载验证码
-        /// </summary>
-        /// <returns>验证码的图象</returns>
-        public Image LoadPwDext()
-        {
-            //	this.StrUrl = "验证码URL";
-            Image img = null;
-            HttpWebRequest request = CreateRequest();
-            HttpWebResponse response;
-            try
-            {
-                response = (HttpWebResponse) request.GetResponse();
-                img = Image.FromStream(response.GetResponseStream()); //直接作为stream创建图象。
-                //得到cookie
-                if (response.Cookies.Count > 0)
-                {
-                    CookieGet = response.Cookies;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return img;
-        }
-
-
         public HttpProc()
         {
             CookieGet = new CookieCollection();
@@ -290,6 +137,157 @@ namespace CHSNS
 
 
         public Encoding Encoding { get; set; }
+
+        /// <summary>
+        /// 创建请求
+        /// </summary>
+        /// <returns>请求对象</returns>
+        private HttpWebRequest CreateRequest()
+        {
+            var request = (HttpWebRequest) WebRequest.Create(StrUrl);
+            request.Accept = "*/*"; //接受任意文件
+            request.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.1.4322)"; // 模拟使用IE在浏览
+            //请求.AllowAutoRedirect = false;//这里不允许302
+            request.CookieContainer = new CookieContainer(); //cookie容器，
+            request.Referer = StrRefUrl; //当前页面的引用
+
+            request.Headers["Accept-Language"] = "	zh-cn,zh;q=0.5";
+            //使用代理
+            //WebProxy myProxy = new WebProxy();
+            //if (config.Proxy_DEF != "0") {
+            //    //使用浏览器的代理
+            //    myProxy = (WebProxy)请求.Proxy;
+            //    //Console.WriteLine("\nThe actual default Proxy settings are {0}",myProxy.Address);
+
+            //} else {
+            //    //使用自定的代码
+            //    myProxy.Address = new Uri(String.Format("http://{0}:{1}", config.Proxy_Server, config.Proxy_Port));
+
+            //    myProxy.Credentials = new NetworkCredential(username, password);
+            //    if (config.Proxy_Username.Length > 0 & config.Proxy_Pass.Length > 0) {
+            //        myProxy.Credentials = new NetworkCredential(config.Proxy_Username, config.Proxy_Pass);
+            //    }
+
+            //    请求.Proxy = myProxy;
+            //}
+
+            //Console.WriteLine("\nThe Address of the  new Proxy settings are {0}",myProxy.Address);
+
+
+            //如果附带cookie 就发送
+            if (CookiePost != null)
+            {
+                var u = new Uri(StrUrl);
+                //doenet处理cookie的bug：请求的服务器和cookie的Host必须一直，否则不发送或获取！
+
+                //这里修改成一致！
+                foreach (Cookie c in CookiePost)
+                {
+                    c.Domain = u.Host;
+                }
+
+                request.CookieContainer.Add(CookiePost);
+            }
+
+            //如果需要发送数据，就以Post方式发送
+            if (!string.IsNullOrEmpty(StrPostdata))
+            {
+                request.ContentType = "application/x-www-form-urlencoded"; //作为表单请求
+                request.Method = "POST"; //方式就是Post
+
+                //发送http数据：朝请求流中写post的数据
+                byte[] b = Encoding.GetBytes(StrPostdata);
+                request.ContentLength = b.Length;
+                Stream sw = null;
+                try
+                {
+                    sw = request.GetRequestStream();
+                    sw.Write(b, 0, b.Length);
+                }
+                catch (Exception ex)
+                {
+                    StrErr = ex.Message;
+                }
+                finally
+                {
+                    if (sw != null)
+                    {
+                        sw.Close();
+                    }
+                }
+            }
+            return request; //返回创建的请求对象
+        }
+
+        /// <summary>
+        /// 处理请求
+        /// </summary>
+        /// <returns>返回当前处理的文本</returns>
+        public string Proc()
+        {
+            HttpWebRequest request = CreateRequest(); //请求
+            HttpWebResponse response;
+            StreamReader sr = null;
+            try
+            {
+                //这里得到响
+                response = (HttpWebResponse) request.GetResponse();
+                sr = new StreamReader(response.GetResponseStream(), Encoding);
+                ResHtml = sr.ReadToEnd(); // 这里假定响应的都是html文本
+            }
+            catch (Exception ex)
+            {
+                StrErr = ex.Message; //发生错误就返回空文本
+                return "";
+            }
+            finally
+            {
+                if (sr != null)
+                {
+                    sr.Close();
+                }
+            }
+            //状态码
+            StrCode = response.StatusCode.ToString();
+
+            if (StrCode == "302") //如果是302重定向的话就返回新的地址。
+            {
+                ResHtml = response.Headers["location"];
+            }
+
+            //得到cookie
+            if (response.Cookies.Count > 0)
+            {
+                CookieGet = (response.Cookies); //得到新的cookie：注意这里没考虑cookie合并的情况
+            }
+            return ResHtml;
+        }
+
+        /// <summary>
+        /// 加载验证码
+        /// </summary>
+        /// <returns>验证码的图象</returns>
+        public Image LoadPwDext()
+        {
+            //	this.StrUrl = "验证码URL";
+            Image img = null;
+            HttpWebRequest request = CreateRequest();
+            HttpWebResponse response;
+            try
+            {
+                response = (HttpWebResponse) request.GetResponse();
+                img = Image.FromStream(response.GetResponseStream()); //直接作为stream创建图象。
+                //得到cookie
+                if (response.Cookies.Count > 0)
+                {
+                    CookieGet = response.Cookies;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return img;
+        }
     }
 }
-

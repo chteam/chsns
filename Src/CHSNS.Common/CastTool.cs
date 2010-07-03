@@ -1,7 +1,10 @@
-namespace CHSNS {
-    public class CastTool {
-        static public TDest Cast<TDest>(object source) {
-            var json = JsonAdapter.Serialize(source);
+namespace CHSNS
+{
+    public class CastTool
+    {
+        public static TDest Cast<TDest>(object source)
+        {
+            string json = JsonAdapter.Serialize(source);
             return JsonAdapter.Deserialize<TDest>(json);
         }
     }

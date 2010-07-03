@@ -1,28 +1,30 @@
-using System;
 using System.Drawing;
 using System.IO;
 using CHSNS.Store;
 
-namespace CHSNS.LocalImplement{
-    internal class LocalStoreFile : IStoreFile{
-                IContext Context { get; set; }
-
-                public LocalStoreFile(IContext context) {
+namespace CHSNS.LocalImplement
+{
+    internal class LocalStoreFile : IStoreFile
+    {
+        public LocalStoreFile(IContext context)
+        {
             Context = context;
         }
+
         #region Implementation of IStoreFile
 
-        public bool Exists(string filePath){
-            throw new System.NotImplementedException();
+        public bool Exists(string filePath)
+        {
+            return File.Exists(filePath);
         }
 
-        public void Create(string filePath){
-           
+        public void Create(string filePath)
+        {
         }
 
         public void Save(Stream inputStream, string fileName)
         {
-            var s = inputStream; //这是你获得的流  
+            Stream s = inputStream; //这是你获得的流  
             var buffer = new byte[s.Length];
             s.Read(buffer, 0, buffer.Length); //将流的内容读到缓冲区  
             using (var fs = new FileStream(
@@ -40,18 +42,23 @@ namespace CHSNS.LocalImplement{
             img.Save(Context.HttpContext.Server.MapPath(fileName));
         }
 
-        public void WriteLine(string path, string text){
-            using (var sw = new StreamWriter(path, true)) {
+        public void WriteLine(string path, string text)
+        {
+            using (var sw = new StreamWriter(path, true))
+            {
                 sw.WriteLine(text);
             }
         }
 
 
-        public void Delete(string path){
-            var pathserver = Context.HttpContext.Server.MapPath(path);
+        public void Delete(string path)
+        {
+            string pathserver = Context.HttpContext.Server.MapPath(path);
             File.Delete(pathserver);
         }
 
         #endregion
+
+        private IContext Context { get; set; }
     }
 }

@@ -5,12 +5,16 @@
     /// </summary>
     public class ConfigSerializer : ISerializer
     {
-        IContext Context { get; set; }
+        private const string Path = "/Config/{0}.xml";
+
         public ConfigSerializer(IContext context)
         {
             Context = context;
         }
-        private const string Path = "/Config/{0}.xml";
+
+        private IContext Context { get; set; }
+
+        #region ISerializer Members
 
         /// <summary>
         /// 序列化到配置文件　
@@ -23,11 +27,15 @@
             XmlSerializer.Save(obj, string.Format(Path, key));
             ClearCache(key);
         }
+
         /// <summary>
         /// Clears the Cache of Congig.
         /// </summary>
         /// <param name="key">The key.</param>
-        public void ClearCache(string key) { Context.Cache.Remove(string.Format(Path, key).ToLower()); }
+        public void ClearCache(string key)
+        {
+            Context.Cache.Remove(string.Format(Path, key).ToLower());
+        }
 
         /// <summary>
         /// 从配置文件反序列化
@@ -38,7 +46,7 @@
         /// <returns></returns>
         public T Load<T>(string key, bool isUseCache) where T : class
         {
-            var fn = string.Format(Path, key).ToLower();
+            string fn = string.Format(Path, key).ToLower();
             if (isUseCache)
             {
                 if (!Context.Cache.Contains(fn))
@@ -47,6 +55,7 @@
             }
             return XmlSerializer.Load<T>(fn);
         }
+
         /// <summary>
         /// 从配置文件反序列化
         /// </summary>
@@ -58,6 +67,6 @@
             return Load<T>(key, true);
         }
 
-
+        #endregion
     }
 }
