@@ -1,32 +1,35 @@
+using CHSNS.LocalImplement;
 using CHSNS.Store;
 
-namespace CHSNS {
-
-
+namespace CHSNS
+{
     /// <summary>
     /// 
     /// </summary>
-    public class IOFactory : IIOFactory{
-        IContext Context { get; set; }
+    public class IOFactory : IIOFactory
+    {
+        private IFolder _folder;
+        private IStoreFile _storeFile;
 
-        public IOFactory(IContext context){
+        public IOFactory(IContext context)
+        {
             Context = context;
         }
-        private IStoreFile _storeFile;
-        public IStoreFile StoreFile {
-            get {
-                if (_storeFile == null)
-                    _storeFile = new LocalImplement.LocalStoreFile(Context);
-                return _storeFile;
-            }
+
+        private IContext Context { get; set; }
+
+        #region IIOFactory Members
+
+        public IStoreFile StoreFile
+        {
+            get { return _storeFile ?? (_storeFile = new LocalStoreFile(Context)); }
         }
-        private IFolder _folder;
-        public IFolder Folder {
-            get {
-                if (_folder == null)
-                    _folder = new LocalImplement.LocalFolder(Context);
-                return _folder;
-            }
+
+        public IFolder Folder
+        {
+            get { return _folder ?? (_folder = new LocalFolder(Context)); }
         }
+
+        #endregion
     }
 }
