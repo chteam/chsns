@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("chsword")]
 [assembly: AssemblyProduct("CHSNS")]
-[assembly: AssemblyCopyright("copyright (C) zoujian 2007-2010")]
+[assembly: AssemblyCopyright("Copyright (C) zoujian 2007-2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
