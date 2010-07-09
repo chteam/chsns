@@ -1,4 +1,11 @@
-﻿using System.Reflection;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="eice.com.cn">
+//     Copyright (c) CHSNS eice.com.cn. All rights reserved.
+// </copyright>
+// <author>chsword</author>
+//-----------------------------------------------------------------------
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
