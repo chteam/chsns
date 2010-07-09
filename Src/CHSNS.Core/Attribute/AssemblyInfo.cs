@@ -4,7 +4,7 @@
 // </copyright>
 // <author>chsword</author>
 //-----------------------------------------------------------------------
-
+using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -12,17 +12,18 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CHSNS.Core")]
-[assembly: AssemblyDescription("核心类库")]
+[assembly: AssemblyDescription("The core libary of CHSNS.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("成幻小组")]
+[assembly: AssemblyCompany("chsword")]
 [assembly: AssemblyProduct("CHSNS")]
-[assembly: AssemblyCopyright("版权所有 (C) 成幻工作室 邹健 2007")]
+[assembly: AssemblyCopyright("copyright (C) zoujian 2007-2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // This sets the default COM visibility of types in the assembly to invisible.
 // If you need to expose a type to COM, use [ComVisible(true)] on that type.
 [assembly: ComVisible(false)]
+[assembly: CLSCompliant(true)]
 
 // The assembly version has following format :
 //
