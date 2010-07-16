@@ -134,6 +134,9 @@
     <Compile Include="Server\HostEnvironment.cs" />
     <Compile Include="Extension\Mvc\EmptyActionResultExt.cs" />
     <Compile Include="Update\BetaToRC1\ListItem.cs" />
+    <Compile Include="Validator\EqualsClientAttribute.cs" />
+    <Compile Include="Validator\EqualsClientValidator.cs" />
+    <Compile Include="Validator\ValidatorRegister.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Common\CHSNS.Common.csproj">
