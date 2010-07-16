@@ -10,8 +10,8 @@ namespace CHSNS.Validator
     {
         public static void RegisterAdapter()
         {
-            DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(EqualsClientAttribute),
-typeof(EqualsClientValidator));
+            DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(EqualsClientAttribute),typeof(EqualsClientValidator));
+            DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(ContainsCharacterAttribute), typeof(ContainsCharacterValidator));
         }
     }
 }

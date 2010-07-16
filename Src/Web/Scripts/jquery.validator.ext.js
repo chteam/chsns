@@ -10,4 +10,23 @@
         }
         return false;
     });
-});
+    jQuery.validator.addMethod("containsChar", function (value, element, params) {
+        if (this.optional(element)) {
+            return true;
+        }
+        var p = value;
+        if (params.hl && !/[a-zA-Z]+/g.test(p)) {
+            return false
+        }
+        if (params.hn && !/[\d]+/g.test(p)) {
+            return false
+        }
+        if (params.hc && !/[\u4e00 - \u9fa5]+/g.test(p)) {
+            return false
+        }
+        if (params.hs && !/[^\w\d]+/g.test(p)) {
+            return false
+        }
+        return true;
+    });
+});                
