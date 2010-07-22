@@ -8,8 +8,9 @@ using System.Reflection;
 using System.Web;
 
 namespace CHSNS.Service {
-    public class AccountService {
-        static readonly AccountService Instance = new AccountService();
+    public class AccountService : BaseService<AccountService>
+    {
+        
         private readonly AccountOperator _account;
         public AccountService() {
             _account = new AccountOperator();
@@ -57,6 +58,7 @@ namespace CHSNS.Service {
             var canuse = IsUsernameCanUse(account.UserName);
             return canuse && _account.Create(account, name, site.Score.Init);
         }
+
         public bool IsUsernameCanUse(string username)
         {
             return username.Trim().Length > 0 && _account.IsUsernameCanUse(username);
