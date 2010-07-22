@@ -15,6 +15,8 @@ namespace CHSNS.Web
     [CompilerGlobalScope]
     public class Global : HttpApplication
     {
+        #region Register Routes and GlobalFilters
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             const string ext = "";
@@ -30,12 +32,25 @@ namespace CHSNS.Web
             routes.MapRoute("url", "{controller}/{action}" + ext,
                 new { controller = "Home" });
         }
+
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+        }
+
+        #endregion
+
         public void Application_Start(object sender, EventArgs e)
         {
             // 在应用程序启动时运行的代码
+            AreaRegistration.RegisterAllAreas();
+
+            RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             CHSNS.Validator.ValidatorRegister.RegisterAdapter();
         }
+
+        #region Authenticate
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
@@ -63,20 +78,7 @@ namespace CHSNS.Web
             //                                       Acl.GanjiApplications.CRM);
 
         }
-        public void Session_Start(object sender, EventArgs e)
-        {
 
-            IContext context1 = new CHContext(new HttpContextWrapper(Context));
-            if (!Context.User.Identity.IsAuthenticated) return; //当前不处于登录状态
-            if (!context1.Cookies.IsAutoLogin) return;
-            var pwd = context1.Cookies.UserPassword;
-            var idb = new DataManager();
-            idb.Account.Login(context1.Cookies.UserID.ToString(),
-                              pwd,
-                              true,
-                              false, context1
-                );
-        }
-
+        #endregion
     }
 }
