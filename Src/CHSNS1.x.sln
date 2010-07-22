@@ -11,15 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.MVCHelper", "CHSNS.MV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Model", "CHSNS.Model\CHSNS.Model.csproj", "{A13FEE3F-28F9-4A9C-B774-7C958124D949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.ViewModel", "CHSNS.ViewModel\CHSNS.ViewModel.csproj", "{27E2B6B3-7382-4D72-A889-7FDD618126F3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.SQLServerImplement", "CHSNS.SQLServerImplement\CHSNS.SQLServerImplement.csproj", "{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{565374D0-3D96-4D3B-9E95-108574BA9755}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
+		SccNumberOfProjects = 8
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs02.codeplex.com/
 		SccLocalPath0 = .
@@ -38,15 +36,12 @@ Global
 		SccProjectUniqueName5 = CHSNS.Model\\CHSNS.Model.csproj
 		SccProjectName5 = CHSNS.Model
 		SccLocalPath5 = CHSNS.Model
-		SccProjectUniqueName6 = CHSNS.ViewModel\\CHSNS.ViewModel.csproj
-		SccProjectName6 = CHSNS.ViewModel
-		SccLocalPath6 = CHSNS.ViewModel
-		SccProjectUniqueName7 = CHSNS.SQLServerImplement\\CHSNS.SQLServerImplement.csproj
-		SccProjectName7 = CHSNS.SQLServerImplement
-		SccLocalPath7 = CHSNS.SQLServerImplement
-		SccProjectUniqueName8 = Web\\Web.csproj
-		SccProjectName8 = Web
-		SccLocalPath8 = Web
+		SccProjectUniqueName6 = CHSNS.SQLServerImplement\\CHSNS.SQLServerImplement.csproj
+		SccProjectName6 = CHSNS.SQLServerImplement
+		SccLocalPath6 = CHSNS.SQLServerImplement
+		SccProjectUniqueName7 = Web\\Web.csproj
+		SccProjectName7 = Web
+		SccLocalPath7 = Web
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CHSNS1.x2.vsmdi
@@ -138,21 +133,6 @@ Global
 		{A13FEE3F-28F9-4A9C-B774-7C958124D949}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A13FEE3F-28F9-4A9C-B774-7C958124D949}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A13FEE3F-28F9-4A9C-B774-7C958124D949}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Default|.NET.ActiveCfg = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Default|Any CPU.Build.0 = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Default|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Default|Mixed Platforms.Build.0 = Debug|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Release|.NET.ActiveCfg = Release|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
