@@ -80,27 +80,8 @@ namespace CHSNS.SQLServerImplement.Operator
             }
         }
     
-        public bool IsUsernameCanUse(string username) {
-            using (var db = DBExtInstance) {
-                return db.Account.Where(c => c.UserName == username.Trim()).Count() == 0;
-            }
-        }
 
 
-        public void InitCreater() {
-            using (var db = DBExtInstance) {
-                var p = db.Profile.FirstOrDefault();
-                if (p == null) return;
-                //p.Status = (int)RoleType.Creater;
-                var userrole = new UserRole()
-                {
-                    RoleId = 1,
-                    UserId = p.UserId
-                };
 
-                db.UserRole.AddObject(userrole);
-                db.SubmitChanges();
-            }
-        }
     }
 }
