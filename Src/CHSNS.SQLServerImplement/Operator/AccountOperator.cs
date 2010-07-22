@@ -50,7 +50,7 @@ namespace CHSNS.SQLServerImplement.Operator
 
         public bool Create(Account account, string name, int initScore)
         {
-			account.Password = account.Password.ToMd5();
+            account.Password = account.Password.ToMd5();
             account. Code = DateTime.Now.Ticks;
             using (var db = DBExtInstance)
             {
@@ -79,6 +79,7 @@ namespace CHSNS.SQLServerImplement.Operator
                 return true;
             }
         }
+    
         public bool IsUsernameCanUse(string username) {
             using (var db = DBExtInstance) {
                 return db.Account.Where(c => c.UserName == username.Trim()).Count() == 0;
