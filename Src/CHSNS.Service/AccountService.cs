@@ -6,7 +6,7 @@ using CHSNS.Models;
 using System.Web.Security;
 using System.Reflection;
 using System.Web;
-
+using System.Linq;
 namespace CHSNS.Service {
     public class AccountService : BaseService<AccountService>
     {
@@ -61,11 +61,28 @@ namespace CHSNS.Service {
 
         public bool IsUsernameCanUse(string username)
         {
-            return username.Trim().Length > 0 && _account.IsUsernameCanUse(username);
+            bool isNotExists;
+            using (var db = DBExtInstance)
+            {
+                isNotExists = db.Account.Where(c => c.UserName == username.Trim()).Count() == 0;
+            }
+            return username.Trim().Length > 0 && isNotExists;
         }
 
         public void InitCreater() {
-            _account.InitCreater();
+            using (var db = DBExtInstance)
+            {
+                var p = db.Profile.FirstOrDefault();
+                if (p == null) return;
+
+                var userrole = new UserRole()
+                {
+                    RoleId = 1,
+                    UserId = p.UserId
+                };
+                db.UserRole.AddObject(userrole);
+                db.SaveChanges();
+            }
         }
     }
 }
