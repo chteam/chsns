@@ -135,9 +135,6 @@
     <Content Include="Images\no_middle.jpg" />
     <Content Include="Images\no_small.jpg" />
     <Content Include="Images\no_tiny.jpg" />
-    <Content Include="Scripts\effects\effects.bounce.packed.js" />
-    <Content Include="Scripts\effects\effects.core.packed.js" />
-    <Content Include="Scripts\effects\effects.scale.packed.js" />
     <Content Include="Service\Users.asmx" />
     <Content Include="Style\CHSNS\Images\check_right.gif" />
     <Content Include="Style\CHSNS\Images\curtain.png" />
@@ -182,7 +179,6 @@
     <Content Include="Scripts\Source\wysiwyg\wysiwyg.css" />
     <Content Include="Scripts\Source\wysiwyg\wysiwyg.gif" />
     <Content Include="Scripts\wysiwyg.js" />
-    <Content Include="Scripts\ui.js" />
     <Content Include="Style\CHSNS\admin.css" />
     <Content Include="Style\CHSNS\appli.css" />
     <Content Include="Style\CHSNS\blog.css" />

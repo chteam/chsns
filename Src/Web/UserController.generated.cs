@@ -105,9 +105,9 @@ namespace CHSNS.Controllers {
     public class T4MVC_UserController: CHSNS.Controllers.UserController {
         public T4MVC_UserController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Index(long? userid) {
+        public override System.Web.Mvc.ActionResult Index(long? userId) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
-            callInfo.RouteValueDictionary.Add("userid", userid);
+            callInfo.RouteValueDictionary.Add("userId", userId);
             return callInfo;
         }
 

@@ -117,11 +117,11 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult AddReply(long ReplyerID, string Body, long UserID) {
+        public override System.Web.Mvc.ActionResult AddReply(long replyerId, string body, long userID) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddReply);
-            callInfo.RouteValueDictionary.Add("ReplyerID", ReplyerID);
-            callInfo.RouteValueDictionary.Add("Body", Body);
-            callInfo.RouteValueDictionary.Add("UserID", UserID);
+            callInfo.RouteValueDictionary.Add("replyerId", replyerId);
+            callInfo.RouteValueDictionary.Add("body", body);
+            callInfo.RouteValueDictionary.Add("userID", userID);
             return callInfo;
         }
 
@@ -145,11 +145,11 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Add(long ShowerID, long OwnerID, string Body, CHSNS.CommentType type) {
+        public override System.Web.Mvc.ActionResult Add(long showerId, long ownerId, string body, CHSNS.CommentType type) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Add);
-            callInfo.RouteValueDictionary.Add("ShowerID", ShowerID);
-            callInfo.RouteValueDictionary.Add("OwnerID", OwnerID);
-            callInfo.RouteValueDictionary.Add("Body", Body);
+            callInfo.RouteValueDictionary.Add("showerId", showerId);
+            callInfo.RouteValueDictionary.Add("ownerId", ownerId);
+            callInfo.RouteValueDictionary.Add("body", body);
             callInfo.RouteValueDictionary.Add("type", type);
             return callInfo;
         }
