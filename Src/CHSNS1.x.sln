@@ -1,12 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{B3184A8F-23C1-4DBB-88CC-35D18477161F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implement", "Implement", "{EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{4D062B38-5AF9-4E5E-8D92-5310078CFBDD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core", "CHSNS.Core\CHSNS.Core.csproj", "{F7CF4538-9101-4328-81D0-AF1B2A8B314A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Common", "CHSNS.Common\CHSNS.Common.csproj", "{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}"
@@ -33,26 +27,21 @@ Global
 		SccProjectName1 = CHSNS.Core
 		SccLocalPath1 = CHSNS.Core
 		SccProjectUniqueName2 = CHSNS.Common\\CHSNS.Common.csproj
-		SccProjectTopLevelParentUniqueName2 = CHSNS1.x.sln
 		SccProjectName2 = CHSNS.Common
 		SccLocalPath2 = CHSNS.Common
 		SccProjectUniqueName3 = CHSNS.Service\\CHSNS.Service.csproj
-		SccProjectTopLevelParentUniqueName3 = CHSNS1.x.sln
 		SccProjectName3 = CHSNS.Service
 		SccLocalPath3 = CHSNS.Service
 		SccProjectUniqueName4 = CHSNS.MVCHelper\\CHSNS.MVCHelper.csproj
 		SccProjectName4 = CHSNS.MVCHelper
 		SccLocalPath4 = CHSNS.MVCHelper
 		SccProjectUniqueName5 = CHSNS.Model\\CHSNS.Model.csproj
-		SccProjectTopLevelParentUniqueName5 = CHSNS1.x.sln
 		SccProjectName5 = CHSNS.Model
 		SccLocalPath5 = CHSNS.Model
 		SccProjectUniqueName6 = CHSNS.ViewModel\\CHSNS.ViewModel.csproj
-		SccProjectTopLevelParentUniqueName6 = CHSNS1.x.sln
 		SccProjectName6 = CHSNS.ViewModel
 		SccLocalPath6 = CHSNS.ViewModel
 		SccProjectUniqueName7 = CHSNS.SQLServerImplement\\CHSNS.SQLServerImplement.csproj
-		SccProjectTopLevelParentUniqueName7 = CHSNS1.x.sln
 		SccProjectName7 = CHSNS.SQLServerImplement
 		SccLocalPath7 = CHSNS.SQLServerImplement
 		SccProjectUniqueName8 = Web\\Web.csproj
@@ -197,12 +186,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A13FEE3F-28F9-4A9C-B774-7C958124D949} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
-		{27E2B6B3-7382-4D72-A889-7FDD618126F3} = {B3184A8F-23C1-4DBB-88CC-35D18477161F}
-		{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}
-		{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3} = {EDDCC8CD-6B54-4E66-A5ED-BB0BB8460A50}
-		{2D4FB641-C7D3-4E7F-8B58-A083C0541B66} = {4D062B38-5AF9-4E5E-8D92-5310078CFBDD}
 	EndGlobalSection
 EndGlobal
