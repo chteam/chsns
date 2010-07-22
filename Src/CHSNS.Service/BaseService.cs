@@ -5,11 +5,15 @@
 
     public abstract class BaseService<T>
     {
-        public static readonly T Instance;
+        #region Service Singlet
+
+        public static T Instance { get; private set; }
         static BaseService()
         {
-            Instance = default(T);
+            Instance = (T)System.Activator.CreateInstance(typeof(T));
         }
+
+        #endregion
         internal DbEntities DBExtInstance
         {
             get
