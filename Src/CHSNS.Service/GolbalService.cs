@@ -1,16 +1,18 @@
-﻿namespace CHSNS.Service {
+﻿namespace CHSNS.Service
+{
     using System.Linq;
     using CHSNS.Model;
     using CHSNS.Operator;
     using System.Collections.Generic;
 
-    public class GolbalService {
+    public class GolbalService
+    {
+        public ISerializer Serializer { get; set; }
 
-         public ISerializer Serializer { get;  set; }
-         public GolbalService(IContext context)
-         {
-             Serializer = new ConfigSerializer(context);
-         }
+        public GolbalService(IContext context)
+        {
+            Serializer = new ConfigSerializer(context);
+        }
 
         /// <summary>
         /// Get ALL Provinces or Areas
