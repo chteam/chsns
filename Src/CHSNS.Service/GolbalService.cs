@@ -1,13 +1,11 @@
-﻿using System.Linq;
-using CHSNS.Model;
-using CHSNS.Operator;
-using System.Collections.Generic;
+﻿namespace CHSNS.Service {
+    using System.Linq;
+    using CHSNS.Model;
+    using CHSNS.Operator;
+    using System.Collections.Generic;
 
-namespace CHSNS.Service {
+    public class GolbalService {
 
-	public class GolbalService {
-        //static readonly GolbalService Instance = new GolbalService();
-      //  private readonly IGolbalOperator _golbal;
          public ISerializer Serializer { get;  set; }
          public GolbalService(IContext context)
          {
@@ -32,5 +30,5 @@ namespace CHSNS.Service {
             var citys = Serializer.Load<List<City>>("City");
             return citys.Where(x => x.PId == provinceId).ToList();
         }
-	}
+    }
 }
