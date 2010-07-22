@@ -124,10 +124,10 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(long? id, CHSNS.Models.Note n) {
+        public override System.Web.Mvc.ActionResult Edit(long? id, CHSNS.Models.Note note) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
-            callInfo.RouteValueDictionary.Add("n", n);
+            callInfo.RouteValueDictionary.Add("note", note);
             return callInfo;
         }
 

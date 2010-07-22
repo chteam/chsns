@@ -283,19 +283,6 @@ namespace Links {
         private const string URLPATH = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class effects {
-            private const string URLPATH = "~/Scripts/effects";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string effects_bounce_packed_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/effects.bounce.packed.min.js") ? Url("effects.bounce.packed.min.js") : Url("effects.bounce.packed.js");
-                          
-            public static readonly string effects_core_packed_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/effects.core.packed.min.js") ? Url("effects.core.packed.min.js") : Url("effects.core.packed.js");
-                          
-            public static readonly string effects_scale_packed_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/effects.scale.packed.min.js") ? Url("effects.scale.packed.min.js") : Url("effects.scale.packed.js");
-                          
-        }
-    
         public static readonly string Framework_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Framework.min.js") ? Url("Framework.min.js") : Url("Framework.js");
                       
         public static readonly string jquery_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-vsdoc.min.js") ? Url("jquery-vsdoc.min.js") : Url("jquery-vsdoc.js");
@@ -308,6 +295,8 @@ namespace Links {
         public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
                       
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
+        public static readonly string jquery_validator_ext_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validator.ext.min.js") ? Url("jquery.validator.ext.min.js") : Url("jquery.validator.ext.js");
+                      
         public static readonly string MicrosoftMvcJQueryValidation_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcJQueryValidation.min.js") ? Url("MicrosoftMvcJQueryValidation.min.js") : Url("MicrosoftMvcJQueryValidation.js");
                       
         public static readonly string MicrosoftMvcRemoteValidation_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MicrosoftMvcRemoteValidation.min.js") ? Url("MicrosoftMvcRemoteValidation.min.js") : Url("MicrosoftMvcRemoteValidation.js");
@@ -333,8 +322,6 @@ namespace Links {
         
         }
     
-        public static readonly string ui_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui.min.js") ? Url("ui.min.js") : Url("ui.js");
-                      
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class Upload {
             private const string URLPATH = "~/Scripts/Upload";

@@ -83,9 +83,9 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(CHSNS.Models.SuperNote v) {
+        public override System.Web.Mvc.ActionResult Edit(CHSNS.Models.SuperNote video) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
-            callInfo.RouteValueDictionary.Add("v", v);
+            callInfo.RouteValueDictionary.Add("video", video);
             return callInfo;
         }
 

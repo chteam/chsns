@@ -46,7 +46,7 @@ namespace CHSNS.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string index = ("index").ToLowerInvariant();
+            public readonly string Index = ("Index").ToLowerInvariant();
         }
 
 
@@ -63,7 +63,7 @@ namespace CHSNS.Controllers {
         public T4MVC_TestController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Index() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.index);
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             return callInfo;
         }
 
