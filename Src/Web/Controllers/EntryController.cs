@@ -10,9 +10,8 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
-    public partial class EntryController : NewBaseController
+    public partial class EntryController : BaseController
     {
-        private readonly EntryOperator _entryDb = new EntryOperator();
         #region 前台部分
         /// <summary>
         /// 显示当前词条
@@ -20,10 +19,11 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         public virtual ActionResult Index(string url)
         {
+            
             var model = new EntryIndexViewModel();
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
-            var t = _entryDb.Get(url);
+            var t = DataExt.Entry.Get(url);
             model.Entry = t.Key;
             if (model.Entry == null) return Wait();
             var version = t.Value;
@@ -45,15 +45,15 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         public virtual ActionResult HistoryList(long id)
         {
-        	// var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
-            ViewData["Source"] = _entryDb.Historys(id);
-        	Title = "版本比较";
-        	return View();
+            // var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
+            ViewData["Source"] = DataExt.Entry.Historys(id);
+            Title = "版本比较";
+            return View();
         }
 
         public virtual ActionResult History(long versionId)
         {
-            var t = _entryDb.GetFromVersion(versionId);
+            var t = DataExt.Entry.GetFromVersion(versionId);
             if (t.Key == null || t.Value == null) return View("wait", "site");
             var entry = t.Key;
             var version = t.Value;
@@ -74,7 +74,7 @@ namespace CHSNS.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-		[AdminFilter]
+        [AdminFilter]
         public virtual ActionResult Edit(string title, long? id)
         {
             if (!string.IsNullOrEmpty(title)&&title.Contains("%"))
@@ -82,7 +82,7 @@ namespace CHSNS.Controllers
     
             if (id != null) {
                 //修改
-                var d = _entryDb.Get(id.Value);
+                var d = DataExt.Entry.Get(id.Value);
                 var entry = d.Key;
                 if ((entry.Status == (int)EntryType.Common || HasManageRight())) {
                     ViewData["exists"] = true;
@@ -117,20 +117,20 @@ namespace CHSNS.Controllers
         /// <param name="tags"></param>
         /// <returns></returns>
         [HttpPost]
-		[AdminFilter]
+        [AdminFilter]
         [ValidateInput(false)]
         public virtual ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags)
         {
-            var b = _entryDb.AddVersion(id, entry, entryversion, tags, CHUser);
+            var b = DataExt.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
             if (!b) throw new ApplicationException("标题已存在");
             return RedirectToAction("NewList");
         }
-		[AdminFilter]
+        [AdminFilter]
         public virtual ActionResult AdminHistoryList(string url)
         {
             url = url.Trim();
-		    ViewData["Source"] = _entryDb.Historys(url);
-		    Title = "历史版本";
+            ViewData["Source"] = DataExt.Entry.Historys(url);
+            Title = "历史版本";
             return View();
         }
 
@@ -141,7 +141,7 @@ namespace CHSNS.Controllers
         [AdminFilter]
         public virtual ActionResult NewList()
         {
-            var li = _entryDb.List(1, 10);
+            var li = DataExt.Entry.List(1, 10);
             Title = "词条列表";
             return View(li);
         }
@@ -159,14 +159,14 @@ namespace CHSNS.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-		[AdminFilter]
+        [AdminFilter]
         public virtual ActionResult Pass(long id)
         {
             /*
              * 1.设置当前版本为最新版本词条
              * 2.将当前版本状态改为常规状态
              */
-            _entryDb.PassWaitVersion(id);
+            DataExt.Entry.PassWaitVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -174,13 +174,13 @@ namespace CHSNS.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-		[AdminFilter]
+        [AdminFilter]
         public virtual ActionResult Lock(long id)
         {
             /*
              * 锁定当前版本
              */
-            _entryDb.LockCommonVersion(id);
+            DataExt.Entry.LockCommonVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -191,13 +191,13 @@ namespace CHSNS.Controllers
         [AdminFilter]
         public virtual ActionResult Delete(long id)
         {
-            _entryDb.DeleteByVersionId(id, CHUser.UserId);
+            DataExt.Entry.DeleteByVersionId(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         [AdminFilter]
         public virtual ActionResult DeleteVersion(long id)
         {
-            _entryDb.DeleteVersion(id, CHUser.UserId);
+            DataExt.Entry.DeleteVersion(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion
@@ -205,7 +205,7 @@ namespace CHSNS.Controllers
         #region Ajax
         public virtual ActionResult Has(string title)
         {
-            var exists = _entryDb.HasTitle(title);
+            var exists = DataExt.Entry.HasTitle(title);
             return Json(exists); 
         }
 

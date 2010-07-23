@@ -1,13 +1,14 @@
-﻿using System;
-using CHSNS.Config;
-using CHSNS.Operator;
-using CHSNS.SQLServerImplement.Operator;
-using CHSNS.Models;
-using System.Web.Security;
-using System.Reflection;
-using System.Web;
-using System.Linq;
-namespace CHSNS.Service {
+﻿
+namespace CHSNS.Service
+{
+
+    using System;
+    using CHSNS.Config;
+    using CHSNS.Models;
+    using System.Web.Security;
+    using System.Web;
+    using System.Linq;
+
     public class AccountService : BaseService<AccountService>
     {
         #region LogOut
@@ -95,7 +96,8 @@ namespace CHSNS.Service {
 
         #region Create
 
-        public bool Create(Account account, string name,SiteConfig site) {
+        public bool Create(Account account, string name, SiteConfig site)
+        {
             var canuse = IsUsernameCanUse(account.UserName);
             return canuse && Create(account, name, site.Score.Init);
         }

@@ -2,8 +2,6 @@
 namespace CHSNS.Service {
     using System.Collections.Generic;
     using System.Linq;
-    using CHSNS.Operator;
-    using CHSNS.SQLServerImplement;
     using CHSNS.Models;
     using System;
 
@@ -31,7 +29,7 @@ namespace CHSNS.Service {
             using (var db = DBExtInstance)
             {
                 db.Album.AddObject(album);
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 
@@ -43,7 +41,7 @@ namespace CHSNS.Service {
                 al.Description = album.Description;
                 al.ShowLevel = album.ShowLevel;
                 al.Name = album.Name;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
         public List<Photo> GetPhotos(long id, long uId, int page, int pageSize) {
@@ -63,7 +61,7 @@ namespace CHSNS.Service {
                 {
                     a.Count += num;
                     if (a.Count < 0) a.Count = 0;
-                    db.SubmitChanges();
+                    db.SaveChanges();
                 }
                 return a;
             }
