@@ -3,27 +3,24 @@ using System.Collections.Generic;
 using CHSNS.Model;
 using CHSNS.Models;
 using CHSNS.Operator;
-
+using System.Linq;
 namespace CHSNS.Service
 {
     public class NoteService : BaseService<NoteService>
     {
        
-        private readonly NoteOperator _note;
-
-        public NoteService()
-        {
-            _note = new NoteOperator();
- 
-        }
-
 
         /// <summary>
         /// userid
         /// </summary>
         public void Add(Note note, IUser user)
         {
-            _note.Add(note);
+            note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
+            using (var db = DBExtInstance)
+            {
+                db.Note.AddObject(note);
+                db.SaveChanges();
+            }
             switch ((NoteType) note.Type)
             {
                 case NoteType.Note:
@@ -48,7 +45,14 @@ namespace CHSNS.Service
 
         public void Edit(Note note)
         {
-            _note.Edit(note);
+            using (var db = DBExtInstance)
+            {
+                var n = db.Note.FirstOrDefault(c => c.UserId == note.UserId && c.Id == note.Id);
+                n.Title = note.Title;
+                n.Body = note.Body;
+                n.EditTime = DateTime.Now;
+                db.SaveChanges();
+            }
         }
 
         /// <summary>
@@ -56,24 +60,93 @@ namespace CHSNS.Service
         /// </summary>
         public void Delete(long id, long pid, NoteType nt)
         {
-            _note.Delete(id, pid, nt);
+            using (var db = DBExtInstance)
+            {
+                var n = db.Note.FirstOrDefault(c => c.Id == id && c.UserId == pid);
+                if (null != n)
+                {
+                    db.DeleteObject(n);
+                    db.SaveChanges();
+                }
+
+            }
+            switch (nt)
+            {
+                case NoteType.Note:
+                    break;
+                case NoteType.GroupPost:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public NoteDetailsPas Details(long id, NoteType? nt)
         {
-            return
-                _note.Details(id, nt);
+            using (var db = DBExtInstance)
+            {
+                var type = (byte)(nt ?? NoteType.Note);
+                var ret = (from n in db.Note
+                           join p in db.Profile on n.UserId equals p.UserId
+                           where n.Id == id && n.Type.Equals(type)
+                           select new NoteDetailsPas
+                           {
+                               Note = n,
+                               User = new UserCountPas
+                               {
+                                   Id = p.UserId,
+                                   Name = p.Name,
+                                   Count = n.CommentCount
+                               }
+                           }
+                          ).FirstOrDefault();
+                return ret;
+            }
         }
 
         public List<NotePas> GetLastNotes(int? ni)
         {
-            return
-                _note.GetLastNotes(ni);
+            using (var db = DBExtInstance)
+            {
+                return (from n in db.Note
+                        join p in db.Profile on n.UserId equals p.UserId
+                        orderby n.Id descending
+                        select new NotePas
+                        {
+                            AddTime = n.AddTime,
+                            Body = n.Summary,
+                            CommentCount = n.CommentCount,
+                            Id = n.Id,
+                            Title = n.Title,
+                            UserId = n.UserId,
+                            ViewCount = n.ViewCount,
+                            WriteName = p.Name
+                        }).Take(ni ?? 10).ToList();
+            }
         }
 
         public PagedList<NotePas> GetNotes(long pid, NoteType? nt, int p, int ep)
         {
-            return _note.GetNotes(pid, nt, p, ep);
+            using (var db = DBExtInstance)
+            {
+                var type = (byte)(nt ?? NoteType.Note);
+                var notes = (from n in db.Note
+                             join pr in db.Profile on n.UserId equals pr.UserId
+                             where n.ParentId == pid && n.Type.Equals(type)
+                             orderby n.Id descending
+                             select new NotePas
+                             {
+                                 AddTime = n.AddTime,
+                                 Body = n.Summary,
+                                 CommentCount = n.CommentCount,
+                                 Id = n.Id,
+                                 Title = n.Title,
+                                 UserId = n.UserId,
+                                 ViewCount = n.ViewCount,
+                                 WriteName = pr.Name
+                             });
+                return notes.Pager(p, ep);
+            }
         }
     }
 }
