@@ -1,41 +1,72 @@
-﻿using System.Collections.Generic;
-
-using CHSNS.Operator;
-using CHSNS.SQLServerImplement;
-using CHSNS.Models;
-using System;
-
+﻿
 namespace CHSNS.Service {
+    using System.Collections.Generic;
+    using System.Linq;
+    using CHSNS.Operator;
+    using CHSNS.SQLServerImplement;
+    using CHSNS.Models;
+    using System;
+
     public class AlbumService : BaseService<AlbumService>
     {
-        private readonly AlbumOperator _album;
-        public AlbumService() {
-            _album = new AlbumOperator();
-        }
-
-
         public List<Album> Items(long uId) {
-            return _album.Items(uId);
+            using (var db = DBExtInstance)
+            {
+                return (from a in db.Album
+                        where a.UserId.Equals(uId)
+                        select a).ToList();
+            }
         }
 
         public Album Get(long id) {
-            return _album.Get(id);
+            using (var db = DBExtInstance)
+            {
+                return db.Album.FirstOrDefault(c => c.Id.Equals(id));
+            }
         }
 
         public void Add(Album album, long uId) {
             album.UserId = uId;
             album.AddTime = DateTime.Now;
-            _album.Add(album);
+            using (var db = DBExtInstance)
+            {
+                db.Album.AddObject(album);
+                db.SubmitChanges();
+            }
         }
 
         public void Update(Album album) {
-            _album.Update(album);
+            using (var db = DBExtInstance)
+            {
+                var al = db.Album.FirstOrDefault(c => c.Id == album.Id);
+                al.Location = album.Location;
+                al.Description = album.Description;
+                al.ShowLevel = album.ShowLevel;
+                al.Name = album.Name;
+                db.SubmitChanges();
+            }
         }
         public List<Photo> GetPhotos(long id, long uId, int page, int pageSize) {
-            return _album.GetPhotos(id, uId, page, pageSize);
+            using (var db = DBExtInstance)
+            {
+                return (from ph in db.Photo
+                        where ph.AlbumId == id && ph.UserId == uId
+                        orderby ph.AddTime descending
+                        select ph).Pager(page, pageSize);
+            }
         }
         public Album GetCountChange(long id, int num) {
-            return _album.GetCountChange(id, num);
+            using (var db = DBExtInstance)
+            {
+                var a = db.Album.FirstOrDefault(c => c.Id.Equals(id));
+                if (num != 0)
+                {
+                    a.Count += num;
+                    if (a.Count < 0) a.Count = 0;
+                    db.SubmitChanges();
+                }
+                return a;
+            }
         }
     }
 }
