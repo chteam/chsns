@@ -5,35 +5,40 @@ using CHSNS.Model;
 using CHSNS.Operator;
 using CHSNS.Models;
 
-namespace CHSNS.Service {
-    public class GroupService {
-        static readonly GroupService Instance = new GroupService();
+namespace CHSNS.Service
+{
+    public class GroupService : BaseService<GroupService>
+    {
         private readonly GroupOperator _group;
-        public GroupService() {
+        public GroupService()
+        {
             _group = new GroupOperator();
         }
 
-        public static GroupService GetInstance() {
-            return Instance;
-        }
-
-        public GroupUser GetGroupUser(long gId, long uId) {
+        public GroupUser GetGroupUser(long gId, long uId)
+        {
             return _group.GetGroupUser(gId, uId);
         }
-        public Group Get(long groupId) {
+        public Group Get(long groupId)
+        {
             return _group.Get(groupId);
         }
-        public int WaitJoinCount(long groupId) {
+        public int WaitJoinCount(long groupId)
+        {
             return _group.WaitJoinCount(groupId);
         }
-        public List<UserItemPas> GetAdmins(long groupId) {
+        public List<UserItemPas> GetAdmins(long groupId)
+        {
             return _group.GetAdmins(groupId);
         }
-        public PagedList<Group> GetList(long uId, int page, int pageSize) {
+        public PagedList<Group> GetList(long uId, int page, int pageSize)
+        {
             return _group.GetList(uId, page, pageSize);
         }
-        public bool Add(string name, long uId) {
-            var group = new Group{
+        public bool Add(string name, long uId)
+        {
+            var group = new Group
+            {
                 Name = name,
                 Type = (byte)GroupType.Common,
                 AddTime = DateTime.Now,
@@ -42,11 +47,13 @@ namespace CHSNS.Service {
             };
             return _group.Add(group, uId);
         }
-        public bool Update(long groupId, Group group) {
+        public bool Update(long groupId, Group group)
+        {
             group.Id = groupId;
             return _group.Update(group);
         }
-        public List<UserCountPas> GetGroupUser(long groupId){
+        public List<UserCountPas> GetGroupUser(long groupId)
+        {
             return _group.GetGroupUser(groupId);
         }
     }

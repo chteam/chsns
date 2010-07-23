@@ -5,17 +5,13 @@ using CHSNS.Operator;
 using CHSNS.Models;
 
 namespace CHSNS.Service {
-    public class UserService {
-        static readonly UserService Instance = new UserService();
+    public class UserService : BaseService<UserService>
+    {
         private readonly UserOperator _user;
         private readonly EventOperator _event;
         public UserService() {
             _user = new UserOperator();
             _event = new EventOperator();
-        }
-
-        public static UserService GetInstance() {
-            return Instance;
         }
 
         public UserPas UserInformation(long userid) {

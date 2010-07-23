@@ -12,12 +12,9 @@ namespace CHSNS.Service {
     {
         
         private readonly AccountOperator _account;
-        public AccountService() {
+        public AccountService()
+        {
             _account = new AccountOperator();
-        }
-
-        public static AccountService GetInstance() {
-            return Instance;
         }
 
         /// <summary>

@@ -6,9 +6,8 @@ using CHSNS.Operator;
 
 namespace CHSNS.Service
 {
-    public class NoteService
+    public class NoteService : BaseService<NoteService>
     {
-        private static readonly NoteService Instance = new NoteService();
         private readonly EventOperator _event;
         private readonly NoteOperator _note;
 
@@ -18,10 +17,6 @@ namespace CHSNS.Service
             _event = new EventOperator();
         }
 
-        public static NoteService GetInstance()
-        {
-            return Instance;
-        }
 
         /// <summary>
         /// userid

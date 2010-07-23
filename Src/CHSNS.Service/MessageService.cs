@@ -10,17 +10,14 @@ namespace CHSNS.Service
     /// Site Message Service,
     /// Jian Zou 2009 03 27,2009 4 16
     /// </summary>
-    public class MessageService
+    public class MessageService : BaseService<MessageService>
     {
-                static readonly MessageService Instance = new MessageService();
                 private readonly MessageOperator _message;
         public MessageService() {
                     _message = new MessageOperator();
         }
 
-        public static MessageService GetInstance(){
-            return Instance;
-        }
+
 
         //  public MessageService(IDBManager id) : base(id) { }
         public PagedList<MessageItemPas> GetInbox(long uid, int p, SiteConfig site){

@@ -6,16 +6,15 @@ using CHSNS.Operator;
 using CHSNS.Models;
 
 namespace CHSNS.Service {
-    public class CommentService {
-        static readonly CommentService Instance = new CommentService();
+    public class CommentService : BaseService<CommentService>
+    {
+ 
         private readonly CommentOperator _comment;
         public CommentService() {
             _comment = new CommentOperator();
         }
 
-        public static CommentService GetInstance() {
-            return Instance;
-        }
+    
 
         #region reply
 
