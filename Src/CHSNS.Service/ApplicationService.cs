@@ -7,17 +7,15 @@ using CHSNS.SQLServerImplement.Operator;
 using CHSNS.Models;
 
 namespace CHSNS.Service {
-    public class ApplicationService {
+    public class ApplicationService : BaseService<ApplicationService>
+    {
 
-        static readonly ApplicationService Instance = new ApplicationService();
+
         private readonly ApplicationOperator _application;
         public ApplicationService() {
             _application = new ApplicationOperator();
         }
 
-        public static ApplicationService GetInstance() {
-            return Instance;
-        }
        // private const string APPLISTALL = "APPLISTALL";
         /// <summary>
         /// 缓存的应用列表

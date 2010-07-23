@@ -6,7 +6,8 @@ using CHSNS.Models;
 
 namespace CHSNS.SQLServerImplement.Operator
 {
-    public class AccountOperator : BaseOperator {
+    public class AccountOperator : BaseOperator
+    {
         public CHIdentity Login(String userName, String password, int logOnScore)
         {
             using (var db = DBExtInstance)
@@ -51,7 +52,7 @@ namespace CHSNS.SQLServerImplement.Operator
         public bool Create(Account account, string name, int initScore)
         {
             account.Password = account.Password.ToMd5();
-            account. Code = DateTime.Now.Ticks;
+            account.Code = DateTime.Now.Ticks;
             using (var db = DBExtInstance)
             {
                 db.Account.AddObject(account);
@@ -67,7 +68,7 @@ namespace CHSNS.SQLServerImplement.Operator
                     Status = (int)RoleType.General,
                     RegTime = DateTime.Now,
                     LoginTime = DateTime.Now,
-                   // MagicBox = ""
+                    // MagicBox = ""
                 });
                 db.BasicInformation.AddObject(
                     new BasicInformation
@@ -79,9 +80,6 @@ namespace CHSNS.SQLServerImplement.Operator
                 return true;
             }
         }
-    
-
-
 
     }
 }

@@ -6,16 +6,13 @@ using CHSNS.Models;
 using System;
 
 namespace CHSNS.Service {
-    public class AlbumService {
-        static readonly AlbumService Instance = new AlbumService();
+    public class AlbumService : BaseService<AlbumService>
+    {
         private readonly AlbumOperator _album;
         public AlbumService() {
             _album = new AlbumOperator();
         }
 
-        public static AlbumService GetInstance() {
-            return Instance;
-        }
 
         public List<Album> Items(long uId) {
             return _album.Items(uId);

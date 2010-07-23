@@ -6,21 +6,16 @@ using CHSNS.Model;
 using CHSNS.Operator;
 using CHSNS.SQLServerImplement;
 
-namespace CHSNS.Service {
-    public class EntryService {
-        static readonly EntryService Instance = new EntryService();
+namespace CHSNS.Service
+{
+    public class EntryService : BaseService<EntryService>
+    {
         private readonly EntryOperator _entry;
-        public EntryService() {
+        public EntryService()
+        {
             _entry = new EntryOperator();
         }
 
-        public static EntryService GetInstance() {
-            return Instance;
-        }
-
-  
-      
- 
- 
+        
     }
 }

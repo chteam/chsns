@@ -6,19 +6,16 @@ namespace CHSNS.Service
     /// <summary>
     /// Calling the event
     /// </summary>
-    public class EventService 
+    public class EventService : BaseService<EventService>
     {
-        static readonly EventService Instance = new EventService();
         private readonly EventOperator _event;
         private readonly FriendOperator _friend;
-        public EventService() {
+        public EventService()
+        {
             _event = new EventOperator();
             _friend = new FriendOperator();
         }
 
-        public static EventService GetInstance() {
-            return Instance;
-        }
 
         /// <summary>
         /// 50好友事件
