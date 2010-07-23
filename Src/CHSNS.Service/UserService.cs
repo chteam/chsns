@@ -8,10 +8,10 @@ namespace CHSNS.Service {
     public class UserService : BaseService<UserService>
     {
         private readonly UserOperator _user;
-        private readonly EventOperator _event;
+ 
         public UserService() {
             _user = new UserOperator();
-            _event = new EventOperator();
+ 
         }
 
         public UserPas UserInformation(long userid) {
@@ -65,7 +65,8 @@ namespace CHSNS.Service {
         #region profile
         public void SaveText(long uid, string text, IContext context) {
             _user.SaveText(uid, text);
-            _event.Add(new Event{
+            EventService.Instance.Add(new Event
+            {
                 OwnerId = context.User.UserId,
                 TemplateName = "ProText",
                 AddTime = DateTime.Now,

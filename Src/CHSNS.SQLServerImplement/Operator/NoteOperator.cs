@@ -7,20 +7,20 @@ using CHSNS.SQLServerImplement;
 using CHSNS.Models;
 
 namespace CHSNS.Operator {
-	public class NoteOperator : BaseOperator{
-		/// <summary>
-		/// userid
-		/// </summary>
+    public class NoteOperator : BaseOperator{
+        /// <summary>
+        /// userid
+        /// </summary>
         public void Add(Note note)
-		{
-		    using (var db = DBExtInstance)
-		    {
-		        note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
+        {
+            using (var db = DBExtInstance)
+            {
+                note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
                 db.Note.AddObject(note);
-		        db.SubmitChanges();
-		    }
-		    
-		}
+                db.SubmitChanges();
+            }
+            
+        }
 
         public void Edit(Note note)
         {
@@ -47,10 +47,10 @@ namespace CHSNS.Operator {
             #endregion
         }
 
-	    /// <summary>
-		/// Delete the not e by id
-		/// </summary>
-		public void Delete(long id, long pid, NoteType nt) {
+        /// <summary>
+        /// Delete the not e by id
+        /// </summary>
+        public void Delete(long id, long pid, NoteType nt) {
             using (var db = DBExtInstance)
             {
                 var n = db.Note.FirstOrDefault(c => c.Id == id && c.UserId == pid);
@@ -61,18 +61,18 @@ namespace CHSNS.Operator {
                 }
 
             }
-	        switch (nt) { 
-				case NoteType.Note:
-					break;
-				case NoteType.GroupPost:
-					break;
-				default:
-					break;
-			}
+            switch (nt) { 
+                case NoteType.Note:
+                    break;
+                case NoteType.GroupPost:
+                    break;
+                default:
+                    break;
+            }
 
-		}
+        }
 
-		public NoteDetailsPas Details(long id, NoteType? nt) {
+        public NoteDetailsPas Details(long id, NoteType? nt) {
             using (var db = DBExtInstance)
             {
                 var type = (byte)(nt ?? NoteType.Note);
@@ -92,9 +92,9 @@ namespace CHSNS.Operator {
                           ).FirstOrDefault();
                 return ret;
             }
-		}
+        }
 
-		public List<NotePas> GetLastNotes(int? ni) {
+        public List<NotePas> GetLastNotes(int? ni) {
             using (var db = DBExtInstance)
             {
                 return (from n in db.Note
@@ -112,7 +112,7 @@ namespace CHSNS.Operator {
                                        WriteName = p.Name
                                    }).Take(ni ?? 10).ToList();
             }
-		}
+        }
 
         public PagedList<NotePas> GetNotes(long pid, NoteType? nt, int p, int ep)
         {
@@ -138,5 +138,5 @@ namespace CHSNS.Operator {
             }
         }
 
-	}
+    }
 }
