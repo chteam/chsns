@@ -81,9 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbExtension.cs" />
-    <Compile Include="Operator\ApplicationOperator.cs" />
     <Compile Include="BaseOperator.cs" />
-    <Compile Include="Operator\CommenOperator.cs" />
     <Compile Include="Operator\EntryOperator.cs" />
     <Compile Include="Operator\EventOperator.cs" />
     <Compile Include="Operator\FriendOperator.cs" />

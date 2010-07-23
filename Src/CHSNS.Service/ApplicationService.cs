@@ -1,33 +1,30 @@
-﻿
+﻿namespace CHSNS.Service
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using CHSNS.Models;
 
-using System.Collections.Generic;
-
-using CHSNS.Operator;
-using CHSNS.SQLServerImplement.Operator;
-using CHSNS.Models;
-
-namespace CHSNS.Service {
     public class ApplicationService : BaseService<ApplicationService>
     {
-
-
-        private readonly ApplicationOperator _application;
-        public ApplicationService() {
-            _application = new ApplicationOperator();
-        }
-
-       // private const string APPLISTALL = "APPLISTALL";
+        // private const string APPLISTALL = "APPLISTALL";
         /// <summary>
         /// 缓存的应用列表
         /// </summary>
-        public List<Application> Applications {
-            get {
-                return _application.Applications;
+        public List<Application> Applications
+        {
+            get
+            {
+                using (var db = DBExtInstance)
+                {
+                    return db.Application.Cast<Application>().ToList();
+                }
             }
         }
 
-        public List<Application> GetApps(long[] ids) {
-            return _application.GetApps(ids);
+        public List<Application> GetApps(params long[] ids)
+        {
+            return ids.Length == 0 ? Applications.Where(c => c.IsSystem).ToList() : Applications.Where(c => ids.Contains(c.Id)).ToList();
+
         }
     }
 }
