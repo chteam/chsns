@@ -8,14 +8,6 @@ namespace CHSNS.Service
     using System.Linq;
     public class VideoService : BaseService<VideoService>
     {
-        private readonly VideoOperator _video;
-        public VideoService()
-        {
-            _video = new VideoOperator();
-        }
-
-        
-
         #region ICURDService<SuperNote> 成员
 
         public void Create(IUser user, SuperNote content)
