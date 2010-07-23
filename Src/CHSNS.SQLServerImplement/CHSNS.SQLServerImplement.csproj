@@ -82,13 +82,7 @@
   <ItemGroup>
     <Compile Include="DbExtension.cs" />
     <Compile Include="BaseOperator.cs" />
-    <Compile Include="Operator\EntryOperator.cs" />
-    <Compile Include="Operator\EventOperator.cs" />
-    <Compile Include="Operator\FriendOperator.cs" />
-    <Compile Include="Operator\GatherOperator.cs" />
-    <Compile Include="Operator\MessageOperator.cs" />
     <Compile Include="Operator\NoteOperator.cs" />
-    <Compile Include="Operator\PhotoOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Operator\UserOperator.cs" />
     <Compile Include="Operator\VideoOperator.cs" />

@@ -8,13 +8,13 @@ namespace CHSNS.Service
 {
     public class NoteService : BaseService<NoteService>
     {
-        private readonly EventOperator _event;
+       
         private readonly NoteOperator _note;
 
         public NoteService()
         {
             _note = new NoteOperator();
-            _event = new EventOperator();
+ 
         }
 
 
@@ -27,7 +27,7 @@ namespace CHSNS.Service
             switch ((NoteType) note.Type)
             {
                 case NoteType.Note:
-                    _event.Add(new Event
+                    EventService.Instance.Add(new Event
                                    {
                                        OwnerId = note.UserId,
                                        TemplateName = "AddNote",

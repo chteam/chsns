@@ -1,10 +1,13 @@
-namespace CHSNS.Service {
+namespace CHSNS.Service
+{
     using System.Configuration;
-    public class DataManager {
+    public class DataManager
+    {
 
 
         public string ConnectionString { get; set; }
-        public DataManager() {
+        public DataManager()
+        {
             ConnectionString = ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString;
             Init();
         }
@@ -29,12 +32,11 @@ namespace CHSNS.Service {
 
         #endregion
 
-        public void Init() {
+        public void Init()
+        {
         }
-        public void Dispose() {
+        public void Dispose()
+        {
         }
-
-
-
     }
 }

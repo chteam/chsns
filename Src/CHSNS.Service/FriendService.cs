@@ -1,47 +1,103 @@
-﻿using CHSNS.Config;
-using CHSNS.Model;
-using CHSNS.Operator;
-using System;
- 
-using System.Collections.Generic;
-using CHSNS.Models;
+﻿
 namespace CHSNS.Service
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using CHSNS.Config;
+    using CHSNS.Model;
+    using CHSNS.Models;
 
     public class FriendService : BaseService<FriendService>
     {
-        private readonly FriendOperator _friend;
-        private readonly UserOperator _user;
-        private readonly EventOperator _event;
-        public FriendService()
-        {
-            _friend = new FriendOperator();
-            _user = new UserOperator();
-            _event = new EventOperator();
-        }
-
         #region 获取
-        public Profile UserFriendInfo(long userid)
+        public Profile UserFriendInfo(long userId)
         {
-            return _friend.UserFriendInfo(userid);
+            using (var db = DBExtInstance)
+            {
+                var ret = (from p in db.Profile
+                           where p.UserId == userId
+                           select new
+                           {
+                               UserId = userId,
+                               //   p.FriendCount,
+                               p.Name
+                           }).FirstOrDefault();
+                return new Profile
+                {
+                    UserId = ret.UserId,
+                    //	FriendCount = ret.FriendCount,
+                    Name = ret.Name
+                };
+            }
         }
         public List<long> GetFriendsId(long userid)
         {
-            return _friend.GetFriendsId(userid);
+            using (var db = DBExtInstance)
+            {
+                return (from f1 in db.Friend
+                        where f1.FromId == userid && f1.IsTrue
+                        select f1.ToId)
+                                   .Union(from f1 in db.Friend
+                                          where f1.ToId == userid && f1.IsTrue
+                                          select f1.FromId).ToList();
+            }
         }
-        public PagedList<UserItemPas> GetFriends(long uid, int p, SiteConfig site)
+
+        public PagedList<UserItemPas> GetFriends(long uid, int page, SiteConfig site)
         {
-            return _friend.GetFriends(uid, p, site.EveryPage.Friend);
+            var ids = GetFriendsId(uid);
+            using (var db = DBExtInstance)
+            {
+                var ret = (from c in db.Profile
+                           where ids.Contains(c.UserId)
+                           orderby c.UserId
+                           select new UserItemPas
+                           {
+                               Id = c.UserId,
+                               Name = c.Name,
+                               //   ShowText = c.ShowText,
+                               //   ShowTextTime = c.ShowTextTime
+                           });
+
+                return ret.Pager(page, site.EveryPage.Friend);// );
+
+            }
         }
 
         public List<UserItemPas> GetRandoms(int n)
         {
-            return _friend.GetRandoms(n);
+            using (var db = DBExtInstance)
+            {
+                var ret = (from p in db.Profile
+                           where p.Status.Equals(RoleType.General)
+                           //  orderby db.Newid()
+                           select new UserItemPas
+                           {
+                               Id = p.UserId,
+                               Name = p.Name,
+                           }).Take(n);
+                return ret.ToList();
+            }
         }
 
-        public PagedList<UserItemPas> GetRequests(long userid, int p, SiteConfig site)
+        public PagedList<UserItemPas> GetRequests(long userid, int page, SiteConfig site)
         {
-            return _friend.GetRequests(userid, p, site.EveryPage.FriendRequest);
+            using (var db = DBExtInstance)
+            {
+                var ret = (from f1 in db.Friend
+                           join p1 in db.Profile on f1.FromId equals p1.UserId
+                           where f1.ToId == userid && !f1.IsTrue
+                           orderby p1.UserId descending
+                           select new UserItemPas
+                           {
+                               Id = p1.UserId,
+                               Name = p1.Name,
+                               ShowText = "",
+                               ShowTextTime = DateTime.Now
+                           });
+                return ret.Pager(page, site.EveryPage.FriendRequest);//, Site.EveryPage.FriendRequest);
+            }
         }
 
         #endregion
@@ -53,7 +109,33 @@ namespace CHSNS.Service
         /// <returns>已经是好友则返回False，如果还不是，则返回True，并发送一个好友请求</returns>
         public bool Add(long fromId, long toId)
         {
-            return _friend.Add(fromId, toId);
+            using (var db = DBExtInstance)
+            {
+                var f = db.Friend.FirstOrDefault(
+                    c =>
+                    (c.ToId == toId && c.FromId == fromId)
+                    ||
+                    (c.ToId == fromId && c.FromId == toId)
+                    );
+                if (f == null)
+                {
+                    db.Friend.AddObject(
+                        new Friend
+                        {
+                            FromId = fromId,
+                            ToId = toId,
+                            IsTrue = false,
+                            IsCommon = true
+                        });
+                }
+                else
+                {//update
+                    if (f.FromId == toId)
+                        f.IsTrue = true;
+                }
+                db.SaveChanges();
+            }
+            return true;
         }
 
         /// <summary>
@@ -64,7 +146,20 @@ namespace CHSNS.Service
         /// <returns></returns>
         public bool Delete(long fromId, long toId)
         {
-            return _friend.Delete(fromId, toId);
+            using (var db = DBExtInstance)
+            {
+                var f = db.Friend.FirstOrDefault(
+                    c =>
+                    (c.ToId == toId && c.FromId == fromId)
+                    ||
+                    (c.ToId == fromId && c.FromId == toId)
+                    &&
+                    c.IsTrue
+                    );
+                db.DeleteObject(f);
+                db.SaveChanges();
+            }
+            return true;
         }
 
         /// <summary>
@@ -76,10 +171,10 @@ namespace CHSNS.Service
         /// <returns></returns>
         public bool Agree(long operaterId, long toId, IUser user)
         {
-            var b = _friend.Agree(operaterId, toId);
-            string name = _user.GetUserName(toId);
+            var b = Agree(operaterId, toId);
+            string name = UserService.Instance.GetUserName(toId);
 
-            _event.Add(new Event
+            EventService.Instance.Add(new Event
             {
                 OwnerId = toId,
                 ViewerId = operaterId,
@@ -93,7 +188,22 @@ namespace CHSNS.Service
                 );
             return b;
         }
-
+        internal bool Agree(long operaterId, long toId)
+        {
+            //string name;
+            using (var db = DBExtInstance)
+            {
+                var f = db.Friend.FirstOrDefault(
+                    c =>
+                    (c.ToId == toId && c.FromId == operaterId) ||
+                    (c.ToId == operaterId && c.FromId == toId) && !c.IsTrue
+                    );
+                if (f == null) return false;
+                f.IsTrue = true;
+                db.SaveChanges();
+            }
+            return true;
+        }
         /// <summary>
         /// Ignores friend request
         /// </summary>
@@ -102,11 +212,24 @@ namespace CHSNS.Service
         /// <returns></returns>
         public bool Ignore(long fromId, long operaterId)
         {
-            return _friend.Ignore(fromId, operaterId);
+            using (var db = DBExtInstance)
+            {
+                var f = db.Friend.FirstOrDefault(c => c.ToId == operaterId && c.FromId == fromId && !c.IsTrue);
+                if (f == null) return false;
+                db.DeleteObject(f);
+                db.SaveChanges();
+                return true;
+            }
         }
-        public bool IgnoreAll(long uId)
+        public bool IgnoreAll(long userId)
         {
-            return _friend.IgnoreAll(uId);
+            using (var db = DBExtInstance)
+            {
+                var f = db.Friend.Where(c => c.ToId == userId && !c.IsTrue);
+                db.DeleteObject(f);
+                db.SaveChanges();
+                return true;
+            }
         }
     }
 }
