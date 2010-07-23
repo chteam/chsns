@@ -81,8 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbExtension.cs" />
-    <Compile Include="Operator\AccountOperator.cs" />
-    <Compile Include="Operator\AlbumOperator.cs" />
     <Compile Include="Operator\ApplicationOperator.cs" />
     <Compile Include="BaseOperator.cs" />
     <Compile Include="Operator\CommenOperator.cs" />
