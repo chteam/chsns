@@ -84,7 +84,6 @@
     <Compile Include="BaseOperator.cs" />
     <Compile Include="Operator\NoteOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Operator\UserOperator.cs" />
     <Compile Include="Operator\VideoOperator.cs" />
     <Compile Include="Operator\ViewOperator.cs" />
     <Compile Include="Operator\GroupOperator.cs" />
