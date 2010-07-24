@@ -1,15 +1,13 @@
-﻿        using System;
-using System.Linq;
-    using System.Web.Mvc;
-    using CHSNS.Model;
-
-using CHSNS.ViewModel;
-using CHSNS.Operator;
-using CHSNS.SQLServerImplement;
-using CHSNS.Models;
+﻿
 
 namespace CHSNS.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+    using CHSNS.Model;
+    using CHSNS.Models;
+    using CHSNS.ViewModel;
     public partial class EntryController : BaseController
     {
         #region 前台部分

@@ -6,7 +6,6 @@ namespace CHSNS.Service
     using System.Linq;
     using CHSNS.Model;
     using CHSNS.Models;
-    using CHSNS.SQLServerImplement;
     public class EntryService : BaseService<EntryService>
     {
         public bool HasTitle(string url)
@@ -44,7 +43,7 @@ namespace CHSNS.Service
 
                 db.DeleteObject(vs);
                 db.DeleteObject(entry);
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 
@@ -65,7 +64,7 @@ namespace CHSNS.Service
                     var e = db.Entry.FirstOrDefault(c => c.Id == ev.EntryId);
                     e.CurrentId = lastv.Id;
                 }
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 
@@ -77,7 +76,7 @@ namespace CHSNS.Service
                 ev.Status = (int)EntryVersionType.Common;
                 var e = db.Entry.Where(c => c.Id == ev.EntryId).SingleOrDefault();
                 e.CurrentId = ev.Id;
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 
@@ -179,7 +178,7 @@ namespace CHSNS.Service
                     var old = db.Entry.Where(c => c.Url == entry.Url.Trim()).Count();
                     if (old > 0) return false;
                     db.Entry.AddObject(entry);
-                    db.SubmitChanges();
+                    db.SaveChanges();
                 }
                 entryVersion.EntryId = entry.Id;
                 entryVersion.AddTime = DateTime.Now;
