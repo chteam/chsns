@@ -4,7 +4,6 @@ namespace CHSNS.Service
     using System;
     using System.Linq;
     using CHSNS.Models;
-    using CHSNS.SQLServerImplement;
     public class PhotoService : BaseService<PhotoService>
     {
 
@@ -14,7 +13,7 @@ namespace CHSNS.Service
             using (var db = DBExtInstance)
             {
                 db.Photo.AddObject(photo);
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 

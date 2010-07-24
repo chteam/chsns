@@ -4,7 +4,6 @@
     using CHSNS.Config;
     using CHSNS.Model;
     using CHSNS.Models;
-    using CHSNS.SQLServerImplement;
 
     public class CommentService : BaseService<CommentService>
     {
@@ -43,7 +42,7 @@
             using (var db = DBExtInstance)
             {
                 db.Reply.AddObject(r);
-                db.SubmitChanges();
+                db.SaveChanges();
             }
             return r;
         }
@@ -53,7 +52,7 @@
             {
                 var obj = db.Reply.FirstOrDefault(c => c.Id == id && c.UserId == userid);
                 db.DeleteObject(obj);
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 
@@ -113,7 +112,7 @@
                     var n = db.Note.FirstOrDefault(c => c.Id == com.ShowerId && c.CommentCount > 0);
                     if (null != n) n.CommentCount--;
                 }
-                db.SubmitChanges();
+                db.SaveChanges();
                 return true;
             }
         }
@@ -133,7 +132,7 @@
                     default:
                         break;
                 }
-                db.SubmitChanges();
+                db.SaveChanges();
             }
         }
 
