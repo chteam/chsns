@@ -2,7 +2,6 @@
 namespace CHSNS.Service
 {
     using CHSNS.Model;
-    using CHSNS.Operator;
     using System.Linq;
 
     /// <summary>

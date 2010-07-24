@@ -107,10 +107,6 @@
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>CHSNS.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.SQLServerImplement\CHSNS.SQLServerImplement.csproj">
-      <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
-      <Name>CHSNS.SQLServerImplement</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

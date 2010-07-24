@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using CHSNS.Model;
 using CHSNS.Models;
-using CHSNS.Operator;
+
 using System.Linq;
 namespace CHSNS.Service
 {
