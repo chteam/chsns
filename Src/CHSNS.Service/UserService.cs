@@ -3,7 +3,6 @@ namespace CHSNS.Service {
     using System;
     using CHSNS.Model;
 
-    using CHSNS.Operator;
     using CHSNS.Models;
     using System.Linq;
     public class UserService : BaseService<UserService>

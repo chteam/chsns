@@ -1,39 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CHSNS.Model;
-
-using CHSNS.Operator;
 using CHSNS.Models;
-
 namespace CHSNS.Service
 {
     public class GroupService : BaseService<GroupService>
     {
-        private readonly GroupOperator _group;
-        public GroupService()
-        {
-            _group = new GroupOperator();
-        }
 
         public GroupUser GetGroupUser(long gId, long uId)
         {
-            return _group.GetGroupUser(gId, uId);
+            using (var db = DBExtInstance)
+            {
+                return db.GroupUser.FirstOrDefault(gu => gu.UserId == uId && gu.GroupId == gId);
+            }
         }
         public Group Get(long groupId)
         {
-            return _group.Get(groupId);
+            using (var db = DBExtInstance)
+            {
+                return db.Group.FirstOrDefault(c => c.Id == groupId);
+            }
         }
         public int WaitJoinCount(long groupId)
         {
-            return _group.WaitJoinCount(groupId);
+            var type = (byte)GroupUserStatus.Wait;
+            using (var db = DBExtInstance)
+            {
+                return db.GroupUser.Where(
+                    c => c.GroupId == groupId
+                         && c.Status.Equals(type)
+                    ).Count();
+            }
         }
         public List<UserItemPas> GetAdmins(long groupId)
         {
-            return _group.GetAdmins(groupId);
+            byte tc = (byte)GroupUserStatus.Ceater;
+            byte ta = (byte)GroupUserStatus.Admin;
+            using (var db = DBExtInstance)
+            {
+                return (from gu in db.GroupUser
+                        join a in db.Profile on gu.UserId equals a.UserId
+                        where gu.GroupId == groupId
+                              && (gu.Status.Equals(tc) ||
+                                  gu.Status.Equals(ta))
+                        orderby gu.Status descending
+                        select new UserItemPas
+                        {
+                            Name = a.Name,
+                            Id = a.UserId
+                        }).ToList();
+            }
         }
         public PagedList<Group> GetList(long uId, int page, int pageSize)
         {
-            return _group.GetList(uId, page, pageSize);
+            using (var db = DBExtInstance)
+            {
+                var ret = (from gu in db.GroupUser
+                           join g in db.Group on gu.GroupId equals g.Id
+                           where gu.UserId == uId
+                           select g
+                                        ).Cast<Group>();
+                ret = ret.OrderBy(c => c.Id);
+                return ret.Pager(page, pageSize);
+            }
         }
         public bool Add(string name, long uId)
         {
@@ -45,16 +75,53 @@ namespace CHSNS.Service
                 Summary = "",
                 CreaterId = uId
             };
-            return _group.Add(group, uId);
+
+            using (var db = DBExtInstance)
+            {
+                db.Group.AddObject(group);
+                db.SaveChanges();
+                var gu = new GroupUser
+                {
+                    GroupId = group.Id,
+                    Status = (byte)GroupUserStatus.Ceater,
+                    UserId = uId,
+                    AddTime = DateTime.Now
+                };
+                db.GroupUser.AddObject(gu);
+                db.SaveChanges();
+            }
+            return true;
         }
         public bool Update(long groupId, Group group)
         {
             group.Id = groupId;
-            return _group.Update(group);
+            using (var db = DBExtInstance)
+            {
+                var g = db.Group.Where(c => c.Id == group.Id).FirstOrDefault();
+                if (g == null) return false;
+                g.Name = group.Name;
+                g.JoinLevel = group.JoinLevel;
+                g.ShowLevel = group.ShowLevel;
+                g.Summary = group.Summary ?? "";
+                db.SaveChanges();
+            }
+            return true;
         }
         public List<UserCountPas> GetGroupUser(long groupId)
         {
-            return _group.GetGroupUser(groupId);
+            using (var db = DBExtInstance)
+            {
+                var list = (from g in db.GroupUser
+                            join u in db.Profile on g.UserId equals u.UserId
+                            where g.GroupId == groupId
+                            select new UserCountPas
+                            {
+                                Id = u.UserId,
+                                Name = u.Name,
+                                Count = g.Status
+                            });
+                return list.ToList();
+            }
         }
     }
 }

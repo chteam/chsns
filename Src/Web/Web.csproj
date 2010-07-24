@@ -487,10 +487,6 @@
       <Project>{2D4FB641-C7D3-4E7F-8B58-A083C0541B66}</Project>
       <Name>CHSNS.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CHSNS.SQLServerImplement\CHSNS.SQLServerImplement.csproj">
-      <Project>{35BE4C3F-C9D9-49C5-B8DA-ADCF8BD144F3}</Project>
-      <Name>CHSNS.SQLServerImplement</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
