@@ -12,8 +12,9 @@ namespace CHSNS {
         /// 构造函数唯一
         /// </summary>
         /// <param name="context"></param>
-        public CHContext(HttpContextBase context) {
+        public CHContext(HttpContextBase context,string appRootPath) {
             HttpContext = context;
+            AppRootPath = appRootPath;
         }
         public IPathGenerate Path {
             get {
@@ -54,6 +55,7 @@ namespace CHSNS {
             }
         }
         #endregion
+
         #region Cookies
         ICookies _cookies;
         public ICookies Cookies {
@@ -65,6 +67,7 @@ namespace CHSNS {
             }
         }
         #endregion
+
         #region Site
         SiteConfig _site;
         public SiteConfig Site {
@@ -77,6 +80,7 @@ namespace CHSNS {
             }
         }
         #endregion
+
         #region Online
         IOnline _online;
         public IOnline Online {
@@ -88,6 +92,7 @@ namespace CHSNS {
             }
         }
         #endregion
+
         #region Serializer
         ISerializer _serializer;
         public ISerializer ConfigSerializer {
@@ -99,16 +104,10 @@ namespace CHSNS {
             }
         }
         #endregion
-        #region DataManager
-        //IDBManager _dbmanager;
-        //public IDBManager DataManager {
-        //    get {
-        //        return _dbmanager ?? (_dbmanager = new SQLServerDBManager(this));
-        //    }
-        //    set {
-        //        _dbmanager = value;
-        //    }
-        //}
+
+        #region Http prop
+
+        public string AppRootPath { get; private set; }
 
         public HttpContextBase HttpContext {
             get;
