@@ -16,6 +16,10 @@ namespace CHSNS {
             HttpContext = context;
             AppRootPath = appRootPath;
         }
+        public CHContext(HttpContextBase context)
+        {
+            HttpContext = context;
+        }
         public IPathGenerate Path {
             get {
                 return LocalPathGenerate.Intance;
