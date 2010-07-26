@@ -3,15 +3,16 @@
  * Date: 2007-10-19
  * Time: 22:51
  */
-using System;
-using System.Runtime.CompilerServices;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using CHSNS.Service;
-using System.Web.Security;
 namespace CHSNS.Web
 {
+    using System;
+    using System.Runtime.CompilerServices;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Routing;
+    using CHSNS.Service;
+    using System.Web.Security;
+
     [CompilerGlobalScope]
     public class Global : HttpApplication
     {
