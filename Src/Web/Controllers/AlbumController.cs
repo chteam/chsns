@@ -54,6 +54,7 @@ namespace CHSNS.Controllers
         }
 
         #endregion
+
         #region œ‡≤·
         public virtual ActionResult Details(long id, int? p)
         {
@@ -109,7 +110,7 @@ namespace CHSNS.Controllers
         }
 
         #endregion
-		#region …Ë÷√Õº∆¨Œ™∑‚∆§
+        #region …Ë÷√Õº∆¨Œ™∑‚∆§
         public virtual ActionResult SetFace(long id)
         {
 
@@ -125,6 +126,6 @@ namespace CHSNS.Controllers
         }
 
         #endregion
-	}
+    }
 }
 

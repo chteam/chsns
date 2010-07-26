@@ -7,10 +7,10 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers {
 
-	[Authorize]
+    [Authorize]
     public partial class GroupController : BaseController
     {
-		#region 主页
+        #region 主页
         public virtual ActionResult Index(long id, int? p)
         {
             InitPage(ref p);
@@ -72,7 +72,7 @@ namespace CHSNS.Controllers {
             return View(g);
         }
 
-	    #endregion
+        #endregion
 
         public virtual ActionResult List(long? uid, int? p)
         {
@@ -82,14 +82,14 @@ namespace CHSNS.Controllers {
             return View(DataExt.Group.GetList(uid.Value, p.Value, 10));
         }
 
-	    #region Create
-		[HttpGet]
+        #region Create
+        [HttpGet]
         public virtual ActionResult Create()
         {
-			Title = "新建群";
-			ViewData["category"] = ConfigSerializer.GetConfig("Category").ToSelectList(c => c.Value, c => c.Text);
-			return View();
-		}
+            Title = "新建群";
+            ViewData["category"] = ConfigSerializer.GetConfig("Category").ToSelectList(c => c.Value, c => c.Text);
+            return View();
+        }
         [HttpPost]
         public virtual ActionResult Create(string name)
         {
@@ -97,9 +97,9 @@ namespace CHSNS.Controllers {
             DataExt.Group.Add(name, CHUser.UserId);
             return this.RedirectToReferrer();
         }
-		#endregion
+        #endregion
 
-		#region 管理
+        #region 管理
         [HttpGet]
         public virtual ActionResult Manage(long id)
         {
@@ -107,20 +107,20 @@ namespace CHSNS.Controllers {
             return ManageResult(DataExt.Group.Get(id));
         }
 
-	    [NonAction]
-		ActionResult ManageResult(Group g) {
+        [NonAction]
+        ActionResult ManageResult(Group g) {
             if (g == null)
                 return HttpNotFound("group not found");
-			Title = g.Name + "管理";
-			ViewData["group.ShowLevel"] = new SelectList(
-				ConfigSerializer.Load<List<ListItem>>("Group/ShowLevel"),
-				"Value", "Text", g.ShowLevel);
-			ViewData["group.JoinLevel"] = new SelectList(
-				ConfigSerializer.Load<List<ListItem>>("Group/JoinLevel"),
-				"Value", "Text", g.JoinLevel);
-			ViewData["group"] = g;
-			return View();
-		}
+            Title = g.Name + "管理";
+            ViewData["group.ShowLevel"] = new SelectList(
+                ConfigSerializer.Load<List<ListItem>>("Group/ShowLevel"),
+                "Value", "Text", g.ShowLevel);
+            ViewData["group.JoinLevel"] = new SelectList(
+                ConfigSerializer.Load<List<ListItem>>("Group/JoinLevel"),
+                "Value", "Text", g.JoinLevel);
+            ViewData["group"] = g;
+            return View();
+        }
 
         [HttpPost]
         public virtual ActionResult Manage(long id, Group group)
@@ -130,19 +130,19 @@ namespace CHSNS.Controllers {
             return RedirectToAction("Manage", new{id});
         }
 
-	    #endregion
+        #endregion
 
-		#region 用户管理
+        #region 用户管理
         public virtual ActionResult ManageUser(long id)
         {
-			Title = "用户管理";
-		    ViewData["list"] = DataExt.Group.GetGroupUser(id);
+            Title = "用户管理";
+            ViewData["list"] = DataExt.Group.GetGroupUser(id);
             
-			return View();
-		}
-		#endregion
+            return View();
+        }
+        #endregion
 
-		#region 帖子
+        #region 帖子
         public virtual ActionResult Details(long id)
         {
             var note = DataExt.Note.Details(id, NoteType.GroupPost);
@@ -154,56 +154,56 @@ namespace CHSNS.Controllers {
             return View(note);
         }
 
-	    [HttpPost]
+        [HttpPost]
         public virtual ActionResult Post(long? id, Note note)
         {
-			using (var ts = new TransactionScope()) {
-				if (note.Title.Length < 1 || note.Body.Length < 1) {
-					Message = "请输入正确的日志内容";
-					return this.RedirectToReferrer();
-				}
-				note.Type = (int)NoteType.GroupPost;
+            using (var ts = new TransactionScope()) {
+                if (note.Title.Length < 1 || note.Body.Length < 1) {
+                    Message = "请输入正确的日志内容";
+                    return this.RedirectToReferrer();
+                }
+                note.Type = (int)NoteType.GroupPost;
                 note.UserId = CHContext.User.UserId;
-				if (id.HasValue) {
-					note.Id = id.Value;
-					DataExt.Note.Edit(note);
-				} else {
-					DataExt.Note.Add(note,CHUser);
-				}
-				ts.Complete();
-				return this.RedirectToReferrer();
-			}
-		}
-		#endregion
-		/*public void ClassList() {
+                if (id.HasValue) {
+                    note.Id = id.Value;
+                    DataExt.Note.Edit(note);
+                } else {
+                    DataExt.Note.Add(note,CHUser);
+                }
+                ts.Complete();
+                return this.RedirectToReferrer();
+            }
+        }
+        #endregion
+        /*public void ClassList() {
 
-			Dictionary dict = new Dictionary();
-			dict.Add("@userid", CHSNSUser.Current.UserId);
-			ViewData.Add("rows",DataBaseExecutor.GetRows(
-				"GetRelationClass", dict));
-		}
-		
-		public void CreateClass() {
-			Dictionary dict=new Dictionary();
-			dict.Add("@userid",CHSNSUser.Current.UserId);
-			DataRowCollection rows = DataBaseExecutor.GetRows(
-				"SchoolInfo", dict);
-			if (rows.Count != 0) {
-				ViewData.Add("University", rows[0]["University"]);
-				ViewData.Add("Xueyuan", rows[0]["XueYuan"]);
-				ViewData.Add("Grade", rows[0]["Grade"]);
-			}
-		}
+            Dictionary dict = new Dictionary();
+            dict.Add("@userid", CHSNSUser.Current.UserId);
+            ViewData.Add("rows",DataBaseExecutor.GetRows(
+                "GetRelationClass", dict));
+        }
+        
+        public void CreateClass() {
+            Dictionary dict=new Dictionary();
+            dict.Add("@userid",CHSNSUser.Current.UserId);
+            DataRowCollection rows = DataBaseExecutor.GetRows(
+                "SchoolInfo", dict);
+            if (rows.Count != 0) {
+                ViewData.Add("University", rows[0]["University"]);
+                ViewData.Add("Xueyuan", rows[0]["XueYuan"]);
+                ViewData.Add("Grade", rows[0]["Grade"]);
+            }
+        }
 
-		public ActionResult ShowGroupList(string template,long Ownerid,
-			int groupclass,int Npage,int Epage,int type) {
-			return View(template, DataBaseExecutor.GetRows("GroupList",
-				"@userid", Ownerid
-				, "@page", Npage
-				, "@everypage", Epage
-				, "@GroupClass", groupclass
-				, "@type", type
-				));
-		}*/
-	}
+        public ActionResult ShowGroupList(string template,long Ownerid,
+            int groupclass,int Npage,int Epage,int type) {
+            return View(template, DataBaseExecutor.GetRows("GroupList",
+                "@userid", Ownerid
+                , "@page", Npage
+                , "@everypage", Epage
+                , "@GroupClass", groupclass
+                , "@type", type
+                ));
+        }*/
+    }
 }
