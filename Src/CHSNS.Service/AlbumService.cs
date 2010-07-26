@@ -53,6 +53,12 @@ namespace CHSNS.Service {
                         select ph).Pager(page, pageSize);
             }
         }
+        /// <summary>
+        /// 获取相册并更改其中图片数量
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
         public Album GetCountChange(long id, int num) {
             using (var db = DBExtInstance)
             {

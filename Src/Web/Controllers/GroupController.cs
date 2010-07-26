@@ -18,9 +18,11 @@ namespace CHSNS.Controllers {
             #region 群信息和用户
 
             var g = DataExt.Group.Get(id);
-            Validate404(g);
+            if (g == null)
+                return HttpNotFound("group not found");
             var u = DataExt.Group.GetGroupUser(id, CHUser.UserId);
-            Validate404(u);
+            if (u == null)
+                return HttpNotFound("group user not found");
             ViewData["guser"] = u;
             Title = g.Name;
 
@@ -107,7 +109,8 @@ namespace CHSNS.Controllers {
 
 	    [NonAction]
 		ActionResult ManageResult(Group g) {
-			Validate404(g);
+            if (g == null)
+                return HttpNotFound("group not found");
 			Title = g.Name + "管理";
 			ViewData["group.ShowLevel"] = new SelectList(
 				ConfigSerializer.Load<List<ListItem>>("Group/ShowLevel"),
