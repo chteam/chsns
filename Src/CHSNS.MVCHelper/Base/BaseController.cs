@@ -1,12 +1,10 @@
-using System.Web.Mvc;
-using CHSNS.Service;
+
 
 namespace CHSNS.Controllers {
-
-    //	[Helper(typeof(StringHelper),"String")]
-    [OnlineFilter]
-    [HandleError]
+    using System.Web.Mvc;
+    using CHSNS.Service;
     abstract public class BaseController : NewBaseController {
+
         #region Êý¾Ý²Ù×÷
         private DataManager _dataExt;
         protected DataManager DataExt {

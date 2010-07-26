@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
-using CHSNS.ViewModel;
-using System.Web;
+﻿
 
 namespace CHSNS
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Web.Mvc;
+    using CHSNS.ViewModel;
+    using System.Web;
 
-    //	[Helper(typeof(StringHelper),"String")]
-    [OnlineFilter]
-    [HandleError]
     abstract public class NewBaseController : Controller
     {
  
@@ -27,28 +25,12 @@ namespace CHSNS
                 return CHContext.ConfigSerializer as ConfigSerializer;
             }
         }
-        public Boolean IsPost
-        {
-            get
-            {
-                return Request.Form.Count != 0;
-            }
-        }
-        public string Title
-        {
-            set
-            {
-                ViewData["Page_Title"] = value;
-            }
-        }
+        public Boolean IsPost { get { return Request.Form.Count != 0; } }
+        
+        public string Title { set { ViewData["Page_Title"] = value; } }
 
-        public string Message
-        {
-            set
-            {
-                TempData["Page_Message"] = value;
-            }
-        }
+        public string Message { set { TempData["Page_Message"] = value; } }
+
         protected static void InitPage(ref int? p)
         {
             if (!p.HasValue || p == 0) p = 1;
@@ -70,12 +52,9 @@ namespace CHSNS
                 ViewData["Page_Title"] += "-" + CHContext.Site.BaseConfig.Title;
            
         }
-        protected static void Validate404(object obj)
-        {
-            if (obj == null)
-                throw new HttpException(404, "Not Found");
-        }
+
         public CHIdentity CHUser { get { return User.Identity as CHIdentity; } }
+
         protected bool HasManageRight()
         {
             return CHUser.Status.Equals(RoleType.Editor) || CHUser.Status .Equals(RoleType.Creater);

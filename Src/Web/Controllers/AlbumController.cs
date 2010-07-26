@@ -80,7 +80,8 @@ namespace CHSNS.Controllers
         public virtual ActionResult UploadPhoto(string name, long id, HttpPostedFileBase file)
         {
             var al = DataExt.Album.GetCountChange(id,1);
-            Validate404(al);
+            if (al == null)
+                return HttpNotFound("album not found");
             var p = new Photo { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = CHUser.UserId };
             var f = new ImageUpload(file,
                                     CHContext,
