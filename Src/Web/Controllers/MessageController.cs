@@ -28,7 +28,7 @@ namespace CHSNS.Controllers
         {
             InitPage(ref p);
           //  InitPage(ref ep, 10);
-            var m = DataExt.Message.GetInbox(CHUser.UserId, p.Value,CHContext.Site);
+            var m = DataManager.Message.GetInbox(CHUser.UserId, p.Value,CHContext.Site);
             ViewData["NowPage"] = p;
             ViewData["PageCount"] = m.TotalPages;
             return View(m);
@@ -44,7 +44,7 @@ namespace CHSNS.Controllers
         {
             InitPage(ref p);
            // InitPage(ref ep, 10);
-            var m = DataExt.Message.GetOutbox(CHUser.UserId, p.Value, CHContext.Site);
+            var m = DataManager.Message.GetOutbox(CHUser.UserId, p.Value, CHContext.Site);
             ViewData["NowPage"] = p;
             ViewData["PageCount"] = m.TotalPages;
             return View(m);
@@ -53,13 +53,13 @@ namespace CHSNS.Controllers
         [HttpPost]
         public virtual ActionResult Delete(long id, int t)
         {
-            DataExt.Message.Delete(id, (MessageBoxType)t, CHUser.UserId);
+            DataManager.Message.Delete(id, (MessageBoxType)t, CHUser.UserId);
             //CHStatic.Clear();
             return Content("");
         }
         public virtual ActionResult Details(long id)
         {
-            var m = DataExt.Message.Details(id, CHUser.UserId);
+            var m = DataManager.Message.Details(id, CHUser.UserId);
             Title = m.Message.Title;
             //	CHStatic.Clear();
             return View(m);
@@ -83,7 +83,7 @@ namespace CHSNS.Controllers
                 SendTime = DateTime.Now
             };
             UpdateModel(m, new[] { "Title", "Body", "ToID" });
-            DataExt.Message.Add(m,CHContext);
+            DataManager.Message.Add(m,CHContext);
 
         }
         [HttpPost]

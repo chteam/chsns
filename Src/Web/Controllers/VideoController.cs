@@ -18,7 +18,7 @@ namespace CHSNS.Controllers {
         [HttpPost]
         public virtual ActionResult Edit(SuperNote video)
         {
-            DataExt.Video.Create(CHUser,video);
+            DataManager.Video.Create(CHUser,video);
             Message = "提交成功";
             return RedirectToAction("List");
         }
@@ -29,13 +29,13 @@ namespace CHSNS.Controllers {
         public virtual ActionResult List(long? uid, int? p)
         {
             InitPage(ref p);
-            ViewData["list"] = DataExt.Video.List(uid,p.Value, 10,CHUser);
+            ViewData["list"] = DataManager.Video.List(uid,p.Value, 10,CHUser);
             Title = "视频列表";
             return View();
         }
         public virtual ActionResult Del(long[] uid)
         {
-            DataExt.Video.Remove(CHUser,uid);
+            DataManager.Video.Remove(CHUser,uid);
             return View();
         }
     }

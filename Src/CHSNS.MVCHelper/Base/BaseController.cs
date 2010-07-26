@@ -5,12 +5,6 @@ namespace CHSNS.Controllers {
     using CHSNS.Service;
     abstract public class BaseController : Controller {
 
-        #region Êý¾Ý²Ù×÷
-        private DataManager _dataExt;
-        protected DataManager DataExt {
-            get { return _dataExt ?? (_dataExt = new DataManager()); }
-        }
-        #endregion
 
         private GolbalService _global;
         public GolbalService Global

@@ -9,7 +9,7 @@ namespace CHSNS.Controllers {
         }
         public virtual ActionResult SaveText(string text)
         {
-            DataExt.UserInfo.SaveText(CHUser.UserId, text, CHContext);
+            DataManager.UserInfo.SaveText(CHUser.UserId, text, CHContext);
             return Content("");
         }
     }

@@ -54,7 +54,7 @@ namespace CHSNS.Controllers {
                         );
             }
             //SetStarLevel(CHUser.UserId); //更新
-            DataExt.Photo.Add(new Photo
+            DataManager.Photo.Add(new Photo
                                 {
                                     Title = "头像" + DateTime.Now.ToString("yyyyMMddhhmm"),
                                     UserId = CHUser.UserId,
@@ -62,7 +62,7 @@ namespace CHSNS.Controllers {
                                     Domain = CHContext.Site.Upload.Domain,
                                     Url = photourl
                                 });
-            DataExt.UserInfo.ChangeFace(CHUser.UserId, System.IO.Path.Combine(CHContext.Site.Upload.Domain, photourl));
+            DataManager.UserInfo.ChangeFace(CHUser.UserId, System.IO.Path.Combine(CHContext.Site.Upload.Domain, photourl));
             //更新头像地址
             //将新头像地址存入相册
             return
