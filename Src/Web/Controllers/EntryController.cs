@@ -1,6 +1,4 @@
-﻿
-
-namespace CHSNS.Controllers
+﻿namespace CHSNS.Controllers
 {
     using System;
     using System.Linq;
@@ -8,6 +6,7 @@ namespace CHSNS.Controllers
     using CHSNS.Model;
     using CHSNS.Models;
     using CHSNS.ViewModel;
+
     public partial class EntryController : BaseController
     {
         #region 前台部分
@@ -64,6 +63,7 @@ namespace CHSNS.Controllers
 
         
         #endregion
+
         #region 管理员后台
         /// <summary>
         /// 编辑与创建词条
