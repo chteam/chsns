@@ -20,7 +20,7 @@
             var model = new EntryIndexViewModel();
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
-            var t = DataExt.Entry.Get(url);
+            var t = DataManager.Entry.Get(url);
             model.Entry = t.Key;
             if (model.Entry == null) return Wait();
             var version = t.Value;
@@ -43,14 +43,14 @@
         public virtual ActionResult HistoryList(long id)
         {
             // var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
-            ViewData["Source"] = DataExt.Entry.Historys(id);
+            ViewData["Source"] = DataManager.Entry.Historys(id);
             Title = "版本比较";
             return View();
         }
 
         public virtual ActionResult History(long versionId)
         {
-            var t = DataExt.Entry.GetFromVersion(versionId);
+            var t = DataManager.Entry.GetFromVersion(versionId);
             if (t.Key == null || t.Value == null) return View("wait", "site");
             var entry = t.Key;
             var version = t.Value;
@@ -80,7 +80,7 @@
     
             if (id != null) {
                 //修改
-                var d = DataExt.Entry.Get(id.Value);
+                var d = DataManager.Entry.Get(id.Value);
                 var entry = d.Key;
                 if ((entry.Status == (int)EntryType.Common || HasManageRight())) {
                     ViewData["exists"] = true;
@@ -119,7 +119,7 @@
         [ValidateInput(false)]
         public virtual ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags)
         {
-            var b = DataExt.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
+            var b = DataManager.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
             if (!b) throw new ApplicationException("标题已存在");
             return RedirectToAction("NewList");
         }
@@ -127,7 +127,7 @@
         public virtual ActionResult AdminHistoryList(string url)
         {
             url = url.Trim();
-            ViewData["Source"] = DataExt.Entry.Historys(url);
+            ViewData["Source"] = DataManager.Entry.Historys(url);
             Title = "历史版本";
             return View();
         }
@@ -139,7 +139,7 @@
         [AdminFilter]
         public virtual ActionResult NewList()
         {
-            var li = DataExt.Entry.List(1, 10);
+            var li = DataManager.Entry.List(1, 10);
             Title = "词条列表";
             return View(li);
         }
@@ -164,7 +164,7 @@
              * 1.设置当前版本为最新版本词条
              * 2.将当前版本状态改为常规状态
              */
-            DataExt.Entry.PassWaitVersion(id);
+            DataManager.Entry.PassWaitVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -178,7 +178,7 @@
             /*
              * 锁定当前版本
              */
-            DataExt.Entry.LockCommonVersion(id);
+            DataManager.Entry.LockCommonVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -189,13 +189,13 @@
         [AdminFilter]
         public virtual ActionResult Delete(long id)
         {
-            DataExt.Entry.DeleteByVersionId(id, CHUser.UserId);
+            DataManager.Entry.DeleteByVersionId(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         [AdminFilter]
         public virtual ActionResult DeleteVersion(long id)
         {
-            DataExt.Entry.DeleteVersion(id, CHUser.UserId);
+            DataManager.Entry.DeleteVersion(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion
@@ -203,7 +203,7 @@
         #region Ajax
         public virtual ActionResult Has(string title)
         {
-            var exists = DataExt.Entry.HasTitle(title);
+            var exists = DataManager.Entry.HasTitle(title);
             return Json(exists); 
         }
 

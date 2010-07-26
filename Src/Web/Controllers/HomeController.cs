@@ -15,7 +15,7 @@ namespace CHSNS.Controllers
             return RedirectToAction("index", "Entry", new { title = "index" });
         }
 		public void LogOff() {
-            DataExt.Account.Logout(CHContext);
+            DataManager.Account.Logout(CHContext);
 			RedirectToAction("index");
 		}
 		protected override void HandleUnknownAction(string actionName) {

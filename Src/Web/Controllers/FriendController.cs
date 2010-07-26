@@ -12,7 +12,7 @@ namespace CHSNS.Controllers {
         #region Action
         public virtual ActionResult Random()
         {
-            ViewData["source"] = DataExt.Friend.GetRandoms(10);
+            ViewData["source"] = DataManager.Friend.GetRandoms(10);
             return View();
         }
         [Authorize]
@@ -20,7 +20,7 @@ namespace CHSNS.Controllers {
         {
             if (!userid.HasValue || userid == 0) userid = CHUser.UserId;
             InitPage(ref p);
-            var b = DataExt.Friend.UserFriendInfo(userid.Value);
+            var b = DataManager.Friend.UserFriendInfo(userid.Value);
             if (b == null) throw new ApplicationException("用户不存在");
             ViewData["UserId"] = userid;
             ViewData["Name"] = b.Name;
@@ -35,9 +35,9 @@ namespace CHSNS.Controllers {
         public virtual ActionResult RequestHack(int? p)
         {
             InitPage(ref p);
-            var profile = DataExt.Friend.UserFriendInfo(CHUser.UserId);
+            var profile = DataManager.Friend.UserFriendInfo(CHUser.UserId);
             if (profile == null) throw new ApplicationException("用户不存在");
-            var items = DataExt.Friend.GetRequests(CHUser.UserId, p.Value, CHContext.Site);
+            var items = DataManager.Friend.GetRequests(CHUser.UserId, p.Value, CHContext.Site);
             Title = profile.Name + "的好友请求";
             return View(new FriendRequest { Items = items, Profile = profile });
 
@@ -50,7 +50,7 @@ namespace CHSNS.Controllers {
         [HttpPost]
         public virtual ActionResult FriendList(int p, long userid)
         {
-            var list = DataExt.Friend.GetFriends(userid, p, CHContext.Site);
+            var list = DataManager.Friend.GetFriends(userid, p, CHContext.Site);
             ViewData["PageCount"] = list.TotalPages;
             return View(list);
         }
@@ -58,13 +58,13 @@ namespace CHSNS.Controllers {
         [HttpPost]
         public virtual ActionResult RequestList(int p, long userid)
         {
-            return View(DataExt.Friend.GetRequests(userid, p, CHContext.Site));
+            return View(DataManager.Friend.GetRequests(userid, p, CHContext.Site));
         }
         [Authorize]
         [HttpPost]
         public virtual ActionResult RandomList()
         {
-            return View(DataExt.Friend.GetRandoms(10));
+            return View(DataManager.Friend.GetRandoms(10));
         }
         #endregion
 
@@ -75,7 +75,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var x = DataExt.Friend.Add(CHUser.UserId, toid);
+                var x = DataManager.Friend.Add(CHUser.UserId, toid);
                 ts.Complete();
                 if (x) return Content("已经向对方发出请求");
                 return Content("对方已经是你的好友");
@@ -92,7 +92,7 @@ namespace CHSNS.Controllers {
         {
             using (var ts = new TransactionScope())
             {
-                DataExt.Friend.Delete(CHUser.UserId, toid);
+                DataManager.Friend.Delete(CHUser.UserId, toid);
                 ts.Complete();
                 return Content("解除关系成功");
             }
@@ -103,7 +103,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var r = DataExt.Friend.Agree(CHUser.UserId, uid,CHUser);
+                var r = DataManager.Friend.Agree(CHUser.UserId, uid,CHUser);
                 ts.Complete();
                 if (r) return Content("已经加对方为好友");
                 return Content("请求已经处理过了");
@@ -115,7 +115,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var r=DataExt.Friend.Ignore(uid, CHUser.UserId);
+                var r=DataManager.Friend.Ignore(uid, CHUser.UserId);
                 ts.Complete();
                 if (r)	return Content("已经忽略了请求");
                 return Content("请求已经处理过了");
@@ -127,7 +127,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                DataExt.Friend.IgnoreAll(CHUser.UserId);
+                DataManager.Friend.IgnoreAll(CHUser.UserId);
                 ts.Complete();
                 return Content("已经忽略所有请求");
             }
