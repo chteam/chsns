@@ -3,12 +3,6 @@ namespace CHSNS.Service
     using System.Configuration;
     public class DataManager
     {
-        //public string ConnectionString { get; set; }
-        public DataManager()
-        {
-           // ConnectionString = ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString;
-           // Init();
-        }
         #region ²Ù×÷µ¥Àý
 
         public AccountService Account { get { return AccountService.Instance; } }
