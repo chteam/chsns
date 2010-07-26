@@ -10,11 +10,6 @@ namespace CHSNS.Controllers {
         protected DataManager DataExt {
             get { return _dataExt ?? (_dataExt = new DataManager()); }
         }
-
-        protected override void OnResultExecuted(ResultExecutedContext filterContext) {
-            if (_dataExt != null)
-                DataExt.Dispose();
-        }
         #endregion
 
         private GolbalService _global;
