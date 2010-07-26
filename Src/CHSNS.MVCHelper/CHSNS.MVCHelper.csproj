@@ -85,6 +85,7 @@
     <Compile Include="Extension\Common\EnumerableExtensions.cs" />
     <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
     <Compile Include="Extension\Html\ApplicationContext.cs" />
+    <Compile Include="Extension\Html\ScriptExtensions.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />

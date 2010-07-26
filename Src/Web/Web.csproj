@@ -61,7 +61,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
@@ -172,7 +174,6 @@
     <Content Include="Views\Shared\Admin.Master" />
     <Content Include="Config\ThumbnailSize.xml" />
     <Content Include="Config\_UserEditMenu.xml" />
-    <Content Include="Default.aspx" />
     <Content Include="Scripts\Source\wysiwyg\jquery.wysiwyg.jpg" />
     <Content Include="Scripts\Source\wysiwyg\jquery.wysiwyg.js" />
     <Content Include="Scripts\Source\wysiwyg\wysiwyg.css" />
@@ -395,13 +396,6 @@
     <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="EntryController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
