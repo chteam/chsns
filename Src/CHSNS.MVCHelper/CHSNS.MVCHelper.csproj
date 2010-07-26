@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseController.cs" />
-    <Compile Include="Base\NewBaseController.cs" />
     <Compile Include="CH.cs" />
     <Compile Include="ConfigSerializerExt.cs" />
     <Compile Include="Core\CHCache.cs" />

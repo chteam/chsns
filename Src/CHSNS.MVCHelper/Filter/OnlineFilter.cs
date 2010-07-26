@@ -1,4 +1,5 @@
 using System.Web.Mvc;
+using CHSNS.Controllers;
 
 namespace CHSNS
 {
@@ -27,7 +28,7 @@ namespace CHSNS
             //        "<a href='http://www.eice.com.cn'>www.eice.com.cn</a>");
             //    return false;
             //}
-            var Online = (filterContext.Controller as NewBaseController).CHContext.Online;
+            var Online = (filterContext.Controller as BaseController).CHContext.Online;
             Online.Update();
         }
     }
