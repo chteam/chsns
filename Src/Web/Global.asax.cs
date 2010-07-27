@@ -61,6 +61,7 @@ namespace CHSNS.Web
             CacheFactory.Register(new HttpCache());
             var rootPath = Server.MapPath("~/");
             IOFactory.Register(new LocalStoreFile(rootPath), new LocalFolder(rootPath));
+            ConfigSerializer.Register(new ConfigSerializer(rootPath));
         }
 
         #region Authenticate

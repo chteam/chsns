@@ -8,7 +8,7 @@ namespace CHSNS {
         ICookies Cookies { get; set; }
         IOnline Online { get; set; }
         SiteConfig Site { get; set; }
-        ISerializer ConfigSerializer { get; set; }
+      //  ISerializer ConfigSerializer { get; set; }
         HttpContextBase HttpContext { get; set; }
     }
 }

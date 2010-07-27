@@ -6,19 +6,12 @@
 
     public class GolbalService
     {
-        public ISerializer Serializer { get; set; }
-
-        public GolbalService(IContext context)
-        {
-            Serializer = context.ConfigSerializer;
-        }
-
         /// <summary>
         /// Get ALL Provinces or Areas
         /// </summary>
-        public List<Province> Provinces
+        public static List<Province> Provinces
         {
-            get { return Serializer.Load<List<Province>>("Province"); }
+            get { return ConfigSerializer.Instance.Load<List<Province>>("Province"); }
         }
 
         /// <summary>
@@ -26,9 +19,9 @@
         /// </summary>
         /// <param name="provinceId"></param>
         /// <returns></returns>
-        public List<City> GetCitys(int provinceId)
+        public static List<City> GetCitys(int provinceId)
         {
-            var citys = Serializer.Load<List<City>>("City");
+            var citys = ConfigSerializer.Instance.Load<List<City>>("City");
             return citys.Where(x => x.PId == provinceId).ToList();
         }
     }
