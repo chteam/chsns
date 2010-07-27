@@ -57,6 +57,7 @@ namespace CHSNS.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             CHSNS.Validator.ValidatorRegister.RegisterAdapter();
+            CacheFactory.Register(new HttpCache());
         }
 
         #region Authenticate

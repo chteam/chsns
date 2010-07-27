@@ -39,16 +39,12 @@ namespace CHSNS {
                 _IOFactory = value;
             }
         }
-        ICache _cahce;
         /// <summary>
         /// 缓存单例
         /// </summary>
         public ICache Cache {
             get {
-                return _cahce ?? (_cahce = new CHCache(this));
-            }
-            set {
-                _cahce = value;
+                return CacheFactory.Instance;
             }
         }
         #endregion

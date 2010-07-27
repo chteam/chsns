@@ -77,7 +77,7 @@
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="CH.cs" />
     <Compile Include="ConfigSerializerExt.cs" />
-    <Compile Include="Core\CHCache.cs" />
+    <Compile Include="Core\HttpCache.cs" />
     <Compile Include="Core\CHContext.cs" />
     <Compile Include="Core\CHCookies.cs" />
     <Compile Include="Core\Online.cs" />
