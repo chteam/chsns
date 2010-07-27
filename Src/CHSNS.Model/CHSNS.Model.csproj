@@ -128,7 +128,6 @@
     <Compile Include="ContactInformation.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\ICache.cs" />
     <Compile Include="Context\IContext.cs" />
     <Compile Include="Context\ICookies.cs" />
     <Compile Include="Context\IIOFactory.cs" />

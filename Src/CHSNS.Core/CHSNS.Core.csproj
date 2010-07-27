@@ -94,6 +94,8 @@
     <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
+    <Compile Include="Interface\CacheFactory.cs" />
+    <Compile Include="Interface\ICache.cs" />
     <Compile Include="Interface\IFileProcess.cs" />
     <Compile Include="Interface\IPathBuilder.cs" />
     <Compile Include="Interface\ISerializer.cs" />
