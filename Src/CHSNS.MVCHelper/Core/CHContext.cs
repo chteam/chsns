@@ -52,7 +52,7 @@ namespace CHSNS {
         public SiteConfig Site {
             get {
                 return _site ??
-                    (_site = new SiteConfig(ConfigSerializer).Current);
+                    (_site = new SiteConfig().Current);
             }
             set {
                 _site = value;
@@ -68,18 +68,6 @@ namespace CHSNS {
             }
             set {
                 _online = value;
-            }
-        }
-        #endregion
-
-        #region Serializer
-        ISerializer _serializer;
-        public ISerializer ConfigSerializer {
-            get {
-                return _serializer ?? (_serializer = new ConfigSerializer(AppRootPath ?? HttpContext.Server.MapPath("~/")));
-            }
-            set {
-                _serializer = value;
             }
         }
         #endregion

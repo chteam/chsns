@@ -1,15 +1,13 @@
-using System;
+
 namespace CHSNS.Config {
+    using System;
+    using CHSNS;
     /// <summary>
     /// Õ¯’æ≈‰÷√
     /// </summary>
     [Serializable]
     public class SiteConfig {
         public SiteConfig() { }
-        ISerializer ConfigSerializer { get; set; }
-        public SiteConfig(ISerializer serializer) {
-            ConfigSerializer = serializer;
-        }
 
         public BaseConfig BaseConfig { get; set; }
         public RegVisitConfig RegVisitConfig { get; set; }

@@ -6,18 +6,12 @@ namespace CHSNS.Controllers {
     abstract public class BaseController : Controller {
 
 
-        private GolbalService _global;
-        public GolbalService Global
-        {
-            get { return _global ?? (_global = new GolbalService(CHContext)); }
-        }
-
         public IContext CHContext { get { return new CHContext(HttpContext); } }
-        public ConfigSerializer ConfigSerializer
+        public ISerializer ConfigSerializer
         {
             get
             {
-                return CHContext.ConfigSerializer as ConfigSerializer;
+                return CHSNS.ConfigSerializer.Instance;
             }
         }
         public bool IsPost { get { return Request.Form.Count != 0; } }

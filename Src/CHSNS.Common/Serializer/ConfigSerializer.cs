@@ -5,6 +5,11 @@
     /// </summary>
     public class ConfigSerializer : ISerializer
     {
+        public static ISerializer Instance { get; private set; }
+        public static void Register(ISerializer serializer) {
+            Instance = serializer;
+        }
+
         private const string Path = "{0}Config/{1}.xml";
         private string _rootPath;
         public ConfigSerializer(string rootPath)
