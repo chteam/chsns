@@ -5,14 +5,12 @@
     /// </summary>
     public class ConfigSerializer : ISerializer
     {
-        private const string Path = "/Config/{0}.xml";
-
-        public ConfigSerializer(IContext context)
+        private const string Path = "{0}Config/{1}.xml";
+        private string _rootPath;
+        public ConfigSerializer(string rootPath)
         {
-            Context = context;
+            _rootPath = rootPath;
         }
-
-        private IContext Context { get; set; }
 
         #region ISerializer Members
 
@@ -24,7 +22,7 @@
         /// <param name="key">键值</param>
         public void Save<T>(T obj, string key) where T : class
         {
-            XmlSerializer.Save(obj, string.Format(Path, key));
+            XmlSerializer.Save(obj, string.Format(Path, _rootPath, key));
             ClearCache(key);
         }
 
@@ -34,7 +32,7 @@
         /// <param name="key">The key.</param>
         public void ClearCache(string key)
         {
-            Context.Cache.Remove(string.Format(Path, key).ToLower());
+            CacheFactory.Instance.Remove(string.Format(Path, _rootPath, key).ToLower());
         }
 
         /// <summary>
@@ -46,12 +44,12 @@
         /// <returns></returns>
         public T Load<T>(string key, bool isUseCache) where T : class
         {
-            string fn = string.Format(Path, key).ToLower();
+            string fn = string.Format(Path, _rootPath, key).ToLower();
             if (isUseCache)
             {
-                if (!Context.Cache.Contains(fn))
-                    Context.Cache.Add(fn, XmlSerializer.Load<T>(fn));
-                return Context.Cache.Get<T>(fn);
+                if (!CacheFactory.Instance.Contains(fn))
+                    CacheFactory.Instance.Add(fn, XmlSerializer.Load<T>(fn));
+                return CacheFactory.Instance.Get<T>(fn);
             }
             return XmlSerializer.Load<T>(fn);
         }

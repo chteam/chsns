@@ -12,9 +12,9 @@ namespace CHSNS
     ///</summary>
     public class Thumbnail
     {
-        public static void CreateThumbnail(Image img, string newFile, Size size, IIOFactory ioFactory)
+        public static void CreateThumbnail(Image img, string newFile, Size size)
         {
-            CreateThumbnail(img, newFile, size.Width, size.Height, ioFactory);
+            CreateThumbnail(img, newFile, size.Width, size.Height);
         }
 
         ///<summary>
@@ -25,7 +25,7 @@ namespace CHSNS
         ///<param name="maxWidth">最大宽</param>
         ///<param name="maxHeight">最大高</param>
         ///<param name="ioFactory"></param>
-        public static void CreateThumbnail(Image img, string fileName, int maxWidth, int maxHeight, IIOFactory ioFactory)
+        public static void CreateThumbnail(Image img, string fileName, int maxWidth, int maxHeight)
         {
             Size newSize = NewSize(maxWidth, maxHeight, img.Width, img.Height);
             using (var outBmp = new Bitmap(newSize.Width, newSize.Height))
@@ -54,7 +54,7 @@ namespace CHSNS
                         outBmp.Save(stream, jpegIci, encoderParams);
                     else
                         outBmp.Save(stream, img.RawFormat);
-                    ioFactory.StoreFile.SaveImage(stream, fileName);
+                    IOFactory.StoreFile.SaveImage(stream, fileName);
                 }
             }
         }

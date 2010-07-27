@@ -6,30 +6,16 @@ namespace CHSNS
     /// <summary>
     /// 
     /// </summary>
-    public class IOFactory : IIOFactory
+    public class IOFactory
     {
-        private IFolder _folder;
-        private IStoreFile _storeFile;
+        public static IStoreFile StoreFile { get; private set; }
 
-        public IOFactory(IContext context)
+        public static IFolder Folder { get; private set; }
+
+        public static void Register(IStoreFile file, IFolder folder)
         {
-            Context = context;
+            StoreFile = file;
+            Folder = folder;
         }
-
-        private IContext Context { get; set; }
-
-        #region IIOFactory Members
-
-        public IStoreFile StoreFile
-        {
-            get { return _storeFile ?? (_storeFile = new LocalStoreFile(Context)); }
-        }
-
-        public IFolder Folder
-        {
-            get { return _folder ?? (_folder = new LocalFolder(Context)); }
-        }
-
-        #endregion
     }
 }

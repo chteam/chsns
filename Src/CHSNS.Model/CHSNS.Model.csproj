@@ -130,7 +130,6 @@
     </Compile>
     <Compile Include="Context\IContext.cs" />
     <Compile Include="Context\ICookies.cs" />
-    <Compile Include="Context\IIOFactory.cs" />
     <Compile Include="Context\IOnline.cs" />
     <Compile Include="Context\IPathGenerate.cs" />
     <Compile Include="Context\IUser.cs" />

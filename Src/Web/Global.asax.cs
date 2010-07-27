@@ -19,6 +19,7 @@ namespace CHSNS.Web
     using System.Web.Routing;
     using CHSNS.Service;
     using System.Web.Security;
+    using CHSNS.LocalImplement;
 
     [CompilerGlobalScope]
     public class Global : HttpApplication
@@ -58,6 +59,8 @@ namespace CHSNS.Web
             RegisterRoutes(RouteTable.Routes);
             CHSNS.Validator.ValidatorRegister.RegisterAdapter();
             CacheFactory.Register(new HttpCache());
+            var rootPath = Server.MapPath("~/");
+            IOFactory.Register(new LocalStoreFile(rootPath), new LocalFolder(rootPath));
         }
 
         #region Authenticate

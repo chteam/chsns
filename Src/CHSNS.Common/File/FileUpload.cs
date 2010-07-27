@@ -7,13 +7,6 @@ namespace CHSNS
 {
     public class FileUpload : IFileProcess
     {
-        public FileUpload(IIOFactory ioFactory)
-        {
-            IOFactory = ioFactory;
-        }
-
-        private IIOFactory IOFactory { get; set; }
-
         public HttpPostedFileBase File { get; set; }
 
         #region IFileProcess Members

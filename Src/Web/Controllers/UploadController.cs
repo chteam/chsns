@@ -49,8 +49,7 @@ namespace CHSNS.Controllers {
                         imgSrc,
                         CHContext.Path.ThumbPhoto(fileName, keyvalue.ImageType),
                         keyvalue.Size.Width,
-                        keyvalue.Size.Height,
-                        IOFactory
+                        keyvalue.Size.Height
                         );
             }
             //SetStarLevel(CHUser.UserId); //¸üÐÂ

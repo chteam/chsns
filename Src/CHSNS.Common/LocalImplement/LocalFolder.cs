@@ -4,15 +4,13 @@ using CHSNS.Store;
 
 namespace CHSNS.LocalImplement
 {
-    internal class LocalFolder : IFolder
+    public class LocalFolder : IFolder
     {
-        public LocalFolder(IContext context)
+        string _rootPath;
+        public LocalFolder(string rootPath)
         {
-            Context = context;
+            _rootPath = rootPath;
         }
-
-        private IContext Context { get; set; }
-
         #region IFolder Members
 
         public void Delete(string path)
@@ -27,7 +25,7 @@ namespace CHSNS.LocalImplement
 
         public void Create(string path)
         {
-            string serverPath = Context.HttpContext.Server.MapPath(path);
+            string serverPath = System.IO.Path.Combine(_rootPath, path.TrimStart("\\/".ToCharArray()));
             Directory.CreateDirectory(serverPath);
         }
 
