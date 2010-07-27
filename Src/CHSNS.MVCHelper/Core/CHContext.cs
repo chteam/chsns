@@ -52,7 +52,7 @@ namespace CHSNS {
         public SiteConfig Site {
             get {
                 return _site ??
-                    (_site = new SiteConfig().Current);
+                    (_site = ConfigSerializer.Instance.Load<SiteConfig>("Config"));
             }
             set {
                 _site = value;

@@ -16,20 +16,13 @@ namespace CHSNS.Config {
         public EveryPageConfig EveryPage { get; set; }
         public ScoreConfig Score { get; set; }
         public UploadConfig Upload { get; set; }
-        /// <summary>
-        /// Gets the current.
-        /// </summary>
-        public SiteConfig Current {
-            get {
-                return ConfigSerializer.Instance.Load<SiteConfig>("Config");
-            }
-        }
+ 
         /// <summary>
         /// ÐòÁÐ»¯Îªxml
         /// </summary>
         public void Save() {
-            const string fn = "Config";
-            ConfigSerializer.Instance.Save(this, fn);
+            //const string fn = "Config";
+            //ConfigSerializer.Instance.Save(this, fn);
         }
     }
 }
