@@ -21,7 +21,7 @@ namespace CHSNS.Config {
         /// </summary>
         public SiteConfig Current {
             get {
-                return ConfigSerializer.Load<SiteConfig>("Config");
+                return ConfigSerializer.Instance.Load<SiteConfig>("Config");
             }
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace CHSNS.Config {
         /// </summary>
         public void Save() {
             const string fn = "Config";
-            ConfigSerializer.Save(this, fn);
+            ConfigSerializer.Instance.Save(this, fn);
         }
     }
 }
