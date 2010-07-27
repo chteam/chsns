@@ -10,7 +10,7 @@
             Instance = serializer;
         }
 
-        private const string Path = "{0}Config/{1}.config";
+        private const string Path = "{0}Config/{1}.xml";
         private string _rootPath;
         public ConfigSerializer(string rootPath)
         {
