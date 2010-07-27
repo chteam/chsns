@@ -109,21 +109,21 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\AllowImageExt.xml" />
-    <Content Include="Config\City.xml" />
+    <None Include="Config\AllowImageExt.config" />
+    <None Include="Config\City.config" />
     <Content Include="Config\EditFormat.config" />
-    <Content Include="Config\Group\ShowLevel.xml" />
-    <Content Include="Config\Group\JoinLevel.xml" />
-    <Content Include="Config\Province.xml" />
-    <Content Include="Config\Sex.xml" />
-    <Content Include="Config\ShowLevel.xml" />
+    <None Include="Config\Group\ShowLevel.config" />
+    <None Include="Config\Group\JoinLevel.config" />
+    <None Include="Config\Province.config" />
+    <None Include="Config\Sex.config" />
+    <None Include="Config\ShowLevel.config" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <None Include="Style\CHSNS\i\Thumbs.db" />
     <None Include="Areas\Admin\Views\Application\myapp.vm" />
-    <Content Include="Config\SystemApplication.xml" />
-    <Content Include="Config\SystemTemplate.xml" />
-    <Content Include="Config\Category.xml" />
-    <Content Include="Config\WowTaskType.xml" />
+    <None Include="Config\SystemApplication.config" />
+    <None Include="Config\SystemTemplate.config" />
+    <None Include="Config\Category.config" />
+    <None Include="Config\WowTaskType.config" />
     <Content Include="Images\CHBox\b.png" />
     <Content Include="Images\CHBox\bl.png" />
     <Content Include="Images\CHBox\br.png" />
@@ -172,8 +172,8 @@
     <Content Include="Views\Event\IndexCtl\Event.ascx" />
     <Content Include="Views\Note\News.aspx" />
     <Content Include="Views\Shared\Admin.Master" />
-    <Content Include="Config\ThumbnailSize.xml" />
-    <Content Include="Config\_UserEditMenu.xml" />
+    <None Include="Config\ThumbnailSize.config" />
+    <None Include="Config\_UserEditMenu.config" />
     <Content Include="Scripts\Source\wysiwyg\jquery.wysiwyg.jpg" />
     <Content Include="Scripts\Source\wysiwyg\jquery.wysiwyg.js" />
     <Content Include="Scripts\Source\wysiwyg\wysiwyg.css" />
@@ -455,7 +455,7 @@
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\Config.xml" />
+    <None Include="Config\Config.config" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Views\Account\ChangePassword.aspx" />
   </ItemGroup>

@@ -87,7 +87,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Create()
         {
             Title = "ÐÂ½¨Èº";
-            ViewData["category"] = ConfigSerializer.GetConfig("Category").ToSelectList(c => c.Value, c => c.Text);
+            //ViewData["category"] = ConfigSerializer.GetConfig("Category").ToSelectList(c => c.Value, c => c.Text);
             return View();
         }
         [HttpPost]
