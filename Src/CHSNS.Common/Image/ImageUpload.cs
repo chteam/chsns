@@ -18,7 +18,7 @@ namespace CHSNS
             Time = dt;
             Context = context;
             Ext = System.IO.Path.GetExtension(file.FileName);
-            FileUpload = new FileUpload(Context.IOFactory)
+            FileUpload = new FileUpload()
                              {
                                  File = file,
                                  FileExtList = ext,
@@ -52,7 +52,7 @@ namespace CHSNS
                         imgSrc,
                         Context.HttpContext.Server.MapPath(
                             Path.Photo(Context.User.UserId, Time, Ext, p.ImageType.ToString())),
-                        p.Size, Context.IOFactory
+                        p.Size
                         );
                 }
             }

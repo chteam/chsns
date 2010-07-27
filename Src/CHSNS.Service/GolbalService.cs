@@ -10,7 +10,7 @@
 
         public GolbalService(IContext context)
         {
-            Serializer = new ConfigSerializer(context);
+            Serializer = context.ConfigSerializer;
         }
 
         /// <summary>

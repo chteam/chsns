@@ -1,8 +1,8 @@
-﻿using System.IO;
-using System.Web;
-
+﻿
 namespace CHSNS
 {
+    using System.IO;
+
     public class XmlSerializer
     {
         /// <summary>
@@ -10,11 +10,10 @@ namespace CHSNS
         /// </summary>
         /// <typeparam name="T">序列化此类型</typeparam>
         /// <param name="obj">要序列化的对象</param>
-        /// <param name="fn">键值</param>
-        public static void Save<T>(T obj, string fn) where T : class
+        /// <param name="filepath">文件路径</param>
+        public static void Save<T>(T obj, string filepath) where T : class
         {
             var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof (T));
-            string filepath = HttpContext.Current.Server.MapPath(fn);
             if (!File.Exists(filepath))
                 File.Create(filepath);
             using (var myWriter = new StreamWriter(filepath))
@@ -27,16 +26,16 @@ namespace CHSNS
         /// 从配置文件反序列化
         /// </summary>
         /// <parameters name="T"/>反序列化的目标类型
-        /// <param name="fn">键</param>
+        /// <param name="filepath">文件路径</param>
         /// <returns></returns>
-        public static T Load<T>(string fn) where T : class
+        public static T Load<T>(string filepath) where T : class
         {
-            string filepath = HttpContext.Current.Server.MapPath(fn);
+            //string filepath = HttpContext.Current.Server.MapPath(fn);
             if (!File.Exists(filepath))
                 File.Create(filepath);
 
             var mySerializer = new System.Xml.Serialization.XmlSerializer(typeof (T));
-            using (Stream myFileStream = new StreamReader(HttpContext.Current.Server.MapPath(fn)).BaseStream)
+            using (Stream myFileStream = new StreamReader(filepath).BaseStream)
             {
                 return mySerializer.Deserialize(myFileStream) as T;
             }

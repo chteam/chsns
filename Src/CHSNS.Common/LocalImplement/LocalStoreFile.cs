@@ -4,14 +4,13 @@ using CHSNS.Store;
 
 namespace CHSNS.LocalImplement
 {
-    internal class LocalStoreFile : IStoreFile
+    public  class LocalStoreFile : IStoreFile
     {
-        public LocalStoreFile(IContext context)
+        string _rootPath;
+        public LocalStoreFile(string rootPath)
         {
-            Context = context;
+            _rootPath = rootPath;
         }
-
-        #region Implementation of IStoreFile
 
         public bool Exists(string filePath)
         {
@@ -28,7 +27,8 @@ namespace CHSNS.LocalImplement
             var buffer = new byte[s.Length];
             s.Read(buffer, 0, buffer.Length); //将流的内容读到缓冲区  
             using (var fs = new FileStream(
-                Context.HttpContext.Server.MapPath(fileName),
+            System.IO.Path.Combine(_rootPath, fileName.TrimStart("\\/".ToCharArray())
+            ),
                 FileMode.OpenOrCreate, FileAccess.Write))
             {
                 fs.Write(buffer, 0, buffer.Length);
@@ -39,7 +39,7 @@ namespace CHSNS.LocalImplement
         public void SaveImage(Stream inputStream, string fileName)
         {
             Image img = new Bitmap(inputStream);
-            img.Save(Context.HttpContext.Server.MapPath(fileName));
+            img.Save(System.IO.Path.Combine(_rootPath, fileName.TrimStart("\\/".ToCharArray())));
         }
 
         public void WriteLine(string path, string text)
@@ -53,12 +53,9 @@ namespace CHSNS.LocalImplement
 
         public void Delete(string path)
         {
-            string pathserver = Context.HttpContext.Server.MapPath(path);
+            string pathserver = System.IO.Path.Combine(_rootPath, path.TrimStart("\\/".ToCharArray()));
             File.Delete(pathserver);
         }
 
-        #endregion
-
-        private IContext Context { get; set; }
     }
 }

@@ -26,28 +26,7 @@ namespace CHSNS {
             }
             set { throw new NotImplementedException(); }
         }
-        #region Cache
 
-
-
-        private IIOFactory _IOFactory;
-        public IIOFactory IOFactory {
-            get {
-                return _IOFactory ?? (_IOFactory = new IOFactory(this));
-            }
-            set {
-                _IOFactory = value;
-            }
-        }
-        /// <summary>
-        /// 缓存单例
-        /// </summary>
-        public ICache Cache {
-            get {
-                return CacheFactory.Instance;
-            }
-        }
-        #endregion
         #region User
         public IUser User {
             get {
@@ -73,7 +52,7 @@ namespace CHSNS {
         public SiteConfig Site {
             get {
                 return _site ??
-                    (_site = (new SiteConfig(new ConfigSerializer(this))).Current);
+                    (_site = new SiteConfig(ConfigSerializer).Current);
             }
             set {
                 _site = value;
@@ -97,7 +76,7 @@ namespace CHSNS {
         ISerializer _serializer;
         public ISerializer ConfigSerializer {
             get {
-                return _serializer ?? (_serializer = new ConfigSerializer(this));
+                return _serializer ?? (_serializer = new ConfigSerializer(AppRootPath ?? HttpContext.Server.MapPath("~/")));
             }
             set {
                 _serializer = value;

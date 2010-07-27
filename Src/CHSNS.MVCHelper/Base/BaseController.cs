@@ -13,10 +13,6 @@ namespace CHSNS.Controllers {
         }
 
         public IContext CHContext { get { return new CHContext(HttpContext); } }
-        protected IIOFactory IOFactory
-        {
-            get { return CHContext.IOFactory; }
-        }
         public ConfigSerializer ConfigSerializer
         {
             get
