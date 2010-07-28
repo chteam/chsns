@@ -16,19 +16,18 @@
         /// <returns></returns>
         public virtual ActionResult Index(string url)
         {
-            
-            var model = new EntryIndexViewModel();
+          //  var model = new EntryIndexViewModel();
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
             var t = DataManager.Entry.Get(url);
-            model.Entry = t.Key;
-            if (model.Entry == null) return Wait();
+            ViewModel.Entry = t.Key;
+            if (ViewModel.Entry == null) return Wait();
             var version = t.Value;
             if (version == null) return Wait();
-            model.Version = version;
-            model.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
-            Title = model.Entry.Url;
-            return View(model);
+            ViewModel.Version = version;
+            ViewModel.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
+            Title = ViewModel.Entry.Url;
+            return View();
         }
 
         [NonAction]

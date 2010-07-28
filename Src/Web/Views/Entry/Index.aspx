@@ -1,13 +1,14 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" 
-Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
+Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <%
-        var entry = Model.Entry;
-        var version = Model.Version;
-        var ext = Model.Ext ?? new EntryExt();
+        
+        var entry = View.Entry;
+        var version = View.Version;
+        var ext = View.Ext ?? new EntryExt();
     %>
     <div id="entryContent">
         <%if (entry.IsDisplayTitle)
@@ -33,7 +34,7 @@ Inherits="System.Web.Mvc.ViewPage<EntryIndexViewModel>" %>
             <%} %>
         </p>
         <ul>
-            <li><span>标签：</span><%=string.Join(",", (ext.Tags.ToNotNull()).ToArray())%>
+            <li><span>标签：</span><%=string.Join(",", (ext.Tags??new List<string>()).ToArray())%>
             </li>
         </ul>
     </div>

@@ -39,7 +39,7 @@
     <asp:ContentPlaceHolder ID="FootPlaceHolder" runat="server" />
 
     <script type="text/javascript">
-		chmenu("#publicmenu .menu");
+        chmenu("#publicmenu .menu");
     </script>
 
 </body>
