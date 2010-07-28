@@ -39,7 +39,9 @@ namespace CHSNS.Controllers {
             if (profile == null) throw new ApplicationException("用户不存在");
             var items = DataManager.Friend.GetRequests(CHUser.UserId, p.Value, CHContext.Site);
             Title = profile.Name + "的好友请求";
-            return View(new FriendRequest { Items = items, Profile = profile });
+            ViewModel.Items = items;
+            ViewModel.Profile = profile;
+            return View();
 
         }
 

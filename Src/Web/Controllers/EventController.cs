@@ -9,71 +9,70 @@ using CHSNS.ViewModel;
 */
 namespace CHSNS.Controllers {
 
-	/// <summary>
-	/// 事件的控制器
-	/// the Controller of Event.
-	/// </summary>
-	[Authorize]
+    /// <summary>
+    /// 事件的控制器
+    /// the Controller of Event.
+    /// </summary>
+    [Authorize]
     public partial class EventController : BaseController
     {
-		#region Action
+        #region Action
 
         public virtual ActionResult Index()
         {
             Title = "事件";
-            var m = new EventIndexViewModel{
-                                                 //     Events = DBExt.Event.GetFriendEvent(CHUser.UserId, 1, 20),
-                                                 LastViews = DataManager.View.ViewList(0, 3, CHUser.UserId, 6),
-                                                 NewViews = DataManager.View.ViewList(2, 3, CHUser.UserId, 6),
-                                                 Page = DataManager.Gather.EventGather(CHUser.UserId)
-                                             };
-            return View(m);
+
+            //     Events = DBExt.Event.GetFriendEvent(CHUser.UserId, 1, 20),
+            ViewModel.LastViews = DataManager.View.ViewList(0, 3, CHUser.UserId, 6);
+            ViewModel.NewViews = DataManager.View.ViewList(2, 3, CHUser.UserId, 6);
+            ViewModel.Page = DataManager.Gather.EventGather(CHUser.UserId);
+            return View();
         }
 
-		#endregion
+        #endregion
 
 
-		#region Management
-		[AdminFilter]
+        #region Management
+        [AdminFilter]
         public virtual ActionResult SystemTemplate()
         {
-			var x = ConfigSerializer.Load<List<ListItem>>("SystemTemplate");
-			ViewData["source"] = x;
-			return View("Admin/SystemTemplate");
-		}
-		[AdminFilter]
+            var x = ConfigSerializer.Load<List<ListItem>>("SystemTemplate");
+            ViewData["source"] = x;
+            return View("Admin/SystemTemplate");
+        }
+        [AdminFilter]
         public virtual ActionResult GetSystemTemplate(string name)
-		{
+        {
             var ret = "";// CHSNS.File.ReadAllText(Path.EventSystemTemplatePath(name));
-			return Content(Server.HtmlEncode(ret));
-		}
-		[AdminFilter]
+            return Content(Server.HtmlEncode(ret));
+        }
+        [AdminFilter]
         public virtual ActionResult AddSystemTemplate(string c, string v, string t)
-		{
-			if (string.IsNullOrEmpty(c) || string.IsNullOrEmpty(v))
-				return Content("Error");
-			if (!c.Contains("<%@")) {
-				c = "<%@ Control Language=\"C#\" AutoEventWireup=\"true\" Inherits=\"System.Web.Mvc.ViewUserControl\" %>" + c;
-			}
-			var li = new ListItem
-			         	{
-			         		Text = t,
-			         		Value = v
-			         	};
-			var x = ConfigSerializer.Load<List<ListItem>>("SystemTemplate");
-			if (x.Where(q => q.Value == li.Value).Count() != 1)
-			{
-				x.Add(li);
-				ConfigSerializer.Save(x, "SystemTemplate");
-				ConfigSerializer.ClearCache("SystemTemplate");
-			//	CHSNS.File.SaveAllText(Path.EventSystemTemplatePath(li.Value), c);
-			}
-			else {
-				return Content("Error");
-			}
-			return Content("添加成功");
-		}
-		#endregion
+        {
+            if (string.IsNullOrEmpty(c) || string.IsNullOrEmpty(v))
+                return Content("Error");
+            if (!c.Contains("<%@")) {
+                c = "<%@ Control Language=\"C#\" AutoEventWireup=\"true\" Inherits=\"System.Web.Mvc.ViewUserControl\" %>" + c;
+            }
+            var li = new ListItem
+                        {
+                            Text = t,
+                            Value = v
+                        };
+            var x = ConfigSerializer.Load<List<ListItem>>("SystemTemplate");
+            if (x.Where(q => q.Value == li.Value).Count() != 1)
+            {
+                x.Add(li);
+                ConfigSerializer.Save(x, "SystemTemplate");
+                ConfigSerializer.ClearCache("SystemTemplate");
+            //	CHSNS.File.SaveAllText(Path.EventSystemTemplatePath(li.Value), c);
+            }
+            else {
+                return Content("Error");
+            }
+            return Content("添加成功");
+        }
+        #endregion
 
-	}
+    }
 }
