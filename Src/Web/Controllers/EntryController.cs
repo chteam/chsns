@@ -42,8 +42,7 @@
         /// <returns></returns>
         public virtual ActionResult HistoryList(long id)
         {
-            // var arealist = AreaList.Load(AreaType.EntryArea).ToDictionary();
-            ViewData["Source"] = DataManager.Entry.Historys(id);
+            ViewModel.Source = DataManager.Entry.Historys(id);
             Title = "版本比较";
             return View();
         }
