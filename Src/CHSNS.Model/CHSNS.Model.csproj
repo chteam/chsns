@@ -241,7 +241,6 @@
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewListPas.cs" />
-    <Compile Include="ViewModel\EntryIndexViewModel.cs" />
     <Compile Include="ViewModel\EventIndexViewModel.cs" />
     <Compile Include="ViewModel\FriendRequest.cs" />
     <Compile Include="ViewModel\UserIndexViewModel.cs" />
