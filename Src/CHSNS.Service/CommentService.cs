@@ -63,7 +63,7 @@
         /// <summary>
         /// Comments the list.
         /// </summary>
-        /// <param name="ShowerID">The shower ID.</param>
+        /// <param name="showerId"></param>
         /// <param name="type">The type.</param>
         /// <param name="p"></param>
         /// <param name="site"></param>
