@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" MasterPageFile="Edit.master"  %>
-<%@ Import Namespace="CHSNS.Web" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="TabContent" runat="server">
     <%=Html.Script(Links.Scripts.Upload.swfupload_js)%>
     <%=Html.Script(Links.Scripts.Upload.handlers_js)%>
