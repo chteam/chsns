@@ -24,7 +24,6 @@ namespace CHSNS
         ///<param name="fileName">要存的地址</param>
         ///<param name="maxWidth">最大宽</param>
         ///<param name="maxHeight">最大高</param>
-        ///<param name="ioFactory"></param>
         public static void CreateThumbnail(Image img, string fileName, int maxWidth, int maxHeight)
         {
             Size newSize = NewSize(maxWidth, maxHeight, img.Width, img.Height);

@@ -12,6 +12,7 @@ namespace CHSNS {
         /// 构造函数唯一
         /// </summary>
         /// <param name="context"></param>
+        /// <param name="appRootPath"></param>
         public CHContext(HttpContextBase context,string appRootPath) {
             HttpContext = context;
             AppRootPath = appRootPath;

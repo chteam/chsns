@@ -9,16 +9,12 @@ namespace CHSNS.Service
     /// </summary>
     public class EventService : BaseService<EventService>
     {
-     
-     
-
-
         /// <summary>
         /// 50好友事件
         /// </summary>
         /// <param name="userid">The userid.</param>
-        /// <param name="p"></param>
-        /// <param name="ep"></param>
+        /// <param name="page"></param>
+        /// <param name="pageSize"></param>
         /// <returns></returns>
         public PagedList<Event> GetFriendEvent(long userid, int page, int pageSize)
         {
