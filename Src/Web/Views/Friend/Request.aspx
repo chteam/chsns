@@ -1,6 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master"
-Inherits="System.Web.Mvc.ViewPage" %>
- 
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
     <%=Html.Script("PageSet") %>
 
@@ -10,7 +9,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
     </div>
     <h2>
         <%=View.Profile.Name%>的好友</h2>
-    (有<span class="count" id="FriendCount"><%=Model.Items.TotalCount%></span>个人请求加你为好友)
+    (有<span class="count" id="FriendCount"><%=View.Items.TotalCount%></span>个人请求加你为好友)
     <a href="javascript:IgnoreAllFriend();">忽略所有请求，慎用</a>
     <div class="ch_content">
         <div id="PageUp" class="page">
