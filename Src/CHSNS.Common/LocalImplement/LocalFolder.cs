@@ -6,7 +6,7 @@ namespace CHSNS.LocalImplement
 {
     public class LocalFolder : IFolder
     {
-        string _rootPath;
+        readonly string _rootPath;
         public LocalFolder(string rootPath)
         {
             _rootPath = rootPath;
