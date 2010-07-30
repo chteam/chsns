@@ -27,13 +27,12 @@
 		</p>
 		<p class="discription"><b>小贴士：</b> 使用方法 在地址栏中输入对应的视频地址链接， 然后在描述栏中输入对应的标题或其他文字描述就可以了...<br />
 				<br />
-				<b>视频地址获取方法：</b> 在对应的视频网站选择 【把视频贴到Blog或BBS】，然后复制对应的地址即可。</span>
+				<b>视频地址获取方法：</b> 在对应的视频网站选择 【把视频贴到Blog或BBS】，然后复制对应的地址即可。
 		</p>
 		</form>
 	</fieldset>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
-	<%if (false) { %><script src="../../Scripts/jquery-1.2.6-vsdoc.js"></script><%} %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="FootPlaceHolder" runat="server">
 
