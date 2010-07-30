@@ -1,4 +1,3 @@
-using CHSNS.LocalImplement;
 using CHSNS.Store;
 
 namespace CHSNS
