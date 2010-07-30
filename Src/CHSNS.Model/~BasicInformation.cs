@@ -8,7 +8,7 @@ namespace CHSNS.Models
     public partial class BasicInformation
     {
 
-        sealed class BasicInformationMeta
+        public sealed class BasicInformationMeta
         {
             [DisplayName("姓名")]
             public string Name { get; set; }

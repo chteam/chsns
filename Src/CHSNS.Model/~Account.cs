@@ -7,7 +7,7 @@ namespace CHSNS.Models
 	public partial class Account
 	{
 		[DisplayName("account")]
-		class AccountMeta
+		public class AccountMeta
 		{
 			[RegularExpression(@"[\w\W]{4,32}")]
 			[Required(ErrorMessage="dfsfsdf")]
