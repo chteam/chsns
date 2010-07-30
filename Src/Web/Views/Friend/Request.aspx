@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master"
-Inherits="ViewPage" %>
+Inherits="System.Web.Mvc.ViewPage" %>
  
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
     <%=Html.Script("PageSet") %>
