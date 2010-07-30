@@ -5,7 +5,6 @@ namespace CHSNS.Controllers {
     using CHSNS.Service;
     abstract public class BaseController : Controller {
 
-
         public IContext CHContext { get { return new CHContext(HttpContext); } }
         public ISerializer ConfigSerializer
         {
