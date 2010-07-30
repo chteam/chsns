@@ -13,7 +13,7 @@
 		</ul>
 	</div>
 	<%=Html.ActionLink("事件","Index","Event") %>
-	<%=0 == 0?
+	<%=Page.User.Identity == null?
 		Html.ActionLink("好友", "Index", "Friend"):
 		Html.ActionLink("好友", "Request", "Friend")%>
 	<div class="menu">
