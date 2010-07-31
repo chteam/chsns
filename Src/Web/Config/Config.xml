@@ -35,7 +35,7 @@
     <NoteComment>10</NoteComment>
     <Friend>10</Friend>
     <FriendRequest>10</FriendRequest>
-	  <MessageBox>10</MessageBox>
+      <MessageBox>10</MessageBox>
   </EveryPage>
   <Score>
     <Init>50</Init>
