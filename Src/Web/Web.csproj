@@ -71,7 +71,6 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\Config.xml" />
     <Content Include="Config\usereditmenu.xml" />
     <Content Include="Global.asax" />
     <Content Include="Images\XPButtonNoText_160x22.png" />
@@ -117,7 +116,7 @@
     <Content Include="Config\AllowImageExt.config" />
     <Content Include="Config\Category.config" />
     <Content Include="Config\City.config" />
-    <Content Include="Config\Config.config" />
+    <Content Include="Config\Config.xml" />
     <Content Include="Config\Group\JoinLevel.config" />
     <Content Include="Config\Group\ShowLevel.config" />
     <Content Include="Config\_UserEditMenu.config" />
