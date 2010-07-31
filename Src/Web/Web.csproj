@@ -71,20 +71,8 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\AllowImageExt.xml" />
-    <Content Include="Config\Category.xml" />
-    <Content Include="Config\City.xml" />
     <Content Include="Config\Config.xml" />
-    <Content Include="Config\Group\JoinLevel.xml" />
-    <Content Include="Config\Group\ShowLevel.xml" />
-    <Content Include="Config\Province.xml" />
-    <Content Include="Config\Sex.xml" />
-    <Content Include="Config\ShowLevel.xml" />
-    <Content Include="Config\SystemApplication.xml" />
-    <Content Include="Config\SystemTemplate.xml" />
-    <Content Include="Config\ThumbnailSize.xml" />
-    <Content Include="Config\WowTaskType.xml" />
-    <Content Include="Config\_UserEditMenu.xml" />
+    <Content Include="Config\usereditmenu.xml" />
     <Content Include="Global.asax" />
     <Content Include="Images\XPButtonNoText_160x22.png" />
     <Content Include="Scripts\Framework.js" />
@@ -126,6 +114,20 @@
   <ItemGroup>
     <Content Include="Config\EditFormat.config" />
     <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Config\AllowImageExt.config" />
+    <Content Include="Config\Category.config" />
+    <Content Include="Config\City.config" />
+    <Content Include="Config\Config.config" />
+    <Content Include="Config\Group\JoinLevel.config" />
+    <Content Include="Config\Group\ShowLevel.config" />
+    <Content Include="Config\_UserEditMenu.config" />
+    <Content Include="Config\Province.config" />
+    <Content Include="Config\Sex.config" />
+    <Content Include="Config\ShowLevel.config" />
+    <Content Include="Config\SystemApplication.config" />
+    <Content Include="Config\SystemTemplate.config" />
+    <Content Include="Config\ThumbnailSize.config" />
+    <Content Include="Config\WowTaskType.config" />
     <None Include="Style\CHSNS\i\Thumbs.db" />
     <None Include="Areas\Admin\Views\Application\myapp.vm" />
     <Content Include="Images\CHBox\b.png" />
