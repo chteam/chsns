@@ -94,15 +94,18 @@
     <Compile Include="Extension\IEnumerableExtension.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="Extension\JsonExtension.cs" />
+    <Compile Include="Interface\BaseFactory.cs" />
     <Compile Include="Interface\CacheFactory.cs" />
     <Compile Include="Interface\ICache.cs" />
     <Compile Include="Interface\IFileProcess.cs" />
+    <Compile Include="Interface\IOnline.cs" />
     <Compile Include="Interface\IPathBuilder.cs" />
     <Compile Include="Interface\ISerializer.cs" />
     <Compile Include="Extension\NullableExtension.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="Interface\OnlineFactory.cs" />
     <Compile Include="Pager\IPagedList.cs">
       <SubType>Code</SubType>
     </Compile>

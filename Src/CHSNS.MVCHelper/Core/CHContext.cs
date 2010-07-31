@@ -61,17 +61,6 @@ namespace CHSNS {
         }
         #endregion
 
-        #region Online
-        IOnline _online;
-        public IOnline Online {
-            get {
-                return _online ?? (_online = new Online(this));
-            }
-            set {
-                _online = value;
-            }
-        }
-        #endregion
 
         #region Http prop
 
