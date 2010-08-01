@@ -113,15 +113,15 @@
   <ItemGroup>
     <Content Include="Config\EditFormat.config" />
     <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Config\AllowImageExt.config" />
+    <Content Include="Config\AllowImageExt.xml" />
     <Content Include="Config\Category.config" />
-    <Content Include="Config\City.config" />
+    <Content Include="Config\City.xml" />
     <Content Include="Config\Config.xml" />
     <Content Include="Config\Group\JoinLevel.config" />
     <Content Include="Config\Group\ShowLevel.config" />
     <Content Include="Config\_UserEditMenu.config" />
-    <Content Include="Config\Province.config" />
-    <Content Include="Config\Sex.config" />
+    <Content Include="Config\Province.xml" />
+    <Content Include="Config\Sex.xml" />
     <Content Include="Config\ShowLevel.config" />
     <Content Include="Config\SystemApplication.xml" />
     <Content Include="Config\SystemTemplate.config" />
