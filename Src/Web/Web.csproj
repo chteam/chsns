@@ -123,7 +123,7 @@
     <Content Include="Config\Province.config" />
     <Content Include="Config\Sex.config" />
     <Content Include="Config\ShowLevel.config" />
-    <Content Include="Config\SystemApplication.config" />
+    <Content Include="Config\SystemApplication.xml" />
     <Content Include="Config\SystemTemplate.config" />
     <Content Include="Config\ThumbnailSize.config" />
     <Content Include="Config\WowTaskType.config" />

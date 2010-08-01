@@ -20,14 +20,14 @@ Inherits="System.Web.Mvc.ViewPage<EventIndexViewModel>" %>
         <div class="box">
             <h4>
                 谁最近看过我的页面</h4>
-            <%
-                Html.RenderPartial("ViewList", View.LastViews); %>
+            <%--<%
+                Html.RenderPartial("ViewList", View.LastViews); %>--%>
         </div>
         <div class="box">
             <h4>
                 好友</h4>
-            <%
-                Html.RenderPartial("ViewList", View.NewViews); %>
+       <%--     <%
+                Html.RenderPartial("ViewList", View.NewViews); %>--%>
         </div>
     </div>
     <div class="left">
