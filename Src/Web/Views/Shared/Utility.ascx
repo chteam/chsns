@@ -36,7 +36,7 @@
 	<%=Html.RouteLink("首页", "index",null)%>
 	<%=Html.ActionLink("站内信", "Inbox", "Message")%>
 	<a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
-	<%=Html.ActionLink("注销","Logout","Account") %>
+	<%=Html.ActionLink("注销",MVC.Account.LogOff()) %>
 	<%}
    else
    { %>
