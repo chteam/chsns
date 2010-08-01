@@ -34,7 +34,7 @@ namespace CHSNS {
          public void Update() {
              if (HttpContext.Current.User.Identity.IsAuthenticated)
              {
-                 var user = HttpContext.Current.User as CHIdentity;
+                 var user = HttpContext.Current.User.Identity as CHIdentity;
                 if (Date.DivMinutes(RemoveTime) > 1) {//过了1分钟才清理
                     Application.Lock();
                     if (!IsOnline(user.UserId))
