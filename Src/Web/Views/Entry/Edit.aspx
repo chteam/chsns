@@ -73,7 +73,7 @@
             &&v_notin("#entryversion_areaid",["",0], '必填')
             &&v_empty("#entryversion_description", '必填')
            //  &&v_empty("#tags", '必填')
-             <%=ViewData.ContainsKey("exists")?@"&&v_empty('#entryversion_reason', '必填')":"" %>
+             //<%=ViewData.ContainsKey("exists")?@"&&v_empty('#entryversion_reason', '必填')":"" %>
         );
         if(r) $('#entryform').submit();
         return r;

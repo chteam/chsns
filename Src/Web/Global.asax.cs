@@ -67,7 +67,6 @@ namespace CHSNS.Web
             FormsAuthenticationTicket authTicket;
             try
             {
-
                 authTicket = FormsAuthentication.Decrypt(authCookie.Value);
             }
             catch (Exception)

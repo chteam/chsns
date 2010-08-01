@@ -10,21 +10,22 @@ namespace CHSNS.Models
 
         public sealed class BasicInformationMeta
         {
-            [DisplayName("姓名")]
+            [Display(Name="姓名",Description="222",GroupName="GroupName",ShortName="short name")]
+            
             public string Name { get; set; }
-            [DisplayName("电子邮箱")]
+            [Display(Name="电子邮箱")]
             public string Email { get; set; }
-            [DisplayName("性别")]
+            [Display(Name="性别")]
             public bool? Sex { get; set; }
-            [DisplayName("出生时间")]
+            [Display(Name="出生时间")]
             [DataType(DataType.DateTime)]
             //[DisplayFormat(DataFormatString = "{0:d}")]
             public DateTime Birthday { get; set; }
-            [DisplayName("省")]
+            [Display(Name="省")]
             public int ProvinceId { get; set; }
-            [DisplayName("市")]
+            [Display(Name="市")]
             public long CityId { get; set; }
-            [DisplayName("可见度")]
+            [Display(Name="可见度")]
             public byte ShowLevel { get; set; }
         }
     }
