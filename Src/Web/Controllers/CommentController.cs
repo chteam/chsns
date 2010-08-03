@@ -62,19 +62,19 @@ namespace CHSNS.Controllers {
                 }
                 r.UserId = ownerId;
                 var model = new List<CommentPas>{
-					new CommentPas{
-					Sender = new NameIdPas{
-						Id = CHUser.UserId,
-						Name = CHUser.Name
-					},
-					Comment =new CommentItemPas{ 
-						 ID = r.Id,
-						 OwnerID=r.UserId,
-							   Body = r.Body,
-							   AddTime = r.AddTime,
-							   IsDel = r.IsDel	}
-				}
-			};
+                    new CommentPas{
+                    Sender = new NameIdPas{
+                        Id = CHUser.UserId,
+                        Name = CHUser.Name
+                    },
+                    Comment =new CommentItemPas{ 
+                         ID = r.Id,
+                         OwnerID=r.UserId,
+                               Body = r.Body,
+                               AddTime = r.AddTime,
+                               IsDel = r.IsDel	}
+                }
+            };
                 ts.Complete();
                 return View("Comment/Item", model);
             }
@@ -126,20 +126,20 @@ namespace CHSNS.Controllers {
                 IsTellMe = 0
             };
             var model = new List<CommentPas>{
-					new CommentPas{
-					Sender = new NameIdPas{
-						Id = CHUser.UserId,
-						Name = CHUser.Name
-					},
-					Comment =new CommentItemPas{ 
-						 ID = cmt.Id,
-						 OwnerID=cmt.OwnerId,
-							   Body = cmt.Body,
-							   AddTime =cmt.AddTime,
-							   IsDel =cmt.IsDel
-					}
-				}
-			};
+                    new CommentPas{
+                    Sender = new NameIdPas{
+                        Id = CHUser.UserId,
+                        Name = CHUser.Name
+                    },
+                    Comment =new CommentItemPas{ 
+                         ID = cmt.Id,
+                         OwnerID=cmt.OwnerId,
+                               Body = cmt.Body,
+                               AddTime =cmt.AddTime,
+                               IsDel =cmt.IsDel
+                    }
+                }
+            };
             DataManager.Comment.Add(cmt, type);
             return View("Comment/Item", model);
         }
