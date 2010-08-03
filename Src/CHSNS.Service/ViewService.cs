@@ -6,7 +6,7 @@ namespace CHSNS.Service
 {
     public class ViewService : BaseService<ViewService>
     {
-        public ViewListPas ViewList(byte type, int everyrow, long ownerid, int count)
+        public ViewListPas ViewList(byte type, int everyRow, long ownerId, int count)
         {
             using (var db = DBExtInstance)
             {
@@ -18,7 +18,7 @@ namespace CHSNS.Service
                         lu =
                             (from f in db.Friend
                              join p in db.Profile on f.ToId equals p.UserId
-                             where f.FromId == ownerid && f.IsTrue
+                             where f.FromId == ownerId && f.IsTrue
                              orderby p.LoginTime descending
                              select new UserItemPas
                              {
@@ -28,7 +28,7 @@ namespace CHSNS.Service
                             ).Union(
                                 from f in db.Friend
                                 join p in db.Profile on f.FromId equals p.UserId
-                                where f.ToId == ownerid && f.IsTrue
+                                where f.ToId == ownerId && f.IsTrue
                                 orderby p.LoginTime descending
                                 select new UserItemPas
                                 {
@@ -46,7 +46,7 @@ namespace CHSNS.Service
 
                         lu = (from v in db.ViewData
                               join p in db.Profile on v.ViewerId equals p.UserId
-                              where v.OwnerId == ownerid && v.ViewClass == type
+                              where v.OwnerId == ownerId && v.ViewClass == type
                               orderby v.ViewTime descending
                               select new UserItemPas
                               {
@@ -90,7 +90,7 @@ namespace CHSNS.Service
                     default: //if (type==6)//--群用户随机
                         lu = (from u in db.GroupUser
                               join p in db.Profile on u.UserId equals p.UserId
-                              where u.GroupId == ownerid && u.Status != (int)GroupUserStatus.Wait
+                              where u.GroupId == ownerId && u.Status != (int)GroupUserStatus.Wait
                               orderby p.LoginTime descending
                               select new UserItemPas
                               {
@@ -102,7 +102,7 @@ namespace CHSNS.Service
                 }
                 return new ViewListPas
                 {
-                    EveryRow = everyrow,
+                    EveryRow = everyRow,
                     Rows = lu.Take(count).ToList()
                 };
             }
