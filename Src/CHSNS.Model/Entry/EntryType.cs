@@ -1,19 +1,16 @@
 ﻿
 namespace CHSNS
 {
+    using System.ComponentModel;
     public enum EntryType
     {
-        /// <summary>
-        /// 待审
-        /// </summary>
+        [Description("待审核")]
         Wait = 0,
-        /// <summary>
-        /// 一般    
-        /// </summary>
+
+        [Description("一般")]
         Common = 1,
-        /// <summary>
-        /// 锁定
-        /// </summary>
+        
+        [Description("锁定")]
         Lock = 2
     }
 }

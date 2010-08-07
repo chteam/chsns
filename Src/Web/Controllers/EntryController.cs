@@ -16,6 +16,7 @@
         /// <returns></returns>
         public virtual ActionResult Index(string url)
         {
+            
           //  var model = new EntryIndexViewModel();
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();

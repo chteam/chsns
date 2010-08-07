@@ -3,6 +3,7 @@
 namespace CHSNS.Controllers {
     using System.Web.Mvc;
     using CHSNS.Service;
+
     abstract public class BaseController : Controller {
 
         public IContext CHContext { get { return new CHContext(HttpContext); } }
