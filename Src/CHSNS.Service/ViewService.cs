@@ -108,15 +108,18 @@ namespace CHSNS.Service
             }
         }
 
-        public void Update(byte type, long ownerid, IUser user)
+        public void Update(VisitLogType type, long ownerid, IUser user)
         {
             var myId = user.UserId;
             if (ownerid == myId) return;
+            var intType = (byte)type;
             using (var db = DBExtInstance)
             {
                 var vd = db.ViewData.FirstOrDefault(c =>
-                                                    c.ViewClass == type && c.ViewerId == myId &&
-                                                    c.OwnerId == ownerid);
+                                                    c.ViewClass == intType
+                                                    && c.ViewerId == myId
+                                                    && c.OwnerId == ownerid
+                                                    );
                 if (null != vd) return;
 
                 #region sql
@@ -132,7 +135,7 @@ namespace CHSNS.Service
                 #endregion
                 switch (type)
                 {
-                    case 0:
+                    case VisitLogType.Profile:
                         var p = db.Profile.FirstOrDefault(c => c.UserId == ownerid);
                         if (p != null) p.ViewCount++;
                         #region sql
@@ -143,7 +146,7 @@ namespace CHSNS.Service
                         //                            "@ownerid", ownerid);
                         #endregion
                         break;
-                    case 1:
+                    case VisitLogType.Group:
                         var g = db.Group.FirstOrDefault(c => c.Id == ownerid);
                         if (g != null) g.ViewCount++;
                         #region sql
@@ -155,7 +158,7 @@ namespace CHSNS.Service
 
                         #endregion
                         break;
-                    case 5:
+                    case VisitLogType.Note:
                         var n = db.Note.FirstOrDefault(c => c.Id == ownerid);
                         if (n != null) n.ViewCount++;
                         #region sql
@@ -171,8 +174,11 @@ namespace CHSNS.Service
                         break;
                 }
                 //更新相关数据完毕
+                
                 var vds = db.ViewData.Where(c => c.OwnerId == ownerid &&
-                                                 c.ViewClass == type).OrderByDescending(c => c.ViewTime).Take(50);
+                                                 c.ViewClass == intType)
+                                                 .OrderByDescending(c => c.ViewTime)
+                                                 .Take(50);
                 var v = vds.LastOrDefault();
                 if (null != v)
                 {
@@ -204,7 +210,7 @@ namespace CHSNS.Service
                     {
                         ViewerId = myId,
                         OwnerId = ownerid,
-                        ViewClass = type,
+                        ViewClass = intType,
                         ViewTime = DateTime.Now
                     });
                     #region sql
