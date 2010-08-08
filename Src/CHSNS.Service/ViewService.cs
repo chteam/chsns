@@ -1,9 +1,12 @@
-﻿using System.Linq;
-using CHSNS.Model;
-using System;
-using CHSNS.Models;
+﻿
 namespace CHSNS.Service
 {
+    using System.Linq;
+    using CHSNS.Model;
+    using System;
+    using CHSNS.Models;
+    using System.Threading.Tasks;
+
     public class ViewService : BaseService<ViewService>
     {
         public ViewListPas ViewList(byte type, int everyRow, long ownerId, int count)
@@ -107,124 +110,98 @@ namespace CHSNS.Service
                 };
             }
         }
-
-        public void Update(VisitLogType type, long ownerid, IUser user)
+        public void Update(VisitLogType type, long ownerId, IUser user)
         {
-            var myId = user.UserId;
-            if (ownerid == myId) return;
+            Parallel.Invoke(() =>
+            {
+                UpdateMethod(type, ownerId, user);
+            });
+        }
+        
+        private void UpdateMethod(VisitLogType type, long ownerId, IUser user)
+        {
+            
+            if (ownerId == user.UserId) return;
             var intType = (byte)type;
             using (var db = DBExtInstance)
             {
-                var vd = db.ViewData.FirstOrDefault(c =>
-                                                    c.ViewClass == intType
-                                                    && c.ViewerId == myId
-                                                    && c.OwnerId == ownerid
-                                                    );
-                if (null != vd) return;
-
-                #region sql
-                //                var x =
-                //    DataBaseExecutor.Execute(
-                //        @"UPDATE [ViewData] SET ViewTime = @now
-                //WHERE (Ownerid = @ownerid) AND (Viewerid = @viewerid) AND (ViewClass = @viewclass)"
-                //        , "@now", DateTime.Now
-                //        , "@ownerid", ownerid
-                //        , "@viewerid", CHUser.UserId
-                //        , "@viewclass", type
-                //        );
+                #region old
+                
+                //var vd = db.ViewData.FirstOrDefault(c =>
+                //                                    c.ViewClass == intType
+                //                                    && c.ViewerId == myId
+                //                                    && c.OwnerId == ownerid
+                //                                    );
+                //if (null != vd) return;
                 #endregion
+                var x = db.ExecuteStoreCommand(
+        @"UPDATE [ViewData] SET ViewTime=getdate()
+                WHERE Ownerid=@p0 AND Viewerid=@p1
+                AND ViewClass=@p2"
+        , ownerId
+        , user.UserId
+        , intType
+        );
+                if (x == 0) {
+                    db.ExecuteStoreCommand(
+@"INSERT INTO ViewData(Viewerid, Ownerid, ViewTime,viewclass)
+VALUES(@p0,@p1, getdate(),@p2)", user.UserId, ownerId, intType);
+                }
+                #region UPDATE Details
+                
                 switch (type)
                 {
                     case VisitLogType.Profile:
-                        var p = db.Profile.FirstOrDefault(c => c.UserId == ownerid);
-                        if (p != null) p.ViewCount++;
-                        #region sql
-                        //                                                DataBaseExecutor.Execute(
-                        //                            @"UPDATE [profile]
-                        //SET ViewCount = ViewCount + 1 
-                        //WHERE [profile].UserId = @ownerid",
-                        //                            "@ownerid", ownerid);
-                        #endregion
+                        db.ExecuteStoreCommand(
+    @"UPDATE [profile] SET ViewCount+=1 WHERE [profile].UserId=@p0", ownerId);
                         break;
                     case VisitLogType.Group:
-                        var g = db.Group.FirstOrDefault(c => c.Id == ownerid);
-                        if (g != null) g.ViewCount++;
-                        #region sql
-                        //                        DataBaseExecutor.Execute(
-                        //                            @"UPDATE    [group]
-                        //			SET              ViewCount = ViewCount + 1 
-                        //			WHERE     ([group].Id = @ownerid)",
-                        //                            "@ownerid", ownerid);
-
-                        #endregion
+                        db.ExecuteStoreCommand(
+                            @"UPDATE [group] SET ViewCount+=1 WHERE Id=@p0", ownerId);
                         break;
                     case VisitLogType.Note:
-                        var n = db.Note.FirstOrDefault(c => c.Id == ownerid);
-                        if (n != null) n.ViewCount++;
-                        #region sql
-                        //                        DataBaseExecutor.Execute(
-                        //                            @"UPDATE    [N ote]
-                        //			SET              ViewCount = ViewCount + 1 
-                        //			WHERE     ([No te].Id = @ownerid)",
-                        //                            "@ownerid", ownerid);
-                        #endregion
-
+                        db.ExecuteStoreCommand(
+                            @"UPDATE [Note] SET ViewCount+=1 WHERE Id=@p0", ownerId);
                         break;
                     default:
                         break;
                 }
                 //更新相关数据完毕
-                
-                var vds = db.ViewData.Where(c => c.OwnerId == ownerid &&
-                                                 c.ViewClass == intType)
-                                                 .OrderByDescending(c => c.ViewTime)
-                                                 .Take(50);
-                var v = vds.LastOrDefault();
-                if (null != v)
-                {
-                    v.ViewerId = myId;
-                    v.ViewTime = DateTime.Now;
-                }
-                #region sql
-
-                //                var num =
-                //                    DataBaseExecutor.Execute(
-                //                        @"UPDATE [ViewData]
-                //SET ViewTime = @now,Viewerid = @viewerid
-                //WHERE ID IN	(SELECT top (1) [id] FROM ViewData
-                //WHERE  Ownerid = @ownerid AND ViewClass = @viewclass
-                //order by ViewTime) 
-                //and 
-                //@num < All(SELECT count(1) FROM ViewData WHERE 
-                //Ownerid = @ownerid and viewclass=@viewclass)"
-                //                        , "@now", DateTime.Now
-                //                        , "@ownerid", ownerid
-                //                        , "@viewerid", CHUser.UserId
-                //                        , "@viewclass", type
-                //                        , "@num", 50
-                //                        );
                 #endregion
-                if (vds.Count() < 50)
-                {
-                    db.ViewData.AddObject(new ViewData
-                    {
-                        ViewerId = myId,
-                        OwnerId = ownerid,
-                        ViewClass = intType,
-                        ViewTime = DateTime.Now
-                    });
-                    #region sql
-                    //                                       DataBaseExecutor.Execute(
-                    //                        @"INSERT INTO ViewData(Viewerid, Ownerid, ViewTime,viewclass)
-                    //VALUES(@Viewerid,@ownerid, @now,@viewclass)"
-                    //                        , "@now", DateTime.Now
-                    //                        , "@ownerid", ownerid
-                    //                        , "@viewerid", CHUser.UserId
-                    //                        , "@viewclass", type);
-                    #endregion
+                #region old
 
-                }
-                db.SaveChanges();
+                //var vds = db.ViewData.Where(c => c.OwnerId == ownerid &&
+                //                                 c.ViewClass == intType)
+                //                                 .OrderByDescending(c => c.ViewTime)
+                //                                 .Take(50);
+                //var v = vds.LastOrDefault();
+                //if (null != v)
+                //{
+                //    v.ViewerId = myId;
+                //    v.ViewTime = DateTime.Now;
+                //}
+                //#region sql
+
+                ////                var num =
+                ////                    DataBaseExecutor.Execute(
+                ////                        @"UPDATE [ViewData]
+                ////SET ViewTime = @now,Viewerid = @viewerid
+                ////WHERE ID IN	(SELECT top (1) [id] FROM ViewData
+                ////WHERE  Ownerid = @ownerid AND ViewClass = @viewclass
+                ////order by ViewTime) 
+                ////and 
+                ////@num < All(SELECT count(1) FROM ViewData WHERE 
+                ////Ownerid = @ownerid and viewclass=@viewclass)"
+                ////                        , "@now", DateTime.Now
+                ////                        , "@ownerid", ownerid
+                ////                        , "@viewerid", CHUser.UserId
+                ////                        , "@viewclass", type
+                ////                        , "@num", 50
+                ////                        );
+                //#endregion
+                //db.SaveChanges();
+
+                #endregion
             }
         }
     }
