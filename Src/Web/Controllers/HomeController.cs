@@ -1,25 +1,25 @@
-﻿using System.Web.Mvc;
-
+﻿
 namespace CHSNS.Controllers
 {
-	
-//	[Filter(ExecuteEnum.BeforeAction, typeof(PublicFilter))]
-//	[DefaultAction("Index")]
+    using System.Web.Mvc;
+    using CHSNS.Models;
+    using System.Configuration;
+    
     public partial class HomeController : BaseController
-	{
-		//[Cache(HttpCacheability.Public, Duration = 360, VaryByParams = "id,name")]
+    {
         public virtual ActionResult Index()
         {
             //ViewData["viewlist"] = DBExt.View.ViewList(3, 3, 0, 6);
             Title = "首页";
             return RedirectToAction("index", "Entry", new { title = "index" });
         }
-		public void LogOff() {
+        public void LogOff() {
             DataManager.Account.Logout(CHContext);
-			RedirectToAction("index");
-		}
-		protected override void HandleUnknownAction(string actionName) {
-			View(actionName).ExecuteResult(ControllerContext);
-		}
-	}
+            RedirectToAction("index");
+        }
+        protected override void HandleUnknownAction(string actionName) {
+            View(actionName).ExecuteResult(ControllerContext);
+        }
+
+    }
 }
