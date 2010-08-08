@@ -170,6 +170,7 @@
     <Compile Include="Enum\SuperNoteType.cs" />
     <Compile Include="Enum\TagsType.cs" />
     <Compile Include="Enum\ThumbType.cs" />
+    <Compile Include="Enum\VisitLogType.cs" />
     <Compile Include="Enum\VisitType.cs" />
     <Compile Include="Event.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>

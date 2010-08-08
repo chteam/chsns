@@ -4,6 +4,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
 <%Html.RenderPartial("ManageToc"); %>
 <% var x = ViewData["Source"] as IEnumerable< EntryPas>; %>
     <h2>
