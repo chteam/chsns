@@ -146,11 +146,9 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Details(long id)
         {
             var note = DataManager.Note.Details(id, NoteType.GroupPost);
-            var cl = DataManager.Comment.CommentList(id, CommentType.Note, 1,CHContext.Site);
+            var cl = DataManager.Comment.CommentList(id, CommentType.Note, 1, CHContext.Site);
             ViewData["commentlist"] = cl;
-            Title = note.Note.Title;
-            //	ViewData["NowPage"] = 1;
-            //		ViewData["PageCount"] = note.User.Count;
+            Title = note.Title;
             return View(note);
         }
 
