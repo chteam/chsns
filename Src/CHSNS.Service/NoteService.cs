@@ -16,6 +16,7 @@ namespace CHSNS.Service
         public void Add(Note note, IUser user)
         {
             note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
+            note.LastCommentUsername = "";
             using (var db = DBExtInstance)
             {
                 db.Note.AddObject(note);
@@ -58,17 +59,18 @@ namespace CHSNS.Service
         /// <summary>
         /// Delete the not e by id
         /// </summary>
-        public void Delete(long id, long pid, NoteType nt)
+        public void Delete(long id, long parentId, NoteType nt)
         {
             using (var db = DBExtInstance)
             {
-                var n = db.Note.FirstOrDefault(c => c.Id == id && c.UserId == pid);
-                if (null != n)
-                {
-                    db.DeleteObject(n);
-                    db.SaveChanges();
-                }
-
+                //var n = db.Note.FirstOrDefault(c => c.Id == id && c.UserId == pid);
+                //if (null != n)
+                //{
+                //    db.DeleteObject(n);
+                //    db.SaveChanges();
+                //}
+                db.ExecuteStoreCommand(@"delete from [Note] where id=@p0 and userId=@p1"
+                    , id, parentId);
             }
             switch (nt)
             {
@@ -81,25 +83,12 @@ namespace CHSNS.Service
             }
         }
 
-        public NoteDetailsPas Details(long id, NoteType? nt)
+        public Note Details(long id, NoteType? nt)
         {
             using (var db = DBExtInstance)
             {
                 var type = (byte)(nt ?? NoteType.Note);
-                var ret = (from n in db.Note
-                           join p in db.Profile on n.UserId equals p.UserId
-                           where n.Id == id && n.Type.Equals(type)
-                           select new NoteDetailsPas
-                           {
-                               Note = n,
-                               User = new UserCountPas
-                               {
-                                   Id = p.UserId,
-                                   Name = p.Name,
-                                   Count = n.CommentCount
-                               }
-                           }
-                          ).FirstOrDefault();
+                var ret = db.Note.FirstOrDefault(n => n.Id == id && n.Type.Equals(type));
                 return ret;
             }
         }

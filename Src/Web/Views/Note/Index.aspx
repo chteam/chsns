@@ -48,7 +48,7 @@ Inherits="System.Web.Mvc.ViewPage" %>
 				init_confirm();
 			});
 		};
-		pagefun();
+		//pagefun();
 		init_confirm();
 	</script>
 

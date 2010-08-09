@@ -119,8 +119,7 @@ namespace CHSNS.Service
         }
         
         private void UpdateMethod(VisitLogType type, long ownerId, IUser user)
-        {
-            
+        {            
             if (ownerId == user.UserId) return;
             var intType = (byte)type;
             using (var db = DBExtInstance)
@@ -135,17 +134,13 @@ namespace CHSNS.Service
                 //if (null != vd) return;
                 #endregion
                 var x = db.ExecuteStoreCommand(
-        @"UPDATE [ViewData] SET ViewTime=getdate()
-                WHERE Ownerid=@p0 AND Viewerid=@p1
-                AND ViewClass=@p2"
-        , ownerId
-        , user.UserId
-        , intType
-        );
+@"UPDATE [ViewData] SET ViewTime=getdate() WHERE Ownerid=@p0 AND Viewerid=@p1 AND ViewClass=@p2"
+        , ownerId, user.UserId, intType);
+
                 if (x == 0) {
                     db.ExecuteStoreCommand(
-@"INSERT INTO ViewData(Viewerid, Ownerid, ViewTime,viewclass)
-VALUES(@p0,@p1, getdate(),@p2)", user.UserId, ownerId, intType);
+@"INSERT INTO ViewData(Viewerid, Ownerid, ViewTime,viewclass)VALUES(@p0,@p1, getdate(),@p2)"
+, user.UserId, ownerId, intType);
                 }
                 #region UPDATE Details
                 

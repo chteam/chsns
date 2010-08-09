@@ -8,7 +8,7 @@ Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<NotePas>>" %>
 		<p><%=n.Body %><%=Html.NoteDetails("[查看全文]",n.Id,n.AddTime ) %>
 		</p>
 	</div>
-	<div class="right option">
+	<div class="right option" style="width:100%">
 		<span class="time"><%=n.AddTime .ToString("yyyy-MM-dd hh:mm") %> </span>
 		<%=n.WriteName %>
 		阅读(<%=n.ViewCount %>)

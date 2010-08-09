@@ -138,12 +138,6 @@ namespace CHSNS.Models
         }
         private ObjectSet<Message> _message;
     
-        public ObjectSet<Note> Note
-        {
-            get { return _note  ?? (_note = CreateObjectSet<Note>("Note")); }
-        }
-        private ObjectSet<Note> _note;
-    
         public ObjectSet<PersonalInformation> PersonalInformation
         {
             get { return _personalInformation  ?? (_personalInformation = CreateObjectSet<PersonalInformation>("PersonalInformation")); }
@@ -209,6 +203,12 @@ namespace CHSNS.Models
             get { return _profile  ?? (_profile = CreateObjectSet<Profile>("Profile")); }
         }
         private ObjectSet<Profile> _profile;
+    
+        public ObjectSet<Note> Note
+        {
+            get { return _note  ?? (_note = CreateObjectSet<Note>("Note")); }
+        }
+        private ObjectSet<Note> _note;
 
         #endregion
     }

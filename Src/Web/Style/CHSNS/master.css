@@ -21,9 +21,9 @@ legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:3px 5px}
 .graybox{background-color:#fff; border:1px solid #e9e9e9; margin:5px 10px; padding:10px;}
 .note {background:#FFF;border:1px solid #D8DFEA;margin:10px 0;padding:10px;text-align:center;}
 /*class*/
-.title{clear:both;float:right;font-size:12px;font-weight:600;line-height:1.5em;width:100%;
-       border-bottom:solid 1px #2984ad;
-       background:#e5e5e5}
+.title{clear:both;font-size:2.4em;font-weight:bold;line-height:100%;width:100%;letter-spacing:-2px;
+       border-bottom:solid 1px #2984ad;margin:2px 0 0.8em;
+       }
 .title a{color:#333333;display:block}
 .title a:hover{color:red;text-decoration:none}
 .text{clear:both;line-height:1.5em;}
@@ -133,11 +133,11 @@ html>body #myhome,html>body #myblog,html>body #myphoto{border-bottom:0;}
 input,textarea{border:1px solid #bdc7d8;}
 input[type~="text"], input[type~="password"], input[type~="inputfile"]
 { font-weight:500;
-	font-size: 15px;
-	font-family: Microsoft Yahei,SimHei,Simsun;
-	padding: 3px;
-	line-height: 15px;
-	height: 18px;
+    font-size: 15px;
+    font-family: Microsoft Yahei,SimHei,Simsun;
+    padding: 3px;
+    line-height: 15px;
+    height: 18px;
 }
 * html .inputtext,* html .inputfile{border:1px solid #bdc7d8;}
 input[type~="text"]:focus,input[type~="password"]:focus,textarea:focus{background:#fcfcfc; border:1px solid #bdc7d8;}
@@ -146,17 +146,17 @@ input[type~="text"]:focus,input[type~="password"]:focus,textarea:focus{backgroun
 input[type~="submit"],input[type~="button"]{background:#3B5999; padding:2px;border:1px solid; border-color:#d8dfea #0e1f5b #0e1f5b #d8dfea; color:#fff; background-image:url(images/buttonbg.jpg)}
 .select
 {
-	border:1px solid #bdc7d8;
-	font-size: 15px;
-	font-family: Microsoft Yahei,SimHei,Simsun;
-	line-height: 15px;
-	height: 24px;
-	padding:1px;
+    border:1px solid #bdc7d8;
+    font-size: 15px;
+    font-family: Microsoft Yahei,SimHei,Simsun;
+    line-height: 15px;
+    height: 24px;
+    padding:1px;
 }
 .select select
 {
-	margin:-2px;
-	background:#fcfcfc;
+    margin:-2px;
+    background:#fcfcfc;
 }
 /*以下 为 ajax controlpadding-right:20px*/
 /*消息内容*/
@@ -239,11 +239,11 @@ background-position:0 -1400px;
 .evt{ border-bottom:solid 1px #EBEBEB;}
 .evt_del,.evt_del:hover
 {
-	float:right;
-	font-size:10px;
-	text-decoration:none;
-	background:url(images/bg_icon.png) no-repeat -40px -640px;
-	width:20px;
+    float:right;
+    font-size:10px;
+    text-decoration:none;
+    background:url(images/bg_icon.png) no-repeat -40px -640px;
+    width:20px;
 }
 
 
@@ -390,13 +390,13 @@ background-position:0 -1400px;
 
 .box { position:relative; overflow:hidden; width:100%; margin-bottom:0px;}
 .box h3 { height:20px; margin-bottom:0px; padding-left:8px; background: transparent url(images/h4bg.jpg) repeat-x bottom left; color:#444444; border-top:1px solid #95a5c6; font-size:12px; line-height:20px;}
-	.box h3 .edit a{ color:#cccccc; font-weight:normal; float:right; margin-right:10px;}
-	.box h3 .stat { height:20px; margin-left:5px; color:#000; font-size:12px; font-weight:normal; line-height:20px;}
-	.box h3 .count { padding:0 2px;}
+    .box h3 .edit a{ color:#cccccc; font-weight:normal; float:right; margin-right:10px;}
+    .box h3 .stat { height:20px; margin-left:5px; color:#000; font-size:12px; font-weight:normal; line-height:20px;}
+    .box h3 .count { padding:0 2px;}
 .box .boxcontent { padding:0 5px;}
-	.box .readmore { text-align:right;}
+    .box .readmore { text-align:right;}
 .box .more { position:absolute; right:10px; top:6px; line-height:24px; color:#fff;}
-	.box .more .stat { color:#3B5999;}
+    .box .more .stat { color:#3B5999;}
 .box .boxcont{ padding:0 10px;}
 
 
@@ -406,26 +406,26 @@ background-position:0 -1400px;
 
 
 .personInfo { overflow:hidden; width:91px; vertical-align:bottom;}
-	.personIcon { width:52px; overflow:hidden;}
-		.personIcon td { width:52px;}
-		.personIcon a img { width:50px; border:1px solid #d8dfea;}
-		.personIcon a:hover img { border:1px solid #3B5999;}
+    .personIcon { width:52px; overflow:hidden;}
+        .personIcon td { width:52px;}
+        .personIcon a img { width:50px; border:1px solid #d8dfea;}
+        .personIcon a:hover img { border:1px solid #3B5999;}
 .personName { padding:5px 0 2px; line-height:15px; overflow:hidden;}
 .personName a { display:block; white-space:nowrap;}
 
 /* ==== 1.1 userInfo ==== */
 #userPicture { margin-bottom:10px;}
-	#userPicture a img { border:1px solid #d8dfea;z-index:100;}
-	#userPicture a:hover img { border:1px solid #3B5999;z-index:100;}
+    #userPicture a img { border:1px solid #d8dfea;z-index:100;}
+    #userPicture a:hover img { border:1px solid #3B5999;z-index:100;}
 
 #userActions { list-style-type:none; font-family:Tahoma, Helvetica, sans-serif; margin-top:5px;margin-left:0}
-	#userActions li { border-bottom:1px solid #d8dfea; color:#808080; text-indent:5px; line-height:20px;}
-	* html #userActions li { height:1%;}
-	*+html #userActions li { min-height:1%;}
-	#userActions li a { display:block; width:202px; text-decoration:none; font-size:12px;}
-	#userActions li a:hover{ background-color:#3b5999; color:White;}
-	
-	
+    #userActions li { border-bottom:1px solid #d8dfea; color:#808080; text-indent:5px; line-height:20px;}
+    * html #userActions li { height:1%;}
+    *+html #userActions li { min-height:1%;}
+    #userActions li a { display:block; width:202px; text-decoration:none; font-size:12px;}
+    #userActions li a:hover{ background-color:#3b5999; color:White;}
+    
+    
 #AccountInfo,#BasicInfo,#ContactInfo,#MagicBox{ color:#3b5999;}
 
 /*toc tabs*/

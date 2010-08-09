@@ -35,9 +35,11 @@ namespace CHSNS.Models
     
         public virtual long UserId{get;set;}
     
+        public virtual string Username{get;set;}
+    
         public virtual byte IsTellMe{get;set;}
     
-        public virtual Nullable<bool> IsAnonymous{get;set;}
+        public virtual bool IsAnonymous{get;set;}
     
         public virtual byte ShowLevel{get;set;}
     
@@ -50,6 +52,8 @@ namespace CHSNS.Models
         public virtual long CommentCount{get;set;}
     
         public virtual long LastCommentUserId{get;set;}
+    
+        public virtual string LastCommentUsername{get;set;}
     
         public virtual System.DateTime LastCommentTime{get;set;}
     
