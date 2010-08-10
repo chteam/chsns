@@ -33,13 +33,6 @@ namespace CHSNS.Controllers {
 
         }
 
-        /// <summary>
-        /// Notes the list.
-        /// </summary>
-        /// <param name="p">The p.</param>
-        /// <param name="ep">The ep.</param>
-        /// <param name="userid">The userid.</param>
-        /// <returns></returns>
         [HttpPost]
         public virtual ActionResult NoteList(int p, int ep, long userid)
         {
@@ -101,11 +94,7 @@ namespace CHSNS.Controllers {
             return RedirectToAction("Index");
         }
 
-        /// <summary>
-        /// Delete the Note
-        /// </summary>
-        /// <param name="id">The id.</param>
-        /// <returns></returns>
+
         [HttpPost]
         [Authorize]
         public virtual ActionResult Delete(long id)
