@@ -24,7 +24,7 @@ namespace CHSNS {
  ;
         }
         public static SelectList GetSelectList(this HtmlHelper html, string key) {
-            return new SelectList(ConfigSerializer.Instance.Load<List<ListItem>>(key), "Value", "Text");
+            return new SelectList(ConfigSerializer.Instance.Load<List<SelectListItem>>(key), "Value", "Text");
         }
     }
     public class DropDownListModel<T> {

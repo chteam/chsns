@@ -113,10 +113,10 @@ namespace CHSNS.Controllers {
                 return HttpNotFound("group not found");
             Title = g.Name + "№ЬАн";
             ViewData["group.ShowLevel"] = new SelectList(
-                ConfigSerializer.Load<List<ListItem>>("Group/ShowLevel"),
+                ConfigSerializer.Load<List<SelectListItem>>("Group/ShowLevel"),
                 "Value", "Text", g.ShowLevel);
             ViewData["group.JoinLevel"] = new SelectList(
-                ConfigSerializer.Load<List<ListItem>>("Group/JoinLevel"),
+                ConfigSerializer.Load<List<SelectListItem>>("Group/JoinLevel"),
                 "Value", "Text", g.JoinLevel);
             ViewData["group"] = g;
             return View();

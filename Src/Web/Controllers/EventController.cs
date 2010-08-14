@@ -36,7 +36,7 @@ namespace CHSNS.Controllers {
         [AdminFilter]
         public virtual ActionResult SystemTemplate()
         {
-            var x = ConfigSerializer.Load<List<ListItem>>("SystemTemplate");
+            var x = ConfigSerializer.Load<List<SelectListItem>>("SystemTemplate");
             ViewData["source"] = x;
             return View("Admin/SystemTemplate");
         }
@@ -54,12 +54,12 @@ namespace CHSNS.Controllers {
             if (!c.Contains("<%@")) {
                 c = "<%@ Control Language=\"C#\" AutoEventWireup=\"true\" Inherits=\"System.Web.Mvc.ViewUserControl\" %>" + c;
             }
-            var li = new ListItem
+            var li = new SelectListItem
                         {
                             Text = t,
                             Value = v
                         };
-            var x = ConfigSerializer.Load<List<ListItem>>("SystemTemplate");
+            var x = ConfigSerializer.Load<List<SelectListItem>>("SystemTemplate");
             if (x.Where(q => q.Value == li.Value).Count() != 1)
             {
                 x.Add(li);
