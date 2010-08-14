@@ -2,13 +2,13 @@
 
 namespace CHSNS
 {
-	/// <summary>
-	/// 计算特殊时间的类
-	/// AU:邹健
-	/// LE:2006年8月
-	/// </summary>
-	public class Date
-	{
+    /// <summary>
+    /// 计算特殊时间的类
+    /// AU:邹健
+    /// LE:2006年8月
+    /// </summary>
+    public class Date
+    {
         //#region SkyTreeText enum
 
         ///// <summary>
@@ -29,26 +29,26 @@ namespace CHSNS
         //#endregion
 
 
-		/// <summary>
-		/// 求时间与现在的分数间隔
-		/// </summary>
-		/// <param name="oldtime"></param>
-		/// <returns></returns>
+        /// <summary>
+        /// 求时间与现在的分数间隔
+        /// </summary>
+        /// <param name="oldtime"></param>
+        /// <returns></returns>
         public static int DivMinutes(DateTime oldtime)
-		{
-			TimeSpan st = DateTime.Now - oldtime;
+        {
+            TimeSpan st = DateTime.Now - oldtime;
             return (int)st.TotalMinutes;
-			//.Minutes;
-		}
+            //.Minutes;
+        }
 
-		public static int DivMinutes(object oldtime)
-		{
-			DateTime dt;
-			if (DateTime.TryParse(oldtime.ToString(), out dt))
+        public static int DivMinutes(object oldtime)
+        {
+            DateTime dt;
+            if (DateTime.TryParse(oldtime.ToString(), out dt))
                 return DivMinutes(dt);
-			return 1000;
-			//.Minutes;
-		}
+            return 1000;
+            //.Minutes;
+        }
 
         ///// <summary>
         ///// 获取天干或地枝的编号
@@ -350,5 +350,5 @@ namespace CHSNS
         //    }
         //    return functionReturnValue;
         //}
-	}
+    }
 }

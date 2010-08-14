@@ -3,46 +3,46 @@ using System.Web.Mvc;
 
 namespace CHSNS
 {
-	public class DefaultDataBinder : IDataBinder
-	{
-		public object NestedRootInstance { get; set; }
+    public class DefaultDataBinder : IDataBinder
+    {
+        public object NestedRootInstance { get; set; }
         
-		public object ExtractValue(string target, ViewContext context)
-		{
-			if (target == null)
-				return null;
+        public object ExtractValue(string target, ViewContext context)
+        {
+            if (target == null)
+                return null;
 
-			var viewData = context.ViewData;
+            var viewData = context.ViewData;
 
-			if(NestedRootInstance != null)
-			{
-				viewData = new ViewDataDictionary(NestedRootInstance);
-			}
+            if(NestedRootInstance != null)
+            {
+                viewData = new ViewDataDictionary(NestedRootInstance);
+            }
 
-			return viewData.Eval(target);
-		}
+            return viewData.Eval(target);
+        }
 
-		public IDisposable NestedBindingScope(object rootDataItem)
-		{
-			return new DefaultBindingScope(this, rootDataItem);
-		}
+        public IDisposable NestedBindingScope(object rootDataItem)
+        {
+            return new DefaultBindingScope(this, rootDataItem);
+        }
 
-		public class DefaultBindingScope : IDisposable
-		{
-			private readonly DefaultDataBinder _binder;
-			private readonly object _originalRootInstance;
+        public class DefaultBindingScope : IDisposable
+        {
+            private readonly DefaultDataBinder _binder;
+            private readonly object _originalRootInstance;
 
-			public DefaultBindingScope(DefaultDataBinder binder, object newRootInstance)
-			{
-				_binder = binder;
-				_originalRootInstance = binder.NestedRootInstance;
-				binder.NestedRootInstance = newRootInstance;
-			}
+            public DefaultBindingScope(DefaultDataBinder binder, object newRootInstance)
+            {
+                _binder = binder;
+                _originalRootInstance = binder.NestedRootInstance;
+                binder.NestedRootInstance = newRootInstance;
+            }
 
-			public void Dispose()
-			{
-				_binder.NestedRootInstance = _originalRootInstance;
-			}
-		}
-	}
+            public void Dispose()
+            {
+                _binder.NestedRootInstance = _originalRootInstance;
+            }
+        }
+    }
 }
