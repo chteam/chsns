@@ -85,6 +85,7 @@
     <Compile Include="Extension\Common\EnumerableExtensions.cs" />
     <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
     <Compile Include="Extension\Html\ApplicationContext.cs" />
+    <Compile Include="Extension\Html\ImageSpriteHelper.cs" />
     <Compile Include="Extension\Html\ScriptExtensions.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
@@ -152,6 +153,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
