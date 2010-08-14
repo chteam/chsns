@@ -141,7 +141,6 @@
     <Content Include="Images\no_middle.jpg" />
     <Content Include="Images\no_small.jpg" />
     <Content Include="Images\no_tiny.jpg" />
-    <Content Include="Service\Users.asmx" />
     <Content Include="Style\CHSNS\Images\check_right.gif" />
     <Content Include="Style\CHSNS\Images\curtain.png" />
     <Content Include="Style\CHSNS\Images\logo.jpg" />
@@ -427,10 +426,6 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\Users.asmx.cs">
-      <DependentUpon>Users.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -487,7 +482,6 @@
     <Folder Include="App_Sprites\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Style\Sprite\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\App_LocalResources\Boolean.ascx.resx" />

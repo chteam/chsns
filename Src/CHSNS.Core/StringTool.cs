@@ -39,6 +39,7 @@ namespace CHSNS {
         //    //return str;
         //}
         #endregion
+
         #region 正则匹配
 
 
@@ -50,8 +51,7 @@ namespace CHSNS {
         //}
 
         #endregion
-
-
+        
         #region 兴趣爱好格式化
         ///// <summary>
         ///// 将分隔符规范化为','
@@ -166,7 +166,6 @@ namespace CHSNS {
         //    }
         //    return bytes < 1073741824L ? string.Format("{0:N2} MB", bytes / 1048576f) : string.Format("{0:N2} GB", bytes / 1.073742E+09f);
         //}
-
-
+    
     }
 }

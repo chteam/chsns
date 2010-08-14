@@ -118,7 +118,6 @@
     <Compile Include="Store\IFolder.cs" />
     <Compile Include="Store\IStoreFile.cs" />
     <Compile Include="StringTool.cs" />
-    <Compile Include="TestFriends.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

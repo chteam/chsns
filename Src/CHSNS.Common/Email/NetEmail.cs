@@ -1,8 +1,9 @@
-﻿using System.Net;
-using System.Net.Mail;
-
+﻿
 namespace CHSNS.Email
 {
+    using System.Net;
+    using System.Net.Mail;
+
     /// <summary>
     /// .net 2.0邮件发送方式
     /// </summary>
