@@ -90,6 +90,7 @@
     <Content Include="Scripts\Upload\swfupload.js" />
     <Content Include="Scripts\Upload\swfupload.swf" />
     <Content Include="Scripts\Upload\swfuploadbutton.swf" />
+    <Content Include="Views\Account\LogOn.aspx" />
     <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Boolean.ascx" />
     <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Collection.ascx" />
     <Content Include="Views\Shared\DefaultTemplates\DisplayTemplates\Decimal.ascx" />

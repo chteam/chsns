@@ -70,7 +70,7 @@ function FormMsg(i, m, p, f) {//i:id without msg,m:message,p:id withmsg or defin
     if (p == null) p = i + "msg";
     var l = $(p);
     if (!l.length) {
-    	l = $("<span></span>").attr("id", p.substr(1, p.length - 1).replace("\\", "")).addClass("error");
+        l = $("<span></span>").attr("id", p.substr(1, p.length - 1).replace("\\", "")).addClass("error");
         $(i).after(l);
     }
     l.html(m).fadeIn();
@@ -578,44 +578,44 @@ var dc_edit = function (text, edit, time, onblur) {
 };
 
 $.extend({
-	_fileloaded: ',',
-	rootPath: '',
-	include: function (file, rp) {
-		if (rp) this.rootPath = rp;
-		var files = typeof file == "string" ? [file] : file;
-		for (var i = 0; i < files.length; i++) {
-			var fn = files[i].toLowerCase();
-			var array = fn.split('.');
-			if (array.length == 0) continue;
-			var ext = array[array.length - 1];
-			var path = ($.rootPath + fn).toLowerCase();
-			if (this._fileloaded.indexOf(path) == -1) {
-				if (ext == "css") {
-					$(document.createElement("link"))
+    _fileloaded: ',',
+    rootPath: '',
+    include: function (file, rp) {
+        if (rp) this.rootPath = rp;
+        var files = typeof file == "string" ? [file] : file;
+        for (var i = 0; i < files.length; i++) {
+            var fn = files[i].toLowerCase();
+            var array = fn.split('.');
+            if (array.length == 0) continue;
+            var ext = array[array.length - 1];
+            var path = ($.rootPath + fn).toLowerCase();
+            if (this._fileloaded.indexOf(path) == -1) {
+                if (ext == "css") {
+                    $(document.createElement("link"))
                     .attr({ "rel": "stylesheet", "type": "text/css", "href": path })
                     .appendTo("head");
-				}
-				else {
-					$(document.createElement("script"))
+                }
+                else {
+                    $(document.createElement("script"))
                     .attr({ "type": "text/javascript", "src": path })
                     .appendTo("head");
-				}
-			}
-			this._fileloaded += path + ",";
-		}
-	}
+                }
+            }
+            this._fileloaded += path + ",";
+        }
+    }
 });
 ///Dynamic load error info, http://bbs.eice.com.cn
 $.fn.extend({
-	valiMsg: function (msg, valiId, isfocus) {
-		var id = this.attr("id") + "msg";
-		var p = valiId == null ? "#" + id : valiId;
-		var l = $(p);
-		if (l.length <= 0) {
-			this.after($("<span></span>").attr("id", id).addClass("error"));
-		}
-		l.html(msg).fadeIn();
-		if (isfocus) this.focus();
-		return this;
-	}
+    valiMsg: function (msg, valiId, isfocus) {
+        var id = this.attr("id") + "msg";
+        var p = valiId == null ? "#" + id : valiId;
+        var l = $(p);
+        if (l.length <= 0) {
+            this.after($("<span></span>").attr("id", id).addClass("error"));
+        }
+        l.html(msg).fadeIn();
+        if (isfocus) this.focus();
+        return this;
+    }
 });

@@ -27,10 +27,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
         <div id="linkList">
-            <div id="linkList2">
-                <%
-                    Html.RenderPartial("MyMenu");%>
-            </div>
+                <%Html.RenderPartial("MyMenu");%>
         </div>
         <%
             Html.RenderPartial("Footer");%>

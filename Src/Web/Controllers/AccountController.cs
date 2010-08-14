@@ -9,6 +9,8 @@ namespace CHSNS.Controllers
 {
     public partial class AccountController : BaseController
     {
+        #region 注册
+
         /// <summary>
         /// 注册协议页
         /// </summary>
@@ -55,6 +57,7 @@ namespace CHSNS.Controllers
             TempData["errors"] = "用户名已经存在";
             return RedirectToAction(Actions.RegPage());
         }
+        #endregion
 
         #region 登录注销
         /// <summary>
@@ -65,25 +68,30 @@ namespace CHSNS.Controllers
             DataManager.Account.Logout(CHContext);
             return RedirectToAction(MVC.Entry.Index("index"));
         }
-        /// <summary>
-        /// 登录
-        /// </summary>
-        /// <param name="u">用户名/Id</param>
-        /// <param name="p">密码</param>
-        /// <param name="a">是否保存密码</param>
-        /// <returns>是否登录成功</returns>
-        public virtual ActionResult LogOn(string u, string p, bool a)
+        [HttpGet]
+        public virtual ActionResult LogOn()
         {
-            if (u.Length > 3 && Regex.IsMatch(p, @"[^']{4,}"))
-            {
-                //匹配成功则赋值
-                var loginResult = DataManager.Account.Login(u, p, a, true, CHContext);
-                return loginResult <= 0 ? Content("false") : Content("true");
-            }
-            return Content("false");
+            Title = "登录";
+            return View();
         }
-
+        [HttpPost]
+        public virtual ActionResult LogOn(Account account, bool? autoLogOn)
+        {
+            if (!ViewData.ModelState.IsValid)
+            {
+                return View(account);
+            }
+            //匹配成功则赋值
+            var loginResult = DataManager.Account.Login(
+                account.UserName, account.Password,
+                autoLogOn ?? false, true, CHContext);
+            if (loginResult <= 0)
+                return View(account);
+            else
+                return RedirectToAction(MVC.Entry.Index("index"));
+        }
         #endregion
+
         #region 设置管理员
         public virtual ActionResult InitCreater()
         {
@@ -91,6 +99,7 @@ namespace CHSNS.Controllers
             return View();
         }
         #endregion
+
         #region 修改密码
         [HttpGet]
         public virtual ActionResult ChangePassword()
