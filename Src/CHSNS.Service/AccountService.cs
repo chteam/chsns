@@ -25,8 +25,10 @@ namespace CHSNS.Service
 
         #region LogOn
 
-        public int Login(String userName, String password, Boolean isAutoLogin, Boolean isPasswordMd5, IContext context)
+        public int Login(Account account, Boolean isAutoLogin, Boolean isPasswordMd5, IContext context)
         {
+            var userName = account.UserName;
+            var password = account.Password;
             if (string.IsNullOrEmpty(userName.Trim())) throw new Exception("用户名不能为空");
             password = isPasswordMd5 ? password.Trim().ToMd5() : password.Trim();
             var identity = GeneralIdentity(userName, password, context.Site.Score.LogOn);

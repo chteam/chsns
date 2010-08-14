@@ -7,7 +7,7 @@
     <script src="/Scripts/MicrosoftMvcJQueryValidation.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin-left:200px;margin-top:120px">
+    <div style="margin-left: 200px; margin-top: 120px">
         <%
             Html.EnableClientValidation();
             using (Html.BeginForm())
@@ -25,7 +25,9 @@
                 <%: Html.ValidationMessageFor(model => model.Password) %>
             </p>
             <p>
-                <input type="checkbox" value="true" name="autoLogOn" />&nbsp;下次自动登录
+                <%:Html.Hidden("ReturnUrl")%>
+                <%:Html.CheckBox("autoLogOn") %>
+                &nbsp;下次自动登录
             </p>
             <p>
                 <input type="submit" value="登录" />

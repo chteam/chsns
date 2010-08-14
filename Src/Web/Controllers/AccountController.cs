@@ -69,26 +69,29 @@ namespace CHSNS.Controllers
             return RedirectToAction(MVC.Entry.Index("index"));
         }
         [HttpGet]
-        public virtual ActionResult LogOn()
+        public virtual ActionResult LogOn(string returnUrl)
         {
             Title = "登录";
+            ViewModel.ReturnUrl = returnUrl;
             return View();
         }
         [HttpPost]
-        public virtual ActionResult LogOn(Account account, bool? autoLogOn)
+        public virtual ActionResult LogOn(Account account, bool? autoLogOn, string returnUrl)
         {
             if (!ViewData.ModelState.IsValid)
             {
-                return View(account);
+                ViewData.Model = account;
+                ViewModel.AutoLogOn = autoLogOn;
+                return LogOn(returnUrl);
             }
             //匹配成功则赋值
-            var loginResult = DataManager.Account.Login(
-                account.UserName, account.Password,
-                autoLogOn ?? false, true, CHContext);
+            var loginResult = DataManager.Account.Login(account, autoLogOn ?? false, true, CHContext);
             if (loginResult <= 0)
                 return View(account);
             else
-                return RedirectToAction(MVC.Entry.Index("index"));
+                return RedirectToAction(
+                    returnUrl ?? Url.Action(MVC.Entry.Index("index"))
+                    );
         }
         #endregion
 
