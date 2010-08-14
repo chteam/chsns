@@ -43,6 +43,11 @@ namespace CHSNS.Controllers {
         public System.Web.Mvc.ActionResult SaveReg() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.SaveReg);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult LogOn() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AccountController Actions { get { return MVC.Account; } }
@@ -113,15 +118,17 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult LogOn() {
+        public override System.Web.Mvc.ActionResult LogOn(string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult LogOn(CHSNS.Models.Account account, bool? autoLogOn) {
+        public override System.Web.Mvc.ActionResult LogOn(CHSNS.Models.Account account, bool? autoLogOn, string returnUrl) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
             callInfo.RouteValueDictionary.Add("account", account);
             callInfo.RouteValueDictionary.Add("autoLogOn", autoLogOn);
+            callInfo.RouteValueDictionary.Add("returnUrl", returnUrl);
             return callInfo;
         }
 
