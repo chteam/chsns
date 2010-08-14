@@ -20,7 +20,7 @@ img{border:0;}
 border:solid 1px #cccccc;border-bottom:solid 1px #3b5999;overflow:hidden;}
 #content h2{margin:10px}
 
-#footer{font-size:12px;padding:7px;padding-top:5px;width:100%}
+#footer{font-size:12px;padding:0px;padding-top:5px;width:90%;padding-left:10px;min-width:600px}
 #footer p{text-align:center;}
 #footer a:link,#footer a:visited{margin-right: 10px;color:#3b5999;float:right;}
 #copyright{float:left;width:150px;color:#999999;text-decoration:none;}
