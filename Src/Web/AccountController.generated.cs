@@ -43,11 +43,6 @@ namespace CHSNS.Controllers {
         public System.Web.Mvc.ActionResult SaveReg() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.SaveReg);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult LogOn() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AccountController Actions { get { return MVC.Account; } }
@@ -79,6 +74,7 @@ namespace CHSNS.Controllers {
         public class ViewNames {
             public readonly string Agreement = "~/Views/Account/Agreement.aspx";
             public readonly string ChangePassword = "~/Views/Account/ChangePassword.aspx";
+            public readonly string LogOn = "~/Views/Account/LogOn.aspx";
             public readonly string Reg_Success = "~/Views/Account/Reg-Success.aspx";
             public readonly string RegPage = "~/Views/Account/RegPage.aspx";
         }
@@ -117,11 +113,15 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult LogOn(string u, string p, bool a) {
+        public override System.Web.Mvc.ActionResult LogOn() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
-            callInfo.RouteValueDictionary.Add("u", u);
-            callInfo.RouteValueDictionary.Add("p", p);
-            callInfo.RouteValueDictionary.Add("a", a);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult LogOn(CHSNS.Models.Account account, bool? autoLogOn) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
+            callInfo.RouteValueDictionary.Add("account", account);
+            callInfo.RouteValueDictionary.Add("autoLogOn", autoLogOn);
             return callInfo;
         }
 

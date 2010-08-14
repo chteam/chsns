@@ -9,11 +9,12 @@ namespace CHSNS.Models
         public class AccountMeta
         {
             [RegularExpression(@"[\w\W]{4,32}")]
-            [Required(ErrorMessage="dfsfsdf")]
+            [Required(ErrorMessage = "请填写用户名")]
             [StringLength(50)]
-            [Display(Name="用户名")]
+            [Display(Name = "用户名")]
             public string UserName { get; set; }
-            [Required]
+
+            [Required(ErrorMessage = "请填写密码")]
             [RegularExpression(@"[\w\W]{4,32}")]
             [StringLength(32)]
             [Display(Name = "密码")]
