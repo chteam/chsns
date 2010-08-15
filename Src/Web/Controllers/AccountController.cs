@@ -12,21 +12,27 @@ namespace CHSNS.Controllers
         #region 注册
 
         /// <summary>
-        /// 注册协议页
-        /// </summary>
-        /// <returns></returns>
-        public virtual ActionResult Agreement()
-        {
-            Title = "注册 - 注册协议";
-            return View();
-        }
-        /// <summary>
         /// 注册页
         /// </summary>
-        public virtual ActionResult RegPage()
+        public virtual ActionResult Register()
         {
             Title = "注册 - 注册账号";
             return View();
+        }
+        
+        [HttpPost]
+        public virtual ActionResult Register(RegisterModel account)
+        {
+            if (!ViewData.ModelState.IsValid)
+            {
+                ViewData.Model = account;
+                return Register();
+            }
+            var hasSuccess = DataManager.Account.Create(account, CHContext.Site);
+            Title = "注册成功";
+            if (hasSuccess)
+                return View(Views.Reg_Success);
+            return View(account);
         }
         /// <summary>
         /// Username can use.
@@ -34,28 +40,6 @@ namespace CHSNS.Controllers
         public virtual ActionResult UsernameCanUse(string username)
         {
             return Json(DataManager.Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
-        }
-        [HttpPost]
-        public virtual ActionResult SaveReg(string userName, string password, string name)
-        {
-            if (!(userName.Length > 3 && Regex.IsMatch(password, @"[^']{4,}")))
-                return this.RedirectToReferrer();
-
-            if (string.IsNullOrEmpty(name))
-                throw new ApplicationException("资料中有空项");
-            var account = new Account
-                        {
-                            UserName = userName,
-                            Password = password,
-                        };
-
-            var hasSuccess = DataManager.Account.Create(account, name, CHContext.Site);
-
-            Title = "注册成功";
-            if (hasSuccess)
-                return View(Views.Reg_Success);
-            TempData["errors"] = "用户名已经存在";
-            return RedirectToAction(Actions.RegPage());
         }
         #endregion
 

@@ -34,18 +34,11 @@ namespace CHSNS.Service
             var identity = GeneralIdentity(userName, password, context.Site.Score.LogOn);
             if (identity == null) return -1;//无账号
             Logout(context);
-            var expires = isAutoLogin
-            ? DateTime.Now.AddMinutes(60)
-            : DateTime.Now.AddYears(1);
-            FormsAuthenticationTicket authTicket = new
-       FormsAuthenticationTicket(1, identity.Name, DateTime.Now,
-       expires
-       , true, JsonAdapter.Serialize(identity));
+            var expires = isAutoLogin ? DateTime.Now.AddMinutes(60) : DateTime.Now.AddYears(1);
+            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, identity.Name, DateTime.Now, expires, true, JsonAdapter.Serialize(identity));
             string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
 
-            HttpCookie authCookie =
-                         new HttpCookie(FormsAuthentication.FormsCookieName,
-                                        encryptedTicket);
+            HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
             authCookie.Expires = expires;
             context.HttpContext.Response.Cookies.Add(authCookie);
 
@@ -98,10 +91,10 @@ namespace CHSNS.Service
 
         #region Create
 
-        public bool Create(Account account, string name, SiteConfig site)
+        public bool Create(RegisterModel account, SiteConfig site)
         {
             var canuse = IsUsernameCanUse(account.UserName);
-            return canuse && Create(account, name, site.Score.Init);
+            return canuse && Create(account.ToAccount(), account.Nickname, site.Score.Init);
         }
         internal bool Create(Account account, string name, int initScore)
         {

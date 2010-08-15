@@ -19,6 +19,7 @@ img{border:0;}
          margin-left:100px;
 border:solid 1px #cccccc;border-bottom:solid 1px #3b5999;overflow:hidden;}
 #content h2{margin:10px}
+#content .centerform{margin-left: 200px; margin-top: 50px}
 
 #footer{font-size:12px;padding:0px;padding-top:5px;width:90%;padding-left:10px;min-width:600px}
 #footer p{text-align:center;}
