@@ -241,6 +241,7 @@
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewListPas.cs" />
+    <Compile Include="ViewModel\RegisterModel.cs" />
     <Compile Include="ViewModel\UserIndexViewModel.cs" />
     <Compile Include="WebProvider\CHIdentity.cs" />
     <Compile Include="WebProvider\CHPrincipal.cs" />

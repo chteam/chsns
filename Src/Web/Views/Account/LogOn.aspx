@@ -1,13 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<CHSNS.Models.Account>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
-    <script src="/Scripts/jquery.jqtransform.js" type="text/javascript"></script>
-    <link href="/Style/jqtransform.css" rel="stylesheet" type="text/css" />
+    
+    
     <script src="/Scripts/jquery.validate.min.js" type="text/javascript"></script>
     <script src="/Scripts/MicrosoftMvcJQueryValidation.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin-left: 200px; margin-top: 120px">
+    <div  class="centerform">
         <%
             Html.EnableClientValidation();
             using (Html.BeginForm())

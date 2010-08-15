@@ -276,9 +276,8 @@
     <Content Include="Style\CHSNS\video.css" />
     <Content Include="Style\CHSNS\wysiwyg\wysiwyg.css" />
     <Content Include="Style\CHSNS\Images\wysiwyg.gif" />
-    <Content Include="Views\Account\Agreement.aspx" />
     <Content Include="Views\Account\Reg-Success.aspx" />
-    <Content Include="Views\Account\RegPage.aspx" />
+    <Content Include="Views\Account\Register.aspx" />
     <Content Include="Views\Event\Index.aspx" />
     <Content Include="Views\Event\Show.aspx" />
     <Content Include="Views\Friend\FriendList.ascx" />

@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 	<div class="notes">
-		恭喜您,注册成功,<%=Html.ActionLink("请登录","Index","Home") %>
+		恭喜您,注册成功,<%=Html.ActionLink("请登录",MVC.Account.LogOn()) %>
 	</div>
 		
 </asp:Content>

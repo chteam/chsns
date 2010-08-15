@@ -40,11 +40,6 @@ namespace CHSNS.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult SaveReg() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.SaveReg);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult LogOn() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.LogOn);
         }
@@ -61,10 +56,8 @@ namespace CHSNS.Controllers {
         public ActionNamesClass ActionNames { get { return s_actions; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
-            public readonly string Agreement = ("Agreement").ToLowerInvariant();
-            public readonly string RegPage = ("RegPage").ToLowerInvariant();
+            public readonly string Register = ("Register").ToLowerInvariant();
             public readonly string UsernameCanUse = ("UsernameCanUse").ToLowerInvariant();
-            public readonly string SaveReg = ("SaveReg").ToLowerInvariant();
             public readonly string LogOff = ("LogOff").ToLowerInvariant();
             public readonly string LogOn = ("LogOn").ToLowerInvariant();
             public readonly string InitCreater = ("InitCreater").ToLowerInvariant();
@@ -77,11 +70,10 @@ namespace CHSNS.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
-            public readonly string Agreement = "~/Views/Account/Agreement.aspx";
             public readonly string ChangePassword = "~/Views/Account/ChangePassword.aspx";
             public readonly string LogOn = "~/Views/Account/LogOn.aspx";
             public readonly string Reg_Success = "~/Views/Account/Reg-Success.aspx";
-            public readonly string RegPage = "~/Views/Account/RegPage.aspx";
+            public readonly string Register = "~/Views/Account/Register.aspx";
         }
     }
 
@@ -89,27 +81,20 @@ namespace CHSNS.Controllers {
     public class T4MVC_AccountController: CHSNS.Controllers.AccountController {
         public T4MVC_AccountController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Agreement() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Agreement);
+        public override System.Web.Mvc.ActionResult Register() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult RegPage() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.RegPage);
+        public override System.Web.Mvc.ActionResult Register(CHSNS.Models.RegisterModel account) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Register);
+            callInfo.RouteValueDictionary.Add("account", account);
             return callInfo;
         }
 
         public override System.Web.Mvc.ActionResult UsernameCanUse(string username) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.UsernameCanUse);
             callInfo.RouteValueDictionary.Add("username", username);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult SaveReg(string userName, string password, string name) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.SaveReg);
-            callInfo.RouteValueDictionary.Add("userName", userName);
-            callInfo.RouteValueDictionary.Add("password", password);
-            callInfo.RouteValueDictionary.Add("name", name);
             return callInfo;
         }
 
