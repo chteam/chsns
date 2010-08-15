@@ -44,14 +44,13 @@ namespace CHSNS.Controllers
         #endregion
 
         #region 登录注销
-        /// <summary>
-        /// 注销功能
-        /// </summary>
+
         public virtual ActionResult LogOff()
         {
             DataManager.Account.Logout(CHContext);
             return RedirectToAction(MVC.Entry.Index("index"));
         }
+
         [HttpGet]
         public virtual ActionResult LogOn(string returnUrl)
         {
@@ -59,6 +58,7 @@ namespace CHSNS.Controllers
             ViewModel.ReturnUrl = returnUrl;
             return View();
         }
+
         [HttpPost]
         public virtual ActionResult LogOn(Account account, bool? autoLogOn, string returnUrl)
         {
@@ -74,7 +74,7 @@ namespace CHSNS.Controllers
                 return View(account);
             else
                 return RedirectToAction(
-                    returnUrl ?? Url.Action(MVC.Entry.Index("index"))
+                    string.IsNullOrEmpty(returnUrl) ? Url.Action(MVC.Entry.Index("index")) : returnUrl
                     );
         }
         #endregion
