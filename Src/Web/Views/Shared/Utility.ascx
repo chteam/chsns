@@ -8,7 +8,6 @@
         Html.ActionLink("好友", "Index", "Friend") :
         Html.ActionLink("好友", "Request", "Friend")%>
     <a href="javascript:void(0);" class="menu_title">您好！<%=Page.User.Identity.Name%></a>
-    
     <%=Html.ActionLink("我的页面", "Index", "User")%>
     <%=Html.UserEditLink("BaseInfo", "设置")%>
     <%=Html.ActionLink("密码修改", "ChangePassword", "Account")%>
@@ -17,9 +16,9 @@
     <%}
       else
       { 
-      %>
-      <%=Html.ActionLink("注册",MVC.Account.Register()) %>
-      <%=Html.ActionLink("登录",MVC.Account.LogOn()) %>
-      <%} %>
+    %>
+    <%=Html.ActionLink("注册",MVC.Account.Register()) %>
+    <%=Html.ActionLink("登录",MVC.Account.LogOn()) %>
+    <%} %>
     <a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
 </div>
