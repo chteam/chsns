@@ -149,19 +149,19 @@ namespace CHSNS.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(string title, long? id) {
+        public override System.Web.Mvc.ActionResult Edit(long? id) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
-            callInfo.RouteValueDictionary.Add("title", title);
             callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Edit(long? id, CHSNS.Models.Entry entry, CHSNS.Models.EntryVersion entryversion, string tags) {
+        public override System.Web.Mvc.ActionResult Edit(long? id, CHSNS.Models.Entry entry, CHSNS.Models.EntryVersion entryversion, string tags, bool isNew) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("id", id);
             callInfo.RouteValueDictionary.Add("entry", entry);
             callInfo.RouteValueDictionary.Add("entryversion", entryversion);
             callInfo.RouteValueDictionary.Add("tags", tags);
+            callInfo.RouteValueDictionary.Add("isNew", isNew);
             return callInfo;
         }
 

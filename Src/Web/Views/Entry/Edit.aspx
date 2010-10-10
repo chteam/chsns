@@ -2,7 +2,6 @@
     Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
-    <%=Html.Script("wysiwyg") %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <%Html.RenderPartial("ManageToc"); %>
@@ -20,8 +19,17 @@
             <label>
                 词条名称：</label>
             <%=Html.TextBox("entryversion.Title", null, new { style = "width: 50%", onblur = "Has(this);" })%>
-            是否显示标题 是<%=Html.RadioButton("entry.IsDisplayTitle","true") %>
-            否<%=Html.RadioButton("entry.IsDisplayTitle","false") %>
+            <em>
+            是否显示标题 
+            是<%=Html.RadioButton("entry.IsDisplayTitle","true") %>
+            否<%=Html.RadioButton("entry.IsDisplayTitle","false",true) %>
+           
+            是否保存为新的档案
+            是<%=Html.RadioButton("isNew","true") %>
+            否<%=Html.RadioButton("isNew","false",true) %>
+            <%=Html.Hidden("entryversion.Id")%>
+            </em>
+
         </p>
         <p>
             <label>

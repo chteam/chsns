@@ -67,15 +67,15 @@
         /// <summary>
         /// 编辑与创建词条
         /// </summary>
-        /// <param name="title"></param>
+        /// <param name="url"></param>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
         [AdminFilter]
-        public virtual ActionResult Edit(string title, long? id)
+        public virtual ActionResult Edit(long? id)
         {
-            if (!string.IsNullOrEmpty(title)&&title.Contains("%"))
-                    title = Server.UrlDecode(title);
+            //if (!string.IsNullOrEmpty(url) && url.Contains("%"))
+              //  url = Server.UrlDecode(url);
     
             if (id != null) {
                 //修改
@@ -97,8 +97,8 @@
             }
             else
             {
-                if (!string.IsNullOrEmpty(title))
-                    ViewData["entryversion.title"] = title;
+                if (!string.IsNullOrEmpty(Request.QueryString["url"]))
+                    ViewData["entry.Url"] = Request.QueryString["url"];
                 ViewData["entryversion.reason"] = "创建词条";
                 Title = "创建词条";
             }
@@ -116,9 +116,9 @@
         [HttpPost]
         [AdminFilter]
         [ValidateInput(false)]
-        public virtual ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags)
+        public virtual ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags,bool isNew)
         {
-            var b = DataManager.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
+            var b = DataManager.Entry.AddVersion(id, entry, entryversion, tags, CHUser,isNew);
             if (!b) throw new ApplicationException("标题已存在");
             return RedirectToAction(MVC.Entry.Index(entry.Url));
         }
