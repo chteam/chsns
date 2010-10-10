@@ -1040,7 +1040,7 @@ namespace CHSNS.MVCHelper.Wiki
 							if(!isImage) sb.Append(@" class=""unknownlink""");
 							if(blank) sb.Append(@" target=""_blank""");
 							sb.Append(@" href=""");
-                            if (tempLink.Length > 0) sb.Append("/note/" + tempLink);
+                            if (tempLink.Length > 0) sb.Append("/" + tempLink);
                             else sb.Append(n);
 							//sb.Append(a);
 							//UrlTools.BuildUrl(sb, explicitNamespace ? "++" : "", a);

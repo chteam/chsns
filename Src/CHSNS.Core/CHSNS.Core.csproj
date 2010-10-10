@@ -106,6 +106,7 @@
     <Compile Include="Dictionary.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Interface\OnlineFactory.cs" />
+    <Compile Include="ModelCopier.cs" />
     <Compile Include="Pager\IPagedList.cs">
       <SubType>Code</SubType>
     </Compile>

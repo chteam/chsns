@@ -160,7 +160,7 @@ namespace CHSNS.Service
             }
         }
 
-        public bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags, IUser user)
+        public bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags, IUser user,bool isNew)
         {
             var isDisplayTitle = entry.IsDisplayTitle;
             using (var db = DBExtInstance)
@@ -179,14 +179,25 @@ namespace CHSNS.Service
                     if (old > 0) return false;
                     db.Entry.AddObject(entry);
                     db.SaveChanges();
+                
                 }
-                entryVersion.EntryId = entry.Id;
-                entryVersion.AddTime = DateTime.Now;
-                entryVersion.Reference = entryVersion.Reference ?? "";
-                entryVersion.Reason = entryVersion.Reason ?? "";
-                db.EntryVersion.AddObject(entryVersion);
-                db.SaveChanges();
-                entry.CurrentId = entryVersion.Id;
+
+                if (id.HasValue && isNew) {
+                    entryVersion.EntryId = entry.Id;
+                    entryVersion.AddTime = DateTime.Now;
+                    entryVersion.Reference = entryVersion.Reference ?? "";
+                    entryVersion.Reason = entryVersion.Reason ?? "";
+                    db.EntryVersion.AddObject(entryVersion);
+                    db.SaveChanges();
+                    entry.CurrentId = entryVersion.Id;
+                }
+                else {
+                    var ev = db.EntryVersion.FirstOrDefault(c => c.Id == entryVersion.Id);
+                    ev.Description = entryVersion.Description;
+                    ev.Title = entryVersion.Title;
+                    ev.AddTime = DateTime.Now;
+                }
+                               
                 db.SaveChanges();
             }
             return true;
@@ -217,6 +228,7 @@ namespace CHSNS.Service
             using (var db = DBExtInstance)
             {
                 var entry = db.Entry.FirstOrDefault(c => c.Url == url);
+                if (entry == null) return new KeyValuePair<Entry, EntryVersion>(null, null);
                 return new KeyValuePair<Entry, EntryVersion>(
                   entry,
                   db.EntryVersion.FirstOrDefault(c => c.Id == entry.CurrentId));
