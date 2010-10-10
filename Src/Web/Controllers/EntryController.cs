@@ -27,7 +27,7 @@
             if (version == null) return Wait();
             ViewModel.Version = version;
             ViewModel.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
-            Title = ViewModel.Entry.Url;
+            Title = t.Value.Title;
             return View();
         }
 
@@ -120,7 +120,7 @@
         {
             var b = DataManager.Entry.AddVersion(id, entry, entryversion, tags, CHUser);
             if (!b) throw new ApplicationException("标题已存在");
-            return RedirectToAction("NewList");
+            return RedirectToAction(MVC.Entry.Index(entry.Url));
         }
         [AdminFilter]
         public virtual ActionResult AdminHistoryList(string url)

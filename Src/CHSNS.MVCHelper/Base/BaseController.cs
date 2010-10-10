@@ -38,7 +38,7 @@ namespace CHSNS.Controllers {
                 if (ViewData.ContainsKey(item.Key))
                     ViewData[item.Key] = item.Value;
             if (ViewData.ContainsKey("Page_Title"))
-                ViewData["Page_Title"] += "-" + CHContext.Site.BaseConfig.Title;
+                ViewData["Page_Title"] += " - " + CHContext.Site.BaseConfig.Title;
 
         }
 

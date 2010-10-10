@@ -183,6 +183,7 @@ namespace CHSNS.Service
                 entryVersion.EntryId = entry.Id;
                 entryVersion.AddTime = DateTime.Now;
                 entryVersion.Reference = entryVersion.Reference ?? "";
+                entryVersion.Reason = entryVersion.Reason ?? "";
                 db.EntryVersion.AddObject(entryVersion);
                 db.SaveChanges();
                 entry.CurrentId = entryVersion.Id;

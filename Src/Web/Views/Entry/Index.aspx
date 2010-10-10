@@ -10,14 +10,14 @@
     %>
     <div id="entryContent">
         <div>
-        <div style="float:right">
-            <%if (User.IsInRole("Admin"))
-              { %>
-            操作：
-            <%=Html.ActionLink("编辑", "Edit", new { id = entry.Id })%>
-            <%=Html.ActionLink("新建", "Edit", "Entry")%>
-            <%} %>
-        </div>
+            <div style="float: right">
+                <%if (User.IsInRole("Admin"))
+                  { %>
+                操作：
+                <%=Html.ActionLink("编辑", "Edit", new { id = entry.Id })%>
+                <%=Html.ActionLink("新建", "Edit", "Entry")%>
+                <%} %>
+            </div>
             <%if (entry.IsDisplayTitle)
               {%>
             <h2>
@@ -26,7 +26,7 @@
                 }%></div>
         <div class="body">
             <p>
-                <%=version.Description%></p>
+                <%=CHSNS.MVCHelper.Wiki.WikiEngine.Explain( version.Description)%></p>
         </div>
     </div>
     <div id="entryTools">
@@ -34,7 +34,8 @@
             <%=Html.ActionLink("Version", "Historylist", new { id = entry.Id })%>
             <span>(<%=entry.EditCount%>)</span>
         </p>
-        <%if (ext.Tags != null && ext.Tags.Count > 0) {  %>
+        <%if (ext.Tags != null && ext.Tags.Count > 0)
+          {  %>
         <ul>
             <li><span>标签：</span><%=string.Join(",", (ext.Tags??new List<string>()).ToArray())%>
             </li>

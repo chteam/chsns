@@ -111,6 +111,8 @@
     <Compile Include="Validator\EqualsClientAttribute.cs" />
     <Compile Include="Validator\EqualsClientValidator.cs" />
     <Compile Include="Validator\ValidatorRegister.cs" />
+    <Compile Include="Wiki\Formatter.cs" />
+    <Compile Include="Wiki\WikiEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Common\CHSNS.Common.csproj">
