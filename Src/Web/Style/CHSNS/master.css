@@ -64,7 +64,7 @@ legend {background:#3B5999;color:#fff;border:solid 1px #bdbdbd;padding:3px 5px}
 .portal span{display:block; color:#666; font-weight:normal;}
 .portal:hover span{color:#333;}
 .link > a{color:#fff;padding:0px 3px 3px 4px;font-family:'@Î¢ÈíÑÅºÚ','@ËÎÌå';font-size:9pt}
-.link > a:hover{background-color:#9B4342;}
+.link > a:hover{/*background-color:#9B4342;*/}
 #Profile_Isstar{background-position:0 -2080px;width:20px;height:20px;}
 #Profile_Isstar:hover{text-decoration:none;}
 

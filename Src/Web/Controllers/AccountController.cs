@@ -51,7 +51,7 @@ namespace CHSNS.Controllers
         public virtual ActionResult LogOn(string returnUrl)
         {
             Title = "登录";
-            ViewModel.ReturnUrl = returnUrl;
+            ViewModel.ReturnUrl = returnUrl ?? Url.Action(MVC.Entry.Index("index"));
             return View();
         }
 
@@ -69,9 +69,10 @@ namespace CHSNS.Controllers
             if (loginResult <= 0)
                 return View(account);
             else
-                return RedirectToAction(
-                    string.IsNullOrEmpty(returnUrl) ? Url.Action(MVC.Entry.Index("index")) : returnUrl
-                    );
+            {
+                var url = string.IsNullOrEmpty(returnUrl) ? Url.ActionAbsolute(MVC.Entry.Index("index")) : returnUrl;
+                return Redirect(url);
+            }
         }
         #endregion
 
