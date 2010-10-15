@@ -165,10 +165,10 @@ namespace CHSNS.Service
             var isDisplayTitle = entry.IsDisplayTitle;
             using (var db = DBExtInstance)
             {
+                entry.UpdateTime = DateTime.Now;
                 if (id.HasValue)
                 {
                     entry = db.Entry.Where(c => c.Id == id.Value).FirstOrDefault();
-                    entry.UpdateTime = DateTime.Now;
                     entry.EditCount += 1;
                     if (!Equals(entry.IsDisplayTitle, isDisplayTitle))
                         entry.IsDisplayTitle = isDisplayTitle;
@@ -177,6 +177,7 @@ namespace CHSNS.Service
                 {
                     var old = db.Entry.Where(c => c.Url == entry.Url.Trim()).Count();
                     if (old > 0) return false;
+                    entry.EditCount = 1;
                     db.Entry.AddObject(entry);
                     db.SaveChanges();
                 
