@@ -83,6 +83,7 @@
     <Compile Include="Core\Online.cs" />
     <Compile Include="DefaultDataBinder.cs" />
     <Compile Include="Extension\Common\EnumerableExtensions.cs" />
+    <Compile Include="Tools\EnumHelper.cs" />
     <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
     <Compile Include="Extension\Html\ApplicationContext.cs" />
     <Compile Include="Extension\Html\ImageSpriteHelper.cs" />
@@ -104,7 +105,7 @@
     <Compile Include="Extension\Mvc\RedirectExt.cs" />
     <Compile Include="Result\XmlActionResult.cs" />
     <Compile Include="Result\XmlViewResult.cs" />
-    <Compile Include="Server\HostEnvironment.cs" />
+    <Compile Include="HostEnvironment.cs" />
     <Compile Include="Extension\Mvc\EmptyActionResultExt.cs" />
     <Compile Include="Validator\ContainsCharacterAttribute.cs" />
     <Compile Include="Validator\ContainsCharacterValidator.cs" />
@@ -153,6 +154,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Server\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

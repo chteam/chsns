@@ -167,6 +167,8 @@
     <Compile Include="Enum\RoleType.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enum\SexType.cs" />
+    <Compile Include="Enum\ShowLevel.cs" />
     <Compile Include="Enum\SuperNoteType.cs" />
     <Compile Include="Enum\TagsType.cs" />
     <Compile Include="Enum\ThumbType.cs" />

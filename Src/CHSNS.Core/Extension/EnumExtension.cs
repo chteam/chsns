@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-//using System.Web.UI.WebControls;
+using System.Reflection;
+using System.ComponentModel;
 
 namespace CHSNS {
 	public static class EnumExtension {
@@ -12,17 +12,25 @@ namespace CHSNS {
 		/// <typeparam name="T"></typeparam>
 		/// <param name="e"></param>
 		/// <returns></returns>
-        static public IDictionary<string, int> ToDictionary<T>(this Enum e) {
-            //var dict = new Dictionary();
-            //foreach (int s in Enum.GetValues(typeof(T))) {
-            //    dict.Add(Enum.GetName(typeof(T), s), s);
-            //}
-            //return dict;
+        static public IDictionary<string, int> ToDictionary<T>() {
             return Enum.GetValues(typeof(T))
                 .Cast<Int32>()
-                .ToDictionary(currentItem => Enum.GetName(typeof(T), currentItem));
-
+                .ToDictionary(currentItem => ToDescription((Enum)Enum.Parse(typeof(T), currentItem.ToString())));
 		}
+
+        static public string ToDescription(this Enum e)
+        {
+            Type type = e.GetType();
+            MemberInfo[] memInfo = type.GetMember(e.ToString());
+            if (memInfo != null && memInfo.Length > 0)
+            {
+                object[] attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                if (attrs != null && attrs.Length > 0)
+                    return ((DescriptionAttribute)attrs[0]).Description;
+            }
+            return e.ToString();
+
+        }
 
 		
 	}
