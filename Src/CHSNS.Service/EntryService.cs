@@ -213,14 +213,14 @@ namespace CHSNS.Service
             }
         }
 
-        public KeyValuePair<Entry, EntryVersion> Get(long entryId)
+        public Tuple<Entry, EntryVersion> Get(long entryId)
         {
             using (var db = DBExtInstance)
             {
                 var entry = db.Entry.FirstOrDefault(c => c.Id == entryId);
-                return new KeyValuePair<Entry, EntryVersion>(
-                    entry,
-                    db.EntryVersion.FirstOrDefault(c => c.Id == entry.CurrentId));
+                if (entry == null) return Tuple.Create<Entry, EntryVersion>(null, null);
+                var ev = db.EntryVersion.FirstOrDefault(c => c.Id == entry.CurrentId);
+                return Tuple.Create(entry, ev);
             }
         }
 

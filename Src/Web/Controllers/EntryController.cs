@@ -76,23 +76,25 @@
         {
             //if (!string.IsNullOrEmpty(url) && url.Contains("%"))
               //  url = Server.UrlDecode(url);
-    
-            if (id != null) {
+
+            if (id != null)
+            {
                 //修改
                 var d = DataManager.Entry.Get(id.Value);
-                var entry = d.Key;
-                if ((entry.Status == (int)EntryType.Common || HasManageRight())) {
+                var entry = d.Item1;
+                if ((entry.Status == (int)EntryType.Common || HasManageRight() || new[] { 0, CHUser.UserId }.Contains(entry.CreaterId)))
+                {
                     ViewData["exists"] = true;
                     ViewData["entry"] = entry;
                     ViewData["id"] = entry.Id;
-                    var entryversion = d.Value;
-                    if (entryversion == null) return View("Wait");
-                    ViewData["entryversion"] = entryversion;//.Url;
-                    var ee = JsonAdapter.Deserialize<EntryExt>(entryversion.Ext)??new EntryExt();
+                    var ev = d.Item2;
+                    if (ev == null) ev = new EntryVersion();
+                    ViewData["entryversion"] = ev;//.Url;
+                    var ee = JsonAdapter.Deserialize<EntryExt>(ev.Ext) ?? new EntryExt();
                     ViewData["tags"] = string.Join(",", ee.Tags.ToNotNull().ToArray());
                     Title = "编辑词条:" + entry.Url;
                 }
-                else 
+                else
                     return View(Views.Wait);
             }
             else
