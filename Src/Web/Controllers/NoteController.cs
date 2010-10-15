@@ -78,6 +78,7 @@ namespace CHSNS.Controllers {
                 Message = ("请输入正确的日志内容");
                 return View(note);
             }
+            note.UserId = CHUser.UserId;
             if (id.HasValue)
             {
                 note.Id = id.Value;
@@ -86,7 +87,6 @@ namespace CHSNS.Controllers {
             else
             {
                 note.Type = (int)NoteType.Note;
-                note.UserId = CHUser.UserId;
                 note.Username = CHUser.Name;
                 note.ParentId = CHUser.UserId;
                 DataManager.Note.Add(note, CHUser);

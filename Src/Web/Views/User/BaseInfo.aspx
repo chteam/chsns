@@ -9,7 +9,7 @@
     <div class="fieldset">
               <p>
             <%=Html.LabelFor(c => c.ShowLevel)%>
-            <%=Html.DropDownListFor(c => c.ShowLevel, Html.GetSelectList("ShowLevel"))%>
+            <%=Html.DropDownListFor(c => c.ShowLevel,EnumHelper.ToSelectList<ShowLevel>())%>
         </p>
         <p>
             <%=Html.LabelFor(c => c.Name)%>
@@ -17,7 +17,7 @@
         </p>
         <p>
             <%=Html.LabelFor(c => c.Sex)%>
-            <%=Html.DropDownListFor(c => c.Sex, Html.GetSelectList("Sex"))%>
+            <%=Html.DropDownListFor(c => c.Sex, EnumHelper.ToSelectList<SexType>())%>
         </p>
         <p>
             <%=Html.LabelFor(c => c.Birthday)%>
