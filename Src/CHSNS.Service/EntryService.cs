@@ -183,7 +183,7 @@ namespace CHSNS.Service
                 
                 }
 
-                if (id.HasValue && isNew) {
+                if (id.HasValue || isNew) {
                     entryVersion.EntryId = entry.Id;
                     entryVersion.AddTime = DateTime.Now;
                     entryVersion.Reference = entryVersion.Reference ?? "";
