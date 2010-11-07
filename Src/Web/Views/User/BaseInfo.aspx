@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<BasicInformation>" MasterPageFile="Edit.master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="TabContent" runat="server">
-    <%using (Html.BeginForm())
+    <%
+        Html.EnableClientValidation();
+        using (Html.BeginForm())
       {%>
     <div class="notes">
         [*为必填 其它选填] 请完善以下基本信息
@@ -21,7 +23,7 @@
         </p>
         <p>
             <%=Html.LabelFor(c => c.Birthday)%>
-            <%=Html.TextBoxFor(c => c.Birthday)%>
+            <%=Html.EditorFor(c => c.Birthday,"Date")%>
         </p>
         <p>
             <%=Html.LabelFor(c => c.ProvinceId)%>
