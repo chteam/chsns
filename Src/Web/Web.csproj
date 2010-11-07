@@ -109,6 +109,8 @@
     <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Object.ascx" />
     <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Password.ascx" />
     <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\String.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\Date.ascx" />
+    <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\DateTime.ascx" />
     <Content Include="Views\Shared\DropDownList.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
