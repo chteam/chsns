@@ -25,8 +25,8 @@
             否<%=Html.RadioButton("entry.IsDisplayTitle","false",true) %>
            
             是否保存为新的档案
-            是<%=Html.RadioButton("isNew","true") %>
-            否<%=Html.RadioButton("isNew","false",true) %>
+            是<%=Html.RadioButton("isNew", "true", true)%>
+            否<%=Html.RadioButton("isNew","false") %>
             <%=Html.Hidden("entryversion.Id")%>
             </em>
 
