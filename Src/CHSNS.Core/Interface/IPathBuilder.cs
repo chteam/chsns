@@ -1,4 +1,4 @@
-namespace CHSNS {
+namespace CHSNS.Interface {
     /// <summary>
     /// Â·¾¶Éú³ÉÆ÷
     /// </summary>

@@ -1,6 +1,7 @@
-﻿using System;
-namespace CHSNS
+﻿namespace CHSNS.Interface
 {
+    using System;
+
     public interface IOnline
     {
   

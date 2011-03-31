@@ -1,9 +1,10 @@
 using System;
 using System.IO;
-using CHSNS.Store;
 
 namespace CHSNS.LocalImplement
 {
+    using Interface;
+
     public class LocalFolder : IFolder
     {
         readonly string _rootPath;

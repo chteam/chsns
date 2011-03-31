@@ -88,23 +88,22 @@
     <Compile Include="Encrypt\Md5Extension.cs" />
     <Compile Include="Encrypt\SHA1Extension.cs" />
     <Compile Include="Encrypt\StringToBytesExtension.cs" />
-    <Compile Include="DateTimeExtension.cs" />
-    <Compile Include="IEmail.cs" />
-    <Compile Include="EnumExtension.cs" />
-    <Compile Include="IEnumerableExtension.cs" />
+    <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="Interface\IEmail.cs" />
+    <Compile Include="EnumExtensions.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Hash.cs" />
-    <Compile Include="JsonExtension.cs" />
-    <Compile Include="Interface\BaseFactory.cs" />
+    <Compile Include="BaseFactory.cs" />
     <Compile Include="Interface\CacheFactory.cs" />
     <Compile Include="Interface\ICache.cs" />
     <Compile Include="Interface\IFileProcess.cs" />
     <Compile Include="Interface\IOnline.cs" />
     <Compile Include="Interface\IPathBuilder.cs" />
     <Compile Include="Interface\ISerializer.cs" />
-    <Compile Include="NullableExtension.cs" />
+    <Compile Include="NullableExtensions.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="Dictionary.cs" />
-    <Compile Include="StringExtension.cs" />
+    <Compile Include="StringExtensions.cs" />
     <Compile Include="Interface\OnlineFactory.cs" />
     <Compile Include="ModelCopier.cs" />
     <Compile Include="Pager\IPagedList.cs">
@@ -152,7 +151,5 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Adapter\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

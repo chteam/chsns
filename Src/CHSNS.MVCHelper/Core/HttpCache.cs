@@ -4,6 +4,8 @@ using System.Web.Caching;
 using System.Web;
 
 namespace CHSNS {
+    using Interface;
+
     /// <summary>
     /// »º´æÀà 
     /// AU:×Þ½¡

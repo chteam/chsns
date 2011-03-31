@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace CHSNS.Interface {
+    using System;
+    using System.Collections.Generic;
 
-namespace CHSNS {
     public interface IFileProcess {
-        //HttpPostedFileBase File { get; set; }
-
         /// <summary>
         /// 单位：M
         /// </summary>

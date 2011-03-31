@@ -1,9 +1,10 @@
 using System.Drawing;
 using System.IO;
-using CHSNS.Store;
 
 namespace CHSNS.LocalImplement
 {
+    using Interface;
+
     public  class LocalStoreFile : IStoreFile
     {
         string _rootPath;

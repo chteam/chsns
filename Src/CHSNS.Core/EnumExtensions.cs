@@ -5,14 +5,13 @@ using System.Reflection;
 using System.ComponentModel;
 
 namespace CHSNS {
-	public static class EnumExtension {
-		/// <summary>
-		/// 转为Dictionary
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="e"></param>
-		/// <returns></returns>
-        static public IDictionary<string, int> ToDictionary<T>() {
+	public static class EnumExtensions {
+	    /// <summary>
+	    /// 转为Dictionary
+	    /// </summary>
+	    /// <typeparam name="T"></typeparam>
+	    /// <returns></returns>
+	    static public IDictionary<string, int> ToDictionary<T>() {
             return Enum.GetValues(typeof(T))
                 .Cast<Int32>()
                 .ToDictionary(currentItem => ToDescription((Enum)Enum.Parse(typeof(T), currentItem.ToString())));
@@ -22,10 +21,10 @@ namespace CHSNS {
         {
             Type type = e.GetType();
             MemberInfo[] memInfo = type.GetMember(e.ToString());
-            if (memInfo != null && memInfo.Length > 0)
+            if (memInfo.Length > 0)
             {
                 object[] attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-                if (attrs != null && attrs.Length > 0)
+                if (attrs.Length > 0)
                     return ((DescriptionAttribute)attrs[0]).Description;
             }
             return e.ToString();
