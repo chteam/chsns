@@ -12,7 +12,7 @@ namespace CHSNS.Web
     using System.Web.Mvc;
     using System.Web.Routing;
     using System.Web.Security;
-    using CHSNS.LocalImplement;
+    using LocalImplement;
 
     [CompilerGlobalScope]
     public class Global : HttpApplication
