@@ -116,8 +116,8 @@
     <Compile Include="Pager\PagerExt.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Store\IFolder.cs" />
-    <Compile Include="Store\IStoreFile.cs" />
+    <Compile Include="Interface\IFolder.cs" />
+    <Compile Include="Interface\IStoreFile.cs" />
     <Compile Include="StringTool.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,5 +152,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Store\" />
+  </ItemGroup>
 </Project>
