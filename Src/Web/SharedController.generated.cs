@@ -66,6 +66,8 @@ namespace T4MVC {
                 public partial class _EditorTemplates{
                     public readonly string Boolean = "~/Views/Shared/DefaultTemplates/EditorTemplates/Boolean.ascx";
                     public readonly string Collection = "~/Views/Shared/DefaultTemplates/EditorTemplates/Collection.ascx";
+                    public readonly string Date = "~/Views/Shared/DefaultTemplates/EditorTemplates/Date.ascx";
+                    public readonly string DateTime = "~/Views/Shared/DefaultTemplates/EditorTemplates/DateTime.ascx";
                     public readonly string Decimal = "~/Views/Shared/DefaultTemplates/EditorTemplates/Decimal.ascx";
                     public readonly string HiddenInput = "~/Views/Shared/DefaultTemplates/EditorTemplates/HiddenInput.ascx";
                     public readonly string MultilineText = "~/Views/Shared/DefaultTemplates/EditorTemplates/MultilineText.ascx";
