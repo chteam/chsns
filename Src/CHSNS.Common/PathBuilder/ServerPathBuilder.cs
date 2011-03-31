@@ -2,6 +2,8 @@
 
 namespace CHSNS.Common.PathBuilder
 {
+    using Interface;
+
     /// <summary>
     /// 使用Server.MapPath来生成目标路径
     /// </summary>

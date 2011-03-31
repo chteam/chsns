@@ -1,7 +1,7 @@
-using CHSNS.Store;
-
 namespace CHSNS
 {
+    using Interface;
+
     /// <summary>
     /// 
     /// </summary>

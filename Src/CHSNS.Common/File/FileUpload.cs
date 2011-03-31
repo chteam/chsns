@@ -5,6 +5,8 @@ using System.Web;
 
 namespace CHSNS
 {
+    using Interface;
+
     public class FileUpload : IFileProcess
     {
         public HttpPostedFileBase File { get; set; }

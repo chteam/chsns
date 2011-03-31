@@ -1,5 +1,7 @@
 ﻿namespace CHSNS
 {
+    using Interface;
+
     /// <summary>
     /// 配置文件序列化及反序列化
     /// </summary>

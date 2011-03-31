@@ -1,6 +1,6 @@
-using System.IO;
+namespace CHSNS.Interface{
+    using System.IO;
 
-namespace CHSNS.Store{
     public interface IStoreFile{
         bool Exists(string filePath);
         void Create(string filePath);

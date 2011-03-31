@@ -3,6 +3,7 @@
 namespace CHSNS.Controllers {
     using System.Web.Mvc;
     using CHSNS.Service;
+    using Interface;
 
     abstract public class BaseController : Controller {
 

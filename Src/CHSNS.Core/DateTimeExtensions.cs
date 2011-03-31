@@ -3,7 +3,7 @@ using System.Text;
 
 namespace CHSNS
 {
-	public static class DateTimeExtension
+	public static class DateTimeExtensions
 	{
 		public static string Ago(this DateTime target)
 		{
@@ -31,15 +31,9 @@ namespace CHSNS
 					}
 				}
 			}
-			if (result.Length == 0)
-			{
-				result.Append("刚刚");
-			}
-			else {
-				result.Append("前");
-			}
+		    result.Append(result.Length == 0 ? "刚刚" : "前");
 
-			return result.ToString();
+		    return result.ToString();
 		}
 	}
 }

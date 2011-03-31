@@ -3,7 +3,7 @@
 
 namespace CHSNS
 {
-	public static class StringExtension {
+	public static class StringExtensions {
 		/// <summary>
 		/// 去除末尾部分字符串
 		/// "asdfg".TrimEnd("fg")

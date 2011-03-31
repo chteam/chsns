@@ -10,7 +10,7 @@ namespace CHSNS
     {
         static public SelectList ToSelectList<T>() where T:struct
         {
-            return new SelectList(EnumExtension.ToDictionary<T>(), "Value", "Key");
+            return new SelectList(EnumExtensions.ToDictionary<T>(), "Value", "Key");
         }
     }
 }

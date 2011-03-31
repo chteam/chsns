@@ -1,6 +1,7 @@
 ﻿
-namespace CHSNS {
+namespace CHSNS.Interface {
     using System;
+
     public interface ICache {
         void Add(string key, object obj, TimeSpan ts);
         void Add(string key, object obj);

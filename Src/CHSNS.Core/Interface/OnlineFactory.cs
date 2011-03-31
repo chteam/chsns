@@ -5,6 +5,8 @@ using System.Text;
 
 namespace CHSNS
 {
+    using Interface;
+
     public class OnlineFactory:BaseFactory<IOnline>
     {
     }
