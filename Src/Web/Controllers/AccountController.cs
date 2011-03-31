@@ -51,7 +51,7 @@ namespace CHSNS.Controllers
         public virtual ActionResult LogOn(string returnUrl)
         {
             Title = "登录";
-            ViewModel.ReturnUrl = returnUrl ?? Url.Action(MVC.Entry.Index("index"));
+            ViewBag.ReturnUrl = returnUrl ?? Url.Action(MVC.Entry.Index("index"));
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace CHSNS.Controllers
             if (!ViewData.ModelState.IsValid)
             {
                 ViewData.Model = account;
-                ViewModel.AutoLogOn = autoLogOn;
+                ViewBag.AutoLogOn = autoLogOn;
                 return LogOn(returnUrl);
             }
             //匹配成功则赋值

@@ -48,5 +48,6 @@ namespace CHSNS.Controllers {
         {
             return CHUser.Status.Equals(RoleType.Editor) || CHUser.Status.Equals(RoleType.Creater);
         }
+
     }
 }

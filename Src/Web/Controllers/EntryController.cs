@@ -16,17 +16,15 @@
         /// <returns></returns>
         public virtual ActionResult Index(string url)
         {
-            
-          //  var model = new EntryIndexViewModel();
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
             var t = DataManager.Entry.Get(url);
-            ViewModel.Entry = t.Key;
-            if (ViewModel.Entry == null) return Wait();
+            ViewBag.Entry = t.Key;
+            if (ViewBag.Entry == null) return Wait();
             var version = t.Value;
             if (version == null) return Wait();
-            ViewModel.Version = version;
-            ViewModel.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
+            ViewBag.Version = version;
+            ViewBag.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
             Title = t.Value.Title;
             return View();
         }
@@ -42,7 +40,7 @@
         /// <returns></returns>
         public virtual ActionResult HistoryList(long id)
         {
-            ViewModel.Source = DataManager.Entry.Historys(id);
+            ViewBag.Source = DataManager.Entry.Historys(id);
             Title = "版本比较";
             return View();
         }
