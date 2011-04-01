@@ -17,10 +17,10 @@ namespace CHSNS.Controllers {
 
             #region 群信息和用户
 
-            var g = DataManager.Group.Get(id);
+            var g = ServicesFactory.Group.Get(id);
             if (g == null)
                 return HttpNotFound("group not found");
-            var u = DataManager.Group.GetGroupUser(id, CHUser.UserId);
+            var u = ServicesFactory.Group.GetGroupUser(id, CHUser.UserId);
             if (u == null)
                 return HttpNotFound("group user not found");
             ViewData["guser"] = u;
@@ -57,17 +57,17 @@ namespace CHSNS.Controllers {
 
             #region 统计
 
-            ViewData["MemberList"] = DataManager.View.ViewList(6, 2, g.Id, 6);
-            ViewData["ViewList"] = DataManager.View.ViewList(1, 6, g.Id, 6);
+            ViewData["MemberList"] = ServicesFactory.View.ViewList(6, 2, g.Id, 6);
+            ViewData["ViewList"] = ServicesFactory.View.ViewList(1, 6, g.Id, 6);
 
-            ViewData["Applycount"] = DataManager.Group.WaitJoinCount(id);
+            ViewData["Applycount"] = ServicesFactory.Group.WaitJoinCount(id);
 
-            var adminList = DataManager.Group.GetAdmins(id);
+            var adminList = ServicesFactory.Group.GetAdmins(id);
             ViewData["adminlist"] = adminList;
 
             #endregion
 
-            var posts = DataManager.Note.GetNotes(id, NoteType.GroupPost, p.Value, 20);
+            var posts = ServicesFactory.Note.GetNotes(id, NoteType.GroupPost, p.Value, 20);
             ViewData["posts"] = posts;
             return View(g);
         }
@@ -79,7 +79,7 @@ namespace CHSNS.Controllers {
             InitPage(ref p);
             uid = uid ?? CHUser.UserId;
             Title = "群列表";
-            return View(DataManager.Group.GetList(uid.Value, p.Value, 10));
+            return View(ServicesFactory.Group.GetList(uid.Value, p.Value, 10));
         }
 
         #region Create
@@ -94,7 +94,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Create(string name)
         {
             Message = "创建成功";
-            DataManager.Group.Add(name, CHUser.UserId);
+            ServicesFactory.Group.Add(name, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion
@@ -104,7 +104,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Manage(long id)
         {
             //TODO:限制访问人员
-            return ManageResult(DataManager.Group.Get(id));
+            return ManageResult(ServicesFactory.Group.Get(id));
         }
 
         [NonAction]
@@ -126,7 +126,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Manage(long id, Group group)
         {
             //TODO:限制访问人员
-            DataManager.Group.Update(id, group);
+            ServicesFactory.Group.Update(id, group);
             return RedirectToAction("Manage", new{id});
         }
 
@@ -136,7 +136,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult ManageUser(long id)
         {
             Title = "用户管理";
-            ViewData["list"] = DataManager.Group.GetGroupUser(id);
+            ViewData["list"] = ServicesFactory.Group.GetGroupUser(id);
             
             return View();
         }
@@ -145,8 +145,8 @@ namespace CHSNS.Controllers {
         #region 帖子
         public virtual ActionResult Details(long id)
         {
-            var note = DataManager.Note.Details(id, NoteType.GroupPost);
-            var cl = DataManager.Comment.CommentList(id, CommentType.Note, 1, CHContext.Site);
+            var note = ServicesFactory.Note.Details(id, NoteType.GroupPost);
+            var cl = ServicesFactory.Comment.CommentList(id, CommentType.Note, 1, CHContext.Site);
             ViewData["commentlist"] = cl;
             Title = note.Title;
             return View(note);
@@ -164,9 +164,9 @@ namespace CHSNS.Controllers {
                 note.UserId = CHContext.User.UserId;
                 if (id.HasValue) {
                     note.Id = id.Value;
-                    DataManager.Note.Edit(note);
+                    ServicesFactory.Note.Edit(note);
                 } else {
-                    DataManager.Note.Add(note,CHUser);
+                    ServicesFactory.Note.Add(note,CHUser);
                 }
                 ts.Complete();
                 return this.RedirectToReferrer();

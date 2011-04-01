@@ -5,6 +5,8 @@ using CHSNS.Model;
 using CHSNS.Models;
 namespace CHSNS.Service
 {
+    using System.ComponentModel.Composition;
+    [Export]
     public class GroupService : BaseService<GroupService>
     {
 

@@ -3,10 +3,12 @@ namespace CHSNS.Service
 {
     using CHSNS.Model;
     using System.Linq;
+    using System.ComponentModel.Composition;
 
     /// <summary>
     /// 统计的类
     /// </summary>
+    [Export]
     public class GatherService : BaseService<GatherService>
     {
         /// <summary>

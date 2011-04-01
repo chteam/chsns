@@ -4,6 +4,8 @@ namespace CHSNS.Service
     using System;
     using System.Linq;
     using CHSNS.Models;
+    using System.ComponentModel.Composition;
+    [Export]
     public class PhotoService : BaseService<PhotoService>
     {
 

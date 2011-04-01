@@ -3,7 +3,8 @@
     using System.Linq;
     using CHSNS.Model;
     using System.Collections.Generic;
-
+    using System.ComponentModel.Composition;
+    [Export]
     public class GolbalService
     {
         /// <summary>

@@ -8,7 +8,8 @@ namespace CHSNS.Service
     using System.Web.Security;
     using System.Web;
     using System.Linq;
-
+    using System.ComponentModel.Composition;
+        [Export]
     public class AccountService : BaseService<AccountService>
     {
         #region LogOut

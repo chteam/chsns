@@ -4,7 +4,8 @@
     using CHSNS.Config;
     using CHSNS.Model;
     using CHSNS.Models;
-
+    using System.ComponentModel.Composition;
+    [Export]
     public class CommentService : BaseService<CommentService>
     {
         #region Reply

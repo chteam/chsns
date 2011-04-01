@@ -5,6 +5,8 @@ namespace CHSNS.Service {
 
     using CHSNS.Models;
     using System.Linq;
+    using System.ComponentModel.Composition;
+    [Export]
     public class UserService : BaseService<UserService>
     {
         public UserPas UserInformation(long userid) {
