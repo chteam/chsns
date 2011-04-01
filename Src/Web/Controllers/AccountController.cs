@@ -3,7 +3,7 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
-    public partial class AccountController : BaseController
+    public class AccountController : BaseController
     {
         #region 注册
 
@@ -26,8 +26,7 @@ namespace CHSNS.Controllers
             }
             var hasSuccess = DataManager.Account.Create(account, CHContext.Site);
             Title = "注册成功";
-            if (hasSuccess)
-                return View(Views.Reg_Success);
+            if (hasSuccess) return View("Reg-Success");
             return View(account);
         }
         /// <summary>
@@ -44,14 +43,14 @@ namespace CHSNS.Controllers
         public virtual ActionResult LogOff()
         {
             DataManager.Account.Logout(CHContext);
-            return RedirectToAction(MVC.Entry.Index("index"));
+            return Redirect(HomePage);
         }
 
         [HttpGet]
         public virtual ActionResult LogOn(string returnUrl)
         {
             Title = "登录";
-            ViewBag.ReturnUrl = returnUrl ?? Url.Action(MVC.Entry.Index("index"));
+            ViewBag.ReturnUrl = returnUrl ?? HomePage;
             return View();
         }
 
@@ -68,11 +67,8 @@ namespace CHSNS.Controllers
             var loginResult = DataManager.Account.Login(account, autoLogOn ?? false, true, CHContext);
             if (loginResult <= 0)
                 return View(account);
-            else
-            {
-                var url = string.IsNullOrEmpty(returnUrl) ? Url.ActionAbsolute(MVC.Entry.Index("index")) : returnUrl;
-                return Redirect(url);
-            }
+            var url = string.IsNullOrEmpty(returnUrl) ? HomePage : returnUrl;
+            return Redirect(url);
         }
         #endregion
 
@@ -80,7 +76,7 @@ namespace CHSNS.Controllers
         public virtual ActionResult InitCreater()
         {
             DataManager.Account.InitCreater();
-            return View();
+            return Content("");
         }
         #endregion
 
