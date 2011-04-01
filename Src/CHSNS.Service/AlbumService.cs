@@ -4,7 +4,8 @@ namespace CHSNS.Service {
     using System.Linq;
     using CHSNS.Models;
     using System;
-
+    using System.ComponentModel.Composition;
+    [Export]
     public class AlbumService : BaseService<AlbumService>
     {
         public List<Album> Items(long uId) {

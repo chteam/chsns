@@ -1,12 +1,14 @@
 ﻿
 namespace CHSNS.Service
 {
-    
+    using System.ComponentModel.Composition;
     using CHSNS.Models;
     using System.Linq;
     /// <summary>
     /// Calling the event
-    /// </summary>
+    /// </summary>    
+
+    [Export]
     public class EventService : BaseService<EventService>
     {
         /// <summary>

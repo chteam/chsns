@@ -24,7 +24,7 @@ namespace CHSNS.Controllers
                 ViewData.Model = account;
                 return Register();
             }
-            var hasSuccess = DataManager.Account.Create(account, CHContext.Site);
+            var hasSuccess = ServicesFactory.Account.Create(account, CHContext.Site);
             Title = "注册成功";
             if (hasSuccess) return View("Reg-Success");
             return View(account);
@@ -34,7 +34,7 @@ namespace CHSNS.Controllers
         /// </summary>
         public virtual ActionResult UsernameCanUse(string username)
         {
-            return Json(DataManager.Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
+            return Json(ServicesFactory.Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
         }
         #endregion
 
@@ -42,7 +42,7 @@ namespace CHSNS.Controllers
 
         public virtual ActionResult LogOff()
         {
-            DataManager.Account.Logout(CHContext);
+            ServicesFactory.Account.Logout(CHContext);
             return Redirect(HomePage);
         }
 
@@ -64,7 +64,7 @@ namespace CHSNS.Controllers
                 return LogOn(returnUrl);
             }
             //匹配成功则赋值
-            var loginResult = DataManager.Account.Login(account, autoLogOn ?? false, true, CHContext);
+            var loginResult = ServicesFactory.Account.Login(account, autoLogOn ?? false, true, CHContext);
             if (loginResult <= 0)
                 return View(account);
             var url = string.IsNullOrEmpty(returnUrl) ? HomePage : returnUrl;
@@ -75,7 +75,7 @@ namespace CHSNS.Controllers
         #region 设置管理员
         public virtual ActionResult InitCreater()
         {
-            DataManager.Account.InitCreater();
+            ServicesFactory.Account.InitCreater();
             return Content("");
         }
         #endregion

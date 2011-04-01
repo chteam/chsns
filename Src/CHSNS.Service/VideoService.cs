@@ -5,6 +5,8 @@ namespace CHSNS.Service
 
     using CHSNS.Models;
     using System.Linq;
+    using System.ComponentModel.Composition;
+    [Export]
     public class VideoService : BaseService<VideoService>
     {
         #region ICURDService<SuperNote> 成员

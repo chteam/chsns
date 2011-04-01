@@ -3,7 +3,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using CHSNS.Models;
-
+    using System.ComponentModel.Composition;
+    [Export]
     public class ApplicationService : BaseService<ApplicationService>
     {
         // private const string APPLISTALL = "APPLISTALL";

@@ -7,7 +7,8 @@ namespace CHSNS.Service
     using CHSNS.Config;
     using CHSNS.Model;
     using CHSNS.Models;
-
+    using System.ComponentModel.Composition;
+    [Export]
     public class FriendService : BaseService<FriendService>
     {
         #region 获取

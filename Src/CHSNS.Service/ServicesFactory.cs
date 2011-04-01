@@ -1,8 +1,7 @@
 namespace CHSNS
 {
-    using System.Configuration;
-    using CHSNS.Service;
-    public static class DataManager
+    using Service;
+    public static class ServicesFactory
     {
         #region ²Ù×÷µ¥Àý
 

@@ -5,11 +5,13 @@ namespace CHSNS.Service
     using System.Linq;
     using CHSNS.Config;
     using CHSNS.Model;
-    using CHSNS.Models;
+    using CHSNS.Models;    using System.ComponentModel.Composition;
     /// <summary>
     /// Site Message Service,
     /// Jian Zou 2009 03 27,2009 4 16
     /// </summary>
+
+    [Export]
     public class MessageService : BaseService<MessageService>
     {
         public PagedList<MessageItemPas> GetInbox(long userId, int page, SiteConfig site)

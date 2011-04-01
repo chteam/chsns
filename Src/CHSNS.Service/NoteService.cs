@@ -6,6 +6,8 @@ using CHSNS.Models;
 using System.Linq;
 namespace CHSNS.Service
 {
+    using System.ComponentModel.Composition;
+    [Export]
     public class NoteService : BaseService<NoteService>
     {
        

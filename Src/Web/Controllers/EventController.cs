@@ -23,9 +23,9 @@ namespace CHSNS.Controllers {
             Title = "事件";
 
             //     Events = DBExt.Event.GetFriendEvent(CHUser.UserId, 1, 20),
-            ViewBag.LastViews = DataManager.View.ViewList(0, 3, CHUser.UserId, 6);
-            ViewBag.NewViews = DataManager.View.ViewList(2, 3, CHUser.UserId, 6);
-            ViewBag.Page = DataManager.Gather.EventGather(CHUser.UserId);
+            ViewBag.LastViews = ServicesFactory.View.ViewList(0, 3, CHUser.UserId, 6);
+            ViewBag.NewViews = ServicesFactory.View.ViewList(2, 3, CHUser.UserId, 6);
+            ViewBag.Page = ServicesFactory.Gather.EventGather(CHUser.UserId);
             return View();
         }
 
