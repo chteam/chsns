@@ -31,7 +31,7 @@
 
         [NonAction]
         public ActionResult Wait() {
-            return View(Views.Wait, "site");
+            return View(null, "site");
         }
 
         /// <summary>
@@ -65,16 +65,12 @@
         /// <summary>
         /// 编辑与创建词条
         /// </summary>
-        /// <param name="url"></param>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
         [AdminFilter]
         public virtual ActionResult Edit(long? id)
         {
-            //if (!string.IsNullOrEmpty(url) && url.Contains("%"))
-              //  url = Server.UrlDecode(url);
-
             if (id != null)
             {
                 //修改
@@ -93,7 +89,7 @@
                     Title = "编辑词条:" + entry.Url;
                 }
                 else
-                    return View(Views.Wait);
+                    return View("Wait");
             }
             else
             {
@@ -120,7 +116,7 @@
         {
             var b = DataManager.Entry.AddVersion(id, entry, entryversion, tags, CHUser,isNew);
             if (!b) throw new ApplicationException("标题已存在");
-            return RedirectToAction(MVC.Entry.Index(entry.Url));
+            return RedirectToAction("Index", "Entry", new { url = entry.Url });
         }
         [AdminFilter]
         public virtual ActionResult AdminHistoryList(string url)

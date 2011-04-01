@@ -2,7 +2,6 @@
 
 namespace CHSNS.Controllers {
     using System.Web.Mvc;
-    using CHSNS.Service;
     using Interface;
 
     abstract public class BaseController : Controller {
@@ -50,5 +49,9 @@ namespace CHSNS.Controllers {
             return CHUser.Status.Equals(RoleType.Editor) || CHUser.Status.Equals(RoleType.Creater);
         }
 
+        public string HomePage
+        {
+            get { return Url.Action("Index", "Entry", new {url = "Index"}); }
+        }
     }
 }
