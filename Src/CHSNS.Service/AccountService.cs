@@ -47,7 +47,7 @@ namespace CHSNS.Service
             return identity.Status;
         }
 
-        internal CHIdentity GeneralIdentity(String userName, String password, int logOnScore)
+        internal WebIdentity GeneralIdentity(String userName, String password, int logOnScore)
         {
             using (var db = DBExtInstance)
             {
@@ -72,7 +72,7 @@ namespace CHSNS.Service
                     profile.LoginTime = DateTime.Now;
                     db.SaveChanges();
                 }
-                return new CHIdentity
+                return new WebIdentity
                 {
                     Name = profile.Name,
                     UserId = profile.UserId,

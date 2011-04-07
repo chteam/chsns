@@ -19,7 +19,7 @@ namespace CHSNS.Controllers {
         /// <returns></returns>
         public virtual ActionResult Reply(long? userid)
         {
-            if (!userid.HasValue) userid = CHUser.UserId;
+            if (!userid.HasValue) userid = WebUser.UserId;
             var user = Services.UserInfo.GetUser(
                 userid.Value,
                 c => new Profile{
@@ -53,7 +53,7 @@ namespace CHSNS.Controllers {
 
                 //UpdateModel(r, new[] { "Body", "UserId" });
                 var ownerId = r.UserId;
-                r.SenderId = CHUser.UserId;
+                r.SenderId = WebUser.UserId;
                 r.AddTime = DateTime.Now;
                 r = Services.Comment.AddReply(r);
                 if (replyerId != ownerId) {
@@ -64,8 +64,8 @@ namespace CHSNS.Controllers {
                 var model = new List<CommentPas>{
                     new CommentPas{
                     Sender = new NameIdPas{
-                        Id = CHUser.UserId,
-                        Name = CHUser.Name
+                        Id = WebUser.UserId,
+                        Name = WebUser.Name
                     },
                     Comment =new CommentItemPas{ 
                          ID = r.Id,
@@ -89,7 +89,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult DeleteReply(long id)
         {
 
-            Services.Comment.DeleteReply(id, CHUser.UserId);
+            Services.Comment.DeleteReply(id, WebUser.UserId);
 
             return new EmptyResult();
 
@@ -119,7 +119,7 @@ namespace CHSNS.Controllers {
             var cmt = new Comment {
                 ShowerId = showerId,
                 OwnerId = ownerId,
-                SenderId = CHUser.UserId,
+                SenderId = WebUser.UserId,
                 Body = body,
                 Type = (byte)type,
                 AddTime = DateTime.Now,
@@ -128,8 +128,8 @@ namespace CHSNS.Controllers {
             var model = new List<CommentPas>{
                     new CommentPas{
                     Sender = new NameIdPas{
-                        Id = CHUser.UserId,
-                        Name = CHUser.Name
+                        Id = WebUser.UserId,
+                        Name = WebUser.Name
                     },
                     Comment =new CommentItemPas{ 
                          ID = cmt.Id,

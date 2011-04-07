@@ -7,208 +7,73 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Data.Objects;
-using System.Data.EntityClient;
-
 namespace CHSNS.Models
 {
-    public partial class DbEntities : ObjectContext
+    using System.Data.Entity;
+
+    public class DbEntities : DbContext
     {
         public const string ConnectionString = "name=DbEntities";
         public const string ContainerName = "DbEntities";
-    
-        #region Constructors
-    
-        public DbEntities() : base(ConnectionString, ContainerName){ }
-    
-        public DbEntities(string connectionString)
-            : base(connectionString, ContainerName)
-        {
-        }
-    
-        public DbEntities(EntityConnection connection)
-            : base(connection, ContainerName)
-        {
-        }
-    
-        #endregion
-    
-        #region ObjectSet Properties
-    
-        public ObjectSet<Account> Account
-        {
-            get { return _account  ?? (_account = CreateObjectSet<Account>("Account")); }
-        }
-        private ObjectSet<Account> _account;
-    
-        public ObjectSet<Album> Album
-        {
-            get { return _album  ?? (_album = CreateObjectSet<Album>("Album")); }
-        }
-        private ObjectSet<Album> _album;
-    
-        public ObjectSet<Application> Application
-        {
-            get { return _application  ?? (_application = CreateObjectSet<Application>("Application")); }
-        }
-        private ObjectSet<Application> _application;
-    
-        public ObjectSet<BasicInformation> BasicInformation
-        {
-            get { return _basicInformation  ?? (_basicInformation = CreateObjectSet<BasicInformation>("BasicInformation")); }
-        }
-        private ObjectSet<BasicInformation> _basicInformation;
-    
-        public ObjectSet<Blogs> Blogs
-        {
-            get { return _blogs  ?? (_blogs = CreateObjectSet<Blogs>("Blogs")); }
-        }
-        private ObjectSet<Blogs> _blogs;
-    
-        public ObjectSet<Category> Category
-        {
-            get { return _category  ?? (_category = CreateObjectSet<Category>("Category")); }
-        }
-        private ObjectSet<Category> _category;
-    
-        public ObjectSet<Comment> Comment
-        {
-            get { return _comment  ?? (_comment = CreateObjectSet<Comment>("Comment")); }
-        }
-        private ObjectSet<Comment> _comment;
-    
-        public ObjectSet<ContactInformation> ContactInformation
-        {
-            get { return _contactInformation  ?? (_contactInformation = CreateObjectSet<ContactInformation>("ContactInformation")); }
-        }
-        private ObjectSet<ContactInformation> _contactInformation;
-    
-        public ObjectSet<Entry> Entry
-        {
-            get { return _entry  ?? (_entry = CreateObjectSet<Entry>("Entry")); }
-        }
-        private ObjectSet<Entry> _entry;
-    
-        public ObjectSet<EntryVersion> EntryVersion
-        {
-            get { return _entryVersion  ?? (_entryVersion = CreateObjectSet<EntryVersion>("EntryVersion")); }
-        }
-        private ObjectSet<EntryVersion> _entryVersion;
-    
-        public ObjectSet<Event> Event
-        {
-            get { return _event  ?? (_event = CreateObjectSet<Event>("Event")); }
-        }
-        private ObjectSet<Event> _event;
-    
-        public ObjectSet<FieldInformation> FieldInformation
-        {
-            get { return _fieldInformation  ?? (_fieldInformation = CreateObjectSet<FieldInformation>("FieldInformation")); }
-        }
-        private ObjectSet<FieldInformation> _fieldInformation;
-    
-        public ObjectSet<Friend> Friend
-        {
-            get { return _friend  ?? (_friend = CreateObjectSet<Friend>("Friend")); }
-        }
-        private ObjectSet<Friend> _friend;
-    
-        public ObjectSet<Group> Group
-        {
-            get { return _group  ?? (_group = CreateObjectSet<Group>("Group")); }
-        }
-        private ObjectSet<Group> _group;
-    
-        public ObjectSet<GroupUser> GroupUser
-        {
-            get { return _groupUser  ?? (_groupUser = CreateObjectSet<GroupUser>("GroupUser")); }
-        }
-        private ObjectSet<GroupUser> _groupUser;
-    
-        public ObjectSet<LogTag> LogTag
-        {
-            get { return _logTag  ?? (_logTag = CreateObjectSet<LogTag>("LogTag")); }
-        }
-        private ObjectSet<LogTag> _logTag;
-    
-        public ObjectSet<Message> Message
-        {
-            get { return _message  ?? (_message = CreateObjectSet<Message>("Message")); }
-        }
-        private ObjectSet<Message> _message;
-    
-        public ObjectSet<PersonalInformation> PersonalInformation
-        {
-            get { return _personalInformation  ?? (_personalInformation = CreateObjectSet<PersonalInformation>("PersonalInformation")); }
-        }
-        private ObjectSet<PersonalInformation> _personalInformation;
-    
-        public ObjectSet<Photo> Photo
-        {
-            get { return _photo  ?? (_photo = CreateObjectSet<Photo>("Photo")); }
-        }
-        private ObjectSet<Photo> _photo;
-    
-        public ObjectSet<Push> Push
-        {
-            get { return _push  ?? (_push = CreateObjectSet<Push>("Push")); }
-        }
-        private ObjectSet<Push> _push;
-    
-        public ObjectSet<Reply> Reply
-        {
-            get { return _reply  ?? (_reply = CreateObjectSet<Reply>("Reply")); }
-        }
-        private ObjectSet<Reply> _reply;
-    
-        public ObjectSet<Services> Services
-        {
-            get { return _services  ?? (_services = CreateObjectSet<Services>("Services")); }
-        }
-        private ObjectSet<Services> _services;
-    
-        public ObjectSet<SuperNote> SuperNote
-        {
-            get { return _superNote  ?? (_superNote = CreateObjectSet<SuperNote>("SuperNote")); }
-        }
-        private ObjectSet<SuperNote> _superNote;
-    
-        public ObjectSet<Tags> Tags
-        {
-            get { return _tags  ?? (_tags = CreateObjectSet<Tags>("Tags")); }
-        }
-        private ObjectSet<Tags> _tags;
-    
-        public ObjectSet<ViewData> ViewData
-        {
-            get { return _viewData  ?? (_viewData = CreateObjectSet<ViewData>("ViewData")); }
-        }
-        private ObjectSet<ViewData> _viewData;
-    
-        public ObjectSet<Roles> Roles
-        {
-            get { return _roles  ?? (_roles = CreateObjectSet<Roles>("Roles")); }
-        }
-        private ObjectSet<Roles> _roles;
-    
-        public ObjectSet<UserRole> UserRole
-        {
-            get { return _userRole  ?? (_userRole = CreateObjectSet<UserRole>("UserRole")); }
-        }
-        private ObjectSet<UserRole> _userRole;
-    
-        public ObjectSet<Profile> Profile
-        {
-            get { return _profile  ?? (_profile = CreateObjectSet<Profile>("Profile")); }
-        }
-        private ObjectSet<Profile> _profile;
-    
-        public ObjectSet<Note> Note
-        {
-            get { return _note  ?? (_note = CreateObjectSet<Note>("Note")); }
-        }
-        private ObjectSet<Note> _note;
+
+        #region DbSet Properties
+
+        public DbSet<Account> Account { get; set; }
+
+        public DbSet<Album> Album { get; set; }
+
+        public DbSet<Application> Application { get; set; }
+
+        public DbSet<BasicInformation> BasicInformation { get; set; }
+
+        public DbSet<Blogs> Blogs { get; set; }
+
+        public DbSet<Category> Category { get; set; }
+
+        public DbSet<Comment> Comment { get; set; }
+
+        public DbSet<ContactInformation> ContactInformation { get; set; }
+
+        public DbSet<Wiki> Entry { get; set; }
+
+        public DbSet<WikiVersion> EntryVersion { get; set; }
+
+        public DbSet<Event> Event { get; set; }
+
+        public DbSet<FieldInformation> FieldInformation { get; set; }
+
+        public DbSet<Friend> Friend { get; set; }
+
+        public DbSet<Group> Group { get; set; }
+
+        public DbSet<GroupUser> GroupUser { get; set; }
+
+        public DbSet<LogTag> LogTag { get; set; }
+        public DbSet<Message> Message { get; set; }
+
+        public DbSet<PersonalInformation> PersonalInformation { get; set; }
+
+        public DbSet<Photo> Photo { get; set; }
+
+        public DbSet<Push> Push { get; set; }
+
+        public DbSet<Reply> Reply { get; set; }
+
+        public DbSet<Services> Services { get; set; }
+
+        public DbSet<SuperNote> SuperNote { get; set; }
+
+        public DbSet<Tags> Tags { get; set; }
+
+        public DbSet<ViewData> ViewData { get; set; }
+
+        public DbSet<Roles> Roles { get; set; }
+
+        public DbSet<UserRole> UserRole { get; set; }
+
+        public DbSet<Profile> Profile { get; set; }
+
+        public DbSet<Note> Note { get; set; }
 
         #endregion
     }

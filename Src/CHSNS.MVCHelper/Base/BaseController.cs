@@ -45,11 +45,11 @@ namespace CHSNS.Controllers {
 
         }
 
-        public CHIdentity CHUser { get { return User.Identity as CHIdentity; } }
+        public WebIdentity WebUser { get { return User.Identity as WebIdentity; } }
 
         protected bool HasManageRight()
         {
-            return CHUser.Status.Equals(RoleType.Editor) || CHUser.Status.Equals(RoleType.Creater);
+            return WebUser.Status.Equals(RoleType.Editor) || WebUser.Status.Equals(RoleType.Creater);
         }
 
         public string HomePage

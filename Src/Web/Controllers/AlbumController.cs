@@ -19,7 +19,7 @@ namespace CHSNS.Controllers
         /// </summary>
         public virtual ActionResult Index(int? p, long? uid)
         {
-            uid = uid ?? CHUser.UserId;
+            uid = uid ?? WebUser.UserId;
             var list = Services.Album.Items(uid.Value);
             Title = string.Format("{0}µÄÏà²á",
                                   Services.UserInfo.GetUserName(uid.Value));
@@ -49,7 +49,7 @@ namespace CHSNS.Controllers
                 Services.Album.Update(a);
                 return RedirectToAction("Index");
             }
-            Services.Album.Add(a, CHUser.UserId);
+            Services.Album.Add(a, WebUser.UserId);
             return RedirectToAction("Index");
         }
 
@@ -60,7 +60,7 @@ namespace CHSNS.Controllers
         {
             InitPage(ref p);
             var album = Services.Album.Get(id);
-            var photos = Services.Album.GetPhotos(album.Id, CHUser.UserId, p.Value, 12);
+            var photos = Services.Album.GetPhotos(album.Id, WebUser.UserId, p.Value, 12);
             ViewData["album"] = album;
             ViewData["photos"] = photos;
             Title = album.Name;
@@ -83,7 +83,7 @@ namespace CHSNS.Controllers
             var al = Services.Album.GetCountChange(id,1);
             if (al == null)
                 return HttpNotFound("album not found");
-            var p = new Photo { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = CHUser.UserId };
+            var p = new Photo { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = WebUser.UserId };
             var f = new ImageUpload(file,
                                     WebContext,
                                     ConfigSerializer.Load<List<string>>("AllowImageExt")
@@ -101,7 +101,7 @@ namespace CHSNS.Controllers
         public virtual ActionResult PhotoDel(long id)
         {
             var p = Services.Photo.Get(id);
-            var path = Path.Photo(CHUser.UserId, p.AddTime, p.Summary, ThumbType.Middle);
+            var path = Path.Photo(WebUser.UserId, p.AddTime, p.Summary, ThumbType.Middle);
 
             IOFactory.StoreFile.Delete(path);
             Services.Album.GetCountChange(p.AlbumId.Value, -1);
@@ -116,7 +116,7 @@ namespace CHSNS.Controllers
 
 
             var p = Services.Photo.Get(id);
-            var path = Path.Photo(CHUser.UserId, p.AddTime, p.Summary, ThumbType.Middle);
+            var path = Path.Photo(WebUser.UserId, p.AddTime, p.Summary, ThumbType.Middle);
 
             var album = Services.Album.Get(p.AlbumId.Value);
             // db.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();

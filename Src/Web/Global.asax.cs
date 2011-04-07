@@ -74,8 +74,8 @@ namespace CHSNS.Web
                 return;
             }
             if (null == authTicket) return;
-            var profile = JsonAdapter.Deserialize<CHIdentity>(authTicket.UserData);
-            Context.User = new CHPrincipal()
+            var profile = JsonAdapter.Deserialize<WebIdentity>(authTicket.UserData);
+            Context.User = new WebPrincipal()
             {
                 Identity = profile
             };

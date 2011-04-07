@@ -83,7 +83,7 @@
     <Compile Include="ConfigSerializerExt.cs" />
     <Compile Include="Core\HttpCache.cs" />
     <Compile Include="Core\WebContext.cs" />
-    <Compile Include="Core\CHCookies.cs" />
+    <Compile Include="Core\WebCookies.cs" />
     <Compile Include="Core\Online.cs" />
     <Compile Include="Extension\Common\EnumerableExtensions.cs" />
     <Compile Include="Tools\EnumHelper.cs" />

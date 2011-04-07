@@ -20,7 +20,7 @@ namespace CHSNS.Controllers {
             var g = Services.Group.Get(id);
             if (g == null)
                 return HttpNotFound("group not found");
-            var u = Services.Group.GetGroupUser(id, CHUser.UserId);
+            var u = Services.Group.GetGroupUser(id, WebUser.UserId);
             if (u == null)
                 return HttpNotFound("group user not found");
             ViewData["guser"] = u;
@@ -77,7 +77,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult List(long? uid, int? p)
         {
             InitPage(ref p);
-            uid = uid ?? CHUser.UserId;
+            uid = uid ?? WebUser.UserId;
             Title = "群列表";
             return View(Services.Group.GetList(uid.Value, p.Value, 10));
         }
@@ -94,7 +94,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Create(string name)
         {
             Message = "创建成功";
-            Services.Group.Add(name, CHUser.UserId);
+            Services.Group.Add(name, WebUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion
@@ -166,7 +166,7 @@ namespace CHSNS.Controllers {
                     note.Id = id.Value;
                     Services.Note.Edit(note);
                 } else {
-                    Services.Note.Add(note,CHUser);
+                    Services.Note.Add(note,WebUser);
                 }
                 ts.Complete();
                 return this.RedirectToReferrer();

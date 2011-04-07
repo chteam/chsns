@@ -18,7 +18,7 @@ namespace CHSNS.Controllers {
         [Authorize]
         public virtual ActionResult Index(int? p, long? userid)
         {
-            if (!userid.HasValue || userid == 0) userid = CHUser.UserId;
+            if (!userid.HasValue || userid == 0) userid = WebUser.UserId;
             InitPage(ref p);
             var b = Services.Friend.UserFriendInfo(userid.Value);
             if (b == null) throw new ApplicationException("用户不存在");
@@ -35,9 +35,9 @@ namespace CHSNS.Controllers {
         public virtual ActionResult RequestHack(int? p)
         {
             InitPage(ref p);
-            var profile = Services.Friend.UserFriendInfo(CHUser.UserId);
+            var profile = Services.Friend.UserFriendInfo(WebUser.UserId);
             if (profile == null) throw new ApplicationException("用户不存在");
-            var items = Services.Friend.GetRequests(CHUser.UserId, p.Value, WebContext.Site);
+            var items = Services.Friend.GetRequests(WebUser.UserId, p.Value, WebContext.Site);
             Title = profile.Name + "的好友请求";
             ViewBag.Items = items;
             ViewBag.Profile = profile;
@@ -77,7 +77,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var x = Services.Friend.Add(CHUser.UserId, toid);
+                var x = Services.Friend.Add(WebUser.UserId, toid);
                 ts.Complete();
                 if (x) return Content("已经向对方发出请求");
                 return Content("对方已经是你的好友");
@@ -94,7 +94,7 @@ namespace CHSNS.Controllers {
         {
             using (var ts = new TransactionScope())
             {
-                Services.Friend.Delete(CHUser.UserId, toid);
+                Services.Friend.Delete(WebUser.UserId, toid);
                 ts.Complete();
                 return Content("解除关系成功");
             }
@@ -105,7 +105,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var r = Services.Friend.Agree(CHUser.UserId, uid,CHUser);
+                var r = Services.Friend.Agree(WebUser.UserId, uid,WebUser);
                 ts.Complete();
                 if (r) return Content("已经加对方为好友");
                 return Content("请求已经处理过了");
@@ -117,7 +117,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var r=Services.Friend.Ignore(uid, CHUser.UserId);
+                var r=Services.Friend.Ignore(uid, WebUser.UserId);
                 ts.Complete();
                 if (r)	return Content("已经忽略了请求");
                 return Content("请求已经处理过了");
@@ -129,7 +129,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                Services.Friend.IgnoreAll(CHUser.UserId);
+                Services.Friend.IgnoreAll(WebUser.UserId);
                 ts.Complete();
                 return Content("已经忽略所有请求");
             }

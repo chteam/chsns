@@ -4,6 +4,8 @@
     using CHSNS.Model;
     using System.Collections.Generic;
     using System.ComponentModel.Composition;
+    using Models;
+
     [Export]
     public class GolbalService
     {
@@ -23,7 +25,7 @@
         public static List<City> GetCitys(int provinceId)
         {
             var citys = ConfigSerializer.Instance.Load<List<City>>("City");
-            return citys.Where(x => x.PId == provinceId).ToList();
+            return citys.Where(x => x.ParentId == provinceId).ToList();
         }
     }
 }

@@ -162,42 +162,42 @@ namespace CHSNS.Service
             }
         }
 
-        public bool AddVersion(long? id, Entry entry, EntryVersion entryVersion, string tags, IUser user,bool isNew)
+        public bool AddVersion(long? id, Wiki wiki, WikiVersion wikiVersion, string tags, IUser user,bool isNew)
         {
-            var isDisplayTitle = entry.IsDisplayTitle;
+            var isDisplayTitle = wiki.IsDisplayTitle;
             using (var db = DBExtInstance)
             {
-                entry.UpdateTime = DateTime.Now;
+                wiki.UpdateTime = DateTime.Now;
                 if (id.HasValue)
                 {
-                    entry = db.Entry.Where(c => c.Id == id.Value).FirstOrDefault();
-                    entry.EditCount += 1;
-                    if (!Equals(entry.IsDisplayTitle, isDisplayTitle))
-                        entry.IsDisplayTitle = isDisplayTitle;
+                    wiki = db.Entry.Where(c => c.Id == id.Value).FirstOrDefault();
+                    wiki.EditCount += 1;
+                    if (!Equals(wiki.IsDisplayTitle, isDisplayTitle))
+                        wiki.IsDisplayTitle = isDisplayTitle;
                 }
                 else
                 {
-                    var old = db.Entry.Where(c => c.Url == entry.Url.Trim()).Count();
+                    var old = db.Entry.Where(c => c.Url == wiki.Url.Trim()).Count();
                     if (old > 0) return false;
-                    entry.EditCount = 1;
-                    db.Entry.AddObject(entry);
+                    wiki.EditCount = 1;
+                    db.Entry.AddObject(wiki);
                     db.SaveChanges();
                 
                 }
 
                 if (id.HasValue || isNew) {
-                    entryVersion.EntryId = entry.Id;
-                    entryVersion.AddTime = DateTime.Now;
-                    entryVersion.Reference = entryVersion.Reference ?? "";
-                    entryVersion.Reason = entryVersion.Reason ?? "";
-                    db.EntryVersion.AddObject(entryVersion);
+                    wikiVersion.EntryId = wiki.Id;
+                    wikiVersion.AddTime = DateTime.Now;
+                    wikiVersion.Reference = wikiVersion.Reference ?? "";
+                    wikiVersion.Reason = wikiVersion.Reason ?? "";
+                    db.EntryVersion.AddObject(wikiVersion);
                     db.SaveChanges();
-                    entry.CurrentId = entryVersion.Id;
+                    wiki.CurrentId = wikiVersion.Id;
                 }
                 else {
-                    var ev = db.EntryVersion.FirstOrDefault(c => c.Id == entryVersion.Id);
-                    ev.Description = entryVersion.Description;
-                    ev.Title = entryVersion.Title;
+                    var ev = db.EntryVersion.FirstOrDefault(c => c.Id == wikiVersion.Id);
+                    ev.Description = wikiVersion.Description;
+                    ev.Title = wikiVersion.Title;
                     ev.AddTime = DateTime.Now;
                 }
                                
@@ -206,7 +206,7 @@ namespace CHSNS.Service
             return true;
         }
 
-        public EntryVersion GetVersion(long versionId)
+        public WikiVersion GetVersion(long versionId)
         {
             using (var db = DBExtInstance)
             {
@@ -215,34 +215,34 @@ namespace CHSNS.Service
             }
         }
 
-        public Tuple<Entry, EntryVersion> Get(long entryId)
+        public Tuple<Wiki, WikiVersion> Get(long entryId)
         {
             using (var db = DBExtInstance)
             {
                 var entry = db.Entry.FirstOrDefault(c => c.Id == entryId);
-                if (entry == null) return Tuple.Create<Entry, EntryVersion>(null, null);
+                if (entry == null) return Tuple.Create<Wiki, WikiVersion>(null, null);
                 var ev = db.EntryVersion.FirstOrDefault(c => c.Id == entry.CurrentId);
                 return Tuple.Create(entry, ev);
             }
         }
 
-        public KeyValuePair<Entry, EntryVersion> Get(string url)
+        public KeyValuePair<Wiki, WikiVersion> Get(string url)
         {
             using (var db = DBExtInstance)
             {
                 var entry = db.Entry.FirstOrDefault(c => c.Url == url);
-                if (entry == null) return new KeyValuePair<Entry, EntryVersion>(null, null);
-                return new KeyValuePair<Entry, EntryVersion>(
+                if (entry == null) return new KeyValuePair<Wiki, WikiVersion>(null, null);
+                return new KeyValuePair<Wiki, WikiVersion>(
                   entry,
                   db.EntryVersion.FirstOrDefault(c => c.Id == entry.CurrentId));
             }
         }
-        public KeyValuePair<Entry, EntryVersion> GetFromVersion(long versionId)
+        public KeyValuePair<Wiki, WikiVersion> GetFromVersion(long versionId)
         {
             using (var db = DBExtInstance)
             {
                 var v = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
-                return new KeyValuePair<Entry, EntryVersion>(
+                return new KeyValuePair<Wiki, WikiVersion>(
                     db.Entry.FirstOrDefault(c => c.Id == v.EntryId), v
                     );
             }

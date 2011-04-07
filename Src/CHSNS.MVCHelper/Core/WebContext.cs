@@ -31,7 +31,7 @@ namespace CHSNS {
         #region User
         public IUser User {
             get {
-                return HttpContext.User.Identity as CHIdentity;
+                return HttpContext.User.Identity as WebIdentity;
             }
         }
         #endregion
@@ -40,7 +40,7 @@ namespace CHSNS {
         ICookies _cookies;
         public ICookies Cookies {
             get {
-                return _cookies ?? (_cookies = new CHCookies(this));
+                return _cookies ?? (_cookies = new WebCookies(this));
             }
             set {
                 _cookies = value;

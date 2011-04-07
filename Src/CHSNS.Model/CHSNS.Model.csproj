@@ -93,27 +93,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Album.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Application.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Area\City.cs" />
     <Compile Include="Area\Province.cs" />
     <Compile Include="BasicInformation.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Blogs.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Category.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Comment.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CommentItemPas.cs" />
     <Compile Include="CommentPas.cs" />
@@ -130,7 +123,6 @@
     <Compile Include="Config\ThumbnailPair.cs" />
     <Compile Include="Config\UploadConfig.cs" />
     <Compile Include="ContactInformation.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\IContext.cs" />
     <Compile Include="Context\ICookies.cs" />
@@ -139,23 +131,10 @@
     <Compile Include="DbEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntities.tt</DependentUpon>
+    <Compile Include="Wiki.cs">
     </Compile>
-    <Compile Include="DbEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Entry.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntryVersion.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
+    <Compile Include="WikiVersion.cs">
     </Compile>
     <Compile Include="Entry\EntryExt.cs" />
     <Compile Include="Entry\EntryPas.cs" />
@@ -179,78 +158,59 @@
     <Compile Include="Enum\VisitLogType.cs" />
     <Compile Include="Enum\VisitType.cs" />
     <Compile Include="Event.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Event\EventPagePas.cs" />
     <Compile Include="FieldInformation.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Friend.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Group.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="GroupUser.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="LogTag.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Message.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="MessageDetailsPas.cs" />
     <Compile Include="MessageItemPas.cs" />
     <Compile Include="NameIDPas.cs" />
     <Compile Include="Note.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="NoteDetailsPas.cs" />
     <Compile Include="NotePas.cs" />
     <Compile Include="PersonalInformation.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Photo.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Profile.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Push.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Reply.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Roles.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Services.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ShowLevelOption.cs" />
     <Compile Include="SuperNote.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Tags.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UserPas.cs" />
     <Compile Include="UserItemPas.cs" />
     <Compile Include="UserRole.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UserwithCountPas.cs" />
     <Compile Include="ViewData.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewListPas.cs" />
     <Compile Include="ViewModel\RegisterModel.cs" />
     <Compile Include="ViewModel\UserIndexViewModel.cs" />
-    <Compile Include="WebProvider\CHIdentity.cs" />
-    <Compile Include="WebProvider\CHPrincipal.cs" />
+    <Compile Include="WebProvider\WebIdentity.cs" />
+    <Compile Include="WebProvider\WebPrincipal.cs" />
     <Compile Include="~Account.cs" />
     <Compile Include="~BasicInformation.cs" />
   </ItemGroup>
@@ -260,18 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EntityDeploy Include="DbEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DbEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbEntities.Context.cs</LastGenOutput>
-    </None>
-    <None Include="DbEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbEntities.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

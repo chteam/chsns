@@ -7,15 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-
 namespace CHSNS.Models
 {
-    public partial class Entry{
+    public partial class Wiki{
     
         public virtual long Id{get;set;}
     
@@ -25,7 +19,7 @@ namespace CHSNS.Models
     
         public virtual System.DateTime UpdateTime{get;set;}
     
-        public virtual Nullable<long> CurrentId{get;set;}
+        public virtual long? CurrentId{get;set;}
     
         public virtual int EditCount{get;set;}
     

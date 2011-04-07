@@ -10,8 +10,8 @@ namespace CHSNS {
     /// </summary>
     public class Online : IOnline {
         
-        private const string ONLINE_REMOVETIME = "useronline.time";
-        private const string ONLINE_LIST = "useronline";
+        private const string OnlineRemovetime = "useronline.time";
+        private const string OnlineList = "useronline";
         /// <summary>
         /// 清理离线用户
         /// </summary>
@@ -34,13 +34,14 @@ namespace CHSNS {
          public void Update() {
              if (HttpContext.Current.User.Identity.IsAuthenticated)
              {
-                 var user = HttpContext.Current.User.Identity as CHIdentity;
+                 var user = HttpContext.Current.User.Identity as WebIdentity;
                 if (Date.DivMinutes(RemoveTime) > 1) {//过了1分钟才清理
                     Application.Lock();
-                    if (!IsOnline(user.UserId))
-                        Items.Add(user.UserId, DateTime.Now);
-                    else
-                        Items[user.UserId] = DateTime.Now;
+                    if (user != null)
+                        if (!IsOnline(user.UserId))
+                            Items.Add(user.UserId, DateTime.Now);
+                        else
+                            Items[user.UserId] = DateTime.Now;
                     RemoveTime = DateTime.Now;
                     Application.UnLock();
                 }
@@ -58,27 +59,27 @@ namespace CHSNS {
         /// </summary>
          public Dictionary<long, DateTime> Items {
             get {
-                if (Application[ONLINE_LIST] == null) {
+                if (Application[OnlineList] == null) {
                     Application.Lock();
-                    Application[ONLINE_LIST] = new Dictionary<long, DateTime>();
+                    Application[OnlineList] = new Dictionary<long, DateTime>();
                     Application.UnLock();
                 }
-                return Application[ONLINE_LIST] as Dictionary<long, DateTime>;
+                return Application[OnlineList] as Dictionary<long, DateTime>;
             }
         }
         
          DateTime RemoveTime {
             get {
             //	Hashtable
-                if (Application[ONLINE_REMOVETIME] == null) {
+                if (Application[OnlineRemovetime] == null) {
                     Application.Lock();
-                    Application[ONLINE_REMOVETIME] = new DateTime();
+                    Application[OnlineRemovetime] = new DateTime();
                     Application.UnLock();
                 }
-                return Convert.ToDateTime(Application[ONLINE_REMOVETIME]);
+                return Convert.ToDateTime(Application[OnlineRemovetime]);
             }
             set {
-                Application.Add(ONLINE_REMOVETIME, value);
+                Application.Add(OnlineRemovetime, value);
             }
         }
 

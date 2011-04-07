@@ -5,7 +5,7 @@
 // <author>chsword</author>
 //-----------------------------------------------------------------------
 
-namespace CHSNS.Model
+namespace CHSNS.Models
 {
     /// <summary>
     /// 城市类，描述城市 信息
@@ -25,6 +25,6 @@ namespace CHSNS.Model
         /// <summary>
         /// Gets or sets the P id.
         /// </summary>
-        public int PId { get; set; }
+        public int ParentId { get; set; }
     }
 }
