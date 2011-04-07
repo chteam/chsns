@@ -4,8 +4,8 @@ AutoEventWireup="true" Inherits="System.Web.Mvc.ViewPage" %>
 </asp:Content> 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 <%
-   var entry = ViewData["entry"] as Entry;
-  var version = ViewData["version"] as EntryVersion;
+   var entry = ViewData["entry"] as Wiki;
+  var version = ViewData["version"] as WikiVersion;
   var ext = ViewData["ext"] as EntryExt;
   if (ext == null) ext = new EntryExt {Tags = new List<string>()};
      %>

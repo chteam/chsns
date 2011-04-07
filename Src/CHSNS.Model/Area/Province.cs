@@ -5,7 +5,7 @@
 // <author>chsword</author>
 //-----------------------------------------------------------------------
 
-namespace CHSNS.Model
+namespace CHSNS.Models
 {
     /// <summary>
     /// Province information

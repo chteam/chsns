@@ -76,13 +76,13 @@
                 //修改
                 var d = Services.Entry.Get(id.Value);
                 var entry = d.Item1;
-                if ((entry.Status == (int)EntryType.Common || HasManageRight() || new[] { 0, CHUser.UserId }.Contains(entry.CreaterId)))
+                if ((entry.Status == (int)EntryType.Common || HasManageRight() || new[] { 0, WebUser.UserId }.Contains(entry.CreaterId)))
                 {
                     ViewData["exists"] = true;
                     ViewData["entry"] = entry;
                     ViewData["id"] = entry.Id;
                     var ev = d.Item2;
-                    if (ev == null) ev = new EntryVersion();
+                    if (ev == null) ev = new WikiVersion();
                     ViewData["entryversion"] = ev;//.Url;
                     var ee = JsonAdapter.Deserialize<EntryExt>(ev.Ext) ?? new EntryExt();
                     ViewData["tags"] = string.Join(",", ee.Tags.ToNotNull().ToArray());
@@ -105,18 +105,18 @@
         /// 编辑与创建词条
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="entry"></param>
+        /// <param name="wiki"></param>
         /// <param name="entryversion"></param>
         /// <param name="tags"></param>
         /// <returns></returns>
         [HttpPost]
         [AdminFilter]
         [ValidateInput(false)]
-        public virtual ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags,bool isNew)
+        public virtual ActionResult Edit(long? id, Wiki wiki, WikiVersion entryversion, string tags,bool isNew)
         {
-            var b = Services.Entry.AddVersion(id, entry, entryversion, tags, CHUser,isNew);
+            var b = Services.Entry.AddVersion(id, wiki, entryversion, tags, WebUser,isNew);
             if (!b) throw new ApplicationException("标题已存在");
-            return RedirectToAction("Index", "Entry", new { url = entry.Url });
+            return RedirectToAction("Index", "Entry", new { url = wiki.Url });
         }
         [AdminFilter]
         public virtual ActionResult AdminHistoryList(string url)
@@ -184,13 +184,13 @@
         [AdminFilter]
         public virtual ActionResult Delete(long id)
         {
-            Services.Entry.DeleteByVersionId(id, CHUser.UserId);
+            Services.Entry.DeleteByVersionId(id, WebUser.UserId);
             return this.RedirectToReferrer();
         }
         [AdminFilter]
         public virtual ActionResult DeleteVersion(long id)
         {
-            Services.Entry.DeleteVersion(id, CHUser.UserId);
+            Services.Entry.DeleteVersion(id, WebUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion

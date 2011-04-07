@@ -8,10 +8,6 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
@@ -25,6 +21,6 @@ namespace CHSNS.Models
     
         public virtual long Count{get;set;}
     
-        public virtual Nullable<long> UserId{get;set;}
+        public virtual long? UserId{get;set;}
     }
 }

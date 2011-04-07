@@ -10,9 +10,9 @@ namespace CHSNS
     /// AU:×Þ½¡
     /// EL: 2007 10 25
     /// </summary>
-    public class CHCookies : ICookies
+    public class WebCookies : ICookies
     {
-        public CHCookies(IContext context)
+        public WebCookies(IContext context)
         {
             Context = context;
         }

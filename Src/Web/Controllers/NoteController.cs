@@ -12,7 +12,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Index(long? userid, int? p)
         {
 
-            if (!userid.HasValue) userid = CHUser.UserId;
+            if (!userid.HasValue) userid = WebUser.UserId;
             if (!p.HasValue || p == 0) p = 1;
             var user = Services.UserInfo.GetUser(
                 userid.Value,
@@ -48,7 +48,7 @@ namespace CHSNS.Controllers {
             Title = note.Title;
             ViewData["NowPage"] = 1;
             ViewData["PageCount"] = note.CommentCount;
-            Services.View.Update(VisitLogType.Note, id, CHUser);
+            Services.View.Update(VisitLogType.Note, id, WebUser);
             return View(note);
         }
         
@@ -78,7 +78,7 @@ namespace CHSNS.Controllers {
                 Message = ("请输入正确的日志内容");
                 return View(note);
             }
-            note.UserId = CHUser.UserId;
+            note.UserId = WebUser.UserId;
             if (id.HasValue)
             {
                 note.Id = id.Value;
@@ -87,9 +87,9 @@ namespace CHSNS.Controllers {
             else
             {
                 note.Type = (int)NoteType.Note;
-                note.Username = CHUser.Name;
-                note.ParentId = CHUser.UserId;
-                Services.Note.Add(note, CHUser);
+                note.Username = WebUser.Name;
+                note.ParentId = WebUser.UserId;
+                Services.Note.Add(note, WebUser);
             }
             return RedirectToAction("Index");
         }
@@ -99,7 +99,7 @@ namespace CHSNS.Controllers {
         [Authorize]
         public virtual ActionResult Delete(long id)
         {
-            Services.Note.Delete(id, CHUser.UserId, NoteType.Note);
+            Services.Note.Delete(id, WebUser.UserId, NoteType.Note);
             return Content("");
         }
 

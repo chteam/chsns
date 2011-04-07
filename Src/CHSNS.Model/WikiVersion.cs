@@ -8,14 +8,10 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace CHSNS.Models
 {
-    public partial class EntryVersion{
+    public partial class WikiVersion{
     
         public virtual long Id{get;set;}
     

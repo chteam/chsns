@@ -7,12 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-
 namespace CHSNS.Models
 {
     public partial class Account{
@@ -23,6 +17,6 @@ namespace CHSNS.Models
     
         public virtual string Password{get;set;}
     
-        public virtual Nullable<long> Code{get;set;}
+        public virtual long? Code{get;set;}
     }
 }

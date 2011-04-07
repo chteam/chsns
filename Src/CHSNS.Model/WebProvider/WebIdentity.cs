@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace CHSNS
 {
-    public class CHIdentity : IIdentity,IUser
+    public class WebIdentity : IIdentity,IUser
     {
-        public string AuthenticationType { get { return "CHIdentity"; } }
+        public string AuthenticationType { get { return "WebIdentity"; } }
         public bool IsAuthenticated { get { return true; } }
         public string Name { get; set; }
         public string Email { get; set; }
