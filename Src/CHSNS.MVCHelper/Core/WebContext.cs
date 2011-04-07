@@ -7,17 +7,17 @@ namespace CHSNS {
     /// <summary>
     /// CHSNS实现，WEB实现
     /// </summary>
-    public class CHContext : IContext {
+    public class WebContext : IContext {
         /// <summary>
         /// 构造函数唯一
         /// </summary>
         /// <param name="context"></param>
         /// <param name="appRootPath"></param>
-        public CHContext(HttpContextBase context,string appRootPath) {
+        public WebContext(HttpContextBase context,string appRootPath) {
             HttpContext = context;
             AppRootPath = appRootPath;
         }
-        public CHContext(HttpContextBase context)
+        public WebContext(HttpContextBase context)
         {
             HttpContext = context;
         }

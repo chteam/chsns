@@ -6,11 +6,9 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
-using System;
-
-namespace CHSNS.MVCHelper.Wiki
+namespace CHSNS.Wiki
 {
-	/// <summary>
+    /// <summary>
 	/// Description of WikiEngine.
 	/// </summary>
     public class WikiEngine

@@ -7,7 +7,7 @@ namespace CHSNS
         {
             get
             {
-                return new CHContext(new HttpContextWrapper(HttpContext.Current));
+                return new WebContext(new HttpContextWrapper(HttpContext.Current));
             }
         }
     }

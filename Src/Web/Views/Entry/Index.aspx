@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="CHSNS.Wiki" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
@@ -26,7 +27,7 @@
                 }%></div>
         <div class="body">
             <p>
-                <%=CHSNS.MVCHelper.Wiki.WikiEngine.Explain( version.Description)%></p>
+                <%=WikiEngine.Explain( version.Description)%></p>
         </div>
     </div>
     <div id="entryTools">

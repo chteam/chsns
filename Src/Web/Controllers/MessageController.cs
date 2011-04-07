@@ -28,7 +28,7 @@ namespace CHSNS.Controllers
         {
             InitPage(ref p);
           //  InitPage(ref ep, 10);
-            var m = ServicesFactory.Message.GetInbox(CHUser.UserId, p.Value,CHContext.Site);
+            var m = Services.Message.GetInbox(CHUser.UserId, p.Value,WebContext.Site);
             ViewData["NowPage"] = p;
             ViewData["PageCount"] = m.TotalPages;
             return View(m);
@@ -44,7 +44,7 @@ namespace CHSNS.Controllers
         {
             InitPage(ref p);
            // InitPage(ref ep, 10);
-            var m = ServicesFactory.Message.GetOutbox(CHUser.UserId, p.Value, CHContext.Site);
+            var m = Services.Message.GetOutbox(CHUser.UserId, p.Value, WebContext.Site);
             ViewData["NowPage"] = p;
             ViewData["PageCount"] = m.TotalPages;
             return View(m);
@@ -53,13 +53,13 @@ namespace CHSNS.Controllers
         [HttpPost]
         public virtual ActionResult Delete(long id, int t)
         {
-            ServicesFactory.Message.Delete(id, (MessageBoxType)t, CHUser.UserId);
+            Services.Message.Delete(id, (MessageBoxType)t, CHUser.UserId);
             //CHStatic.Clear();
             return Content("");
         }
         public virtual ActionResult Details(long id)
         {
-            var m = ServicesFactory.Message.Details(id, CHUser.UserId);
+            var m = Services.Message.Details(id, CHUser.UserId);
             Title = m.Message.Title;
             //	CHStatic.Clear();
             return View(m);
@@ -83,7 +83,7 @@ namespace CHSNS.Controllers
                 SendTime = DateTime.Now
             };
             UpdateModel(m, new[] { "Title", "Body", "ToID" });
-            ServicesFactory.Message.Add(m,CHContext);
+            Services.Message.Add(m,WebContext);
 
         }
         [HttpPost]

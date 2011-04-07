@@ -18,7 +18,7 @@
         {
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
-            var t = ServicesFactory.Entry.Get(url);
+            var t = Services.Entry.Get(url);
             ViewBag.Entry = t.Key;
             if (ViewBag.Entry == null) return Wait();
             var version = t.Value;
@@ -40,14 +40,14 @@
         /// <returns></returns>
         public virtual ActionResult HistoryList(long id)
         {
-            ViewBag.Source = ServicesFactory.Entry.Historys(id);
+            ViewBag.Source = Services.Entry.Historys(id);
             Title = "版本比较";
             return View();
         }
 
         public virtual ActionResult History(long versionId)
         {
-            var t = ServicesFactory.Entry.GetFromVersion(versionId);
+            var t = Services.Entry.GetFromVersion(versionId);
             if (t.Key == null || t.Value == null) return View("wait", "site");
             var entry = t.Key;
             var version = t.Value;
@@ -74,7 +74,7 @@
             if (id != null)
             {
                 //修改
-                var d = ServicesFactory.Entry.Get(id.Value);
+                var d = Services.Entry.Get(id.Value);
                 var entry = d.Item1;
                 if ((entry.Status == (int)EntryType.Common || HasManageRight() || new[] { 0, CHUser.UserId }.Contains(entry.CreaterId)))
                 {
@@ -114,7 +114,7 @@
         [ValidateInput(false)]
         public virtual ActionResult Edit(long? id, Entry entry, EntryVersion entryversion, string tags,bool isNew)
         {
-            var b = ServicesFactory.Entry.AddVersion(id, entry, entryversion, tags, CHUser,isNew);
+            var b = Services.Entry.AddVersion(id, entry, entryversion, tags, CHUser,isNew);
             if (!b) throw new ApplicationException("标题已存在");
             return RedirectToAction("Index", "Entry", new { url = entry.Url });
         }
@@ -122,7 +122,7 @@
         public virtual ActionResult AdminHistoryList(string url)
         {
             url = url.Trim();
-            ViewData["Source"] = ServicesFactory.Entry.Historys(url);
+            ViewData["Source"] = Services.Entry.Historys(url);
             Title = "历史版本";
             return View();
         }
@@ -134,7 +134,7 @@
         [AdminFilter]
         public virtual ActionResult NewList()
         {
-            var li = ServicesFactory.Entry.List(1, 10);
+            var li = Services.Entry.List(1, 10);
             Title = "词条列表";
             return View(li);
         }
@@ -159,7 +159,7 @@
              * 1.设置当前版本为最新版本词条
              * 2.将当前版本状态改为常规状态
              */
-            ServicesFactory.Entry.PassWaitVersion(id);
+            Services.Entry.PassWaitVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -173,7 +173,7 @@
             /*
              * 锁定当前版本
              */
-            ServicesFactory.Entry.LockCommonVersion(id);
+            Services.Entry.LockCommonVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -184,13 +184,13 @@
         [AdminFilter]
         public virtual ActionResult Delete(long id)
         {
-            ServicesFactory.Entry.DeleteByVersionId(id, CHUser.UserId);
+            Services.Entry.DeleteByVersionId(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         [AdminFilter]
         public virtual ActionResult DeleteVersion(long id)
         {
-            ServicesFactory.Entry.DeleteVersion(id, CHUser.UserId);
+            Services.Entry.DeleteVersion(id, CHUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion
@@ -198,7 +198,7 @@
         #region Ajax
         public virtual ActionResult Has(string title)
         {
-            var exists = ServicesFactory.Entry.HasTitle(title);
+            var exists = Services.Entry.HasTitle(title);
             return Json(exists); 
         }
 
