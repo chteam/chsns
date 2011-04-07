@@ -179,8 +179,6 @@
     </Compile>
     <Compile Include="NoteDetailsPas.cs" />
     <Compile Include="NotePas.cs" />
-    <Compile Include="PersonalInformation.cs">
-    </Compile>
     <Compile Include="Photo.cs">
     </Compile>
     <Compile Include="Profile.cs">
