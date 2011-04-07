@@ -51,7 +51,7 @@ namespace CHSNS.Models
         public DbSet<LogTag> LogTag { get; set; }
         public DbSet<Message> Message { get; set; }
 
-        public DbSet<PersonalInformation> PersonalInformation { get; set; }
+       // public DbSet<PersonalInformation> PersonalInformation { get; set; }
 
         public DbSet<Photo> Photo { get; set; }
 
