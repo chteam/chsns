@@ -1,11 +1,8 @@
 ﻿
 namespace CHSNS.Helper {
-    using System;
     using System.IO;
     using System.Web;
     using System.Web.UI;
-    using System.Web.Mvc;
-    using System.Web.Hosting;
     using System.Web.Mvc;
     using CHSNS.Common;
 
@@ -31,6 +28,7 @@ namespace CHSNS.Helper {
         /// <summary>
         /// Creates the proper CSS link reference within the target CSHTML page's head section
         /// </summary>
+        /// <param name="html"></param>
         /// <param name="virtualPath">The relative path of the image to be displayed, or its directory</param>
         public static IHtmlString ImportStylesheet(this HtmlHelper html,string virtualPath) {
             

@@ -4,9 +4,12 @@ namespace CHSNS.Controllers {
     using System.Web.Mvc;
     using Interface;
 
-    abstract public class BaseController : Controller {
-
-        public IContext CHContext { get { return new CHContext(HttpContext); } }
+    abstract public class BaseController : Controller
+    {
+        private ServicesFactory _services;
+        protected ServicesFactory Services { get { return _services = _services ?? new ServicesFactory(); }
+        }
+        public IContext WebContext { get { return new WebContext(HttpContext); } }
         public ISerializer ConfigSerializer
         {
             get
@@ -38,7 +41,7 @@ namespace CHSNS.Controllers {
                 if (ViewData.ContainsKey(item.Key))
                     ViewData[item.Key] = item.Value;
             if (ViewData.ContainsKey("Page_Title"))
-                ViewData["Page_Title"] += " - " + CHContext.Site.BaseConfig.Title;
+                ViewData["Page_Title"] += " - " + WebContext.Site.BaseConfig.Title;
 
         }
 

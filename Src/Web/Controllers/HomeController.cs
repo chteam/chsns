@@ -14,7 +14,7 @@ namespace CHSNS.Controllers
             return RedirectToAction("index", "Entry", new { title = "index" });
         }
         public void LogOff() {
-            ServicesFactory.Account.Logout(CHContext);
+            Services.Account.Logout(WebContext);
             RedirectToAction("index");
         }
         protected override void HandleUnknownAction(string actionName) {

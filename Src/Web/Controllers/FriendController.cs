@@ -12,7 +12,7 @@ namespace CHSNS.Controllers {
         #region Action
         public virtual ActionResult Random()
         {
-            ViewData["source"] = ServicesFactory.Friend.GetRandoms(10);
+            ViewData["source"] = Services.Friend.GetRandoms(10);
             return View();
         }
         [Authorize]
@@ -20,7 +20,7 @@ namespace CHSNS.Controllers {
         {
             if (!userid.HasValue || userid == 0) userid = CHUser.UserId;
             InitPage(ref p);
-            var b = ServicesFactory.Friend.UserFriendInfo(userid.Value);
+            var b = Services.Friend.UserFriendInfo(userid.Value);
             if (b == null) throw new ApplicationException("用户不存在");
             ViewData["UserId"] = userid;
             ViewData["Name"] = b.Name;
@@ -35,9 +35,9 @@ namespace CHSNS.Controllers {
         public virtual ActionResult RequestHack(int? p)
         {
             InitPage(ref p);
-            var profile = ServicesFactory.Friend.UserFriendInfo(CHUser.UserId);
+            var profile = Services.Friend.UserFriendInfo(CHUser.UserId);
             if (profile == null) throw new ApplicationException("用户不存在");
-            var items = ServicesFactory.Friend.GetRequests(CHUser.UserId, p.Value, CHContext.Site);
+            var items = Services.Friend.GetRequests(CHUser.UserId, p.Value, WebContext.Site);
             Title = profile.Name + "的好友请求";
             ViewBag.Items = items;
             ViewBag.Profile = profile;
@@ -52,7 +52,7 @@ namespace CHSNS.Controllers {
         [HttpPost]
         public virtual ActionResult FriendList(int p, long userid)
         {
-            var list = ServicesFactory.Friend.GetFriends(userid, p, CHContext.Site);
+            var list = Services.Friend.GetFriends(userid, p, WebContext.Site);
             ViewData["PageCount"] = list.TotalPages;
             return View(list);
         }
@@ -60,13 +60,13 @@ namespace CHSNS.Controllers {
         [HttpPost]
         public virtual ActionResult RequestList(int p, long userid)
         {
-            return View(ServicesFactory.Friend.GetRequests(userid, p, CHContext.Site));
+            return View(Services.Friend.GetRequests(userid, p, WebContext.Site));
         }
         [Authorize]
         [HttpPost]
         public virtual ActionResult RandomList()
         {
-            return View(ServicesFactory.Friend.GetRandoms(10));
+            return View(Services.Friend.GetRandoms(10));
         }
         #endregion
 
@@ -77,7 +77,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var x = ServicesFactory.Friend.Add(CHUser.UserId, toid);
+                var x = Services.Friend.Add(CHUser.UserId, toid);
                 ts.Complete();
                 if (x) return Content("已经向对方发出请求");
                 return Content("对方已经是你的好友");
@@ -94,7 +94,7 @@ namespace CHSNS.Controllers {
         {
             using (var ts = new TransactionScope())
             {
-                ServicesFactory.Friend.Delete(CHUser.UserId, toid);
+                Services.Friend.Delete(CHUser.UserId, toid);
                 ts.Complete();
                 return Content("解除关系成功");
             }
@@ -105,7 +105,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var r = ServicesFactory.Friend.Agree(CHUser.UserId, uid,CHUser);
+                var r = Services.Friend.Agree(CHUser.UserId, uid,CHUser);
                 ts.Complete();
                 if (r) return Content("已经加对方为好友");
                 return Content("请求已经处理过了");
@@ -117,7 +117,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                var r=ServicesFactory.Friend.Ignore(uid, CHUser.UserId);
+                var r=Services.Friend.Ignore(uid, CHUser.UserId);
                 ts.Complete();
                 if (r)	return Content("已经忽略了请求");
                 return Content("请求已经处理过了");
@@ -129,7 +129,7 @@ namespace CHSNS.Controllers {
         {//添加好友
             using (var ts = new TransactionScope())
             {
-                ServicesFactory.Friend.IgnoreAll(CHUser.UserId);
+                Services.Friend.IgnoreAll(CHUser.UserId);
                 ts.Complete();
                 return Content("已经忽略所有请求");
             }

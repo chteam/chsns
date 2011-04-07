@@ -14,7 +14,7 @@ namespace CHSNS.Controllers {
 
             if (!userid.HasValue) userid = CHUser.UserId;
             if (!p.HasValue || p == 0) p = 1;
-            var user = ServicesFactory.UserInfo.GetUser(
+            var user = Services.UserInfo.GetUser(
                 userid.Value,
                 c => new Profile
                          {
@@ -36,19 +36,19 @@ namespace CHSNS.Controllers {
         [HttpPost]
         public virtual ActionResult NoteList(int p, int ep, long userid)
         {
-            ViewData.Model = ServicesFactory.Note.GetNotes(userid, NoteType.Note, p, ep);
+            ViewData.Model = Services.Note.GetNotes(userid, NoteType.Note, p, ep);
             return View();
         }
        
         public virtual ActionResult Details(long id)
         {
-            var note = ServicesFactory.Note.Details(id, NoteType.Note);
-            var cl = ServicesFactory.Comment.CommentList(id, CommentType.Note, 1, CHContext.Site);
+            var note = Services.Note.Details(id, NoteType.Note);
+            var cl = Services.Comment.CommentList(id, CommentType.Note, 1, WebContext.Site);
             ViewData["commentlist"] = cl;
             Title = note.Title;
             ViewData["NowPage"] = 1;
             ViewData["PageCount"] = note.CommentCount;
-            ServicesFactory.View.Update(VisitLogType.Note, id, CHUser);
+            Services.View.Update(VisitLogType.Note, id, CHUser);
             return View(note);
         }
         
@@ -59,7 +59,7 @@ namespace CHSNS.Controllers {
             if (id.HasValue)
             {
                 Title = "修改日志";
-                var n = ServicesFactory.Note.Details(id.Value, NoteType.Note);
+                var n = Services.Note.Details(id.Value, NoteType.Note);
                 return View(n);
             }
             else
@@ -82,14 +82,14 @@ namespace CHSNS.Controllers {
             if (id.HasValue)
             {
                 note.Id = id.Value;
-                ServicesFactory.Note.Edit(note);
+                Services.Note.Edit(note);
             }
             else
             {
                 note.Type = (int)NoteType.Note;
                 note.Username = CHUser.Name;
                 note.ParentId = CHUser.UserId;
-                ServicesFactory.Note.Add(note, CHUser);
+                Services.Note.Add(note, CHUser);
             }
             return RedirectToAction("Index");
         }
@@ -99,7 +99,7 @@ namespace CHSNS.Controllers {
         [Authorize]
         public virtual ActionResult Delete(long id)
         {
-            ServicesFactory.Note.Delete(id, CHUser.UserId, NoteType.Note);
+            Services.Note.Delete(id, CHUser.UserId, NoteType.Note);
             return Content("");
         }
 
@@ -110,7 +110,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult News()
         {
             Title = "日志首页";
-            return View(ServicesFactory.Note.GetLastNotes(null));
+            return View(Services.Note.GetLastNotes(null));
         }
     }
 }
