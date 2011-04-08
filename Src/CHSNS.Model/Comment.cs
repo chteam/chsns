@@ -7,19 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-
 namespace CHSNS.Models
 {
     public partial class Comment{
     
         public virtual long Id{get;set;}
     
-        public virtual Nullable<long> ShowerId{get;set;}
+        public virtual long? ShowerId{get;set;}
     
         public virtual long OwnerId{get;set;}
     
