@@ -4,6 +4,8 @@
  * Time: 22:51
  */
 
+using CHSNS.Common.Serializer;
+
 namespace CHSNS.Web
 {
     using System;

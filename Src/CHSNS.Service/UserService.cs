@@ -1,4 +1,6 @@
 ﻿
+using CHSNS.Common.Serializer;
+
 namespace CHSNS.Service {
     using System;
     using CHSNS.Model;
@@ -111,8 +113,8 @@ namespace CHSNS.Service {
                 TemplateName = "ProText",
                 AddTime = DateTime.Now,
                 ShowLevel = 0,
-                Json = Dictionary.CreateFromArgs("name", context.User.Name,
-                                                 "text", text).ToJsonString()
+                Json =JsonAdapter.Serialize( Dictionary.CreateFromArgs("name", context.User.Name,
+                                                 "text", text))
             });
         }
 
