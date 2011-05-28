@@ -16,7 +16,7 @@ namespace CHSNS.Service
     {
         public PagedList<MessageItemPas> GetInbox(long userId, int page, SiteConfig site)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from m in db.Message
                            join p1 in db.Profile on m.FromId equals p1.UserId
@@ -37,7 +37,7 @@ namespace CHSNS.Service
 
         public PagedList<MessageItemPas> GetOutbox(long userId, int page, SiteConfig site)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from m in db.Message
                            join p1 in db.Profile on m.ToId equals p1.UserId
@@ -60,7 +60,7 @@ namespace CHSNS.Service
         public void Add(Message m, IContext context)
         {
             var server = context.HttpContext.Server;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
 
                 m.Title = server.HtmlEncode(m.Title ?? "");
@@ -73,7 +73,7 @@ namespace CHSNS.Service
 
         public void Delete(long id, MessageBoxType t, long uid)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var message = db.Message.FirstOrDefault(m => m.Id == id);
                 if (null == message) return;
@@ -88,7 +88,7 @@ namespace CHSNS.Service
         public MessageDetailsPas Details(long id, long userId)
         {
             MessageDetailsPas ret;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret1 = (from m in db.Message
                             where m.Id == id

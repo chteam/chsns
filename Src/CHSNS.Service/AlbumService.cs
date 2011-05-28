@@ -9,7 +9,7 @@ namespace CHSNS.Service {
     public class AlbumService : BaseService<AlbumService>
     {
         public List<Album> Items(long uId) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return (from a in db.Album
                         where a.UserId.Equals(uId)
@@ -18,7 +18,7 @@ namespace CHSNS.Service {
         }
 
         public Album Get(long id) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return db.Album.FirstOrDefault(c => c.Id.Equals(id));
             }
@@ -27,7 +27,7 @@ namespace CHSNS.Service {
         public void Add(Album album, long uId) {
             album.UserId = uId;
             album.AddTime = DateTime.Now;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 db.Album.Add(album);
                 db.SaveChanges();
@@ -35,7 +35,7 @@ namespace CHSNS.Service {
         }
 
         public void Update(Album album) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var al = db.Album.FirstOrDefault(c => c.Id == album.Id);
                 al.Location = album.Location;
@@ -46,7 +46,7 @@ namespace CHSNS.Service {
             }
         }
         public List<Photo> GetPhotos(long id, long uId, int page, int pageSize) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return (from ph in db.Photos
                         where ph.AlbumId == id && ph.UserId == uId
@@ -61,7 +61,7 @@ namespace CHSNS.Service {
         /// <param name="num"></param>
         /// <returns></returns>
         public Album GetCountChange(long id, int num) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var a = db.Album.FirstOrDefault(c => c.Id.Equals(id));
                 if (num != 0)

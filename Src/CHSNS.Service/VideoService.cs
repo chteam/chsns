@@ -19,7 +19,7 @@ namespace CHSNS.Service
             content.Title = content.Title ?? m.Title;
             content.FaceURL = m.Pic;
             content.Type = (byte)SuperNoteType.Video;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 db.SuperNote.Add(content);
                 db.SaveChanges();
@@ -33,7 +33,7 @@ namespace CHSNS.Service
 
         public void Remove(IUser user, params long[] uids)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var superNotes = db.SuperNote
                     .Where(c =>
@@ -49,7 +49,7 @@ namespace CHSNS.Service
         {
             uid = uid ?? user.UserId;
             //类型,时间排序,用户
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return db.SuperNote.Where(c => c.Type == (byte)SuperNoteType.Video
                                                && c.UserId == uid).OrderByDescending(

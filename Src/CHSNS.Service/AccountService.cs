@@ -49,7 +49,7 @@ namespace CHSNS.Service
 
         internal WebIdentity GeneralIdentity(String userName, String password, int logOnScore)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 long userId;
                 long.TryParse(userName.Trim(), out userId);
@@ -101,7 +101,7 @@ namespace CHSNS.Service
         {
             account.Password = account.Password.ToMd5();
             account.Code = DateTime.Now.Ticks;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 db.Account.Add(account);
                 db.SaveChanges();
@@ -136,7 +136,7 @@ namespace CHSNS.Service
         public bool IsUsernameCanUse(string username)
         {
             bool isNotExists;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 isNotExists = db.Account.Where(c => c.UserName == username.Trim()).Count() == 0;
             }
@@ -147,7 +147,7 @@ namespace CHSNS.Service
         #region Init
         public void InitCreater()
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var p = db.Profile.FirstOrDefault();
                 if (p == null) return;

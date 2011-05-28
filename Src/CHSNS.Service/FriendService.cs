@@ -14,7 +14,7 @@ namespace CHSNS.Service
         #region 获取
         public Profile UserFriendInfo(long userId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from p in db.Profile
                            where p.UserId == userId
@@ -34,7 +34,7 @@ namespace CHSNS.Service
         }
         public List<long> GetFriendsId(long userid)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return (from f1 in db.Friends
                         where f1.FromId == userid && f1.IsTrue
@@ -48,7 +48,7 @@ namespace CHSNS.Service
         public PagedList<UserItemPas> GetFriends(long uid, int page, SiteConfig site)
         {
             var ids = GetFriendsId(uid);
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from c in db.Profile
                            where ids.Contains(c.UserId)
@@ -68,7 +68,7 @@ namespace CHSNS.Service
 
         public List<UserItemPas> GetRandoms(int n)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from p in db.Profile
                            where p.Status.Equals(RoleType.General)
@@ -84,7 +84,7 @@ namespace CHSNS.Service
 
         public PagedList<UserItemPas> GetRequests(long userid, int page, SiteConfig site)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from f1 in db.Friends
                            join p1 in db.Profile on f1.FromId equals p1.UserId
@@ -110,7 +110,7 @@ namespace CHSNS.Service
         /// <returns>已经是好友则返回False，如果还不是，则返回True，并发送一个好友请求</returns>
         public bool Add(long fromId, long toId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var f = db.Friends.FirstOrDefault(
                     c =>
@@ -147,7 +147,7 @@ namespace CHSNS.Service
         /// <returns></returns>
         public bool Delete(long fromId, long toId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var f = db.Friends.FirstOrDefault(
                     c =>
@@ -192,7 +192,7 @@ namespace CHSNS.Service
         internal bool Agree(long operaterId, long toId)
         {
             //string name;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var f = db.Friends.FirstOrDefault(
                     c =>
@@ -213,7 +213,7 @@ namespace CHSNS.Service
         /// <returns></returns>
         public bool Ignore(long fromId, long operaterId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var f = db.Friends.FirstOrDefault(c => c.ToId == operaterId && c.FromId == fromId && !c.IsTrue);
                 if (f == null) return false;
@@ -224,7 +224,7 @@ namespace CHSNS.Service
         }
         public bool IgnoreAll(long userId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var f = db.Friends.Where(c => c.ToId == userId && !c.IsTrue);
                 db.Friends.BulkRemove(f);

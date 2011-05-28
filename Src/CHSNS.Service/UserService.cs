@@ -10,7 +10,7 @@ namespace CHSNS.Service {
     public class UserService : BaseService<UserService>
     {
         public UserPas UserInformation(long userid) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from p in db.Profile
                            join b in db.BasicInformation on p.UserId equals b.UserId
@@ -22,7 +22,7 @@ namespace CHSNS.Service {
         }
 
         public int Relation(long ownerId, long viewerId) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 if (ownerId == viewerId) return 200;
                 var x =
@@ -36,14 +36,14 @@ namespace CHSNS.Service {
 
         #region BasicInfo
         public BasicInformation GetBaseInfo(long userId) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return db.BasicInformation.Where(c => c.UserId == userId).FirstOrDefault();
             }
         }
         public void SaveBaseInfo(BasicInformation b, IContext context) {
             if (b.UserId == 0) b.UserId = context.User.UserId;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var bi = db.BasicInformation.FirstOrDefault(c => c.UserId == b.UserId);
                 if (null == bi) return;
@@ -86,7 +86,7 @@ namespace CHSNS.Service {
         }
 
         public Profile GetUser<T>(long userid, System.Linq.Expressions.Expression<Func<Profile, T>> x) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = db.Profile
                     .FirstOrDefault(c => c.UserId == userid);
@@ -98,7 +98,7 @@ namespace CHSNS.Service {
  
         #region profile
         public void SaveText(long uid, string text, IContext context) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var p = db.Profile.FirstOrDefault(c => c.UserId == uid);
                 if (null == p) return;
@@ -120,7 +120,7 @@ namespace CHSNS.Service {
 
 
         public string GetUserName(long uid) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var p = db.Profile.FirstOrDefault(c => c.UserId == uid);
                 return p == null ? "undefault" : p.Name;
@@ -132,7 +132,7 @@ namespace CHSNS.Service {
         /// <param name="userId">用户Id</param>
         /// <param name="url">头像地址，（全）</param>
         public void ChangeFace(long userId, string url) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var p = db.Profile.Where(c => c.UserId == userId).FirstOrDefault();
                 p.Face = url;

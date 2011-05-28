@@ -15,7 +15,7 @@
         {
             get
             {
-                using (var db = DBExtInstance)
+                using (var db = DbInstance)
                 {
                     return db.Application.Cast<Application>().ToList();
                 }

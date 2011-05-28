@@ -18,7 +18,7 @@ namespace CHSNS.Service
         public EventPagePas EventGather(long userId)
         {
             EventPagePas ep = null;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var r = (from p in db.Profile
                          where p.UserId == userId
