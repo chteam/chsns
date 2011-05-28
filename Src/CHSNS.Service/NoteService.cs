@@ -21,7 +21,7 @@ namespace CHSNS.Service
             note.LastCommentUsername = "";
             using (var db = DBExtInstance)
             {
-                db.Note.AddObject(note);
+                db.Note.Add(note);
                 db.SaveChanges();
             }
             switch ((NoteType) note.Type)
@@ -71,7 +71,7 @@ namespace CHSNS.Service
                 //    db.DeleteObject(n);
                 //    db.SaveChanges();
                 //}
-                db.ExecuteStoreCommand(@"delete from [Note] where id=@p0 and userId=@p1"
+                db.Database.ExecuteSqlCommand(@"delete from [Note] where id=@p0 and userId=@p1"
                     , id, parentId);
             }
             switch (nt)

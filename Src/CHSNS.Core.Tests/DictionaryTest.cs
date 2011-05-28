@@ -1,6 +1,7 @@
 ﻿//using System.Web.TestUtil;
+using System;
+using CHSNS.Core.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.TestUtil;
 
 namespace CHSNS.Test {
     /// <summary>
@@ -41,9 +42,11 @@ namespace CHSNS.Test {
             Assert.IsTrue(expected.ContainsKey("name"));
             Assert.AreEqual(expected["id"], actual["id"]);
             Assert.AreEqual(expected["name"], actual["name"]);
-            ExceptionHelper.ExpectArgumentException(
+            
+            ExceptionAssert.IsException<ArgumentException>(
                 () => Dictionary.CreateFromArgs("id", 1, "name", "xx", "untitl"),
-                "参数必须为偶数个。");
+                @"参数必须为偶数个。
+参数名: args");
         }
         #endregion
 

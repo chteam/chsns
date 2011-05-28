@@ -21,7 +21,7 @@ namespace CHSNS.Service
             content.Type = (byte)SuperNoteType.Video;
             using (var db = DBExtInstance)
             {
-                db.SuperNote.AddObject(content);
+                db.SuperNote.Add(content);
                 db.SaveChanges();
             }
         }
@@ -35,12 +35,12 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var es = db.SuperNote
+                var superNotes = db.SuperNote
                     .Where(c =>
                            c.Type == (byte)SuperNoteType.Video
                                && c.UserId == user.UserId
-                           && uids.Contains(c.Id));
-                db.DeleteObject(es);
+                           && uids.Contains(c.Id)).ToList();
+                db.SuperNote.BulkRemove(superNotes);
                 db.SaveChanges();
             }
         }

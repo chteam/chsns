@@ -2,11 +2,11 @@
 
 namespace CHSNS {
 	public static class NullableExtensions {
-        public static TResult Get<T, TResult>(this T n, Func<T, TResult> func) where T : class
+        public static TResult GetProperty<T, TResult>(this T obj, Func<T, TResult> func) where T : class
         {
-            if (n == null)
-                return default(TResult);
-            return func(n);
+            if (obj != null) return func(obj);
+            return default(TResult);
         }
+
 	}
 }

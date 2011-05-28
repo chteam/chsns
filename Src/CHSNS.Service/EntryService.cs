@@ -14,7 +14,7 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var exists = db.Entry.Where(c => c.Url == url).Count() != 0;
+                var exists = db.Wikis.Where(c => c.Url == url).Count() != 0;
                 return exists;
             }
         }
@@ -22,12 +22,12 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var version = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
+                var version = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 if (version == null) return;
-                var entry = db.Entry.FirstOrDefault(c => c.Id == version.EntryId);
+                var entry = db.Wikis.FirstOrDefault(c => c.Id == version.EntryId);
                 if (entry == null) return;
                 entry.EditCount--;
-                db.DeleteObject(version);
+                db.WikiVersions.Remove(version);
                 db.SaveChanges();
             }
         }
@@ -36,14 +36,14 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var version = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
+                var version = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 if (version == null) return;
-                var entry = db.Entry.FirstOrDefault(c => c.Id == version.EntryId);
+                var entry = db.Wikis.FirstOrDefault(c => c.Id == version.EntryId);
                 if (entry == null) return;
-                var vs = db.EntryVersion.Where(c => c.EntryId == entry.Id);
+                var vs = db.WikiVersions.Where(c => c.EntryId == entry.Id);
                 if (entry.CreaterId != uId) return;
 
-                db.DeleteObject(vs);
+                db.WikiVersions.BulkRemove(vs);
                 db.DeleteObject(entry);
                 db.SaveChanges();
             }
@@ -53,17 +53,17 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var ev = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
+                var ev = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 ev.Status = (int)EntryVersionType.Lock;
 
                 var lastv =
-                    db.EntryVersion.Where(
+                    db.WikiVersions.Where(
                         c => c.EntryId == ev.EntryId && c.Status == (int)EntryVersionType.Common)
                         .OrderByDescending(c => c.AddTime)
                         .FirstOrDefault();
                 if (lastv != null)
                 {
-                    var e = db.Entry.FirstOrDefault(c => c.Id == ev.EntryId);
+                    var e = db.Wikis.FirstOrDefault(c => c.Id == ev.EntryId);
                     e.CurrentId = lastv.Id;
                 }
                 db.SaveChanges();
@@ -74,9 +74,9 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var ev = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
+                var ev = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 ev.Status = (int)EntryVersionType.Common;
-                var e = db.Entry.Where(c => c.Id == ev.EntryId).SingleOrDefault();
+                var e = db.Wikis.Where(c => c.Id == ev.EntryId).SingleOrDefault();
                 e.CurrentId = ev.Id;
                 db.SaveChanges();
             }
@@ -86,8 +86,8 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var newlist = (from v in db.EntryVersion
-                               join e in db.Entry on v.EntryId equals e.Id
+                var newlist = (from v in db.WikiVersions
+                               join e in db.Wikis on v.EntryId equals e.Id
                                join p in db.Profile on v.UserId equals p.UserId
                                orderby v.Id descending
                                select new EntryPas
@@ -114,8 +114,8 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var newlist = (from v in db.EntryVersion
-                               join e in db.Entry on v.EntryId equals e.Id
+                var newlist = (from v in db.WikiVersions
+                               join e in db.Wikis on v.EntryId equals e.Id
                                join p in db.Profile on v.UserId equals p.UserId
                                where e.Url == url
                                orderby v.Id descending
@@ -140,8 +140,8 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var newlist = (from v in db.EntryVersion
-                               join e in db.Entry on v.EntryId equals e.Id
+                var newlist = (from v in db.WikiVersions
+                               join e in db.Wikis on v.EntryId equals e.Id
                                join p in db.Profile on v.UserId equals p.UserId
                                where e.Id == entryId
                                orderby v.Id descending
@@ -170,17 +170,17 @@ namespace CHSNS.Service
                 wiki.UpdateTime = DateTime.Now;
                 if (id.HasValue)
                 {
-                    wiki = db.Entry.Where(c => c.Id == id.Value).FirstOrDefault();
+                    wiki = db.Wikis.Where(c => c.Id == id.Value).FirstOrDefault();
                     wiki.EditCount += 1;
                     if (!Equals(wiki.IsDisplayTitle, isDisplayTitle))
                         wiki.IsDisplayTitle = isDisplayTitle;
                 }
                 else
                 {
-                    var old = db.Entry.Where(c => c.Url == wiki.Url.Trim()).Count();
+                    var old = db.Wikis.Where(c => c.Url == wiki.Url.Trim()).Count();
                     if (old > 0) return false;
                     wiki.EditCount = 1;
-                    db.Entry.AddObject(wiki);
+                    db.Wikis.Add(wiki);
                     db.SaveChanges();
                 
                 }
@@ -190,12 +190,12 @@ namespace CHSNS.Service
                     wikiVersion.AddTime = DateTime.Now;
                     wikiVersion.Reference = wikiVersion.Reference ?? "";
                     wikiVersion.Reason = wikiVersion.Reason ?? "";
-                    db.EntryVersion.AddObject(wikiVersion);
+                    db.WikiVersions.Add(wikiVersion);
                     db.SaveChanges();
                     wiki.CurrentId = wikiVersion.Id;
                 }
                 else {
-                    var ev = db.EntryVersion.FirstOrDefault(c => c.Id == wikiVersion.Id);
+                    var ev = db.WikiVersions.FirstOrDefault(c => c.Id == wikiVersion.Id);
                     ev.Description = wikiVersion.Description;
                     ev.Title = wikiVersion.Title;
                     ev.AddTime = DateTime.Now;
@@ -211,7 +211,7 @@ namespace CHSNS.Service
             using (var db = DBExtInstance)
             {
                 return
-                     db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
+                     db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
             }
         }
 
@@ -219,9 +219,9 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var entry = db.Entry.FirstOrDefault(c => c.Id == entryId);
+                var entry = db.Wikis.FirstOrDefault(c => c.Id == entryId);
                 if (entry == null) return Tuple.Create<Wiki, WikiVersion>(null, null);
-                var ev = db.EntryVersion.FirstOrDefault(c => c.Id == entry.CurrentId);
+                var ev = db.WikiVersions.FirstOrDefault(c => c.Id == entry.CurrentId);
                 return Tuple.Create(entry, ev);
             }
         }
@@ -230,20 +230,20 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var entry = db.Entry.FirstOrDefault(c => c.Url == url);
+                var entry = db.Wikis.FirstOrDefault(c => c.Url == url);
                 if (entry == null) return new KeyValuePair<Wiki, WikiVersion>(null, null);
                 return new KeyValuePair<Wiki, WikiVersion>(
                   entry,
-                  db.EntryVersion.FirstOrDefault(c => c.Id == entry.CurrentId));
+                  db.WikiVersions.FirstOrDefault(c => c.Id == entry.CurrentId));
             }
         }
         public KeyValuePair<Wiki, WikiVersion> GetFromVersion(long versionId)
         {
             using (var db = DBExtInstance)
             {
-                var v = db.EntryVersion.FirstOrDefault(c => c.Id == versionId);
+                var v = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 return new KeyValuePair<Wiki, WikiVersion>(
-                    db.Entry.FirstOrDefault(c => c.Id == v.EntryId), v
+                    db.Wikis.FirstOrDefault(c => c.Id == v.EntryId), v
                     );
             }
         }

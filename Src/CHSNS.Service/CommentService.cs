@@ -42,7 +42,7 @@
             r.AddTime = DateTime.Now;
             using (var db = DBExtInstance)
             {
-                db.Reply.AddObject(r);
+                db.Reply.Add(r);
                 db.SaveChanges();
             }
             return r;
@@ -52,7 +52,7 @@
             using (var db = DBExtInstance)
             {
                 var obj = db.Reply.FirstOrDefault(c => c.Id == id && c.UserId == userid);
-                db.DeleteObject(obj);
+                db.Reply.Remove(obj);
                 db.SaveChanges();
             }
         }
@@ -123,7 +123,7 @@
             cmt.AddTime = DateTime.Now;
             using (var db = DBExtInstance)
             {
-                db.Comment.AddObject(cmt);
+                db.Comment.Add(cmt);
                 switch (type)
                 {
                     case CommentType.Note:
