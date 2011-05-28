@@ -110,12 +110,11 @@
     <Compile Include="Pager\PagedList.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Pager\PagerExt.cs">
+    <Compile Include="Pager\PagerExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Interface\IFolder.cs" />
     <Compile Include="Interface\IStoreFile.cs" />
-    <Compile Include="StringTool.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

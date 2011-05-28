@@ -44,7 +44,10 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContextFactory.cs" />
     <Compile Include="EntityFramework\DbSetExtensions.cs" />
+    <Compile Include="InMemoryDbSet.cs" />
+    <Compile Include="InMemoryEntities.cs" />
     <Compile Include="SqlServerEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
