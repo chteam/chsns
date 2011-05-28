@@ -5,7 +5,7 @@
     using CHSNS.Models;
     using System.ComponentModel.Composition;
     [Export]
-    public class ApplicationService : BaseService<ApplicationService>
+    public class ApplicationService : BaseService
     {
         // private const string APPLISTALL = "APPLISTALL";
         /// <summary>

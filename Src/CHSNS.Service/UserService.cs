@@ -9,7 +9,7 @@ namespace CHSNS.Service {
     using System.Linq;
     using System.ComponentModel.Composition;
     [Export]
-    public class UserService : BaseService<UserService>
+    public class UserService : BaseService
     {
         public UserPas UserInformation(long userid) {
             using (var db = DbInstance)
@@ -107,7 +107,7 @@ namespace CHSNS.Service {
                 //              p.show = magicbox;
                 db.SaveChanges();
             }
-            EventService.Instance.Add(new Event
+            ServicesFactory.Event.Add(new Event
             {
                 OwnerId = context.User.UserId,
                 TemplateName = "ProText",

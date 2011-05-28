@@ -8,11 +8,11 @@ namespace CHSNS.Service {
     using CHSNS.Models;
     using System.ComponentModel.Composition;
     [Export]
-    public class CommentService : BaseService<CommentService>
+    public class CommentService : BaseService
     {
         #region Reply
 
-        private static IQueryable<CommentPas> GetReplyPrivate(SqlServerEntities sqlServer, long uid)
+        private static IQueryable<CommentPas> GetReplyPrivate(IDbEntities sqlServer, long uid)
         {
             IQueryable<CommentPas> ret = (from r in sqlServer.Reply
                                           join p in sqlServer.Profile on r.SenderId equals p.UserId

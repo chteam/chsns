@@ -6,7 +6,7 @@ namespace CHSNS.Service
     using CHSNS.Models;
     using System.ComponentModel.Composition;
     [Export]
-    public class PhotoService : BaseService<PhotoService>
+    public class PhotoService : BaseService
     {
 
         public void Add(Photo photo)

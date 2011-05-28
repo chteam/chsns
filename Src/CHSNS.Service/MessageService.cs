@@ -12,7 +12,7 @@ namespace CHSNS.Service
     /// </summary>
 
     [Export]
-    public class MessageService : BaseService<MessageService>
+    public class MessageService : BaseService
     {
         public PagedList<MessageItemPas> GetInbox(long userId, int page, SiteConfig site)
         {

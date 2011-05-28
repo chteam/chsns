@@ -7,7 +7,7 @@ namespace CHSNS.Service
 {
     using System.ComponentModel.Composition;
     [Export]
-    public class GroupService : BaseService<GroupService>
+    public class GroupService : BaseService
     {
 
         public GroupUser GetGroupUser(long gId, long uId)

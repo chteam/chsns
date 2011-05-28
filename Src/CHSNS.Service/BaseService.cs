@@ -1,28 +1,25 @@
-﻿using CHSNS.DataContext;
+﻿using System;
+using CHSNS.DataContext;
 
 namespace CHSNS.Service
 {
-    using CHSNS.Models;
-    using System.Configuration;
-
-    public abstract class BaseService<T>
+    public abstract class BaseService
     {
-        #region Service Singlet
-
-        public static T Instance { get; private set; }
-        static BaseService()
+        private ServicesFactory _servicesFactory;
+        public virtual ServicesFactory ServicesFactory
         {
-            Instance = (T)System.Activator.CreateInstance(typeof(T));
+            get { return _servicesFactory ?? (_servicesFactory = new ServicesFactory()); }
         }
 
-        #endregion
-        internal SqlServerEntities DbInstance
+        private DataContextFactory _dataContextFactory;
+        public DataContextFactory DataContextFactory
         {
-            get
-            {
-                var db = new SqlServerEntities();
-                return db;
-            }
+            get { return _dataContextFactory ?? (_dataContextFactory = new DataContextFactory()); }
+        }
+
+        internal IDbEntities DbInstance
+        {
+            get { return DataContextFactory.GetSqlServerEntities(); }
         }
     }
 }
