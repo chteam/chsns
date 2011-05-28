@@ -202,8 +202,6 @@
     <Compile Include="ViewModel\UserIndexViewModel.cs" />
     <Compile Include="WebProvider\WebIdentity.cs" />
     <Compile Include="WebProvider\WebPrincipal.cs" />
-    <Compile Include="~Account.cs" />
-    <Compile Include="~BasicInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
