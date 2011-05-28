@@ -1,4 +1,5 @@
 ﻿using CHSNS.Email;
+using CHSNS.Interface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CHSNS.Test
 {

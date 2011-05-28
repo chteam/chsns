@@ -103,10 +103,10 @@ namespace CHSNS.Service
             account.Code = DateTime.Now.Ticks;
             using (var db = DBExtInstance)
             {
-                db.Account.AddObject(account);
+                db.Account.Add(account);
                 db.SaveChanges();
                 if (account.UserId < 999) return false;
-                db.Profile.AddObject(new Profile
+                db.Profile.Add(new Profile
                 {
                     UserId = account.UserId,
                     Name = name,
@@ -118,7 +118,7 @@ namespace CHSNS.Service
                     LoginTime = DateTime.Now,
                     // MagicBox = ""
                 });
-                db.BasicInformation.AddObject(
+                db.BasicInformation.Add(
                     new BasicInformation
                     {
                         UserId = account.UserId,
@@ -157,7 +157,7 @@ namespace CHSNS.Service
                     RoleId = 1,
                     UserId = p.UserId
                 };
-                db.UserRole.AddObject(userrole);
+                db.UserRole.Add(userrole);
                 db.SaveChanges();
             }
         }

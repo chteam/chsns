@@ -36,10 +36,10 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                return (from f1 in db.Friend
+                return (from f1 in db.Friends
                         where f1.FromId == userid && f1.IsTrue
                         select f1.ToId)
-                                   .Union(from f1 in db.Friend
+                                   .Union(from f1 in db.Friends
                                           where f1.ToId == userid && f1.IsTrue
                                           select f1.FromId).ToList();
             }
@@ -86,7 +86,7 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var ret = (from f1 in db.Friend
+                var ret = (from f1 in db.Friends
                            join p1 in db.Profile on f1.FromId equals p1.UserId
                            where f1.ToId == userid && !f1.IsTrue
                            orderby p1.UserId descending
@@ -112,7 +112,7 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.FirstOrDefault(
+                var f = db.Friends.FirstOrDefault(
                     c =>
                     (c.ToId == toId && c.FromId == fromId)
                     ||
@@ -120,7 +120,7 @@ namespace CHSNS.Service
                     );
                 if (f == null)
                 {
-                    db.Friend.AddObject(
+                    db.Friends.Add(
                         new Friend
                         {
                             FromId = fromId,
@@ -149,7 +149,7 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.FirstOrDefault(
+                var f = db.Friends.FirstOrDefault(
                     c =>
                     (c.ToId == toId && c.FromId == fromId)
                     ||
@@ -157,7 +157,7 @@ namespace CHSNS.Service
                     &&
                     c.IsTrue
                     );
-                db.DeleteObject(f);
+                db.Friends.Remove(f);
                 db.SaveChanges();
             }
             return true;
@@ -194,7 +194,7 @@ namespace CHSNS.Service
             //string name;
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.FirstOrDefault(
+                var f = db.Friends.FirstOrDefault(
                     c =>
                     (c.ToId == toId && c.FromId == operaterId) ||
                     (c.ToId == operaterId && c.FromId == toId) && !c.IsTrue
@@ -215,9 +215,9 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.FirstOrDefault(c => c.ToId == operaterId && c.FromId == fromId && !c.IsTrue);
+                var f = db.Friends.FirstOrDefault(c => c.ToId == operaterId && c.FromId == fromId && !c.IsTrue);
                 if (f == null) return false;
-                db.DeleteObject(f);
+                db.Friends.Remove(f);
                 db.SaveChanges();
                 return true;
             }
@@ -226,8 +226,8 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var f = db.Friend.Where(c => c.ToId == userId && !c.IsTrue);
-                db.DeleteObject(f);
+                var f = db.Friends.Where(c => c.ToId == userId && !c.IsTrue);
+                db.Friends.BulkRemove(f);
                 db.SaveChanges();
                 return true;
             }

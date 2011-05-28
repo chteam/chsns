@@ -58,10 +58,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DLL\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -88,12 +84,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BytesExtensionTest.cs" />
     <Compile Include="DateTest.cs" />
     <Compile Include="DateTimeExtensionTest.cs" />
     <Compile Include="DESEntensionTest.cs" />
     <Compile Include="DictionaryTest.cs" />
-    <Compile Include="EnumExtensionTest.cs" />
+    <Compile Include="ExceptionAssert.cs" />
     <Compile Include="HashTest.cs" />
     <Compile Include="IEmailTest.cs" />
     <Compile Include="IEnumerableExtensionsTest.cs" />

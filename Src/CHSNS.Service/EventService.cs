@@ -43,7 +43,7 @@ namespace CHSNS.Service
             {
                 var e = db.Event.FirstOrDefault(c => c.Id == id && c.OwnerId == ownerId);
                 if (e == null) return;
-                db.DeleteObject(e);
+                db.Event.Remove(e);
                 db.SaveChanges();
             }
         }
@@ -52,7 +52,7 @@ namespace CHSNS.Service
             var et = CastTool.Cast<Event>(e);
             using (var db = DBExtInstance)
             {
-                db.Event.AddObject(et);
+                db.Event.Add(et);
                 db.SaveChanges();
             }
         }

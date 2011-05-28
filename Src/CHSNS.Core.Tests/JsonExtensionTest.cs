@@ -1,9 +1,8 @@
-﻿using CHSNS;
+﻿using System.Collections.Generic;
+using CHSNS;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 //using Newtonsoft.Json.Linq;
 using System;
-using Newtonsoft.Json.Linq;
-
 namespace CHSNS.Test
 {
     
@@ -74,7 +73,7 @@ namespace CHSNS.Test
 		{
 			string str = "{title:'text of title',body:'content',addtime:'2008-08-08 20:00:00'}"; // TODO: 初始化为适当的值
 		//	JObject expected = null; // TODO: 初始化为适当的值
-			var actual = JsonExtension.ToJObject(str);
+			var actual = JsonAdapter.Deserialize<Dictionary<string,string>>(str);
 			Assert.AreEqual(actual["title"], "text of title");
 			Assert.AreEqual(actual["body"], "content");
             Assert.AreEqual(DateTime.Parse(actual["addtime"].ToString()), DateTime.Parse("2008-08-08 20:00"));

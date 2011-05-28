@@ -14,7 +14,7 @@ namespace CHSNS.Service
             photo.AddTime = DateTime.Now;
             using (var db = DBExtInstance)
             {
-                db.Photo.AddObject(photo);
+                db.Photos.Add(photo);
                 db.SaveChanges();
             }
         }
@@ -23,7 +23,7 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var p = db.Photo.Where(c => c.Id == id).FirstOrDefault();
+                var p = db.Photos.Where(c => c.Id == id).FirstOrDefault();
                 return p;
             }
         }
@@ -32,8 +32,8 @@ namespace CHSNS.Service
         {
             using (var db = DBExtInstance)
             {
-                var p = db.Photo.Where(c => c.Id == id).FirstOrDefault();
-                db.DeleteObject(p);
+                var p = db.Photos.Where(c => c.Id == id).FirstOrDefault();
+                db.Photos.Remove(p);
                 db.SaveChanges();
             }
         }

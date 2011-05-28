@@ -26,7 +26,7 @@ namespace CHSNS.Service {
             {
                 if (ownerId == viewerId) return 200;
                 var x =
-                    (from f in db.Friend
+                    (from f in db.Friends
                      where (f.FromId == ownerId && f.ToId == viewerId) ||
                            (f.FromId == viewerId && f.ToId == ownerId) && f.IsTrue
                      select 1).Count();

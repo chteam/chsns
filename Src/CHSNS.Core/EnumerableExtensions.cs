@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CHSNS {
 	public static class EnumerableExtensions {
@@ -6,6 +7,6 @@ namespace CHSNS {
 		{
 			return ie ?? new List<T>();
 		}
-		
+
 	}
 }

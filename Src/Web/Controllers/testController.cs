@@ -45,20 +45,7 @@ namespace CHSNS.Controllers
         //}
         public virtual ActionResult Index()
         {
-            using (var db = new DbEntities(
-                    ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString
-                    ))
-            {
-                int i = 100;
-                db.ExecuteStoreCommand(
-            "INSERT INTO [Tags]([Title],[Count],[Type])VALUES('',@id,2);",i);
-                var c =
-                   db.ExecuteStoreCommand(
-               "UPDATE [TAGS] SET COUNT+=1;");
-              //  var ret = c.Execute(mergeOption: System.Data.Objects.MergeOption.AppendOnly);
-
-                return Content(c.ToString());
-            }
+            return View();
 
         }
         //#region NVelocity

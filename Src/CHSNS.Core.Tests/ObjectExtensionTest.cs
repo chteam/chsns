@@ -21,12 +21,12 @@ namespace CHSNS.Core.Tests {
         [TestMethod]
         public void ObjectToNotNullTest() {
             //   ToNotNullTestHelper<GenericParameterHelper>();
-            object list = new List<int> { 1, 2, 3 };
+            var list = new List<int> { 1, 2, 3 };
             const List<int> list2 = null;
-            Assert.AreEqual(list, list.ToNotNull<int>());
+            Assert.AreEqual(list, list.ToNotNull());
             Assert.IsNotNull(list2.ToNotNull());
             Assert.AreEqual(0, ((List<int>)list2.ToNotNull()).Count);
-            Assert.AreEqual(3, ((List<int>)list.ToNotNull<int>()).Count);
+            Assert.AreEqual(3, ((List<int>)list.ToNotNull()).Count);
         }
     }
 }

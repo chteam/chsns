@@ -20,7 +20,7 @@ namespace CHSNS.Service
                     case 2:
                         //最近登录的好友
                         lu =
-                            (from f in db.Friend
+                            (from f in db.Friends
                              join p in db.Profile on f.ToId equals p.UserId
                              where f.FromId == ownerId && f.IsTrue
                              orderby p.LoginTime descending
@@ -30,7 +30,7 @@ namespace CHSNS.Service
                                  Name = p.Name
                              }
                             ).Union(
-                                from f in db.Friend
+                                from f in db.Friends
                                 join p in db.Profile on f.FromId equals p.UserId
                                 where f.ToId == ownerId && f.IsTrue
                                 orderby p.LoginTime descending
@@ -134,12 +134,12 @@ namespace CHSNS.Service
                 //                                    );
                 //if (null != vd) return;
                 #endregion
-                var x = db.ExecuteStoreCommand(
+                var x = db.Database.ExecuteSqlCommand(
 @"UPDATE [ViewData] SET ViewTime=getdate() WHERE Ownerid=@p0 AND Viewerid=@p1 AND ViewClass=@p2"
         , ownerId, user.UserId, intType);
 
                 if (x == 0) {
-                    db.ExecuteStoreCommand(
+                    db.Database.ExecuteSqlCommand(
 @"INSERT INTO ViewData(Viewerid, Ownerid, ViewTime,viewclass)VALUES(@p0,@p1, getdate(),@p2)"
 , user.UserId, ownerId, intType);
                 }
@@ -148,15 +148,15 @@ namespace CHSNS.Service
                 switch (type)
                 {
                     case VisitLogType.Profile:
-                        db.ExecuteStoreCommand(
+                        db.Database.ExecuteSqlCommand(
     @"UPDATE [profile] SET ViewCount+=1 WHERE [profile].UserId=@p0", ownerId);
                         break;
                     case VisitLogType.Group:
-                        db.ExecuteStoreCommand(
+                        db.Database.ExecuteSqlCommand(
                             @"UPDATE [group] SET ViewCount+=1 WHERE Id=@p0", ownerId);
                         break;
                     case VisitLogType.Note:
-                        db.ExecuteStoreCommand(
+                        db.Database.ExecuteSqlCommand(
                             @"UPDATE [Note] SET ViewCount+=1 WHERE Id=@p0", ownerId);
                         break;
                     default:

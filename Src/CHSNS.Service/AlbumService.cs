@@ -29,7 +29,7 @@ namespace CHSNS.Service {
             album.AddTime = DateTime.Now;
             using (var db = DBExtInstance)
             {
-                db.Album.AddObject(album);
+                db.Album.Add(album);
                 db.SaveChanges();
             }
         }
@@ -48,7 +48,7 @@ namespace CHSNS.Service {
         public List<Photo> GetPhotos(long id, long uId, int page, int pageSize) {
             using (var db = DBExtInstance)
             {
-                return (from ph in db.Photo
+                return (from ph in db.Photos
                         where ph.AlbumId == id && ph.UserId == uId
                         orderby ph.AddTime descending
                         select ph).Pager(page, pageSize);

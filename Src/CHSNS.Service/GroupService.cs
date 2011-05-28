@@ -80,7 +80,7 @@ namespace CHSNS.Service
 
             using (var db = DBExtInstance)
             {
-                db.Group.AddObject(group);
+                db.Group.Add(group);
                 db.SaveChanges();
                 var gu = new GroupUser
                 {
@@ -89,7 +89,7 @@ namespace CHSNS.Service
                     UserId = uId,
                     AddTime = DateTime.Now
                 };
-                db.GroupUser.AddObject(gu);
+                db.GroupUser.Add(gu);
                 db.SaveChanges();
             }
             return true;

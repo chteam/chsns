@@ -66,7 +66,7 @@ namespace CHSNS.Service
                 m.Title = server.HtmlEncode(m.Title ?? "");
                 m.Body = m.IsHtml ? m.Body : server.HtmlEncode(m.Body);
                 m.SendTime = DateTime.Now;
-                db.Message.AddObject(m);
+                db.Message.Add(m);
                 db.SaveChanges();
             }
         }
