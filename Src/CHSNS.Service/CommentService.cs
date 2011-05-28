@@ -1,4 +1,6 @@
-﻿namespace CHSNS.Service {
+﻿using CHSNS.DataContext;
+
+namespace CHSNS.Service {
     using System;
     using System.Linq;
     using CHSNS.Config;
@@ -10,10 +12,10 @@
     {
         #region Reply
 
-        private static IQueryable<CommentPas> GetReplyPrivate(DbEntities db, long uid)
+        private static IQueryable<CommentPas> GetReplyPrivate(SqlServerEntities sqlServer, long uid)
         {
-            IQueryable<CommentPas> ret = (from r in db.Reply
-                                          join p in db.Profile on r.SenderId equals p.UserId
+            IQueryable<CommentPas> ret = (from r in sqlServer.Reply
+                                          join p in sqlServer.Profile on r.SenderId equals p.UserId
                                           where r.UserId == uid
                                           orderby r.Id descending
                                           select new CommentPas
@@ -33,14 +35,14 @@
         }
 
         public PagedList<CommentPas> GetReply(long uid, int p, int ep) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return GetReplyPrivate(db, uid).Pager(p, ep);
             }
         }
         public Reply AddReply(Reply r) {
             r.AddTime = DateTime.Now;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 db.Reply.Add(r);
                 db.SaveChanges();
@@ -49,7 +51,7 @@
         }
 
         public void DeleteReply(long id, long userid) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var obj = db.Reply.FirstOrDefault(c => c.Id == id && c.UserId == userid);
                 db.Reply.Remove(obj);
@@ -72,7 +74,7 @@
         public PagedList<CommentPas> CommentList(long showerId, CommentType type, int p
             , SiteConfig site)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var t = (int)type;
                 var ret = (from c in db.Comment
@@ -103,7 +105,7 @@
         /// <param name="type"></param>
         /// <returns></returns>
         public bool Delete(long id, CommentType type) {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var com = db.Comment.FirstOrDefault(c => c.Id == id);
                 if (null == com) return false;
@@ -121,7 +123,7 @@
 
         public void Add(Comment cmt, CommentType type) {
             cmt.AddTime = DateTime.Now;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 db.Comment.Add(cmt);
                 switch (type)

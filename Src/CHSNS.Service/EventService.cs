@@ -21,7 +21,7 @@ namespace CHSNS.Service
         public PagedList<Event> GetFriendEvent(long userid, int page, int pageSize)
         {
             var ids = FriendService.Instance.GetFriendsId(userid);
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from e in db.Event
                            where ids.Contains(e.OwnerId)
@@ -39,7 +39,7 @@ namespace CHSNS.Service
         /// <param name="ownerId"></param>
         public void Delete(long id, long ownerId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var e = db.Event.FirstOrDefault(c => c.Id == id && c.OwnerId == ownerId);
                 if (e == null) return;
@@ -50,7 +50,7 @@ namespace CHSNS.Service
         public void Add(Event e)
         {
             var et = CastTool.Cast<Event>(e);
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 db.Event.Add(et);
                 db.SaveChanges();
@@ -62,7 +62,7 @@ namespace CHSNS.Service
 
         public PagedList<Event> GetEvent(long userid, int page, int pageSize)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from e in db.Event
                            where e.OwnerId == userid

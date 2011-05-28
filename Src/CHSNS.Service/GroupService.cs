@@ -12,14 +12,14 @@ namespace CHSNS.Service
 
         public GroupUser GetGroupUser(long gId, long uId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return db.GroupUser.FirstOrDefault(gu => gu.UserId == uId && gu.GroupId == gId);
             }
         }
         public Group Get(long groupId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return db.Group.FirstOrDefault(c => c.Id == groupId);
             }
@@ -27,7 +27,7 @@ namespace CHSNS.Service
         public int WaitJoinCount(long groupId)
         {
             var type = (byte)GroupUserStatus.Wait;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return db.GroupUser.Where(
                     c => c.GroupId == groupId
@@ -39,7 +39,7 @@ namespace CHSNS.Service
         {
             byte tc = (byte)GroupUserStatus.Ceater;
             byte ta = (byte)GroupUserStatus.Admin;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return (from gu in db.GroupUser
                         join a in db.Profile on gu.UserId equals a.UserId
@@ -56,7 +56,7 @@ namespace CHSNS.Service
         }
         public PagedList<Group> GetList(long uId, int page, int pageSize)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ret = (from gu in db.GroupUser
                            join g in db.Group on gu.GroupId equals g.Id
@@ -78,7 +78,7 @@ namespace CHSNS.Service
                 CreaterId = uId
             };
 
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 db.Group.Add(group);
                 db.SaveChanges();
@@ -97,7 +97,7 @@ namespace CHSNS.Service
         public bool Update(long groupId, Group group)
         {
             group.Id = groupId;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var g = db.Group.Where(c => c.Id == group.Id).FirstOrDefault();
                 if (g == null) return false;
@@ -111,7 +111,7 @@ namespace CHSNS.Service
         }
         public List<UserCountPas> GetGroupUser(long groupId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var list = (from g in db.GroupUser
                             join u in db.Profile on g.UserId equals u.UserId

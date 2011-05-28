@@ -12,7 +12,7 @@ namespace CHSNS.Service
     {
         public ViewListPas ViewList(byte type, int everyRow, long ownerId, int count)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 IQueryable<UserItemPas> lu;
                 switch (type)
@@ -123,7 +123,7 @@ namespace CHSNS.Service
         {            
             if (ownerId == user.UserId) return;
             var intType = (byte)type;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 #region old
                 

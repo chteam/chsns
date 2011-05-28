@@ -12,7 +12,7 @@ namespace CHSNS.Service
     {
         public bool HasTitle(string url)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var exists = db.Wikis.Where(c => c.Url == url).Count() != 0;
                 return exists;
@@ -20,7 +20,7 @@ namespace CHSNS.Service
         }
         public void DeleteVersion(long versionId, long uId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var version = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 if (version == null) return;
@@ -34,7 +34,7 @@ namespace CHSNS.Service
 
         public void DeleteByVersionId(long versionId, long uId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var version = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 if (version == null) return;
@@ -44,14 +44,14 @@ namespace CHSNS.Service
                 if (entry.CreaterId != uId) return;
 
                 db.WikiVersions.BulkRemove(vs);
-                db.DeleteObject(entry);
+                db.Wikis.Remove(entry);
                 db.SaveChanges();
             }
         }
 
         public void LockCommonVersion(long versionId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ev = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 ev.Status = (int)EntryVersionType.Lock;
@@ -72,7 +72,7 @@ namespace CHSNS.Service
 
         public void PassWaitVersion(long versionId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var ev = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 ev.Status = (int)EntryVersionType.Common;
@@ -84,7 +84,7 @@ namespace CHSNS.Service
 
         public PagedList<EntryPas> List(int page, int pageSize)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var newlist = (from v in db.WikiVersions
                                join e in db.Wikis on v.EntryId equals e.Id
@@ -112,7 +112,7 @@ namespace CHSNS.Service
 
         public List<EntryPas> Historys(string url)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var newlist = (from v in db.WikiVersions
                                join e in db.Wikis on v.EntryId equals e.Id
@@ -138,7 +138,7 @@ namespace CHSNS.Service
 
         public List<EntryPas> Historys(long entryId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var newlist = (from v in db.WikiVersions
                                join e in db.Wikis on v.EntryId equals e.Id
@@ -165,7 +165,7 @@ namespace CHSNS.Service
         public bool AddVersion(long? id, Wiki wiki, WikiVersion wikiVersion, string tags, IUser user,bool isNew)
         {
             var isDisplayTitle = wiki.IsDisplayTitle;
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 wiki.UpdateTime = DateTime.Now;
                 if (id.HasValue)
@@ -208,7 +208,7 @@ namespace CHSNS.Service
 
         public WikiVersion GetVersion(long versionId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return
                      db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
@@ -217,7 +217,7 @@ namespace CHSNS.Service
 
         public Tuple<Wiki, WikiVersion> Get(long entryId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var entry = db.Wikis.FirstOrDefault(c => c.Id == entryId);
                 if (entry == null) return Tuple.Create<Wiki, WikiVersion>(null, null);
@@ -228,7 +228,7 @@ namespace CHSNS.Service
 
         public KeyValuePair<Wiki, WikiVersion> Get(string url)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var entry = db.Wikis.FirstOrDefault(c => c.Url == url);
                 if (entry == null) return new KeyValuePair<Wiki, WikiVersion>(null, null);
@@ -239,7 +239,7 @@ namespace CHSNS.Service
         }
         public KeyValuePair<Wiki, WikiVersion> GetFromVersion(long versionId)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var v = db.WikiVersions.FirstOrDefault(c => c.Id == versionId);
                 return new KeyValuePair<Wiki, WikiVersion>(

@@ -1,4 +1,6 @@
-﻿namespace CHSNS.Service
+﻿using CHSNS.DataContext;
+
+namespace CHSNS.Service
 {
     using CHSNS.Models;
     using System.Configuration;
@@ -14,13 +16,11 @@
         }
 
         #endregion
-        internal DbEntities DBExtInstance
+        internal SqlServerEntities DbInstance
         {
             get
             {
-                var db = new DbEntities(
-                    ConfigurationManager.ConnectionStrings["CHSNSDBLink"].ConnectionString
-                    );
+                var db = new SqlServerEntities();
                 return db;
             }
         }

@@ -19,7 +19,7 @@ namespace CHSNS.Service
         {
             note.LastCommentTime = note.EditTime = note.AddTime = DateTime.Now;
             note.LastCommentUsername = "";
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 db.Note.Add(note);
                 db.SaveChanges();
@@ -48,7 +48,7 @@ namespace CHSNS.Service
 
         public void Edit(Note note)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var n = db.Note.FirstOrDefault(c => c.UserId == note.UserId && c.Id == note.Id);
                 n.Title = note.Title;
@@ -63,7 +63,7 @@ namespace CHSNS.Service
         /// </summary>
         public void Delete(long id, long parentId, NoteType nt)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 //var n = db.Note.FirstOrDefault(c => c.Id == id && c.UserId == pid);
                 //if (null != n)
@@ -87,7 +87,7 @@ namespace CHSNS.Service
 
         public Note Details(long id, NoteType? nt)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var type = (byte)(nt ?? NoteType.Note);
                 var ret = db.Note.FirstOrDefault(n => n.Id == id && n.Type.Equals(type));
@@ -97,7 +97,7 @@ namespace CHSNS.Service
 
         public List<NotePas> GetLastNotes(int? ni)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 return (from n in db.Note
                         join p in db.Profile on n.UserId equals p.UserId
@@ -118,7 +118,7 @@ namespace CHSNS.Service
 
         public PagedList<NotePas> GetNotes(long pid, NoteType? nt, int p, int ep)
         {
-            using (var db = DBExtInstance)
+            using (var db = DbInstance)
             {
                 var type = (byte)(nt ?? NoteType.Note);
                 var notes = (from n in db.Note
