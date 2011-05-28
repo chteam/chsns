@@ -1,5 +1,6 @@
 ﻿//using System.Web.TestUtil;
 using System;
+using CHSNS.Common.Serializer;
 using CHSNS.Core.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -23,7 +24,7 @@ namespace CHSNS.Test {
         [TestMethod]
         public void ToJsonStringTest() {
             var a = new Dictionary {{"title", "gogo"}};
-            Assert.AreEqual(a.ToJsonString(), "{\"title\":\"gogo\"}");
+            Assert.AreEqual(JsonAdapter.Serialize(a), "{\"title\":\"gogo\"}");
 
         }
         #endregion

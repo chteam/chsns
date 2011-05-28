@@ -5,11 +5,11 @@
 // <author>chsword</author>
 //-----------------------------------------------------------------------
 
-namespace CHSNS
-{
-    using System.Text;
-    using System.Web.Script.Serialization;
+using System.Text;
+using System.Web.Script.Serialization;
 
+namespace CHSNS.Common.Serializer
+{
     /// <summary>
     /// 序列化与反序列化WEB传递的 JSON数据
     /// 重典 http://chsword.cnblogs.com

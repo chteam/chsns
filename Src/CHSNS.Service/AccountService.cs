@@ -1,4 +1,6 @@
 ﻿
+using CHSNS.Common.Serializer;
+
 namespace CHSNS.Service
 {
 

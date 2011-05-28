@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\DbSetExtensions.cs" />
     <Compile Include="SqlServerEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -55,6 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
+      <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
+      <Name>CHSNS.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CHSNS.Model\CHSNS.Model.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>
       <Name>CHSNS.Model</Name>

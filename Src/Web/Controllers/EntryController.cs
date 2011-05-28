@@ -1,4 +1,6 @@
-﻿namespace CHSNS.Controllers
+﻿using CHSNS.Common.Serializer;
+
+namespace CHSNS.Controllers
 {
     using System;
     using System.Linq;

@@ -1,4 +1,6 @@
 ﻿
+using CHSNS.Common.Serializer;
+
 namespace CHSNS.Service
 {
     using System;
@@ -183,8 +185,8 @@ namespace CHSNS.Service
                 AddTime = DateTime.Now,
                 ShowLevel = 0,
                 Json =
-                    Dictionary.CreateFromArgs("ownername", name, "sendername", user.Name).
-                    ToJsonString()
+                    JsonAdapter.Serialize(Dictionary.CreateFromArgs("ownername", name, "sendername", user.Name)
+                    )
             }
                 );
             return b;

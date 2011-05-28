@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CHSNS.Common.Serializer;
 using CHSNS.Model;
 using CHSNS.Models;
 
@@ -33,10 +34,10 @@ namespace CHSNS.Service
                                        TemplateName = "AddNote",
                                        AddTime = DateTime.Now,
                                        ShowLevel = 0,
-                                       Json = Dictionary.CreateFromArgs("id", note.Id,
+                                       Json = JsonAdapter.Serialize(Dictionary.CreateFromArgs("id", note.Id,
                                                                         "title", note.Title, "addtime",
-                                                                        note.AddTime, "name", user.Name).
-                                           ToJsonString()
+                                                                        note.AddTime, "name", user.Name))
+                                          
                                    });
                     break;
                 case NoteType.GroupPost:

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CHSNS;
+using CHSNS.Common.Serializer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 //using Newtonsoft.Json.Linq;
 using System;

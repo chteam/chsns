@@ -30,9 +30,6 @@ namespace CHSNS
             }
             return dict;
         }
-        public string ToJsonString()
-        {
-            return JsonAdapter.Serialize(this);
-        }
+       
     }
 }

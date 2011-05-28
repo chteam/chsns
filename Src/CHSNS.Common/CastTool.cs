@@ -1,3 +1,5 @@
+using CHSNS.Common.Serializer;
+
 namespace CHSNS
 {
     public class CastTool
