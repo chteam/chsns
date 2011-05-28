@@ -12,7 +12,7 @@ namespace CHSNS.Service
     using System.Linq;
     using System.ComponentModel.Composition;
         [Export]
-    public class AccountService : BaseService<AccountService>
+    public class AccountService : BaseService
     {
         #region LogOut
 

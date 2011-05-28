@@ -9,7 +9,7 @@ namespace CHSNS.Service
     /// 统计的类
     /// </summary>
     [Export]
-    public class GatherService : BaseService<GatherService>
+    public class GatherService : BaseService
     {
         /// <summary>
         /// 我的统计

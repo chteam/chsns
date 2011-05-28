@@ -11,7 +11,7 @@ namespace CHSNS.Service
     using CHSNS.Models;
     using System.ComponentModel.Composition;
     [Export]
-    public class FriendService : BaseService<FriendService>
+    public class FriendService : BaseService
     {
         #region 获取
         public Profile UserFriendInfo(long userId)
@@ -175,9 +175,9 @@ namespace CHSNS.Service
         public bool Agree(long operaterId, long toId, IUser user)
         {
             var b = Agree(operaterId, toId);
-            string name = UserService.Instance.GetUserName(toId);
+            string name = ServicesFactory.UserInfo.GetUserName(toId);
 
-            EventService.Instance.Add(new Event
+          ServicesFactory.Event.Add(new Event
             {
                 OwnerId = toId,
                 ViewerId = operaterId,

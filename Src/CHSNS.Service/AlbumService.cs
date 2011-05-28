@@ -6,7 +6,7 @@ namespace CHSNS.Service {
     using System;
     using System.ComponentModel.Composition;
     [Export]
-    public class AlbumService : BaseService<AlbumService>
+    public class AlbumService : BaseService
     {
         public List<Album> Items(long uId) {
             using (var db = DbInstance)

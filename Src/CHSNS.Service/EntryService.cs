@@ -8,7 +8,7 @@ namespace CHSNS.Service
     using CHSNS.Models;
     using System.ComponentModel.Composition;
     [Export]
-    public class EntryService : BaseService<EntryService>
+    public class EntryService : BaseService
     {
         public bool HasTitle(string url)
         {

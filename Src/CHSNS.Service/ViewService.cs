@@ -8,7 +8,7 @@ namespace CHSNS.Service
     using System.Threading.Tasks;
     using System.ComponentModel.Composition;
     [Export]
-    public class ViewService : BaseService<ViewService>
+    public class ViewService : BaseService
     {
         public ViewListPas ViewList(byte type, int everyRow, long ownerId, int count)
         {

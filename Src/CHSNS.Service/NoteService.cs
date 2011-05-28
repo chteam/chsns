@@ -9,7 +9,7 @@ namespace CHSNS.Service
 {
     using System.ComponentModel.Composition;
     [Export]
-    public class NoteService : BaseService<NoteService>
+    public class NoteService : BaseService
     {
        
 
@@ -28,7 +28,7 @@ namespace CHSNS.Service
             switch ((NoteType) note.Type)
             {
                 case NoteType.Note:
-                    EventService.Instance.Add(new Event
+                    ServicesFactory.Event.Add(new Event
                                    {
                                        OwnerId = note.UserId,
                                        TemplateName = "AddNote",
