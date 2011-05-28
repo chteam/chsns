@@ -6,7 +6,7 @@ namespace CHSNS.Service
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using CHSNS.Config;
+    using Config;
     using CHSNS.Model;
     using CHSNS.Models;
     using System.ComponentModel.Composition;
