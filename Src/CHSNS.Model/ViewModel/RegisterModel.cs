@@ -1,13 +1,9 @@
 ﻿
 namespace CHSNS.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.ComponentModel.DataAnnotations;
 
-    public class RegisterModel : Account.AccountMeta
+    public class RegisterModel : Account
     {
         [Required(ErrorMessage="确认密码必须填写")]
         [RegularExpression(@"[\w\W]{4,32}")]
