@@ -77,6 +77,9 @@
     <Content Include="Global.asax" />
     <Content Include="Images\XPButtonNoText_160x22.png" />
     <Content Include="Scripts\Framework.js" />
+    <Content Include="Scripts\jquery-1.6.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.1.js" />
+    <Content Include="Scripts\jquery-1.6.1.min.js" />
     <Content Include="Scripts\jquery-vsdoc.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.tools.min.js" />
@@ -113,7 +116,9 @@
     <Content Include="Views\Shared\DefaultTemplates\EditorTemplates\DateTime.ascx" />
     <Content Include="Views\Shared\DropDownList.ascx" />
     <Content Include="Web.config" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="_bin_deployableAssemblies\System.Web.Mvc.dll" />
     <None Include="_bin_deployableAssemblies\WebMatrix.WebData.xml" />
     <None Include="_bin_deployableAssemblies\WebMatrix.WebData.dll" />
