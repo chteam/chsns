@@ -91,9 +91,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.validator.ext.js" />
-    <Content Include="Scripts\linq-vsdoc.js" />
-    <Content Include="Scripts\linq.js" />
-    <Content Include="Scripts\linq.min.js" />
     <Content Include="Scripts\MicrosoftMvcJQueryValidation.js" />
     <Content Include="Scripts\MicrosoftMvcRemoteValidation.js" />
     <Content Include="Scripts\Upload\handlers.js" />
