@@ -1,13 +1,10 @@
 ﻿
-namespace CHSNS.Email
+namespace CHSNS.Common.Email
 {
     using System.Net;
     using System.Net.Mail;
-    using Interface;
+    using CHSNS.Interface;
 
-    /// <summary>
-    /// .net 2.0邮件发送方式
-    /// </summary>
     public class NetEmail : IEmail
     {
         #region IEmail Members

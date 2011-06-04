@@ -1,16 +1,33 @@
-﻿using System.Security.Principal;
-using System.Collections.Generic;
-
-namespace CHSNS
+﻿namespace CHSNS
 {
-    public class WebIdentity : IIdentity,IUser
+    using System.Collections.Generic;
+    using System.Security.Principal;
+
+    public class WebIdentity : IIdentity, IUser
     {
-        public string AuthenticationType { get { return "WebIdentity"; } }
-        public bool IsAuthenticated { get { return true; } }
+        #region IIdentity Members
+
+        public string AuthenticationType
+        {
+            get { return "WebIdentity"; }
+        }
+
+        public bool IsAuthenticated
+        {
+            get { return true; }
+        }
+
         public string Name { get; set; }
+
+        #endregion
+
+        #region IUser Members
+
         public string Email { get; set; }
         public List<string> Roles { get; set; }
         public long UserId { get; set; }
         public byte Status { get; set; }
+
+        #endregion
     }
 }
