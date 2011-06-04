@@ -3,6 +3,8 @@ using System.Text;
 
 namespace CHSNS
 {
+    using CHSNS.Encrypt;
+
     public static class Md5Extension
     {
         /// <summary>

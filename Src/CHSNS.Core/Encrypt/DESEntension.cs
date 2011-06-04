@@ -1,11 +1,4 @@
-//-----------------------------------------------------------------------
-// <copyright file="DESEntension.cs" company="eice.com.cn">
-//     Copyright (c) CHSNS eice.com.cn. All rights reserved.
-// </copyright>
-// <author>chsword</author>
-//-----------------------------------------------------------------------
-
-namespace CHSNS
+namespace CHSNS.Encrypt
 {
     using System;
     using System.IO;
@@ -20,7 +13,7 @@ namespace CHSNS
         /// <summary>
         /// 用于补位的密钥
         /// </summary>
-        private const string REPLACECRYPTORKEY = "6sf8eIh";
+        private const string Replacecryptorkey = "6sf8eIh";
 
         /// <summary>
         /// 使用DES加密 chsword 2005-2-12
@@ -32,8 +25,8 @@ namespace CHSNS
         public static string DESEncrypt(this string originalValue, string key, string iv)
         {
             //将key和IV处理成8个字符
-            key = (key + REPLACECRYPTORKEY).Substring(0, 8);
-            iv = (iv + REPLACECRYPTORKEY).Substring(0, 8);
+            key = (key + Replacecryptorkey).Substring(0, 8);
+            iv = (iv + Replacecryptorkey).Substring(0, 8);
             using (var sa = new DESCryptoServiceProvider())
             {
                 sa.Key = key.ToUTF8Bytes(); 
@@ -73,8 +66,8 @@ namespace CHSNS
         public static string DESDecrypt(this string encryptedValue, string key, string iv)
         {
             ////将key和IV处理成8个字符
-            var keyBytes = Encoding.UTF8.GetBytes((key + REPLACECRYPTORKEY).Substring(0, 8));
-            var ivBytes = Encoding.UTF8.GetBytes((iv + REPLACECRYPTORKEY).Substring(0, 8));
+            var keyBytes = Encoding.UTF8.GetBytes((key + Replacecryptorkey).Substring(0, 8));
+            var ivBytes = Encoding.UTF8.GetBytes((iv + Replacecryptorkey).Substring(0, 8));
             using (var sa =
                 new DESCryptoServiceProvider())
             {
