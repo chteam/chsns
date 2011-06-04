@@ -29,7 +29,7 @@ namespace CHSNS
             //    return false;
             //}
             
-            OnlineFactory.Instance.Update();
+            OnlineProvider.Instance.Update();
         }
     }
 }

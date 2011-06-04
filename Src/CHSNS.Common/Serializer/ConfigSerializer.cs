@@ -13,7 +13,7 @@
         }
 
         private const string Path = "{0}Config/{1}.xml";
-        private string _rootPath;
+        private readonly string _rootPath;
         public ConfigSerializer(string rootPath)
         {
             _rootPath = rootPath;
@@ -39,7 +39,7 @@
         /// <param name="key">The key.</param>
         public void ClearCache(string key)
         {
-            CacheFactory.Instance.Remove(string.Format(Path, _rootPath, key).ToLower());
+            CacheProvider.Instance.Remove(string.Format(Path, _rootPath, key).ToLower());
         }
 
         /// <summary>
@@ -54,9 +54,9 @@
             string fn = string.Format(Path, _rootPath, key).ToLower();
             if (isUseCache)
             {
-                if (!CacheFactory.Instance.Contains(fn))
-                    CacheFactory.Instance.Add(fn, XmlSerializer.Load<T>(fn));
-                return CacheFactory.Instance.Get<T>(fn);
+                if (!CacheProvider.Instance.Contains(fn))
+                    CacheProvider.Instance.Add(fn, XmlSerializer.Load<T>(fn));
+                return CacheProvider.Instance.Get<T>(fn);
             }
             return XmlSerializer.Load<T>(fn);
         }

@@ -1,6 +1,6 @@
 ﻿namespace CHSNS
 {
-    public class BaseFactory<T>
+    public class BaseProvider<T>
     {
         public static T Instance { get; private set; }
         public static void Register(T cache)
