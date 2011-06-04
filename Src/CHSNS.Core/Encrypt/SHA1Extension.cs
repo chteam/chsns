@@ -1,6 +1,6 @@
-using System.Security.Cryptography;
+namespace CHSNS.Encrypt {
+    using System.Security.Cryptography;
 
-namespace CHSNS {
     public static class SHACryptExtension {
         /// <summary>
         /// ½øĞĞSHA1(°×¹¬ÃÜÂë)¼ÓÃÜ

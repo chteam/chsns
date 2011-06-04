@@ -4,6 +4,7 @@ namespace CHSNS
 {
     using System;
     using System.Web;
+    using CHSNS.Encrypt;
 
     /// <summary>
     /// 用户信息 Cookies 类

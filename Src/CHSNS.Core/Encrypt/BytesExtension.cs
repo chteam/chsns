@@ -1,11 +1,4 @@
-//-----------------------------------------------------------------------
-// <copyright file="BytesExtension.cs" company="eice.com.cn">
-//     Copyright (c) CHSNS eice.com.cn. All rights reserved.
-// </copyright>
-// <author>chsword</author>
-//-----------------------------------------------------------------------
-
-namespace CHSNS
+namespace CHSNS.Encrypt
 {
     using System.Text;
 

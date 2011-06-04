@@ -1,7 +1,7 @@
-using System.Text;
-
-namespace CHSNS
+namespace CHSNS.Encrypt
 {
+    using System.Text;
+
     internal static class StringToBytesExtension
     {
         internal static byte[] ToASCIIBytes(this string strKey) {

@@ -1,8 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CHSNS.Core.Tests
 {
-    
-    
+    using CHSNS.Encrypt;
+
+
     /// <summary>
     ///这是 SHACryptExtensionTest 的测试类，旨在
     ///包含所有 SHACryptExtensionTest 单元测试
