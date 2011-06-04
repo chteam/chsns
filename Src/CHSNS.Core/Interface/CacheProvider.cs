@@ -2,7 +2,7 @@
 {
     using Interface;
 
-    public class CacheFactory : BaseFactory<ICache>
+    public class CacheProvider : BaseProvider<ICache>
     {
     }
 }

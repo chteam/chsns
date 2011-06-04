@@ -53,11 +53,11 @@ namespace CHSNS.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             CHSNS.Validator.ValidatorRegister.RegisterAdapter();
-            CacheFactory.Register(new HttpCache());
+            CacheProvider.Register(new HttpCache());
             var rootPath = Server.MapPath("~/");
             IOFactory.Register(new LocalStoreFile(rootPath), new LocalFolder(rootPath));
             ConfigSerializer.Register(new ConfigSerializer(rootPath));
-            OnlineFactory.Register(new Online());
+            OnlineProvider.Register(new Online());
         }
 
         #region Authenticate
