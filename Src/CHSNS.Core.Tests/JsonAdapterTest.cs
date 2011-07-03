@@ -40,7 +40,7 @@ namespace CHSNS.Core.Tests
         [TestMethod]
         public void Deserialize() {
             DeserializeTestHelper<GenericParameterHelper>();
-            Assert.AreEqual(default(GenericParameterHelper), JsonAdapter.Deserialize<GenericParameterHelper>("{\"Data\":\"\"}"));
+            Assert.AreEqual(default(GenericParameterHelper), JsonAdapter.Deserialize<GenericParameterHelper>("{\"Data\":\"1\"}"));
         }
 
     }
