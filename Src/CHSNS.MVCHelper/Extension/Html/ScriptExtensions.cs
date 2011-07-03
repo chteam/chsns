@@ -38,7 +38,7 @@ namespace CHSNS.Helper
             {
                 src = file;
             }
-            TagBuilder scriptTag = new TagBuilder("script");
+            var scriptTag = new TagBuilder("script");
             scriptTag.MergeAttribute("type", "text/javascript");
             scriptTag.MergeAttribute("src", UrlHelper.GenerateContentUrl(src, helper.ViewContext.HttpContext));
             return MvcHtmlString.Create(scriptTag.ToString(TagRenderMode.Normal));
