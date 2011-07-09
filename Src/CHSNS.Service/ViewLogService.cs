@@ -3,12 +3,11 @@ namespace CHSNS.Service
 {
     using System.Linq;
     using CHSNS.Model;
-    using System;
     using CHSNS.Models;
     using System.Threading.Tasks;
     using System.ComponentModel.Composition;
     [Export]
-    public class ViewService : BaseService
+    public class ViewLogService : BaseService
     {
         public ViewListPas ViewList(byte type, int everyRow, long ownerId, int count)
         {

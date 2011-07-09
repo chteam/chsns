@@ -61,8 +61,8 @@ namespace CHSNS.Controllers {
 
             #region Í³¼Æ
 
-            ViewData["MemberList"] = ViewLog.ViewList(6, 2, g.Id, 6);
-            ViewData["ViewList"] = ViewLog.ViewList(1, 6, g.Id, 6);
+            ViewData["MemberList"] = ViewLogLog.ViewList(6, 2, g.Id, 6);
+            ViewData["ViewList"] = ViewLogLog.ViewList(1, 6, g.Id, 6);
 
             ViewData["Applycount"] = Group.WaitJoinCount(id);
 
@@ -76,7 +76,7 @@ namespace CHSNS.Controllers {
             return View(g);
         }
         [Import]
-        public ViewService ViewLog { get; set; }
+        public ViewLogService ViewLogLog { get; set; }
 
         [Import]
         public NoteService Note{ get; set; }

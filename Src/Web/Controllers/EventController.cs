@@ -19,7 +19,7 @@ namespace CHSNS.Controllers {
     public partial class EventController : BaseController
     {
         [Import]
-        public ViewService ViewLog { get; set; }
+        public ViewLogService ViewLogLog { get; set; }
         [Import]
         public GatherService Gather{ get; set; }
         #region Action
@@ -29,8 +29,8 @@ namespace CHSNS.Controllers {
             Title = "事件";
 
             //     Events = DBExt.Event.GetFriendEvent(CHUser.UserId, 1, 20),
-            ViewBag.LastViews = ViewLog.ViewList(0, 3, WebUser.UserId, 6);
-            ViewBag.NewViews = ViewLog.ViewList(2, 3, WebUser.UserId, 6);
+            ViewBag.LastViews = ViewLogLog.ViewList(0, 3, WebUser.UserId, 6);
+            ViewBag.NewViews = ViewLogLog.ViewList(2, 3, WebUser.UserId, 6);
             ViewBag.Page = Gather.EventGather(WebUser.UserId);
             return View();
         }
