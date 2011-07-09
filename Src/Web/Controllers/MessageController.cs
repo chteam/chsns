@@ -1,9 +1,3 @@
-/*
- * 邹健 08-1-24
- * 09 03 27
- */
-
-
 using System;
 using System.Web.Mvc;
 using CHSNS.Model;
@@ -11,6 +5,8 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
 
     /// <summary>
     /// 站内信
@@ -18,6 +14,8 @@ namespace CHSNS.Controllers
     [Authorize]
     public partial class MessageController : BaseController
     {
+        [Import]
+        public MessageService MessageInfo { get; set; }
         public virtual ActionResult InBox(int? p)
         {
             Title = "收件箱";
@@ -28,7 +26,7 @@ namespace CHSNS.Controllers
         {
             InitPage(ref p);
           //  InitPage(ref ep, 10);
-            var m = Services.Message.GetInbox(WebUser.UserId, p.Value,WebContext.Site);
+            var m = MessageInfo.GetInbox(WebUser.UserId, p.Value,WebContext.Site);
             ViewData["NowPage"] = p;
             ViewData["PageCount"] = m.TotalPages;
             return View(m);
@@ -44,7 +42,7 @@ namespace CHSNS.Controllers
         {
             InitPage(ref p);
            // InitPage(ref ep, 10);
-            var m = Services.Message.GetOutbox(WebUser.UserId, p.Value, WebContext.Site);
+            var m = MessageInfo.GetOutbox(WebUser.UserId, p.Value, WebContext.Site);
             ViewData["NowPage"] = p;
             ViewData["PageCount"] = m.TotalPages;
             return View(m);
@@ -53,13 +51,13 @@ namespace CHSNS.Controllers
         [HttpPost]
         public virtual ActionResult Delete(long id, int t)
         {
-            Services.Message.Delete(id, (MessageBoxType)t, WebUser.UserId);
+            MessageInfo.Delete(id, (MessageBoxType)t, WebUser.UserId);
             //CHStatic.Clear();
             return Content("");
         }
         public virtual ActionResult Details(long id)
         {
-            var m = Services.Message.Details(id, WebUser.UserId);
+            var m = MessageInfo.Details(id, WebUser.UserId);
             Title = m.Message.Title;
             //	CHStatic.Clear();
             return View(m);
@@ -83,7 +81,7 @@ namespace CHSNS.Controllers
                 SendTime = DateTime.Now
             };
             UpdateModel(m, new[] { "Title", "Body", "ToID" });
-            Services.Message.Add(m,WebContext);
+            MessageInfo.Add(m,WebContext);
 
         }
         [HttpPost]

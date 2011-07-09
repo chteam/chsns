@@ -1,14 +1,23 @@
 
 
 namespace CHSNS.Controllers {
+    using System.ComponentModel.Composition;
+    using System.ComponentModel.Composition.Hosting;
+    using System.Reflection;
     using System.Web.Mvc;
     using Interface;
 
     abstract public class BaseController : Controller
     {
-        private ServicesFactory _services;
-        protected ServicesFactory Services { get { return _services = _services ?? new ServicesFactory(); }
+        protected BaseController()
+        {
+            var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
+            var container = new CompositionContainer(catalog);
+            var batch = new CompositionBatch();
+            batch.AddPart(this);
+            container.Compose(batch);
         }
+
         public IContext WebContext { get { return new WebContext(HttpContext); } }
         public ISerializer ConfigSerializer
         {

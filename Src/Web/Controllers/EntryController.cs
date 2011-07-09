@@ -3,14 +3,17 @@
 namespace CHSNS.Controllers
 {
     using System;
+    using System.ComponentModel.Composition;
     using System.Linq;
     using System.Web.Mvc;
     using CHSNS.Model;
     using CHSNS.Models;
-    using CHSNS.ViewModel;
+    using CHSNS.Service;
 
     public partial class EntryController : BaseController
     {
+        [Import]
+        public EntryService     Entry { get; set; }
         #region 前台部分
         /// <summary>
         /// 显示当前词条
@@ -20,7 +23,7 @@ namespace CHSNS.Controllers
         {
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
-            var t = Services.Entry.Get(url);
+            var t = Entry.Get(url);
             ViewBag.Entry = t.Key;
             if (ViewBag.Entry == null) return Wait();
             var version = t.Value;
@@ -42,14 +45,14 @@ namespace CHSNS.Controllers
         /// <returns></returns>
         public virtual ActionResult HistoryList(long id)
         {
-            ViewBag.Source = Services.Entry.Historys(id);
+            ViewBag.Source = Entry.Historys(id);
             Title = "版本比较";
             return View();
         }
 
         public virtual ActionResult History(long versionId)
         {
-            var t = Services.Entry.GetFromVersion(versionId);
+            var t = Entry.GetFromVersion(versionId);
             if (t.Key == null || t.Value == null) return View("wait", "site");
             var entry = t.Key;
             var version = t.Value;
@@ -76,7 +79,7 @@ namespace CHSNS.Controllers
             if (id != null)
             {
                 //修改
-                var d = Services.Entry.Get(id.Value);
+                var d = Entry.Get(id.Value);
                 var entry = d.Item1;
                 if ((entry.Status == (int)EntryType.Common || HasManageRight() || new[] { 0, WebUser.UserId }.Contains(entry.CreaterId)))
                 {
@@ -116,7 +119,7 @@ namespace CHSNS.Controllers
         [ValidateInput(false)]
         public virtual ActionResult Edit(long? id, Wiki wiki, WikiVersion entryversion, string tags,bool isNew)
         {
-            var b = Services.Entry.AddVersion(id, wiki, entryversion, tags, WebUser,isNew);
+            var b = Entry.AddVersion(id, wiki, entryversion, tags, WebUser,isNew);
             if (!b) throw new ApplicationException("标题已存在");
             return RedirectToAction("Index", "Entry", new { url = wiki.Url });
         }
@@ -124,7 +127,7 @@ namespace CHSNS.Controllers
         public virtual ActionResult AdminHistoryList(string url)
         {
             url = url.Trim();
-            ViewData["Source"] = Services.Entry.Historys(url);
+            ViewData["Source"] = Entry.Historys(url);
             Title = "历史版本";
             return View();
         }
@@ -136,7 +139,7 @@ namespace CHSNS.Controllers
         [AdminFilter]
         public virtual ActionResult NewList()
         {
-            var li = Services.Entry.List(1, 10);
+            var li = Entry.List(1, 10);
             Title = "词条列表";
             return View(li);
         }
@@ -161,7 +164,7 @@ namespace CHSNS.Controllers
              * 1.设置当前版本为最新版本词条
              * 2.将当前版本状态改为常规状态
              */
-            Services.Entry.PassWaitVersion(id);
+            Entry.PassWaitVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -175,7 +178,7 @@ namespace CHSNS.Controllers
             /*
              * 锁定当前版本
              */
-            Services.Entry.LockCommonVersion(id);
+            Entry.LockCommonVersion(id);
             return this.RedirectToReferrer();
         }
         /// <summary>
@@ -186,13 +189,13 @@ namespace CHSNS.Controllers
         [AdminFilter]
         public virtual ActionResult Delete(long id)
         {
-            Services.Entry.DeleteByVersionId(id, WebUser.UserId);
+            Entry.DeleteByVersionId(id, WebUser.UserId);
             return this.RedirectToReferrer();
         }
         [AdminFilter]
         public virtual ActionResult DeleteVersion(long id)
         {
-            Services.Entry.DeleteVersion(id, WebUser.UserId);
+            Entry.DeleteVersion(id, WebUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion
@@ -200,7 +203,7 @@ namespace CHSNS.Controllers
         #region Ajax
         public virtual ActionResult Has(string title)
         {
-            var exists = Services.Entry.HasTitle(title);
+            var exists = Entry.HasTitle(title);
             return Json(exists); 
         }
 

@@ -11,8 +11,8 @@ namespace CHSNS.Service
     [Export]
     public class NoteService : BaseService
     {
-       
-
+        [Import]
+        public EventService Event { get; set; }
         /// <summary>
         /// userid
         /// </summary>
@@ -28,7 +28,7 @@ namespace CHSNS.Service
             switch ((NoteType) note.Type)
             {
                 case NoteType.Note:
-                    ServicesFactory.Event.Add(new Event
+                    Event.Add(new Event
                                    {
                                        OwnerId = note.UserId,
                                        TemplateName = "AddNote",

@@ -164,6 +164,10 @@ namespace CHSNS.Service
             }
             return true;
         }
+        [Import]
+        public EventService Event { get; set; }
+        [Import]
+        public UserService UserInfo { get; set; }
 
         /// <summary>
         /// Agrees the friend request.
@@ -175,9 +179,9 @@ namespace CHSNS.Service
         public bool Agree(long operaterId, long toId, IUser user)
         {
             var b = Agree(operaterId, toId);
-            string name = ServicesFactory.UserInfo.GetUserName(toId);
+            string name = UserInfo.GetUserName(toId);
 
-          ServicesFactory.Event.Add(new Event
+Event.Add(new Event
             {
                 OwnerId = toId,
                 ViewerId = operaterId,

@@ -8,9 +8,19 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
+
     [Authorize]
     public partial class AlbumController : BaseController
     {
+        [Import]
+        public AlbumService Album { get; set; }
+        [Import]
+        public PhotoService Photo
+        { get; set; }
+        [Import]
+        public UserService UserInfo { get; set; }
         #region 应用、相册列表
 
 
@@ -20,9 +30,9 @@ namespace CHSNS.Controllers
         public virtual ActionResult Index(int? p, long? uid)
         {
             uid = uid ?? WebUser.UserId;
-            var list = Services.Album.Items(uid.Value);
+            var list = Album.Items(uid.Value);
             Title = string.Format("{0}的相册",
-                                  Services.UserInfo.GetUserName(uid.Value));
+                                  UserInfo.GetUserName(uid.Value));
             return View(list);
         }
         #endregion
@@ -36,7 +46,7 @@ namespace CHSNS.Controllers
                 return View();
             }
             Title = "编辑相册";
-            var model = Services.Album.Get(id.Value);
+            var model = Album.Get(id.Value);
             ViewData["a"] = model;
             return View(model);
         }
@@ -46,10 +56,10 @@ namespace CHSNS.Controllers
         {
             if (id.HasValue){
                 a.Id = id.Value;
-                Services.Album.Update(a);
+                Album.Update(a);
                 return RedirectToAction("Index");
             }
-            Services.Album.Add(a, WebUser.UserId);
+            Album.Add(a, WebUser.UserId);
             return RedirectToAction("Index");
         }
 
@@ -59,8 +69,8 @@ namespace CHSNS.Controllers
         public virtual ActionResult Details(long id, int? p)
         {
             InitPage(ref p);
-            var album = Services.Album.Get(id);
-            var photos = Services.Album.GetPhotos(album.Id, WebUser.UserId, p.Value, 12);
+            var album = Album.Get(id);
+            var photos = Album.GetPhotos(album.Id, WebUser.UserId, p.Value, 12);
             ViewData["album"] = album;
             ViewData["photos"] = photos;
             Title = album.Name;
@@ -72,7 +82,7 @@ namespace CHSNS.Controllers
         [HttpGet]
         public virtual ActionResult Upload(long? id)
         {
-            var album = Services.Album.Get(id.Value);
+            var album = Album.Get(id.Value);
             ViewData["album"] = album;
             Title = "上传";
             return View();
@@ -80,7 +90,7 @@ namespace CHSNS.Controllers
 
         public virtual ActionResult UploadPhoto(string name, long id, HttpPostedFileBase file)
         {
-            var al = Services.Album.GetCountChange(id,1);
+            var al = Album.GetCountChange(id,1);
             if (al == null)
                 return HttpNotFound("album not found");
             var p = new Photo { Title = name, AlbumId = id, AddTime = DateTime.Now, UserId = WebUser.UserId };
@@ -92,7 +102,7 @@ namespace CHSNS.Controllers
                 );
             f.Upload();
             p.Summary = f.Ext;
-            Services.Photo.Add(p);
+            Photo.Add(p);
             return RedirectToAction("details", new{id});
         }
 
@@ -100,12 +110,12 @@ namespace CHSNS.Controllers
         #region 图片删除
         public virtual ActionResult PhotoDel(long id)
         {
-            var p = Services.Photo.Get(id);
+            var p = Photo.Get(id);
             var path = Path.Photo(WebUser.UserId, p.AddTime, p.Summary, ThumbType.Middle);
 
             IOFactory.StoreFile.Delete(path);
-            Services.Album.GetCountChange(p.AlbumId.Value, -1);
-            Services.Photo.Delete(p.Id);
+            Album.GetCountChange(p.AlbumId.Value, -1);
+            Photo.Delete(p.Id);
             return this.RedirectToReferrer();
         }
 
@@ -115,13 +125,13 @@ namespace CHSNS.Controllers
         {
 
 
-            var p = Services.Photo.Get(id);
+            var p = Photo.Get(id);
             var path = Path.Photo(WebUser.UserId, p.AddTime, p.Summary, ThumbType.Middle);
 
-            var album = Services.Album.Get(p.AlbumId.Value);
+            var album = Album.Get(p.AlbumId.Value);
             // db.Album.Where(c => c.ID == p.AlbumID).FirstOrDefault();
             album.FaceUrl = path;
-            Services.Album.Update(album);
+            Album.Update(album);
             return Content("设置成功");
         }
 

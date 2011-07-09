@@ -1,20 +1,21 @@
-using System.Transactions;
 using System.Web.Mvc;
-using CHSNS.Model;
 using CHSNS.Models;
 
 
 namespace CHSNS.Controllers {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
 
     public partial class NoteController : BaseController
-    {
+    {[Import]
+        public UserService UserInfo { get; set; }
         [Authorize]
         public virtual ActionResult Index(long? userid, int? p)
         {
 
             if (!userid.HasValue) userid = WebUser.UserId;
             if (!p.HasValue || p == 0) p = 1;
-            var user = Services.UserInfo.GetUser(
+            var user = UserInfo.GetUser(
                 userid.Value,
                 c => new Profile
                          {
@@ -32,23 +33,27 @@ namespace CHSNS.Controllers {
             return ret;
 
         }
-
+        [Import]
+        public NoteService Note { get; set; }
         [HttpPost]
         public virtual ActionResult NoteList(int p, int ep, long userid)
         {
-            ViewData.Model = Services.Note.GetNotes(userid, NoteType.Note, p, ep);
+            ViewData.Model = Note.GetNotes(userid, NoteType.Note, p, ep);
             return View();
         }
-       
+        [Import]
+        public CommentService Comment { get; set; }
+        [Import]
+        public ViewService ViewLog { get; set; }
         public virtual ActionResult Details(long id)
         {
-            var note = Services.Note.Details(id, NoteType.Note);
-            var cl = Services.Comment.CommentList(id, CommentType.Note, 1, WebContext.Site);
+            var note = Note.Details(id, NoteType.Note);
+            var cl = Comment.CommentList(id, CommentType.Note, 1, WebContext.Site);
             ViewData["commentlist"] = cl;
             Title = note.Title;
             ViewData["NowPage"] = 1;
             ViewData["PageCount"] = note.CommentCount;
-            Services.View.Update(VisitLogType.Note, id, WebUser);
+            ViewLog.Update(VisitLogType.Note, id, WebUser);
             return View(note);
         }
         
@@ -59,7 +64,7 @@ namespace CHSNS.Controllers {
             if (id.HasValue)
             {
                 Title = "修改日志";
-                var n = Services.Note.Details(id.Value, NoteType.Note);
+                var n = Note.Details(id.Value, NoteType.Note);
                 return View(n);
             }
             else
@@ -82,14 +87,14 @@ namespace CHSNS.Controllers {
             if (id.HasValue)
             {
                 note.Id = id.Value;
-                Services.Note.Edit(note);
+                Note.Edit(note);
             }
             else
             {
                 note.Type = (int)NoteType.Note;
                 note.Username = WebUser.Name;
                 note.ParentId = WebUser.UserId;
-                Services.Note.Add(note, WebUser);
+                Note.Add(note, WebUser);
             }
             return RedirectToAction("Index");
         }
@@ -99,7 +104,7 @@ namespace CHSNS.Controllers {
         [Authorize]
         public virtual ActionResult Delete(long id)
         {
-            Services.Note.Delete(id, WebUser.UserId, NoteType.Note);
+            Note.Delete(id, WebUser.UserId, NoteType.Note);
             return Content("");
         }
 
@@ -110,7 +115,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult News()
         {
             Title = "日志首页";
-            return View(Services.Note.GetLastNotes(null));
+            return View(Note.GetLastNotes(null));
         }
     }
 }

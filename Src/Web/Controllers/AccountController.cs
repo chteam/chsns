@@ -3,8 +3,13 @@ using CHSNS.Models;
 
 namespace CHSNS.Controllers
 {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
+
     public class AccountController : BaseController
     {
+        [Import]
+        public AccountService Account { get; set; }
         #region 注册
 
         /// <summary>
@@ -24,7 +29,7 @@ namespace CHSNS.Controllers
                 ViewData.Model = account;
                 return Register();
             }
-            var hasSuccess = Services.Account.Create(account, WebContext.Site);
+            var hasSuccess = Account.Create(account, WebContext.Site);
             Title = "注册成功";
             if (hasSuccess) return View("Reg-Success");
             return View(account);
@@ -34,7 +39,7 @@ namespace CHSNS.Controllers
         /// </summary>
         public virtual ActionResult UsernameCanUse(string username)
         {
-            return Json(Services.Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
+            return Json(Account.IsUsernameCanUse(username), JsonRequestBehavior.AllowGet);
         }
         #endregion
 
@@ -42,7 +47,7 @@ namespace CHSNS.Controllers
 
         public virtual ActionResult LogOff()
         {
-            Services.Account.Logout(WebContext);
+            Account.Logout(WebContext);
             return Redirect(HomePage);
         }
 
@@ -64,7 +69,7 @@ namespace CHSNS.Controllers
                 return LogOn(returnUrl);
             }
             //匹配成功则赋值
-            var loginResult = Services.Account.Login(account, autoLogOn ?? false, true, WebContext);
+            var loginResult = Account.Login(account, autoLogOn ?? false, true, WebContext);
             if (loginResult <= 0)
                 return View(account);
             var url = string.IsNullOrEmpty(returnUrl) ? HomePage : returnUrl;
@@ -75,7 +80,7 @@ namespace CHSNS.Controllers
         #region 设置管理员
         public virtual ActionResult InitCreater()
         {
-            Services.Account.InitCreater();
+            Account.InitCreater();
             return Content("");
         }
         #endregion
