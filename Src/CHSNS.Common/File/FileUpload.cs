@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace CHSNS
+﻿namespace CHSNS
 {
-    using Interface;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.Composition;
+    using System.Linq;
+    using System.Web;
+    using CHSNS.Interface;
 
+    [Export]
     public class FileUpload : IFileProcess
     {
         public HttpPostedFileBase File { get; set; }

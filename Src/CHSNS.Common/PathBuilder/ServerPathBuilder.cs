@@ -1,25 +1,24 @@
-﻿using System.Web;
-
-namespace CHSNS.Common.PathBuilder
+﻿namespace CHSNS.Common.PathBuilder
 {
-    using Interface;
+    using System.Web;
+    using CHSNS.Interface;
 
     /// <summary>
     /// 使用Server.MapPath来生成目标路径
     /// </summary>
     public class ServerPathBuilder : IPathBuilder
     {
-        private readonly HttpServerUtilityBase Server;
+        private readonly HttpServerUtilityBase _server;
         private string _descpath;
 
         public ServerPathBuilder(HttpServerUtilityBase server)
         {
-            Server = server;
+            _server = server;
         }
 
         public ServerPathBuilder(HttpServerUtilityBase server, string path)
         {
-            Server = server;
+            _server = server;
             SourcePath = path;
         }
 
@@ -33,7 +32,7 @@ namespace CHSNS.Common.PathBuilder
             {
                 if (string.IsNullOrEmpty(_descpath))
                 {
-                    _descpath = Server.MapPath(SourcePath);
+                    _descpath = _server.MapPath(SourcePath);
                 }
                 return _descpath;
             }

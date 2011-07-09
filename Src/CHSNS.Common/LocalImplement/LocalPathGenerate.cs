@@ -1,18 +1,11 @@
-using System;
-
-namespace CHSNS.LocalImplement
+namespace CHSNS.Common.LocalImplement
 {
+    using System;
+    using System.ComponentModel.Composition;
+
+    [Export]
     public class LocalPathGenerate : IPathGenerate
     {
-        static LocalPathGenerate()
-        {
-            Intance = new LocalPathGenerate();
-        }
-
-        public static LocalPathGenerate Intance { get; private set; }
-
-        #region IPathGenerate Members
-
         public string NewPhoto(long userId, string fileExt)
         {
             return string.Format("/uploadFiles/{0}/{1}{2}", userId, Guid.NewGuid(), fileExt);
@@ -36,6 +29,5 @@ namespace CHSNS.LocalImplement
             return string.Format("/uploadFiles/{0}/", userId);
         }
 
-        #endregion
     }
 }
