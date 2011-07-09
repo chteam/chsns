@@ -79,8 +79,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BaseController.cs" />
-    <Compile Include="CH.cs" />
+    <Compile Include="BaseController.cs" />
     <Compile Include="ConfigSerializerExt.cs" />
     <Compile Include="Core\HttpCache.cs" />
     <Compile Include="Core\WebContext.cs" />
@@ -161,6 +160,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Base\" />
     <Folder Include="Server\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

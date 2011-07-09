@@ -1,12 +1,14 @@
-﻿using System;
-using System.Web;
-using CHSNS.Config;
-using CHSNS.LocalImplement;
+﻿namespace CHSNS.Core {
+    using System;
+    using System.Web;
+    using CHSNS.Config;
+    using CHSNS.LocalImplement;
+    using System.ComponentModel.Composition;
 
-namespace CHSNS {
     /// <summary>
     /// CHSNS实现，WEB实现
     /// </summary>
+    [Export]
     public class WebContext : IContext {
         /// <summary>
         /// 构造函数唯一
