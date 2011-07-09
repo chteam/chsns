@@ -1,10 +1,11 @@
-﻿
-namespace CHSNS.Common.Email
+﻿namespace CHSNS.Common.Email
 {
+    using System.ComponentModel.Composition;
     using System.Net;
     using System.Net.Mail;
     using CHSNS.Interface;
 
+    [Export]
     public class NetEmail : IEmail
     {
         #region IEmail Members

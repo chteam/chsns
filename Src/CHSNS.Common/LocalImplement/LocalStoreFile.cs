@@ -1,17 +1,21 @@
-using System.Drawing;
-using System.IO;
-
-namespace CHSNS.LocalImplement
+namespace CHSNS.Common.LocalImplement
 {
-    using Interface;
+    using System.ComponentModel.Composition;
+    using System.Drawing;
+    using System.IO;
+    using CHSNS.Interface;
 
-    public  class LocalStoreFile : IStoreFile
+    [Export]
+    public class LocalStoreFile : IStoreFile
     {
-        string _rootPath;
+        private readonly string _rootPath;
+
         public LocalStoreFile(string rootPath)
         {
             _rootPath = rootPath;
         }
+
+        #region IStoreFile Members
 
         public bool Exists(string filePath)
         {
@@ -28,8 +32,8 @@ namespace CHSNS.LocalImplement
             var buffer = new byte[s.Length];
             s.Read(buffer, 0, buffer.Length); //将流的内容读到缓冲区  
             using (var fs = new FileStream(
-            System.IO.Path.Combine(_rootPath, fileName.TrimStart("\\/".ToCharArray())
-            ),
+                Path.Combine(_rootPath, fileName.TrimStart("\\/".ToCharArray())
+                    ),
                 FileMode.OpenOrCreate, FileAccess.Write))
             {
                 fs.Write(buffer, 0, buffer.Length);
@@ -40,7 +44,7 @@ namespace CHSNS.LocalImplement
         public void SaveImage(Stream inputStream, string fileName)
         {
             Image img = new Bitmap(inputStream);
-            img.Save(System.IO.Path.Combine(_rootPath, fileName.TrimStart("\\/".ToCharArray())));
+            img.Save(Path.Combine(_rootPath, fileName.TrimStart("\\/".ToCharArray())));
         }
 
         public void WriteLine(string path, string text)
@@ -54,9 +58,10 @@ namespace CHSNS.LocalImplement
 
         public void Delete(string path)
         {
-            string pathserver = System.IO.Path.Combine(_rootPath, path.TrimStart("\\/".ToCharArray()));
+            string pathserver = Path.Combine(_rootPath, path.TrimStart("\\/".ToCharArray()));
             File.Delete(pathserver);
         }
 
+        #endregion
     }
 }

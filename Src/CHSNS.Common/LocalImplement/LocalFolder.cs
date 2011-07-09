@@ -1,10 +1,10 @@
-using System;
-using System.IO;
-
-namespace CHSNS.LocalImplement
+namespace CHSNS.Common.LocalImplement
 {
-    using Interface;
-
+    using System;
+    using System.ComponentModel.Composition;
+    using System.IO;
+    using CHSNS.Interface;
+    [Export]
     public class LocalFolder : IFolder
     {
         readonly string _rootPath;
@@ -26,7 +26,7 @@ namespace CHSNS.LocalImplement
 
         public void Create(string path)
         {
-            string serverPath = System.IO.Path.Combine(_rootPath, path.TrimStart("\\/".ToCharArray()));
+            string serverPath = Path.Combine(_rootPath, path.TrimStart("\\/".ToCharArray()));
             Directory.CreateDirectory(serverPath);
         }
 

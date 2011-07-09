@@ -58,6 +58,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -79,9 +80,6 @@
     <Compile Include="LocalImplement\LocalPathGenerate.cs" />
     <Compile Include="LocalImplement\LocalStoreFile.cs" />
     <Compile Include="Media\Media.cs" />
-    <Compile Include="Modules\SpriteCSS\ImageOptimizationModule.cs" />
-    <Compile Include="Modules\SpriteCSS\ImageOptimizations.cs" />
-    <Compile Include="Modules\SpriteCSS\ImageSettings.cs" />
     <Compile Include="NetworkCross.cs" />
     <Compile Include="PathBuilder\ServerPathBuilder.cs" />
     <Compile Include="Path\Path.cs" />
