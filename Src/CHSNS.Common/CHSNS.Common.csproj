@@ -70,24 +70,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CastTool.cs" />
-    <Compile Include="Email\NetEmail.cs" />
+    <Compile Include="NetEmail.cs" />
     <Compile Include="SystemLogger.cs" />
-    <Compile Include="File\FileUpload.cs" />
-    <Compile Include="Image\ImageUpload.cs" />
-    <Compile Include="Image\Thumbnail.cs" />
+    <Compile Include="FileUpload.cs" />
+    <Compile Include="ImageUpload.cs" />
+    <Compile Include="Thumbnail.cs" />
     <Compile Include="IOFactory.cs" />
-    <Compile Include="LocalImplement\LocalFolder.cs" />
-    <Compile Include="LocalImplement\LocalPathGenerate.cs" />
-    <Compile Include="LocalImplement\LocalStoreFile.cs" />
-    <Compile Include="Media\Media.cs" />
+    <Compile Include="LocalFolder.cs" />
+    <Compile Include="LocalPathGenerate.cs" />
+    <Compile Include="LocalStoreFile.cs" />
+    <Compile Include="Media.cs" />
     <Compile Include="NetworkCross.cs" />
-    <Compile Include="PathBuilder\ServerPathBuilder.cs" />
-    <Compile Include="Path\Path.cs" />
+    <Compile Include="ServerPathBuilder.cs" />
+    <Compile Include="Path.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serializer\ConfigSerializer.cs" />
-    <Compile Include="Serializer\JsonAdapter.cs" />
-    <Compile Include="Serializer\XmlSerializer.cs" />
-    <Compile Include="Tools\HttpProc.cs" />
+    <Compile Include="ConfigSerializer.cs" />
+    <Compile Include="JsonAdapter.cs" />
+    <Compile Include="XmlSerializer.cs" />
+    <Compile Include="HttpProc.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
@@ -120,6 +120,17 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Email\" />
+    <Folder Include="File\" />
+    <Folder Include="Image\" />
+    <Folder Include="LocalImplement\" />
+    <Folder Include="Media\" />
+    <Folder Include="PathBuilder\" />
+    <Folder Include="Path\" />
+    <Folder Include="Serializer\" />
+    <Folder Include="Tools\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
