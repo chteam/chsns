@@ -181,7 +181,7 @@ namespace CHSNS.Service
             var b = Agree(operaterId, toId);
             string name = UserInfo.GetUserName(toId);
 
-Event.Add(new Event
+Event.Add(new EventLog
             {
                 OwnerId = toId,
                 ViewerId = operaterId,

@@ -28,7 +28,7 @@ namespace CHSNS.Service
             switch ((NoteType) note.Type)
             {
                 case NoteType.Note:
-                    Event.Add(new Event
+                    Event.Add(new EventLog
                                    {
                                        OwnerId = note.UserId,
                                        TemplateName = "AddNote",

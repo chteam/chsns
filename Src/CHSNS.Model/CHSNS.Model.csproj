@@ -150,7 +150,7 @@
     <Compile Include="Enum\ThumbType.cs" />
     <Compile Include="Enum\VisitLogType.cs" />
     <Compile Include="Enum\VisitType.cs" />
-    <Compile Include="Event.cs">
+    <Compile Include="EventLog.cs">
     </Compile>
     <Compile Include="Event\EventPagePas.cs" />
     <Compile Include="FieldInformation.cs">

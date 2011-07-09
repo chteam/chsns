@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true"
-Inherits="System.Web.Mvc.ViewUserControl<Event>" %>
+Inherits="System.Web.Mvc.ViewUserControl<EventLog>" %>
 <% Hashtable e = ViewData.Model.Json.ToJObject(); %>
 
 <%=Html.UserPageLink(ViewData.Model.OwnerId,e["name"].ToString()) %>

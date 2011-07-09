@@ -108,7 +108,7 @@ namespace CHSNS.Service {
                 //              p.show = magicbox;
                 db.SaveChanges();
             }
-            Event.Add(new Event
+            Event.Add(new EventLog
             {
                 OwnerId = context.User.UserId,
                 TemplateName = "ProText",

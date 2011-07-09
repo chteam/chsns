@@ -20,7 +20,7 @@ namespace CHSNS.Service
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public PagedList<Event> GetFriendEvent(long userid, int page, int pageSize)
+        public PagedList<EventLog> GetFriendEvent(long userid, int page, int pageSize)
         {
             var ids = Friend.GetFriendsId(userid);
             using (var db = DbInstance)
@@ -49,9 +49,9 @@ namespace CHSNS.Service
                 db.SaveChanges();
             }
         }
-        public void Add(Event e)
+        public void Add(EventLog e)
         {
-            var et = CastTool.Cast<Event>(e);
+            var et = CastTool.Cast<EventLog>(e);
             using (var db = DbInstance)
             {
                 db.Event.Add(et);
@@ -62,7 +62,7 @@ namespace CHSNS.Service
         #region IEventService 成员
 
 
-        public PagedList<Event> GetEvent(long userid, int page, int pageSize)
+        public PagedList<EventLog> GetEvent(long userid, int page, int pageSize)
         {
             using (var db = DbInstance)
             {

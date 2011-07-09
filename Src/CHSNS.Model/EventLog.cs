@@ -2,7 +2,7 @@ namespace CHSNS.Models
 {
     using System;
 
-    public class Event
+    public class EventLog
     {
         public virtual long Id { get; set; }
 
