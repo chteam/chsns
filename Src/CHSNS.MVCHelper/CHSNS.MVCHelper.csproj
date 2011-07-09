@@ -88,7 +88,6 @@
     <Compile Include="Extension\Common\EnumerableExtensions.cs" />
     <Compile Include="Tools\EnumHelper.cs" />
     <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
-    <Compile Include="Extension\Html\ApplicationContext.cs" />
     <Compile Include="Extension\Html\ImageSpriteHelper.cs" />
     <Compile Include="Extension\Html\ScriptExtensions.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
@@ -99,16 +98,12 @@
     <Compile Include="Extension\Html\Include.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Extension\Common\StringHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Extension\Url\UrlHelperExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extension\Mvc\RedirectExt.cs" />
     <Compile Include="Result\XmlActionResult.cs" />
     <Compile Include="Result\XmlViewResult.cs" />
     <Compile Include="HostEnvironment.cs" />
-    <Compile Include="Extension\Mvc\EmptyActionResultExt.cs" />
     <Compile Include="Validator\ContainsCharacterAttribute.cs" />
     <Compile Include="Validator\ContainsCharacterValidator.cs" />
     <Compile Include="Validator\EqualsClientAttribute.cs" />

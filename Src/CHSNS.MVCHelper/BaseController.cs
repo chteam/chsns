@@ -66,5 +66,9 @@ namespace CHSNS.Controllers {
         {
             get { return Url.Action("Index", "Entry", new {url = "Index"}); }
         }
+        public ActionResult Empty()
+        {
+            return new EmptyResult();
+        }
     }
 }

@@ -1,18 +1,18 @@
-﻿using System.Web.Mvc;
+﻿namespace CHSNS.Result {
+    using System.Web.Mvc;
 
-namespace CHSNS {
-	public class XmlViewResult : ViewResult {
-		private readonly string viewName;
+    public class XmlViewResult : ViewResult {
+		private readonly string _viewName;
 
 		public XmlViewResult() : this("") { }
 
 		public XmlViewResult(string viewName) {
-			this.viewName = viewName;
+			_viewName = viewName;
 		}
 
 		public override void ExecuteResult(ControllerContext context) {
-			if (!string.IsNullOrEmpty(viewName))
-				ViewName = viewName;
+			if (!string.IsNullOrEmpty(_viewName))
+				ViewName = _viewName;
 
 			TempData = context.Controller.TempData;
 			ViewData = context.Controller.ViewData;
