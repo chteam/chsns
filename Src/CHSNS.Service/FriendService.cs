@@ -165,7 +165,7 @@ namespace CHSNS.Service
             return true;
         }
         [Import]
-        public EventService Event { get; set; }
+        public EventLogService EventLog { get; set; }
         [Import]
         public UserService UserInfo { get; set; }
 
@@ -181,7 +181,7 @@ namespace CHSNS.Service
             var b = Agree(operaterId, toId);
             string name = UserInfo.GetUserName(toId);
 
-Event.Add(new EventLog
+EventLog.Add(new EventLog
             {
                 OwnerId = toId,
                 ViewerId = operaterId,
