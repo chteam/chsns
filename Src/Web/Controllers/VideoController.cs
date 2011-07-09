@@ -4,9 +4,13 @@ using CHSNS.Models;
 
 
 namespace CHSNS.Controllers {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
 
     public partial class VideoController : BaseController
     {
+        [Import]
+        public VideoService Video { get; set; }
         [Authorize]
         [HttpGet]
         public virtual ActionResult Edit()
@@ -18,7 +22,7 @@ namespace CHSNS.Controllers {
         [HttpPost]
         public virtual ActionResult Edit(SuperNote video)
         {
-            Services.Video.Create(WebUser,video);
+            Video.Create(WebUser,video);
             Message = "提交成功";
             return RedirectToAction("List");
         }
@@ -29,13 +33,13 @@ namespace CHSNS.Controllers {
         public virtual ActionResult List(long? uid, int? p)
         {
             InitPage(ref p);
-            ViewData["list"] = Services.Video.List(uid,p.Value, 10,WebUser);
+            ViewData["list"] = Video.List(uid,p.Value, 10,WebUser);
             Title = "视频列表";
             return View();
         }
         public virtual ActionResult Del(long[] uid)
         {
-            Services.Video.Remove(WebUser,uid);
+            Video.Remove(WebUser,uid);
             return View();
         }
     }

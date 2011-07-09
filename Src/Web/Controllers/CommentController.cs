@@ -8,9 +8,15 @@ using CHSNS.Models;
 
 
 namespace CHSNS.Controllers {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
 
     public partial class CommentController : BaseController
     {
+        [Import]
+        public UserService UserInfo { get; set; }
+        [Import]
+        public CommentService Comment { get; set; }
         #region reply
         /// <summary>
         ///回复列表
@@ -20,7 +26,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Reply(long? userid)
         {
             if (!userid.HasValue) userid = WebUser.UserId;
-            var user = Services.UserInfo.GetUser(
+            var user = UserInfo.GetUser(
                 userid.Value,
                 c => new Profile{
                                              UserId = c.UserId,
@@ -29,13 +35,13 @@ namespace CHSNS.Controllers {
                                          });
             ViewData["NowPage"] = 1;
             ViewData["PageCount"] = 0;// user.Count;
-            ViewData["replylist"] = Services.Comment.GetReply(user.UserId, 1, 10);
+            ViewData["replylist"] = Comment.GetReply(user.UserId, 1, 10);
             Title = user.Name + "的留言本";
             return View(user);
         }
         public virtual ActionResult ReplyList(long userid, int p)
         {
-            var u = Services.Comment.GetReply(userid, p, 10);
+            var u = Comment.GetReply(userid, p, 10);
             return View("Comment/Item", u);
         }
         /// <summary>
@@ -43,22 +49,22 @@ namespace CHSNS.Controllers {
         /// </summary>
         /// <param name="replyerId">The replyer ID.</param>
         /// <param name="body"></param>
-        /// <param name="userID"></param>
+        /// <param name="userId"></param>
         /// <returns></returns>
         [Authorize]
-        public virtual ActionResult AddReply(long replyerId, string body, long userID)
+        public virtual ActionResult AddReply(long replyerId, string body, long userId)
         {
             using (var ts = new TransactionScope()) {
-                Reply r = new Reply { Body = body, UserId = userID };
+                var r = new Reply { Body = body, UserId = userId };
 
                 //UpdateModel(r, new[] { "Body", "UserId" });
                 var ownerId = r.UserId;
                 r.SenderId = WebUser.UserId;
                 r.AddTime = DateTime.Now;
-                r = Services.Comment.AddReply(r);
+                r = Comment.AddReply(r);
                 if (replyerId != ownerId) {
                     r.UserId = replyerId;
-                    Services.Comment.AddReply(r);
+                    Comment.AddReply(r);
                 }
                 r.UserId = ownerId;
                 var model = new List<CommentPas>{
@@ -89,7 +95,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult DeleteReply(long id)
         {
 
-            Services.Comment.DeleteReply(id, WebUser.UserId);
+            Comment.DeleteReply(id, WebUser.UserId);
 
             return new EmptyResult();
 
@@ -99,7 +105,7 @@ namespace CHSNS.Controllers {
         #region comment
         public virtual ActionResult List(long id, int p, CommentType type)
         {
-            var cl = Services.Comment.CommentList(id, CommentType.Note, p, WebContext.Site);
+            var cl = Comment.CommentList(id, CommentType.Note, p, WebContext.Site);
             
             return View("Comment/Item", cl);
         }
@@ -109,7 +115,7 @@ namespace CHSNS.Controllers {
         {
             // TODO:少删除的权限判断
 
-            Services.Comment.Delete(id, CommentType.Note);
+            Comment.Delete(id, CommentType.Note);
 
             return this.Empty();
         }
@@ -140,7 +146,7 @@ namespace CHSNS.Controllers {
                     }
                 }
             };
-            Services.Comment.Add(cmt, type);
+            Comment.Add(cmt, type);
             return View("Comment/Item", model);
         }
         #endregion

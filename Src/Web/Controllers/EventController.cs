@@ -8,6 +8,8 @@ using CHSNS.ViewModel;
 * Time: 22:39
 */
 namespace CHSNS.Controllers {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
 
     /// <summary>
     /// 事件的控制器
@@ -16,6 +18,10 @@ namespace CHSNS.Controllers {
     [Authorize]
     public partial class EventController : BaseController
     {
+        [Import]
+        public ViewService ViewLog { get; set; }
+        [Import]
+        public GatherService Gather{ get; set; }
         #region Action
 
         public virtual ActionResult Index()
@@ -23,9 +29,9 @@ namespace CHSNS.Controllers {
             Title = "事件";
 
             //     Events = DBExt.Event.GetFriendEvent(CHUser.UserId, 1, 20),
-            ViewBag.LastViews = Services.View.ViewList(0, 3, WebUser.UserId, 6);
-            ViewBag.NewViews = Services.View.ViewList(2, 3, WebUser.UserId, 6);
-            ViewBag.Page = Services.Gather.EventGather(WebUser.UserId);
+            ViewBag.LastViews = ViewLog.ViewList(0, 3, WebUser.UserId, 6);
+            ViewBag.NewViews = ViewLog.ViewList(2, 3, WebUser.UserId, 6);
+            ViewBag.Page = Gather.EventGather(WebUser.UserId);
             return View();
         }
 

@@ -11,6 +11,8 @@ namespace CHSNS.Service
     [Export]
     public class EventService : BaseService
     {
+        [Import]
+        public FriendService Friend { get; set; }
         /// <summary>
         /// 50好友事件
         /// </summary>
@@ -20,7 +22,7 @@ namespace CHSNS.Service
         /// <returns></returns>
         public PagedList<Event> GetFriendEvent(long userid, int page, int pageSize)
         {
-            var ids = ServicesFactory.Friend.GetFriendsId(userid);
+            var ids = Friend.GetFriendsId(userid);
             using (var db = DbInstance)
             {
                 var ret = (from e in db.Event

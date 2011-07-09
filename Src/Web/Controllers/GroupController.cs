@@ -6,10 +6,14 @@ using CHSNS.Models;
 
 
 namespace CHSNS.Controllers {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
 
     [Authorize]
     public partial class GroupController : BaseController
     {
+        [Import]
+        public GroupService Group { get; set; }
         #region 主页
         public virtual ActionResult Index(long id, int? p)
         {
@@ -17,10 +21,10 @@ namespace CHSNS.Controllers {
 
             #region 群信息和用户
 
-            var g = Services.Group.Get(id);
+            var g = Group.Get(id);
             if (g == null)
                 return HttpNotFound("group not found");
-            var u = Services.Group.GetGroupUser(id, WebUser.UserId);
+            var u = Group.GetGroupUser(id, WebUser.UserId);
             if (u == null)
                 return HttpNotFound("group user not found");
             ViewData["guser"] = u;
@@ -31,7 +35,7 @@ namespace CHSNS.Controllers {
             #region 权限计算
 
             int ret = g.ShowLevel;
-            if (u != null && u.Status != (byte) GroupUserStatus.Wait)
+            if (u.Status != (byte) GroupUserStatus.Wait)
             {
                 ret = 0;
             }
@@ -48,7 +52,7 @@ namespace CHSNS.Controllers {
             }
             else
             {
-                if (u != null) userlevel = u.Status;
+                userlevel = u.Status;
             }
             ViewData["right"] = userlevel;
             ViewData["showlevel"] = ret;
@@ -57,21 +61,25 @@ namespace CHSNS.Controllers {
 
             #region 统计
 
-            ViewData["MemberList"] = Services.View.ViewList(6, 2, g.Id, 6);
-            ViewData["ViewList"] = Services.View.ViewList(1, 6, g.Id, 6);
+            ViewData["MemberList"] = ViewLog.ViewList(6, 2, g.Id, 6);
+            ViewData["ViewList"] = ViewLog.ViewList(1, 6, g.Id, 6);
 
-            ViewData["Applycount"] = Services.Group.WaitJoinCount(id);
+            ViewData["Applycount"] = Group.WaitJoinCount(id);
 
-            var adminList = Services.Group.GetAdmins(id);
+            var adminList = Group.GetAdmins(id);
             ViewData["adminlist"] = adminList;
 
             #endregion
 
-            var posts = Services.Note.GetNotes(id, NoteType.GroupPost, p.Value, 20);
+            var posts = Note.GetNotes(id, NoteType.GroupPost, p.Value, 20);
             ViewData["posts"] = posts;
             return View(g);
         }
+        [Import]
+        public ViewService ViewLog { get; set; }
 
+        [Import]
+        public NoteService Note{ get; set; }
         #endregion
 
         public virtual ActionResult List(long? uid, int? p)
@@ -79,7 +87,7 @@ namespace CHSNS.Controllers {
             InitPage(ref p);
             uid = uid ?? WebUser.UserId;
             Title = "群列表";
-            return View(Services.Group.GetList(uid.Value, p.Value, 10));
+            return View(Group.GetList(uid.Value, p.Value, 10));
         }
 
         #region Create
@@ -94,7 +102,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Create(string name)
         {
             Message = "创建成功";
-            Services.Group.Add(name, WebUser.UserId);
+            Group.Add(name, WebUser.UserId);
             return this.RedirectToReferrer();
         }
         #endregion
@@ -104,7 +112,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Manage(long id)
         {
             //TODO:限制访问人员
-            return ManageResult(Services.Group.Get(id));
+            return ManageResult(Group.Get(id));
         }
 
         [NonAction]
@@ -126,7 +134,7 @@ namespace CHSNS.Controllers {
         public virtual ActionResult Manage(long id, Group group)
         {
             //TODO:限制访问人员
-            Services.Group.Update(id, group);
+            Group.Update(id, group);
             return RedirectToAction("Manage", new{id});
         }
 
@@ -136,17 +144,18 @@ namespace CHSNS.Controllers {
         public virtual ActionResult ManageUser(long id)
         {
             Title = "用户管理";
-            ViewData["list"] = Services.Group.GetGroupUser(id);
+            ViewData["list"] = Group.GetGroupUser(id);
             
             return View();
         }
         #endregion
-
+        [Import]
+        public CommentService Comment { get; set; }
         #region 帖子
         public virtual ActionResult Details(long id)
         {
-            var note = Services.Note.Details(id, NoteType.GroupPost);
-            var cl = Services.Comment.CommentList(id, CommentType.Note, 1, WebContext.Site);
+            var note = Note.Details(id, NoteType.GroupPost);
+            var cl = Comment.CommentList(id, CommentType.Note, 1, WebContext.Site);
             ViewData["commentlist"] = cl;
             Title = note.Title;
             return View(note);
@@ -164,9 +173,9 @@ namespace CHSNS.Controllers {
                 note.UserId = WebContext.User.UserId;
                 if (id.HasValue) {
                     note.Id = id.Value;
-                    Services.Note.Edit(note);
+                    Note.Edit(note);
                 } else {
-                    Services.Note.Add(note,WebUser);
+                    Note.Add(note,WebUser);
                 }
                 ts.Complete();
                 return this.RedirectToReferrer();

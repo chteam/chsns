@@ -1,15 +1,9 @@
-﻿using System;
-using CHSNS.DataContext;
+﻿using CHSNS.DataContext;
 
 namespace CHSNS.Service
 {
     public abstract class BaseService
     {
-        private ServicesFactory _servicesFactory;
-        public virtual ServicesFactory ServicesFactory
-        {
-            get { return _servicesFactory ?? (_servicesFactory = new ServicesFactory()); }
-        }
 
         private DataContextFactory _dataContextFactory;
         public DataContextFactory DataContextFactory

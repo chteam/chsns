@@ -8,6 +8,9 @@ using Image=System.Drawing.Image;
 using CHSNS.Models;
 
 namespace CHSNS.Controllers {
+    using System.ComponentModel.Composition;
+    using CHSNS.Service;
+
     //[Helper(typeof(ChHelper))]
     [Authorize]
     public partial class UploadController : BaseController
@@ -53,7 +56,7 @@ namespace CHSNS.Controllers {
                         );
             }
             //SetStarLevel(CHUser.UserId); //更新
-            Services.Photo.Add(new Photo
+            Photo.Add(new Photo
                                 {
                                     Title = "头像" + DateTime.Now.ToString("yyyyMMddhhmm"),
                                     UserId = WebUser.UserId,
@@ -61,12 +64,17 @@ namespace CHSNS.Controllers {
                                     Domain = WebContext.Site.Upload.Domain,
                                     Url = photourl
                                 });
-            Services.UserInfo.ChangeFace(WebUser.UserId, System.IO.Path.Combine(WebContext.Site.Upload.Domain, photourl));
+            UserInfo.ChangeFace(WebUser.UserId, System.IO.Path.Combine(WebContext.Site.Upload.Domain, photourl));
             //更新头像地址
             //将新头像地址存入相册
             return
                 Content(WebContext.Path.ThumbUrl(photourl, ThumbType.Big, WebContext));
         }
+
+        [Import]
+        public PhotoService Photo { get; set; }
+        [Import]
+        public UserService UserInfo { get; set; }
 
     }
 }
