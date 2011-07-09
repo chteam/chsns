@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.DataContext", "CHSNS.DataContext\CHSNS.DataContext.csproj", "{88890A92-9787-4650-999E-C7137326E4BD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{263402D1-228B-42A1-BA49-309325AC652B}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 10
@@ -51,9 +53,11 @@ Global
 		SccProjectName6 = Web
 		SccLocalPath6 = Web
 		SccProjectUniqueName7 = CHSNS.Core.Tests\\CHSNS.Core.Tests.csproj
+		SccProjectTopLevelParentUniqueName7 = CHSNS3.x.sln
 		SccProjectName7 = CHSNS.Core.Tests
 		SccLocalPath7 = CHSNS.Core.Tests
 		SccProjectUniqueName8 = CHSNS.Service.Test\\CHSNS.Service.Test.csproj
+		SccProjectTopLevelParentUniqueName8 = CHSNS3.x.sln
 		SccProjectName8 = CHSNS.Service.Test
 		SccLocalPath8 = CHSNS.Service.Test
 		SccProjectUniqueName9 = CHSNS.DataContext\\CHSNS.DataContext.csproj
@@ -213,5 +217,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{54126DEC-D878-40B2-9E49-57E8C04F0D21} = {263402D1-228B-42A1-BA49-309325AC652B}
+		{E12E56FC-7D2A-4675-962B-2142B7D5AAED} = {263402D1-228B-42A1-BA49-309325AC652B}
 	EndGlobalSection
 EndGlobal

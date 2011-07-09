@@ -31,7 +31,7 @@ namespace CHSNS.Service
 
                 if (r != null)
                 {
-                    ep = new EventPagePas { NewReply = null, RssSource = null, ViewCount = r.ViewCount };
+                    ep = new EventPagePas { ViewCount = r.ViewCount };
                     //ep.FriendRequestCount = r.FriendRequestCount;
                     //	ep.ReplyCount = r.ReplyCount;
                 }
