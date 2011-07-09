@@ -3,7 +3,9 @@ using System.Web.Mvc;
 
 namespace CHSNS.Helper
 {
-	static public class Include {
+    using CHSNS.Core;
+
+    static public class Include {
         //static public string Script(this HtmlHelper h, String fn) {
         //    var chsite = CH.Context.Site;
         //    if (!fn.StartsWith("/"))
@@ -14,8 +16,10 @@ namespace CHSNS.Helper
         //        string.Format("<script type=\"text/javascript\" src=\"{0}\"></script>"
         //                      , fn);
         //}
-		static public string CSSLink(this HtmlHelper h, String fn) {
-            var chsite = CH.Context.Site;
+		static public string CSSLink(this HtmlHelper html, String fn)
+		{
+
+		    var chsite = new WebContext(html.ViewContext.HttpContext).Site;
 			return string.Format(
 				"<link href=\"{0}Style/{1}/{2}.css\" rel=\"stylesheet\" type=\"text/css\" />"
                 , chsite.BaseConfig.Path
