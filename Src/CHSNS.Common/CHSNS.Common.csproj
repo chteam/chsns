@@ -121,17 +121,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Email\" />
-    <Folder Include="File\" />
-    <Folder Include="Image\" />
-    <Folder Include="LocalImplement\" />
-    <Folder Include="Media\" />
-    <Folder Include="PathBuilder\" />
-    <Folder Include="Path\" />
-    <Folder Include="Serializer\" />
-    <Folder Include="Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
