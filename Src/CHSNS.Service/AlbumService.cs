@@ -63,14 +63,14 @@ namespace CHSNS.Service {
         public Album GetCountChange(long id, int num) {
             using (var db = DbInstance)
             {
-                var a = db.Album.FirstOrDefault(c => c.Id.Equals(id));
+                var album = db.Album.FirstOrDefault(c => c.Id.Equals(id));
                 if (num != 0)
                 {
-                    a.Count += num;
-                    if (a.Count < 0) a.Count = 0;
+                    album.Count += num;
+                    if (album.Count < 0) album.Count = 0;
                     db.SaveChanges();
                 }
-                return a;
+                return album;
             }
         }
     }
