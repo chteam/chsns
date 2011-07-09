@@ -1,17 +1,17 @@
-﻿
-using CHSNS.Common.Serializer;
-
-namespace CHSNS.Service
+﻿namespace CHSNS.Service
 {
-
     using System;
-    using CHSNS.Config;
-    using CHSNS.Models;
-    using System.Web.Security;
-    using System.Web;
-    using System.Linq;
+    using System.Collections.Generic;
     using System.ComponentModel.Composition;
-        [Export]
+    using System.Linq;
+    using System.Web;
+    using System.Web.Security;
+    using CHSNS.Common.Serializer;
+    using CHSNS.Config;
+    using CHSNS.DataContext;
+    using CHSNS.Models;
+
+    [Export]
     public class AccountService : BaseService
     {
         #region LogOut
@@ -24,25 +24,26 @@ namespace CHSNS.Service
             context.Cookies.Clear();
             FormsAuthentication.SignOut();
         }
+
         #endregion
 
         #region LogOn
 
         public int Login(Account account, Boolean isAutoLogin, Boolean isPasswordMd5, IContext context)
         {
-            var userName = account.UserName;
-            var password = account.Password;
+            string userName = account.UserName;
+            string password = account.Password;
             if (string.IsNullOrEmpty(userName.Trim())) throw new Exception("用户名不能为空");
             password = isPasswordMd5 ? password.Trim().ToMd5() : password.Trim();
-            var identity = GeneralIdentity(userName, password, context.Site.Score.LogOn);
-            if (identity == null) return -1;//无账号
+            WebIdentity identity = GeneralIdentity(userName, password, context.Site.Score.LogOn);
+            if (identity == null) return -1; //无账号
             Logout(context);
-            var expires = isAutoLogin ? DateTime.Now.AddMinutes(60) : DateTime.Now.AddYears(1);
-            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, identity.Name, DateTime.Now, expires, true, JsonAdapter.Serialize(identity));
+            DateTime expires = isAutoLogin ? DateTime.Now.AddMinutes(60) : DateTime.Now.AddYears(1);
+            var authTicket = new FormsAuthenticationTicket(1, identity.Name, DateTime.Now, expires, true,
+                                                           JsonAdapter.Serialize(identity));
             string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
 
-            HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-            authCookie.Expires = expires;
+            var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket) {Expires = expires};
             context.HttpContext.Response.Cookies.Add(authCookie);
 
             if (!isAutoLogin) return identity.Status;
@@ -51,20 +52,20 @@ namespace CHSNS.Service
 
         internal WebIdentity GeneralIdentity(String userName, String password, int logOnScore)
         {
-            using (var db = DbInstance)
+            using (IDbEntities db = DbInstance)
             {
                 long userId;
                 long.TryParse(userName.Trim(), out userId);
-                var userid = (from a in db.Account
-                              where (a.UserName == userName || a.UserId == userId)
-                                    && a.Password == password
-                              select a.UserId).FirstOrDefault();
+                long userid = (from a in db.Account
+                               where (a.UserName == userName || a.UserId == userId)
+                                     && a.Password == password
+                               select a.UserId).FirstOrDefault();
                 if (userid <= 1000) return null;
-                var profile = db.Profile.FirstOrDefault(p => p.UserId == userid);
-                var roles = (from ur in db.UserRole
-                             join ro in db.Roles on ur.RoleId equals ro.Id
-                             where ur.UserId == profile.UserId
-                             select ro.RoleName).ToList();
+                Profile profile = db.Profile.FirstOrDefault(p => p.UserId == userid);
+                List<string> roles = (from ur in db.UserRole
+                                      join ro in db.Roles on ur.RoleId equals ro.Id
+                                      where ur.UserId == profile.UserId
+                                      select ro.RoleName).ToList();
                 //var retint = profile.Status;
                 // if (retint <= 0) return null;
                 if (profile.LoginTime.Date != DateTime.Now.Date)
@@ -75,19 +76,18 @@ namespace CHSNS.Service
                     db.SaveChanges();
                 }
                 return new WebIdentity
-                {
-                    Name = profile.Name,
-                    UserId = profile.UserId,
-                    // Email= profile.
-                    Roles = roles,
-                    Status = profile.Status
-                    //                    AuthenticationType = AccountType.Default.ToString()
+                           {
+                               Name = profile.Name,
+                               UserId = profile.UserId,
+                               // Email= profile.
+                               Roles = roles,
+                               Status = profile.Status
+                               //                    AuthenticationType = AccountType.Default.ToString()
 
-                    //Status = retint,
-                    //Applications = profile.Applications
-                };
+                               //Status = retint,
+                               //Applications = profile.Applications
+                           };
             }
-
         }
 
         #endregion
@@ -96,74 +96,77 @@ namespace CHSNS.Service
 
         public bool Create(RegisterModel account, SiteConfig site)
         {
-            var canuse = IsUsernameCanUse(account.UserName);
+            bool canuse = IsUsernameCanUse(account.UserName);
             return canuse && Create(account.ToAccount(), account.Nickname, site.Score.Init);
         }
+
         internal bool Create(Account account, string name, int initScore)
         {
             account.Password = account.Password.ToMd5();
             account.Code = DateTime.Now.Ticks;
-            using (var db = DbInstance)
+            using (IDbEntities db = DbInstance)
             {
                 db.Account.Add(account);
                 db.SaveChanges();
                 if (account.UserId < 999) return false;
                 db.Profile.Add(new Profile
-                {
-                    UserId = account.UserId,
-                    Name = name,
-                    ShowScore = initScore,
-                    Score = initScore,
-                    DelScore = 0,
-                    Status = (int)RoleType.General,
-                    RegTime = DateTime.Now,
-                    LoginTime = DateTime.Now,
-                    // MagicBox = ""
-                });
+                                   {
+                                       UserId = account.UserId,
+                                       Name = name,
+                                       ShowScore = initScore,
+                                       Score = initScore,
+                                       DelScore = 0,
+                                       Status = (int) RoleType.General,
+                                       RegTime = DateTime.Now,
+                                       LoginTime = DateTime.Now,
+                                       // MagicBox = ""
+                                   });
                 db.BasicInformation.Add(
                     new BasicInformation
-                    {
-                        UserId = account.UserId,
-                        Name = name
-                    });
+                        {
+                            UserId = account.UserId,
+                            Name = name
+                        });
                 db.SaveChanges();
                 return true;
             }
         }
 
-
         #endregion
 
         #region Username is Used
+
         public bool IsUsernameCanUse(string username)
         {
             bool isNotExists;
-            using (var db = DbInstance)
+            using (IDbEntities db = DbInstance)
             {
                 isNotExists = db.Account.Where(c => c.UserName == username.Trim()).Count() == 0;
             }
             return username.Trim().Length > 0 && isNotExists;
         }
+
         #endregion
 
         #region Init
+
         public void InitCreater()
         {
-            using (var db = DbInstance)
+            using (IDbEntities db = DbInstance)
             {
-                var p = db.Profile.FirstOrDefault();
+                Profile p = db.Profile.FirstOrDefault();
                 if (p == null) return;
 
-                var userrole = new UserRole()
-                {
-                    RoleId = 1,
-                    UserId = p.UserId
-                };
+                var userrole = new UserRole
+                                   {
+                                       RoleId = 1,
+                                       UserId = p.UserId
+                                   };
                 db.UserRole.Add(userrole);
                 db.SaveChanges();
             }
         }
-        #endregion
 
+        #endregion
     }
 }
