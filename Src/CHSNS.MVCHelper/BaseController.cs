@@ -5,6 +5,7 @@ namespace CHSNS.Controllers {
     using System.ComponentModel.Composition.Hosting;
     using System.Reflection;
     using System.Web.Mvc;
+    using CHSNS.Core;
     using Interface;
 
     abstract public class BaseController : Controller
