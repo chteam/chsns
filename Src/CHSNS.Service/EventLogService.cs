@@ -9,7 +9,7 @@ namespace CHSNS.Service
     /// </summary>    
 
     [Export]
-    public class EventService : BaseService
+    public class EventLogService : BaseService
     {
         [Import]
         public FriendService Friend { get; set; }

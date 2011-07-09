@@ -98,7 +98,7 @@ namespace CHSNS.Service {
         }
 
         [Import]
-        private EventService Event { get; set; }
+        private EventLogService EventLog { get; set; }
         #region profile
         public void SaveText(long uid, string text, IContext context) {
             using (var db = DbInstance)
@@ -108,7 +108,7 @@ namespace CHSNS.Service {
                 //              p.show = magicbox;
                 db.SaveChanges();
             }
-            Event.Add(new EventLog
+            EventLog.Add(new EventLog
             {
                 OwnerId = context.User.UserId,
                 TemplateName = "ProText",
