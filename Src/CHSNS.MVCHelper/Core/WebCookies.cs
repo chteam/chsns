@@ -1,7 +1,6 @@
-using System.Linq;
-
-namespace CHSNS
+namespace CHSNS.Core
 {
+    using System.Linq;
     using System;
     using System.Web;
     using CHSNS.Encrypt;
@@ -103,7 +102,7 @@ namespace CHSNS
                 return new long[0];
             }
         }
-        const string COOKIEDESKEY="45;6kjZF";
+        const string Cookiedeskey="45;6kjZF";
         ///<summary>获取或设置应用程序顺序
         ///</summary>
         public string Apps
@@ -111,12 +110,12 @@ namespace CHSNS
             get
             {
                 if (GetCookieItem("apps").Contains("%"))
-                    return HttpUtility.UrlDecode(GetCookieItem("userm")).DESDecrypt(COOKIEDESKEY);
-                return GetCookieItem("apps").DESDecrypt(COOKIEDESKEY);
+                    return HttpUtility.UrlDecode(GetCookieItem("userm")).DESDecrypt(Cookiedeskey);
+                return GetCookieItem("apps").DESDecrypt(Cookiedeskey);
             }
             set
             {
-                SetCookieItem("apps", value.DESEncrypt(COOKIEDESKEY));
+                SetCookieItem("apps", value.DESEncrypt(Cookiedeskey));
             }
         }
         /// <summary>
@@ -126,11 +125,11 @@ namespace CHSNS
         {
             get
             {
-                return GetCookieItem("userm").Contains("%") ? HttpUtility.UrlDecode(GetCookieItem("userm")).DESDecrypt(COOKIEDESKEY) : GetCookieItem("userm").DESDecrypt(COOKIEDESKEY);
+                return GetCookieItem("userm").Contains("%") ? HttpUtility.UrlDecode(GetCookieItem("userm")).DESDecrypt(Cookiedeskey) : GetCookieItem("userm").DESDecrypt(Cookiedeskey);
             }
             set
             {
-                SetCookieItem("userm", value.DESEncrypt(COOKIEDESKEY));
+                SetCookieItem("userm", value.DESEncrypt(Cookiedeskey));
             }
         }
         /// <summary>

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Web;
 using System.Linq;
 namespace CHSNS {
+    using System.ComponentModel.Composition;
     using Interface;
 
     /// <summary>
     /// ÔÚÏß
     /// </summary>
+    [Export]
     public class Online : IOnline {
         
         private const string OnlineRemovetime = "useronline.time";
