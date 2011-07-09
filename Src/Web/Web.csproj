@@ -49,16 +49,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Samples.ImageOptimizationFramework">
+      <HintPath>..\packages\AspNetSprites-Core.0.4\lib\Microsoft.Web.Samples.ImageOptimizationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Samples.SpriteHelper">
+      <HintPath>..\packages\AspNetSprites-MvcAndRazorHelper.0.4\lib\Microsoft.Web.Samples.SpriteHelper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
@@ -70,10 +69,10 @@
     </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Sprites\README.txt" />
     <Content Include="Config\usereditmenu.xml" />
     <Content Include="Content\images\buttons.gif" />
     <Content Include="Content\images\toolbar.gif" />
@@ -81,9 +80,9 @@
     <Content Include="Global.asax" />
     <Content Include="Images\XPButtonNoText_160x22.png" />
     <Content Include="Scripts\Framework.js" />
-    <Content Include="Scripts\jquery-1.6.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.1.js" />
-    <Content Include="Scripts\jquery-1.6.1.min.js" />
+    <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.2.js" />
+    <Content Include="Scripts\jquery-1.6.2.min.js" />
     <Content Include="Scripts\jquery-vsdoc.js" />
     <Content Include="Scripts\jquery.cleditor.js" />
     <Content Include="Scripts\jquery.cleditor.min.js" />
@@ -428,7 +427,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Sprites\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
