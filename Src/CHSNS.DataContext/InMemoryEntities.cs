@@ -54,7 +54,7 @@ namespace CHSNS.DataContext
         public IDbSet<ContactInformation> ContactInformation { get; set; }
         public IDbSet<Wiki> Wikis { get; set; }
         public IDbSet<WikiVersion> WikiVersions { get; set; }
-        public IDbSet<Event> Event { get; set; }
+        public IDbSet<EventLog> Event { get; set; }
         public IDbSet<FieldInformation> FieldInformation { get; set; }
         public IDbSet<Friend> Friends { get; set; }
         public IDbSet<Group> Group { get; set; }
