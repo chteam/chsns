@@ -18,7 +18,7 @@ namespace CHSNS
                 var data = md5.ComputeHash(Encoding.UTF8.GetBytes(str.Trim()));
                 return data.ToHexUpperString();
             }
-            //FormsAuthentication.HashPasswordForStoringInConfigFile(str, "MD5");
+
         }
     }
 }

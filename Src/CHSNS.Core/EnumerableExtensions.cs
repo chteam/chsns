@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace CHSNS
+{
+    using System.Collections.Generic;
 
-namespace CHSNS {
-	public static class EnumerableExtensions {
-		public static IEnumerable<T> ToNotNull<T>(this IEnumerable<T> ie)
-		{
-			return ie ?? new List<T>();
-		}
-
-	}
+    public static class EnumerableExtensions
+    {
+        public static IEnumerable<T> ToNotNull<T>(this IEnumerable<T> items)
+        {
+            return items ?? new List<T>();
+        }
+    }
 }
