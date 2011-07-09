@@ -88,13 +88,11 @@
     <Compile Include="Extension\Common\EnumerableExtensions.cs" />
     <Compile Include="Tools\EnumHelper.cs" />
     <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
-    <Compile Include="Extension\Html\ImageSpriteHelper.cs" />
     <Compile Include="Extension\Html\ScriptExtensions.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />
     <Compile Include="Extension\Html\HtmlHelperExt.cs" />
-    <Compile Include="Extension\Html\HtmlRenderExt.cs" />
     <Compile Include="Extension\Html\Include.cs">
       <SubType>Code</SubType>
     </Compile>

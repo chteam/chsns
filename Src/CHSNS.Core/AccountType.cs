@@ -4,6 +4,5 @@
     {
         Default = 0,
         WindowsLive = 1,
-
     }
 }
