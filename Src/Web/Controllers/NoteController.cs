@@ -44,7 +44,7 @@ namespace CHSNS.Controllers {
         [Import]
         public CommentService Comment { get; set; }
         [Import]
-        public ViewService ViewLog { get; set; }
+        public ViewLogService ViewLogLog { get; set; }
         public virtual ActionResult Details(long id)
         {
             var note = Note.Details(id, NoteType.Note);
@@ -53,7 +53,7 @@ namespace CHSNS.Controllers {
             Title = note.Title;
             ViewData["NowPage"] = 1;
             ViewData["PageCount"] = note.CommentCount;
-            ViewLog.Update(VisitLogType.Note, id, WebUser);
+            ViewLogLog.Update(VisitLogType.Note, id, WebUser);
             return View(note);
         }
         
