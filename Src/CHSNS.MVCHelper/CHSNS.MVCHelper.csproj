@@ -85,20 +85,20 @@
     <Compile Include="Core\WebContext.cs" />
     <Compile Include="Core\WebCookies.cs" />
     <Compile Include="Core\Online.cs" />
-    <Compile Include="Extension\Common\EnumerableExtensions.cs" />
+    <Compile Include="Extension\EnumerableExtensions.cs" />
     <Compile Include="Tools\EnumHelper.cs" />
-    <Compile Include="Extension\Html\DropDownListRenderExt.cs" />
-    <Compile Include="Extension\Html\ScriptExtensions.cs" />
+    <Compile Include="Extension\DropDownListRenderExt.cs" />
+    <Compile Include="Extension\ScriptExtensions.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Filter\LoginedFilter.cs" />
     <Compile Include="Filter\OnlineFilter.cs" />
-    <Compile Include="Extension\Html\HtmlHelperExt.cs" />
-    <Compile Include="Extension\Html\Include.cs">
+    <Compile Include="Extension\HtmlHelperExt.cs" />
+    <Compile Include="Extension\Include.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Extension\Url\UrlHelperExt.cs" />
+    <Compile Include="Extension\UrlHelperExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extension\Mvc\RedirectExt.cs" />
+    <Compile Include="Extension\RedirectExt.cs" />
     <Compile Include="Result\XmlActionResult.cs" />
     <Compile Include="Result\XmlViewResult.cs" />
     <Compile Include="HostEnvironment.cs" />
@@ -152,7 +152,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Extension\Common\" />
+    <Folder Include="Extension\Html\" />
+    <Folder Include="Extension\Mvc\" />
+    <Folder Include="Extension\Url\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
