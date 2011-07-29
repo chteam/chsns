@@ -48,6 +48,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Samples.ImageOptimizationFramework">
       <HintPath>..\packages\AspNetSprites-Core.0.4\lib\Microsoft.Web.Samples.ImageOptimizationFramework.dll</HintPath>
@@ -55,8 +56,13 @@
     <Reference Include="Microsoft.Web.Samples.SpriteHelper">
       <HintPath>..\packages\AspNetSprites-MvcAndRazorHelper.0.4\lib\Microsoft.Web.Samples.SpriteHelper.dll</HintPath>
     </Reference>
+    <Reference Include="MvcMiniProfiler">
+      <HintPath>..\packages\MiniProfiler.1.4\lib\MvcMiniProfiler.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
@@ -69,8 +75,10 @@
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.sdf" />
     <Content Include="App_Sprites\README.txt" />
     <Content Include="Config\usereditmenu.xml" />
     <Content Include="Content\images\buttons.gif" />
@@ -411,6 +419,10 @@
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj">
       <Project>{F7CF4538-9101-4328-81D0-AF1B2A8B314A}</Project>
       <Name>CHSNS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CHSNS.DataContext\CHSNS.DataContext.csproj">
+      <Project>{88890A92-9787-4650-999E-C7137326E4BD}</Project>
+      <Name>CHSNS.DataContext</Name>
     </ProjectReference>
     <ProjectReference Include="..\CHSNS.Model\CHSNS.Model.csproj">
       <Project>{A13FEE3F-28F9-4A9C-B774-7C958124D949}</Project>

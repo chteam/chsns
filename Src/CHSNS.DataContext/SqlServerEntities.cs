@@ -6,7 +6,10 @@ namespace CHSNS.DataContext
 {
     public class SqlServerEntities : DbContext, IDbEntities,IDbContext,IDisposable
     {
-        public SqlServerEntities():base(){}
+        public SqlServerEntities():base()
+        {
+            
+        }
         public SqlServerEntities(string connectionStringOrName)
             : base(connectionStringOrName){}
         public IDbSet<Account> Account { get; set; }
