@@ -3,6 +3,7 @@ using System.Web.Mvc;
 
 namespace CHSNS.Helper
 {
+    using System.Web;
     using CHSNS.Core;
 
     static public class Include {
@@ -16,16 +17,17 @@ namespace CHSNS.Helper
         //        string.Format("<script type=\"text/javascript\" src=\"{0}\"></script>"
         //                      , fn);
         //}
-		static public string CSSLink(this HtmlHelper html, String fn)
+		static public IHtmlString CSSLink(this HtmlHelper html, String fn)
 		{
 
 		    var chsite = new WebContext(html.ViewContext.HttpContext).Site;
-			return string.Format(
-				"<link href=\"{0}Style/{1}/{2}.css\" rel=\"stylesheet\" type=\"text/css\" />"
+			var link= string.Format(
+				"<link href=\"{0}Content/{1}/{2}.css\" rel=\"stylesheet\" type=\"text/css\" />"
                 , chsite.BaseConfig.Path
                 , chsite.BaseConfig.Style
 				, fn.TrimEnd(".css")
 				);
+            return new MvcHtmlString(link);
 		}
 	}
 }
