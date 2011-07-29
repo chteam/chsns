@@ -4,6 +4,7 @@ namespace CHSNS.Controllers {
     using System.ComponentModel.Composition;
     using System.ComponentModel.Composition.Hosting;
     using System.Reflection;
+    using System.Web;
     using System.Web.Mvc;
     using CHSNS.Core;
     using Interface;
@@ -12,7 +13,7 @@ namespace CHSNS.Controllers {
     {
         protected BaseController()
         {
-            var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
+            var catalog = new DirectoryCatalog(HttpRuntime.BinDirectory,"CHSNS.*.dll");
             var container = new CompositionContainer(catalog);
             var batch = new CompositionBatch();
             batch.AddPart(this);

@@ -8,11 +8,32 @@
     using System.Web.Security;
     using CHSNS.Common.LocalImplement;
     using CHSNS.Common.Serializer;
+    using CHSNS.DataContext;
     using CHSNS.Validator;
 
     [CompilerGlobalScope]
     public class Global : HttpApplication
     {
+        public Global()
+        {
+            BeginRequest+=Global_BeginRequest;
+            EndRequest+=GlobalEndRequest;
+        }
+
+        private void GlobalEndRequest(object sender, EventArgs e)
+        {
+            if(Context.Request.IsLocal)
+            {
+                MvcMiniProfiler.MiniProfiler.Start();
+            }
+        }
+
+        private void Global_BeginRequest(object sender, EventArgs e)
+        {
+            
+            MvcMiniProfiler.MiniProfiler.Start();
+        }
+
         #region Register Routes and GlobalFilters
 
         public static void RegisterRoutes(RouteCollection routes)
@@ -52,6 +73,11 @@
             IOFactory.Register(new LocalStoreFile(rootPath), new LocalFolder(rootPath));
             ConfigSerializer.Register(new ConfigSerializer(rootPath));
             OnlineProvider.Register(new Online());
+            
+            using (var db = new SqlServerEntities())
+            {
+                db.Database.CreateIfNotExists();
+            }
         }
 
         #region Authenticate
@@ -78,5 +104,6 @@
         }
 
         #endregion
+        
     }
 }
