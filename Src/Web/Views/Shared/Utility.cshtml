@@ -1,9 +1,8 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
-<div class="untityright link">
-    <%=Html.RouteLink("首页", "index",null)%>
-    <%if (Page.User.Identity.IsAuthenticated)
-      {%>
-    <%=Html.ActionLink("事件", "Index", "Event")%>
+﻿<div class="untityright link">
+    @Html.RouteLink("首页", "index",null)
+    @if (User.Identity.IsAuthenticated)
+      {
+    @*<%=Html.ActionLink("事件", "Index", "Event")%>
     <%=Page.User.Identity == null ?
         Html.ActionLink("好友", "Index", "Friend") :
         Html.ActionLink("好友", "Request", "Friend")%>
@@ -12,13 +11,15 @@
     <%=Html.UserEditLink("BaseInfo", "设置")%>
     <%=Html.ActionLink("密码修改", "ChangePassword", "Account")%>
     <%=Html.ActionLink("站内信", "Inbox", "Message")%>
-    <%=Html.ActionLink("注销", MVC.Account.LogOff())%>
-    <%}
+    <%=Html.ActionLink("注销", MVC.Account.LogOff())%>*@
+    }
       else
-      { 
-    %>
-    <%=Html.ActionLink("注册",MVC.Account.Register()) %>
-    <%=Html.ActionLink("登录",MVC.Account.LogOn()) %>
-    <%} %>
+    {
+@*
+        <%=
+        Html.ActionLink("注册", MVC.Account.Register())% >
+        <%=
+        Html.ActionLink("登录", MVC.Account.LogOn())% >*@
+    }
     <a href="http://www.eice.com.cn/help.ashx" target="_blank">帮助</a>
 </div>
