@@ -22,7 +22,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <TargetFrameworkProfile />
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -346,10 +346,10 @@
     <Content Include="Style\Readme.txt" />
     <Content Include="Views\Readme.txt" />
     <Content Include="Views\Shared\Error.aspx" />
-    <Content Include="Views\Shared\Footer.ascx" />
+    <None Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\LoginControl.ascx" />
     <Content Include="Views\Shared\MyMenu.ascx" />
-    <Content Include="Views\Shared\Utility.ascx" />
+    <None Include="Views\Shared\Utility.cshtml" />
     <Content Include="Views\Shared\ViewList.ascx" />
     <Content Include="Views\User\Admin\ManageUser.ascx" />
     <Content Include="Views\User\BaseInfo.aspx" />
@@ -459,12 +459,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>6377</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:6377/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
