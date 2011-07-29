@@ -24,17 +24,9 @@
         /// <returns></returns>
         public virtual ActionResult Index(string url)
         {
-            Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
-            KeyValuePair<Wiki, WikiVersion> t = Entry.Get(url);
-            ViewBag.Entry = t.Key;
-            if (ViewBag.Entry == null) return Wait();
-            WikiVersion version = t.Value;
-            if (version == null) return Wait();
-            ViewBag.Version = version;
-            ViewBag.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
-            Title = t.Value.Title;
-            return View();
+            var version = Entry.GetVersion(url);
+            return View(version);
         }
 
         [NonAction]
@@ -85,8 +77,8 @@
                 //修改
                 Tuple<Wiki, WikiVersion> d = Entry.Get(id.Value);
                 Wiki entry = d.Item1;
-                if ((entry.Status == (int) EntryType.Common || HasManageRight() ||
-                     new[] {0, WebUser.UserId}.Contains(entry.CreaterId)))
+                if ((entry.Status == (int) WikiStatus.Common || HasManageRight() ||
+                     new[] {0, WebUser.UserId}.Contains(entry.CreatorId)))
                 {
                     ViewData["exists"] = true;
                     ViewData["entry"] = entry;

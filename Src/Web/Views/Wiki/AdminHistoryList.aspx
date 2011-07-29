@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" 
 AutoEventWireup="true"
 Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="CHSNS.Models.Entry" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -36,8 +37,8 @@ Inherits="System.Web.Mvc.ViewPage" %>
             </td>
             <td class="ln25">
                             <%=e.Status%>
-                <%=(e.Status != (int)EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.Id }) : MvcHtmlString.Empty%>
-                <%=(e.Status != (int)EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }) : MvcHtmlString.Empty%>
+                <%=(e.Status != (int)WikiVersionStatus.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.Id }) : MvcHtmlString.Empty%>
+                <%=(e.Status != (int)WikiVersionStatus.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }) : MvcHtmlString.Empty%>
             </td>
             <td class="ln25 f14">
             <%=e.AddTime.ToString("yyyy-MM-dd hh:mm:ss") %>版本&nbsp;&nbsp;
