@@ -44,9 +44,9 @@
             //routes.IgnoreRoute("{resource}.txt");
             routes.IgnoreRoute("{resource}.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute("indexf", "", new {controller = "Entry", action = "Index", Url = "Index"});
-            routes.MapRoute("index", "{Url}" + ext, new {controller = "Entry", action = "Index", Url = "Index"});
-            routes.MapRoute("entry", "w/{Url}" + ext, new {controller = "Entry", action = "Index", Url = "Index"});
+            routes.MapRoute("indexf", "", new {controller = "Wiki", action = "Index", Url = "Index"});
+            routes.MapRoute("index", "{Url}" + ext, new { controller = "Wiki", action = "Index", Url = "Index" });
+            routes.MapRoute("entry", "w/{Url}" + ext, new { controller = "Wiki", action = "Index", Url = "Index" });
             routes.MapRoute("post", "Post/{y}/{m}/{d}/{id}" + ext, new {controller = "Group", action = "Details"});
             routes.MapRoute("note", "Note/{y}/{m}/{d}/{id}" + ext, new {controller = "Note", action = "Details"});
             routes.MapRoute("url", "{controller}/{action}" + ext,
