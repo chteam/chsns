@@ -5,6 +5,8 @@ namespace CHSNS.Models
 
     public partial class BasicInformation
     {
+        [Key]
+        [DatabaseGenerated( DatabaseGeneratedOption.None)]
         public virtual long UserId { get; set; }
 
         [Display(Name = "ÐÕÃû", Description = "222", GroupName = "GroupName", ShortName = "short name")]

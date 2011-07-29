@@ -4,6 +4,8 @@ namespace CHSNS.Models
 
     public partial class Account{
     
+
+        [Key]
         public virtual long UserId{get;set;}
         [RegularExpression(@"[\w\W]{4,32}")]
         [Required(ErrorMessage = "用户名必须填写")]

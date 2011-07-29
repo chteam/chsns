@@ -7,28 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-
 namespace CHSNS.Models
 {
-    public partial class FieldInformation{
-    
-        public virtual long UserId{get;set;}
-    
-        public virtual long Field{get;set;}
-    
-        public virtual Nullable<short> Year{get;set;}
-    
-        public virtual Nullable<long> MiniField{get;set;}
-    
-        public virtual Nullable<long> QinShi{get;set;}
-    
-        public virtual Nullable<long> Field1{get;set;}
-    
-        public virtual Nullable<long> Field2{get;set;}
+    using System.ComponentModel.DataAnnotations;
+
+    public class FieldInformation
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public virtual long UserId { get; set; }
+
+        public virtual long Field { get; set; }
+
+        public virtual short Year { get; set; }
+
+        public virtual long MiniField { get; set; }
+
+        public virtual long QinShi { get; set; }
+
+        public virtual long Field1 { get; set; }
+
+        public virtual long Field2 { get; set; }
     }
 }
