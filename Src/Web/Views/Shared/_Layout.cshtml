@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>
+        @ViewData["Page_Title"]</title>
+    @Html.Script("~/scripts/jquery.js")
+    @Html.Script("~/scripts/framework.js")
+    @Html.CSSLink("Master")
+    @RenderSection("head")
+</head>
+<body>
+    <div id="container">
+        <div id="intro">
+            <div id="publicmenu" class="mymenu">
+                @{ Html.RenderPartial("Utility"); }
+            </div>
+            <h1><span>
+                @*<%= CH.Context.Site.BaseConfig.Title %>*@</span></h1>
+        </div>
+        <div id="content">
+            @{ Html.RenderPartial("Message_Box"); }
+            @RenderBody()
+        </div>
+        <div id="linkList">
+              @{ Html.RenderPartial("MyMenu"); }
+        </div>
+        @{ Html.RenderPartial("Footer"); }
+    </div>
+    @RenderSection("footer")
+    <script type="text/javascript">
+        chmenu("#publicmenu .menu");
+    </script>
+</body></html>

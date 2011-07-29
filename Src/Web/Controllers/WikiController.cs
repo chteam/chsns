@@ -1,20 +1,23 @@
-﻿using CHSNS.Common.Serializer;
-
-namespace CHSNS.Controllers
+﻿namespace CHSNS.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.Composition;
     using System.Linq;
     using System.Web.Mvc;
+    using CHSNS.Common.Serializer;
+    using CHSNS.Controllers;
     using CHSNS.Model;
     using CHSNS.Models;
     using CHSNS.Service;
 
-    public partial class EntryController : BaseController
+    public class WikiController : BaseController
     {
         [Import]
-        public EntryService     Entry { get; set; }
+        public EntryService Entry { get; set; }
+
         #region 前台部分
+
         /// <summary>
         /// 显示当前词条
         /// </summary>
@@ -23,10 +26,10 @@ namespace CHSNS.Controllers
         {
             Title = "页面不存在";
             if (string.IsNullOrEmpty(url)) return Wait();
-            var t = Entry.Get(url);
+            KeyValuePair<Wiki, WikiVersion> t = Entry.Get(url);
             ViewBag.Entry = t.Key;
             if (ViewBag.Entry == null) return Wait();
-            var version = t.Value;
+            WikiVersion version = t.Value;
             if (version == null) return Wait();
             ViewBag.Version = version;
             ViewBag.Ext = JsonAdapter.Deserialize<EntryExt>(version.Ext);
@@ -35,7 +38,8 @@ namespace CHSNS.Controllers
         }
 
         [NonAction]
-        public ActionResult Wait() {
+        public ActionResult Wait()
+        {
             return View(null, "site");
         }
 
@@ -52,10 +56,10 @@ namespace CHSNS.Controllers
 
         public virtual ActionResult History(long versionId)
         {
-            var t = Entry.GetFromVersion(versionId);
+            KeyValuePair<Wiki, WikiVersion> t = Entry.GetFromVersion(versionId);
             if (t.Key == null || t.Value == null) return View("wait", "site");
-            var entry = t.Key;
-            var version = t.Value;
+            Wiki entry = t.Key;
+            WikiVersion version = t.Value;
             ViewData["version"] = version;
             ViewData["entry"] = entry;
             ViewData["ext"] = JsonAdapter.Deserialize<EntryExt>(version.Ext);
@@ -63,10 +67,10 @@ namespace CHSNS.Controllers
             return View();
         }
 
-        
         #endregion
 
         #region 管理员后台
+
         /// <summary>
         /// 编辑与创建词条
         /// </summary>
@@ -79,17 +83,18 @@ namespace CHSNS.Controllers
             if (id != null)
             {
                 //修改
-                var d = Entry.Get(id.Value);
-                var entry = d.Item1;
-                if ((entry.Status == (int)EntryType.Common || HasManageRight() || new[] { 0, WebUser.UserId }.Contains(entry.CreaterId)))
+                Tuple<Wiki, WikiVersion> d = Entry.Get(id.Value);
+                Wiki entry = d.Item1;
+                if ((entry.Status == (int) EntryType.Common || HasManageRight() ||
+                     new[] {0, WebUser.UserId}.Contains(entry.CreaterId)))
                 {
                     ViewData["exists"] = true;
                     ViewData["entry"] = entry;
                     ViewData["id"] = entry.Id;
-                    var ev = d.Item2;
+                    WikiVersion ev = d.Item2;
                     if (ev == null) ev = new WikiVersion();
-                    ViewData["entryversion"] = ev;//.Url;
-                    var ee = JsonAdapter.Deserialize<EntryExt>(ev.Ext) ?? new EntryExt();
+                    ViewData["entryversion"] = ev; //.Url;
+                    EntryExt ee = JsonAdapter.Deserialize<EntryExt>(ev.Ext) ?? new EntryExt();
                     ViewData["tags"] = string.Join(",", ee.Tags.ToNotNull().ToArray());
                     Title = "编辑词条:" + entry.Url;
                 }
@@ -117,12 +122,13 @@ namespace CHSNS.Controllers
         [HttpPost]
         [AdminFilter]
         [ValidateInput(false)]
-        public virtual ActionResult Edit(long? id, Wiki wiki, WikiVersion entryversion, string tags,bool isNew)
+        public virtual ActionResult Edit(long? id, Wiki wiki, WikiVersion entryversion, string tags, bool isNew)
         {
-            var b = Entry.AddVersion(id, wiki, entryversion, tags, WebUser,isNew);
+            bool b = Entry.AddVersion(id, wiki, entryversion, tags, WebUser, isNew);
             if (!b) throw new ApplicationException("标题已存在");
-            return RedirectToAction("Index", "Entry", new { url = wiki.Url });
+            return RedirectToAction("Index", "Entry", new {url = wiki.Url});
         }
+
         [AdminFilter]
         public virtual ActionResult AdminHistoryList(string url)
         {
@@ -139,7 +145,7 @@ namespace CHSNS.Controllers
         [AdminFilter]
         public virtual ActionResult NewList()
         {
-            var li = Entry.List(1, 10);
+            PagedList<EntryPas> li = Entry.List(1, 10);
             Title = "词条列表";
             return View(li);
         }
@@ -152,6 +158,7 @@ namespace CHSNS.Controllers
         {
             return View();
         }
+
         /// <summary>
         /// 通过审核
         /// </summary>
@@ -167,6 +174,7 @@ namespace CHSNS.Controllers
             Entry.PassWaitVersion(id);
             return this.RedirectToReferrer();
         }
+
         /// <summary>
         /// 锁定
         /// </summary>
@@ -181,6 +189,7 @@ namespace CHSNS.Controllers
             Entry.LockCommonVersion(id);
             return this.RedirectToReferrer();
         }
+
         /// <summary>
         /// 通过版本id.删除词条
         /// </summary>
@@ -192,19 +201,22 @@ namespace CHSNS.Controllers
             Entry.DeleteByVersionId(id, WebUser.UserId);
             return this.RedirectToReferrer();
         }
+
         [AdminFilter]
         public virtual ActionResult DeleteVersion(long id)
         {
             Entry.DeleteVersion(id, WebUser.UserId);
             return this.RedirectToReferrer();
         }
+
         #endregion
-         
+
         #region Ajax
+
         public virtual ActionResult Has(string title)
         {
-            var exists = Entry.HasTitle(title);
-            return Json(exists); 
+            bool exists = Entry.HasTitle(title);
+            return Json(exists);
         }
 
         #endregion
