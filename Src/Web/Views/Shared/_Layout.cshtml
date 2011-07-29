@@ -1,10 +1,12 @@
+@using MvcMiniProfiler
 <!DOCTYPE html>
 <html>
 <head><title>
-        @ViewData["Page_Title"]</title>
-    @Html.Script("~/scripts/jquery.js")
+    @ViewData["Page_Title"]</title>
+    @Html.Script("~/scripts/jquery-1.6.2.min.js")
     @Html.Script("~/scripts/framework.js")
     @Html.CSSLink("Master")
+    @MiniProfiler.RenderIncludes()
     @RenderSection("head",false)
 </head>
 <body>
@@ -27,6 +29,6 @@
     </div>
     @RenderSection("footer", false)
     <script type="text/javascript">
-        chmenu("#publicmenu .menu");
+       // chmenu("#publicmenu .menu");
     </script>
 </body></html>

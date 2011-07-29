@@ -3,6 +3,7 @@
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Web;
     using System.Web.Mvc;
@@ -12,28 +13,29 @@
     using CHSNS.Common.Serializer;
     using CHSNS.DataContext;
     using CHSNS.Validator;
+    using MvcMiniProfiler.MVCHelpers;
 
     [CompilerGlobalScope]
     public class Global : HttpApplication
     {
         public Global()
         {
-            BeginRequest+=Global_BeginRequest;
+            BeginRequest+=GlobalBeginRequest;
             EndRequest+=GlobalEndRequest;
         }
 
         private void GlobalEndRequest(object sender, EventArgs e)
         {
-            if(Context.Request.IsLocal)
+                //MiniProfiler.Stop(discardResults: !IsAnAdmin());
+                MvcMiniProfiler.MiniProfiler.Stop();
+        }
+
+        private void GlobalBeginRequest(object sender, EventArgs e)
+        {
+            if (Context.Request.IsLocal)
             {
                 MvcMiniProfiler.MiniProfiler.Start();
             }
-        }
-
-        private void Global_BeginRequest(object sender, EventArgs e)
-        {
-            
-            MvcMiniProfiler.MiniProfiler.Start();
         }
 
         #region Register Routes and GlobalFilters
@@ -50,8 +52,13 @@
             routes.MapRoute("entry", "w/{Url}" + ext, new { controller = "Wiki", action = "Index", Url = "Index" });
             routes.MapRoute("post", "Post/{y}/{m}/{d}/{id}" + ext, new {controller = "Group", action = "Details"});
             routes.MapRoute("note", "Note/{y}/{m}/{d}/{id}" + ext, new {controller = "Note", action = "Details"});
+            routes.MapRoute("Default",
+                            "{controller}/{action}/{id}",
+                            new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                );
             routes.MapRoute("url", "{controller}/{action}" + ext,
                             new {controller = "Home"});
+            
         }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -75,14 +82,22 @@
             IOFactory.Register(new LocalStoreFile(rootPath), new LocalFolder(rootPath));
             ConfigSerializer.Register(new ConfigSerializer(rootPath));
             OnlineProvider.Register(new Online());
-            Database.DefaultConnectionFactory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0");
+            var factory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0");
 
+            Database.DefaultConnectionFactory =
+                new MvcMiniProfiler.Data.ProfiledDbConnectionFactory(factory);
             Database.SetInitializer(new ContextInitializer());
             using (var db = new SqlServerEntities())
             {
                 //db.Database.(true);
                 db.Database.CreateIfNotExists();
                 db.Database.Initialize(false);
+            }
+            var copy = ViewEngines.Engines.ToList();
+            ViewEngines.Engines.Clear();
+            foreach (var item in copy)
+            {
+                ViewEngines.Engines.Add(new ProfilingViewEngine(item));
             }
         }
 
