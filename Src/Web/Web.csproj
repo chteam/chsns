@@ -183,7 +183,7 @@
     <Content Include="Views\Wiki\Edit.aspx" />
     <Content Include="Views\Wiki\History.aspx" />
     <Content Include="Views\Wiki\HistoryList.aspx" />
-    <Content Include="Views\Wiki\Index.aspx" />
+    <None Include="Views\Wiki\Index.cshtml" />
     <Content Include="Views\Wiki\ManageToc.ascx" />
     <Content Include="Views\Wiki\NewList.aspx" />
     <Content Include="Views\Wiki\Wait.aspx" />

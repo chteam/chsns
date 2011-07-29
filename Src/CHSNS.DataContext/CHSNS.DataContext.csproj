@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContextFactory.cs" />
+    <Compile Include="ContextInitializer.cs" />
     <Compile Include="EntityFramework\DbSetExtensions.cs" />
     <Compile Include="InMemoryDbSet.cs" />
     <Compile Include="InMemoryEntities.cs" />

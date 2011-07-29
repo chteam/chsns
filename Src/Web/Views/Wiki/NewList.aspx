@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<PagedList<EntryPas>>" %>
+<%@ Import Namespace="CHSNS.Models.Entry" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
 </asp:Content>
@@ -60,8 +61,8 @@
                 <%=e.Status%>
                 <%if (new[] { RoleType.Creater, RoleType.Editor }.Contains((RoleType)CH.Context.User.Status))
                   {%>
-                <%=(e.Status != (int)EntryVersionType.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.Id }).ToHtmlString() : ""%>
-                <%=(e.Status != (int)EntryVersionType.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }).ToHtmlString() : ""%>
+                <%=(e.Status != (int)WikiVersionStatus.Common) ? Html.ActionLink("通过审核", "Pass", new { id = e.Id }).ToHtmlString() : ""%>
+                <%=(e.Status != (int)WikiVersionStatus.Lock) ? Html.ActionLink("锁定", "Lock", new { id = e.Id }).ToHtmlString() : ""%>
                 <%} %>
                 <%=Html.ActionLink("删除词条及全版本", "Delete",new { id=e.Id})%>
             </td>

@@ -1,14 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
-<%@ Import Namespace="CHSNS.Wiki" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadPlaceHolder" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <%
-        var entry = View.Entry;
-        var version = View.Version;
-        var ext = View.Ext ?? new EntryExt();
-    %>
+﻿@using CHSNS.Models
+@using CHSNS.Wiki
+@model WikiVersion
     <div id="entryContent">
         <div>
             <div style="float: right">
@@ -19,15 +11,15 @@
                 <%=Html.ActionLink("新建", "Edit", "Entry")%>
                 <%} %>
             </div>
-            <%if (entry.IsDisplayTitle)
-              {%>
+            @if (Model.Wiki.IsTitleDisplay)
+              {
             <h2>
-                <%=version.Title%></h2>
-            <%
-                }%></div>
+                @Model.Title</h2>
+            
+                }</div>
         <div class="body">
             <p>
-                <%=WikiEngine.Explain( version.Description)%></p>
+                @WikiEngine.Explain( Model.Description)</p>
         </div>
     </div>
     <div id="entryTools">
@@ -43,6 +35,3 @@
         </ul>
         <%} %>
     </div>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="FootPlaceHolder" runat="server">
-</asp:Content>

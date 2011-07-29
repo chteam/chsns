@@ -5,7 +5,7 @@
     @Html.Script("~/scripts/jquery.js")
     @Html.Script("~/scripts/framework.js")
     @Html.CSSLink("Master")
-    @RenderSection("head")
+    @RenderSection("head",false)
 </head>
 <body>
     <div id="container">
@@ -25,7 +25,7 @@
         </div>
         @{ Html.RenderPartial("Footer"); }
     </div>
-    @RenderSection("footer")
+    @RenderSection("footer", false)
     <script type="text/javascript">
         chmenu("#publicmenu .menu");
     </script>
