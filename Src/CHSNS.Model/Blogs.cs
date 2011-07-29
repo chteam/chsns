@@ -4,6 +4,7 @@ namespace CHSNS.Models
 
     public class Blogs
     {
+        public virtual int Id { get; set; }
         public virtual long UserId { get; set; }
 
         public virtual DateTime CreateTime { get; set; }

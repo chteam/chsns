@@ -78,7 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database1.sdf" />
     <Content Include="App_Sprites\README.txt" />
     <Content Include="Config\usereditmenu.xml" />
     <Content Include="Content\images\buttons.gif" />
@@ -438,6 +437,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>

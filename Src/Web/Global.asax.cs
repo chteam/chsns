@@ -1,6 +1,7 @@
 ﻿namespace CHSNS.Web
 {
     using System;
+    using System.Data.Entity.Infrastructure;
     using System.Runtime.CompilerServices;
     using System.Web;
     using System.Web.Mvc;
@@ -73,7 +74,8 @@
             IOFactory.Register(new LocalStoreFile(rootPath), new LocalFolder(rootPath));
             ConfigSerializer.Register(new ConfigSerializer(rootPath));
             OnlineProvider.Register(new Online());
-            
+            System.Data.Entity.Database.DefaultConnectionFactory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0");
+            ;
             using (var db = new SqlServerEntities())
             {
                 db.Database.CreateIfNotExists();
