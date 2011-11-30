@@ -1,9 +1,6 @@
 ﻿namespace CHSNS.Web
 {
     using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Web;
     using System.Web.Mvc;
@@ -13,30 +10,12 @@
     using CHSNS.Common.Serializer;
     using CHSNS.DataContext;
     using CHSNS.Validator;
-    using MvcMiniProfiler.MVCHelpers;
 
     [CompilerGlobalScope]
     public class Global : HttpApplication
     {
-        public Global()
-        {
-            BeginRequest+=GlobalBeginRequest;
-            EndRequest+=GlobalEndRequest;
-        }
-
-        private void GlobalEndRequest(object sender, EventArgs e)
-        {
-                //MiniProfiler.Stop(discardResults: !IsAnAdmin());
-                MvcMiniProfiler.MiniProfiler.Stop();
-        }
-
-        private void GlobalBeginRequest(object sender, EventArgs e)
-        {
-            if (Context.Request.IsLocal)
-            {
-                MvcMiniProfiler.MiniProfiler.Start();
-            }
-        }
+ 
+ 
 
         #region Register Routes and GlobalFilters
 
@@ -81,24 +60,7 @@
             string rootPath = Server.MapPath("~/");
             IOFactory.Register(new LocalStoreFile(rootPath), new LocalFolder(rootPath));
             ConfigSerializer.Register(new ConfigSerializer(rootPath));
-            OnlineProvider.Register(new Online());
-            var factory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0");
-
-            Database.DefaultConnectionFactory =
-                new MvcMiniProfiler.Data.ProfiledDbConnectionFactory(factory);
-            Database.SetInitializer(new ContextInitializer());
-            using (var db = new SqlServerEntities())
-            {
-                //db.Database.(true);
-                db.Database.CreateIfNotExists();
-                db.Database.Initialize(false);
-            }
-            var copy = ViewEngines.Engines.ToList();
-            ViewEngines.Engines.Clear();
-            foreach (var item in copy)
-            {
-                ViewEngines.Engines.Add(new ProfilingViewEngine(item));
-            }
+          
         }
 
         #region Authenticate
