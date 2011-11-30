@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[GroupUser] ADD CONSTRAINT [PK_GroupUser] PRIMARY KEY CLUSTERED  ([UserID], [GroupID]) ON [PRIMARY]
-
-

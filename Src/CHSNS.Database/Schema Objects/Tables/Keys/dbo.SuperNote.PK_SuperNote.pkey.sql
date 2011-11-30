@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[SuperNote] ADD CONSTRAINT [PK_SuperNote] PRIMARY KEY CLUSTERED  ([ID]) ON [PRIMARY]
-
-

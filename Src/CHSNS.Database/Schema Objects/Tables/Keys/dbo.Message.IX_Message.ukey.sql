@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[Message] ADD CONSTRAINT [IX_Message] UNIQUE NONCLUSTERED  ([ID]) ON [PRIMARY]
-
-

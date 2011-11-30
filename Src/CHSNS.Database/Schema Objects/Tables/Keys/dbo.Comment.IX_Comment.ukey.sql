@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[Comment] ADD CONSTRAINT [IX_Comment] UNIQUE NONCLUSTERED  ([ID]) ON [PRIMARY]
-
-

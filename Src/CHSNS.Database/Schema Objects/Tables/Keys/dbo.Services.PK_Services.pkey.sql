@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[Services] ADD CONSTRAINT [PK_Services] PRIMARY KEY CLUSTERED  ([ID]) ON [PRIMARY]
-
-
