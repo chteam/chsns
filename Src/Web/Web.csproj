@@ -56,10 +56,6 @@
     <Reference Include="Microsoft.Web.Samples.SpriteHelper">
       <HintPath>..\packages\AspNetSprites-MvcAndRazorHelper.0.4\lib\Microsoft.Web.Samples.SpriteHelper.dll</HintPath>
     </Reference>
-    <Reference Include="MvcMiniProfiler, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MiniProfiler.1.7\lib\MvcMiniProfiler.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -87,9 +83,9 @@
     <Content Include="Global.asax" />
     <Content Include="Images\XPButtonNoText_160x22.png" />
     <Content Include="Scripts\Framework.js" />
-    <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.2.js" />
-    <Content Include="Scripts\jquery-1.6.2.min.js" />
+    <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-vsdoc.js" />
     <Content Include="Scripts\jquery.cleditor.js" />
     <Content Include="Scripts\jquery.cleditor.min.js" />
