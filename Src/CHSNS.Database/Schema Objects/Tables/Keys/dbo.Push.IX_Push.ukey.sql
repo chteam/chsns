@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[Push] ADD CONSTRAINT [IX_Push] UNIQUE NONCLUSTERED  ([LogID], [UserID]) ON [PRIMARY]
-
-

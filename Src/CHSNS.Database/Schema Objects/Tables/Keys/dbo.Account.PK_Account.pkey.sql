@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[Account] ADD CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED  ([UserID]) ON [PRIMARY]
-
-
