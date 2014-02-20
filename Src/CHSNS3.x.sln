@@ -1,6 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD1EA637-32E1-41AE-9850-217FBB801868}"
+	ProjectSection(SolutionItems) = preProject
+		CHSNS3.x.vsmdi = CHSNS3.x.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{263402D1-228B-42A1-BA49-309325AC652B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core", "CHSNS.Core\CHSNS.Core.csproj", "{F7CF4538-9101-4328-81D0-AF1B2A8B314A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Common", "CHSNS.Common\CHSNS.Common.csproj", "{9BD39C5B-5BFB-48DE-A131-3AF2D19C29FA}"
@@ -17,16 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Core.Tests", "CHSNS.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Service.Test", "CHSNS.Service.Test\CHSNS.Service.Test.csproj", "{E12E56FC-7D2A-4675-962B-2142B7D5AAED}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD1EA637-32E1-41AE-9850-217FBB801868}"
-	ProjectSection(SolutionItems) = preProject
-		CHSNS3.x.vsmdi = CHSNS3.x.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.DataContext", "CHSNS.DataContext\CHSNS.DataContext.csproj", "{88890A92-9787-4650-999E-C7137326E4BD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{263402D1-228B-42A1-BA49-309325AC652B}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -63,9 +65,6 @@ Global
 		SccProjectUniqueName9 = CHSNS.DataContext\\CHSNS.DataContext.csproj
 		SccProjectName9 = CHSNS.DataContext
 		SccLocalPath9 = CHSNS.DataContext
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = CHSNS3.x.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -221,5 +220,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{54126DEC-D878-40B2-9E49-57E8C04F0D21} = {263402D1-228B-42A1-BA49-309325AC652B}
 		{E12E56FC-7D2A-4675-962B-2142B7D5AAED} = {263402D1-228B-42A1-BA49-309325AC652B}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CHSNS3.x.vsmdi
 	EndGlobalSection
 EndGlobal
