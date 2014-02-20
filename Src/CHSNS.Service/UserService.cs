@@ -137,9 +137,12 @@ namespace CHSNS.Service {
         public void ChangeFace(long userId, string url) {
             using (var db = DbInstance)
             {
-                var p = db.Profile.Where(c => c.UserId == userId).FirstOrDefault();
-                p.Face = url;
-                db.SaveChanges();
+                var p = db.Profile.FirstOrDefault(c => c.UserId == userId);
+                if (p != null)
+                {
+                    p.Face = url;
+                    db.SaveChanges();
+                }
             }
         }
     }
