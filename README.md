@@ -6,7 +6,7 @@ CHSNS# is a SNS web Application
 
 CHSNS#是成幻小组开发的一款SNS网站应用
 
-** Lasted News**
+**Lasted News**
 
 CHSNS# 1.30 Alpha http://sns.codeplex.com/Release/ProjectReleases.aspx#ReleaseFiles
 
