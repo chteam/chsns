@@ -15,8 +15,10 @@ CHSNS# Update to ASP.NET MVC Rc1
 **About CHTeam**
 
 If you have good idea,or suggest you can email me.
+
 Email:chsword@126.com
-Develop by:CHTeam|成幻小组
+
+Develop by:CHTeam，成幻小组
 -----------------------------------------------------------------------
 有建议意见可以发邮件给我
 Email/Skype : chsword@126.com
