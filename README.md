@@ -19,8 +19,9 @@ If you have good idea,or suggest you can email me.
 Email:chsword@126.com
 
 Develop by:CHTeam，成幻小组
+
 -----------------------------------------------------------------------
-有建议意见可以发邮件给我
+
 Email/Skype : chsword@126.com
 程序开发:[成幻小组]
  
