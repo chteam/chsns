@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>C:\Users\ZouJian\.nuget\packages\system.componentmodel.primitives\4.1.0\ref\netstandard1.0\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
