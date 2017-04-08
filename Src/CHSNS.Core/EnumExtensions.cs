@@ -19,15 +19,16 @@ namespace CHSNS {
 
         static public string ToDescription(this Enum e)
         {
-            Type type = e.GetType();
-            MemberInfo[] memInfo = type.GetMember(e.ToString());
-            if (memInfo.Length > 0)
-            {
-                object[] attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-                if (attrs.Length > 0)
-                    return ((DescriptionAttribute)attrs[0]).Description;
-            }
-            return e.ToString();
+            throw new NotImplementedException();
+            //Type type = e.GetType();
+            //MemberInfo[] memInfo = type.GetMember(e.ToString());
+            //if (memInfo.Length > 0)
+            //{
+            //    object[] attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            //    if (attrs.Length > 0)
+            //        return ((DescriptionAttribute)attrs[0]).Description;
+            //}
+            //return e.ToString();
 
         }
 

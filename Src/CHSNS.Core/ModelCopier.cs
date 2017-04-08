@@ -31,36 +31,38 @@
         /// <param name="exceptProperties">排除属性的列表</param>
         public static void CopyModel(object from, object to, params string[] exceptProperties)
         {
-            if (from == null || to == null)
-            {
-                return;
-            }
-            if (exceptProperties == null) exceptProperties = new string[] { };
-            PropertyDescriptorCollection fromProperties = TypeDescriptor.GetProperties(from);
-            PropertyDescriptorCollection toProperties = TypeDescriptor.GetProperties(to);
+            throw new NotImplementedException();
+            //TODO AutoMapper
+            //if (from == null || to == null)
+            //{
+            //    return;
+            //}
+            //if (exceptProperties == null) exceptProperties = new string[] { };
+            //PropertyDescriptorCollection fromProperties = TypeDescriptor.GetProperties(from);
+            //PropertyDescriptorCollection toProperties = TypeDescriptor.GetProperties(to);
 
-            foreach (PropertyDescriptor fromProperty in fromProperties)
-            {
-                if (exceptProperties.Contains(fromProperty.Name)) continue;
+            //foreach (PropertyDescriptor fromProperty in fromProperties)
+            //{
+            //    if (exceptProperties.Contains(fromProperty.Name)) continue;
 
-                PropertyDescriptor toProperty = toProperties.Find(fromProperty.Name, true /* ignoreCase */);
-                if (toProperty != null && !toProperty.IsReadOnly)
-                {
+            //    PropertyDescriptor toProperty = toProperties.Find(fromProperty.Name, true /* ignoreCase */);
+            //    if (toProperty != null && !toProperty.IsReadOnly)
+            //    {
 
-                    bool isDirectlyAssignable = toProperty.PropertyType.IsAssignableFrom(fromProperty.PropertyType);
+            //        bool isDirectlyAssignable = toProperty.PropertyType.IsAssignableFrom(fromProperty.PropertyType);
 
-                    bool liftedValueType = (isDirectlyAssignable) ? false : (Nullable.GetUnderlyingType(fromProperty.PropertyType) == toProperty.PropertyType);
+            //        bool liftedValueType = (isDirectlyAssignable) ? false : (Nullable.GetUnderlyingType(fromProperty.PropertyType) == toProperty.PropertyType);
 
-                    if (isDirectlyAssignable || liftedValueType)
-                    {
-                        object fromValue = fromProperty.GetValue(from);
-                        if (isDirectlyAssignable || (fromValue != null && liftedValueType))
-                        {
-                            toProperty.SetValue(to, fromValue);
-                        }
-                    }
-                }
-            }
+            //        if (isDirectlyAssignable || liftedValueType)
+            //        {
+            //            object fromValue = fromProperty.GetValue(from);
+            //            if (isDirectlyAssignable || (fromValue != null && liftedValueType))
+            //            {
+            //                toProperty.SetValue(to, fromValue);
+            //            }
+            //        }
+            //    }
+            //}
         }
 
 

@@ -1,8 +1,0 @@
-C:\Chsword\Chsword\bin\Release\System.Core.dll
-C:\Chsword\Chsword\obj\Release\ResolveAssemblyReference.cache
-C:\Chsword\Chsword\bin\Release\CHSNS.Core.dll
-C:\Chsword\Chsword\obj\Release\CHSNS.Core.dll
-C:\Chsword\CHSNS.Core\bin\Release\CHSNS.Core.dll
-C:\Chsword\CHSNS.Core\bin\Release\System.Core.dll
-C:\Chsword\CHSNS.Core\obj\Release\ResolveAssemblyReference.cache
-C:\Chsword\CHSNS.Core\obj\Release\CHSNS.Core.dll

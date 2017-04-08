@@ -24,10 +24,11 @@ namespace CHSNS.Encrypt
         /// <returns>加密 后的 字符 串</returns>
         public static string DESEncrypt(this string originalValue, string key, string iv)
         {
+            
             //将key和IV处理成8个字符
             key = (key + Replacecryptorkey).Substring(0, 8);
             iv = (iv + Replacecryptorkey).Substring(0, 8);
-            using (var sa = new DESCryptoServiceProvider())
+            using (var sa = TripleDES.Create())
             {
                 sa.Key = key.ToUTF8Bytes(); 
                 sa.IV = iv.ToUTF8Bytes();
@@ -68,8 +69,7 @@ namespace CHSNS.Encrypt
             ////将key和IV处理成8个字符
             var keyBytes = Encoding.UTF8.GetBytes((key + Replacecryptorkey).Substring(0, 8));
             var ivBytes = Encoding.UTF8.GetBytes((iv + Replacecryptorkey).Substring(0, 8));
-            using (var sa =
-                new DESCryptoServiceProvider())
+            using (var sa =TripleDES.Create())
             {
                 sa.Key = keyBytes;
                 sa.IV = ivBytes;
