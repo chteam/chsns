@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.WebTools", "CHSNS.Web
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Services", "CHSNS.Services\CHSNS.Services.csproj", "{01AD77D4-6955-4CD2-89B0-C857336A3271}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.WebUI", "CHSNS.WebUI\CHSNS.WebUI.csproj", "{81AFAFDD-0497-477E-B0E6-A37ADF97BFA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{01AD77D4-6955-4CD2-89B0-C857336A3271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01AD77D4-6955-4CD2-89B0-C857336A3271}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01AD77D4-6955-4CD2-89B0-C857336A3271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81AFAFDD-0497-477E-B0E6-A37ADF97BFA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81AFAFDD-0497-477E-B0E6-A37ADF97BFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81AFAFDD-0497-477E-B0E6-A37ADF97BFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81AFAFDD-0497-477E-B0E6-A37ADF97BFA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
