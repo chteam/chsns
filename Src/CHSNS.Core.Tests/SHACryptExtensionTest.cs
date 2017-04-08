@@ -18,17 +18,7 @@ namespace CHSNS.Core.Tests
 
         private const string SOURCESTRING = @"asdfjl;f,[e]=-43320590uifahklsfd5+789+-*/-*/fsdafkp\//.,joi28{}|_+(*():>?<";
 
-        /// <summary>
-        ///ToSHA1 的测试
-        ///</summary>
-        [TestMethod]
-        public void ToSHA1() {
-
-            const string expected = "05EAE9582A1F950D404B3E61E3AE6C4E16E35D37"; 
-            string actual = SOURCESTRING.ToSHA1();
-            Assert.AreEqual(expected, actual);
-
-        }
+ 
 
         /// <summary>
         ///SHA512Encrypt 的测试

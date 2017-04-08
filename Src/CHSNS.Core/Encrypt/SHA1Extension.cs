@@ -3,6 +3,7 @@ namespace CHSNS.Encrypt {
 
     public static class SHACryptExtension {
 
+    
         /// <summary>
         /// Ω¯––SHA256º”√‹
         /// </summary>

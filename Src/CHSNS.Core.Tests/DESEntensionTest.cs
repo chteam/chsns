@@ -24,9 +24,10 @@ namespace CHSNS.Core.Tests
         [TestMethod]
         public void DESEncryptTest1() {
             const string originalValue = "sdfj89wjf;sdafj";
-            const string expected = "8ElU3E8IM5P8wdMj26GZNw==";
+
             var actual = originalValue.DESEncrypt(DESKEY);
-            Assert.AreEqual(expected, actual);
+            var decrypt = actual.DESDecrypt(DESKEY);
+            Assert.AreEqual(originalValue, decrypt);
         }
 
         /// <summary>
@@ -35,32 +36,13 @@ namespace CHSNS.Core.Tests
         [TestMethod]
         public void DESEncryptTest() {
             const string originalValue = "sdfj89wjf;sdafj"; 
-            const string expected = "/6nZEDbNazIXPhjVLLAZOQ==";
+             
             var actual = originalValue.DESEncrypt(DESKEY, DESVI);
-            Assert.AreEqual(expected, actual);
+            var decrypt = actual.DESDecrypt(DESKEY, DESVI);
+            Assert.AreEqual(originalValue, decrypt);
 
         }
 
-        /// <summary>
-        ///DESDecrypt 的测试
-        ///</summary>
-        [TestMethod]
-        public void DESDecryptTest1() {
-            const string encryptedValue = "8ElU3E8IM5P8wdMj26GZNw==";
-            const string expected = "sdfj89wjf;sdafj"; 
-            var actual = encryptedValue.DESDecrypt(DESKEY);
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
-        ///DESDecrypt 的测试
-        ///</summary>
-        [TestMethod]
-        public void DESDecryptTest() {
-            const string encryptedValue = "/6nZEDbNazIXPhjVLLAZOQ==";
-            const string expected = "sdfj89wjf;sdafj";
-            var actual = encryptedValue.DESDecrypt(DESKEY, DESVI);
-            Assert.AreEqual(expected, actual);
-        }
+ 
     }
 }

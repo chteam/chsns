@@ -1,6 +1,5 @@
 ﻿using CHSNS;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.Security;
 namespace CHSNS.Core.Tests
 {
     

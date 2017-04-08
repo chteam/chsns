@@ -1,6 +1,5 @@
 ﻿//using System.Web.TestUtil;
 using System;
-using CHSNS.Common.Serializer;
 using CHSNS.Core.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
