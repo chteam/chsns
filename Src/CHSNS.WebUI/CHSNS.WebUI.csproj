@@ -40,6 +40,12 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Views\Account\ChangePassword.cshtml" />
+    <None Include="Views\Account\LogOn.cshtml" />
+    <None Include="Views\Account\Reg-Success.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CHSNS.Common\CHSNS.Common.csproj" />
     <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj" />
     <ProjectReference Include="..\CHSNS.DataContext\CHSNS.DataContext.csproj" />

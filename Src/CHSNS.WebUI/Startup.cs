@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CHSNS.Config;
+using CHSNS.DataContext;
+using CHSNS.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +34,9 @@ namespace CHSNS.WebUI
             services.Configure<SiteConfig>(Configuration.GetSection("SiteConfig"));
             // Add framework services.
             services.AddMvc();
+
+            services.AddTransient<AccountService, AccountService>();
+            services.AddDbContext<SqlServerEntities>(ServiceLifetime.Scoped);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

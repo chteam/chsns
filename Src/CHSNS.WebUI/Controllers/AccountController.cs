@@ -2,20 +2,22 @@
 using CHSNS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-
+    using CHSNS.Service;
 namespace CHSNS.Controllers
 {
-    using CHSNS.Service;
+
 
     public class AccountController : BaseController
     {
-        private readonly SiteConfig _siteConfig;
+        private readonly AccountService _accountService;
+        
 
-        public AccountController(IOptions<SiteConfig> siteConfig)
+        public AccountController(AccountService accountService)
         {
-            _siteConfig = siteConfig.Value;
+            _accountService = accountService;
+            
         }
-        public AccountService Account { get; set; }
+         
         #region 注册
 
         /// <summary>
@@ -35,7 +37,7 @@ namespace CHSNS.Controllers
                 ViewData.Model = account;
                 return Register();
             }
-            var hasSuccess = Account.Create(account, _siteConfig);
+            var hasSuccess = _accountService.Create(account);
             Title = "注册成功";
             if (hasSuccess) return View("Reg-Success");
             return View(account);
@@ -45,7 +47,7 @@ namespace CHSNS.Controllers
         /// </summary>
         public virtual ActionResult UsernameCanUse(string username)
         {
-            return Json(Account.IsUsernameCanUse(username));
+            return Json(_accountService.IsUsernameCanUse(username));
         }
         #endregion
 
@@ -53,8 +55,8 @@ namespace CHSNS.Controllers
 
         public virtual ActionResult LogOff()
         {
-            Account.Logout(null);
-            return Redirect("");
+            _accountService.Logout(null);
+            return Redirect(HomePage);
         }
 
         [HttpGet]
@@ -75,7 +77,7 @@ namespace CHSNS.Controllers
                 return LogOn(returnUrl);
             }
             //匹配成功则赋值
-            var loginResult = Account.Login(account, autoLogOn ?? false, true, null);
+            var loginResult = _accountService.Login(account, autoLogOn ?? false, true);
             if (loginResult <= 0)
                 return View(account);
             var url = string.IsNullOrEmpty(returnUrl) ? HomePage : returnUrl;
@@ -86,7 +88,7 @@ namespace CHSNS.Controllers
         #region 设置管理员
         public virtual ActionResult InitCreater()
         {
-            Account.InitCreater();
+            _accountService.InitCreater();
             return Content("");
         }
         #endregion
