@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ConfigSerializerExt.cs" />
+    <Compile Remove="Core\WebContext.cs" />
+    <Compile Remove="Core\WebCookies.cs" />
+    <Compile Remove="Extension\Include.cs" />
+    <Compile Remove="Extension\ScriptExtensions.cs" />
+    <Compile Remove="Result\XmlActionResult.cs" />
+    <Compile Remove="Result\XmlViewResult.cs" />
+    <Compile Remove="Validator\ContainsCharacterAttribute.cs" />
+    <Compile Remove="Validator\ContainsCharacterValidator.cs" />
+    <Compile Remove="Validator\EqualsClientAttribute.cs" />
+    <Compile Remove="Validator\EqualsClientValidator.cs" />
+    <Compile Remove="Validator\ValidatorRegister.cs" />
+    <Compile Remove="Wiki\Formatter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj" />
+    <ProjectReference Include="..\CHSNS.Models\CHSNS.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Result\" />
+    <Folder Include="Validator\" />
+  </ItemGroup>
+
+</Project>

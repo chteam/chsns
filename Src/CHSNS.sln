@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Models", "CHSNS.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.DataContext", "CHSNS.DataContext\CHSNS.DataContext.csproj", "{93EE8D20-1F71-40E9-9388-F37DE8DC4164}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.WebTools", "CHSNS.WebTools\CHSNS.WebTools.csproj", "{8F73BB58-01C6-4BD4-81A8-6822C205C115}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Services", "CHSNS.Services\CHSNS.Services.csproj", "{01AD77D4-6955-4CD2-89B0-C857336A3271}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{93EE8D20-1F71-40E9-9388-F37DE8DC4164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93EE8D20-1F71-40E9-9388-F37DE8DC4164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93EE8D20-1F71-40E9-9388-F37DE8DC4164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F73BB58-01C6-4BD4-81A8-6822C205C115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F73BB58-01C6-4BD4-81A8-6822C205C115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F73BB58-01C6-4BD4-81A8-6822C205C115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F73BB58-01C6-4BD4-81A8-6822C205C115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01AD77D4-6955-4CD2-89B0-C857336A3271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01AD77D4-6955-4CD2-89B0-C857336A3271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01AD77D4-6955-4CD2-89B0-C857336A3271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01AD77D4-6955-4CD2-89B0-C857336A3271}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

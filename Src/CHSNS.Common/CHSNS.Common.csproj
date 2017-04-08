@@ -5,12 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CastTool.cs" />
     <Compile Remove="ImageUpload.cs" />
     <Compile Remove="JsonAdapter.cs" />
     <Compile Remove="LocalPathGenerate.cs" />
     <Compile Remove="SystemLogger.cs" />
     <Compile Remove="XmlSerializer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>

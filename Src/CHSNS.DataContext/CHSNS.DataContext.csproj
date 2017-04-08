@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Compile Remove="ContextInitializer.cs" />
-    <Compile Remove="IDbContext.cs" />
     <Compile Remove="InMemoryDbSet.cs" />
     <Compile Remove="InMemoryEntities.cs" />
   </ItemGroup>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CHSNS.DataContext
 {
-    public interface IDbEntities :IDisposable
+    public interface IDbEntities :IDisposable,IDbContext
     {
         DbSet<Account> Account { get; set; }
         DbSet<Album> Album { get; set; }
