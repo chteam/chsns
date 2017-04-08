@@ -5,8 +5,7 @@
  * 
  * 
  */
-using System.Linq;
-using System.Management;
+using System;
 
 namespace CHSNS.Common
 {
@@ -15,28 +14,29 @@ namespace CHSNS.Common
     /// </summary>
     public class NetworkCross
     {
-        private ManagementObject _disk;
+        //private ManagementObject _disk;
 
-        /// <summary>
-        /// 读取设备
-        /// </summary>
-        private ManagementClass _mc;
+        ///// <summary>
+        ///// 读取设备
+        ///// </summary>
+        //private ManagementClass _mc;
 
-        private ManagementObjectCollection _moc;
+        //private ManagementObjectCollection _moc;
 
         /// <summary>
         /// 取得设备网卡的MAC地址
         /// </summary>
         public string GetNetCardMacAddress()
         {
-            _mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-            _moc = _mc.GetInstances();
-            string str = "";
-            foreach (ManagementObject mo in _moc.Cast<ManagementObject>().Where(mo => (bool) mo["IPEnabled"]))
-            {
-                str = mo["MacAddress"].ToString();
-            }
-            return str;
+            throw new NotImplementedException();
+            //_mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            //_moc = _mc.GetInstances();
+            //string str = "";
+            //foreach (ManagementObject mo in _moc.Cast<ManagementObject>().Where(mo => (bool) mo["IPEnabled"]))
+            //{
+            //    str = mo["MacAddress"].ToString();
+            //}
+            //return str;
         }
 
         /// <summary>
@@ -45,10 +45,11 @@ namespace CHSNS.Common
         /// <returns>硬盘的卷标号</returns>
         public string GetDiskVolumeSerialNumber()
         {
-            _mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-            _disk = new ManagementObject("win32_logicaldisk.deviceid=\"c:\"");
-            _disk.Get();
-            return _disk.GetPropertyValue("VolumeSerialNumber").ToString();
+            throw new NotImplementedException();
+            //_mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            //_disk = new ManagementObject("win32_logicaldisk.deviceid=\"c:\"");
+            //_disk.Get();
+            //return _disk.GetPropertyValue("VolumeSerialNumber").ToString();
         }
 
         /// <summary>
@@ -57,16 +58,17 @@ namespace CHSNS.Common
         /// <returns>CPU编号</returns>
         public string GetCpuId()
         {
-            var wmi = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
+            throw new NotImplementedException();
+            //var wmi = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
 
-            string uint32 = "";
+            //string uint32 = "";
 
-            foreach (ManagementBaseObject wmiObj in wmi.Get())
-            {
-                uint32 = wmiObj["ProcessorId"].ToString();
-            }
+            //foreach (ManagementBaseObject wmiObj in wmi.Get())
+            //{
+            //    uint32 = wmiObj["ProcessorId"].ToString();
+            //}
 
-            return uint32;
+            //return uint32;
         }
     }
 }

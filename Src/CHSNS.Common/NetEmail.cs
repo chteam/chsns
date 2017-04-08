@@ -1,11 +1,8 @@
 ﻿namespace CHSNS.Common.Email
 {
-    using System.ComponentModel.Composition;
-    using System.Net;
-    using System.Net.Mail;
     using CHSNS.Interface;
 
-    [Export]
+ 
     public class NetEmail : IEmail
     {
         #region IEmail Members
@@ -23,7 +20,8 @@
         public void Send(string to, string from, string subject, string body, string userName, string password,
                          string smtpHost)
         {
-            var f = new MailAddress(from);
+            throw new System.NotImplementedException();
+            /*var f = new MailAddress(from);
             var t = new MailAddress(to);
             var message = new MailMessage(f, t) {Subject = subject, IsBodyHtml = true, Body = body};
             var client = new SmtpClient(smtpHost)
@@ -33,6 +31,7 @@
             //设置发送邮件身份验证方式
             //注意如果发件人地址是abc@def.com，则用户名是abc而不是abc@def.com
             client.Send(message);
+            */
         }
 
         #endregion

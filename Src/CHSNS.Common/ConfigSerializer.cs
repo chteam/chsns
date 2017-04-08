@@ -29,8 +29,9 @@
         /// <param name="key">键值</param>
         public void Save<T>(T obj, string key) where T : class
         {
-            XmlSerializer.Save(obj, string.Format(Path, _rootPath, key));
-            ClearCache(key);
+            throw new System.NotImplementedException();
+            // XmlSerializer.Save(obj, string.Format(Path, _rootPath, key));
+            // ClearCache(key);
         }
 
         /// <summary>
@@ -51,14 +52,15 @@
         /// <returns></returns>
         public T Load<T>(string key, bool isUseCache) where T : class
         {
-            string fn = string.Format(Path, _rootPath, key).ToLower();
-            if (isUseCache)
-            {
-                if (!CacheProvider.Instance.Contains(fn))
-                    CacheProvider.Instance.Add(fn, XmlSerializer.Load<T>(fn));
-                return CacheProvider.Instance.Get<T>(fn);
-            }
-            return XmlSerializer.Load<T>(fn);
+            /*      string fn = string.Format(Path, _rootPath, key).ToLower();
+                  if (isUseCache)
+                  {
+                      if (!CacheProvider.Instance.Contains(fn))
+                          CacheProvider.Instance.Add(fn, XmlSerializer.Load<T>(fn));
+                      return CacheProvider.Instance.Get<T>(fn);
+                  }
+                  return XmlSerializer.Load<T>(fn);*/
+            throw new System.NotImplementedException();
         }
 
         /// <summary>

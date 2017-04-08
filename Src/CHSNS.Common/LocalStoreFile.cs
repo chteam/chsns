@@ -1,11 +1,8 @@
 namespace CHSNS.Common.LocalImplement
 {
-    using System.ComponentModel.Composition;
-    using System.Drawing;
     using System.IO;
     using CHSNS.Interface;
 
-    [Export]
     public class LocalStoreFile : IStoreFile
     {
         private readonly string _rootPath;
@@ -43,16 +40,15 @@ namespace CHSNS.Common.LocalImplement
 
         public void SaveImage(Stream inputStream, string fileName)
         {
-            Image img = new Bitmap(inputStream);
-            img.Save(Path.Combine(_rootPath, fileName.TrimStart("\\/".ToCharArray())));
+            throw new System.NotImplementedException();
+           /* Image img = new Bitmap(inputStream);
+            img.Save(Path.Combine(_rootPath, fileName.TrimStart("\\/".ToCharArray())));*/
         }
 
         public void WriteLine(string path, string text)
         {
-            using (var sw = new StreamWriter(path, true))
-            {
-                sw.WriteLine(text);
-            }
+            File.AppendAllText(path, text);
+            
         }
 
 

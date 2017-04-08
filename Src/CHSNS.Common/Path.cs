@@ -1,6 +1,4 @@
 using System;
-using System.Web;
-
 namespace CHSNS
 {
     /// <summary>
@@ -32,10 +30,10 @@ namespace CHSNS
                                  PhotoPath(dt), UserID, dt.Ticks/1000000, ext, size);
         }
 
-        public static string Photo(long UserID, DateTime dt, string ext, ThumbType t)
-        {
-            return Photo(UserID, dt, ext, t.ToString());
-        }
+        //public static string Photo(long UserID, DateTime dt, string ext, ThumbType t)
+        //{
+        //    return Photo(UserID, dt, ext, t.ToString());
+        //}
 
         #endregion
 
@@ -43,7 +41,8 @@ namespace CHSNS
 
         public static string AlbumFace(string url)
         {
-            return Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute) ? url : EmptyImage(ThumbType.Middle);
+            throw new NotImplementedException();
+            // return Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute) ? url : EmptyImage(ThumbType.Middle);
         }
 
         #endregion
@@ -65,42 +64,6 @@ namespace CHSNS
 
         #region 新版本的
 
-        #region UserWebPath
-
-        /// <summary>
-        /// 得到用户文件夹
-        /// </summary>
-        /// <param name="userid">用户ID</param>
-        /// <returns>用户文件夹</returns>
-        public static string UserWebPath(string userid)
-        {
-            return string.Format("/userFiles/{0}/", userid.PadLeft(12, '0').Insert(9, "/").Insert(6, "/").Insert(4, "/"));
-        }
-
-        //static public string UserWebPath() {
-        //    return UserWebPath(CHUser.UserId.ToString());
-        //}
-
-        #endregion
-
-        #region
-
-        /// <summary>
-        /// 用户文件夹(ASp.net用)
-        /// </summary>
-        /// <param name="userid">用户ID</param>
-        /// <returns></returns>
-        public static string UserServerPath(object userid)
-        {
-            return string.Format("~{0}", UserWebPath(userid.ToString()));
-        }
-
-        public static string FaceMapPath(object userid)
-        {
-            return HttpContext.Current.Server.MapPath(string.Format("{0}face/", UserServerPath(userid)));
-        }
-
-        #endregion
 
         #region GetFace
 
@@ -110,22 +73,22 @@ namespace CHSNS
         /// <param name="userid"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static string GetFace(object userid, ThumbType type)
-        {
-            string text = string.Format("{0}Face/{1}{2}.jpg",
-                                        UserWebPath(userid.ToString()),
-                                        userid,
-                                        type);
-            //if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
-            return text;
-            //	}
-            //return EmptyImage(type);
-        }
+        //public static string GetFace(object userid, ThumbType type)
+        //{
+        //    string text = string.Format("{0}Face/{1}{2}.jpg",
+        //                                UserWebPath(userid.ToString()),
+        //                                userid,
+        //                                type);
+        //    //if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+        //    return text;
+        //    //	}
+        //    //return EmptyImage(type);
+        //}
 
-        private static string EmptyImage(ThumbType type)
-        {
-            return string.Format("/images/no_{0}.jpg", type);
-        }
+        //private static string EmptyImage(ThumbType type)
+        //{
+        //    return string.Format("/images/no_{0}.jpg", type);
+        //}
 
         #endregion
 
@@ -138,24 +101,27 @@ namespace CHSNS
         {
             get
             {
-                if (HttpContext.Current.Application["path_current"] == null)
-                {
-                    HttpContext.Current.Application.Lock();
-                    HttpContext.Current.Application["path_current"] = new Path();
-                    HttpContext.Current.Application.UnLock();
-                }
-                return HttpContext.Current.Application["path_current"] as Path;
+                //if (HttpContext.Current.Application["path_current"] == null)
+                //{
+                //    HttpContext.Current.Application.Lock();
+                //    HttpContext.Current.Application["path_current"] = new Path();
+                //    HttpContext.Current.Application.UnLock();
+                //}
+                //return HttpContext.Current.Application["path_current"] as Path;
+                throw new NotImplementedException();
             }
         }
 
         public string GetFace_Small(object userid)
         {
-            return GetFace(userid.ToString(), ThumbType.Small);
+            throw new NotImplementedException();
+            //return GetFace(userid.ToString(), ThumbType.Small);
         }
 
         public string GetFace_Middle(object userid)
         {
-            return GetFace(userid.ToString(), ThumbType.Middle);
+            throw new NotImplementedException();
+            //return GetFace(userid.ToString(), ThumbType.Middle);
         }
 
         //public string GetFace_Big() {
@@ -163,7 +129,8 @@ namespace CHSNS
         //}
         public string GetFace_Big(object userid)
         {
-            return GetFace(userid.ToString(), ThumbType.Big);
+            throw new NotImplementedException();
+            //return GetFace(userid.ToString(), ThumbType.Big);
         }
 
         public string GetThumbPhoto(long userid, string photofn)
@@ -184,7 +151,8 @@ namespace CHSNS
 
         public string GroupImg_Big(object groupid)
         {
-            return GetGroupImg(groupid.ToString(), ThumbType.Big);
+            throw new NotImplementedException();
+            //return GetGroupImg(groupid.ToString(), ThumbType.Big);
         }
 
         public static string GetRoot()
@@ -212,9 +180,10 @@ namespace CHSNS
         {
             get
             {
-                return System.IO.Path.GetFileNameWithoutExtension(
-                    HttpContext.Current.Server.MapPath(HttpContext.Current.Request.Path)
-                    ).ToLower();
+                //return System.IO.Path.GetFileNameWithoutExtension(
+                //    HttpContext.Current.Server.MapPath(HttpContext.Current.Request.Path)
+                //    ).ToLower();
+                throw new NotImplementedException();
             }
         }
 
@@ -241,7 +210,8 @@ namespace CHSNS
         //}
         public static string ClientUserPhotosFolder(string userid)
         {
-            return String.Format("{0}photos/", UserWebPath(userid));
+            //  return String.Format("{0}photos/", UserWebPath(userid));
+            throw new NotImplementedException();
         }
 
         ///// <summary>
@@ -253,25 +223,26 @@ namespace CHSNS
         //}
         public static string ClientUserThumbFolder(string userid)
         {
-            return String.Format("{0}Thumb/", UserWebPath(userid));
+            throw new NotImplementedException();
+            //  return String.Format("{0}Thumb/", UserWebPath(userid));
         }
 
         #endregion
 
         #region 用户头像路径
 
-        public static string GetFaceEmpty(string userid, ThumbType type)
-        {
-//如果没有图片则返回空串
-            if (userid.Length > 3)
-            {
-                string text = string.Format("{0}face/{1}{2}.jpg", UserWebPath(userid), userid.Substring(0, 3), type);
-                //      if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
-                return text;
-                //		}
-            }
-            return String.Empty;
-        }
+//        public static string GetFaceEmpty(string userid, ThumbType type)
+//        {
+////如果没有图片则返回空串
+//            if (userid.Length > 3)
+//            {
+//                string text = string.Format("{0}face/{1}{2}.jpg", UserWebPath(userid), userid.Substring(0, 3), type);
+//                //      if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+//                return text;
+//                //		}
+//            }
+//            return String.Empty;
+//        }
 
         #endregion
 
@@ -283,15 +254,15 @@ namespace CHSNS
         /// <param name="groupId">群ID</param>
         /// <param name="type">图片大小</param>
         /// <returns>群图片路径</returns>
-        public static string GetGroupImg(object groupId, ThumbType type)
-        {
-            string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(groupId), groupId, type);
-            //Debug.Trace(HttpContext.Current.Request.PhysicalApplicationPath + text);
-            // if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
-            return text;
-            //}
-            //return "/images/logoMain.jpg";
-        }
+        //public static string GetGroupImg(object groupId, ThumbType type)
+        //{
+        //    string text = string.Format("{0}face/{1}{2}.jpg", ClientGroupFolder(groupId), groupId, type);
+        //    //Debug.Trace(HttpContext.Current.Request.PhysicalApplicationPath + text);
+        //    // if (IOFactory.StoreFile.Exists(HttpContext.Current.Request.PhysicalApplicationPath + text)) {
+        //    return text;
+        //    //}
+        //    //return "/images/logoMain.jpg";
+        //}
 
         /// <summary>
         /// 获取群图片(中号)
@@ -299,7 +270,8 @@ namespace CHSNS
         /// <returns>群图片路径</returns>
         public static string GetGroupImg(string groupId)
         {
-            return GetGroupImg(groupId, ThumbType.Middle);
+            throw new NotImplementedException();
+            // return GetGroupImg(groupId, ThumbType.Middle);
         }
 
         public string GetGroupImg(object groupId)
@@ -323,35 +295,6 @@ namespace CHSNS
 
         #endregion
 
-        //#region 计算服务器上文件夹/文件大小
-        // <summary>
-        // 递归算文件夹大小
-        // </summary>
-        // <param name="d"></param>
-        // <returns>文件夹的大小(字节)</returns>
-        //static public long DirectorySize(DirectoryInfo d) {
-        //    long Size = 0;
-        //     所有文件大小.
-        //    FileInfo[] fis = d.GetFiles();
-        //    foreach (FileInfo fi in fis) {
-        //        Size += fi.Length;
-        //    }
-        //     遍历出当前目录的所有文件夹.
-        //    DirectoryInfo[] dis = d.GetDirectories();
-        //    foreach (DirectoryInfo di in dis) {
-        //        Size += DirectorySize(di);   //这就用到递归了，调用父方法,注意，这里并不是直接返回值，而是调用父返回来的
-        //    }
-        //    return (Size);
-        //}
-        // <summary>
-        // 获取文件大小
-        // </summary>
-        // <param name="path">文件路径</param>
-        // <returns>文件的大小(字节)</returns>
-        //static public long FileSize(string path) {
-        //    FileInfo fi = new FileInfo(path);
-        //    return fi.Length;
-        //}
-        //#endregion
+ 
     }
 }

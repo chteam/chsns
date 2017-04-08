@@ -1,6 +1,5 @@
 ﻿namespace CHSNS.Common.PathBuilder
 {
-    using System.Web;
     using CHSNS.Interface;
 
     /// <summary>
@@ -8,19 +7,19 @@
     /// </summary>
     public class ServerPathBuilder : IPathBuilder
     {
-        private readonly HttpServerUtilityBase _server;
+       // private readonly HttpServerUtilityBase _server;
         private string _descpath;
 
-        public ServerPathBuilder(HttpServerUtilityBase server)
-        {
-            _server = server;
-        }
+        //public ServerPathBuilder(HttpServerUtilityBase server)
+        //{
+        //    _server = server;
+        //}
 
-        public ServerPathBuilder(HttpServerUtilityBase server, string path)
-        {
-            _server = server;
-            SourcePath = path;
-        }
+        //public ServerPathBuilder(HttpServerUtilityBase server, string path)
+        //{
+        //    _server = server;
+        //    SourcePath = path;
+        //}
 
         #region IPathBuilder Members
 
@@ -32,7 +31,7 @@
             {
                 if (string.IsNullOrEmpty(_descpath))
                 {
-                    _descpath = _server.MapPath(SourcePath);
+                   // _descpath = _server.MapPath(SourcePath);
                 }
                 return _descpath;
             }

@@ -2,7 +2,6 @@ namespace CHSNS.Common
 {
     using System;
     using System.Diagnostics;
-    using System.Web;
     public class SystemLogger
     {
         public SystemLogger(HttpContextBase httpContext,IContext context)
