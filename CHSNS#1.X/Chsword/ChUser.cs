@@ -1,11 +1,11 @@
-namespace CHSNS {
+ï»¿namespace CHSNS {
 	using System;
 	using System.Data;
 	using System.Web;
 
 	public partial class ChUser {
 		/// <summary>
-		/// Ö»ÓĞ×¢²áÊ±²ÅÓÃµÄÊôĞÔ
+		/// åªæœ‰æ³¨å†Œæ—¶æ‰ç”¨çš„å±æ€§
 		/// </summary>
 		string _email;
 		public string Email {
@@ -17,7 +17,7 @@ namespace CHSNS {
 			}
 		}
 		/// <summary>
-		/// »ñÈ¡µ±Ç°ÓÃ»§ID,ÈçÓÃ»§Î´µÇÂ¼ÔòÅ×³öÒì³£.
+		/// è·å–å½“å‰ç”¨æˆ·ID,å¦‚ç”¨æˆ·æœªç™»å½•åˆ™æŠ›å‡ºå¼‚å¸¸.
 		/// </summary>
 		long _userid;
 		public long Userid {
@@ -29,7 +29,7 @@ namespace CHSNS {
 			}
 		}
 		/// <summary>
-		/// »ñÈ¡µ±Ç°ÓÃ»§ĞÕÃû
+		/// è·å–å½“å‰ç”¨æˆ·å§“å
 		/// </summary>
 		string _username;
 		public string Username {
@@ -44,7 +44,7 @@ namespace CHSNS {
 			}
 		}
 		/// <summary>
-		/// »ñÈ¡µ±Ç°ÓÃ»§×´Ì¬
+		/// è·å–å½“å‰ç”¨æˆ·çŠ¶æ€
 		/// </summary>
 		UserStatusType _status;
 		public UserStatusType Status {
