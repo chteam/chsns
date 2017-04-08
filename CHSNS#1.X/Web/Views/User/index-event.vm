@@ -1,3 +1,0 @@
-﻿<div><h4>$user.get_item("name")的动向</h4><ul id="Profile_Event">
-#component(Event with "type=0" "userid=$Ownerid") ##type me 0
-</ul></div>

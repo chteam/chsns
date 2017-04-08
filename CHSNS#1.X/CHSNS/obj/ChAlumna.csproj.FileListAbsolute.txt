@@ -1,3 +1,0 @@
-C:\Chsword\Web\bin\ResolveAssemblyReference.cache
-C:\Chsword\Web\bin\ChAlumna.dll
-C:\Chsword\Web\bin\ChAlumna.pdb

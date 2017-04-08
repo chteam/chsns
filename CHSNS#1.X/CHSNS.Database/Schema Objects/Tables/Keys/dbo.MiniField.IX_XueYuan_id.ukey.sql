@@ -1,3 +1,0 @@
-﻿ALTER TABLE [dbo].[MiniField] ADD CONSTRAINT [IX_XueYuan_id] UNIQUE NONCLUSTERED  ([ID]) ON [PRIMARY]
-
-
