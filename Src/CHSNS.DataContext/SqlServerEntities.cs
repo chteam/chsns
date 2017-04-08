@@ -1,44 +1,44 @@
 ﻿using System;
-using System.Data.Entity;
+ 
 using CHSNS.Models;
-
+using Microsoft.EntityFrameworkCore;
 namespace CHSNS.DataContext
 {
-    public class SqlServerEntities : DbContext, IDbEntities,IDbContext,IDisposable
+    public class SqlServerEntities : DbContext, IDbEntities,IDisposable
     {
         public SqlServerEntities():base()
         {
             
         }
-        public SqlServerEntities(string connectionStringOrName)
-            : base(connectionStringOrName){}
-        public IDbSet<Account> Account { get; set; }
-        public IDbSet<Album> Album { get; set; }
-        public IDbSet<Application> Application { get; set; }
-        public IDbSet<BasicInformation> BasicInformation { get; set; }
-        public IDbSet<Blogs> Blogs { get; set; }
-        public IDbSet<Category> Category { get; set; }
-        public IDbSet<Comment> Comment { get; set; }
-        public IDbSet<ContactInformation> ContactInformation { get; set; }
-        public IDbSet<Wiki> Wikis { get; set; }
-        public IDbSet<WikiVersion> WikiVersions { get; set; }
-        public IDbSet<EventLog> Event { get; set; }
-        public IDbSet<FieldInformation> FieldInformation { get; set; }
-        public IDbSet<Friend> Friends { get; set; }
-        public IDbSet<Group> Group { get; set; }
-        public IDbSet<GroupUser> GroupUser { get; set; }
-        public IDbSet<LogTag> LogTag { get; set; }
-        public IDbSet<Message> Message { get; set; }
-        public IDbSet<Photo> Photos { get; set; }
-        public IDbSet<Push> Push { get; set; }
-        public IDbSet<Reply> Reply { get; set; }
-        public IDbSet<Services> Services { get; set; }
-        public IDbSet<SuperNote> SuperNote { get; set; }
-        public IDbSet<Tags> Tags { get; set; }
-        public IDbSet<ViewData> ViewData { get; set; }
-        public IDbSet<Roles> Roles { get; set; }
-        public IDbSet<UserRole> UserRole { get; set; }
-        public IDbSet<Profile> Profile { get; set; }
-        public IDbSet<Note> Note { get; set; }
+        //public SqlServerEntities(string connectionStringOrName)
+        //    : base(connectionStringOrName){}
+        public DbSet<Account> Account { get; set; }
+        public DbSet<Album> Album { get; set; }
+        public DbSet<Application> Application { get; set; }
+        public DbSet<BasicInformation> BasicInformation { get; set; }
+        public DbSet<Blogs> Blogs { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Comment> Comment { get; set; }
+        public DbSet<ContactInformation> ContactInformation { get; set; }
+        public DbSet<Wiki> Wikis { get; set; }
+        public DbSet<WikiVersion> WikiVersions { get; set; }
+        public DbSet<EventLog> Event { get; set; }
+        public DbSet<FieldInformation> FieldInformation { get; set; }
+        public DbSet<Friend> Friends { get; set; }
+        public DbSet<Group> Group { get; set; }
+        public DbSet<GroupUser> GroupUser { get; set; }
+        public DbSet<LogTag> LogTag { get; set; }
+        public DbSet<Message> Message { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<Push> Push { get; set; }
+        public DbSet<Reply> Reply { get; set; }
+        public DbSet<Services> Services { get; set; }
+        public DbSet<SuperNote> SuperNote { get; set; }
+        public DbSet<Tags> Tags { get; set; }
+        public DbSet<ViewData> ViewData { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
+        public DbSet<Profile> Profile { get; set; }
+        public DbSet<Note> Note { get; set; }
     }
 }

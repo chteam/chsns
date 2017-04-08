@@ -1,39 +1,40 @@
 ﻿using System;
-using System.Data.Entity;
+ 
 using CHSNS.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CHSNS.DataContext
 {
-    public interface IDbEntities :IDisposable,IDbContext
+    public interface IDbEntities :IDisposable
     {
-        IDbSet<Account> Account { get; set; }
-        IDbSet<Album> Album { get; set; }
-        IDbSet<Application> Application { get; set; }
-        IDbSet<BasicInformation> BasicInformation { get; set; }
-        IDbSet<Blogs> Blogs { get; set; }
-        IDbSet<Category> Category { get; set; }
-        IDbSet<Comment> Comment { get; set; }
-        IDbSet<ContactInformation> ContactInformation { get; set; }
-        IDbSet<Wiki> Wikis { get; set; }
-        IDbSet<WikiVersion> WikiVersions { get; set; }
-        IDbSet<EventLog> Event { get; set; }
-        IDbSet<FieldInformation> FieldInformation { get; set; }
-        IDbSet<Friend> Friends { get; set; }
-        IDbSet<Group> Group { get; set; }
-        IDbSet<GroupUser> GroupUser { get; set; }
-        IDbSet<LogTag> LogTag { get; set; }
-        IDbSet<Message> Message { get; set; }
-        IDbSet<Photo> Photos { get; set; }
-        IDbSet<Push> Push { get; set; }
-        IDbSet<Reply> Reply { get; set; }
-        IDbSet<Services> Services { get; set; }
-        IDbSet<SuperNote> SuperNote { get; set; }
-        IDbSet<Tags> Tags { get; set; }
-        IDbSet<ViewData> ViewData { get; set; }
-        IDbSet<Roles> Roles { get; set; }
-        IDbSet<UserRole> UserRole { get; set; }
-        IDbSet<Profile> Profile { get; set; }
-        IDbSet<Note> Note { get; set; }
+        DbSet<Account> Account { get; set; }
+        DbSet<Album> Album { get; set; }
+        DbSet<Application> Application { get; set; }
+        DbSet<BasicInformation> BasicInformation { get; set; }
+        DbSet<Blogs> Blogs { get; set; }
+        DbSet<Category> Category { get; set; }
+        DbSet<Comment> Comment { get; set; }
+        DbSet<ContactInformation> ContactInformation { get; set; }
+        DbSet<Wiki> Wikis { get; set; }
+        DbSet<WikiVersion> WikiVersions { get; set; }
+        DbSet<EventLog> Event { get; set; }
+        DbSet<FieldInformation> FieldInformation { get; set; }
+        DbSet<Friend> Friends { get; set; }
+        DbSet<Group> Group { get; set; }
+        DbSet<GroupUser> GroupUser { get; set; }
+        DbSet<LogTag> LogTag { get; set; }
+        DbSet<Message> Message { get; set; }
+        DbSet<Photo> Photos { get; set; }
+        DbSet<Push> Push { get; set; }
+        DbSet<Reply> Reply { get; set; }
+        DbSet<Services> Services { get; set; }
+        DbSet<SuperNote> SuperNote { get; set; }
+        DbSet<Tags> Tags { get; set; }
+        DbSet<ViewData> ViewData { get; set; }
+        DbSet<Roles> Roles { get; set; }
+        DbSet<UserRole> UserRole { get; set; }
+        DbSet<Profile> Profile { get; set; }
+        DbSet<Note> Note { get; set; }
 
  
  

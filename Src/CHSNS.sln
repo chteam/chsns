@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Common", "CHSNS.Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.Models", "CHSNS.Models\CHSNS.Models.csproj", "{28C3CB0C-CE31-4240-8C06-7F6CBA6D8186}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHSNS.DataContext", "CHSNS.DataContext\CHSNS.DataContext.csproj", "{93EE8D20-1F71-40E9-9388-F37DE8DC4164}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{28C3CB0C-CE31-4240-8C06-7F6CBA6D8186}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C3CB0C-CE31-4240-8C06-7F6CBA6D8186}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28C3CB0C-CE31-4240-8C06-7F6CBA6D8186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93EE8D20-1F71-40E9-9388-F37DE8DC4164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93EE8D20-1F71-40E9-9388-F37DE8DC4164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93EE8D20-1F71-40E9-9388-F37DE8DC4164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93EE8D20-1F71-40E9-9388-F37DE8DC4164}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
