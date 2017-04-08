@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfListItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<ListItem>
+		<Selected>false</Selected>
+		<Text>无需批准</Text>
+		<Value>0</Value>
+	</ListItem>
+	<ListItem>
+		<Selected>true</Selected>
+		<Text>需要管理员批准</Text>
+		<Value>4</Value>
+	</ListItem>
+	<ListItem>
+		<Selected>false</Selected>
+		<Text>只能由管理员邀请</Text>
+		<Value>8</Value>
+	</ListItem>
+</ArrayOfListItem>

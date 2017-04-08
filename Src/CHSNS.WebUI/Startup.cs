@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CHSNS.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +28,8 @@ namespace CHSNS.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOptions();
+            services.Configure<SiteConfig>(Configuration.GetSection("SiteConfig"));
             // Add framework services.
             services.AddMvc();
         }
@@ -53,7 +56,7 @@ namespace CHSNS.WebUI
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Register}/{id?}");
             });
         }
     }

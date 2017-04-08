@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <string>.bmp</string>
-  <string>.jpg</string>
-  <string>.png</string>
-  <string>.gif</string>
-  <string>.jpeg</string>
-</ArrayOfString>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfListItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ListItem>
+    <Selected>false</Selected>
+    <Text>发布日志模板</Text>
+    <Value>AddNote</Value>
+  </ListItem>
+  <ListItem>
+    <Selected>false</Selected>
+    <Text>XX与XX成为好友</Text>
+    <Value>MakeFriend</Value>
+  </ListItem>
+  <ListItem>
+    <Selected>false</Selected>
+    <Text>sdf</Text>
+    <Value>dsf</Value>
+  </ListItem>
+</ArrayOfListItem>

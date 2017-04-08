@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfListItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<ListItem>
+		<Selected>false</Selected>
+		<Text>公开(任何人都可以看贴和发贴)</Text>
+		<Value>0</Value>
+	</ListItem>
+	<ListItem>
+		<Selected>true</Selected>
+		<Text>半公开(任何人可以看贴，成员可以发贴)</Text>
+		<Value>4</Value>
+	</ListItem>
+	<ListItem>
+		<Selected>false</Selected>
+		<Text>私有(只有成员才能看贴，发贴)</Text>
+		<Value>8</Value>
+	</ListItem>
+</ArrayOfListItem>

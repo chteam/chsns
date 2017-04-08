@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfListItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ListItem>
+    <Selected>true</Selected>
+    <Text>公开</Text>
+    <Value>0</Value>
+  </ListItem>
+  <ListItem>
+    <Selected>false</Selected>
+    <Text>私有</Text>
+    <Value>200</Value>
+  </ListItem>
+</ArrayOfListItem>

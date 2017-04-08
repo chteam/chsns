@@ -1,35 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace CHSNS.WebUI.Controllers
+﻿
+namespace CHSNS.Controllers
 {
-    public class HomeController : Controller
+    using System.ComponentModel.Composition;
+    using System.Web.Mvc;
+    using CHSNS.Service;
+
+    public partial class HomeController : BaseController
     {
-        public IActionResult Index()
+        [Import]
+        public AccountService Account { get; set; }
+        public virtual ActionResult Index()
         {
-            return View();
+            //ViewData["viewlist"] = DBExt.View.ViewList(3, 3, 0, 6);
+            Title = "首页";
+            return RedirectToAction("index", "Entry", new { title = "index" });
+        }
+        public void LogOff() {
+            Account.Logout(WebContext);
+            RedirectToAction("index");
+        }
+        protected override void HandleUnknownAction(string actionName) {
+            View(actionName).ExecuteResult(ControllerContext);
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
-        }
     }
 }

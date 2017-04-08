@@ -46,12 +46,12 @@ namespace CHSNS.Controllers {
         }
 
 
-        
 
-        //public string HomePage
-        //{
-        //    get { return Url.Action("Index", "Entry", new {url = "Index"}); }
-        //}
+
+        public string HomePage
+        {
+            get { return Url.Action("Index", "Entry", new { url = "Index" }); }
+        }
         //public ActionResult Empty()
         //{
         //    return new EmptyResult();

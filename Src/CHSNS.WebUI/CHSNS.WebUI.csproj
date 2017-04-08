@@ -7,6 +7,24 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AjaxController.cs" />
+    <Compile Remove="Controllers\AlbumController.cs" />
+    <Compile Remove="Controllers\CommentController.cs" />
+    <Compile Remove="Controllers\EventController.cs" />
+    <Compile Remove="Controllers\FriendController.cs" />
+    <Compile Remove="Controllers\GroupController.cs" />
+    <Compile Remove="Controllers\HomeController.cs" />
+    <Compile Remove="Controllers\MessageController.cs" />
+    <Compile Remove="Controllers\NoteController.cs" />
+    <Compile Remove="Controllers\ProfileController.cs" />
+    <Compile Remove="Controllers\testController.cs" />
+    <Compile Remove="Controllers\UploadController.cs" />
+    <Compile Remove="Controllers\UserController.cs" />
+    <Compile Remove="Controllers\VideoController.cs" />
+    <Compile Remove="Controllers\WikiController.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -20,6 +38,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CHSNS.Common\CHSNS.Common.csproj" />
+    <ProjectReference Include="..\CHSNS.Core\CHSNS.Core.csproj" />
+    <ProjectReference Include="..\CHSNS.DataContext\CHSNS.DataContext.csproj" />
+    <ProjectReference Include="..\CHSNS.Models\CHSNS.Models.csproj" />
+    <ProjectReference Include="..\CHSNS.Services\CHSNS.Services.csproj" />
+    <ProjectReference Include="..\CHSNS.WebTools\CHSNS.WebTools.csproj" />
   </ItemGroup>
 
 </Project>
