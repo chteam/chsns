@@ -1,8 +1,4 @@
 ﻿@model CHSNS.Models.RegisterModel
-
-<script src="/Scripts/jquery.validate.min.js" type="text/javascript"></script>
-<script src="/Scripts/MicrosoftMvcJQueryValidation.js" type="text/javascript"></script>
-
 @using (Html.BeginForm())
 {
     <div class="formset centerform">
@@ -52,7 +48,7 @@
             if (_v) {
                 _msg(_v);
             } else {
-                $.post('<%=Url.Action("UsernameCanUse") %>', { 'username': un.val() }, function (r) {
+                $.post('@Url.Action("UsernameCanUse")', { 'username': un.val() }, function (r) {
                     _dict[un.val()] = r;
                     _msg(r);
                 });
@@ -60,3 +56,6 @@
         }).focus();
     })();
 </script>
+@section Scripts{
+    @Html.Partial("_ValidationScriptsPartial")
+}
