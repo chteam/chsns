@@ -13,33 +13,34 @@
 
 <!--
   ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
+  for the project. For CHSNS, use the modern stack defined in the constitution.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Frontend**: Vue 3 + TypeScript (strict mode) + Ant Design Vue 4.x + Vite 5+  
+**Backend**: .NET 10 Web API (API-only, no views) + Entity Framework Core  
+**Primary Dependencies**: [e.g., Pinia for state, axios for HTTP, FluentValidation for backend or NEEDS CLARIFICATION]  
+**Storage**: [e.g., PostgreSQL, SQL Server, MongoDB or NEEDS CLARIFICATION]  
+**Testing**: Vitest + Playwright (frontend), xUnit + WebApplicationFactory (backend)  
+**Target Platform**: Modern browsers (Chrome, Firefox, Safari, Edge latest 2 versions) + Linux/Windows server  
+**Project Type**: web (frontend + backend API in monorepo)  
+**Performance Goals**: [e.g., <100ms API response time, 60fps UI, <3s initial load or NEEDS CLARIFICATION]  
+**Constraints**: [e.g., <200ms p95, mobile-responsive, accessibility WCAG 2.1 AA or NEEDS CLARIFICATION]  
+**Scale/Scope**: [e.g., 10k concurrent users, 1M records, 100+ API endpoints or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+_GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
-- [ ] **Component-Based Architecture**: Feature designed as modular components with clear boundaries?
-- [ ] **API-First Development**: API contracts documented before implementation (if backend changes)?
+- [ ] **Component-Based Architecture**: Feature designed as modular components with clear boundaries? TypeScript strict mode enabled?
+- [ ] **API-First Development**: API contracts documented before implementation? Backend provides ONLY APIs (no views)?
 - [ ] **Test-Driven Development**: Test strategy defined with acceptance criteria?
 - [ ] **Progressive Migration**: If touching legacy code, migration approach documented?
 - [ ] **Observability**: Logging, error handling, and monitoring approach defined?
-- [ ] **Technology Stack**: Using approved frontend (Vue 3 + Ant Design Vue) and backend (.NET 10) stack?
-- [ ] **Quality Gates**: Tests, code review, and documentation plan in place?
+- [ ] **Technology Stack**: Using modern stack (Vue 3 + TypeScript strict + Ant Design Vue / .NET 10 Web API only)?
+- [ ] **Strict Typing**: All props, emits, functions have explicit types? No `any` types used?
+- [ ] **Quality Gates**: Tests, linting, type checking, code review, and documentation plan in place?
 
-*Any violations MUST be justified in the Complexity Tracking section below.*
+_Any violations MUST be justified in the Complexity Tracking section below._
 
 ## Project Structure
 
@@ -56,6 +57,7 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+
 <!--
   ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
   for this feature. Delete unused options and expand the chosen structure with
@@ -111,7 +113,7 @@ directories captured above]
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+| Violation                  | Why Needed         | Simpler Alternative Rejected Because |
+| -------------------------- | ------------------ | ------------------------------------ |
+| [e.g., 4th project]        | [current need]     | [why 3 projects insufficient]        |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient]  |

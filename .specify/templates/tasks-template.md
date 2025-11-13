@@ -1,5 +1,4 @@
 ---
-
 description: "Task list template for feature implementation"
 ---
 
@@ -25,32 +24,37 @@ description: "Task list template for feature implementation"
 - **Legacy code**: `Src/` folder (read-only unless actively migrating)
 - Paths shown below assume web app structure - adjust based on plan.md if needed
 
-<!-- 
+<!--
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
-  
+
   The /speckit.tasks command MUST replace these with actual tasks based on:
   - User stories from spec.md (with their priorities P1, P2, P3...)
   - Feature requirements from plan.md
   - Entities from data-model.md
   - Endpoints from contracts/
-  
+
   Tasks MUST be organized by user story so each story can be:
   - Implemented independently
   - Tested independently
   - Delivered as an MVP increment
-  
+
   DO NOT keep these sample tasks in the generated tasks.md file.
   ============================================================================
 -->
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-**Purpose**: Project initialization and basic structure
+**Purpose**: Project initialization and basic structure with modern tooling
 
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+- [ ] T001 Create project structure per implementation plan (frontend/, backend/ folders)
+- [ ] T002 Initialize frontend project with Vite + Vue 3 + TypeScript (strict mode)
+- [ ] T003 Initialize backend project with .NET 10 Web API template (no MVC views)
+- [ ] T004 [P] Configure ESLint + Prettier for frontend (zero warnings policy)
+- [ ] T005 [P] Configure .editorconfig + analyzers for backend
+- [ ] T006 [P] Setup Git hooks with Husky + lint-staged
+- [ ] T007 Configure tsconfig.json with strict: true and necessary compiler options
+- [ ] T008 [P] Setup CI/CD pipeline (build, test, lint on PR)
 
 ---
 
@@ -62,12 +66,15 @@ description: "Task list template for feature implementation"
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T009 Setup database schema and EF Core migrations framework
+- [ ] T010 [P] Implement JWT authentication/authorization with typed tokens
+- [ ] T011 [P] Setup API routing structure with versioning (e.g., /api/v1/)
+- [ ] T012 Configure OpenAPI/Swagger documentation generation
+- [ ] T013 Create base typed models/entities with validation
+- [ ] T014 Configure structured logging (Serilog with JSON output)
+- [ ] T015 Setup error handling middleware with consistent error responses
+- [ ] T016 [P] Create TypeScript API client types (auto-generated from OpenAPI if possible)
+- [ ] T017 Setup environment configuration management (.env files, appsettings.json)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -83,14 +90,33 @@ Examples of foundational tasks (adjust based on your project):
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T018 [P] [US1] Contract test for [endpoint] in backend/tests/Integration/[EndpointName]Tests.cs
+- [ ] T019 [P] [US1] Integration test for [user journey] in frontend/tests/e2e/[feature].spec.ts
+- [ ] T020 [P] [US1] Component unit tests in frontend/tests/unit/[ComponentName].spec.ts
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
+**Backend (API-only)**:
+
+- [ ] T021 [P] [US1] Define request/response DTOs with validation in backend/src/Models/Dto/[Name]Dto.cs
+- [ ] T022 [P] [US1] Create [Entity] model in backend/src/Models/[Entity].cs
+- [ ] T023 [US1] Implement [Service] with business logic in backend/src/Services/[Service].cs (depends on T022)
+- [ ] T024 [US1] Create API controller [endpoint] in backend/src/Controllers/[Name]Controller.cs
+- [ ] T025 [US1] Update OpenAPI documentation (verify Swagger UI reflects changes)
+
+**Frontend (TypeScript strict)**:
+
+- [ ] T026 [P] [US1] Define TypeScript interfaces/types in frontend/src/types/[feature].ts
+- [ ] T027 [P] [US1] Create API service methods in frontend/src/services/[feature]Service.ts
+- [ ] T028 [US1] Implement Vue component with typed props/emits in frontend/src/components/[Name].vue
+- [ ] T029 [US1] Create composable with explicit return types in frontend/src/composables/use[Feature].ts
+- [ ] T030 [US1] Integrate component in page/view with proper type safety
+
+**Type Safety Verification**:
+
+- [ ] T031 [US1] Run `tsc --noEmit` - verify zero TypeScript errors
+- [ ] T032 [US1] Run ESLint - verify zero warnings/errors
+- [ ] T033 [US1] Run backend code analysis - verify zero warnings
 - [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
 - [ ] T016 [US1] Add validation and error handling
 - [ ] T017 [US1] Add logging for user story 1 operations
@@ -107,8 +133,8 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test\_[name].py
+- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test\_[name].py
 
 ### Implementation for User Story 2
 
@@ -129,8 +155,8 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test\_[name].py
+- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test\_[name].py
 
 ### Implementation for User Story 3
 
