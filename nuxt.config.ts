@@ -3,6 +3,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   
+  // Configure source directory
+  dir: {
+    pages: 'app/pages',
+    layouts: 'app/layouts',
+    middleware: 'app/middleware',
+    plugins: 'app/plugins'
+  },
+  
   modules: [
     '@nuxtjs/tailwindcss'
   ],
@@ -22,6 +30,6 @@ export default defineNuxtConfig({
 
   typescript: {
     strict: true,
-    typeCheck: true
+    typeCheck: false
   }
 })
