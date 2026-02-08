@@ -1,29 +1,78 @@
-# chsns
-**What's the CHSNS#**
+# CHSNS - Modern SNS Web Application
 
+**What's CHSNS?**
 
-CHSNS# is a SNS web Application
+CHSNS is a modern SNS (Social Network Service) web application built with Nuxt.js 3.
 
-CHSNS#是成幻小组开发的一款SNS网站应用
+CHSNS是成幻小组开发的一款SNS网站应用，现已升级为基于Nuxt.js 3的现代化Web应用。
 
-**Lasted News**
+## 🚀 Technology Stack
 
-CHSNS# 1.30
+- **Nuxt.js 3** - The Intuitive Vue Framework
+- **Vue 3** - Progressive JavaScript Framework  
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
 
-CHSNS# Update to ASP.NET MVC Rc1
+## 📦 Installation
 
-**About CHTeam**
+```bash
+# Install dependencies
+npm install
 
-If you have good idea,or suggest you can email me.
+# Start development server
+npm run dev
 
-Email:chsword@126.com
+# Build for production
+npm run build
 
-Develop by:CHTeam，成幻小组
+# Preview production build
+npm run preview
+```
 
------------------------------------------------------------------------
+## 🔧 Development
 
-Email/Skype : chsword@126.com
-程序开发:[成幻小组]
- 
-* CHSNS1.X
-* CHSNS2.0
+```bash
+# Run development server at http://localhost:3000
+npm run dev
+
+# Run linter
+npm run lint
+
+# Fix linting issues
+npm run lint:fix
+```
+
+## 📚 Project Structure
+
+```
+chsns/
+├── app/
+│   ├── assets/          # Static assets (CSS, images)
+│   ├── components/      # Vue components
+│   ├── composables/     # Composition API functions
+│   ├── layouts/         # Layout components
+│   └── pages/          # Page components (auto-routed)
+├── public/             # Public static files
+├── nuxt.config.ts      # Nuxt configuration
+├── package.json        # Dependencies and scripts
+└── tsconfig.json       # TypeScript configuration
+```
+
+## 📝 Version History
+
+- **CHSNS 3.0** - Modern Nuxt.js application (Current)
+- **CHSNS 2.0** - Enhanced features
+- **CHSNS 1.X** - Initial versions
+- **Legacy ASP.NET MVC** - Original implementation (tagged as `aspnet-mvc-legacy`)
+
+## 👥 About CHTeam
+
+Developed by CHTeam (成幻小组)
+
+If you have good ideas or suggestions, please email us:
+
+**Email/Skype:** chsword@126.com
+
+## 📄 License
+
+Copyright © 2024 CHTeam
